@@ -1,0 +1,18 @@
+PREFIX Λ:      <http://www.inl.nl/diamant/>
+PREFIX lemon:  <http://lemon-model.net/lemon#>
+
+SELECT   ?e ?e1 ?p ?l ?l1 ?s ?s1 ?sy ?sy1 WHERE
+{ 
+   ?e a lemon:LexicalEntry .
+   ?e lemon:canonicalForm ?lf .
+   ?lf lemon:writtenRep ?l .
+   ?e lemon:sense ?s .
+   ?s lemon:reference ?sy .
+   ?sy ?p ?sy1 .
+   ?s1 lemon:reference ?sy1 .
+   ?e1 lemon:sense ?s1 .
+   ?e1 lemon:canonicalForm ?lf1 .
+   ?lf1 lemon:writtenRep ?l1 .
+   VALUES ?l { "hond" "kat" } .
+   filter (contains(str(?e1), "wnt"))
+}
