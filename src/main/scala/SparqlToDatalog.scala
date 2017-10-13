@@ -30,7 +30,40 @@ import org.openrdf.query.algebra.ValueConstant
 import org.openrdf.query.parser.ParsedGraphQuery
 import org.openrdf.query.parser.ParsedQuery
 import org.openrdf.query.parser.ParsedTupleQuery
+import com.google.common.collect.ImmutableList
+import com.google.common.collect.ImmutableSet
+import com.google.common.collect.Sets
+import it.unibz.inf.ontop.model.OBDAQueryModifiers
+//import it.unibz.inf.ontop.model.OBDAQueryModifiers.OrderCondition
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.utils.ImmutableCollectors
+import org.openrdf.query.algebra.BindingSetAssignment
+import org.openrdf.query.algebra.ExtensionElem
+import org.openrdf.query.algebra.LeftJoin
+import org.openrdf.query.algebra.Order
+import org.openrdf.query.algebra.Projection
+import org.openrdf.query.algebra.ProjectionElem
+import org.openrdf.query.algebra.Reduced
+import org.openrdf.query.algebra.SingletonSet
+import org.openrdf.query.algebra.Slice
+import org.openrdf.query.algebra.StatementPattern
+import org.openrdf.query.algebra.TupleExpr
+import org.openrdf.query.algebra.ValueExpr
+import org.openrdf.query.algebra.Var
+import java.util
+import java.util.stream.Collectors
+import java.util.stream.StreamSupport
 
+import com.google.common.collect.ImmutableList
+import com.google.common.collect.ImmutableSet
+import com.google.common.collect.Iterables
+import com.google.common.collect.Sets
+import it.unibz.inf.ontop.model.OBDADataFactory
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
+import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+import org.openrdf.query.algebra.BindingSetAssignment
+import java.util.stream.Collectors
 
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
@@ -47,40 +80,7 @@ class SparqlToDatalog
     translator.translate(pq).getProgram // let op signature is ook interessant
   }
 
-  import com.google.common.collect.ImmutableList
-  import com.google.common.collect.ImmutableSet
-  import com.google.common.collect.Sets
-  import it.unibz.inf.ontop.model.OBDAQueryModifiers
-  //import it.unibz.inf.ontop.model.OBDAQueryModifiers.OrderCondition
-  import it.unibz.inf.ontop.model.Term
-  import it.unibz.inf.ontop.utils.ImmutableCollectors
-  import org.openrdf.query.algebra.BindingSetAssignment
-  import org.openrdf.query.algebra.ExtensionElem
-  import org.openrdf.query.algebra.LeftJoin
-  import org.openrdf.query.algebra.Order
-  import org.openrdf.query.algebra.Projection
-  import org.openrdf.query.algebra.ProjectionElem
-  import org.openrdf.query.algebra.Reduced
-  import org.openrdf.query.algebra.SingletonSet
-  import org.openrdf.query.algebra.Slice
-  import org.openrdf.query.algebra.StatementPattern
-  import org.openrdf.query.algebra.TupleExpr
-  import org.openrdf.query.algebra.ValueExpr
-  import org.openrdf.query.algebra.Var
-  import java.util
-  import java.util.stream.Collectors
-  import java.util.stream.StreamSupport
 
-  import com.google.common.collect.ImmutableList
-  import com.google.common.collect.ImmutableSet
-  import com.google.common.collect.Iterables
-  import com.google.common.collect.Sets
-  import it.unibz.inf.ontop.model.OBDADataFactory
-  import it.unibz.inf.ontop.model.Term
-  import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
-  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
-  import org.openrdf.query.algebra.BindingSetAssignment
-  import java.util.stream.Collectors
 
   private class TranslationResult(val atoms: ImmutableList[Nothing], val variables: ImmutableSet[Nothing], val isBGP: Boolean) {
     final val ofac = OBDADataFactoryImpl.getInstance
