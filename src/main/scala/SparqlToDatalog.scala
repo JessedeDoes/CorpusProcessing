@@ -71,7 +71,64 @@ class SparqlToDatalog
   import java.util.stream.Collectors
   import java.util.stream.StreamSupport
 
-  class TranslationResult
+  import com.google.common.collect.ImmutableList
+  import com.google.common.collect.ImmutableSet
+  import com.google.common.collect.Iterables
+  import com.google.common.collect.Sets
+  import it.unibz.inf.ontop.model.OBDADataFactory
+  import it.unibz.inf.ontop.model.Term
+  import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
+  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+  import org.openrdf.query.algebra.BindingSetAssignment
+  import java.util.stream.Collectors
+
+  private class TranslationResult(val atoms: ImmutableList[Nothing], val variables: ImmutableSet[Nothing], val isBGP: Boolean) {
+    final val ofac = OBDADataFactoryImpl.getInstance
+
+    /**
+      * Extends the current translation result with bindings coming from {@link Extension} (expr AS ?x) or {@link BindingSetAssignment} (VALUES in SPARQL)
+      *
+      * @param bindings  a stream of bindings. A binding is a pair of a variable, and a value/expression
+      * @param varMapper a function from bindings to { @link Variable}s
+      * @param exprMapper a function maps a pair of a binding and a set variables to a { @link Term}
+      * @param < T>        A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
+      * @return extended translation result
+      */
+    def extendWithBindings[T](bindings: Nothing, varMapper: Function[_ >: T, Nothing], exprMapper: BiFunction[_ >: T, ImmutableSet[Nothing], Term]): TranslationResult = {
+      val vars = new Nothing(variables)
+      val eqAtoms = bindings.map((b) => {
+        def foo(b) = {
+          val expr = exprMapper.apply(b, ImmutableSet.copyOf(vars))
+          val v = varMapper.apply(b)
+          if (!vars.add(v)) throw new IllegalArgumentException("Duplicate binding for variable " + v)
+          ofac.getFunctionEQ(v, expr)
+        }
+
+        foo(b)
+      })
+      new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars), false)
+    }
+
+    def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Nothing]): ImmutableList[Nothing] = {
+      val nullVariables = Sets.difference(allVariables, variables)
+      if (nullVariables.isEmpty) return atoms
+      getAtomsExtended(nullVariables.stream.map((v: Nothing) => ofac.getFunctionEQ(v, OBDAVocabulary.NULL)))
+    }
+
+    /**
+      * Extends the atoms in current translation result with {@code extension}
+      *
+      * @param extension a stream of functions to be added
+      * @return extended list of atoms
+      */
+    def getAtomsExtended(extension: Nothing): ImmutableList[Nothing] = {
+      ImmutableList.copyOf(Iterables.concat(atoms, extension.collect(Collectors.toList)))
+      //            ImmutableList.Builder builder = ImmutableList.<Function>builder().addAll(atoms)
+      //                    .addAll(nullVariables.stream().map(v -> ofac.getFunctionEQ(v, OBDAVocabulary.NULL)).iterator());
+      //            return builder.build();
+    }
+  }
+
   private def translate(node: TupleExpr): Nothing = { //System.out.println("node: \n" + node);
     if (node.isInstanceOf[Slice]) { // SLICE algebra operation
       val slice = node.asInstanceOf[Slice]
