@@ -70,7 +70,7 @@ import it.unibz.inf.ontop.model.Predicate.COL_TYPE
 import it.unibz.inf.ontop.model.Term
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary
 import org.openrdf.query.algebra.StatementPattern
-
+import it.unibz.inf.ontop.model.Predicate
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
 class SparqlToDatalog
@@ -90,6 +90,11 @@ class SparqlToDatalog
   import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
 
   private val ofac = OBDADataFactoryImpl.getInstance
+
+  import it.unibz.inf.ontop.model.DatatypeFactory
+  import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
+
+  private val dtfac = OBDADataFactoryImpl.getInstance.getDatatypeFactory
 
   private class TranslationResult(val atoms: ImmutableList[Function],
                                   val variables: ImmutableSet[Variable],
@@ -220,7 +225,7 @@ class SparqlToDatalog
     val variables = ImmutableSet.builder[Variable]()
     var atom:Function = null
 
-    val s = triple.getSubjectVar.getValue
+    val s:Value = triple.getSubjectVar.getValue
     val p = triple.getPredicateVar.getValue
     val o = triple.getObjectVar.getValue
 
@@ -239,8 +244,8 @@ class SparqlToDatalog
       val oTerm = getTermForVariable(triple.getObjectVar, variables)
       atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
     }
-    else if (o.isInstanceOf[Nothing]) { // term rdf:type uri .
-      val datatype = dtfac.getDatatype(o.asInstanceOf[Nothing])
+    else if (o.isInstanceOf[URI]) { // term rdf:type uri .
+      val datatype = dtfac.getDatatype(o.asInstanceOf[URI])
       if (datatype != null) { // datatype
         atom = ofac.getFunction(dtfac.getTypePredicate(datatype), sTerm)
       }
@@ -261,6 +266,22 @@ class SparqlToDatalog
     new TranslationResult(ImmutableList.of(atom), variables.build, true)
   }
 
+  import it.unibz.inf.ontop.model.CQIE
+  import java.util
+
+  private def wrapNonTriplePattern(sub: TranslationResult): Function = {
+    if (sub.atoms.size > 1 || sub.atoms.get(0).isAlgebraFunction) {
+      val head = getFreshHead(new util.ArrayList[E](sub.variables))
+      appendRule(head, sub.atoms)
+      return head
+    }
+    sub.atoms.get(0)
+  }
+
+  private def appendRule(head: Function, body: List[Function]): Unit = {
+    val rule = ofac.getCQIE(head, body)
+    program.appendRule(rule)
+  }
   private def translate(node: TupleExpr): TranslationResult = { //System.out.println("node: \n" + node);
     if (node.isInstanceOf[Slice]) { // SLICE algebra operation
       val slice = node.asInstanceOf[Slice]
@@ -365,7 +386,7 @@ class SparqlToDatalog
       if (noRenaming && sVars.containsAll(sub.variables)) { // neither projection nor renaming
         return sub
       }
-      val v0:java.util.stream.Stream[Variable] = tVars.stream.map((t) => t.asInstanceOf[Variable])
+      val v0 = tVars.stream.map((t) => t.asInstanceOf[Variable])
       val set = v0.collect(Collectors.toSet[Variable]())
       val vars = ImmutableSet.copyOf(set)
       if (noRenaming) return new TranslationResult(sub.atoms, vars, false)
