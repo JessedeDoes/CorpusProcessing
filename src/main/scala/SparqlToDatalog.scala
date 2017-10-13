@@ -1,5 +1,4 @@
-import org.openrdf.query.MalformedQueryException
-import org.openrdf.query.QueryLanguage
+import org.openrdf.query.{BindingSet, MalformedQueryException, QueryLanguage}
 import org.openrdf.query.parser.ParsedQuery
 import org.openrdf.query.parser.QueryParser
 import org.openrdf.query.parser.QueryParserUtil
@@ -10,7 +9,6 @@ import it.unibz.inf.ontop.model.Term
 import it.unibz.inf.ontop.model.Variable
 import it.unibz.inf.ontop.model.ValueConstant
 import it.unibz.inf.ontop.model.Constant
-
 import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.UriTemplateMatcher
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.VocabularyValidator
@@ -18,6 +16,7 @@ import it.unibz.inf.ontop.owlrefplatform.core.translator.DatalogToSparqlTranslat
 import it.unibz.inf.ontop.owlrefplatform.core.translator.SPARQLQueryFlattener
 import it.unibz.inf.ontop.owlrefplatform.core.translator.SparqlAlgebraToDatalogTranslator
 import it.unibz.inf.ontop.model.OBDAQueryModifiers._
+
 import scala.collection.JavaConversions._
 import org.openrdf.query.algebra.TupleExpr
 import org.openrdf.model.Literal
@@ -80,9 +79,13 @@ class SparqlToDatalog
     translator.translate(pq).getProgram // let op signature is ook interessant
   }
 
+  import it.unibz.inf.ontop.model.OBDADataFactory
+  import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
 
+  private val ofac = OBDADataFactoryImpl.getInstance
 
-  private class TranslationResult(val atoms: ImmutableList[Nothing], val variables: ImmutableSet[Nothing], val isBGP: Boolean) {
+  private class TranslationResult(val atoms: ImmutableList[Function],
+                                  val variables: ImmutableSet[Variable], val isBGP: Boolean) {
     final val ofac = OBDADataFactoryImpl.getInstance
 
     /**
@@ -91,28 +94,31 @@ class SparqlToDatalog
       * @param bindings  a stream of bindings. A binding is a pair of a variable, and a value/expression
       * @param varMapper a function from bindings to { @link Variable}s
       * @param exprMapper a function maps a pair of a binding and a set variables to a { @link Term}
-      * @param < T>        A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
+      * @param T       A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
       * @return extended translation result
       */
-    def extendWithBindings[T](bindings: Nothing, varMapper: Function[_ >: T, Nothing], exprMapper: BiFunction[_ >: T, ImmutableSet[Nothing], Term]): TranslationResult = {
-      val vars = new Nothing(variables)
-      val eqAtoms = bindings.map((b) => {
-        def foo(b) = {
+    def extendWithBindings[T](bindings: java.util.stream.Stream[T],
+                              varMapper: java.util.function.Function[_ >: T, Variable],
+                              exprMapper: java.util.function.BiFunction[_ >: T,
+                                ImmutableSet[Variable], Term]): TranslationResult =
+
+
+    {
+      val vars = new java.util.HashSet[Variable](variables)
+      val eqAtoms:java.util.stream.Stream[Function] = bindings.map((b) => {
+
           val expr = exprMapper.apply(b, ImmutableSet.copyOf(vars))
           val v = varMapper.apply(b)
           if (!vars.add(v)) throw new IllegalArgumentException("Duplicate binding for variable " + v)
           ofac.getFunctionEQ(v, expr)
-        }
-
-        foo(b)
       })
       new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars), false)
     }
 
-    def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Nothing]): ImmutableList[Nothing] = {
+    def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Nothing]): ImmutableList[Function] = {
       val nullVariables = Sets.difference(allVariables, variables)
       if (nullVariables.isEmpty) return atoms
-      getAtomsExtended(nullVariables.stream.map((v: Nothing) => ofac.getFunctionEQ(v, OBDAVocabulary.NULL)))
+      getAtomsExtended(nullVariables.stream.map(v => ofac.getFunctionEQ(v, OBDAVocabulary.NULL)))
     }
 
     /**
@@ -121,15 +127,67 @@ class SparqlToDatalog
       * @param extension a stream of functions to be added
       * @return extended list of atoms
       */
-    def getAtomsExtended(extension: Nothing): ImmutableList[Nothing] = {
-      ImmutableList.copyOf(Iterables.concat(atoms, extension.collect(Collectors.toList)))
+    def getAtomsExtended(extension: java.util.stream.Stream[Function]): ImmutableList[Function] = {
+      val x =  extension.collect(Collectors.toList[Function]())
+      ImmutableList.copyOf(Iterables.concat(atoms, x))
       //            ImmutableList.Builder builder = ImmutableList.<Function>builder().addAll(atoms)
       //                    .addAll(nullVariables.stream().map(v -> ofac.getFunctionEQ(v, OBDAVocabulary.NULL)).iterator());
       //            return builder.build();
     }
   }
 
-  private def translate(node: TupleExpr): Nothing = { //System.out.println("node: \n" + node);
+  import com.google.common.collect.ImmutableList
+  import com.google.common.collect.ImmutableSet
+  import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+  import it.unibz.inf.ontop.model.Term
+  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+  import org.openrdf.query.algebra.StatementPattern
+
+  private def translateTriplePattern(triple: StatementPattern):TranslationResult =
+  { // A triple pattern is member of the set (RDF-T + V) x (I + V) x (RDF-T + V)
+    // VarOrTerm ::=  Var | GraphTerm
+    // GraphTerm ::=  iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | NIL
+    val variables = ImmutableSet.builder
+    var atom = null
+    val s = triple.getSubjectVar.getValue
+    val p = triple.getPredicateVar.getValue
+    val o = triple.getObjectVar.getValue
+    val sTerm = if (s == null) getTermForVariable(triple.getSubjectVar, variables)
+    else getTermForLiteralOrIri(s)
+    if (p == null) { //  term variable term .
+      val pTerm = getTermForVariable(triple.getPredicateVar, variables)
+      val oTerm = if (o == null) getTermForVariable(triple.getObjectVar, variables)
+      else getTermForLiteralOrIri(o)
+      atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
+    }
+    else if (p.isInstanceOf[Nothing]) if (p.equals(RDF.TYPE)) if (o == null) { // term rdf:type variable .
+      val pTerm = ofac.getUriTemplate(ofac.getConstantLiteral(OBDAVocabulary.RDF_TYPE))
+      val oTerm = getTermForVariable(triple.getObjectVar, variables)
+      atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
+    }
+    else if (o.isInstanceOf[Nothing]) { // term rdf:type uri .
+      val `type` = dtfac.getDatatype(o.asInstanceOf[Nothing])
+      if (`type` != null) { // datatype
+        atom = ofac.getFunction(dtfac.getTypePredicate(`type`), sTerm)
+      }
+      else { // class
+        atom = ofac.getFunction(ofac.getClassPredicate(o.stringValue), sTerm)
+      }
+    }
+    else throw new IllegalArgumentException("Unsupported query syntax")
+    else { // term uri term . (where uri is either an object or a datatype property)
+      val oTerm = if (o == null) getTermForVariable(triple.getObjectVar, variables)
+      else getTermForLiteralOrIri(o)
+      val predicate = ofac.getPredicate(p.stringValue, Array[Predicate.COL_TYPE](null, null))
+      atom = ofac.getFunction(predicate, sTerm, oTerm)
+    }
+    else { // if predicate is a variable or literal
+      throw new RuntimeException("Unsupported query syntax")
+    }
+    new TranslationResult(ImmutableList.of(atom), variables.build, true)
+  }
+
+  private def translate(node: TupleExpr): TranslationResult = { //System.out.println("node: \n" + node);
     if (node.isInstanceOf[Slice]) { // SLICE algebra operation
       val slice = node.asInstanceOf[Slice]
       //val modifiers = program.getQueryModifiers
@@ -165,7 +223,7 @@ class SparqlToDatalog
       return translateTriplePattern(node.asInstanceOf[StatementPattern])
     }
     else if (node.isInstanceOf[SingletonSet]) { // the empty BGP has no variables and gives a single solution mapping on every non-empty graph
-      return new Nothing(ImmutableList.of, ImmutableSet.of, true)
+      return new TranslationResult(ImmutableList.of(), ImmutableSet.of(), true)
     }
     else if (node.isInstanceOf[Join]) { // JOIN algebra operation
       val join = node.asInstanceOf[Join]
@@ -173,12 +231,12 @@ class SparqlToDatalog
       val a2 = translate(join.getRightArg)
       val vars = Sets.union(a1.variables, a2.variables).immutableCopy
       if (a1.isBGP && a2.isBGP) { // collect triple patterns into BGPs
-        val atoms = ImmutableList.builder[Nothing].addAll(a1.atoms).addAll(a2.atoms).build
-        return new Nothing(atoms, vars, true)
+        val atoms = ImmutableList.builder[Function].addAll(a1.atoms).addAll(a2.atoms).build
+        return new TranslationResult(atoms, vars, true)
       }
       else {
         val body = ofac.getSPARQLJoin(wrapNonTriplePattern(a1), wrapNonTriplePattern(a2))
-        return new Nothing(ImmutableList.of(body), vars, false)
+        return new TranslationResult(ImmutableList.of(body), vars, false)
       }
     }
     else if (node.isInstanceOf[LeftJoin]) { // OPTIONAL algebra operation
@@ -192,10 +250,10 @@ class SparqlToDatalog
         val f = getFilterExpression(expr, vars)
         body.getTerms.add(f)
       }
-      return new Nothing(ImmutableList.of(body), vars, false)
+      return new TranslationResult(ImmutableList.of(body), vars, false)
     }
-    else if (node.isInstanceOf[Nothing]) { // UNION algebra operation
-      val union = node.asInstanceOf[Nothing]
+    else if (node.isInstanceOf[Union]) { // UNION algebra operation
+      val union = node.asInstanceOf[Union]
       val a1 = translate(union.getLeftArg)
       val a2 = translate(union.getRightArg)
       val vars = Sets.union(a1.variables, a2.variables).immutableCopy
@@ -204,11 +262,11 @@ class SparqlToDatalog
       appendRule(res.atoms.get(0), a2.getAtomsExtendedWithNulls(vars))
       return res
     }
-    else if (node.isInstanceOf[Nothing]) { // FILTER algebra operation
-      val filter = node.asInstanceOf[Nothing]
+    else if (node.isInstanceOf[Filter]) { // FILTER algebra operation
+      val filter = node.asInstanceOf[Filter]
       val a = translate(filter.getArg)
       val f = getFilterExpression(filter.getCondition, a.variables)
-      val atoms = ImmutableList.builder[Nothing].addAll(a.atoms).add(f).build
+      val atoms = ImmutableList.builder[Function].addAll(a.atoms).add(f).build
       // TODO: split ANDs in the FILTER?
       return new Nothing(atoms, a.variables, false)
     }
@@ -217,13 +275,14 @@ class SparqlToDatalog
       val sub = translate(projection.getArg)
       val pes = projection.getProjectionElemList.getElements
       // the two lists are required to synchronise the order of variables
-      val sVars = new util.ArrayList[_](pes.size)
-      val tVars = new util.ArrayList[_](pes.size)
+      val sVars = new java.util.ArrayList[Term](pes.size)
+      val tVars = new java.util.ArrayList[Term](pes.size)
       var noRenaming = true
       import scala.collection.JavaConversions._
       for (pe <- pes) {
         val sVar = ofac.getVariable(pe.getSourceName)
-        if (!sub.variables.contains(sVar)) throw new IllegalArgumentException("Projection source of " + pe + " not found in " + projection.getArg)
+        if (!sub.variables.contains(sVar))
+          throw new IllegalArgumentException("Projection source of " + pe + " not found in " + projection.getArg)
         sVars.add(sVar)
         val tVar = ofac.getVariable(pe.getTargetName)
         tVars.add(tVar)
@@ -232,7 +291,7 @@ class SparqlToDatalog
       if (noRenaming && sVars.containsAll(sub.variables)) { // neither projection nor renaming
         return sub
       }
-      val vars = ImmutableSet.copyOf(tVars.stream.map((t) => t.asInstanceOf[Nothing]).collect(Collectors.toSet))
+      val vars = ImmutableSet.copyOf(tVars.stream.map((t) => t.asInstanceOf[Variable]).collect(Collectors.toSet[Variable]()))
       if (noRenaming) return new Nothing(sub.atoms, vars, false)
       val head = getFreshHead(sVars)
       appendRule(head, sub.atoms)
@@ -249,8 +308,11 @@ class SparqlToDatalog
     }
     else if (node.isInstanceOf[BindingSetAssignment]) { // VALUES in SPARQL
       val values = node.asInstanceOf[BindingSetAssignment]
-      val empty = new Nothing(ImmutableList.of, ImmutableSet.of, false)
-      val bindings = StreamSupport.stream(values.getBindingSets.spliterator, false).map((bs: BindingSet) => empty.extendWithBindings(StreamSupport.stream(bs.spliterator, false), (be) => ofac.getVariable(be.getName), (be, vars) => getTermForLiteralOrIri(be.getValue))).collect(Collectors.toList)
+      val empty = new TranslationResult(ImmutableList.of(), ImmutableSet.of(), false)
+      val bindings = StreamSupport.stream(values.getBindingSets.spliterator, false)
+        .map((bs: BindingSet) => empty.extendWithBindings(StreamSupport.stream(bs.spliterator, false),
+          be => ofac.getVariable(be.getName),
+          (be, vars) => getTermForLiteralOrIri(be.getValue))).collect(Collectors.toList)
       val allVars = bindings.stream.flatMap((s) => s.variables.stream).collect(ImmutableCollectors.toSet)
       val res = createFreshNode(allVars)
       bindings.forEach((p) => appendRule(res.atoms.get(0), p.getAtomsExtendedWithNulls(allVars)))
