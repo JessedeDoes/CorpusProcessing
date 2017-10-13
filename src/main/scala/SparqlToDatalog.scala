@@ -64,6 +64,13 @@ import it.unibz.inf.ontop.model.impl.OBDAVocabulary
 import org.openrdf.query.algebra.BindingSetAssignment
 import java.util.stream.Collectors
 
+import com.google.common.collect.ImmutableList
+import com.google.common.collect.ImmutableSet
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+import org.openrdf.query.algebra.StatementPattern
+
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
 class SparqlToDatalog
@@ -85,7 +92,9 @@ class SparqlToDatalog
   private val ofac = OBDADataFactoryImpl.getInstance
 
   private class TranslationResult(val atoms: ImmutableList[Function],
-                                  val variables: ImmutableSet[Variable], val isBGP: Boolean) {
+                                  val variables: ImmutableSet[Variable],
+                                  val isBGP: Boolean)
+  {
     final val ofac = OBDADataFactoryImpl.getInstance
 
     /**
@@ -97,10 +106,12 @@ class SparqlToDatalog
       * @param T       A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
       * @return extended translation result
       */
+
     def extendWithBindings[T](bindings: java.util.stream.Stream[T],
                               varMapper: java.util.function.Function[_ >: T, Variable],
                               exprMapper: java.util.function.BiFunction[_ >: T,
                                 ImmutableSet[Variable], Term]): TranslationResult =
+
 
 
     {
@@ -136,39 +147,102 @@ class SparqlToDatalog
     }
   }
 
-  import com.google.common.collect.ImmutableList
   import com.google.common.collect.ImmutableSet
   import it.unibz.inf.ontop.model.Predicate.COL_TYPE
   import it.unibz.inf.ontop.model.Term
-  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
-  import org.openrdf.query.algebra.StatementPattern
+  import org.openrdf.model.datatypes.XMLDatatypeUtil
+  import org.openrdf.query.algebra.Var
 
-  private def translateTriplePattern(triple: StatementPattern):TranslationResult =
+  private def getTermForVariable(v: Var, variables: ImmutableSet.Builder[Variable]) = {
+    val `var` = ofac.getVariable(v.getName)
+    variables.add(`var`)
+    `var`
+  }
+
+  private def getTermForLiteralOrIri(v: Value): Term = {
+    if (v.isInstanceOf[Literal]) return getTermForLiteral(v.asInstanceOf[Literal])
+    else if (v.isInstanceOf[URI]) return getTermForIri(v.asInstanceOf[URI], false)
+    throw new RuntimeException("The value " + v + " is not supported yet!")
+  }
+
+  private def getTermForLiteral(literal: Literal): Term = {
+    val typeURI = literal.getDatatype
+    val value = literal.getLabel
+    var datatype:COL_TYPE = null
+    if (typeURI == null) datatype = COL_TYPE.LITERAL
+    else {
+      datatype = dtfac.getDatatype(typeURI)
+      if (datatype == null) { // ROMAN (27 June 2016): type1 in open-eq-05 test would not be supported in OWL
+        // the actual value is LOST here
+        return ofac.getUriTemplateForDatatype(typeURI.stringValue)
+      }
+      // old strict version:
+      // throw new RuntimeException("Unsupported datatype: " + typeURI);
+      // check if the value is (lexically) correct for the specified datatype
+      if (!XMLDatatypeUtil.isValidValue(value, typeURI)) throw new RuntimeException("Invalid lexical form for datatype. Found: " + value)
+    }
+    val constant = ofac.getConstantLiteral(value, datatype)
+    // wrap the constant in its datatype function
+    if (datatype eq COL_TYPE.LITERAL) { // if the object has type LITERAL, check the language tag
+      val lang = literal.getLanguage
+      if (lang != null && !(lang == "")) return ofac.getTypedTerm(constant, lang)
+    }
+    ofac.getTypedTerm(constant, datatype)
+  }
+
+  import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+  import it.unibz.inf.ontop.model.Term
+  import it.unibz.inf.ontop.parser.EncodeForURI
+
+  private def getTermForIri(v: URI, unknownUrisToTemplates: Boolean):Term = {
+    val uri = EncodeForURI.decodeURIEscapeCodes(v.stringValue)
+    if (uriRef != null) { // if in the Semantic Index mode
+      val id = uriRef.getId(uri)
+      if (id < 0 && unknownUrisToTemplates) { // URI is not found and need to wrap it in a template
+        ofac.getUriTemplateForDatatype(uri)
+      }
+      else ofac.getUriTemplate(ofac.getConstantLiteral(String.valueOf(id), COL_TYPE.INTEGER))
+    }
+    else {
+      var constantFunction = uriTemplateMatcher.generateURIFunction(uri)
+      if ((constantFunction.getArity eq 1) && unknownUrisToTemplates) { // ROMAN (27 June 2016: this means ZERO arguments, e.g., xsd:double or :z
+        // despite the name, this is NOT necessarily a datatype
+        constantFunction = ofac.getUriTemplateForDatatype(uri)
+      }
+      constantFunction
+    }
+  }
+
+  private def translateTriplePattern(triple: StatementPattern) =
   { // A triple pattern is member of the set (RDF-T + V) x (I + V) x (RDF-T + V)
     // VarOrTerm ::=  Var | GraphTerm
     // GraphTerm ::=  iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | NIL
-    val variables = ImmutableSet.builder
-    var atom = null
+    val variables = ImmutableSet.builder[Variable]()
+    var atom:Function = null
+
     val s = triple.getSubjectVar.getValue
     val p = triple.getPredicateVar.getValue
     val o = triple.getObjectVar.getValue
-    val sTerm = if (s == null) getTermForVariable(triple.getSubjectVar, variables)
-    else getTermForLiteralOrIri(s)
+
+    val sTerm:Term = if (s == null)
+      getTermForVariable(triple.getSubjectVar, variables)
+    else
+      getTermForLiteralOrIri(s)
+
     if (p == null) { //  term variable term .
       val pTerm = getTermForVariable(triple.getPredicateVar, variables)
       val oTerm = if (o == null) getTermForVariable(triple.getObjectVar, variables)
       else getTermForLiteralOrIri(o)
       atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
-    }
-    else if (p.isInstanceOf[Nothing]) if (p.equals(RDF.TYPE)) if (o == null) { // term rdf:type variable .
+    } else if (p.isInstanceOf[URI]) if (p.equals(RDF.TYPE)) if (o == null) { // term rdf:type variable .
       val pTerm = ofac.getUriTemplate(ofac.getConstantLiteral(OBDAVocabulary.RDF_TYPE))
       val oTerm = getTermForVariable(triple.getObjectVar, variables)
       atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
     }
     else if (o.isInstanceOf[Nothing]) { // term rdf:type uri .
-      val `type` = dtfac.getDatatype(o.asInstanceOf[Nothing])
-      if (`type` != null) { // datatype
-        atom = ofac.getFunction(dtfac.getTypePredicate(`type`), sTerm)
+      val datatype = dtfac.getDatatype(o.asInstanceOf[Nothing])
+      if (datatype != null) { // datatype
+        atom = ofac.getFunction(dtfac.getTypePredicate(datatype), sTerm)
       }
       else { // class
         atom = ofac.getFunction(ofac.getClassPredicate(o.stringValue), sTerm)
@@ -291,12 +365,14 @@ class SparqlToDatalog
       if (noRenaming && sVars.containsAll(sub.variables)) { // neither projection nor renaming
         return sub
       }
-      val vars = ImmutableSet.copyOf(tVars.stream.map((t) => t.asInstanceOf[Variable]).collect(Collectors.toSet[Variable]()))
-      if (noRenaming) return new Nothing(sub.atoms, vars, false)
+      val v0:java.util.stream.Stream[Variable] = tVars.stream.map((t) => t.asInstanceOf[Variable])
+      val set = v0.collect(Collectors.toSet[Variable]())
+      val vars = ImmutableSet.copyOf(set)
+      if (noRenaming) return new TranslationResult(sub.atoms, vars, false)
       val head = getFreshHead(sVars)
       appendRule(head, sub.atoms)
       val atom = ofac.getFunction(head.getFunctionSymbol, tVars)
-      return new Nothing(ImmutableList.of(atom), vars, false)
+      return new TranslationResult(ImmutableList.of(atom), vars, false)
     }
     else if (node.isInstanceOf[Extension]) { // EXTEND algebra operation
       val extension = node.asInstanceOf[Extension]
