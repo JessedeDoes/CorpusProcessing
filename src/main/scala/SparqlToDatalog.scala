@@ -73,12 +73,35 @@ import org.openrdf.query.algebra.StatementPattern
 import it.unibz.inf.ontop.model.Predicate
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
+import com.google.common.collect.ImmutableSet
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+import it.unibz.inf.ontop.model.Term
+import org.openrdf.model.datatypes.XMLDatatypeUtil
+import org.openrdf.query.algebra.Var
+
+
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.parser.EncodeForURI
+
+
+import com.google.common.collect.ImmutableList
+import com.google.common.collect.ImmutableSet
+import java.util
+
 class SparqlToDatalog
 {
   import org.openrdf.query.parser.ParsedQuery
+  val uriTemplateMatcher = new UriTemplateMatcher
   val translator = new SparqlAlgebraToDatalogTranslator(new UriTemplateMatcher, new SemanticIndexURIMap)
+  var predicateIdx:Int = 0
 
+  import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap
 
+  private val uriRef:SemanticIndexURIMap = null
+  import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.UriTemplateMatcher
+
+  //private val uriTemplateMatcher = translator
   @throws[Exception]
   def s2d(sparql: String): DatalogProgram =
   {
@@ -108,7 +131,7 @@ class SparqlToDatalog
       * @param bindings  a stream of bindings. A binding is a pair of a variable, and a value/expression
       * @param varMapper a function from bindings to { @link Variable}s
       * @param exprMapper a function maps a pair of a binding and a set variables to a { @link Term}
-      * @param T       A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
+      * //@param T       A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
       * @return extended translation result
       */
 
@@ -116,9 +139,6 @@ class SparqlToDatalog
                               varMapper: java.util.function.Function[_ >: T, Variable],
                               exprMapper: java.util.function.BiFunction[_ >: T,
                                 ImmutableSet[Variable], Term]): TranslationResult =
-
-
-
     {
       val vars = new java.util.HashSet[Variable](variables)
       val eqAtoms:java.util.stream.Stream[Function] = bindings.map((b) => {
@@ -152,11 +172,6 @@ class SparqlToDatalog
     }
   }
 
-  import com.google.common.collect.ImmutableSet
-  import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-  import it.unibz.inf.ontop.model.Term
-  import org.openrdf.model.datatypes.XMLDatatypeUtil
-  import org.openrdf.query.algebra.Var
 
   private def getTermForVariable(v: Var, variables: ImmutableSet.Builder[Variable]) = {
     val `var` = ofac.getVariable(v.getName)
@@ -195,11 +210,11 @@ class SparqlToDatalog
     ofac.getTypedTerm(constant, datatype)
   }
 
-  import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-  import it.unibz.inf.ontop.model.Term
-  import it.unibz.inf.ontop.parser.EncodeForURI
 
   private def getTermForIri(v: URI, unknownUrisToTemplates: Boolean):Term = {
+
+    val t = new Term {}
+
     val uri = EncodeForURI.decodeURIEscapeCodes(v.stringValue)
     if (uriRef != null) { // if in the Semantic Index mode
       val id = uriRef.getId(uri)
@@ -218,7 +233,7 @@ class SparqlToDatalog
     }
   }
 
-  private def translateTriplePattern(triple: StatementPattern) =
+  private def translateTriplePattern(triple: StatementPattern):TranslationResult =
   { // A triple pattern is member of the set (RDF-T + V) x (I + V) x (RDF-T + V)
     // VarOrTerm ::=  Var | GraphTerm
     // GraphTerm ::=  iri | RDFLiteral | NumericLiteral | BooleanLiteral | BlankNode | NIL
@@ -271,17 +286,32 @@ class SparqlToDatalog
 
   private def wrapNonTriplePattern(sub: TranslationResult): Function = {
     if (sub.atoms.size > 1 || sub.atoms.get(0).isAlgebraFunction) {
-      val head = getFreshHead(new util.ArrayList[E](sub.variables))
+      val head = getFreshHead(new util.ArrayList[Term](sub.variables))
       appendRule(head, sub.atoms)
       return head
     }
     sub.atoms.get(0)
   }
 
+
+  private def createFreshNode(vars: ImmutableSet[Variable]) = {
+    val head = getFreshHead(new java.util.ArrayList[Term](vars))
+    new Nothing(ImmutableList.of(head), vars, false)
+  }
+  import it.unibz.inf.ontop.model.Term
+  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+
+  private def getFreshHead(terms: java.util.List[Term]):Function = {
+    val pred = ofac.getPredicate(OBDAVocabulary.QUEST_QUERY + predicateIdx, terms.size)
+    predicateIdx += 1
+    ofac.getFunction(pred, terms)
+  }
+
   private def appendRule(head: Function, body: List[Function]): Unit = {
     val rule = ofac.getCQIE(head, body)
-    program.appendRule(rule)
+    //program.appendRule(rule)
   }
+
   private def translate(node: TupleExpr): TranslationResult = { //System.out.println("node: \n" + node);
     if (node.isInstanceOf[Slice]) { // SLICE algebra operation
       val slice = node.asInstanceOf[Slice]
