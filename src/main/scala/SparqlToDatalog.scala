@@ -239,6 +239,10 @@ class SparqlToDatalog
     }
   }
 
+  def getExpression(expr: ValueExpr , variables: ImmutableSet[Variable]):Term = {
+   return null;
+  }
+
   private def translateTriplePattern(triple: StatementPattern):TranslationResult =
   { // A triple pattern is member of the set (RDF-T + V) x (I + V) x (RDF-T + V)
     // VarOrTerm ::=  Var | GraphTerm
@@ -311,8 +315,21 @@ class SparqlToDatalog
         return ofac.getFunctionIsTrue(term);
     }
 
+  private TranslationResult createFreshNode(ImmutableSet<Variable> vars) {
+        Function head = getFreshHead(new ArrayList<>(vars));
+        return new TranslationResult(ImmutableList.of(head), vars, false);
+    }
+
    */
 
+  import com.google.common.collect.ImmutableList
+  import com.google.common.collect.ImmutableSet
+  import java.util
+
+  private def createFreshNode(vars: ImmutableSet[Variable]):TranslationResult = {
+    val head = getFreshHead(new util.ArrayList[Term](vars))
+    new Nothing(ImmutableList.of(head), vars, false)
+  }
   private def getFilterExpression(expr: ValueExpr, variables: ImmutableSet[Variable]): Function = {
     /*
     val term = getExpression(expr, variables)
@@ -461,21 +478,30 @@ class SparqlToDatalog
       val extension = node.asInstanceOf[Extension]
       val sub = translate(extension.getArg)
       //sub.e
+      val f0 =  (ee:ExtensionElem) => ofac.getVariable(ee.getName)
+      val f1 = (ee:ExtensionElem, vars:ImmutableSet[Variable]) => getExpression(ee.getExpr, vars)
       val nontrivialBindings = extension.getElements.stream.filter( // ignore EXTEND(P, v, v), which is sometimes introduced by Sesame SPARQL parser
       (ee) =>
         !(ee.getExpr.isInstanceOf[Var] && ee.getName.equals((ee.getExpr.asInstanceOf[Var]).getName)))
-        return sub.extendWithBindings(nontrivialBindings,
-          (ee:ExtensionElem) => ofac.getVariable(ee.getName),
-          (ee:ExtensionElem, vars) => getExpression(ee.getExpr, vars))
+        return sub.extendWithBindings[ExtensionElem](nontrivialBindings,
+          //f0,
+          //f1
+          null,null
+          )
     }
     else if (node.isInstanceOf[BindingSetAssignment]) { // VALUES in SPARQL
       val values = node.asInstanceOf[BindingSetAssignment]
       val empty = new TranslationResult(ImmutableList.of(), ImmutableSet.of(), false)
-      val bindings = StreamSupport.stream(values.getBindingSets.spliterator, false)
+      val bindings:java.util.List[TranslationResult] = StreamSupport.stream(values.getBindingSets.spliterator, false)
         .map((bs: BindingSet) => empty.extendWithBindings(StreamSupport.stream(bs.spliterator, false),
-          be => ofac.getVariable(be.getName),
-          (be, vars) => getTermForLiteralOrIri(be.getValue))).collect(Collectors.toList)
-      val allVars = bindings.stream.flatMap((s) => s.variables.stream).collect(ImmutableCollectors.toSet)
+          //be => ofac.getVariable(be.getName),
+          //(be, vars) => getTermForLiteralOrIri(be.getValue))
+          null,null
+        )
+        .collect(Collectors.toList)
+      val allVars0:java.util.stream.Stream[Variable] = bindings.stream.flatMap((s) => s.variables.stream)
+      val allVars = allVars0.collect(Collectors.toSet[Variable]())
+        // .collect(ImmutableCollectors.toSet[Variable]())
       val res = createFreshNode(allVars)
       bindings.forEach((p) => appendRule(res.atoms.get(0), p.getAtomsExtendedWithNulls(allVars)))
       return res
