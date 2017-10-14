@@ -89,6 +89,12 @@ import com.google.common.collect.ImmutableList
 import com.google.common.collect.ImmutableSet
 import java.util
 
+import com.google.common.collect.ImmutableSet
+import it.unibz.inf.ontop.model.Term
+import org.openrdf.query.algebra.ValueExpr
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+
 class SparqlToDatalog
 {
   import org.openrdf.query.parser.ParsedQuery
@@ -151,7 +157,7 @@ class SparqlToDatalog
       new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars), false)
     }
 
-    def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Nothing]): ImmutableList[Function] = {
+    def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Variable]): ImmutableList[Function] = {
       val nullVariables = Sets.difference(allVariables, variables)
       if (nullVariables.isEmpty) return atoms
       getAtomsExtended(nullVariables.stream.map(v => ofac.getFunctionEQ(v, OBDAVocabulary.NULL)))
@@ -293,13 +299,39 @@ class SparqlToDatalog
     sub.atoms.get(0)
   }
 
+  /*
+   private Function getFilterExpression(ValueExpr expr, ImmutableSet<Variable> variables) {
+        Term term = getExpression(expr, variables);
+        // Effective Boolean Value (EBV): wrap in isTrue function if it is not a (Boolean) expression
+        if (term instanceof Function) {
+            Function f = (Function) term;
+            // TODO: check whether the return type is Boolean
+            return f;
+        }
+        return ofac.getFunctionIsTrue(term);
+    }
+
+   */
+
+  private def getFilterExpression(expr: ValueExpr, variables: ImmutableSet[Variable]): Function = {
+    /*
+    val term = getExpression(expr, variables)
+    // Effective Boolean Value (EBV): wrap in isTrue function if it is not a (Boolean) expression
+    if (term.isInstanceOf[Function]) {
+      val f = term.asInstanceOf[Function]
+      // TODO: check whether the return type is Boolean
+      return f
+    }
+    ofac.getFunctionIsTrue(term)
+    */
+    return null
+  }
 
   private def createFreshNode(vars: ImmutableSet[Variable]) = {
     val head = getFreshHead(new java.util.ArrayList[Term](vars))
-    new Nothing(ImmutableList.of(head), vars, false)
+    new TranslationResult(ImmutableList.of(head), vars, false)
   }
-  import it.unibz.inf.ontop.model.Term
-  import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+
 
   private def getFreshHead(terms: java.util.List[Term]):Function = {
     val pred = ofac.getPredicate(OBDAVocabulary.QUEST_QUERY + predicateIdx, terms.size)
@@ -307,7 +339,7 @@ class SparqlToDatalog
     ofac.getFunction(pred, terms)
   }
 
-  private def appendRule(head: Function, body: List[Function]): Unit = {
+  private def appendRule(head: Function, body: java.util.List[Function]): Unit = {
     val rule = ofac.getCQIE(head, body)
     //program.appendRule(rule)
   }
@@ -428,10 +460,13 @@ class SparqlToDatalog
     else if (node.isInstanceOf[Extension]) { // EXTEND algebra operation
       val extension = node.asInstanceOf[Extension]
       val sub = translate(extension.getArg)
-      val nontrivialBindings = extension.getElements.stream.filter // ignore EXTEND(P, v, v), which is sometimes introduced by Sesame SPARQL parser
+      //sub.e
+      val nontrivialBindings = extension.getElements.stream.filter( // ignore EXTEND(P, v, v), which is sometimes introduced by Sesame SPARQL parser
       (ee) =>
-        !(ee.getExpr.isInstanceOf[Var] && ee.getName.equals((ee.getExpr.asInstanceOf[Var]).getName))
-        return sub.extendWithBindings(nontrivialBindings, (ee) => ofac.getVariable(ee.getName), (ee, vars) => getExpression(ee.getExpr, vars))
+        !(ee.getExpr.isInstanceOf[Var] && ee.getName.equals((ee.getExpr.asInstanceOf[Var]).getName)))
+        return sub.extendWithBindings(nontrivialBindings,
+          (ee:ExtensionElem) => ofac.getVariable(ee.getName),
+          (ee:ExtensionElem, vars) => getExpression(ee.getExpr, vars))
     }
     else if (node.isInstanceOf[BindingSetAssignment]) { // VALUES in SPARQL
       val values = node.asInstanceOf[BindingSetAssignment]
