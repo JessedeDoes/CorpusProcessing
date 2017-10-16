@@ -33,7 +33,7 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[String])
 
   lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList
 
-  def toQuery() =
+  def toQuery():String =
   {
     val dollar = "$"
     val fors:String = variablesSorted.reverse.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
