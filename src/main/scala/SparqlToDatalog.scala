@@ -125,7 +125,7 @@ class SparqlToDatalog
 
   private val dtfac = OBDADataFactoryImpl.getInstance.getDatatypeFactory
 
-  private class TranslationResult(val atoms: ImmutableList[Function],
+  class TranslationResult(val atoms: ImmutableList[Function],
                                   val variables: ImmutableSet[Variable],
                                   val isBGP: Boolean)
   {
@@ -149,12 +149,12 @@ class SparqlToDatalog
       val vars = new java.util.HashSet[Variable](variables)
       val eqAtoms:java.util.stream.Stream[Function] = bindings.map((b) => {
 
-          val expr = exprMapper.apply(b, ImmutableSet.copyOf(vars))
+          val expr = exprMapper.apply(b, ImmutableSet.copyOf(vars.iterator()))
           val v = varMapper.apply(b)
           if (!vars.add(v)) throw new IllegalArgumentException("Duplicate binding for variable " + v)
           ofac.getFunctionEQ(v, expr)
       })
-      new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars), false)
+      new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars.iterator()), false)
     }
 
     def getAtomsExtendedWithNulls(allVariables: ImmutableSet[Variable]): ImmutableList[Function] = {
@@ -169,9 +169,17 @@ class SparqlToDatalog
       * @param extension a stream of functions to be added
       * @return extended list of atoms
       */
+    def concat(a: java.util.List[Function], b: java.util.List[Function]):ImmutableList[Function] =
+    {
+      val x = Iterables.concat(a,b, new java.util.ArrayList[Function](),
+        new java.util.ArrayList[Function](),
+        new java.util.ArrayList[Function]())
+      return ImmutableList.copyOf(x)
+    }
     def getAtomsExtended(extension: java.util.stream.Stream[Function]): ImmutableList[Function] = {
       val x =  extension.collect(Collectors.toList[Function]())
-      ImmutableList.copyOf(Iterables.concat(atoms, x))
+      concat(atoms,x)
+      //ImmutableList.copyOf[Function](Iterables.concat(atoms, x).iterator())
       //            ImmutableList.Builder builder = ImmutableList.<Function>builder().addAll(atoms)
       //                    .addAll(nullVariables.stream().map(v -> ofac.getFunctionEQ(v, OBDAVocabulary.NULL)).iterator());
       //            return builder.build();
@@ -230,8 +238,10 @@ class SparqlToDatalog
       else ofac.getUriTemplate(ofac.getConstantLiteral(String.valueOf(id), COL_TYPE.INTEGER))
     }
     else {
-      var constantFunction = uriTemplateMatcher.generateURIFunction(uri)
-      if ((constantFunction.getArity eq 1) && unknownUrisToTemplates) { // ROMAN (27 June 2016: this means ZERO arguments, e.g., xsd:double or :z
+      var constantFunction:Function = uriTemplateMatcher.generateURIFunction(uri)
+      var arity:Int = constantFunction.getArity
+      if ((arity == 1.asInstanceOf[Int])
+        && unknownUrisToTemplates) { // ROMAN (27 June 2016: this means ZERO arguments, e.g., xsd:double or :z
         // despite the name, this is NOT necessarily a datatype
         constantFunction = ofac.getUriTemplateForDatatype(uri)
       }
@@ -326,10 +336,7 @@ class SparqlToDatalog
   import com.google.common.collect.ImmutableSet
   import java.util
 
-  private def createFreshNode(vars: ImmutableSet[Variable]):TranslationResult = {
-    val head = getFreshHead(new util.ArrayList[Term](vars))
-    new Nothing(ImmutableList.of(head), vars, false)
-  }
+
   private def getFilterExpression(expr: ValueExpr, variables: ImmutableSet[Variable]): Function = {
     /*
     val term = getExpression(expr, variables)
@@ -344,7 +351,7 @@ class SparqlToDatalog
     return null
   }
 
-  private def createFreshNode(vars: ImmutableSet[Variable]) = {
+  def createFreshNode(vars: ImmutableSet[Variable]):TranslationResult = {
     val head = getFreshHead(new java.util.ArrayList[Term](vars))
     new TranslationResult(ImmutableList.of(head), vars, false)
   }
@@ -430,8 +437,8 @@ class SparqlToDatalog
       val union = node.asInstanceOf[Union]
       val a1 = translate(union.getLeftArg)
       val a2 = translate(union.getRightArg)
-      val vars = Sets.union(a1.variables, a2.variables).immutableCopy
-      val res = createFreshNode(vars)
+      val vars:ImmutableSet[Variable] = Sets.union(a1.variables, a2.variables).immutableCopy
+      val res = createFreshNode(vars)// createFreshNode(vars)
       appendRule(res.atoms.get(0), a1.getAtomsExtendedWithNulls(vars))
       appendRule(res.atoms.get(0), a2.getAtomsExtendedWithNulls(vars))
       return res
@@ -442,7 +449,7 @@ class SparqlToDatalog
       val f = getFilterExpression(filter.getCondition, a.variables)
       val atoms = ImmutableList.builder[Function].addAll(a.atoms).add(f).build
       // TODO: split ANDs in the FILTER?
-      return new Nothing(atoms, a.variables, false)
+      return new TranslationResult(atoms, a.variables, false)
     }
     else if (node.isInstanceOf[Projection]) { // PROJECT algebra operation
       val projection = node.asInstanceOf[Projection]
@@ -465,9 +472,9 @@ class SparqlToDatalog
       if (noRenaming && sVars.containsAll(sub.variables)) { // neither projection nor renaming
         return sub
       }
-      val v0 = tVars.stream.map((t) => t.asInstanceOf[Variable])
+      val v0:java.util.stream.Stream[Variable] = tVars.stream.map((t) => t.asInstanceOf[Variable])
       val set = v0.collect(Collectors.toSet[Variable]())
-      val vars = ImmutableSet.copyOf(set)
+      val vars = ImmutableSet.copyOf(set.iterator())
       if (noRenaming) return new TranslationResult(sub.atoms, vars, false)
       val head = getFreshHead(sVars)
       appendRule(head, sub.atoms)
@@ -492,21 +499,22 @@ class SparqlToDatalog
     else if (node.isInstanceOf[BindingSetAssignment]) { // VALUES in SPARQL
       val values = node.asInstanceOf[BindingSetAssignment]
       val empty = new TranslationResult(ImmutableList.of(), ImmutableSet.of(), false)
-      val bindings:java.util.List[TranslationResult] = StreamSupport.stream(values.getBindingSets.spliterator, false)
+      val bindings0:java.util.stream.Stream[TranslationResult] = StreamSupport.stream(values.getBindingSets.spliterator, false)
         .map((bs: BindingSet) => empty.extendWithBindings(StreamSupport.stream(bs.spliterator, false),
           //be => ofac.getVariable(be.getName),
           //(be, vars) => getTermForLiteralOrIri(be.getValue))
           null,null
-        )
-        .collect(Collectors.toList)
+        ))
+      val bindings = bindings0.collect(Collectors.toList[TranslationResult]())
+        //.collect(Collectors.toList[TranslationResult]()))
       val allVars0:java.util.stream.Stream[Variable] = bindings.stream.flatMap((s) => s.variables.stream)
-      val allVars = allVars0.collect(Collectors.toSet[Variable]())
+      val allVars:ImmutableSet[Variable] = ImmutableSet.copyOf(allVars0.collect(Collectors.toSet[Variable]()).iterator())
         // .collect(ImmutableCollectors.toSet[Variable]())
       val res = createFreshNode(allVars)
       bindings.forEach((p) => appendRule(res.atoms.get(0), p.getAtomsExtendedWithNulls(allVars)))
       return res
     }
-    else if (node.isInstanceOf[Nothing]) throw new IllegalArgumentException("GROUP BY is not supported yet")
+    else throw new IllegalArgumentException("GROUP BY is not supported yet")
     throw new IllegalArgumentException("Not supported: " + node)
   }
 
