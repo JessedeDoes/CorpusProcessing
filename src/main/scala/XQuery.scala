@@ -18,30 +18,41 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[String])
 
   lazy val pathMap:Map[String,String] = pathExpressions.map(p =>
   {
-    val cols = p.split("←")
+    val cols = p.split("\\s*←\\s*")
     val (varName, path) = (cols(0), cols(1))
     varName -> path
   }).toMap
 
   def varsIn(x: String)  = variables.filter(v => x.contains("$" + v))
+
   def dep(v: String, p:String):List[(String,String)] = varsIn(p).map(v1 => (v,v1)).toList
 
-
   lazy val dependencies = pathMap.map({case (v,p) => dep(v,p)}).flatten
-  //lazy val dependencies = dep0.map
 
-
-  lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList
+  lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList.reverse
 
   def toQuery():String =
   {
     val dollar = "$"
-    val fors:String = variablesSorted.reverse.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
-    val re = variables.map(v => s"<var><name>$v</name><value>$dollar$v</value></var>").mkString("\n")
-    s"for  $fors \n return( <result>$re</result>) "
-   //  + "return () "
+
+    val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
+    val returnPart = variables.map(v => s"<var><name>$v</name><value>$dollar$v</value></var>").mkString("\n")
+
+    s"for  $forPart \n return( <result>$returnPart</result>) "
   }
-  //def union
+
+  def toPath(): String =
+  {
+    def foldie(m:Map[String, String], v:String):Map[String,String] =
+      m.map(
+        { case (v1,p) =>
+          println(v + " in " + p)
+          (v1, p.replaceAll("\\$" + v, m(v)) )}
+         )
+    val mx = variablesSorted.foldLeft(pathMap)(foldie)
+    mx.toString
+  }
+  // def union
 }
 
 
@@ -57,21 +68,32 @@ class XQuery {
 object x
 {
   val t1 = BasicPattern(Set(
-    "x←$y//entry/@id",
+    "x←$y//sense/[@ref=$y/@id]",
     "y←$u//entry",
     "f←$y//form[@type='lemma']",
-    "u←document('data/wnt.xml')",
-    "z←$y::parent"
+    "u←doc('data/wnt.xml')",
+    "z←$y/.."
   ), Set("u", "x", "y", "z","f"))
 
 
+  val t2 = BasicPattern(Set(
+    "s←//node[@cat='smain']",
+    "subj←$s/node[@rel='su']",
+    "obj←$s/node[@rel='obj1']"
+  ), Set("s", "subj", "obj")
+  )
   def main(args: Array[String]) =
   {
-    //val a = 1
-    println(t1.toQuery)
-    //println(t1.pathExpressions.map(p => t1.varsIn(p)))
+    println(t2.toQuery)
+    //println(t1.toPath)
   }
 }
 
 
-
+/**
+  * Bij
+  * x=//entry
+  * y=$x/@id[0]
+  * z=$x//sense[@id=$y]
+  *
+  */
