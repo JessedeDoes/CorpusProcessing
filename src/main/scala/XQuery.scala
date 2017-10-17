@@ -4,6 +4,7 @@ trait XQueryNode
   def toQuery(): String
 }
 
+
 object XQueryNode
 {
   type Variable = String
@@ -11,10 +12,34 @@ object XQueryNode
 
 import XQueryNode.Variable
 
+
+case class ValueRestrictionSet(m: Map[Variable,List[String]]) extends XQueryNode
+{
+  val dollar = "$"
+  def toQuery():String =
+  {
+     val conditions = m.keySet.map(
+       v => {
+         val cond = s"(${m(v).mkString(",")}) = $dollar${v}"
+         cond
+       }
+     )
+    s"where ${conditions.mkString("and")}"
+  }
+
+  def empty():Boolean = m.size > 0
+}
+
+object ValueRestrictionSet
+{
+  val empty = ValueRestrictionSet(Map.empty)
+}
+
+
 trait XQuerySelect extends XQueryNode
 {
   val pathExpressions: Set[String]
-
+  val valueRestrictions: ValueRestrictionSet=ValueRestrictionSet.empty
   val variables: Set[Variable]
 
   def join(b: BasicPattern) = BasicPattern(this.pathExpressions ++ b.pathExpressions,
@@ -49,8 +74,8 @@ trait XQuerySelect extends XQueryNode
 
     val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
     val returnPart = variables.filter(isSelected).map(v => s"<var><name>$v</name><value>{$dollar$v}</value></var>").mkString("\n")
-
-    s"for  $forPart \n return( <result>$returnPart</result>) "
+    val wherePart = if (valueRestrictions.empty) "" else valueRestrictions.toQuery()
+    s"for  $forPart \n $wherePart \n return( <result>$returnPart</result>) "
   }
 
   def toPath(): String =
@@ -91,7 +116,10 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]) 
   // def union
 }
 
-case class SimpleSelect(pathExpressions: Set[String], variables: Set[Variable], selected: Set[Variable])
+case class SimpleSelect(pathExpressions: Set[String],
+                        variables: Set[Variable],
+                        selected: Set[Variable],
+                        override val valueRestrictions: ValueRestrictionSet=ValueRestrictionSet.empty)
   extends XQuerySelect
 {
   override def isSelected(v: String) = selected.contains(v)

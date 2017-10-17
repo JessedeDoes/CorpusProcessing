@@ -75,7 +75,23 @@ class SparqlToXquery(basicMapping: TripleMapping) {
             val newPaths = a.pathExpressions ++ b.pathExpressions
             val newSelectedVars = a.selected ++ b.selected
             SimpleSelect(newPaths, newVars, newSelectedVars)
+          case (a:SimpleSelect, b:ValueRestrictionSet) =>
+            a.copy(valueRestrictions =  b)
+          case (b:ValueRestrictionSet, a:SimpleSelect) =>
+            a.copy(valueRestrictions =  b)
         }
+      }
+      case ba: BindingSetAssignment =>
+      {
+         val x:Map[String,List[String]] = ba.getBindingSets.flatMap(
+           bs => bs.getBindingNames.toList.map(n =>
+             {
+               val b = bs.getBinding(n)
+               b.getName -> b.getValue
+             })
+         ).groupBy(_._1).mapValues(l => l.map(_._2.toString).toList)
+        // println(x)
+        new ValueRestrictionSet(x)
       }
       //case j: Join => join(j.getLeftArg, j.getRightArg)
       //case
@@ -116,7 +132,7 @@ object SparqlToXquery
     val t = new SparqlToXquery(Mappings.testje)
     val q =
       """prefix : <http://example.org/>
-        |select ?s  ?o ?h1 where { ?x :su ?s . ?x :ob ?o . ?x :ob ?h1 }
+        |select ?s  ?o ?h1 where { ?x :su ?s . ?x :ob ?o . ?x :ob ?h1 . values ?x  {"aap" "noot"} }
       """.stripMargin
     println(q)
     val x:XQueryNode = t.translate(q)
