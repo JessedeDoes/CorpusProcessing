@@ -1,4 +1,9 @@
 
+trait XQueryNode
+{
+  def toQuery(): String
+}
+
 object XQueryNode
 {
   type Variable = String
@@ -6,11 +11,10 @@ object XQueryNode
 
 import XQueryNode.Variable
 
-trait XQueryNode
+trait XQuerySelect extends XQueryNode
 {
-
-
   val pathExpressions: Set[String]
+
   val variables: Set[Variable]
 
   def join(b: BasicPattern) = BasicPattern(this.pathExpressions ++ b.pathExpressions,
@@ -38,6 +42,7 @@ trait XQueryNode
 
   lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList.reverse
 
+
   def toQuery():String =
   {
     val dollar = "$"
@@ -61,24 +66,37 @@ trait XQueryNode
   }
 }
 
-
-
-case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]) extends XQueryNode
+case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]) extends XQuerySelect
 {
+  val dollar = "$"
 
+  def renameVars(mapping: Map[String,String]) =
+  {
+    val newVars = variables.map(v => mapping.getOrElse(v,v))
+
+    def replaceOneVar(p: String, before: String, after: String) =
+      p.replaceAll(s"\\s*$before\\s*←", s"$after←")
+      .replaceAll("\\" + dollar + before, "\\"  + dollar + after)
+
+    def replaceOne(p: String, kv: (String,String)): String =
+    {
+      val (a, b) = kv;
+      replaceOneVar(p,a,b)
+    }
+
+    def replaceAllVars(s:String) = mapping.foldLeft(s)(replaceOne)
+
+    BasicPattern(pathExpressions.map(replaceAllVars), newVars)
+  }
   // def union
 }
 
 case class SimpleSelect(pathExpressions: Set[String], variables: Set[Variable], selected: Set[Variable])
-  extends XQueryNode
+  extends XQuerySelect
 {
   override def isSelected(v: String) = selected.contains(v)
 }
 
-case class BasicMapping(property: String, subjectName: String, objectName: String)
-{
-
-}
 
 class XQuery {
 

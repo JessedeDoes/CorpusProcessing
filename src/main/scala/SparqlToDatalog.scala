@@ -466,6 +466,7 @@ object y
   val f = "data/odwn.sprql"
   def munch(f: String):String = scala.io.Source.fromFile(f).getLines.reduceLeft(_+_)
   val t = new SparqlToDatalog
+
   def main(args: Array[String]) =
   {
     val q = """select ?s ?c where {?s a ?c . values ?c {"aap" "noot"} . ?c a ?x}"""
