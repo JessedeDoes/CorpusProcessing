@@ -1,15 +1,18 @@
 
-//import scala.collection.GenTraversableOnce
-
-class XPathTemplate(pathExpressions: Set[String])
+object XQueryNode
 {
-
+  type Variable = String
 }
+
+import XQueryNode.Variable
 
 trait XQueryNode
 {
+
+
   val pathExpressions: Set[String]
-  val variables: Set[String]
+  val variables: Set[Variable]
+
   def join(b: BasicPattern) = BasicPattern(this.pathExpressions ++ b.pathExpressions,
     this.variables ++ b.variables)
 
@@ -20,7 +23,7 @@ trait XQueryNode
     val commonVariables = this.variables.intersect(b.variables)
   }
 
-  lazy val pathMap:Map[String,String] = pathExpressions.map(p =>
+  lazy val pathMap:Map[Variable,String] = pathExpressions.map(p =>
   {
     val cols = p.split("\\s*←\\s*")
     val (varName, path) = (cols(0), cols(1))
@@ -29,7 +32,7 @@ trait XQueryNode
 
   def varsIn(x: String)  = variables.filter(v => x.contains("$" + v))
 
-  def dep(v: String, p:String):List[(String,String)] = varsIn(p).map(v1 => (v,v1)).toList
+  def dep(v: Variable, p:String):List[(String,String)] = varsIn(p).map(v1 => (v,v1)).toList
 
   lazy val dependencies = pathMap.map({case (v,p) => dep(v,p)}).flatten
 
@@ -60,13 +63,13 @@ trait XQueryNode
 
 
 
-case class BasicPattern(pathExpressions: Set[String], variables: Set[String]) extends XQueryNode
+case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]) extends XQueryNode
 {
 
   // def union
 }
 
-case class SimpleSelect(pathExpressions: Set[String], variables: Set[String], selected: Set[String])
+case class SimpleSelect(pathExpressions: Set[String], variables: Set[Variable], selected: Set[Variable])
   extends XQueryNode
 {
   override def isSelected(v: String) = selected.contains(v)

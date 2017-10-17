@@ -1,99 +1,31 @@
-import org.openrdf.query.{BindingSet, MalformedQueryException, QueryLanguage}
-import org.openrdf.query.parser.ParsedQuery
-import org.openrdf.query.parser.QueryParser
-import org.openrdf.query.parser.QueryParserUtil
-import it.unibz.inf.ontop.model.CQIE
-import it.unibz.inf.ontop.model.DatalogProgram
-import it.unibz.inf.ontop.model.Function
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.model.Variable
-import it.unibz.inf.ontop.model.ValueConstant
-import it.unibz.inf.ontop.model.Constant
+import it.unibz.inf.ontop.model.{DatalogProgram, Function, Variable}
 import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.UriTemplateMatcher
-import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.VocabularyValidator
-import it.unibz.inf.ontop.owlrefplatform.core.translator.DatalogToSparqlTranslator
-import it.unibz.inf.ontop.owlrefplatform.core.translator.SPARQLQueryFlattener
 import it.unibz.inf.ontop.owlrefplatform.core.translator.SparqlAlgebraToDatalogTranslator
-import it.unibz.inf.ontop.model.OBDAQueryModifiers._
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+import it.unibz.inf.ontop.model.Term
+import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+import it.unibz.inf.ontop.parser.EncodeForURI
+import it.unibz.inf.ontop.model.Predicate
 
-import scala.collection.JavaConversions._
-import org.openrdf.query.algebra.TupleExpr
-import org.openrdf.model.Literal
-import org.openrdf.model.URI
-import org.openrdf.model.Value
-import org.openrdf.model.datatypes.XMLDatatypeUtil
+import org.openrdf.model.{Literal, URI, Value}
 import org.openrdf.model.vocabulary.RDF
 import org.openrdf.query.algebra._
-import org.openrdf.query.algebra.ValueConstant
-import org.openrdf.query.parser.ParsedGraphQuery
-import org.openrdf.query.parser.ParsedQuery
-import org.openrdf.query.parser.ParsedTupleQuery
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableSet
-import com.google.common.collect.Sets
-import it.unibz.inf.ontop.model.OBDAQueryModifiers
+import org.openrdf.query.parser.QueryParserUtil
+import org.openrdf.query.{BindingSet, MalformedQueryException, QueryLanguage}
+import org.openrdf.model.datatypes.XMLDatatypeUtil
+import org.openrdf.query.algebra.{ValueExpr, Var}
+import org.openrdf.query.algebra.{BindingSetAssignment, ExtensionElem, LeftJoin,
+  Order, Projection, Reduced, SingletonSet, Slice, StatementPattern, TupleExpr}
+
 //import it.unibz.inf.ontop.model.OBDAQueryModifiers.OrderCondition
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.utils.ImmutableCollectors
-import org.openrdf.query.algebra.BindingSetAssignment
-import org.openrdf.query.algebra.ExtensionElem
-import org.openrdf.query.algebra.LeftJoin
-import org.openrdf.query.algebra.Order
-import org.openrdf.query.algebra.Projection
-import org.openrdf.query.algebra.ProjectionElem
-import org.openrdf.query.algebra.Reduced
-import org.openrdf.query.algebra.SingletonSet
-import org.openrdf.query.algebra.Slice
-import org.openrdf.query.algebra.StatementPattern
-import org.openrdf.query.algebra.TupleExpr
-import org.openrdf.query.algebra.ValueExpr
-import org.openrdf.query.algebra.Var
-import java.util
-import java.util.stream.Collectors
-import java.util.stream.StreamSupport
+import java.util.stream.{Collectors, StreamSupport}
+import com.google.common.collect.{Iterables, Sets}
+import com.google.common.collect.{ImmutableList, ImmutableSet}
 
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableSet
-import com.google.common.collect.Iterables
-import com.google.common.collect.Sets
-import it.unibz.inf.ontop.model.OBDADataFactory
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
-import it.unibz.inf.ontop.model.impl.OBDAVocabulary
-import org.openrdf.query.algebra.BindingSetAssignment
-import java.util.stream.Collectors
-
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableSet
-import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.model.impl.OBDAVocabulary
-import org.openrdf.query.algebra.StatementPattern
-import it.unibz.inf.ontop.model.Predicate
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
-import com.google.common.collect.ImmutableSet
-import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-import it.unibz.inf.ontop.model.Term
-import org.openrdf.model.datatypes.XMLDatatypeUtil
-import org.openrdf.query.algebra.Var
 
-
-import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.parser.EncodeForURI
-
-
-import com.google.common.collect.ImmutableList
-import com.google.common.collect.ImmutableSet
-import java.util
-
-import com.google.common.collect.ImmutableSet
-import it.unibz.inf.ontop.model.Term
-import org.openrdf.query.algebra.ValueExpr
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.model.impl.OBDAVocabulary
 
 class SparqlToDatalog
 {
@@ -105,7 +37,6 @@ class SparqlToDatalog
   import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap
 
   private val uriRef:SemanticIndexURIMap = null
-  import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.UriTemplateMatcher
 
   //private val uriTemplateMatcher = translator
   @throws[Exception]
@@ -115,12 +46,10 @@ class SparqlToDatalog
     translator.translate(pq).getProgram // let op signature is ook interessant
   }
 
-  import it.unibz.inf.ontop.model.OBDADataFactory
   import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
 
   private val ofac = OBDADataFactoryImpl.getInstance
 
-  import it.unibz.inf.ontop.model.DatatypeFactory
   import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl
 
   private val dtfac = OBDADataFactoryImpl.getInstance.getDatatypeFactory
@@ -163,12 +92,6 @@ class SparqlToDatalog
       getAtomsExtended(nullVariables.stream.map(v => ofac.getFunctionEQ(v, OBDAVocabulary.NULL)))
     }
 
-    /**
-      * Extends the atoms in current translation result with {@code extension}
-      *
-      * @param extension a stream of functions to be added
-      * @return extended list of atoms
-      */
     def concat(a: java.util.List[Function], b: java.util.List[Function]):ImmutableList[Function] =
     {
       val x = Iterables.concat(a,b, new java.util.ArrayList[Function](),
@@ -176,6 +99,15 @@ class SparqlToDatalog
         new java.util.ArrayList[Function]())
       return ImmutableList.copyOf(x)
     }
+
+
+    /**
+      * Extends the atoms in current translation result with {@code extension}
+      *
+      * @param extension a stream of functions to be added
+      * @return extended list of atoms
+      */
+
     def getAtomsExtended(extension: java.util.stream.Stream[Function]): ImmutableList[Function] = {
       val x =  extension.collect(Collectors.toList[Function]())
       concat(atoms,x)
@@ -301,7 +233,6 @@ class SparqlToDatalog
     new TranslationResult(ImmutableList.of(atom), variables.build, true)
   }
 
-  import it.unibz.inf.ontop.model.CQIE
   import java.util
 
   private def wrapNonTriplePattern(sub: TranslationResult): Function = {
@@ -332,9 +263,7 @@ class SparqlToDatalog
 
    */
 
-  import com.google.common.collect.ImmutableList
-  import com.google.common.collect.ImmutableSet
-  import java.util
+  import com.google.common.collect.{ImmutableList, ImmutableSet}
 
 
   private def getFilterExpression(expr: ValueExpr, variables: ImmutableSet[Variable]): Function = {
