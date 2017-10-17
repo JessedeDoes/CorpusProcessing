@@ -116,7 +116,7 @@ object SparqlToXquery
     val t = new SparqlToXquery(Mappings.testje)
     val q =
       """prefix : <http://example.org/>
-        |select ?s  ?h where { ?x :su ?s . ?x :ob ?o . ?x :ob ?h }
+        |select ?s  ?o ?h1 where { ?x :su ?s . ?x :ob ?o . ?x :ob ?h1 }
       """.stripMargin
     println(q)
     val x:XQueryNode = t.translate(q)
