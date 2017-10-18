@@ -33,29 +33,41 @@ object Mappings
   val testMap:PredicateMapping = Map(
     "http://example.org/su" ->
       BasicPattern(
-        Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='su']"),
-        Set("subject", "object"),
+        Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='su']")
       ),
     "http://example.org/ob" ->
       BasicPattern(
-        Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='obj1']"),
-        Set("subject", "object"),
+        Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='obj1']")
       ),
     "http://example.org/word" ->
       BasicPattern(
-        Set("object←$subject/@word"),
-        Set("subject", "object"),
+        Set("object←$subject/@word")
+      ),
+    "http://example.org/lemma" ->
+      BasicPattern(
+        Set("object←$subject/@lemma")
+      ),
+    "http://example.org/pos" ->
+      BasicPattern(
+        Set("object←$subject/@pos")
       ),
     "http://example.org/rel" ->
       BasicPattern(
-        Set("object←$subject/@rel"),
-        Set("subject", "object"),
+        Set("object←$subject/@rel")
+      ),
+    "http://example.org/child" ->
+      BasicPattern(
+        Set("object←$subject/*")
       ))
   val testje = TripleMapping(testMap)
 }
 
 
 class SparqlToXquery(basicMapping: TripleMapping) {
+
+  var constNumber:Int=0
+
+  def getNewConstantName():String = { constNumber += 1; "const" + constNumber}
 
   def getParsedQuery(sparql: String): ParsedQuery = {
     val parser = QueryParserUtil.createParser(QueryLanguage.SPARQL)
@@ -118,6 +130,8 @@ class SparqlToXquery(basicMapping: TripleMapping) {
     }
   }
 
+  val dq = "\""
+
   def triplePattern(triple: StatementPattern):XQueryNode =
   {
     val sVar = triple.getSubjectVar
@@ -125,7 +139,11 @@ class SparqlToXquery(basicMapping: TripleMapping) {
     val oVar = triple.getObjectVar
 
     val (sVal,pVal,oVal) = (sVar.getValue,pVar.getValue,oVar.getValue)
-    val (sName, pName, oName) = (sVar.getName, pVar.getName, oVar.getName)
+    val (sName, pName, oName) = (
+      if (sVal != null) getNewConstantName() else sVar.getName,
+      pVar.getName,
+      if (oVal != null) getNewConstantName() else oVar.getName)
+
     val vars = Set(sName, oName)
 
     if (pVal == null) // predicate variables not supported
@@ -133,11 +151,11 @@ class SparqlToXquery(basicMapping: TripleMapping) {
     else {
       val x:SimpleSelect = basicMapping.apply(sName, oName, pVal.stringValue())
       val subjectRestriction = if (sVal != null)
-        Map(sName -> List(sVal.stringValue))
+        Map(sName -> List(dq + sVal.stringValue + dq))
       else Map.empty[String,List[String]]
 
       val objectRestriction = if (oVal != null)
-        Map(oName -> List(oVal.stringValue))
+        Map(oName -> List(dq + oVal.stringValue + dq))
       else Map.empty[String,List[String]]
 
       val r  = x.copy(valueRestrictions = ValueRestrictionSet(subjectRestriction ++ objectRestriction))
@@ -155,7 +173,17 @@ object SparqlToXquery
     val t = new SparqlToXquery(Mappings.testje)
     val q =
       """prefix : <http://example.org/>
-        |select ?s  ?o where { ?x :su ?s . ?s :word "mens" . ?x :ob ?o . ?o :word ?w . values ?w  {"aap" "apen"} }
+        |select ?s  ?o ?vl where
+        |{
+        | ?x :su ?s .
+        | ?s :lemma "mens" .
+        | ?x :ob ?o .
+        | ?o :lemma ?w .
+        | values ?w  {"zich"} .
+        | ?x :child ?c .
+        | ?c :pos "verb" .
+        | ?c :lemma ?vl
+        | }
       """.stripMargin
     println(q)
     val x:XQueryNode = t.translate(q)
@@ -163,3 +191,78 @@ object SparqlToXquery
     println(x.toQuery())
   }
 }
+
+/**
+  *
+  *
+Rels:
+top
+--
+su
+det
+hd
+vc
+obj1
+ld
+mod
+predc
+mwp
+cnj
+crd
+app
+dp
+cmp
+body
+pc
+sat
+nucl
+svp
+rhd
+me
+tag
+obj2
+whd
+predm
+dlink
+se
+sup
+hdf
+obcomp
+pobj1
+
+  Cats:
+
+top
+smain
+np
+ppart
+pp
+mwu
+inf
+conj
+du
+cp
+sv1
+ap
+ssub
+ti
+rel
+detp
+oti
+whq
+whsub
+advp
+ppres
+whrel
+ahi
+svan
+
+Nuttige query:
+
+  let $sv := for  $x in //node[@cat='smain'] ,
+$o in $x/node[@rel='obj1'] ,
+$s in $x/node[@rel='su']
+return ($s/@lemma, $o/@lemma)
+return distinct-values($sv)
+
+  */

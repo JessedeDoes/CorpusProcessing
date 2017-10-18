@@ -94,7 +94,7 @@ trait XQuerySelect extends XQueryNode
   }
 }
 
-case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]) extends XQuerySelect
+case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=Set("subject", "object")) extends XQuerySelect
 {
   val dollar = "$"
 
