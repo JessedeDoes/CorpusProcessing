@@ -18,12 +18,12 @@ import Mappings._
 
 case class TripleMapping(pm: PredicateMapping)
 {
-  def apply(sName: String, oName: String, predicate: String): XQueryNode =
+  def apply(sName: String, oName: String, predicate: String): SimpleSelect =
   {
     val base = pm(predicate)
     val m = Map("subject" -> sName, "object" -> oName)
     val mapped = base.renameVars(m)
-    SimpleSelect(mapped.pathExpressions, mapped.variables, Set(sName, oName)).asInstanceOf[XQueryNode]
+    SimpleSelect(mapped.pathExpressions, mapped.variables, Set(sName, oName))
   }
 }
 
@@ -84,11 +84,12 @@ class SparqlToXquery(basicMapping: TripleMapping) {
             val newVars = a.variables ++ b.variables
             val newPaths = a.pathExpressions ++ b.pathExpressions
             val newSelectedVars = a.selected ++ b.selected
-            SimpleSelect(newPaths, newVars, newSelectedVars)
+            SimpleSelect(newPaths, newVars, newSelectedVars,
+              a.valueRestrictions ++ b.valueRestrictions)
           case (a:SimpleSelect, b:ValueRestrictionSet) =>
-            a.copy(valueRestrictions =  b)
+            a.copy(valueRestrictions =  a.valueRestrictions ++ b)
           case (b:ValueRestrictionSet, a:SimpleSelect) =>
-            a.copy(valueRestrictions =  b)
+            a.copy(valueRestrictions =  a.valueRestrictions ++ b)
         }
       }
       case ba: BindingSetAssignment =>
@@ -129,9 +130,21 @@ class SparqlToXquery(basicMapping: TripleMapping) {
 
     if (pVal == null) // predicate variables not supported
       return null
-    else
-      return basicMapping.apply(sName, oName, pVal.stringValue())
-    null;
+    else {
+      val x:SimpleSelect = basicMapping.apply(sName, oName, pVal.stringValue())
+      val subjectRestriction = if (sVal != null)
+        Map(sName -> List(sVal.stringValue))
+      else Map.empty[String,List[String]]
+
+      val objectRestriction = if (oVal != null)
+        Map(oName -> List(oVal.stringValue))
+      else Map.empty[String,List[String]]
+
+      val r  = x.copy(valueRestrictions = ValueRestrictionSet(subjectRestriction ++ objectRestriction))
+      println(r)
+      return r
+    }
+    null
   }
 }
 
@@ -142,7 +155,7 @@ object SparqlToXquery
     val t = new SparqlToXquery(Mappings.testje)
     val q =
       """prefix : <http://example.org/>
-        |select ?s  ?o where { ?x :su ?s . ?x :ob ?o . ?o :word ?w . values ?w  {"aap" "apen"} }
+        |select ?s  ?o where { ?x :su ?s . ?s :word "mens" . ?x :ob ?o . ?o :word ?w . values ?w  {"aap" "apen"} }
       """.stripMargin
     println(q)
     val x:XQueryNode = t.translate(q)

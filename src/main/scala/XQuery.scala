@@ -24,10 +24,13 @@ case class ValueRestrictionSet(m: Map[Variable,List[String]]) extends XQueryNode
          cond
        }
      )
-    s"where ${conditions.mkString("and")}"
+    s"where ${conditions.mkString(" and ")}"
   }
 
   def isEmpty():Boolean = m.isEmpty
+
+  def ++(b: ValueRestrictionSet) =
+    ValueRestrictionSet(this.m ++ b.m)
 }
 
 object ValueRestrictionSet
