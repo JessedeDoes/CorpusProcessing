@@ -63,14 +63,15 @@ object Mappings
 
   val udPrefix = "http://universaldependencies.org/u/dep/"
 
+  // this is obviously too complex.
   val udRelMap = Map(
     udPrefix + "nsubj" ->
-      BasicPattern(Set("sentence←//node[@cat='smain' or @cat='ssub']",
-        "su←$sentence/node[@rel='su']",
-        "suhead←$su/[@rel='hd' and @pos='noun']",
-        "predicate←$sentence/node[@rel='hd' and @pos='verb']",
-        "subject←$predicate",
-        "object←$suhead"))
+      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
+        "su←$sentence/node[@rel='su' and ./node[@rel='hd' and @pos='noun']] ",
+        "object←$su/node[@rel='hd' and @pos='noun']",
+        "subject←$sentence/node[@rel='hd' and @pos='verb']",
+        ),
+        Set("sentence", "predicate", "su", "subject", "object"))
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
@@ -215,11 +216,9 @@ object SparqlToXquery
     val q1 =
       s"""prefix : <http://example.org/>
          |prefix ud: <${Mappings.udPrefix}>
-         |select ?verb ?noun where
+         |select ?onderwerp ?gezegde where
          |{
-         | ?gezegde ud:nsubj ?onderwerp .
-         | ?gezegde :lemma ?verb .
-         | ?onderwerp :lemma ?noun
+         | ?gezegde ud:nsubj ?onderwerp
          | }
       """.stripMargin
 
