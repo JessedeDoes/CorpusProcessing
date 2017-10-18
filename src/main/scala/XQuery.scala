@@ -27,7 +27,7 @@ case class ValueRestrictionSet(m: Map[Variable,List[String]]) extends XQueryNode
     s"where ${conditions.mkString("and")}"
   }
 
-  def empty():Boolean = m.size > 0
+  def isEmpty():Boolean = m.isEmpty
 }
 
 object ValueRestrictionSet
@@ -39,7 +39,7 @@ object ValueRestrictionSet
 trait XQuerySelect extends XQueryNode
 {
   val pathExpressions: Set[String]
-  val valueRestrictions: ValueRestrictionSet=ValueRestrictionSet.empty
+  def valueRestrictions: ValueRestrictionSet=ValueRestrictionSet.empty
   val variables: Set[Variable]
 
   def join(b: BasicPattern) = BasicPattern(this.pathExpressions ++ b.pathExpressions,
@@ -71,10 +71,10 @@ trait XQuerySelect extends XQueryNode
   def toQuery():String =
   {
     val dollar = "$"
-
+    println("restrictions: " + valueRestrictions)
     val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
     val returnPart = variables.filter(isSelected).map(v => s"<var><name>$v</name><value>{$dollar$v}</value></var>").mkString("\n")
-    val wherePart = if (valueRestrictions.empty) "" else valueRestrictions.toQuery()
+    val wherePart = if (valueRestrictions.isEmpty) "" else valueRestrictions.toQuery()
     s"for  $forPart \n $wherePart \n return( <result>$returnPart</result>) "
   }
 
