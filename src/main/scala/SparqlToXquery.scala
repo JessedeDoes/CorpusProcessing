@@ -40,6 +40,16 @@ object Mappings
       BasicPattern(
         Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='obj1']"),
         Set("subject", "object"),
+      ),
+    "http://example.org/word" ->
+      BasicPattern(
+        Set("object←$subject/@word"),
+        Set("subject", "object"),
+      ),
+    "http://example.org/rel" ->
+      BasicPattern(
+        Set("object←$subject/@rel"),
+        Set("subject", "object"),
       ))
   val testje = TripleMapping(testMap)
 }
@@ -132,7 +142,7 @@ object SparqlToXquery
     val t = new SparqlToXquery(Mappings.testje)
     val q =
       """prefix : <http://example.org/>
-        |select ?s  ?o ?h1 where { ?x :su ?s . ?x :ob ?o . ?x :ob ?h1 . values ?x  {"aap" "noot"} }
+        |select ?s  ?o where { ?x :su ?s . ?x :ob ?o . ?o :word ?w . values ?w  {"aap" "apen"} }
       """.stripMargin
     println(q)
     val x:XQueryNode = t.translate(q)
