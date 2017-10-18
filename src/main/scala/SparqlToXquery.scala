@@ -59,7 +59,19 @@ object Mappings
       BasicPattern(
         Set("object←$subject/*")
       ))
-  val testje = TripleMapping(testMap)
+
+  val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
+    "mwp", "cnj", "crd", "app", "dp", "cmp", "body", "pc", "sat", "nucl", "svp",
+    "rhd", "me", "tag", "obj2", "whd", "predm", "dlink", "se", "sup", "hdf",
+    "obcomp", "pobj1"
+  )
+  val dollar = "$"
+
+  val lassyRelMap = lassyRelNames.map(s =>
+    s"http://example.org/rel_$s" -> BasicPattern(Set("subject←//node", s"object←${dollar}subject/node[@rel='$s']")))
+    .toMap
+
+  val testje = TripleMapping(testMap ++ lassyRelMap)
 }
 
 
@@ -175,9 +187,9 @@ object SparqlToXquery
       """prefix : <http://example.org/>
         |select ?s  ?o ?vl where
         |{
-        | ?x :su ?s .
+        | ?x :rel_su ?s .
         | ?s :lemma "mens" .
-        | ?x :ob ?o .
+        | ?x :rel_obj1 ?o .
         | ?o :lemma ?w .
         | values ?w  {"zich"} .
         | ?x :child ?c .
