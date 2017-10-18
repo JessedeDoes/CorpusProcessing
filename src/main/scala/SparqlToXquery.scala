@@ -30,6 +30,7 @@ case class TripleMapping(pm: PredicateMapping)
 object Mappings
 {
   type PredicateMapping = Map[String, BasicPattern]
+
   val testMap:PredicateMapping = Map(
     "http://example.org/su" ->
       BasicPattern(
@@ -60,6 +61,18 @@ object Mappings
         Set("object←$subject/*")
       ))
 
+  val udPrefix = "http://universaldependencies.org/u/dep/"
+
+  val udRelMap = Map(
+    udPrefix + "nsubj" ->
+      BasicPattern(Set("sentence←//node[@cat='smain' or @cat='ssub']",
+        "su←$sentence/node[@rel='su']",
+        "suhead←$su/[@rel='hd' and @pos='noun']",
+        "predicate←$sentence/node[@rel='hd' and @pos='verb']",
+        "subject←$predicate",
+        "object←$suhead"))
+  )
+
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
     "mwp", "cnj", "crd", "app", "dp", "cmp", "body", "pc", "sat", "nucl", "svp",
     "rhd", "me", "tag", "obj2", "whd", "predm", "dlink", "se", "sup", "hdf",
@@ -71,7 +84,7 @@ object Mappings
     s"http://example.org/rel_$s" -> BasicPattern(Set("subject←//node", s"object←${dollar}subject/node[@rel='$s']")))
     .toMap
 
-  val testje = TripleMapping(testMap ++ lassyRelMap)
+  val testje = TripleMapping(testMap ++ lassyRelMap ++ udRelMap)
 }
 
 
@@ -171,7 +184,7 @@ class SparqlToXquery(basicMapping: TripleMapping) {
       else Map.empty[String,List[String]]
 
       val r  = x.copy(valueRestrictions = ValueRestrictionSet(subjectRestriction ++ objectRestriction))
-      println(r)
+      Console.err.println("triple pattern translated to:" + r)
       return r
     }
     null
@@ -184,7 +197,8 @@ object SparqlToXquery
   {
     val t = new SparqlToXquery(Mappings.testje)
     val q =
-      """prefix : <http://example.org/>
+      s"""prefix : <http://example.org/>
+        |prefix ud: <${Mappings.udPrefix}>
         |select ?s  ?o ?vl where
         |{
         | ?x :rel_su ?s .
@@ -197,8 +211,20 @@ object SparqlToXquery
         | ?c :lemma ?vl
         | }
       """.stripMargin
-    println(q)
-    val x:XQueryNode = t.translate(q)
+
+    val q1 =
+      s"""prefix : <http://example.org/>
+         |prefix ud: <${Mappings.udPrefix}>
+         |select ?verb ?noun where
+         |{
+         | ?gezegde ud:nsubj ?onderwerp .
+         | ?gezegde :lemma ?verb .
+         | ?onderwerp :lemma ?noun
+         | }
+      """.stripMargin
+
+    println(q1)
+    val x:XQueryNode = t.translate(q1)
     println(x)
     println(x.toQuery())
   }
