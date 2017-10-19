@@ -23,7 +23,7 @@ case class TripleMapping(pm: PredicateMapping)
     val base = pm(predicate)
     val m = Map("subject" -> sName, "object" -> oName)
     val mapped = base.renameVars(m)
-    SimpleSelect(mapped.pathExpressions, mapped.variables, Set(sName, oName))
+    SimpleSelect(mapped.pathExpressions, mapped.variables, Set(sName, oName)).anonymizeVars()
   }
 }
 
@@ -117,6 +117,13 @@ object Mappings
         "object←$top/node[@rel='su' and (@cat='ssub' or @cat='whsub')]"
       ),
         Set("subject", "object", "top")
+      ),
+    udPrefix + "xcomp" -> // xcomp heeft een eigen subject (?) anders ccomp ?
+      BasicPattern(Set(
+        "subject←node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
+        "object←$subject/../node[@rel='vc' and ./node[(@cat='ssub' or @cat='whsub') and ./node[@rel='su']]]"
+      ),
+        Set("subject", "object")
       )
   )
 
@@ -290,16 +297,19 @@ object SparqlToXquery
 
     val q3 = s"""prefix : <http://example.org/>
                 |prefix ud: <${Mappings.udPrefix}>
-                |select ?t1 ?t2 where
+                |select ?t1 ?t2 ?t3 where
                 |{
-                | ?c1 ud:csubj ?c2 .
+                | ?c1 ud:xcomp ?c2 .
                 | ?c1 :text ?t1 .
                 | ?c2 :text ?t2 .
+                | ?c2 :child ?ssub .
+                | ?ssub ud:xcomp ?c3 .
+                | ?c3 :text ?t3
                 |}
       """.stripMargin
 
     println(q1)
-    val x:XQueryNode = t.translate(q3)
+    val x:XQueryNode = t.translate(q2)
     println(x)
     println(x.toQuery())
   }

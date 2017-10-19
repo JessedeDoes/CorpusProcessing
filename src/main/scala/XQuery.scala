@@ -8,6 +8,10 @@ trait XQueryNode
 object XQueryNode
 {
   type Variable = String
+  var varNumber = 0
+
+  def getNewVarName():String = { varNumber += 1; "var" + varNumber}
+
 }
 
 import XQueryNode.Variable
@@ -55,16 +59,18 @@ trait XQuerySelect extends XQueryNode
     val commonVariables = this.variables.intersect(b.variables)
   }
 
-  lazy val pathMap:Map[Variable,String] = pathExpressions.map(p =>
+  private lazy val pathMap:Map[Variable,Set[String]] = pathExpressions.map(p =>
   {
     val cols = p.split("\\s*←\\s*")
     val (varName, path) = (cols(0), cols(1))
     varName -> path
-  }).toMap
+  }).groupBy(_._1).mapValues(l => l.map(_._2))
 
-  def varsIn(x: String)  = variables.filter(v => x.contains("$" + v))
+  def varsIn(x: String):Set[Variable]  = variables.filter(v => x.contains("$" + v))
+  def varsIn(x: Set[String]):Set[Variable] = x.flatMap(varsIn(_))
 
   def dep(v: Variable, p:String):List[(String,String)] = varsIn(p).map(v1 => (v,v1)).toList
+  def dep(v: Variable, p:Set[String]):List[(String,String)] = varsIn(p).map(v1 => (v,v1)).toList
 
   lazy val dependencies = pathMap.map({case (v,p) => dep(v,p)}).flatten
 
@@ -72,31 +78,40 @@ trait XQuerySelect extends XQueryNode
 
   //ToDo: Maak niet geselecteerde variabelen verborgen (hernoem naar iets globaal unieks)
 
+
+  def forWhere(v: Variable):String =
+  {
+    val l = pathMap(v).toList
+    val fOr = s"$dollar$v in ${l.head} "
+    val wheres = l.tail.map(x => s"($x = $dollar${v})")
+    fOr + (if (wheres.isEmpty) "" else " where " + wheres.mkString(" and "))
+  }
+
   def toQuery():String =
   {
-    val dollar = "$"
+
     println("restrictions: " + valueRestrictions)
-    val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v)} ").mkString(",\n")
+    //val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v).toList(0)} ").mkString(",\n")
+    val forPart =  variablesSorted.map(v => forWhere(v)).mkString(",\n")
     val returnPart = variables.filter(isSelected).map(v => s"<var><name>$v</name><value>{$dollar$v}</value></var>").mkString("\n")
     val wherePart = if (valueRestrictions.isEmpty) "" else valueRestrictions.toQuery()
     s"for  $forPart \n $wherePart \n return( <result>$returnPart</result>) "
   }
 
+  /*
   def toPath(): String =
   {
-    def foldie(m:Map[String, String], v:String):Map[String,String] =
+    def foldie(m:Map[String, Set[String]], v:String):Map[String,Set[String]] =
       m.map(
-        { case (v1,p) =>
+        { case (v1,p:Set[String]) =>
           println(v + " in " + p)
-          (v1, p.replaceAll("\\$" + v, m(v)) )}
+          (v1, p.map(x => x.replaceAll("\\$" + v, m(v))) )}
       )
     val mx = variablesSorted.foldLeft(pathMap)(foldie)
     mx.toString
   }
-}
+  */
 
-case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=Set("subject", "object")) extends XQuerySelect
-{
   val dollar = "$"
 
   def renameVars(mapping: Map[String,String]) =
@@ -105,7 +120,7 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=S
 
     def replaceOneVar(p: String, before: String, after: String) =
       p.replaceAll(s"\\s*$before\\s*←", s"$after←")
-      .replaceAll("\\" + dollar + before, "\\"  + dollar + after)
+        .replaceAll("\\" + dollar + before, "\\"  + dollar + after)
 
     def replaceOne(p: String, kv: (String,String)): String =
     {
@@ -117,6 +132,13 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=S
 
     BasicPattern(pathExpressions.map(replaceAllVars), newVars)
   }
+}
+
+case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=Set("subject", "object")) extends XQuerySelect
+{
+
+
+
   // def union
 }
 
@@ -129,6 +151,15 @@ case class SimpleSelect(pathExpressions: Set[String],
   extends XQuerySelect
 {
   override def isSelected(v: String) = selected.contains(v)
+
+  def anonymizeVars() =
+  {
+    val m: Map[Variable,Variable] = this.variables.map(
+      v => if (isSelected(v)) (v,v) else (v, XQueryNode.getNewVarName()))
+      .toMap
+    val b = renameVars(m)
+    SimpleSelect(b.pathExpressions, b.variables, this.selected)
+  }
 }
 
 
