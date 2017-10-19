@@ -106,7 +106,7 @@ object Mappings
     udPrefix + "cc" ->
       BasicPattern(Set(
         "subject←//node[@rel='cnj']",
-        "object←$subject/preceding-sibling::*[1][@rel='crd']]"
+        "object←$subject/preceding-sibling::*[1][@rel='crd']"
       ),
     Set("subject", "object")
     )
@@ -270,16 +270,18 @@ object SparqlToXquery
 
     val q2 =  s"""prefix : <http://example.org/>
                  |prefix ud: <${Mappings.udPrefix}>
-                 |select ?t1 ?t2 where
+                 |select ?t1 ?t2 ?tcc where
                  |{
                  | ?c1 ud:conj ?c2 .
+                 | ?c2 ud:cc ?cc .
                  | ?c1 :text ?t1 .
-                 | ?c2 :text ?t2
+                 | ?c2 :text ?t2 .
+                 | ?cc :text ?tcc
                  |}
       """.stripMargin
 
     println(q1)
-    val x:XQueryNode = t.translate(q1)
+    val x:XQueryNode = t.translate(q2)
     println(x)
     println(x.toQuery())
   }
