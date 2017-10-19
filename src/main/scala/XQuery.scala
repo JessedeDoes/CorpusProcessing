@@ -82,9 +82,10 @@ trait XQuerySelect extends XQueryNode
   def forWhere(v: Variable):String =
   {
     val l = pathMap(v).toList
-    val fOr = s"$dollar$v in ${l.head}"
-    val wheres = l.tail.map(x => s"($x = $dollar${v})")
-    fOr + (if (wheres.isEmpty) "" else " where " + wheres.mkString(" and "))
+    val clauses = l.map(x => s"($x)")
+    val fOr = s"$dollar$v in ${clauses.mkString(" intersect ")}"
+    //val wheres = l.tail.map(x => s"($x = $dollar${v})")
+    fOr // + (if (wheres.isEmpty) "" else " where " + wheres.mkString(" and "))
   }
 
   def toQuery():String =
