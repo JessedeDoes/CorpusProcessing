@@ -59,6 +59,10 @@ object Mappings
     "http://example.org/child" ->
       BasicPattern(
         Set("object←$subject/*")
+      ),
+    "http://example.org/text" ->
+      BasicPattern(
+        Set("object←string-join($subject//@word, ' ')")
       ))
 
   val udPrefix = "http://universaldependencies.org/u/dep/"
@@ -95,10 +99,17 @@ object Mappings
       BasicPattern(
         Set(
           "subject←//node[@rel='cnj']",
-          "object←$subject/following-sibling::*[2][@rel='cnj' and [preceding-sibling::*[1][@rel='crd']]]|$subject/following-sibling::*[1][@rel='cnj']"
+          "object←$subject/following-sibling::*[2][@rel='cnj' and preceding-sibling::*[1][@rel='crd']]|$subject/following-sibling::*[1][@rel='cnj']"
         ),
         Set("subject", "object")
-      )
+      ),
+    udPrefix + "cc" ->
+      BasicPattern(Set(
+        "subject←//node[@rel='cnj']",
+        "object←$subject/preceding-sibling::*[1][@rel='crd']]"
+      ),
+    Set("subject", "object")
+    )
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
@@ -244,24 +255,31 @@ object SparqlToXquery
     val q1 =
       s"""prefix : <http://example.org/>
          |prefix ud: <${Mappings.udPrefix}>
-         |select ?onderwerp ?gezegde ?lv ?mv where
+         |select ?tonderwerp ?tgezegde ?tlv ?tmv where
          |{
          | ?gezegde ud:nsubj ?onderwerp .
          | ?gezegde ud:obj ?lv .
-         | ?gezegde ud:iobj ?mv
+         | ?gezegde ud:iobj ?mv .
+         |
+         | ?gezegde :text ?tgezegde .
+         | ?onderwerp :text ?tonderwerp .
+         | ?lv :text ?tlv .
+         | ?mv :text ?tmv
          | }
       """.stripMargin
 
-    val q3 =  s"""prefix : <http://example.org/>
+    val q2 =  s"""prefix : <http://example.org/>
                  |prefix ud: <${Mappings.udPrefix}>
-                 |select ?c1 ?c2 where
+                 |select ?t1 ?t2 where
                  |{
                  | ?c1 ud:conj ?c2 .
-                 | }
+                 | ?c1 :text ?t1 .
+                 | ?c2 :text ?t2
+                 |}
       """.stripMargin
 
     println(q1)
-    val x:XQueryNode = t.translate(q3)
+    val x:XQueryNode = t.translate(q1)
     println(x)
     println(x.toQuery())
   }
