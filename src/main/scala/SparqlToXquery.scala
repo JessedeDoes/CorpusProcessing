@@ -109,7 +109,15 @@ object Mappings
         "object←$subject/preceding-sibling::*[1][@rel='crd']"
       ),
     Set("subject", "object")
-    )
+    ),
+    udPrefix + "csubj" ->
+      BasicPattern(Set(
+        "top←//node",
+        "subject←$top/node[@rel='hd' and @pos='verb']",
+        "object←$top/node[@rel='su' and (@cat='ssub' or @cat='whsub')]"
+      ),
+        Set("subject", "object", "top")
+      )
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
@@ -280,8 +288,18 @@ object SparqlToXquery
                  |}
       """.stripMargin
 
+    val q3 = s"""prefix : <http://example.org/>
+                |prefix ud: <${Mappings.udPrefix}>
+                |select ?t1 ?t2 where
+                |{
+                | ?c1 ud:csubj ?c2 .
+                | ?c1 :text ?t1 .
+                | ?c2 :text ?t2 .
+                |}
+      """.stripMargin
+
     println(q1)
-    val x:XQueryNode = t.translate(q2)
+    val x:XQueryNode = t.translate(q3)
     println(x)
     println(x.toQuery())
   }
