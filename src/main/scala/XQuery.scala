@@ -70,6 +70,7 @@ trait XQuerySelect extends XQueryNode
 
   lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList.reverse
 
+  //ToDo: Maak niet geselecteerde variabelen verborgen (hernoem naar iets globaal unieks)
 
   def toQuery():String =
   {
@@ -118,6 +119,8 @@ case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=S
   }
   // def union
 }
+
+
 
 case class SimpleSelect(pathExpressions: Set[String],
                         variables: Set[Variable],

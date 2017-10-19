@@ -70,18 +70,35 @@ object Mappings
   // https://github.com/gossebouma/lassy2ud/blob/master/universal_dependencies_2.0.xq
 
   val udRelMap = Map(
+
     udPrefix + "nsubj" ->
       BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
         "su←$sentence/node[@rel='su' and ./node[@rel='hd' and @pos='noun']] ",
         "object←$su/node[@rel='hd' and @pos='noun']",
         "subject←$sentence/node[@rel='hd' and @pos='verb']",
         ), Set("sentence", "predicate", "su", "subject", "object")),
+
     udPrefix + "obj" ->
       BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
         "obj←$sentence/node[@rel='obj1' and ./node[@rel='hd' and @pos='noun']] ",
         "object←$obj/node[@rel='hd' and @pos='noun']",
         "subject←$sentence/node[@rel='hd' and @pos='verb']",
-      ), Set("sentence", "predicate", "obj", "subject", "object"))
+      ), Set("sentence", "predicate", "obj", "subject", "object")),
+
+    udPrefix + "iobj" ->
+      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
+        "iobj←$sentence/node[@rel='obj2' and ./node[@rel='hd' and @pos='noun']] ",
+        "object←$iobj/node[@rel='hd' and @pos='noun']",
+        "subject←$sentence/node[@rel='hd' and @pos='verb']",
+      ), Set("sentence", "predicate", "iobj", "subject", "object")),
+    udPrefix + "conj" ->
+      BasicPattern(
+        Set(
+          "subject←//node[@rel='cnj']",
+          "object←$subject/following-sibling::*[2][@rel='cnj' and [preceding-sibling::*[1][@rel='crd']]]|$subject/following-sibling::*[1][@rel='cnj']"
+        ),
+        Set("subject", "object")
+      )
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
@@ -227,14 +244,24 @@ object SparqlToXquery
     val q1 =
       s"""prefix : <http://example.org/>
          |prefix ud: <${Mappings.udPrefix}>
-         |select ?onderwerp ?gezegde where
+         |select ?onderwerp ?gezegde ?lv ?mv where
          |{
-         | ?gezegde ud:nsubj ?onderwerp
+         | ?gezegde ud:nsubj ?onderwerp .
+         | ?gezegde ud:obj ?lv .
+         | ?gezegde ud:iobj ?mv
          | }
       """.stripMargin
 
+    val q3 =  s"""prefix : <http://example.org/>
+                 |prefix ud: <${Mappings.udPrefix}>
+                 |select ?c1 ?c2 where
+                 |{
+                 | ?c1 ud:conj ?c2 .
+                 | }
+      """.stripMargin
+
     println(q1)
-    val x:XQueryNode = t.translate(q1)
+    val x:XQueryNode = t.translate(q3)
     println(x)
     println(x.toQuery())
   }
