@@ -64,14 +64,24 @@ object Mappings
   val udPrefix = "http://universaldependencies.org/u/dep/"
 
   // this is obviously too complex.
+  // zie http://aclweb.org/anthology/W17-0403
+  // Increasing return on annotation investment: the automatic construction of
+  // a Universal Dependency treebank for Dutch
+  // https://github.com/gossebouma/lassy2ud/blob/master/universal_dependencies_2.0.xq
+
   val udRelMap = Map(
     udPrefix + "nsubj" ->
       BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
         "su←$sentence/node[@rel='su' and ./node[@rel='hd' and @pos='noun']] ",
         "object←$su/node[@rel='hd' and @pos='noun']",
         "subject←$sentence/node[@rel='hd' and @pos='verb']",
-        ),
-        Set("sentence", "predicate", "su", "subject", "object"))
+        ), Set("sentence", "predicate", "su", "subject", "object")),
+    udPrefix + "obj" ->
+      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
+        "obj←$sentence/node[@rel='obj1' and ./node[@rel='hd' and @pos='noun']] ",
+        "object←$obj/node[@rel='hd' and @pos='noun']",
+        "subject←$sentence/node[@rel='hd' and @pos='verb']",
+      ), Set("sentence", "predicate", "obj", "subject", "object"))
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
@@ -79,6 +89,7 @@ object Mappings
     "rhd", "me", "tag", "obj2", "whd", "predm", "dlink", "se", "sup", "hdf",
     "obcomp", "pobj1"
   )
+
   val dollar = "$"
 
   val lassyRelMap = lassyRelNames.map(s =>
@@ -178,11 +189,11 @@ class SparqlToXquery(basicMapping: TripleMapping) {
       val x:SimpleSelect = basicMapping.apply(sName, oName, pVal.stringValue())
       val subjectRestriction = if (sVal != null)
         Map(sName -> List(dq + sVal.stringValue + dq))
-      else Map.empty[String,List[String]]
+      else Map.empty[String, List[String]]
 
       val objectRestriction = if (oVal != null)
         Map(oName -> List(dq + oVal.stringValue + dq))
-      else Map.empty[String,List[String]]
+      else Map.empty[String, List[String]]
 
       val r  = x.copy(valueRestrictions = ValueRestrictionSet(subjectRestriction ++ objectRestriction))
       Console.err.println("triple pattern translated to:" + r)
@@ -229,113 +240,3 @@ object SparqlToXquery
   }
 }
 
-/**
-  *
-//node[@cat="np" and node[@rel="hd" and @pt="n"] and node [@rel="mod" and @cat="rel" and node[@rel="rhd"] and @pt="bw"]]
-
-  Klopt voor mijn versie van Lassy Klein niet:
-
-  let $nodes := //node[@cat="np" and node[@rel="hd" and @pt="n"] and node [@rel="mod" and @cat="rel" and node[@rel="rhd" and @lemma="waar"]]]
-for $n in $nodes
-let $words := (<words>{for $w in $n//*[@word] return concat("", $w/@word,":",$w/@pt)}</words>)
-return $words
-
-<words>de:lid bierkelders:n waar:vnw CDU-politici:n mogen:ww graag:bw het:lid glas:n heffen:ww</words>
-<words>feestjes:n waar:vnw de:lid jongste:adj later:adj probleemloos:adj naar:vz toe:vz mag:ww</words>
-<words>de:lid plaats:n waar:vnw de:lid Grieken:n hun:vnw boten:n verborgen:ww voor:vz ze:vnw de:lid stad:n Troje:n aanvielen:ww precies:adj zoals:vg een:lid Griekse:adj voorganger:n van:vz hem:vnw ene:vnw Strabo:n 1250:tw jaar:n na:vz de:lid oorlog:n beschreef:ww</words>
-<words>de:lid plaats:n waar:vnw Jupiter:n zich:vnw nu:bw bevindt:ww</words>
-<words>de:lid Rwandese:adj stad:n Gysenyi:n waar:vnw hulporganisaties:n kampen:n opzetten:ww</words>
-<words>een:lid niet:bw zo:bw democratisch:adj land:n waar:vnw het:lid leger:n de:lid touwtjes:n stevig:adj in:vz handen:n houdt:ww</words>
-<words>Cambodja:n waar:vnw Flahaut:n halt:n hield:ww op:vz doorreis:n naar:vz Vietnam:n met:vz in:vz zijn:vnw voetspoor:n een:lid uitgebreide:ww parlementaire:adj delegatie:n</words>
-<words>de:lid waarden:n waar:vnw wij:vnw als:vz samenleving:n voor:vz staan:ww</words>
-
- de laatste @pt moet dus vnw zijn?
-
-  let $nodes := //node[@cat="np" and node[@rel="hd" and @pt="n" and @word='waarden'] and node [@rel="mod" and @cat="rel" and node[@rel="rhd" and @lemma="waar"]]]
-for $n in $nodes
-let $words := (<words>{for $w in $n//*[@word] return concat("", $w/@word,":",$w/@pt)}</words>)
-return ($words,$n)
-
-  let $nodes := //node[@cat="np" and node[@rel="hd" and @pt="n" and @word="waarden"] and node [@rel="mod" and @cat="rel" and node[@rel="rhd" and @pdtype="adv-pron" and @word="waar"]  and node[@rel="body" and @cat="ssub" and node[@pos='part' and @pt='vz']  ]  ]]
-for $n in $nodes
-let $words := (<words>{for $w in $n//*[@word] return concat("", $w/@word,":",$w/@pt)}</words>)
-return ($words,$n)
-
-
-  let $nodes := //node[@cat="np" and node[@rel="hd" and @pt="n"] and node [@rel="mod" and @cat="rel" and node[@rel="rhd" and @pdtype="adv-pron" and @word="waar"]  and node[@rel="body" and @cat="ssub" and node[@pos='part' and @pt='vz']  ]  ]]
-for $n in $nodes
-let $words := (<words>{for $w in $n//*[@word] return concat("", $w/@word,":",$w/@pt)}</words>)
-return ($words)
-
-
-Rels:
-top
---
-su
-det
-hd
-vc
-obj1
-ld
-mod
-predc
-mwp
-cnj
-crd
-app
-dp
-cmp
-body
-pc
-sat
-nucl
-svp
-rhd
-me
-tag
-obj2
-whd
-predm
-dlink
-se
-sup
-hdf
-obcomp
-pobj1
-
-  Cats:
-
-top
-smain
-np
-ppart
-pp
-mwu
-inf
-conj
-du
-cp
-sv1
-ap
-ssub
-ti
-rel
-detp
-oti
-whq
-whsub
-advp
-ppres
-whrel
-ahi
-svan
-
-Nuttige query:
-
-  let $sv := for  $x in //node[@cat='smain'] ,
-$o in $x/node[@rel='obj1'] ,
-$s in $x/node[@rel='su']
-return ($s/@lemma, $o/@lemma)
-return distinct-values($sv)
-
-  */
