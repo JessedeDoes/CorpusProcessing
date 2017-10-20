@@ -1,9 +1,8 @@
-import javax.xml.xquery.XQDataSource
-import javax.xml.xquery.XQConnection
-import javax.xml.xquery.XQPreparedExpression
-import javax.xml.xquery.XQResultSequence
-import javax.xml.xquery.XQException
+package basex
+
 import javax.xml.namespace.QName
+import javax.xml.xquery.XQException
+
 import net.xqj.basex.BaseXXQDataSource
 
 /*
@@ -25,7 +24,6 @@ object BaseXTest {
     ds.setProperty("user", "jesse")
     ds.setProperty("password", "dedoes")
     val conn = ds.getConnection
-    import javax.xml.xquery.XQExpression
     val xqe = conn.createExpression
 
     xqe.executeCommand("SHOW DATABASES")
