@@ -16,6 +16,13 @@ libraryDependencies += "org.basex" % "basex" % "7.6"
 
 resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
 
+libraryDependencies += "net.xqj" % "basex-xqj" % "1.2.0"
+
+libraryDependencies += "com.xqj2" % "xqj2" % "0.1.0"
+
+libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
+
+/*
 <dependency>
   <groupId>net.xqj</groupId>
   <artifactId>basex-xqj</artifactId>
@@ -31,6 +38,6 @@ resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
   <artifactId>xqj-api</artifactId>
   <version>1.0</version>
 </dependency>
-
+*/
 
         
