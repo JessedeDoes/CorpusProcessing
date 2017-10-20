@@ -4,6 +4,7 @@ import javax.xml.namespace.QName
 import javax.xml.xquery.XQException
 
 import net.xqj.basex.BaseXXQDataSource
+import javax.xml.xquery.XQDataSource
 
 /*
  * Copyright (c) 2014 xqj.net. All rights reserved.
@@ -17,15 +18,20 @@ import net.xqj.basex.BaseXXQDataSource
   **/
 object BaseXTest {
 
-
+  private val DRIVER = "net.xqj.basex.BaseXXQDataSource"
   @throws[XQException]
   def test(): Unit = {
-    val ds = new BaseXXQDataSource
+    //val ds = new BaseXXQDataSource
+
+
+    val ds = Class.forName(DRIVER).newInstance.asInstanceOf[XQDataSource]
+    import javax.xml.xquery.XQConnection
+    val conn = ds.getConnection("admin", "admin")
     ds.setProperty("serverName", "localhost")
     ds.setProperty("port", "1984")
     ds.setProperty("user", "jesse")
     ds.setProperty("password", "dedoes")
-    val conn = ds.getConnection
+    //val conn = ds.getConnection
     val xqe = conn.createExpression
 
     xqe.executeCommand("SHOW DATABASES")
