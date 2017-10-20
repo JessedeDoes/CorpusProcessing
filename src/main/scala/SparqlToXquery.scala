@@ -63,7 +63,16 @@ object Mappings
     "http://example.org/text" ->
       BasicPattern(
         Set("object←string-join($subject//@word, ' ')")
-      ))
+      ),
+    "http://example.org/sentence" ->
+      BasicPattern(
+        Set("object←$subject/ancestor::alpino_ds/sentence")
+      ),
+    "http://example.org/precedes" -> // dit zou beter via een filter (where) kunnen worden gedaan
+      BasicPattern(
+        Set("object←$subject/ancestor::node/descendant::node[@begin > $subject/@begin]")
+      )
+  )
 
   val udPrefix = "http://universaldependencies.org/u/dep/"
 
@@ -76,25 +85,22 @@ object Mappings
   val udRelMap = Map(
 
     udPrefix + "nsubj" ->
-      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
-        "su←$sentence/node[@rel='su' and ./node[@rel='hd' and @pos='noun']] ",
-        "object←$su/node[@rel='hd' and @pos='noun']",
-        "subject←$sentence/node[@rel='hd' and @pos='verb']",
-        ), Set("sentence", "predicate", "su", "subject", "object")),
+      BasicPattern(Set(
+        "object←$subject/../node[@rel='su']/node[@rel='hd' and @pos='noun']",
+        "subject←//node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
+        ), Set("subject", "object")),
 
     udPrefix + "obj" ->
-      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
-        "obj←$sentence/node[@rel='obj1' and ./node[@rel='hd' and @pos='noun']] ",
-        "object←$obj/node[@rel='hd' and @pos='noun']",
-        "subject←$sentence/node[@rel='hd' and @pos='verb']",
-      ), Set("sentence", "predicate", "obj", "subject", "object")),
+      BasicPattern(Set(
+        "object←$subject/../node[@rel='obj1']/node[@rel='hd' and @pos='noun']",
+        "subject←//node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
+      ), Set("subject", "object")),
 
     udPrefix + "iobj" ->
-      BasicPattern(Set("sentence←//node[(@cat='smain' or @cat='ssub')]",
-        "iobj←$sentence/node[@rel='obj2' and ./node[@rel='hd' and @pos='noun']] ",
-        "object←$iobj/node[@rel='hd' and @pos='noun']",
-        "subject←$sentence/node[@rel='hd' and @pos='verb']",
-      ), Set("sentence", "predicate", "iobj", "subject", "object")),
+      BasicPattern(Set(
+        "object←$subject/../node[@rel='obj2']/node[@rel='hd' and @pos='noun']",
+        "subject←//node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
+      ), Set("subject", "object")),
     udPrefix + "conj" ->
       BasicPattern(
         Set(
@@ -122,6 +128,13 @@ object Mappings
       BasicPattern(Set(
         "subject←node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
         "object←$subject/../node[@rel='vc' and ./node[(@cat='ssub' or @cat='whsub') and ./node[@rel='su']]]"
+      ),
+        Set("subject", "object")
+      ),
+    udPrefix + "ccomp" -> // ccomp heeft GEEN eigen onderwerp (! deze klopt totaal niet)
+      BasicPattern(Set(
+        "subject←node[@rel='hd' and @pos='verb' and parent::node[@cat='smain' or @cat='ssub']]",
+        "object←$subject/../node[@rel='vc' and ./node[(@cat='ssub' or @cat='whsub') and not(./node[@rel='su'])]]"
       ),
         Set("subject", "object")
       )
@@ -308,8 +321,34 @@ object SparqlToXquery
                 |}
       """.stripMargin
 
-    println(q1)
-    val x:XQueryNode = t.translate(q2)
+    val q4 = s"""prefix : <http://example.org/>
+                |prefix ud: <${Mappings.udPrefix}>
+                |select ?t1 ?t2  where
+                |{
+                | ?c1 ud:ccomp ?c2 .
+                | ?c1 :text ?t1 .
+                | ?c2 :text ?t2
+                | }
+      """.stripMargin
+
+
+    val q5 =
+      s"""prefix : <http://example.org/>
+         |prefix ud: <${Mappings.udPrefix}>
+         |select ?tonderwerp ?tgezegde ?tlv ?sent where
+         |{
+         | ?gezegde ud:nsubj ?onderwerp .
+         | ?gezegde ud:obj ?lv .
+         | ?lv :precedes ?onderwerp .
+         | ?gezegde :text ?tgezegde .
+         | ?onderwerp :text ?tonderwerp .
+         | ?lv :text ?tlv .
+         | ?gezegde :sentence ?sent
+         | }
+      """.stripMargin
+
+    println(q5)
+    val x:XQueryNode = t.translate(q5)
     println(x)
     println(x.toQuery())
   }
