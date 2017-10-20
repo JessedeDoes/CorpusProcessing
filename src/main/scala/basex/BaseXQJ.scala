@@ -10,6 +10,8 @@ import net.xqj.basex.BaseXXQDataSource
  */
 
 
+// look at: https://github.com/BaseXdb/basex/blob/master/basex-examples/src/main/java/org/basex/examples/xqj/XQJQuery.java
+
 /**
   * Basic Example showing how to bind Java values to XQuery external variables
   **/
