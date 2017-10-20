@@ -70,7 +70,7 @@ object Mappings
       ),
     "http://example.org/precedes" -> // dit zou beter via een filter (where) kunnen worden gedaan
       BasicPattern(
-        Set("object←$subject/ancestor::node/descendant::node[@begin > $subject/@begin]")
+        Set("object←$subject/ancestor::node/descendant::node[xs:int(@begin) > xs:int($subject/@begin)]")
       )
   )
 
