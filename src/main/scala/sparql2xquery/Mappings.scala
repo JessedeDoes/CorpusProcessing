@@ -19,15 +19,15 @@ object Mappings
       ),
     "http://example.org/lemma" ->
       BasicPattern(
-        Set("object←$subject/@lemma")
+        Set("object←xs:string($subject/@lemma)")
       ),
     "http://example.org/pos" ->
       BasicPattern(
-        Set("object←$subject/@pos")
+        Set("object←xs:string($subject/@pos)")
       ),
     "http://example.org/rel" ->
       BasicPattern(
-        Set("object←$subject/@rel")
+        Set("object←xs:string($subject/@rel)")
       ),
     "http://example.org/child" ->
       BasicPattern(

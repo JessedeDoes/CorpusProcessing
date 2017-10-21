@@ -18,7 +18,7 @@ PREFIX : <http://example.org/>
 
 PREFIX diamant:      <http://rdf.ivdnt.org/schema/diamant#>
 
-SELECT distinct ?pw ?ow ?lvw
+SELECT distinct ?pw ?ow ?lvw ?lvl
 WHERE {
   SERVICE lassyklein:
   {
@@ -30,6 +30,13 @@ WHERE {
   } .
   graph <http://rdf.ivdnt.org/lexica/dbnl_similarity/>
   {
-    ?sim diamant:source "woede" . ?sim diamant:target ?lvw
+    ?sim diamant:source "woede" . ?sim diamant:target ?lvl
+  } .
+  graph <http://rdf.ivdnt.org/lexica/diamant/v1.0/>
+  {
+    ?e ontolex:canonicalForm ?lvc  . 
+    ?lvc ontolex:writtenRep ?lvl .
+    ?e ontolex:lexicalForm ?lvf .
+    ?lvf ontolex:writtenRep ?lvw
   }
 }
