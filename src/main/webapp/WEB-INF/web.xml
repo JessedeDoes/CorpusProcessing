@@ -1,0 +1,13 @@
+<web-app>
+
+  <servlet>
+    <servlet-name>sparql2xquery</servlet-name>
+    <servlet-class>servlet.BogusEndpoint</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>sparql2xquery</servlet-name>
+    <url-pattern>/sparql2xquery</url-pattern>
+  </servlet-mapping>
+
+</web-app>

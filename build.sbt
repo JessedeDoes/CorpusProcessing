@@ -32,6 +32,8 @@ libraryDependencies += "org.json4s" % "json4s-native_2.12" % "3.5.3"
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 libraryDependencies += "javax.servlet" % "javax.servlet-api" % "4.0.0" % "provided"
 
+enablePlugins(TomcatPlugin)
+
 /*
 <dependency>
   <groupId>net.xqj</groupId>

@@ -4,8 +4,22 @@ import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
 
-class BogusEndpoint {
+// https://github.com/earldouglas/xsbt-web-plugin/blob/master/docs/4.0.x.md
 
+class BogusEndpoint extends HttpServlet
+{
+  override def doGet(request: HttpServletRequest, response: HttpServletResponse) {
+
+    response.setContentType("text/html")
+    response.setCharacterEncoding("UTF-8")
+    response.getWriter.write("""<h1>Hello, world!</h1>""")
+
+    val query = request.getParameter("query")
+    if (query != null)
+      {
+         System.err.println(query)
+      }
+  }
 }
 
 
