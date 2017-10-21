@@ -235,21 +235,21 @@ object SparqlToXquery
     println(x)
     println(x.toQuery())
     val bx = basex.BaseXConnection.default()
-    val dinges = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
-    println(QueryResults.toJSON(dinges.toList))
+    val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
+    println(QueryResults.response(resultStream.take(5)))
     //bx.ge.tAsScalaNodes(x.toQuery()).foreach(n => QueryResults.toJSON(parseResult(n)));
   }
 
   def maxResults = 20
 
-  def translateAndRunQuery(q: String):String =
+  def translateAndRunQuery(q: String):QueryResults.Response =
   {
     val t = new SparqlToXquery(Mappings.testje)
     val xqn = t.translate(q)
     val xquery = xqn.toQuery
     val bx = basex.BaseXConnection.default()
     val result = bx.getAsScalaNodes(xquery).take(maxResults).map(parseResult)
-    val json = QueryResults.toJSON(result)
+    val json = QueryResults.response(result)
     json
   }
 }

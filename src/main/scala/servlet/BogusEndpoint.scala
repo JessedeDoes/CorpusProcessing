@@ -14,7 +14,8 @@ class BogusEndpoint extends HttpServlet
 {
   override def doGet(request: HttpServletRequest, response: HttpServletResponse) {
 
-    response.setContentType("application/sparql-results+json")
+    //response.setContentType("application/sparql-results+json")
+    response.setContentType("application/sparql-results+xml")
     response.setCharacterEncoding("UTF-8")
     //response.getWriter.write("""<h1>Hello, world!</h1>""")
     request.getHeaderNames.foreach(
@@ -24,9 +25,9 @@ class BogusEndpoint extends HttpServlet
     if (query != null)
       {
         System.err.println(query)
-        val results = SparqlToXquery.translateAndRunQuery(query)
-        System.err.println(results)
-        response.getWriter.write(results)
+        val qresponse:QueryResults.Response = SparqlToXquery.translateAndRunQuery(query)
+        System.err.println(qresponse)
+        response.getWriter.write(qresponse.toString)
       }
   }
 }
