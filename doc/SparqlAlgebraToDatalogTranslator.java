@@ -50,7 +50,7 @@ import java.util.stream.StreamSupport;
 
 
 /***
- * Translate a SPARQL algebra expression into a Datalog program that has the
+ * Translate a SPARQL algebra expression into a datalog.Datalog program that has the
  * same semantics. We use the built-in predicates Join and LeftJoin.
  * 
  * @author Roman Kontchakov
@@ -138,9 +138,9 @@ public class SparqlAlgebraToDatalogTranslator {
         /**
          * Extends the current translation result with bindings coming from {@link Extension} (expr AS ?x) or {@link BindingSetAssignment} (VALUES in SPARQL)
          *
-         * @param bindings   a stream of bindings. A binding is a pair of a variable, and a value/expression
-         * @param varMapper  a function from bindings to {@link Variable}s
-         * @param exprMapper a function maps a pair of a binding and a set variables to a {@link Term}
+         * @param bindings   a stream of bindings. A binding is a pair of a datalog.variable, and a value/expression
+         * @param varMapper  a datalog.function from bindings to {@link Variable}s
+         * @param exprMapper a datalog.function maps a pair of a binding and a set variables to a {@link Term}
          * @param <T>        A class for binding. E.g. {@link org.openrdf.query.Binding} or {@link org.openrdf.query.algebra.ExtensionElem}
          * @return extended translation result
          */
@@ -154,7 +154,7 @@ public class SparqlAlgebraToDatalogTranslator {
 
                 Variable v = varMapper.apply(b);
                 if (!vars.add(v))
-                    throw new IllegalArgumentException("Duplicate binding for variable " + v);
+                    throw new IllegalArgumentException("Duplicate binding for datalog.variable " + v);
 
                 return ofac.getFunctionEQ(v, expr);
             });
@@ -400,7 +400,7 @@ public class SparqlAlgebraToDatalogTranslator {
 
     private Function getFilterExpression(ValueExpr expr, ImmutableSet<Variable> variables) {
         Term term = getExpression(expr, variables);
-        // Effective Boolean Value (EBV): wrap in isTrue function if it is not a (Boolean) expression
+        // Effective Boolean Value (EBV): wrap in isTrue datalog.function if it is not a (Boolean) expression
         if (term instanceof Function) {
             Function f = (Function) term;
             // TODO: check whether the return type is Boolean
@@ -425,7 +425,7 @@ public class SparqlAlgebraToDatalogTranslator {
         Term sTerm = (s == null) ? getTermForVariable(triple.getSubjectVar(), variables) : getTermForLiteralOrIri(s);
 
 		if (p == null) {
-			//  term variable term .
+			//  term datalog.variable term .
             Term pTerm = getTermForVariable(triple.getPredicateVar(), variables);
             Term oTerm = (o == null) ? getTermForVariable(triple.getObjectVar(), variables) : getTermForLiteralOrIri(o);
 			atom = ofac.getTripleAtom(sTerm, pTerm, oTerm);
@@ -433,7 +433,7 @@ public class SparqlAlgebraToDatalogTranslator {
 		else if (p instanceof URI) {
 			if (p.equals(RDF.TYPE)) {
 				if (o == null) {
-					// term rdf:type variable .
+					// term rdf:type datalog.variable .
 					Term pTerm = ofac.getUriTemplate(ofac.getConstantLiteral(OBDAVocabulary.RDF_TYPE));
                     Term oTerm = getTermForVariable(triple.getObjectVar(), variables);
 					atom = ofac.getTripleAtom(sTerm, pTerm, oTerm);
@@ -457,7 +457,7 @@ public class SparqlAlgebraToDatalogTranslator {
 			}
 		}
 		else
-			// if predicate is a variable or literal
+			// if predicate is a datalog.variable or literal
 			throw new RuntimeException("Unsupported query syntax");
 
         return new TranslationResult(ImmutableList.of(atom), variables.build(), true);
@@ -502,7 +502,7 @@ public class SparqlAlgebraToDatalogTranslator {
 
         Term constant = ofac.getConstantLiteral(value, type);
 
-        // wrap the constant in its datatype function
+        // wrap the constant in its datatype datalog.function
         if (type == COL_TYPE.LITERAL) {
             // if the object has type LITERAL, check the language tag
             String lang = literal.getLanguage();
@@ -572,7 +572,7 @@ public class SparqlAlgebraToDatalogTranslator {
         }
         else if (expr instanceof Bound) {
             // BOUND (Sec 17.4.1.1)
-            // xsd:boolean  BOUND (variable var)
+            // xsd:boolean  BOUND (datalog.variable var)
             Var v = ((Bound) expr).getArg();
             Variable var = ofac.getVariable(v.getName());
             return variables.contains(var) ? ofac.getFunctionIsNotNull(var) : ofac.getBooleanConstant(false);
@@ -603,7 +603,7 @@ public class SparqlAlgebraToDatalogTranslator {
                 if (arg instanceof Var)
                     return ofac.getFunction(ExpressionOperation.SPARQL_LANG, term);
                 else
-                    throw new RuntimeException("A variable or a value is expected in " + expr);
+                    throw new RuntimeException("A datalog.variable or a value is expected in " + expr);
             }
             // other subclasses
             // IRIFunction: IRI (Sec 17.4.2.8) for constructing IRIs
@@ -677,12 +677,12 @@ public class SparqlAlgebraToDatalogTranslator {
                 if (arity != p.getArity())
                     throw new UnsupportedOperationException(
                             "Wrong number of arguments (found " + terms.size() + ", only " +
-                                    p.getArity() + "supported) for SPARQL " + f.getURI() + "function");
+                                    p.getArity() + "supported) for SPARQL " + f.getURI() + "datalog.function");
 
                 return ofac.getFunction(p, terms);
             }
 
-            // these are all special cases with **variable** number of arguments
+            // these are all special cases with **datalog.variable** number of arguments
 
             switch (f.getURI()) {
                 // CONCAT (Sec 17.4.3.12)
@@ -690,7 +690,7 @@ public class SparqlAlgebraToDatalogTranslator {
                 case "http://www.w3.org/2005/xpath-functions#concat":
                     if (arity < 1)
                         throw new UnsupportedOperationException("Wrong number of arguments (found " + terms.size() +
-                                ", at least 1) for SPARQL function CONCAT");
+                                ", at least 1) for SPARQL datalog.function CONCAT");
 
                     Term concat = terms.get(0);
                     for (int i = 1; i < arity; i++) // .get(i) is OK because it's based on an array
@@ -709,7 +709,7 @@ public class SparqlAlgebraToDatalogTranslator {
                         flags = terms.get(3);
                     else
                         throw new UnsupportedOperationException("Wrong number of arguments (found "
-                                + terms.size() + ", only 3 or 4 supported) for SPARQL function REPLACE");
+                                + terms.size() + ", only 3 or 4 supported) for SPARQL datalog.function REPLACE");
 
                     return ofac.getFunction(ExpressionOperation.REPLACE, terms.get(0), terms.get(1), terms.get(2), flags);
 
@@ -724,7 +724,7 @@ public class SparqlAlgebraToDatalogTranslator {
                         return ofac.getFunction(ExpressionOperation.SUBSTR3, terms.get(0), terms.get(1), terms.get(2));
 
                     throw new UnsupportedOperationException("Wrong number of arguments (found "
-                            + terms.size() + ", only 2 or 3 supported) for SPARQL function SUBSTRING");
+                            + terms.size() + ", only 2 or 3 supported) for SPARQL datalog.function SUBSTRING");
 
                 default:
                     throw new RuntimeException("Function " + f.getURI() + " is not supported yet!");

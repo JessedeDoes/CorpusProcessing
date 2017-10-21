@@ -1,0 +1,3 @@
+package datalog
+
+trait Datalog

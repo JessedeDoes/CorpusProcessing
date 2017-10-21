@@ -127,7 +127,7 @@ object BaseXTest
    ds.setProperty("user", args(2))
    ds.setProperty("password", args(3))
    val xqc = ds.getConnection
-   val xqpe = xqc.prepareExpression("declare variable $str as xs:string external;\n" + "declare variable $doc as document-node(element(e)) external;\n" + "fn:concat('String: ', $str),\n" + "fn:concat('Document: ', fn:serialize($doc))")
+   val xqpe = xqc.prepareExpression("declare datalog.variable $str as xs:string external;\n" + "declare datalog.variable $doc as document-node(element(e)) external;\n" + "fn:concat('String: ', $str),\n" + "fn:concat('Document: ', fn:serialize($doc))")
    // ... Bind String ...
    xqpe.bindString(new QName("str"), "Hello World", null)
    // ... Bind Document ...

@@ -1,27 +1,23 @@
-import it.unibz.inf.ontop.model.{DatalogProgram, Function, Variable}
+package datalog
+
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE
+import it.unibz.inf.ontop.model.impl.OBDAVocabulary
+import it.unibz.inf.ontop.model.{DatalogProgram, Function, Predicate, Term, Variable}
 import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.UriTemplateMatcher
 import it.unibz.inf.ontop.owlrefplatform.core.translator.SparqlAlgebraToDatalogTranslator
-import it.unibz.inf.ontop.model.Predicate.COL_TYPE
-import it.unibz.inf.ontop.model.Term
-import it.unibz.inf.ontop.model.impl.OBDAVocabulary
 import it.unibz.inf.ontop.parser.EncodeForURI
-import it.unibz.inf.ontop.model.Predicate
-
-import org.openrdf.model.{Literal, URI, Value}
+import org.openrdf.model.datatypes.XMLDatatypeUtil
 import org.openrdf.model.vocabulary.RDF
-import org.openrdf.query.algebra._
+import org.openrdf.model.{Literal, URI, Value}
+import org.openrdf.query.algebra.{BindingSetAssignment, ExtensionElem, LeftJoin, Order, Projection, Reduced, SingletonSet, Slice, StatementPattern, TupleExpr, ValueExpr, Var, _}
 import org.openrdf.query.parser.QueryParserUtil
 import org.openrdf.query.{BindingSet, MalformedQueryException, QueryLanguage}
-import org.openrdf.model.datatypes.XMLDatatypeUtil
-import org.openrdf.query.algebra.{ValueExpr, Var}
-import org.openrdf.query.algebra.{BindingSetAssignment, ExtensionElem, LeftJoin,
-  Order, Projection, Reduced, SingletonSet, Slice, StatementPattern, TupleExpr}
 
 //import it.unibz.inf.ontop.model.OBDAQueryModifiers.OrderCondition
 import java.util.stream.{Collectors, StreamSupport}
-import com.google.common.collect.{Iterables, Sets}
-import com.google.common.collect.{ImmutableList, ImmutableSet}
+
+import com.google.common.collect.{ImmutableList, ImmutableSet, Iterables, Sets}
 
 // kijk naar: ../ontop/reformulation-core/src/main/java/it/unibz/inf/ontop/owlrefplatform/core/translator/SparqlAlgebraToDatalogTranslator.java
 
@@ -63,9 +59,9 @@ class SparqlToDatalog
     /**
       * Extends the current translation result with bindings coming from {@link Extension} (expr AS ?x) or {@link BindingSetAssignment} (VALUES in SPARQL)
       *
-      * @param bindings  a stream of bindings. A binding is a pair of a variable, and a value/expression
-      * @param varMapper a function from bindings to { @link Variable}s
-      * @param exprMapper a function maps a pair of a binding and a set variables to a { @link Term}
+      * @param bindings  a stream of bindings. A binding is a pair of a datalog.variable, and a value/expression
+      * @param varMapper a datalog.function from bindings to { @link Variable}s
+      * @param exprMapper a datalog.function maps a pair of a binding and a set variables to a { @link Term}
       * //@param T       A class for binding. E.g. { @link org.openrdf.query.Binding} or { @link org.openrdf.query.algebra.ExtensionElem}
       * @return extended translation result
       */
@@ -80,7 +76,7 @@ class SparqlToDatalog
 
           val expr = exprMapper.apply(b, ImmutableSet.copyOf(vars.iterator()))
           val v = varMapper.apply(b)
-          if (!vars.add(v)) throw new IllegalArgumentException("Duplicate binding for variable " + v)
+          if (!vars.add(v)) throw new IllegalArgumentException("Duplicate binding for datalog.variable " + v)
           ofac.getFunctionEQ(v, expr)
       })
       new TranslationResult(getAtomsExtended(eqAtoms), ImmutableSet.copyOf(vars.iterator()), false)
@@ -148,7 +144,7 @@ class SparqlToDatalog
       if (!XMLDatatypeUtil.isValidValue(value, typeURI)) throw new RuntimeException("Invalid lexical form for datatype. Found: " + value)
     }
     val constant = ofac.getConstantLiteral(value, datatype)
-    // wrap the constant in its datatype function
+    // wrap the constant in its datatype datalog.function
     if (datatype eq COL_TYPE.LITERAL) { // if the object has type LITERAL, check the language tag
       val lang = literal.getLanguage
       if (lang != null && !(lang == "")) return ofac.getTypedTerm(constant, lang)
@@ -201,12 +197,12 @@ class SparqlToDatalog
     else
       getTermForLiteralOrIri(s)
 
-    if (p == null) { //  term variable term .
+    if (p == null) { //  term datalog.variable term .
       val pTerm = getTermForVariable(triple.getPredicateVar, variables)
       val oTerm = if (o == null) getTermForVariable(triple.getObjectVar, variables)
       else getTermForLiteralOrIri(o)
       atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
-    } else if (p.isInstanceOf[URI]) if (p.equals(RDF.TYPE)) if (o == null) { // term rdf:type variable .
+    } else if (p.isInstanceOf[URI]) if (p.equals(RDF.TYPE)) if (o == null) { // term rdf:type datalog.variable .
       val pTerm = ofac.getUriTemplate(ofac.getConstantLiteral(OBDAVocabulary.RDF_TYPE))
       val oTerm = getTermForVariable(triple.getObjectVar, variables)
       atom = ofac.getTripleAtom(sTerm, pTerm, oTerm)
@@ -227,7 +223,7 @@ class SparqlToDatalog
       val predicate = ofac.getPredicate(p.stringValue, Array[Predicate.COL_TYPE](null, null))
       atom = ofac.getFunction(predicate, sTerm, oTerm)
     }
-    else { // if predicate is a variable or literal
+    else { // if predicate is a datalog.variable or literal
       throw new RuntimeException("Unsupported query syntax")
     }
     new TranslationResult(ImmutableList.of(atom), variables.build, true)
@@ -247,7 +243,7 @@ class SparqlToDatalog
   /*
    private Function getFilterExpression(ValueExpr expr, ImmutableSet<Variable> variables) {
         Term term = getExpression(expr, variables);
-        // Effective Boolean Value (EBV): wrap in isTrue function if it is not a (Boolean) expression
+        // Effective Boolean Value (EBV): wrap in isTrue datalog.function if it is not a (Boolean) expression
         if (term instanceof Function) {
             Function f = (Function) term;
             // TODO: check whether the return type is Boolean
@@ -269,7 +265,7 @@ class SparqlToDatalog
   private def getFilterExpression(expr: ValueExpr, variables: ImmutableSet[Variable]): Function = {
     /*
     val term = getExpression(expr, variables)
-    // Effective Boolean Value (EBV): wrap in isTrue function if it is not a (Boolean) expression
+    // Effective Boolean Value (EBV): wrap in isTrue datalog.function if it is not a (Boolean) expression
     if (term.isInstanceOf[Function]) {
       val f = term.asInstanceOf[Function]
       // TODO: check whether the return type is Boolean
