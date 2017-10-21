@@ -1,10 +1,17 @@
 PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xsd: <http://www.w3.org/2001/XMLSchema#>
+
 PREFIX prov: <http://www.w3.org/ns/prov#>
 PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+
 PREFIX hisco: <https://iisg.amsterdam/hisco/>
 PREFIX hisco-cat: <https://iisg.amsterdam/hisco/code/hisco/>
+
 PREFIX local_fuseki: <http://svprre02:8080/fuseki/tdb/sparql>
 PREFIX bogus: <http://localhost:8080/sparql2xquery/sparql2xquery>
+
+
 PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
 PREFIX ud: <http://universaldependencies.org/u/dep/>
 PREFIX : <http://example.org/>
@@ -16,5 +23,16 @@ WHERE {
       ?pred ud:nsubj ?onderwerp .
       ?onderwerp :word ?ow .
       ?pred :word ?pw
-  } 
+  }
+  SERVICE  <http://nl.dbpedia.org/sparql>
+  {
+       {
+            ?a a <http://dbpedia.org/ontology/City> .
+            ?a <http://purl.org/dc/terms/subject> ?s .
+            ?s rdfs:label ?l
+        }
+  }
+  .
+  bind (lcase(xsd:string(?l)) as ?l1) .
+  filter (?l1 = ?pw)
 } 
