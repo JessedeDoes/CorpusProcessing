@@ -13,6 +13,7 @@ import com.google.common.collect.{Iterables, Sets}
 import com.google.common.collect.{ImmutableList, ImmutableSet}
 import scala.collection.JavaConversions._
 
+// https://daverog.wordpress.com/2013/06/04/the-enduring-myth-of-the-sparql-endpoint/
 
 import Mappings._
 
