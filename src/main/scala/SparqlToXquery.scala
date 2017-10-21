@@ -14,6 +14,7 @@ import com.google.common.collect.{ImmutableList, ImmutableSet}
 import scala.collection.JavaConversions._
 
 // https://daverog.wordpress.com/2013/06/04/the-enduring-myth-of-the-sparql-endpoint/
+// kijk ook nog even naar http://citeseerx.ist.psu.edu/viewdoc/download?rep=rep1&type=pdf&doi=10.1.1.214.3631
 
 import Mappings._
 
