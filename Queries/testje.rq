@@ -9,30 +9,27 @@ PREFIX hisco: <https://iisg.amsterdam/hisco/>
 PREFIX hisco-cat: <https://iisg.amsterdam/hisco/code/hisco/>
 
 PREFIX local_fuseki: <http://svprre02:8080/fuseki/tdb/sparql>
-PREFIX bogus: <http://localhost:8080/sparql2xquery/sparql2xquery>
+PREFIX lassyklein: <http://localhost:8080/sparql2xquery/sparql2xquery>
 
 
 PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
 PREFIX ud: <http://universaldependencies.org/u/dep/>
 PREFIX : <http://example.org/>
 
-SELECT ?pw ?ow
+PREFIX diamant:      <http://rdf.ivdnt.org/schema/diamant#>
+
+SELECT distinct ?pw ?ow ?lvw
 WHERE {
-  SERVICE bogus:
+  SERVICE lassyklein:
   {
       ?pred ud:nsubj ?onderwerp .
+      ?pred ud:obj ?lv .
       ?onderwerp :word ?ow .
-      ?pred :word ?pw
-  }
-  SERVICE  <http://nl.dbpedia.org/sparql>
+      ?pred :word ?pw . 
+      ?lv :word ?lvw
+  } .
+  graph <http://rdf.ivdnt.org/lexica/dbnl_similarity/>
   {
-       {
-            ?a a <http://dbpedia.org/ontology/City> .
-            ?a <http://purl.org/dc/terms/subject> ?s .
-            ?s rdfs:label ?l
-        }
+    ?sim diamant:source "woede" . ?sim diamant:target ?lvw
   }
-  .
-  bind (lcase(xsd:string(?l)) as ?l1) .
-  filter (?l1 = ?pw)
-} 
+}
