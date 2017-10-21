@@ -4,6 +4,10 @@ version := "0.1"
 
 scalaVersion := "2.12.3"
 
+// https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml_2.12
+
+libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.12" % "1.0.6"
+
 libraryDependencies += "net.sf.saxon" % "Saxon-HE" % "9.8.0-4"
 
 libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-owlapi" % "1.18.1"
@@ -16,7 +20,7 @@ libraryDependencies += "org.basex" % "basex" % "7.6"
 
 resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
 
-libraryDependencies += "net.xqj" % "basex-xqj" % "1.2.0"
+libraryDependencies += "net.xqj" % "basex-xqj" % "1.4.0"
 
 libraryDependencies += "com.xqj2" % "xqj2" % "0.1.0"
 
