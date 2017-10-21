@@ -30,8 +30,8 @@ case class BaseXConnection(server: String, port: String, user: String, password:
   }
 
   //val x = XML.loadString("aap")
-
   //danger: stack overflow
+
   final def toStream(seq: XQSequence):Stream[XQItem] =
   {
     if (!seq.next)
