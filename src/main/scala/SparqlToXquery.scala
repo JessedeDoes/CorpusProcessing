@@ -270,7 +270,7 @@ object SparqlToXquery
       name -> value
     }).toMap
 
-  def main(args: Array[String]) =
+  def main(args: Array[String]):Unit =
   {
     val t = new SparqlToXquery(Mappings.testje)
     val q =
@@ -361,7 +361,9 @@ object SparqlToXquery
     println(x)
     println(x.toQuery())
     val bx = basex.BaseXConnection.default()
-    bx.getAsScalaNodes(x.toQuery()).foreach(n => println(parseResult(n)));
+    val dinges = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
+    println(QueryResults.toJSON(dinges.toList))
+    //bx.ge.tAsScalaNodes(x.toQuery()).foreach(n => QueryResults.toJSON(parseResult(n)));
   }
 }
 

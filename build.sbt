@@ -26,6 +26,9 @@ libraryDependencies += "com.xqj2" % "xqj2" % "0.1.0"
 
 libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
 
+// https://mvnrepository.com/artifact/org.json4s/json4s-native_2.12
+libraryDependencies += "org.json4s" % "json4s-native_2.12" % "3.5.3"
+
 /*
 <dependency>
   <groupId>net.xqj</groupId>
