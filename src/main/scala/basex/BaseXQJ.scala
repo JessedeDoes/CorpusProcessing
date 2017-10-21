@@ -23,10 +23,10 @@ case class BaseXConnection(server: String, port: String, user: String, password:
   lazy val ds = Class.forName(DRIVER).newInstance.asInstanceOf[XQDataSource]
   lazy val connection =
   {
-    ds.setProperty("serverName", "localhost")
-    ds.setProperty("port", "1984")
-    ds.setProperty("user", "jesse")
-    ds.setProperty("password", "dedoes")
+    ds.setProperty("serverName", server)
+    ds.setProperty("port", port)
+    ds.setProperty("user", user)
+    ds.setProperty("password", password)
     val c = ds.getConnection
     val xqe = c.createExpression
     xqe.executeCommand(s"OPEN $database")

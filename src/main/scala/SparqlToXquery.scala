@@ -261,6 +261,14 @@ class SparqlToXquery(basicMapping: TripleMapping) {
 
 object SparqlToXquery
 {
+  def parseResult(n: scala.xml.Node):Map[String, scala.xml.Node] =
+    (n \\ "var").map(v =>
+    {
+      val name = (v \\ "name").text
+      val value = (v \\ "value").head
+      name -> value
+    }).toMap
+
   def main(args: Array[String]) =
   {
     val t = new SparqlToXquery(Mappings.testje)
@@ -352,7 +360,7 @@ object SparqlToXquery
     println(x)
     println(x.toQuery())
     val bx = basex.BaseXConnection.default()
-    bx.getAsScalaNodes(x.toQuery()).foreach(println);
+    bx.getAsScalaNodes(x.toQuery()).foreach(n => println(parseResult(n)));
   }
 }
 
