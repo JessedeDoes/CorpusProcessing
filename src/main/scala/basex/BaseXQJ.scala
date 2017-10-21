@@ -13,6 +13,10 @@ import javax.xml.xquery.XQConnection
 
 import scala.annotation.tailrec
 
+object BaseXConnection
+{
+  def default() = BaseXConnection("localhost", "1984", "jesse", "dedoes", "LassyKlein")
+}
 
 case class BaseXConnection(server: String, port: String, user: String, password: String, database: String)
 {

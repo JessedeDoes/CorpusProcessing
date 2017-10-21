@@ -351,6 +351,8 @@ object SparqlToXquery
     val x:XQueryNode = t.translate(q5)
     println(x)
     println(x.toQuery())
+    val bx = basex.BaseXConnection.default()
+    bx.getAsScalaNodes(x.toQuery()).foreach(println);
   }
 }
 
