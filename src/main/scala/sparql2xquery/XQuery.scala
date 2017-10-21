@@ -1,18 +1,5 @@
+package sparql2xquery
 
-trait XQueryNode
-{
-  def toQuery(): String
-}
-
-
-object XQueryNode
-{
-  type Variable = String
-  var varNumber = 0
-
-  def getNewVarName():String = { varNumber += 1; "var" + varNumber}
-
-}
 
 import XQueryNode.Variable
 
@@ -41,7 +28,6 @@ object ValueRestrictionSet
 {
   val empty = ValueRestrictionSet(Map.empty)
 }
-
 
 trait XQuerySelect extends XQueryNode
 {
@@ -138,8 +124,6 @@ trait XQuerySelect extends XQueryNode
 case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=Set("subject", "object")) extends XQuerySelect
 {
 
-
-
   // def union
 }
 
@@ -164,9 +148,7 @@ case class SimpleSelect(pathExpressions: Set[String],
 }
 
 
-class XQuery {
 
-}
 
 object x
 {

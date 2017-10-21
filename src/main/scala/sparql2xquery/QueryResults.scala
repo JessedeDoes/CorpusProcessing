@@ -1,8 +1,8 @@
-import org.json4s.JsonDSL._
+package sparql2xquery
 import org.json4s._
 import org.json4s.native.Serialization
 import org.json4s.native.Serialization.{read, write}
-//import scala.xml._
+
 
 object QueryResults {
 
@@ -20,13 +20,13 @@ object QueryResults {
     def toJSON():String = write(this)
   }
 
-  def toJSON(results: List[Map[String,scala.xml.Node]]): String =
+  def toJSON(results: Seq[Map[String,scala.xml.Node]]): String =
   {
-     val vars = results.flatMap(_.keySet).distinct
+     val vars = results.flatMap(_.keySet).distinct.toList
      val head = Head(vars)
      val bindings = results.map(
-       m => m.map( { case (k,v) => (k -> Value("literal", v.text ) )  }).toMap
-     )
+       m => m.map( { case (k,v) => (k -> Value("literal", v.toString ) )  }).toMap
+     ).toList
      val r = Results(bindings)
      val response = Response(head, r)
      return response.toJSON()

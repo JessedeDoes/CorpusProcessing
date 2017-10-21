@@ -3,6 +3,7 @@ package servlet
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
+import sparql2xquery._
 
 // https://github.com/earldouglas/xsbt-web-plugin/blob/master/docs/4.0.x.md
 
@@ -18,6 +19,7 @@ class BogusEndpoint extends HttpServlet
     if (query != null)
       {
          System.err.println(query)
+        val results = SparqlToXquery.translateAndRunQuery(query)
       }
   }
 }

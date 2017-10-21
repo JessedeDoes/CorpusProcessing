@@ -1,3 +1,5 @@
+package sparql2xquery
+
 object TopologicalSort {
   def tsort[A](edges: Traversable[(A, A)]): Iterable[A] = {
     //@tailrec
