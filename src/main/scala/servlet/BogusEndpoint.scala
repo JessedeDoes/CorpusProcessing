@@ -7,19 +7,26 @@ import sparql2xquery._
 
 // https://github.com/earldouglas/xsbt-web-plugin/blob/master/docs/4.0.x.md
 
+// bleuh volgens mij verwacht jena rdf/xml bij federated query...
+import scala.collection.JavaConversions._
+
 class BogusEndpoint extends HttpServlet
 {
   override def doGet(request: HttpServletRequest, response: HttpServletResponse) {
 
-    response.setContentType("text/html")
+    response.setContentType("application/sparql-results+json")
     response.setCharacterEncoding("UTF-8")
-    response.getWriter.write("""<h1>Hello, world!</h1>""")
-
+    //response.getWriter.write("""<h1>Hello, world!</h1>""")
+    request.getHeaderNames.foreach(
+      n => { System.err.println(n + " -->  " + request.getHeader(n)) }
+    )
     val query = request.getParameter("query")
     if (query != null)
       {
-         System.err.println(query)
+        System.err.println(query)
         val results = SparqlToXquery.translateAndRunQuery(query)
+        System.err.println(results)
+        response.getWriter.write(results)
       }
   }
 }
