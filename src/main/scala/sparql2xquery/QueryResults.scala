@@ -45,7 +45,7 @@ object QueryResults {
      val vars = results.flatMap(_.keySet).distinct.toList
      val head = Head(vars)
      val bindings = results.map(
-       m => m.map( { case (k,v) => (k -> Value("literal", v.toString ) )  }).toMap
+       m => m.map( { case (k,v) => (k -> Value("literal", v.text ) )  }).toMap
      ).toList
      val r = Results(bindings)
      val response = Response(head, r)

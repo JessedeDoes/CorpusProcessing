@@ -240,7 +240,7 @@ object SparqlToXquery
     //bx.ge.tAsScalaNodes(x.toQuery()).foreach(n => QueryResults.toJSON(parseResult(n)));
   }
 
-  def maxResults = 20
+  def maxResults = 10000
 
   def translateAndRunQuery(q: String):QueryResults.Response =
   {

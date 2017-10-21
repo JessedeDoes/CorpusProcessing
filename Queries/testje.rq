@@ -1,0 +1,20 @@
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX prov: <http://www.w3.org/ns/prov#>
+PREFIX skos: <http://www.w3.org/2004/02/skos/core#>
+PREFIX hisco: <https://iisg.amsterdam/hisco/>
+PREFIX hisco-cat: <https://iisg.amsterdam/hisco/code/hisco/>
+PREFIX local_fuseki: <http://svprre02:8080/fuseki/tdb/sparql>
+PREFIX bogus: <http://localhost:8080/sparql2xquery/sparql2xquery>
+PREFIX ontolex: <http://www.w3.org/ns/lemon/ontolex#>
+PREFIX ud: <http://universaldependencies.org/u/dep/>
+PREFIX : <http://example.org/>
+
+SELECT ?pw ?ow
+WHERE {
+  SERVICE bogus:
+  {
+      ?pred ud:nsubj ?onderwerp .
+      ?onderwerp :word ?ow .
+      ?pred :word ?pw
+  } 
+} 

@@ -15,7 +15,7 @@ object Mappings
       ),
     "http://example.org/word" ->
       BasicPattern(
-        Set("object←$subject/@word")
+        Set("object←xs:string($subject/@word)")
       ),
     "http://example.org/lemma" ->
       BasicPattern(
