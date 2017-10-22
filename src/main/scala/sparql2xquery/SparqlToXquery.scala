@@ -231,12 +231,12 @@ object SparqlToXquery
         |}
         |
       """.stripMargin
-    val x:XQueryNode = t.translate(q6)
+    val x:XQueryNode = t.translate(q5)
     println(x)
     println(x.toQuery())
     val bx = basex.BaseXConnection.default()
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
-    println(QueryResults.response(resultStream.take(5)))
+    println(QueryResults.response(resultStream.take(1000)))
     //bx.ge.tAsScalaNodes(x.toQuery()).foreach(n => QueryResults.toJSON(parseResult(n)));
   }
 

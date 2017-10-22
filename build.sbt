@@ -14,9 +14,9 @@ libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-owlapi" % "1.18.1"
 
 libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-sesame" % "1.18.1"
 
-resolvers +=  "XQJ Repository" at "http://files.basex.org/maven"
+resolvers +=  "Basex Repository" at "http://files.basex.org/maven"
 
-libraryDependencies += "org.basex" % "basex" % "7.6"
+libraryDependencies += "org.basex" % "basex" % "8.6.7"
 
 resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
 
