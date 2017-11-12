@@ -23,7 +23,7 @@ case class Dimacs(clauses: Seq[Seq[Int]])
   lazy val nbClauses:Int = clauses.size
   lazy val maxVar:Int = clauses.maxBy(c => c.max).max
 
-  def solve() =
+  def isSatisfiable():Boolean =
   {
 
     val solver = SolverFactory.newDefault
@@ -36,17 +36,14 @@ case class Dimacs(clauses: Seq[Seq[Int]])
       val clause = clauses(i).toArray
       solver.addClause(new VecInt(clause))
     })
-    if (solver.isSatisfiable)
-      {
-        println("Yup!")
-        //solver.
-      }
+    solver.isSatisfiable
   }
 }
 
 object Proposition
 {
   def ¬(p:Proposition) = Not(p)
+  def l(s:String) = Literal(s)
   def p(s:String) = Literal(s)
 
   def example() =
@@ -60,7 +57,7 @@ object Proposition
     val d:Option[Dimacs] = p.toDimacs
 
     println(s"$p => $d")
-    d.map(_.solve)
+    d.map(_.isSatisfiable())
   }
 
   def example1(): Unit =
@@ -74,6 +71,9 @@ object Proposition
     println(phi.simpleConvert())
     println(phi.simpleConvert().flattenOrs().toDimacs)
   }
+
+
+
   def main(args: Array[String]):Unit = example1
 }
 
@@ -219,7 +219,7 @@ trait Proposition
   def isSimpleDisjunction():Boolean =  this match
   {
     case Or(l @ _*) => l.forall(x => x.isAtom() || x.isSimpleDisjunction())
-    case _ => false
+    case _ => this.isAtom()
   }
 
   def isCNF:Boolean = this match {
@@ -240,9 +240,20 @@ trait Proposition
               case Not(Literal(s)) => -1 * varMap(s)
             }
           )
+          case Literal(s) => Seq(varMap(s))
+          case Not(Literal(s)) => Seq(-1 * varMap(s))
         })
     }
     Some(new Dimacs(translation))
+  }
+
+  def isSatisfiable(): Boolean =
+  {
+    val cnf = this.simpleConvert().flattenOrs()
+    println(cnf)
+    val dima = cnf.toDimacs
+    println(dima)
+    dima.get.isSatisfiable()
   }
 }
 
