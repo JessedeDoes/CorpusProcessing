@@ -131,9 +131,17 @@ trait Proposition
         val orz = clauses.flatMap(c => clauses.map(c1 => Or(c,c1)))
         And(orz: _*)
       }
+      case Not(p) =>
+        p match {
+          case Not(q) => q.simpleConvert()
+          case Literal(s) => p
+          case And(p,q) => { val p0 = Or(Not(p), Not(q)); p0.simpleConvert() }
+          case Or(p,q) =>
+
+        }
     }
   }
-  
+
   override def toString():String =
   this match {
     case Literal(s) => s
