@@ -5,7 +5,9 @@ object Mapping {
   val basicClauses = And(
     l("pos=INTJ") → l("cgn=TSW"),
     l("pos=NOUN") →  l("cgn=ZNW"),
-    l("pos=PROPN") → (l("cgn=SPEC") ∧ l("cgn=deeleigen"))
+    l("pos=PROPN") → (l("cgn=SPEC") ∧ l("cgn=deeleigen")),
+    l("pos=VERB") ∧ l("mood=Part") → l("cgn=deelwoord"),
+    l("mood=Part") →l("pos=VERB")
   )
 
   def mapToCGN(p:Proposition):Proposition =
@@ -23,7 +25,7 @@ object Mapping {
 
   def main(args: Array[String]) =
   {
-    val p  = l("pos=PROPN")
+    val p  = l("mood=Part")
     val q = mapToCGN(p)
     println(s"$p => $q")
   }
