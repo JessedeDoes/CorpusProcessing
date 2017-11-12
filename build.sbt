@@ -32,6 +32,10 @@ libraryDependencies += "org.json4s" % "json4s-native_2.12" % "3.5.3"
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 libraryDependencies += "javax.servlet" % "javax.servlet-api" % "4.0.0" % "provided"
 
+// https://mvnrepository.com/artifact/org.ow2.sat4j/org.ow2.sat4j.core
+
+libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
+
 enablePlugins(TomcatPlugin)
 
 /*
