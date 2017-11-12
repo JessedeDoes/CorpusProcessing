@@ -112,6 +112,28 @@ trait Proposition
     case Literal(s) => Set(this)
   }
 
+  def simpleConvert():Proposition =
+  {
+    this match {
+      case And(l @ _*) =>
+        {
+          val clauses = l.map(_.simpleConvert)
+          val flattened = clauses.flatMap(
+            {
+              case And(l @ _*) => l
+              case  x:_ => Seq(x)
+            })
+          And(flattened: _*)
+        }
+      case Or(l @ _*) =>
+      {
+        val clauses = l.map(_.simpleConvert)
+        val orz = clauses.flatMap(c => clauses.map(c1 => Or(c,c1)))
+        And(orz: _*)
+      }
+    }
+  }
+  
   override def toString():String =
   this match {
     case Literal(s) => s
