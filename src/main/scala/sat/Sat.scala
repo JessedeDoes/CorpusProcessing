@@ -70,7 +70,9 @@ object Proposition
     val r =  Literal("r")
     val s = Literal("s")
     val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
-    phi.tseytin
+    //phi.tseytin
+    println(phi.simpleConvert())
+    println(phi.simpleConvert().flattenOrs().toDimacs)
   }
   def main(args: Array[String]):Unit = example1
 }
@@ -114,30 +116,54 @@ trait Proposition
 
   def simpleConvert():Proposition =
   {
-    this match {
+    val noDouble = this.removeDoubleNegation()
+    this.removeDoubleNegation() match {
+      case Literal(s) => And(noDouble)
       case And(l @ _*) =>
         {
           val clauses = l.map(_.simpleConvert)
+          Console.err.println(s"and: ($noDouble): " + clauses)
           val flattened = clauses.flatMap(
             {
               case And(l @ _*) => l
-              case  x:_ => Seq(x)
+              case  x:Any => Seq(x)
             })
+          Console.err.println("flattened:" + flattened)
           And(flattened: _*)
         }
+      case Or(p, q) =>
+        {
+          val p1 = p.simpleConvert()
+          val q1 = q.simpleConvert()
+          (p1,q1) match {
+            case (And(l1 @ _*), And(l2 @ _*)) =>
+              val orz = l1.flatMap(l => l2.map(k => Or(k,l)))
+              Console.err.println(orz.mkString(" ## "))
+              And(orz: _*)
+          }
+        }
+        /*
       case Or(l @ _*) =>
       {
         val clauses = l.map(_.simpleConvert)
-        val orz = clauses.flatMap(c => clauses.map(c1 => Or(c,c1)))
+        Console.err.println(s"or: ($noDouble): " + clauses)
+        val flattened = clauses.flatMap(
+          {
+            case And(l @ _*) => l
+            case  x:Any => Seq(x)
+          })
+        Console.err.println("flattened (or):" + flattened)
+
+        val orz = flattened.flatMap(c => flattened.map(c1 => Or(c,c1))).toSet.toList
+        Console.err.println(s"\n##" + orz.mkString("\n") + "##")
         And(orz: _*)
-      }
+      } */
       case Not(p) =>
         p match {
           case Not(q) => q.simpleConvert()
-          case Literal(s) => p
-          case And(p,q) => { val p0 = Or(Not(p), Not(q)); p0.simpleConvert() }
-          case Or(p,q) =>
-
+          case Literal(s) => And(Not(p))
+          case And(p1,q1) => { val p0 = Or(Not(p1), Not(q1)); p0.simpleConvert() }
+          case Or(p1,q1) =>  { val p0 = And(Not(p1), Not(q1)); p0.simpleConvert() }
         }
     }
   }
@@ -145,9 +171,32 @@ trait Proposition
   override def toString():String =
   this match {
     case Literal(s) => s
-    case And(l @ _*) => l.map(_.toString).mkString(" ∧ ")
+    case And(l @ _*) => "(" + l.map(_.toString).mkString(" ∧ ") + ")"
     case Or(l @ _*) => "(" + l.map(_.toString).mkString(" ∨ ") + ")"
     case Not(p) => "¬(" + p.toString + ")"
+  }
+
+  def removeDoubleNegation():Proposition = this match {
+    case Literal(s) => this
+    case And(l @ _*) =>  And(l.map(_.removeDoubleNegation()): _*)
+    case Or(l @ _*) =>  Or(l.map(_.removeDoubleNegation()): _*)
+    case Not(Not(p)) => p
+    case _ => this
+  }
+
+  def flattenOrs():Proposition = this match {
+    case Literal(s) => this
+    case And(l @ _*) =>  And(l.map(_.flattenOrs()): _*)
+    case Or(l @ _*) => val clauses = l.map(_.flattenOrs)
+      val flattened = clauses.flatMap(
+        {
+          case Or(l @ _*) => l
+          case  x:Any => Seq(x)
+        })
+      Console.err.println("flattened:" + flattened)
+      Or(flattened: _*)
+    case Not(Not(p)) => p
+    case _ => this
   }
 
   def tseytin =
@@ -169,7 +218,7 @@ trait Proposition
 
   def isSimpleDisjunction():Boolean =  this match
   {
-    case Or(l @ _*) => l.forall(_.isAtom())
+    case Or(l @ _*) => l.forall(x => x.isAtom() || x.isSimpleDisjunction())
     case _ => false
   }
 
