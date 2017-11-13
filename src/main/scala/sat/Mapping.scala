@@ -6,7 +6,7 @@ object Mapping {
     l("pos=INTJ") → l("cgn=TSW"),
     l("pos=NOUN") →  l("cgn=ZNW"),
     l("pos=PROPN") → (l("cgn=SPEC") ∧ l("cgn=deeleigen")),
-    l("pos=VERB") ∧ l("mood=Part") → l("cgn=deelwoord"),
+    l("pos=VERB") ∧ l("mood=Part") → (l("cgn=deelwoord") ∧ l("cgn=WW")),
     l("mood=Part") →l("pos=VERB")
   )
 

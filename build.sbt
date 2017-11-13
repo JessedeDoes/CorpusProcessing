@@ -8,6 +8,9 @@ scalaVersion := "2.12.3"
 
 libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.12" % "1.0.6"
 
+// https://mvnrepository.com/artifact/org.scala-lang.modules/scala-parser-combinators_2.12
+libraryDependencies += "org.scala-lang.modules" % "scala-parser-combinators_2.12" % "1.0.6"
+
 libraryDependencies += "net.sf.saxon" % "Saxon-HE" % "9.8.0-4"
 
 libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-owlapi" % "1.18.1"

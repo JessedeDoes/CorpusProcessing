@@ -18,7 +18,7 @@ import java.io.FileNotFoundException
 import java.io.IOException
 import org.sat4j.core.VecInt
 
-case class Dimacs(clauses: Seq[Seq[Int]])
+private case class Dimacs(clauses: Seq[Seq[Int]])
 {
   lazy val nbClauses:Int = clauses.size
   lazy val maxVar:Int = clauses.maxBy(c => c.max).max
@@ -29,7 +29,7 @@ case class Dimacs(clauses: Seq[Seq[Int]])
     val solver = SolverFactory.newDefault
 
     solver.newVar(maxVar)
-    solver.setExpectedNumberOfClauses(nbClauses);
+    solver.setExpectedNumberOfClauses(nbClauses)
     // Feed the solver using Dimacs format, using arrays of int
     // (best option to avoid dependencies on SAT4J IVecInt)
     (0 until  nbClauses).foreach(i => {
@@ -68,8 +68,9 @@ object Proposition
     val s = Literal("s")
     val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
     //phi.tseytin
-    println(phi.simpleConvert())
-    println(phi.simpleConvert().flattenOrs().toDimacs)
+    val simple = phi.simpleConvert()
+    println(simple)
+    println(simple.flattenOrs().toDimacs)
   }
 
 
@@ -89,7 +90,7 @@ trait Proposition
   def ∧(q:Proposition) = And(this,q)
   def ∨(q:Proposition) = Or(this,q)
   def →(q:Proposition) = ¬(this ∧ ¬(q))
-  def ↔(q:Proposition) = (this→q) ∧ (q → this);
+  def ↔(q:Proposition) = (this→q) ∧ (q → this)
 
   def varsIn:Set[String] =
   {
@@ -122,13 +123,13 @@ trait Proposition
       case And(l @ _*) =>
         {
           val clauses = l.map(_.simpleConvert)
-          Console.err.println(s"and: ($noDouble): " + clauses)
+          //Console.err.println(s"and: ($noDouble): " + clauses)
           val flattened = clauses.flatMap(
             {
               case And(l @ _*) => l
               case  x:Any => Seq(x)
             })
-          Console.err.println("flattened:" + flattened)
+          //Console.err.println("flattened:" + flattened)
           And(flattened: _*)
         }
       case Or(p, q) =>
@@ -138,7 +139,7 @@ trait Proposition
           (p1,q1) match {
             case (And(l1 @ _*), And(l2 @ _*)) =>
               val orz = l1.flatMap(l => l2.map(k => Or(k,l)))
-              Console.err.println(orz.mkString(" ## "))
+              // Console.err.println(orz.mkString(" ## "))
               And(orz: _*)
           }
         }
@@ -193,7 +194,7 @@ trait Proposition
           case Or(l @ _*) => l
           case  x:Any => Seq(x)
         })
-      Console.err.println("flattened:" + flattened)
+      // Console.err.println("flattened:" + flattened)
       Or(flattened: _*)
     case Not(Not(p)) => p
     case _ => this
@@ -227,7 +228,7 @@ trait Proposition
     case _ => false
   }
 
-  def toDimacs:Option[Dimacs] =
+  private def toDimacs:Option[Dimacs] =
   {
     if (!isCNF)
       return None
