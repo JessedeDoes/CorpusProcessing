@@ -82,6 +82,8 @@ case class Literal(s: String) extends Proposition
 case class Not(p:Proposition) extends Proposition
 case class And(p: Proposition*) extends Proposition
 case class Or(p: Proposition*) extends Proposition
+case class Implies(p: Proposition, q:Proposition) extends Proposition
+case class Equiv(p: Proposition, q:Proposition) extends Proposition
 
 trait Proposition
 {
@@ -175,6 +177,8 @@ trait Proposition
     case And(l @ _*) => "(" + l.map(_.toString).mkString(" ∧ ") + ")"
     case Or(l @ _*) => "(" + l.map(_.toString).mkString(" ∨ ") + ")"
     case Not(p) => "¬(" + p.toString + ")"
+    case Implies(p,q) => p.toString() +  "→" + q.toString()
+    case Equiv(p,q) => p.toString() +  "↔" + q.toString()
   }
 
   def removeDoubleNegation():Proposition = this match {

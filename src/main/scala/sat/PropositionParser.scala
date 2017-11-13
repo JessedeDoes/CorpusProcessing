@@ -7,7 +7,7 @@ object PropositionParser extends App with PropositionParser
   def parse(p: String) = parseAll(program, p)
   def parseFile(f: String) = parse(scala.io.Source.fromFile(f).getLines().mkString(","))
 
-  // println(parseAll(program, "p ∨ q → ¬(pos=ADJ)").get)
+  println(parseAll(program, "p ∨ q → ¬(cgn:pos=ADJ|NOUN)").get)
 }
 
 trait PropositionParser extends JavaTokenParsers {
@@ -47,7 +47,7 @@ trait PropositionParser extends JavaTokenParsers {
     case not ~ c => Not(c)
   }
 
-  lazy val literal: Parser[Proposition] = "[A-za-z[0-9]_=]+".r ^^ { case s => Literal(s) }
+  lazy val literal: Parser[Proposition] = "[A-za-z[0-9]_=:|]+".r ^^ { case s => Literal(s) }
 }
 
 // example combinator parser: https://gist.github.com/sschaef/5529436
