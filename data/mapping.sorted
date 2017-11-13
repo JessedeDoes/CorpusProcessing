@@ -7,7 +7,7 @@ ud:AdpType=Prep ↔ (cgn:feat.vztype=init)
 ud:Aspect=Imp ↔ (cgn:feat.wvorm=od)
 ud:Aspect=Perf ↔ (cgn:feat.wvorm=vd)
 
-ud:Case=AccNom ↔ (cgn:feat.naamval=stan)
+ud:Case=Acc|Nom ↔ (cgn:feat.naamval=stan)
 ud:Case=Acc ↔ (cgn:feat.naamval=obl)
 ud:Case=Dat ↔ (cgn:feat.naamval=dat)
 ud:Case=Gen ↔ (cgn:feat.naamval=gen)
@@ -41,6 +41,8 @@ ud:Number=Sing ↔ (cgn:feat.getal=ev ∨ cgn:feat.npagr=evon ∨ cgn:feat.npagr
 ud:Person=1 ↔ cgn:feat.persoon=1
 ud:Person=2 ↔ cgn:feat.persoon=2 ∨ cgn:feat.persoon=2v ∨ cgn:feat.persoon=2b
 ud:Person=3 ↔ cgn:feat.persoon=3 ∨ cgn:feat.persoon=3p ∨ cgn:feat.persoon=3v ∨ cgn:feat.persoon=3m ∨ cgn:feat.persoon=3o ∨ cgn:feat.persoon=3
+
+# introduceer voor die boolean ors op een feature automatisch een alias = a|b|c|... ?
 
 ud:Polite=Inf ↔ cgn:feat.persoon=2v
 ud:Polite=Pol → (cgn:feat.persoon=2b ∨ cgn:feat.pvagr=met-t)
@@ -95,6 +97,8 @@ ud:pos=SYM → (cgn:pos=SPEC)
 ud:pos=VERB ↔ (cgn:pos=WW)
 ud:pos=X → (cgn:pos=SPEC)
 
+ud:pos=SCONJ|CCONJ ↔ ud:pos=SCONJ ∨ ud:pos=CCONJ
+
 # exclusies. Zouden eigenlijk voor alles opgenomen moeten worden
 
 ¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
@@ -102,6 +106,7 @@ cgn:pos=N → cgn:feat.ntype=soort
 ¬(cgn:pos=VNW ∧ cgn:pos=LID)
 
 # moet dit echt?
+
 ¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=imp)
 ¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=conj)
 ¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=imp)

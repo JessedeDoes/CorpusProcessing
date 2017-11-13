@@ -66,8 +66,8 @@ object Proposition
     val r =  Literal("r")
     val s = Literal("s")
     val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
-    //phi.tseytin
-    val simple = phi.simpleConvert()
+  //phi.tseytin
+  val simple = phi.simpleCNFConversion()
     println(simple)
     println(simple.flattenOrs().toDimacs)
   }
@@ -114,77 +114,61 @@ trait Proposition
     case Literal(s) => Set(this)
   }
 
-  def simpleConvert():Proposition =
+  def simpleCNFConversion():Proposition =
   {
     val noDouble = this.removeDoubleNegation()
     this.removeDoubleNegation() match {
       case Literal(s) => And(noDouble)
       case And(l @ _*) =>
-        {
-          val clauses = l.map(_.simpleConvert)
-          //Console.err.println(s"and: ($noDouble): " + clauses)
-          val flattened = clauses.flatMap(
-            {
-              case And(l @ _*) => l
-              case  x:Any => Seq(x)
-            })
-          //Console.err.println("flattened:" + flattened)
-          And(flattened: _*)
-        }
-      case Or(p, q) =>
-        {
-          val p1 = p.simpleConvert()
-          val q1 = q.simpleConvert()
-          (p1,q1) match {
-            case (And(l1 @ _*), And(l2 @ _*)) =>
-              val orz = l1.flatMap(l => l2.map(k => Or(k,l)))
-              // Console.err.println(orz.mkString(" ## "))
-              And(orz: _*)
-          }
-        }
-
-      case Or(p) => p.simpleConvert()
-      case Or(l @ _*) => {
-        val h = l.head
-        val t = Or(l.tail : _*)
-        val x = Or(l.head, t)
-        t.simpleConvert()
-      }
-        /*
-      case Or(l @ _*) =>
       {
-        val clauses = l.map(_.simpleConvert)
-        Console.err.println(s"or: ($noDouble): " + clauses)
+        val clauses = l.map(_.simpleCNFConversion)
+        //Console.err.println(s"and: ($noDouble): " + clauses)
         val flattened = clauses.flatMap(
           {
             case And(l @ _*) => l
             case  x:Any => Seq(x)
           })
-        Console.err.println("flattened (or):" + flattened)
+        //Console.err.println("flattened:" + flattened)
+        And(flattened: _*)
+      }
+      case Or(p, q) =>
+      {
+        val p1 = p.simpleCNFConversion()
+        val q1 = q.simpleCNFConversion()
+        (p1,q1) match {
+          case (And(l1 @ _*), And(l2 @ _*)) =>
+            val orz = l1.flatMap(l => l2.map(k => Or(k,l)))
+            // Console.err.println(orz.mkString(" ## "))
+            And(orz: _*)
+        }
+      }
 
-        val orz = flattened.flatMap(c => flattened.map(c1 => Or(c,c1))).toSet.toList
-        Console.err.println(s"\n##" + orz.mkString("\n") + "##")
-        And(orz: _*)
-      } */
+      case Or(p) => p.simpleCNFConversion()
+      case Or(l @ _*) => {
+        val h = l.head
+        val t = Or(l.tail : _*)
+        val x = Or(l.head, t)
+        t.simpleCNFConversion()
+      }
       case Not(p) =>
         p match {
-          case Not(q) => q.simpleConvert()
+          case Not(q) => q.simpleCNFConversion()
           case Literal(s) => And(Not(p))
-          case And(p1,q1) => { val p0 = Or(Not(p1), Not(q1)); p0.simpleConvert() }
-          case Or(p1,q1) =>  { val p0 = And(Not(p1), Not(q1)); p0.simpleConvert() }
+          case And(p1,q1) => { val p0 = Or(Not(p1), Not(q1)); p0.simpleCNFConversion() }
+          case Or(p1,q1) =>  { val p0 = And(Not(p1), Not(q1)); p0.simpleCNFConversion() }
         }
     }
   }
 
   override def toString():String =
-  this match {
-    case Literal(s) => s
-    case And(l @ _*) => "(" + l.map(_.toString).mkString(" ∧ ") + ")"
-    case Or(l @ _*) => "(" + l.map(_.toString).mkString(" ∨ ") + ")"
-    case Not(p) => "¬(" + p.toString + ")"
-    case Implies(p,q) => p.toString() +  "→" + q.toString()
-    case Equiv(p,q) => p.toString() +  "↔" + q.toString()
-  }
+    this match {
+      case Literal(s) => s
+      case And(l @ _*) => "(" + l.map(_.toString).mkString(" ∧ ") + ")"
+      case Or(l @ _*) => "(" + l.map(_.toString).mkString(" ∨ ") + ")"
+      case Not(p) => "¬(" + p.toString + ")"
+      case Implies(p,q) => p.toString() +  "→" + q.toString()
+      case Equiv(p,q) => p.toString() +  "↔" + q.toString()
+    }
 
   def removeDoubleNegation():Proposition = this match {
     case Literal(s) => this
@@ -210,6 +194,7 @@ trait Proposition
     case _ => this
   }
 
+  // TODO niet af
   def tseytin =
   {
     val subMap:Map[Proposition, Proposition] =
@@ -240,7 +225,7 @@ trait Proposition
 
   def translate(varMap:Map[String,Int]): Seq[Seq[Int]] =
   {
-    val cnfje = if (isCNF) this else  this.simpleConvert().flattenOrs()
+    val cnfje = if (isCNF) this else  this.simpleCNFConversion().flattenOrs()
     cnfje match {
       case And(l @ _*) =>
         l.map(d => d match {
@@ -281,7 +266,7 @@ trait Proposition
 
   def isSatisfiable(): Boolean =
   {
-    val cnf = this.simpleConvert().flattenOrs()
+    val cnf = this.simpleCNFConversion().flattenOrs()
     // println(cnf)
     val dima = cnf.toDimacs
     //println(dima)
@@ -292,9 +277,6 @@ trait Proposition
 
 
 // case class Implies(p: Proposition, q:Proposition) extends Proposition
-
-
-
 
 object Example {
   def main(args: Array[String]): Unit = {
