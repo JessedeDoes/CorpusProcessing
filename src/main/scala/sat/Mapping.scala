@@ -96,7 +96,7 @@ object CGNMapping
     //translate(cgnMapping)
     (0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("ud:VerbForm=Fin ∧ ud:Tense=Past").get, cgnTagSet)))
     (0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("cgn:pos=WW ∧ cgn:feat.persoon=1").get, udTagSet)))
-    cgnTagSet.foreach(s => {
+    cgnTagSet.toList.sorted.foreach(s => {
       val p = Literal(s)
       println(s"$s => ${mapToTagset(p, udTagSet)}")
     })

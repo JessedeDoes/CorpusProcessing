@@ -106,3 +106,8 @@ ud:pos=X → (cgn:pos=SPEC)
 (¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=od)
 (¬cgn:feat.wvorm=pv ∨ ¬cgn:feat.wvorm=od)
 (¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=pv)
+
+# tagsetinterne implicaties
+
+cgn:feat.vwtype=bep → cgn:pos=VNW
+cgn:feat.vwtype=bez → cgn:pos=VNW
