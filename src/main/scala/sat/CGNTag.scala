@@ -12,15 +12,15 @@ object CGNTag extends App
     "numtype" -> Set("hoofd", "rang"),
     "getal" -> Set("ev", "mv", "getal"),
     "pvagr" -> Set("met-t", "ev", "mv"), // kan dit???
-    "pvtijd" -> Set("tgw", "verl", "conj"), // conjunctief een tijd??
+    "pvtijd" -> Set("tgw", "verl", "conj", "imp"), // conjunctief een tijd? ja.
     "status" -> Set("nadr", "red", "vol"),
     "vztype" -> Set("init", "fin", "versm"),
     "graad" -> Set("basis", "comp", "dim", "sup"),
-    "pdtype" -> Set("adv-pron", "det", "grad", "pron"), // wat is grad?
+    "pdtype" -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
     "positie" -> Set("nom", "postnom", "prenom", "vrij"),
     "genus" -> Set("fem", "genus", "masc", "onz", "zijd"),
     "naamval" -> Set("bijz", "dat", "gen", "nomin", "obl", "stan"),
-    "persoon" -> Set("1", "2","2b", "2v", "3", "3m", "3o", "3p", "3v", "persoon"),
+    "persoon" -> Set("1", "2", "2b", "2v", "3", "3m", "3o", "3p", "3v", "persoon"),
     "npagr" -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
     "wvorm" -> Set("inf", "od", "pv", "vd"),
     "vwtype" -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag")
