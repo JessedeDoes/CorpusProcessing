@@ -2,12 +2,16 @@ package sat
 
 import scala.util.parsing.combinator.JavaTokenParsers
 
+
 object PropositionParser extends App with PropositionParser
 {
   def parse(p: String) = parseAll(program, p)
-  def parseFile(f: String) = parse(scala.io.Source.fromFile(f).getLines().mkString(","))
+  def parseFile(f: String) = parse(scala.io.Source.fromFile(f).getLines()
+    .map(s => s.replaceAll("#.*", ""))
+    .filter(s => !(s.trim == ""))
+    .mkString(", "))
 
-  println(parseAll(program, "p ∨ q → ¬(cgn:pos=ADJ|NOUN)").get)
+  // println(parseAll(program, "p ∨ q → ¬(cgn:pos=ADJ|NOUN)").get)
 }
 
 trait PropositionParser extends JavaTokenParsers {
@@ -15,16 +19,18 @@ trait PropositionParser extends JavaTokenParsers {
   lazy val program: Parser[Proposition] =
     (clause ~ rep(",".r ~ clause)) ^^ {
       case e ~ es => es.foldLeft(e) {
-        case (t1, "→" ~ t2) => t1 ∧ t2
+        case (t1, "," ~ t2) => t1 ∧ t2
       }
     }
 
   lazy val clause: Parser[Proposition] =
-    (expression ~ rep("[→↔]|->".r ~ expression)) ^^ {
+    (expression ~ rep("[→↔]|->|<->".r ~ expression)) ^^ {
       case e ~ es => es.foldLeft(e) {
         case (t1, "→" ~ t2) => t1 → t2
         case (t1, "->" ~ t2) => t1 → t2
+
         case (t1, "↔" ~ t2) => t1 ↔ t2
+        case (t1, "<->" ~ t2) => t1 ↔ t2
       }
   }
 
@@ -49,7 +55,7 @@ trait PropositionParser extends JavaTokenParsers {
     case not ~ c => Not(c)
   }
 
-  lazy val literal: Parser[Proposition] = "[A-za-z[0-9]_=:|]+".r ^^ { case s => Literal(s) }
+  lazy val literal: Parser[Proposition] = "[A-Za-z][A-za-z[0-9]_=:|.-]*".r ^^ { case s => Literal(s) }
 }
 
 // example combinator parser: https://gist.github.com/sschaef/5529436

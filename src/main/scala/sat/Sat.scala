@@ -17,6 +17,7 @@ import org.sat4j.specs.ISolver
 import java.io.FileNotFoundException
 import java.io.IOException
 import org.sat4j.core.VecInt
+import CGNMapping.time
 
 private case class Dimacs(clauses: Seq[Seq[Int]])
 {
@@ -145,6 +146,14 @@ trait Proposition
               And(orz: _*)
           }
         }
+
+      case Or(p) => p.simpleConvert()
+      case Or(l @ _*) => {
+        val h = l.head
+        val t = Or(l.tail : _*)
+        val x = Or(l.head, t)
+        t.simpleConvert()
+      }
         /*
       case Or(l @ _*) =>
       {
@@ -184,6 +193,7 @@ trait Proposition
   def removeDoubleNegation():Proposition = this match {
     case Literal(s) => this
     case And(l @ _*) =>  And(l.map(_.removeDoubleNegation()): _*)
+    case Or(p:Proposition) => p.removeDoubleNegation()
     case Or(l @ _*) =>  Or(l.map(_.removeDoubleNegation()): _*)
     case Not(Not(p)) => p
     case _ => this
@@ -255,9 +265,9 @@ trait Proposition
   def isSatisfiable(): Boolean =
   {
     val cnf = this.simpleConvert().flattenOrs()
-    println(cnf)
+    // println(cnf)
     val dima = cnf.toDimacs
-    println(dima)
+    //println(dima)
     dima.get.isSatisfiable()
   }
 }

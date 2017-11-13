@@ -1,0 +1,6 @@
+ud:Tense=Past ↔ ((cgn:feat.pvtijd=verl ∧ cgn:feat.wvorm=pv) ∨ (cgn:feat.wvorm=vd))
+ud:VerbForm=Fin ↔ (cgn:feat.wvorm=pv)
+ud:VerbForm=Part ↔ (cgn:feat.wvorm=od) ∨ (cgn:feat.wvorm=vd)
+(¬cgn:feat.wvorm=vd ∨  ¬cgn:feat.wvorm=od)
+(¬cgn:feat.wvorm=pv ∨  ¬cgn:feat.wvorm=od)
+(¬cgn:feat.wvorm=vd ∨  ¬cgn:feat.wvorm=pv)

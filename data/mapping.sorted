@@ -1,0 +1,108 @@
+ud:AdpType=Comprep ↔ (cgn:feat.vztype=versm)
+ud:AdpType=Post ↔ (cgn:feat.vztype=fin)
+ud:AdpType=Prep ↔ (cgn:feat.vztype=init)
+
+ud:Aspect=Imp ↔ (cgn:feat.wvorm=od)
+ud:Aspect=Perf ↔ (cgn:feat.wvorm=vd)
+
+ud:Case=AccNom ↔ (cgn:feat.naamval=stan)
+ud:Case=Acc ↔ (cgn:feat.naamval=obl)
+ud:Case=Dat ↔ (cgn:feat.naamval=dat)
+ud:Case=Gen ↔ (cgn:feat.naamval=gen ∧ (cgn:pos=ADJ ∨ cgn:pos=N ∨ cgn:pos=VNW))
+ud:Case=Nom ↔ (cgn:feat.naamval=nomin)
+
+ud:Definite=Def ↔ (cgn:feat.lwtype=bep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=bep ∧ cgn:pos=VNW)
+ud:Definite=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
+
+ud:Degree=Cmp ↔ (cgn:feat.graad=comp)
+ud:Degree=Dim ↔ (cgn:feat.graad=dim)
+ud:Degree=Pos ↔ (cgn:feat.graad=basis)
+ud:Degree=Sup ↔ (cgn:feat.graad=sup)
+
+ud:Gender=Com ↔ (cgn:feat.genus=zijd)
+ud:Gender=Fem ↔ (cgn:feat.genus=fem) ∨ (cgn:feat.npagr=evf) ∨ (cgn:feat.persoon=2v|3v)
+ud:Gender=Masc ↔ (cgn:feat.genus=masc) ∨ (cgn:feat.persoon=3m)
+ud:Gender=Neut ↔ (cgn:feat.genus=onz) ∨ (cgn:feat.npagr=evon) ∨ (cgn:feat.graad=dim ∧ cgn:pos=N)
+
+# CGN stopt conj en imp in de tijd
+
+ud:Mood=Ind ↔ (cgn:feat.wvorm=pv ∧ (cgn:feat.pvtijd=tgw  ∨  cgn:feat.pvtijd=verl))
+ud:Mood=Sub ↔ (cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=conj)
+ud:Mood=Imp ↔ (cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=imp)
+
+ud:NumType=Card ↔ (cgn:feat.numtype=hoofd)
+ud:NumType=Ord ↔ (cgn:feat.numtype=rang)
+
+ud:Number=Plur ↔ (cgn:feat.getal=mv)
+ud:Number=Sing ↔ (cgn:feat.getal=ev)
+
+ud:Person=1 ↔ (cgn:feat.persoon=1)
+ud:Person=2 ↔ (cgn:feat.persoon=2|2v|2b)
+ud:Person=3 ↔ (cgn:feat.persoon=3|3p|3v|3m|3o)
+
+ud:Polite=Inf ↔ (cgn:feat.persoon=2v)
+ud:Polite=Pol → (cgn:feat.persoon=2b ∨ cgn:feat.pvagr=met-t)
+cgn:feat.persoon=2b → ud:Polite=Pol
+
+ud:Position=Free ↔ (cgn:feat.positie=vrij)
+ud:Position=Nom ↔ (cgn:feat.positie=nom)
+ud:Position=Postnom ↔ (cgn:feat.positie=postnom)
+ud:Position=Prenom ↔ (cgn:feat.positie=prenom)
+
+ud:Poss=Yes ↔ (cgn:pos=VNW ∧ cgn:feat.vwtype=bez)
+
+ud:PronType=Art ↔ (cgn:pos=LID ∧ ¬cgn:pos=DET)
+ud:PronType=Dem ↔ (cgn:feat.vwtype=aanw ∧ cgn:pos=VNW)
+ud:PronType=Exc ↔ (cgn:feat.vwtype=excl ∧ cgn:pos=VNW)
+ud:PronType=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
+ud:PronType=Int ↔ (cgn:feat.vwtype=vrag)
+ud:PronType=NegTot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=geen)
+ud:PronType=Prs  ↔ (cgn:feat.vwtype=pers)
+ud:PronType=Rcp ↔ (cgn:feat.vwtype=recip)
+ud:PronType=Rel ↔ (cgn:feat.vwtype=betr)
+ud:PronType=Tot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=iedereen|ieder|al|alles|elk|elke)
+
+ud:Reflex=Yes ↔ (cgn:feat.vwtype=refl ∧ cgn:feat.persoon=3) ∨ (cgn:feat.vwtype=pr)
+
+ud:Tense=Past ↔  (cgn:feat.pvtijd=verl ∧ cgn:feat.wvorm=pv) ∨ (cgn:feat.wvorm=vd)
+ud:Tense=Pres ↔ (cgn:feat.pvtijd=tgw)
+
+ud:Variant=Long ↔ (cgn:feat.status=vol)
+ud:Variant=Short ↔ (cgn:feat.status=red)
+
+ud:VerbForm=Fin ↔ (cgn:feat.wvorm=pv)
+ud:VerbForm=Inf ↔ (cgn:feat.wvorm=inf)
+ud:VerbForm=Part ↔ (cgn:feat.wvorm=od) ∨ (cgn:feat.wvorm=vd)
+
+# main part of speech
+ud:pos=ADJ ↔ (cgn:pos=ADJ)
+ud:pos=ADP ↔ (cgn:pos=VZ)
+ud:pos=ADV ↔ (cgn:pos=BW)
+ud:pos=AUX → (cgn:pos=WW)
+ud:pos=CCONJ ↔ (cgn:pos=VG ∧ cgn:feat.conjtype=neven)
+ud:pos=DET ↔ (cgn:pos=LID) ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det)
+ud:pos=INTJ ↔ (cgn:pos=TSW)
+ud:pos=NOUN ↔ (cgn:pos=N ∧ cgn:feat.ntype=soort)
+ud:pos=NUM ↔ (cgn:pos=TW)
+ud:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron)
+ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen)
+ud:pos=PUNCT ↔ (cgn:pos=LET)
+ud:pos=SCONJ ↔ (cgn:pos=VG ∧ cgn:feat.conjtype=onder)
+ud:pos=SYM → (cgn:pos=SPEC)
+ud:pos=VERB ↔ (cgn:pos=WW)
+ud:pos=X → (cgn:pos=SPEC)
+
+# exclusies. Zouden eigenlijk voor alles opgenomen moeten worden
+
+¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
+¬(cgn:pos=VNW ∧ cgn:pos=LID)
+
+# moet dit echt?
+¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=imp)
+¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=conj)
+¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=imp)
+¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=conj)
+
+(¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=od)
+(¬cgn:feat.wvorm=pv ∨ ¬cgn:feat.wvorm=od)
+(¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=pv)
