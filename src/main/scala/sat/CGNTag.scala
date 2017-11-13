@@ -28,8 +28,18 @@ object CGNTag extends App
 
   def inSubsets(f:String):List[String] = subsets.filter( {case (s,v) => v.contains(f)} ).toList.map(_._1)
 
-  println(CGNTag("LID(onbep)").proposition)
+  lazy val allTags = scala.io.Source.fromFile("data/cgn.tagset").getLines().map(CGNTag(_))
+
+  // println(CGNTag("LID(onbep)").proposition)
+
+  allTags.foreach(t => {
+    val p = t.proposition
+    // println(p)
+    val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
+    println(s"$t -> $p1")
+  })
 }
+
 case class Feature(name: String, Value: String)
 
 case class CGNTag(tag: String)
@@ -42,8 +52,10 @@ case class CGNTag(tag: String)
     f => f match {
       case Feature("lwtype|vwtype","onbep") if (pos=="LID") => Feature("lwtype", "onbep")
       case Feature("lwtype|vwtype","onbep") if (pos=="VNW") => Feature("vwtype", "onbep")
+      case Feature("pvagr|getal",a ) if (pos=="WW") => Feature("pvagr", a)
+      case Feature("pvagr|getal",a ) if (pos !="WW") => Feature("getal", a)
       case _ => f
     })
-  lazy val proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"cgn:$n=$v") } ) :_*)
+  lazy val proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"cgn:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 

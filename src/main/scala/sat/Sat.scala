@@ -266,7 +266,8 @@ trait Proposition
 
   def addToDimacs(dima: Dimacs): Option[Dimacs] =
   {
-    val varMapExtra:Map[String,Int] = varsIn.diff(dima.varMap.keySet).zipWithIndex.map({case (s,i:Int) => s -> (i+1)}).toMap
+    var max:Int = dima.varMap.values.max
+    val varMapExtra:Map[String,Int] = varsIn.diff(dima.varMap.keySet).zipWithIndex.map({ case (s,i:Int) => s -> (max + i+1)} ).toMap
     val varMap = dima.varMap ++ varMapExtra
     var translation = translate(varMap)
     Some(new Dimacs(dima.clauses ++ translation, varMap))
