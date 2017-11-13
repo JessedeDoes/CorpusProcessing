@@ -19,14 +19,13 @@ import java.io.IOException
 import org.sat4j.core.VecInt
 import CGNMapping.time
 
-private case class Dimacs(clauses: Seq[Seq[Int]])
+case class Dimacs(clauses: Seq[Seq[Int]], varMap:Map[String,Int])
 {
   lazy val nbClauses:Int = clauses.size
   lazy val maxVar:Int = clauses.maxBy(c => c.max).max
 
   def isSatisfiable():Boolean =
   {
-
     val solver = SolverFactory.newDefault
 
     solver.newVar(maxVar)
@@ -49,7 +48,6 @@ object Proposition
 
   def example() =
   {
-
     val p:Proposition = And(
       Or(Literal("p"), (Literal("p"))),
       Or(Literal("q"), ¬(Literal("p")))
@@ -73,8 +71,6 @@ object Proposition
     println(simple)
     println(simple.flattenOrs().toDimacs)
   }
-
-
 
   def main(args: Array[String]):Unit = example1
 }
@@ -242,24 +238,44 @@ trait Proposition
     case _ => false
   }
 
-  private def toDimacs:Option[Dimacs] =
+  def translate(varMap:Map[String,Int]): Seq[Seq[Int]] =
   {
-    if (!isCNF)
-      return None
-    val varMap:Map[String,Int] = varsIn.zipWithIndex.map({case (s,i:Int) => s -> (i+1)}).toMap
-    var translation:Seq[Seq[Int]] = this match {
+    val cnfje = if (isCNF) this else  this.simpleConvert().flattenOrs()
+    cnfje match {
       case And(l @ _*) =>
         l.map(d => d match {
           case Or(l1 @ _*) => l1.map({
-              case Literal(s) => varMap(s)
-              case Not(Literal(s)) => -1 * varMap(s)
-            }
+            case Literal(s) => varMap(s)
+            case Not(Literal(s)) => -1 * varMap(s)
+          }
           )
           case Literal(s) => Seq(varMap(s))
           case Not(Literal(s)) => Seq(-1 * varMap(s))
         })
     }
-    Some(new Dimacs(translation))
+  }
+
+  lazy val dimacs:Option[Dimacs] = toDimacs
+
+  private def toDimacs:Option[Dimacs] =
+  {
+    val varMap:Map[String,Int] = varsIn.zipWithIndex.map({case (s,i:Int) => s -> (i+1)}).toMap
+    var translation:Seq[Seq[Int]] = translate(varMap)
+    Some(new Dimacs(translation, varMap))
+  }
+
+  def addToDimacs(dima: Dimacs): Option[Dimacs] =
+  {
+    val varMapExtra:Map[String,Int] = varsIn.diff(dima.varMap.keySet).zipWithIndex.map({case (s,i:Int) => s -> (i+1)}).toMap
+    val varMap = dima.varMap ++ varMapExtra
+    var translation = translate(varMap)
+    Some(new Dimacs(dima.clauses ++ translation, varMap))
+  }
+
+  def isConsistentWith(p: Proposition): Boolean =
+  {
+    val dima = p.addToDimacs(this.dimacs.get).get
+    dima.isSatisfiable()
   }
 
   def isSatisfiable(): Boolean =
