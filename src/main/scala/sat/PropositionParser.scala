@@ -20,9 +20,11 @@ trait PropositionParser extends JavaTokenParsers {
     }
 
   lazy val clause: Parser[Proposition] =
-    (expression ~ rep("[→↔]".r ~ expression)) ^^ {
+    (expression ~ rep("[→↔]|->".r ~ expression)) ^^ {
       case e ~ es => es.foldLeft(e) {
         case (t1, "→" ~ t2) => t1 → t2
+        case (t1, "->" ~ t2) => t1 → t2
+        case (t1, "↔" ~ t2) => t1 ↔ t2
       }
   }
 
