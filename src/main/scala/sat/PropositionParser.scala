@@ -35,23 +35,25 @@ trait PropositionParser extends JavaTokenParsers {
   }
 
   lazy val expression: Parser[Proposition] =
-    term ~ rep("[∨]".r ~ term)  ^^ {
+    term ~ rep("[∨|]".r ~ term)  ^^ {
       case t ~ ts => ts.foldLeft(t) {
         case (t1, "∨" ~ t2) => Or(t1, t2)
+        case (t1, "|" ~ t2) => Or(t1, t2)
       }
     }
 
   lazy val term: Parser[Proposition] =
-    factor ~ rep("[∧]".r ~ factor) ^^ {
+    factor ~ rep("[∧&]".r ~ factor) ^^ {
       case t ~ ts => ts.foldLeft(t) {
         case (t1, "∧" ~ t2) => And(t1, t2)
+        case (t1, "&" ~ t2) => And(t1, t2)
       }
     }
 
   lazy val factor: Parser[Proposition] =
     "(" ~> clause <~ ")" | literal | notFactor
 
-  lazy val notFactor: Parser[Proposition] = "¬".r ~ factor ^^ {
+  lazy val notFactor: Parser[Proposition] = "[¬!]".r ~ factor ^^ {
     case not ~ c => Not(c)
   }
 

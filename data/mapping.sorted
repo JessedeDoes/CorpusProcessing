@@ -8,7 +8,7 @@ ud:Aspect=Perf ↔ (cgn:feat.wvorm=vd)
 ud:Case=AccNom ↔ (cgn:feat.naamval=stan)
 ud:Case=Acc ↔ (cgn:feat.naamval=obl)
 ud:Case=Dat ↔ (cgn:feat.naamval=dat)
-ud:Case=Gen ↔ (cgn:feat.naamval=gen ∧ (cgn:pos=ADJ ∨ cgn:pos=N ∨ cgn:pos=VNW))
+ud:Case=Gen ↔ (cgn:feat.naamval=gen)
 ud:Case=Nom ↔ (cgn:feat.naamval=nomin)
 
 ud:Definite=Def ↔ (cgn:feat.lwtype=bep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=bep ∧ cgn:pos=VNW)
@@ -38,7 +38,7 @@ ud:Number=Sing ↔ (cgn:feat.getal=ev)
 
 ud:Person=1 ↔ (cgn:feat.persoon=1)
 ud:Person=2 ↔ (cgn:feat.persoon=2|2v|2b)
-ud:Person=3 ↔ (cgn:feat.persoon=3|3p|3v|3m|3o)
+ud:Person=3 ↔ (cgn:feat.persoon=3|3p|3v|3m|3o ∨ cgn:feat.persoon=3)
 
 ud:Polite=Inf ↔ (cgn:feat.persoon=2v)
 ud:Polite=Pol → (cgn:feat.persoon=2b ∨ cgn:feat.pvagr=met-t)
@@ -51,7 +51,7 @@ ud:Position=Prenom ↔ (cgn:feat.positie=prenom)
 
 ud:Poss=Yes ↔ (cgn:pos=VNW ∧ cgn:feat.vwtype=bez)
 
-ud:PronType=Art ↔ (cgn:pos=LID ∧ ¬cgn:pos=DET)
+ud:PronType=Art ↔ (cgn:pos=LID)
 ud:PronType=Dem ↔ (cgn:feat.vwtype=aanw ∧ cgn:pos=VNW)
 ud:PronType=Exc ↔ (cgn:feat.vwtype=excl ∧ cgn:pos=VNW)
 ud:PronType=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
@@ -62,7 +62,7 @@ ud:PronType=Rcp ↔ (cgn:feat.vwtype=recip)
 ud:PronType=Rel ↔ (cgn:feat.vwtype=betr)
 ud:PronType=Tot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=iedereen|ieder|al|alles|elk|elke)
 
-ud:Reflex=Yes ↔ (cgn:feat.vwtype=refl ∧ cgn:feat.persoon=3) ∨ (cgn:feat.vwtype=pr)
+ud:Reflex=Yes ↔ (cgn:feat.vwtype=refl) ∨ (cgn:feat.vwtype=pr)
 
 ud:Tense=Past ↔  (cgn:feat.pvtijd=verl ∧ cgn:feat.wvorm=pv) ∨ (cgn:feat.wvorm=vd)
 ud:Tense=Pres ↔ (cgn:feat.pvtijd=tgw)
@@ -85,8 +85,9 @@ ud:pos=INTJ ↔ (cgn:pos=TSW)
 ud:pos=NOUN ↔ (cgn:pos=N ∧ cgn:feat.ntype=soort)
 ud:pos=NUM ↔ (cgn:pos=TW)
 ud:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron)
-ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen)
+#ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (cgn:feat.spectype=deeleigen)
 ud:pos=PUNCT ↔ (cgn:pos=LET)
+ud:pos=PROPN ↔ (cgn:feat.spectype=deeleigen)
 ud:pos=SCONJ ↔ (cgn:pos=VG ∧ cgn:feat.conjtype=onder)
 ud:pos=SYM → (cgn:pos=SPEC)
 ud:pos=VERB ↔ (cgn:pos=WW)
@@ -95,6 +96,7 @@ ud:pos=X → (cgn:pos=SPEC)
 # exclusies. Zouden eigenlijk voor alles opgenomen moeten worden
 
 ¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
+cgn:pos=N → cgn:feat.ntype=soort
 ¬(cgn:pos=VNW ∧ cgn:pos=LID)
 
 # moet dit echt?
@@ -103,11 +105,35 @@ ud:pos=X → (cgn:pos=SPEC)
 ¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=imp)
 ¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=conj)
 
-(¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=od)
-(¬cgn:feat.wvorm=pv ∨ ¬cgn:feat.wvorm=od)
-(¬cgn:feat.wvorm=vd ∨ ¬cgn:feat.wvorm=pv)
+((¬cgn:feat.wvorm=vd) ∨ ¬cgn:feat.wvorm=od)
+((¬cgn:feat.wvorm=pv) ∨ ¬cgn:feat.wvorm=od)
+((¬cgn:feat.wvorm=vd) ∨ ¬cgn:feat.wvorm=pv)
+
 
 # tagsetinterne implicaties
 
 cgn:feat.vwtype=bep → cgn:pos=VNW
 cgn:feat.vwtype=bez → cgn:pos=VNW
+cgn:feat.vwtype=aanw → cgn:pos=VNW
+cgn:feat.vwtype=vrag → cgn:pos=VNW
+cgn:feat.vwtype=recip → cgn:pos=VNW
+cgn:feat.vwtype=betr → cgn:pos=VNW
+cgn:feat.vwtype=refl → cgn:pos=VNW
+cgn:feat.vwtype=pr → cgn:pos=VNW
+cgn:feat.vwtype=excl → cgn:pos=VNW
+cgn:feat.vwtype=onbep → cgn:pos=VNW
+
+cgn:feat.conjtype=onder → cgn:pos=VG
+cgn:feat.conjtype=neven → cgn:pos=VG
+
+cgn:feat.lwtype=bep → cgn:pos=LID
+cgn:feat.lwtype=onbep → cgn:pos=LID
+
+cgn:feat.ntype=soort → cgn:pos=N
+cgn:feat.ntype=eigen → cgn:pos=N
+
+cgn:feat.pdtype=det → cgn:pos=VNW
+cgn:feat.pdtype=pron → cgn:pos=VNW
+
+
+(cgn:feat.pvtijd=tgw ∨ cgn:feat.pvtijd=verl ∨ cgn:feat.pvtijd=conj ∨ cgn:feat.pvtijd=imp) → cgn:feat.wvorm=pv

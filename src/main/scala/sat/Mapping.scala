@@ -33,8 +33,6 @@ object Mapping {
 
 object CGNMapping
 {
-
-
   def translate(mapping: Array[Array[String]]) =
   {
     val clauses:Array[Proposition] = mapping.map(a =>
@@ -88,17 +86,17 @@ object CGNMapping
     And(b: _*)
   }
 
-  val cgnTagSet = mappingProposition.varsIn.filter(s => s.startsWith("cgn:"))
-  val udTagSet = mappingProposition.varsIn.filter(s => s.startsWith("ud:"))
+  val cgnFeatureSet = mappingProposition.varsIn.filter(s => s.startsWith("cgn:"))
+  val udFeatureSet = mappingProposition.varsIn.filter(s => s.startsWith("ud:"))
 
   def main(args: Array[String]) =
   {
     //translate(cgnMapping)
-    (0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("ud:VerbForm=Fin ∧ ud:Tense=Past").get, cgnTagSet)))
-    (0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("cgn:pos=WW ∧ cgn:feat.persoon=1").get, udTagSet)))
-    cgnTagSet.toList.sorted.foreach(s => {
+    //(0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("ud:VerbForm=Fin ∧ ud:Tense=Past").get, cgnTagSet)))
+    //(0 to 1).foreach(i => println(mapToTagset(PropositionParser.parse("cgn:pos=WW ∧ cgn:feat.persoon=1").get, udTagSet)))
+    cgnFeatureSet.toList.sorted.foreach(s => {
       val p = Literal(s)
-      println(s"$s => ${mapToTagset(p, udTagSet)}")
+      println(s"$s => ${mapToTagset(p, udFeatureSet)}")
     })
   }
 }
