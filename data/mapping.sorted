@@ -1,4 +1,8 @@
-# wat een gedoe dit!
+# Mapping tussen CGN en UD
+# probeer het zo te doen dat de mapping functioneert als tagconversie en als query conversie
+# dwz er zit voldoende informatie in voor hele tags features in combinatie om te zetten
+# en ook zoveel mogelijk houvast om losse features in queries om te zetten
+# zie ook http://universaldependencies.org/v2/postags.html voor de boundary issues
 
 ud:AdpType=Comprep ↔ (cgn:feat.vztype=versm)
 ud:AdpType=Post ↔ (cgn:feat.vztype=fin)
@@ -79,17 +83,25 @@ ud:VerbForm=Inf ↔ cgn:feat.wvorm=inf
 ud:VerbForm=Part ↔ cgn:feat.wvorm=od ∨ cgn:feat.wvorm=vd
 
 ### main part of speech
+
 ud:pos=ADJ ↔ cgn:pos=ADJ
+  ud:pos=ADJ ↔ gigant:pos=AA
 ud:pos=ADP ↔ cgn:pos=VZ
+  ud:pos=ADP ↔ gigant:pos=ADP
 ud:pos=ADV ↔ cgn:pos=BW ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=adv-pron)
+  ud:pos=ADV ↔ gigant:pos=ADV
 # wat doen we met pdtype=grad (weinig, veel, etc...)
+
 ud:pos=AUX → cgn:pos=WW
+  ud:pos=AUX → gigant:pos=VRB
+
 ud:pos=CCONJ ↔ cgn:pos=VG ∧ cgn:feat.conjtype=neven
-ud:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det) ∨ (cgn:pos=VNW ∧ cgn:feat.position=prenom)
+
+ud:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det) ∨ (cgn:pos=VNW ∧ cgn:feat.positie=prenom)
 ud:pos=INTJ ↔ cgn:pos=TSW
 ud:pos=NOUN ↔ cgn:pos=N ∧ cgn:feat.ntype=soort
 ud:pos=NUM ↔ cgn:pos=TW
-ud:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron) ∨ (cgn:pos=VNW ∧ cgn:feat.position=vrij)
+ud:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron) ∨ (cgn:pos=VNW ∧ (cgn:feat.positie=vrij ∨ cgn:feat.positie=nom))
 #ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (cgn:feat.spectype=deeleigen)
 ud:pos=PUNCT ↔ cgn:pos=LET
 ud:pos=PROPN ↔ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen
@@ -145,6 +157,6 @@ cgn:feat.ntype=eigen → cgn:pos=N
 
 cgn:feat.pdtype=det → cgn:pos=VNW
 cgn:feat.pdtype=pron → cgn:pos=VNW
-# let op, geen position als pdtype=pron
+# let op, geen positie als pdtype=pron
 
 (cgn:feat.pvtijd=tgw ∨ cgn:feat.pvtijd=verl ∨ cgn:feat.pvtijd=conj ∨ cgn:feat.pvtijd=imp) → cgn:feat.wvorm=pv
