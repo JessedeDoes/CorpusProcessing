@@ -45,11 +45,10 @@ ud:pos=SYM → chn:pos=RES
 ud:pos=VERB ↔ chn:pos=VRB
 ud:pos=X → chn:pos=RES
 
-ud:Position=Free → chn:position=oth|pred))
+ud:Position=Free → chn:position=oth|pred
 ud:Position=Nom → chn:position=oth|pred ∨ chn:position=pron
 ud:Position=Postnom → chn:position=postnom
 ud:Position=Prenom → chn:position=prenom
-
 
 ud:Poss=Yes ↔ chn:type=poss
 
