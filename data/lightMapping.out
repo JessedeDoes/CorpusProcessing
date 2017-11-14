@@ -42,7 +42,7 @@ CGNTag(VNW(pr,pron)) ((cgn:feat.vwtype=pr ∧ cgn:feat.pdtype=pron ∧ cgn:pos=V
 CGNTag(VNW(recip,pron)) ((cgn:feat.vwtype=recip ∧ cgn:feat.pdtype=pron ∧ cgn:pos=VNW)) -> (ud:PronType=Rcp ∧ ud:pos=PRON)
 CGNTag(VNW(refl,pron)) ((cgn:feat.vwtype=refl ∧ cgn:feat.pdtype=pron ∧ cgn:pos=VNW)) -> (ud:Reflex=Yes ∧ ud:pos=PRON)
 CGNTag(VNW(vb,adv-pron)) ((cgn:feat.vwtype=vb ∧ cgn:feat.pdtype=adv-pron ∧ cgn:pos=VNW)) -> (ud:pos=ADV)
-CGNTag(VNW(vb,det,nom)) ((cgn:feat.vwtype=vb ∧ cgn:feat.pdtype=det ∧ cgn:feat.positie=nom ∧ cgn:pos=VNW)) -> (ud:pos=DET ∧ ud:Position=Nom ∧ ud:pos=PRON)
+? CGNTag(VNW(vb,det,nom)) ((cgn:feat.vwtype=vb ∧ cgn:feat.pdtype=det ∧ cgn:feat.positie=nom ∧ cgn:pos=VNW)) -> (ud:pos=DET ∧ ud:Position=Nom ∧ ud:pos=PRON)
 CGNTag(VNW(vb,det,prenom)) ((cgn:feat.vwtype=vb ∧ cgn:feat.pdtype=det ∧ cgn:feat.positie=prenom ∧ cgn:pos=VNW)) -> (ud:pos=DET ∧ ud:Position=Prenom)
 CGNTag(VNW(vb,pron)) ((cgn:feat.vwtype=vb ∧ cgn:feat.pdtype=pron ∧ cgn:pos=VNW)) -> (ud:pos=PRON)
 CGNTag(VNW(vrag,pron)) ((cgn:feat.vwtype=vrag ∧ cgn:feat.pdtype=pron ∧ cgn:pos=VNW)) -> (ud:PronType=Int ∧ ud:pos=PRON)
