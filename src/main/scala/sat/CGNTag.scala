@@ -24,11 +24,13 @@ object CGNTag extends App
     "npagr" -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
     "wvorm" -> Set("inf", "od", "pv", "vd"),
     "vwtype" -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag")
-  );
+  )
+
+  val lightFeaturesSet = Set("pos", "positie", "conjtype", "wvorm")
 
   def inSubsets(f:String):List[String] = subsets.filter( {case (s,v) => v.contains(f)} ).toList.map(_._1)
 
-  lazy val allTags = scala.io.Source.fromFile("data/cgn.tagset").getLines().map(CGNTag(_))
+  lazy val allTags = scala.io.Source.fromFile("data/cgn.tagset").getLines().toList.sorted.map(CGNTag(_))
 
   // println(CGNTag("LID(onbep)").proposition)
 
@@ -36,18 +38,20 @@ object CGNTag extends App
     val p = t.proposition
     // println(p)
     val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
-    println(s"$t -> $p1")
+    println(s"$t (${t.lightTag}) }-> $p1")
   })
 }
 
-case class Feature(name: String, Value: String)
+case class Feature(name: String, value: String)
 
 case class CGNTag(tag: String)
 {
   import CGNTag._
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
   val Tag(pos,feats) = tag
+
   val prefeats:List[Feature] = feats.split("\\s*,\\s*").map(s => Feature( inSubsets(s).mkString("|"),s)).toList ++ List(Feature("pos", pos))
+
   val features = prefeats.map(
     f => f match {
       case Feature("lwtype|vwtype","onbep") if (pos=="LID") => Feature("lwtype", "onbep")
@@ -56,6 +60,10 @@ case class CGNTag(tag: String)
       case Feature("pvagr|getal",a ) if (pos !="WW") => Feature("getal", a)
       case _ => f
     })
+
   lazy val proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"cgn:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
+
+  lazy val lightFeatures = features.filter({ case Feature(n,v) => lightFeaturesSet.contains(n)})
+  lazy val lightTag = s"$pos(${lightFeatures.filter(f => !(f.name=="pos")).map(_.value).mkString(",")})"
 }
 

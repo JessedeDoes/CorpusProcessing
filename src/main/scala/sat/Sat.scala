@@ -1,79 +1,11 @@
 package sat
-import org.sat4j.specs._
-import org.sat4j.reader.DimacsReader
-import org.sat4j.minisat.SolverFactory
-import org.sat4j.specs.ISolver
+import sat.Proposition.¬
 //import scala.tools.
 // https://github.com/Gbury/mSAT
 
 
-import org.sat4j.minisat.SolverFactory
-import org.sat4j.reader.DimacsReader
-import org.sat4j.reader.ParseFormatException
-import org.sat4j.reader.Reader
-import org.sat4j.specs.ContradictionException
-import org.sat4j.specs.IProblem
-import org.sat4j.specs.ISolver
-import java.io.FileNotFoundException
-import java.io.IOException
 import org.sat4j.core.VecInt
-import CGNMapping.time
-
-case class Dimacs(clauses: Seq[Seq[Int]], varMap:Map[String,Int])
-{
-  lazy val nbClauses:Int = clauses.size
-  lazy val maxVar:Int = clauses.maxBy(c => c.max).max
-
-  def isSatisfiable():Boolean =
-  {
-    val solver = SolverFactory.newDefault
-
-    solver.newVar(maxVar)
-    solver.setExpectedNumberOfClauses(nbClauses)
-    // Feed the solver using Dimacs format, using arrays of int
-    // (best option to avoid dependencies on SAT4J IVecInt)
-    (0 until  nbClauses).foreach(i => {
-      val clause = clauses(i).toArray
-      solver.addClause(new VecInt(clause))
-    })
-    solver.isSatisfiable
-  }
-}
-
-object Proposition
-{
-  def ¬(p:Proposition) = Not(p)
-  def l(s:String) = Literal(s)
-  def p(s:String) = Literal(s)
-
-  def example() =
-  {
-    val p:Proposition = And(
-      Or(Literal("p"), (Literal("p"))),
-      Or(Literal("q"), ¬(Literal("p")))
-    )
-
-    val d:Option[Dimacs] = p.toDimacs
-
-    println(s"$p => $d")
-    d.map(_.isSatisfiable())
-  }
-
-  def example1(): Unit =
-  {
-    val p = Literal("p")
-    val q = Literal("q")
-    val r =  Literal("r")
-    val s = Literal("s")
-    val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
-  //phi.tseytin
-  val simple = phi.simpleCNFConversion()
-    println(simple)
-    println(simple.flattenOrs().toDimacs)
-  }
-
-  def main(args: Array[String]):Unit = example1
-}
+import org.sat4j.minisat.SolverFactory
 
 case class Literal(s: String) extends Proposition
 case class Not(p:Proposition) extends Proposition
@@ -81,6 +13,13 @@ case class And(p: Proposition*) extends Proposition
 case class Or(p: Proposition*) extends Proposition
 case class Implies(p: Proposition, q:Proposition) extends Proposition
 case class Equiv(p: Proposition, q:Proposition) extends Proposition
+
+object Proposition
+{
+  def ¬(p:Proposition) = Not(p)
+  def l(s:String) = Literal(s)
+  def p(s:String) = Literal(s)
+}
 
 trait Proposition
 {
@@ -119,6 +58,7 @@ trait Proposition
     val noDouble = this.removeDoubleNegation()
     this.removeDoubleNegation() match {
       case Literal(s) => And(noDouble)
+
       case And(l @ _*) =>
       {
         val clauses = l.map(_.simpleCNFConversion)
@@ -131,6 +71,7 @@ trait Proposition
         //Console.err.println("flattened:" + flattened)
         And(flattened: _*)
       }
+
       case Or(p, q) =>
       {
         val p1 = p.simpleCNFConversion()
@@ -144,12 +85,14 @@ trait Proposition
       }
 
       case Or(p) => p.simpleCNFConversion()
+
       case Or(l @ _*) => {
         val h = l.head
         val t = Or(l.tail : _*)
         val x = Or(l.head, t)
         t.simpleCNFConversion()
       }
+
       case Not(p) =>
         p match {
           case Not(q) => q.simpleCNFConversion()
@@ -242,7 +185,7 @@ trait Proposition
 
   lazy val dimacs:Option[Dimacs] = toDimacs
 
-  private def toDimacs:Option[Dimacs] =
+  def toDimacs:Option[Dimacs] =
   {
     val varMap:Map[String,Int] = varsIn.zipWithIndex.map({case (s,i:Int) => s -> (i+1)}).toMap
     var translation:Seq[Seq[Int]] = translate(varMap)
@@ -274,10 +217,60 @@ trait Proposition
   }
 }
 
+case class Dimacs(clauses: Seq[Seq[Int]], varMap:Map[String,Int])
+{
+  lazy val nbClauses:Int = clauses.size
+  lazy val maxVar:Int = clauses.maxBy(c => c.max).max
 
+  def isSatisfiable():Boolean =
+  {
+    val solver = SolverFactory.newDefault
 
+    solver.newVar(maxVar)
+    solver.setExpectedNumberOfClauses(nbClauses)
+    // Feed the solver using Dimacs format, using arrays of int
+    // (best option to avoid dependencies on SAT4J IVecInt)
+    (0 until  nbClauses).foreach(i => {
+      val clause = clauses(i).toArray
+      solver.addClause(new VecInt(clause))
+    })
+    solver.isSatisfiable
+  }
+}
+
+object SimpleSatTest
+{
+  def example() =
+  {
+    val p:Proposition = And(
+      Or(Literal("p"), (Literal("p"))),
+      Or(Literal("q"), ¬(Literal("p")))
+    )
+
+    val d:Option[Dimacs] = p.toDimacs
+
+    println(s"$p => $d")
+    d.map(_.isSatisfiable())
+  }
+
+  def example1(): Unit =
+  {
+    val p = Literal("p")
+    val q = Literal("q")
+    val r =  Literal("r")
+    val s = Literal("s")
+    val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
+  //phi.tseytin
+  val simple = phi.simpleCNFConversion()
+    println(simple)
+    println(simple.flattenOrs().toDimacs)
+  }
+
+  def main(args: Array[String]):Unit = example1
+}
 // case class Implies(p: Proposition, q:Proposition) extends Proposition
 
+/*
 object Example {
   def main(args: Array[String]): Unit = {
     val solver = SolverFactory.newDefault
@@ -295,7 +288,7 @@ object Example {
     } catch {
       case e: FileNotFoundException =>
 
-      // TODO Auto-generated catch block
+
       case e: ParseFormatException =>
 
       case e: IOException =>
@@ -307,3 +300,4 @@ object Example {
     }
   }
 }
+*/
