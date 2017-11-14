@@ -1,0 +1,75 @@
+ud:AdpType=Post → chn:type=post
+ud:AdpType=Prep → chn:type=pre
+
+ud:Case=Gen → chn:case=gen
+
+ud:Degree=Cmp → chn:degree=comp
+ud:Degree=Pos → chn:degree=pos
+ud:Degree=Sup → chn:degree=sup
+
+ud:Gender=Com → (chn:gender=f ∧ chn:gender=m)
+ud:Gender=Fem → chn:gender=f
+ud:Gender=Masc → chn:gender=m
+ud:Gender=Neut → chn:gender=n
+
+ud:Mood=Imp → chn:finiteness=fin
+ud:Mood=Ind → chn:finiteness=fin
+ud:Mood=Sub → chn:finiteness=fin
+
+ud:Number=Plur → chn:number=pl
+ud:Number=Sing → chn:number=sg
+ud:NumType=Card → chn:type=card
+ud:NumType=Ord → chn:type=ord
+ud:Person=1 → chn:person=1
+ud:Person=2 → chn:person=2
+ud:Person=3 → chn:person=3
+
+ud:pos=ADJ → chn:pos=AA
+ud:pos=ADP → chn:pos=ADP
+ud:pos=ADV → chn:pos=ADV ∨ (chn:pos=AA ∧ chn:position=oth|pred)
+ud:pos=AUX → chn:pos=VRB
+ud:pos=CCONJ → chn:pos=CONJ ∧ chn:type=coor
+
+# probleem hiermee: hoe weet ie dat prontype NIET art is
+# aanname dat alle niet gegeven kenmerken ook ontkend zijn?
+ud:pos=DET ∧ ud:PronType=Art ↔ chn:pos=ART
+ud:pos=DET ∧ ¬ud:PronType=Art ↔ chn:pos=PD ∧ chn:position=prenom
+ud:pos=INTJ → chn:pos=INT
+ud:pos=NOUN → chn:pos=NOU-C
+ud:pos=NUM → chn:pos=NUM
+ud:pos=PRON ↔ (chn:pos=PD ∧ chn:position=pron)
+ud:pos=PROPN ↔ chn:pos=NOU-P
+# ud:pos=PUNCT → chn:pos=RES
+ud:pos=SCONJ ↔ chn:pos=CONJ ∧ chn:type=sub
+ud:pos=SYM → chn:pos=RES
+ud:pos=VERB ↔ chn:pos=VRB
+ud:pos=X → chn:pos=RES
+
+ud:Position=Free → chn:position=oth|pred))
+ud:Position=Nom → chn:position=oth|pred ∨ chn:position=pron
+ud:Position=Postnom → chn:position=postnom
+ud:Position=Prenom → chn:position=prenom
+
+
+ud:Poss=Yes ↔ chn:type=poss
+
+ud:PronType=Art ↔ (chn:subtype=art-def) ∨ (chn:subtype=art-indef)
+ud:PronType=Dem → chn:type=dem ∨ chn:type=d-p
+ud:PronType=Ind → chn:type=indef)
+ud:PronType=Int → chn:type=w-p
+ud:PronType=Prs → chn:type=pers
+ud:PronType=Rcp → chn:type=recip
+ud:PronType=Rel → chn:type=rel ∨ chn:type=w-p ∨ chn:type=d-p
+ud:PronType=Tot → chn:type=indef ∧ chn:lemma=iedereen|ieder|al|alles
+
+ud:Reflex=Yes → chn:type=refl
+
+ud:Tense=Past → chn:tense=past
+ud:Tense=Pres → chn:tense=pres
+
+ud:VerbForm=Fin  → chn:finiteness=fin
+ud:VerbForm=Inf  → chn:finiteness=inf ∨ chn:finiteness=ger
+ud:VerbForm=Part → chn:finiteness=part
+
+# declareer combinaties
+chn:finiteness=ger|inf ↔ chn:finiteness=inf ∨ chn:finiteness=ger
