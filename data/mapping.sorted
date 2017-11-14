@@ -30,7 +30,7 @@ ud:Gender=Fem ↔ (cgn:feat.genus=fem) ∨ (cgn:feat.npagr=evf) ∨ (cgn:feat.pe
 ud:Gender=Masc ↔ (cgn:feat.genus=masc) ∨ (cgn:feat.persoon=3m)
 ud:Gender=Neut ↔ (cgn:feat.genus=onz) ∨ (cgn:feat.npagr=evon) ∨ (cgn:feat.graad=dim ∧ cgn:pos=N)
 
-# CGN stopt conj en imp in de tijd
+# CGN stopt conj en imp in een kenmerk met de tijd (historisch niet houdbaar, zie bijvoorbeeld http://gtb.inl.nl/iWDB/search?actie=article&wdb=VMNW&id=ID92682&article=beghote)
 
 ud:Mood=Ind ↔ (cgn:feat.wvorm=pv ∧ (cgn:feat.pvtijd=tgw  ∨  cgn:feat.pvtijd=verl))
 ud:Mood=Sub ↔ (cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=conj)
