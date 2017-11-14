@@ -64,6 +64,7 @@ ud:PronType=Dem ↔ (cgn:feat.vwtype=aanw ∧ cgn:pos=VNW)
 ud:PronType=Exc ↔ (cgn:feat.vwtype=excl ∧ cgn:pos=VNW)
 ud:PronType=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
 ud:PronType=Int ↔ (cgn:feat.vwtype=vrag)
+ud:PronType=Int|Rel ↔ cgn:feat.vwtype=vb
 ud:PronType=NegTot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=geen)
 ud:PronType=Prs  ↔ (cgn:feat.vwtype=pers)
 ud:PronType=Rcp ↔ (cgn:feat.vwtype=recip)
@@ -97,7 +98,7 @@ ud:pos=AUX → cgn:pos=WW
 
 ud:pos=CCONJ ↔ cgn:pos=VG ∧ cgn:feat.conjtype=neven
 
-ud:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det) ∨ (cgn:pos=VNW ∧ cgn:feat.positie=prenom)
+ud:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det ∧ ¬cgn:feat.positie=nom) ∨ (cgn:pos=VNW ∧ cgn:feat.positie=prenom)
 ud:pos=INTJ ↔ cgn:pos=TSW
 ud:pos=NOUN ↔ cgn:pos=N ∧ cgn:feat.ntype=soort
 ud:pos=NUM ↔ cgn:pos=TW

@@ -61,13 +61,13 @@ object CGNTag extends App
     println(s"$t -> $p1")
 
     val p1Light = scala.util.Try(CGNMapping.mapToTagset(pLight, CGNMapping.udFeatureSet)).get
-    println(s"$tLight }-> $p1Light")
+    println(s"$tLight -> $p1Light")
   })
 
   def checkLightTags = allLightTags.foreach(t => {
   val p = t.proposition
   val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
-  println(s"$t ($p) -> $p1")
+  println(s"$t\t$p\t$p1")
   })
 
   checkLightTags
@@ -114,5 +114,15 @@ case class CGNTag(tag: String)
 
   lazy val lightFeatures = features.filter({ case Feature(n,v) => lightFeaturesSet.contains(n)})
   lazy val lightTag = CGNTag(s"$pos(${lightFeatures.filter(f => !(f.name=="pos")).map(_.value).mkString(",")})")
+
+  override def toString = tag
+
+  def openSonarLink =
+    {
+      import java.net.URLEncoder
+      //URLEncoder.encode(q, "UTF-8")
+      val pattern = s"""[pos='$pos.${featureValues.mkString(",(.*,)?")}(,.*)?.']"""
+      s"http://opensonar.ato.inl.nl/search/expert?patt=${URLEncoder.encode(pattern)}&within=document&view=1&offset=0&number=10#results"
+    }
 }
 
