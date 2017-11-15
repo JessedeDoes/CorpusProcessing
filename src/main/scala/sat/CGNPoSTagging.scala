@@ -44,13 +44,13 @@ object CGNPoSTagging
     "conjtype" -> Set("neven", "onder"),
     "ntype"    -> Set("eigen", "soort"),
     "numtype"  -> Set("hoofd", "rang"),
-    "getal"    -> Set("ev", "mv", "getal"), // bij substantieven: getal
-    "pvagr"    -> Set("met-t", "ev", "mv"), // kan dit???
-    "pvtijd"   -> Set("tgw", "verl", "conj", "imp"), // conjunctief een tijd? ja.
+    "getal"    -> Set("ev", "mv", "getal"),
+    "pvagr"    -> Set("met-t", "ev", "mv"),
+    "pvtijd"   -> Set("tgw", "verl", "conj", "imp"),
     "status"   -> Set("nadr", "red", "vol"),
     "vztype"   -> Set("init", "fin", "versm"),
     "graad"    -> Set("basis", "comp", "dim", "sup"),
-    "pdtype"   -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
+    "pdtype"   -> Set("adv-pron", "det", "grad", "pron"),
     "positie"  -> Set("nom", "postnom", "prenom", "vrij"),
     "genus"    -> Set("fem", "genus", "masc", "onz", "zijd"),
     "naamval"  -> Set("bijz", "dat", "gen", "nomin", "obl", "stan"),
@@ -68,7 +68,7 @@ object CGNPoSTagging
     "WW"   -> List("wvorm", "pvtijd", "pvagr", "positie", "buiging", "getal-n"),
     "NUM"  -> List("numtype", "positie", "graad", "getal-n", "naamval"),
     "VNW"  -> List("vwtype", "pdtype", "naamval", "status", "persoon",
-      "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
+                      "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
     "LID"  -> List("lwtype", "naamval", "npagr"),
     "VZ"   -> List("vztype"),
     "VG"   -> List("conjtype"),
@@ -139,7 +139,7 @@ object CGNLite
     "pdtype"   -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
     "positie"  -> Set("nom", "postnom", "prenom", "vrij"),
     "wvorm"    -> Set("inf", "od", "pv", "vd"),
-    "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "Xpr", "recip", "vb", "Xvrag"),
+    "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "recip", "vb"),
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
     "variatie" -> Set("dial") // officiele naam??
   )
@@ -160,7 +160,7 @@ object CGNLite
   def posTags = pos2partitions.keySet.toList
 }
 
-object CGNLiteTagset extends TagSet("cgn", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
+object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
 {
   def fromProposition(p:Proposition):Tag =CGNTagset.fromProposition(p)
   override def fromString(t: String): Tag = CGNLiteTag(t)
