@@ -2,6 +2,16 @@ package sat
 import scala.util.Success
 import scala.util.matching._
 
+case class Feature(name: String, value: String)
+
+abstract class Tag(tag: String, tagset: TagSet)
+{
+  val pos:String
+  val features:List[Feature]
+  def parseFeature(f:String):Feature
+  def proposition:Proposition
+}
+
 case class TagSet(prefix: String,
                   posTags: List[String] = List.empty,
                   partitions:Map[String,Set[String]] = Map.empty,
@@ -9,9 +19,7 @@ case class TagSet(prefix: String,
 {
   def inSubsets(f:String):List[String] = scala.util.Try (
     {
-      //Console.err.println(s"Zoek subsets found for <$f> in $subsets")
       val z = partitions.filter({ case (s, v) => v.contains(f) })
-      //Console.err.println(s"Subsets found for <$f>: $z")
       z.toList.map(_._1)
     })
   match {
@@ -47,7 +55,7 @@ object CGNTag
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
     "variatie" -> Set("dial") // officiele naam??
-  ) // onbep, ev, mv komen nog in meerdere setjes voor...
+  )
 
   lazy val pos2partitions = List( // fix volgorde....
     "N"    -> List("ntype", "getal", "graad", "genus", "naamval"),
@@ -75,13 +83,11 @@ object CGNTag
 
   lazy val allLightTags = allLightTags0.sortBy(_.toString)
 
-  // println(CGNTag("LID(onbep)").proposition)
-
-  def checkAllTags = allTags.foreach(t => {
+  def checkAllTags:Unit = allTags.foreach(t => {
     val p = t.proposition
     val tLight = t.lightTag
     val pLight = tLight.proposition
-    // println(p)
+
     val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
     println(s"$t -> $p1")
 
@@ -89,23 +95,13 @@ object CGNTag
     println(s"$tLight -> $p1Light")
   })
 
-  def checkLightTags = allLightTags.foreach(t => {
-  val p = t.proposition
-  val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
-  println(s"$t\t$p\t$p1")
+  def checkLightTags:Unit = allLightTags.foreach(t => {
+    val p = t.proposition
+    val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
+    println(s"$t\t$p\t$p1")
   })
 
   def main(args: Array[String]):Unit = checkLightTags
-}
-
-case class Feature(name: String, value: String)
-
-abstract class Tag(tag: String, tagset: TagSet)
-{
-  val pos:String
-  val features:List[Feature]
-  def parseFeature(f:String):Feature
-  def proposition:Proposition
 }
 
 class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
@@ -113,9 +109,9 @@ class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
   val Tag(pos,feats) = tag
 
-  val featureValues = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
+  val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
   val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
-  def parseFeature(f: String) = {val c = f.split("\\s*,\\s*"); Feature(c(0), c(1))}
+  def parseFeature(f: String):Feature = {val c = f.split("\\s*,\\s*"); Feature(c(0), c(1))}
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:$n=$v") } ) :_*)
 }
@@ -125,7 +121,7 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
   val Tag(pos,feats) = tag
 
-  val featureValues = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
+  val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
 
   val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
 
@@ -133,47 +129,42 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 
   def getFeatureName(f: String):String =
   {
-    //Console.err.println(f)
     val p: String = this.pos
     val V: List[String] = this.tagset.inSubsets(f)
-    // Console.err.println(V)
-    val fn = if (V.size == 0) "UNK"
-    else if (V.size ==1) V.head
-    else
-    {
+
+    val fn = if (V.isEmpty) "UNK"
+    else if (V.size == 1) V.head
+    else {
       val V1 = V.filter(n => tagset.pos2partitions(p).contains(n))
       if (V1.nonEmpty) V1.head else V.mkString("|")
     }
-    // Console.err.println(fn)
+
     fn
   }
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
-
 case class CGNTag(tag: String) extends CGNStyleTag(tag, CGNTag.CGNTagset)
 {
   import CGNTag._
 
-  //println(featureValues.toList)
-
-  val problems = featureValues.filter(f => getFeatureName(f).contains("UNK") || getFeatureName(f)=="")
+  val problems:Array[String] = featureValues.filter(f => getFeatureName(f).contains("UNK") || getFeatureName(f)=="")
 
   if (problems.nonEmpty) Console.err.println(s"PROBLEM FOR FEATURE VALUES  IN ($tag):" + problems.toList)
 
-  lazy val lightFeatures = features.filter({ case Feature(n,v) => lightFeaturesSet.contains(n)})
+  lazy val lightFeatures:List[Feature] = features.filter({ case Feature(n,v) => lightFeaturesSet.contains(n)})
 
   lazy val lightTag = CGNTag(s"$pos(${lightFeatures.filter(f => !(f.name=="pos")).map(_.value).mkString(",")})")
 
-  override def toString = tag
+  override def toString:String = tag
 
-  def openSonarLink =
-    {
-      import java.net.URLEncoder
-      //URLEncoder.encode(q, "UTF-8")
-      val pattern = s"""[pos='$pos.${featureValues.mkString(",(.*,)?")}(,.*)?.']"""
-      s"http://opensonar.ato.inl.nl/search/expert?patt=${URLEncoder.encode(pattern)}&within=document&view=1&offset=0&number=10#results"
-    }
+  def openSonarLink:String =
+  {
+    import java.net.URLEncoder
+
+    val pattern = s"""[pos='$pos.${featureValues.mkString(",(.*,)?")}(,.*)?.']"""
+    s"http://opensonar.ato.inl.nl/search/expert?patt=${URLEncoder.encode(pattern)}&within=document&view=1&offset=0&number=10#results"
+  }
 }
 
