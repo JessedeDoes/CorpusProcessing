@@ -124,7 +124,7 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
     val vars = p.varsIn
     Console.err.println(p)
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).get.replaceAll(".*=", "")
-    val features = vars.map(v => v.replaceAll(s"^.*=", ""))
+    val features = vars.filter(f => !f.startsWith(s"${this.prefix}:pos=")).map(v => v.replaceAll(s"^.*=", "")).mkString(",")
     new CGNStyleTag(s"$pos($features)", this)
   }
 
@@ -168,10 +168,13 @@ object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions,
   def fromProposition(p:Proposition):Tag =
   {
     val vars = p.varsIn
-    Console.err.println(p)
+
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
-    val features = vars.map(v => v.replaceAll(s"^.*=", ""))
-    new CGNStyleTag(s"$pos($features)", this)
+    val features = vars.filter(f => !f.startsWith(s"${this.prefix}:pos=")).map(v => v.replaceAll(s"^.*=", "")).mkString(",")
+
+    var x = new CGNStyleTag(s"$pos($features)", this)
+    Console.err.println(s"Proposition to tag: $p->$x")
+    x
   }
   override def fromString(t: String): Tag = CGNLiteTag(t)
 }
