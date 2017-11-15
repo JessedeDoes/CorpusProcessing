@@ -1,4 +1,5 @@
 package sat
+import scala.util.Success
 import scala.util.matching._
 
 object CGNTag extends App
@@ -23,7 +24,8 @@ object CGNTag extends App
     "persoon" -> Set("1", "2", "2b", "2v", "3", "3m", "3o", "3p", "3v", "persoon"),
     "npagr" -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
     "wvorm" -> Set("inf", "od", "pv", "vd"),
-    "vwtype" -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag")
+    "vwtype" -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
+    "spectype" -> Set("deeleigen")
   ) // onbep, ev, mv komen nog in meerdere setjes voor...
 
   val pos2subsets = List(
@@ -42,7 +44,10 @@ object CGNTag extends App
 
   val lightFeaturesSet = Set("pos", "positie", "conjtype", "wvorm", "vwtype", "prontype", "pdtype")
 
-  def inSubsets(f:String):List[String] = subsets.filter( {case (s,v) => v.contains(f)} ).toList.map(_._1)
+  def inSubsets(f:String):List[String] = scala.util.Try (subsets.filter( {case (s,v) => v.contains(f)} ).toList.map(_._1)) match {
+    case Success(l) => l
+    case scala.util.Failure(s) => List("failure")
+  }
 
   lazy val allTags:List[CGNTag] = scala.io.Source.fromFile("data/cgn.tagset").getLines().toList.sorted.map(CGNTag(_))
 
@@ -83,17 +88,23 @@ case class CGNTag(tag: String)
 
   val featureValues = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
 
+  println(featureValues.toList)
+
   def getFeatureName(f: String):String =
     {
+      Console.err.println(f)
       val p:String = this.pos
       val V:List[String] = inSubsets(f)
-      if (V.size == 0) "UNK"
-      else  if (V.size ==1) V.head
+      Console.err.println(V)
+      val fn = if (V.size == 0) "UNK"
+      else if (V.size ==1) V.head
       else
          {
            val V1 = V.filter(n => pos2subsets(p).contains(n))
            if (V1.nonEmpty) V1.head else V.mkString("|")
          }
+      Console.err.println(fn)
+      fn
     }
 
   val problems = featureValues.filter(f => getFeatureName(f).contains("UNK") || getFeatureName(f)=="")
