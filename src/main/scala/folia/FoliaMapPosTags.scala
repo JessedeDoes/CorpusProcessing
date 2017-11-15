@@ -51,6 +51,7 @@ object TestSimplify
 {
   def simplify(t: Tag):Tag = t.asInstanceOf[CGNTag].lightTag.asInstanceOf[Tag] // CGNTag(s"${t.pos}()")
   def toUD(t:Tag) = CGNPoSTagging.toUD(t)
+  def toLite(t:Tag) = CGNPoSTagging.toLite(t)
   def cgnParse(t: String):Tag = CGNTagset.fromString(t)
-  def main(args: Array[String]):Unit = FoliaMapPosTags(cgnParse, toUD).updatePoS(args(0))
+  def main(args: Array[String]):Unit = FoliaMapPosTags(cgnParse, toLite).updatePoS(args(0))
 }

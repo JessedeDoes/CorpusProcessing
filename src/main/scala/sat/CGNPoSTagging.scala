@@ -88,8 +88,10 @@ object CGNPoSTagging
   lazy val allLightTags = allLightTags0.sortBy(_.toString)
 
   val mappingToUD = PropositionalTagsetMapping("data/mapping.sorted", ()=>CGNTagset, ()=>UDTagSet)
+  val mappingToLite = PropositionalTagsetMapping("data/cgn2lite.prop", ()=>CGNTagset, ()=>CGNLiteTagset)
 
   def toUD(t: Tag):Tag = mappingToUD.mapTag(t)
+  def toLite(t: Tag):Tag = mappingToLite.mapTag(t)
 
   def checkAllTags:Unit = allTags.foreach(t => {
     val p = t.proposition
@@ -120,6 +122,7 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
   def fromProposition(p:Proposition):Tag =
   {
     val vars = p.varsIn
+    Console.err.println(p)
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).get.replaceAll(".*=", "")
     val features = vars.map(v => v.replaceAll(s"^.*=", ""))
     new CGNStyleTag(s"$pos($features)", this)
@@ -162,7 +165,14 @@ object CGNLite
 
 object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
 {
-  def fromProposition(p:Proposition):Tag =CGNTagset.fromProposition(p)
+  def fromProposition(p:Proposition):Tag =
+  {
+    val vars = p.varsIn
+    Console.err.println(p)
+    val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
+    val features = vars.map(v => v.replaceAll(s"^.*=", ""))
+    new CGNStyleTag(s"$pos($features)", this)
+  }
   override def fromString(t: String): Tag = CGNLiteTag(t)
 }
 
