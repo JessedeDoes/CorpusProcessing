@@ -122,10 +122,48 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
     val vars = p.varsIn
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).get.replaceAll(".*=", "")
     val features = vars.map(v => v.replaceAll(s"^.*=", ""))
-    new UDStyleTag(s"$pos($features)", this)
+    new CGNStyleTag(s"$pos($features)", this)
   }
 
   override def fromString(t: String): Tag = CGNTag(t)
+}
+
+object CGNLite
+{
+  def partitions = Map(
+
+    "conjtype" -> Set("neven", "onder"),
+    "ntype"    -> Set("eigen", "soort"),
+    "vztype"   -> Set("init", "fin", "versm"),
+    "graad"    -> Set("basis", "comp", "dim", "sup"),
+    "pdtype"   -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
+    "positie"  -> Set("nom", "postnom", "prenom", "vrij"),
+    "wvorm"    -> Set("inf", "od", "pv", "vd"),
+    "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "Xpr", "recip", "vb", "Xvrag"),
+    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
+    "variatie" -> Set("dial") // officiele naam??
+  )
+
+  def pos2partitions = List( // fix volgorde....
+    "N"    -> List("ntype"),
+    "ADJ"  -> List("positie", "graad"),
+    "WW"   -> List("wvorm",  "positie"),
+    "NUM"  -> List("numtype", "positie"),
+    "VNW"  -> List("vwtype", "pdtype",  "positie"),
+    "VZ"   -> List("vztype"),
+    "VG"   -> List("conjtype"),
+    "BW"   -> List(),
+    "TSW"  -> List(),
+    "SPEC" -> List("spectype")
+  ).toMap
+
+  def posTags = pos2partitions.keySet.toList
+}
+
+object CGNLiteTagset extends TagSet("cgn", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
+{
+  def fromProposition(p:Proposition):Tag =CGNTagset.fromProposition(p)
+  override def fromString(t: String): Tag = CGNLiteTag(t)
 }
 
 class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
@@ -172,6 +210,8 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
+
+case class CGNLiteTag(tag: String) extends CGNStyleTag(tag, CGNLiteTagset)
 
 case class CGNTag(tag: String) extends CGNStyleTag(tag, CGNTagset)
 {
