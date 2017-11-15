@@ -2,52 +2,72 @@ package sat
 import scala.util.Success
 import scala.util.matching._
 
-object CGNTag extends App
+case class TagSet(prefix: String,
+                  posTags: List[String] = List.empty,
+                  partitions:Map[String,Set[String]] = Map.empty,
+                  pos2partitions: Map[String,List[String]] = Map.empty)
 {
-  val subsets = Map(
-    "buiging" -> Set("met-e", "met-s", "zonder"),
-    "getal-n" -> Set("mv-n", "zonder-n"),
-    "lwtype" -> Set("bep", "onbep"),
-    "conjtype" -> Set("neven", "onder"),
-    "ntype" -> Set("eigen", "soort"),
-    "numtype" -> Set("hoofd", "rang"),
-    "getal" -> Set("ev", "mv", "getal"), // bij substantieven: getal
-    "pvagr" -> Set("met-t", "ev", "mv"), // kan dit???
-    "pvtijd" -> Set("tgw", "verl", "conj", "imp"), // conjunctief een tijd? ja.
-    "status" -> Set("nadr", "red", "vol"),
-    "vztype" -> Set("init", "fin", "versm"),
-    "graad" -> Set("basis", "comp", "dim", "sup"),
-    "pdtype" -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
-    "positie" -> Set("nom", "postnom", "prenom", "vrij"),
-    "genus" -> Set("fem", "genus", "masc", "onz", "zijd"),
-    "naamval" -> Set("bijz", "dat", "gen", "nomin", "obl", "stan"),
-    "persoon" -> Set("1", "2", "2b", "2v", "3", "3m", "3o", "3p", "3v", "persoon"),
-    "npagr" -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
-    "wvorm" -> Set("inf", "od", "pv", "vd"),
-    "vwtype" -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
-    "spectype" -> Set("deeleigen")
-  ) // onbep, ev, mv komen nog in meerdere setjes voor...
-
-  val pos2subsets = List(
-    "N" -> List("ntype", "getal", "graad", "genus", "naamval"),
-    "ADJ" -> List("positie", "graad", "buiging", "getal-n", "naamval"),
-    "WW" -> List("wvorm", "pvtijd", "pvagr", "positie", "buiging", "getal-n"),
-    "NUM" -> List("numtype", "positie", "graad", "getal-n", "naamval"),
-    "VNW" -> List("vwtype", "pdtype", "naamval", "status", "persoon", "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
-    "LID" -> List("lwtype", "naamval", "npagr"),
-    "VZ" -> List("vztype"),
-    "VG" -> List("conjtype"),
-    "BW" -> List(),
-    "TSW" -> List(),
-    "SPEC" -> List("spectype")
-  ).toMap
-
-  val lightFeaturesSet = Set("pos", "positie", "conjtype", "wvorm", "vwtype", "prontype", "pdtype")
-
-  def inSubsets(f:String):List[String] = scala.util.Try (subsets.filter( {case (s,v) => v.contains(f)} ).toList.map(_._1)) match {
+  def inSubsets(f:String):List[String] = scala.util.Try (
+    {
+      //Console.err.println(s"Zoek subsets found for <$f> in $subsets")
+      val z = partitions.filter({ case (s, v) => v.contains(f) })
+      //Console.err.println(s"Subsets found for <$f>: $z")
+      z.toList.map(_._1)
+    })
+  match {
     case Success(l) => l
     case scala.util.Failure(s) => List("failure")
   }
+}
+
+object UDTagSet extends TagSet("ud")
+
+object CGNTag
+{
+  lazy val partitions = Map(
+    "buiging"  -> Set("met-e", "met-s", "zonder"),
+    "getal-n"  -> Set("mv-n", "zonder-n"),
+    "lwtype"   -> Set("bep", "onbep"),
+    "conjtype" -> Set("neven", "onder"),
+    "ntype"    -> Set("eigen", "soort"),
+    "numtype"  -> Set("hoofd", "rang"),
+    "getal"    -> Set("ev", "mv", "getal"), // bij substantieven: getal
+    "pvagr"    -> Set("met-t", "ev", "mv"), // kan dit???
+    "pvtijd"   -> Set("tgw", "verl", "conj", "imp"), // conjunctief een tijd? ja.
+    "status"   -> Set("nadr", "red", "vol"),
+    "vztype"   -> Set("init", "fin", "versm"),
+    "graad"    -> Set("basis", "comp", "dim", "sup"),
+    "pdtype"   -> Set("adv-pron", "det", "grad", "pron"), // wat is grad? en doe iets met adv-pron!
+    "positie"  -> Set("nom", "postnom", "prenom", "vrij"),
+    "genus"    -> Set("fem", "genus", "masc", "onz", "zijd"),
+    "naamval"  -> Set("bijz", "dat", "gen", "nomin", "obl", "stan"),
+    "persoon"  -> Set("1", "2", "2b", "2v", "3", "3m", "3o", "3p", "3v", "persoon"),
+    "npagr"    -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
+    "wvorm"    -> Set("inf", "od", "pv", "vd"),
+    "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
+    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
+    "variatie" -> Set("dial") // officiele naam??
+  ) // onbep, ev, mv komen nog in meerdere setjes voor...
+
+  lazy val pos2partitions = List( // fix volgorde....
+    "N"    -> List("ntype", "getal", "graad", "genus", "naamval"),
+    "ADJ"  -> List("positie", "graad", "buiging", "getal-n", "naamval"),
+    "WW"   -> List("wvorm", "pvtijd", "pvagr", "positie", "buiging", "getal-n"),
+    "NUM"  -> List("numtype", "positie", "graad", "getal-n", "naamval"),
+    "VNW"  -> List("vwtype", "pdtype", "naamval", "status", "persoon", "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
+    "LID"  -> List("lwtype", "naamval", "npagr"),
+    "VZ"   -> List("vztype"),
+    "VG"   -> List("conjtype"),
+    "BW"   -> List(),
+    "TSW"  -> List(),
+    "SPEC" -> List("spectype")
+  ).toMap
+
+  lazy val posTags = pos2partitions.keySet.toList
+
+  val CGNTagset = TagSet("cgn", posTags, partitions, pos2partitions)
+
+  lazy val lightFeaturesSet = Set("pos", "positie", "conjtype", "wvorm", "vwtype", "prontype", "pdtype")
 
   lazy val allTags:List[CGNTag] = scala.io.Source.fromFile("data/cgn.tagset").getLines().toList.sorted.map(CGNTag(_))
 
@@ -75,55 +95,75 @@ object CGNTag extends App
   println(s"$t\t$p\t$p1")
   })
 
-  checkLightTags
+  def main(args: Array[String]):Unit = checkLightTags
 }
 
 case class Feature(name: String, value: String)
 
-case class CGNTag(tag: String)
+abstract class Tag(tag: String, tagset: TagSet)
 {
-  import CGNTag._
+  val pos:String
+  val features:List[Feature]
+  def parseFeature(f:String):Feature
+  def proposition:Proposition
+}
+
+class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
+{
+  val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+  val Tag(pos,feats) = tag
+
+  val featureValues = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
+  val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
+  def parseFeature(f: String) = {val c = f.split("\\s*,\\s*"); Feature(c(0), c(1))}
+
+  def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:$n=$v") } ) :_*)
+}
+
+class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
+{
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
   val Tag(pos,feats) = tag
 
   val featureValues = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
 
-  println(featureValues.toList)
+  val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
+
+  def parseFeature(f: String) = Feature(getFeatureName(f),f)
 
   def getFeatureName(f: String):String =
+  {
+    //Console.err.println(f)
+    val p: String = this.pos
+    val V: List[String] = this.tagset.inSubsets(f)
+    // Console.err.println(V)
+    val fn = if (V.size == 0) "UNK"
+    else if (V.size ==1) V.head
+    else
     {
-      Console.err.println(f)
-      val p:String = this.pos
-      val V:List[String] = inSubsets(f)
-      Console.err.println(V)
-      val fn = if (V.size == 0) "UNK"
-      else if (V.size ==1) V.head
-      else
-         {
-           val V1 = V.filter(n => pos2subsets(p).contains(n))
-           if (V1.nonEmpty) V1.head else V.mkString("|")
-         }
-      Console.err.println(fn)
-      fn
+      val V1 = V.filter(n => tagset.pos2partitions(p).contains(n))
+      if (V1.nonEmpty) V1.head else V.mkString("|")
     }
+    // Console.err.println(fn)
+    fn
+  }
+
+  def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
+}
+
+
+case class CGNTag(tag: String) extends CGNStyleTag(tag, CGNTag.CGNTagset)
+{
+  import CGNTag._
+
+  //println(featureValues.toList)
 
   val problems = featureValues.filter(f => getFeatureName(f).contains("UNK") || getFeatureName(f)=="")
 
   if (problems.nonEmpty) Console.err.println(s"PROBLEM FOR FEATURE VALUES  IN ($tag):" + problems.toList)
-  val prefeats:List[Feature] = featureValues.map(s => Feature(getFeatureName(s),s)).toList ++ List(Feature("pos", pos))
-
-  val features = prefeats.map(
-    f => f match {
-      case Feature("lwtype|vwtype","onbep") if (pos=="LID") => Feature("lwtype", "onbep")
-      case Feature("lwtype|vwtype","onbep") if (pos=="VNW") => Feature("vwtype", "onbep")
-      case Feature("pvagr|getal",a ) if (pos=="WW") => Feature("pvagr", a)
-      case Feature("pvagr|getal",a ) if (pos !="WW") => Feature("getal", a)
-      case _ => f
-    })
-
-  lazy val proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"cgn:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 
   lazy val lightFeatures = features.filter({ case Feature(n,v) => lightFeaturesSet.contains(n)})
+
   lazy val lightTag = CGNTag(s"$pos(${lightFeatures.filter(f => !(f.name=="pos")).map(_.value).mkString(",")})")
 
   override def toString = tag
