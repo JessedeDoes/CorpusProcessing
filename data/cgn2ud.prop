@@ -4,18 +4,18 @@
 # en ook zoveel mogelijk houvast om losse features in queries om te zetten
 # zie ook http://universaldependencies.org/v2/postags.html voor de boundary issues
 
-ud:AdpType=Comprep ↔ (cgn:feat.vztype=versm)
-ud:AdpType=Post ↔ (cgn:feat.vztype=fin)
-ud:AdpType=Prep ↔ (cgn:feat.vztype=init)
+ud:AdpType=Comprep ↔ cgn:feat.vztype=versm
+ud:AdpType=Post ↔ cgn:feat.vztype=fin
+ud:AdpType=Prep ↔ cgn:feat.vztype=init
 
-ud:Aspect=Imp ↔ (cgn:feat.wvorm=od)
-ud:Aspect=Perf ↔ (cgn:feat.wvorm=vd)
+ud:Aspect=Imp ↔ cgn:feat.wvorm=od
+ud:Aspect=Perf ↔ cgn:feat.wvorm=vd
 
-ud:Case=Acc|Nom ↔ (cgn:feat.naamval=stan)
-ud:Case=Acc ↔ (cgn:feat.naamval=obl)
-ud:Case=Dat ↔ (cgn:feat.naamval=dat)
-ud:Case=Gen ↔ (cgn:feat.naamval=gen)
-ud:Case=Nom ↔ (cgn:feat.naamval=nomin)
+ud:Case=Acc|Nom ↔ cgn:feat.naamval=stan
+ud:Case=Acc ↔ cgn:feat.naamval=obl
+ud:Case=Dat ↔ cgn:feat.naamval=dat
+ud:Case=Gen ↔ cgn:feat.naamval=gen
+ud:Case=Nom ↔ cgn:feat.naamval=nomin
 
 ud:Definite=Def ↔ (cgn:feat.lwtype=bep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=bep ∧ cgn:pos=VNW)
 ud:Definite=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
@@ -118,7 +118,7 @@ ud:pos=SCONJ|CCONJ ↔ ud:pos=SCONJ ∨ ud:pos=CCONJ
 # mutual exclusions. 
 # Zouden eigenlijk voor alles opgenomen moeten worden
 
-¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
+#¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
 cgn:pos=N → cgn:feat.ntype=soort
 ¬(cgn:pos=VNW ∧ cgn:pos=LID)
 

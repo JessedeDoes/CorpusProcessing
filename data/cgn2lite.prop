@@ -4,26 +4,50 @@
 # en ook zoveel mogelijk houvast om losse features in queries om te zetten
 # zie ook http://universaldependencies.org/v2/postags.html voor de boundary issues
 
-cgnl:feat.vztype=versm  ↔ cgn:feat.vztype=versm
-cgnl:feat.vztype=fin ↔ cgn:feat.vztype=fin
-cgnl:feat.vztype=init ↔ cgn:feat.vztype=init
+### main part of speech
 
-cgnl:feat.wvorm=od ↔ cgn:feat.wvorm=od
-cgnl:feat.wvorm=vd ↔ cgn:feat.wvorm=vd
-cgnl:feat.wvorm=pv ↔ cgn:feat.wvorm=pv
-
-#cgnl:feat.graad=comp ↔ (cgn:feat.graad=comp)
-cgnl:feat.graad=dim ↔ cgn:feat.graad=dim
-#cgn:feat.graad=basis ↔ (cgn:feat.graad=basis)
-#cgn:feat.graad=sup ↔ (cgn:feat.graad=sup)
-
-cgnl:feat.numtype=hoofd ↔ cgn:feat.numtype=hoofd
-cgnl:feat.numtype=rang ↔ cgn:feat.numtype=rang
+cgnl:pos=LID ↔ cgn:pos=LID
+cgnl:pos=ADJ ↔ cgn:pos=ADJ
+cgnl:pos=VZ ↔ cgn:pos=VZ
+cgnl:pos=ADP ↔ cgn:pos=ADP
+cgnl:pos=BW ↔ cgn:pos=BW
+cgnl:pos=VG ↔ cgn:pos=VG
+cgnl:pos=DET ↔ cgn:pos=DET
+cgnl:pos=INTJ ↔ cgn:pos=INTJ
+cgnl:pos=N ↔ cgn:pos=N
+cgnl:pos=TW ↔ cgn:pos=TW
+cgnl:pos=TSW ↔ cgn:pos=TSW
+cgnl:pos=VNW ↔ cgn:pos=VNW 
+cgnl:pos=LET ↔ cgn:pos=LET
+cgnl:pos=SPEC ↔ cgn:pos=SPEC
+cgnl:pos=WW  ↔ cgn:pos=WW
 
 cgnl:feat.positie=vrij ↔ cgn:feat.positie=vrij
 cgnl:feat.positie=nom ↔ cgn:feat.positie=nom
 cgnl:feat.positie=postnom ↔ cgn:feat.positie=postnom
 cgnl:feat.positie=prenom ↔ cgn:feat.positie=prenom
+
+# vz types
+cgnl:feat.vztype=versm  ↔ cgn:feat.vztype=versm
+cgnl:feat.vztype=fin ↔ cgn:feat.vztype=fin
+cgnl:feat.vztype=init ↔ cgn:feat.vztype=init
+
+# werkwoorden: wvorm blijft
+cgnl:feat.wvorm=od ↔ cgn:feat.wvorm=od
+cgnl:feat.wvorm=vd ↔ cgn:feat.wvorm=vd
+cgnl:feat.wvorm=pv ↔ cgn:feat.wvorm=pv
+
+# van de trappen van vergelijking alleen dim
+cgnl:feat.graad=dim ↔ cgn:feat.graad=dim
+
+#cgnl:feat.graad=comp ↔ (cgn:feat.graad=comp)
+#cgn:feat.graad=basis ↔ (cgn:feat.graad=basis)
+#cgn:feat.graad=sup ↔ (cgn:feat.graad=sup)
+
+# houden we numtype? gaat het weg?
+cgnl:feat.numtype=hoofd ↔ cgn:feat.numtype=hoofd
+cgnl:feat.numtype=rang ↔ cgn:feat.numtype=rang
+
 
 # voornaamwoordengedoe....
 
@@ -36,7 +60,7 @@ cgnl:feat.vwtype=aanw ↔ cgn:feat.vwtype=aanw
 cgnl:feat.vwtype=refl ↔ cgn:feat.vwtype=refl ∨ cgn:feat.vwtype=pr
 cgnl:feat.vwtype=excl ↔  cgn:feat.vwtype=excl
 cgnl:feat.vwtype=onbep ↔  cgn:feat.vwtype=onbep
-cgnl:feat.vwtype=vb ↔ cgn:feat.vwtype=vb ∨ cgn:feat.vwtype=vb=vrag
+cgnl:feat.vwtype=vb ↔ cgn:feat.vwtype=vb ∨ cgn:feat.vwtype=vrag
 cgnl:feat.vwtype=pers ↔ cgn:feat.vwtype=pers
 cgnl:feat.vwtype=pers ↔ cgn:feat.vwtype=recip
 cgnl:feat.vwtype=betr ↔ cgn:feat.vwtype=betr
@@ -46,18 +70,3 @@ cgnl:feat.vwtype=betr ↔ cgn:feat.vwtype=betr
 cgnl:feat.conjtype=neven  ↔ cgn:feat.conjtype=neven
 cgnl:feat.conjtype=onder  ↔ cgn:feat.conjtype=onder
 
-### main part of speech
-
-cgnl:pos=ADJ ↔ cgn:pos=ADJ
-cgnl:pos=VZ ↔ cgn:pos=VZ
-cgnl:pos=ADP ↔ cgn:pos=ADP
-cgnl:pos=BW ↔ cgn:pos=BW
-cgnl:pos=VG ↔ cgn:pos=VG
-cgnl:pos=DET ↔ cgn:pos=DET
-cgnl:pos=INTJ ↔ cgn:pos=INTJ
-cgnl:pos=N ↔ cgn:pos=N
-cgnl:pos=TW ↔ cgn:pos=TW
-cgnl:pos=VNW ↔ cgn:pos=VNW 
-cgnl:pos=LET ↔ cgn:pos=LET
-cgnl:pos=SPEC ↔ cgn:pos=SPEC
-cgnl:pos=WW  ↔ cgn:pos=WW
