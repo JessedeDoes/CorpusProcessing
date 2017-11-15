@@ -20,10 +20,10 @@ ud:Case=Nom ↔ cgn:feat.naamval=nomin
 ud:Definite=Def ↔ (cgn:feat.lwtype=bep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=bep ∧ cgn:pos=VNW)
 ud:Definite=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
 
-ud:Degree=Cmp ↔ (cgn:feat.graad=comp)
-ud:Degree=Dim ↔ (cgn:feat.graad=dim)
-ud:Degree=Pos ↔ (cgn:feat.graad=basis)
-ud:Degree=Sup ↔ (cgn:feat.graad=sup)
+ud:Degree=Cmp ↔ cgn:feat.graad=comp
+ud:Degree=Dim ↔ cgn:feat.graad=dim
+ud:Degree=Pos ↔ cgn:feat.graad=basis
+ud:Degree=Sup ↔ cgn:feat.graad=sup
 
 ud:Gender=Com ↔ (cgn:feat.genus=zijd)
 ud:Gender=Fem ↔ (cgn:feat.genus=fem) ∨ (cgn:feat.npagr=evf) ∨ (cgn:feat.persoon=2v|3v)
@@ -32,12 +32,12 @@ ud:Gender=Neut ↔ (cgn:feat.genus=onz) ∨ (cgn:feat.npagr=evon) ∨ (cgn:feat.
 
 # CGN stopt conj en imp in een kenmerk met de tijd (historisch niet houdbaar, zie bijvoorbeeld http://gtb.inl.nl/iWDB/search?actie=article&wdb=VMNW&id=ID92682&article=beghote)
 
-ud:Mood=Ind ↔ (cgn:feat.wvorm=pv ∧ (cgn:feat.pvtijd=tgw  ∨  cgn:feat.pvtijd=verl))
-ud:Mood=Sub ↔ (cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=conj)
-ud:Mood=Imp ↔ (cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=imp)
+ud:Mood=Ind ↔ cgn:feat.wvorm=pv ∧ (cgn:feat.pvtijd=tgw  ∨  cgn:feat.pvtijd=verl)
+ud:Mood=Sub ↔ cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=conj
+ud:Mood=Imp ↔ cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=imp
 
-ud:NumType=Card ↔ (cgn:feat.numtype=hoofd)
-ud:NumType=Ord ↔ (cgn:feat.numtype=rang)
+ud:NumType=Card ↔ cgn:feat.numtype=hoofd
+ud:NumType=Ord ↔ cgn:feat.numtype=rang
 
 ud:Number=Plur ↔ (cgn:feat.getal=mv)
 ud:Number=Sing ↔ (cgn:feat.getal=ev ∨ cgn:feat.npagr=evon ∨ cgn:feat.npagr=evf)
@@ -52,24 +52,24 @@ ud:Polite=Inf ↔ cgn:feat.persoon=2v
 ud:Polite=Pol → (cgn:feat.persoon=2b ∨ cgn:feat.pvagr=met-t)
 cgn:feat.persoon=2b → ud:Polite=Pol
 
-ud:Position=Free ↔ (cgn:feat.positie=vrij)
-ud:Position=Nom ↔ (cgn:feat.positie=nom)
-ud:Position=Postnom ↔ (cgn:feat.positie=postnom)
-ud:Position=Prenom ↔ (cgn:feat.positie=prenom)
+ud:Position=Free ↔ cgn:feat.positie=vrij
+ud:Position=Nom ↔ cgn:feat.positie=nom
+ud:Position=Postnom ↔ cgn:feat.positie=postnom
+ud:Position=Prenom ↔ cgn:feat.positie=prenom
 
-ud:Poss=Yes ↔ (cgn:pos=VNW ∧ cgn:feat.vwtype=bez)
+ud:Poss=Yes ↔ cgn:pos=VNW ∧ cgn:feat.vwtype=bez
 
-ud:PronType=Art ↔ (cgn:pos=LID)
-ud:PronType=Dem ↔ (cgn:feat.vwtype=aanw ∧ cgn:pos=VNW)
-ud:PronType=Exc ↔ (cgn:feat.vwtype=excl ∧ cgn:pos=VNW)
+ud:PronType=Art ↔ cgn:pos=LID
+ud:PronType=Dem ↔ cgn:feat.vwtype=aanw ∧ cgn:pos=VNW
+ud:PronType=Exc ↔ cgn:feat.vwtype=excl ∧ cgn:pos=VNW
 ud:PronType=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
-ud:PronType=Int ↔ (cgn:feat.vwtype=vrag)
+ud:PronType=Int ↔ cgn:feat.vwtype=vrag
 ud:PronType=Int|Rel ↔ cgn:feat.vwtype=vb
-ud:PronType=NegTot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=geen)
-ud:PronType=Prs  ↔ (cgn:feat.vwtype=pers)
-ud:PronType=Rcp ↔ (cgn:feat.vwtype=recip)
-ud:PronType=Rel ↔ (cgn:feat.vwtype=betr)
-ud:PronType=Tot ↔ (cgn:feat.lwtype=onbep ∧ cgn:lemma=iedereen|ieder|al|alles|elk|elke)
+ud:PronType=NegTot ↔ cgn:feat.lwtype=onbep ∧ cgn:lemma=geen
+ud:PronType=Prs  ↔ cgn:feat.vwtype=pers
+ud:PronType=Rcp ↔ cgn:feat.vwtype=recip
+ud:PronType=Rel ↔ cgn:feat.vwtype=betr
+ud:PronType=Tot ↔ cgn:feat.lwtype=onbep ∧ cgn:lemma=iedereen|ieder|al|alles|elk|elke
 
 ud:Reflex=Yes ↔ (cgn:feat.vwtype=refl) ∨ (cgn:feat.vwtype=pr)
 
