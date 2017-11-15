@@ -12,27 +12,32 @@ abstract class Tag(tag: String, tagset: TagSet)
   def proposition:Proposition
 }
 
-case class TagSet(prefix: String,
-                  posTags: List[String] = List.empty,
+abstract case class TagSet(prefix: String,
+                           val posTags: List[String] = List.empty,
                   partitions:Map[String,Set[String]] = Map.empty,
                   pos2partitions: Map[String,List[String]] = Map.empty)
 {
-  def inSubsets(f:String):List[String] = scala.util.Try (
-    {
-      val z = partitions.filter({ case (s, v) => v.contains(f) })
-      z.toList.map(_._1)
-    })
-  match {
-    case Success(l) => l
-    case scala.util.Failure(s) => List("failure")
-  }
+  def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
+  def fromProposition(p:Proposition):Tag
+  def fromString(t: String):Tag
 }
 
 object UDTagSet extends TagSet("ud")
-
-object CGNTag
 {
-  lazy val partitions = Map(
+  def fromProposition(p:Proposition):Tag =
+  {
+    val vars = p.varsIn
+    val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
+    val features = vars.map(v => v.replaceAll(s"^${this.prefix}:", "")).mkString(",")
+    new UDStyleTag(s"$pos($features)", this)
+  }
+  override def fromString(t: String): Tag = new UDStyleTag(t, this)
+}
+
+object CGNPoSTagging
+{
+  //Console.err.println("eek!!")
+  def partitions = Map(
     "buiging"  -> Set("met-e", "met-s", "zonder"),
     "getal-n"  -> Set("mv-n", "zonder-n"),
     "lwtype"   -> Set("bep", "onbep"),
@@ -57,12 +62,13 @@ object CGNTag
     "variatie" -> Set("dial") // officiele naam??
   )
 
-  lazy val pos2partitions = List( // fix volgorde....
+  def pos2partitions = List( // fix volgorde....
     "N"    -> List("ntype", "getal", "graad", "genus", "naamval"),
     "ADJ"  -> List("positie", "graad", "buiging", "getal-n", "naamval"),
     "WW"   -> List("wvorm", "pvtijd", "pvagr", "positie", "buiging", "getal-n"),
     "NUM"  -> List("numtype", "positie", "graad", "getal-n", "naamval"),
-    "VNW"  -> List("vwtype", "pdtype", "naamval", "status", "persoon", "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
+    "VNW"  -> List("vwtype", "pdtype", "naamval", "status", "persoon",
+      "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad"),
     "LID"  -> List("lwtype", "naamval", "npagr"),
     "VZ"   -> List("vztype"),
     "VG"   -> List("conjtype"),
@@ -71,9 +77,7 @@ object CGNTag
     "SPEC" -> List("spectype")
   ).toMap
 
-  lazy val posTags = pos2partitions.keySet.toList
-
-  val CGNTagset = TagSet("cgn", posTags, partitions, pos2partitions)
+  def posTags = pos2partitions.keySet.toList
 
   lazy val lightFeaturesSet = Set("pos", "positie", "conjtype", "wvorm", "vwtype", "prontype", "pdtype")
 
@@ -83,37 +87,60 @@ object CGNTag
 
   lazy val allLightTags = allLightTags0.sortBy(_.toString)
 
+  val mappingToUD = PropositionalTagsetMapping("data/mapping.sorted", ()=>CGNTagset, ()=>UDTagSet)
+
+  def toUD(t: Tag):Tag = mappingToUD.mapTag(t)
+
   def checkAllTags:Unit = allTags.foreach(t => {
     val p = t.proposition
     val tLight = t.lightTag
     val pLight = tLight.proposition
 
-    val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
+    val p1 = scala.util.Try(mappingToUD.mapToTagset(p)).get
     println(s"$t -> $p1")
 
-    val p1Light = scala.util.Try(CGNMapping.mapToTagset(pLight, CGNMapping.udFeatureSet)).get
+    val p1Light = scala.util.Try(mappingToUD.mapToTagset(pLight)).get
     println(s"$tLight -> $p1Light")
   })
 
   def checkLightTags:Unit = allLightTags.foreach(t => {
     val p = t.proposition
-    val p1 = scala.util.Try(CGNMapping.mapToTagset(p, CGNMapping.udFeatureSet)).get
+    val p1 = scala.util.Try(mappingToUD.mapToTagset(p)).get
     println(s"$t\t$p\t$p1")
   })
 
   def main(args: Array[String]):Unit = checkLightTags
+  //Console.err.println("peek!!")
+}
+
+object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.partitions, CGNPoSTagging.pos2partitions)
+{
+  //Console.err.println(s"blurk $posTags")
+
+  def fromProposition(p:Proposition):Tag =
+  {
+    val vars = p.varsIn
+    val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).get.replaceAll(".*=", "")
+    val features = vars.map(v => v.replaceAll(s"^.*=", ""))
+    new UDStyleTag(s"$pos($features)", this)
+  }
+
+  override def fromString(t: String): Tag = CGNTag(t)
 }
 
 class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 {
-  val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+  //Console.err.println(s"Yes: $tag...")
+  val Tag = new Regex("^([A-Z\\|]+)\\((.*?)\\)")
   val Tag(pos,feats) = tag
 
   val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
   val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
-  def parseFeature(f: String):Feature = {val c = f.split("\\s*,\\s*"); Feature(c(0), c(1))}
+  def parseFeature(f: String):Feature = {val c = f.split("\\s*=\\s*"); Feature(c(0), c(1))}
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:$n=$v") } ) :_*)
+
+  override def toString:String = tag
 }
 
 class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
@@ -138,16 +165,17 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
       val V1 = V.filter(n => tagset.pos2partitions(p).contains(n))
       if (V1.nonEmpty) V1.head else V.mkString("|")
     }
-
     fn
   }
+
+  override def toString:String = tag
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
-case class CGNTag(tag: String) extends CGNStyleTag(tag, CGNTag.CGNTagset)
+case class CGNTag(tag: String) extends CGNStyleTag(tag, CGNTagset)
 {
-  import CGNTag._
+  import CGNPoSTagging._
 
   val problems:Array[String] = featureValues.filter(f => getFeatureName(f).contains("UNK") || getFeatureName(f)=="")
 

@@ -27,8 +27,8 @@ trait Proposition
 
   def ∧(q:Proposition) = And(this,q)
   def ∨(q:Proposition) = Or(this,q)
-  def →(q:Proposition) = ¬(this ∧ ¬(q))
-  def ↔(q:Proposition) = (this→q) ∧ (q → this)
+  def →(q:Proposition):Proposition = ¬(this ∧ ¬(q))
+  def ↔(q:Proposition):Proposition = (this→q) ∧ (q → this)
 
   def varsIn:Set[String] =
   {

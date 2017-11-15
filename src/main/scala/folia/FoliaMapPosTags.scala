@@ -5,7 +5,7 @@ import java.util.zip.GZIPInputStream
 import scala.xml._
 import sat._
 
-case class FoliaMapPosTags(tagMapping: sat.CGNTag => sat.CGNTag) {
+case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
 
   val cachedMapping = Cache(tagMapping)
 
@@ -24,7 +24,7 @@ case class FoliaMapPosTags(tagMapping: sat.CGNTag => sat.CGNTag) {
 
   def mapPosElement(e:Elem):Elem =
   {
-    val tag = CGNTag((e \ "@class").toString)
+    val tag = parseTag((e \ "@class").toString)
     val newTag = cachedMapping(tag)
     val features = newTag.features.map({case Feature(n,v) => <feat class={n} value={v}/>})
     e.copy(child=features,
@@ -49,7 +49,8 @@ case class Cache[A,B](f: A=>B)
 
 object TestSimplify
 {
-  def simplify(t: CGNTag) = t.lightTag // CGNTag(s"${t.pos}()")
-
-  def main(args: Array[String]) = FoliaMapPosTags(simplify).updatePoS(args(0))
+  def simplify(t: Tag):Tag = t.asInstanceOf[CGNTag].lightTag.asInstanceOf[Tag] // CGNTag(s"${t.pos}()")
+  def toUD(t:Tag) = CGNPoSTagging.toUD(t)
+  def cgnParse(t: String):Tag = CGNTagset.fromString(t)
+  def main(args: Array[String]):Unit = FoliaMapPosTags(cgnParse, toUD).updatePoS(args(0))
 }
