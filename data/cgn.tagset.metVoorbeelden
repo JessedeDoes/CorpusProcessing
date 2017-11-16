@@ -1,8 +1,8 @@
-ADJ(nom,basis,met-e,mv-n)
-ADJ(nom,basis,met-e,zonder-n,bijz)
-ADJ(nom,basis,met-e,zonder-n,stan)
+ADJ(nom,basis,met-e,mv-n) de rijken
+ADJ(nom,basis,met-e,zonder-n,bijz) hosanna in den hogen (crazy again, een n is zonder-n)
+ADJ(nom,basis,met-e,zonder-n,stan) 
 ADJ(nom,basis,zonder,mv-n)
-ADJ(nom,basis,zonder,zonder-n)
+ADJ(nom,basis,zonder,zonder-n) in het groot
 ADJ(nom,comp,met-e,mv-n)
 ADJ(nom,comp,met-e,zonder-n,bijz)
 ADJ(nom,comp,met-e,zonder-n,stan)
@@ -11,23 +11,23 @@ ADJ(nom,sup,met-e,mv-n)
 ADJ(nom,sup,met-e,zonder-n,bijz)
 ADJ(nom,sup,met-e,zonder-n,stan)
 ADJ(nom,sup,zonder,zonder-n)
-ADJ(postnom,basis,met-s)
-ADJ(postnom,basis,zonder)
-ADJ(postnom,comp,met-s)
-ADJ(postnom,comp,zonder)
-ADJ(prenom,basis,met-e,bijz)
-ADJ(prenom,basis,met-e,stan)
-ADJ(prenom,basis,zonder)
-ADJ(prenom,comp,met-e,bijz)
-ADJ(prenom,comp,met-e,stan)
-ADJ(prenom,comp,zonder)
-ADJ(prenom,sup,met-e,bijz)
-ADJ(prenom,sup,met-e,stan)
-ADJ(prenom,sup,zonder)
-ADJ(vrij,basis,zonder)
-ADJ(vrij,comp,zonder)
-ADJ(vrij,dim,zonder)
-ADJ(vrij,sup,zonder)
+ADJ(postnom,basis,met-s) iets moois
+ADJ(postnom,basis,zonder) rivieren bevaarbaar in de winter
+ADJ(postnom,comp,met-s) iets gekkers
+ADJ(postnom,comp,zonder) een getal groter dan drie
+ADJ(prenom,basis,met-e,bijz) zaliger gedachtenis (leuk dat de -er uitgang een bijzondere -e is??) 
+ADJ(prenom,basis,met-e,stan) mooie huizen
+ADJ(prenom,basis,zonder) een mooi huis
+ADJ(prenom,comp,met-e,bijz) van beteren huize
+ADJ(prenom,comp,met-e,stan) mooiere huizen
+ADJ(prenom,comp,zonder) een mooier huis
+ADJ(prenom,sup,met-e,bijz) bester kwaliteit
+ADJ(prenom,sup,met-e,stan) de mooiste keuken
+ADJ(prenom,sup,zonder) een alleraardigst mens
+ADJ(vrij,basis,zonder) die stok is lang
+ADJ(vrij,comp,zonder) die stok is langer
+ADJ(vrij,dim,zonder)  hier is het stilletjes
+ADJ(vrij,sup,zonder) die stok is het langst
 BW()
 LET()
 LID(bep,dat,evf)
@@ -48,15 +48,15 @@ N(eigen,ev,dim,gen)
 N(eigen,ev,dim,onz,stan)
 N(eigen,mv,basis)
 N(eigen,mv,dim)
-N(soort,ev,basis,dat)
-N(soort,ev,basis,gen)
-N(soort,ev,basis,genus,stan)
-N(soort,ev,basis,onz,stan)
-N(soort,ev,basis,zijd,stan)
-N(soort,ev,dim,gen)
-N(soort,ev,dim,onz,stan)
-N(soort,mv,basis)
-N(soort,mv,dim)
+N(soort,ev,basis,dat) ter _plaatse
+N(soort,ev,basis,gen) 's _avonds
+N(soort,ev,basis,genus,stan) ?
+N(soort,ev,basis,onz,stan) kind
+N(soort,ev,basis,zijd,stan) stoel
+N(soort,ev,dim,gen) _vadertjes pijp
+N(soort,ev,dim,onz,stan) stoeltje
+N(soort,mv,basis) stoelen
+N(soort,mv,dim) stoeltjes
 SPEC(afgebr)
 SPEC(deeleigen)
 SPEC(meta)
