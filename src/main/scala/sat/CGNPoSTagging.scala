@@ -74,6 +74,7 @@ object CGNPoSTagging
     "VG"   -> List("conjtype"),
     "BW"   -> List(),
     "TSW"  -> List(),
+    "TW"  -> List("numtype", "graad", "positie"),
     "SPEC" -> List("spectype")
   ).toMap
 
@@ -100,7 +101,7 @@ object CGNPoSTagging
     // val pLight = tLight.proposition
 
     val p1 = scala.util.Try(mappingToUD.mapToTagset(p)).get
-    println(s"$t\t$tUd\t$tLight")
+    println(s"$t\t$tLight\t$tUd")
   })
 
   def checkLightTags:Unit = allLightTags.foreach(t => {
@@ -155,7 +156,7 @@ object CGNLite
     "VG"   -> List("conjtype"),
     "BW"   -> List(),
     "TSW"  -> List(),
-    "TW"   -> List(),
+    "TW"  -> List("numtype", "graad", "positie"),
     "LET"  -> List(),
     "SPEC" -> List("spectype")
   ).toMap
@@ -172,9 +173,11 @@ object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions,
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
     val features = vars.filter(f => !f.startsWith(s"${this.prefix}:pos=")).toList
       .sortBy(f => {
-        val v = f.replaceAll(s"^$prefix:feat.|=.*","")
+        val n = f.replaceAll(s"^$prefix:feat.|=.*","")
         //Console.err.println(v)
-        v
+        val l = pos2partitions(pos)
+        val i = l.zipWithIndex.find({case (s,i) => s == n}).map({case (s,i) => i})
+        i.getOrElse(0)
       })
       .map(v => v.replaceAll(s"^.*=", "")).mkString(",")
 
