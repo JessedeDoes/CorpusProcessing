@@ -1,4 +1,6 @@
 package sat
+import java.io.FileWriter
+
 import scala.util.Success
 import scala.util.matching._
 
@@ -86,12 +88,41 @@ object CGNPoSTagging
   lazy val allTags:List[CGNTag] = scala.io.Source.fromFile("data/cgn.tagset").getLines().toList.sorted.map(CGNTag(_))
 
   case class TagWithExample(id: String, tag: String, example: String)
+  {
+    lazy val t = CGNTag(tag)
+    lazy val liteTag = toLite(t).toString
+    lazy val udTag = toUD(t).toString
+  }
+
+  def printEenLeukOverzichtje =
+  {
+    val x = tagsWithExamples.groupBy(_.liteTag)
+    Console.err.println(x.keySet.size)
+    val html =
+      <html>
+      <body>
+        <table>
+        {x.keySet.toList.sorted.map(t => { val l = x(t)
+          <tr valign="top"><td colspan="3" style="margin-top:4em; font-size:18pt"><b>{t}</b></td></tr> ++
+          l.map(te => <tr valign="top">
+            <td style="margin-left:2em; font-size:8pt">{te.id}</td>
+            <td style="font-size:8pt; margin: 0pt">{te.tag}</td>
+            <td style="font-size:8pt; margin: 0pt">{te.udTag}</td>
+            <td style="font-size:8pt; margin: 0pt"><i>{te.example}</i></td></tr>)
+      })}
+        </table>
+      </body>
+    </html>
+    val p = new FileWriter("data/overzicht.html")
+    p.write(html.toString)
+    p.close()
+  }
 
   lazy val tagsWithExamples = scala.io.Source.fromFile("data/cgn_vb_vaneynde.utf8.txt").getLines()
     .filter(l => !(l.trim.isEmpty))
     .map(l => l.split("\\t").toList)
     .filter(_.size >=3)
-    .map(l => TagWithExample(l(0), l(1), l(2)))
+    .map(l => TagWithExample(l(0), l(1), l(2))).toList
 
   lazy val allLightTags0:List[CGNTag] = allTags.map(_.lightTag).toSet.toList
 
@@ -111,6 +142,7 @@ object CGNPoSTagging
         println(s"$id\t$t\t$tLight\t$tUd\t$example")
     }
   )
+
   def checkAllTags:Unit = allTags.foreach(t => {
     val p = t.proposition
     val tLight = toLite(t)
@@ -127,7 +159,7 @@ object CGNPoSTagging
     println(s"$t\t$p\t$p1")
   })
 
-  def main(args: Array[String]):Unit = checkTagsWithExamples
+  def main(args: Array[String]):Unit = printEenLeukOverzichtje
   //Console.err.println("peek!!")
 }
 
