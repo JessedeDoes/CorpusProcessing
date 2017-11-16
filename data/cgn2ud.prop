@@ -39,8 +39,8 @@ ud:Mood=Imp ↔ cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=imp
 ud:NumType=Card ↔ cgn:feat.numtype=hoofd
 ud:NumType=Ord ↔ cgn:feat.numtype=rang
 
-ud:Number=Plur ↔ (cgn:feat.getal=mv)
-ud:Number=Sing ↔ (cgn:feat.getal=ev ∨ cgn:feat.npagr=evon ∨ cgn:feat.npagr=evf)
+ud:Number=Plur ↔ (cgn:feat.getal=mv ∨ cgn:feat.npagr=mv ∨ cgn:feat.pvagr=mv)
+ud:Number=Sing ↔ (cgn:feat.getal=ev ∨ cgn:feat.pvagr=ev ∨ cgn:feat.npagr=ev ∨ cgn:feat.npagr=evon ∨ cgn:feat.npagr=evf)
 
 ud:Person=1 ↔ cgn:feat.persoon=1
 ud:Person=2 ↔ cgn:feat.persoon=2 ∨ cgn:feat.persoon=2v ∨ cgn:feat.persoon=2b
