@@ -137,7 +137,7 @@ trait Proposition
     case _ => this
   }
 
-  // TODO niet af
+  // TODO niet af (en tot nu toe niet zo nodig)
   def tseytin =
   {
     val subMap:Map[Proposition, Proposition] =
