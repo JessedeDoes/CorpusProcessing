@@ -45,6 +45,7 @@ object CGNPoSTagging
     "ntype"    -> Set("eigen", "soort"),
     "numtype"  -> Set("hoofd", "rang"),
     "getal"    -> Set("ev", "mv", "getal"),
+    "getal-n"  -> Set("getal-n", "mv-n", "ev-n"),
     "pvagr"    -> Set("met-t", "ev", "mv"),
     "pvtijd"   -> Set("tgw", "verl", "conj", "imp"),
     "status"   -> Set("nadr", "red", "vol"),
@@ -58,7 +59,7 @@ object CGNPoSTagging
     "npagr"    -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
     "wvorm"    -> Set("inf", "od", "pv", "vd"),
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
-    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
+    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst"),
     "variatie" -> Set("dial") // officiele naam??
   )
 
@@ -84,6 +85,14 @@ object CGNPoSTagging
 
   lazy val allTags:List[CGNTag] = scala.io.Source.fromFile("data/cgn.tagset").getLines().toList.sorted.map(CGNTag(_))
 
+  case class TagWithExample(id: String, tag: String, example: String)
+
+  lazy val tagsWithExamples = scala.io.Source.fromFile("data/cgn_vb_vaneynde.utf8.txt").getLines()
+    .filter(l => !(l.trim.isEmpty))
+    .map(l => l.split("\\t").toList)
+    .filter(_.size >=3)
+    .map(l => TagWithExample(l(0), l(1), l(2)))
+
   lazy val allLightTags0:List[CGNTag] = allTags.map(_.lightTag).toSet.toList
 
   lazy val allLightTags = allLightTags0.sortBy(_.toString)
@@ -94,6 +103,14 @@ object CGNPoSTagging
   def toUD(t: Tag):Tag = mappingToUD.mapTag(t)
   def toLite(t: Tag):Tag = mappingToLite.mapTag(t)
 
+  def checkTagsWithExamples = tagsWithExamples.foreach(
+    {case TagWithExample(id, tag, example) =>
+       val t = CGNTag(tag)
+        val tLight = toLite(t)
+        val tUd = toUD(t)
+        println(s"$id\t$t\t$tLight\t$tUd\t$example")
+    }
+  )
   def checkAllTags:Unit = allTags.foreach(t => {
     val p = t.proposition
     val tLight = toLite(t)
@@ -110,7 +127,7 @@ object CGNPoSTagging
     println(s"$t\t$p\t$p1")
   })
 
-  def main(args: Array[String]):Unit = checkAllTags
+  def main(args: Array[String]):Unit = checkTagsWithExamples
   //Console.err.println("peek!!")
 }
 

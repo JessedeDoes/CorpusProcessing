@@ -111,7 +111,7 @@ ud:pos=SYM → cgn:pos=SPEC
 ud:pos=VERB ↔ cgn:pos=WW
 ud:pos=X → cgn:pos=SPEC
 
-ud:pos=SCONJ|CCONJ ↔ ud:pos=SCONJ ∨ ud:pos=CCONJ
+#ud:pos=SCONJ|CCONJ ↔ ud:pos=SCONJ ∨ ud:pos=CCONJ
 
 #### helaas zijn er wat cgn-interne implicaties nodig om de conversie op gang te krijgen
 
@@ -147,8 +147,8 @@ cgn:feat.vwtype=pr → cgn:pos=VNW
 cgn:feat.vwtype=excl → cgn:pos=VNW
 cgn:feat.vwtype=onbep → cgn:pos=VNW
 
-cgn:feat.conjtype=onder → cgn:pos=VG
-cgn:feat.conjtype=neven → cgn:pos=VG
+#cgn:feat.conjtype=onder → cgn:pos=VG
+#cgn:feat.conjtype=neven → cgn:pos=VG
 
 cgn:feat.lwtype=bep → cgn:pos=LID
 cgn:feat.lwtype=onbep → cgn:pos=LID
