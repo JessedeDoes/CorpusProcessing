@@ -1,4 +1,4 @@
-package sat
+package propositional
 
 import scala.util.parsing.combinator.JavaTokenParsers
 
@@ -38,7 +38,7 @@ trait PropositionParser extends JavaTokenParsers {
     term ~ rep("[∨|]".r ~ term)  ^^ {
       case t ~ ts => ts.foldLeft(t) {
         case (t1, "∨" ~ t2) => Or(t1, t2)
-        case (t1, "|" ~ t2) => Or(t1, t2)
+        case (t1, "|" ~ t2) => propositional.Or(t1, t2)
       }
     }
 
@@ -46,7 +46,7 @@ trait PropositionParser extends JavaTokenParsers {
     factor ~ rep("[∧&]".r ~ factor) ^^ {
       case t ~ ts => ts.foldLeft(t) {
         case (t1, "∧" ~ t2) => And(t1, t2)
-        case (t1, "&" ~ t2) => And(t1, t2)
+        case (t1, "&" ~ t2) => propositional.And(t1, t2)
       }
     }
 

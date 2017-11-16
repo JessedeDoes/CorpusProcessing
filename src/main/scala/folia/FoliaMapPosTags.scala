@@ -3,7 +3,7 @@ import java.io.FileInputStream
 import java.util.zip.GZIPInputStream
 
 import scala.xml._
-import sat._
+import posmapping._
 
 case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
 

@@ -114,7 +114,7 @@ object Mappings
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
-    "mwp", "cnj", "crd", "app", "dp", "cmp", "body", "pc", "sat", "nucl", "svp",
+    "mwp", "cnj", "crd", "app", "dp", "cmp", "body", "pc", "posmapping", "nucl", "svp",
     "rhd", "me", "tag", "obj2", "whd", "predm", "dlink", "se", "sup", "hdf",
     "obcomp", "pobj1"
   )

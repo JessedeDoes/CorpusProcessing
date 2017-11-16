@@ -1,5 +1,7 @@
-package sat
+package posmapping
 import java.io.FileWriter
+
+import propositional.{And, Literal, Proposition}
 
 import scala.util.Success
 import scala.util.matching._

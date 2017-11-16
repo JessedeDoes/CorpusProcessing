@@ -1,5 +1,6 @@
-package sat
-import sat.Proposition.¬
+package propositional
+
+import propositional.Proposition.¬
 //import scala.tools.
 // https://github.com/Gbury/mSAT
 

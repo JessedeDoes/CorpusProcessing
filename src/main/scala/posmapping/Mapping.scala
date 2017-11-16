@@ -1,8 +1,9 @@
-package sat
-import Proposition._
+package posmapping
+import propositional.{And, Literal, Proposition, PropositionParser}
 
 case class PropositionalTagsetMapping(fileName: String, from: ()=>TagSet, to: ()=>TagSet)
 {
+  import Proposition._
   lazy val mappingProposition:Proposition = PropositionParser.parseFile(fileName).get
   // println(from().posTags)
   lazy val fromFeatureSet = mappingProposition.varsIn.filter(s => s.startsWith(s"${from().prefix}:"))
@@ -34,7 +35,7 @@ case class PropositionalTagsetMapping(fileName: String, from: ()=>TagSet, to: ()
         b1
       })
       translation.map(Literal(_)).toList })
-    And(b: _*)
+    propositional.And(b: _*)
   }
 
   def main(args: Array[String]) =
