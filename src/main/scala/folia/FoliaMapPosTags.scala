@@ -55,8 +55,8 @@ case class Cache[A,B](f: A=>B)
 object TestSimplify
 {
   def simplify(t: Tag):Tag = t.asInstanceOf[CGNTag].lightTag.asInstanceOf[Tag] // CGNTag(s"${t.pos}()")
-  def toUD(t:Tag) = CGNPoSTagging.toUD(t)
-  def toLite(t:Tag) = CGNPoSTagging.toLite(t)
+  def toUD(t:Tag):Tag = CGNPoSTagging.toUD(t)
+  def toLite(t:Tag):Tag = CGNPoSTagging.toLite(t)
   def cgnParse(t: String):Tag = CGNTagset.fromString(t)
   def main(args: Array[String]):Unit = FoliaMapPosTags(cgnParse, toLite).updatePoS(args(0))
 }

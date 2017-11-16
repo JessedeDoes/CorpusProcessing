@@ -41,9 +41,9 @@ trait Proposition
     }
   }
 
-  def isAtom():Boolean = this match {
+  def isAtom:Boolean = this match {
     case Literal(_) => true
-    case Not(p) => p.isAtom()
+    case Not(p) => p.isAtom
     case _ => false
   }
 
@@ -54,7 +54,7 @@ trait Proposition
     case Literal(s) => Set(this)
   }
 
-  def simpleCNFConversion():Proposition =
+  def simpleCNFConversion:Proposition =
   {
     val noDouble = this.removeDoubleNegation()
     this.removeDoubleNegation() match {
@@ -75,8 +75,8 @@ trait Proposition
 
       case Or(p, q) =>
       {
-        val p1 = p.simpleCNFConversion()
-        val q1 = q.simpleCNFConversion()
+        val p1 = p.simpleCNFConversion
+        val q1 = q.simpleCNFConversion
         (p1,q1) match {
           case (And(l1 @ _*), And(l2 @ _*)) =>
             val orz = l1.flatMap(l => l2.map(k => Or(k,l)))
@@ -85,26 +85,26 @@ trait Proposition
         }
       }
 
-      case Or(p) => p.simpleCNFConversion()
+      case Or(p) => p.simpleCNFConversion
 
       case Or(l @ _*) => {
         val h = l.head
         val t = Or(l.tail : _*)
         val x = Or(l.head, t)
-        t.simpleCNFConversion()
+        t.simpleCNFConversion
       }
 
       case Not(p) =>
         p match {
-          case Not(q) => q.simpleCNFConversion()
+          case Not(q) => q.simpleCNFConversion
           case Literal(s) => And(Not(p))
-          case And(p1,q1) => { val p0 = Or(Not(p1), Not(q1)); p0.simpleCNFConversion() }
-          case Or(p1,q1) =>  { val p0 = And(Not(p1), Not(q1)); p0.simpleCNFConversion() }
+          case And(p1,q1) =>  val p0 = Or(Not(p1), Not(q1)); p0.simpleCNFConversion
+          case Or(p1,q1) =>   val p0 = And(Not(p1), Not(q1)); p0.simpleCNFConversion
         }
     }
   }
 
-  override def toString():String =
+  override def toString:String =
     this match {
       case Literal(s) => s
       case And(l @ _*) => "(" + l.map(_.toString).mkString(" ∧ ") + ")"
@@ -158,8 +158,8 @@ trait Proposition
 
   def isSimpleDisjunction():Boolean =  this match
   {
-    case Or(l @ _*) => l.forall(x => x.isAtom() || x.isSimpleDisjunction())
-    case _ => this.isAtom()
+    case Or(l @ _*) => l.forall(x => x.isAtom || x.isSimpleDisjunction())
+    case _ => this.isAtom
   }
 
   def isCNF:Boolean = this match {
@@ -169,7 +169,7 @@ trait Proposition
 
   def translate(varMap:Map[String,Int]): Seq[Seq[Int]] =
   {
-    val cnfje = if (isCNF) this else  this.simpleCNFConversion().flattenOrs()
+    val cnfje = if (isCNF) this else  this.simpleCNFConversion.flattenOrs()
     cnfje match {
       case And(l @ _*) =>
         l.map(d => d match {
@@ -210,7 +210,7 @@ trait Proposition
 
   def isSatisfiable(): Boolean =
   {
-    val cnf = this.simpleCNFConversion().flattenOrs()
+    val cnf = this.simpleCNFConversion.flattenOrs()
     // println(cnf)
     val dima = cnf.toDimacs
     //println(dima)
@@ -241,7 +241,7 @@ case class Dimacs(clauses: Seq[Seq[Int]], varMap:Map[String,Int])
 
 object SimpleSatTest
 {
-  def example() =
+  def example:Unit =
   {
     val p:Proposition = And(
       Or(Literal("p"), (Literal("p"))),
@@ -262,12 +262,12 @@ object SimpleSatTest
     val s = Literal("s")
     val phi = (p ∨ q ∧ r) → ¬(s) // {\displaystyle \phi :=((p\lor q)\land r)\to (\neg s)}
   //phi.tseytin
-  val simple = phi.simpleCNFConversion()
+  val simple = phi.simpleCNFConversion
     println(simple)
     println(simple.flattenOrs().toDimacs)
   }
 
-  def main(args: Array[String]):Unit = example1
+  def main(args: Array[String]):Unit = example1()
 }
 // case class Implies(p: Proposition, q:Proposition) extends Proposition
 
