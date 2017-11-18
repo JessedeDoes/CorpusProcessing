@@ -8,7 +8,7 @@ object FoliaToRudimentaryTEI
 {
   val xml = "@{http://www.w3.org/XML/1998/namespace}"
 
-  def convert(folia: Node) = 
+  def convert(folia: Node):Node =
   {
     val id = folia \ s"${xml}id"
     val sentences = (folia \\ "s").map(convertSentence)

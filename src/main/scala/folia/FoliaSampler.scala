@@ -4,11 +4,27 @@ import java.util.zip.GZIPInputStream
 
 import scala.xml._
 
-case class FoliaSampler(document: Elem, numWords: Int)
+/*
+Probleem: sample een beetje "normale" tekst.
+Geen foreign
+Geen tabellen, inhoudsopgaven
+Niet te veel afkortingen etc...
+
+Taalmodel van complete tekst maken en daarmee scoren (Te veel gedoe, geen zin...)
+Beter gewoon iets meer sampelen en zooi wegsmijten
+
+Workflow:
+
+Sample
+Simplify tagset
+Convert back to TEI
+ */
+
+case class FoliaSampler(document: Node, numWords: Int)
 {
    lazy val sentencesShuffled:List[Node] = scala.util.Random.shuffle((document \\ "s").filter(textLength(_) > 10).toList)
    lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle((document \\ "p")
-     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100) && averageWordLength(p) > 6).toList)
+     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100) && averageWordLength(p) > 3).toList)
 
    def textLength(n: Node):Int = (n \\ "w" \\  "t").size
 
@@ -40,7 +56,10 @@ case class FoliaSampler(document: Elem, numWords: Int)
 
    def sample():Option[Node] =
    {
-     paragraphSample._1.foreach(s => Console.err.println((s \\ "t").map(_.text).mkString(" ")))
+     val samp = paragraphSample._1
+     val size = paragraphSample._2
+     Console.err.println(s"Size: $size")
+     samp.foreach(s => Console.err.println((s \\ "w" \\ "t").map(_.text).mkString(" ")))
      val keepjes = expandKeepSet(document, n => paragraphSample._1.contains(n) || n.label == "metadata")
      sample(document, keepjes)
    }
