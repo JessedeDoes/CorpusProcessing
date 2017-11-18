@@ -48,7 +48,7 @@ object FoliaToRudimentaryTEI
 
     val cls = (w \ "@class").toString
 
-    val teiw = if (cls=="WORD") 
+    val teiw = if (cls !="PUNCTUATION")
           <w xml:id={id} type={pos} lemma={lemma}>{content}</w>
        else
           <pc xml:id={id} type={pos}>{content}</pc>
