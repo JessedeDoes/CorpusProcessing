@@ -37,14 +37,24 @@ object FoliaToRudimentaryTEI
 
   def nonModernized(t:Node) = !((t \ "@class").toString == "contemporary")
 
-  def convertWord(w: Node) = 
+  val preferedLemmaSet = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl"
+  val nextBestLemmaSet = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl"
+
+  def convertWord(w: Node) =
   {
     val content = (w \\ "t").filter(nonModernized).text
     val pos =  w \\ "pos" \ "@class"
-    val lemma = w \\ "lemma" \ "@class"
+    val lemmatags = w \\ "lemma"
+
+    val lemmatag = lemmatags.find(t => (t \ "@set").toString == preferedLemmaSet)
+      .getOrElse(lemmatags.find(t => (t \ "@set").toString == nextBestLemmaSet)
+      .getOrElse(lemmatags.head))
+
+    val lemma = (lemmatag \ "@class").toString
+
     val id = w \ s"${xml}id"
 
-    // scala.Console.err.println(pos)
+    //scala.Console.err.println(s"""$w, Lemma: ${w \\ "lemma"}""")
 
     val cls = (w \ "@class").toString
 

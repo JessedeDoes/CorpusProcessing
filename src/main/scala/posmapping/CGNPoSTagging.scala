@@ -49,7 +49,7 @@ object CGNPoSTagging
     "ntype"    -> Set("eigen", "soort"),
     "numtype"  -> Set("hoofd", "rang"),
     "getal"    -> Set("ev", "mv", "getal"),
-    "getal-n"  -> Set("getal-n", "mv-n", "ev-n"),
+    "getal-n"  -> Set("getal-n", "mv-n", "ev-n", "zonder-n"),
     "pvagr"    -> Set("met-t", "ev", "mv"),
     "pvtijd"   -> Set("tgw", "verl", "conj", "imp"),
     "status"   -> Set("nadr", "red", "vol"),
