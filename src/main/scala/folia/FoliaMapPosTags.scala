@@ -5,6 +5,12 @@ import java.util.zip.GZIPInputStream
 import scala.xml._
 import posmapping._
 
+/*
+ToDo: houd rekening met de sets.
+- Pas alleen toe op tags uit een op te geven set
+- Pas de setdeclaratie in de header aan
+ */
+
 case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
 
   val cachedMapping = Cache(tagMapping)
