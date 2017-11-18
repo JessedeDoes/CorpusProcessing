@@ -37,7 +37,7 @@ object FoliaToRudimentaryTEI
   
   def convertWord(w: Node) = 
   {
-    val content = (w \\ "t").text
+    val content = (w \\ "t").filter(t => !((t \ "@class").toString == "contemporary")).text
     val pos =  w \\ "pos" \ "@class"
     val lemma = w \\ "lemma" \ "@class"
     val id = w \ s"${xml}id"
