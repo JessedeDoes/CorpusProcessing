@@ -6,16 +6,21 @@ import scala.xml._
 
 case class FoliaSampler(document: Elem, numWords: Int)
 {
-   lazy val sentencesShuffled = scala.util.Random.shuffle((document \\ "s").filter(textLength(_) > 10).toList)
-   lazy val paragraphsShuffled = scala.util.Random.shuffle((document \\ "p")
-     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100)).toList)
+   lazy val sentencesShuffled:List[Node] = scala.util.Random.shuffle((document \\ "s").filter(textLength(_) > 10).toList)
+   lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle((document \\ "p")
+     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100) && averageWordLength(p) > 6).toList)
 
-   def textLength(n: Node) = (n \\ "t").size
+   def textLength(n: Node):Int = (n \\ "w" \\  "t").size
 
-   def addToSample(acc:(Set[Node], Int), s: Node) = if (acc._2 > numWords) acc else (acc._1 + s, acc._2 + s.size)
+   def averageWordLength(n: Node):Double = {
+     val words = (n \\ "w" \\  "t").map(_.text)
+     words.map(_.length).sum / words.size.toDouble
+   }
 
-   lazy val sentenceSample = sentencesShuffled.foldLeft(Set.empty[Node], 0)(addToSample)
-   lazy val paragraphSample  = paragraphsShuffled.foldLeft(Set.empty[Node], 0)(addToSample)
+   def addToSample(acc:(Set[Node], Int), s: Node):(Set[Node], Int) = if (acc._2 > numWords) acc else (acc._1 + s, acc._2 + textLength(s))
+
+   lazy val sentenceSample:(Set[Node], Int) = sentencesShuffled.foldLeft(Set.empty[Node], 0)(addToSample)
+   lazy val paragraphSample:(Set[Node], Int)  = paragraphsShuffled.foldLeft(Set.empty[Node], 0)(addToSample)
 
    def expandKeepSet(node: Node, filter: Node => Boolean):Set[Node] =
      if (filter(node)) node.descendant_or_self.toSet else
@@ -46,7 +51,7 @@ object FoliaSampler
   def main(args: Array[String]):Unit  =
   {
     val folia = XML.load(new GZIPInputStream(new FileInputStream(args(0))))
-    val sample = FoliaSampler(folia, 300).sample()
+    val sample = FoliaSampler(folia, 5000).sample()
     if (sample.isDefined) {
       println(sample.get)
     }
