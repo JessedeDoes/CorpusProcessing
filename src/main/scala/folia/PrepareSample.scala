@@ -28,6 +28,6 @@ object PrepareSample {
   {
     val folia = XML.load(new GZIPInputStream(new FileInputStream(args(0))))
     val sample = prepareSample(folia)
-    println(sample)
+    if (sample.isDefined) println(sample.get)
   }
 }

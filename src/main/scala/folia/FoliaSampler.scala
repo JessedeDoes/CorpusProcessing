@@ -2,6 +2,8 @@ package folia
 import java.io.FileInputStream
 import java.util.zip.GZIPInputStream
 
+import folia.FoliaToRudimentaryTEI.nonModernized
+
 import scala.xml._
 
 /*
@@ -26,10 +28,10 @@ case class FoliaSampler(document: Node, numWords: Int)
    lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle((document \\ "p")
      .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100) && averageWordLength(p) > 3).toList)
 
-   def textLength(n: Node):Int = (n \\ "w" \\  "t").size
+   def textLength(n: Node):Int = (n \\ "w" \\  "t").filter(nonModernized).size
 
    def averageWordLength(n: Node):Double = {
-     val words = (n \\ "w" \\  "t").map(_.text)
+     val words = (n \\ "w" \\  "t").filter(nonModernized).map(_.text)
      words.map(_.length).sum / words.size.toDouble
    }
 
@@ -59,7 +61,7 @@ case class FoliaSampler(document: Node, numWords: Int)
      val samp = paragraphSample._1
      val size = paragraphSample._2
      Console.err.println(s"Size: $size")
-     samp.foreach(s => Console.err.println((s \\ "w" \\ "t").map(_.text).mkString(" ")))
+     samp.foreach(s => Console.err.println((s \\ "w" \\ "t").filter(nonModernized).map(_.text).mkString(" ")))
      val keepjes = expandKeepSet(document, n => paragraphSample._1.contains(n) || n.label == "metadata")
      sample(document, keepjes)
    }
