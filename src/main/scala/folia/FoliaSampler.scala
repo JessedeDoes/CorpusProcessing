@@ -26,9 +26,11 @@ case class FoliaSampler(document: Node, numWords: Int)
 {
    lazy val sentencesShuffled:List[Node] = scala.util.Random.shuffle((document \\ "s").filter(textLength(_) > 10).toList)
    lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle((document \\ "p")
-     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 100) && averageWordLength(p) > 3).toList)
+     .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 300) && averageWordLength(p) > 3).toList)
 
-   def textLength(n: Node):Int = (n \\ "w" \\  "t").filter(nonModernized).size
+   Console.err.println(s"Paragraphs filtered: ${paragraphsShuffled.size}")
+
+   def textLength(n: Node):Int = (n \\ "w" \\  "t").count(nonModernized)
 
    def averageWordLength(n: Node):Double = {
      val words = (n \\ "w" \\  "t").filter(nonModernized).map(_.text)
