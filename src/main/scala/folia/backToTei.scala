@@ -12,7 +12,7 @@ object FoliaToRudimentaryTEI
   {
     val id = folia \ s"${xml}id"
     val sentences = (folia \\ "s").map(convertSentence)
-    <TEI xml:id={id}>
+    <TEI.2 xml:id={id}>
       <teiHeader>
       </teiHeader>
      <text>
@@ -24,7 +24,7 @@ object FoliaToRudimentaryTEI
         </div>
        </body>
     </text>
-    </TEI>
+    </TEI.2>
   } 
 
   def convertSentence(s: Node) = 
@@ -46,6 +46,8 @@ object FoliaToRudimentaryTEI
     val pos =  w \\ "pos" \ "@class"
     val lemmatags = w \\ "lemma"
 
+    val simplePos = pos.toString.replaceAll(",","_").replace("()","").replace("(","_").replace(")","").toUpperCase
+
     val lemmatag = lemmatags.find(t => (t \ "@set").toString == preferedLemmaSet)
       .getOrElse(lemmatags.find(t => (t \ "@set").toString == nextBestLemmaSet)
       .getOrElse(lemmatags.head))
@@ -59,9 +61,9 @@ object FoliaToRudimentaryTEI
     val cls = (w \ "@class").toString
 
     val teiw = if (cls !="PUNCTUATION")
-          <w xml:id={id} type={pos} lemma={lemma}>{content}</w>
+          <w xml:id={id} type={simplePos} lemma={lemma}>{content}</w>
        else
-          <pc xml:id={id} type={pos}>{content}</pc>
+          <pc xml:id={id} type={simplePos}>{content}</pc>
     
     val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
  

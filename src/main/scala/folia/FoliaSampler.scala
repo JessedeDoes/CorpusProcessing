@@ -20,6 +20,9 @@ Workflow:
 Sample
 Simplify tagset
 Convert back to TEI
+
+
+Voor een paar bestanden werkt sample per alinea niet (engelsman, ams)
  */
 
 case class FoliaSampler(document: Node, numWords: Int)
