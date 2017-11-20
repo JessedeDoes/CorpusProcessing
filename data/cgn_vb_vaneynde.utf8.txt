@@ -6,17 +6,19 @@
 [T106]	N(soort,ev,basis,dat)	ter plaatse, heden  ten dage  
 [T107]	N(soort,mv,basis)	stoelen, kinderen,  hersenen  
 [T108]	N(soort,mv,dim)	stoeltjes, huisjes, hersentjes  
-[T109]	N(eigen,ev,basis,zijd,stan)	de Noordzee, de  Kemmelberg  
-[T110]	N(eigen,ev,basis,onz,stan)	het Hageland, het  Nederlands  
-[T111]	N(eigen,ev,dim,onz,stan)	het slimme Kareltje  
-[T112]	N(eigen,ev,basis,gen)	des Heren, Hagelands trots  
-[T113]	N(eigen,ev,dim,gen)	Kareltjes fiets  
-[T114]	N(eigen,ev,basis,dat)	wat den Here toekomt  
-[T115]	N(eigen,mv,basis)	de Ardennen, de  Middeleeuwen  
-[T116]	N(eigen,mv,dim)	de Maatjes  
+
+# [T109]	N(eigen,ev,basis,zijd,stan)	de Noordzee, de  Kemmelberg  
+# [T110]	N(eigen,ev,basis,onz,stan)	het Hageland, het  Nederlands  
+# [T111]	N(eigen,ev,dim,onz,stan)	het slimme Kareltje  
+# [T112]	N(eigen,ev,basis,gen)	des Heren, Hagelands trots  
+# [T113]	N(eigen,ev,dim,gen)	Kareltjes fiets  
+# [T114]	N(eigen,ev,basis,dat)	wat den Here toekomt  
+# [T115]	N(eigen,mv,basis)	de Ardennen, de  Middeleeuwen  
+# [T116]	N(eigen,mv,dim)	de Maatjes  
 
 [U117]	N(soort,ev,basis,genus,stan)	een riool, geen filter  
-[U118]	N(eigen,ev,basis,genus,stan)	Linux, Esselte 
+
+#[U118]	N(eigen,ev,basis,genus,stan)	Linux, Esselte 
  
 [T201]	ADJ(prenom,basis,zonder)	een mooi huis, een ijzeren ketel  
 [T202]	ADJ(prenom,basis,met-e,stan)	mooie huizen  
@@ -325,7 +327,7 @@
 
 [R101]	N(soort,dial)	bompa*d
 [R102]	N(eigen,dial)	
-[R201]	ADJ(dial)	ne*d langen*d toot*d
+#[R201]	ADJ(dial)	ne*d langen*d toot*d
 
 [R301]	WW(dial)	’k zen*d nie*d thuis, ’k hem*d gee*d geld
 
@@ -336,7 +338,7 @@
 [R502]	VNW(refl,pron,dial)	
 [R503]	VNW(recip,pron,dial)	we zien malkanderen*d niet veel
 
-[R504]	VNW(bez,det,dial)	hij heeft z’ne*d frak*d vergeten
+# [R504]	VNW(bez,det,dial)	hij heeft z’ne*d frak*d vergeten
 
 [R505]	VNW(vrag,pron,dial)	
 [R506]	VNW(vrag,det,dial)	
@@ -345,11 +347,11 @@
 [R509]	VNW(excl,pron,dial)	
 [R510]	VNW(excl,det,dial)	
 [R511]	VNW(aanw,pron,dial)	
-[R512]	VNW(aanw,det,dial)	diejen*d boek, dees*d week
+# [R512]	VNW(aanw,det,dial)	diejen*d boek, dees*d week
 
 
 [R513]	VNW(onbep,pron,dial)	z’ hebben iet*d gezien 
-[R514]	VNW(onbep,det,dial)	ze kan elken*d dag vertrekken  
+# [R514]	VNW(onbep,det,dial)	ze kan elken*d dag vertrekken  
 [R601]	LID(bep,dial)	het gevecht met den*d beer  
 [R602]	LID(onbep,dial)	nen*d toffe gast, ne*d vieze vent  
 [R701]	VZ(init,dial)	

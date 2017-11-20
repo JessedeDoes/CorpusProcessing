@@ -23,9 +23,10 @@ cgnl:pos=SPEC ↔ cgn:pos=SPEC
 cgnl:pos=WW  ↔ cgn:pos=WW
 
 cgnl:feat.ntype=eigen ↔ cgn:feat.ntype=eigen
-cgnl:feat.ntype=soort ↔ cgn:feat.ntype=soort
+# cgnl:feat.ntype=soort ↔ cgn:feat.ntype=soort
 
 # spectype
+
 cgnl:feat.spectype=deeleigen ↔ cgn:feat.spectype=deeleigen
 cgnl:feat.spectype=vreemd ↔ cgn:feat.spectype=vreemd
 cgnl:feat.spectype=symb ↔ cgn:feat.spectype=symb
@@ -33,10 +34,14 @@ cgnl:feat.spectype=afk ↔ cgn:feat.spectype=afk
 cgnl:feat.spectype=afgebr ↔ cgn:feat.spectype=afgebr
 cgnl:feat.spectype=symb ↔ cgn:feat.spectype=symb
 
-cgnl:feat.positie=vrij ↔ cgn:feat.positie=vrij
-cgnl:feat.positie=nom ↔ cgn:feat.positie=nom
-cgnl:feat.positie=postnom ↔ cgn:feat.positie=postnom
-cgnl:feat.positie=prenom ↔ cgn:feat.positie=prenom
+vrij_is_mogelijk ↔ cgn:pos=ADJ ∨ cgn:pos=TW ∨ cgn:pos=WW ∨ cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=vrag ∨ cgn:feat.vwtype=onbep
+
+cgnl:feat.positie=vrij ↔ vrij_is_mogelijk ∧ (cgn:feat.positie=vrij ∨ (cgn:feat.positie=postnom ∧ cgn:pos=WW ∧ cgn:feat.wvorm=inf)  ∨ (cgn:feat.vwtype=vrag) ∨ (cgn:feat.positie=prenom ∧ cgn:pos=WW ∧ cgn:feat.wvorm=inf))
+
+cgnl:feat.positie=nom ↔ (cgn:feat.positie=nom ∨ cgn:feat.pdtype=pron) ∧ (cgn:pos=ADJ ∨ cgn:pos=TW ∨ cgn:pos=WW ∨ cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=vb ∨ cgn:feat.vwtype=bez ∨ cgn:feat.vwtype=onbep)
+cgnl:feat.positie=postnom ↔ cgn:feat.positie=postnom ∧ ¬cgn:feat.wvorm=inf
+cgnl:feat.positie=prenom ↔ cgn:feat.positie=prenom ∧ ¬cgn:feat.wvorm=inf
+
 
 # vz types
 cgnl:feat.vztype=versm  ↔ cgn:feat.vztype=versm
@@ -63,8 +68,9 @@ cgnl:feat.numtype=rang ↔ cgn:feat.numtype=rang
 
 # voornaamwoordengedoe....
 
-cgnl:feat.pdtype=pron ↔ cgn:pos=VNW ∧ cgn:feat.pdtype=pron ∧ (cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=onbep ∨  cgn:feat.vwtype=vb)
-cgnl:feat.pdtype=det ↔ cgn:pos=VNW ∧ cgn:feat.pdtype=det ∧ (cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=onbep ∨  cgn:feat.vwtype=vb)
+#cgnl:feat.pdtype=pron ↔ cgn:pos=VNW ∧ (cgn:feat.pdtype=pron ∨ (cgn:feat.pdtype=det ∧ cgn:feat.positie=nom)) ∧ (cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=onbep ∨  cgn:feat.vwtype=vb)
+#cgnl:feat.pdtype=det ↔ cgn:pos=VNW ∧ (cgn:feat.pdtype=det ∧ ¬cgn:feat.positie=nom) ∧ (cgn:feat.vwtype=aanw ∨  cgn:feat.vwtype=onbep ∨  cgn:feat.vwtype=vb)
+
 cgnl:feat.pdtype=adv-pron ↔ cgn:pos=VNW ∧ cgn:feat.pdtype=adv-pron
 
 cgnl:feat.vwtype=bez ↔ cgn:pos=VNW ∧ cgn:feat.vwtype=bez
@@ -74,7 +80,7 @@ cgnl:feat.vwtype=excl ↔  cgn:feat.vwtype=excl
 cgnl:feat.vwtype=onbep ↔  cgn:feat.vwtype=onbep
 cgnl:feat.vwtype=vb ↔ cgn:feat.vwtype=vb ∨ cgn:feat.vwtype=vrag
 cgnl:feat.vwtype=pers ↔ cgn:feat.vwtype=pers
-cgnl:feat.vwtype=pers ↔ cgn:feat.vwtype=recip
+cgnl:feat.vwtype=recip ↔ cgn:feat.vwtype=recip
 cgnl:feat.vwtype=betr ↔ cgn:feat.vwtype=betr
 
 # we houden conjtype
@@ -82,3 +88,11 @@ cgnl:feat.vwtype=betr ↔ cgn:feat.vwtype=betr
 cgnl:feat.conjtype=neven  ↔ cgn:feat.conjtype=neven
 cgnl:feat.conjtype=onder  ↔ cgn:feat.conjtype=onder
 
+# weer wat lelijkheden
+
+¬(cgn:feat.wvorm=inf ∧ cgn:pos=ADJ)
+¬(cgn:feat.wvorm=inf ∧ cgn:pos=VNW)
+¬(cgn:feat.wvorm=inf ∧ cgn:pos=TW)
+¬(cgn:feat.wvorm=inf ∧ cgn:feat.wvorm=vd)
+¬(cgn:feat.wvorm=inf ∧ cgn:feat.wvorm=od)
+#¬(cgn:feat.positie=prenom ∧ cgn:feat.positie=nom)

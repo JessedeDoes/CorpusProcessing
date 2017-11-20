@@ -124,7 +124,27 @@ object CGNPoSTagging
     p.close()
   }
 
+  def compacterOverzichtje =
+  {
+    val x = tagsWithExamples.groupBy(_.liteTag)
+    val html =
+      <html>
+        <body>
+            {x.keySet.toList.sorted.map(t => { val l = x(t)
+             <div>
+            <h3>{simplePoS(t)}</h3>
+               <p style="font-style: italic">{l.map(te => te.example).mkString(", ")}</p>
+             </div>
+          })}
+        </body>
+      </html>
+    val p = new FileWriter("data/compact_overzicht.html")
+    p.write(html.toString)
+    p.close()
+  }
+
   lazy val tagsWithExamples = scala.io.Source.fromFile("data/cgn_vb_vaneynde.utf8.txt").getLines()
+    .map(l => l.replaceAll("#.*",""))
     .filter(l => !(l.trim.isEmpty))
     .map(l => l.split("\\t").toList)
     .filter(_.size >=3)
@@ -165,7 +185,7 @@ object CGNPoSTagging
     println(s"$t\t$p\t$p1")
   })
 
-  def main(args: Array[String]):Unit = printEenLeukOverzichtje
+  def main(args: Array[String]):Unit = { printEenLeukOverzichtje; compacterOverzichtje}
   //Console.err.println("peek!!")
 }
 
@@ -206,12 +226,12 @@ object CGNLite
     "ADJ"  -> List("positie", "graad"),
     "WW"   -> List("wvorm",  "positie"),
     "NUM"  -> List("numtype", "positie"),
-    "VNW"  -> List("vwtype", "pdtype",  "positie"),
+    "VNW"  -> List("vwtype", "pdtype",  "positie", "graad"),
     "VZ"   -> List("vztype"),
     "VG"   -> List("conjtype"),
     "BW"   -> List(),
     "TSW"  -> List(),
-    "TW"  -> List("numtype", "graad", "positie"),
+    "TW"  -> List("numtype", "positie", "graad"),
     "LET"  -> List(),
     "SPEC" -> List("spectype")
   ).toMap
