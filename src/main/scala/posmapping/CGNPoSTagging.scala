@@ -106,6 +106,9 @@ object CGNPoSTagging
     Console.err.println(x.keySet.size)
     val html =
       <html>
+        <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+        </head>
       <body>
         <table>
         {x.keySet.toList.sorted.map(t => { val l = x(t)
@@ -129,6 +132,9 @@ object CGNPoSTagging
     val x = tagsWithExamples.groupBy(_.liteTag)
     val html =
       <html>
+        <head>
+        <meta http-equiv="content-type" content="text/html; charset=utf-8"></meta>
+        </head>
         <body>
             {x.keySet.toList.sorted.map(t => { val l = x(t)
              <div>
