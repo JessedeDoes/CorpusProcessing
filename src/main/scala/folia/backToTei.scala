@@ -4,6 +4,8 @@ import scala.xml._
 import java.io._
 import java.util.zip._
 
+import posmapping.CGNPoSTagging
+
 object FoliaToRudimentaryTEI
 {
   val xml = "@{http://www.w3.org/XML/1998/namespace}"
@@ -40,13 +42,14 @@ object FoliaToRudimentaryTEI
   val preferedLemmaSet = "http://ilk.uvt.nl/folia/sets/frog-mblem-nl"
   val nextBestLemmaSet = "https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/int_lemmatext_withcompounds.foliaset.ttl"
 
+
+
   def convertWord(w: Node) =
   {
     val content = (w \\ "t").filter(nonModernized).text
-    val pos =  w \\ "pos" \ "@class"
+    val pos =  (w \\ "pos" \ "@class").toString()
     val lemmatags = w \\ "lemma"
 
-    val simplePos = pos.toString.replaceAll(",","_").replace("()","").replace("(","_").replace(")","").toUpperCase
 
     val lemmatag = lemmatags.find(t => (t \ "@set").toString == preferedLemmaSet)
       .getOrElse(lemmatags.find(t => (t \ "@set").toString == nextBestLemmaSet)
@@ -61,9 +64,9 @@ object FoliaToRudimentaryTEI
     val cls = (w \ "@class").toString
 
     val teiw = if (cls !="PUNCTUATION")
-          <w xml:id={id} type={simplePos} lemma={lemma}>{content}</w>
+          <w xml:id={id} type={CGNPoSTagging.simplePoS(pos)} lemma={lemma}>{content}</w>
        else
-          <pc xml:id={id} type={simplePos}>{content}</pc>
+          <pc xml:id={id} type={CGNPoSTagging.simplePoS(pos)}>{content}</pc>
     
     val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
  

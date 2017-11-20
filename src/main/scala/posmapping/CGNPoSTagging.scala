@@ -96,6 +96,10 @@ object CGNPoSTagging
     lazy val udTag = toUD(t).toString
   }
 
+  def simplePoS(pos: String):String = pos.toString.replaceAll(",","_")
+    .replace("()","").replace("(","_").replace(")","").toUpperCase
+    .replace("ADV-PRON","ADV").replace("N_SOORT","N")
+
   def printEenLeukOverzichtje =
   {
     val x = tagsWithExamples.groupBy(_.liteTag)
@@ -105,7 +109,7 @@ object CGNPoSTagging
       <body>
         <table>
         {x.keySet.toList.sorted.map(t => { val l = x(t)
-          <tr valign="top"><td colspan="3" style="margin-top:4em; font-size:18pt"><b>{t}</b></td></tr> ++
+          <tr valign="top"><td colspan="3" style="margin-top:4em; font-size:18pt"><b>{simplePoS(t)}</b></td></tr> ++
           l.map(te => <tr valign="top">
             <td style="margin-left:2em; font-size:8pt">{te.id}</td>
             <td style="font-size:8pt; margin: 0pt">{te.tag}</td>
