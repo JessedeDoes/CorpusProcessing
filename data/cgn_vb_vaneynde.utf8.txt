@@ -317,19 +317,20 @@
 [T901]	BW()	gisteren, nu, niet, nog, al, hoe
 [T001]	TSW()	oei, amai, uh, hoera
 
-[T002]	SPEC(afgebr)	uitge*a, binnen
+[T002]	SPEC(afgebr)	uitge*a, binnen-, appel- en perenstroop
 [T003]	SPEC(onverst)	ggg, xxx, Xxx
 [T004]	SPEC(vreemd)	whatever*v, ad, hoc, wishful
-[T005]	SPEC(deeleigen)	Den, Haag, New,York
+[T005]	SPEC(deeleigen)	Den, Haag, New, York
 [T006]	SPEC(meta)	(het woord) homosexueel
-
+[T010]	SPEC(afk)	d.w.z., dwz, enz., EHBO
+[T011]	SPEC(symb)	@, %, NaCl, =, emoticons
 [T007]	LET()	., ..., ?
 
 [R101]	N(soort,dial)	bompa*d
 [R102]	N(eigen,dial)	
 #[R201]	ADJ(dial)	ne*d langen*d toot*d
 
-[R301]	WW(dial)	’k zen*d nie*d thuis, ’k hem*d gee*d geld
+#[R301]	WW(dial)	’k zen*d nie*d thuis, ’k hem*d gee*d geld
 
 [R401]	TW(hoofd,dial)	
 [R402]	TW(rang,dial)	den*d elfste*d
