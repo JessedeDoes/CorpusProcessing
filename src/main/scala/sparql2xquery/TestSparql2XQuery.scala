@@ -102,7 +102,23 @@ object TestSparql2XQuery {
         |}
          |
       """.stripMargin
-    val x:XQueryNode = t.translate(q5)
+
+    val q7 =
+      s"""
+         |prefix : <http://example.org/>
+         |prefix ud: <${Mappings.udPrefix}>
+         |SELECT ?adj ?noun
+         |WHERE {
+         |
+         |     ?somenounnode ud:nmod ?someadjnode .
+         |     ?somenounnode :text ?noun .
+         |     ?someadjnode :text ?adj .
+         |     ?someadjnode ud:inflection ?b .
+         |     values ?b {"zonder"}
+        |}
+         |
+      """.stripMargin
+    val x:XQueryNode = t.translate(q7)
     println(x)
     println(x.toQuery())
     val bx = basex.BaseXConnection.default()

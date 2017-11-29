@@ -110,7 +110,18 @@ object Mappings
         "object←$subject/../node[@rel='vc' and ./node[(@cat='ssub' or @cat='whsub') and not(./node[@rel='su'])]]"
       ),
         Set("subject", "object")
-      )
+      ),
+    udPrefix + "nmod" -> BasicPattern(Set(
+      "subject←//node[@rel='hd' and @pos='noun' and parent::node[@cat='np']]",
+      "object←$subject/../node[@rel='mod' and @pos='adj']"
+    ),
+      Set("subject", "object")
+    ),
+    udPrefix + "inflection" -> BasicPattern(Set(
+      "object←$subject/@buiging"
+    ),
+      Set("subject", "object")
+    )
   )
 
   val lassyRelNames = List("top", "su", "det", "hd", "vc", "obj1", "ld", "mod", "predc",
