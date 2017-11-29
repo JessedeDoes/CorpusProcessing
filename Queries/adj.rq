@@ -21,22 +21,22 @@ PREFIX wn: <http://wordnet-rdf.princeton.edu/ontology#>
 
 PREFIX diamant:      <http://rdf.ivdnt.org/schema/diamant#>
 
-SELECT distinct  ?adj ?noun
+SELECT distinct  ?adj  ?noun
 WHERE {
-#  SERVICE lassyklein:
-#  {
-#     ?somenounnode ud:nmod ?someadjnode .
-#     ?somenounnode :text ?noun .
-#     ?someadjnode :text ?adj .
-#     ?someadjnode ud:inflection ?b .
-#     values ?b {"zonder"}
-#  } .
-  graph molex:
+  SERVICE lassyklein:
   {
-    ?ae ontolex:canonicalForm ?acf .
-    ?acf ontolex:writtenRep ?adj .
-    ?ae ontolex:lexicalForm ?alf .
-    ?alf wn:part_of_speech ?p .
+     ?somenounnode ud:nmod ?someadjnode .
+     ?somenounnode :text ?noun .
+     ?someadjnode :text ?adj .
+     ?someadjnode ud:inflection ?b .
+     values ?b {"zonder"}
+  } .
+#  graph molex:
+#  {
+#    ?ae ontolex:canonicalForm ?acf .
+#    ?acf ontolex:writtenRep ?adj .
+#    ?ae ontolex:lexicalForm ?alf .
+#    ?alf wn:part_of_speech ?p .
 #    FILTER regex(?p, "infl-e") 
-  } limit 10
-}
+#  }
+} limit 10

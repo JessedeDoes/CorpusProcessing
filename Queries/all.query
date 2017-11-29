@@ -1,0 +1,11 @@
+PREFIX diamant:      <http://www.ivdnt.org/diamant#>
+PREFIX lemon:  <http://lemon-model.net/lemon#>
+PREFIX molex:  <http://rdf.ivdnt.org/lexica/molex/v1.0/>
+
+SELECT  ?s ?p ?o  where
+{
+graph ?g
+{ 
+   ?s ?p ?o 
+}
+}
