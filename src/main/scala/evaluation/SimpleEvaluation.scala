@@ -35,41 +35,46 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
+  val mappings = Map("NP" -> "SPEC_DEELEIGEN")
+
+  val map: String=> String = s => if (mappings.contains(s)) mappings(s) else s
+
   lazy val guessMap:Map[String,Node] = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
 
-  val flatten: String => String =  p =>  p.replaceAll("_.*", "")
+  val flatten: String => String =  p => p.replaceAll("_.*", "")
 
   def pos(w: Node):String = (w \ "@type").toString
   def ctag(w: Node):String = (w \ "@ctag").toString
 
   def getWord(w: Node):String  = w.text
 
-  def toMap(e: Elem,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String]  =
+  def toMap(e: Elem,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
-  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString)
+  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || ctag(n).contains("|")
 
-  private lazy val truePoSMap = toMap(truthDoc, ctag, !isMulti(_))
+  private lazy val truePoSMap = toMap(truthDoc, n => map(ctag(n)), !isMulti(_))
 
   private lazy val guessPosMap = toMap(guessDoc, pos)
 
-  private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(ctag), !isMulti(_))
+  private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(map.compose(ctag)), !isMulti(_))
   private lazy val guessFlatPosMap = toMap(guessDoc, flatten.compose(pos))
 
   def compare = (truthDoc \\ "w").foreach(
     w => {
       val id = getId(w).get
+      val multi = if (isMulti(w)) "M" else "S"
       val word = getWord(w)
-      val tPos = ctag(w)
+      val tPos = map(ctag(w))
       val gPos = pos(guessMap(id))
       val OK = tPos == gPos
-      val flatOK =  flatten(tPos) == flatten(gPos)
-      println(s"$word\t$tPos\t$gPos\t$flatOK\t$OK")
+      val flatOK = flatten(tPos) == flatten(gPos)
+      println(s"$word\t$multi\t$tPos\t$gPos\t$flatOK\t$OK")
     }
   )
 
-  lazy val posEval:SimpleEvaluation[String,String] = SimpleEvaluation(truePoSMap, guessPosMap)
-  lazy val flatEval:SimpleEvaluation[String,String] = SimpleEvaluation(trueFlatPoSMap, guessFlatPosMap)
+  lazy val posEval:SimpleEvaluation[String, String] = SimpleEvaluation(truePoSMap, guessPosMap)
+  lazy val flatEval:SimpleEvaluation[String, String] = SimpleEvaluation(trueFlatPoSMap, guessFlatPosMap)
 
   lazy val posAccuracy:Double = posEval.accuracy
   lazy val flatAccuracy:Double = flatEval.accuracy
