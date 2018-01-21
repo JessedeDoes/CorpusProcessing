@@ -13,32 +13,56 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
   lazy val confusion:Map[Item[T],Int]  = truth.map({case (k,v) => Item(truth(k), guess(k))} ).groupBy(identity).mapValues(l => l.size)
 
+  def trueCount(c: T) = truth.values.count(_ == c)
+  def guessCount(c: T) = guess.values.count(_ == c)
+  def truePositiveCount(c: T) = truth.keySet.filter(k => truth(k) == c && guess(k) == c).size
+
   def count(a: T, b: T):Int = {
     confusion.get(Item(a, b)) match {
       case Some(i) => i;
       case _ => 0
     }}
 
+  def precision(c: T):Double = {
+    val positives = truth.keySet.filter(k => guess(k) == c)
+    val truePositives = positives.filter(k => truth(k) == c)
+    truePositives.size / positives.size.asInstanceOf[Double]
+  }
+
+  def recall(c: T):Double =
+  {
+    val truePositives = truth.keySet.filter(k => truth(k) == c)
+    val positives = truePositives.filter(k => guess(k) == c)
+    positives.size / truePositives.size.asInstanceOf[Double]
+  }
+
+  def f1(c: T):Double = { val p = precision(c);  val r = recall(c); 2 * p * r / (p + r) }
+
+  lazy val labels:List[T] = confusion.keySet.flatMap(_.both).toList.filter(c => !(c.toString.trim== ""))
+
+  def rowCounts(i: Int):List[Int] = labels.map(s => count(labels(i), s))
+
   def confusionMatrix(): String =
   {
-    val labels:List[T] = confusion.keySet.flatMap(_.both).toSet.toList
-    def rowCounts(i: Int) = labels.map(s => count(labels(i), s))
-
     val row = (i: Int) => f"${labels(i)}%7s\t" + rowCounts(i).map(j => f"$j%7d").mkString("\t")
     val header = f"${" "}%7s\t" + labels.map(s => f"$s%7s").mkString("\t")
     (header  +: labels.indices.map(row)).mkString("\n")
   }
+
+  def prList():String = labels.map(l => s"$l (${trueCount(l)} ${guessCount(l)} ${truePositiveCount(l)}) -> p:${precision(l)} r:${recall(l)} f1:${f1(l)}").mkString("\n")
 }
 
-// warrig. beter eerste filyet
+
+
 case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  val mappings = Map("NP" -> "SPEC_DEELEIGEN")
+  val mappings = Map("NP" -> "SPEC_DEELEIGEN", "PV" -> "WW_PV")
 
-  val map: String=> String = s => if (mappings.contains(s)) mappings(s) else s
+  val map: String=> String = s0 =>
+    { val s = s0.replace("VW", "VG").replaceAll("^PV", "WW_PV"); if (mappings.contains(s)) mappings(s) else s }
 
   lazy val guessMap:Map[String,Node] = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
 
@@ -109,5 +133,6 @@ object NederlabEval
     e.printTokens
     println(e.report)
     println(e.flatEvalFiltered.confusionMatrix)
+    println(e.flatEvalFiltered.prList())
   }
 }
