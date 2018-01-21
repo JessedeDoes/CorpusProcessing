@@ -75,8 +75,8 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
 
   val flattenPoS: String => String = p => p.replaceAll("_.*", "")
 
-  def pos(w: Node):String = (w \ "@type").toString
-  def ctag(w: Node):String = (w \ "@ctag").toString // cobalts export puts PoS in ctag and possibly multiw in type
+  def getPoS(w: Node):String = (w \ "@type").toString
+  def getPoSFromCtag(w: Node):String = (w \ "@ctag").toString // cobalts export puts PoS in ctag and possibly multiw in type
   def lemma(w: Node):String = (w \ "@lemma").toString
 
   def getWord(w: Node):String  = w.text
@@ -84,7 +84,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
   def toMap(e: NodeSeq,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
-  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || ctag(n).contains("|")
+  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|")
 
   def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
   {
@@ -100,8 +100,8 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
       val word = getWord(w)
       val tLem = lemma(w)
       val gLem = lemma(guessMap(id))
-      val tPos = map(ctag(w))
-      val gPos = if (guessMap.contains(id)) pos(guessMap(id)) else "MISSING"
+      val tPos = map(getPoSFromCtag(w))
+      val gPos = if (guessMap.contains(id)) getPoS(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
       val flatOK = flattenPoS(tPos) == flattenPoS(gPos)
       println(s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK")
@@ -109,12 +109,12 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
   )
 
   lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, !isMulti(_))
-  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(ctag), pos, !isMulti(_))
-  lazy val flatEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(flattenPoS.compose(map.compose(ctag)), flattenPoS.compose(pos), !isMulti(_))
+  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, !isMulti(_))
+  lazy val flatEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), !isMulti(_))
 
   lazy val lemEvalUnfiltered = getEvaluation(lemma, lemma)
-  lazy val posEvalUnfiltered = getEvaluation(map.compose(ctag), pos)
-  lazy val flatEvalUnfiltered = getEvaluation(flattenPoS.compose(map.compose(ctag)), flattenPoS.compose(pos))
+  lazy val posEvalUnfiltered = getEvaluation(map.compose(getPoSFromCtag), getPoS)
+  lazy val flatEvalUnfiltered = getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS))
 
   lazy val posAccuracyFiltered:Double = posEvalFiltered.accuracy
   lazy val flatAccuracyFiltered:Double = flatEvalFiltered.accuracy
@@ -126,8 +126,9 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
 
   lazy val report =
     s"""
-       Met multiwords: PoS: Flat: ${flatAccuracyUnFiltered} Full: ${posAccuracyUnFiltered}; Lemma: ${lemAccuracyUnFiltered}
-       Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltered}; Lemma: ${lemAccuracyFiltered}
+#### Tokens: ${(truthDoc \\ "w").size}, multiwords:  ${(truthDoc \\ "w").filter(isMulti).size}
+Met multiwords: PoS: Flat: ${flatAccuracyUnFiltered} Full: ${posAccuracyUnFiltered}; Lemma: ${lemAccuracyUnFiltered}
+Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltered}; Lemma: ${lemAccuracyFiltered}
      """
 }
 
