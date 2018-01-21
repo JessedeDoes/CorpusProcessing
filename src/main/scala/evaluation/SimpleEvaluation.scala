@@ -61,12 +61,12 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
 
 
-case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
+case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
 {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  val mappings = Map("NP" -> "SPEC_DEELEIGEN", "PV" -> "WW_PV")
+  val mappings = Map("NP" -> "SPEC_DEELEIGEN", "PV" -> "WW_PV", "AJ" -> "ADJ")
 
   val map: String=> String = s0 =>
     { val s = s0.replace("VW", "VG").replaceAll("^PV", "WW_PV"); if (mappings.contains(s)) mappings(s) else s }
@@ -81,7 +81,7 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 
   def getWord(w: Node):String  = w.text
 
-  def toMap(e: Elem,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
+  def toMap(e: NodeSeq,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
   def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || ctag(n).contains("|")
@@ -134,14 +134,25 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 object NederlabEval
 {
   // truth is arg 0
+  def addElems(a: Seq[Node], b: Elem):Seq[Node]  = a ++ Seq(b)
+
   def main(args: Array[String]):Unit =
   {
-    val e = evaluationFromTEI(XML.load(args(0)), XML.load(args(1)))
+    val e = if (args.size > 1) evaluationFromTEI(XML.load(args(0)), XML.load(args(1))) else
+    {
+      val pairs = scala.io.Source.fromFile(args(0)).getLines.map(l => l.split("\\s+")).filter(r => r.size == 2).toList
+      val truth:NodeSeq = pairs.map(r => XML.load(r(0))).foldLeft(Seq.empty[Node])(addElems)
+      val guess:NodeSeq = pairs.map(r => XML.load(r(1))).foldLeft(Seq.empty[Node])(addElems)
+      evaluationFromTEI(truth,guess)
+    }
     e.printTokens
     println(e.report)
     println(e.flatEvalFiltered.confusionMatrix)
+    println("* precisie, recall, f1 voor hoofdwoordsoort *")
     println(e.flatEvalFiltered.prList())
-    println(e.flatEvalFiltered.confusionsByFrequency().take(5).mkString("\n"))
-    println(e.lemEvalFiltered.confusionsByFrequency().take(20).mkString("\n"))
+    println("* top verwarringen voor hoofdwoordsoort *")
+    println(e.flatEvalFiltered.confusionsByFrequency().take(10).mkString("\n"))
+    println("* top verwarringen voor lemma *")
+    println(e.lemEvalFiltered.confusionsByFrequency().take(50).mkString("\n"))
   }
 }
