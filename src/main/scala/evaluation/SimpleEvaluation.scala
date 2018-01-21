@@ -35,25 +35,25 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  lazy val guessMap = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
+  lazy val guessMap:Map[String,Node] = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
 
-  val flatten: String=>String =  p =>  p.replaceAll("_.*", "")
+  val flatten: String => String =  p =>  p.replaceAll("_.*", "")
 
   def pos(w: Node):String = (w \ "@type").toString
   def ctag(w: Node):String = (w \ "@ctag").toString
 
-  def getWord(w: Node)  = w.text
+  def getWord(w: Node):String  = w.text
 
-  def toMap(e: Elem, f: Node => String)  = (e \\ "w").map(w => getId(w).get -> f(w)).toMap
+  def toMap(e: Elem,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String]  =
+    (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
-  def toPosMap(e: Elem):Map[String,String] = (e \\ "w").map(w => getId(w).get ->  (w \ "@type").text).toMap
-  def toLemMap(e: Elem):Map[String,String] = (e \\ "w").map(w => getId(w).get ->  (w \ "@lemma").text).toMap
+  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString)
 
-  private lazy val truePoSMap = toMap(truthDoc, ctag)
+  private lazy val truePoSMap = toMap(truthDoc, ctag, !isMulti(_))
+
   private lazy val guessPosMap = toMap(guessDoc, pos)
 
-
-  private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(ctag))
+  private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(ctag), !isMulti(_))
   private lazy val guessFlatPosMap = toMap(guessDoc, flatten.compose(pos))
 
   def compare = (truthDoc \\ "w").foreach(
@@ -70,6 +70,7 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 
   lazy val posEval:SimpleEvaluation[String,String] = SimpleEvaluation(truePoSMap, guessPosMap)
   lazy val flatEval:SimpleEvaluation[String,String] = SimpleEvaluation(trueFlatPoSMap, guessFlatPosMap)
+
   lazy val posAccuracy:Double = posEval.accuracy
   lazy val flatAccuracy:Double = flatEval.accuracy
 }
