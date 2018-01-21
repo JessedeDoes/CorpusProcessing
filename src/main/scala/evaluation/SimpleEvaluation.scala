@@ -49,7 +49,14 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
     (header  +: labels.indices.map(row)).mkString("\n")
   }
 
-  def prList():String = labels.map(l => s"$l (${trueCount(l)} ${guessCount(l)} ${truePositiveCount(l)}) -> p:${precision(l)} r:${recall(l)} f1:${f1(l)}").mkString("\n")
+  def prList():String =
+    labels.map(l => s"$l (${trueCount(l)} ${guessCount(l)} ${truePositiveCount(l)}) -> p:${precision(l)} r:${recall(l)} f1:${f1(l)}")
+      .mkString("\n")
+
+  def confusionsByFrequency():List[String] = confusion.toList
+    .filter({ case (Item(t,g), k) => t != g})
+    .sortBy({ case (_, k) => -1 * k})
+    .map({ case (Item(t,g), k) => s"$t->$g: $k"})
 }
 
 
@@ -134,5 +141,7 @@ object NederlabEval
     println(e.report)
     println(e.flatEvalFiltered.confusionMatrix)
     println(e.flatEvalFiltered.prList())
+    println(e.flatEvalFiltered.confusionsByFrequency().take(5).mkString("\n"))
+    println(e.lemEvalFiltered.confusionsByFrequency().take(20).mkString("\n"))
   }
 }
