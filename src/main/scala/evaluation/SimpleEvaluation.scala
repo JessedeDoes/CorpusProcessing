@@ -30,6 +30,7 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
   }
 }
 
+// warrig. beter eerste filyet
 case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
@@ -66,7 +67,7 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
       val multi = if (isMulti(w)) "M" else "S"
       val word = getWord(w)
       val tPos = map(ctag(w))
-      val gPos = pos(guessMap(id))
+      val gPos = if (guessMap.contains(id)) pos(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
       val flatOK = flatten(tPos) == flatten(gPos)
       println(s"$word\t$multi\t$tPos\t$gPos\t$flatOK\t$OK")

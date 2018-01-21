@@ -19,15 +19,22 @@ object PrepareSample {
   def simplify(n:Node):Option[Node] = Some(FoliaMapPosTags(CGNTagset.fromString, CGNPoSTagging.toLite).updatePoS(n.asInstanceOf[Elem]))
   def toTEI(n:Node):Option[Node] = Some(FoliaToRudimentaryTEI.convert(n))
 
-  def prepareSample(doc: Node):Option[Node] =
+  def sampleFromExample(n: Node, f: String):Option[Node] =
   {
-    Chain(List(sample, simplify, toTEI)).run(doc)
+    val reference = XML.load(f)
+    val idz = (reference \\ "w").map(floep.getId).toSet
+    FoliaSampler(n, 5000, idz).sample()
+  }
+
+  def prepareSample(doc: Node, f: Option[String] = None):Option[Node] =
+  {
+    Chain(List(if (f.isDefined) x => sampleFromExample(x,f.get) else sample, simplify, toTEI)).run(doc)
   }
 
   def main(args: Array[String]) =
   {
     val folia = XML.load(new GZIPInputStream(new FileInputStream(args(0))))
-    val sample = prepareSample(folia)
+    val sample = prepareSample(folia, if (args.size > 1) Some(args(1)) else None)
     if (sample.isDefined) println(sample.get)
   }
 }
