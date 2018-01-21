@@ -45,7 +45,8 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
   val flatten: String => String =  p => p.replaceAll("_.*", "")
 
   def pos(w: Node):String = (w \ "@type").toString
-  def ctag(w: Node):String = (w \ "@ctag").toString
+  def ctag(w: Node):String = (w \ "@ctag").toString // cobalts export puts PoS in ctag and possibly multiw in type
+  def lemma(w: Node):String = (w \ "@lemma").toString
 
   def getWord(w: Node):String  = w.text
 
@@ -60,25 +61,31 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 
   private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(map.compose(ctag)), !isMulti(_))
   private lazy val guessFlatPosMap = toMap(guessDoc, flatten.compose(pos))
+  private lazy val trueLemmaMap = toMap(truthDoc, lemma, !isMulti(_))
+  private lazy val guessLemmaMap = toMap(guessDoc, lemma, !isMulti(_))
 
-  def compare = (truthDoc \\ "w").foreach(
+  def printTokens = (truthDoc \\ "w").foreach(
     w => {
       val id = getId(w).get
       val multi = if (isMulti(w)) "M" else "S"
       val word = getWord(w)
+      val tLem = lemma(w)
+      val gLem = lemma(guessMap(id))
       val tPos = map(ctag(w))
       val gPos = if (guessMap.contains(id)) pos(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
       val flatOK = flatten(tPos) == flatten(gPos)
-      println(s"$word\t$multi\t$tPos\t$gPos\t$flatOK\t$OK")
+      println(s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK")
     }
   )
 
+  lazy val lemEval:SimpleEvaluation[String, String] = SimpleEvaluation(trueLemmaMap, guessLemmaMap)
   lazy val posEval:SimpleEvaluation[String, String] = SimpleEvaluation(truePoSMap, guessPosMap)
   lazy val flatEval:SimpleEvaluation[String, String] = SimpleEvaluation(trueFlatPoSMap, guessFlatPosMap)
 
   lazy val posAccuracy:Double = posEval.accuracy
   lazy val flatAccuracy:Double = flatEval.accuracy
+  lazy val lemAccuracy:Double = lemEval.accuracy
 }
 
 object NederlabEval
@@ -87,8 +94,8 @@ object NederlabEval
   def main(args: Array[String]):Unit =
   {
     val e = evaluationFromTEI(XML.load(args(0)), XML.load(args(1)))
-    e.compare
-    println(s"Flat: ${e.flatAccuracy} Full: ${e.posAccuracy}")
+    e.printTokens
+    println(s"PoS: Flat: ${e.flatAccuracy} Full: ${e.posAccuracy}; Lemma: ${e.lemAccuracy}")
     println(e.flatEval.confusionMatrix)
   }
 }
