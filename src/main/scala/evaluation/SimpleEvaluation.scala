@@ -42,7 +42,7 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 
   lazy val guessMap:Map[String,Node] = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
 
-  val flatten: String => String =  p => p.replaceAll("_.*", "")
+  val flattenPoS: String => String = p => p.replaceAll("_.*", "")
 
   def pos(w: Node):String = (w \ "@type").toString
   def ctag(w: Node):String = (w \ "@ctag").toString // cobalts export puts PoS in ctag and possibly multiw in type
@@ -55,14 +55,12 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
 
   def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || ctag(n).contains("|")
 
-  private lazy val truePoSMap = toMap(truthDoc, n => map(ctag(n)), !isMulti(_))
-
-  private lazy val guessPosMap = toMap(guessDoc, pos)
-
-  private lazy val trueFlatPoSMap = toMap(truthDoc, flatten.compose(map.compose(ctag)), !isMulti(_))
-  private lazy val guessFlatPosMap = toMap(guessDoc, flatten.compose(pos))
-  private lazy val trueLemmaMap = toMap(truthDoc, lemma, !isMulti(_))
-  private lazy val guessLemmaMap = toMap(guessDoc, lemma, !isMulti(_))
+  def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
+  {
+    val truthMap = toMap(truthDoc, truthFeature, truthFilter)
+    val guessMap = toMap(guessDoc, guessFeature)
+    SimpleEvaluation(truthMap, guessMap)
+  }
 
   def printTokens = (truthDoc \\ "w").foreach(
     w => {
@@ -74,18 +72,32 @@ case class evaluationFromTEI(truthDoc: Elem, guessDoc: Elem)
       val tPos = map(ctag(w))
       val gPos = if (guessMap.contains(id)) pos(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
-      val flatOK = flatten(tPos) == flatten(gPos)
+      val flatOK = flattenPoS(tPos) == flattenPoS(gPos)
       println(s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK")
     }
   )
 
-  lazy val lemEval:SimpleEvaluation[String, String] = SimpleEvaluation(trueLemmaMap, guessLemmaMap)
-  lazy val posEval:SimpleEvaluation[String, String] = SimpleEvaluation(truePoSMap, guessPosMap)
-  lazy val flatEval:SimpleEvaluation[String, String] = SimpleEvaluation(trueFlatPoSMap, guessFlatPosMap)
+  lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, !isMulti(_))
+  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(ctag), pos, !isMulti(_))
+  lazy val flatEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(flattenPoS.compose(map.compose(ctag)), flattenPoS.compose(pos), !isMulti(_))
 
-  lazy val posAccuracy:Double = posEval.accuracy
-  lazy val flatAccuracy:Double = flatEval.accuracy
-  lazy val lemAccuracy:Double = lemEval.accuracy
+  lazy val lemEvalUnfiltered = getEvaluation(lemma, lemma)
+  lazy val posEvalUnfiltered = getEvaluation(map.compose(ctag), pos)
+  lazy val flatEvalUnfiltered = getEvaluation(flattenPoS.compose(map.compose(ctag)), flattenPoS.compose(pos))
+
+  lazy val posAccuracyFiltered:Double = posEvalFiltered.accuracy
+  lazy val flatAccuracyFiltered:Double = flatEvalFiltered.accuracy
+  lazy val lemAccuracyFiltered:Double = lemEvalFiltered.accuracy
+
+  lazy val posAccuracyUnFiltered:Double = posEvalUnfiltered.accuracy
+  lazy val flatAccuracyUnFiltered:Double = flatEvalUnfiltered.accuracy
+  lazy val lemAccuracyUnFiltered:Double = lemEvalUnfiltered.accuracy
+
+  lazy val report =
+    s"""
+       Met multiwords: PoS: Flat: ${flatAccuracyUnFiltered} Full: ${posAccuracyUnFiltered}; Lemma: ${lemAccuracyUnFiltered}
+       Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltered}; Lemma: ${lemAccuracyFiltered}
+     """
 }
 
 object NederlabEval
@@ -95,7 +107,7 @@ object NederlabEval
   {
     val e = evaluationFromTEI(XML.load(args(0)), XML.load(args(1)))
     e.printTokens
-    println(s"PoS: Flat: ${e.flatAccuracy} Full: ${e.posAccuracy}; Lemma: ${e.lemAccuracy}")
-    println(e.flatEval.confusionMatrix)
+    println(e.report)
+    println(e.flatEvalFiltered.confusionMatrix)
   }
 }
