@@ -76,7 +76,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
 
   val flattenPoS: String => String = p => p.replaceAll("_.*", "")
 
-  def getPoS(w: Node):String = (w \ "@type").toString
+  def getPoS(w: Node):String = (w \ "@type").toString.replace("VNW_AANW_ADV", "BW") // ahem
   def getPoSFromCtag(w: Node):String = (w \ "@ctag").toString // COBALT export puts PoS in ctag and possibly multiw in type
   def lemma(w: Node):String = (w \ "@lemma").toString
 
