@@ -61,7 +61,7 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
 
 
-case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
+case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: String)
 {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
@@ -84,7 +84,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
   def toMap(e: NodeSeq,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
-  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|")
+  def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|") || getPoSFromCtag(n).contains("+")
 
   def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
   {
@@ -93,7 +93,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
     SimpleEvaluation(truthMap, guessMap)
   }
 
-  def printTokens = (truthDoc \\ "w").foreach(
+  def printTokens = (truthDoc \\ "w").map(
     w => {
       val id = getId(w).get
       val multi = if (isMulti(w)) "M" else "S"
@@ -104,9 +104,9 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
       val gPos = if (guessMap.contains(id)) getPoS(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
       val flatOK = flattenPoS(tPos) == flattenPoS(gPos)
-      println(s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK")
+      s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK"
     }
-  )
+  ).mkString("\n")
 
   lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, !isMulti(_))
   lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, !isMulti(_))
@@ -123,13 +123,46 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq)
   lazy val posAccuracyUnFiltered:Double = posEvalUnfiltered.accuracy
   lazy val flatAccuracyUnFiltered:Double = flatEvalUnfiltered.accuracy
   lazy val lemAccuracyUnFiltered:Double = lemEvalUnfiltered.accuracy
+  lazy val nTokens = (truthDoc \\ "w").size
+  lazy val nMultiwords = (truthDoc \\ "w").filter(isMulti).size
 
-  lazy val report =
+  lazy val shortReport =
     s"""
-#### Tokens: ${(truthDoc \\ "w").size}, multiwords:  ${(truthDoc \\ "w").filter(isMulti).size}
+#### Tokens: $nTokens, multiwords:  $nMultiwords
 Met multiwords: PoS: Flat: ${flatAccuracyUnFiltered} Full: ${posAccuracyUnFiltered}; Lemma: ${lemAccuracyUnFiltered}
 Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltered}; Lemma: ${lemAccuracyFiltered}
      """
+
+  lazy val fullReport =
+    s"""
+       |${printTokens}
+       |$shortReport
+       |${flatEvalFiltered.confusionMatrix()}
+       |* precisie, recall, f1 voor hoofdwoordsoort *
+       |${flatEvalFiltered.prList()}
+       |* top verwarringen voor hoofdwoordsoort *
+       |${flatEvalFiltered.confusionsByFrequency().take(10).mkString("\n")}
+       |* top verwarringen voor lemma *
+       |${lemEvalFiltered.confusionsByFrequency().take(50).mkString("\n")}
+     """.stripMargin
+
+  def p(d: Double) = f"${100*d}%2.2f"
+
+  lazy val HTMLReport =
+    <tr>
+      <td>{setName}</td>
+      <td>{nTokens}</td>
+      <td>{p(flatAccuracyUnFiltered)}</td>
+      <td>{p(posAccuracyUnFiltered)}</td>
+      <td>{p(lemAccuracyUnFiltered)}</td>
+    </tr>
+      <tr>
+        <td>{setName} - without multiwords/clitics</td>
+        <td>{nTokens - nMultiwords}</td>
+        <td>{p(flatAccuracyFiltered)}</td>
+        <td>{p(posAccuracyFiltered)}</td>
+        <td>{p(lemAccuracyFiltered)}</td>
+      </tr>
 }
 
 object NederlabEval
@@ -137,23 +170,28 @@ object NederlabEval
   // truth is arg 0
   def addElems(a: Seq[Node], b: Elem):Seq[Node]  = a ++ Seq(b)
 
+  def evaluateSet(setFileName: String): evaluationFromTEI =
+  {
+    val pairs = scala.io.Source.fromFile(setFileName).getLines.map(l => l.split("\\s+")).filter(r => r.size == 2).toList
+    val truth:NodeSeq = pairs.map(r => XML.load(r(0))).foldLeft(Seq.empty[Node])(addElems)
+    val guess:NodeSeq = pairs.map(r => XML.load(r(1))).foldLeft(Seq.empty[Node])(addElems)
+    evaluationFromTEI(truth,guess, setFileName.replaceAll(".*/",""))
+  }
+
   def main(args: Array[String]):Unit =
   {
-    val e = if (args.size > 1) evaluationFromTEI(XML.load(args(0)), XML.load(args(1))) else
-    {
-      val pairs = scala.io.Source.fromFile(args(0)).getLines.map(l => l.split("\\s+")).filter(r => r.size == 2).toList
-      val truth:NodeSeq = pairs.map(r => XML.load(r(0))).foldLeft(Seq.empty[Node])(addElems)
-      val guess:NodeSeq = pairs.map(r => XML.load(r(1))).foldLeft(Seq.empty[Node])(addElems)
-      evaluationFromTEI(truth,guess)
-    }
-    e.printTokens
-    println(e.report)
-    println(e.flatEvalFiltered.confusionMatrix)
-    println("* precisie, recall, f1 voor hoofdwoordsoort *")
-    println(e.flatEvalFiltered.prList())
-    println("* top verwarringen voor hoofdwoordsoort *")
-    println(e.flatEvalFiltered.confusionsByFrequency().take(10).mkString("\n"))
-    println("* top verwarringen voor lemma *")
-    println(e.lemEvalFiltered.confusionsByFrequency().take(50).mkString("\n"))
+    val e =
+      if (args.size == 2 && args(0).endsWith(".xml"))
+        println(evaluationFromTEI(XML.load(args(0)), XML.load(args(1)), args(0)).fullReport)
+      else if (args.size == 1)
+        println(evaluateSet(args(0)).fullReport)
+      else
+        {
+          val report = <table border="border" style="border-style:solid; border-collapse: collapse">
+            <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>Full eval PoS</td> <td>Lemma</td></tr>
+            {args.map(a => evaluateSet(a).HTMLReport)}
+          </table>
+          println(report)
+        }
   }
 }
