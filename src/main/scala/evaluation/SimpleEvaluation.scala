@@ -201,12 +201,16 @@ object NederlabEval
       {
         val report =
           <html>
-            <head><style type="text/css">td { "{padding: 2pt}" }
-            </style></head>
-          <table border="border" style="padding: 2pt; border-style:solid; border-collapse: collapse">
-          <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>PoS + features in evaluation tagset</td> <td>Lemma</td></tr>
-          {args.map(a => evaluateSet(a).HTMLReport)}
-        </table>
+            <head>
+              <style type="text/css">td
+                {"{padding: 2pt}"}
+              </style>
+            </head>
+            <table border="border" style="padding: 2pt; border-style:solid; border-collapse: collapse">
+              <tr>
+                <td>Set</td> <td>size</td> <td>Main PoS</td> <td>PoS + features in evaluation tagset</td> <td>Lemma</td>
+              </tr>{args.map(a => evaluateSet(a).HTMLReport)}
+            </table>
           </html>
         println(report)
       }
