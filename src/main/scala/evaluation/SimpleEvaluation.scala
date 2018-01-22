@@ -59,7 +59,7 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
     .map({ case (Item(t,g), k) => s"$t->$g: $k"})
 }
 
-
+// VNW_AANW_ADV (er,hier, daar, ...) = BW in onze tagging
 
 case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: String)
 {
@@ -77,7 +77,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
   val flattenPoS: String => String = p => p.replaceAll("_.*", "")
 
   def getPoS(w: Node):String = (w \ "@type").toString
-  def getPoSFromCtag(w: Node):String = (w \ "@ctag").toString // cobalts export puts PoS in ctag and possibly multiw in type
+  def getPoSFromCtag(w: Node):String = (w \ "@ctag").toString // COBALT export puts PoS in ctag and possibly multiw in type
   def lemma(w: Node):String = (w \ "@lemma").toString
 
   def getWord(w: Node):String  = w.text
@@ -87,7 +87,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
 
   def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|") || getPoSFromCtag(n).contains("+")
 
-  def isSimpleWord(n:Node) = !isMulti(n) && decentPoS.contains(flattenPoS(getPoSFromCtag(n)))
+  def isSimpleWord(n:Node):Boolean = !isMulti(n) && decentPoS.contains(flattenPoS(getPoSFromCtag(n)))
 
   def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
   {
@@ -96,7 +96,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
     SimpleEvaluation(truthMap, guessMap)
   }
 
-  def printTokens = (truthDoc \\ "w").map(
+  def printTokens:String = (truthDoc \\ "w").map(
     w => {
       val id = getId(w).get
       val multi = if (isMulti(w)) "M" else "S"
