@@ -67,9 +67,10 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
     a.key.equals("id")).map(a => a.value.toString).headOption
 
   val mappings = Map("NP" -> "SPEC_DEELEIGEN", "PV" -> "WW_PV", "AJ" -> "ADJ")
+  val decentPoS = Set("N", "WW", "LID", "TW", "VG", "VZ", "TSW", "ADJ", "BW", "SPEC", "LET", "VNW")
 
   val map: String=> String = s0 =>
-    { val s = s0.replace("VW", "VG").replaceAll("^PV", "WW_PV"); if (mappings.contains(s)) mappings(s) else s }
+  { val s = s0.replace("VW", "VG").replaceAll("^PV", "WW_PV"); if (mappings.contains(s)) mappings(s) else s }
 
   lazy val guessMap:Map[String,Node] = (guessDoc \\ "w").map(w => getId(w).get->  w).toMap
 
@@ -85,6 +86,8 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
   def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|") || getPoSFromCtag(n).contains("+")
+
+  def simple(n:Node) = !isMulti(n) && decentPoS.contains(flattenPoS(getPoSFromCtag(n)))
 
   def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
   {
@@ -104,17 +107,19 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
       val gPos = if (guessMap.contains(id)) getPoS(guessMap(id)) else "MISSING"
       val OK = tPos == gPos
       val flatOK = flattenPoS(tPos) == flattenPoS(gPos)
-      s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})\t$flatOK\t$OK"
+      s"$word\t$multi\t($tPos, $gPos, $flatOK, $OK)\t($tLem, $gLem, ${tLem == gLem})"
     }
   ).mkString("\n")
 
-  lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, !isMulti(_))
-  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, !isMulti(_))
-  lazy val flatEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), !isMulti(_))
+  lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, simple)
+  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, simple)
+  lazy val flatEvalFiltered:SimpleEvaluation[String, String] =
+    getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), simple)
 
-  lazy val lemEvalUnfiltered = getEvaluation(lemma, lemma)
-  lazy val posEvalUnfiltered = getEvaluation(map.compose(getPoSFromCtag), getPoS)
-  lazy val flatEvalUnfiltered = getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS))
+  lazy val lemEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma)
+  lazy val posEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS)
+  lazy val flatEvalUnfiltered:SimpleEvaluation[String, String] =
+    getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS))
 
   lazy val posAccuracyFiltered:Double = posEvalFiltered.accuracy
   lazy val flatAccuracyFiltered:Double = flatEvalFiltered.accuracy
@@ -186,12 +191,12 @@ object NederlabEval
       else if (args.size == 1)
         println(evaluateSet(args(0)).fullReport)
       else
-        {
-          val report = <table border="border" style="border-style:solid; border-collapse: collapse">
-            <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>Full eval PoS</td> <td>Lemma</td></tr>
-            {args.map(a => evaluateSet(a).HTMLReport)}
-          </table>
-          println(report)
-        }
+      {
+        val report = <table border="border" style="border-style:solid; border-collapse: collapse">
+          <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>Full eval PoS</td> <td>Lemma</td></tr>
+          {args.map(a => evaluateSet(a).HTMLReport)}
+        </table>
+        println(report)
+      }
   }
 }
