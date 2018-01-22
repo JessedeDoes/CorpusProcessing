@@ -4,7 +4,7 @@ import scala.xml._
 
 case class Item[T](truth: T, guess: T)
 {
-  def both: Set[T] = Set(truth,guess)
+  def toSet: Set[T] = Set(truth,guess)
 }
 
 case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
@@ -13,9 +13,9 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
   lazy val confusion:Map[Item[T],Int]  = truth.map({case (k,v) => Item(truth(k), guess(k))} ).groupBy(identity).mapValues(l => l.size)
 
-  def trueCount(c: T) = truth.values.count(_ == c)
-  def guessCount(c: T) = guess.values.count(_ == c)
-  def truePositiveCount(c: T) = truth.keySet.filter(k => truth(k) == c && guess(k) == c).size
+  def trueCount(c: T):Int = truth.values.count(_ == c)
+  def guessCount(c: T):Int = guess.values.count(_ == c)
+  def truePositiveCount(c: T):Int = truth.keySet.count(k => truth(k) == c && guess(k) == c)
 
   def count(a: T, b: T):Int = {
     confusion.get(Item(a, b)) match {
@@ -38,7 +38,7 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
   def f1(c: T):Double = { val p = precision(c);  val r = recall(c); 2 * p * r / (p + r) }
 
-  lazy val labels:List[T] = confusion.keySet.flatMap(_.both).toList.filter(c => !(c.toString.trim== ""))
+  lazy val labels:List[T] = confusion.keySet.flatMap(_.toSet).toList.filter(c => !(c.toString.trim== ""))
 
   def rowCounts(i: Int):List[Int] = labels.map(s => count(labels(i), s))
 
@@ -87,7 +87,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
 
   def isMulti(n: Node):Boolean = "multiw".equals((n \ "@type").toString) || getPoSFromCtag(n).contains("|") || getPoSFromCtag(n).contains("+")
 
-  def simple(n:Node) = !isMulti(n) && decentPoS.contains(flattenPoS(getPoSFromCtag(n)))
+  def isSimpleWord(n:Node) = !isMulti(n) && decentPoS.contains(flattenPoS(getPoSFromCtag(n)))
 
   def getEvaluation(truthFeature: Node=>String, guessFeature: Node=>String, truthFilter: Node=>Boolean = n => true):SimpleEvaluation[String,String] =
   {
@@ -111,10 +111,10 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
     }
   ).mkString("\n")
 
-  lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, simple)
-  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, simple)
+  lazy val lemEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma, isSimpleWord)
+  lazy val posEvalFiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS, isSimpleWord)
   lazy val flatEvalFiltered:SimpleEvaluation[String, String] =
-    getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), simple)
+    getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), isSimpleWord)
 
   lazy val lemEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma)
   lazy val posEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS)
@@ -128,8 +128,8 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
   lazy val posAccuracyUnFiltered:Double = posEvalUnfiltered.accuracy
   lazy val flatAccuracyUnFiltered:Double = flatEvalUnfiltered.accuracy
   lazy val lemAccuracyUnFiltered:Double = lemEvalUnfiltered.accuracy
-  lazy val nTokens = (truthDoc \\ "w").size
-  lazy val nMultiwords = (truthDoc \\ "w").filter(isMulti).size
+  lazy val nTokens:Int = (truthDoc \\ "w").size
+  lazy val nMultiwords:Int = (truthDoc \\ "w").count(isMulti)
 
   lazy val shortReport =
     s"""
@@ -153,7 +153,7 @@ Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltere
 
   def p(d: Double) = f"${100*d}%2.2f"
 
-  lazy val HTMLReport =
+  lazy val HTMLReport:NodeSeq =
     <tr>
       <td>{setName}</td>
       <td>{nTokens}</td>
