@@ -6,6 +6,10 @@ case class Item[T](truth: T, guess: T)
 {
   def toSet: Set[T] = Set(truth,guess)
 }
+object simpleEvaluation
+{
+
+}
 
 case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 {
