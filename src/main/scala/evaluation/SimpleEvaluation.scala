@@ -42,9 +42,10 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
   def rowCounts(i: Int):List[Int] = labels.map(s => count(labels(i), s))
 
-  val room = Math.max(labels.map(t => t.toString.length).maxBy(identity),
+  lazy val room:Int = Math.max(labels.map(t => t.toString.length).maxBy(identity),
     confusion.values.map(i => i.toString.length).maxBy(identity)) + 1
-  def times(n: Int, s: String) = (0 until n).map(_ => s).mkString("")
+
+  def times(n: Int, s: String):String = (0 until n).map(_ => s).mkString("")
   def pad(s: String):String  =  (s.reverse +  times(Math.max(room - s.length, 0) , " ")).substring(0,room).reverse
 
 
@@ -168,7 +169,7 @@ Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltere
       <td>{p(lemAccuracyUnFiltered)}</td>
     </tr>
       <tr>
-        <td>{setName} - without multiwords/clitics</td>
+        <td>{"\u00A0" * 4} without multiwords/clitics</td>
         <td>{nTokens - nMultiwords}</td>
         <td>{p(flatAccuracyFiltered)}</td>
         <td>{p(posAccuracyFiltered)}</td>
@@ -186,7 +187,7 @@ object NederlabEval
     val pairs = scala.io.Source.fromFile(setFileName).getLines.map(l => l.split("\\s+")).filter(r => r.size == 2).toList
     val truth:NodeSeq = pairs.map(r => XML.load(r(0))).foldLeft(Seq.empty[Node])(addElems)
     val guess:NodeSeq = pairs.map(r => XML.load(r(1))).foldLeft(Seq.empty[Node])(addElems)
-    evaluationFromTEI(truth,guess, setFileName.replaceAll(".*/",""))
+    evaluationFromTEI(truth,guess, setFileName.replaceAll(".*/","").replace(".list", ""))
   }
 
   def main(args: Array[String]):Unit =
@@ -198,10 +199,15 @@ object NederlabEval
         println(evaluateSet(args(0)).fullReport)
       else
       {
-        val report = <table border="border" style="border-style:solid; border-collapse: collapse">
-          <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>Full eval PoS</td> <td>Lemma</td></tr>
+        val report =
+          <html>
+            <head><style type="text/css">td { "{padding: 2pt}" }
+            </style></head>
+          <table border="border" style="padding: 2pt; border-style:solid; border-collapse: collapse">
+          <tr><td>Set</td> <td>size</td> <td>Main PoS</td> <td>PoS + features in evaluation tagset</td> <td>Lemma</td></tr>
           {args.map(a => evaluateSet(a).HTMLReport)}
         </table>
+          </html>
         println(report)
       }
   }
