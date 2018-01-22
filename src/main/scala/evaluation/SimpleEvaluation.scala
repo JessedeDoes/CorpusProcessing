@@ -38,14 +38,20 @@ case class SimpleEvaluation[S,T](truth: Map[S,T], guess: Map[S,T])
 
   def f1(c: T):Double = { val p = precision(c);  val r = recall(c); 2 * p * r / (p + r) }
 
-  lazy val labels:List[T] = confusion.keySet.flatMap(_.toSet).toList.filter(c => !(c.toString.trim== ""))
+  lazy val labels:List[T] = confusion.keySet.flatMap(_.toSet).toList.filter(c => !(c.toString.trim== "")).sortBy(_.toString)
 
   def rowCounts(i: Int):List[Int] = labels.map(s => count(labels(i), s))
 
+  val room = Math.max(labels.map(t => t.toString.length).maxBy(identity),
+    confusion.values.map(i => i.toString.length).maxBy(identity)) + 1
+  def times(n: Int, s: String) = (0 until n).map(_ => s).mkString("")
+  def pad(s: String):String  =  (s.reverse +  times(Math.max(room - s.length, 0) , " ")).substring(0,room).reverse
+
+
   def confusionMatrix(): String =
   {
-    val row = (i: Int) => f"${labels(i)}%7s\t" + rowCounts(i).map(j => f"$j%7d").mkString("\t")
-    val header = f"${" "}%7s\t" + labels.map(s => f"$s%7s").mkString("\t")
+    val row = (i: Int) => s"${pad(labels(i).toString)}" + rowCounts(i).map(j => pad(j.toString)).mkString("")
+    val header = pad("") + "" + labels.map(s => pad(s.toString)  ).mkString("")
     (header  +: labels.indices.map(row)).mkString("\n")
   }
 
@@ -78,7 +84,7 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
 
   def getPoS(w: Node):String = (w \ "@type").toString.replace("VNW_AANW_ADV", "BW") // ahem
   def getPoSFromCtag(w: Node):String = (w \ "@ctag").toString // COBALT export puts PoS in ctag and possibly multiw in type
-  def lemma(w: Node):String = (w \ "@lemma").toString
+  def lemma(w: Node):String = (w \ "@lemma").toString.toLowerCase
 
   def getWord(w: Node):String  = w.text
 
