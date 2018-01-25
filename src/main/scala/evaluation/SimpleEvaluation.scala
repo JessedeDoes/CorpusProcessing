@@ -131,6 +131,15 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
   lazy val flatEvalFiltered:SimpleEvaluation[String, String] =
     getEvaluation(flattenPoS.compose(map.compose(getPoSFromCtag)), flattenPoS.compose(getPoS), isSimpleWord)
 
+
+  lazy val lemEvalPerWoordSoort = decentPoS.toList.sortBy(identity).map(pos =>
+  {
+    val filter:Node => Boolean = w => isSimpleWord(w) && flattenPoS(getPoSFromCtag(w)) == pos
+    (pos, getEvaluation(lemma,lemma,filter).accuracy)
+  })
+
+  // def isContentWord(w) = isSimpleWord(w) && Set("N", "SPEC").contaiflattenPoS(getPoSFromCtag(w))
+
   lazy val lemEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(lemma, lemma)
   lazy val posEvalUnfiltered:SimpleEvaluation[String, String] = getEvaluation(map.compose(getPoSFromCtag), getPoS)
   lazy val flatEvalUnfiltered:SimpleEvaluation[String, String] =
@@ -164,6 +173,8 @@ Zonder multiwords: PoS: Flat: ${flatAccuracyFiltered} Full: ${posAccuracyFiltere
        |${flatEvalFiltered.confusionsByFrequency().take(10).mkString("\n")}
        |* top verwarringen voor lemma *
        |${lemEvalFiltered.confusionsByFrequency().take(50).mkString("\n")}
+       |* lemma accurracy per woordsoort
+       |${lemEvalPerWoordSoort.map({case (p,a) => s"$p:$a"}).mkString("\n")}
      """.stripMargin
 
   def p(d: Double) = f"${100*d}%2.2f"
