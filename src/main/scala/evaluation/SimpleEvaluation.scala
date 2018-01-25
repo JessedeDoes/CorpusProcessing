@@ -93,6 +93,10 @@ case class evaluationFromTEI(truthDoc: NodeSeq, guessDoc: NodeSeq, setName: Stri
 
   def getWord(w: Node):String  = w.text
 
+  lazy val allWords = (truthDoc \\ "w").map(getWord).toList
+
+  lazy val frequencyList = allWords.groupBy(identity).mapValues(_.size).toList.sortBy({case (w,c) => -1*c})
+
   def toMap(e: NodeSeq,  f: Node => String, filter: Node => Boolean = n => true):Map[String,String] =
     (e \\ "w").filter(filter).map(w => getId(w).get -> f(w)).toMap
 
