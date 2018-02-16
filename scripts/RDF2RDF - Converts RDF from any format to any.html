@@ -1,0 +1,80 @@
+
+<!-- saved from url=(0034)http://www.l3s.de/~minack/rdf2rdf/ -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>RDF2RDF - Converts RDF from any format to any</title></head>
+ <body>
+  <h2>RDF2RDF</h2>
+  This Java tool converts your RDF files from any format to any format. It is wrapped into one single jar file for easy usage.<br>
+  <br>
+  <b>Download:</b><br>
+  Latest version at <a href="http://www.l3s.de/~minack/rdf2rdf/downloads/rdf2rdf-1.0.1-2.3.1.jar">rdf2rdf-1.0.1-2.3.1.jar</a> [329 kByte].<br>
+  <br>
+  <b>License</b><br>
+  This tool is licensed under <a href="http://www.gnu.org/licenses/gpl-2.0.txt">GPL v2.0</a><br>
+  <br>
+  <b>Usage:</b><br>
+  Run the jar file like this: <code>java -jar rdf2rdf-1.0.1-2.3.1.jar INPUTFILE(S) OUTPUTFILE</code><br>
+  <br>
+  <b>Examples:</b><br>
+  <table border="0" cellpadding="1" cellspacing="2">
+   <tbody><tr>
+    <th>command</th>
+    <th>input file(s)</th>
+    <th>output file (format)</th>
+    <th>description</th>
+   </tr>
+   <tr>
+    <td rowspan="7" valign="top"><nobr><code>java -jar rdf2rdf-1.0.1-2.3.1.jar</code></nobr></td>
+    <td align="center"><code>test.rdf</code></td>
+    <td align="center"><code>test.nt</code></td>
+    <td>converts RDF/XML into NTRIPLES</td>
+   </tr>
+   <tr>
+    <td align="center"><code>test.rdf.gz</code></td>
+    <td align="center"><code>.nt</code></td>
+    <td>converts gzipped input file into unzipped NTRIPLES file test.nt</td>
+   </tr>
+   <tr>
+    <td align="center"><nobr><code>test1.rdf test2.n3</code></nobr></td>
+    <td align="center"><code>.nt</code></td>
+    <td>converts input files into NTRIPLES, here into <code>test1.nt</code> and <code>test2.nt</code>, respectively</td>
+   </tr>
+   <tr>
+    <td align="center"><nobr><code>test1.rdf test2.n3</code></nobr></td>
+    <td align="center"><code>test.nt</code></td>
+    <td>converts input files into NTRIPLES, concatenated into <code>test.nt</code></td>
+   </tr>
+   <tr>
+    <td align="center"><nobr><code>test1.rdf test2.n3</code></nobr></td>
+    <td align="center"><code>-.nt</code></td>
+    <td>converts input files into NTRIPLES, streamed to STDOUT</td>
+   </tr>
+   <tr>
+    <td align="center"><code>-.rdf</code></td>
+    <td align="center"><code>-.nt</code></td>
+    <td>converts STDIN from RDF/XML into NTRIPLES, streamed to STDOUT</td>
+   </tr>
+   <tr>
+    <td align="center"><code>-.rdf.gz</code></td>
+    <td align="center"><code>-.nt.gz</code></td>
+    <td>converts gzipped RDF/XML from STDIN into gzipped NTRIPLES, streamed to STDOUT</td>
+   </tr>
+  </tbody></table>
+  <br>
+  <table border="1">
+   <tbody><tr><th colspan="2">Supported extensions</th></tr>
+   <tr><td>rdf, rdfs, owl, xml</td><td>RDF/XML</td></tr>
+   <tr><td>nt</td><td>N-Triples</td></tr>
+   <tr><td>ttl</td><td>Turtle</td></tr>
+   <tr><td>n3</td><td>N3</td></tr>
+   <tr><td>trig, xml</td><td>TriX</td></tr>
+   <tr><td>trig</td><td>TriG</td></tr>
+  </tbody></table>
+  <br>
+  RDF2RDF uses <a href="http://www.openrdf.org/doc/sesame2/api/org/openrdf/rio/package-summary.html">OpenRDF RIO</a> 2.3.1 to convert formats. Please read their <a href="http://www.l3s.de/~minack/rdf2rdf/downloads/LICENSE.txt">LICENSE</a>!<br>
+  <br>
+  <hr>
+  07.05.2010 - <a href="http://www.l3s.de/web/minack">Enrico Minack</a><br>
+  <script type="text/javascript"> var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www."); document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E")); </script><script src="./RDF2RDF - Converts RDF from any format to any_files/ga.js.download" type="text/javascript"></script> <script type="text/javascript"> try { var pageTracker = _gat._getTracker("UA-7295218-1"); pageTracker._trackPageview(); } catch(err) {}</script>
+ 
+
+</body></html>
