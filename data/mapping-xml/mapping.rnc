@@ -1,0 +1,16 @@
+default namespace = ""
+
+start =
+  element mapping {
+    element equivalent {
+      atom+,
+      (element land { atom+ }
+       | element or { atom+ })?
+    }+,
+    element implies { empty }
+  }
+atom =
+  element atom {
+    element f { xsd:NCName },
+    element v { xsd:NCName }
+  }

@@ -1,0 +1,34 @@
+
+land
+{
+ 
+}
+
+or > atom:nth-child(2)::before {
+  content: "∨";
+  font-size: 12pt;
+}
+equivalent
+{
+    display: block;
+}
+
+equivalent > *:nth-child(2)::before
+{
+    content: '↔';
+    font-size: 12pt
+}
+
+land > atom:nth-child(2)::before {
+  content: "∧";
+  font-size: 12pt;
+}
+
+atom f::after
+{
+    content: ":"
+}
+
+equivalent::before {
+  
+}
