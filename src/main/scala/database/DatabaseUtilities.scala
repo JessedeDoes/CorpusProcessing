@@ -20,6 +20,8 @@ object DatabaseUtilities
 {
   type AlmostQuery[T] = (Handle => Query[T])
 
+  implicit def makeMapping[T](f: ResultSet => T) = ResultMapping[T](f)
+
   case class ResultMapping[T](f: ResultSet => T) extends ResultSetMapper[T]
   {
     override def map(arg0: Int, r: ResultSet, arg2: StatementContext): T =
