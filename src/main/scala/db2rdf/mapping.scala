@@ -75,12 +75,39 @@ object mapping {
   implicit def x(s: String): ResultSet => IRI = r => IRI(r.getString(s))
 
   case class ϝ(field: String, f: String => String = identity)
+
   implicit def fd(x: (String, String => String)):ϝ = ϝ(x._1,x._2)
 
   implicit def y(d: ϝ): ResultSet => IRI = r => IRI(d.f(r.getString(d.field)))
   implicit def z(d: ϝ): ResultSet => StringLiteral = r => StringLiteral(d.f(r.getString(d.field)))
   implicit def z(x: (String, String => String)): ResultSet => StringLiteral = { val d:ϝ = x; r => StringLiteral(d.f(r.getString(d.field))) }
   implicit def i(s: String):IRI = IRI(s)
+
+  case class XXX(s: String)
+  {
+    import scala.util.matching.Regex
+    val f:ResultSet => StringLiteral = r =>  StringLiteral(r.getString(s))
+
+    lazy val asTemplate: ResultSet => IRI  =
+    {
+      val x = "\\$([a-zA-Z][a-zA-Z0-9_]+)".r.findFirstMatchIn(s)
+      val z = if (x.isDefined)
+        {
+          val g:ResultSet => IRI = r => IRI(s.replaceAll(x.get.group(0), r.getString(x.get.group(1))))
+          g
+        } else
+        {
+          val g:ResultSet => IRI  = r => IRI("bla")
+          g
+        }
+      z
+    }
+
+    def unary_~ = asTemplate
+    def unary_! =f
+  }
+
+  implicit def xxx(s:String):XXX = XXX(s)
 
   ////////////////////////////////////////////////////////
 
@@ -96,8 +123,10 @@ object mapping {
 
   ////// queries //////
 
-  val wordformQuery = """"select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
-        "where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
+  val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
+        where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
+  val posQuery = """select persistent_id,regexp_split_to_table(lemma_part_of_speech,'\s+') from data.lemmata"""
+
   val lemmaQuery = """select * from lemmata"""
 
   val attestationQuery =
@@ -123,26 +152,23 @@ object mapping {
   val documents = {
     val d = ϝ("document_id", "http://document/" + _)
     MultiMapping(List(
-      mappingDP("http://yearFrom", d, r => StringLiteral(r.getString("year_from"))),
-      mappingDP("http://yearTo", d, r => StringLiteral(r.getString("year_to"))),
-      mappingDP("http://title", d, r => StringLiteral(r.getString("title"))),
-      mappingDP("http://author", d, r => StringLiteral(r.getString("author")))
+      mappingDP("http://yearFrom", d, !"year_from"),
+      mappingDP("http://yearTo", d, !"year_to"),
+      mappingDP("http://title", d, !"title"),
+      mappingDP("http://author", d, !"author")
     ))
   }
 
   val lemmata =
     MultiMapping(List(
 
-      mapping(canonicalForm,
-        ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
-        ϝ("lemma_id", "http://canonical/" + _)),
-
-      mappingDP(writtenRep, ϝ("lemma_id", "http://canonical/" + _), ϝ("modern_lemma")),
+      mapping(canonicalForm, ~"http//rdf.ivdnt.org/entry/$persistent_id", ~"http://rdf.ivdnt.org/canonical/$lemma_id"),
+      mappingDP(writtenRep, ~"http://rdf.ivdnt.org/canonical/$lemma_id", !"modern_lemma"),
 
       // multiple PoS per entry? Or just separate query with split_to_table
       mapping(pos,
-        ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
-        ϝ("lemma_part_of_speech", pos + _))
+        ~"http//rdf.ivdnt.org/entry/$persistent_id",
+        ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
     ))
 
 
@@ -165,8 +191,10 @@ object mapping {
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
-    attestations.triples(db, attestationQuery).take(10).foreach(println)
     documents.triples(db, documentQuery).take(10).foreach(println)
+
+    attestations.triples(db, attestationQuery).take(10).foreach(println)
+
     allMappings.foreach(m =>
     m.triples(db, wordformQuery
       ).take(100).foreach(println)
