@@ -50,8 +50,6 @@ case class mappingDP(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) exten
       val query: AlmostQuery[DataProperty] = db => db.createQuery(q).map(ResultMapping(r => DataProperty(s(r) ,p, o(r))))
       db.stream(query)
     }
-
-
 }
 
 case class MultiMapping(mappings:List[Mapping])
@@ -92,8 +90,11 @@ object mapping {
   val canonicalForm = "http://ontolex/canonicalForm"
   val attestation = "http://rdf.ivdnt.org/diamant/attestation"
   val text = "http://rdf.ivdnt.org/diamant/text"
-
   val pos = "http://universaldependencies.org/u/pos/"
+  val beginIndex = "http://nif/beginIndex"
+  val endIndex = "http://nif/endIndex"
+
+  ////// queries //////
 
   val wordformQuery = """"select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         "where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
@@ -103,17 +104,31 @@ object mapping {
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
-      |   and d.document_id=a.document_id""".stripMargin
+      |   and d.document_id=t.document_id""".stripMargin
 
-  val attestations =
+  val documentQuery = "select * from documents"
+
+  val attestations = {
+    val attest = ϝ("attestation_id", "http://attestation/" + _)
+    val document = ϝ("document_id", "http://quotation/" + _)
+
     MultiMapping(List(
-
-      mapping(attestation,
-        ϝ("analyzed_wordform_id", "http://awf" + _),
-        ϝ("token_attestation_id", "http://attestation/" + _)),
-
-      
+      mapping(attestation, ϝ("analyzed_wordform_id", "http://awf" + _), attest),
+      mapping(text, attest, document),
+      mappingDP(beginIndex, attest, r => IntLiteral(r.getInt("start_pos"))),
+      mappingDP(endIndex, attest, r => IntLiteral(r.getInt("end_pos")))
     ))
+  }
+
+  val documents = {
+    val d = ϝ("document_id", "http://document/" + _)
+    MultiMapping(List(
+      mappingDP("http://yearFrom", d, r => StringLiteral(r.getString("year_from"))),
+      mappingDP("http://yearTo", d, r => StringLiteral(r.getString("year_to"))),
+      mappingDP("http://title", d, r => StringLiteral(r.getString("title"))),
+      mappingDP("http://author", d, r => StringLiteral(r.getString("author")))
+    ))
+  }
 
   val lemmata =
     MultiMapping(List(
@@ -125,25 +140,11 @@ object mapping {
       mappingDP(writtenRep, ϝ("lemma_id", "http://canonical/" + _), ϝ("modern_lemma")),
 
       // multiple PoS per entry? Or just separate query with split_to_table
-
       mapping(pos,
         ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
         ϝ("lemma_part_of_speech", pos + _))
     ))
 
-  val wordformAttestations = MultiMapping(List(
-    mapping(canonicalForm,
-      ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
-      ϝ("lemma_id", "http://canonical/" + _)),
-
-    mappingDP(writtenRep, ϝ("lemma_id", "http://canonical/" + _), ϝ("modern_lemma")),
-
-    // multiple PoS per entry? Or just separate query with split_to_table
-
-    mapping(pos,
-      ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
-      ϝ("lemma_part_of_speech", pos + _))
-  ))
 
   val lemmaWordform =
     MultiMapping(List(
@@ -163,6 +164,9 @@ object mapping {
 
   def main(args: Array[String]) =
   {
+    db.runStatement(("set schema 'data'"))
+    attestations.triples(db, attestationQuery).take(10).foreach(println)
+    documents.triples(db, documentQuery).take(10).foreach(println)
     allMappings.foreach(m =>
     m.triples(db, wordformQuery
       ).take(100).foreach(println)
