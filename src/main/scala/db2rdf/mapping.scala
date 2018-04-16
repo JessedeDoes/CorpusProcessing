@@ -90,7 +90,30 @@ object mapping {
   val writtenRep = "http://ontolex/writtenRep"
   val lexicalForm = "http://ontolex/lexicalForm"
   val canonicalForm = "http://ontolex/canonicalForm"
+  val attestation = "http://rdf.ivdnt.org/diamant/attestation"
+  val text = "http://rdf.ivdnt.org/diamant/text"
+
   val pos = "http://universaldependencies.org/u/pos/"
+
+  val wordformQuery = """"select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
+        "where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
+  val lemmaQuery = """select * from lemmata"""
+
+  val attestationQuery =
+    """select * from analyzed_wordforms a, token_attestations t, documents d
+      | where
+      |   a.analyzed_wordform_id = t.analyzed_wordform_id
+      |   and d.document_id=a.document_id""".stripMargin
+
+  val attestations =
+    MultiMapping(List(
+
+      mapping(attestation,
+        ϝ("analyzed_wordform_id", "http://awf" + _),
+        ϝ("token_attestation_id", "http://attestation/" + _)),
+
+      
+    ))
 
   val lemmata =
     MultiMapping(List(
@@ -101,11 +124,26 @@ object mapping {
 
       mappingDP(writtenRep, ϝ("lemma_id", "http://canonical/" + _), ϝ("modern_lemma")),
 
+      // multiple PoS per entry? Or just separate query with split_to_table
+
       mapping(pos,
         ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
         ϝ("lemma_part_of_speech", pos + _))
-
     ))
+
+  val wordformAttestations = MultiMapping(List(
+    mapping(canonicalForm,
+      ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
+      ϝ("lemma_id", "http://canonical/" + _)),
+
+    mappingDP(writtenRep, ϝ("lemma_id", "http://canonical/" + _), ϝ("modern_lemma")),
+
+    // multiple PoS per entry? Or just separate query with split_to_table
+
+    mapping(pos,
+      ϝ("persistent_id", "http//rdf.ivdnt.org/entry/" + _),
+      ϝ("lemma_part_of_speech", pos + _))
+  ))
 
   val lemmaWordform =
     MultiMapping(List(
@@ -126,8 +164,8 @@ object mapping {
   def main(args: Array[String]) =
   {
     allMappings.foreach(m =>
-    m.triples(db,
-      "select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id").take(100).foreach(println)
+    m.triples(db, wordformQuery
+      ).take(100).foreach(println)
     )
   }
 }
