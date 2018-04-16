@@ -93,7 +93,14 @@ object mapping {
       val x = "\\$([a-zA-Z][a-zA-Z0-9_]+)".r.findFirstMatchIn(s)
       val z = if (x.isDefined)
         {
-          val g:ResultSet => IRI = r => IRI(s.replaceAll(x.get.group(0), r.getString(x.get.group(1))))
+          val g:ResultSet => IRI = r =>
+          {
+            val g = x.get.group(0); val y = r.getString(x.get.group(1));
+            //Console.err.println(s"Hola $g=$y in $s!");
+            val i = IRI(s.replaceAll("\\" + g, y))
+            //Console.err.println(s"Dus: $i")
+            i
+          }
           g
         } else
         {
@@ -120,7 +127,9 @@ object mapping {
   val pos = "http://universaldependencies.org/u/pos/"
   val beginIndex = "http://nif/beginIndex"
   val endIndex = "http://nif/endIndex"
-
+  val subsense = "http://rdf.ivdnt.org/diamant/subsense"
+  val lexicalDefinition = "http://rdf.ivdnt.org/diamant/lexicalDefinition"
+  val definitionText = "http://rdf.ivdnt.org/diamant/definitionText"
   ////// queries //////
 
   val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
@@ -137,15 +146,32 @@ object mapping {
 
   val documentQuery = "select * from documents"
 
+  val senseQuery = "select * from senses"
+
+  //////////////////////////////
+
+
+  val senses =
+  {
+    val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
+    val definition = ~"http://rdf.ivdnt.org/sense/$definition"
+    MultiMapping(List(
+      mapping(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
+      mapping(lexicalDefinition, sense, definition),
+      mappingDP(definitionText, definition, !"definition")
+    ))
+  }
+
   val attestations = {
-    val attest = ϝ("attestation_id", "http://attestation/" + _)
+    val theAttestation = ϝ("attestation_id", "http://attestation/" + _)
     val document = ϝ("document_id", "http://quotation/" + _)
 
     MultiMapping(List(
-      mapping(attestation, ϝ("analyzed_wordform_id", "http://awf" + _), attest),
-      mapping(text, attest, document),
-      mappingDP(beginIndex, attest, r => IntLiteral(r.getInt("start_pos"))),
-      mappingDP(endIndex, attest, r => IntLiteral(r.getInt("end_pos")))
+      mapping(attestation, ~"http://awf/$analyzed_wordform_id", theAttestation),
+      mapping(text, theAttestation, document),
+      mapping(attestation,  ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
+      mappingDP(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
+      mappingDP(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos")))
     ))
   }
 
@@ -191,13 +217,16 @@ object mapping {
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
+    allMappings.foreach(m =>
+      m.triples(db, wordformQuery
+      ).take(10).foreach(println)
+    )
+
+    senses.triples(db, senseQuery).take(10).foreach(println)
     documents.triples(db, documentQuery).take(10).foreach(println)
 
     attestations.triples(db, attestationQuery).take(10).foreach(println)
 
-    allMappings.foreach(m =>
-    m.triples(db, wordformQuery
-      ).take(100).foreach(println)
-    )
+
   }
 }
