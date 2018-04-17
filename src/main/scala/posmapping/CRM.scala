@@ -9,6 +9,10 @@ object CRM {
   lazy val d = XML.load(mappingFile)
 
   case class Feature(name: String, value: String)
+  {
+    override def toString = s"$name=$value"
+  }
+
   def map() =
   {
 
@@ -19,7 +23,11 @@ object CRM {
         crmTags.flatMap(tag =>
           {
             val o = c \ "output"
-            o.map(x => tag -> Feature((x \ "@name").text, (x \ "@value").text))
+
+            o.map(x => tag -> {
+              val v = (x \ "@value").text
+              Feature((x \ "@name").text, if (v.nonEmpty) v else "true") }
+            )
           }
         )
       }
