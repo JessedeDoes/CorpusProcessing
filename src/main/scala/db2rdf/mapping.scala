@@ -52,9 +52,9 @@ case class mappingDP(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) exten
     }
 }
 
-case class MultiMapping(mappings:List[Mapping])
+case class MultiMapping(mappings:Seq[Mapping])
 {
-  def multiMapping(mappings:List[Mapping]): ResultMapping[Set[Statement]] =
+  def multiMapping(mappings:Seq[Mapping]): ResultMapping[Set[Statement]] =
   {
     val dps = mappings.filter(_.isInstanceOf[mappingDP]).map(_.asInstanceOf[mappingDP]).toSet
     val ops = mappings.filter(_.isInstanceOf[mapping]).map(_.asInstanceOf[mapping]).toSet
@@ -116,6 +116,8 @@ object mapping {
 
   implicit def xxx(s:String):XXX = XXX(s)
 
+  def ⊕(l: Mapping*) = MultiMapping(l)
+
   ////////////////////////////////////////////////////////
 
 
@@ -134,7 +136,8 @@ object mapping {
 
   val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
-  val posQuery = """select persistent_id,regexp_split_to_table(lemma_part_of_speech,'\s+') from data.lemmata"""
+
+  val posQuery = """select persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
 
   val lemmaQuery = """select * from lemmata"""
 
@@ -151,72 +154,71 @@ object mapping {
   //////////////////////////////
 
 
-  val senses =
+  val senses:MultiMapping =
   {
     val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/sense/$definition"
-    MultiMapping(List(
+    ⊕(
       mapping(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
       mapping(lexicalDefinition, sense, definition),
       mappingDP(definitionText, definition, !"definition")
-    ))
+    )
   }
 
   val attestations = {
     val theAttestation = ϝ("attestation_id", "http://attestation/" + _)
     val document = ϝ("document_id", "http://quotation/" + _)
 
-    MultiMapping(List(
+    ⊕(
       mapping(attestation, ~"http://awf/$analyzed_wordform_id", theAttestation),
       mapping(text, theAttestation, document),
       mapping(attestation,  ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
       mappingDP(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
       mappingDP(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos")))
-    ))
+    )
   }
 
   val documents = {
     val d = ϝ("document_id", "http://document/" + _)
-    MultiMapping(List(
+    ⊕(
       mappingDP("http://yearFrom", d, !"year_from"),
       mappingDP("http://yearTo", d, !"year_to"),
       mappingDP("http://title", d, !"title"),
       mappingDP("http://author", d, !"author")
-    ))
+    )
   }
 
-  val lemmata =
-    MultiMapping(List(
+  val posMapping =
+    ⊕(
+      mapping(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id",  ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
+    )
 
+  val lemmata =
+    ⊕(
       mapping(canonicalForm, ~"http//rdf.ivdnt.org/entry/$persistent_id", ~"http://rdf.ivdnt.org/canonical/$lemma_id"),
       mappingDP(writtenRep, ~"http://rdf.ivdnt.org/canonical/$lemma_id", !"modern_lemma"),
-
-      // multiple PoS per entry? Or just separate query with split_to_table
-      mapping(pos,
-        ~"http//rdf.ivdnt.org/entry/$persistent_id",
-        ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
-    ))
+    )
 
 
   val lemmaWordform =
-    MultiMapping(List(
-
-      mapping(lexicalForm,
-        ϝ("lemma_id", "http//rdf.ivdnt.org/entry/" + _), ϝ("analyzed_wordform_id", "http://awf" + _)),
-
-      mappingDP(writtenRep, ϝ("analyzed_wordform_id", "http://awf" + _), ϝ("wordform"))
-    ))
+  {
+    val awf = ~"http://awf/$analyzed_wordform_id"
+    ⊕(
+      mapping(lexicalForm, ~"http//rdf.ivdnt.org/entry/$lemma_id", awf),
+      mappingDP(writtenRep, awf, !"wordform")
+    )
+  }
 
   val allMappings = List(lemmata, lemmaWordform)
-
-
-
 
   val db = new database.Database(Configuration("x", "localhost","gigant_hilex_clean", "postgres", "inl"))
 
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
+
+    posMapping.triples(db, posQuery).take(1000).foreach(println)
+
     allMappings.foreach(m =>
       m.triples(db, wordformQuery
       ).take(10).foreach(println)
@@ -224,9 +226,6 @@ object mapping {
 
     senses.triples(db, senseQuery).take(10).foreach(println)
     documents.triples(db, documentQuery).take(10).foreach(println)
-
     attestations.triples(db, attestationQuery).take(10).foreach(println)
-
-
   }
 }
