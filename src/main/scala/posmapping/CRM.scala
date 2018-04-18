@@ -10,7 +10,7 @@ import scala.xml._
 
 object CRM {
 
-  val mappingFile = "data/crm.xml"
+  val mappingFile = "data/CG/crm.xml"
 
   lazy val d = XML.load(mappingFile)
 

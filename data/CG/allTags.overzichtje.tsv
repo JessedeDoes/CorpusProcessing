@@ -1,0 +1,489 @@
+000	NOU(type=common,number=sg,inflection=0)	pos=N,feat.getal=ev	zelfstandig naamwoord enkelvoud, geen uitgang
+001	NOU(type=common,number=sg,inflection=e)	pos=N,feat.getal=ev,feat.form=-e	zelfstandig naamwoord enkelvoud, uitgang -e
+002	NOU(type=common,number=sg,inflection=s/th)	pos=N,feat.getal=ev,feat.form=-s/-th	zelfstandig naamwoord enkelvoud, uitgang -s/-th
+003	NOU(type=common,number=sg,inflection=t)	pos=N,feat.getal=ev,feat.form=-t	zelfstandig naamwoord enkelvoud, uitgang -t
+004	NOU(type=common,number=sg,inflection=n)	pos=N,feat.getal=ev,feat.form=-n	zelfstandig naamwoord enkelvoud, uitgang -n
+005	NOU(type=common,number=sg,inflection=r/re)	pos=N,feat.getal=ev,feat.form=-r/-re	zelfstandig naamwoord enkelvoud, uitgang -r/-re
+006	NOU(type=common,number=sg,inflection=a)	pos=N,feat.getal=ev,feat.form=-a	zelfstandig naamwoord enkelvoud, uitgang -a
+009	NOU(type=common,number=sg,inflection=other)	pos=N,feat.getal=ev,feat.form=unclear	zelfstandig naamwoord enkelvoud, uitgang latijn, onduidelijk of evident fout geschreven
+010	NOU(type=common,number=pl,inflection=0)	pos=N,feat.getal=mv	zelfstandig naamwoord meervoud, geen uitgang
+011	NOU(type=common,number=pl,inflection=e)	pos=N,feat.getal=mv,feat.form=-e	zelfstandig naamwoord meervoud, uitgang -e
+012	NOU(type=common,number=pl,inflection=s/th)	pos=N,feat.getal=mv,feat.form=-s/-th	zelfstandig naamwoord meervoud, uitgang -s/-th
+013	NOU(type=common,number=pl,inflection=t)	pos=N,feat.getal=mv,feat.form=-t	zelfstandig naamwoord meervoud, uitgang -t
+014	NOU(type=common,number=pl,inflection=n)	pos=N,feat.getal=mv,feat.form=-n	zelfstandig naamwoord meervoud, uitgang -n
+015	NOU(type=common,number=pl,inflection=r/re)	pos=N,feat.getal=mv,feat.form=-r/-re	zelfstandig naamwoord meervoud, uitgang -r/-re
+016	NOU(type=common,number=pl,inflection=a)	pos=N,feat.getal=mv,feat.form=-a	zelfstandig naamwoord meervoud, uitgang -a
+019	NOU(type=common,number=pl,inflection=other)	pos=N,feat.getal=mv,feat.form=unclear	zelfstandig naamwoord meervoud, uitgang latijn, onduidelijk of evident fout geschreven
+020	NOU(type=proper,inflection=0)	pos=N,feat.ntype=eigen	eigennaam, geen uitgang
+021	NOU(type=proper,inflection=e)	pos=N,feat.ntype=eigen,feat.form=-e	eigennaam, uitgang -e
+022	NOU(type=proper,inflection=s/th)	pos=N,feat.ntype=eigen,feat.form=-s/-th	eigennaam, uitgang -s/-th
+023	NOU(type=proper,inflection=t)	pos=N,feat.ntype=eigen,feat.form=-t	eigennaam, uitgang -t
+024	NOU(type=proper,inflection=n)	pos=N,feat.ntype=eigen,feat.form=-n	eigennaam, uitgang -n
+025	NOU(type=proper,inflection=r/re)	pos=N,feat.ntype=eigen,feat.form=-r/-re	eigennaam, uitgang -r/-re
+026	NOU(type=proper,inflection=a)	pos=N,feat.ntype=eigen,feat.form=-a	eigennaam, uitgang -a
+029	NOU(type=proper,inflection=other)	pos=N,feat.ntype=eigen,feat.form=unclear	eigennaam, uitgang latijn, onduidelijk of evident fout geschreven
+090	NOU(type=other,inflection=0)	pos=N,feat.probleemgeval=true	zelfstandig naamwoord probleemgeval, geen uitgang
+091	NOU(type=other,inflection=e)	pos=N,feat.probleemgeval=true,feat.form=-e	zelfstandig naamwoord probleemgeval, uitgang -e
+092	NOU(type=other,inflection=s/th)	pos=N,feat.probleemgeval=true,feat.form=-s/-th	zelfstandig naamwoord probleemgeval, uitgang -s/-th
+093	NOU(type=other,inflection=t)	pos=N,feat.probleemgeval=true,feat.form=-t	zelfstandig naamwoord probleemgeval, uitgang -t
+094	NOU(type=other,inflection=n)	pos=N,feat.probleemgeval=true,feat.form=-n	zelfstandig naamwoord probleemgeval, uitgang -n
+095	NOU(type=other,inflection=r/re)	pos=N,feat.probleemgeval=true,feat.form=-r/-re	zelfstandig naamwoord probleemgeval, uitgang -r/-re
+096	NOU(type=other,inflection=a)	pos=N,feat.probleemgeval=true,feat.form=-a	zelfstandig naamwoord probleemgeval, uitgang -a
+099	NOU(type=other,inflection=other)	pos=N,feat.probleemgeval=true,feat.form=unclear	zelfstandig naamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+100	ADJ(number=sg,inflection=0)	pos=ADJ,feat.getal=ev	bijvoeglijk naamwoord enkelvoud, geen uitgang
+101	ADJ(number=sg,inflection=e)	pos=ADJ,feat.getal=ev,feat.form=-e	bijvoeglijk naamwoord enkelvoud, uitgang -e
+102	ADJ(number=sg,inflection=s/th)	pos=ADJ,feat.getal=ev,feat.form=-s/-th	bijvoeglijk naamwoord enkelvoud, uitgang -s/-th
+103	ADJ(number=sg,inflection=t)	pos=ADJ,feat.getal=ev,feat.form=-t	bijvoeglijk naamwoord enkelvoud, uitgang -t
+104	ADJ(number=sg,inflection=n)	pos=ADJ,feat.getal=ev,feat.form=-n	bijvoeglijk naamwoord enkelvoud, uitgang -n
+105	ADJ(number=sg,inflection=r/re)	pos=ADJ,feat.getal=ev,feat.form=-r/-re	bijvoeglijk naamwoord enkelvoud, uitgang -r/-re
+106	ADJ(number=sg,inflection=a)	pos=ADJ,feat.getal=ev,feat.form=-a	bijvoeglijk naamwoord enkelvoud, uitgang -a
+109	ADJ(number=sg,inflection=other)	pos=ADJ,feat.getal=ev	bijvoeglijk naamwoord enkelvoud, uitgang latijn, onduidelijk of evident fout geschreven
+110	ADJ(number=pl,inflection=0)	pos=ADJ,feat.getal=mv	bijvoeglijk naamwoord meervoud, geen uitgang
+111	ADJ(number=pl,inflection=e)	pos=ADJ,feat.getal=mv,feat.form=-e	bijvoeglijk naamwoord meervoud, uitgang -e
+112	ADJ(number=pl,inflection=s/th)	pos=ADJ,feat.getal=mv,feat.form=-s/-th	bijvoeglijk naamwoord meervoud, uitgang -s/-th
+113	ADJ(number=pl,inflection=t)	pos=ADJ,feat.getal=mv,feat.form=-t	bijvoeglijk naamwoord meervoud, uitgang -t
+114	ADJ(number=pl,inflection=n)	pos=ADJ,feat.getal=mv,feat.form=-n	bijvoeglijk naamwoord meervoud, uitgang -n
+115	ADJ(number=pl,inflection=r/re)	pos=ADJ,feat.getal=mv,feat.form=-r/-re	bijvoeglijk naamwoord meervoud, uitgang -r/-re
+116	ADJ(number=pl,inflection=a)	pos=ADJ,feat.getal=mv,feat.form=-a	bijvoeglijk naamwoord meervoud, uitgang -a
+119	ADJ(number=pl,inflection=other)	pos=ADJ,feat.getal=mv	bijvoeglijk naamwoord meervoud, uitgang latijn, onduidelijk of evident fout geschreven
+190	ADJ(number=other,inflection=0)	pos=ADJ,feat.probleemgeval=true	bijvoeglijk naamwoord probleemgeval, geen uitgang
+191	ADJ(number=other,inflection=e)	pos=ADJ,feat.probleemgeval=true,feat.form=-e	bijvoeglijk naamwoord probleemgeval, uitgang -e
+192	ADJ(number=other,inflection=s/th)	pos=ADJ,feat.probleemgeval=true,feat.form=-s/-th	bijvoeglijk naamwoord probleemgeval, uitgang -s/-th
+193	ADJ(number=other,inflection=t)	pos=ADJ,feat.probleemgeval=true,feat.form=-t	bijvoeglijk naamwoord probleemgeval, uitgang -t
+194	ADJ(number=other,inflection=n)	pos=ADJ,feat.probleemgeval=true,feat.form=-n	bijvoeglijk naamwoord probleemgeval, uitgang -n
+195	ADJ(number=other,inflection=r/re)	pos=ADJ,feat.probleemgeval=true,feat.form=-r/-re	bijvoeglijk naamwoord probleemgeval, uitgang -r/-re
+196	ADJ(number=other,inflection=a)	pos=ADJ,feat.probleemgeval=true,feat.form=-a	bijvoeglijk naamwoord probleemgeval, uitgang -a
+199	ADJ(number=other,inflection=other)	pos=ADJ,feat.probleemgeval=true	bijvoeglijk naamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+200	VRB(type=main,finiteness=finite,tense=present,inflection=0)	pos=WW,feat.pvtijd=tgw	persoonsvorm o.t.t. (zelfst.ww.), geen uitgang
+201	VRB(type=main,finiteness=finite,tense=present,inflection=e)	pos=WW,feat.pvtijd=tgw,feat.form=-e	persoonsvorm o.t.t. (zelfst.ww.), uitgang -e
+202	VRB(type=main,finiteness=finite,tense=present,inflection=s/th)	pos=WW,feat.pvtijd=tgw,feat.form=-s/-th	persoonsvorm o.t.t. (zelfst.ww.), uitgang -s/-th
+203	VRB(type=main,finiteness=finite,tense=present,inflection=t)	pos=WW,feat.pvtijd=tgw,feat.form=-t	persoonsvorm o.t.t. (zelfst.ww.), uitgang -t
+204	VRB(type=main,finiteness=finite,tense=present,inflection=n)	pos=WW,feat.pvtijd=tgw,feat.form=-n	persoonsvorm o.t.t. (zelfst.ww.), uitgang -n
+205	VRB(type=main,finiteness=finite,tense=present,inflection=r/re)	pos=WW,feat.pvtijd=tgw,feat.form=-r/-re	persoonsvorm o.t.t. (zelfst.ww.), uitgang -r/-re
+206	VRB(type=main,finiteness=finite,tense=present,inflection=a)	pos=WW,feat.pvtijd=tgw,feat.form=-a	persoonsvorm o.t.t. (zelfst.ww.), uitgang -a
+209	VRB(type=main,finiteness=finite,tense=present,inflection=other)	pos=WW,feat.pvtijd=tgw	persoonsvorm o.t.t. (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+210	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	pos=WW,feat.pvtijd=tgw	persoonsvorm o.t.t. (koppel-/hulpww.), geen uitgang
+211	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)	pos=WW,feat.pvtijd=tgw,feat.form=-e	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -e
+212	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=s/th)	pos=WW,feat.pvtijd=tgw,feat.form=-s/-th	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -s/-th
+213	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)	pos=WW,feat.pvtijd=tgw,feat.form=-t	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -t
+214	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)	pos=WW,feat.pvtijd=tgw,feat.form=-n	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -n
+215	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=r/re)	pos=WW,feat.pvtijd=tgw,feat.form=-r/-re	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -r/-re
+216	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=a)	pos=WW,feat.pvtijd=tgw,feat.form=-a	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -a
+219	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=other)	pos=WW,feat.pvtijd=tgw	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+220	VRB(type=main,finiteness=finite,tense=past,inflection=0)	pos=WW,feat.pvtijd=verl	persoonsvorm o.v.t. (zelfst.ww.), geen uitgang
+221	VRB(type=main,finiteness=finite,tense=past,inflection=e)	pos=WW,feat.pvtijd=verl,feat.form=-e	persoonsvorm o.v.t. (zelfst.ww.), uitgang -e
+222	VRB(type=main,finiteness=finite,tense=past,inflection=s/th)	pos=WW,feat.pvtijd=verl,feat.form=-s/-th	persoonsvorm o.v.t. (zelfst.ww.), uitgang -s/-th
+223	VRB(type=main,finiteness=finite,tense=past,inflection=t)	pos=WW,feat.pvtijd=verl,feat.form=-t	persoonsvorm o.v.t. (zelfst.ww.), uitgang -t
+224	VRB(type=main,finiteness=finite,tense=past,inflection=n)	pos=WW,feat.pvtijd=verl,feat.form=-n	persoonsvorm o.v.t. (zelfst.ww.), uitgang -n
+225	VRB(type=main,finiteness=finite,tense=past,inflection=r/re)	pos=WW,feat.pvtijd=verl,feat.form=-r/-re	persoonsvorm o.v.t. (zelfst.ww.), uitgang -r/-re
+226	VRB(type=main,finiteness=finite,tense=past,inflection=a)	pos=WW,feat.pvtijd=verl,feat.form=-a	persoonsvorm o.v.t. (zelfst.ww.), uitgang -a
+229	VRB(type=main,finiteness=finite,tense=past,inflection=other)	pos=WW,feat.pvtijd=verl	persoonsvorm o.v.t. (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+230	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)	pos=WW,feat.pvtijd=verl	persoonsvorm o.v.t. (koppel-/hulpww.), geen uitgang
+231	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=e)	pos=WW,feat.pvtijd=verl,feat.form=-e	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -e
+232	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=s/th)	pos=WW,feat.pvtijd=verl,feat.form=-s/-th	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -s/-th
+233	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=t)	pos=WW,feat.pvtijd=verl,feat.form=-t	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -t
+234	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=n)	pos=WW,feat.pvtijd=verl,feat.form=-n	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -n
+235	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=r/re)	pos=WW,feat.pvtijd=verl,feat.form=-r/-re	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -r/-re
+236	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=a)	pos=WW,feat.pvtijd=verl,feat.form=-a	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -a
+239	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=other)	pos=WW,feat.pvtijd=verl	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+240	VRB(type=-,finiteness=finite,mood=imperative,inflection=0)	pos=WW	imperatief, geen uitgang
+241	VRB(type=-,finiteness=finite,mood=imperative,inflection=e)	pos=WW,feat.form=-e	imperatief, uitgang -e
+242	VRB(type=-,finiteness=finite,mood=imperative,inflection=s/th)	pos=WW,feat.form=-s/-th	imperatief, uitgang -s/-th
+243	VRB(type=-,finiteness=finite,mood=imperative,inflection=t)	pos=WW,feat.form=-t	imperatief, uitgang -t
+244	VRB(type=-,finiteness=finite,mood=imperative,inflection=n)	pos=WW,feat.form=-n	imperatief, uitgang -n
+245	VRB(type=-,finiteness=finite,mood=imperative,inflection=r/re)	pos=WW,feat.form=-r/-re	imperatief, uitgang -r/-re
+246	VRB(type=-,finiteness=finite,mood=imperative,inflection=a)	pos=WW,feat.form=-a	imperatief, uitgang -a
+249	VRB(type=-,finiteness=finite,mood=imperative,inflection=other)	pos=WW	imperatief, uitgang latijn, onduidelijk of evident fout geschreven
+250	VRB(type=main,finiteness=finite,inflection=0)	pos=WW,feat.wvorm=inf	infinitief (zelfst.ww.), geen uitgang
+251	VRB(type=main,finiteness=finite,inflection=e)	pos=WW,feat.wvorm=inf,feat.form=-e	infinitief (zelfst.ww.), uitgang -e
+252	VRB(type=main,finiteness=finite,inflection=s/th)	pos=WW,feat.wvorm=inf,feat.form=-s/-th	infinitief (zelfst.ww.), uitgang -s/-th
+253	VRB(type=main,finiteness=finite,inflection=t)	pos=WW,feat.wvorm=inf,feat.form=-t	infinitief (zelfst.ww.), uitgang -t
+254	VRB(type=main,finiteness=finite,inflection=n)	pos=WW,feat.wvorm=inf,feat.form=-n	infinitief (zelfst.ww.), uitgang -n
+255	VRB(type=main,finiteness=finite,inflection=r/re)	pos=WW,feat.wvorm=inf,feat.form=-r/-re	infinitief (zelfst.ww.), uitgang -r/-re
+256	VRB(type=main,finiteness=finite,inflection=a)	pos=WW,feat.wvorm=inf,feat.form=-a	infinitief (zelfst.ww.), uitgang -a
+259	VRB(type=main,finiteness=finite,inflection=other)	pos=WW,feat.wvorm=inf	infinitief (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+260	VRB(type=auxiliary,finiteness=inf/ger,inflection=0)	pos=WW,feat.wvorm=inf	infinitief (koppel-/hulpww.), geen uitgang
+261	VRB(type=auxiliary,finiteness=inf/ger,inflection=e)	pos=WW,feat.wvorm=inf,feat.form=-e	infinitief (koppel-/hulpww.), uitgang -e
+262	VRB(type=auxiliary,finiteness=inf/ger,inflection=s/th)	pos=WW,feat.wvorm=inf,feat.form=-s/-th	infinitief (koppel-/hulpww.), uitgang -s/-th
+263	VRB(type=auxiliary,finiteness=inf/ger,inflection=t)	pos=WW,feat.wvorm=inf,feat.form=-t	infinitief (koppel-/hulpww.), uitgang -t
+264	VRB(type=auxiliary,finiteness=inf/ger,inflection=n)	pos=WW,feat.wvorm=inf,feat.form=-n	infinitief (koppel-/hulpww.), uitgang -n
+265	VRB(type=auxiliary,finiteness=inf/ger,inflection=r/re)	pos=WW,feat.wvorm=inf,feat.form=-r/-re	infinitief (koppel-/hulpww.), uitgang -r/-re
+266	VRB(type=auxiliary,finiteness=inf/ger,inflection=a)	pos=WW,feat.wvorm=inf,feat.form=-a	infinitief (koppel-/hulpww.), uitgang -a
+269	VRB(type=auxiliary,finiteness=inf/ger,inflection=other)	pos=WW,feat.wvorm=inf	infinitief (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+270	VRB(type=main,finiteness=part,inflection=0)	pos=WW	deelwoord (zelfst.ww.), geen uitgang
+271	VRB(type=main,finiteness=part,inflection=e)	pos=WW,feat.form=-e	deelwoord (zelfst.ww.), uitgang -e
+272	VRB(type=main,finiteness=part,inflection=s/th)	pos=WW,feat.form=-s/-th	deelwoord (zelfst.ww.), uitgang -s/-th
+273	VRB(type=main,finiteness=part,inflection=t)	pos=WW,feat.form=-t	deelwoord (zelfst.ww.), uitgang -t
+274	VRB(type=main,finiteness=part,inflection=n)	pos=WW,feat.form=-n	deelwoord (zelfst.ww.), uitgang -n
+275	VRB(type=main,finiteness=part,inflection=r/re)	pos=WW,feat.form=-r/-re	deelwoord (zelfst.ww.), uitgang -r/-re
+276	VRB(type=main,finiteness=part,inflection=a)	pos=WW,feat.form=-a	deelwoord (zelfst.ww.), uitgang -a
+279	VRB(type=main,finiteness=part,inflection=other)	pos=WW	deelwoord (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+280	VRB(type=auxiliary,finiteness=part,inflection=0)	pos=WW	deelwoord (koppel-/hulpww.), geen uitgang
+281	VRB(type=auxiliary,finiteness=part,inflection=e)	pos=WW,feat.form=-e	deelwoord (koppel-/hulpww.), uitgang -e
+282	VRB(type=auxiliary,finiteness=part,inflection=s/th)	pos=WW,feat.form=-s/-th	deelwoord (koppel-/hulpww.), uitgang -s/-th
+283	VRB(type=auxiliary,finiteness=part,inflection=t)	pos=WW,feat.form=-t	deelwoord (koppel-/hulpww.), uitgang -t
+284	VRB(type=auxiliary,finiteness=part,inflection=n)	pos=WW,feat.form=-n	deelwoord (koppel-/hulpww.), uitgang -n
+285	VRB(type=auxiliary,finiteness=part,inflection=r/re)	pos=WW,feat.form=-r/-re	deelwoord (koppel-/hulpww.), uitgang -r/-re
+286	VRB(type=auxiliary,finiteness=part,inflection=a)	pos=WW,feat.form=-a	deelwoord (koppel-/hulpww.), uitgang -a
+289	VRB(type=auxiliary,finiteness=part,inflection=other)	pos=WW	deelwoord (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+290	VRB(type=other,inflection=0)	pos=WW,feat.probleemgeval=true	werkwoord probleemgeval, geen uitgang
+291	VRB(type=other,inflection=e)	pos=WW,feat.probleemgeval=true,feat.form=-e	werkwoord probleemgeval, uitgang -e
+292	VRB(type=other,inflection=s/th)	pos=WW,feat.probleemgeval=true,feat.form=-s/-th	werkwoord probleemgeval, uitgang -s/-th
+293	VRB(type=other,inflection=t)	pos=WW,feat.probleemgeval=true,feat.form=-t	werkwoord probleemgeval, uitgang -t
+294	VRB(type=other,inflection=n)	pos=WW,feat.probleemgeval=true,feat.form=-n	werkwoord probleemgeval, uitgang -n
+295	VRB(type=other,inflection=r/re)	pos=WW,feat.probleemgeval=true,feat.form=-r/-re	werkwoord probleemgeval, uitgang -r/-re
+296	VRB(type=other,inflection=a)	pos=WW,feat.probleemgeval=true,feat.form=-a	werkwoord probleemgeval, uitgang -a
+299	VRB(type=other,inflection=other)	pos=WW,feat.probleemgeval=true	werkwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+300	NUM(type=cardinal,inflection=0)	pos=TW,feat.numtype=hoofd	hoofdtelwoord, geen uitgang
+301	NUM(type=cardinal,inflection=e)	pos=TW,feat.numtype=hoofd,feat.form=-e	hoofdtelwoord, uitgang -e
+302	NUM(type=cardinal,inflection=s/th)	pos=TW,feat.numtype=hoofd,feat.form=-s/-th	hoofdtelwoord, uitgang -s/-th
+303	NUM(type=cardinal,inflection=t)	pos=TW,feat.numtype=hoofd,feat.form=-t	hoofdtelwoord, uitgang -t
+304	NUM(type=cardinal,inflection=n)	pos=TW,feat.numtype=hoofd,feat.form=-n	hoofdtelwoord, uitgang -n
+305	NUM(type=cardinal,inflection=r/re)	pos=TW,feat.numtype=hoofd,feat.form=-r/-re	hoofdtelwoord, uitgang -r/-re
+306	NUM(type=cardinal,inflection=a)	pos=TW,feat.numtype=hoofd,feat.form=-a	hoofdtelwoord, uitgang -a
+309	NUM(type=cardinal,inflection=other)	pos=TW,feat.numtype=hoofd	hoofdtelwoord, uitgang latijn, onduidelijk of evident fout geschreven
+310	NUM(type=ordinal,inflection=0)	pos=TW,feat.numtype=rang	rangtelwoord, geen uitgang
+311	NUM(type=ordinal,inflection=e)	pos=TW,feat.numtype=rang,feat.form=-e	rangtelwoord, uitgang -e
+312	NUM(type=ordinal,inflection=s/th)	pos=TW,feat.numtype=rang,feat.form=-s/-th	rangtelwoord, uitgang -s/-th
+313	NUM(type=ordinal,inflection=t)	pos=TW,feat.numtype=rang,feat.form=-t	rangtelwoord, uitgang -t
+314	NUM(type=ordinal,inflection=n)	pos=TW,feat.numtype=rang,feat.form=-n	rangtelwoord, uitgang -n
+315	NUM(type=ordinal,inflection=r/re)	pos=TW,feat.numtype=rang,feat.form=-r/-re	rangtelwoord, uitgang -r/-re
+316	NUM(type=ordinal,inflection=a)	pos=TW,feat.numtype=rang,feat.form=-a	rangtelwoord, uitgang -a
+319	NUM(type=ordinal,inflection=other)	pos=TW,feat.numtype=rang	rangtelwoord, uitgang latijn, onduidelijk of evident fout geschreven
+320	NUM(type=indefinite,inflection=0)	pos=TW	onbepaald telwoord, geen uitgang
+321	NUM(type=indefinite,inflection=e)	pos=TW,feat.form=-e	onbepaald telwoord, uitgang -e
+322	NUM(type=indefinite,inflection=s/th)	pos=TW,feat.form=-s/-th	onbepaald telwoord, uitgang -s/-th
+323	NUM(type=indefinite,inflection=t)	pos=TW,feat.form=-t	onbepaald telwoord, uitgang -t
+324	NUM(type=indefinite,inflection=n)	pos=TW,feat.form=-n	onbepaald telwoord, uitgang -n
+325	NUM(type=indefinite,inflection=r/re)	pos=TW,feat.form=-r/-re	onbepaald telwoord, uitgang -r/-re
+326	NUM(type=indefinite,inflection=a)	pos=TW,feat.form=-a	onbepaald telwoord, uitgang -a
+329	NUM(type=indefinite,inflection=other)	pos=TW	onbepaald telwoord, uitgang latijn, onduidelijk of evident fout geschreven
+390	NUM(type=other,inflection=0)	pos=TW,feat.probleemgeval=true	telwoord probleemgeval, geen uitgang
+391	NUM(type=other,inflection=e)	pos=TW,feat.probleemgeval=true,feat.form=-e	telwoord probleemgeval, uitgang -e
+392	NUM(type=other,inflection=s/th)	pos=TW,feat.probleemgeval=true,feat.form=-s/-th	telwoord probleemgeval, uitgang -s/-th
+393	NUM(type=other,inflection=t)	pos=TW,feat.probleemgeval=true,feat.form=-t	telwoord probleemgeval, uitgang -t
+394	NUM(type=other,inflection=n)	pos=TW,feat.probleemgeval=true,feat.form=-n	telwoord probleemgeval, uitgang -n
+395	NUM(type=other,inflection=r/re)	pos=TW,feat.probleemgeval=true,feat.form=-r/-re	telwoord probleemgeval, uitgang -r/-re
+396	NUM(type=other,inflection=a)	pos=TW,feat.probleemgeval=true,feat.form=-a	telwoord probleemgeval, uitgang -a
+399	NUM(type=other,inflection=other)	pos=TW,feat.probleemgeval=true	telwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+401	PD(type=pers,person=1,number=sg)	pos=VNW,feat.getal=ev,feat.persoon=1	persoonlijk voornaamwoord, 1e persoon enkelvoud
+402	PD(type=pers,person=2,number=sg)	pos=VNW,feat.getal=ev,feat.persoon=2	persoonlijk voornaamwoord, 2e persoon enkelvoud
+403	PD(type=pers,person=3,number=sg)	pos=VNW,feat.getal=ev,feat.persoon=3	persoonlijk voornaamwoord, 3e persoon enkelvoud
+404	PD(type=pers,person=1,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=1	persoonlijk voornaamwoord, 1e persoon meervoud
+405	PD(type=pers,person=2,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=2	persoonlijk voornaamwoord, 2e persoon meervoud
+406	PD(type=pers,person=3,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=3	persoonlijk voornaamwoord, 3e persoon meervoud
+409	PD(type=pers,other)	pos=VNW,feat.probleemgeval=true	probleemgeval
+410	PD(type=dem,inflection=0)	pos=VNW,feat.vwtype=aanw	aanwijzend voornaamwoord, geen uitgang
+411	PD(type=dem,inflection=e)	pos=VNW,feat.vwtype=aanw,feat.form=-e	aanwijzend voornaamwoord, uitgang -e
+412	PD(type=dem,inflection=s/th)	pos=VNW,feat.vwtype=aanw,feat.form=-s/-th	aanwijzend voornaamwoord, uitgang -s/-th
+413	PD(type=dem,inflection=t)	pos=VNW,feat.vwtype=aanw,feat.form=-t	aanwijzend voornaamwoord, uitgang -t
+414	PD(type=dem,inflection=n)	pos=VNW,feat.vwtype=aanw,feat.form=-n	aanwijzend voornaamwoord, uitgang -n
+415	PD(type=dem,inflection=r/re)	pos=VNW,feat.vwtype=aanw,feat.form=-r/-re	aanwijzend voornaamwoord, uitgang -r/-re
+416	PD(type=dem,inflection=a)	pos=VNW,feat.vwtype=aanw,feat.form=-a	aanwijzend voornaamwoord, uitgang -a
+419	PD(type=dem,inflection=other)	pos=VNW,feat.vwtype=aanw	aanwijzend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+420	PD(type=rel,inflection=0)	pos=VNW,feat.vwtype=betr	betrekkelijk voornaamwoord, geen uitgang
+421	PD(type=rel,inflection=e)	pos=VNW,feat.vwtype=betr,feat.form=-e	betrekkelijk voornaamwoord, uitgang -e
+422	PD(type=rel,inflection=s/th)	pos=VNW,feat.vwtype=betr,feat.form=-s/-th	betrekkelijk voornaamwoord, uitgang -s/-th
+423	PD(type=rel,inflection=t)	pos=VNW,feat.vwtype=betr,feat.form=-t	betrekkelijk voornaamwoord, uitgang -t
+424	PD(type=rel,inflection=n)	pos=VNW,feat.vwtype=betr,feat.form=-n	betrekkelijk voornaamwoord, uitgang -n
+425	PD(type=rel,inflection=r/re)	pos=VNW,feat.vwtype=betr,feat.form=-r/-re	betrekkelijk voornaamwoord, uitgang -r/-re
+426	PD(type=rel,inflection=a)	pos=VNW,feat.vwtype=betr,feat.form=-a	betrekkelijk voornaamwoord, uitgang -a
+429	PD(type=rel,inflection=other)	pos=VNW,feat.vwtype=betr	betrekkelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+430	PD(type=int,inflection=0)	pos=VNW,feat.vwtype=vb	vragend voornaamwoord, geen uitgang
+431	PD(type=int,inflection=e)	pos=VNW,feat.vwtype=vb,feat.form=-e	vragend voornaamwoord, uitgang -e
+432	PD(type=int,inflection=s/th)	pos=VNW,feat.vwtype=vb,feat.form=-s/-th	vragend voornaamwoord, uitgang -s/-th
+433	PD(type=int,inflection=t)	pos=VNW,feat.vwtype=vb,feat.form=-t	vragend voornaamwoord, uitgang -t
+434	PD(type=int,inflection=n)	pos=VNW,feat.vwtype=vb,feat.form=-n	vragend voornaamwoord, uitgang -n
+435	PD(type=int,inflection=r/re)	pos=VNW,feat.vwtype=vb,feat.form=-r/-re	vragend voornaamwoord, uitgang -r/-re
+436	PD(type=int,inflection=a)	pos=VNW,feat.vwtype=vb,feat.form=-a	vragend voornaamwoord, uitgang -a
+439	PD(type=int,inflection=other)	pos=VNW,feat.vwtype=vb	vragend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+440	PD(type=indef,inflection=0)	pos=VNW,feat.lwtype=onbep	onbepaald voornaamwoord, geen uitgang
+441	PD(type=indef,inflection=e)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-e	onbepaald voornaamwoord, uitgang -e
+442	PD(type=indef,inflection=s/th)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-s/-th	onbepaald voornaamwoord, uitgang -s/-th
+443	PD(type=indef,inflection=t)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-t	onbepaald voornaamwoord, uitgang -t
+444	PD(type=indef,inflection=n)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-n	onbepaald voornaamwoord, uitgang -n
+445	PD(type=indef,inflection=r/re)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-r/-re	onbepaald voornaamwoord, uitgang -r/-re
+446	PD(type=indef,inflection=a)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep,feat.form=-a	onbepaald voornaamwoord, uitgang -a
+449	PD(type=indef,inflection=other)	pos=VNW,feat.vwtype=vb,feat.lwtype=onbep	onbepaald voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+450	PD(type=poss,inflection=0)	pos=VNW,feat.vwtype=bez	bezittelijk voornaamwoord, geen uitgang
+451	PD(type=poss,inflection=e)	pos=VNW,feat.vwtype=bez,feat.form=-e	bezittelijk voornaamwoord, uitgang -e
+452	PD(type=poss,inflection=s/th)	pos=VNW,feat.vwtype=bez,feat.form=-s/-th	bezittelijk voornaamwoord, uitgang -s/-th
+453	PD(type=poss,inflection=t)	pos=VNW,feat.vwtype=bez,feat.form=-t	bezittelijk voornaamwoord, uitgang -t
+454	PD(type=poss,inflection=n)	pos=VNW,feat.vwtype=bez,feat.form=-n	bezittelijk voornaamwoord, uitgang -n
+455	PD(type=poss,inflection=r/re)	pos=VNW,feat.vwtype=bez,feat.form=-r/-re	bezittelijk voornaamwoord, uitgang -r/-re
+456	PD(type=poss,inflection=a)	pos=VNW,feat.vwtype=bez,feat.form=-a	bezittelijk voornaamwoord, uitgang -a
+459	PD(type=poss,inflection=other)	pos=VNW,feat.vwtype=bez	bezittelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+460	PD(type=refl/recp)	_	wederkerend/wederkerig voornaamwoord
+461	PD(type=refl/recp,person=1,number=sg)	pos=VNW,feat.vwtype=refl,feat.getal=ev,feat.persoon=1	wederkerend/wederkerig voornaamwoord, 1e persoon enkelvoud
+462	PD(type=refl/recp,person=2,number=sg)	pos=VNW,feat.vwtype=refl,feat.getal=ev,feat.persoon=2	wederkerend/wederkerig voornaamwoord, 2e persoon enkelvoud
+463	PD(type=refl/recp,person=3,number=sg)	pos=VNW,feat.vwtype=refl,feat.getal=ev,feat.persoon=3	wederkerend/wederkerig voornaamwoord, 3e persoon enkelvoud
+464	PD(type=refl/recp,person=1,number=pl)	pos=VNW,feat.vwtype=refl,feat.getal=mv,feat.persoon=1	wederkerend/wederkerig voornaamwoord, 1e persoon meervoud
+465	PD(type=refl/recp,person=2,number=pl)	pos=VNW,feat.vwtype=refl,feat.getal=mv,feat.persoon=2	wederkerend/wederkerig voornaamwoord, 2e persoon meervoud
+466	PD(type=refl/recp,person=3,number=pl)	pos=VNW,feat.vwtype=refl,feat.getal=mv,feat.persoon=3	wederkerend/wederkerig voornaamwoord, 3e persoon meervoud
+469	PD(type=refl/recp,other)	pos=VNW,feat.vwtype=refl,feat.probleemgeval=true	probleemgeval
+470	PD(type=art,subtype=def,inflection=0)	pos=LID	bepaald lidwoord, geen uitgang
+471	PD(type=art,subtype=def,inflection=e)	pos=LID,feat.form=-e	bepaald lidwoord, uitgang -e
+472	PD(type=art,subtype=def,inflection=s/th)	pos=LID,feat.form=-s/-th	bepaald lidwoord, uitgang -s/-th
+473	PD(type=art,subtype=def,inflection=t)	pos=LID,feat.form=-t	bepaald lidwoord, uitgang -t
+474	PD(type=art,subtype=def,inflection=n)	pos=LID,feat.form=-n	bepaald lidwoord, uitgang -n
+475	PD(type=art,subtype=def,inflection=r/re)	pos=LID,feat.form=-r/-re	bepaald lidwoord, uitgang -r/-re
+476	PD(type=art,subtype=def,inflection=a)	pos=LID,feat.form=-a	bepaald lidwoord, uitgang -a
+479	PD(type=art,subtype=def,inflection=other)	pos=LID	bepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+480	PD(type=art,subtype=indef,inflection=0)	pos=LID	onbepaald lidwoord, geen uitgang
+481	PD(type=art,subtype=indef,inflection=e)	pos=LID,feat.form=-e	onbepaald lidwoord, uitgang -e
+482	PD(type=art,subtype=indef,inflection=s/th)	pos=LID,feat.form=-s/-th	onbepaald lidwoord, uitgang -s/-th
+483	PD(type=art,subtype=indef,inflection=t)	pos=LID,feat.form=-t	onbepaald lidwoord, uitgang -t
+484	PD(type=art,subtype=indef,inflection=n)	pos=LID,feat.form=-n	onbepaald lidwoord, uitgang -n
+485	PD(type=art,subtype=indef,inflection=r/re)	pos=LID,feat.form=-r/-re	onbepaald lidwoord, uitgang -r/-re
+486	PD(type=art,subtype=indef,inflection=a)	pos=LID,feat.form=-a	onbepaald lidwoord, uitgang -a
+489	PD(type=art,subtype=indef,inflection=other)	pos=LID	onbepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+490	PD(type=other,inflection=0)	pos=VNW,feat.probleemgeval=true	voornaamwoord probleemgeval, geen uitgang
+491	PD(type=other,inflection=e)	pos=VNW,feat.probleemgeval=true,feat.form=-e	voornaamwoord probleemgeval, uitgang -e
+492	PD(type=other,inflection=s/th)	pos=VNW,feat.probleemgeval=true,feat.form=-s/-th	voornaamwoord probleemgeval, uitgang -s/-th
+493	PD(type=other,inflection=t)	pos=VNW,feat.probleemgeval=true,feat.form=-t	voornaamwoord probleemgeval, uitgang -t
+494	PD(type=other,inflection=n)	pos=VNW,feat.probleemgeval=true,feat.form=-n	voornaamwoord probleemgeval, uitgang -n
+495	PD(type=other,inflection=r/re)	pos=VNW,feat.probleemgeval=true,feat.form=-r/-re	voornaamwoord probleemgeval, uitgang -r/-re
+496	PD(type=other,inflection=a)	pos=VNW,feat.probleemgeval=true,feat.form=-a	voornaamwoord probleemgeval, uitgang -a
+499	PD(type=other,inflection=other)	pos=VNW,feat.probleemgeval=true	voornaamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+500	ADV(type=general,inflection=0)	pos=BW	bijwoord, geen uitgang
+501	ADV(type=general,inflection=e)	pos=BW,feat.form=-e	bijwoord, uitgang -e
+502	ADV(type=general,inflection=s/th)	pos=BW,feat.form=-s/-th	bijwoord, uitgang -s/-th
+503	ADV(type=general,inflection=t)	pos=BW,feat.form=-t	bijwoord, uitgang -t
+504	ADV(type=general,inflection=n)	pos=BW,feat.form=-n	bijwoord, uitgang -n
+505	ADV(type=general,inflection=r/re)	pos=BW,feat.form=-r/-re	bijwoord, uitgang -r/-re
+506	ADV(type=general,inflection=a)	pos=BW,feat.form=-a	bijwoord, uitgang -a
+509	ADV(type=general,inflection=other)	pos=BW	bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+510	ADV(type=dem,inflection=0)	pos=BW	aanwijzend bijwoord, geen uitgang
+511	ADV(type=dem,inflection=e)	pos=BW,feat.form=-e	aanwijzend bijwoord, uitgang -e
+512	ADV(type=dem,inflection=s/th)	pos=BW,feat.form=-s/-th	aanwijzend bijwoord, uitgang -s/-th
+513	ADV(type=dem,inflection=t)	pos=BW,feat.form=-t	aanwijzend bijwoord, uitgang -t
+514	ADV(type=dem,inflection=n)	pos=BW,feat.form=-n	aanwijzend bijwoord, uitgang -n
+515	ADV(type=dem,inflection=r/re)	pos=BW,feat.form=-r/-re	aanwijzend bijwoord, uitgang -r/-re
+516	ADV(type=dem,inflection=a)	pos=BW,feat.form=-a	aanwijzend bijwoord, uitgang -a
+519	ADV(type=dem,inflection=other)	pos=BW	aanwijzend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+520	ADV(type=rel,inflection=0)	pos=BW	betrekkelijk bijwoord, geen uitgang
+521	ADV(type=rel,inflection=e)	pos=BW,feat.form=-e	betrekkelijk bijwoord, uitgang -e
+522	ADV(type=rel,inflection=s/th)	pos=BW,feat.form=-s/-th	betrekkelijk bijwoord, uitgang -s/-th
+523	ADV(type=rel,inflection=t)	pos=BW,feat.form=-t	betrekkelijk bijwoord, uitgang -t
+524	ADV(type=rel,inflection=n)	pos=BW,feat.form=-n	betrekkelijk bijwoord, uitgang -n
+525	ADV(type=rel,inflection=r/re)	pos=BW,feat.form=-r/-re	betrekkelijk bijwoord, uitgang -r/-re
+526	ADV(type=rel,inflection=a)	pos=BW,feat.form=-a	betrekkelijk bijwoord, uitgang -a
+529	ADV(type=rel,inflection=other)	pos=BW	betrekkelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+530	ADV(type=int,inflection=0)	pos=BW	vragend bijwoord, geen uitgang
+531	ADV(type=int,inflection=e)	pos=BW,feat.form=-e	vragend bijwoord, uitgang -e
+532	ADV(type=int,inflection=s/th)	pos=BW,feat.form=-s/-th	vragend bijwoord, uitgang -s/-th
+533	ADV(type=int,inflection=t)	pos=BW,feat.form=-t	vragend bijwoord, uitgang -t
+534	ADV(type=int,inflection=n)	pos=BW,feat.form=-n	vragend bijwoord, uitgang -n
+535	ADV(type=int,inflection=r/re)	pos=BW,feat.form=-r/-re	vragend bijwoord, uitgang -r/-re
+536	ADV(type=int,inflection=a)	pos=BW,feat.form=-a	vragend bijwoord, uitgang -a
+539	ADV(type=int,inflection=other)	pos=BW	vragend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+540	ADV(type=indef,inflection=0)	pos=BW	onbepaald bijwoord, geen uitgang
+541	ADV(type=indef,inflection=e)	pos=BW,feat.form=-e	onbepaald bijwoord, uitgang -e
+542	ADV(type=indef,inflection=s/th)	pos=BW,feat.form=-s/-th	onbepaald bijwoord, uitgang -s/-th
+543	ADV(type=indef,inflection=t)	pos=BW,feat.form=-t	onbepaald bijwoord, uitgang -t
+544	ADV(type=indef,inflection=n)	pos=BW,feat.form=-n	onbepaald bijwoord, uitgang -n
+545	ADV(type=indef,inflection=r/re)	pos=BW,feat.form=-r/-re	onbepaald bijwoord, uitgang -r/-re
+546	ADV(type=indef,inflection=a)	pos=BW,feat.form=-a	onbepaald bijwoord, uitgang -a
+549	ADV(type=indef,inflection=other)	pos=BW	onbepaald bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+550	ADV(type=resumptive,inflection=0)	pos=BW	hervattend bijwoord, geen uitgang
+551	ADV(type=resumptive,inflection=e)	pos=BW,feat.form=-e	hervattend bijwoord, uitgang -e
+552	ADV(type=resumptive,inflection=s/th)	pos=BW,feat.form=-s/-th	hervattend bijwoord, uitgang -s/-th
+553	ADV(type=resumptive,inflection=t)	pos=BW,feat.form=-t	hervattend bijwoord, uitgang -t
+554	ADV(type=resumptive,inflection=n)	pos=BW,feat.form=-n	hervattend bijwoord, uitgang -n
+555	ADV(type=resumptive,inflection=r/re)	pos=BW,feat.form=-r/-re	hervattend bijwoord, uitgang -r/-re
+556	ADV(type=resumptive,inflection=a)	pos=BW,feat.form=-a	hervattend bijwoord, uitgang -a
+559	ADV(type=resumptive,inflection=other)	pos=BW	hervattend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+560	ADV(type=negative,inflection=0)	pos=BW	ontkennend bijwoord, geen uitgang
+561	ADV(type=negative,inflection=e)	pos=BW,feat.form=-e	ontkennend bijwoord, uitgang -e
+562	ADV(type=negative,inflection=s/th)	pos=BW,feat.form=-s/-th	ontkennend bijwoord, uitgang -s/-th
+563	ADV(type=negative,inflection=t)	pos=BW,feat.form=-t	ontkennend bijwoord, uitgang -t
+564	ADV(type=negative,inflection=n)	pos=BW,feat.form=-n	ontkennend bijwoord, uitgang -n
+565	ADV(type=negative,inflection=r/re)	pos=BW,feat.form=-r/-re	ontkennend bijwoord, uitgang -r/-re
+566	ADV(type=negative,inflection=a)	pos=BW,feat.form=-a	ontkennend bijwoord, uitgang -a
+569	ADV(type=negative,inflection=other)	pos=BW	ontkennend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+590	ADV(type=other,inflection=0)	pos=BW,feat.probleemgeval=true	bijwoord probleemgeval, geen uitgang
+591	ADV(type=other,inflection=e)	pos=BW,feat.probleemgeval=true,feat.form=-e	bijwoord probleemgeval, uitgang -e
+592	ADV(type=other,inflection=s/th)	pos=BW,feat.probleemgeval=true,feat.form=-s/-th	bijwoord probleemgeval, uitgang -s/-th
+593	ADV(type=other,inflection=t)	pos=BW,feat.probleemgeval=true,feat.form=-t	bijwoord probleemgeval, uitgang -t
+594	ADV(type=other,inflection=n)	pos=BW,feat.probleemgeval=true,feat.form=-n	bijwoord probleemgeval, uitgang -n
+595	ADV(type=other,inflection=r/re)	pos=BW,feat.probleemgeval=true,feat.form=-r/-re	bijwoord probleemgeval, uitgang -r/-re
+596	ADV(type=other,inflection=a)	pos=BW,feat.probleemgeval=true,feat.form=-a	bijwoord probleemgeval, uitgang -a
+599	ADV(type=other,inflection=other)	pos=BW,feat.probleemgeval=true	bijwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+600	ADV(advType=pronominal,type=general,inflection=0)	pos=BW	voornaamwoordelijk bijwoord, geen uitgang
+601	ADV(advType=pronominal,type=general,inflection=e)	pos=BW,feat.form=-e	voornaamwoordelijk bijwoord, uitgang -e
+602	ADV(advType=pronominal,type=general,inflection=s/th)	pos=BW,feat.form=-s/-th	voornaamwoordelijk bijwoord, uitgang -s/-th
+603	ADV(advType=pronominal,type=general,inflection=t)	pos=BW,feat.form=-t	voornaamwoordelijk bijwoord, uitgang -t
+604	ADV(advType=pronominal,type=general,inflection=n)	pos=BW,feat.form=-n	voornaamwoordelijk bijwoord, uitgang -n
+605	ADV(advType=pronominal,type=general,inflection=r/re)	pos=BW,feat.form=-r/-re	voornaamwoordelijk bijwoord, uitgang -r/-re
+606	ADV(advType=pronominal,type=general,inflection=a)	pos=BW,feat.form=-a	voornaamwoordelijk bijwoord, uitgang -a
+609	ADV(advType=pronominal,type=general,inflection=other)	pos=BW	voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+610	ADV(advType=pronominal,type=dem,inflection=0)	pos=BW	aanwijzend voornaamwoordelijk bijwoord, geen uitgang
+611	ADV(advType=pronominal,type=dem,inflection=e)	pos=BW,feat.form=-e	aanwijzend voornaamwoordelijk bijwoord, uitgang -e
+612	ADV(advType=pronominal,type=dem,inflection=s/th)	pos=BW,feat.form=-s/-th	aanwijzend voornaamwoordelijk bijwoord, uitgang -s/-th
+613	ADV(advType=pronominal,type=dem,inflection=t)	pos=BW,feat.form=-t	aanwijzend voornaamwoordelijk bijwoord, uitgang -t
+614	ADV(advType=pronominal,type=dem,inflection=n)	pos=BW,feat.form=-n	aanwijzend voornaamwoordelijk bijwoord, uitgang -n
+615	ADV(advType=pronominal,type=dem,inflection=r/re)	pos=BW,feat.form=-r/-re	aanwijzend voornaamwoordelijk bijwoord, uitgang -r/-re
+616	ADV(advType=pronominal,type=dem,inflection=a)	pos=BW,feat.form=-a	aanwijzend voornaamwoordelijk bijwoord, uitgang -a
+619	ADV(advType=pronominal,type=dem,inflection=other)	pos=BW	aanwijzend voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+620	ADV(advType=pronominal,type=rel,inflection=0)	pos=BW	betrekkelijk voornaamwoordelijk bijwoord, geen uitgang
+621	ADV(advType=pronominal,type=rel,inflection=e)	pos=BW,feat.form=-e	betrekkelijk voornaamwoordelijk bijwoord, uitgang -e
+622	ADV(advType=pronominal,type=rel,inflection=s/th)	pos=BW,feat.form=-s/-th	betrekkelijk voornaamwoordelijk bijwoord, uitgang -s/-th
+623	ADV(advType=pronominal,type=rel,inflection=t)	pos=BW,feat.form=-t	betrekkelijk voornaamwoordelijk bijwoord, uitgang -t
+624	ADV(advType=pronominal,type=rel,inflection=n)	pos=BW,feat.form=-n	betrekkelijk voornaamwoordelijk bijwoord, uitgang -n
+625	ADV(advType=pronominal,type=rel,inflection=r/re)	pos=BW,feat.form=-r/-re	betrekkelijk voornaamwoordelijk bijwoord, uitgang -r/-re
+626	ADV(advType=pronominal,type=rel,inflection=a)	pos=BW,feat.form=-a	betrekkelijk voornaamwoordelijk bijwoord, uitgang -a
+629	ADV(advType=pronominal,type=rel,inflection=other)	pos=BW	betrekkelijk voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+630	ADV(advType=pronominal,type=int,inflection=0)	pos=BW	vragend voornaamwoordelijk bijwoord, geen uitgang
+631	ADV(advType=pronominal,type=int,inflection=e)	pos=BW,feat.form=-e	vragend voornaamwoordelijk bijwoord, uitgang -e
+632	ADV(advType=pronominal,type=int,inflection=s/th)	pos=BW,feat.form=-s/-th	vragend voornaamwoordelijk bijwoord, uitgang -s/-th
+633	ADV(advType=pronominal,type=int,inflection=t)	pos=BW,feat.form=-t	vragend voornaamwoordelijk bijwoord, uitgang -t
+634	ADV(advType=pronominal,type=int,inflection=n)	pos=BW,feat.form=-n	vragend voornaamwoordelijk bijwoord, uitgang -n
+635	ADV(advType=pronominal,type=int,inflection=r/re)	pos=BW,feat.form=-r/-re	vragend voornaamwoordelijk bijwoord, uitgang -r/-re
+636	ADV(advType=pronominal,type=int,inflection=a)	pos=BW,feat.form=-a	vragend voornaamwoordelijk bijwoord, uitgang -a
+639	ADV(advType=pronominal,type=int,inflection=other)	pos=BW	vragend voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+640	ADV(advType=pronominal,type=indef,inflection=0)	pos=BW	onbepaald voornaamwoordelijk bijwoord, geen uitgang
+641	ADV(advType=pronominal,type=indef,inflection=e)	pos=BW,feat.form=-e	onbepaald voornaamwoordelijk bijwoord, uitgang -e
+642	ADV(advType=pronominal,type=indef,inflection=s/th)	pos=BW,feat.form=-s/-th	onbepaald voornaamwoordelijk bijwoord, uitgang -s/-th
+643	ADV(advType=pronominal,type=indef,inflection=t)	pos=BW,feat.form=-t	onbepaald voornaamwoordelijk bijwoord, uitgang -t
+644	ADV(advType=pronominal,type=indef,inflection=n)	pos=BW,feat.form=-n	onbepaald voornaamwoordelijk bijwoord, uitgang -n
+645	ADV(advType=pronominal,type=indef,inflection=r/re)	pos=BW,feat.form=-r/-re	onbepaald voornaamwoordelijk bijwoord, uitgang -r/-re
+646	ADV(advType=pronominal,type=indef,inflection=a)	pos=BW,feat.form=-a	onbepaald voornaamwoordelijk bijwoord, uitgang -a
+649	ADV(advType=pronominal,type=indef,inflection=other)	pos=BW	onbepaald voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+650	ADV(advType=pronominal,type=resumptive,inflection=0)	pos=BW	bijwoordelijk deel van voornaamwoordelijk bijwoord, geen uitgang
+651	ADV(advType=pronominal,type=resumptive,inflection=e)	pos=BW,feat.form=-e	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -e
+652	ADV(advType=pronominal,type=resumptive,inflection=s/th)	pos=BW,feat.form=-s/-th	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -s/-th
+653	ADV(advType=pronominal,type=resumptive,inflection=t)	pos=BW,feat.form=-t	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -t
+654	ADV(advType=pronominal,type=resumptive,inflection=n)	pos=BW,feat.form=-n	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -n
+655	ADV(advType=pronominal,type=resumptive,inflection=r/re)	pos=BW,feat.form=-r/-re	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -r/-re
+656	ADV(advType=pronominal,type=resumptive,inflection=a)	pos=BW,feat.form=-a	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -a
+659	ADV(advType=pronominal,type=resumptive,inflection=other)	pos=BW	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+690	ADV(advType=pronominal,type=other,inflection=0)	pos=BW,feat.probleemgeval=true	voornaamwoordelijk bijwoord probleemgeval, geen uitgang
+691	ADV(advType=pronominal,type=other,inflection=e)	pos=BW,feat.probleemgeval=true,feat.form=-e	voornaamwoordelijk bijwoord probleemgeval, uitgang -e
+692	ADV(advType=pronominal,type=other,inflection=s/th)	pos=BW,feat.probleemgeval=true,feat.form=-s/-th	voornaamwoordelijk bijwoord probleemgeval, uitgang -s/-th
+693	ADV(advType=pronominal,type=other,inflection=t)	pos=BW,feat.probleemgeval=true,feat.form=-t	voornaamwoordelijk bijwoord probleemgeval, uitgang -t
+694	ADV(advType=pronominal,type=other,inflection=n)	pos=BW,feat.probleemgeval=true,feat.form=-n	voornaamwoordelijk bijwoord probleemgeval, uitgang -n
+695	ADV(advType=pronominal,type=other,inflection=r/re)	pos=BW,feat.probleemgeval=true,feat.form=-r/-re	voornaamwoordelijk bijwoord probleemgeval, uitgang -r/-re
+696	ADV(advType=pronominal,type=other,inflection=a)	pos=BW,feat.probleemgeval=true,feat.form=-a	voornaamwoordelijk bijwoord probleemgeval, uitgang -a
+699	ADV(advType=pronominal,type=other,inflection=other)	pos=BW,feat.probleemgeval=true	voornaamwoordelijk bijwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+700	ADP(type=general,inflection=0)	pos=VZ	voorzetsel, geen uitgang
+701	ADP(type=general,inflection=e)	pos=VZ,feat.form=-e	voorzetsel, uitgang -e
+702	ADP(type=general,inflection=s/th)	pos=VZ,feat.form=-s/-th	voorzetsel, uitgang -s/-th
+703	ADP(type=general,inflection=t)	pos=VZ,feat.form=-t	voorzetsel, uitgang -t
+704	ADP(type=general,inflection=n)	pos=VZ,feat.form=-n	voorzetsel, uitgang -n
+705	ADP(type=general,inflection=r/re)	pos=VZ,feat.form=-r/-re	voorzetsel, uitgang -r/-re
+706	ADP(type=general,inflection=a)	pos=VZ,feat.form=-a	voorzetsel, uitgang -a
+709	ADP(type=general,inflection=other)	pos=VZ	voorzetsel, uitgang latijn, onduidelijk of evident fout geschreven
+790	ADP(type=other,inflection=0)	pos=VZ	voorzetsel (Latijn)
+791	ADP(type=other,inflection=e)	pos=VZ,feat.form=-e	voorzetsel (Latijn)
+792	ADP(type=other,inflection=s/th)	pos=VZ,feat.form=-s/-th	voorzetsel (Latijn)
+793	ADP(type=other,inflection=t)	pos=VZ,feat.form=-t	voorzetsel (Latijn)
+794	ADP(type=other,inflection=n)	pos=VZ,feat.form=-n	voorzetsel (Latijn)
+795	ADP(type=other,inflection=r/re)	pos=VZ,feat.form=-r/-re	voorzetsel (Latijn)
+796	ADP(type=other,inflection=a)	pos=VZ,feat.form=-a	voorzetsel (Latijn)
+797	_	_	voorzetsel (Latijn)
+798	_	_	voorzetsel (Latijn)
+799	ADP(type=other,inflection=other)	pos=VZ	voorzetsel (Latijn)
+800	CON(type=coordinating,inflection=0)	pos=VG	nevenschikkend voegwoord, geen uitgang
+801	CON(type=coordinating,inflection=e)	pos=VG,feat.form=-e	nevenschikkend voegwoord, uitgang -e
+802	CON(type=coordinating,inflection=s/th)	pos=VG,feat.form=-s/-th	nevenschikkend voegwoord, uitgang -s/-th
+803	CON(type=coordinating,inflection=t)	pos=VG,feat.form=-t	nevenschikkend voegwoord, uitgang -t
+804	CON(type=coordinating,inflection=n)	pos=VG,feat.form=-n	nevenschikkend voegwoord, uitgang -n
+805	CON(type=coordinating,inflection=r/re)	pos=VG,feat.form=-r/-re	nevenschikkend voegwoord, uitgang -r/-re
+806	CON(type=coordinating,inflection=a)	pos=VG,feat.form=-a	nevenschikkend voegwoord, uitgang -a
+809	CON(type=coordinating,inflection=other)	pos=VG	nevenschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+810	CON(type=subordinating,inflection=0)	pos=VG	onderschikkend voegwoord, geen uitgang
+811	CON(type=subordinating,inflection=e)	pos=VG,feat.form=-e	onderschikkend voegwoord, uitgang -e
+812	CON(type=subordinating,inflection=s/th)	pos=VG,feat.form=-s/-th	onderschikkend voegwoord, uitgang -s/-th
+813	CON(type=subordinating,inflection=t)	pos=VG,feat.form=-t	onderschikkend voegwoord, uitgang -t
+814	CON(type=subordinating,inflection=n)	pos=VG,feat.form=-n	onderschikkend voegwoord, uitgang -n
+815	CON(type=subordinating,inflection=r/re)	pos=VG,feat.form=-r/-re	onderschikkend voegwoord, uitgang -r/-re
+816	CON(type=subordinating,inflection=a)	pos=VG,feat.form=-a	onderschikkend voegwoord, uitgang -a
+819	CON(type=subordinating,inflection=other)	pos=VG	onderschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+820	CON(type=comparison,inflection=0)	pos=VG	vergelijkend voegwoord, geen uitgang
+821	CON(type=comparison,inflection=e)	pos=VG,feat.form=-e	vergelijkend voegwoord, uitgang -e
+822	CON(type=comparison,inflection=s/th)	pos=VG,feat.form=-s/-th	vergelijkend voegwoord, uitgang -s/-th
+823	CON(type=comparison,inflection=t)	pos=VG,feat.form=-t	vergelijkend voegwoord, uitgang -t
+824	CON(type=comparison,inflection=n)	pos=VG,feat.form=-n	vergelijkend voegwoord, uitgang -n
+825	CON(type=comparison,inflection=r/re)	pos=VG,feat.form=-r/-re	vergelijkend voegwoord, uitgang -r/-re
+826	CON(type=comparison,inflection=a)	pos=VG,feat.form=-a	vergelijkend voegwoord, uitgang -a
+829	CON(type=comparison,inflection=other)	pos=VG	vergelijkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+830	CON(type=negative,inflection=0)	pos=VG	ontkennend voegwoord, geen uitgang
+831	CON(type=negative,inflection=e)	pos=VG,feat.form=-e	ontkennend voegwoord, uitgang -e
+832	CON(type=negative,inflection=s/th)	pos=VG,feat.form=-s/-th	ontkennend voegwoord, uitgang -s/-th
+833	CON(type=negative,inflection=t)	pos=VG,feat.form=-t	ontkennend voegwoord, uitgang -t
+834	CON(type=negative,inflection=n)	pos=VG,feat.form=-n	ontkennend voegwoord, uitgang -n
+835	CON(type=negative,inflection=r/re)	pos=VG,feat.form=-r/-re	ontkennend voegwoord, uitgang -r/-re
+836	CON(type=negative,inflection=a)	pos=VG,feat.form=-a	ontkennend voegwoord, uitgang -a
+839	CON(type=negative,inflection=other)	pos=VG	ontkennend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+840	CON(type=explicative,inflection=0)	pos=VG	explicatief voegwoord, geen uitgang
+841	CON(type=explicative,inflection=e)	pos=VG,feat.form=-e	explicatief voegwoord, uitgang -e
+842	CON(type=explicative,inflection=s/th)	pos=VG,feat.form=-s/-th	explicatief voegwoord, uitgang -s/-th
+843	CON(type=explicative,inflection=t)	pos=VG,feat.form=-t	explicatief voegwoord, uitgang -t
+844	CON(type=explicative,inflection=n)	pos=VG,feat.form=-n	explicatief voegwoord, uitgang -n
+845	CON(type=explicative,inflection=r/re)	pos=VG,feat.form=-r/-re	explicatief voegwoord, uitgang -r/-re
+846	CON(type=explicative,inflection=a)	pos=VG,feat.form=-a	explicatief voegwoord, uitgang -a
+849	CON(type=explicative,inflection=other)	pos=VG	explicatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+850	CON(type=rel,inflection=0)	pos=VG	relatief voegwoord, geen uitgang
+851	CON(type=rel,inflection=e)	pos=VG,feat.form=-e	relatief voegwoord, uitgang -e
+852	CON(type=rel,inflection=s/th)	pos=VG,feat.form=-s/-th	relatief voegwoord, uitgang -s/-th
+853	CON(type=rel,inflection=t)	pos=VG,feat.form=-t	relatief voegwoord, uitgang -t
+854	CON(type=rel,inflection=n)	pos=VG,feat.form=-n	relatief voegwoord, uitgang -n
+855	CON(type=rel,inflection=r/re)	pos=VG,feat.form=-r/-re	relatief voegwoord, uitgang -r/-re
+856	CON(type=rel,inflection=a)	pos=VG,feat.form=-a	relatief voegwoord, uitgang -a
+859	CON(type=rel,inflection=other)	pos=VG	relatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+860	CON(type=quality,inflection=0)	pos=VG	voegwoord van hoedanigheid, geen uitgang
+861	CON(type=quality,inflection=e)	pos=VG,feat.form=-e	voegwoord van hoedanigheid, uitgang -e
+862	CON(type=quality,inflection=s/th)	pos=VG,feat.form=-s/-th	voegwoord van hoedanigheid, uitgang -s/-th
+863	CON(type=quality,inflection=t)	pos=VG,feat.form=-t	voegwoord van hoedanigheid, uitgang -t
+864	CON(type=quality,inflection=n)	pos=VG,feat.form=-n	voegwoord van hoedanigheid, uitgang -n
+865	CON(type=quality,inflection=r/re)	pos=VG,feat.form=-r/-re	voegwoord van hoedanigheid, uitgang -r/-re
+866	CON(type=quality,inflection=a)	pos=VG,feat.form=-a	voegwoord van hoedanigheid, uitgang -a
+869	CON(type=quality,inflection=other)	pos=VG	voegwoord van hoedanigheid, uitgang latijn, onduidelijk of evident fout geschreven
+870	CON(type=subordinating,inflection=0)	pos=VG	alse + te + infinitief, geen uitgang
+871	CON(type=subordinating,inflection=e)	pos=VG,feat.form=-e	alse + te + infinitief, uitgang -e
+872	CON(type=subordinating,inflection=s/th)	pos=VG,feat.form=-s/-th	alse + te + infinitief, uitgang -s/-th
+873	CON(type=subordinating,inflection=t)	pos=VG,feat.form=-t	alse + te + infinitief, uitgang -t
+874	CON(type=subordinating,inflection=n)	pos=VG,feat.form=-n	alse + te + infinitief, uitgang -n
+875	CON(type=subordinating,inflection=r/re)	pos=VG,feat.form=-r/-re	alse + te + infinitief, uitgang -r/-re
+876	CON(type=subordinating,inflection=a)	pos=VG,feat.form=-a	alse + te + infinitief, uitgang -a
+879	CON(type=subordinating,inflection=other)	pos=VG	alse + te + infinitief, uitgang latijn, onduidelijk of evident fout geschreven
+880	CON(type=,inflection=0)	pos=VG	_
+881	CON(type=,inflection=e)	pos=VG,feat.form=-e	_
+882	CON(type=,inflection=s/th)	pos=VG,feat.form=-s/-th	_
+883	CON(type=,inflection=t)	pos=VG,feat.form=-t	_
+884	CON(type=,inflection=n)	pos=VG,feat.form=-n	_
+885	CON(type=,inflection=r/re)	pos=VG,feat.form=-r/-re	_
+886	CON(type=,inflection=a)	pos=VG,feat.form=-a	_
+889	CON(type=,inflection=other)	pos=VG	_
+890	CON(type=other,inflection=0)	pos=VG,feat.probleemgeval=true	voegwoord probleemgeval, geen uitgang
+891	CON(type=other,inflection=e)	pos=VG,feat.probleemgeval=true,feat.form=-e	voegwoord probleemgeval, uitgang -e
+892	CON(type=other,inflection=s/th)	pos=VG,feat.probleemgeval=true,feat.form=-s/-th	voegwoord probleemgeval, uitgang -s/-th
+893	CON(type=other,inflection=t)	pos=VG,feat.probleemgeval=true,feat.form=-t	voegwoord probleemgeval, uitgang -t
+894	CON(type=other,inflection=n)	pos=VG,feat.probleemgeval=true,feat.form=-n	voegwoord probleemgeval, uitgang -n
+895	CON(type=other,inflection=r/re)	pos=VG,feat.probleemgeval=true,feat.form=-r/-re	voegwoord probleemgeval, uitgang -r/-re
+896	CON(type=other,inflection=a)	pos=VG,feat.probleemgeval=true,feat.form=-a	voegwoord probleemgeval, uitgang -a
+899	CON(type=other,inflection=other)	pos=VG,feat.probleemgeval=true	voegwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+900	RES(type=other,inflection=0)	feat.probleemgeval=true	woordsoort probleemgeval, geen uitgang
+901	RES(type=other,inflection=e)	feat.probleemgeval=true,feat.form=-e	woordsoort probleemgeval, uitgang -e
+902	RES(type=other,inflection=s/th)	feat.probleemgeval=true,feat.form=-s/-th	woordsoort probleemgeval, uitgang -s/-th
+903	RES(type=other,inflection=t)	feat.probleemgeval=true,feat.form=-t	woordsoort probleemgeval, uitgang -t
+904	RES(type=other,inflection=n)	feat.probleemgeval=true,feat.form=-n	woordsoort probleemgeval, uitgang -n
+905	RES(type=other,inflection=r/re)	feat.probleemgeval=true,feat.form=-r/-re	woordsoort probleemgeval, uitgang -r/-re
+906	RES(type=other,inflection=a)	feat.probleemgeval=true,feat.form=-a	woordsoort probleemgeval, uitgang -a
+909	RES(type=other,inflection=other)	feat.probleemgeval=true	woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+910	INT(type=interjection,inflection=0)	_	tussenwerpsel, geen uitgang
+911	INT(type=interjection,inflection=e)	feat.form=-e	tussenwerpsel, uitgang -e
+912	INT(type=interjection,inflection=s/th)	feat.form=-s/-th	tussenwerpsel, uitgang -s/-th
+913	INT(type=interjection,inflection=t)	feat.form=-t	tussenwerpsel, uitgang -t
+914	INT(type=interjection,inflection=n)	feat.form=-n	tussenwerpsel, uitgang -n
+915	INT(type=interjection,inflection=r/re)	feat.form=-r/-re	tussenwerpsel, uitgang -r/-re
+916	INT(type=interjection,inflection=a)	feat.form=-a	tussenwerpsel, uitgang -a
+919	INT(type=interjection,inflection=other)	_	tussenwerpsel, uitgang latijn, onduidelijk of evident fout geschreven
+990	RES(type=other,inflection=0)	feat.probleemgeval=true	woordsoort probleemgeval, geen uitgang
+991	RES(type=other,inflection=e)	feat.probleemgeval=true,feat.form=-e	woordsoort probleemgeval, uitgang -e
+992	RES(type=other,inflection=s/th)	feat.probleemgeval=true,feat.form=-s/-th	woordsoort probleemgeval, uitgang -s/-th
+993	RES(type=other,inflection=t)	feat.probleemgeval=true,feat.form=-t	woordsoort probleemgeval, uitgang -t
+994	RES(type=other,inflection=n)	feat.probleemgeval=true,feat.form=-n	woordsoort probleemgeval, uitgang -n
+995	RES(type=other,inflection=r/re)	feat.probleemgeval=true,feat.form=-r/-re	woordsoort probleemgeval, uitgang -r/-re
+996	RES(type=other,inflection=a)	feat.probleemgeval=true,feat.form=-a	woordsoort probleemgeval, uitgang -a
+999	RES(type=other,inflection=other)	feat.probleemgeval=true	woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
