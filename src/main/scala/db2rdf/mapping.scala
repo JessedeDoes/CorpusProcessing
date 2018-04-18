@@ -90,15 +90,13 @@ object mapping {
 
     lazy val asTemplate: ResultSet => IRI  =
     {
-      val x = "\\$([a-zA-Z][a-zA-Z0-9_]+)".r.findFirstMatchIn(s)
-      val z = if (x.isDefined)
+      val varNames = "\\$([a-zA-Z][a-zA-Z0-9_]+)".r.findAllMatchIn(s).toStream.map(_.group(1))
+      val z = if (varNames.nonEmpty)
         {
           val g:ResultSet => IRI = r =>
           {
-            val g = x.get.group(0); val y = r.getString(x.get.group(1));
-            //Console.err.println(s"Hola $g=$y in $s!");
-            val i = IRI(s.replaceAll("\\" + g, y))
-            //Console.err.println(s"Dus: $i")
+            val substituted = varNames.foldLeft(s)( (z, v) => z.replaceAll("\\$" + v, r.getString(v)))
+            val i = IRI(substituted)
             i
           }
           g
@@ -132,6 +130,7 @@ object mapping {
   val subsense = "http://rdf.ivdnt.org/diamant/subsense"
   val lexicalDefinition = "http://rdf.ivdnt.org/diamant/lexicalDefinition"
   val definitionText = "http://rdf.ivdnt.org/diamant/definitionText"
+  val synonymDefinition = "http://synonymDefinition"
   ////// queries //////
 
   val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
@@ -151,6 +150,7 @@ object mapping {
 
   val senseQuery = "select * from senses"
 
+  val synonymQuery = "select * from diamant.synonym_definitions where correct=true"
   //////////////////////////////
 
 
@@ -166,8 +166,8 @@ object mapping {
   }
 
   val attestations = {
-    val theAttestation = ϝ("attestation_id", "http://attestation/" + _)
-    val document = ϝ("document_id", "http://quotation/" + _)
+    val theAttestation = ~"http://attestation/$attestation_id"
+    val document = ~"http://quotation/$document_id"
 
     ⊕(
       mapping(attestation, ~"http://awf/$analyzed_wordform_id", theAttestation),
@@ -209,6 +209,30 @@ object mapping {
     )
   }
 
+  /*
+  import net.xqj.basex.bin.r
+rel.id = r.getInt("id")// todo better id's (more persistent) for this
+
+				rel.dictionary = r.getString("dictionary")
+				rel.lemmaId = r.getString("entry_id")
+				rel.senseId = r.getString("sense_id").trim
+				rel.synonym = r.getString("synonym")
+				rel.correct = r.getBoolean("correct")
+				rel.extra = r.getBoolean("extra")
+				rel.verified = r.getBoolean("verified")
+   */
+  val synonyms =
+  {
+    val synonymDef = ~"http//rdf.ivdnt.org/synonymdefinition/$id"
+    ⊕(
+      mapping(synonymDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
+      mappingDP(definitionText, synonymDef, !"synonym")
+
+      // ToDo doe de prov ellende hier ook
+    )
+  }
+
+
   val allMappings = List(lemmata, lemmaWordform)
 
   val db = new database.Database(Configuration("x", "localhost","gigant_hilex_clean", "postgres", "inl"))
@@ -217,6 +241,7 @@ object mapping {
   {
     db.runStatement(("set schema 'data'"))
 
+    synonyms.triples(db, synonymQuery).take(10).foreach(println)
     posMapping.triples(db, posQuery).take(1000).foreach(println)
 
     allMappings.foreach(m =>

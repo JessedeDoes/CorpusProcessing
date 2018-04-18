@@ -2,7 +2,7 @@ package posmapping
 
 import scala.xml._
 
-object dinges {
+object CRM2Xml {
   val dir = "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
   val CRM = dir + "CRM14Alfabetisch.txt"
   val index = dir + "index"
@@ -12,6 +12,8 @@ object dinges {
 
   def optXML(x: Option[Elem]) = if (x.isEmpty) <none/> else x.get
 
+
+
   case class Meta(locPlus: String, status: String, kloeke: String, year: String, month: String, id: String)
   {
     def idPlus = s"$locPlus.$id".replaceAll("^o_","_o:")
@@ -20,9 +22,8 @@ object dinges {
     def interp(n:String, v:String):Elem  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
 
     val metaWithNames = List(
-
-
-     ("witnessLocalization_kloeke", kloeke),
+      ("pid", uuid),
+      ("witnessLocalization_kloeke", kloeke),
       ("witnessYear_from", year),
       ("titleLevel1", id))
 
@@ -31,6 +32,13 @@ object dinges {
         {metaWithNames.map({case (k,v) => interp(k,v)})  }
       </bibl>
     </listBibl>
+
+    def uuid():String =
+    {
+      val source = idPlus
+      val bytes = source.getBytes("UTF-8")
+      java.util.UUID.nameUUIDFromBytes(bytes).toString
+    }
   }
 
 
@@ -46,15 +54,15 @@ object dinges {
 
   val metaMap = metaList.groupBy(_.idPlus).mapValues(_.head)
 
-  lazy val rawTokens = scala.io.Source.fromFile(CRM).getLines.toStream.map(_.split("\\s+")).filter(_.size > 4).map(token)
+  lazy val rawTokens:Stream[Token] = scala.io.Source.fromFile(CRM).getLines.toStream.map(_.split("\\s+")).filter(_.size > 4).map(token)
 
-  val puncMap =  (<pc x=":">&amp;colon;</pc>
+  val puncMap:Map[String,String] =  <pc x=":">&amp;colon;</pc>
     <pc x="/">&amp;duitsekomma;</pc>
     <pc x="-">&amp;hyph;</pc>
     <pc x=",">&amp;komma;</pc>
     <pc x =".">&amp;period;</pc>
     <pc x=";">&amp;semi;</pc>
-    <pc x="???">&amp;unreadable;</pc>).filter(x => x.label=="pc").map(x => x.text -> (x \ "@x").toString).toMap
+    <pc x="???">&amp;unreadable;</pc>.filter(x => x.label=="pc").map(x => x.text -> (x \ "@x").toString).toMap
 
 
   def rewritePunc(s:String) = puncMap.getOrElse(s, s)
