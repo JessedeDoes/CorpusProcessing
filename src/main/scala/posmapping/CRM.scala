@@ -1,10 +1,16 @@
 package posmapping
 
+/**
+  * Dit gaat over de mapping file van CRM naar CGN die uit de MTAS repository komt:
+  *
+  * https://raw.githubusercontent.com/meertensinstituut/mtas/master/conf/parser/mtas/crm.xml
+  */
+
 import scala.xml._
 
 object CRM {
 
-  val mappingFile = "data/cgr.xml"
+  val mappingFile = "data/crm.xml"
 
   lazy val d = XML.load(mappingFile)
 
