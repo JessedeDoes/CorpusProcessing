@@ -16,6 +16,9 @@ libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.16" force()
 libraryDependencies += "org.jdbi" % "jdbi" % "2.78"
 libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
 
+// https://mvnrepository.com/artifact/org.incava/java-diff
+libraryDependencies += "org.incava" % "java-diff" % "1.1"
+
 
 libraryDependencies += "net.sf.saxon" % "Saxon-HE" % "9.8.0-4"
 
