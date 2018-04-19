@@ -8,12 +8,12 @@ import org.incava.util.diff.{Diff, Difference}
 import scala.collection.JavaConversions._
 import scala.xml._
 
-case class SimOrDiff[T](diff: Option[Difference[T]], sim: Option[Similarity])
+case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity])
 {
   lazy val leftStart = if (diff.isEmpty) sim.get.s2 else diff.get.getDeletedStart
-  lazy val leftEnd = if (diff.isEmpty) sim.get.s2 + sim.get.length else diff.get.getDeletedEnd
+  lazy val leftEnd = if (diff.isEmpty) sim.get.s2 + sim.get.length else diff.get.getDeletedEnd+1
   lazy val rightStart = if (diff.isEmpty) sim.get.s1 else diff.get.getAddedStart
-  lazy val rightEnd = if (diff.isEmpty) sim.get.s1 + sim.get.length else diff.get.getAddedEnd
+  lazy val rightEnd = if (diff.isEmpty) sim.get.s1 + sim.get.length else diff.get.getAddedEnd+1
 }
 
 case class Similarity(var s1: Int, var s2: Int, var length: Int) //System.err.println("{" + s1 + "," + s2 + ","  + length + "}");
@@ -164,11 +164,11 @@ object testje
   }
 
 
-  def alignExpansionWithOriginal(expansion: String, original: String):String =
+  def alignExpansionWithOriginal(original: String, expansion: String):String =
   {
     val a = new AlignmentGeneric[Char](comp)
     val (diffs, sims) = a.findDiffsAndSimilarities(original.toList, expansion.toList)
-    val dPlus  = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference[Char]]), None[Similarity]))
+    val dPlus  = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference]), None))
     val simPlus  = sims.map(s => SimOrDiff[Char](None, Some(s)))
 
     val corresp = (dPlus ++ simPlus).sortBy(_.leftStart)
@@ -177,12 +177,19 @@ object testje
       c => {
          val left = original.substring(c.leftStart, c.leftEnd)
          val right = expansion.substring(c.rightStart, c.rightEnd)
-         s"($left:$right)"
+         if (left == right) left
+         else
+         s"<expan>$right</expan>"
       }
     ).mkString
   }
 
   def main(args: Array[String]) = {
-
+     val tests = List(
+       "ap_kop" -> "apenkop",
+       "en_" -> "ende",
+       "_aap_noot" -> "kaapenaardnoot"
+     )
+     tests.foreach(x => println(alignExpansionWithOriginal(x._1, x._2)))
   }
 }
