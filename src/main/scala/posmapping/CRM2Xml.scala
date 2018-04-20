@@ -27,7 +27,7 @@ object CRM2Xml {
       ("witnessYear_from", year),
       ("titleLevel1", id))
 
-    def asXML = <listBibl xml:id="inlMetadata">
+    def asXML:Elem = <listBibl xml:id="inlMetadata">
       <bibl>
         {metaWithNames.map({case (k,v) => interp(k,v)})  }
       </bibl>
@@ -42,7 +42,7 @@ object CRM2Xml {
   }
 
 
-  def meta(c: Array[String]) = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
+  def meta(c: Array[String]):Meta = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
 
   def metaFromId(s: String) =
   {
@@ -50,11 +50,13 @@ object CRM2Xml {
     val (status, rest) = (c(0), c(1))
   }
 
-  lazy val metaList = scala.io.Source.fromFile(index).getLines.toStream.map(_.split("\\s+")).filter(_.size > 5).map(meta)
+  def getRows(fileName: String):Stream[Array[String]] = scala.io.Source.fromFile(fileName).getLines.toStream.map(_.split("\\s+"))
 
-  val metaMap = metaList.groupBy(_.idPlus).mapValues(_.head)
+  lazy val metaList:Stream[Meta] = getRows(index).filter(_.size > 5).map(meta)
 
-  lazy val rawTokens:Stream[Token] = scala.io.Source.fromFile(CRM).getLines.toStream.map(_.split("\\s+")).filter(_.size > 4).map(token)
+  val metaMap:Map[String,Meta] = metaList.groupBy(_.idPlus).mapValues(_.head)
+
+  lazy val rawTokens:Stream[Token] = getRows(CRM).filter(_.size > 4).map(token)
 
   val puncMap:Map[String,String] =  <pc x=":">&amp;colon;</pc>
     <pc x="/">&amp;duitsekomma;</pc>
@@ -65,7 +67,7 @@ object CRM2Xml {
     <pc x="???">&amp;unreadable;</pc>.filter(x => x.label=="pc").map(x => x.text -> (x \ "@x").toString).toMap
 
 
-  def rewritePunc(s:String) = puncMap.getOrElse(s, s)
+  def rewritePunc(s:String):String = puncMap.getOrElse(s, s)
 
   case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String)
   {
@@ -73,7 +75,7 @@ object CRM2Xml {
 
     def isLine = tag.equals("Markup(line)")
 
-    def asXML =
+    def asXML:Elem =
       if (isLine)
         <lb/>
       else
@@ -87,11 +89,11 @@ object CRM2Xml {
 
   case class Document(id: String, tokens: List[Token])
   {
-    lazy val metadata = metaMap.get(id)
+    lazy val metadata:Option[Meta] = metaMap.get(id)
   }
 
-  def token(c:Array[String]) = { Token(c(0), c(1), c(2), c(3), c(4)) }
-  def token(s:String) = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4)) }
+  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4)) }
+  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4)) }
 
 
   def makeGroup[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
@@ -104,7 +106,7 @@ object CRM2Xml {
   }
 
 
-  def process =
+  def process:Unit =
   {
     val documents = makeGroup[Token](rawTokens, List.empty, _.isHeader)
       .filter(_.nonEmpty)
