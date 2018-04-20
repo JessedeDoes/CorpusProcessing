@@ -7,6 +7,7 @@ import org.incava.util.diff.{Diff, Difference}
 
 import scala.collection.JavaConversions._
 import scala.xml._
+import scala.xml._
 
 case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity])
 {
@@ -149,7 +150,7 @@ class AlignmentGeneric[T](c: Comparator[T])  {
 
 }
 
-object testje
+object alignment
 {
   case class ElementWithPosition(e: Elem, p: Int)
   {
@@ -164,7 +165,7 @@ object testje
   }
 
 
-  def alignExpansionWithOriginal(original: String, expansion: String):String =
+  def alignExpansionWithOriginal(original: String, expansion: String):NodeSeq =
   {
     val a = new AlignmentGeneric[Char](comp)
     val (diffs, sims) = a.findDiffsAndSimilarities(original.toList, expansion.toList)
@@ -177,11 +178,11 @@ object testje
       c => {
          val left = original.substring(c.leftStart, c.leftEnd)
          val right = expansion.substring(c.rightStart, c.rightEnd)
-         if (left == right) left
-         else
-         s"<expan>$right</expan>"
+         if (left == right) Text(left
+         )         else
+          <expan>{right}</expan>
       }
-    ).mkString
+    )
   }
 
   def main(args: Array[String]) = {

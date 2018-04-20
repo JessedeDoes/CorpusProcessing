@@ -79,8 +79,10 @@ object CRM2Xml {
       else
       if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
-          else
-      <w lemma={lemma} pos={tag} reg={wordExpanded}>{word}</w>
+          else {
+            val w = utils.alignment.alignExpansionWithOriginal(word, wordExpanded)
+            <w lemma={lemma} pos={tag} orig={word}>{w}</w>
+          }
   }
 
   case class Document(id: String, tokens: List[Token])
