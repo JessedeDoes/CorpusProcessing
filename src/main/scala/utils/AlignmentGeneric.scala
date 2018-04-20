@@ -12,9 +12,23 @@ import scala.xml._
 case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity])
 {
   lazy val leftStart = if (diff.isEmpty) sim.get.s2 else diff.get.getDeletedStart
-  lazy val leftEnd = if (diff.isEmpty) sim.get.s2 + sim.get.length else diff.get.getDeletedEnd+1
+  lazy val leftEnd = if (diff.isEmpty) sim.get.s2 + sim.get.length else {
+    val de = diff.get.getDeletedEnd
+    if (de < 0)
+      leftStart
+    else
+      de + 1}
   lazy val rightStart = if (diff.isEmpty) sim.get.s1 else diff.get.getAddedStart
-  lazy val rightEnd = if (diff.isEmpty) sim.get.s1 + sim.get.length else diff.get.getAddedEnd+1
+  lazy val rightEnd = if (diff.isEmpty) sim.get.s1 + sim.get.length else
+    {
+      val ad = diff.get.getAddedEnd
+      if (ad < 0)
+        rightStart
+      else
+       ad + 1}
+
+
+  override def toString = s"$diff $sim $leftStart-$leftEnd, $rightStart-$rightEnd"
 }
 
 case class Similarity(var s1: Int, var s2: Int, var length: Int) //System.err.println("{" + s1 + "," + s2 + ","  + length + "}");
@@ -173,14 +187,20 @@ object alignment
     val simPlus  = sims.map(s => SimOrDiff[Char](None, Some(s)))
 
     val corresp = (dPlus ++ simPlus).sortBy(_.leftStart)
-
+    Console.err.println(s"[$original] [$expansion]")
     corresp.map(
       c => {
+        Console.err.println(c)
          val left = original.substring(c.leftStart, c.leftEnd)
          val right = expansion.substring(c.rightStart, c.rightEnd)
-         if (left == right) Text(left
-         )         else
+
+         Console.err.println(s"$left -> $right")
+
+         if (left.toLowerCase == right.toLowerCase) Text(left) else
+         if (left.equals("_"))
           <expan>{right}</expan>
+         else
+           <choice><orig>{left}</orig><reg>{right}</reg></choice>
       }
     )
   }

@@ -83,7 +83,7 @@ object CRM2Xml {
         <pc>{rewritePunc(word)}</pc>
           else {
             val w = utils.alignment.alignExpansionWithOriginal(word, wordExpanded)
-            <w lemma={lemma} pos={tag} orig={word}>{w}</w>
+            <w lemma={lemma} pos={tag} orig={word} reg={wordExpanded}>{w}</w>
           }
   }
 
