@@ -27,7 +27,7 @@ object CRM2Xml {
       ("witnessYear_from", year),
       ("titleLevel1", id))
 
-    def asXML:Elem = <listBibl xml:id="inlMetadata">
+    def asXML:Elem = <listBibl type="metadata">
       <bibl>
         {metaWithNames.map({case (k,v) => interp(k,v)})  }
       </bibl>
