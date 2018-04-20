@@ -8,6 +8,7 @@ import org.incava.util.diff.{Diff, Difference}
 import scala.collection.JavaConversions._
 import scala.xml._
 import scala.xml._
+import scala.util.matching.Regex._
 
 case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity])
 {
@@ -182,33 +183,47 @@ object alignment
   def alignExpansionWithOriginal(original: String, expansion: String):NodeSeq =
   {
     val a = new AlignmentGeneric[Char](comp)
-    val (diffs, sims) = a.findDiffsAndSimilarities(original.toList, expansion.toList)
+    val x = "~".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
+    val o1 = original.replaceAll("~","")
+    val (diffs, sims) = a.findDiffsAndSimilarities(o1.toList, expansion.toList)
     val dPlus  = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference]), None))
     val simPlus  = sims.map(s => SimOrDiff[Char](None, Some(s)))
 
     val corresp = (dPlus ++ simPlus).sortBy(_.leftStart)
-    Console.err.println(s"[$original] [$expansion]")
-    corresp.map(
+    //Console.err.println(s"[$original] [$expansion]")
+    val lr = corresp.map(
       c => {
-        Console.err.println(c)
-         val left = original.substring(c.leftStart, c.leftEnd)
-         val right = expansion.substring(c.rightStart, c.rightEnd)
+        //Console.err.println(c)
+        val left = o1.substring(c.leftStart, c.leftEnd)
+        val right = expansion.substring(c.rightStart, c.rightEnd)
+        (left,right,c.leftStart)
+      })
 
-         Console.err.println(s"$left -> $right")
 
-         if (left.toLowerCase == right.toLowerCase) Text(left) else
-         if (left.equals("_"))
-          <expan>{right}</expan>
-         else
-           <choice><orig>{left}</orig><reg>{right}</reg></choice>
-      }
+    val pieces = lr.flatMap(
+      { case (left,right,i) =>
+      {
+        Console.err.println(s"$left -> $right")
+        val K = x.find(k => k >= i && i + left.length() > k)
+        val space = if (K.isDefined) "+" else ""
+        val spaceSeq = if (space=="") Seq() else Seq(Text(space))
+        val leftWithSpace = if (K.isEmpty) left else left.substring(0,K.get-i) + space + left.substring(K.get-i)
+        if (left.toLowerCase == right.toLowerCase) Seq(Text(leftWithSpace)) else
+        if (left.equals("_"))
+          spaceSeq ++ Seq(<expan>{right}</expan>)
+        else
+          spaceSeq ++ Seq(<choice><orig>{left}</orig><reg>{right}</reg></choice>)
+      } }
     )
+    pieces
   }
 
   def main(args: Array[String]) = {
      val tests = List(
-       "ap_kop" -> "apenkop",
+       "ap_~kop" -> "apenkop",
+       "ap~_kop" -> "apenkop",
        "en_" -> "ende",
+       "te~rug" -> "terug",
        "_aap_noot" -> "kaapenaardnoot"
      )
      tests.foreach(x => println(alignExpansionWithOriginal(x._1, x._2)))
