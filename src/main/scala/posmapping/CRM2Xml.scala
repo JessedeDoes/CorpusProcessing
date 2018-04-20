@@ -16,13 +16,13 @@ object CRM2Xml {
 
   case class Meta(locPlus: String, status: String, kloeke: String, year: String, month: String, id: String)
   {
-    def idPlus = s"$locPlus.$id".replaceAll("^o_","_o:")
+    def idPlus:String = s"$locPlus.$id".replaceAll("^o_","_o:")
     println(idPlus)
 
     def interp(n:String, v:String):Elem  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
 
     val metaWithNames = List(
-      ("pid", uuid),
+      ("pid", uuid()),
       ("witnessLocalization_kloeke", kloeke),
       ("witnessYear_from", year),
       ("titleLevel1", id))
@@ -106,7 +106,7 @@ object CRM2Xml {
   }
 
 
-  def process:Unit =
+  def process():Unit =
   {
     val documents = makeGroup[Token](rawTokens, List.empty, _.isHeader)
       .filter(_.nonEmpty)
@@ -137,6 +137,6 @@ object CRM2Xml {
 
   def main(args: Array[String]): Unit = {
 
-   process
+   process()
   }
 }
