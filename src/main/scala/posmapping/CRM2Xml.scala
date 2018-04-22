@@ -21,10 +21,48 @@ object Location
 
 }
 
+
+object ents {
+
+  val entities:Map[String, String] = List(
+    ("&komma;", ","),
+    ("&excl;", "!"),
+    ("&2periods;", ".."),
+
+    ("u&uml;", "ü"),
+    ("ouml;", "ö"),
+    ("a&uml;", "ä"),
+    ("y&uml", "ÿ"),
+    ("e&uml;", "ë"),
+    ("v&uml", "v̈"),
+    ("&duitsekomma;", "/"),
+
+    ("&super;", ""), // ahem nog iets mee doen, weet niet precies wat
+
+    ("o&grave;", "ò"),
+    ("&period;", "."),
+    ("&semi;", ";"),
+    ("&tilde;", "~"),
+
+    //("&scheider;", 17664)
+    ("&r;", "°"),
+    ("&hyph;", "-"),
+    ("&unreadable;", "?"),
+    ("&colon;", ":"),
+    ("&quest;", "?")
+  ).toMap;
+
+  import java.text.Normalizer
+  def noAccents(s: String) = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
+
+
+  val entityPattern = entities.keySet.mkString("|").r
+  def replaceEnts(s: String) = entityPattern.replaceAllIn(s, m => entities(m.group(0)))
+}
+
 object Meta
 {
   def interp(n:String, v:String):Elem  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
-
 
   def locationFields(c: String):NodeSeq =
     optXML(
@@ -41,8 +79,6 @@ object Meta
 case class Meta(locPlus: String, status: String, kloeke: String, year: String, month: String, id: String)
 {
   def idPlus:String = s"$locPlus.$id".replaceAll(s"^${status}_",s"_$status:")
-
-
 
   val metaWithNames = List(
     ("pid", uuid()),
@@ -82,9 +118,6 @@ object CRM2Xml {
 
   val squareCup = "⊔"
 
-
-
-
   lazy val tags:Stream[CRMTag] = scala.io.Source.fromFile("data/CG/allTags.overzichtje.tsv")
     .getLines.toStream.map(l => l.split("\\t"))
     .map(c => CRMTag(c(0), c(1), c(2), c(3)) )
@@ -95,8 +128,6 @@ object CRM2Xml {
   //@ @ @ _o:I222p30601.StBernardHemiksem.Summarium113.VlpNr6 Markup(samp) - - -
 
   def optXML(x: Option[NodeSeq]):NodeSeq = if (x.isEmpty) <none/> else x.get
-
-
 
 
   def meta(c: Array[String]):Meta = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
@@ -125,6 +156,7 @@ object CRM2Xml {
 
   case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String)
   {
+    import ents._
     def isHeader:Boolean = word.equals("@") && !tag.equals("Markup(line)")
 
     def isLine:Boolean = tag.equals("Markup(line)")
@@ -137,7 +169,7 @@ object CRM2Xml {
       else if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
           else {
-            val w = alignExpansionWithOriginal(word, wordExpanded)
+            val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
             <w lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
           }
   }
@@ -160,12 +192,19 @@ object CRM2Xml {
       makeGroupx(s.tail, currentGroup :+ s.head, f)
   }
 
-  def alignExpansionWithOriginal(original: String, expansion: String):NodeSeq =
+  def alignExpansionWithOriginal(org0: String, expansion: String):NodeSeq =
   {
+    val original = org0.replaceAll("~?<nl>", "↩").replaceAll("~", squareCup).replaceAll("_\\?", "?")
+
     if (original.toLowerCase == expansion.toLowerCase) return Text(original)
+
+
     val a = new AlignmentGeneric[Char](comp)
-    val x = "~".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
-    val o1 = original.replaceAll("~","")
+
+    val positionsOfTilde = "⊔|↩".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
+    val tildesAtPosition = "⊔|↩".r.findAllMatchIn(original).toStream.zipWithIndex.map(p => p._1.start - p._2 -> p._1.group(0)).toMap
+
+    val o1 = original.replaceAll("[⊔↩]","")
 
     val (diffs, sims) = a.findDiffsAndSimilarities(o1.toList, expansion.toList)
     val dPlus  = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference]), None))
@@ -181,27 +220,38 @@ object CRM2Xml {
         (left,right,c.leftStart)
       })
 
+    val showMe = lr.map(x => {
+      val z = if (x._1==x._2) x._1 else s"${x._1}:${x._2}"
+      z }
+    ).mkString("|")
 
     val pieces = lr.flatMap(
       { case (left,right,i) =>
       {
         //Console.err.println(s"$left -> $right")
-        val K = x.find(k => k >= i && i + left.length() > k)
-        val space = if (K.isDefined) squareCup else ""
+        val K = positionsOfTilde.find(k => k >= i && i + left.length() > k)
+
+        val space = if (K.isDefined) tildesAtPosition(K.get) else ""
+
         val spaceSeq = if (space=="") Seq() else Seq(Text(space))
         val leftWithSpace = if (K.isEmpty) left else left.substring(0,K.get-i) + space + left.substring(K.get-i)
-        if (left.toLowerCase == right.toLowerCase) Seq(Text(leftWithSpace)) else
+        import ents._
+
+        if (noAccents(left) == noAccents(right)) Seq(Text(leftWithSpace)) else
+
         if (left.equals("_"))
           spaceSeq ++ Seq(<expan>{right}</expan>)
         else if (left.equals("?"))
           spaceSeq ++ Seq(<expan cert="low">{right}</expan>)
+        else if (right.isEmpty)
+          spaceSeq ++ Seq(<orig>{left}</orig>)
         else
           spaceSeq ++ Seq(<choice><orig>{left}</orig><reg>{right}</reg></choice>)
       } }
     )
     if (original.toLowerCase != expansion.toLowerCase)
     {
-      Console.err.println(s"$original $expansion ${pieces.mkString("")}")
+      Console.err.println(s"ORG=$original EPANSION=$expansion ALIGNMENT=$showMe ${pieces.mkString("")}")
     }
     pieces
   }
