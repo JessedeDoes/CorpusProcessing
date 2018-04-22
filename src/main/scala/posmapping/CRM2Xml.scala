@@ -52,11 +52,11 @@ object ents {
   ).toMap;
 
   import java.text.Normalizer
-  def noAccents(s: String) = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
+  def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
 
 
   val entityPattern = entities.keySet.mkString("|").r
-  def replaceEnts(s: String) = entityPattern.replaceAllIn(s, m => entities(m.group(0)))
+  def replaceEnts(s: String):String = entityPattern.replaceAllIn(s, m => entities(m.group(0)))
 }
 
 object Meta
@@ -105,12 +105,12 @@ case class CRMTag(code: String, cgTag: String, cgnTag: String, description: Stri
 
 object CRM2Xml {
   val atHome = true
-  val dir = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
+  val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
   val CRM:String = dir + "CRM14Alfabetisch.txt"
   val index:String = dir + "index"
-  val kloekeCodes = Location.allKloekeCodes(dir + "kloeke_cumul.csv")
+  private val kloekeCodes = Location.allKloekeCodes(dir + "kloeke_cumul.csv")
 
-  val kloekeByCode = kloekeCodes.groupBy(_.kloeke_code1).mapValues(_.head)
+  val kloekeByCode:Map[String, Location] = kloekeCodes.groupBy(_.kloeke_code1).mapValues(_.head)
 
   import Meta._
 
@@ -151,7 +151,7 @@ object CRM2Xml {
 
   def rewritePunc(s:String):String = puncMap.getOrElse(s, s)
 
-  def mapTag(codes: String) = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
+  def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
   case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String)
   {
@@ -160,8 +160,8 @@ object CRM2Xml {
 
     def isLine:Boolean = tag.equals("Markup(line)")
     def isSic:Boolean =  tag.equals("Markup(sic)")
-    def isSeparator = tag.equals("Markup(sep)")
-    def isComment = tag.equals("Markup(com)")
+    def isSeparator:Boolean = tag.equals("Markup(sep)")
+    def isComment:Boolean = tag.equals("Markup(com)")
 
     def asXML:Elem =
       if (isLine) <lb/>
