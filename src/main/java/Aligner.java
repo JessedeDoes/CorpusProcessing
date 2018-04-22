@@ -33,7 +33,7 @@ public class Aligner {
             if (x != 0)
                 left += x;
             if (y != 0)
-                right += x;
+                right += y;
 
             if (x == y) type = NOOP ;
             else if (x != 0 && y != 0)
@@ -110,23 +110,26 @@ public class Aligner {
         double r = Math.min(x, y);
         if (r == Double.NaN) {
             //org.ivdnt.openconvert.log.ConverterLog.defaultLog.printf("Huh\n");
+            System.err.println("Nee he!");
             return Double.POSITIVE_INFINITY;
         }
         return r;
     }
 
     static double deleteCost(char x) {
-        return -1;
+        return 1;
     }
 
     static double insertCost(char x) {
-        return -1;
+        return 1;
     }
 
     static double replaceCost(char x, char y) {
-        if (x == y)
+        if (x == y) {
+
             return 0;
-        return -1.5;
+        }
+        return 1.5;
     }
 
     double getCost(int a, int b) {
@@ -144,7 +147,7 @@ public class Aligner {
 
     void setCost(int a, int b, double d) {
         if (Double.isNaN(d)) {
-            //org.ivdnt.openconvert.log.ConverterLog.defaultLog.printf("NaN at %d %d\n", a, b);
+            System.err.printf("NaN at %d %d\n", a, b);
         }
         costMatrix[a][b] = d;
     }
@@ -234,14 +237,13 @@ public class Aligner {
                 p2 = newCost(getCost(b - 1, a), insertCost(t.charAt(b - 1)));// transducer.delta[Alphabet.空][t.get(b-1)]);
                 p3 = newCost(getCost(b, a - 1), deleteCost(s.charAt(a - 1))); // transducer.delta[s.get(a-1)][Alphabet.空]);
 
-                if (p1 >= p2 && p1 >= p3) {
+                if (p1 <= p2 && p1 <= p3) {
                     setOperation(b, a, REPLACE);
-                } else if (p2 > p3) {
+                } else if (p2 < p3) {
                     setOperation(b, a, INSERT);
                 } else {
                     setOperation(b, a, DELETE);
-                }
-                ;
+                };
 
                 setCost(b, a, best(best(p1, p2), p3));
             }
@@ -317,6 +319,6 @@ public class Aligner {
 
     public static void main(String[] args) {
         Aligner a = new Aligner();
-        System.out.println((a.alignment("paap", "paeip")));
+        System.out.println(clunk(a.alignment("paap", "paaep")));
     }
 }
