@@ -156,15 +156,17 @@ object CRM2Xml {
   case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String)
   {
     import ents._
-    def isHeader:Boolean = word.equals("@") && !tag.equals("Markup(line)") && !tag.equals("Markup(sic)")
+    def isHeader:Boolean = word.equals("@") && !tag.equals("Markup(line)") && !tag.equals("Markup(sic)") && !isComment
 
     def isLine:Boolean = tag.equals("Markup(line)")
     def isSic:Boolean =  tag.equals("Markup(sic)")
     def isSeparator = tag.equals("Markup(sep)")
+    def isComment = tag.equals("Markup(com)")
 
     def asXML:Elem =
       if (isLine) <lb/>
       else if (isSic) <sic/> // hoort bij voorgaande woord
+      else if (isComment) <note>{lemma}</note>
       else if (isSeparator) <milestone type="separator"/> // ?? wat is dit precies
       else if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
