@@ -1,5 +1,7 @@
+package utils;
+
 /*
- * Compute alignments for a weighted transducer: 
+ * Compute alignments for a weighted transducer:
  * Aligner for he joint unigram case ("learning string edit distance")
  * This is just the usual string edit distance procedure
  */
@@ -21,9 +23,9 @@ public class Aligner {
 
     public static class Chunk
     {
-        String left="";
-        String right="";
-        int position;
+        public String left="";
+        public String right="";
+        public int position;
         double cost=0;
         int type;
 
@@ -129,7 +131,7 @@ public class Aligner {
 
             return 0;
         }
-        return 2;
+        return 1.2;
     }
 
     double getCost(int a, int b) {
@@ -288,7 +290,7 @@ public class Aligner {
                     if (a >= 0)
                     {
                         theAlignment = addPair(theAlignment, s.charAt(a), nul);
-                    chunks.addFirst(new Chunk(s.charAt(a), nul, a )); }
+                        chunks.addFirst(new Chunk(s.charAt(a), nul, a )); }
                     break;
                 default:
                     //fwprintf(stderr,L"ERROR AT %d,%d (%s,%s,%s)\n",a,b,s,t,the_alignment);

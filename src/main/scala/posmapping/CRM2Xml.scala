@@ -2,9 +2,9 @@ package posmapping
 
 import org.incava.util.diff.Difference
 import posmapping.CRM2Xml.{kloekeByCode, optXML}
-import utils.{Alignment, SimOrDiff}
+import utils.{Alignment, Chunk, SimOrDiff}
 import utils.alignment.comp
-
+import scala.collection.JavaConverters._
 import scala.xml._
 
 
@@ -170,6 +170,7 @@ object CRM2Xml {
         <pc>{rewritePunc(word)}</pc>
           else {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
+            if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
             <w lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
           }
   }
@@ -192,35 +193,24 @@ object CRM2Xml {
       makeGroupx(s.tail, currentGroup :+ s.head, f)
   }
 
-  def alignExpansionWithOriginal(org0: String, expansion0: String):NodeSeq =
+  def alignExpansionWithOriginal(org0: String, expansion0: String, useLevenshtein: Boolean=false):NodeSeq =
   {
     val expansion = expansion0.replaceAll("~", "") // is er meestal uit, dus voor consistentie maar altijd doen
 
-    val original = org0.replaceAll("~?<nl>", "↩").replaceAll("~", squareCup).replaceAll("_\\?", "?")
+    val original = org0.replaceAll("~?<nl>", "↩").replaceAll("~", squareCup).replaceAll("_\\?", "?").replaceAll("\\?_", "?")
 
     if (original.toLowerCase == expansion.toLowerCase) return Text(original)
 
 
-    val a = new Alignment[Char](comp)
+
 
     val positionsOfTilde = "⊔|↩".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
     val tildesAtPosition = "⊔|↩".r.findAllMatchIn(original).toStream.zipWithIndex.map(p => p._1.start - p._2 -> p._1.group(0)).toMap
 
     val o1 = original.replaceAll("[⊔↩]","")
 
-    val (diffs, sims) = a.findDiffsAndSimilarities(o1.toList, expansion.toList)
-    val dPlus  = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference]), None))
-    val simPlus  = sims.map(s => SimOrDiff[Char](None, Some(s)))
 
-    val corresp = (dPlus ++ simPlus).sortBy(_.leftStart)
-    //Console.err.println(s"[$original] [$expansion]")
-    val lr = corresp.map(
-      c => {
-        //Console.err.println(c)
-        val left = o1.substring(c.leftStart, c.leftEnd)
-        val right = expansion.substring(c.rightStart, c.rightEnd)
-        (left,right,c.leftStart)
-      })
+    val lr: List[(String, String, Int)] = findAlignment(expansion, o1, useLevenshtein)
 
     val showMe = lr.map(x => {
       val z = if (x._1==x._2) x._1 else s"${x._1}:${x._2}"
@@ -251,13 +241,53 @@ object CRM2Xml {
           spaceSeq ++ Seq(<choice><orig>{left}</orig><reg>{right}</reg></choice>)
       } }
     )
-    if (original.toLowerCase != expansion.toLowerCase && (pieces \\ "choice").nonEmpty)
+
+    if (original.toLowerCase != expansion.toLowerCase && ((pieces \\ "choice").nonEmpty || useLevenshtein))
     {
-      Console.err.println(s"ORG=$original EPANSION=$expansion ALIGNMENT=$showMe ${pieces.mkString("")}")
+      // Console.err.println(s"L=$useLevenshtein ORG=$original EXPANSION=$expansion ALIGNMENT=$showMe ${pieces.mkString("")}")
+    }
+    if (!useLevenshtein && (pieces \\ "choice").nonEmpty)
+    {
+      // Console.err.println("retry with levenshtein!!!!")
+      val pieces2 = alignExpansionWithOriginal(org0, expansion0, true)
+      return pieces2
     }
     pieces
   }
 
+
+  private def findAlignmentLCS(expansion: String, o1: String) = {
+    val a = new Alignment[Char](comp)
+    val (diffs, sims) = a.findDiffsAndSimilarities(o1.toList, expansion.toList)
+    val dPlus = diffs.map(d => SimOrDiff[Char](Some(d.asInstanceOf[Difference]), None))
+    val simPlus = sims.map(s => SimOrDiff[Char](None, Some(s)))
+
+    val corresp = (dPlus ++ simPlus).sortBy(_.leftStart)
+    //Console.err.println(s"[$original] [$expansion]")
+    val lr = corresp.map(
+      c => {
+        //Console.err.println(c)
+        val left = o1.substring(c.leftStart, c.leftEnd)
+        val right = expansion.substring(c.rightStart, c.rightEnd)
+        (left, right, c.leftStart)
+      })
+    lr
+  }
+
+  def findAlignmentLevenshtein(expansion: String, original: String):List[(String,String,Int)] =
+  {
+    val x = new utils.Aligner
+    val l:java.util.List[utils.Aligner.Chunk] = utils.Aligner.clunk(x.alignment(original, expansion))
+    l.asScala.toList.map(c => (c.left, c.right, c.position))
+  }
+
+  def findAlignment(expansion: String, original: String, useLevenshtein: Boolean): List[(String,String,Int)] =
+  {
+    if (useLevenshtein)
+      findAlignmentLevenshtein(expansion, original)
+    else
+      findAlignmentLCS(expansion, original)
+  }
 
   def makeGroup[T](s: Stream[T], f: T=>Boolean):Stream[List[T]] =
   {
