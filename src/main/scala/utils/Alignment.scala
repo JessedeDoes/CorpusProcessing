@@ -100,7 +100,6 @@ object alignment {
   case class ElementWithPosition(e: Elem, p: Int) {
     override def toString() = s"[$p: ${e.text}/${e \\ "@tpart2b"}/(${e \\ "@__code"}${e \\ "@pos"}) ${e \\ "@id"}]"
 
-
   }
 
   object comp extends Comparator[Char] {

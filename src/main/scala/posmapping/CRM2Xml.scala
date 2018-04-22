@@ -18,7 +18,6 @@ object Location
     Location(a(0), a(1), a(2), a(3), a(4), a(5), a(6), a(7), a(8), a(9), a(10), a(11), a(12), a(13), a(14), a(15))
 
   def allKloekeCodes(f: String):Stream[Location] = scala.io.Source.fromFile(f).getLines().toStream.map(l => makeLocation(l.split("\\t")))
-
 }
 
 
@@ -32,9 +31,9 @@ object ents {
     ("u&uml;", "ü"),
     ("ouml;", "ö"),
     ("a&uml;", "ä"),
-    ("y&uml", "ÿ"),
+    ("y&uml;", "ÿ"),
     ("e&uml;", "ë"),
-    ("v&uml", "v̈"),
+    ("v&uml;", "v̈"),
     ("&duitsekomma;", "/"),
 
     ("&super;", ""), // ahem nog iets mee doen, weet niet precies wat
@@ -274,9 +273,25 @@ object CRM2Xml {
     lr
   }
 
+  object myCost extends utils.Aligner.Cost
+  {
+    override def deleteCost(x: Char): Double = super.deleteCost(x)
+
+    override def insertCost(x: Char): Double = super.insertCost(x)
+
+    override def replaceCost(x: Char, y: Char): Double = {
+      val s1 = ents.noAccents(x.toString)
+      val s2 = ents.noAccents(y.toString)
+      if (s1 == s2)
+        0 else
+      super.replaceCost(x, y)
+    }
+  }
+
   def findAlignmentLevenshtein(expansion: String, original: String):List[(String,String,Int)] =
   {
     val x = new utils.Aligner
+    x.c = myCost
     val l:java.util.List[utils.Aligner.Chunk] = utils.Aligner.clunk(x.alignment(original, expansion))
     l.asScala.toList.map(c => (c.left, c.right, c.position))
   }

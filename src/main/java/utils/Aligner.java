@@ -21,12 +21,38 @@ public class Aligner {
     int n, m;
     private int[][] operationMatrix;
 
+    public static class Cost
+    {
+        public Cost()
+        {
+
+        }
+
+        public double deleteCost(char x) {
+            return 1;
+        }
+
+        public double insertCost(char x) {
+            return 1;
+        }
+
+        public double replaceCost(char x, char y) {
+            if (x == y) {
+
+                return 0;
+            }
+            return 1.2;
+        }
+    }
+
+    public Cost c = new Cost();
+
     public static class Chunk
     {
         public String left="";
         public String right="";
         public int position;
-        double cost=0;
+
         int type;
 
         public Chunk(char x, char y, int p)
@@ -39,14 +65,14 @@ public class Aligner {
 
             if (x == y) type = NOOP ;
             else if (x != 0 && y != 0)
-            {type = REPLACE ; cost = replaceCost(x,y); }
+            {type = REPLACE ; }
             else if (x == 0) {
                 type = INSERT ;
-                cost = insertCost(y);
+
             }
             else {
                 type = DELETE;
-                cost = deleteCost(x);
+
             }
         }
 
@@ -118,20 +144,16 @@ public class Aligner {
         return r;
     }
 
-    static double deleteCost(char x) {
-        return 1;
+    double deleteCost(char x) {
+        return c.deleteCost(x);
     }
 
-    static double insertCost(char x) {
-        return 1;
+    double insertCost(char x) {
+        return c.insertCost(x);
     }
 
-    static double replaceCost(char x, char y) {
-        if (x == y) {
-
-            return 0;
-        }
-        return 1.2;
+    double replaceCost(char x, char y) {
+        return c.replaceCost(x,y);
     }
 
     double getCost(int a, int b) {
