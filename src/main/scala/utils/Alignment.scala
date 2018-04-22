@@ -14,6 +14,15 @@ import scala.util.matching.Regex._
 Problem: incava diff is not very good at optimal alignment of small changes, use editdistance-base alignment instead??
  */
 
+trait Chunk
+{
+  def leftStart: Int
+  def leftEnd: Int
+  def rightStart: Int
+  def rightEnd: Int
+  def isSimilarity: Boolean
+}
+
 case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity]) {
   lazy val leftStart: Int = if (diff.isEmpty) sim.get.s2 else diff.get.getDeletedStart
   lazy val leftEnd: Int = if (diff.isEmpty) sim.get.s2 + sim.get.length else {
