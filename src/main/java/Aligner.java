@@ -61,7 +61,7 @@ public class Aligner {
 
         public String toString()
         {
-            return type + ":[" + left + ":" + right + "]" + cost + "|";
+            return type + ":[" + left + ":" + right + "]" ;
         }
 
         public Chunk add(Chunk next)
