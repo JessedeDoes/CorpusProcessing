@@ -153,11 +153,11 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
-  case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String)
+  case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String)
   {
     import ents._
-    def isHeader:Boolean = word.equals("@") && !tag.equals("Markup(line)") && !tag.equals("Markup(sic)") && !isComment
 
+    def isHeader:Boolean = word.equals("@") && !tag.equals("Markup(line)") && !tag.equals("Markup(sic)") && !isComment
     def isLine:Boolean = tag.equals("Markup(line)")
     def isSic:Boolean =  tag.equals("Markup(sic)")
     def isSeparator:Boolean = tag.equals("Markup(sep)")
@@ -182,8 +182,8 @@ object CRM2Xml {
 
   }
 
-  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4)) }
-  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4)) }
+  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4), c(7)) }
+  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4), c(7)) }
 
 
   def makeGroupx[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
@@ -194,6 +194,12 @@ object CRM2Xml {
     else
       makeGroupx(s.tail, currentGroup :+ s.head, f)
   }
+
+  def makeGroup[T](s: Stream[T], f: T=>Boolean):Stream[List[T]] =
+  {
+    makeGroupx[T](s, List.empty, f).filter(_.nonEmpty)
+  }
+
 
   def alignExpansionWithOriginal(org0: String, expansion0: String, useLevenshtein: Boolean=false):NodeSeq =
   {
@@ -304,10 +310,6 @@ object CRM2Xml {
       findAlignmentLCS(expansion, original)
   }
 
-  def makeGroup[T](s: Stream[T], f: T=>Boolean):Stream[List[T]] =
-  {
-     makeGroupx[T](s, List.empty, f).filter(_.nonEmpty)
-  }
 
   def process():Unit =
   {
@@ -334,7 +336,9 @@ object CRM2Xml {
             </teiHeader>
             <text>
               <body>
-              {d.tokens.map(_.asXML).map(e => Seq(e,white))}
+              {
+                d.tokens.map(_.asXML).map(e => Seq(e,white))
+                }
               </body>
             </text>
           </TEI>
