@@ -185,7 +185,7 @@ object CRM2Xml {
 
   def makeGroupx[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
   {
-    if (s.isEmpty) Stream.empty
+    if (s.isEmpty) Stream(currentGroup)
     else if (f(s.head))
       Stream.cons(currentGroup, makeGroupx(s.tail, List(s.head), f))
     else
@@ -199,9 +199,6 @@ object CRM2Xml {
     val original = org0.replaceAll("~?<nl>", "↩").replaceAll("~", squareCup).replaceAll("_\\?", "?").replaceAll("\\?_", "?")
 
     if (original.toLowerCase == expansion.toLowerCase) return Text(original)
-
-
-
 
     val positionsOfTilde = "⊔|↩".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
     val tildesAtPosition = "⊔|↩".r.findAllMatchIn(original).toStream.zipWithIndex.map(p => p._1.start - p._2 -> p._1.group(0)).toMap
