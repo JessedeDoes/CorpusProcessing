@@ -2,7 +2,7 @@ package posmapping
 
 import org.incava.util.diff.Difference
 import posmapping.CRM2Xml.{kloekeByCode, optXML}
-import utils.{AlignmentGeneric, SimOrDiff}
+import utils.{Alignment, SimOrDiff}
 import utils.alignment.comp
 
 import scala.xml._
@@ -192,14 +192,16 @@ object CRM2Xml {
       makeGroupx(s.tail, currentGroup :+ s.head, f)
   }
 
-  def alignExpansionWithOriginal(org0: String, expansion: String):NodeSeq =
+  def alignExpansionWithOriginal(org0: String, expansion0: String):NodeSeq =
   {
+    val expansion = expansion0.replaceAll("~", "") // is er meestal uit, dus voor consistentie maar altijd doen
+
     val original = org0.replaceAll("~?<nl>", "↩").replaceAll("~", squareCup).replaceAll("_\\?", "?")
 
     if (original.toLowerCase == expansion.toLowerCase) return Text(original)
 
 
-    val a = new AlignmentGeneric[Char](comp)
+    val a = new Alignment[Char](comp)
 
     val positionsOfTilde = "⊔|↩".r.findAllMatchIn(original).toStream.map(m => m.start).zipWithIndex.map(p => p._1 - p._2)
     val tildesAtPosition = "⊔|↩".r.findAllMatchIn(original).toStream.zipWithIndex.map(p => p._1.start - p._2 -> p._1.group(0)).toMap
@@ -249,7 +251,7 @@ object CRM2Xml {
           spaceSeq ++ Seq(<choice><orig>{left}</orig><reg>{right}</reg></choice>)
       } }
     )
-    if (original.toLowerCase != expansion.toLowerCase)
+    if (original.toLowerCase != expansion.toLowerCase && (pieces \\ "choice").nonEmpty)
     {
       Console.err.println(s"ORG=$original EPANSION=$expansion ALIGNMENT=$showMe ${pieces.mkString("")}")
     }
