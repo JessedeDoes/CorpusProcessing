@@ -21,21 +21,31 @@ public class Aligner {
 
     public static class Chunk
     {
-        String left;
-        String right;
+        String left="";
+        String right="";
         int position;
-        double cost;
+        double cost=0;
         int type;
 
         public Chunk(char x, char y, int p)
         {
             position  = p;
-            left = "" + x;
-            right = "" + y;
+            if (x != 0)
+                left += x;
+            if (y != 0)
+                right += x;
+
             if (x == y) type = NOOP ;
-            else if (x != 0 && y != 0) type = REPLACE ;
-            else if (x == 0) type = INSERT ;
-            else type = DELETE;
+            else if (x != 0 && y != 0)
+            {type = REPLACE ; cost = replaceCost(x,y); }
+            else if (x == 0) {
+                type = INSERT ;
+                cost = insertCost(y);
+            }
+            else {
+                type = DELETE;
+                cost = deleteCost(x);
+            }
         }
 
         public Chunk(String x, String y, int p)
@@ -51,7 +61,7 @@ public class Aligner {
 
         public String toString()
         {
-            return type + ":[" + left + ":" + right + "]";
+            return type + ":[" + left + ":" + right + "]" + cost + "|";
         }
 
         public Chunk add(Chunk next)
@@ -105,15 +115,15 @@ public class Aligner {
         return r;
     }
 
-    double deleteCost(char x) {
+    static double deleteCost(char x) {
         return -1;
     }
 
-    double insertCost(char x) {
+    static double insertCost(char x) {
         return -1;
     }
 
-    double replaceCost(char x, char y) {
+    static double replaceCost(char x, char y) {
         if (x == y)
             return 0;
         return -1.5;
