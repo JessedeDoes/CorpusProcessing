@@ -129,7 +129,7 @@ public class Aligner {
 
             return 0;
         }
-        return 1.5;
+        return 2;
     }
 
     double getCost(int a, int b) {
@@ -216,9 +216,9 @@ public class Aligner {
                 p2 = newCost(getCost(a - 1, b), insertCost(t.charAt(a - 1))); // transducer.delta[Alphabet.空][t.get(a-1)]);
                 p3 = newCost(getCost(a, b - 1), deleteCost(s.charAt(b - 1))); // transducer.delta[s.get(b-1)][Alphabet.空]);
 
-                if (p1 >= p2 && p1 >= p3) {
+                if (p1 <= p2 && p1 <= p3) {
                     setOperation(a, b, REPLACE);
-                } else if (p2 > p3) {
+                } else if (p2 < p3) {
                     setOperation(a, b, INSERT);
                 } else {
                     setOperation(a, b, DELETE);
@@ -319,6 +319,7 @@ public class Aligner {
 
     public static void main(String[] args) {
         Aligner a = new Aligner();
-        System.out.println(clunk(a.alignment("paap", "paaep")));
+        List<Chunk> x = a.alignment("paaiip", "paaep");
+        System.out.println(x + " --> " + clunk(x));
     }
 }
