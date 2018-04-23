@@ -113,7 +113,7 @@ object diamantMapping {
 
   // classes
   val conceptType = owlClass(s"${skosPrefix}Concept")
-  val lexicalConceptType = owlClass(s"${diamantSchemaPrefix}LexicalConcept")
+  val lexicalConceptType = owlClass(s"${ontolexPrefix}LexicalConcept")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
 
   // resource prefixes
@@ -180,11 +180,11 @@ object diamantMapping {
 
   val senses: Mappings = {
     val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
-    val definition = ~"http://rdf.ivdnt.org/sense/$definition"
+    val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
       Ω(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
       Ω(senseDefinition, sense, definition),
-      Ω(definitionText, definition, definition)
+      Δ(definitionText, definition, !"definition")
     )
   }
 /*
@@ -210,19 +210,19 @@ public void doSomeStuff(Handle handle) throws Exception
 
   val hilexSynsets: Mappings =
   {
-    val synset = ~s"${synsetResourcePrefix}\$synset_id"
+    val synset = ~s"${synsetResourcePrefix}$$synset_id"
     ⊕(
-      Ω(isA, ~s"${synsetResourcePrefix}\$synset_id", lexicalConceptType),
-      Ω(reference, s"${senseResourcePrefix}\$sense_id", synset)
+      Ω(isA, synset, lexicalConceptType),
+      Ω(reference, s"${senseResourcePrefix}$$sense_id", synset)
     )
   }
 
   val attestations: Mappings = {
-    val theAttestation = ~"http://attestation/$attestation_id"
+    val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
     val document = ~"http://quotation/$document_id"
 
     ⊕(
-      Ω(attestation, ~"http://awf/$analyzed_wordform_id", theAttestation),
+      Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
       Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
@@ -231,8 +231,8 @@ public void doSomeStuff(Handle handle) throws Exception
   }
 
   val senseAttestations: Mappings = {
-    val theAttestation = ~s"${attestationResourcePrefix}\$attestation_id"
-    val quotation = ~s"${quotationResourcePrefix}\$document_id"
+    val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
+    val quotation = ~s"${quotationResourcePrefix}$$document_id"
 
     ⊕(
       Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation)
@@ -241,7 +241,7 @@ public void doSomeStuff(Handle handle) throws Exception
 
 
   val documents: Mappings = {
-    val d = ~s"${quotationResourcePrefix}\$document_id"// ϝ("document_id", "http://document/" + _)
+    val d = ~s"${quotationResourcePrefix}$$document_id"// ϝ("document_id", "http://document/" + _)
     ⊕(
       Δ(yearFrom, d, !"year_from"),
       Δ(yearTo, d, !"year_to"),
@@ -342,17 +342,18 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     )
   }
 
-  val allMappings = List(lemmata, lemmaWordform)
+
   val serpens = List(serpensConcepts, serpensWNT)
 
   val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_clean", "postgres", "inl"))
 
-  val limit = 1000
+  val limit = 5
+
   def main(args: Array[String]) =
   {
 
     db.runStatement(("set schema 'data'"))
-
+    
     lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
     lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
     serpensConcepts.triples(db, serpensConceptQuery).take(limit).foreach(println)
@@ -361,8 +362,6 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
     synonyms.triples(db, synonymQuery).take(limit).foreach(println)
     posMapping.triples(db, posQuery).take(limit).foreach(println)
-
-
 
     senses.triples(db, senseQuery).take(limit).foreach(println)
     documents.triples(db, documentQuery).take(limit).foreach(println)
