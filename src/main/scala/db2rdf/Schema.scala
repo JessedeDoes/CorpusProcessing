@@ -16,6 +16,9 @@ class Schema(fileName: String) {
   val classes:Set[OWLClass] = ontology.getClassesInSignature().asScala.toSet
   val objectProperties = ontology.getObjectPropertiesInSignature().asScala.toSet
   val dataProperties = ontology.getDataPropertiesInSignature().asScala.toSet
+  val axioms = ontology.getTBoxAxioms(null).asScala.toSet
+
+  //axioms.foreach(println)
 
   val objectPropertyNames = objectProperties.map(op => op.getIRI.toString)
   val dataPropertyNames = dataProperties.map(op => op.getIRI.toString)
@@ -24,6 +27,8 @@ class Schema(fileName: String) {
   def validObjectProperty(s: String):Boolean = objectPropertyNames.contains(s)
   def validDataProperty(s: String):Boolean = dataPropertyNames.contains(s)
   def validClass(s: String):Boolean = classNames.contains(s)
+
+
 }
 
 object testSchema
