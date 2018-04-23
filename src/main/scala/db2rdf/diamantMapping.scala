@@ -29,6 +29,11 @@ object diamantMapping {
   val skosNarrower = IRI("http://skos/narrower")
   val skosRelated = IRI("http://skos/related")
   val skosCloseMatch = IRI("http://skos/closeMatch")
+  val yearFrom = "http://yearFrom"
+  val yearTo = "http://yearTo"
+  val dcTitle = "http://title"
+  val dcAuthor = "http://author"
+
 
   val isA = rdfsType
 
@@ -110,13 +115,14 @@ object diamantMapping {
     )
   }
 
+
   val documents:Mappings = {
-    val d = ϝ("document_id", "http://document/" + _)
+    val d = ~"http://document/$document_id" // ϝ("document_id", "http://document/" + _)
     ⊕(
-      Δ("http://yearFrom", d, !"year_from"),
-      Δ("http://yearTo", d, !"year_to"),
-      Δ("http://title", d, !"title"),
-      Δ("http://author", d, !"author")
+      Δ(yearFrom, d, !"year_from"),
+      Δ(yearTo, d, !"year_to"),
+      Δ(dcTitle, d, !"title"),
+      Δ(dcAuthor, d, !"author")
     )
   }
 
