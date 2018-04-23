@@ -285,11 +285,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     val parent = ~"$parent_iri"
     val child = ~"$child_iri"
 
-    val rel:ResultSet => IRI = r =>
-      {
-        val relName = r.getString("relation")
-        relMap.getOrElse(relName, "piep")
-      }
+    val rel:ResultSet => IRI = r => relMap.getOrElse(r.getString("relation"), "piep")
 
     ⊕(
       Ω(rel, parent, child),
@@ -301,29 +297,26 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
   val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_clean", "postgres", "inl"))
 
+  val limit = 1000
   def main(args: Array[String]) =
   {
-    System.exit(0)
+
     db.runStatement(("set schema 'data'"))
 
-    lemmata.triples(db, lemmaQuery).take(10).foreach(println)
-    serpensConcepts.triples(db, serpensConceptQuery).take(10).foreach(println)
-    serpensWNT.triples(db, serpensWntQuery).take(10).foreach(println)
-    serpensConceptRelations.triples(db, conceptRelationQuery).take(10).foreach(println)
+    lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
+    lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
+    serpensConcepts.triples(db, serpensConceptQuery).take(limit).foreach(println)
+    serpensWNT.triples(db, serpensWntQuery).take(limit).foreach(println)
+    serpensConceptRelations.triples(db, conceptRelationQuery).take(limit).foreach(println)
+
+    synonyms.triples(db, synonymQuery).take(limit).foreach(println)
+    posMapping.triples(db, posQuery).take(limit).foreach(println)
 
 
 
-    synonyms.triples(db, synonymQuery).take(10).foreach(println)
-    posMapping.triples(db, posQuery).take(10).foreach(println)
-
-    allMappings.foreach(m =>
-      m.triples(db, wordformQuery
-      ).take(10).foreach(println)
-    )
-
-    senses.triples(db, senseQuery).take(10).foreach(println)
-    documents.triples(db, documentQuery).take(10).foreach(println)
-    senseAttestations.triples(db, senseAttestationQuery).take(10).foreach(println)
-    attestations.triples(db, attestationQuery).take(10).foreach(println)
+    senses.triples(db, senseQuery).take(limit).foreach(println)
+    documents.triples(db, documentQuery).take(limit).foreach(println)
+    senseAttestations.triples(db, senseAttestationQuery).take(limit).foreach(println)
+    attestations.triples(db, attestationQuery).take(limit).foreach(println)
   }
 }
