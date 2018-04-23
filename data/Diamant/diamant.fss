@@ -1,0 +1,310 @@
+#Prefix(:=<http://meraka/moss/exampleBooks.owl#>)
+Prefix(dc:=<http://purl.org/dc/elements/1.1/#>)
+Prefix(dcterms:=<http://dublincore.org/2012/06/14/dcterms.ttl#>)
+
+#Prefix(j.1:=<http://purl.org/dc/terms/>)
+
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(pwn:=<http://wordnet-rdf.princeton.edu/ontology#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Prefix(quest:=<http://obda.org/quest#>)
+
+Prefix(skos:=<http://www.w3.org/2004/02/skos/core#>)
+Prefix(diamant:=<http://rdf.ivdnt.org/schema/diamant#>)
+Prefix(lemon:=<http://lemon-model.net/lemon#>)
+Prefix(lexinfo:=<http://www.lexinfo.net/ontology/2.0/lexinfo#>)
+Prefix(ontolex:=<http://www.w3.org/ns/lemon/ontolex#>)
+Prefix(nif:=<http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core>)
+Prefix(olia_top:=<http://purl.org/olia/olia-top.owl>)
+Prefix(prov:=<http://www.w3.org/ns/prov#>)
+
+#Prefix(protege:=<http://protege.stanford.edu/plugins/owl/protege#>)
+
+
+
+Ontology(<http://rdf.ivdnt.org/schema/diamant/diamant.fss>
+
+
+# class declarations
+Declaration(Class(ontolex:Form))
+Declaration(Class(ontolex:LexicalEntry))
+Declaration(Class(rdfs:Resource))
+Declaration(Class(lexinfo:PartOfSpeech))
+Declaration(Class(skos:Concept))
+Declaration(Class(ontolex:LexicalEntry))
+Declaration(Class(ontolex:LexicalSense))
+Declaration(Class(ontolex:LexicalConcept))
+Declaration(Class(lemon:SenseDefinition))
+Declaration(Class(diamant:SynonymDefinition))
+#Declaration(Class(lemon:UsageExample))
+Declaration(Class(diamant:LexicalPhenomenon))
+Declaration(Class(diamant:Attestation))
+Declaration(Class(diamant:Text))
+Declaration(Class(diamant:Quotation))
+Declaration(Class(diamant:Similarity))
+Declaration(Class(diamant:Set))
+#Declaration(Class(diamant:SemanticRelation))
+Declaration(Class(dcterms:PeriodOfTime))
+Declaration(Class(dcterms:Location))
+Declaration(Class(diamant:LocationType))
+
+
+# Declaration(Class(dcterms:Agent))
+
+
+# object properties
+
+Declaration(ObjectProperty(diamant:elementOf))
+	ObjectPropertyDomain(diamant:elementOf ontolex:LexicalEntry)
+        ObjectPropertyRange(diamant:elementOf diamant:Set)
+
+Declaration(ObjectProperty(ontolex:sense))
+	ObjectPropertyDomain(ontolex:sense ontolex:LexicalEntry)
+	ObjectPropertyRange(ontolex:sense ontolex:LexicalSense)
+	
+Declaration(ObjectProperty(lemon:subsense))
+	ObjectPropertyDomain(lemon:subsense ontolex:LexicalSense)
+	ObjectPropertyRange(lemon:subsense ontolex:LexicalSense)
+	TransitiveObjectProperty(lemon:subsense)
+
+# check!	
+Declaration(ObjectProperty(ontolex:senseRelation))
+	ObjectPropertyDomain(ontolex:senseRelation ontolex:LexicalSense)
+	ObjectPropertyRange(ontolex:senseRelation ontolex:LexicalSense)
+
+Declaration(ObjectProperty(ontolex:reference))
+	ObjectPropertyDomain(ontolex:reference ontolex:LexicalSense)
+	ObjectPropertyRange(ontolex:reference rdfs:Resource)
+
+Declaration(ObjectProperty(lemon:definition))
+   ObjectPropertyDomain(lemon:definition ontolex:LexicalSense)
+   ObjectPropertyRange(lemon:definition lemon:SenseDefinition)
+   
+# islexicalizedsenseof moet subproperty van reference zijn!
+	
+Declaration(ObjectProperty(ontolex:isLexicalizedSenseOf))
+	ObjectPropertyDomain(ontolex:isLexicalizedSenseOf ontolex:LexicalSense)
+	ObjectPropertyRange(ontolex:isLexicalizedSenseOf ontolex:LexicalConcept)
+	SubObjectPropertyOf(ontolex:isLexicalizedSenseOf ontolex:reference)	
+
+Declaration(ObjectProperty(ontolex:lexicalizedSense))
+	ObjectPropertyDomain(ontolex:lexicalizedSense ontolex:LexicalConcept)
+	ObjectPropertyRange(ontolex:lexicalizedSense ontolex:LexicalSense)
+	InverseObjectProperties(ontolex:lexicalizedSense ontolex:isLexicalizedSenseOf)	
+
+#SubObjectPropertyOf(ObjectPropertyChain(:sense :isLexicalizedSenseOf) :evokes)
+#SubObjectPropertyOf(ObjectPropertyChain(:sense :reference) :denotes)	
+SubObjectPropertyOf(ObjectPropertyChain(diamant:elementOf lexinfo:partOfSpeech) lexinfo:partOfSpeech)
+
+Declaration(ObjectProperty(ontolex:lexicalForm))
+	ObjectPropertyDomain(ontolex:lexicalForm ontolex:LexicalEntry)
+	ObjectPropertyRange(ontolex:lexicalForm ontolex:Form)
+
+Declaration(ObjectProperty(ontolex:canonicalForm))
+	ObjectPropertyDomain(ontolex:canonicalForm ontolex:LexicalEntry)
+	ObjectPropertyRange(ontolex:canonicalForm ontolex:Form)	
+	SubObjectPropertyOf(ontolex:canonicalForm ontolex:lexicalForm)
+
+Declaration(ObjectProperty(diamant:canonicalModernForm))
+	ObjectPropertyDomain(diamant:canonicalModernForm ontolex:LexicalEntry)
+	ObjectPropertyRange(diamant:canonicalModernForm ontolex:Form)	
+	SubObjectPropertyOf(diamant:canonicalModernForm ontolex:canonicalForm)
+	
+Declaration(ObjectProperty(diamant:canonicalHistoricalForm))
+	ObjectPropertyDomain(diamant:canonicalHistoricalForm ontolex:LexicalEntry)
+	ObjectPropertyRange(diamant:canonicalHistoricalForm ontolex:Form)	
+	SubObjectPropertyOf(diamant:canonicalHistoricalForm ontolex:canonicalForm)	
+		
+Declaration(ObjectProperty(lexinfo:partOfSpeech))
+	ObjectPropertyDomain(lexinfo:partOfSpeech ontolex:LexicalEntry)
+	ObjectPropertyRange(lexinfo:partOfSpeech lexinfo:PartOfSpeech)
+
+Declaration(ObjectProperty(skos:semanticRelation))
+	ObjectPropertyDomain(skos:semanticRelation skos:Concept)
+	ObjectPropertyRange(skos:semanticRelation skos:Concept)
+
+### attestatie en metadata enzo ...
+
+#SubClassOf(diamant:Quotation lemon:UsageExample)
+
+SubClassOf(diamant:SynonymDefinition lemon:SenseDefinition)
+SubClassOf(diamant:SynonymDefinition prov:Entity)
+
+Declaration(ObjectProperty(diamant:attestation))
+	ObjectPropertyDomain(diamant:attestation diamant:LexicalPhenomenon)
+	ObjectPropertyRange(diamant:attestation diamant:Attestation)
+
+#SubObjectPropertyOf(ObjectPropertyChain( diamant:attestation diamant:text) lemon:example)	
+SubClassOf(diamant:Quotation diamant:Text)
+
+FunctionalDataProperty(diamant:quotationText)
+#    SubDataPropertyOf(diamant:quotationText lemon:value)
+    DataPropertyDomain(diamant:quotationText diamant:Quotation)
+    DataPropertyRange(diamant:quotationText xsd:string)
+    
+FunctionalDataProperty(diamant:beginIndex)
+	DataPropertyDomain(diamant:beginIndex diamant:Attestation)
+	DataPropertyRange(diamant:beginIndex xsd:integer)
+	
+FunctionalDataProperty(diamant:endIndex)
+	DataPropertyDomain(diamant:endIndex diamant:Attestation)
+	DataPropertyRange(diamant:endIndex xsd:integer)
+
+Declaration(ObjectProperty(diamant:text))
+    ObjectPropertyDomain(diamant:text diamant:Attestation)
+    ObjectPropertyRange(diamant:text diamant:Text)
+
+#Declaration(ObjectProperty(diamant:witness))
+#    ObjectPropertyDomain(diamant:witness diamant:Text)
+#    ObjectPropertyRange(diamant:witness diamant:Text)
+            
+### dublin core metadata
+
+# http://dublincore.org/documents/dcmi-period/
+
+
+Declaration(Class(dcterms:BibliographicResource))
+	SubClassOf(diamant:Text dcterms:BibliographicResource)
+
+# nee, spatial en temporary deugen niet
+	
+#Declaration(ObjectProperty(dcterms:temporal))
+#	ObjectPropertyDomain(dcterms:temporal dcterms:BibliographicResource)
+#    ObjectPropertyRange(dcterms:temporal dcterms:PeriodOfTime)
+    
+Declaration(ObjectProperty(diamant:location))
+	ObjectPropertyDomain(diamant:location diamant:Text)
+	ObjectPropertyRange(diamant:location dcterms:Location)
+
+Declaration(ObjectProperty(diamant:locationType))
+        ObjectPropertyDomain(diamant:locationType dcterms:Location)
+        ObjectPropertyRange(diamant:locationType diamant:LocationType)
+
+Declaration(DataProperty(diamant:kloekeCode))
+    DataPropertyDomain(diamant:kloekeCode dcterms:Location)
+    DataPropertyRange(diamant:kloekeCode xsd:string)
+
+Declaration(DataProperty(dcterms:creator))
+	DataPropertyDomain(dcterms:creator dcterms:BibliographicResource)
+    DataPropertyRange(dcterms:creator xsd:string)
+    
+Declaration(DataProperty(diamant:author))
+	DataPropertyDomain(diamant:author dcterms:BibliographicResource)
+    DataPropertyRange(diamant:author xsd:string)
+	SubDataPropertyOf(diamant:author dcterms:creator)
+	
+Declaration(DataProperty(dcterms:title))
+	DataPropertyDomain(dcterms:title dcterms:BibliographicResource)
+	DataPropertyRange(dcterms:title xsd:string)
+	
+	
+##### semantische relaties (Kan je in owl zeggen: iedere diamant:SemanticRelation is subproperty van skos:semanticRelation??)
+
+
+Declaration(ObjectProperty(diamant:synonym))
+	SubObjectPropertyOf(diamant:synonym skos:semanticRelation)
+#	ClassAssertion(diamant:SemanticRelation diamant:synonym)
+	ObjectPropertyDomain(diamant:synonym ontolex:LexicalConcept)
+	ObjectPropertyRange(diamant:synonym ontolex:LexicalConcept)
+	
+Declaration(ObjectProperty(diamant:antonym))
+	SubObjectPropertyOf(diamant:antonym skos:semanticRelation)
+#	ClassAssertion(diamant:SemanticRelation diamant:antonym)
+	ObjectPropertyDomain(diamant:antonym ontolex:LexicalConcept)
+	ObjectPropertyRange(diamant:antonym ontolex:LexicalConcept)
+	
+Declaration(ObjectProperty(diamant:hyponym))
+	SubObjectPropertyOf(diamant:hyponym skos:semanticRelation)
+#	ClassAssertion(diamant:SemanticRelation diamant:hyponym)
+	ObjectPropertyDomain(diamant:hyponym ontolex:LexicalConcept)
+	ObjectPropertyRange(diamant:hyponym ontolex:LexicalConcept)
+	
+Declaration(ObjectProperty(diamant:hyperonym))
+	SubObjectPropertyOf(diamant:hyperonym skos:semanticRelation)
+#	ClassAssertion(diamant:SemanticRelation diamant:hyperonym)
+	ObjectPropertyDomain(diamant:hyperonym ontolex:LexicalConcept)
+	ObjectPropertyRange(diamant:hyperonym ontolex:LexicalConcept)
+	
+# data properties
+Declaration(DataProperty(ontolex:writtenRep))
+  DataPropertyDomain(ontolex:writtenRep ontolex:Form)
+  DataPropertyDomain(ontolex:writtenRep xsd:string)
+
+Declaration(DataProperty(diamant:siblingNumber))
+  DataPropertyDomain(diamant:siblingNumber ontolex:LexicalSense)
+  DataPropertyDomain(diamant:siblingNumber xsd:integer)
+
+Declaration(DataProperty(diamant:synonymDefinition))
+  DataPropertyDomain(diamant:synonymDefinition ontolex:LexicalSense)
+  DataPropertyRange(diamant:synonymDefinition xsd:string)
+    
+Declaration(DataProperty(diamant:definitionText))
+  DataPropertyDomain(diamant:definitionText lemon:SenseDefinition)
+  DataPropertyRange(diamant:definitionText xsd:string)
+  
+#Declaration(DataProperty(pwn:part_of_speech))
+#	DataPropertyDomain(pwn:part_of_speech ontolex:LexicalEntry)
+#	DataPropertyRange(pwn:part_of_speech xsd:string)
+	
+Declaration(DataProperty(diamant:hyphenation))
+DataPropertyDomain(diamant:hyphenation ontolex:Form)
+DataPropertyRange(diamant:hyphenation xsd:string)
+
+Declaration(DataProperty(diamant:source))
+DataPropertyDomain(diamant:source diamant:Similarity)
+DataPropertyRange(diamant:source xsd:string)
+
+Declaration(DataProperty(diamant:target))
+DataPropertyDomain(diamant:target diamant:Similarity)
+DataPropertyRange(diamant:target xsd:string)
+
+Declaration(DataProperty(diamant:similarity))
+DataPropertyDomain(diamant:similarity diamant:Similarity)
+DataPropertyRange(diamant:similarity xsd:double)
+
+Declaration(DataProperty(diamant:witnessYearFrom))
+	DataPropertyDomain(diamant:witnessYearFrom diamant:Text)
+	DataPropertyRange(diamant:witnessYearFrom xsd:date)
+
+Declaration(DataProperty(diamant:witnessYearTo))
+   DataPropertyDomain(diamant:witnessYearTo diamant:Text)
+   DataPropertyRange(diamant:witnessYearTo xsd:date)
+
+
+DataPropertyDomain(ontolex:writtenRep ontolex:Form)
+DataPropertyRange(ontolex:writtenRep xsd:string)
+
+Declaration(DataProperty(rdfs:label))
+DataPropertyRange(rdfs:label xsd:string)
+DataPropertyDomain(rdfs:label rdfs:Resource)
+
+####### de eigenlijke ontologiezooi voor de obdatool
+
+SubClassOf(ontolex:LexicalConcept skos:Concept)
+SubClassOf(ontolex:Form diamant:LexicalPhenomenon)
+SubClassOf(ontolex:LexicalEntry diamant:LexicalPhenomenon)
+SubClassOf(ontolex:LexicalSense diamant:LexicalPhenomenon)
+
+DisjointClasses(ontolex:Form ontolex:LexicalEntry)
+
+SubClassOf(ontolex:LexicalEntry ObjectMinCardinality(1 ontolex:lexicalForm))
+
+
+
+
+#skos:closeMatch and skos:exactMatch are used to link SKOS concepts in different schemes. A skos:closeMatch link indicates that two concepts are sufficiently similar that they can be used interchangeably in some information retrieval applications. 
+
+EquivalentObjectProperties(diamant:hyponym skos:narrower)
+EquivalentObjectProperties(diamant:hyperonym skos:broader)
+EquivalentObjectProperties(diamant:synonym skos:closeMatch)
+
+EquivalentDataProperties(diamant:beginIndex nif:beginIndex)
+EquivalentDataProperties(diamant:endIndex nif:endIndex)
+
+)

@@ -28,11 +28,11 @@ class Schema(fileName: String) {
 
 object testSchema
 {
-  val s = new Schema("data/Diamant/words_ontology.fss")
+  val s = new Schema("data/Diamant/diamant.fss")
 
   def main(args: Array[String]): Unit =
   {
-    s.classNames.foreach(println)
-    s.objectPropertyNames.foreach(println)
+    s.classNames.toList.sortBy(identity).foreach(println)
+    s.objectPropertyNames.toList.sortBy(identity).foreach(println)
   }
 }

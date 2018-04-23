@@ -62,22 +62,28 @@ object diamantMapping {
 
   // properties
 
-  implicit val schema = new Schema("data/Diamant/words_ontology.fss")
+  implicit val schema = new Schema("data/Diamant/diamant.fss")
   implicit val sort = Sort.DataPropertyType
 
-  val writtenRep = IRI("http://ontolex/writtenRep", schema)
-  val lexicalForm = IRI("http://ontolex/lexicalForm")
-  val canonicalForm = IRI("http://ontolex/canonicalForm")
-  val attestation = IRI("http://rdf.ivdnt.org/diamant/attestation")
+  def objectProperty(s:String) = IRI(s, schema) (Sort.ObjectPropertyType)
+  def dataProperty(s:String) = IRI(s, schema) (Sort.DataPropertyType)
+
+  val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
+  val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
+  val canonicalForm:IRI = objectProperty(s"${ontolexPrefix}canonicalForm")
+  val attestation:IRI = objectProperty(s"${diamantSchemaPrefix}attestation")
 
   
-  val text = IRI("http://rdf.ivdnt.org/diamant/text")
-  val pos = IRI("http://universaldependencies.org/u/pos/")
-  val beginIndex = IRI("http://nif/beginIndex")
-  val endIndex = IRI("http://nif/endIndex")
-  val subsense = IRI("http://rdf.ivdnt.org/diamant/subsense")
-  val lexicalDefinition = IRI("http://rdf.ivdnt.org/diamant/lexicalDefinition")
-  val definitionText = IRI("http://rdf.ivdnt.org/diamant/definitionText")
+  val text = objectProperty(s"${diamantSchemaPrefix}text")
+  val pos = objectProperty("http://universaldependencies.org/u/pos/")
+
+
+  val beginIndex = dataProperty(s"${nifPrefix}beginIndex")
+  val endIndex = dataProperty(s"${nifPrefix}endIndex")
+
+  val subsense = IRI(s"${diamantSchemaPrefix}subsense")
+  val lexicalDefinition = IRI(s"${diamantSchemaPrefix}lexicalDefinition")
+  val definitionText = IRI(s"${diamantSchemaPrefix}definitionText")
   val evokes = IRI("http://ontolex/evokes")
   val synonymDefinition = IRI("http://synonymDefinition")
   val rdfsType = IRI("http://rdfs/type")
