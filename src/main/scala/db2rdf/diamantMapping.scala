@@ -79,7 +79,7 @@ object diamantMapping {
 
   
   val text = objectProperty(s"${diamantSchemaPrefix}text")
-  val pos = objectProperty(s"${udPrefix}pos/")
+  val pos = objectProperty(s"${udPrefix}pos")
 
 
   val beginIndex = dataProperty(s"${nifPrefix}beginIndex")
@@ -88,7 +88,7 @@ object diamantMapping {
   val subsense = objectProperty(s"${diamantSchemaPrefix}subsense")
   val senseDefinition = objectProperty(s"${lemonPrefix}definition")
   val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")
-  val synonymDefinition = objectProperty(s"${diamantSchemaPrefix}synonymDefinition")
+
 
   val evokes = objectProperty(s"${ontolexPrefix}evokes")
 
@@ -111,9 +111,9 @@ object diamantMapping {
   val isA = rdfsType
 
   // classes
-  val conceptType = IRI("http://skos/concept")
-  val linguisticConceptType = IRI("http://rdf.ivdnt.org/LinguisticConcept")
-
+  val conceptType = owlClass(s"${skosPrefix}Concept")
+  val linguisticConceptType = owlClass(s"${diamantSchemaPrefix}LexicalConcept")
+  val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
   ////// queries //////
 
   val wordformQuery =
@@ -247,8 +247,8 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     val synonymDef = ~"http//rdf.ivdnt.org/synonymdefinition/$id"
     ⊕(
       Ω(senseDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
-      Ω(isA, synonymDef, synonymDefClass),
-      Δ(definitionText, synonymDef, !"synonym")
+      Ω(isA, synonymDef, synonymDefinitionType),
+      Δ(definitionText, senseDefinition, !"synonym")
 
       // ToDo doe de prov ellende hier ook nog....
     )

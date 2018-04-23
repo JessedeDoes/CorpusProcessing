@@ -25,12 +25,12 @@ object Sort extends Enumeration {
 }
 import Sort._
 
-case class StringLiteral(s: String) extends Literal { override def toString = '"' + s.toString + '"' }
+case class StringLiteral(s: String, lang: String="nl-nl") extends Literal { override def toString = s""""$s"@$lang"""  }
 case class IntLiteral(k: Int) extends Literal  { override def toString = k.toString   }
 
 case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = None)
 {
-  def validate() = if (schema != null && sort != None)
+  def validate():Boolean = if (schema != null && sort != None)
     {
       val valid = sort match {
         case ClassType => schema.classNames.contains(s)

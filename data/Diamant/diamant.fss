@@ -23,6 +23,7 @@ Prefix(ontolex:=<http://www.w3.org/ns/lemon/ontolex#>)
 Prefix(nif:=<http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#>)
 Prefix(olia_top:=<http://purl.org/olia/olia-top.owl>)
 Prefix(prov:=<http://www.w3.org/ns/prov#>)
+Prefix(ud:=<http://universaldependencies.org/u/>)
 
 #Prefix(protege:=<http://protege.stanford.edu/plugins/owl/protege#>)
 
@@ -124,6 +125,15 @@ Declaration(ObjectProperty(diamant:canonicalHistoricalForm))
 Declaration(ObjectProperty(lexinfo:partOfSpeech))
 	ObjectPropertyDomain(lexinfo:partOfSpeech ontolex:LexicalEntry)
 	ObjectPropertyRange(lexinfo:partOfSpeech lexinfo:PartOfSpeech)
+
+#
+Declaration(ObjectProperty(ud:pos))
+         	ObjectPropertyDomain(ud:pos ontolex:LexicalEntry)
+         	ObjectPropertyRange(ud:pos ud:pos)
+
+Declaration(ObjectProperty(ontolex:evokes))
+	ObjectPropertyDomain(ontolex:evokes ontolex:LexicalEntry)
+	ObjectPropertyRange(ontolex:evokes skos:Concept)
 
 Declaration(ObjectProperty(skos:semanticRelation))
 	ObjectPropertyDomain(skos:semanticRelation skos:Concept)
