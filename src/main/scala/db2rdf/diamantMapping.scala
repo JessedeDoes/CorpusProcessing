@@ -6,6 +6,7 @@ import database.Configuration
 import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
 
+
 object posConversion {
 
   import java.util
@@ -115,7 +116,7 @@ object diamantMapping {
   val conceptType = owlClass(s"${skosPrefix}Concept")
   val lexicalConceptType = owlClass(s"${ontolexPrefix}LexicalConcept")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
-
+  val semanticRelationType  = owlClass(s"${diamantSchemaPrefix}SemanticRelation")
   // resource prefixes
 
   val diamantBaseURI: String = INTBaseURI + "lexica/diamant/"
@@ -123,7 +124,8 @@ object diamantMapping {
   val senseResourcePrefix: String = diamantBaseURI + "sense/"
   val definitionResourcePrefix: String = diamantBaseURI + "definition/"
   val synonymDefinitionResourcePrefix: String = diamantBaseURI + "synonymdefinition/"
-  val lemmaResourcePrefix: String = diamantBaseURI + "lemma/"
+  val entryResourcePrefix: String = diamantBaseURI + "entry/"
+  val canonicalFormResourcePrefix = diamantBaseURI + "canonicalform/"
   val attestationResourcePrefix: String = diamantBaseURI + "attestation/"
   val synsetResourcePrefix: String = diamantBaseURI + "synset/"
   val wordformResourcePrefix: String = diamantBaseURI + "wordform/"
@@ -137,7 +139,7 @@ object diamantMapping {
     """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
 
-  val posQuery = """select persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
+  val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
 
   val lemmaQuery = """select * from lemmata"""
 
@@ -157,11 +159,11 @@ object diamantMapping {
 
   val senseQuery = "select * from senses"
 
-  val synonymQuery = "select * from diamant.synonym_definitions where correct=true"
+  val synonymQuery = "select *, 'MNW' as wdb from diamant.synonym_definitions where correct=true"
 
-  val synsetQuery = "select synset_id, unnest(synset) as sense_id from diamant.synsets"
+  val synsetQuery = "select synset_id, unnest(synset) as sense_id, 'WNT' as wdb from diamant.synsets"
 
-  val synsetRelationQuery = "select parent_id, relation, child_id  from diamant.synset_relations"
+  val synsetRelationQuery = "select parent_id, relation, child_id, 'WNT' as wdb  from diamant.synset_relations"
 
   val serpensConceptQuery = "select * from serpens.concepts"
 
@@ -178,43 +180,78 @@ object diamantMapping {
   //////////////////////////////
 
 
+  val lemma = ~s"$entryResourcePrefix$$wdb/$$persistent_id"
+
+  val lemmata:Mappings =
+    ⊕(
+      Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
+      Δ(writtenRep, ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id", !"modern_lemma"),
+    )
+
+  val posMapping: Mappings = {
+    def convertPoS(r: ResultSet): IRI = IRI(s"$udPrefix/pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
+
+    ⊕(Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
+  }
+
+
+  val lemmaWordform =
+  {
+    val awf = ~s"$wordformResourcePrefix$$analyzed_wordform_id"
+    ⊕(
+      Ω(lexicalForm, lemma, awf),
+      Δ(writtenRep, awf, !"wordform")
+    )
+  }
+
+
   val senses: Mappings = {
-    val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
+    val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
-      Ω(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
+      Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
       Δ(definitionText, definition, !"definition")
     )
   }
-/*
-public void doSomeStuff(Handle handle) throws Exception
-	{
 
-		DatabaseStuff db = new DatabaseStuff(handle);
-		db.query("select synset_id, unnest(synset) as sense_id from diamant.synsets;",
-				r -> {
-					LexiconObject synset = this.model.createResource(this.synsetResourcePrefix + db.integer(r,"synset_id"), this.lexicalConceptType);
-					LexiconObject sense =  this.model.createResource(this.senseResourcePrefix  + db.string(r,"sense_id"), this.senseType);
-					model.addStatement(sense, this.reference.get(), synset);
-				});
-		db.query("select parent_id, relation, child_id  from diamant.synset_relations",
-				r -> {
-					LexiconObject synset1 =  this.model.createResource(this.synsetResourcePrefix + db.integer(r,"parent_id"), this.lexicalConceptType);
-					LexiconObject synset2 =  this.model.createResource(this.synsetResourcePrefix +db.integer(r,"child_id"), this.lexicalConceptType);
-					LexicalProperty rel = this.createSemanticRelation(db.string(r, "relation"));
-					model.addStatement(synset1, rel, synset2);
-				});
-	}
- */
+  val synonyms =
+  {
+    val synonymDef = ~s"$synonymDefinitionResourcePrefix$$wdb/$$id"
+    val sense = ~s"$senseResourcePrefix$$wdb/$$sense_id"
+    ⊕(
+      Ω(senseDefinition, sense, synonymDef),
+      Ω(isA, synonymDef, synonymDefinitionType),
+      Δ(definitionText, senseDefinition, !"synonym")
+
+      // ToDo doe de prov ellende hier ook nog....
+    )
+  }
+
+
+  // ezeltjes en zo...
+  val hilexRelMap:Map[String, String] = Map("=" -> "synonym", ">" -> "hyperonym", "<" -> "hyponym")
 
   val hilexSynsets: Mappings =
   {
-    val synset = ~s"${synsetResourcePrefix}$$synset_id"
+    val synset = ~s"${synsetResourcePrefix}$$wdb/$$synset_id"
     ⊕(
       Ω(isA, synset, lexicalConceptType),
-      Ω(reference, s"${senseResourcePrefix}$$sense_id", synset)
+      Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset)
     )
+  }
+
+  val hilexSynsetRelations: Mappings =
+  {
+    val parent = ~s"${synsetResourcePrefix}$$parent_id"
+    val child = ~s"${synsetResourcePrefix}$$child_id"
+
+    val rel:ResultSet => IRI = r => {
+      val relName = hilexRelMap.getOrElse(r.getString("relation"), "piep")
+      IRI(s"$semanticRelationResourcePrefix$relName")
+    }
+
+    ⊕(Ω(rel, parent, child), Ω(isA, rel, semanticRelationType))
   }
 
   val attestations: Mappings = {
@@ -224,7 +261,7 @@ public void doSomeStuff(Handle handle) throws Exception
     ⊕(
       Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
-      Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
+      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos")))
     )
@@ -235,49 +272,21 @@ public void doSomeStuff(Handle handle) throws Exception
     val quotation = ~s"${quotationResourcePrefix}$$document_id"
 
     ⊕(
-      Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation)
+      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation)
     )
   }
 
 
-  val documents: Mappings = {
-    val d = ~s"${quotationResourcePrefix}$$document_id"// ϝ("document_id", "http://document/" + _)
+  val quotations: Mappings = {
+    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"// ϝ("document_id", "http://document/" + _)
     ⊕(
-      Δ(yearFrom, d, !"year_from"),
-      Δ(yearTo, d, !"year_to"),
-      Δ(dcTitle, d, !"title"),
-      Δ(dcAuthor, d, !"author")
+      Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
+      Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
+      Δ(dcTitle, quotation, !"title"),
+      Δ(dcAuthor, quotation, !"author")
     )
   }
 
-  val posMapping: Mappings = {
-
-  def convertPoS(r: ResultSet): IRI = {
-    val p0 = r.getString("lemma_part_of_speech")
-    val pUd = posConversion.convertPos(p0)
-    IRI(s"http://universaldependencies.org/u/pos/$pUd")
-  }
-  ⊕(
-    Ω(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id", convertPoS)
-  )}
-
-  val lemma = ~"http//rdf.ivdnt.org/entry/$wdb/$persistent_id"
-
-  val lemmata:Mappings =
-    ⊕(
-      Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
-      Δ(writtenRep, ~"http://rdf.ivdnt.org/canonical/$lemma_id", !"modern_lemma"),
-    )
-
-
-  val lemmaWordform =
-  {
-    val awf = ~"http://awf/$analyzed_wordform_id"
-    ⊕(
-      Ω(lexicalForm, ~"http//rdf.ivdnt.org/entry/$lemma_id", awf),
-      Δ(writtenRep, awf, !"wordform")
-    )
-  }
 
   /*
   import net.xqj.basex.bin.r
@@ -292,23 +301,14 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 				rel.verified = r.getBoolean("verified")
    */
 
-  val synonyms =
-  {
-    val synonymDef = ~"http//rdf.ivdnt.org/synonymdefinition/$id"
-    ⊕(
-      Ω(senseDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
-      Ω(isA, synonymDef, synonymDefinitionType),
-      Δ(definitionText, senseDefinition, !"synonym")
 
-      // ToDo doe de prov ellende hier ook nog....
-    )
-  }
 
   val typeForConcept: ResultSet => IRI =
     r => if (r.getString("ontology").equalsIgnoreCase("wnt")) lexicalConceptType else conceptType
 
-  val serpensConcepts =
-  {
+  val serpensRelMap:Map[String, IRI] = Map("=" -> skosCloseMatch, ">" -> skosBroader, "<" -> skosNarrower)
+
+  val serpensConcepts = {
     val concept = ~"$iri"
     ⊕(
       Ω(isA, concept, typeForConcept),
@@ -317,29 +317,16 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     )
   }
 
-
-  val serpensWNT =
-  {
-    val concept = ~"$iri"
-
-    ⊕(
-      Ω(isA, concept, typeForConcept),
-      Ω(evokes, lemma, concept)
-    )
-  }
-
-  val relMap:Map[String, IRI] = Map("=" -> skosCloseMatch, ">" -> skosBroader, "<" -> skosNarrower)
+  val serpensWNT = { val concept = ~"$iri"; ⊕(Ω(isA, concept, typeForConcept), Ω(evokes, lemma, concept)) }
 
   val serpensConceptRelations =
   {
     val parent = ~"$parent_iri"
     val child = ~"$child_iri"
 
-    val rel:ResultSet => IRI = r => relMap.getOrElse(r.getString("relation"), "piep")
+    val rel:ResultSet => IRI = r => serpensRelMap.getOrElse(r.getString("relation"), "piep")
 
-    ⊕(
-      Ω(rel, parent, child),
-    )
+    ⊕(Ω(rel, parent, child))
   }
 
 
@@ -347,25 +334,45 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
   val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_clean", "postgres", "inl"))
 
-  val limit = 5
+  val limit = Int.MaxValue
 
   def main(args: Array[String]) =
   {
 
     db.runStatement(("set schema 'data'"))
-    
+
+    println(s"#lemmata en PoS voor ${lemmata.triples(db, lemmaQuery).size} lemmata")
+
     lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
+    posMapping.triples(db, posQuery).take(limit).foreach(println)
+
+    println(s"#woordvormen ${lemmaWordform.triples(db, wordformQuery).size} triples")
+
     lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
+
+    println(s"#senses synonym stuk: ${synonyms.triples(db, synonymQuery).size}")
+
+    senses.triples(db, senseQuery).take(limit).foreach(println)
+    synonyms.triples(db, synonymQuery).take(limit).foreach(println)
+
+    println("#attestations en quotations")
+
+    quotations.triples(db, documentQuery).take(limit).foreach(println)
+    senseAttestations.triples(db, senseAttestationQuery).take(limit).foreach(println)
+    attestations.triples(db, attestationQuery).take(limit).foreach(println)
+
+    println("#ezels")
+
+    hilexSynsets.triples(db, synsetQuery).take(limit).foreach(println)
+    hilexSynsetRelations.triples(db, synsetRelationQuery).take(limit).foreach(println)
+
+    println("#serpens")
+
     serpensConcepts.triples(db, serpensConceptQuery).take(limit).foreach(println)
     serpensWNT.triples(db, serpensWntQuery).take(limit).foreach(println)
     serpensConceptRelations.triples(db, conceptRelationQuery).take(limit).foreach(println)
 
-    synonyms.triples(db, synonymQuery).take(limit).foreach(println)
-    posMapping.triples(db, posQuery).take(limit).foreach(println)
 
-    senses.triples(db, senseQuery).take(limit).foreach(println)
-    documents.triples(db, documentQuery).take(limit).foreach(println)
-    senseAttestations.triples(db, senseAttestationQuery).take(limit).foreach(println)
-    attestations.triples(db, attestationQuery).take(limit).foreach(println)
+
   }
 }

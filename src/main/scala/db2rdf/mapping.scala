@@ -25,7 +25,12 @@ object Sort extends Enumeration {
 }
 import Sort._
 
-case class StringLiteral(s: String, lang: String="nl") extends Literal { override def toString = s""""$s"@$lang"""  }
+case class StringLiteral(s: String, lang: String="nl") extends Literal
+{
+  lazy val escaped: String = s.replaceAll("\"", "\\\\\"").replaceAll("\\s", " ") ;
+  override def toString = s""""$escaped"@$lang"""
+}
+
 case class IntLiteral(k: Int) extends Literal  { override def toString = k.toString   }
 
 case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = None)
