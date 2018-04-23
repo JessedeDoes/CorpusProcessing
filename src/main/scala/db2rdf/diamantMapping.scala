@@ -180,30 +180,21 @@ object diamantMapping {
   //////////////////////////////
 
 
-  val lemma = ~s"$entryResourcePrefix$$wdb/$$persistent_id"
+  val lemma:ResultSet=>IRI = ~s"$entryResourcePrefix$$wdb/$$persistent_id"
 
   val lemmata:Mappings =
-    ⊕(
-      Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
-      Δ(writtenRep, ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id", !"modern_lemma"),
-    )
+    ⊕(Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
+      Δ(writtenRep, ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id", !"modern_lemma"))
 
   val posMapping: Mappings = {
     def convertPoS(r: ResultSet): IRI = IRI(s"$udPrefix/pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
-
     ⊕(Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
   }
 
-
-  val lemmaWordform =
-  {
+  val lemmaWordform = {
     val awf = ~s"$wordformResourcePrefix$$analyzed_wordform_id"
-    ⊕(
-      Ω(lexicalForm, lemma, awf),
-      Δ(writtenRep, awf, !"wordform")
-    )
+    ⊕(Ω(lexicalForm, lemma, awf), Δ(writtenRep, awf, !"wordform"))
   }
-
 
   val senses: Mappings = {
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
@@ -211,34 +202,26 @@ object diamantMapping {
     ⊕(
       Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
-      Δ(definitionText, definition, !"definition")
-    )
+      Δ(definitionText, definition, !"definition"))
   }
 
-  val synonyms =
+  val synonyms = // ToDo doe de prov ellende hier ook nog....
   {
     val synonymDef = ~s"$synonymDefinitionResourcePrefix$$wdb/$$id"
     val sense = ~s"$senseResourcePrefix$$wdb/$$sense_id"
     ⊕(
       Ω(senseDefinition, sense, synonymDef),
       Ω(isA, synonymDef, synonymDefinitionType),
-      Δ(definitionText, senseDefinition, !"synonym")
-
-      // ToDo doe de prov ellende hier ook nog....
-    )
+      Δ(definitionText, senseDefinition, !"synonym"))
   }
 
 
   // ezeltjes en zo...
   val hilexRelMap:Map[String, String] = Map("=" -> "synonym", ">" -> "hyperonym", "<" -> "hyponym")
 
-  val hilexSynsets: Mappings =
-  {
+  val hilexSynsets: Mappings = {
     val synset = ~s"${synsetResourcePrefix}$$wdb/$$synset_id"
-    ⊕(
-      Ω(isA, synset, lexicalConceptType),
-      Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset)
-    )
+    ⊕(Ω(isA, synset, lexicalConceptType), Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset))
   }
 
   val hilexSynsetRelations: Mappings =
@@ -258,24 +241,19 @@ object diamantMapping {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
     val document = ~"http://quotation/$document_id"
 
-    ⊕(
-      Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
+    ⊕(Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
       Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
-      Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos")))
-    )
+      Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos"))))
   }
 
   val senseAttestations: Mappings = {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
     val quotation = ~s"${quotationResourcePrefix}$$document_id"
 
-    ⊕(
-      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation)
-    )
+    ⊕(Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation))
   }
-
 
   val quotations: Mappings = {
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"// ϝ("document_id", "http://document/" + _)
@@ -287,22 +265,6 @@ object diamantMapping {
     )
   }
 
-
-  /*
-  import net.xqj.basex.bin.r
-rel.id = r.getInt("id")// todo better id's (more persistent) for this
-
-				rel.dictionary = r.getString("dictionary")
-				rel.lemmaId = r.getString("entry_id")
-				rel.senseId = r.getString("sense_id").trim
-				rel.synonym = r.getString("synonym")
-				rel.correct = r.getBoolean("correct")
-				rel.extra = r.getBoolean("extra")
-				rel.verified = r.getBoolean("verified")
-   */
-
-
-
   val typeForConcept: ResultSet => IRI =
     r => if (r.getString("ontology").equalsIgnoreCase("wnt")) lexicalConceptType else conceptType
 
@@ -310,25 +272,17 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
   val serpensConcepts = {
     val concept = ~"$iri"
-    ⊕(
-      Ω(isA, concept, typeForConcept),
-      Δ(prefLabel, concept, !"preflabel"),
-      Δ(altLabel, concept, !"altlabel")
-    )
+    ⊕(Ω(isA, concept, typeForConcept), Δ(prefLabel, concept, !"preflabel"), Δ(altLabel, concept, !"altlabel"))
   }
 
   val serpensWNT = { val concept = ~"$iri"; ⊕(Ω(isA, concept, typeForConcept), Ω(evokes, lemma, concept)) }
 
-  val serpensConceptRelations =
-  {
+  val serpensConceptRelations = {
     val parent = ~"$parent_iri"
     val child = ~"$child_iri"
-
     val rel:ResultSet => IRI = r => serpensRelMap.getOrElse(r.getString("relation"), "piep")
-
     ⊕(Ω(rel, parent, child))
   }
-
 
   val serpens = List(serpensConcepts, serpensWNT)
 
@@ -338,7 +292,6 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
   def main(args: Array[String]) =
   {
-
     db.runStatement(("set schema 'data'"))
 
     println(s"#lemmata en PoS voor ${lemmata.triples(db, lemmaQuery).size} lemmata")
@@ -371,8 +324,20 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     serpensConcepts.triples(db, serpensConceptQuery).take(limit).foreach(println)
     serpensWNT.triples(db, serpensWntQuery).take(limit).foreach(println)
     serpensConceptRelations.triples(db, conceptRelationQuery).take(limit).foreach(println)
-
-
-
   }
 }
+
+/*
+import net.xqj.basex.bin.r
+rel.id = r.getInt("id")// todo better id's (more persistent) for this
+
+      rel.dictionary = r.getString("dictionary")
+      rel.lemmaId = r.getString("entry_id")
+      rel.senseId = r.getString("sense_id").trim
+      rel.synonym = r.getString("synonym")
+      rel.correct = r.getBoolean("correct")
+      rel.extra = r.getBoolean("extra")
+      rel.verified = r.getBoolean("verified")
+ */
+
+
