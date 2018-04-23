@@ -38,6 +38,29 @@ object diamantMapping {
 
   import Ω._
 
+  val INTBaseURI = "http://rdf.ivdnt.org/"
+
+
+  // prefixes
+  val owlPrefix = "http://www.w3.org/2002/07/owl#"
+  val lemonPrefix = "http://lemon-model.net/lemon#"
+  val ontolexPrefix = "http://www.w3.org/ns/lemon/ontolex#" // lemon of ontolex ????
+
+  val diamantSchemaPrefix: String = INTBaseURI + "schema/diamant#"
+  val rdfPrefix = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+  val rdfsPrefix = "http://www.w3.org/2000/01/rdf-schema#"
+  val wnPrefix = "http://wordnet-rdf.princeton.edu/ontology#"
+  val isocatPrefix = "http://www.isocat.org/ns/dcr.rdf#"
+  val skosPrefix = "http://www.w3.org/2004/02/skos/core#"
+  val lexinfoPrefix = "http://www.lexinfo.net/ontology/2.0/lexinfo#"
+  val provPrefix = "http://www.w3.org/ns/prov#"
+  val nifPrefix = "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#"
+  val dcTermsPrefix = "http://dublincore.org/2012/06/14/dcterms.ttl#"
+
+  val udPosPrefix = "http://universaldependencies.org/u/pos/"
+  val udFeatPrefix = "http://universaldependencies.org/u/feat/"
+
+  // properties
   val writtenRep = IRI("http://ontolex/writtenRep")
   val lexicalForm = IRI("http://ontolex/lexicalForm")
   val canonicalForm = IRI("http://ontolex/canonicalForm")
@@ -221,10 +244,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     )
   }
 
-  /*
-   	val lemmaObject: Nothing = this.createLemma("wnt", db.string(r, "wnt_id"), lemma, db.string(r, "lemma_part_of_speech"))
-					this.evokes(lemmaObject, concept)
-   */
+
   val serpensWNT =
   {
     val concept = ~"$iri"
@@ -252,22 +272,6 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
       Ω(rel, parent, child),
     )
   }
-/*
-r -> {
-					LexiconObject concept;
-					String ontology = db.string(r, "ontology");
-
-
-					if (ontology.equalsIgnoreCase("wnt"))
-					   concept = this.model.createResource(db.string(r,"iri"), this.linguisticConceptType);
-					else
-					   concept = this.model.createResource(db.string(r,"iri"), this.conceptType);
-
-					this.setLabel(concept, db.string(r,"altlabel"));
-					this.setLabel(concept, db.string(r,"preflabel"));
-
-				});
- */
 
   val allMappings = List(lemmata, lemmaWordform)
   val serpens = List(serpensConcepts, serpensWNT)
