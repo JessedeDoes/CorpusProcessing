@@ -53,7 +53,7 @@ case class Δ(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) extends Mapp
     }
 }
 
-case class MultiMapping(mappings:Seq[Mapping])
+case class Mappings(mappings:Seq[Mapping])
 {
   def multiMapping(mappings:Seq[Mapping]): ResultMapping[Set[Statement]] =
   {
@@ -122,7 +122,7 @@ object Ω {
 
   implicit def xxx(s:String):XXX = XXX(s)
 
-  def ⊕(l: Mapping*) = MultiMapping(l)
+  def ⊕(l: Mapping*) = Mappings(l)
 
   ////////////////////////////////////////////////////////
 

@@ -30,10 +30,11 @@ object diamantMapping {
   val skosRelated = IRI("http://skos/related")
   val skosCloseMatch = IRI("http://skos/closeMatch")
 
-  val a = rdfsType
+  val isA = rdfsType
 
   val conceptType = IRI("http://skos/concept")
   val linguisticConceptType = IRI("http://rdf.ivdnt.org/LinguisticConcept")
+
   ////// queries //////
 
   val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
@@ -76,7 +77,7 @@ object diamantMapping {
   //////////////////////////////
 
 
-  val senses:MultiMapping =
+  val senses:Mappings =
   {
     val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/sense/$definition"
@@ -87,7 +88,7 @@ object diamantMapping {
     )
   }
 
-  val attestations:MultiMapping = {
+  val attestations:Mappings = {
     val theAttestation = ~"http://attestation/$attestation_id"
     val document = ~"http://quotation/$document_id"
 
@@ -100,7 +101,7 @@ object diamantMapping {
     )
   }
 
-  val senseAttestations:MultiMapping = {
+  val senseAttestations:Mappings = {
     val theAttestation = ~"http://attestation/$attestation_id"
     val document = ~"http://quotation/$document_id"
 
@@ -109,7 +110,7 @@ object diamantMapping {
     )
   }
 
-  val documents:MultiMapping = {
+  val documents:Mappings = {
     val d = ϝ("document_id", "http://document/" + _)
     ⊕(
       Δ("http://yearFrom", d, !"year_from"),
@@ -119,14 +120,14 @@ object diamantMapping {
     )
   }
 
-  val posMapping:MultiMapping =
+  val posMapping:Mappings =
     ⊕(
       Ω(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id",  ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
     )
 
   val lemma = ~"http//rdf.ivdnt.org/entry/$wdb/$persistent_id"
 
-  val lemmata:MultiMapping =
+  val lemmata:Mappings =
     ⊕(
       Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
       Δ(writtenRep, ~"http://rdf.ivdnt.org/canonical/$lemma_id", !"modern_lemma"),
@@ -173,7 +174,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
   {
     val concept = ~"$iri"
     ⊕(
-      Ω(a, concept, typeForConcept),
+      Ω(isA, concept, typeForConcept),
       Δ(prefLabel, concept, !"preflabel"),
       Δ(altLabel, concept, !"altlabel")
     )
@@ -188,7 +189,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     val concept = ~"$iri"
 
     ⊕(
-      Ω(a, concept, typeForConcept),
+      Ω(isA, concept, typeForConcept),
       Ω(evokes, lemma, concept)
     )
   }
