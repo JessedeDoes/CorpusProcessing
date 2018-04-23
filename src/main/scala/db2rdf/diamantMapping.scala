@@ -6,7 +6,36 @@ import database.Configuration
 import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
 
+object posConversion {
+
+  import java.util
+
+  val knownPoS: List[String] = List("ADP", "ADV", "ADJ", "ART", "CONJ", "INT", "NOU-C", "NOU-P",
+    "NOU-P_LOC", "NOU-P_ORG", "NOU-P_PER", "NOU-P_OTHER", "NUM", "PRN", "VRB", "COLL", "WOORDDL")
+
+  val conversionTable = List(
+    ("ADP", "ADP"),
+    ("ADV", "ADV"),
+    ("ADJ", "ADJ"),
+    ("ART", "pos=PRON&PronType=Art"),
+    ("CONJ", "SCONJ|CCONJ"),
+    ("INT", "INTJ"),
+    ("NOU", "NOUN"),
+    ("NOU-C", "NOUN"),
+    ("NOU-P", "PROPN"),
+    ("NOU-P_LOC", "PROPN"),
+    ("NOU-P_ORG", "PROPN"),
+    ("NOU-P_PER", "PROPN"),
+    ("NOU-P_OTHER", "PROPN"),
+    ("NUM", "NUM"),
+    ("PRN", "PRON"),
+    ("VRB", "VERB")).toMap
+
+  def convertPos(p: String): String = conversionTable.getOrElse(p, s"unknown:$p")
+}
+
 object diamantMapping {
+
   import Ω._
 
   val writtenRep = IRI("http://ontolex/writtenRep")
@@ -42,20 +71,21 @@ object diamantMapping {
 
   ////// queries //////
 
-  val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
+  val wordformQuery =
+    """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
 
   val posQuery = """select persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
 
   val lemmaQuery = """select * from lemmata"""
 
-  val attestationQuery:String =
+  val attestationQuery: String =
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id""".stripMargin
 
-  val senseAttestationQuery:String =
+  val senseAttestationQuery: String =
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
@@ -69,12 +99,12 @@ object diamantMapping {
 
   val serpensConceptQuery = "select * from serpens.concepts"
 
-  val serpensWntQuery:String =
+  val serpensWntQuery: String =
     """select serpens.concepts.*, data.lemmata.modern_lemma, data.lemmata.lemma_part_of_speech, data.lemmata.wdb, data.lemmata.persistent_id
       | from serpens.concepts,data.lemmata
       | where serpens.concepts.concept_id=data.lemmata.persistent_id""".stripMargin
 
-  val conceptRelationQuery:String =
+  val conceptRelationQuery: String =
     """select cl.*, s1.iri as parent_iri, s2.iri as child_iri
       | from serpens.concept_links cl, serpens.concepts s1, serpens.concepts s2
       | where s1.concept_id = cl.parent_id and s2.concept_id = cl.child_id""".stripMargin
@@ -82,8 +112,7 @@ object diamantMapping {
   //////////////////////////////
 
 
-  val senses:Mappings =
-  {
+  val senses: Mappings = {
     val sense = ~"http://rdf.ivdnt.org/sense/$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/sense/$definition"
     ⊕(
@@ -93,30 +122,30 @@ object diamantMapping {
     )
   }
 
-  val attestations:Mappings = {
+  val attestations: Mappings = {
     val theAttestation = ~"http://attestation/$attestation_id"
     val document = ~"http://quotation/$document_id"
 
     ⊕(
       Ω(attestation, ~"http://awf/$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
-      Ω(attestation,  ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
+      Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos")))
     )
   }
 
-  val senseAttestations:Mappings = {
+  val senseAttestations: Mappings = {
     val theAttestation = ~"http://attestation/$attestation_id"
     val document = ~"http://quotation/$document_id"
 
     ⊕(
-      Ω(attestation,  ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation)
+      Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation)
     )
   }
 
 
-  val documents:Mappings = {
+  val documents: Mappings = {
     val d = ~"http://document/$document_id" // ϝ("document_id", "http://document/" + _)
     ⊕(
       Δ(yearFrom, d, !"year_from"),
@@ -126,10 +155,16 @@ object diamantMapping {
     )
   }
 
-  val posMapping:Mappings =
-    ⊕(
-      Ω(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id",  ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
-    )
+  val posMapping: Mappings = {
+
+  def convertPoS(r: ResultSet): IRI = {
+    val p0 = r.getString("lemma_part_of_speech")
+    val pUd = posConversion.convertPos(p0)
+    IRI(s"http://universaldependencies.org/u/pos/$pUd")
+  }
+  ⊕(
+    Ω(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id", convertPoS)
+  )}
 
   val lemma = ~"http//rdf.ivdnt.org/entry/$wdb/$persistent_id"
 
@@ -169,12 +204,12 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
       Ω(synonymDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
       Δ(definitionText, synonymDef, !"synonym")
 
-      // ToDo doe de prov ellende hier ook
+      // ToDo doe de prov ellende hier ook nog....
     )
   }
 
   val typeForConcept: ResultSet => IRI =
-    r => if (r.getString("ontology").equalsIgnoreCase("wnt"))linguisticConceptType else conceptType
+    r => if (r.getString("ontology").equalsIgnoreCase("wnt")) linguisticConceptType else conceptType
 
   val serpensConcepts =
   {
@@ -200,17 +235,17 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     )
   }
 
+  val relMap:Map[String, IRI] = Map("=" -> skosCloseMatch, ">" -> skosBroader, "<" -> skosNarrower)
+
   val serpensConceptRelations =
   {
     val parent = ~"$parent_iri"
     val child = ~"$child_iri"
+
     val rel:ResultSet => IRI = r =>
       {
         val relName = r.getString("relation")
-        val bla:IRI = if (relName.equals("=")) skosCloseMatch else
-        if (relName.equals(">")) skosBroader else
-        if (relName.equals("<")) skosNarrower else "piep"
-        bla
+        relMap.getOrElse(relName, "piep")
       }
 
     ⊕(
