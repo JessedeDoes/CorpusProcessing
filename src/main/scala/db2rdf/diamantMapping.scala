@@ -38,10 +38,15 @@ object diamantMapping {
 
   import Ω._
 
+
+  implicit val schema = new Schema("data/Diamant/diamant.fss")
+  implicit val sort = Sort.DataPropertyType
+
   val INTBaseURI = "http://rdf.ivdnt.org/"
 
 
   // prefixes
+
   val owlPrefix = "http://www.w3.org/2002/07/owl#"
   val lemonPrefix = "http://lemon-model.net/lemon#"
   val ontolexPrefix = "http://www.w3.org/ns/lemon/ontolex#" // lemon of ontolex ????
@@ -57,16 +62,15 @@ object diamantMapping {
   val nifPrefix = "http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#"
   val dcTermsPrefix = "http://dublincore.org/2012/06/14/dcterms.ttl#"
 
-  val udPosPrefix = "http://universaldependencies.org/u/pos/"
+  val udPrefix = "http://universaldependencies.org/u/"
   val udFeatPrefix = "http://universaldependencies.org/u/feat/"
 
   // properties
 
-  implicit val schema = new Schema("data/Diamant/diamant.fss")
-  implicit val sort = Sort.DataPropertyType
 
   def objectProperty(s:String) = IRI(s, schema) (Sort.ObjectPropertyType)
   def dataProperty(s:String) = IRI(s, schema) (Sort.DataPropertyType)
+  def owlClass(s:String) = IRI(s, schema) (Sort.ClassType)
 
   val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
   val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
@@ -75,32 +79,38 @@ object diamantMapping {
 
   
   val text = objectProperty(s"${diamantSchemaPrefix}text")
-  val pos = objectProperty("http://universaldependencies.org/u/pos/")
+  val pos = objectProperty(s"${udPrefix}pos/")
 
 
   val beginIndex = dataProperty(s"${nifPrefix}beginIndex")
   val endIndex = dataProperty(s"${nifPrefix}endIndex")
 
-  val subsense = IRI(s"${diamantSchemaPrefix}subsense")
-  val lexicalDefinition = IRI(s"${diamantSchemaPrefix}lexicalDefinition")
-  val definitionText = IRI(s"${diamantSchemaPrefix}definitionText")
-  val evokes = IRI("http://ontolex/evokes")
-  val synonymDefinition = IRI("http://synonymDefinition")
-  val rdfsType = IRI("http://rdfs/type")
-  val prefLabel = IRI("http://skos/prefLabel")
-  val altLabel = IRI("http://skos/altLabel")
-  val skosBroader = IRI("http://skos/broader")
-  val skosNarrower = IRI("http://skos/narrower")
-  val skosRelated = IRI("http://skos/related")
-  val skosCloseMatch = IRI("http://skos/closeMatch")
-  val yearFrom = "http://yearFrom"
-  val yearTo = "http://yearTo"
-  val dcTitle = "http://title"
-  val dcAuthor = "http://author"
+  val subsense = objectProperty(s"${diamantSchemaPrefix}subsense")
+  val senseDefinition = objectProperty(s"${lemonPrefix}definition")
+  val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")
+  val synonymDefinition = objectProperty(s"${diamantSchemaPrefix}synonymDefinition")
+
+  val evokes = objectProperty(s"${ontolexPrefix}evokes")
+
+
+
+  val rdfsType = IRI(s"${rdfsPrefix}type")
+
+  val prefLabel = dataProperty(s"${skosPrefix}prefLabel")
+  val altLabel = dataProperty(s"${skosPrefix}altLabel")
+  val skosBroader = objectProperty(s"${skosPrefix}broader")
+  val skosNarrower = objectProperty(s"${skosPrefix}narrower")
+  val skosRelated = objectProperty(s"${skosPrefix}related")
+  val skosCloseMatch = objectProperty(s"${skosPrefix}closeMatch")
+  val yearFrom = dataProperty(s"${diamantSchemaPrefix}witnessYearFrom")
+  val yearTo = dataProperty(s"${diamantSchemaPrefix}witnessYearTo")
+  val dcTitle = dataProperty(s"${dcTermsPrefix}title")
+  val dcAuthor = dataProperty(s"${dcTermsPrefix}creator")
 
 
   val isA = rdfsType
 
+  // classes
   val conceptType = IRI("http://skos/concept")
   val linguisticConceptType = IRI("http://rdf.ivdnt.org/LinguisticConcept")
 
@@ -152,7 +162,7 @@ object diamantMapping {
     val definition = ~"http://rdf.ivdnt.org/sense/$definition"
     ⊕(
       Ω(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
-      Ω(lexicalDefinition, sense, definition),
+      Ω(senseDefinition, sense, definition),
       Δ(definitionText, definition, !"definition")
     )
   }
@@ -236,7 +246,8 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
   {
     val synonymDef = ~"http//rdf.ivdnt.org/synonymdefinition/$id"
     ⊕(
-      Ω(synonymDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
+      Ω(senseDefinition, ~"http//rdf.ivdnt.org/entry/$dictionary/$sense_id", synonymDef),
+      Ω(isA, synonymDef, synonymDefClass),
       Δ(definitionText, synonymDef, !"synonym")
 
       // ToDo doe de prov ellende hier ook nog....
@@ -292,6 +303,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
 
   def main(args: Array[String]) =
   {
+    System.exit(0)
     db.runStatement(("set schema 'data'"))
 
     lemmata.triples(db, lemmaQuery).take(10).foreach(println)
@@ -299,7 +311,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     serpensWNT.triples(db, serpensWntQuery).take(10).foreach(println)
     serpensConceptRelations.triples(db, conceptRelationQuery).take(10).foreach(println)
 
-    //System.exit(0)
+
 
     synonyms.triples(db, synonymQuery).take(10).foreach(println)
     posMapping.triples(db, posQuery).take(10).foreach(println)

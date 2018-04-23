@@ -39,5 +39,6 @@ object testSchema
   {
     s.classNames.toList.sortBy(identity).foreach(println)
     s.objectPropertyNames.toList.sortBy(identity).foreach(println)
+    s.dataPropertyNames.toList.sortBy(identity).foreach(println)
   }
 }
