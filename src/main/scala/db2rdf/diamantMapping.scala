@@ -86,6 +86,7 @@ object diamantMapping {
   val endIndex = dataProperty(s"${nifPrefix}endIndex")
 
   val subsense = objectProperty(s"${diamantSchemaPrefix}subsense")
+  val reference = objectProperty(s"${ontolexPrefix}reference")
   val senseDefinition = objectProperty(s"${lemonPrefix}definition")
   val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")
 
@@ -112,8 +113,24 @@ object diamantMapping {
 
   // classes
   val conceptType = owlClass(s"${skosPrefix}Concept")
-  val linguisticConceptType = owlClass(s"${diamantSchemaPrefix}LexicalConcept")
+  val lexicalConceptType = owlClass(s"${diamantSchemaPrefix}LexicalConcept")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
+
+  // resource prefixes
+
+  val diamantBaseURI: String = INTBaseURI + "lexica/diamant/"
+  val quotationResourcePrefix: String = diamantBaseURI + "quotation/"
+  val senseResourcePrefix: String = diamantBaseURI + "sense/"
+  val definitionResourcePrefix: String = diamantBaseURI + "definition/"
+  val synonymDefinitionResourcePrefix: String = diamantBaseURI + "synonymdefinition/"
+  val lemmaResourcePrefix: String = diamantBaseURI + "lemma/"
+  val attestationResourcePrefix: String = diamantBaseURI + "attestation/"
+  val synsetResourcePrefix: String = diamantBaseURI + "synset/"
+  val wordformResourcePrefix: String = diamantBaseURI + "wordform/"
+  val conceptResourcePrefix: String = diamantBaseURI + "concept/"
+  val similarityResourcePrefix: String = diamantBaseURI + "similarity/"
+  val semanticRelationResourcePrefix: String = diamantSchemaPrefix + "relation/" // relaties moeten in het schema komen
+
   ////// queries //////
 
   val wordformQuery =
@@ -142,6 +159,10 @@ object diamantMapping {
 
   val synonymQuery = "select * from diamant.synonym_definitions where correct=true"
 
+  val synsetQuery = "select synset_id, unnest(synset) as sense_id from diamant.synsets"
+
+  val synsetRelationQuery = "select parent_id, relation, child_id  from diamant.synset_relations"
+
   val serpensConceptQuery = "select * from serpens.concepts"
 
   val serpensWntQuery: String =
@@ -163,7 +184,36 @@ object diamantMapping {
     ⊕(
       Ω(subsense, ~"http://rdf.ivdnt.org/sense/$parent_id", sense),
       Ω(senseDefinition, sense, definition),
-      Δ(definitionText, definition, !"definition")
+      Ω(definitionText, definition, definition)
+    )
+  }
+/*
+public void doSomeStuff(Handle handle) throws Exception
+	{
+
+		DatabaseStuff db = new DatabaseStuff(handle);
+		db.query("select synset_id, unnest(synset) as sense_id from diamant.synsets;",
+				r -> {
+					LexiconObject synset = this.model.createResource(this.synsetResourcePrefix + db.integer(r,"synset_id"), this.lexicalConceptType);
+					LexiconObject sense =  this.model.createResource(this.senseResourcePrefix  + db.string(r,"sense_id"), this.senseType);
+					model.addStatement(sense, this.reference.get(), synset);
+				});
+		db.query("select parent_id, relation, child_id  from diamant.synset_relations",
+				r -> {
+					LexiconObject synset1 =  this.model.createResource(this.synsetResourcePrefix + db.integer(r,"parent_id"), this.lexicalConceptType);
+					LexiconObject synset2 =  this.model.createResource(this.synsetResourcePrefix +db.integer(r,"child_id"), this.lexicalConceptType);
+					LexicalProperty rel = this.createSemanticRelation(db.string(r, "relation"));
+					model.addStatement(synset1, rel, synset2);
+				});
+	}
+ */
+
+  val hilexSynsets: Mappings =
+  {
+    val synset = ~s"${synsetResourcePrefix}\$synset_id"
+    ⊕(
+      Ω(isA, ~s"${synsetResourcePrefix}\$synset_id", lexicalConceptType),
+      Ω(reference, s"${senseResourcePrefix}\$sense_id", synset)
     )
   }
 
@@ -181,8 +231,8 @@ object diamantMapping {
   }
 
   val senseAttestations: Mappings = {
-    val theAttestation = ~"http://attestation/$attestation_id"
-    val document = ~"http://quotation/$document_id"
+    val theAttestation = ~s"${attestationResourcePrefix}\$attestation_id"
+    val quotation = ~s"${quotationResourcePrefix}\$document_id"
 
     ⊕(
       Ω(attestation, ~"http://rdf.ivdnt.org/sense/$sense_id", theAttestation)
@@ -191,7 +241,7 @@ object diamantMapping {
 
 
   val documents: Mappings = {
-    val d = ~"http://document/$document_id" // ϝ("document_id", "http://document/" + _)
+    val d = ~s"${quotationResourcePrefix}\$document_id"// ϝ("document_id", "http://document/" + _)
     ⊕(
       Δ(yearFrom, d, !"year_from"),
       Δ(yearTo, d, !"year_to"),
@@ -255,7 +305,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
   }
 
   val typeForConcept: ResultSet => IRI =
-    r => if (r.getString("ontology").equalsIgnoreCase("wnt")) linguisticConceptType else conceptType
+    r => if (r.getString("ontology").equalsIgnoreCase("wnt")) lexicalConceptType else conceptType
 
   val serpensConcepts =
   {
