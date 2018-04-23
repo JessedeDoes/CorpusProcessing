@@ -61,10 +61,16 @@ object diamantMapping {
   val udFeatPrefix = "http://universaldependencies.org/u/feat/"
 
   // properties
-  val writtenRep = IRI("http://ontolex/writtenRep")
+
+  implicit val schema = new Schema("data/Diamant/words_ontology.fss")
+  implicit val sort = Sort.DataPropertyType
+
+  val writtenRep = IRI("http://ontolex/writtenRep", schema)
   val lexicalForm = IRI("http://ontolex/lexicalForm")
   val canonicalForm = IRI("http://ontolex/canonicalForm")
   val attestation = IRI("http://rdf.ivdnt.org/diamant/attestation")
+
+  
   val text = IRI("http://rdf.ivdnt.org/diamant/text")
   val pos = IRI("http://universaldependencies.org/u/pos/")
   val beginIndex = IRI("http://nif/beginIndex")
@@ -276,7 +282,7 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
   val allMappings = List(lemmata, lemmaWordform)
   val serpens = List(serpensConcepts, serpensWNT)
 
-  val db = new database.Database(Configuration("x", "localhost","gigant_hilex_clean", "postgres", "inl"))
+  val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_clean", "postgres", "inl"))
 
   def main(args: Array[String]) =
   {

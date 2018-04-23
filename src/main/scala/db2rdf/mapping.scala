@@ -19,9 +19,31 @@ import net.sf.jsqlparser.schema.Database
 trait Literal
 trait Statement
 
+object Sort extends Enumeration {
+  type Sort = Value
+  val ClassType, ObjectPropertyType, DataPropertyType, None = Value
+}
+import Sort._
+
 case class StringLiteral(s: String) extends Literal { override def toString = '"' + s.toString + '"' }
 case class IntLiteral(k: Int) extends Literal  { override def toString = k.toString   }
-case class IRI(s: String)   { override def toString = '<' + s.toString + '>' }
+
+case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = None)
+{
+  def validate() = if (schema != null && sort != None)
+    {
+      val valid = sort match {
+        case ClassType => schema.classNames.contains(s)
+        case ObjectPropertyType => schema.objectPropertyNames.contains(s)
+        case DataPropertyType => schema.dataPropertyNames.contains(s)
+      }
+      if (!valid) Console.err.println(s"Unknown $sort: $s!!!")
+      valid
+    } else true
+
+  validate()
+  override def toString = '<' + s.toString + '>'
+}
 
 case class ObjectProperty(s: IRI, p: IRI, o: IRI) extends Statement
 {
