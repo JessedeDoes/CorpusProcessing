@@ -1,23 +1,39 @@
 package db2rdf
 
+import java.sql.ResultSet
+
 import database.Configuration
 import db2rdf.Ω.{ϝ, ⊕}
+import db2rdf.IRI
 
 object diamantMapping {
   import Ω._
 
-  val writtenRep = "http://ontolex/writtenRep"
-  val lexicalForm = "http://ontolex/lexicalForm"
-  val canonicalForm = "http://ontolex/canonicalForm"
-  val attestation = "http://rdf.ivdnt.org/diamant/attestation"
-  val text = "http://rdf.ivdnt.org/diamant/text"
-  val pos = "http://universaldependencies.org/u/pos/"
-  val beginIndex = "http://nif/beginIndex"
-  val endIndex = "http://nif/endIndex"
-  val subsense = "http://rdf.ivdnt.org/diamant/subsense"
-  val lexicalDefinition = "http://rdf.ivdnt.org/diamant/lexicalDefinition"
-  val definitionText = "http://rdf.ivdnt.org/diamant/definitionText"
-  val synonymDefinition = "http://synonymDefinition"
+  val writtenRep = IRI("http://ontolex/writtenRep")
+  val lexicalForm = IRI("http://ontolex/lexicalForm")
+  val canonicalForm = IRI("http://ontolex/canonicalForm")
+  val attestation = IRI("http://rdf.ivdnt.org/diamant/attestation")
+  val text = IRI("http://rdf.ivdnt.org/diamant/text")
+  val pos = IRI("http://universaldependencies.org/u/pos/")
+  val beginIndex = IRI("http://nif/beginIndex")
+  val endIndex = IRI("http://nif/endIndex")
+  val subsense = IRI("http://rdf.ivdnt.org/diamant/subsense")
+  val lexicalDefinition = IRI("http://rdf.ivdnt.org/diamant/lexicalDefinition")
+  val definitionText = IRI("http://rdf.ivdnt.org/diamant/definitionText")
+  val evokes = IRI("http://ontolex/evokes")
+  val synonymDefinition = IRI("http://synonymDefinition")
+  val rdfsType = IRI("http://rdfs/type")
+  val prefLabel = IRI("http://skos/prefLabel")
+  val altLabel = IRI("http://skos/altLabel")
+  val skosBroader = IRI("http://skos/broader")
+  val skosNarrower = IRI("http://skos/narrower")
+  val skosRelated = IRI("http://skos/related")
+  val skosCloseMatch = IRI("http://skos/closeMatch")
+
+  val a = rdfsType
+
+  val conceptType = IRI("http://skos/concept")
+  val linguisticConceptType = IRI("http://rdf.ivdnt.org/LinguisticConcept")
   ////// queries //////
 
   val wordformQuery = """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
@@ -27,13 +43,13 @@ object diamantMapping {
 
   val lemmaQuery = """select * from lemmata"""
 
-  val attestationQuery =
+  val attestationQuery:String =
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id""".stripMargin
 
-  val senseAttestationQuery =
+  val senseAttestationQuery:String =
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
@@ -44,6 +60,19 @@ object diamantMapping {
   val senseQuery = "select * from senses"
 
   val synonymQuery = "select * from diamant.synonym_definitions where correct=true"
+
+  val serpensConceptQuery = "select * from serpens.concepts"
+
+  val serpensWntQuery:String =
+    """select serpens.concepts.*, data.lemmata.modern_lemma, data.lemmata.lemma_part_of_speech, data.lemmata.wdb, data.lemmata.persistent_id
+      | from serpens.concepts,data.lemmata
+      | where serpens.concepts.concept_id=data.lemmata.persistent_id""".stripMargin
+
+  val conceptRelationQuery:String =
+    """select cl.*, s1.iri as parent_iri, s2.iri as child_iri
+      | from serpens.concept_links cl, serpens.concepts s1, serpens.concepts s2
+      | where s1.concept_id = cl.parent_id and s2.concept_id = cl.child_id""".stripMargin
+
   //////////////////////////////
 
 
@@ -95,9 +124,11 @@ object diamantMapping {
       Ω(pos, ~"http//rdf.ivdnt.org/entry/$persistent_id",  ~"http://universaldependencies.org/u/pos/$lemma_part_of_speech")
     )
 
+  val lemma = ~"http//rdf.ivdnt.org/entry/$wdb/$persistent_id"
+
   val lemmata:MultiMapping =
     ⊕(
-      Ω(canonicalForm, ~"http//rdf.ivdnt.org/entry/$persistent_id", ~"http://rdf.ivdnt.org/canonical/$lemma_id"),
+      Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
       Δ(writtenRep, ~"http://rdf.ivdnt.org/canonical/$lemma_id", !"modern_lemma"),
     )
 
@@ -135,14 +166,82 @@ rel.id = r.getInt("id")// todo better id's (more persistent) for this
     )
   }
 
+  val typeForConcept: ResultSet => IRI =
+    r => if (r.getString("ontology").equalsIgnoreCase("wnt"))linguisticConceptType else conceptType
+
+  val serpensConcepts =
+  {
+    val concept = ~"$iri"
+    ⊕(
+      Ω(a, concept, typeForConcept),
+      Δ(prefLabel, concept, !"preflabel"),
+      Δ(altLabel, concept, !"altlabel")
+    )
+  }
+
+  /*
+   	val lemmaObject: Nothing = this.createLemma("wnt", db.string(r, "wnt_id"), lemma, db.string(r, "lemma_part_of_speech"))
+					this.evokes(lemmaObject, concept)
+   */
+  val serpensWNT =
+  {
+    val concept = ~"$iri"
+
+    ⊕(
+      Ω(a, concept, typeForConcept),
+      Ω(evokes, lemma, concept)
+    )
+  }
+
+  val serpensConceptRelations =
+  {
+    val parent = ~"$parent_iri"
+    val child = ~"$child_iri"
+    val rel:ResultSet => IRI = r =>
+      {
+        val relName = r.getString("relation")
+        val bla:IRI = if (relName.equals("=")) skosCloseMatch else
+        if (relName.equals(">")) skosBroader else
+        if (relName.equals("<")) skosNarrower else "piep"
+        bla
+      }
+
+    ⊕(
+      Ω(rel, parent, child),
+    )
+  }
+/*
+r -> {
+					LexiconObject concept;
+					String ontology = db.string(r, "ontology");
+
+
+					if (ontology.equalsIgnoreCase("wnt"))
+					   concept = this.model.createResource(db.string(r,"iri"), this.linguisticConceptType);
+					else
+					   concept = this.model.createResource(db.string(r,"iri"), this.conceptType);
+
+					this.setLabel(concept, db.string(r,"altlabel"));
+					this.setLabel(concept, db.string(r,"preflabel"));
+
+				});
+ */
 
   val allMappings = List(lemmata, lemmaWordform)
+  val serpens = List(serpensConcepts, serpensWNT)
 
   val db = new database.Database(Configuration("x", "localhost","gigant_hilex_clean", "postgres", "inl"))
 
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
+
+    lemmata.triples(db, lemmaQuery).take(10).foreach(println)
+    serpensConcepts.triples(db, serpensConceptQuery).take(10).foreach(println)
+    serpensWNT.triples(db, serpensWntQuery).take(10).foreach(println)
+    serpensConceptRelations.triples(db, conceptRelationQuery).take(10).foreach(println)
+
+    //System.exit(0)
 
     synonyms.triples(db, synonymQuery).take(10).foreach(println)
     posMapping.triples(db, posQuery).take(10).foreach(println)

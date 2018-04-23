@@ -35,14 +35,15 @@ case class DataProperty(s: IRI, p: IRI, o: Literal) extends Statement
 
 trait Mapping
 
-case class Ω(p: IRI, s: ResultSet => IRI, o: ResultSet => IRI) extends Mapping
+case class Ω(p: ResultSet => IRI, s: ResultSet => IRI, o: ResultSet => IRI) extends Mapping
 {
   def triples(db: database.Database, q: String) : Stream[ObjectProperty] =
     {
-      val query: AlmostQuery[ObjectProperty] = db => db.createQuery(q).map(ResultMapping(r => ObjectProperty(s(r) ,p, o(r))))
+      val query: AlmostQuery[ObjectProperty] = db => db.createQuery(q).map(ResultMapping(r => ObjectProperty(s(r) ,p(r), o(r))))
       db.stream(query)
     }
 }
+
 case class Δ(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) extends Mapping
 {
   def triples(db: database.Database, q: String) : Stream[DataProperty] =
@@ -58,7 +59,7 @@ case class MultiMapping(mappings:Seq[Mapping])
   {
     val dps = mappings.filter(_.isInstanceOf[Δ]).map(_.asInstanceOf[Δ]).toSet
     val ops = mappings.filter(_.isInstanceOf[Ω]).map(_.asInstanceOf[Ω]).toSet
-    ResultMapping(r => ops.map(x => ObjectProperty(x.s(r) ,x.p, x.o(r))) ++ dps.map(x => DataProperty(x.s(r) ,x.p, x.o(r)))  )
+    ResultMapping(r => ops.map(x => ObjectProperty(x.s(r) ,x.p(r), x.o(r))) ++ dps.map(x => DataProperty(x.s(r) ,x.p, x.o(r)))  )
   }
 
   def triples(db: database.Database, q: String): Stream[Statement] =
@@ -82,6 +83,7 @@ object Ω {
   implicit def z(d: ϝ): ResultSet => StringLiteral = r => StringLiteral(d.f(r.getString(d.field)))
   implicit def z(x: (String, String => String)): ResultSet => StringLiteral = { val d:ϝ = x; r => StringLiteral(d.f(r.getString(d.field))) }
   implicit def i(s: String):IRI = IRI(s)
+  implicit def toFunction(i: IRI): ResultSet => IRI = r => i
 
   case class XXX(s: String)
   {
