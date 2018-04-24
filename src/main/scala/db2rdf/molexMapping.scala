@@ -8,6 +8,8 @@ import database.DatabaseUtilities.AlmostQuery
 import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
 
+import scala.util.{Try,Success,Failure}
+
 object molexMapping {
   import Ω._
 
@@ -37,7 +39,8 @@ object molexMapping {
 
   def createPosFeaturesForLemma(r: ResultSet): List[Statement] =
   {
-    val lemma_id = r.getString("lemma_id")
+    Try (
+    {val lemma_id = r.getString("lemma_id")
     val pos = r.getString("lemma_gigpos").trim
     val pos1 = if (pos.contains("(")) pos else pos + "()"
     val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
@@ -51,27 +54,40 @@ object molexMapping {
           else
         ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
       }
-    ).toList}
-
-
-  def createPosFeaturesForWordform(r: ResultSet): List[Statement] =
-  {
-    //Console.err.println(s"${r.getString("modern_lemma")} ${r.getString("wordform")}")
-    val wordform_id = r.getString("analyzed_wordform_id")
-    val pos = r.getString("wordform_gigpos").trim
-    val pos1 = if (pos.contains("(")) pos else pos + "()"
-    val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
-
-    //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
-
-    posUD.map({
-      case posmapping.Feature(name,value) =>
-        if (name == "pos")
-          ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
-        else
-          ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
+    ).toList}) match
+    {
+      case Success(x) => x
+      case Failure(f) => List.empty
     }
-    ).toList}
+  }
+
+
+  def createPosFeaturesForWordform(r: ResultSet): List[Statement] = {
+    //Console.err.println(s"${r.getString("modern_lemma")} ${r.getString("wordform")}")
+    Try(
+      {
+        val wordform_id = r.getString("analyzed_wordform_id")
+        val pos = r.getString("wordform_gigpos").trim
+        val pos1 = if (pos.contains("(")) pos else pos + "()"
+        val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
+
+        //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
+
+        posUD.map({
+          case posmapping.Feature(name, value) =>
+            if (name == "pos")
+              ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
+            else
+              ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
+        }
+        ).toList
+      })
+    match {
+      case Success(x) => x
+      case Failure(f) => List.empty
+    }
+  }
+
 
 
 
