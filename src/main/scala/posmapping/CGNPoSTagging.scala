@@ -38,6 +38,12 @@ object UDTagSet extends TagSet("ud")
   override def fromString(t: String): Tag = new UDStyleTag(t, this)
 }
 
+object MolexTagSet extends TagSet("molex")
+{
+  def fromProposition(p:Proposition):Tag = UDTagSet.fromProposition(p)
+  override def fromString(t: String): Tag = new UDStyleTag(t, this)
+}
+
 object CGNPoSTagging
 {
   //Console.err.println("eek!!")
@@ -269,14 +275,23 @@ object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions,
   override def fromString(t: String): Tag = CGNLiteTag(t)
 }
 
-class UDStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
+object defaultTagset extends TagSet("unknown")
+{
+  override def fromProposition(p: Proposition): Tag = ???
+
+  override def fromString(t: String): Tag = ???
+}
+
+class UDStyleTag(tag: String, tagset: TagSet=defaultTagset) extends Tag(tag,tagset)
 {
   //Console.err.println(s"Yes: $tag...")
-  val Tag = new Regex("^([A-Z\\|]+)\\((.*?)\\)")
+  val Tag = new Regex("^([A-Z\\|-]+)\\((.*?)\\)")
+
   val Tag(pos,feats) = tag
 
   val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
   val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
+
   def parseFeature(f: String):Feature = {val c = f.split("\\s*=\\s*"); Feature(c(0), c(1))}
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:$n=$v") } ) :_*)

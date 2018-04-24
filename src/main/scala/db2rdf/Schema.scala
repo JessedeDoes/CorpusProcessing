@@ -37,8 +37,11 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
+    println("#classes:")
     s.classNames.toList.sortBy(identity).foreach(println)
+    println("#object properties")
     s.objectPropertyNames.toList.sortBy(identity).foreach(println)
+    println("#data properties")
     s.dataPropertyNames.toList.sortBy(identity).foreach(println)
   }
 }

@@ -1,0 +1,100 @@
+ud:Abbr=True ↔  molex:wf=abbr
+ud:AdpType=Post ↔  molex:type=post
+ud:AdpType=Prep ↔  molex:type=pre
+
+ud:Case=Gen ↔  molex:case=gen
+ud:Case=Norm ↔  molex:case=norm
+
+ud:Degree=Cmp  ↔   molex:degree=comp
+ud:Degree=Pos  ↔   molex:degree=pos
+ud:Degree=Sup  ↔  molex:degree=sup
+
+ud:Gender=Com ↔  (molex:gender=f ∧ molex:gender=m)
+ud:Gender=Fem ↔  molex:gender=f
+ud:Gender=Masc ↔  molex:gender=m
+ud:Gender=Neut ↔   molex:gender=n
+
+ud:Gender=Fem|Neut ↔   molex:gender=f/n
+ud:Gender=Masc|Neut ↔   molex:gender=m/n
+ud:Gender=Fem|Masc ↔   molex:gender=m/f
+
+ud:Mood=Imp → molex:finiteness=fin
+ud:Mood=Ind → molex:finiteness=fin
+ud:Mood=Sub → molex:finiteness=fin
+
+ud:Number=Plur ↔  molex:number=pl
+ud:Number=Sing ↔  molex:number=sg
+ud:NumType=Card ↔  molex:type=card
+ud:NumType=Ord ↔  molex:type=ord
+ud:Person=1 ↔  molex:person=1
+ud:Person=2 ↔  molex:person=2
+ud:Person=3 ↔  molex:person=3
+
+ud:pos=ADJ  ↔  molex:pos=AA
+ud:pos=ADP  ↔   molex:pos=ADP
+ud:pos=ADV  ↔   molex:pos=ADV
+ud:pos=XCOLL ↔   molex:pos=COLL
+# ∨ (molex:pos=AA ∧ molex:position=oth|pred)
+
+ud:pos=AUX →  molex:pos=VRB
+ud:pos=CCONJ  ↔  molex:pos=CONJ ∧ molex:type=coor
+ud:pos=SCONJ  ↔  molex:pos=CONJ ∧ molex:type=sub
+ud:pos=CCONJ|SCONJ ↔  molex:pos=CONJ
+molex:pos=CONJ →  molex:type=coor ∨ molex:type=sub ∨  molex:type=unclear
+
+# probleem hiermee: hoe weet ie dat prontype NIET art is
+# aanname dat alle niet gegeven kenmerken ook ontkend zijn?
+
+ud:pos=DET ∧ ud:PronType=Art ↔ molex:pos=ART
+ud:pos=DET ∧ ¬ud:PronType=Art ↔ molex:pos=PD ∧ molex:position=prenom
+ud:pos=INTJ ↔  molex:pos=INT
+ud:pos=NOUN ↔  molex:pos=NOU-C
+ud:pos=NOUN ↔  molex:pos=NOU
+
+ud:pos=NUM ↔ molex:pos=NUM
+ud:pos=PRON ↔ (molex:pos=PD ∧ molex:position=pron)
+ud:pos=PROPN ↔ molex:pos=NOU-P
+ud:pos=SCONJ ↔ molex:pos=CONJ ∧ molex:type=sub
+ud:pos=SYM → molex:pos=RES
+ud:pos=VERB ↔ molex:pos=VRB
+ud:pos=X ↔  molex:pos=RES
+
+
+ud:pos=DET ∧ ud:Poss=Yes ↔ molex:type=poss
+
+ud:pos=DET ∧  ud:PronType=Art ↔ (molex:subtype_art=def) ∨ (molex:subtype_art=indef)
+
+ud:Definiteness=Def ↔ (molex:subtype_art=def)
+ud:Definiteness=Ind ↔ (molex:subtype_art=indef)
+
+ud:pos=DET|PRON ∧   ud:PronType=Ind ↔  molex:type=indef
+ud:pos=DET|PRON ∧  ud:PronType=Dem ↔ molex:type=dem 
+ud:pos=DET|PRON ∧ ud:PronType=Ind ↔ molex:type=indef
+ud:pos=PRON ∧ ud:PronType=Prs ↔ molex:type=pers
+ud:pos=PRON ∧ ud:PronType=Rcp ↔ molex:type=recip
+ud:pos=PRON ∧ ud:PronType=Rel ↔ molex:type=rel
+ud:pos=DET|PRON ∧ ud:PronType=Int ↔ molex:type=int
+
+##ud:PronType=Tot → molex:type=indef ∧ molex:lemma=iedereen|ieder|al|alles
+
+ud:Reflex=Yes ↔  molex:type=refl
+
+ud:Tense=Past ↔  molex:tense=past
+ud:Tense=Pres ↔  molex:tense=pres
+
+ud:Mood=Ind ↔  molex:mood=ind
+ud:Mood=Imp ↔  molex:mood=imper
+
+# let op volgende kloppen niet...
+
+ud:Number=Plur ↔  molex:NA=pl
+ud:Number=Sing ↔  molex:NA=sg
+
+ud:Person=1 ↔  molex:PA=1
+ud:Person=2 ↔  molex:PA=2
+ud:Person=3 ↔  molex:PA=3
+
+ud:VerbForm=Fin  ↔  molex:finiteness=fin
+ud:VerbForm=Inf  ↔  molex:finiteness=inf ∨ molex:finiteness=ger ∨ molex:finiteness=inf/ger
+ud:VerbForm=Part ↔  molex:finiteness=part
+

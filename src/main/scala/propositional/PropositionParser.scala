@@ -57,7 +57,7 @@ trait PropositionParser extends JavaTokenParsers {
     case not ~ c => Not(c)
   }
 
-  lazy val literal: Parser[Proposition] = "[A-Za-z][A-za-z[0-9]_=:|.-]*".r ^^ { case s => Literal(s) }
+  lazy val literal: Parser[Proposition] = "[A-Za-z][A-za-z[0-9]_=:|./-]*".r ^^ { case s => Literal(s) }
 }
 
 // example combinator parser: https://gist.github.com/sschaef/5529436

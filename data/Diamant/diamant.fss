@@ -246,9 +246,9 @@ Declaration(DataProperty(ontolex:writtenRep))
   DataPropertyDomain(ontolex:writtenRep ontolex:Form)
   DataPropertyDomain(ontolex:writtenRep xsd:string)
 
-Declaration(DataProperty(diamant:siblingNumber))
-  DataPropertyDomain(diamant:siblingNumber ontolex:LexicalSense)
-  DataPropertyDomain(diamant:siblingNumber xsd:integer)
+Declaration(DataProperty(diamant:senseOrder))
+  DataPropertyDomain(diamant:senseOrder ontolex:LexicalSense)
+  DataPropertyDomain(diamant:senseOrder xsd:integer)
 
 # dit klopt niet met de data
 Declaration(DataProperty(diamant:synonymDefinition))
@@ -315,7 +315,7 @@ EquivalentObjectProperties(diamant:hyponym skos:narrower)
 EquivalentObjectProperties(diamant:hyperonym skos:broader)
 EquivalentObjectProperties(diamant:synonym skos:closeMatch)
 
-EquivalentDataProperties(diamant:beginIndex nif:beginIndex)
-EquivalentDataProperties(diamant:endIndex nif:endIndex)
+#EquivalentDataProperties(diamant:beginIndex nif:beginIndex)
+#EquivalentDataProperties(diamant:endIndex nif:endIndex)
 
 )

@@ -153,7 +153,7 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
-  case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String)
+  case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String=null)
   {
     import ents._
 
@@ -182,8 +182,8 @@ object CRM2Xml {
 
   }
 
-  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4), c(7)) }
-  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4), c(7)) }
+  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4)) }
+  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4)) }
 
 
   def makeGroupx[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
