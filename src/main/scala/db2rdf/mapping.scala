@@ -28,7 +28,7 @@ trait Statement
 
   def toString1:String = ???
 
-  def validate():Boolean = // http://archive.rdf4j.org/users/ch09.html
+  def valid():Boolean = // http://archive.rdf4j.org/users/ch09.html
   {
     val in = new java.io.StringReader(toString1)
     val p = Rio.createParser(RDFFormat.NTRIPLES)
@@ -75,7 +75,7 @@ case class ObjectProperty(s: IRI, p: IRI, o: IRI) extends Statement
 {
   override lazy val toString1 = s"$s $p $o ."
 
-  override def toString = if (validate()) toString1 else "<an> <error> <occured>"
+  override def toString = if (valid()) toString1 else "<an> <error> <occured>"
 
 }
 
@@ -83,7 +83,7 @@ case class DataProperty(s: IRI, p: IRI, o: Literal) extends Statement
 {
   override def toString1 = s"$s $p $o ."
 
-  override def toString = if (validate()) toString1 else "<an> <error> <occured>"
+  override def toString = if (valid()) toString1 else "<an> <error> <occured>"
 }
 
 trait Mapping
@@ -119,7 +119,7 @@ case class Mappings(mappings:Seq[Mapping])
   {
     val m = multiMapping(this.mappings)
     val query : AlmostQuery[Set[Statement]] = db => db.createQuery(q).map(m)
-    db.stream(query).flatten
+    db.stream(query).flatten.filter(_.valid())
   }
 }
 
@@ -179,6 +179,8 @@ object Ω {
 
   ////////////////////////////////////////////////////////
 
+  def main(args: Array[String])=
+  println(ObjectProperty("aap", "noot", "mies"))
 
 
 }
