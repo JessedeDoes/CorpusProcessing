@@ -20,7 +20,18 @@ case class PropositionalTagsetMapping(fileName: String, from: ()=>TagSet, to: ()
     a
   }
 
-  def mapTag(t:Tag):Tag = to().fromProposition(mapToTagset(t.proposition))
+  def mapTag(t:Tag):Tag = {
+    val p1 = mapToTagset(t.proposition)
+    to().fromProposition(p1)
+  }
+
+  def mapTagAsFeatures(pos: String): Set[Feature] =
+  {
+    val pos1 = if (pos.contains("(")) pos else pos + "()"
+    val t = from().fromString(pos1)
+    val p1 = mapToTagset(t.proposition)
+    to().featuresFromProposition(p1)
+  }
 
   case class Cache[A,B](f: A=>B)
   {
@@ -34,7 +45,7 @@ case class PropositionalTagsetMapping(fileName: String, from: ()=>TagSet, to: ()
       mapTag(from().fromString(pos1)).toString
     }
 
-  val mapTagCached = Cache[String,String](mapTag)
+  val mapTagCached = Cache(mapTagAsFeatures)
 
   def mapToTagset(p:Proposition, featureSet: Set[String] = toFeatureSet):Proposition =
   {
@@ -69,19 +80,19 @@ object molexTagMapping extends PropositionalTagsetMapping("data/ud2molex.mini", 
   override def main(args: Array[String]) =
   {
 
-    if (false) io.Source.fromFile("data/molex_lemma_pos.txt").getLines.toStream.foreach(
+    if (true) io.Source.fromFile("data/molex_lemma_pos.txt").getLines.toStream.foreach(
       t => {
         //Console.err.println(t)
-        Try(
-        println(s"$t -> ${mapTagCached(t)}"))
+
+        println(s"$t -> ${mapTagCached(t)}")
       }
     )
 
     io.Source.fromFile("data/molex_wordform_pos.txt").getLines.toStream.foreach(
       t => {
         //Console.err.println(t)
-        Try(
-          println(s"$t -> ${mapTagCached(t)}"))
+
+          println(s"$t -> ${mapTagCached(t)}")
       }
     )
   }

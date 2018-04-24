@@ -1,9 +1,13 @@
+ud:X-Form=-e ↔ molex:infl=e
+ud:X-Form=X-Norm ↔ molex:infl=norm
+
 ud:Abbr=True ↔  molex:wf=abbr
 ud:AdpType=Post ↔  molex:type=post
 ud:AdpType=Prep ↔  molex:type=pre
 
 ud:Case=Gen ↔  molex:case=gen
-ud:Case=Norm ↔  molex:case=norm
+ud:Case=Dat ↔  molex:case=dat
+ud:Case=X-Norm ↔  molex:case=norm
 
 ud:Degree=Cmp  ↔   molex:degree=comp
 ud:Degree=Pos  ↔   molex:degree=pos
@@ -33,17 +37,20 @@ ud:Person=3 ↔  molex:person=3
 ud:pos=ADJ  ↔  molex:pos=AA
 ud:pos=ADP  ↔   molex:pos=ADP
 ud:pos=ADV  ↔   molex:pos=ADV
-ud:pos=XCOLL ↔   molex:pos=COLL
+ud:pos=X-COLL ↔   molex:pos=COLL
+
 # ∨ (molex:pos=AA ∧ molex:position=oth|pred)
 
 ud:pos=AUX →  molex:pos=VRB
 ud:pos=CCONJ  ↔  molex:pos=CONJ ∧ molex:type=coor
 ud:pos=SCONJ  ↔  molex:pos=CONJ ∧ molex:type=sub
-ud:pos=CCONJ|SCONJ ↔  molex:pos=CONJ
+ud:pos=SCONJ|CCONJ ↔  molex:pos=CONJ
 molex:pos=CONJ →  molex:type=coor ∨ molex:type=sub ∨  molex:type=unclear
 
 # probleem hiermee: hoe weet ie dat prontype NIET art is
 # aanname dat alle niet gegeven kenmerken ook ontkend zijn?
+
+molex:pos=PD →  ud:pos=PRON|DET
 
 ud:pos=DET ∧ ud:PronType=Art ↔ molex:pos=ART
 ud:pos=DET ∧ ¬ud:PronType=Art ↔ molex:pos=PD ∧ molex:position=prenom
@@ -97,4 +104,6 @@ ud:Person=3 ↔  molex:PA=3
 ud:VerbForm=Fin  ↔  molex:finiteness=fin
 ud:VerbForm=Inf  ↔  molex:finiteness=inf ∨ molex:finiteness=ger ∨ molex:finiteness=inf/ger
 ud:VerbForm=Part ↔  molex:finiteness=part
+
+ud:Polite=Form ↔  molex:usage=u
 

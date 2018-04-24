@@ -7,6 +7,9 @@ import scala.util.Success
 import scala.util.matching._
 
 case class Feature(name: String, value: String)
+{
+  override def toString: String = s"$name=$value"
+}
 
 abstract class Tag(tag: String, tagset: TagSet)
 {
@@ -22,13 +25,19 @@ abstract case class TagSet(prefix: String,
                   pos2partitions: Map[String,List[String]] = Map.empty)
 {
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
-  def fromProposition(p:Proposition):Tag
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag
+  def featuresFromProposition(p:Proposition): Set[Feature] =
+  {
+    val vars = p.varsIn
+    val features = vars.map(v => v.replaceAll(s"^${this.prefix}:", "")).map(x => {val r = x.split("="); Feature(r(0), r(1))})
+    features
+  }
   def fromString(t: String):Tag
 }
 
 object UDTagSet extends TagSet("ud")
 {
-  def fromProposition(p:Proposition):Tag =
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = true):Tag =
   {
     val vars = p.varsIn
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
@@ -40,7 +49,7 @@ object UDTagSet extends TagSet("ud")
 
 object MolexTagSet extends TagSet("molex")
 {
-  def fromProposition(p:Proposition):Tag = UDTagSet.fromProposition(p)
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = UDTagSet.fromProposition(p)
   override def fromString(t: String): Tag = new UDStyleTag(t, this)
 }
 
@@ -205,7 +214,7 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
 {
   //Console.err.println(s"blurk $posTags")
 
-  def fromProposition(p:Proposition):Tag =
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
   {
     val vars = p.varsIn
 
@@ -253,7 +262,7 @@ object CGNLite
 
 object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
 {
-  def fromProposition(p:Proposition):Tag =
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
   {
     val vars = p.varsIn
 
@@ -277,7 +286,7 @@ object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions,
 
 object defaultTagset extends TagSet("unknown")
 {
-  override def fromProposition(p: Proposition): Tag = ???
+  override def fromProposition(p: Proposition, posIsSpecial: Boolean = true): Tag = ???
 
   override def fromString(t: String): Tag = ???
 }

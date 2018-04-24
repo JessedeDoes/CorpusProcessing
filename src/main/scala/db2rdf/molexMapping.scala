@@ -31,7 +31,6 @@ object molexMapping {
     ⊕(
       Ω(canonicalForm, lemma , canonical),
       Δ(writtenRep, canonical, !"modern_lemma"),
-
     )
 
 
@@ -43,16 +42,16 @@ object molexMapping {
     val pos1 = if (pos.contains("(")) pos else pos + "()"
     val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
 
-    val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
+    //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
 
-    t.features.map({
+    posUD.map({
       case posmapping.Feature(name,value) =>
         if (name == "pos")
           ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
           else
         ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
       }
-    )}
+    ).toList}
 
 
   def createPosFeaturesForWordform(r: ResultSet): List[Statement] =
@@ -61,17 +60,18 @@ object molexMapping {
     val wordform_id = r.getString("analyzed_wordform_id")
     val pos = r.getString("wordform_gigpos").trim
     val pos1 = if (pos.contains("(")) pos else pos + "()"
+    val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
 
-    val t = new posmapping.UDStyleTag(pos1) // TODO vertaal naar UD...
+    //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
 
-    t.features.map({
+    posUD.map({
       case posmapping.Feature(name,value) =>
         if (name == "pos")
           ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
         else
           ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
     }
-    )}
+    ).toList}
 
 
 
@@ -89,14 +89,14 @@ object molexMapping {
 
   val db = new database.Database(Configuration("x", "svowdb06","gig_pro", "fannee", "Cric0topus"))
 
-  val limit = 50
+  val limit = Int.MaxValue
 
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
 
     db.stream(lemmaPosQuery).flatten.foreach(println)
-    // db.stream(wordformPosQuery).flatten.foreach(println)
+    db.stream(wordformPosQuery).flatten.foreach(println)
 
     lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
     lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
