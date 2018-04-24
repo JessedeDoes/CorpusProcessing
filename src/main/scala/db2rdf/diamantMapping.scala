@@ -47,7 +47,7 @@ object diamantMapping {
     """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
 
-  val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
+  val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\\s+') as lemma_part_of_speech from data.lemmata"""
 
   val lemmaQuery = """select * from lemmata"""
 

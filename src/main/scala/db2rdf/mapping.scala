@@ -16,8 +16,29 @@ import database.DatabaseUtilities.makeMapping
 import database.DatabaseUtilities.ResultMapping
 import database.Configuration
 import net.sf.jsqlparser.schema.Database
+
+import org.openrdf.rio.RDFFormat
+import org.openrdf.rio.RDFParser
+import org.openrdf.rio.Rio
+import scala.util.{Try, Failure, Success}
+
 trait Literal
 trait Statement
+{
+
+  def toString1:String = ???
+
+  def validate():Boolean = // http://archive.rdf4j.org/users/ch09.html
+  {
+    val in = new java.io.StringReader(toString1)
+    val p = Rio.createParser(RDFFormat.NTRIPLES)
+
+    Try (p.parse(in, "http://bullshit")) match {
+      case Failure(e) => e.printStackTrace(); System.err.println(s"problem with $toString1!!"); false
+      case Success(x) => true
+    }
+  }
+}
 
 object Sort extends Enumeration {
   type Sort = Value
@@ -52,12 +73,17 @@ case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:So
 
 case class ObjectProperty(s: IRI, p: IRI, o: IRI) extends Statement
 {
-  override def toString = s"$s $p $o ."
+  override lazy val toString1 = s"$s $p $o ."
+
+  override def toString = if (validate()) toString1 else "<an> <error> <occured>"
+
 }
 
 case class DataProperty(s: IRI, p: IRI, o: Literal) extends Statement
 {
-  override def toString = s"$s $p $o ."
+  override def toString1 = s"$s $p $o ."
+
+  override def toString = if (validate()) toString1 else "<an> <error> <occured>"
 }
 
 trait Mapping
