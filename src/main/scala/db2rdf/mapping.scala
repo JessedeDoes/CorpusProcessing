@@ -34,7 +34,7 @@ trait Statement
     val p = Rio.createParser(RDFFormat.NTRIPLES)
 
     Try (p.parse(in, "http://bullshit")) match {
-      case Failure(e) => e.printStackTrace(); System.err.println(s"problem with $toString1!!"); false
+      case Failure(e) =>  System.err.println(s"problem with $toString1!!"); false
       case Success(x) => true
     }
   }
@@ -52,7 +52,7 @@ case class StringLiteral(s: String, lang: String="nl") extends Literal
   override def toString = s""""$escaped"@$lang"""
 }
 
-case class IntLiteral(k: Int) extends Literal  { override def toString = k.toString   }
+case class IntLiteral(k: Int) extends Literal  { override def toString = s""""$k"^^<http://www.w3.org/2001/XMLSchema#int>""";   }
 
 case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = None)
 {
@@ -180,7 +180,7 @@ object Ω {
   ////////////////////////////////////////////////////////
 
   def main(args: Array[String])=
-  println(ObjectProperty("aap", "noot", "mies"))
+  println(DataProperty("http://aap", "http://noot", IntLiteral(3)))
 
 
 }
