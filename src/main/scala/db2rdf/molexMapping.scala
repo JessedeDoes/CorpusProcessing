@@ -95,7 +95,7 @@ object molexMapping {
   lazy val wordformPosQuery:AlmostQuery[List[Statement]] = db => db.createQuery(wordformQuery).map(ResultMapping(createPosFeaturesForWordform))
 
   val lemmaWordform = {
-    val awf = ~s"{$wordformResourcePrefix}molex/$$analyzed_wordform_id"
+    val awf = ~s"${wordformResourcePrefix}molex/$$analyzed_wordform_id"
     ⊕(
       Ω(lexicalForm, lemma, awf),
       Δ(writtenRep, awf, !"wordform"),
