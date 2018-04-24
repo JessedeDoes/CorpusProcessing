@@ -12,6 +12,7 @@ import posmapping.Feature
 import scala.util.{Failure, Success, Try}
 
 object molexMapping {
+
   import Ω._
 
   import commonDefinitions._
@@ -26,44 +27,40 @@ object molexMapping {
 
   val lemmaQuery = """select *, 'molex' as wdb  from data.lemmata where keurmerk=true and is_parent=false"""
 
-  val lemma:ResultSet=>IRI = ~s"$entryResourcePrefix$$wdb/$$lemma_id"
+  val lemma: ResultSet => IRI = ~s"$entryResourcePrefix$$wdb/$$lemma_id"
   val canonical = ~s"$canonicalFormResourcePrefix$$wdb/$$lemma_id"
 
 
-  val lemmata:Mappings =
+  val lemmata: Mappings =
     ⊕(
-      Ω(canonicalForm, lemma , canonical),
+      Ω(canonicalForm, lemma, canonical),
       Δ(writtenRep, canonical, !"modern_lemma"),
     )
 
 
-  def posToUD(pos: String):Set[Feature] =
-  {
+  def posToUD(pos: String): Set[Feature] = {
     val pos1 = if (pos.contains("(")) pos else pos + "()"
     posmapping.molexTagMapping.mapTagCached(pos1)
   }
 
-  def createPosFeaturesForLemma(r: ResultSet): List[Statement] =
-  {
-    Try (
-    {
+  def createPosFeaturesForLemma(r: ResultSet): List[Statement] = {
+    Try(
+      {
+        val lemma_id = r.getString("lemma_id")
 
-      val lemma_id = r.getString("lemma_id")
-
-      posToUD(r.getString("lemma_gigpos")).map({
-      case posmapping.Feature(name,value) =>
-        if (name == "pos")
-          ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
-          else
-        ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
-      }
-    ).toList}) match
-    {
+        posToUD(r.getString("lemma_gigpos")).map({
+          case posmapping.Feature(name, value) =>
+            if (name == "pos")
+              ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
+            else
+              ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
+        }
+        ).toList
+      }) match {
       case Success(x) => x
       case Failure(f) => List.empty
     }
   }
-
 
 
   def createPosFeaturesForWordform(r: ResultSet): List[Statement] = {
@@ -88,10 +85,8 @@ object molexMapping {
   }
 
 
-
-
-  lazy val lemmaPosQuery:AlmostQuery[List[Statement]] = db => db.createQuery(lemmaQuery).map(ResultMapping(createPosFeaturesForLemma))
-  lazy val wordformPosQuery:AlmostQuery[List[Statement]] = db => db.createQuery(wordformQuery).map(ResultMapping(createPosFeaturesForWordform))
+  lazy val lemmaPosQuery: AlmostQuery[List[Statement]] = db => db.createQuery(lemmaQuery).map(ResultMapping(createPosFeaturesForLemma))
+  lazy val wordformPosQuery: AlmostQuery[List[Statement]] = db => db.createQuery(wordformQuery).map(ResultMapping(createPosFeaturesForWordform))
 
   val lemmaWordform = {
     val awf = ~s"${wordformResourcePrefix}molex/$$analyzed_wordform_id"
@@ -102,12 +97,11 @@ object molexMapping {
     )
   }
 
-  val db = new database.Database(Configuration("x", "svowdb06","gig_pro", "fannee", "Cric0topus"))
+  val db = new database.Database(Configuration("x", "svowdb06", "gig_pro", "fannee", "Cric0topus"))
 
   val limit = Int.MaxValue
 
-  def main(args: Array[String]) =
-  {
+  def main(args: Array[String]) = {
     db.runStatement(("set schema 'data'"))
 
     db.stream(lemmaPosQuery).flatten.foreach(println)
