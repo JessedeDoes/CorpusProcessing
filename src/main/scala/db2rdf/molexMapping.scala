@@ -7,8 +7,9 @@ import database.DatabaseUtilities.ResultMapping
 import database.DatabaseUtilities.AlmostQuery
 import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
+import posmapping.Feature
 
-import scala.util.{Try,Success,Failure}
+import scala.util.{Failure, Success, Try}
 
 object molexMapping {
   import Ω._
@@ -36,18 +37,20 @@ object molexMapping {
     )
 
 
+  def posToUD(pos: String):Set[Feature] =
+  {
+    val pos1 = if (pos.contains("(")) pos else pos + "()"
+    posmapping.molexTagMapping.mapTagCached(pos1)
+  }
 
   def createPosFeaturesForLemma(r: ResultSet): List[Statement] =
   {
     Try (
-    {val lemma_id = r.getString("lemma_id")
-    val pos = r.getString("lemma_gigpos").trim
-    val pos1 = if (pos.contains("(")) pos else pos + "()"
-    val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
+    {
 
-    //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
+      val lemma_id = r.getString("lemma_id")
 
-    posUD.map({
+      posToUD(r.getString("lemma_gigpos")).map({
       case posmapping.Feature(name,value) =>
         if (name == "pos")
           ObjectProperty(s"${entryResourcePrefix}molex/$lemma_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
@@ -62,18 +65,14 @@ object molexMapping {
   }
 
 
+
   def createPosFeaturesForWordform(r: ResultSet): List[Statement] = {
     //Console.err.println(s"${r.getString("modern_lemma")} ${r.getString("wordform")}")
     Try(
       {
         val wordform_id = r.getString("analyzed_wordform_id")
-        val pos = r.getString("wordform_gigpos").trim
-        val pos1 = if (pos.contains("(")) pos else pos + "()"
-        val posUD = posmapping.molexTagMapping.mapTagCached(pos1)
 
-        //val t = new posmapping.UDStyleTag(posUD) // TODO vertaal naar UD...
-
-        posUD.map({
+        posToUD(r.getString("wordform_gigpos")).map({
           case posmapping.Feature(name, value) =>
             if (name == "pos")
               ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}$name/$value")
@@ -116,8 +115,5 @@ object molexMapping {
 
     lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
     lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
-
-    //println(s"#lemmata en PoS voor ${lemmata.triples(db, lemmaQuery).size} lemmata")
   }
-
 }
