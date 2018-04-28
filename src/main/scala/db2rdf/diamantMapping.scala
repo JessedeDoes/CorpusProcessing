@@ -232,7 +232,7 @@ object diamantMapping {
 
     //Console.err.println(s"###################################################### woordvormen ${lemmaWordform.triplesIterator(db, wordformQuery).size} triples")
 
-    lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(x =>    { mem(); println(x) } )
+    lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(println)
 
     Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
