@@ -55,6 +55,6 @@ object testSchema
     println("#data properties")
     s.dataPropertyNames.toList.sortBy(identity).foreach(println)
     println("#axioms")
-    s.axioms.foreach(println)
+    s.axioms.foreach(a => println(s"$a ${a.getAxiomType}"))
   }
 }
