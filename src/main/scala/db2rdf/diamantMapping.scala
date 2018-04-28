@@ -105,7 +105,7 @@ object diamantMapping {
   }
 
   val lemmaWordform = {
-    val awf = ~s"$wordformResourcePrefix$$analyzed_wordform_id"
+    val awf = ~s"$wordformResourcePrefix$$wdb/$$analyzed_wordform_id"
     ⊕(Ω(lexicalForm, lemma, awf),
       Ω(isA, awf, formType) ,
       Δ(writtenRep, awf, !"wordform"))
@@ -158,7 +158,7 @@ object diamantMapping {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
     val document = ~"http://quotation/$document_id"
 
-    ⊕(Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
+    ⊕(Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
       Ω(isA, theAttestation, attestationType),
       Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
