@@ -77,6 +77,7 @@ object commonDefinitions {
   val conceptType = owlClass(s"${skosPrefix}Concept")
   val lexicalConceptType = owlClass(s"${ontolexPrefix}LexicalConcept")
   val formType = owlClass(s"${ontolexPrefix}Form")
+  val senseType = owlClass(s"${ontolexPrefix}LexicalSense")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
   val semanticRelationType  = owlClass(s"${diamantSchemaPrefix}SemanticRelation")
   // resource prefixes

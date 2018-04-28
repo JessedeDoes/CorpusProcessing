@@ -108,6 +108,7 @@ object diamantMapping {
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
+      Ω(isA, sense, senseType),
       Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
       Δ(definitionText, definition, !"definition"))
@@ -202,12 +203,10 @@ object diamantMapping {
   def mem(): Unit =
   {
     val heapSize = Runtime.getRuntime.totalMemory
-    if (heapSize > memMax)
+    if (heapSize > memMax + 1e5)
       {
-
-      if (heapSize - memMax > 1e3)
         Console.err.println(s"$heapSize")
-      memMax = heapSize
+        memMax = heapSize
       }
   }
 
