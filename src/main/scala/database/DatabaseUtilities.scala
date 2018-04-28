@@ -76,6 +76,11 @@ object DatabaseUtilities
     a(db).iterator().asScala.toStream
   }
 
+  def iterator[A](db: Handle, a: AlmostQuery[A]):Iterator[A] =
+  {
+    a(db).iterator().asScala
+  }
+
   implicit def doeHet[T](s:Select[T]): AlmostQuery[T] =
   {
     val m = new Mocky2
@@ -169,6 +174,7 @@ class Database(configuration: Configuration) {
   def stream[A](a: AlmostQuery[A]): Stream[A] = DatabaseUtilities.stream(handle, a)
 
   def slurp[A](a: AlmostQuery[A]): List[A] = DatabaseUtilities.slurp(handle, a)
+  def iterator[A](a: AlmostQuery[A]): Iterator[A] = DatabaseUtilities.iterator(handle, a)
 
   import scala.util.{Success,Failure,Try}
 

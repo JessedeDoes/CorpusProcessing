@@ -107,7 +107,7 @@ object molexMapping {
     db.stream(lemmaPosQuery).flatten.foreach(println)
     db.stream(wordformPosQuery).flatten.foreach(println)
 
-    lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
-    lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
+    lemmata.triplesStream(db, lemmaQuery).take(limit).foreach(println)
+    lemmaWordform.triplesStream(db, wordformQuery).take(limit).foreach(println)
   }
 }

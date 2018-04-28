@@ -202,36 +202,36 @@ object diamantMapping {
   {
     db.runStatement(("set schema 'data'"))
 
-    println(s"#lemmata en PoS voor ${lemmata.triples(db, lemmaQuery).size} lemmata")
+    println(s"#lemmata en PoS voor ${lemmata.triplesStream(db, lemmaQuery).size} lemmata")
 
-    lemmata.triples(db, lemmaQuery).take(limit).foreach(println)
-    posMapping.triples(db, posQuery).take(limit).foreach(println)
+    lemmata.triplesStream(db, lemmaQuery).take(limit).foreach(println)
+    posMapping.triplesStream(db, posQuery).take(limit).foreach(println)
 
-    println(s"#woordvormen ${lemmaWordform.triples(db, wordformQuery).size} triples")
+    println(s"#woordvormen ${lemmaWordform.triplesStream(db, wordformQuery).size} triples")
 
-    lemmaWordform.triples(db, wordformQuery).take(limit).foreach(println)
+    lemmaWordform.triplesStream(db, wordformQuery).take(limit).foreach(println)
 
-    println(s"#senses synonym stuk: ${synonyms.triples(db, synonymQuery).size}")
+    println(s"#senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
-    senses.triples(db, senseQuery).take(limit).foreach(println)
-    synonyms.triples(db, synonymQuery).take(limit).foreach(println)
+    senses.triplesStream(db, senseQuery).take(limit).foreach(println)
+    synonyms.triplesStream(db, synonymQuery).take(limit).foreach(println)
 
     println("#attestations en quotations")
 
-    quotations.triples(db, documentQuery).take(limit).foreach(println)
-    senseAttestations.triples(db, senseAttestationQuery).take(limit).foreach(println)
-    attestations.triples(db, attestationQuery).take(limit).foreach(println)
+    quotations.triplesStream(db, documentQuery).take(limit).foreach(println)
+    senseAttestations.triplesStream(db, senseAttestationQuery).take(limit).foreach(println)
+    attestations.triplesStream(db, attestationQuery).take(limit).foreach(println)
 
     println("#ezels")
 
-    hilexSynsets.triples(db, synsetQuery).take(limit).foreach(println)
-    hilexSynsetRelations.triples(db, synsetRelationQuery).take(limit).foreach(println)
+    hilexSynsets.triplesStream(db, synsetQuery).take(limit).foreach(println)
+    hilexSynsetRelations.triplesStream(db, synsetRelationQuery).take(limit).foreach(println)
 
     println("#serpens")
 
-    serpensConcepts.triples(db, serpensConceptQuery).take(limit).foreach(println)
-    serpensWNT.triples(db, serpensWntQuery).take(limit).foreach(println)
-    serpensConceptRelations.triples(db, conceptRelationQuery).take(limit).foreach(println)
+    serpensConcepts.triplesStream(db, serpensConceptQuery).take(limit).foreach(println)
+    serpensWNT.triplesStream(db, serpensWntQuery).take(limit).foreach(println)
+    serpensConceptRelations.triplesStream(db, conceptRelationQuery).take(limit).foreach(println)
   }
 }
 

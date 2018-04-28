@@ -115,11 +115,18 @@ case class Mappings(mappings:Seq[Mapping])
     ResultMapping(r => ops.map(x => ObjectProperty(x.s(r) ,x.p(r), x.o(r))) ++ dps.map(x => DataProperty(x.s(r) ,x.p, x.o(r)))  )
   }
 
-  def triples(db: database.Database, q: String): Stream[Statement] =
+  def triplesStream(db: database.Database, q: String): Stream[Statement] =
   {
     val m = multiMapping(this.mappings)
     val query : AlmostQuery[Set[Statement]] = db => db.createQuery(q).map(m)
-    db.stream(query).flatten.filter(_.valid())
+    db.stream(query).flatten.filter(_.valid()) // ok it is the flatten that hurts ....
+  }
+
+  def triplesIterator(db: database.Database, q: String): Iterator[Statement] =
+  {
+    val m = multiMapping(this.mappings)
+    val query : AlmostQuery[Set[Statement]] = db => db.createQuery(q).map(m)
+    db.iterator(query).flatten.filter(_.valid())
   }
 }
 
