@@ -101,7 +101,7 @@ object diamantMapping {
 
   val lemmaWordform = {
     val awf = ~s"$wordformResourcePrefix$$analyzed_wordform_id"
-    ⊕(Ω(lexicalForm, lemma, awf), Δ(writtenRep, awf, !"wordform"))
+    ⊕(Ω(lexicalForm, lemma, awf), Ω(isA, awf, formType) , Δ(writtenRep, awf, !"wordform"))
   }
 
   val senses: Mappings = {
@@ -198,40 +198,54 @@ object diamantMapping {
 
   val limit = Int.MaxValue
 
+  var memMax:Long = 0;
+  def mem(): Unit =
+  {
+    val heapSize = Runtime.getRuntime.totalMemory
+    if (heapSize > memMax)
+      {
+
+      if (heapSize - memMax > 1e3)
+        Console.err.println(s"$heapSize")
+      memMax = heapSize
+      }
+  }
+
   def main(args: Array[String]) =
   {
     db.runStatement(("set schema 'data'"))
 
-    println(s"#lemmata en PoS voor ${lemmata.triplesStream(db, lemmaQuery).size} lemmata")
+    //Console.err.println(s"######################################################lemmata en PoS voor ${lemmata.triplesIterator(db, lemmaQuery).size} lemmata")
 
-    lemmata.triplesStream(db, lemmaQuery).take(limit).foreach(println)
-    posMapping.triplesStream(db, posQuery).take(limit).foreach(println)
+    //lemmata.triplesIterator(db, lemmaQuery).take(limit).foreach(println)
+    //posMapping.triplesIterator(db, posQuery).take(limit).foreach(println)
 
-    println(s"#woordvormen ${lemmaWordform.triplesStream(db, wordformQuery).size} triples")
 
-    lemmaWordform.triplesStream(db, wordformQuery).take(limit).foreach(println)
+    //Console.err.println(s"###################################################### woordvormen ${lemmaWordform.triplesIterator(db, wordformQuery).size} triples")
 
-    println(s"#senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
+    lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(x =>    { mem(); println(x) } )
 
-    senses.triplesStream(db, senseQuery).take(limit).foreach(println)
-    synonyms.triplesStream(db, synonymQuery).take(limit).foreach(println)
+    Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
-    println("#attestations en quotations")
+    senses.triplesIterator(db, senseQuery).take(limit).foreach(println)
+    synonyms.triplesIterator(db, synonymQuery).take(limit).foreach(println)
 
-    quotations.triplesStream(db, documentQuery).take(limit).foreach(println)
-    senseAttestations.triplesStream(db, senseAttestationQuery).take(limit).foreach(println)
-    attestations.triplesStream(db, attestationQuery).take(limit).foreach(println)
+    Console.err.println("###################################################### attestations en quotations")
 
-    println("#ezels")
+    quotations.triplesIterator(db, documentQuery).take(limit).foreach(println)
+    senseAttestations.triplesIterator(db, senseAttestationQuery).take(limit).foreach(println)
+    attestations.triplesIterator(db, attestationQuery).take(limit).foreach(println)
 
-    hilexSynsets.triplesStream(db, synsetQuery).take(limit).foreach(println)
-    hilexSynsetRelations.triplesStream(db, synsetRelationQuery).take(limit).foreach(println)
+    Console.err.println("###################################################### ezels")
 
-    println("#serpens")
+    hilexSynsets.triplesIterator(db, synsetQuery).take(limit).foreach(println)
+    hilexSynsetRelations.triplesIterator(db, synsetRelationQuery).take(limit).foreach(println)
 
-    serpensConcepts.triplesStream(db, serpensConceptQuery).take(limit).foreach(println)
-    serpensWNT.triplesStream(db, serpensWntQuery).take(limit).foreach(println)
-    serpensConceptRelations.triplesStream(db, conceptRelationQuery).take(limit).foreach(println)
+    Console.err.println("###################################################### serpens")
+
+    serpensConcepts.triplesIterator(db, serpensConceptQuery).take(limit).foreach(println)
+    serpensWNT.triplesIterator(db, serpensWntQuery).take(limit).foreach(println)
+    serpensConceptRelations.triplesIterator(db, conceptRelationQuery).take(limit).foreach(println)
   }
 }
 
