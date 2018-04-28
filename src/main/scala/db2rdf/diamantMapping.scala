@@ -90,9 +90,14 @@ object diamantMapping {
 
   val lemma:ResultSet=>IRI = ~s"$entryResourcePrefix$$wdb/$$persistent_id"
 
-  val lemmata:Mappings =
-    ⊕(Ω(canonicalForm, lemma , ~"http://rdf.ivdnt.org/canonical/$wdb/$lemma_id"),
-      Δ(writtenRep, ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id", !"modern_lemma"))
+  val lemmata:Mappings = {
+    val cf = ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id"
+    ⊕(
+      Ω(isA, lemma, entryType),
+      Ω(isA, cf, formType),
+      Ω(canonicalForm, lemma, cf),
+      Δ(writtenRep, cf, !"modern_lemma"))
+  }
 
   val posMapping: Mappings = {
     def convertPoS(r: ResultSet): IRI = IRI(s"$udPrefix/pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
@@ -101,7 +106,9 @@ object diamantMapping {
 
   val lemmaWordform = {
     val awf = ~s"$wordformResourcePrefix$$analyzed_wordform_id"
-    ⊕(Ω(lexicalForm, lemma, awf), Ω(isA, awf, formType) , Δ(writtenRep, awf, !"wordform"))
+    ⊕(Ω(lexicalForm, lemma, awf),
+      Ω(isA, awf, formType) ,
+      Δ(writtenRep, awf, !"wordform"))
   }
 
   val senses: Mappings = {
@@ -130,7 +137,8 @@ object diamantMapping {
 
   val hilexSynsets: Mappings = {
     val synset = ~s"${synsetResourcePrefix}$$wdb/$$synset_id"
-    ⊕(Ω(isA, synset, lexicalConceptType), Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset))
+    ⊕(Ω(isA, synset, lexicalConceptType),
+      Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset))
   }
 
   val hilexSynsetRelations: Mappings =
@@ -168,6 +176,7 @@ object diamantMapping {
   val quotations: Mappings = {
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"// ϝ("document_id", "http://document/" + _)
     ⊕(
+      Ω(isA, quotation, quotationType),
       Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
       Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
       Δ(dcTitle, quotation, !"title"),

@@ -37,6 +37,8 @@ object commonDefinitions {
   val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
   val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
   val canonicalForm:IRI = objectProperty(s"${ontolexPrefix}canonicalForm")
+  val canonicalHistoricalForm:IRI = objectProperty(s"${diamantSchemaPrefix}canonicalHistoricalForm")
+  val canonicalModernForm:IRI = objectProperty(s"${diamantSchemaPrefix}canonicalModernForm")
   val hyphenation:IRI = dataProperty(s"${diamantSchemaPrefix}hyphenation")
   val attestation:IRI = objectProperty(s"${diamantSchemaPrefix}attestation")
 
@@ -74,6 +76,7 @@ object commonDefinitions {
   val isA = rdfsType
 
   // classes
+  val entryType = owlClass(s"${ontolexPrefix}LexicalEntry")
   val conceptType = owlClass(s"${skosPrefix}Concept")
   val lexicalConceptType = owlClass(s"${ontolexPrefix}LexicalConcept")
   val formType = owlClass(s"${ontolexPrefix}Form")
@@ -81,6 +84,8 @@ object commonDefinitions {
   val senseType = owlClass(s"${ontolexPrefix}LexicalSense")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
   val semanticRelationType  = owlClass(s"${diamantSchemaPrefix}SemanticRelation")
+  val quotationType  = owlClass(s"${diamantSchemaPrefix}Quotation")
+
   // resource prefixes
 
   val diamantBaseURI: String = INTBaseURI + "lexica/diamant/"
