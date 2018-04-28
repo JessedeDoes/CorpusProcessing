@@ -1,6 +1,7 @@
 package db2rdf
 
 import org.semanticweb.owlapi.model.OWLClass
+import propositional._
 
 import scala.collection.JavaConverters._
 
@@ -28,7 +29,17 @@ class Schema(fileName: String) {
   def validDataProperty(s: String):Boolean = dataPropertyNames.contains(s)
   def validClass(s: String):Boolean = classNames.contains(s)
 
-
+  def prop2owl(p: Proposition): String =
+  {
+    p match {
+      case Literal(a) => a
+      case Not(a) => s"ObjectComplementOf(${prop2owl(a)})"
+      case And(a, b) => s"ObjectIntersectionOf((${prop2owl(a)}) (${prop2owl(b)}) )"
+      case Or(a, b) => s"ObjectUnionOf(${prop2owl(a)} ${prop2owl(b)} )"
+      case Implies(a, b) => s"SubclassOf((${prop2owl(a)}) (${prop2owl(b)}) )"
+      case Equiv(a, b) => s"EquivalentClasses(${prop2owl(a)} ${prop2owl(b)} )"
+    }
+  }
 }
 
 object testSchema
@@ -43,5 +54,7 @@ object testSchema
     s.objectPropertyNames.toList.sortBy(identity).foreach(println)
     println("#data properties")
     s.dataPropertyNames.toList.sortBy(identity).foreach(println)
+    println("#axioms")
+    s.axioms.foreach(println)
   }
 }
