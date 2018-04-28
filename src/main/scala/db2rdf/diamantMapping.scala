@@ -152,6 +152,7 @@ object diamantMapping {
 
     ⊕(Ω(attestation, ~s"${wordformResourcePrefix}$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
+      Ω(isA, theAttestation, attestationType),
       Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos"))))
