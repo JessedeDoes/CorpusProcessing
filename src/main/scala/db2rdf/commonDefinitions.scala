@@ -50,6 +50,10 @@ object commonDefinitions {
   val endIndex = dataProperty(s"${nifPrefix}endIndex")
 
   val subsense = objectProperty(s"${diamantSchemaPrefix}subsense")
+
+  val senseOrder = dataProperty(s"${diamantSchemaPrefix}senseOrder")
+  val senseLabel = dataProperty(s"${diamantSchemaPrefix}senseLabel")
+
   val reference = objectProperty(s"${ontolexPrefix}reference")
   val senseDefinition = objectProperty(s"${lemonPrefix}definition")
   val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")

@@ -10,6 +10,7 @@ import db2rdf.IRI
 import posmapping.Feature
 
 import scala.util.{Failure, Success, Try}
+import org.slf4j._
 
 object molexMapping {
 

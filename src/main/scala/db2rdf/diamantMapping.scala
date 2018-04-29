@@ -6,6 +6,7 @@ import database.Configuration
 import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
 
+import org.slf4j._
 
 object posConversion {
 
@@ -118,7 +119,10 @@ object diamantMapping {
       Ω(isA, sense, senseType),
       Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
-      Δ(definitionText, definition, !"definition"))
+      Δ(definitionText, definition, !"definition"),
+      Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
+        // Δ(senseLabel, sense, !"sense_label")
+    )
   }
 
   val synonyms = // ToDo doe de prov ellende hier ook nog....
@@ -222,6 +226,15 @@ object diamantMapping {
 
   def main(args: Array[String]) =
   {
+    import org.slf4j.Logger
+    import org.slf4j.LoggerFactory
+
+    System.setProperty("org.slf4j.simpleLogger.logFile", "/tmp/loggertje.log")
+    System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off")
+    System.setProperty("log4j.rootLogge", "DEBUG, file")
+    //val logger = LoggerFactory.getLogger(classOf[Nothing])
+    //logger.info("Hello World")
+
     db.runStatement(("set schema 'data'"))
 
     //Console.err.println(s"######################################################lemmata en PoS voor ${lemmata.triplesIterator(db, lemmaQuery).size} lemmata")
@@ -232,7 +245,7 @@ object diamantMapping {
 
     //Console.err.println(s"###################################################### woordvormen ${lemmaWordform.triplesIterator(db, wordformQuery).size} triples")
 
-    lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(println)
+    //lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(println)
 
     Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
