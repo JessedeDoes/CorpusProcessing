@@ -38,6 +38,7 @@ object commonDefinitions {
   val molexGraphURL = "http://rdf.ivdnt.org/lexica/molex/v1.0/"
 
   val odwnGraphURL = "http://odwn-rdf.vu.nl/odwn13/"
+  val distanceGraphURL: String = diamantSchemaPrefix + "/similarity/"
 
   val diamantGraph = IRI("http://rdf.ivdnt.org/lexica/diamant/v1.0/")
 
