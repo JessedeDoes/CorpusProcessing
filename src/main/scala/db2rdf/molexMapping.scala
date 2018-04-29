@@ -34,6 +34,7 @@ object molexMapping {
 
   val lemmata: Mappings =
     ⊕(
+      lemmaQuery,
       Ω(canonicalForm, lemma, canonical),
       Δ(writtenRep, canonical, !"modern_lemma"),
     )
@@ -92,6 +93,7 @@ object molexMapping {
   val lemmaWordform = {
     val awf = ~s"${wordformResourcePrefix}molex/$$analyzed_wordform_id"
     ⊕(
+      wordformQuery,
       Ω(lexicalForm, lemma, awf),
       Δ(writtenRep, awf, !"wordform"),
       Δ(hyphenation, awf, !"wordform_afbr") // ahem, nee, die zit bij woordvorm

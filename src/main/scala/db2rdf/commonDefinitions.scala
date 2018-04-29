@@ -34,6 +34,13 @@ object commonDefinitions {
   def dataProperty(s:String) = IRI(s, schema) (Sort.DataPropertyType)
   def owlClass(s:String) = IRI(s, schema) (Sort.ClassType)
 
+  val diamantGraphURL = "http://rdf.ivdnt.org/lexica/diamant/v1.0/"
+  val molexGraphURL = "http://rdf.ivdnt.org/lexica/molex/v1.0/"
+
+  val odwnGraphURL = "http://odwn-rdf.vu.nl/odwn13/"
+
+  val diamantGraph = IRI("http://rdf.ivdnt.org/lexica/diamant/v1.0/")
+
   val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
   val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
   val canonicalForm:IRI = objectProperty(s"${ontolexPrefix}canonicalForm")

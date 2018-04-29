@@ -95,6 +95,7 @@ object diamantMapping {
   val lemmata:Mappings = {
     val cf = ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id"
     ⊕(
+      lemmaQuery,
       Ω(isA, lemma, entryType),
       Ω(isA, cf, formType),
       Ω(canonicalForm, lemma, cf),
@@ -103,12 +104,14 @@ object diamantMapping {
 
   val posMapping: Mappings = {
     def convertPoS(r: ResultSet): IRI = IRI(s"{$udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
-    ⊕(Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
+    ⊕(posQuery,
+      Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
   }
 
   val lemmaWordform = {
     val awf = ~s"$wordformResourcePrefix$$wdb/$$analyzed_wordform_id"
-    ⊕(Ω(lexicalForm, lemma, awf),
+    ⊕(wordformQuery,
+      Ω(lexicalForm, lemma, awf),
       Ω(isA, awf, formType) ,
       Δ(writtenRep, awf, !"wordform"))
   }
@@ -117,6 +120,7 @@ object diamantMapping {
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
+      senseQuery,
       Ω(isA, sense, senseType),
       Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
@@ -131,6 +135,7 @@ object diamantMapping {
     val synonymDef = ~s"$synonymDefinitionResourcePrefix$$wdb/$$id"
     val sense = ~s"$senseResourcePrefix$$wdb/$$sense_id"
     ⊕(
+      synonymQuery,
       Ω(senseDefinition, sense, synonymDef),
       Ω(isA, synonymDef, synonymDefinitionType),
       Δ(definitionText, senseDefinition, !"synonym"))
@@ -142,7 +147,8 @@ object diamantMapping {
 
   val hilexSynsets: Mappings = {
     val synset = ~s"${synsetResourcePrefix}$$wdb/$$synset_id"
-    ⊕(Ω(isA, synset, lexicalConceptType),
+    ⊕(synsetQuery,
+      Ω(isA, synset, lexicalConceptType),
       Ω(reference, ~s"${senseResourcePrefix}$$wdb/$$sense_id", synset))
   }
 
@@ -156,14 +162,17 @@ object diamantMapping {
       IRI(s"$semanticRelationResourcePrefix$relName")
     }
 
-    ⊕(Ω(rel, parent, child), Ω(isA, rel, semanticRelationType))
+    ⊕(synsetRelationQuery,
+      Ω(rel, parent, child), Ω(isA, rel, semanticRelationType))
   }
 
   val attestations: Mappings = {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
     val document = ~"http://quotation/$document_id"
 
-    ⊕(Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
+    ⊕(
+      attestationQuery,
+      Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
       Ω(isA, theAttestation, attestationType),
       Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
@@ -175,12 +184,14 @@ object diamantMapping {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
     val quotation = ~s"${quotationResourcePrefix}$$document_id"
 
-    ⊕(Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation))
+    ⊕(senseAttestationQuery,
+      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation))
   }
 
   val quotations: Mappings = {
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"// ϝ("document_id", "http://document/" + _)
     ⊕(
+      documentQuery,
       Ω(isA, quotation, quotationType),
       Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
       Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
@@ -196,16 +207,21 @@ object diamantMapping {
 
   val serpensConcepts = {
     val concept = ~"$iri"
-    ⊕(Ω(isA, concept, typeForConcept), Δ(prefLabel, concept, !"preflabel"), Δ(altLabel, concept, !"altlabel"))
+    ⊕(serpensConceptQuery,
+      Ω(isA, concept, typeForConcept), Δ(prefLabel, concept, !"preflabel"), Δ(altLabel, concept, !"altlabel"))
   }
 
-  val serpensWNT = { val concept = ~"$iri"; ⊕(Ω(isA, concept, typeForConcept), Ω(evokes, lemma, concept)) }
+  val serpensWNT = { val concept = ~"$iri"; ⊕(
+    serpensWntQuery,
+    Ω(isA, concept, typeForConcept), Ω(evokes, lemma, concept)) }
 
   val serpensConceptRelations = {
     val parent = ~"$parent_iri"
     val child = ~"$child_iri"
     val rel:ResultSet => IRI = r => serpensRelMap.getOrElse(r.getString("relation"), "piep")
-    ⊕(Ω(rel, parent, child))
+    ⊕(
+      conceptRelationQuery,
+      Ω(rel, parent, child))
   }
 
   val serpens = List(serpensConcepts, serpensWNT)
@@ -242,51 +258,76 @@ object diamantMapping {
 
     //Console.err.println(s"######################################################lemmata en PoS voor ${lemmata.triplesIterator(db, lemmaQuery).size} lemmata")
 
-    val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(outputFolder + "/" + "lemmata.nt.gz")))
-    val wordformOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "wordforms.nt.gz")))
-    val senseOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "senses.nt.gz")))
-    val attestationOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "attestations.nt.gz")))
-    val ezelOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "ezels.nt.gz")))
-    val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "serpens.nt.gz")))
+    def write(m: Mappings, w: java.io.Writer, graph:IRI = diamantGraph): Unit =
+    {
+      m.triplesIterator(db).map(x => x.withGraph(graph)).filter(_.valid()).foreach(x => w.write(x.toString + "\n"))
+    }
 
-    lemmata.triplesIterator(db, lemmaQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
-    posMapping.triplesIterator(db, posQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
+    val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(outputFolder + "/" + "lemmata.nq.gz")))
+    val wordformOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "wordforms.nq.gz")))
+    val senseOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "senses.nq.gz")))
+    val attestationOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "attestations.nq.gz")))
+    val ezelOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "ezels.nq.gz")))
+    val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "serpens.nq.gz")))
+
+
+    write(lemmata, lemmaOutput)
+    write(posMapping, lemmaOutput)
+
+    //lemmata.triplesIterator(db, lemmaQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
+    // posMapping.triplesIterator(db, posQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
 
     lemmaOutput.close()
 
     //Console.err.println(s"###################################################### woordvormen ${lemmaWordform.triplesIterator(db, wordformQuery).size} triples")
 
-    lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(x => wordformOutput.write(x.toString + "\n"))
+    write(lemmaWordform, wordformOutput)
+
+    //lemmaWordform.triplesIterator(db, wordformQuery).take(limit).foreach(x => wordformOutput.write(x.toString + "\n"))
 
     wordformOutput.close()
 
     Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
-    senses.triplesIterator(db, senseQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
-    synonyms.triplesIterator(db, synonymQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
+    write(senses,senseOutput)
+    write(synonyms, senseOutput)
+
+    //senses.triplesIterator(db, senseQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
+    // synonyms.triplesIterator(db, synonymQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
 
     senseOutput.close()
 
     Console.err.println("###################################################### attestations en quotations")
 
-    quotations.triplesIterator(db, documentQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
-    senseAttestations.triplesIterator(db, senseAttestationQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
-    attestations.triplesIterator(db, attestationQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
+    write(quotations, attestationOutput)
+    write(senseAttestations, attestationOutput)
+    write(attestations, attestationOutput)
+
+    //quotations.triplesIterator(db, documentQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
+    //senseAttestations.triplesIterator(db, senseAttestationQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
+    //attestations.triplesIterator(db, attestationQuery).take(limit).foreach(x => attestationOutput.write(x.toString + "\n"))
 
     attestationOutput.close()
 
     Console.err.println("###################################################### ezels")
 
-    hilexSynsets.triplesIterator(db, synsetQuery).take(limit).foreach(x => ezelOutput.write(x.toString + "\n"))
-    hilexSynsetRelations.triplesIterator(db, synsetRelationQuery).take(limit).foreach(x => ezelOutput.write(x.toString + "\n"))
+    write(hilexSynsets, ezelOutput)
+    write(hilexSynsetRelations, ezelOutput)
+
+    //hilexSynsets.triplesIterator(db, synsetQuery).take(limit).foreach(x => ezelOutput.write(x.toString + "\n"))
+    //hilexSynsetRelations.triplesIterator(db, synsetRelationQuery).take(limit).foreach(x => ezelOutput.write(x.toString + "\n"))
 
     ezelOutput.close()
 
     Console.err.println("###################################################### serpens")
 
-    serpensConcepts.triplesIterator(db, serpensConceptQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
-    serpensWNT.triplesIterator(db, serpensWntQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
-    serpensConceptRelations.triplesIterator(db, conceptRelationQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
+    write(serpensConcepts, serpensOutput)
+    write(serpensWNT, serpensOutput)
+    write(serpensConceptRelations, serpensOutput)
+
+    //serpensConcepts.triplesIterator(db, serpensConceptQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
+    //serpensWNT.triplesIterator(db, serpensWntQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
+    //serpensConceptRelations.triplesIterator(db, conceptRelationQuery).take(limit).foreach(x => serpensOutput.write(x.toString + "\n"))
 
     serpensOutput.close()
 

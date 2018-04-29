@@ -26,12 +26,14 @@ trait Literal
 trait Statement
 {
 
+  def isQuad:Boolean = ???
   def toString1:String = ???
+  def withGraph(i: IRI): Statement = ???
 
   def valid():Boolean = // http://archive.rdf4j.org/users/ch09.html
   {
     val in = new java.io.StringReader(toString1)
-    val p = Rio.createParser(RDFFormat.NTRIPLES)
+    val p = Rio.createParser(if (isQuad) RDFFormat.NQUADS else RDFFormat.NTRIPLES)
 
     Try (p.parse(in, "http://bullshit")) match {
       case Failure(e) =>  System.err.println(s"problem with $toString1!!"); false
@@ -42,7 +44,7 @@ trait Statement
 
 object Sort extends Enumeration {
   type Sort = Value
-  val ClassType, ObjectPropertyType, DataPropertyType, None = Value
+  val ClassType, ObjectPropertyType, DataPropertyType, Noop = Value
 }
 import Sort._
 
@@ -54,9 +56,9 @@ case class StringLiteral(s: String, lang: String="nl") extends Literal
 
 case class IntLiteral(k: Int) extends Literal  { override def toString = s""""$k"^^<http://www.w3.org/2001/XMLSchema#int>""";   }
 
-case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = None)
+case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = Noop)
 {
-  def validate():Boolean = if (schema != null && sort != None)
+  def validate():Boolean = if (schema != null && sort != Noop)
     {
       val valid = sort match {
         case ClassType => schema.classNames.contains(s)
@@ -71,19 +73,21 @@ case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:So
   override def toString = '<' + s.toString + '>'
 }
 
-case class ObjectProperty(s: IRI, p: IRI, o: IRI) extends Statement
+case class ObjectProperty(s: IRI, p: IRI, o: IRI, g:Option[IRI]=None) extends Statement
 {
-  override lazy val toString1 = s"$s $p $o ."
-
+  override lazy val toString1 = s"$s $p $o ${if (g.isDefined) g.get.toString else ""}."
+  override def isQuad: Boolean = g.isDefined
   override def toString = if (valid()) toString1 else "<an> <error> <occured>"
 
+  override def withGraph(i: IRI): Statement = this.copy(g = Some(i))
 }
 
-case class DataProperty(s: IRI, p: IRI, o: Literal) extends Statement
+case class DataProperty(s: IRI, p: IRI, o: Literal, g:Option[IRI]=None) extends Statement
 {
-  override def toString1 = s"$s $p $o ."
-
+  override def toString1 = s"$s $p $o ${if (g.isDefined) g.get.toString else ""} ."
+  override def isQuad: Boolean = g.isDefined
   override def toString = if (valid()) toString1 else "<an> <error> <occured>"
+  override def withGraph(i: IRI): Statement = this.copy(g = Some(i))
 }
 
 trait Mapping
@@ -106,7 +110,7 @@ case class Δ(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) extends Mapp
     }
 }
 
-case class Mappings(mappings:Seq[Mapping])
+case class Mappings(query: String, mappings:Seq[Mapping])
 {
   def multiMapping(mappings:Seq[Mapping]): ResultMapping[Set[Statement]] =
   {
@@ -128,6 +132,8 @@ case class Mappings(mappings:Seq[Mapping])
     val query : AlmostQuery[Set[Statement]] = db => db.createQuery(q).map(m)
     db.iterator(query).flatten.filter(_.valid())
   }
+
+  def triplesIterator(db: database.Database): Iterator[Statement] = triplesIterator(db, this.query)
 }
 
 
@@ -182,7 +188,7 @@ object Ω {
 
   implicit def xxx(s:String):XXX = XXX(s)
 
-  def ⊕(l: Mapping*) = Mappings(l)
+  def ⊕(q: String, l: Mapping*) = Mappings(q, l)
 
   ////////////////////////////////////////////////////////
 
