@@ -208,12 +208,17 @@ object diamantMapping {
   val serpensConcepts = {
     val concept = ~"$iri"
     ⊕(serpensConceptQuery,
-      Ω(isA, concept, typeForConcept), Δ(prefLabel, concept, !"preflabel"), Δ(altLabel, concept, !"altlabel"))
+      Ω(isA, concept, typeForConcept),
+      Δ(prefLabel, concept, !"preflabel"),
+      Δ(altLabel, concept, !"altlabel"))
   }
 
-  val serpensWNT = { val concept = ~"$iri"; ⊕(
+  val serpensWNT = { val concept = ~"$iri"
+    ⊕(
     serpensWntQuery,
-    Ω(isA, concept, typeForConcept), Ω(evokes, lemma, concept)) }
+    Ω(isA, concept, typeForConcept),
+    Ω(evokes, lemma, concept))
+  }
 
   val serpensConceptRelations = {
     val parent = ~"$parent_iri"
