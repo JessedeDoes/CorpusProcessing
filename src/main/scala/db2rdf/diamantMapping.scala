@@ -102,7 +102,7 @@ object diamantMapping {
   }
 
   val posMapping: Mappings = {
-    def convertPoS(r: ResultSet): IRI = IRI(s"$udPrefix/pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
+    def convertPoS(r: ResultSet): IRI = IRI(s"{$udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
     ⊕(Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
   }
 
@@ -242,12 +242,12 @@ object diamantMapping {
 
     //Console.err.println(s"######################################################lemmata en PoS voor ${lemmata.triplesIterator(db, lemmaQuery).size} lemmata")
 
-    val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "lemmata.nt.gz"))))
-    val wordformOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "wordforms.nt.gz"))))
-    val senseOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "senses.nt.gz"))))
-    val attestationOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "attestations.nt.gz"))))
-    val ezelOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "ezels.nt.gz"))))
-    val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream((outputFolder + "/" + "serpens.nt.gz"))))
+    val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(outputFolder + "/" + "lemmata.nt.gz")))
+    val wordformOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "wordforms.nt.gz")))
+    val senseOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "senses.nt.gz")))
+    val attestationOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "attestations.nt.gz")))
+    val ezelOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "ezels.nt.gz")))
+    val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "serpens.nt.gz")))
 
     lemmata.triplesIterator(db, lemmaQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
     posMapping.triplesIterator(db, posQuery).take(limit).foreach(x => lemmaOutput.write(x.toString + "\n"))
