@@ -75,7 +75,7 @@ case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:So
 
 case class ObjectProperty(s: IRI, p: IRI, o: IRI, g:Option[IRI]=None) extends Statement
 {
-  override lazy val toString1 = s"$s $p $o ${if (g.isDefined) g.get.toString else ""}."
+  override lazy val toString1 = s"$s $p $o ${if (g.isDefined) g.get.toString else ""} ."
   override def isQuad: Boolean = g.isDefined
   override def toString = if (valid()) toString1 else "<an> <error> <occured>"
 
