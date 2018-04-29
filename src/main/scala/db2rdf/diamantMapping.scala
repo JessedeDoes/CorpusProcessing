@@ -103,7 +103,7 @@ object diamantMapping {
   }
 
   val posMapping: Mappings = {
-    def convertPoS(r: ResultSet): IRI = IRI(s"{$udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
+    def convertPoS(r: ResultSet): IRI = IRI(s"${udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
     ⊕(posQuery,
       Ω(pos, ~s"$entryResourcePrefix$$wdb/$$persistent_id", convertPoS))
   }

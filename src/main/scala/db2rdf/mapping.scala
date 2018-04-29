@@ -34,7 +34,7 @@ trait Statement
   {
     val in = new java.io.StringReader(toString1)
     val p = Rio.createParser(if (isQuad) RDFFormat.NQUADS else RDFFormat.NTRIPLES)
-
+    //Console.err.println(s"$toString1 $isQuad")
     Try (p.parse(in, "http://bullshit")) match {
       case Failure(e) =>  System.err.println(s"problem with $toString1!!"); false
       case Success(x) => true
