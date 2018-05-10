@@ -6,15 +6,15 @@ import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String)
 {
-  def matches(mp: Int):Boolean =
+  def matches(mp: Int, sp: Int, ssp: Int):Boolean =
   {
-    Console.err.println(mp)
+
     mp match {
       case 0 => pos.startsWith("NOU-C")
       case 1 => pos.startsWith("AA")
-      case 2 => pos.startsWith("VRB")
-      case 3 => pos.startsWith("PD")
-      case 4 => pos.startsWith("PD") || pos.startsWith("NUM")
+      case 2 => pos.startsWith("VRB") && !(ssp == 6 && ! pos.contains("past")) && !(ssp == 3 && ! pos.contains("pres"))
+      case 3 => pos.startsWith("PD") && !(sp == 5 && ! pos.contains("poss"))
+      case 4 => (pos.startsWith("PD") || pos.startsWith("NUM"))  && !(pos.contains("poss"))
       case 5 => pos.startsWith("ADV")
       case 6 => pos.startsWith("ADP")
       case 7 => pos.startsWith("CONJ")
@@ -72,20 +72,26 @@ object Eindhoven {
 
   def doWord(w: Elem):Elem = {
     val word = w.text
+
     val lemma = (w \\ "@lemma").text
     val pos = (w \\ "@pos").text
 
-    val vuPos:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
+    val vuPos0:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
+    val vuPos = vuPos0 % 1000
     val vuMainPos = (vuPos - vuPos % 100) / 100
+    val vuSub1 = vuPos - 100 * vuMainPos
+    val vuSubPos = (vuSub1 - vuSub1 % 10) / 10
+    val vuSubSubPos = vuPos - 100 * vuMainPos - 10 * vuSubPos
 
-
+    Console.err.println(s"$vuPos $vuMainPos:$vuSubPos:$vuSubSubPos")
     val cert: UnprefixedAttribute = new UnprefixedAttribute("maybenot", "true", Null)
 
     val candidates = goodMap.get(word.toLowerCase())
+
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
         val c = candidates.get.filter(w => lemma.isEmpty || w.lemma == lemma)
-        val lemmaCandidates = c.filter(w => lemma.isEmpty && w.matches(vuMainPos)).map(_.lemma).toSet
+        val lemmaCandidates = c.filter(w => lemma.isEmpty && w.matches(vuMainPos, vuSubPos, vuSubSubPos)).map(_.lemma).toSet
 
         val lemmaAttribute = new UnprefixedAttribute("lemma", lemmaCandidates.mkString("|"), Null)
         val lAdd = if (lemmaCandidates.isEmpty) List() else List(lemmaAttribute)
