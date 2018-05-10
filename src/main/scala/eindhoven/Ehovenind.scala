@@ -5,6 +5,24 @@ import java.text.Normalizer
 import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String)
+{
+  def matches(mp: Int):Boolean =
+  {
+    Console.err.println(mp)
+    mp match {
+      case 0 => pos.startsWith("NOU-C")
+      case 1 => pos.startsWith("AA")
+      case 2 => pos.startsWith("VRB")
+      case 3 => pos.startsWith("PD")
+      case 4 => pos.startsWith("PD") || pos.startsWith("NUM")
+      case 5 => pos.startsWith("ADV")
+      case 6 => pos.startsWith("ADP")
+      case 7 => pos.startsWith("CONJ")
+      case 8 => pos.startsWith("INT")
+      case _ => true
+    }
+  }
+}
 
 object Eindhoven {
 
@@ -50,10 +68,15 @@ object Eindhoven {
     l.foldLeft(m1)( (m,u) => m.append(u))
   }
 
+  import util.matching.Regex._
+
   def doWord(w: Elem):Elem = {
     val word = w.text
     val lemma = (w \\ "@lemma").text
-    val pos = (w \\ "@pos")
+    val pos = (w \\ "@pos").text
+
+    val vuPos:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
+    val vuMainPos = (vuPos - vuPos % 100) / 100
 
 
     val cert: UnprefixedAttribute = new UnprefixedAttribute("maybenot", "true", Null)
@@ -62,7 +85,11 @@ object Eindhoven {
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
         val c = candidates.get.filter(w => lemma.isEmpty || w.lemma == lemma)
-        //println(c)
+        val lemmaCandidates = c.filter(w => lemma.isEmpty && w.matches(vuMainPos)).map(_.lemma).toSet
+
+        val lemmaAttribute = new UnprefixedAttribute("lemma", lemmaCandidates.mkString("|"), Null)
+        val lAdd = if (lemmaCandidates.isEmpty) List() else List(lemmaAttribute)
+
         val withAccent = c.filter(w => noAccents(w.word) != w.word.toLowerCase())
         val withoutAccent = c.filter(w => noAccents(w.word) == w.word.toLowerCase())
 
@@ -70,11 +97,11 @@ object Eindhoven {
           val a0: UnprefixedAttribute = new UnprefixedAttribute("corr", withAccent.head.word, Null)
 
           Console.err.println(s"$word ($lemma) => $withAccent")
-          if (withoutAccent.isEmpty) List(a0)
+          if (withoutAccent.isEmpty) List(a0) ++ lAdd
           else {
-            List(a0, cert)
+            List(a0, cert) ++ lAdd
           }
-        } else List.empty[UnprefixedAttribute]
+        } else lAdd
       } else List.empty[UnprefixedAttribute]
     w.copy(attributes = append(w.attributes,extraAttributes))
   }
