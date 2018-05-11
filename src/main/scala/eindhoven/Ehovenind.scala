@@ -10,10 +10,17 @@ case class Word(word: String, lemma: String, pos: String)
   {
 
     mp match {
-      case 0 => pos.startsWith("NOU-C")
+      case 0 => if (List(0,2,8,9).contains(sp)) pos.startsWith("NOU-C") &&
+        !(ssp == 0 && ! pos.contains("sg")) && !(ssp == 1 && ! pos.contains("pl"))
+      else pos.startsWith("NOU-P")
       case 1 => pos.startsWith("AA")
-      case 2 => pos.startsWith("VRB") && !(ssp == 6 && ! pos.contains("past")) && !(ssp == 3 && ! pos.contains("pres"))
-      case 3 => pos.startsWith("PD") && !(sp == 5 && ! pos.contains("poss"))
+      case 2 => pos.startsWith("VRB") && !((ssp == 5 || ssp == 6) && ! pos.contains("past")) &&
+        !(List(1,2,3,4).contains(ssp) && ! pos.contains("pres")) &&
+        !(List(0,1,2,3).contains(sp) && ! (pos.contains("=inf") || pos.contains("part")))
+      case 3 => pos.startsWith("PD") &&
+        !(List(2,3).contains(sp) && ! pos.contains("poss")) &&
+        !(List(4,5).contains(sp) && ! pos.contains("ref")) &&
+        !(List(0).contains(sp) && ! pos.contains("per"))
       case 4 => (pos.startsWith("PD") || pos.startsWith("NUM"))  && !(pos.contains("poss"))
       case 5 => pos.startsWith("ADV")
       case 6 => pos.startsWith("ADP")
@@ -73,20 +80,34 @@ object Eindhoven {
   def doWord(w: Elem):Elem = {
     val word = w.text
 
-    val lemma = (w \\ "@lemma").text
+    val lemma0 = (w \\ "@lemma").text
+    val lemma1 = if (lemma0 == "_") "" else lemma0
+
     val pos = (w \\ "@pos").text
 
     val vuPos0:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
+
     val vuPos = vuPos0 % 1000
     val vuMainPos = (vuPos - vuPos % 100) / 100
     val vuSub1 = vuPos - 100 * vuMainPos
     val vuSubPos = (vuSub1 - vuSub1 % 10) / 10
     val vuSubSubPos = vuPos - 100 * vuMainPos - 10 * vuSubPos
 
-    Console.err.println(s"$vuPos $vuMainPos:$vuSubPos:$vuSubSubPos")
+
+    val (lemma, supply):(String, Boolean) =  { if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word,true); else (lemma1,false) }
+
+
+    val lemmaIsWord = new UnprefixedAttribute("lemma", lemma, Null)
+
+    //Console.err.println(s"$vuPos $vuMainPos:$vuSubPos:$vuSubSubPos")
+
     val cert: UnprefixedAttribute = new UnprefixedAttribute("maybenot", "true", Null)
 
     val candidates = goodMap.get(word.toLowerCase())
+
+    val purgedWAttributes = w.attributes.filter(a => !(a.key=="lemma" && a.value.text=="_"))
+
+    Console.err.println(purgedWAttributes)
 
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
@@ -94,7 +115,9 @@ object Eindhoven {
         val lemmaCandidates = c.filter(w => lemma.isEmpty && w.matches(vuMainPos, vuSubPos, vuSubSubPos)).map(_.lemma).toSet
 
         val lemmaAttribute = new UnprefixedAttribute("lemma", lemmaCandidates.mkString("|"), Null)
-        val lAdd = if (lemmaCandidates.isEmpty) List() else List(lemmaAttribute)
+        val lAdd = if (lemmaCandidates.isEmpty)
+          if (supply) List(lemmaIsWord) else List()
+        else List(lemmaAttribute)
 
         val withAccent = c.filter(w => noAccents(w.word) != w.word.toLowerCase())
         val withoutAccent = c.filter(w => noAccents(w.word) == w.word.toLowerCase())
@@ -108,8 +131,8 @@ object Eindhoven {
             List(a0, cert) ++ lAdd
           }
         } else lAdd
-      } else List.empty[UnprefixedAttribute]
-    w.copy(attributes = append(w.attributes,extraAttributes))
+      } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
+    w.copy(attributes = append(purgedWAttributes,extraAttributes))
   }
 
   def main(args: Array[String]) =
