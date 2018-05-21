@@ -77,14 +77,8 @@ object Eindhoven {
 
   import util.matching.Regex._
 
-  def doWord(w: Elem):Elem = {
-    val word = w.text
-
-    val lemma0 = (w \\ "@lemma").text
-    val lemma1 = if (lemma0 == "_") "" else lemma0
-
-    val pos = (w \\ "@pos").text
-
+  def findVuPos(pos: String):(Int,Int,Int) =
+  {
     val vuPos0:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
 
     val vuPos = vuPos0 % 1000
@@ -93,6 +87,18 @@ object Eindhoven {
     val vuSubPos = (vuSub1 - vuSub1 % 10) / 10
     val vuSubSubPos = vuPos - 100 * vuMainPos - 10 * vuSubPos
 
+    (vuPos, vuSubPos, vuSubSubPos)
+  }
+
+  def doWord(w: Elem):Elem = {
+    val word = w.text
+
+    val lemma0 = (w \\ "@lemma").text
+    val lemma1 = if (lemma0 == "_") "" else lemma0
+
+    val pos = (w \\ "@pos").text
+
+    val (vuMainPos, vuSubPos, vuSubSubPos) = findVuPos(pos)
 
     val (lemma, supply):(String, Boolean) =  { if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word,true); else (lemma1,false) }
 
