@@ -117,8 +117,13 @@ object Eindhoven {
 
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
-        val c = candidates.get.filter(w => lemma.isEmpty || w.lemma == lemma)
-        val lemmaCandidates = c.filter(w => lemma.isEmpty && w.matches(vuMainPos, vuSubPos, vuSubSubPos)).map(_.lemma).toSet
+        val c = candidates.get.filter(w => (lemma.isEmpty || w.lemma == lemma) && w.matches(vuMainPos, vuSubPos, vuSubSubPos))
+
+        val molexPos = c.map(_.pos)
+
+        val molexPosAttribute = if (molexPos.isEmpty) List() else List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
+
+        val lemmaCandidates = c.filter(w => lemma.isEmpty).map(_.lemma).toSet
 
         val lemmaAttribute = new UnprefixedAttribute("lemma", lemmaCandidates.mkString("|"), Null)
         val lAdd = if (lemmaCandidates.isEmpty)
@@ -132,11 +137,12 @@ object Eindhoven {
           val a0: UnprefixedAttribute = new UnprefixedAttribute("corr", withAccent.head.word, Null)
 
           Console.err.println(s"$word ($lemma) => $withAccent")
-          if (withoutAccent.isEmpty) List(a0) ++ lAdd
+
+          if (withoutAccent.isEmpty) List(a0) ++ lAdd ++ molexPosAttribute
           else {
-            List(a0, cert) ++ lAdd
+            List(a0, cert) ++ lAdd ++ molexPosAttribute
           }
-        } else lAdd
+        } else lAdd ++ molexPosAttribute
       } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
     w.copy(attributes = append(purgedWAttributes,extraAttributes))
   }
