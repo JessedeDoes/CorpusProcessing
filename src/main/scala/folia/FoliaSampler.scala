@@ -32,10 +32,10 @@ package object floep
 case class FoliaSampler(document: Node, numWords: Int, echoMe: Set[String] = Set())
 {
    lazy val sentencesShuffled:List[Node] = scala.util.Random.shuffle((document \\ "s").filter(textLength(_) > 10).toList)
-   lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle((document \\ "p")
+   lazy val paragraphsShuffled:List[Node] = scala.util.Random.shuffle(((document \\ "p") ++ (document \\ "event"))
      .filter(p => textLength(p) > 30 && textLength(p) < Math.max(numWords / 2, 300) && averageWordLength(p) > 3).toList)
 
-   // Console.err.println(s"Paragraphs filtered: ${paragraphsShuffled.size}")
+   Console.err.println(s"Paragraphs filtered: ${paragraphsShuffled.size}")
 
   def getId(n: Node):String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
@@ -79,6 +79,8 @@ case class FoliaSampler(document: Node, numWords: Int, echoMe: Set[String] = Set
      Console.err.println(s"Size: $size")
      samp.foreach(s => Console.err.println((s \\ "w" \\ "t").filter(nonModernized).map(_.text).mkString(" ")))
      val keepjes = expandKeepSet(document, n => sampie._1.contains(n) || n.label == "metadata")
+     Console.err.println(s"keepjes: ${keepjes.size}")
+     
      sample(document, keepjes)
    }
 
