@@ -80,7 +80,7 @@ case class FoliaSampler(document: Node, numWords: Int, echoMe: Set[String] = Set
      samp.foreach(s => Console.err.println((s \\ "w" \\ "t").filter(nonModernized).map(_.text).mkString(" ")))
      val keepjes = expandKeepSet(document, n => sampie._1.contains(n) || n.label == "metadata")
      Console.err.println(s"keepjes: ${keepjes.size}")
-     
+
      sample(document, keepjes)
    }
 
