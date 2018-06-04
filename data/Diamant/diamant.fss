@@ -263,6 +263,7 @@ Declaration(DataProperty(ontolex:writtenRep))
 Declaration(DataProperty(diamant:senseOrder))
   DataPropertyDomain(diamant:senseOrder ontolex:LexicalSense)
   DataPropertyDomain(diamant:senseOrder xsd:integer)
+ AnnotationAssertion(rdfs:comment diamant:senseOrder "n-th child in the subsense relation")
 
 # dit klopt niet met de data
 Declaration(DataProperty(diamant:synonymDefinition))
