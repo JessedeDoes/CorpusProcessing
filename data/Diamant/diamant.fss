@@ -49,10 +49,15 @@ Declaration(Class(diamant:SynonymDefinition))
 Declaration(Class(diamant:LexicalPhenomenon))
   AnnotationAssertion(rdfs:comment diamant:LexicalPhenomenon "Union of Sense and Form. Used as domain for the attestation data property")
 Declaration(Class(diamant:Attestation))
-
+  AnnotationAssertion(rdfs:comment diamant:Attestation "Pointer to evidence in dictionary quotation or corpus text for a word form or sense")
 Declaration(Class(diamant:Text))
+  AnnotationAssertion(rdfs:comment diamant:Text "Common superclass for dictionary quotations and corpus text, range for the attestation object property")
 Declaration(Class(diamant:Quotation))
+  AnnotationAssertion(rdfs:comment diamant:Quotation "A dictionary quotation with metadata")
+
 Declaration(Class(diamant:Similarity))
+  AnnotationAssertion(rdfs:comment diamant:Similarity "Similarity (real-valued) between to terms")
+
 Declaration(Class(diamant:Set))
 #Declaration(Class(diamant:SemanticRelation))
 Declaration(Class(dcterms:PeriodOfTime))
@@ -76,6 +81,7 @@ Declaration(ObjectProperty(ontolex:sense))
 Declaration(ObjectProperty(diamant:subsense))
 	ObjectPropertyDomain(diamant:subsense ontolex:LexicalSense)
 	ObjectPropertyRange(diamant:subsense ontolex:LexicalSense)
+   AnnotationAssertion(rdfs:comment diamant:subsense "Subsense in the sense hierarchy of a scholarly dictionary")
 #	TransitiveObjectProperty(diamant:subsense)
 
 # check!	
@@ -120,12 +126,14 @@ Declaration(ObjectProperty(diamant:canonicalModernForm))
 	ObjectPropertyDomain(diamant:canonicalModernForm ontolex:LexicalEntry)
 	ObjectPropertyRange(diamant:canonicalModernForm ontolex:Form)	
 	SubObjectPropertyOf(diamant:canonicalModernForm ontolex:canonicalForm)
+  AnnotationAssertion(rdfs:comment diamant:canonicalModernForm "Modern lemma form")
 	
 Declaration(ObjectProperty(diamant:canonicalHistoricalForm))
 	ObjectPropertyDomain(diamant:canonicalHistoricalForm ontolex:LexicalEntry)
 	ObjectPropertyRange(diamant:canonicalHistoricalForm ontolex:Form)	
 	SubObjectPropertyOf(diamant:canonicalHistoricalForm ontolex:canonicalForm)	
-		
+  AnnotationAssertion(rdfs:comment diamant:canonicalHistoricalForm "Historical lemma form (usually the headword in a historical dictionary on which the lexicon is based")	
+
 Declaration(ObjectProperty(lexinfo:partOfSpeech))
 	ObjectPropertyDomain(lexinfo:partOfSpeech ontolex:LexicalEntry)
 	ObjectPropertyRange(lexinfo:partOfSpeech lexinfo:PartOfSpeech)
@@ -153,6 +161,7 @@ SubClassOf(diamant:SynonymDefinition prov:Entity)
 Declaration(ObjectProperty(diamant:attestation))
 	ObjectPropertyDomain(diamant:attestation diamant:LexicalPhenomenon)
 	ObjectPropertyRange(diamant:attestation diamant:Attestation)
+    AnnotationAssertion(rdfs:comment diamant:attestation "relation between that which evidence is provided for and the provided evidence")
 
 #SubObjectPropertyOf(ObjectPropertyChain( diamant:attestation diamant:text) lemon:example)	
 SubClassOf(diamant:Quotation diamant:Text)
@@ -161,7 +170,8 @@ FunctionalDataProperty(diamant:quotationText)
 #    SubDataPropertyOf(diamant:quotationText lemon:value)
     DataPropertyDomain(diamant:quotationText diamant:Quotation)
     DataPropertyRange(diamant:quotationText xsd:string)
-    
+  AnnotationAssertion(rdfs:comment  diamant:quotationText "data property: text content of quotation")
+
 FunctionalDataProperty(nif:beginIndex)
 	DataPropertyDomain(nif:beginIndex diamant:Attestation)
 	DataPropertyRange(nif:beginIndex xsd:integer)
