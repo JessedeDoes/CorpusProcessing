@@ -1,6 +1,8 @@
 package eindhoven
-import java.io.File
+import java.io.{File, FileWriter}
 import java.text.Normalizer
+
+import eindhoven.Eindhoven._
 
 import scala.xml._
 
@@ -39,6 +41,26 @@ object Eindhoven {
   val goodies = scala.io.Source.fromFile(dir + "/" + "goede-woorden-uit-molex-postgres.csv").getLines.toList.map(l => l.split(";"))
     .map(r => r.map(_.trim.replaceAll(""""""", ""))).map(r => Word(r(1), r(0), r(2))
   )
+
+  // ‹vu 000›‹hvh-kort N(soort,ev,neut) ›‹hvh-lang N(com,numgen=singn,case=unm,Psynuse=nom)›
+  val hvh_kort = "‹hvh-kort\\s*(.*?)\\s*›".r
+  val hvh_lang = "‹hvh-lang\\s*(.*?)\\s*›".r
+  val vu_pos = "‹vu\\s*(.*?)\\s*›".r
+
+  def hvhKort(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+    hvh_kort.findFirstMatchIn(a.text).map(_.group(1))
+  ).headOption.map(x => x.replaceAll(":.*",  ""))
+
+  def hvhLang(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+    hvh_lang.findFirstMatchIn(a.text).map(_.group(1))
+  ).headOption
+
+
+  def vuPos(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+    vu_pos.findFirstMatchIn(a.text).map(_.group(1))
+  ).headOption
+
+
 
   val goodMap:Map[String,List[Word]] = goodies.groupBy(w => noAccents(w.word))
 
@@ -152,6 +174,75 @@ object Eindhoven {
     val d = new File(dir)
     d.listFiles.foreach(println)
     files.foreach(doFile)
+  }
+}
+
+object allTags
+{
+  case class TaggedWord(word: String, kort: Option[String], lang: Option[String], vu: Option[String])
+  {
+    override def toString() = s"$word,${vu.getOrElse("_")},${kort.getOrElse("_")},${lang.getOrElse("_")}"
+  }
+
+  def listAllTags() = files.flatMap(f => (XML.loadFile(f) \\ "w").map(n => TaggedWord(n.text, hvhKort(n), hvhLang(n), vuPos(n))))
+
+  def vert() = listAllTags().foreach({ case TaggedWord(w,k,l,v) =>
+    println(s"$w\t${k.getOrElse("_")}\t${l.getOrElse("_")}\t${v.getOrElse("_")}") })
+
+  def byVuTag() = listAllTags().groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
+    //.map({ case (w,k,l,v) =>  s"$w\t${k}\t${l.getOrElse("_")}\t${v.getOrElse("_")}" }
+  // )
+
+  def byKorteTag = listAllTags().groupBy(_.kort).mapValues(l => scala.util.Random.shuffle(l).toSet)
+
+  def splitLangetags:Stream[TaggedWord] = listAllTags().filter(_.lang.isDefined).flatMap(w => w.lang.getOrElse("").split("\\|").toList.map(l
+  => w.copy(lang = Some(l.replaceAll("\\{.*?\\}", "").replaceAll("\\[.*?\\]", "").replaceAll("MTU.[0-9]*_L[0-9]+_", "")  ))))
+
+  // splitLangetags.foreach(println)
+
+  def byLangeTag = splitLangetags.groupBy(_.lang).mapValues(l => scala.util.Random.shuffle(l).toSet)
+
+
+  def main(args: Array[String]) =
+  {
+     val files = List("vu", "kort", "lang").map(s => new FileWriter("/tmp/" + s + ".taginfo.txt"))
+     val (vuFile,kortFile, langFile) = (files(0), files(1), files(2))
+
+    byVuTag.toList.sortBy(_._1).foreach(
+       {
+         case (v, w) if (v.isDefined && v.get.length < 4) =>
+           {
+             val allekortjes = w.filter(_.kort.isDefined).map(_.kort.get).toSet.mkString(",")
+             vuFile.write(s"${v.get}\t${w.size}\t${allekortjes}\t${w.take(5).map(_.toString).mkString("  ")}\n")
+           }
+
+         case _ =>
+       }
+     )
+
+    byKorteTag.toList.sortBy(_._1).foreach(
+      {
+        case (v, w) =>
+        {
+          kortFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
+        }
+
+        case _ =>
+      }
+    )
+
+    byLangeTag.toList.sortBy(_._1).foreach(
+      {
+        case (v, w) =>
+        {
+          langFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
+        }
+
+        case _ =>
+      }
+    )
+    files.foreach(_.close())
+
   }
 }
 
