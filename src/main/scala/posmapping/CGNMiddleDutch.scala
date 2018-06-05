@@ -47,7 +47,7 @@ object CGNMiddleDutch
 
     "lwtype"   -> Set("bep", "onbep"),
     "conjtype" -> Set("neven", "onder",  /**/   "expl", "verg", "ontk", "betr", "kwal"),
-    "ntype"    -> Set("eigen", "soort", /**/ "onduidelijk"),
+    "ntype"    -> Set("eigen", "soort"), // /**/ "onduidelijk"),
     /**/ "wwtype"  -> Set("hoofd", "hulp-of-koppel"), // hk
     "numtype"  -> Set("hoofd", "rang",   /**/  "onbep"), // "onbep" ??
     "vztype"   -> Set("init", "fin", "versm"),
@@ -62,7 +62,7 @@ object CGNMiddleDutch
     "getal-n"  -> Set("getal-n", "mv-n", "ev-n", "zonder-n"),
     "pvagr"    -> Set("met-t", "ev", "mv"),
     "pvtijd"   -> Set("tgw", "verl", "conj", "imp"), // "imper" --> "imp"
-    /**/ "pvmodus"  -> Set("imper"), // vooralsnog niet nodig, wel voor onw!
+    // /**/ "pvmodus"  -> Set("imper"), // vooralsnog niet nodig, wel voor onw!
     "status"   -> Set("nadr", "red", "vol",  /**/    "ellips"),
 
     "graad"    -> Set("basis", "comp", "dim", "sup"),
@@ -78,18 +78,58 @@ object CGNMiddleDutch
     "variatie" -> Set("dial") // officiele naam??
   )
 
+
+  def additions2partitions = Map(
+    "buiging" -> Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig"),
+    "conjtype" -> Set("expl", "verg", "ontk", "betr", "kwal"),
+    "wwtype"  -> Set("hoofd", "hulp-of-koppel"),
+    "numtype" -> Set("onbep"),
+    "vwtype" -> Set("refl-of-recip"),
+    "bwtype"   -> Set("alg", "aanw", "betr", "vrag", "onbep", "herv", "ontk"),
+    "status" -> Set("ellips"),
+    "wvorm" -> Set("part")
+  )
+
+  val p1 = CGNTagset.partitions.map({case (k,v) => (k, v ++ additions2partitions.getOrElse(k, Set())) }) ++ additions2partitions.filter(x =>
+  !CGNTagset.partitions.contains(x._1))
+
+  //Console.err.println(partitions == p1)
+  //Console.err.println(partitions.keySet.filter(k => partitions(k) != p1(k)))
+
+  def pos2partitions_add = Map(
+    "N" -> List("buiging"),
+    "ADJ" -> List("getal", "buiging"),
+    "WW" -> List("wwtype", "buiging"),
+    "NUM" -> List("buiging"),
+    "VNW" -> List("buiging"),
+    "LID" -> List("buiging"),
+    "VZ" -> List("buiging"),
+    "VG" -> List("buiging"),
+    "BW" -> List("bwtype", "status", "pdtype", "buiging"),
+
+    "TSW"  ->List("buiging"),
+    "TW"  -> /**/ List("buiging"),
+    "SPEC"  -> /**/ List("buiging"),
+  )
+
+  val pp1 = CGNTagset.pos2partitions.map({case (k,v) => (k, v ++ pos2partitions_add.getOrElse(k, List())) }) ++ pos2partitions_add.filter(x =>
+    !CGNTagset.pos2partitions.contains(x._1))
+
+  //println(pp1 == pos2partitions)
+  //Console.err.println(pp1.keySet.filter(k => !pos2partitions.contains(k)))
+  //System.exit(0)
   def pos2partitions = List( // fix volgorde....
     "N"    -> List("ntype", "getal", "graad", "genus", "naamval",    /**/     "buiging"),
     "ADJ"  -> List("positie", "graad", "buiging", "getal-n", "naamval",  /**/  "getal", "buiging"),
     "WW"   -> List("wvorm", "pvtijd", "pvagr", "positie", "buiging", "getal-n",
-      /**/ "pvmodus", "wwtype", "buiging"),
+      /**/ /* "pvmodus", */ "wwtype", "buiging"),
     "NUM"  -> List("numtype", "positie", "graad", "getal-n", "naamval",  /**/      "buiging"),
     "VNW"  -> List("vwtype", "pdtype", "naamval", "status", "persoon",
       "getal", "genus", "positie",  "buiging", "npagr", "getal-n", "graad", /**/     "buiging"),
     "LID"  -> List("lwtype", "naamval", "npagr",  /**/   "buiging"),
     "VZ"   -> List("vztype",  /**/   "buiging"),
     "VG"   -> List("conjtype",   /**/  "buiging"),
-    "BW"   -> List("bwtype", "status",  /**/  "pdtype", "buiging"),
+    "BW"   -> /**/ List("bwtype", "status",  "pdtype", "buiging"),
     "TSW"  -> /**/ List("buiging"),
     "TW"  -> List("numtype", "graad", "positie", /**/   "buiging"),
     "SPEC" -> List("spectype",   /**/ "buiging")
@@ -115,7 +155,7 @@ object testje
       //Console.err.println(l(4))
       //Console.err.flush()
       Console.err.println(l(4) + ", " + t + " --> " + t1.proposition)
-
+      println(s"${l(0)}\t$t1")
     })
   }
 
