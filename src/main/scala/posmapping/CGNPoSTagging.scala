@@ -25,7 +25,30 @@ abstract case class TagSet(prefix: String,
                   pos2partitions: Map[String,List[String]] = Map.empty)
 {
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
+
+  def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =
+  {
+    val vars = p.varsIn
+
+    val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
+    val features = vars.filter(f => !f.startsWith(s"${this.prefix}:pos=")).toList
+      .sortBy(f => {
+        val n = f.replaceAll(s"^$prefix:feat.|=.*","")
+        //Console.err.println(v)
+        val l = pos2partitions(pos)
+        val i = l.zipWithIndex.find({case (s,i) => s == n}).map({case (s,i) => i})
+        i.getOrElse(0)
+      })
+      .map(v => v.replaceAll(s"^.*=", "")).mkString(",")
+
+    var x = new CGNStyleTag(s"$pos($features)", this)
+    //Console.err.println(s"Proposition to tag: $p->$x")
+    x
+  }
+
   def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag
+
+
   def featuresFromProposition(p:Proposition): Set[Feature] =
   {
     val vars = p.varsIn
