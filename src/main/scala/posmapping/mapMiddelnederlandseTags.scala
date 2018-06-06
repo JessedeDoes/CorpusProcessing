@@ -20,7 +20,14 @@ object mapMiddelnederlandseTags {
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  def mapTag(s: String) = tagMapping.getOrElse(s, s"MISSING_MAPPING($s)")
+  def mapTag(s: String) =
+    {
+      val s0 = s.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999")
+
+      val s1 =  "0" * Math.max(0, 3 - s0.length) + s0
+
+      tagMapping.getOrElse(s1, s"MISSING_MAPPING($s/($s1))")
+    }
 
   val morfcodeAttribuut = "@type"
   val msdAttribuut = "msd"
