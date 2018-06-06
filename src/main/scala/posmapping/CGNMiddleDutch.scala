@@ -25,6 +25,7 @@ object CGNMiddleDutch
     "form=-r.-re"-> "met-r-of-re",
     "form=-a" -> "met-a",
     "form=other"-> "overig",
+    "form=-nt" -> "met-nt",
 
     ",probleem=true" -> "",
     "probleem=true(,?)" -> "",
@@ -42,7 +43,7 @@ object CGNMiddleDutch
   //Console.err.println("eek!!")
   def partitions = Map(
     "buiging"  -> (Set("met-e", "met-s", "zonder") ++
-            Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig")),
+            Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig", "met-nt")),
     "getal-n"  -> Set("mv-n", "zonder-n"),
 
     "lwtype"   -> Set("bep", "onbep"),
@@ -80,7 +81,7 @@ object CGNMiddleDutch
 
 
   def additions2partitions = Map(
-    "buiging" -> Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig"),
+    "buiging" -> Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig", "met-nt"),
     "conjtype" -> Set("expl", "verg", "neg", "betr", "kwal"),
     "wwtype"  -> Set("hoofd", "hulp-of-koppel"),
     "numtype" -> Set("onbep"),

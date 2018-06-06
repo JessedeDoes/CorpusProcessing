@@ -60,7 +60,7 @@ object ProcessFolder {
 
     if (input.isDirectory)
     {
-      input.listFiles().foreach(f =>
+      input.listFiles().toList.par.foreach(f =>
       {
         if (f.isFile && f.getName.endsWith(".xml"))
           processFolder(f, outputFolder, base)
@@ -69,6 +69,7 @@ object ProcessFolder {
       })
     } else if (input.isFile)
     {
+      Console.err.println(input.getName)
       val outFile = outputFolder + "/" + input.getName()
       base(input.getCanonicalPath, outFile)
     }
