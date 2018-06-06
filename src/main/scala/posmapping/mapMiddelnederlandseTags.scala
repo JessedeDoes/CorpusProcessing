@@ -20,15 +20,22 @@ object mapMiddelnederlandseTags {
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  val morfcodeAttribuut = "@pos"
-  val posAttribuut = "msd"
+  def mapTag(s: String) = tagMapping.getOrElse(s, s"MISSING_MAPPING($s)")
+
+  val morfcodeAttribuut = "@type"
+  val msdAttribuut = "msd"
 
   def updateTag(e: Elem):Elem =
   {
-    val morfcodes = (e \\ morfcodeAttribuut).text.split("\\+")
-    val cgnTag = morfcodes.map(tagMapping).mkString("+")
-    val newAttribute = new UnprefixedAttribute(posAttribuut, cgnTag, Null)
-    e.copy(attributes = e.attributes.filter(a => a.key != posAttribuut).append(newAttribute))
+    val morfcodes = (e \ morfcodeAttribuut).text.split("\\+")
+    val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(new UnprefixedAttribute("pos", f, Null))}
+
+    val cgnTag = morfcodes.map(mapTag).mkString("+")
+
+    val newMSDAttribute = new UnprefixedAttribute(msdAttribuut, cgnTag, Null)
+    val newatts0 = e.attributes.filter(a => a.key != msdAttribuut).append(newMSDAttribute)
+    val newAtts = if (newPoSAttribuut.isEmpty) newatts0 else newatts0.append(newPoSAttribuut.get)
+    e.copy(attributes = newAtts)
   }
 
   def fixEm(d: Elem):Elem = updateElement(d, _.label=="w", updateTag)

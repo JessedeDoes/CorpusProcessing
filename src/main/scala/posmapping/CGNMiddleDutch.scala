@@ -46,7 +46,7 @@ object CGNMiddleDutch
     "getal-n"  -> Set("mv-n", "zonder-n"),
 
     "lwtype"   -> Set("bep", "onbep"),
-    "conjtype" -> Set("neven", "onder",  /**/   "expl", "verg", "ontk", "betr", "kwal"),
+    "conjtype" -> Set("neven", "onder",  /**/   "expl", "verg", "neg", "betr", "kwal"),
     "ntype"    -> Set("eigen", "soort"), // /**/ "onduidelijk"),
     /**/ "wwtype"  -> Set("hoofd", "hulp-of-koppel"), // hk
     "numtype"  -> Set("hoofd", "rang",   /**/  "onbep"), // "onbep" ??
@@ -55,7 +55,7 @@ object CGNMiddleDutch
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl",
       "onbep", "pers", "pr", "recip", "vb", "vrag",   /**/     "refl-of-recip"),
 
-    /**/ "bwtype"   -> Set("alg", "aanw", "betr", "vrag", "onbep", "herv", "ontk"),
+    /**/ "bwtype"   -> Set("alg", "aanw", "betr", "vrag", "onbep", "herv", "neg"),
 
 
     "getal"    -> Set("ev", "mv", "getal"),
@@ -81,11 +81,11 @@ object CGNMiddleDutch
 
   def additions2partitions = Map(
     "buiging" -> Set("met-s-of-th", "met-t", "met-n", "met-r-of-re", "met-a", "overig"),
-    "conjtype" -> Set("expl", "verg", "ontk", "betr", "kwal"),
+    "conjtype" -> Set("expl", "verg", "neg", "betr", "kwal"),
     "wwtype"  -> Set("hoofd", "hulp-of-koppel"),
     "numtype" -> Set("onbep"),
     "vwtype" -> Set("refl-of-recip"),
-    "bwtype"   -> Set("alg", "aanw", "betr", "vrag", "onbep", "herv", "ontk"),
+    "bwtype"   -> Set("alg", "aanw", "betr", "vrag", "onbep", "herv", "neg"),
     "status" -> Set("ellips"),
     "wvorm" -> Set("part")
   )
