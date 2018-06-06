@@ -1,479 +1,479 @@
-000	N(soort,ev,zonder)
-001	N(soort,ev,met-e)
-002	N(soort,ev,met-s-of-th)
-003	N(soort,ev,met-t)
-004	N(soort,ev,met-n)
-005	N(soort,ev,met-r-of-re)
-006	N(soort,ev,met-a)
-009	N(soort,ev,overig)
-010	N(soort,mv,zonder)
-011	N(soort,mv,met-e)
-012	N(soort,mv,met-s-of-th)
-013	N(soort,mv,met-t)
-014	N(soort,mv,met-n)
-015	N(soort,mv,met-r-of-re)
-016	N(soort,mv,met-a)
-019	N(soort,mv,overig)
-020	N(eigen,zonder)
-021	N(eigen,met-e)
-022	N(eigen,met-s-of-th)
-023	N(eigen,met-t)
-024	N(eigen,met-n)
-025	N(eigen,met-r-of-re)
-026	N(eigen,met-a)
-029	N(eigen,overig)
-090	N(zonder)
-091	N(met-e)
-092	N(met-s-of-th)
-093	N(met-t)
-094	N(met-n)
-095	N(met-r-of-re)
-096	N(met-a)
-099	N(overig)
-100	ADJ(ev,zonder)
-101	ADJ(ev,met-e)
-102	ADJ(ev,met-s-of-th)
-103	ADJ(ev,met-t)
-104	ADJ(ev,met-n)
-105	ADJ(ev,met-r-of-re)
-106	ADJ(ev,met-a)
-109	ADJ(ev,overig)
-110	ADJ(mv,zonder)
-111	ADJ(mv,met-e)
-112	ADJ(mv,met-s-of-th)
-113	ADJ(mv,met-t)
-114	ADJ(mv,met-n)
-115	ADJ(mv,met-r-of-re)
-116	ADJ(mv,met-a)
-119	ADJ(mv,overig)
-190	ADJ(zonder)
-191	ADJ(met-e)
-192	ADJ(met-s-of-th)
-193	ADJ(met-t)
-194	ADJ(met-n)
-195	ADJ(met-r-of-re)
-196	ADJ(met-a)
-199	ADJ(overig)
-200	WW(hoofd,pv,tgw,zonder)
-201	WW(hoofd,pv,tgw,met-e)
-202	WW(hoofd,pv,tgw,met-s-of-th)
-203	WW(hoofd,pv,tgw,met-t)
-204	WW(hoofd,pv,tgw,met-n)
-205	WW(hoofd,pv,tgw,met-r-of-re)
-206	WW(hoofd,pv,tgw,met-a)
-209	WW(hoofd,pv,tgw,overig)
-210	WW(hulp-of-koppel,pv,tgw,zonder)
-211	WW(hulp-of-koppel,pv,tgw,met-e)
-212	WW(hulp-of-koppel,pv,tgw,met-s-of-th)
-213	WW(hulp-of-koppel,pv,tgw,met-t)
-214	WW(hulp-of-koppel,pv,tgw,met-n)
-215	WW(hulp-of-koppel,pv,tgw,met-r-of-re)
-216	WW(hulp-of-koppel,pv,tgw,met-a)
-219	WW(hulp-of-koppel,overig)
-220	WW(hoofd,pv,verl,zonder)
-221	WW(hoofd,pv,verl,met-e)
-222	WW(hoofd,pv,verl,met-s-of-th)
-223	WW(hoofd,pv,verl,met-t)
-224	WW(hoofd,pv,verl,met-n)
-225	WW(hoofd,pv,verl,met-r-of-re)
-226	WW(hoofd,pv,verl,met-a)
-229	WW(hoofd,pv,verl,overig)
-230	WW(hulp-of-koppel,pv,verl,zonder)
-231	WW(hulp-of-koppel,pv,verl,met-e)
-232	WW(hulp-of-koppel,pv,verl,met-s-of-th)
-233	WW(hulp-of-koppel,pv,verl,met-t)
-234	WW(hulp-of-koppel,pv,verl,met-n)
-235	WW(hulp-of-koppel,pv,verl,met-r-of-re)
-236	WW(hulp-of-koppel,pv,verl,met-a)
-239	WW(hulp-of-koppel,pv,verl,overig)
-240	WW(pv,imp,zonder)
-241	WW(pv,imp,met-e)
-242	WW(pv,imp,met-s-of-th)
-243	WW(pv,imp,met-t)
-244	WW(pv,imp,met-n)
-245	WW(pv,imp,met-r-of-re)
-246	WW(pv,imp,met-a)
-249	WW(pv,imp,overig)
-250	WW(hoofd,inf,zonder)
-251	WW(hoofd,inf,met-e)
-252	WW(hoofd,inf,met-s-of-th)
-253	WW(hoofd,inf,met-t)
-254	WW(hoofd,inf,met-n)
-255	WW(hoofd,inf,met-r-of-re)
-256	WW(hoofd,inf,met-a)
-259	WW(hoofd,inf,overig)
-260	WW(hulp-of-koppel,inf,zonder)
-261	WW(hulp-of-koppel,inf,met-e)
-262	WW(hulp-of-koppel,inf,met-s-of-th)
-263	WW(hulp-of-koppel,inf,met-t)
-264	WW(hulp-of-koppel,inf,met-n)
-265	WW(hulp-of-koppel,inf,met-r-of-re)
-266	WW(hulp-of-koppel,inf,met-a)
-269	WW(hulp-of-koppel,inf,overig)
-270	WW(hoofd,part,zonder)
-271	WW(hoofd,part,met-e)
-272	WW(hoofd,part,met-s-of-th)
-273	WW(hoofd,part,met-t)
-274	WW(hoofd,part,met-n)
-275	WW(hoofd,part,met-r-of-re)
-276	WW(hoofd,part,met-a)
-279	WW(hoofd,part,overig)
-280	WW(hulp-of-koppel,part,zonder)
-281	WW(hulp-of-koppel,part,met-e)
-282	WW(hulp-of-koppel,part,met-s-of-th)
-283	WW(hulp-of-koppel,part,met-t)
-284	WW(hulp-of-koppel,part,met-n)
-285	WW(hulp-of-koppel,part,met-r-of-re)
-286	WW(hulp-of-koppel,part,met-a)
-289	WW(hulp-of-koppel,part,overig)
-290	WW(zonder)
-291	WW(met-e)
-292	WW(met-s-of-th)
-293	WW(met-t)
-294	WW(met-n)
-295	WW(met-r-of-re)
-296	WW(met-a)
-299	WW(overig)
-300	TW(hoofd,zonder)
-301	TW(hoofd,met-e)
-302	TW(hoofd,met-s-of-th)
-303	TW(hoofd,met-t)
-304	TW(hoofd,met-n)
-305	TW(hoofd,met-r-of-re)
-306	TW(hoofd,met-a)
-309	TW(hoofd,overig)
-310	TW(rang,zonder)
-311	TW(rang,met-e)
-312	TW(rang,met-s-of-th)
-313	TW(rang,met-t)
-314	TW(rang,met-n)
-315	TW(rang,met-r-of-re)
-316	TW(rang,met-a)
-319	TW(rang,overig)
-320	VNW(onbep,zonder)
-321	VNW(onbep,met-e)
-322	VNW(onbep,met-s-of-th)
-323	VNW(onbep,met-t)
-324	VNW(onbep,met-n)
-325	VNW(onbep,met-r-of-re)
-326	VNW(onbep,met-a)
-329	VNW(onbep,overig)
-390	TW(zonder)
-391	TW(met-e)
-392	TW(met-s-of-th)
-393	TW(met-t)
-394	TW(met-n)
-395	TW(met-r-of-re)
-396	TW(met-a)
-399	TW(overig)
-401	VNW(pers,1,ev)
-402	VNW(pers,2,ev)
-403	VNW(pers,3,ev)
-404	VNW(pers,1,mv)
-405	VNW(pers,2,mv)
-406	VNW(pers,3,mv)
-409	VNW(overig)
-410	VNW(aanw,zonder)
-411	VNW(aanw,met-e)
-412	VNW(aanw,met-s-of-th)
-413	VNW(aanw,met-t)
-414	VNW(aanw,met-n)
-415	VNW(aanw,met-r-of-re)
-416	VNW(aanw,met-a)
-419	VNW(aanw,overig)
-420	VNW(betr,zonder)
-421	VNW(betr,met-e)
-422	VNW(betr,met-s-of-th)
-423	VNW(betr,met-t)
-424	VNW(betr,met-n)
-425	VNW(betr,met-r-of-re)
-426	VNW(betr,met-a)
-429	VNW(betr,overig)
-430	VNW(vb,zonder)
-431	VNW(vb,met-e)
-432	VNW(vb,met-s-of-th)
-433	VNW(vb,met-t)
-434	VNW(vb,met-n)
-435	VNW(vb,met-r-of-re)
-436	VNW(vb,met-a)
-439	VNW(vb,overig)
-440	VNW(onbep,zonder)
-441	VNW(onbep,met-e)
-442	VNW(onbep,met-s-of-th)
-443	VNW(onbep,met-t)
-444	VNW(onbep,met-n)
-445	VNW(onbep,met-r-of-re)
-446	VNW(onbep,met-a)
-449	VNW(onbep,overig)
-450	VNW(bez,zonder)
-451	VNW(bez,met-e)
-452	VNW(bez,met-s-of-th)
-453	VNW(bez,met-t)
-454	VNW(bez,met-n)
-455	VNW(bez,met-r-of-re)
-456	VNW(bez,met-a)
-459	VNW(bez,overig)
-460	VNW(refl-of-recip)
-461	VNW(refl-of-recip,1,ev)
-462	VNW(refl-of-recip,2,ev)
-463	VNW(refl-of-recip,3,ev)
-464	VNW(refl-of-recip,1,mv)
-465	VNW(refl-of-recip,2,mv)
-466	VNW(refl-of-recip,3,mv)
-469	VNW(refl-of-recip)
-470	LID(bep,zonder)
-471	LID(bep,met-e)
-472	LID(bep,met-s-of-th)
-473	LID(bep,met-t)
-474	LID(bep,met-n)
-475	LID(bep,met-r-of-re)
-476	LID(bep,met-a)
-479	LID(bep,overig)
-480	LID(onbep,zonder)
-481	LID(onbep,met-e)
-482	LID(onbep,met-s-of-th)
-483	LID(onbep,met-t)
-484	LID(onbep,met-n)
-485	LID(onbep,met-r-of-re)
-486	LID(onbep,met-a)
-489	LID(onbep,overig)
-490	VNW(zonder)
-491	VNW(met-e)
-492	VNW(met-s-of-th)
-493	VNW(met-t)
-494	VNW(met-n)
-495	VNW(met-r-of-re)
-496	VNW(met-a)
-499	VNW(overig)
-500	BW(alg,zonder)
-501	BW(alg,met-e)
-502	BW(alg,met-s-of-th)
-503	BW(alg,met-t)
-504	BW(alg,met-n)
-505	BW(alg,met-r-of-re)
-506	BW(alg,met-a)
-509	BW(alg,overig)
-510	BW(aanw,zonder)
-511	BW(aanw,met-e)
-512	BW(aanw,met-s-of-th)
-513	BW(aanw,met-t)
-514	BW(aanw,met-n)
-515	BW(aanw,met-r-of-re)
-516	BW(aanw,met-a)
-519	BW(aanw,overig)
-520	BW(betr,zonder)
-521	BW(betr,met-e)
-522	BW(betr,met-s-of-th)
-523	BW(betr,met-t)
-524	BW(betr,met-n)
-525	BW(betr,met-r-of-re)
-526	BW(betr,met-a)
-529	BW(betr,overig)
-530	BW(vrag,zonder)
-531	BW(vrag,met-e)
-532	BW(vrag,met-e)
-533	BW(vrag,met-e)
-534	BW(vrag,met-e)
-535	BW(vrag,met-e)
-536	BW(vrag,met-a)
-539	BW(vrag,overig)
-540	BW(onbep,zonder)
-541	BW(onbep,met-e)
-542	BW(onbep,met-s-of-th)
-543	BW(onbep,met-t)
-544	BW(onbep,met-n)
-545	BW(onbep,met-r-of-re)
-546	BW(onbep,met-a)
-549	BW(onbep,overig)
-550	BW(herv,zonder)
-551	BW(herv,met-e)
-552	BW(herv,met-s-of-th)
-553	BW(herv,met-t)
-554	BW(herv,met-n)
-555	BW(herv,met-r-of-re)
-556	BW(herv,met-a)
-559	BW(herv,overig)
-560	BW(neg,zonder)
-561	BW(neg,met-e)
-562	BW(neg,met-s-of-th)
-563	BW(neg,met-t)
-564	BW(neg,met-n)
-565	BW(neg,met-r-of-re)
-566	BW(neg,met-a)
-569	BW(neg,overig)
-590	BW(zonder)
-591	BW(met-e)
-592	BW(met-s-of-th)
-593	BW(met-t)
-594	BW(met-n)
-595	BW(met-r-of-re)
-596	BW(met-a)
-599	BW(overig)
-600	BW(adv-pron,alg,zonder)
-601	BW(adv-pron,alg,met-e)
-602	BW(adv-pron,alg,met-s-of-th)
-603	BW(adv-pron,alg,met-t)
-604	BW(adv-pron,alg,met-n)
-605	BW(adv-pron,alg,met-r-of-re)
-606	BW(adv-pron,alg,met-a)
-609	BW(adv-pron,alg,overig)
-610	BW(adv-pron,aanw,zonder)
-611	BW(adv-pron,aanw,met-e)
-612	BW(adv-pron,aanw,met-s-of-th)
-613	BW(adv-pron,aanw,met-t)
-614	BW(adv-pron,aanw,met-n)
-615	BW(adv-pron,aanw,met-r-of-re)
-616	BW(adv-pron,aanw,met-a)
-619	BW(adv-pron,aanw,overig)
-620	BW(adv-pron,betr,zonder)
-621	BW(adv-pron,betr,met-e)
-622	BW(adv-pron,betr,met-s-of-th)
-623	BW(adv-pron,betr,met-t)
-624	BW(adv-pron,betr,met-n)
-625	BW(adv-pron,betr,met-r-of-re)
-626	BW(adv-pron,betr,met-a)
-629	BW(adv-pron,betr,overig)
-630	BW(adv-pron,vb,zonder)
-631	BW(adv-pron,vb,met-e)
-632	BW(adv-pron,vb,met-s-of-th)
-633	BW(adv-pron,vb,met-t)
-634	BW(adv-pron,vb,met-e)
-635	BW(adv-pron,vb,met-n)
-636	BW(adv-pron,vb,met-a)
-639	BW(adv-pron,vb,overig)
-640	BW(adv-pron,onbep,zonder)
-641	BW(adv-pron,onbep,met-e)
-642	BW(adv-pron,onbep,met-s-of-th)
-643	BW(adv-pron,onbep,met-t)
-644	BW(adv-pron,onbep,met-n)
-645	BW(adv-pron,onbep,met-r-of-re)
-646	BW(adv-pron,onbep,met-a)
-649	BW(adv-pron,onbep,overig)
-650	BW(adv-pron,ellips,zonder)
-651	BW(adv-pron,ellips,met-e)
-652	BW(adv-pron,ellips,met-s-of-th)
-653	BW(adv-pron,ellips,met-t)
-654	BW(adv-pron,ellips,met-e)
-655	BW(adv-pron,ellips,met-n)
-656	BW(adv-pron,ellips,met-a)
-659	BW(adv-pron,ellips,overig)
-690	BW(adv-pron,zonder)
-691	BW(adv-pron,met-e)
-692	BW(adv-pron,met-s-of-th)
-693	BW(adv-pron,met-t)
-694	BW(adv-pron,met-n)
-695	BW(adv-pron,met-r-of-re)
-696	BW(adv-pron,met-a)
-699	BW(adv-pron,overig)
-700	VZ(zonder)
-701	VZ(met-e)
-702	VZ(met-s-of-th)
-703	VZ(met-t)
-704	VZ(met-n)
-705	VZ(met-r-of-re)
-706	VZ(met-a)
-709	VZ(overig)
-790	VZ(zonder)
-791	VZ(met-e)
-792	VZ(met-s-of-th)
-793	VZ(met-t)
-794	VZ(met-n)
-795	VZ(met-r-of-re)
-796	VZ(met-a)
-799	VZ(overig)
-800	VG(neven,zonder)
-801	VG(neven,met-e)
-802	VG(neven,met-s-of-th)
-803	VG(neven,met-t)
-804	VG(neven,met-n)
-805	VG(neven,met-r-of-re)
-806	VG(neven,met-a)
-809	VG(neven,overig)
-810	VG(onder,zonder)
-811	VG(onder,met-e)
-812	VG(onder,met-s-of-th)
-813	VG(onder,met-t)
-814	VG(onder,met-n)
-815	VG(onder,met-r-of-re)
-816	VG(onder,met-a)
-819	VG(onder,overig)
-820	VG(verg,zonder)
-821	VG(verg,met-e)
-822	VG(verg,met-s-of-th)
-823	VG(verg,met-t)
-824	VG(verg,met-n)
-825	VG(verg,met-r-of-re)
-826	VG(verg,met-a)
-829	VG(verg,overig)
-830	VG(neg,zonder)
-831	VG(neg,met-e)
-832	VG(neg,met-s-of-th)
-833	VG(neg,met-t)
-834	VG(neg,met-n)
-835	VG(neg,met-r-of-re)
-836	VG(neg,met-a)
-839	VG(neg,overig)
-840	VG(expl,zonder)
-841	VG(expl,met-e)
-842	VG(expl,met-s-of-th)
-843	VG(expl,met-t)
-844	VG(expl,met-n)
-845	VG(expl,met-r-of-re)
-846	VG(expl,met-a)
-849	VG(expl,overig)
-850	VG(betr,zonder)
-851	VG(betr,met-e)
-852	VG(betr,met-s-of-th)
-853	VG(betr,met-t)
-854	VG(betr,met-n)
-855	VG(betr,met-r-of-re)
-856	VG(betr,met-a)
-859	VG(betr,overig)
-860	VG(kwal,zonder)
-861	VG(kwal,met-e)
-862	VG(kwal,met-s-of-th)
-863	VG(kwal,met-t)
-864	VG(kwal,met-n)
-865	VG(kwal,met-r-of-re)
-866	VG(kwal,met-a)
-869	VG(kwal,overig)
-870	VG(onder,zonder)
-871	VG(onder,met-e)
-872	VG(onder,met-s-of-th)
-873	VG(onder,met-t)
-874	VG(onder,met-n)
-875	VG(onder,met-r-of-re)
-876	VG(onder,met-a)
-879	VG(onder,overig)
-890	VG(zonder)
-891	VG(met-e)
-892	VG(met-s-of-th)
-893	VG(met-t)
-894	VG(met-n)
-895	VG(met-r-of-re)
-896	VG(met-a)
-899	VG(overig)
-900	SPEC(zonder)
-901	SPEC(met-e)
-902	SPEC(met-s-of-th)
-903	SPEC(met-t)
-904	SPEC(met-n)
-905	SPEC(met-r-of-re)
-906	SPEC(met-a)
-909	SPEC(overig)
-910	TSW(zonder)
-911	TSW(met-e)
-912	TSW(met-s-of-th)
-913	TSW(met-t)
-914	TSW(met-n)
-915	TSW(met-r-of-re)
-916	TSW(met-a)
-919	TSW(overig)
-990	SPEC(zonder)
-991	SPEC(met-e)
-992	SPEC(met-s-of-th)
-993	SPEC(met-t)
-994	SPEC(met-n)
-995	SPEC(met-r-of-re)
-996	SPEC(met-a)
-999	SPEC(overig)
+000	N(soort,ev,zonder)	zelfstandig naamwoord enkelvoud, geen uitgang
+001	N(soort,ev,met-e)	zelfstandig naamwoord enkelvoud, uitgang -e
+002	N(soort,ev,met-s-of-th)	zelfstandig naamwoord enkelvoud, uitgang -s/-th
+003	N(soort,ev,met-t)	zelfstandig naamwoord enkelvoud, uitgang -t
+004	N(soort,ev,met-n)	zelfstandig naamwoord enkelvoud, uitgang -n
+005	N(soort,ev,met-r-of-re)	zelfstandig naamwoord enkelvoud, uitgang -r/-re
+006	N(soort,ev,met-a)	zelfstandig naamwoord enkelvoud, uitgang -a
+009	N(soort,ev,overig)	zelfstandig naamwoord enkelvoud, uitgang latijn, onduidelijk of evident fout geschreven
+010	N(soort,mv,zonder)	zelfstandig naamwoord meervoud, geen uitgang
+011	N(soort,mv,met-e)	zelfstandig naamwoord meervoud, uitgang -e
+012	N(soort,mv,met-s-of-th)	zelfstandig naamwoord meervoud, uitgang -s/-th
+013	N(soort,mv,met-t)	zelfstandig naamwoord meervoud, uitgang -t
+014	N(soort,mv,met-n)	zelfstandig naamwoord meervoud, uitgang -n
+015	N(soort,mv,met-r-of-re)	zelfstandig naamwoord meervoud, uitgang -r/-re
+016	N(soort,mv,met-a)	zelfstandig naamwoord meervoud, uitgang -a
+019	N(soort,mv,overig)	zelfstandig naamwoord meervoud, uitgang latijn, onduidelijk of evident fout geschreven
+020	N(eigen,zonder)	eigennaam, geen uitgang
+021	N(eigen,met-e)	eigennaam, uitgang -e
+022	N(eigen,met-s-of-th)	eigennaam, uitgang -s/-th
+023	N(eigen,met-t)	eigennaam, uitgang -t
+024	N(eigen,met-n)	eigennaam, uitgang -n
+025	N(eigen,met-r-of-re)	eigennaam, uitgang -r/-re
+026	N(eigen,met-a)	eigennaam, uitgang -a
+029	N(eigen,overig)	eigennaam, uitgang latijn, onduidelijk of evident fout geschreven
+090	N(zonder)	zelfstandig naamwoord probleemgeval, geen uitgang
+091	N(met-e)	zelfstandig naamwoord probleemgeval, uitgang -e
+092	N(met-s-of-th)	zelfstandig naamwoord probleemgeval, uitgang -s/-th
+093	N(met-t)	zelfstandig naamwoord probleemgeval, uitgang -t
+094	N(met-n)	zelfstandig naamwoord probleemgeval, uitgang -n
+095	N(met-r-of-re)	zelfstandig naamwoord probleemgeval, uitgang -r/-re
+096	N(met-a)	zelfstandig naamwoord probleemgeval, uitgang -a
+099	N(overig)	zelfstandig naamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+100	ADJ(ev,zonder)	bijvoeglijk naamwoord enkelvoud, geen uitgang
+101	ADJ(ev,met-e)	bijvoeglijk naamwoord enkelvoud, uitgang -e
+102	ADJ(ev,met-s-of-th)	bijvoeglijk naamwoord enkelvoud, uitgang -s/-th
+103	ADJ(ev,met-t)	bijvoeglijk naamwoord enkelvoud, uitgang -t
+104	ADJ(ev,met-n)	bijvoeglijk naamwoord enkelvoud, uitgang -n
+105	ADJ(ev,met-r-of-re)	bijvoeglijk naamwoord enkelvoud, uitgang -r/-re
+106	ADJ(ev,met-a)	bijvoeglijk naamwoord enkelvoud, uitgang -a
+109	ADJ(ev,overig)	bijvoeglijk naamwoord enkelvoud, uitgang latijn, onduidelijk of evident fout geschreven
+110	ADJ(mv,zonder)	bijvoeglijk naamwoord meervoud, geen uitgang
+111	ADJ(mv,met-e)	bijvoeglijk naamwoord meervoud, uitgang -e
+112	ADJ(mv,met-s-of-th)	bijvoeglijk naamwoord meervoud, uitgang -s/-th
+113	ADJ(mv,met-t)	bijvoeglijk naamwoord meervoud, uitgang -t
+114	ADJ(mv,met-n)	bijvoeglijk naamwoord meervoud, uitgang -n
+115	ADJ(mv,met-r-of-re)	bijvoeglijk naamwoord meervoud, uitgang -r/-re
+116	ADJ(mv,met-a)	bijvoeglijk naamwoord meervoud, uitgang -a
+119	ADJ(mv,overig)	bijvoeglijk naamwoord meervoud, uitgang latijn, onduidelijk of evident fout geschreven
+190	ADJ(zonder)	bijvoeglijk naamwoord probleemgeval, geen uitgang
+191	ADJ(met-e)	bijvoeglijk naamwoord probleemgeval, uitgang -e
+192	ADJ(met-s-of-th)	bijvoeglijk naamwoord probleemgeval, uitgang -s/-th
+193	ADJ(met-t)	bijvoeglijk naamwoord probleemgeval, uitgang -t
+194	ADJ(met-n)	bijvoeglijk naamwoord probleemgeval, uitgang -n
+195	ADJ(met-r-of-re)	bijvoeglijk naamwoord probleemgeval, uitgang -r/-re
+196	ADJ(met-a)	bijvoeglijk naamwoord probleemgeval, uitgang -a
+199	ADJ(overig)	bijvoeglijk naamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+200	WW(hoofd,pv,tgw,zonder)	persoonsvorm o.t.t. (zelfst.ww.), geen uitgang
+201	WW(hoofd,pv,tgw,met-e)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -e
+202	WW(hoofd,pv,tgw,met-s-of-th)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -s/-th
+203	WW(hoofd,pv,tgw,met-t)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -t
+204	WW(hoofd,pv,tgw,met-n)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -n
+205	WW(hoofd,pv,tgw,met-r-of-re)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -r/-re
+206	WW(hoofd,pv,tgw,met-a)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -a
+209	WW(hoofd,pv,tgw,overig)	persoonsvorm o.t.t. (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+210	WW(hulp-of-koppel,pv,tgw,zonder)	persoonsvorm o.t.t. (koppel-/hulpww.), geen uitgang
+211	WW(hulp-of-koppel,pv,tgw,met-e)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -e
+212	WW(hulp-of-koppel,pv,tgw,met-s-of-th)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -s/-th
+213	WW(hulp-of-koppel,pv,tgw,met-t)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -t
+214	WW(hulp-of-koppel,pv,tgw,met-n)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -n
+215	WW(hulp-of-koppel,pv,tgw,met-r-of-re)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -r/-re
+216	WW(hulp-of-koppel,pv,tgw,met-a)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang -a
+219	WW(hulp-of-koppel,overig)	persoonsvorm o.t.t. (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+220	WW(hoofd,pv,verl,zonder)	persoonsvorm o.v.t. (zelfst.ww.), geen uitgang
+221	WW(hoofd,pv,verl,met-e)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -e
+222	WW(hoofd,pv,verl,met-s-of-th)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -s/-th
+223	WW(hoofd,pv,verl,met-t)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -t
+224	WW(hoofd,pv,verl,met-n)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -n
+225	WW(hoofd,pv,verl,met-r-of-re)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -r/-re
+226	WW(hoofd,pv,verl,met-a)	persoonsvorm o.v.t. (zelfst.ww.), uitgang -a
+229	WW(hoofd,pv,verl,overig)	persoonsvorm o.v.t. (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+230	WW(hulp-of-koppel,pv,verl,zonder)	persoonsvorm o.v.t. (koppel-/hulpww.), geen uitgang
+231	WW(hulp-of-koppel,pv,verl,met-e)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -e
+232	WW(hulp-of-koppel,pv,verl,met-s-of-th)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -s/-th
+233	WW(hulp-of-koppel,pv,verl,met-t)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -t
+234	WW(hulp-of-koppel,pv,verl,met-n)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -n
+235	WW(hulp-of-koppel,pv,verl,met-r-of-re)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -r/-re
+236	WW(hulp-of-koppel,pv,verl,met-a)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang -a
+239	WW(hulp-of-koppel,pv,verl,overig)	persoonsvorm o.v.t. (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+240	WW(pv,imp,zonder)	imperatief, geen uitgang
+241	WW(pv,imp,met-e)	imperatief, uitgang -e
+242	WW(pv,imp,met-s-of-th)	imperatief, uitgang -s/-th
+243	WW(pv,imp,met-t)	imperatief, uitgang -t
+244	WW(pv,imp,met-n)	imperatief, uitgang -n
+245	WW(pv,imp,met-r-of-re)	imperatief, uitgang -r/-re
+246	WW(pv,imp,met-a)	imperatief, uitgang -a
+249	WW(pv,imp,overig)	imperatief, uitgang latijn, onduidelijk of evident fout geschreven
+250	WW(hoofd,inf,zonder)	infinitief (zelfst.ww.), geen uitgang
+251	WW(hoofd,inf,met-e)	infinitief (zelfst.ww.), uitgang -e
+252	WW(hoofd,inf,met-s-of-th)	infinitief (zelfst.ww.), uitgang -s/-th
+253	WW(hoofd,inf,met-t)	infinitief (zelfst.ww.), uitgang -t
+254	WW(hoofd,inf,met-n)	infinitief (zelfst.ww.), uitgang -n
+255	WW(hoofd,inf,met-r-of-re)	infinitief (zelfst.ww.), uitgang -r/-re
+256	WW(hoofd,inf,met-a)	infinitief (zelfst.ww.), uitgang -a
+259	WW(hoofd,inf,overig)	infinitief (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+260	WW(hulp-of-koppel,inf,zonder)	infinitief (koppel-/hulpww.), geen uitgang
+261	WW(hulp-of-koppel,inf,met-e)	infinitief (koppel-/hulpww.), uitgang -e
+262	WW(hulp-of-koppel,inf,met-s-of-th)	infinitief (koppel-/hulpww.), uitgang -s/-th
+263	WW(hulp-of-koppel,inf,met-t)	infinitief (koppel-/hulpww.), uitgang -t
+264	WW(hulp-of-koppel,inf,met-n)	infinitief (koppel-/hulpww.), uitgang -n
+265	WW(hulp-of-koppel,inf,met-r-of-re)	infinitief (koppel-/hulpww.), uitgang -r/-re
+266	WW(hulp-of-koppel,inf,met-a)	infinitief (koppel-/hulpww.), uitgang -a
+269	WW(hulp-of-koppel,inf,overig)	infinitief (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+270	WW(hoofd,part,zonder)	deelwoord (zelfst.ww.), geen uitgang
+271	WW(hoofd,part,met-e)	deelwoord (zelfst.ww.), uitgang -e
+272	WW(hoofd,part,met-s-of-th)	deelwoord (zelfst.ww.), uitgang -s/-th
+273	WW(hoofd,part,met-t)	deelwoord (zelfst.ww.), uitgang -t
+274	WW(hoofd,part,met-n)	deelwoord (zelfst.ww.), uitgang -n
+275	WW(hoofd,part,met-r-of-re)	deelwoord (zelfst.ww.), uitgang -r/-re
+276	WW(hoofd,part,met-a)	deelwoord (zelfst.ww.), uitgang -a
+279	WW(hoofd,part,overig)	deelwoord (zelfst.ww.), uitgang latijn, onduidelijk of evident fout geschreven
+280	WW(hulp-of-koppel,part,zonder)	deelwoord (koppel-/hulpww.), geen uitgang
+281	WW(hulp-of-koppel,part,met-e)	deelwoord (koppel-/hulpww.), uitgang -e
+282	WW(hulp-of-koppel,part,met-s-of-th)	deelwoord (koppel-/hulpww.), uitgang -s/-th
+283	WW(hulp-of-koppel,part,met-t)	deelwoord (koppel-/hulpww.), uitgang -t
+284	WW(hulp-of-koppel,part,met-n)	deelwoord (koppel-/hulpww.), uitgang -n
+285	WW(hulp-of-koppel,part,met-r-of-re)	deelwoord (koppel-/hulpww.), uitgang -r/-re
+286	WW(hulp-of-koppel,part,met-a)	deelwoord (koppel-/hulpww.), uitgang -a
+289	WW(hulp-of-koppel,part,overig)	deelwoord (koppel-/hulpww.), uitgang latijn, onduidelijk of evident fout geschreven
+290	WW(zonder)	werkwoord probleemgeval, geen uitgang
+291	WW(met-e)	werkwoord probleemgeval, uitgang -e
+292	WW(met-s-of-th)	werkwoord probleemgeval, uitgang -s/-th
+293	WW(met-t)	werkwoord probleemgeval, uitgang -t
+294	WW(met-n)	werkwoord probleemgeval, uitgang -n
+295	WW(met-r-of-re)	werkwoord probleemgeval, uitgang -r/-re
+296	WW(met-a)	werkwoord probleemgeval, uitgang -a
+299	WW(overig)	werkwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+300	TW(hoofd,zonder)	hoofdtelwoord, geen uitgang
+301	TW(hoofd,met-e)	hoofdtelwoord, uitgang -e
+302	TW(hoofd,met-s-of-th)	hoofdtelwoord, uitgang -s/-th
+303	TW(hoofd,met-t)	hoofdtelwoord, uitgang -t
+304	TW(hoofd,met-n)	hoofdtelwoord, uitgang -n
+305	TW(hoofd,met-r-of-re)	hoofdtelwoord, uitgang -r/-re
+306	TW(hoofd,met-a)	hoofdtelwoord, uitgang -a
+309	TW(hoofd,overig)	hoofdtelwoord, uitgang latijn, onduidelijk of evident fout geschreven
+310	TW(rang,zonder)	rangtelwoord, geen uitgang
+311	TW(rang,met-e)	rangtelwoord, uitgang -e
+312	TW(rang,met-s-of-th)	rangtelwoord, uitgang -s/-th
+313	TW(rang,met-t)	rangtelwoord, uitgang -t
+314	TW(rang,met-n)	rangtelwoord, uitgang -n
+315	TW(rang,met-r-of-re)	rangtelwoord, uitgang -r/-re
+316	TW(rang,met-a)	rangtelwoord, uitgang -a
+319	TW(rang,overig)	rangtelwoord, uitgang latijn, onduidelijk of evident fout geschreven
+320	VNW(onbep,zonder)	onbepaald telwoord, geen uitgang
+321	VNW(onbep,met-e)	onbepaald telwoord, uitgang -e
+322	VNW(onbep,met-s-of-th)	onbepaald telwoord, uitgang -s/-th
+323	VNW(onbep,met-t)	onbepaald telwoord, uitgang -t
+324	VNW(onbep,met-n)	onbepaald telwoord, uitgang -n
+325	VNW(onbep,met-r-of-re)	onbepaald telwoord, uitgang -r/-re
+326	VNW(onbep,met-a)	onbepaald telwoord, uitgang -a
+329	VNW(onbep,overig)	onbepaald telwoord, uitgang latijn, onduidelijk of evident fout geschreven
+390	TW(zonder)	telwoord probleemgeval, geen uitgang
+391	TW(met-e)	telwoord probleemgeval, uitgang -e
+392	TW(met-s-of-th)	telwoord probleemgeval, uitgang -s/-th
+393	TW(met-t)	telwoord probleemgeval, uitgang -t
+394	TW(met-n)	telwoord probleemgeval, uitgang -n
+395	TW(met-r-of-re)	telwoord probleemgeval, uitgang -r/-re
+396	TW(met-a)	telwoord probleemgeval, uitgang -a
+399	TW(overig)	telwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+401	VNW(pers,1,ev)	persoonlijk voornaamwoord, 1e persoon enkelvoud
+402	VNW(pers,2,ev)	persoonlijk voornaamwoord, 2e persoon enkelvoud
+403	VNW(pers,3,ev)	persoonlijk voornaamwoord, 3e persoon enkelvoud
+404	VNW(pers,1,mv)	persoonlijk voornaamwoord, 1e persoon meervoud
+405	VNW(pers,2,mv)	persoonlijk voornaamwoord, 2e persoon meervoud
+406	VNW(pers,3,mv)	persoonlijk voornaamwoord, 3e persoon meervoud
+409	VNW(overig)	probleemgeval
+410	VNW(aanw,zonder)	aanwijzend voornaamwoord, geen uitgang
+411	VNW(aanw,met-e)	aanwijzend voornaamwoord, uitgang -e
+412	VNW(aanw,met-s-of-th)	aanwijzend voornaamwoord, uitgang -s/-th
+413	VNW(aanw,met-t)	aanwijzend voornaamwoord, uitgang -t
+414	VNW(aanw,met-n)	aanwijzend voornaamwoord, uitgang -n
+415	VNW(aanw,met-r-of-re)	aanwijzend voornaamwoord, uitgang -r/-re
+416	VNW(aanw,met-a)	aanwijzend voornaamwoord, uitgang -a
+419	VNW(aanw,overig)	aanwijzend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+420	VNW(betr,zonder)	betrekkelijk voornaamwoord, geen uitgang
+421	VNW(betr,met-e)	betrekkelijk voornaamwoord, uitgang -e
+422	VNW(betr,met-s-of-th)	betrekkelijk voornaamwoord, uitgang -s/-th
+423	VNW(betr,met-t)	betrekkelijk voornaamwoord, uitgang -t
+424	VNW(betr,met-n)	betrekkelijk voornaamwoord, uitgang -n
+425	VNW(betr,met-r-of-re)	betrekkelijk voornaamwoord, uitgang -r/-re
+426	VNW(betr,met-a)	betrekkelijk voornaamwoord, uitgang -a
+429	VNW(betr,overig)	betrekkelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+430	VNW(vb,zonder)	vragend voornaamwoord, geen uitgang
+431	VNW(vb,met-e)	vragend voornaamwoord, uitgang -e
+432	VNW(vb,met-s-of-th)	vragend voornaamwoord, uitgang -s/-th
+433	VNW(vb,met-t)	vragend voornaamwoord, uitgang -t
+434	VNW(vb,met-n)	vragend voornaamwoord, uitgang -n
+435	VNW(vb,met-r-of-re)	vragend voornaamwoord, uitgang -r/-re
+436	VNW(vb,met-a)	vragend voornaamwoord, uitgang -a
+439	VNW(vb,overig)	vragend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+440	VNW(onbep,zonder)	onbepaald voornaamwoord, geen uitgang
+441	VNW(onbep,met-e)	onbepaald voornaamwoord, uitgang -e
+442	VNW(onbep,met-s-of-th)	onbepaald voornaamwoord, uitgang -s/-th
+443	VNW(onbep,met-t)	onbepaald voornaamwoord, uitgang -t
+444	VNW(onbep,met-n)	onbepaald voornaamwoord, uitgang -n
+445	VNW(onbep,met-r-of-re)	onbepaald voornaamwoord, uitgang -r/-re
+446	VNW(onbep,met-a)	onbepaald voornaamwoord, uitgang -a
+449	VNW(onbep,overig)	onbepaald voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+450	VNW(bez,zonder)	bezittelijk voornaamwoord, geen uitgang
+451	VNW(bez,met-e)	bezittelijk voornaamwoord, uitgang -e
+452	VNW(bez,met-s-of-th)	bezittelijk voornaamwoord, uitgang -s/-th
+453	VNW(bez,met-t)	bezittelijk voornaamwoord, uitgang -t
+454	VNW(bez,met-n)	bezittelijk voornaamwoord, uitgang -n
+455	VNW(bez,met-r-of-re)	bezittelijk voornaamwoord, uitgang -r/-re
+456	VNW(bez,met-a)	bezittelijk voornaamwoord, uitgang -a
+459	VNW(bez,overig)	bezittelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+460	VNW(refl-of-recip)	wederkerend/wederkerig voornaamwoord
+461	VNW(refl-of-recip,1,ev)	wederkerend/wederkerig voornaamwoord, 1e persoon enkelvoud
+462	VNW(refl-of-recip,2,ev)	wederkerend/wederkerig voornaamwoord, 2e persoon enkelvoud
+463	VNW(refl-of-recip,3,ev)	wederkerend/wederkerig voornaamwoord, 3e persoon enkelvoud
+464	VNW(refl-of-recip,1,mv)	wederkerend/wederkerig voornaamwoord, 1e persoon meervoud
+465	VNW(refl-of-recip,2,mv)	wederkerend/wederkerig voornaamwoord, 2e persoon meervoud
+466	VNW(refl-of-recip,3,mv)	wederkerend/wederkerig voornaamwoord, 3e persoon meervoud
+469	VNW(refl-of-recip)	probleemgeval
+470	LID(bep,zonder)	bepaald lidwoord, geen uitgang
+471	LID(bep,met-e)	bepaald lidwoord, uitgang -e
+472	LID(bep,met-s-of-th)	bepaald lidwoord, uitgang -s/-th
+473	LID(bep,met-t)	bepaald lidwoord, uitgang -t
+474	LID(bep,met-n)	bepaald lidwoord, uitgang -n
+475	LID(bep,met-r-of-re)	bepaald lidwoord, uitgang -r/-re
+476	LID(bep,met-a)	bepaald lidwoord, uitgang -a
+479	LID(bep,overig)	bepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+480	LID(onbep,zonder)	onbepaald lidwoord, geen uitgang
+481	LID(onbep,met-e)	onbepaald lidwoord, uitgang -e
+482	LID(onbep,met-s-of-th)	onbepaald lidwoord, uitgang -s/-th
+483	LID(onbep,met-t)	onbepaald lidwoord, uitgang -t
+484	LID(onbep,met-n)	onbepaald lidwoord, uitgang -n
+485	LID(onbep,met-r-of-re)	onbepaald lidwoord, uitgang -r/-re
+486	LID(onbep,met-a)	onbepaald lidwoord, uitgang -a
+489	LID(onbep,overig)	onbepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+490	VNW(zonder)	voornaamwoord probleemgeval, geen uitgang
+491	VNW(met-e)	voornaamwoord probleemgeval, uitgang -e
+492	VNW(met-s-of-th)	voornaamwoord probleemgeval, uitgang -s/-th
+493	VNW(met-t)	voornaamwoord probleemgeval, uitgang -t
+494	VNW(met-n)	voornaamwoord probleemgeval, uitgang -n
+495	VNW(met-r-of-re)	voornaamwoord probleemgeval, uitgang -r/-re
+496	VNW(met-a)	voornaamwoord probleemgeval, uitgang -a
+499	VNW(overig)	voornaamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+500	BW(alg,zonder)	bijwoord, geen uitgang
+501	BW(alg,met-e)	bijwoord, uitgang -e
+502	BW(alg,met-s-of-th)	bijwoord, uitgang -s/-th
+503	BW(alg,met-t)	bijwoord, uitgang -t
+504	BW(alg,met-n)	bijwoord, uitgang -n
+505	BW(alg,met-r-of-re)	bijwoord, uitgang -r/-re
+506	BW(alg,met-a)	bijwoord, uitgang -a
+509	BW(alg,overig)	bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+510	BW(aanw,zonder)	aanwijzend bijwoord, geen uitgang
+511	BW(aanw,met-e)	aanwijzend bijwoord, uitgang -e
+512	BW(aanw,met-s-of-th)	aanwijzend bijwoord, uitgang -s/-th
+513	BW(aanw,met-t)	aanwijzend bijwoord, uitgang -t
+514	BW(aanw,met-n)	aanwijzend bijwoord, uitgang -n
+515	BW(aanw,met-r-of-re)	aanwijzend bijwoord, uitgang -r/-re
+516	BW(aanw,met-a)	aanwijzend bijwoord, uitgang -a
+519	BW(aanw,overig)	aanwijzend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+520	BW(betr,zonder)	betrekkelijk bijwoord, geen uitgang
+521	BW(betr,met-e)	betrekkelijk bijwoord, uitgang -e
+522	BW(betr,met-s-of-th)	betrekkelijk bijwoord, uitgang -s/-th
+523	BW(betr,met-t)	betrekkelijk bijwoord, uitgang -t
+524	BW(betr,met-n)	betrekkelijk bijwoord, uitgang -n
+525	BW(betr,met-r-of-re)	betrekkelijk bijwoord, uitgang -r/-re
+526	BW(betr,met-a)	betrekkelijk bijwoord, uitgang -a
+529	BW(betr,overig)	betrekkelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+530	BW(vrag,zonder)	vragend bijwoord, geen uitgang
+531	BW(vrag,met-e)	vragend bijwoord, uitgang -e
+532	BW(vrag,met-e)	vragend bijwoord, uitgang -s/-th
+533	BW(vrag,met-e)	vragend bijwoord, uitgang -t
+534	BW(vrag,met-e)	vragend bijwoord, uitgang -n
+535	BW(vrag,met-e)	vragend bijwoord, uitgang -r/-re
+536	BW(vrag,met-a)	vragend bijwoord, uitgang -a
+539	BW(vrag,overig)	vragend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+540	BW(onbep,zonder)	onbepaald bijwoord, geen uitgang
+541	BW(onbep,met-e)	onbepaald bijwoord, uitgang -e
+542	BW(onbep,met-s-of-th)	onbepaald bijwoord, uitgang -s/-th
+543	BW(onbep,met-t)	onbepaald bijwoord, uitgang -t
+544	BW(onbep,met-n)	onbepaald bijwoord, uitgang -n
+545	BW(onbep,met-r-of-re)	onbepaald bijwoord, uitgang -r/-re
+546	BW(onbep,met-a)	onbepaald bijwoord, uitgang -a
+549	BW(onbep,overig)	onbepaald bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+550	BW(herv,zonder)	hervattend bijwoord, geen uitgang
+551	BW(herv,met-e)	hervattend bijwoord, uitgang -e
+552	BW(herv,met-s-of-th)	hervattend bijwoord, uitgang -s/-th
+553	BW(herv,met-t)	hervattend bijwoord, uitgang -t
+554	BW(herv,met-n)	hervattend bijwoord, uitgang -n
+555	BW(herv,met-r-of-re)	hervattend bijwoord, uitgang -r/-re
+556	BW(herv,met-a)	hervattend bijwoord, uitgang -a
+559	BW(herv,overig)	hervattend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+560	BW(neg,zonder)	ontkennend bijwoord, geen uitgang
+561	BW(neg,met-e)	ontkennend bijwoord, uitgang -e
+562	BW(neg,met-s-of-th)	ontkennend bijwoord, uitgang -s/-th
+563	BW(neg,met-t)	ontkennend bijwoord, uitgang -t
+564	BW(neg,met-n)	ontkennend bijwoord, uitgang -n
+565	BW(neg,met-r-of-re)	ontkennend bijwoord, uitgang -r/-re
+566	BW(neg,met-a)	ontkennend bijwoord, uitgang -a
+569	BW(neg,overig)	ontkennend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+590	BW(zonder)	bijwoord probleemgeval, geen uitgang
+591	BW(met-e)	bijwoord probleemgeval, uitgang -e
+592	BW(met-s-of-th)	bijwoord probleemgeval, uitgang -s/-th
+593	BW(met-t)	bijwoord probleemgeval, uitgang -t
+594	BW(met-n)	bijwoord probleemgeval, uitgang -n
+595	BW(met-r-of-re)	bijwoord probleemgeval, uitgang -r/-re
+596	BW(met-a)	bijwoord probleemgeval, uitgang -a
+599	BW(overig)	bijwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+600	BW(adv-pron,alg,zonder)	voornaamwoordelijk bijwoord, geen uitgang
+601	BW(adv-pron,alg,met-e)	voornaamwoordelijk bijwoord, uitgang -e
+602	BW(adv-pron,alg,met-s-of-th)	voornaamwoordelijk bijwoord, uitgang -s/-th
+603	BW(adv-pron,alg,met-t)	voornaamwoordelijk bijwoord, uitgang -t
+604	BW(adv-pron,alg,met-n)	voornaamwoordelijk bijwoord, uitgang -n
+605	BW(adv-pron,alg,met-r-of-re)	voornaamwoordelijk bijwoord, uitgang -r/-re
+606	BW(adv-pron,alg,met-a)	voornaamwoordelijk bijwoord, uitgang -a
+609	BW(adv-pron,alg,overig)	voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+610	BW(adv-pron,aanw,zonder)	aanwijzend voornaamwoordelijk bijwoord, geen uitgang
+611	BW(adv-pron,aanw,met-e)	aanwijzend voornaamwoordelijk bijwoord, uitgang -e
+612	BW(adv-pron,aanw,met-s-of-th)	aanwijzend voornaamwoordelijk bijwoord, uitgang -s/-th
+613	BW(adv-pron,aanw,met-t)	aanwijzend voornaamwoordelijk bijwoord, uitgang -t
+614	BW(adv-pron,aanw,met-n)	aanwijzend voornaamwoordelijk bijwoord, uitgang -n
+615	BW(adv-pron,aanw,met-r-of-re)	aanwijzend voornaamwoordelijk bijwoord, uitgang -r/-re
+616	BW(adv-pron,aanw,met-a)	aanwijzend voornaamwoordelijk bijwoord, uitgang -a
+619	BW(adv-pron,aanw,overig)	aanwijzend voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+620	BW(adv-pron,betr,zonder)	betrekkelijk voornaamwoordelijk bijwoord, geen uitgang
+621	BW(adv-pron,betr,met-e)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -e
+622	BW(adv-pron,betr,met-s-of-th)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -s/-th
+623	BW(adv-pron,betr,met-t)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -t
+624	BW(adv-pron,betr,met-n)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -n
+625	BW(adv-pron,betr,met-r-of-re)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -r/-re
+626	BW(adv-pron,betr,met-a)	betrekkelijk voornaamwoordelijk bijwoord, uitgang -a
+629	BW(adv-pron,betr,overig)	betrekkelijk voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+630	BW(adv-pron,vb,zonder)	vragend voornaamwoordelijk bijwoord, geen uitgang
+631	BW(adv-pron,vb,met-e)	vragend voornaamwoordelijk bijwoord, uitgang -e
+632	BW(adv-pron,vb,met-s-of-th)	vragend voornaamwoordelijk bijwoord, uitgang -s/-th
+633	BW(adv-pron,vb,met-t)	vragend voornaamwoordelijk bijwoord, uitgang -t
+634	BW(adv-pron,vb,met-e)	vragend voornaamwoordelijk bijwoord, uitgang -n
+635	BW(adv-pron,vb,met-n)	vragend voornaamwoordelijk bijwoord, uitgang -r/-re
+636	BW(adv-pron,vb,met-a)	vragend voornaamwoordelijk bijwoord, uitgang -a
+639	BW(adv-pron,vb,overig)	vragend voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+640	BW(adv-pron,onbep,zonder)	onbepaald voornaamwoordelijk bijwoord, geen uitgang
+641	BW(adv-pron,onbep,met-e)	onbepaald voornaamwoordelijk bijwoord, uitgang -e
+642	BW(adv-pron,onbep,met-s-of-th)	onbepaald voornaamwoordelijk bijwoord, uitgang -s/-th
+643	BW(adv-pron,onbep,met-t)	onbepaald voornaamwoordelijk bijwoord, uitgang -t
+644	BW(adv-pron,onbep,met-n)	onbepaald voornaamwoordelijk bijwoord, uitgang -n
+645	BW(adv-pron,onbep,met-r-of-re)	onbepaald voornaamwoordelijk bijwoord, uitgang -r/-re
+646	BW(adv-pron,onbep,met-a)	onbepaald voornaamwoordelijk bijwoord, uitgang -a
+649	BW(adv-pron,onbep,overig)	onbepaald voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+650	BW(adv-pron,ellips,zonder)	bijwoordelijk deel van voornaamwoordelijk bijwoord, geen uitgang
+651	BW(adv-pron,ellips,met-e)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -e
+652	BW(adv-pron,ellips,met-s-of-th)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -s/-th
+653	BW(adv-pron,ellips,met-t)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -t
+654	BW(adv-pron,ellips,met-e)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -n
+655	BW(adv-pron,ellips,met-n)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -r/-re
+656	BW(adv-pron,ellips,met-a)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -a
+659	BW(adv-pron,ellips,overig)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+690	BW(adv-pron,zonder)	voornaamwoordelijk bijwoord probleemgeval, geen uitgang
+691	BW(adv-pron,met-e)	voornaamwoordelijk bijwoord probleemgeval, uitgang -e
+692	BW(adv-pron,met-s-of-th)	voornaamwoordelijk bijwoord probleemgeval, uitgang -s/-th
+693	BW(adv-pron,met-t)	voornaamwoordelijk bijwoord probleemgeval, uitgang -t
+694	BW(adv-pron,met-n)	voornaamwoordelijk bijwoord probleemgeval, uitgang -n
+695	BW(adv-pron,met-r-of-re)	voornaamwoordelijk bijwoord probleemgeval, uitgang -r/-re
+696	BW(adv-pron,met-a)	voornaamwoordelijk bijwoord probleemgeval, uitgang -a
+699	BW(adv-pron,overig)	voornaamwoordelijk bijwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+700	VZ(zonder)	voorzetsel, geen uitgang
+701	VZ(met-e)	voorzetsel, uitgang -e
+702	VZ(met-s-of-th)	voorzetsel, uitgang -s/-th
+703	VZ(met-t)	voorzetsel, uitgang -t
+704	VZ(met-n)	voorzetsel, uitgang -n
+705	VZ(met-r-of-re)	voorzetsel, uitgang -r/-re
+706	VZ(met-a)	voorzetsel, uitgang -a
+709	VZ(overig)	voorzetsel, uitgang latijn, onduidelijk of evident fout geschreven
+790	VZ(zonder)	voorzetsel (probleemgeval), geen uitgang
+791	VZ(met-e)	voorzetsel (probleemgeval), uitgang -e
+792	VZ(met-s-of-th)	voorzetsel (probleemgeval), uitgang -s/-th
+793	VZ(met-t)	voorzetsel (probleemgeval), uitgang -t
+794	VZ(met-n)	voorzetsel (probleemgeval), uitgang -n
+795	VZ(met-r-of-re)	voorzetsel (probleemgeval), uitgang -r/-re
+796	VZ(met-a)	voorzetsel (probleemgeval), uitgang -a
+799	VZ(overig)	voorzetsel (probleemgeval), uitgang latijn, onduidelijk of evident fout geschreven
+800	VG(neven,zonder)	nevenschikkend voegwoord, geen uitgang
+801	VG(neven,met-e)	nevenschikkend voegwoord, uitgang -e
+802	VG(neven,met-s-of-th)	nevenschikkend voegwoord, uitgang -s/-th
+803	VG(neven,met-t)	nevenschikkend voegwoord, uitgang -t
+804	VG(neven,met-n)	nevenschikkend voegwoord, uitgang -n
+805	VG(neven,met-r-of-re)	nevenschikkend voegwoord, uitgang -r/-re
+806	VG(neven,met-a)	nevenschikkend voegwoord, uitgang -a
+809	VG(neven,overig)	nevenschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+810	VG(onder,zonder)	onderschikkend voegwoord, geen uitgang
+811	VG(onder,met-e)	onderschikkend voegwoord, uitgang -e
+812	VG(onder,met-s-of-th)	onderschikkend voegwoord, uitgang -s/-th
+813	VG(onder,met-t)	onderschikkend voegwoord, uitgang -t
+814	VG(onder,met-n)	onderschikkend voegwoord, uitgang -n
+815	VG(onder,met-r-of-re)	onderschikkend voegwoord, uitgang -r/-re
+816	VG(onder,met-a)	onderschikkend voegwoord, uitgang -a
+819	VG(onder,overig)	onderschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+820	VG(verg,zonder)	vergelijkend voegwoord, geen uitgang
+821	VG(verg,met-e)	vergelijkend voegwoord, uitgang -e
+822	VG(verg,met-s-of-th)	vergelijkend voegwoord, uitgang -s/-th
+823	VG(verg,met-t)	vergelijkend voegwoord, uitgang -t
+824	VG(verg,met-n)	vergelijkend voegwoord, uitgang -n
+825	VG(verg,met-r-of-re)	vergelijkend voegwoord, uitgang -r/-re
+826	VG(verg,met-a)	vergelijkend voegwoord, uitgang -a
+829	VG(verg,overig)	vergelijkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+830	VG(neg,zonder)	ontkennend voegwoord, geen uitgang
+831	VG(neg,met-e)	ontkennend voegwoord, uitgang -e
+832	VG(neg,met-s-of-th)	ontkennend voegwoord, uitgang -s/-th
+833	VG(neg,met-t)	ontkennend voegwoord, uitgang -t
+834	VG(neg,met-n)	ontkennend voegwoord, uitgang -n
+835	VG(neg,met-r-of-re)	ontkennend voegwoord, uitgang -r/-re
+836	VG(neg,met-a)	ontkennend voegwoord, uitgang -a
+839	VG(neg,overig)	ontkennend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+840	VG(expl,zonder)	explicatief voegwoord, geen uitgang
+841	VG(expl,met-e)	explicatief voegwoord, uitgang -e
+842	VG(expl,met-s-of-th)	explicatief voegwoord, uitgang -s/-th
+843	VG(expl,met-t)	explicatief voegwoord, uitgang -t
+844	VG(expl,met-n)	explicatief voegwoord, uitgang -n
+845	VG(expl,met-r-of-re)	explicatief voegwoord, uitgang -r/-re
+846	VG(expl,met-a)	explicatief voegwoord, uitgang -a
+849	VG(expl,overig)	explicatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+850	VG(betr,zonder)	relatief voegwoord, geen uitgang
+851	VG(betr,met-e)	relatief voegwoord, uitgang -e
+852	VG(betr,met-s-of-th)	relatief voegwoord, uitgang -s/-th
+853	VG(betr,met-t)	relatief voegwoord, uitgang -t
+854	VG(betr,met-n)	relatief voegwoord, uitgang -n
+855	VG(betr,met-r-of-re)	relatief voegwoord, uitgang -r/-re
+856	VG(betr,met-a)	relatief voegwoord, uitgang -a
+859	VG(betr,overig)	relatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+860	VG(kwal,zonder)	voegwoord van hoedanigheid, geen uitgang
+861	VG(kwal,met-e)	voegwoord van hoedanigheid, uitgang -e
+862	VG(kwal,met-s-of-th)	voegwoord van hoedanigheid, uitgang -s/-th
+863	VG(kwal,met-t)	voegwoord van hoedanigheid, uitgang -t
+864	VG(kwal,met-n)	voegwoord van hoedanigheid, uitgang -n
+865	VG(kwal,met-r-of-re)	voegwoord van hoedanigheid, uitgang -r/-re
+866	VG(kwal,met-a)	voegwoord van hoedanigheid, uitgang -a
+869	VG(kwal,overig)	voegwoord van hoedanigheid, uitgang latijn, onduidelijk of evident fout geschreven
+870	VG(onder,zonder)	alse + te + infinitief, geen uitgang
+871	VG(onder,met-e)	alse + te + infinitief, uitgang -e
+872	VG(onder,met-s-of-th)	alse + te + infinitief, uitgang -s/-th
+873	VG(onder,met-t)	alse + te + infinitief, uitgang -t
+874	VG(onder,met-n)	alse + te + infinitief, uitgang -n
+875	VG(onder,met-r-of-re)	alse + te + infinitief, uitgang -r/-re
+876	VG(onder,met-a)	alse + te + infinitief, uitgang -a
+879	VG(onder,overig)	alse + te + infinitief, uitgang latijn, onduidelijk of evident fout geschreven
+890	VG(zonder)	voegwoord probleemgeval, geen uitgang
+891	VG(met-e)	voegwoord probleemgeval, uitgang -e
+892	VG(met-s-of-th)	voegwoord probleemgeval, uitgang -s/-th
+893	VG(met-t)	voegwoord probleemgeval, uitgang -t
+894	VG(met-n)	voegwoord probleemgeval, uitgang -n
+895	VG(met-r-of-re)	voegwoord probleemgeval, uitgang -r/-re
+896	VG(met-a)	voegwoord probleemgeval, uitgang -a
+899	VG(overig)	voegwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+900	SPEC(zonder)	woordsoort probleemgeval, geen uitgang
+901	SPEC(met-e)	woordsoort probleemgeval, uitgang -e
+902	SPEC(met-s-of-th)	woordsoort probleemgeval, uitgang -s/-th
+903	SPEC(met-t)	woordsoort probleemgeval, uitgang -t
+904	SPEC(met-n)	woordsoort probleemgeval, uitgang -n
+905	SPEC(met-r-of-re)	woordsoort probleemgeval, uitgang -r/-re
+906	SPEC(met-a)	woordsoort probleemgeval, uitgang -a
+909	SPEC(overig)	woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+910	TSW(zonder)	tussenwerpsel, geen uitgang
+911	TSW(met-e)	tussenwerpsel, uitgang -e
+912	TSW(met-s-of-th)	tussenwerpsel, uitgang -s/-th
+913	TSW(met-t)	tussenwerpsel, uitgang -t
+914	TSW(met-n)	tussenwerpsel, uitgang -n
+915	TSW(met-r-of-re)	tussenwerpsel, uitgang -r/-re
+916	TSW(met-a)	tussenwerpsel, uitgang -a
+919	TSW(overig)	tussenwerpsel, uitgang latijn, onduidelijk of evident fout geschreven
+990	SPEC(zonder)	woordsoort probleemgeval, geen uitgang
+991	SPEC(met-e)	woordsoort probleemgeval, uitgang -e
+992	SPEC(met-s-of-th)	woordsoort probleemgeval, uitgang -s/-th
+993	SPEC(met-t)	woordsoort probleemgeval, uitgang -t
+994	SPEC(met-n)	woordsoort probleemgeval, uitgang -n
+995	SPEC(met-r-of-re)	woordsoort probleemgeval, uitgang -r/-re
+996	SPEC(met-a)	woordsoort probleemgeval, uitgang -a
+999	SPEC(overig)	woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven

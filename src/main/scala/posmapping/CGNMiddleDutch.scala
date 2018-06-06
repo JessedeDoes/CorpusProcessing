@@ -152,10 +152,11 @@ object testje
     scala.io.Source.fromFile(tagset).getLines.toStream.map(l => l.split("\t").toList).filter(_.size >= 5).foreach(l => {
       val t = CGNMiddleDutch.preprocess(l(4))
       val t1 = CGNMiddleDutchTag(t)
+      val toelichting = l(3)
       //Console.err.println(l(4))
       //Console.err.flush()
       Console.err.println(l(4) + ", " + t + " --> " + t1.proposition)
-      println(s"${l(0)}\t$t1")
+      println(s"${l(0)}\t$t1\t$toelichting")
     })
   }
 
