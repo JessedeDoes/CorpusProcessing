@@ -173,7 +173,7 @@ code	Gysseling online tag	Vertaling Meertens voor CRM	Verklaring uit database
 404	PD(type=pers,person=1,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=1	persoonlijk voornaamwoord, 1e persoon meervoud	VNW(pers,1,mv)	
 405	PD(type=pers,person=2,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=2	persoonlijk voornaamwoord, 2e persoon meervoud	VNW(pers,2,mv)	
 406	PD(type=pers,person=3,number=pl)	pos=VNW,feat.getal=mv,feat.persoon=3	persoonlijk voornaamwoord, 3e persoon meervoud	VNW(pers,3,mv)	
-409	PD(type=pers,other)	pos=VNW,feat.probleemgeval=true	probleemgeval	VNW(probleem=true)	
+409	PD(type=pers,other)	pos=VNW,feat.probleemgeval=true	probleemgeval	VNW(probleem=true,form=other)	
 410	PD(type=dem,inflection=0)	pos=VNW,feat.vwtype=aanw	aanwijzend voornaamwoord, geen uitgang	VNW(aanw,form=0)	
 411	PD(type=dem,inflection=e)	pos=VNW,feat.vwtype=aanw,feat.form=-e	aanwijzend voornaamwoord, uitgang -e	VNW(aanw,form=-e)	
 412	PD(type=dem,inflection=s/th)	pos=VNW,feat.vwtype=aanw,feat.form=-s/-th	aanwijzend voornaamwoord, uitgang -s/-th	VNW(aanw,form=-s/-th)	
