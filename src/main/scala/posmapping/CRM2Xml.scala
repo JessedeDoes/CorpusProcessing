@@ -138,7 +138,7 @@ object CRM2Xml {
 
   val metaMap:Map[String,Meta] = metaList.groupBy(_.idPlus).mapValues(_.head)
 
-  lazy val rawTokens:Stream[Token] = getRows(CRM).filter(_.size > 4).map(token)
+  lazy val rawTokens:Stream[Token] = getRows(CRM).zipWithIndex.filter({case (x,n) => x.size > 4}).map({ case (x,n) => token(n,x) })
 
   val puncMap:Map[String,String] =  <pc x=":">&amp;colon;</pc>
     <pc x="/">&amp;duitsekomma;</pc>
@@ -153,7 +153,7 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
-  case class Token(word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String=null)
+  case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String=null)
   {
     import ents._
 
@@ -173,7 +173,7 @@ object CRM2Xml {
           else {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            <w lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            <w n={n.toString} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
           }
   }
 
@@ -182,8 +182,8 @@ object CRM2Xml {
 
   }
 
-  def token(c:Array[String]):Token = { Token(c(0), c(1), c(2), c(3), c(4)) }
-  def token(s:String):Token = { val c = s.split("\\s+");  Token(c(0), c(1), c(2), c(3), c(4)) }
+  def token(n: Int, c:Array[String]):Token = { Token(n, c(0), c(1), c(2), c(3), c(4)) }
+  def token(n: Int, s:String):Token = { val c = s.split("\\s+");  Token(n, c(0), c(1), c(2), c(3), c(4)) }
 
 
   def makeGroupx[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
