@@ -189,7 +189,7 @@ object allTags
   def vert() = listAllTags().foreach({ case TaggedWord(w,k,l,v) =>
     println(s"$w\t${k.getOrElse("_")}\t${l.getOrElse("_")}\t${v.getOrElse("_")}") })
 
-  def byVuTag() = listAllTags().groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
+  def byVuTag() = listAllTags().filter(w => w.vu.isDefined&& w.vu.get.length == 3).groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
     //.map({ case (w,k,l,v) =>  s"$w\t${k}\t${l.getOrElse("_")}\t${v.getOrElse("_")}" }
   // )
 
@@ -213,7 +213,7 @@ object allTags
          case (v, w) if (v.isDefined && v.get.length < 4) =>
            {
              val allekortjes = w.filter(_.kort.isDefined).map(_.kort.get).toSet.mkString(",")
-             vuFile.write(s"${v.get}\t${w.size}\t${allekortjes}\t${w.take(5).map(_.toString).mkString("  ")}\n")
+             vuFile.write(s"${v.get}\t${w.size}\t${w.take(5).map(_.word).mkString("  ")}\n")
            }
 
          case _ =>
