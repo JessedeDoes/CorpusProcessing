@@ -42,6 +42,10 @@ object Eindhoven {
     .map(r => r.map(_.trim.replaceAll(""""""", ""))).map(r => Word(r(1), r(0), r(2))
   )
 
+  val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >=2).map(l => l(0) -> l(1)).toMap
+
+  def mapTag(t: String)  = tagMapping.getOrElse(t,s"UNDEF($t)")
+
   // ‹vu 000›‹hvh-kort N(soort,ev,neut) ›‹hvh-lang N(com,numgen=singn,case=unm,Psynuse=nom)›
   val hvh_kort = "‹hvh-kort\\s*(.*?)\\s*›".r
   val hvh_lang = "‹hvh-lang\\s*(.*?)\\s*›".r
@@ -77,13 +81,36 @@ object Eindhoven {
       }))
   }
 
+  def capFirst(s: String) = s.substring(0,1).toUpperCase + s.substring(1, s.length)
+
+  def vuPatchP(d: Elem):Elem =
+  {
+    val numberedChildren = d.child.zipWithIndex
+    val firstWordIndex:Int = numberedChildren.find(_._1.label=="w").get._2
+    val firstWord:Elem = numberedChildren(firstWordIndex)._1.asInstanceOf[Elem]
+    val newFirstWord = firstWord.copy(child = Text(capFirst(firstWord.text)))
+    //val newChild = .map({case (e,i) => if (i==firstWord) e.copy(child = Seq())}
+    //)
+    val newChildren = numberedChildren.map({
+      case (c,i) => if (i==firstWordIndex) newFirstWord else c
+    })
+    d.copy(child=newChildren)
+  }
+
+
+  def vuPatch(d: Elem) = updateElement(d, x => x.label=="p" && (x \ "w").nonEmpty, vuPatchP)
+
+
   def doFile(f: File) =
   {
     val doc = XML.loadFile(f)
     (doc \\ "w").map(_.asInstanceOf[Elem])
     val d1 = updateElement(doc, _.label == "w", doWord)
-
-    XML.save(f.getCanonicalPath + ".patch", d1, "UTF-8")
+    val d2 = updateElement(d1, _.label == "name", doName)
+    //val d2a = updateElement(d1, _.label == "p", p=> p.copy())
+    val d3 = if (Set("camb.xml", "cgtl.xml").contains(f.getName))
+      vuPatch(d2) else d2
+    XML.save(f.getParent + "/Patched/" + f.getName, d3, "UTF-8")
   }
 
   val m0 = <x y="1"/>.attributes.filter(p => p.key != "y")
@@ -109,7 +136,7 @@ object Eindhoven {
     val vuSubPos = (vuSub1 - vuSub1 % 10) / 10
     val vuSubSubPos = vuPos - 100 * vuMainPos - 10 * vuSubPos
 
-    (vuPos, vuSubPos, vuSubSubPos)
+    (vuMainPos, vuSubPos, vuSubSubPos)
   }
 
   def doWord(w: Elem):Elem = {
@@ -122,6 +149,8 @@ object Eindhoven {
 
     val (vuMainPos, vuSubPos, vuSubSubPos) = findVuPos(pos)
 
+    val de_vu_pos = List(vuMainPos,vuSubPos,vuSubSubPos).map(_.toString).mkString
+
     val (lemma, supply):(String, Boolean) =  { if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word,true); else (lemma1,false) }
 
 
@@ -133,9 +162,12 @@ object Eindhoven {
 
     val candidates = goodMap.get(word.toLowerCase())
 
-    val purgedWAttributes = w.attributes.filter(a => !(a.key=="lemma" && a.value.text=="_"))
+    val mappedPoS = mapTag(de_vu_pos)
+    val cleanedAttributes = w.attributes.filter(a => !(a.key == "pos") && !(a.key=="lemma" && a.value.text=="_")).append(
+      new UnprefixedAttribute("pos", mappedPoS, Null)
+    ).append(new UnprefixedAttribute("type", de_vu_pos, Null))
 
-    Console.err.println(purgedWAttributes)
+    Console.err.println(cleanedAttributes)
 
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
@@ -143,7 +175,7 @@ object Eindhoven {
 
         val molexPos = c.map(_.pos)
 
-        val molexPosAttribute = if (molexPos.isEmpty) List() else List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
+        val molexPosAttribute = if (molexPos.isEmpty || {val noMolexPos = true; noMolexPos}) List() else List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
 
         val lemmaCandidates = c.filter(w => lemma.isEmpty).map(_.lemma).toSet
 
@@ -166,7 +198,19 @@ object Eindhoven {
           }
         } else lAdd ++ molexPosAttribute
       } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
-    w.copy(attributes = append(purgedWAttributes,extraAttributes))
+    w.copy(attributes = append(cleanedAttributes,extraAttributes))
+  }
+
+  def doName(n: Elem) =
+  {
+    n.copy(child = n.child.map(
+      c => c match
+        {
+        case w: Elem if (w.label == "w") =>
+          w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", "SPEC(deeleigen", Null)))
+        case x:Any => x
+      }
+    ))
   }
 
   def main(args: Array[String]) =
