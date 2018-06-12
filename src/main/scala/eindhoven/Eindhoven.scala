@@ -211,6 +211,11 @@ object Eindhoven {
     w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", addDetailsToPos(word,lemma,pos),Null)) )
   }
 
+  def removeFeature(tag: String, feature: String) = tag.replaceAll(s"([,(])$feature([,)])","$1$2")
+    .replaceAll(",+",",").replaceAll(",\\)",")")
+
+  def removeFeatures(tag: String, features: Set[String]) = features.foldLeft(tag)(removeFeature)
+
   def addDetailsToPos(word: String, lemma: String, tag: String):String =
   {
     if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n"))
@@ -228,6 +233,16 @@ object Eindhoven {
           return tag.replaceAll("\\(.*?,", "(refl,")
         else
           return tag.replaceAll("\\(.*?,", "(pr,")
+      }
+    if (tag.matches("VNW.*aanw.*prenom.*") && (lemma == "het" || lemma == "de"))
+      {
+        val t1 = removeFeatures(tag.replaceAll("VNW", "LID").replaceAll("aanw", "bep"), Set("prenom","det"))
+        return t1
+      }
+    if (tag.matches("VNW.*onbep.*prenom.*") && lemma == "een")
+      {
+        val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom","det"))
+        return t1
       }
     return tag
   }
