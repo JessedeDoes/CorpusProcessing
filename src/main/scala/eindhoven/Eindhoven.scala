@@ -199,7 +199,37 @@ object Eindhoven {
           }
         } else lAdd ++ molexPosAttribute
       } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
-    w.copy(attributes = append(cleanedAttributes,extraAttributes))
+    addDetailsToPos(w.copy(attributes = append(cleanedAttributes,extraAttributes)))
+  }
+
+  def addDetailsToPos(w: Elem):Elem =
+  {
+    val word = w.text
+    val lemma = (w \  "@lemma").text
+    val pos = (w \  "@pos").text
+
+    w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", addDetailsToPos(word,lemma,pos),Null)) )
+  }
+
+  def addDetailsToPos(word: String, lemma: String, tag: String):String =
+  {
+    if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n"))
+      {
+        if (word.endsWith("t") && !lemma.endsWith("ten"))
+          {
+            return tag.replaceAll("\\)$", ",met-t)")
+          }
+      }
+    if (tag.matches("VNW.*refl.*") && tag.matches(".*pr.*"))
+      {
+        if (lemma.contains("kaar") || word.contains("kander") || word.contains("kaar"))
+          return tag.replaceAll("\\(.*?,", "(recip,")
+        if (lemma.contains("zich"))
+          return tag.replaceAll("\\(.*?,", "(refl,")
+        else
+          return tag.replaceAll("\\(.*?,", "(pr,")
+      }
+    return tag
   }
 
   def doName(n: Elem) =
