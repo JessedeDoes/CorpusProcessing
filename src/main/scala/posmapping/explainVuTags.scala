@@ -22,7 +22,7 @@ object explainVuTags {
   def basicMap = Map(0 -> "znw", 1 -> "bnw", 2 -> "ww", 3 -> "vnw", 4 -> "vnw", 5 -> "bw", 6 -> "vz", 7 -> "vg", 8 -> "tsw", 9 -> "res")
 
   val tweedeCijferMap = Map(
-    0 -> Map(0 -> "soort,nomimaal gebruikt", 1 -> "eigennaam", 2 -> "adjectivisch", 8 -> "interjectivisch", 9 -> "zelfnoemfunctie"),
+    0 -> Map(0 -> "soort,nominaal gebruikt", 1 -> "eigennaam", 2 -> "adjectivisch", 8 -> "interjectivisch", 9 -> "zelfnoemfunctie"),
 
     1 -> Map(0 -> "gewoon (predicatief of attributief)", 2 -> "gesubstantiveerd", 5 -> "adverbiaal", 8 -> "interjectivisch"),
 
