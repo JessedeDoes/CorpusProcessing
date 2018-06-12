@@ -42,7 +42,8 @@ object Eindhoven {
     .map(r => r.map(_.trim.replaceAll(""""""", ""))).map(r => Word(r(1), r(0), r(2))
   )
 
-  val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >=2).map(l => l(0) -> l(1)).toMap
+  val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >=2)
+    .map(l => l(0) -> l(1).replaceAll("\\s.*","")).toMap
 
   def mapTag(t: String)  = tagMapping.getOrElse(t,s"UNDEF($t)")
 
