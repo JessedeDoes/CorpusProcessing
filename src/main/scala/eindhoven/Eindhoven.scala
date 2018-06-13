@@ -216,6 +216,26 @@ object Eindhoven {
 
   def removeFeatures(tag: String, features: Set[String]) = features.foldLeft(tag)(removeFeature)
 
+  val gradables = """veel
+    weinig
+    beide
+    meer
+    teveel
+    minder
+    keiveel
+    meeste
+    evenveel
+    zoveel
+    mindere
+    vele
+    superveel
+    keiweinig
+    allerminst
+    minst
+    veels
+    zovele
+    vaak""".split("\\s+").toSet // waarom 'beide' grad??
+
   def addDetailsToPos(word: String, lemma: String, tag: String):String =
   {
     if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n"))
@@ -244,7 +264,9 @@ object Eindhoven {
         val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom","det"))
         return t1
       }
-    return tag
+    if (tag.matches("VNW.*det.*") && gradables.contains(lemma))
+      return tag.replaceAll("det", "grad")
+    tag
   }
 
   def doName(n: Elem) =
