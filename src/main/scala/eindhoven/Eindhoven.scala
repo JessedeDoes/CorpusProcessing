@@ -111,7 +111,9 @@ object Eindhoven {
     //val d2a = updateElement(d1, _.label == "p", p=> p.copy())
     val d3 = if (Set("camb.xml", "cgtl.xml").contains(f.getName))
       vuPatch(d2) else d2
-    XML.save(f.getParent + "/Patched/" + f.getName, d3, "UTF-8")
+    val d4 = createElementIds(updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>)), "EC")
+
+    XML.save(f.getParent + "/Patched/" + f.getName, d4, "UTF-8")
   }
 
   val m0 = <x y="1"/>.attributes.filter(p => p.key != "y")
@@ -279,6 +281,16 @@ object Eindhoven {
         case x:Any => x
       }
     ))
+  }
+
+  def createElementIds(n: Node, path: String):Node = {
+    val id = new PrefixedAttribute("xml", "id", path, Null)
+
+    n match {
+      case e: Elem =>
+        e.copy(attributes = e.attributes.append(id), child = e.child.zipWithIndex.map({ case (c, i) => createElementIds(c, s"${c.label}.$path.$i") }))
+      case n: Node => n
+    }
   }
 
   def main(args: Array[String]) =
