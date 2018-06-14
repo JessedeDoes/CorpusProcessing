@@ -36,9 +36,14 @@ case class Word(word: String, lemma: String, pos: String)
 object Eindhoven {
 
   def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
-  val dir = "/home/jesse/data/Eindhoven"
-  val files = new java.io.File(dir).listFiles.toStream.filter(f => f.getName().endsWith(("xml")))
-  val goodies = scala.io.Source.fromFile(dir + "/" + "goede-woorden-uit-molex-postgres.csv").getLines.toList.map(l => l.split(";"))
+  val hulpDataDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/hulpdata"
+  val xmlDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/xml-with-word-ids/"
+  val patchDir ="/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/xml-tagged/"
+  val outputDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/tkvPatch/"
+
+  val files = new java.io.File(xmlDir).listFiles.toStream.flatMap(f => f.listFiles().toList).filter(f => f.getName().endsWith(("xml")))
+
+  val goodies = scala.io.Source.fromFile(hulpDataDir + "/" + "goede-woorden-uit-molex-postgres.csv").getLines.toList.map(l => l.split(";"))
     .map(r => r.map(_.trim.replaceAll(""""""", ""))).map(r => Word(r(1), r(0), r(2))
   )
 
@@ -103,12 +108,15 @@ object Eindhoven {
 
   def useAutomaticTagging(d: Elem, f: File) =
   {
-    val f1 = f.getParent() + "/reTagged/" + f.getName()
+    val f1 = f.getCanonicalPath.replaceAll("xml-with-word-ids", "xml-tagged")
+
     val d1 = XML.load(f1)
     val mappie = (d1 \\ "w").map(w => {
       val id = getId(w)
       id.get -> w.asInstanceOf[Elem]
     }).toMap
+
+    Console.err.println(mappie)
 
     def doW(w: Elem) =
     {
@@ -116,7 +124,8 @@ object Eindhoven {
       if (id.isDefined && mappie.contains(id.get)) {
         val w1: Elem = mappie(id.get)
         val pos = (w \ "@pos").text
-        val w1Pos = (w1 \ "@pos").text
+        val w1Pos = (w1 \ "@type").text
+        Console.err.println(s"$pos $w1Pos")
         val newPos = {
           if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
           else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches("=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
@@ -132,7 +141,8 @@ object Eindhoven {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  def doFile(f: File) =
+
+  def doFile(f: File, fOut: File):Unit =
   {
     val doc = XML.loadFile(f)
     (doc \\ "w").map(_.asInstanceOf[Elem])
@@ -141,12 +151,14 @@ object Eindhoven {
     //val d2a = updateElement(d1, _.label == "p", p=> p.copy())
     val d3 = if (Set("camb.xml", "cgtl.xml").contains(f.getName))
       vuPatch(d2) else d2
-    val d4 = createElementIds(updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>)), "EC")
+    val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>))
 
     val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
-    XML.save(f.getParent + "/Patched/" + f.getName, d5, "UTF-8")
+
+    XML.save(fOut.getCanonicalPath, d5, "UTF-8")
   }
 
+  def doFile(f: String, f1: String): Unit = doFile(new File(f), new File(f1))
   val m0 = <x y="1"/>.attributes.filter(p => p.key != "y")
   println(m0)
 
@@ -201,7 +213,7 @@ object Eindhoven {
       new UnprefixedAttribute("pos", mappedPoS, Null)
     ).append(new UnprefixedAttribute("type", de_vu_pos, Null))
 
-    Console.err.println(cleanedAttributes)
+    // Console.err.println(cleanedAttributes)
 
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
@@ -224,7 +236,7 @@ object Eindhoven {
         if (withAccent.nonEmpty) {
           val a0: UnprefixedAttribute = new UnprefixedAttribute("corr", withAccent.head.word, Null)
 
-          Console.err.println(s"$word ($lemma) => $withAccent")
+          // Console.err.println(s"$word ($lemma) => $withAccent")
 
           if (withoutAccent.isEmpty) List(a0) ++ lAdd ++ molexPosAttribute
           else {
@@ -316,21 +328,13 @@ object Eindhoven {
     ))
   }
 
-  def createElementIds(n: Node, path: String):Node = {
-    val id = new PrefixedAttribute("xml", "id", path, Null)
-
-    n match {
-      case e: Elem =>
-        e.copy(attributes = e.attributes.append(id), child = e.child.zipWithIndex.map({ case (c, i) => createElementIds(c, s"${c.label}.$path.$i") }))
-      case n: Node => n
-    }
-  }
+  import posmapping.ProcessFolder
 
   def main(args: Array[String]) =
   {
-    val d = new File(dir)
-    d.listFiles.foreach(println)
-    files.foreach(doFile)
+    val d = new File(xmlDir)
+    val d1 = new File(outputDir)
+    ProcessFolder.processFolder(d, d1, doFile)
   }
 }
 
