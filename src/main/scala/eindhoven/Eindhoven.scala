@@ -113,7 +113,7 @@ object Eindhoven {
     def doW(w: Elem) =
     {
       val id = getId(w)
-      if (id.isDefined) {
+      if (id.isDefined && mappie.contains(id.get)) {
         val w1: Elem = mappie(id.get)
         val pos = (w \ "@pos").text
         val w1Pos = (w1 \ "@pos").text
