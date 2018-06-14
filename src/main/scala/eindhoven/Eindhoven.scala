@@ -112,17 +112,18 @@ object Eindhoven {
 
     def doW(w: Elem) =
     {
-      val id = getId(w).get
-      val w1:Elem = mappie(id)
-      val pos = (w \ "@pos").text
-      val w1Pos = (w1 \ "@pos").text
-      val newPos =
-      {
-        if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
-        else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches("=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
-        else pos
-      }
-      w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)))
+      val id = getId(w)
+      if (id.isDefined) {
+        val w1: Elem = mappie(id.get)
+        val pos = (w \ "@pos").text
+        val w1Pos = (w1 \ "@pos").text
+        val newPos = {
+          if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
+          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches("=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
+          else pos
+        }
+        w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)))
+      } else w
     }
 
     updateElement(d, _.label == "w", doW)
