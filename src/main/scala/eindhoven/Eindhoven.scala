@@ -89,7 +89,7 @@ object Eindhoven {
 
   def capFirst(s: String) = s.substring(0,1).toUpperCase + s.substring(1, s.length)
 
-  def vuPatchP(d: Elem):Elem =
+  def vuPatchS(d: Elem):Elem =
   {
     val numberedChildren = d.child.zipWithIndex
     val firstWordIndex:Int = numberedChildren.find(_._1.label=="w").get._2
@@ -104,7 +104,7 @@ object Eindhoven {
   }
 
 
-  def vuPatch(d: Elem) = updateElement(d, x => x.label=="p" && (x \ "w").nonEmpty, vuPatchP)
+  def vuPatch(d: Elem) = updateElement(d, x => x.label=="s" && (x \ "w").nonEmpty, vuPatchS)
 
   def useAutomaticTagging(d: Elem, f: File) =
   {
@@ -149,7 +149,7 @@ object Eindhoven {
     val d1 = updateElement(doc, _.label == "w", doWord)
     val d2 = updateElement(d1, _.label == "name", doName)
     //val d2a = updateElement(d1, _.label == "p", p=> p.copy())
-    val d3 = if (Set("camb.xml", "cgtl.xml").contains(f.getName))
+    val d3 = if (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName))
       vuPatch(d2) else d2
     val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>))
 
