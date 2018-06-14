@@ -2,7 +2,7 @@ package eindhoven
 import java.io.{File, FileWriter}
 import java.text.Normalizer
 
-import eindhoven.Eindhoven._
+import eindhoven.Eindhoven.{replaceFeature, _}
 
 import scala.xml._
 
@@ -101,6 +101,35 @@ object Eindhoven {
 
   def vuPatch(d: Elem) = updateElement(d, x => x.label=="p" && (x \ "w").nonEmpty, vuPatchP)
 
+  def useAutomaticTagging(d: Elem, f: File) =
+  {
+    val f1 = f.getParent() + "/reTagged/" + f.getName()
+    val d1 = XML.load(f1)
+    val mappie = (d1 \\ "w").map(w => {
+      val id = getId(w)
+      id.get -> w.asInstanceOf[Elem]
+    }).toMap
+
+    def doW(w: Elem) =
+    {
+      val id = getId(w).get
+      val w1:Elem = mappie(id)
+      val pos = (w \ "@pos").text
+      val w1Pos = (w1 \ "@pos").text
+      val newPos =
+      {
+        if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
+        else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches("=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
+        else pos
+      }
+      w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)))
+    }
+
+    updateElement(d, _.label == "w", doW)
+  }
+
+  def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
+    a.key.equals("id")).map(a => a.value.toString).headOption
 
   def doFile(f: File) =
   {
@@ -113,7 +142,8 @@ object Eindhoven {
       vuPatch(d2) else d2
     val d4 = createElementIds(updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>)), "EC")
 
-    XML.save(f.getParent + "/Patched/" + f.getName, d4, "UTF-8")
+    val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
+    XML.save(f.getParent + "/Patched/" + f.getName, d5, "UTF-8")
   }
 
   val m0 = <x y="1"/>.attributes.filter(p => p.key != "y")
@@ -215,6 +245,8 @@ object Eindhoven {
 
   def removeFeature(tag: String, feature: String) = tag.replaceAll(s"([,(])$feature([,)])","$1$2")
     .replaceAll(",+",",").replaceAll(",\\)",")")
+
+  def replaceFeature(tag: String, f1: String, f2: String) = tag.replaceAll(s"([,(])$f1([,)])",s"$$1$f2$$2")
 
   def removeFeatures(tag: String, features: Set[String]) = features.foldLeft(tag)(removeFeature)
 
