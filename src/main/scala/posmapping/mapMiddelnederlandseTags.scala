@@ -108,6 +108,12 @@ object mapMiddelnederlandseTags {
 
 
 object ProcessFolder {
+
+  def processFolder[T](input: File, action: File => T):Stream[T] =
+  {
+    if (input.isFile) Stream(action(input)) else input.listFiles.toStream.flatMap(x => processFolder(x,action))
+  }
+
   def processFolder(input: File, outputFolder: File, base: (String,String) => Unit): Unit =
   {
     if (!outputFolder.exists())
