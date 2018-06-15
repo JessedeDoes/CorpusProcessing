@@ -36,11 +36,18 @@ case class Word(word: String, lemma: String, pos: String)
 
 object Eindhoven {
 
+  val atHome = true
+
+  val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
+  val baseDirAtHome = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/"
+
+  val baseDir = if (atHome) baseDirAtHome else baseDirAtWork
+
   def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
-  val hulpDataDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/hulpdata"
-  val xmlDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/xml-with-word-ids/"
-  val patchDir ="/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/xml-tagged/"
-  val outputDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/tkvPatch/"
+  val hulpDataDir = baseDir + "hulpdata/"
+  val xmlDir = baseDir + "xml-with-word-ids/"
+  val patchDir =baseDir + "xml-tagged/"
+  val outputDir = baseDir + "tkvPatch/"
 
   val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size>1).map(l => l(0).trim -> l(1).trim).toMap
 
@@ -175,7 +182,7 @@ object Eindhoven {
         Console.err.println(s"$pos $w1Pos")
         val newPos = {
           if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
-          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches("=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
+          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
           else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*"))
             { if (w1Pos.matches(".*prenom.*"))
             replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-prenom")  else  replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-vrij") }
