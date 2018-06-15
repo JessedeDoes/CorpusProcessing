@@ -35,7 +35,7 @@ case class Word(word: String, lemma: String, pos: String)
 }
 
 object Eindhoven {
-
+  import scala.io.Source._
   val atHome = true
 
   val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
@@ -44,10 +44,31 @@ object Eindhoven {
   val baseDir = if (atHome) baseDirAtHome else baseDirAtWork
 
   def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
+
+
   val hulpDataDir = baseDir + "hulpdata/"
   val xmlDir = baseDir + "xml-with-word-ids/"
   val patchDir =baseDir + "xml-tagged/"
   val outputDir = baseDir + "tkvPatch/"
+
+  case class Tag(tag: String)
+  {
+    val pos = tag.replaceAll("\\(.*","")
+    val features = tag.replaceAll(".*\\(","").replaceAll("\\).*","").split(",").toList
+    val cgnFeatures = features.filter(! _.startsWith("e-"))
+    val extFeatures = features.filter(_.startsWith("e-"))
+  }
+  val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
+
+  def orderFeatures(t: String):String =
+  {
+    val t1 = Tag(t)
+    val matchingCGNTag = cgnTags.find(t => t.pos == t1.pos &&  t1.cgnFeatures.forall(f => t.cgnFeatures.contains(f)))
+    if (matchingCGNTag.isDefined)
+      {
+        s"${t1.pos}(${(matchingCGNTag.get.features ++ t1.extFeatures).mkString(",")}"
+      } else t
+  }
 
   val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size>1).map(l => l(0).trim -> l(1).trim).toMap
 
@@ -330,7 +351,7 @@ object Eindhoven {
     val lemma = (w \  "@lemma").text
     val pos = (w \  "@pos").text
 
-    w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", addDetailsToPos(word,lemma,pos),Null)) )
+    w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", orderFeatures(addDetailsToPos(word,lemma,pos)),Null)) )
   }
 
   def removeFeature(tag: String, feature: String) = tag.replaceAll(s"([,(])$feature([,)])","$1$2")
