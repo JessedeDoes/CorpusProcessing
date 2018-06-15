@@ -136,7 +136,7 @@ object Eindhoven {
     val txt = w.text
     val n = w.text.split("\\s+").size
 
-    val id = getId(w)
+    val id = getId(w).getOrElse("noId")
     val typ = (w \ "@type").text
     val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
       val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "pos").text
