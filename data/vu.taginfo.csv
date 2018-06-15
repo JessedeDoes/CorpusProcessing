@@ -1,16 +1,16 @@
 code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woord+lemma+pos combinaties)	voorbeeldwoordjes	weergave van uitleg in handleiding	opmerking
-000	N(soort,ev,nom,stan)	23657	leer  bloes  truckie  AWW  schiereiland	znw soort,nominaal gebruikt basisvorm	extra kenmerk positie ook bij nomina vanwege het gemarkeerde adjectivische gebruik. Vooralsnog geen markering voor dim vs basis. Ook geslacht is niet geannoreerd in Eindh.
-001	N(soort,mv,nom)	10656	stuurhoezen  blunders  buurlanden  ringetjes  olieconcerns	znw soort,nominaal gebruikt meervoud	
-002	N(soort,ev,gen,nom)	84	Woensdagavonds  vaders  moeders  lands  aanstoots	znw soort,nominaal gebruikt genitief	
-003	N(soort,ev,dat,nom)	79	strijden  goede  laste  volke  mate	znw soort,nominaal gebruikt overige buiging	Is dit bijna altijd dat? Lijkt er wel op. Dus gewoon dat van maken. Lijkt ook altijd ev
+000	N(soort,ev,e-nom,stan)	23657	leer  bloes  truckie  AWW  schiereiland	znw soort,nominaal gebruikt basisvorm	extra kenmerk positie ook bij nomina vanwege het gemarkeerde adjectivische gebruik. Vooralsnog geen markering voor dim vs basis. Ook geslacht is niet geannoreerd in Eindh.
+001	N(soort,mv,e-nom)	10656	stuurhoezen  blunders  buurlanden  ringetjes  olieconcerns	znw soort,nominaal gebruikt meervoud	
+002	N(soort,ev,gen,e-nom)	84	Woensdagavonds  vaders  moeders  lands  aanstoots	znw soort,nominaal gebruikt genitief	
+003	N(soort,ev,dat,e-nom)	79	strijden  goede  laste  volke  mate	znw soort,nominaal gebruikt overige buiging	Is dit bijna altijd dat? Lijkt er wel op. Dus gewoon dat van maken. Lijkt ook altijd ev
 010	N(eigen,ev,stan)	12899	Nootdorp  casa  Basso  werkclassificatie-als-hulpmiddel-van-de-loonpolitiek  Coventry	znw eigennaam basisvorm	
 011	N(eigen,mv)	191	Nieuwenhuizens  Ahoyhallen  Olympische  Wild  Papa's	znw eigennaam meervoud	
 012	N(eigen,ev,gen)	396	gods  Mia's  Moorsom's  Marie's  Brams	znw eigennaam genitief	
 016	?	1	beperkt	znw eigennaam comparatief overige buiging	
-020	N(soort,ev,prenom,stan)	103	research  avant-garde  haute  sex  and	znw adjectivisch basisvorm	
-021	N(soort,mv,prenom)	3	mijls  Dames  N.S.B.ers	znw adjectivisch meervoud	
+020	N(soort,ev,e-prenom,stan)	103	research  avant-garde  haute  sex  and	znw adjectivisch basisvorm	
+021	N(soort,mv,e-prenom)	3	mijls  Dames  N.S.B.ers	znw adjectivisch meervoud	
 023	?	1	sodemieterse	znw adjectivisch overige buiging	
-080	N(soort,ev,interj,stan)	28	christus  help  God  Mina	znw interjectivisch basisvorm	
+080	N(soort,ev,e-interj,stan)	28	christus  help  God  Mina	znw interjectivisch basisvorm	
 081	?	1	mensen	znw interjectivisch meervoud	
 090	SPEC(meta)	235	paap  sanering  admiraal  verbonden-zijn  proskunesis	znw zelfnoemfunctie basisvorm	Dit zijn in de corpusconcordanties lang niet allemaal nomina, moet dus consistenter SPEC(meta) worden
 100	ADJ(gewoon,basis,zonder)	3605	soeverein  glazen  prominent  breed  fiks	bnw gewoon (predicatief of attributief) basisvorm	“Gewoon” lijkt te staan voor attributief of predicatief
@@ -29,87 +29,87 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 126	ADJ(nom,comp,met-e)	14	grotere  oudere  kleinere  jongere  jongeren	bnw gesubstantiveerd comparatief overige buiging	
 127	ADJ(nom,sup,zonder)	5	heetst  laatst  drukst  beste	bnw gesubstantiveerd superlatief onverbogen	
 129	ADJ(nom,sup,met-e)	55	laatste  beroerdste  voornaamste  laatsten	bnw gesubstantiveerd superlatief overige buiging	
-150	ADJ(vrij,adv,basis,zonder)	1934	heilig  achterwaarts  oppervlakkig  walgelijk  telefonisch	bnw adverbiaal basisvorm	Dit is niet hetzelfde als CGN ‘vrij’, want daar valt ook predicatief onder
-153	ADJ(vrij,adv,basis,met-e)	45	Chinese  dramatische  erge  verschrikkelijke  absolute	bnw adverbiaal overige buiging	
-154	ADJ(vrij,adv,comp,zonder)	134	luider  sneller  zwaarder  aandachtiger  indrukwekkender	bnw adverbiaal comparatief onverbogen	
-157	ADJ(vrij,adv,sup,zonder)	39	Allereerst  sterkst  vroegst  eerst  meest	bnw adverbiaal superlatief onverbogen	
-159	ADJ(vrij,adv,sup,met-e)	21	sterkste  langste  strengste  leukste  duidelijkste	bnw adverbiaal superlatief overige buiging	
+150	ADJ(vrij,e-adv,basis,zonder)	1934	heilig  achterwaarts  oppervlakkig  walgelijk  telefonisch	bnw adverbiaal basisvorm	Dit is niet hetzelfde als CGN ‘vrij’, want daar valt ook predicatief onder
+153	ADJ(vrij,e-adv,basis,met-e)	45	Chinese  dramatische  erge  verschrikkelijke  absolute	bnw adverbiaal overige buiging	
+154	ADJ(vrij,e-adv,comp,zonder)	134	luider  sneller  zwaarder  aandachtiger  indrukwekkender	bnw adverbiaal comparatief onverbogen	
+157	ADJ(vrij,e-adv,sup,zonder)	39	Allereerst  sterkst  vroegst  eerst  meest	bnw adverbiaal superlatief onverbogen	
+159	ADJ(vrij,e-adv,sup,met-e)	21	sterkste  langste  strengste  leukste  duidelijkste	bnw adverbiaal superlatief overige buiging	
 174	?	1	zijn	bnw comparatief onverbogen	
-180	ADJ(interj,basis,zonder)	16	goed  waar  werkelijk  mooi  Mooi	bnw interjectivisch basisvorm	
-200	WW(inf,intrans,vrij)	1739	kassie-kijken  bijten  stampen  koken  dopen	ww intrans infinitief,verbaal	Eindh annoteert trans/intrans/refl/hulpkoppel
-201	WW(inf,intrans,nom)	428	aanzien  janken  optreden  kapseizen  dwarrelen	ww intrans infinitief, nominaal	
-202	WW(od,intrans,prenom|vrij,zonder)	371	uitdovend  autorijdend  overtuigend  moordend  studerend	ww intrans od, onverbogen	
-203	WW(od,intrans,prenom,met-e,zonder-n)	749	jagende  vervlakkende  klonterende  dodende  huilende	ww intrans od, verbogen	Alle voorkomens lijken prenominaal te zijn, hoewel dat uit de beschrijving niet per se blijkt
-204	WW(od,intrans,nom,met-e,mv-n)	18	scheidenden  belangstellenden  wachtenden  vooruitstrevenden  werkenden	ww intrans od, meervoud	
-205	WW(od,intrans,adv,vrij)	379	verflauwende  Samenvattend  Uitgaande  schrijvend  peinzend	ww intrans od, bijwoordelijk	Misschien liever adv noemen
-206	WW(vd,intrans,prenom|vrij,zonder)	986	gepraat  gegleden  verdronken  gefungeerd  opgestaan	ww intrans vd, onverbogen	Corpusvoorbeelden zowel attributief als in samengestelde werkwoordstijden
-207	WW(vd,intrans,prenom|nom,met-e,zonder-n)	133	gebeurde  gewijzigde  geavanceerde  verdorde  verminderde	ww intrans vd, verbogen	Niet-attributief gebruik is zeldzaam
-208	WW(vd,intrans,nom,met-e,mv-n)	9	vergrijsden  geemigreerden  verongelukten  gevorderden  uitgetredenen	ww intrans vd, meervoud	
-209	WW(vd,intrans,adv,vrij)	60	veronachtzaamd  Geschrokken  beschouwd  verantwoord  onderuitgezakt	ww intrans vd, bijwoordelijk	
-210	WW(inf,trans,vrij)	2297	wensen  bespotten  beschuldigen  horen  benemen	ww trans infinitief,verbaal	
-211	WW(inf,trans,nom)	502	stelen  vrijwaren  delen  creëren  opheffen	ww trans infinitief, nominaal	
-212	WW(od,trans,zonder)	14	bezittend  samendvattend  trekkend  houdend  overspannend	ww trans od, onverbogen	
-213	WW(od,trans,met-e,zonder-n)	49	serverende  roepende  opleverende  inhoudende  verbrassende	ww trans od, verbogen	
-214	WW(od,trans,met-e,mv-n) ??? [vb kloppen niet]	2	maken  menen	ww trans od, meervoud	
-215	WW(od,trans,adv,vrij)	50	puttend  ontnemend  verzwelgend  betreffende  taxerend	ww trans od, bijwoordelijk	
-216	WW(vd,trans,prenom|vrij,zonder)	3061	bedekt  overreden  gekozen  neergeschreven  gekaapt	ww trans vd, onverbogen	
-217	WW(vd,trans,prenom|nom,met-e,zonder-n)	826	opgedane  beknelde  geforceerde  geharde  verminderde	ww trans vd, verbogen	
-218	WW(vd,trans,met-e,mv-n)	63	gestoorden  geraakten  verzekerden  veroordeelden  afgevaardigden	ww trans vd, meervoud	
-219	WW(vd,trans,adv,vrij)	135	geanimeerd  overdonderd  gekruist  beperkt  Lamgeslagen	ww trans vd, bijwoordelijk	
-220	WW(inf,refl,verbaal)	232	bemoeien  handhaven  werken  verbinden  voorbereiden	ww refl infinitief,verbaal	
-221	WW(inf,refl,nominaal)	9	openstellen  overgeven  verenigen  voordoen  houden	ww refl infinitief, nominaal	
-222	WW(od,refl,zonder)	3	ontstekend  bevindend  wijzigend	ww refl od, onverbogen	
-223	WW(od,refl,met-e,zonder-n)	13	respecterende  wijzigende  ontwikkelende  misdragende  verkeerende	ww refl od, verbogen	
-224	WW(od,refl,met-e,mv-n)	1	voelen	ww refl od, meervoud	
-225	WW(od,refl,adv,vrij)	7	omkerend  aansluitend  baserend  verbazend  aansluitende	ww refl od, bijwoordelijk	
-226	WW(vd,refl,zonder)	157	opgewerkt  beschouwd  gesneden  verbonden  opgehouden	ww refl vd, onverbogen	
-230	WW(inf,hulp-of-koppel,verbaal)	108	raken  lezen  staan  proberen  moeten	ww hulp of koppelwerkwoord infinitief,verbaal	
-231	WW(inf,hulp-of-koppel,nominaal)	12	worden  blijven  zijn  houden	ww hulp of koppelwerkwoord infinitief, nominaal	
-232	WW(od,hulp-of-koppel,prenom|vrij,zonder)	3	wordend  lijkend	ww hulp of koppelwerkwoord od, onverbogen	
-233	WW(od,hulp-of-koppel,met-e,zonder-n)	9	wordende  zijnde  luidende	ww hulp of koppelwerkwoord od, verbogen	
-234	WW(od,hulp-of-koppel,met-e,mv-n) ?? []	1	moeten	ww hulp of koppelwerkwoord od, meervoud	
-235	WW(od,hulp-of-koppel,adv,vrij)	3	zijnde  wordend  trachtend	ww hulp of koppelwerkwoord od, bijwoordelijk	
-236	WW(vd,hulp-of-koppel,prenom|vrij,zonder)	35	geheten  geprobeerd  geworden  gekomen  getracht	ww hulp of koppelwerkwoord vd, onverbogen	
-237	WW(vd,hulp-of-koppel,met-e,zonder-n)	1	geraakte	ww hulp of koppelwerkwoord vd, verbogen	
-240	WW(pv,intrans,??) zou niet moeten bestaan	4	stoppen  uitkomen  opgeven  steken	ww pv, intrans 	
-241	WW(pv,intrans,tgw,1,ev)	181	kijk  staan  zing  snap  sla	ww pv, intrans 1 ev tgw	
-242	WW(pv,intrans,tgw,2,ev)	195	moet  leef  Rook  gelooft  vervalt	ww pv, intrans 2 ev tgw	
-243	WW(pv,intrans,tgw,3,ev)	1002	groeit  zet  Rijst  kuurt  dient	ww pv, intrans 3 ev tgw	Met-t kan eventueel scriptgewijs worden toegekend bij 2e en 3e persoon; niet als stam op -t
-244	WW(pv,intrans,tgw,mv)	612	luisteren  willen  zitten  bloeden  bestaan	ww pv, intrans mv tgw	
-245	WW(pv,intrans,verl,ev)	1010	glansde  publiceerde  school  fungeerde  dook	ww pv, intrans sg verl	
-246	WW(pv,intrans,verl,mv)	430	omgingen  trouwden  dansten  stieten  weigerden	ww pv, intrans pl verl	
-247	WW(pv,intrans,imper,zonder-subj)	109	dans  Doe  komt  kijk  let	ww pv, intrans imperatief zonder pronomen	
-248	WW(pv,intrans,imper,met-subj)	23	Snuiten  Lacht  Zorgt  komt  Zorg	ww pv, intrans imperatief met pronomen	
-249	WW(pv,intrans,conj)	11	zij  inslape  Leve  diene  overdrijve	ww pv, intrans overige vormen	
-250	WW(pv,trans .. XX	3	verbeeld  vertellen  melken	ww pv, trans 	
-251	WW(pv,trans,tgw,1,ev)	280	merk  benijd  haat  Zie  besef	ww pv, trans 1 ev tgw	
-252	WW(pv,trans,tgw,2,ev)	365	ziet  aanhebt  leert  kun  meent	ww pv, trans 2 ev tgw	
-253	WW(pv,trans,tgw,3,ev)	1190	betast  spuwt  afzondert  bejegent  afblaft	ww pv, trans 3 ev tgw	
-254	WW(pv,trans,tgw,mv)	717	verzaken  uithalen  aanbieden  maken  opslokken	ww pv, trans mv tgw	
-255	WW(pv,trans,verl,ev)	1159	aanhief  beschuldigde  verwachtte  duwde  stemde	ww pv, trans sg verl	
-256	WW(pv,trans,verl,mv)	428	hielden  voelden  grepen  zochten  vroegen	ww pv, trans pl verl	
-257	WW(pv,trans,imper,zonderpron)	208	schep  steun  Open  Help  Krijg	ww pv, trans imperatief zonder pronomen	
-258	WW(pv,trans,imper,metpron)	21	Behandelt  Excuseert  Begint  zie  geeft	ww pv, trans imperatief met pronomen	
-259	WW(pv,trans,conj)	18	controlere  raadplege  koste  scheide  behoede	ww pv, trans overige vormen	
-261	WW(pv,refl,tgw,1,ev)	23	herinner  zet  beroep  maak  vergis	ww pv, refl 1 ev tgw	
-262	WW(pv,refl,tgw,2,ev)	20	bemoei  inlaat  voel  houdt  verkleedt	ww pv, refl 2 ev tgw	
-263	WW(pv,refl,tgw,3,ev)	164	over-vrijt  strekt  bevindt  handhaaft  loswoelt	ww pv, refl 3 ev tgw	
-264	WW(pv,refl,tgw,mv)	109	uiten  hoeden  stoten  bezighouden  beperken	ww pv, refl mv tgw	
-265	WW(pv,refl,verl,ev)	132	splitste  schrok  afgaf  redde  afspeelde	ww pv, refl sg verl	
-266	WW(pv,refl,verl,mv) 	59	bemoeiden  voelden  stelden  verlieten	ww pv, refl pl verl	
-267	WW(pv,refl,imper,zonderpron)	12	Beweeg  wacht  Verzet  vergis  vergist	ww pv, refl imperatief zonder pronomen	
-268	WW(pv,refl,imper,metpron)	1	Hou	ww pv, refl imperatief met pronomen	
+180	ADJ(e-interj,basis,zonder)	16	goed  waar  werkelijk  mooi  Mooi	bnw interjectivisch basisvorm	
+200	WW(inf,e-intrans,vrij)	1739	kassie-kijken  bijten  stampen  koken  dopen	ww intrans infinitief,verbaal	Eindh annoteert trans/intrans/refl/hulpkoppel
+201	WW(inf,e-intrans,nom)	428	aanzien  janken  optreden  kapseizen  dwarrelen	ww intrans infinitief, nominaal	
+202	WW(od,e-intrans,prenom|vrij,zonder)	371	uitdovend  autorijdend  overtuigend  moordend  studerend	ww intrans od, onverbogen	
+203	WW(od,e-intrans,prenom,met-e,zonder-n)	749	jagende  vervlakkende  klonterende  dodende  huilende	ww intrans od, verbogen	!Alle voorkomens lijken prenominaal te zijn, hoewel dat uit de beschrijving niet per se blijkt
+204	WW(od,e-intrans,nom,met-e,mv-n)	18	scheidenden  belangstellenden  wachtenden  vooruitstrevenden  werkenden	ww intrans od, meervoud	
+205	WW(od,e-intrans,adv,vrij)	379	verflauwende  Samenvattend  Uitgaande  schrijvend  peinzend	ww intrans od, bijwoordelijk	Misschien liever adv noemen
+206	WW(vd,e-intrans,prenom|vrij,zonder)	986	gepraat  gegleden  verdronken  gefungeerd  opgestaan	ww intrans vd, onverbogen	Corpusvoorbeelden zowel attributief als in samengestelde werkwoordstijden
+207	WW(vd,e-intrans,prenom|nom,met-e,zonder-n)	133	gebeurde  gewijzigde  geavanceerde  verdorde  verminderde	ww intrans vd, verbogen	Niet-attributief gebruik is zeldzaam
+208	WW(vd,e-intrans,nom,met-e,mv-n)	9	vergrijsden  geemigreerden  verongelukten  gevorderden  uitgetredenen	ww intrans vd, meervoud	
+209	WW(vd,e-intrans,adv,vrij)	60	veronachtzaamd  Geschrokken  beschouwd  verantwoord  onderuitgezakt	ww intrans vd, bijwoordelijk	
+210	WW(inf,e-trans,vrij)	2297	wensen  bespotten  beschuldigen  horen  benemen	ww trans infinitief,verbaal	
+211	WW(inf,e-trans,nom)	502	stelen  vrijwaren  delen  creëren  opheffen	ww trans infinitief, nominaal	
+212	WW(od,e-trans,zonder)	14	bezittend  samendvattend  trekkend  houdend  overspannend	ww trans od, onverbogen	
+213	WW(od,e-trans,met-e,zonder-n)	49	serverende  roepende  opleverende  inhoudende  verbrassende	ww trans od, verbogen	
+214	WW(od,e-trans,met-e,mv-n) ??? [vb kloppen niet]	2	maken  menen	ww trans od, meervoud	
+215	WW(od,e-trans,adv,vrij)	50	puttend  ontnemend  verzwelgend  betreffende  taxerend	ww trans od, bijwoordelijk	
+216	WW(vd,e-trans,prenom|vrij,zonder)	3061	bedekt  overreden  gekozen  neergeschreven  gekaapt	ww trans vd, onverbogen	
+217	WW(vd,e-trans,prenom|nom,met-e,zonder-n)	826	opgedane  beknelde  geforceerde  geharde  verminderde	ww trans vd, verbogen	
+218	WW(vd,e-trans,met-e,mv-n)	63	gestoorden  geraakten  verzekerden  veroordeelden  afgevaardigden	ww trans vd, meervoud	
+219	WW(vd,e-trans,adv,vrij)	135	geanimeerd  overdonderd  gekruist  beperkt  Lamgeslagen	ww trans vd, bijwoordelijk	
+220	WW(inf,e-refl,verbaal)	232	bemoeien  handhaven  werken  verbinden  voorbereiden	ww refl infinitief,verbaal	
+221	WW(inf,e-refl,nominaal)	9	openstellen  overgeven  verenigen  voordoen  houden	ww refl infinitief, nominaal	
+222	WW(od,e-refl,zonder)	3	ontstekend  bevindend  wijzigend	ww refl od, onverbogen	
+223	WW(od,e-refl,met-e,zonder-n)	13	respecterende  wijzigende  ontwikkelende  misdragende  verkeerende	ww refl od, verbogen	
+224	WW(od,e-refl,met-e,mv-n)	1	voelen	ww refl od, meervoud	
+225	WW(od,e-refl,adv,vrij)	7	omkerend  aansluitend  baserend  verbazend  aansluitende	ww refl od, bijwoordelijk	
+226	WW(vd,e-refl,zonder)	157	opgewerkt  beschouwd  gesneden  verbonden  opgehouden	ww refl vd, onverbogen	
+230	WW(inf,e-hulp-of-koppel,verbaal)	108	raken  lezen  staan  proberen  moeten	ww hulp of koppelwerkwoord infinitief,verbaal	
+231	WW(inf,e-hulp-of-koppel,nominaal)	12	worden  blijven  zijn  houden	ww hulp of koppelwerkwoord infinitief, nominaal	
+232	WW(od,e-hulp-of-koppel,prenom|vrij,zonder)	3	wordend  lijkend	ww hulp of koppelwerkwoord od, onverbogen	
+233	WW(od,e-hulp-of-koppel,met-e,zonder-n)	9	wordende  zijnde  luidende	ww hulp of koppelwerkwoord od, verbogen	
+234	WW(od,e-hulp-of-koppel,met-e,mv-n) ?? []	1	moeten	ww hulp of koppelwerkwoord od, meervoud	
+235	WW(od,e-hulp-of-koppel,adv,vrij)	3	zijnde  wordend  trachtend	ww hulp of koppelwerkwoord od, bijwoordelijk	
+236	WW(vd,e-hulp-of-koppel,prenom|vrij,zonder)	35	geheten  geprobeerd  geworden  gekomen  getracht	ww hulp of koppelwerkwoord vd, onverbogen	
+237	WW(vd,e-hulp-of-koppel,met-e,zonder-n)	1	geraakte	ww hulp of koppelwerkwoord vd, verbogen	
+240	WW(pv,e-intrans,??) zou niet moeten bestaan	4	stoppen  uitkomen  opgeven  steken	ww pv, intrans 	
+241	WW(pv,e-intrans,tgw,1,ev)	181	kijk  staan  zing  snap  sla	ww pv, intrans 1 ev tgw	
+242	WW(pv,e-intrans,tgw,2,ev)	195	moet  leef  Rook  gelooft  vervalt	ww pv, intrans 2 ev tgw	
+243	WW(pv,e-intrans,tgw,3,ev)	1002	groeit  zet  Rijst  kuurt  dient	ww pv, intrans 3 ev tgw	Met-t kan eventueel scriptgewijs worden toegekend bij 2e en 3e persoon; niet als stam op -t
+244	WW(pv,e-intrans,tgw,mv)	612	luisteren  willen  zitten  bloeden  bestaan	ww pv, intrans mv tgw	
+245	WW(pv,e-intrans,verl,ev)	1010	glansde  publiceerde  school  fungeerde  dook	ww pv, intrans sg verl	
+246	WW(pv,e-intrans,verl,mv)	430	omgingen  trouwden  dansten  stieten  weigerden	ww pv, intrans pl verl	
+247	WW(pv,e-intrans,imper,zonder-subj)	109	dans  Doe  komt  kijk  let	ww pv, intrans imperatief zonder pronomen	
+248	WW(pv,e-intrans,imper,met-subj)	23	Snuiten  Lacht  Zorgt  komt  Zorg	ww pv, intrans imperatief met pronomen	
+249	WW(pv,e-intrans,conj)	11	zij  inslape  Leve  diene  overdrijve	ww pv, intrans overige vormen	
+250	WW(pv,e-trans .. XX	3	verbeeld  vertellen  melken	ww pv, trans 	
+251	WW(pv,e-trans,tgw,1,ev)	280	merk  benijd  haat  Zie  besef	ww pv, trans 1 ev tgw	
+252	WW(pv,e-trans,tgw,2,ev)	365	ziet  aanhebt  leert  kun  meent	ww pv, trans 2 ev tgw	
+253	WW(pv,e-trans,tgw,3,ev)	1190	betast  spuwt  afzondert  bejegent  afblaft	ww pv, trans 3 ev tgw	
+254	WW(pv,e-trans,tgw,mv)	717	verzaken  uithalen  aanbieden  maken  opslokken	ww pv, trans mv tgw	
+255	WW(pv,e-trans,verl,ev)	1159	aanhief  beschuldigde  verwachtte  duwde  stemde	ww pv, trans sg verl	
+256	WW(pv,e-trans,verl,mv)	428	hielden  voelden  grepen  zochten  vroegen	ww pv, trans pl verl	
+257	WW(pv,e-trans,imper,zonderpron)	208	schep  steun  Open  Help  Krijg	ww pv, trans imperatief zonder pronomen	
+258	WW(pv,e-trans,imper,metpron)	21	Behandelt  Excuseert  Begint  zie  geeft	ww pv, trans imperatief met pronomen	
+259	WW(pv,e-trans,conj)	18	controlere  raadplege  koste  scheide  behoede	ww pv, trans overige vormen	
+261	WW(pv,e-refl,tgw,1,ev)	23	herinner  zet  beroep  maak  vergis	ww pv, refl 1 ev tgw	
+262	WW(pv,e-refl,tgw,2,ev)	20	bemoei  inlaat  voel  houdt  verkleedt	ww pv, refl 2 ev tgw	
+263	WW(pv,e-refl,tgw,3,ev)	164	over-vrijt  strekt  bevindt  handhaaft  loswoelt	ww pv, refl 3 ev tgw	
+264	WW(pv,e-refl,tgw,mv)	109	uiten  hoeden  stoten  bezighouden  beperken	ww pv, refl mv tgw	
+265	WW(pv,e-refl,verl,ev)	132	splitste  schrok  afgaf  redde  afspeelde	ww pv, refl sg verl	
+266	WW(pv,e-refl,verl,mv) 	59	bemoeiden  voelden  stelden  verlieten	ww pv, refl pl verl	
+267	WW(pv,e-refl,imper,e-zonderpron)	12	Beweeg  wacht  Verzet  vergis  vergist	ww pv, refl imperatief zonder pronomen	
+268	WW(pv,e-refl,imper,e-metpron)	1	Hou	ww pv, refl imperatief met pronomen	
 270		1	kunnen	ww pv, hulp of koppelwerkwoord 	
-271	WW(pv,hulp-of-koppel,tgw,1,ev)	73	HEB  zal  zit  laat	ww pv, hulp of koppelwerkwoord 1 ev tgw	
-272	WW(pv,hulp-of-koppel,tgw,2,ev)	131	mag  houdt  Weet  Zul  Kunt	ww pv, hulp of koppelwerkwoord 2 ev tgw	
-273	WW(pv,hulp-of-koppel,tgw,3,ev)	152	mag  zijn  kon  tracht  dient	ww pv, hulp of koppelwerkwoord 3 ev tgw	
-274	WW(pv,hulp-of-koppel,tgw,mv)	107	magge  doen  Zijn  behoren  Blijken	ww pv, hulp of koppelwerkwoord mv tgw	
-275	WW(pv,hulp-of-koppel,verl,ev)	134	achtte  Liet  hielp  Was  Moest	ww pv, hulp of koppelwerkwoord sg verl	
-276	WW(pv,hulp-of-koppel,verl,mv)	88	Zouden  HADDEN  sloegen  moesten  probeerden	ww pv, hulp of koppelwerkwoord pl verl	
-277	WW(pv,hulp-of-koppel,imper,zonderpron)	22	blijf  Blijf  Laat  Ga  zit	ww pv, hulp of koppelwerkwoord imperatief zonder pronomen	
-278	WW(pv,hulp-of-koppel,imper,metpron)	7	Begint  gaat  Gaat  Laat  Ga	ww pv, hulp of koppelwerkwoord imperatief met pronomen	
-279	WW(pv,hulp-of-koppel,conj)	14	zij  ware  zijt	ww pv, hulp of koppelwerkwoord overige vormen	
-287	WW(pv,interj,imper,zonderpron)	13	verrek  kijk  hoor  kom	ww imperatief zonder pronomen	? beetje raar
+271	WW(pv,e-hulp-of-koppel,tgw,1,ev)	73	HEB  zal  zit  laat	ww pv, hulp of koppelwerkwoord 1 ev tgw	
+272	WW(pv,e-hulp-of-koppel,tgw,2,ev)	131	mag  houdt  Weet  Zul  Kunt	ww pv, hulp of koppelwerkwoord 2 ev tgw	
+273	WW(pv,e-hulp-of-koppel,tgw,3,ev)	152	mag  zijn  kon  tracht  dient	ww pv, hulp of koppelwerkwoord 3 ev tgw	
+274	WW(pv,e-hulp-of-koppel,tgw,mv)	107	magge  doen  Zijn  behoren  Blijken	ww pv, hulp of koppelwerkwoord mv tgw	
+275	WW(pv,e-hulp-of-koppel,verl,ev)	134	achtte  Liet  hielp  Was  Moest	ww pv, hulp of koppelwerkwoord sg verl	
+276	WW(pv,e-hulp-of-koppel,verl,mv)	88	Zouden  HADDEN  sloegen  moesten  probeerden	ww pv, hulp of koppelwerkwoord pl verl	
+277	WW(pv,e-hulp-of-koppel,imper,zonderpron)	22	blijf  Blijf  Laat  Ga  zit	ww pv, hulp of koppelwerkwoord imperatief zonder pronomen	
+278	WW(pv,e-hulp-of-koppel,imper,metpron)	7	Begint  gaat  Gaat  Laat  Ga	ww pv, hulp of koppelwerkwoord imperatief met pronomen	
+279	WW(pv,e-hulp-of-koppel,conj)	14	zij  ware  zijt	ww pv, hulp of koppelwerkwoord overige vormen	
+287	WW(pv,e-interj,imper,e-zonderpron)	13	verrek  kijk  hoor  kom	ww imperatief zonder pronomen	? beetje raar
 300	VNW(pers,pron,nomin)	84	zij  wij  We  Ze  Iek	vnw persoonlijk basisvorm	
 302	VNW(pers,pron,gen) 	5	onzer  haars  het  hunner	vnw persoonlijk genitief	“het” is tagfout
 303	VNW(pers,pron,obl)	65	hem  haar  hen  jou  't	vnw persoonlijk overige buiging	
@@ -172,42 +172,42 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 490	TW(rang,prenom,stan)	102	12  negentiende  19e  6e  12e	tw rang, bijvoeglijk basisvorm	
 491	TW(rang,prenom,mv-n)	1	eersten	tw rang, bijvoeglijk meervoud	onzin?
 493	TW(rang,prenom,bijz)	10	tweeden  eerste  1e  Eerste	tw rang, bijvoeglijk overige buiging	
-500	BW(alg,zonder)	1945	tenminste  overend  nog  eerst  plm.	bw gewoon basisvorm	
-503	BW(alg,met-e)	7	enenmale  dikke  hele	bw gewoon overige buiging	
-504	BW(alg,comp,zonder)	11	dichter  dichterbij  vaker	bw gewoon comparatief onverbogen	
-507	BW(alg,sup,zonder)	2	dichtst  vaakst	bw gewoon superlatief onverbogen	
-509	BW(alg,sup,met-e)	1	zeerste	bw gewoon superlatief overige buiging	
-510	BW(aanw,zonder)	247	soms  bovendien  zowiezo  ditmaal  zo	bw aanwijzend en onbepaald basisvorm	
-513	BW(aanw,versm)	1	zo'n	bw aanwijzend en onbepaald overige buiging	?
+500	BW(e-alg,e-zonder)	1945	tenminste  overend  nog  eerst  plm.	bw gewoon basisvorm	
+503	BW(e-alg,e-met-e)	7	enenmale  dikke  hele	bw gewoon overige buiging	
+504	BW(e-alg,comp,e-zonder)	11	dichter  dichterbij  vaker	bw gewoon comparatief onverbogen	
+507	BW(e-alg,sup,e-zonder)	2	dichtst  vaakst	bw gewoon superlatief onverbogen	
+509	BW(e-alg,sup,e-met-e)	1	zeerste	bw gewoon superlatief overige buiging	
+510	BW(e-aanw,e-zonder)	247	soms  bovendien  zowiezo  ditmaal  zo	bw aanwijzend en onbepaald basisvorm	
+513	BW(e-aanw,e-versm)	1	zo'n	bw aanwijzend en onbepaald overige buiging	?
 516	BW(aanw,comp,zonder) [VB klopt niet]	1	er	bw aanwijzend en onbepaald comparatief overige buiging	
-519	BW(aanw,sup,met-e-ofzo) [VW klopt niet]	1	Hier	bw aanwijzend en onbepaald superlatief overige buiging	
-520	BW(vrag,zonder)	46	hoe  waarom  wanneer  waarzo	bw basisvorm	
-523	BW(vrag,met-e)	1	hoeverre	bw overige buiging	
-530	BW(betr,zonder)	27	dat  waar  Waarom	bw betrekkelijk basisvorm	
-540	BW(adv-pron,aanw,zonder)	239	ertoe  hierboven  hieromtrent  Hierop  Daaroverheen	bw voornaamwoordelijk basisvorm	Of vnw?
-550	BW(adv-pron,vrag,zonder)	37	waarover  waarna  Waaraan  waar  Waarmee	bw vragend voornaamwoordelijk basisvorm	
-560	BW(adv-pron,betr,zonder)	59	waarmee  Hiertoe  waarbij  Waarmede  waarlangs	bw betrekkelijk voornaamwoordelijk basisvorm	
+519	BW(e-aanw,e-sup,e-met-e-ofzo) [VW klopt niet]	1	Hier	bw aanwijzend en onbepaald superlatief overige buiging	
+520	BW(e-vrag,e-zonder)	46	hoe  waarom  wanneer  waarzo	bw basisvorm	
+523	BW(e-vrag,e-met-e)	1	hoeverre	bw overige buiging	
+530	BW(e-betr,e-zonder)	27	dat  waar  Waarom	bw betrekkelijk basisvorm	
+540	BW(e-adv-pron,e-aanw,e-zonder)	239	ertoe  hierboven  hieromtrent  Hierop  Daaroverheen	bw voornaamwoordelijk basisvorm	Of vnw?
+550	BW(e-adv-pron,e-vrag,e-zonder)	37	waarover  waarna  Waaraan  waar  Waarmee	bw vragend voornaamwoordelijk basisvorm	
+560	BW(e-adv-pron,e-betr,e-zonder)	59	waarmee  Hiertoe  waarbij  Waarmede  waarlangs	bw betrekkelijk voornaamwoordelijk basisvorm	
 566	?? absurd voorbeeld	1	waarbij	bw betrekkelijk voornaamwoordelijk comparatief overige buiging	
-580	BW(interj)	17	vooruit  nu  niet  Toe  wel	bw interjectivisch basisvorm	
-587	BW(interj,sup) [ONZIN]	1	hoor	bw interjectivisch superlatief onverbogen	
+580	BW(e-interj)	17	vooruit  nu  niet  Toe  wel	bw interjectivisch basisvorm	
+587	BW(e-interj,sup) [ONZIN]	1	hoor	bw interjectivisch superlatief onverbogen	
 590	??	2	terecht  terwille	bw basisvorm	
 600	VZ(init)	432	Naast  over  Per  uit	vz nevenschikkend basisvorm	
 603	VZ(versm)	9	ter  Ten  ten	vz nevenschikkend overige buiging	
-610	VZ(fin,deel-bw)	29	aan  voor  van  op  uit	vz onderschikkeld basisvorm	
-620	VZ(fin,deel-ww)	16	voor  voort  af  over  uit	vz vergelijkend basisvorm	
-630	VZ(fin,deel-vz)	146	door  in  af  toe  uit	vz al (met afwijkende volgorde in bijzin) basisvorm	zoals naar .. toe
+610	VZ(fin,e-deel-bw)	29	aan  voor  van  op  uit	vz onderschikkeld basisvorm	
+620	VZ(fin,e-deel-ww)	16	voor  voort  af  over  uit	vz vergelijkend basisvorm	
+630	VZ(fin,e-deel-vz)	146	door  in  af  toe  uit	vz al (met afwijkende volgorde in bijzin) basisvorm	zoals naar .. toe
 640	VZ(fin)	32	in  af  terug  heen  op	vz deel nevenschikkende voegwoordgroep basisvorm	
-650	VZ(init,preverb)	24	voor  Te  Door  teneinde  Alvorens	vz basisvorm	
-660	VZ(init,preconj)	10	zonder  voor  van  vijfenzestig  tegen	vz basisvorm	zonder dat je het begrijpt
+650	VZ(init,e-preverb)	24	voor  Te  Door  teneinde  Alvorens	vz basisvorm	
+660	VZ(init,e-preconj)	10	zonder  voor  van  vijfenzestig  tegen	vz basisvorm	zonder dat je het begrijpt
 700	VG(neven)	98	als  hetzij  Voor	vg basisvorm	
 710	VG(onder)	139	omdat  Naar  Mits  naar  totdat	vg basisvorm	
-720	VG(verg)	59	als  dan  behalve  zoo	vg basisvorm	Wanneer is dit een voorzetsel voor van eynde cum suis?
-730	VG(onder,vso)	9	als  terwijl  Als  Al  of	vg basisvorm	al loop je op straat, …
-740	VG(deel-vg)	49	zowel  en  hetzij	vg basisvorm	Zowel-als-enzo
+720	VG(onder,e-verg)	59	als  dan  behalve  zoo	vg basisvorm	Wanneer is dit een voorzetsel voor van eynde cum suis?
+730	VG(onder,e-vso)	9	als  terwijl  Als  Al  of	vg basisvorm	al loop je op straat, …
+740	VG(e-deel-vg)	49	zowel  en  hetzij	vg basisvorm	Zowel-als-enzo
 800	TSW()	291	ho  Sorry  hm  Tjonge  o	tsw echt basisvorm	
-810	TSW(onomatopee)	6	Pfff  peng  ak-ak-ak  zzz  zo	tsw onomatopeeen basisvorm	
+810	TSW(e-onomatopee)	6	Pfff  peng  ak-ak-ak  zzz  zo	tsw onomatopeeen basisvorm	
 990	SPEC(vreemd)	846	for  door  een  verstehen  to	res anderstalig	
-991	TSW(gewauwel)	3	n  eh  t	res niet-lexicale verbindingselementen	als “n” dan afgebr, anders TSW
-992	SPEC(symb,math)	31	e  /@@  @  q@r  @@@	res rekenkundige symbolen	
+991	TSW(e-gewauwel)	3	n  eh  t	res niet-lexicale verbindingselementen	als “n” dan afgebr, anders TSW
+992	SPEC(symb,e-math)	31	e  /@@  @  q@r  @@@	res rekenkundige symbolen	
 993	SPEC(symb)	20	x  %  =  Ae  moeyden	res overige symbolen	
 998	SPEC(comment)	75	's  ambroen  blijkop  h  hk	res niet tot de steekproef behorende elementen	
