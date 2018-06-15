@@ -228,7 +228,9 @@ object Eindhoven {
 
         val molexPos = c.map(_.pos)
 
-        val molexPosAttribute = if (molexPos.isEmpty || {val noMolexPos = true; noMolexPos}) List() else List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
+        val molexPosAttribute = if (molexPos.isEmpty || {val noMolexPos = true; noMolexPos}) List()
+        else
+          List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
 
         val lemmaCandidates = c.filter(w => lemma.isEmpty).map(_.lemma).toSet
 
