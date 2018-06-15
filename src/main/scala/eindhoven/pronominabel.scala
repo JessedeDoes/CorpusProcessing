@@ -1,7 +1,25 @@
 package eindhoven
 
 object pronominabel {
-
+  val gradables = """veel
+    weinig
+    beide
+    meer
+    teveel
+    minder
+    keiveel
+    meeste
+    evenveel
+    zoveel
+    mindere
+    vele
+    superveel
+    keiweinig
+    allerminst
+    minst
+    veels
+    zovele
+    vaak""".split("\\s+").toSet // waarom 'beide' grad??
 }
 
 

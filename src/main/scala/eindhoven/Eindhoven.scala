@@ -141,12 +141,12 @@ object Eindhoven {
   def vuPatchName(w: Elem):Seq[Node] =
   {
     val txt = w.text
-    val n = w.text.split("\\s+").size
+    val n = w.text.split("\\s+").length
 
     val id = getId(w).getOrElse("noId")
     val typ = (w \ "@type").text
     val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
-      val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "pos").text
+      val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "@pos").text
       val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>})
         <name key={txt} resp="namenKlus">{sequence}</name> <note resp="namenKlus">De vu-naam was: {txt}</note>
     } else w
@@ -170,7 +170,7 @@ object Eindhoven {
       id.get -> w.asInstanceOf[Elem]
     }).toMap
 
-    Console.err.println(mappie)
+
 
     def doW(w: Elem) =
     {
@@ -179,7 +179,8 @@ object Eindhoven {
         val w1: Elem = mappie(id.get)
         val pos = (w \ "@pos").text
         val w1Pos = (w1 \ "@type").text
-        Console.err.println(s"$pos $w1Pos")
+        val word = w.text
+        Console.err.println(s"$word $pos $w1Pos")
         val newPos = {
           if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
           else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,x-pred")
@@ -208,11 +209,15 @@ object Eindhoven {
   {
     val doc = XML.loadFile(f)
     (doc \\ "w").map(_.asInstanceOf[Elem])
-    val d1 = updateElement(doc, _.label == "w", doWord)
+    val d1 = updateElement(doc, x => x.label == "w" || x.label == "pc" , x => if (x.label == "w") doWord(x) else doPunct(x))
+
     val d2 = updateElement(d1, _.label == "name", doName)
+
     //val d2a = updateElement(d1, _.label == "p", p=> p.copy())
+
     val d3 = if (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName))
       vuPatch(d2) else d2
+
     val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>))
 
     val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
@@ -249,9 +254,9 @@ object Eindhoven {
     (vuMainPos, vuSubPos, vuSubSubPos)
   }
 
-  def doPunct(pc: Elem) =
+  def doPunct(pc: Elem):Elem =
   {
-    val id = getId(pc)
+    val id = getId(pc).get
     <pc xml:id={id} pos="LET()">{pc.text}</pc>
   }
 
@@ -335,25 +340,7 @@ object Eindhoven {
 
   def removeFeatures(tag: String, features: Set[String]) = features.foldLeft(tag)(removeFeature)
 
-  val gradables = """veel
-    weinig
-    beide
-    meer
-    teveel
-    minder
-    keiveel
-    meeste
-    evenveel
-    zoveel
-    mindere
-    vele
-    superveel
-    keiweinig
-    allerminst
-    minst
-    veels
-    zovele
-    vaak""".split("\\s+").toSet // waarom 'beide' grad??
+
 
   def addDetailsToPos(word: String, lemma: String, tag: String):String =
   {
@@ -383,7 +370,7 @@ object Eindhoven {
         val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom","det"))
         return t1
       }
-    if (tag.matches("VNW.*det.*") && gradables.contains(lemma))
+    if (tag.matches("VNW.*det.*") && pronominabel.gradables.contains(lemma))
       return tag.replaceAll("det", "grad")
     tag
   }
