@@ -42,6 +42,8 @@ object Eindhoven {
   val patchDir ="/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/xml-tagged/"
   val outputDir = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/tkvPatch/"
 
+  val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size>1).map(l => l(0).trim -> l(1).trim).toMap
+
   val files = new java.io.File(xmlDir).listFiles.toStream.flatMap(f => f.listFiles().toList).filter(f => f.getName().endsWith(("xml")))
 
   val goodies = scala.io.Source.fromFile(hulpDataDir + "/" + "goede-woorden-uit-molex-postgres.csv").getLines.toList.map(l => l.split(";"))
@@ -88,6 +90,23 @@ object Eindhoven {
       }))
   }
 
+  def updateElement5(e: Elem, condition: Elem=>Boolean, f: Elem => NodeSeq):NodeSeq =
+  {
+    val newChildren =  e.child.flatMap({
+      {
+        case e1: Elem => updateElement5(e1,condition,f)
+        case n:Node => Seq(n)
+      }
+    })
+
+    if (condition(e)) {
+      f(e.copy(child = newChildren))
+    }
+    else
+      e.copy(child = newChildren)
+  }
+
+
   def capFirst(s: String) = s.substring(0,1).toUpperCase + s.substring(1, s.length)
 
   def vuPatchS(d: Elem):Elem =
@@ -104,8 +123,35 @@ object Eindhoven {
     d.copy(child=newChildren)
   }
 
+  val xml = "@{http://www.w3.org/XML/1998/namespace}"
 
-  def vuPatch(d: Elem) = updateElement(d, x => x.label=="s" && (x \ "w").nonEmpty, vuPatchS)
+  /*
+  def convert(folia: Node):Node =
+  {
+    val id = folia \ s"${xml}id"
+*/
+
+  def vuPatchName(w: Elem):Seq[Node] =
+  {
+    val txt = w.text
+    val n = w.text.split("\\s+").size
+
+    val id = getId(w)
+    val typ = (w \ "@type").text
+    val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
+      val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "pos").text
+      val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>})
+        <name resp="namenKlus">{sequence}</name> <note resp="namenKlus">De vu-naam was: {txt}</note>
+    } else w
+    s1
+  }
+
+  def vuPatch(d: Elem):Elem =
+    {
+      val v0 = updateElement5(d, x => x.label == "w", vuPatchName).head.asInstanceOf[Elem]
+      val v1 = updateElement(v0, x => x.label=="s" && (x \ "w").nonEmpty, vuPatchS)
+      v1
+    }
 
   def useAutomaticTagging(d: Elem, f: File) =
   {
