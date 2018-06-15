@@ -141,7 +141,7 @@ object Eindhoven {
     val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
       val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "pos").text
       val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>})
-        <name resp="namenKlus">{sequence}</name> <note resp="namenKlus">De vu-naam was: {txt}</note>
+        <name key={txt} resp="namenKlus">{sequence}</name> <note resp="namenKlus">De vu-naam was: {txt}</note>
     } else w
     s1
   }
@@ -212,7 +212,7 @@ object Eindhoven {
 
     val d6 = noNotes(d5)
 
-    XML.save(fOut.getCanonicalPath, d5, "UTF-8")
+    XML.save(fOut.getCanonicalPath, d6, "UTF-8")
   }
 
   def doFile(f: String, f1: String): Unit = doFile(new File(f), new File(f1))
