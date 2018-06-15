@@ -182,7 +182,7 @@ object Eindhoven {
         Console.err.println(s"$pos $w1Pos")
         val newPos = {
           if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
-          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,pred+")
+          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,x-pred")
           else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*"))
             { if (w1Pos.matches(".*prenom.*"))
             replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-prenom")  else  replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-vrij") }
@@ -247,6 +247,12 @@ object Eindhoven {
     val vuSubSubPos = vuPos - 100 * vuMainPos - 10 * vuSubPos
 
     (vuMainPos, vuSubPos, vuSubSubPos)
+  }
+
+  def doPunct(pc: Elem) =
+  {
+    val id = getId(pc)
+    <pc xml:id={id} pos="LET()">{pc.text}</pc>
   }
 
   def doWord(w: Elem):Elem = {
