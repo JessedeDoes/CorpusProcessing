@@ -195,6 +195,8 @@ object Eindhoven {
     a.key.equals("id")).map(a => a.value.toString).headOption
 
 
+  def noNotes(d: Elem) = updateElement5(d, _.label=="note", n => Seq()).head.asInstanceOf[Elem]
+
   def doFile(f: File, fOut: File):Unit =
   {
     val doc = XML.loadFile(f)
@@ -207,6 +209,8 @@ object Eindhoven {
     val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>))
 
     val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
+
+    val d6 = noNotes(d5)
 
     XML.save(fOut.getCanonicalPath, d5, "UTF-8")
   }
