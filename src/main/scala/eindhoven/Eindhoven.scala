@@ -16,8 +16,9 @@ case class Word(word: String, lemma: String, pos: String) {
         !(ssp == 0 && !pos.contains("sg")) && !(ssp == 1 && !pos.contains("pl"))
       else pos.startsWith("NOU-P")
       case 1 => pos.startsWith("AA")
-      case 2 => pos.startsWith("VRB") && !((ssp == 5 || ssp == 6) && !pos.contains("past")) &&
-        !(List(1, 2, 3, 4).contains(ssp) && !pos.contains("pres")) &&
+      case 2 => pos.startsWith("VRB") &&
+        !(sp >= 4 && (ssp == 5 || ssp == 6) && !pos.contains("past")) &&
+        !(sp >= 4 && List(1, 2, 3, 4).contains(ssp) && !pos.contains("pres")) &&
         !(List(0, 1, 2, 3).contains(sp) && !(pos.contains("=inf") || pos.contains("part")))
       case 3 => pos.startsWith("PD") &&
         !(List(2, 3).contains(sp) && !pos.contains("poss")) &&
@@ -81,6 +82,7 @@ object Eindhoven {
   val deelwoorden = goodies.filter(w => w.pos.contains("=part") && !w.word.endsWith("n"))
   val extraDeelwoorden = deelwoorden.map(w => w.copy(word = w.word + "e"))
 
+
   val goodiesPlus = goodies ++ extraDeelwoorden
 
   val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >= 2)
@@ -108,6 +110,7 @@ object Eindhoven {
 
 
   val goodMap: Map[String, List[Word]] = goodiesPlus.groupBy(w => noAccents(w.word))
+
 
   def updateElement(e: Elem, condition: Elem => Boolean, f: Elem => Elem): Elem = {
     if (condition(e))
@@ -201,14 +204,16 @@ object Eindhoven {
       w.copy(attributes = w.attributes.filter(_.key != "pos").append( new UnprefixedAttribute("pos", t1, Null)  ))
     }
 
-    def doW(w: Elem) = {
+    def doW(w: Elem):Elem = {
       val id = getId(w)
-      if (id.isDefined && mappie.contains(id.get)) {
+      val tweakedForPos = if (id.isDefined && mappie.contains(id.get)) {
         val w1: Elem = mappie(id.get)
         val pos = (w \ "@pos").text
         val w1Pos = (w1 \ "@type").text
         val word = w.text
-        Console.err.println(s"$word $pos $w1Pos")
+        val w1Lemma = (w1 \ "@lemma").text
+
+        // Console.err.println(s"$word $pos $w1Pos")
         val newPos = {
           if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
             addFeature(pos, "x-ev") else
@@ -226,8 +231,17 @@ object Eindhoven {
           }
           else pos
         }
-        w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)))
+        val lemmaAdd:List[UnprefixedAttribute] = if ((w \ "@lemma").nonEmpty)
+          List()
+        else {
+          Console.err.println(s"Lemma patch in: $w1Lemma for $word, $pos")
+          List(new UnprefixedAttribute("lemma", w1Lemma, Null))
+        }
+
+        w.copy(attributes = append(w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)),lemmaAdd))
       } else w
+
+      tweakedForPos
     }
 
     updateElement(d, _.label == "w", w => pronomExtra(doW(w)))
@@ -318,6 +332,8 @@ object Eindhoven {
 
     val candidates = goodMap.get(word.toLowerCase())
 
+
+
     val mappedPoS = mapTag(de_vu_pos)
     val cleanedAttributes = w.attributes.filter(a => !(a.key == "pos") && !(a.key == "lemma" && a.value.text == "_")).append(
       new UnprefixedAttribute("pos", mappedPoS, Null)
@@ -339,9 +355,12 @@ object Eindhoven {
 
         val lemmaCandidates = c.filter(w => lemma.isEmpty).map(_.lemma).toSet
 
+
         val lemmaAttribute = new UnprefixedAttribute("lemma", lemmaCandidates.mkString("|"), Null)
+
         val lAdd = if (lemmaCandidates.isEmpty)
           if (supply) List(lemmaIsWord) else List()
+
         else List(lemmaAttribute)
 
         val withAccent = c.filter(w => noAccents(w.word) != w.word.toLowerCase())
