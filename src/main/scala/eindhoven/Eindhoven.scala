@@ -234,8 +234,18 @@ object Eindhoven {
         val lemmaAdd:List[UnprefixedAttribute] = if ((w \ "@lemma").nonEmpty)
           List()
         else {
-          Console.err.println(s"Lemma patch in: $w1Lemma for $word, $pos")
-          List(new UnprefixedAttribute("lemma", w1Lemma, Null))
+
+          val redPatch = if (word.equals("avonds")) "avond"
+          else if (pos.matches("VNW.*")) {
+            if (word == "'t") "het"
+            else if (word == "'n") "een"
+            else if (word == "'s") "de"
+            else w1Lemma
+          } else w1Lemma
+
+          Console.err.println(s"Lemma patch in: $redPatch for $word, $pos")
+
+          List(new UnprefixedAttribute("lemma", redPatch, Null))
         }
 
         w.copy(attributes = append(w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)),lemmaAdd))

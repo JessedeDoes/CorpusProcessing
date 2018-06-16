@@ -92,20 +92,21 @@ object pronominabel {
 
   import Eindhoven._
 
-  def enhancePronFeatures(word: String, lemma: String, tag: String) =
-    {
-      val lem1 = if (Set("ze","zij").contains(lemma.toLowerCase)) {
+  def enhancePronFeatures(word: String, lemma: String, tag: String) = {
+    if (tag.matches("VNW.*pers.*")) {
+      val lem1 = if (Set("ze", "zij").contains(lemma.toLowerCase)) {
         if (tag.matches(".*pers.*nomin.*") && tag.contains("ev"))
           "zij_ev" else if (tag.contains("mv") || tag.contains("obl"))
           "zij_mv" else "zij"
       } else lemma
 
-      val lemExtra:List[String] = lemmaFeatureMap.getOrElse(lem1.toLowerCase(),List())
-      val wordExtra:List[String] = wordformFeatureMap.getOrElse(word.toLowerCase(),List())
+      val lemExtra: List[String] = lemmaFeatureMap.getOrElse(lem1.toLowerCase(), List())
+      val wordExtra: List[String] = wordformFeatureMap.getOrElse(word.toLowerCase(), List())
 
 
       addFeatures(tag, lemExtra ++ wordExtra)
-    }
+    } else tag
+  }
 }
 
 
