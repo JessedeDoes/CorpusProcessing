@@ -183,7 +183,7 @@ object Eindhoven {
       val replacement = namenMap(txt).split("\\s+").toSeq
       val n = replacement.size
       val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "@pos").text
-      val sequence = replacement.zipWithIndex.flatMap({ case (t, i) => ({if (i > 0) Text(" ") else Seq()} ++ <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>)
+      val sequence = replacement.zipWithIndex.flatMap({ case (t, i) => ({if (i >= 0) Text("\n") else Seq()} ++ <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>)
       })
       <name key={txt} resp="namenKlus">
         {sequence}
