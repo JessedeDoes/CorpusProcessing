@@ -3,7 +3,7 @@ package eindhoven
 import java.io.{File, FileWriter}
 import java.text.Normalizer
 
-import eindhoven.Eindhoven.{replaceFeature, _}
+import eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
 import posmapping.ProcessFolder
 
 import scala.xml._
@@ -66,6 +66,8 @@ object Eindhoven {
 
   val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
   val verkleinvormen = fromFile("data/verkleinwoordvormen.txt").getLines.toSet
+
+  val geslachtenMap = fromFile("data/geslacht.txt").getLines.toList.map(l => l.split("\\t")).map(r => r(0) -> r(1)).toMap
 
   def orderFeatures(t: String): String = {
     val t1 = Tag(t)
@@ -361,6 +363,8 @@ object Eindhoven {
 
     // Console.err.println(cleanedAttributes)
 
+    // code below is awful. Rewrite!!
+
     val extraAttributes: List[UnprefixedAttribute] =
       if (candidates.isDefined) {
         val c = candidates.get.filter(w => (lemma.isEmpty || w.lemma == lemma) && w.matches(vuMainPos, vuSubPos, vuSubSubPos))
@@ -388,16 +392,19 @@ object Eindhoven {
 
         if (withAccent.nonEmpty) {
           val a0: UnprefixedAttribute = new UnprefixedAttribute("corr", withAccent.head.word, Null)
-
+          val a1: UnprefixedAttribute = new UnprefixedAttribute("sic", word, Null)
           // Console.err.println(s"$word ($lemma) => $withAccent")
 
-          if (withoutAccent.isEmpty) List(a0) ++ lAdd ++ molexPosAttribute
+          if (withoutAccent.isEmpty) List(a0,a1) ++ lAdd ++ molexPosAttribute
           else {
-            List(a0, cert) ++ lAdd ++ molexPosAttribute
+            List(a0, a1, cert) ++ lAdd ++ molexPosAttribute
           }
         } else lAdd ++ molexPosAttribute
       } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
-    addDetailsToPos(w.copy(attributes = append(cleanedAttributes, extraAttributes)))
+    val w1 = addDetailsToPos(w.copy(attributes = append(cleanedAttributes, extraAttributes)))
+    val w2 = if ((w1 \ "@corr").nonEmpty && (w1 \ "@cert").isEmpty)
+    w1.copy(child=Text( (w1 \ "@corr").text )) else w1
+    w2
   }
 
   def addDetailsToPos(w: Elem): Elem = {
@@ -429,12 +436,23 @@ object Eindhoven {
 
   def addDetailsToPos(word: String, lemma: String, tag: String): String = {
     if (tag.matches("N.*soort.*")) {
-      if (verkleinvormen.contains(word.toLowerCase()))
-        return addFeature(tag, "x-dim")
+      val withDim =
+
+        if (verkleinvormen.contains(word.toLowerCase()))
+        addFeatures(tag, List("x-dim","x-zijd"))
       else if (word.endsWith("je") && !nodims.exists(word.toLowerCase.endsWith(_)))
-        return addFeature(tag, "x-dim")// voor onbekende woorden: lijstje
+        addFeatures(tag, List("x-dim","x-zijd")) // voor onbekende woorden: lijstje
       else
-        return addFeature(tag, "x-basis")
+        addFeature(tag, "x-basis")
+
+      val withGender = if (withDim.contains("x-dim") || !geslachtenMap.contains(lemma.toLowerCase()) || geslachtenMap(lemma.toLowerCase()).contains(","))
+        withDim
+      else
+        {
+          addFeature(tag, "x-" + geslachtenMap(lemma.toLowerCase()))
+        }
+
+      return withGender
     }
 
     if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n")) {
