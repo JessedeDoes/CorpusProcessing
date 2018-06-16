@@ -212,6 +212,17 @@ object Eindhoven {
       w.copy(attributes = w.attributes.filter(_.key != "pos").append( new UnprefixedAttribute("pos", t1, Null)  ))
     }
 
+    val genderRegex = "gender=(.*?)[,)]".r
+
+    def getGender(pos: String):Option[String] = genderRegex
+      .findFirstMatchIn(pos)
+      .map(_.group(1))
+      .map(g => {
+        val zijd = if (g.matches(".*[mf].*")) Set("zijd") else Set.empty[String]
+        val onz = if (g.matches(".*n.*")) Set("onz") else Set.empty[String]
+        zijd ++ onz
+      }).filter(_.size == 1).map(_.head)
+
     def doW(w: Elem):Elem = {
       val id = getId(w)
       val tweakedForPos = if (id.isDefined && mappie.contains(id.get)) {
@@ -223,7 +234,14 @@ object Eindhoven {
 
         // Console.err.println(s"$word $pos $w1Pos")
         val newPos = {
-          if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
+          if (pos.matches("N.*soort.*ev.*") && !pos.matches(".*(zijd|onz).*")  && w1Pos.matches("NOU-C.*gender=.*"))
+            {
+              val g = getGender(w1Pos)
+              if (g.isDefined)
+                addFeature(pos,"x-" + g.get)// gender uit corpustagging moet wel gewantrouwd worden
+              else
+                pos
+            } else if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
             addFeature(pos, "x-ev") else
           if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))
             addFeature(pos, "x-mv") else
@@ -437,19 +455,18 @@ object Eindhoven {
   def addDetailsToPos(word: String, lemma: String, tag: String): String = {
     if (tag.matches("N.*soort.*")) {
       val withDim =
-
         if (verkleinvormen.contains(word.toLowerCase()))
-        addFeatures(tag, List("x-dim","x-zijd"))
+        addFeatures(tag, List("dim","zijd"))
       else if (word.endsWith("je") && !nodims.exists(word.toLowerCase.endsWith(_)))
-        addFeatures(tag, List("x-dim","x-zijd")) // voor onbekende woorden: lijstje
+        addFeatures(tag, List("dim","zijd")) // voor onbekende woorden: lijstje
       else
-        addFeature(tag, "x-basis")
+        addFeature(tag, "basis")
 
-      val withGender = if (withDim.contains("x-dim") || !geslachtenMap.contains(lemma.toLowerCase()) || geslachtenMap(lemma.toLowerCase()).contains(","))
+      val withGender = if (withDim.contains("dim") || !geslachtenMap.contains(lemma.toLowerCase()) || geslachtenMap(lemma.toLowerCase()).contains(","))
         withDim
       else
         {
-          addFeature(tag, "x-" + geslachtenMap(lemma.toLowerCase()))
+          addFeature(withDim, geslachtenMap(lemma.toLowerCase()))
         }
 
       return withGender
