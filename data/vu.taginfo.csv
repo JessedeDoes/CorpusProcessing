@@ -56,60 +56,60 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 217	WW(vd,e-trans,prenom|nom,met-e,zonder-n)	826	opgedane  beknelde  geforceerde  geharde  verminderde	ww trans vd, verbogen	
 218	WW(vd,e-trans,met-e,mv-n)	63	gestoorden  geraakten  verzekerden  veroordeelden  afgevaardigden	ww trans vd, meervoud	
 219	WW(vd,e-trans,adv,vrij)	135	geanimeerd  overdonderd  gekruist  beperkt  Lamgeslagen	ww trans vd, bijwoordelijk	
-220	WW(inf,e-refl,verbaal)	232	bemoeien  handhaven  werken  verbinden  voorbereiden	ww refl infinitief,verbaal	
-221	WW(inf,e-refl,nominaal)	9	openstellen  overgeven  verenigen  voordoen  houden	ww refl infinitief, nominaal	
+220	WW(inf,e-refl,vrij)	232	bemoeien  handhaven  werken  verbinden  voorbereiden	ww refl infinitief,verbaal	
+221	WW(inf,e-refl,nom)	9	openstellen  overgeven  verenigen  voordoen  houden	ww refl infinitief, nominaal	
 222	WW(od,e-refl,zonder)	3	ontstekend  bevindend  wijzigend	ww refl od, onverbogen	
 223	WW(od,e-refl,met-e,zonder-n)	13	respecterende  wijzigende  ontwikkelende  misdragende  verkeerende	ww refl od, verbogen	
 224	WW(od,e-refl,met-e,mv-n)	1	voelen	ww refl od, meervoud	
 225	WW(od,e-refl,adv,vrij)	7	omkerend  aansluitend  baserend  verbazend  aansluitende	ww refl od, bijwoordelijk	
 226	WW(vd,e-refl,zonder)	157	opgewerkt  beschouwd  gesneden  verbonden  opgehouden	ww refl vd, onverbogen	
-230	WW(inf,e-hulp-of-koppel,verbaal)	108	raken  lezen  staan  proberen  moeten	ww hulp of koppelwerkwoord infinitief,verbaal	
-231	WW(inf,e-hulp-of-koppel,nominaal)	12	worden  blijven  zijn  houden	ww hulp of koppelwerkwoord infinitief, nominaal	
+230	WW(inf,e-hulp-of-koppel,vrij)	108	raken  lezen  staan  proberen  moeten	ww hulp of koppelwerkwoord infinitief,verbaal	
+231	WW(inf,e-hulp-of-koppel,nom)	12	worden  blijven  zijn  houden	ww hulp of koppelwerkwoord infinitief, nominaal	
 232	WW(od,e-hulp-of-koppel,prenom|vrij,zonder)	3	wordend  lijkend	ww hulp of koppelwerkwoord od, onverbogen	
 233	WW(od,e-hulp-of-koppel,met-e,zonder-n)	9	wordende  zijnde  luidende	ww hulp of koppelwerkwoord od, verbogen	
-234	WW(od,e-hulp-of-koppel,met-e,mv-n) ?? []	1	moeten	ww hulp of koppelwerkwoord od, meervoud	
+234	WW(od,e-hulp-of-koppel,met-e,mv-n)	1	moeten	ww hulp of koppelwerkwoord od, meervoud	TAGFOUT
 235	WW(od,e-hulp-of-koppel,adv,vrij)	3	zijnde  wordend  trachtend	ww hulp of koppelwerkwoord od, bijwoordelijk	
 236	WW(vd,e-hulp-of-koppel,prenom|vrij,zonder)	35	geheten  geprobeerd  geworden  gekomen  getracht	ww hulp of koppelwerkwoord vd, onverbogen	
 237	WW(vd,e-hulp-of-koppel,met-e,zonder-n)	1	geraakte	ww hulp of koppelwerkwoord vd, verbogen	
-240	WW(pv,e-intrans,??) zou niet moeten bestaan	4	stoppen  uitkomen  opgeven  steken	ww pv, intrans 	
-241	WW(pv,e-intrans,tgw,1,ev)	181	kijk  staan  zing  snap  sla	ww pv, intrans 1 ev tgw	
-242	WW(pv,e-intrans,tgw,2,ev)	195	moet  leef  Rook  gelooft  vervalt	ww pv, intrans 2 ev tgw	
-243	WW(pv,e-intrans,tgw,3,ev)	1002	groeit  zet  Rijst  kuurt  dient	ww pv, intrans 3 ev tgw	Met-t kan eventueel scriptgewijs worden toegekend bij 2e en 3e persoon; niet als stam op -t
+240	WW(pv,e-intrans,??)	4	stoppen  uitkomen  opgeven  steken	ww pv, intrans 	TAGFOUT
+241	WW(pv,e-intrans,tgw,e-1,ev)	181	kijk  staan  zing  snap  sla	ww pv, intrans 1 ev tgw	
+242	WW(pv,e-intrans,tgw,e-2,ev)	195	moet  leef  Rook  gelooft  vervalt	ww pv, intrans 2 ev tgw	
+243	WW(pv,e-intrans,tgw,e-3,ev)	1002	groeit  zet  Rijst  kuurt  dient	ww pv, intrans 3 ev tgw	Met-t kan eventueel scriptgewijs worden toegekend bij 2e en 3e persoon; niet als stam op -t
 244	WW(pv,e-intrans,tgw,mv)	612	luisteren  willen  zitten  bloeden  bestaan	ww pv, intrans mv tgw	
 245	WW(pv,e-intrans,verl,ev)	1010	glansde  publiceerde  school  fungeerde  dook	ww pv, intrans sg verl	
 246	WW(pv,e-intrans,verl,mv)	430	omgingen  trouwden  dansten  stieten  weigerden	ww pv, intrans pl verl	
-247	WW(pv,e-intrans,imper,zonder-subj)	109	dans  Doe  komt  kijk  let	ww pv, intrans imperatief zonder pronomen	
-248	WW(pv,e-intrans,imper,met-subj)	23	Snuiten  Lacht  Zorgt  komt  Zorg	ww pv, intrans imperatief met pronomen	
+247	WW(pv,e-intrans,imper,e-zonder-subj)	109	dans  Doe  komt  kijk  let	ww pv, intrans imperatief zonder pronomen	
+248	WW(pv,e-intrans,imper,e-met-subj)	23	Snuiten  Lacht  Zorgt  komt  Zorg	ww pv, intrans imperatief met pronomen	
 249	WW(pv,e-intrans,conj)	11	zij  inslape  Leve  diene  overdrijve	ww pv, intrans overige vormen	
-250	WW(pv,e-trans .. XX	3	verbeeld  vertellen  melken	ww pv, trans 	
-251	WW(pv,e-trans,tgw,1,ev)	280	merk  benijd  haat  Zie  besef	ww pv, trans 1 ev tgw	
-252	WW(pv,e-trans,tgw,2,ev)	365	ziet  aanhebt  leert  kun  meent	ww pv, trans 2 ev tgw	
-253	WW(pv,e-trans,tgw,3,ev)	1190	betast  spuwt  afzondert  bejegent  afblaft	ww pv, trans 3 ev tgw	
+250	WW(pv,e-trans)	3	verbeeld  vertellen  melken	ww pv, trans 	TAGFOUT
+251	WW(pv,e-trans,tgw,e-1,ev)	280	merk  benijd  haat  Zie  besef	ww pv, trans 1 ev tgw	
+252	WW(pv,e-trans,tgw,e-2,ev)	365	ziet  aanhebt  leert  kun  meent	ww pv, trans 2 ev tgw	
+253	WW(pv,e-trans,tgw,e-3,ev)	1190	betast  spuwt  afzondert  bejegent  afblaft	ww pv, trans 3 ev tgw	
 254	WW(pv,e-trans,tgw,mv)	717	verzaken  uithalen  aanbieden  maken  opslokken	ww pv, trans mv tgw	
 255	WW(pv,e-trans,verl,ev)	1159	aanhief  beschuldigde  verwachtte  duwde  stemde	ww pv, trans sg verl	
 256	WW(pv,e-trans,verl,mv)	428	hielden  voelden  grepen  zochten  vroegen	ww pv, trans pl verl	
-257	WW(pv,e-trans,imper,zonderpron)	208	schep  steun  Open  Help  Krijg	ww pv, trans imperatief zonder pronomen	
-258	WW(pv,e-trans,imper,metpron)	21	Behandelt  Excuseert  Begint  zie  geeft	ww pv, trans imperatief met pronomen	
+257	WW(pv,e-trans,imper,e-zonder-subj)	208	schep  steun  Open  Help  Krijg	ww pv, trans imperatief zonder pronomen	
+258	WW(pv,e-trans,imper,e-met-subj)	21	Behandelt  Excuseert  Begint  zie  geeft	ww pv, trans imperatief met pronomen	
 259	WW(pv,e-trans,conj)	18	controlere  raadplege  koste  scheide  behoede	ww pv, trans overige vormen	
-261	WW(pv,e-refl,tgw,1,ev)	23	herinner  zet  beroep  maak  vergis	ww pv, refl 1 ev tgw	
-262	WW(pv,e-refl,tgw,2,ev)	20	bemoei  inlaat  voel  houdt  verkleedt	ww pv, refl 2 ev tgw	
-263	WW(pv,e-refl,tgw,3,ev)	164	over-vrijt  strekt  bevindt  handhaaft  loswoelt	ww pv, refl 3 ev tgw	
+261	WW(pv,e-refl,tgw,e-1,ev)	23	herinner  zet  beroep  maak  vergis	ww pv, refl 1 ev tgw	
+262	WW(pv,e-refl,tgw,e-2,ev)	20	bemoei  inlaat  voel  houdt  verkleedt	ww pv, refl 2 ev tgw	
+263	WW(pv,e-refl,tgw,e-3,ev)	164	over-vrijt  strekt  bevindt  handhaaft  loswoelt	ww pv, refl 3 ev tgw	
 264	WW(pv,e-refl,tgw,mv)	109	uiten  hoeden  stoten  bezighouden  beperken	ww pv, refl mv tgw	
 265	WW(pv,e-refl,verl,ev)	132	splitste  schrok  afgaf  redde  afspeelde	ww pv, refl sg verl	
 266	WW(pv,e-refl,verl,mv) 	59	bemoeiden  voelden  stelden  verlieten	ww pv, refl pl verl	
-267	WW(pv,e-refl,imper,e-zonderpron)	12	Beweeg  wacht  Verzet  vergis  vergist	ww pv, refl imperatief zonder pronomen	
-268	WW(pv,e-refl,imper,e-metpron)	1	Hou	ww pv, refl imperatief met pronomen	
+267	WW(pv,e-refl,imper,e-zonder-subj)	12	Beweeg  wacht  Verzet  vergis  vergist	ww pv, refl imperatief zonder pronomen	
+268	WW(pv,e-refl,imper,e-met-subj)	1	Hou	ww pv, refl imperatief met pronomen	
 270		1	kunnen	ww pv, hulp of koppelwerkwoord 	
-271	WW(pv,e-hulp-of-koppel,tgw,1,ev)	73	HEB  zal  zit  laat	ww pv, hulp of koppelwerkwoord 1 ev tgw	
-272	WW(pv,e-hulp-of-koppel,tgw,2,ev)	131	mag  houdt  Weet  Zul  Kunt	ww pv, hulp of koppelwerkwoord 2 ev tgw	
-273	WW(pv,e-hulp-of-koppel,tgw,3,ev)	152	mag  zijn  kon  tracht  dient	ww pv, hulp of koppelwerkwoord 3 ev tgw	
+271	WW(pv,e-hulp-of-koppel,tgw,e-1,ev)	73	HEB  zal  zit  laat	ww pv, hulp of koppelwerkwoord 1 ev tgw	
+272	WW(pv,e-hulp-of-koppel,tgw,e-2,ev)	131	mag  houdt  Weet  Zul  Kunt	ww pv, hulp of koppelwerkwoord 2 ev tgw	
+273	WW(pv,e-hulp-of-koppel,tgw,e-3,ev)	152	mag  zijn  kon  tracht  dient	ww pv, hulp of koppelwerkwoord 3 ev tgw	
 274	WW(pv,e-hulp-of-koppel,tgw,mv)	107	magge  doen  Zijn  behoren  Blijken	ww pv, hulp of koppelwerkwoord mv tgw	
 275	WW(pv,e-hulp-of-koppel,verl,ev)	134	achtte  Liet  hielp  Was  Moest	ww pv, hulp of koppelwerkwoord sg verl	
 276	WW(pv,e-hulp-of-koppel,verl,mv)	88	Zouden  HADDEN  sloegen  moesten  probeerden	ww pv, hulp of koppelwerkwoord pl verl	
-277	WW(pv,e-hulp-of-koppel,imper,zonderpron)	22	blijf  Blijf  Laat  Ga  zit	ww pv, hulp of koppelwerkwoord imperatief zonder pronomen	
-278	WW(pv,e-hulp-of-koppel,imper,metpron)	7	Begint  gaat  Gaat  Laat  Ga	ww pv, hulp of koppelwerkwoord imperatief met pronomen	
+277	WW(pv,e-hulp-of-koppel,imper,e-zonder-subj)	22	blijf  Blijf  Laat  Ga  zit	ww pv, hulp of koppelwerkwoord imperatief zonder pronomen	
+278	WW(pv,e-hulp-of-koppel,imper,e-met-subj)	7	Begint  gaat  Gaat  Laat  Ga	ww pv, hulp of koppelwerkwoord imperatief met pronomen	
 279	WW(pv,e-hulp-of-koppel,conj)	14	zij  ware  zijt	ww pv, hulp of koppelwerkwoord overige vormen	
-287	WW(pv,e-interj,imper,e-zonderpron)	13	verrek  kijk  hoor  kom	ww imperatief zonder pronomen	? beetje raar
+287	WW(pv,e-interj,imper,e-zonder-subj)	13	verrek  kijk  hoor  kom	ww imperatief zonder pronomen	? beetje raar
 300	VNW(pers,pron,nomin)	84	zij  wij  We  Ze  Iek	vnw persoonlijk basisvorm	
 302	VNW(pers,pron,gen) 	5	onzer  haars  het  hunner	vnw persoonlijk genitief	“het” is tagfout
 303	VNW(pers,pron,obl)	65	hem  haar  hen  jou  't	vnw persoonlijk overige buiging	
@@ -148,7 +148,7 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 442	VNW(onbep,det,gen,nom) 	10	anderer  beider  andermans	vnw onbepaald, zelfstandig genitief	
 443	VNW(onbep,det,stan,nom,met-e)	29	sommige  vele  enen  enige	vnw onbepaald, zelfstandig overige buiging	gevallen met mv-n zijn tagfout?
 444	VNW(onbep,grad,stan,vrij,zonder,comp) 	10	Meer  min  MIN  meer  minder	vnw onbepaald, zelfstandig comparatief onverbogen	Of grad??
-446	VNW(onbep,grad,stan,vrij,met-e,comp) ??	5	meerdere  meerderen  minderen  mindere	vnw onbepaald, zelfstandig comparatief overige buiging	Niet zo overtuigend getagd dit groepje
+446	VNW(onbep,grad,stan,vrij,met-e,comp)	5	meerdere  meerderen  minderen  mindere	vnw onbepaald, zelfstandig comparatief overige buiging	Niet zo overtuigend getagd dit groepje
 447	VNW(onbep,grad,stan,vrij,zonder,sup) 	9	Allerminst  meest  minst  allerminst	vnw onbepaald, zelfstandig superlatief onverbogen	Bijwoorden?
 449	VNW(onbep,grad,stan,vrij,met-e,sup) 	7	meeste  meest  meesten  minste	vnw onbepaald, zelfstandig superlatief overige buiging	
 450	VNW(onbep,det,prenom,stan,zonder)	147	een  al  EEN  ietwat  zoveelste	vnw onbepaald, bijvoeglijk basisvorm	
@@ -164,7 +164,7 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 463	TW(hoofd,nom,bijz)	21	vijven  zessen  zeuvenen  achten  drieen	tw hoofd, zelfstandig overige buiging	
 470	TW(hoofd,prenom,stan)	1214	45  30,-  2310  14.850,-  vier	tw hoofd, bijvoeglijk basisvorm	
 471	TW(hoofd,prenom,mv-n)	15	mijoenen  Duizenden  duizenden  Tienduizenden  honderden	tw hoofd, bijvoeglijk meervoud	
-472	TW(hoofd,prenom,gen) [KLOPT NIET]	1	duizenden	tw hoofd, bijvoeglijk genitief	
+472	TW(hoofd,prenom,gen) 	1	duizenden	tw hoofd, bijvoeglijk genitief	TAGFOUT
 473	TW(hoofd,prenom,stan,met-e)	7	achtenhalve  drieen'nhalve  Anderhalve  vele  tweeen	tw hoofd, bijvoeglijk overige buiging	
 480	TW(rang,nom,stan)	39	3e  vierenzeventigste  tiende  d.  17e	tw rang, zelfstandig basisvorm	
 481	TW(rang,nom,mv-n)	5	zesden  eersten  derden  miljoenen	tw rang, zelfstandig meervoud	
