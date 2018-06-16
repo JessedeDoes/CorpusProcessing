@@ -94,7 +94,11 @@ object Eindhoven {
   val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >= 2)
     .map(l => l(0) -> l(1).replaceAll("\\s.*", "")).toMap
 
-  def mapTag(t: String) = tagMapping.getOrElse(t, s"UNDEF($t)")
+  def mapTag(t: String) =
+    {
+      val t0 = t.substring(0,Math.min(3,t.length))
+      tagMapping.getOrElse(t0, s"UNDEF($t)")
+    }
 
   // ‹vu 000›‹hvh-kort N(soort,ev,neut) ›‹hvh-lang N(com,numgen=singn,case=unm,Psynuse=nom)›
   val hvh_kort = "‹hvh-kort\\s*(.*?)\\s*›".r
