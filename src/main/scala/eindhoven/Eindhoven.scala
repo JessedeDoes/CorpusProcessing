@@ -38,12 +38,16 @@ object Eindhoven {
 
   import scala.io.Source._
 
+
   val atHome = true
+
 
   val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
   val baseDirAtHome = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/"
 
   val baseDir = if (atHome) baseDirAtHome else baseDirAtWork
+
+  lazy val lemmaLog = new FileWriter(baseDir + "lemma.log")
 
   def noAccents(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
 
@@ -245,7 +249,8 @@ object Eindhoven {
             else w1Lemma
           } else w1Lemma
 
-          // Console.err.println(s"Lemma patch in: $redPatch for $word, $pos")
+
+          lemmaLog.write(s"Lemma patch in: $redPatch for $word, $pos\n")
 
           List(new UnprefixedAttribute("lemma", redPatch, Null))
         }
@@ -314,6 +319,9 @@ object Eindhoven {
     (vuMainPos, vuSubPos, vuSubSubPos)
   }
 
+  def vuPosRaw(pos: String):String =
+    "vu ([0-9]+)".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999")
+
   def doPunct(pc: Elem): Elem = {
     val id = getId(pc).get
     <pc xml:id={id} pos="LET()">{pc.text}</pc>
@@ -329,7 +337,7 @@ object Eindhoven {
 
     val (vuMainPos, vuSubPos, vuSubSubPos) = findVuPos(pos)
 
-    val de_vu_pos = List(vuMainPos, vuSubPos, vuSubSubPos).map(_.toString).mkString
+    val rawVuPos = vuPosRaw(pos)
 
     val (lemma, supply): (String, Boolean) = {
       if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word, true); else (lemma1, false)
@@ -346,10 +354,10 @@ object Eindhoven {
 
 
 
-    val mappedPoS = mapTag(de_vu_pos)
+    val mappedPoS = mapTag(rawVuPos)
     val cleanedAttributes = w.attributes.filter(a => !(a.key == "pos") && !(a.key == "lemma" && a.value.text == "_")).append(
       new UnprefixedAttribute("pos", mappedPoS, Null)
-    ).append(new UnprefixedAttribute("type", de_vu_pos, Null))
+    ).append(new UnprefixedAttribute("type", rawVuPos, Null))
 
     // Console.err.println(cleanedAttributes)
 
@@ -475,6 +483,7 @@ object Eindhoven {
     val d = new File(xmlDir)
     val d1 = new File(outputDir)
     ProcessFolder.processFolder(d, d1, doFile)
+    lemmaLog.close() // bleh
   }
 }
 

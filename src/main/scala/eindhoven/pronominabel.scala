@@ -1,7 +1,8 @@
 package eindhoven
 
 object pronominabel {
-  val gradables = """veel
+  val gradables =
+    """veel
     weinig
     beide
     meer
@@ -22,10 +23,9 @@ object pronominabel {
     vaak""".split("\\s+").toSet // waarom 'beide' grad??
 
 
+  implicit def makeList(s: String): List[String] = s.split(",").toList
 
-  implicit def makeList(s: String):List[String] = s.split(",").toList
-
-  val wordformFeatureMap:Map[String,List[String]] = Map(
+  val wordformFeatureMap: Map[String, List[String]] = Map(
     "ik" -> "vol",
     "ikke" -> "nadr",
     "'k" -> "red",
@@ -43,7 +43,7 @@ object pronominabel {
 
     "de" -> "rest",
 
-    "hij"-> "vol",
+    "hij" -> "vol",
     "ie" -> "red",
     "hem" -> "obl",
     "hemzelf" -> "nadr,obl",
@@ -58,10 +58,32 @@ object pronominabel {
     "hen" -> "obl,vol,3p",
     "hun" -> "obl,vol,3p",
     "henzelf" -> "obl,nadr,3p",
-    "hun" -> "obl,nadr,3p"
+    "hun" -> "obl,nadr,3p",
+
+    "het" -> "red,3,ev,onz",
+    "'t" -> "red,3,ev,onz",
+
+    "mijns" -> "gen,vol,1,ev",
+    "mijner" -> "gen,vol,1,ev",
+    "uws" -> "gen,vol,2",
+    "uwer" -> "gen,vol,2",
+    "zijns" -> "gen,vol,3m,ev",
+    "zijner" -> "gen,vol,3m,ev",
+    "haars" -> "gen,vol,3v",
+    "harer" -> "gen,vol,3v",
+    "huns" -> "gen,vol,3p,mv",
+    "hunner" -> "gen,vol,3p,mv"
+    /*
+[T504a]	VNW(pers,pron,gen,vol,1,ev)	mijns gelijke, gedenk mijner
+[T504b]	VNW(pers,pron,gen,vol,1,mv)	ons gelijke, velen  onzer
+[U504c]	VNW(pers,pron,gen,vol,2,getal)	uws gelijke, wie  uwer
+[T504d]	VNW(pers,pron,gen,vol,3m,ev)	zijns gelijke,  zijner
+[U504e]	VNW(pers,pron,gen,vol,3v,getal)	haars gelijke, harer
+[U504f]	VNW(pers,pron,gen,vol,3p,mv)	huns gelijke, een  hunner
+*/
   )
 
-  val lemmaFeatureMap:Map[String,List[String]] = Map(
+  val lemmaFeatureMap: Map[String, List[String]] = Map(
     "ik" -> "1,ev",
     "ikzelf" -> "nadr,1,ev",
     "wij" -> "1,mv",
@@ -69,7 +91,6 @@ object pronominabel {
 
     "jij" -> "2v,ev",
     "jijzelf" -> "nadr,2v,ev",
-
 
 
     "u" -> "vol,2b",
@@ -81,7 +102,7 @@ object pronominabel {
     "hijzelf" -> "nadr,3m,ev,masc",
     "men" -> "red,3p,ev,masc",
 
-    "zij_ev"  -> "3,fem",
+    "zij_ev" -> "3,x-fem",
     "zij_mv" -> "3,x-mv",
 
     "uzelf" -> "nadr,2b,getal",
