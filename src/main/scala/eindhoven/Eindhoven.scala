@@ -492,7 +492,7 @@ object Eindhoven {
       return t1
     }
 
-    if (tag.matches("VNW.*onbep.*prenom.*") && lemma == "een") {
+    if (tag.matches("VNW.*onbep.*prenom.*") && (lemma == "een" || word=="'n")) { // lemma heeft ie hier og niet altijd
       val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom", "det"))
       return t1
     }
