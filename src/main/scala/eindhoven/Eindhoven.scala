@@ -456,9 +456,9 @@ object Eindhoven {
     if (tag.matches("N.*soort.*")) {
       val withDim =
         if (verkleinvormen.contains(word.toLowerCase()))
-        addFeatures(tag, List("dim","zijd"))
+        addFeatures(tag, List("dim","onz"))
       else if (word.endsWith("je") && !nodims.exists(word.toLowerCase.endsWith(_)))
-        addFeatures(tag, List("dim","zijd")) // voor onbekende woorden: lijstje
+        addFeatures(tag, List("dim","onz")) // voor onbekende woorden: lijstje
       else
         addFeature(tag, "basis")
 
