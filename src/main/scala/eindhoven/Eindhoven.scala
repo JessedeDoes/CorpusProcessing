@@ -6,7 +6,7 @@ import java.text.Normalizer
 import eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
 import posmapping.ProcessFolder
 
-import scala.util.Failure
+import scala.util.{Try,Success,Failure}
 import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String) {
@@ -61,16 +61,21 @@ object Eindhoven {
   case class Tag(tag: String) {
     val pos = tag.replaceAll("\\(.*", "")
     val features = tag.replaceAll(".*\\(", "").replaceAll("\\).*", "").split(",").toList
-    val cgnFeatures = features.filter(!_.startsWith("e-"))
-    val extFeatures = features.filter(_.startsWith("e-"))
+    val cgnFeatures = features.filter(!_.matches("^[e](x?)-.*"))
+    val extFeatures = features.filter(_.matches("^[e](x?)-.*"))
+
+    override def toString = s"$pos(${features.mkString(",")})"
   }
 
   val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
 
 
-  def featureOrder(pos: String) =
+  import sparql2xquery.TopologicalSort._
+
+  def featureOrder(pos: Tag => Boolean):Option[Map[String,Int]] =
   {
-    val twp = cgnTags.filter(_.pos == pos).toList
+    val twp = cgnTags.filter(pos).toList
+
     val relations:List[(String,String)] = twp.flatMap(
       tag => {
         val fi = tag.features.zipWithIndex
@@ -78,31 +83,55 @@ object Eindhoven {
       }
     )
 
-    import sparql2xquery.TopologicalSort._
-
-    scala.util.Try(
-    { val possibleOrder = tsort(relations)
-    Console.err.println(s"$pos -> $possibleOrder") } ) match
+    scala.util.Try(tsort(relations)) match
       {
-      case Failure(e) => Console.err.println(s"Failure for $pos: $e")
-      case scala.util.Success(_) =>
+      case Failure(e) => None
+      case scala.util.Success(x) =>  {
+        Some(x.toList.zipWithIndex.toMap)
+      }
     }
   }
 
-  cgnTags.map(_.pos).foreach(p => featureOrder(p))
-  System.exit(1)
+  cgnTags.map(_.pos).foreach(p => featureOrder(t => t.pos == p))
+
+  val allPronTypes = cgnTags.filter(_.pos == "VNW").map(_.features(0))
+
+  allPronTypes.foreach(
+    pdtype => {
+      Console.err.println(s"Hola:$pdtype")
+      featureOrder(t => t.pos == "VNW" && t.features.contains(pdtype))
+    }
+  )
+
+
+  val mainFeatureOrderMap = cgnTags.map(_.pos).filter(_ != "VNW").map(p => p -> featureOrder(_.pos == p).get).toMap
+  def pronWithType(ptype:String)(t: Tag) = t.pos == "VNW" && t.features(0) == ptype
+
+  val vnwFeatureOrderMap = allPronTypes.map(ptype => (ptype -> featureOrder(pronWithType(ptype)).get)).toMap
+
+  def orderFeatures(t: Tag): String = {
+
+    Try({
+      val order = if (t.pos == "VNW") vnwFeatureOrderMap(t.features(0)) else mainFeatureOrderMap(t.pos)
+      def ordering(x: String) : Int = order( x.replaceAll("\\|.*", "").replaceAll("x-", ""))
+      val fs = Try(t.cgnFeatures.sortBy(ordering)) match {
+        case Success(x) => {}
+        case Failure(e) => Console.err.println(s"Cannot sort $t"); return t.toString;
+      }
+      val allFeaturesSorted = t.cgnFeatures.sortBy(ordering) ++ t.extFeatures
+      s"${t.pos}(${allFeaturesSorted.mkString(",")})"
+    }) match {
+      case Success(s) => s
+      case Failure(e) => t.toString
+    }
+  }
+
+  def orderFeatures(t: String):String = orderFeatures(Tag(t))
 
   val verkleinvormen = fromFile("data/verkleinwoordvormen.txt").getLines.toSet
 
   val geslachtenMap = fromFile("data/geslacht.txt").getLines.toList.map(l => l.split("\\t")).map(r => r(0) -> r(1)).toMap
 
-  def orderFeatures(t: String): String = {
-    val t1 = Tag(t)
-    val matchingCGNTag = cgnTags.find(t => t.pos == t1.pos && t1.cgnFeatures.forall(f => t.cgnFeatures.contains(f)))
-    if (matchingCGNTag.isDefined) {
-      s"${t1.pos}(${(matchingCGNTag.get.features ++ t1.extFeatures).mkString(",")}"
-    } else t
-  }
 
   val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size > 1).map(l => l(0).trim -> l(1).trim).toMap
 
@@ -276,8 +305,8 @@ object Eindhoven {
             addFeature(pos, "x-ev") else
           if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))
             addFeature(pos, "x-mv") else
-          if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
-          else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,x-pred")
+          if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "prenom.e-pred", "x-prenom")
+          else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")
           else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*")) {
             if (w1Pos.matches(".*prenom.*"))
               replaceFeature(pos, "prenom.vrij|vrij.prenom", "x-prenom") else replaceFeature(pos, "prenom.vrij|vrij.prenom", "x-vrij")
@@ -341,7 +370,16 @@ object Eindhoven {
 
     val d6 = noNotes(d5)
 
-    XML.save(fOut.getCanonicalPath, d6, "UTF-8")
+    lazy val d7 = updateElement(d6, _.label == "w", e => replaceAttribute(e, "pos", orderFeatures ))
+
+    XML.save(fOut.getCanonicalPath, d7, "UTF-8")
+  }
+
+  def replaceAttribute(e: Elem, name: String, f: String=>String):Elem = {
+
+    val s = (e \ ("@" + name)).text
+    val s1 = f(s)
+    e.copy(attributes = e.attributes.filter(_.key != name).append(   new UnprefixedAttribute(name, s1, Null)))
   }
 
   def doFile(f: String, f1: String): Unit = doFile(new File(f), new File(f1))
@@ -519,12 +557,12 @@ object Eindhoven {
     }
 
     if (tag.matches("VNW.*aanw.*prenom.*") && (lemma == "het" || lemma == "de")) {
-      val t1 = removeFeatures(tag.replaceAll("VNW", "LID").replaceAll("aanw", "bep"), Set("prenom", "det"))
+      val t1 = removeFeatures(tag.replaceAll("VNW", "LID").replaceAll("aanw", "bep"), Set("prenom", "det", "zonder"))
       return t1
     }
 
     if (tag.matches("VNW.*onbep.*prenom.*") && (lemma == "een" || word=="'n")) { // lemma heeft ie hier og niet altijd
-      val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom", "det"))
+      val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom", "det", "zonder"))
       return t1
     }
 

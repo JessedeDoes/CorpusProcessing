@@ -13,14 +13,14 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 080	N(soort,ev,e-interj,stan)	28	christus  help  God  Mina	znw interjectivisch basisvorm	
 081	?	1	mensen	znw interjectivisch meervoud	
 090	SPEC(meta)	235	paap  sanering  admiraal  verbonden-zijn  proskunesis	znw zelfnoemfunctie basisvorm	Dit zijn in de corpusconcordanties lang niet allemaal nomina, moet dus consistenter SPEC(meta) worden
-100	ADJ(gewoon,basis,zonder)	3605	soeverein  glazen  prominent  breed  fiks	bnw gewoon (predicatief of attributief) basisvorm	“Gewoon” lijkt te staan voor attributief of predicatief
+100	ADJ(prenom|e-pred,basis,zonder)	3605	soeverein  glazen  prominent  breed  fiks	bnw gewoon (predicatief of attributief) basisvorm	“Gewoon” lijkt te staan voor attributief of predicatief
 102	ADJ(postnom,basis,met-s)	103	stelligs  extra's  ruziezoekerigs  moois  blijmoedigs	bnw gewoon (predicatief of attributief) genitief	
 103	ADJ(prenom,basis,met-e)	4466	bekakte  conventionele  Leeuwardense  journalistieke  oorspronkelijke	bnw gewoon (predicatief of attributief) overige buiging	
-104	ADJ(gewoon,comp,zonder)	365	zuiniger  voordeliger  dikker  onhandelbaarder  langzamer	bnw gewoon (predicatief of attributief) comparatief onverbogen	
+104	ADJ(prenom|e-pred,comp,zonder)	365	zuiniger  voordeliger  dikker  onhandelbaarder  langzamer	bnw gewoon (predicatief of attributief) comparatief onverbogen	
 105	ADJ(postnom,comp,met-s)	5	pittigers  ondergeschikt  zinnigers  beters	bnw gewoon (predicatief of attributief) comparatief genitief	
 106	ADJ(prenom,comp,met-e)	86	Vroegere  bredere  bewustere  snellere  Oudere	bnw gewoon (predicatief of attributief) comparatief overige buiging	
-107	ADJ(gewoon,sup,zonder)	34	vreemdst  mooist  kleinst  prettigst	bnw gewoon (predicatief of attributief) superlatief onverbogen	
-109	ADJ(gewoon,sup,met-e)	177	sterkste  eenvoudigste  duurste  allernieuwste  somberste	bnw gewoon (predicatief of attributief) superlatief overige buiging	
+107	ADJ(prenom|e-pred,sup,zonder)	34	vreemdst  mooist  kleinst  prettigst	bnw gewoon (predicatief of attributief) superlatief onverbogen	
+109	ADJ(prenom|e-pred,sup,met-e)	177	sterkste  eenvoudigste  duurste  allernieuwste  somberste	bnw gewoon (predicatief of attributief) superlatief overige buiging	
 120	ADJ(nom,basis,zonder)	106	engels  azuurblauw  Frans-Engels  Maleis  oostfries	bnw gesubstantiveerd basisvorm	
 121	ADJ(nom,basis,mv-n)	210	rood-zwarten  katholieken  wildvreemden  progresieven  rijken	bnw gesubstantiveerd meervoud	
 122	ADJ(nom,basis,met-s)	3	moois  ergs  heerlijks	bnw gesubstantiveerd genitief	
@@ -41,34 +41,34 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 202	WW(od,e-intrans,prenom|vrij,zonder)	371	uitdovend  autorijdend  overtuigend  moordend  studerend	ww intrans od, onverbogen	
 203	WW(od,e-intrans,prenom,met-e,zonder-n)	749	jagende  vervlakkende  klonterende  dodende  huilende	ww intrans od, verbogen	!Alle voorkomens lijken prenominaal te zijn, hoewel dat uit de beschrijving niet per se blijkt
 204	WW(od,e-intrans,nom,met-e,mv-n)	18	scheidenden  belangstellenden  wachtenden  vooruitstrevenden  werkenden	ww intrans od, meervoud	
-205	WW(od,e-intrans,adv,vrij)	379	verflauwende  Samenvattend  Uitgaande  schrijvend  peinzend	ww intrans od, bijwoordelijk	Misschien liever adv noemen
+205	WW(od,e-intrans,e-adv,vrij)	379	verflauwende  Samenvattend  Uitgaande  schrijvend  peinzend	ww intrans od, bijwoordelijk	Misschien liever adv noemen
 206	WW(vd,e-intrans,prenom|vrij,zonder)	986	gepraat  gegleden  verdronken  gefungeerd  opgestaan	ww intrans vd, onverbogen	Corpusvoorbeelden zowel attributief als in samengestelde werkwoordstijden
 207	WW(vd,e-intrans,prenom|nom,met-e,zonder-n)	133	gebeurde  gewijzigde  geavanceerde  verdorde  verminderde	ww intrans vd, verbogen	Niet-attributief gebruik is zeldzaam
 208	WW(vd,e-intrans,nom,met-e,mv-n)	9	vergrijsden  geemigreerden  verongelukten  gevorderden  uitgetredenen	ww intrans vd, meervoud	
-209	WW(vd,e-intrans,adv,vrij)	60	veronachtzaamd  Geschrokken  beschouwd  verantwoord  onderuitgezakt	ww intrans vd, bijwoordelijk	
+209	WW(vd,e-intrans,e-adv,vrij)	60	veronachtzaamd  Geschrokken  beschouwd  verantwoord  onderuitgezakt	ww intrans vd, bijwoordelijk	
 210	WW(inf,e-trans,vrij)	2297	wensen  bespotten  beschuldigen  horen  benemen	ww trans infinitief,verbaal	
 211	WW(inf,e-trans,nom)	502	stelen  vrijwaren  delen  creëren  opheffen	ww trans infinitief, nominaal	
 212	WW(od,e-trans,zonder)	14	bezittend  samendvattend  trekkend  houdend  overspannend	ww trans od, onverbogen	
 213	WW(od,e-trans,met-e,zonder-n)	49	serverende  roepende  opleverende  inhoudende  verbrassende	ww trans od, verbogen	
 214	WW(od,e-trans,met-e,mv-n) ??? [vb kloppen niet]	2	maken  menen	ww trans od, meervoud	
-215	WW(od,e-trans,adv,vrij)	50	puttend  ontnemend  verzwelgend  betreffende  taxerend	ww trans od, bijwoordelijk	
+215	WW(od,e-trans,e-adv,vrij)	50	puttend  ontnemend  verzwelgend  betreffende  taxerend	ww trans od, bijwoordelijk	
 216	WW(vd,e-trans,prenom|vrij,zonder)	3061	bedekt  overreden  gekozen  neergeschreven  gekaapt	ww trans vd, onverbogen	
 217	WW(vd,e-trans,prenom|nom,met-e,zonder-n)	826	opgedane  beknelde  geforceerde  geharde  verminderde	ww trans vd, verbogen	
 218	WW(vd,e-trans,met-e,mv-n)	63	gestoorden  geraakten  verzekerden  veroordeelden  afgevaardigden	ww trans vd, meervoud	
-219	WW(vd,e-trans,adv,vrij)	135	geanimeerd  overdonderd  gekruist  beperkt  Lamgeslagen	ww trans vd, bijwoordelijk	
+219	WW(vd,e-trans,e-adv,vrij)	135	geanimeerd  overdonderd  gekruist  beperkt  Lamgeslagen	ww trans vd, bijwoordelijk	
 220	WW(inf,e-refl,vrij)	232	bemoeien  handhaven  werken  verbinden  voorbereiden	ww refl infinitief,verbaal	
 221	WW(inf,e-refl,nom)	9	openstellen  overgeven  verenigen  voordoen  houden	ww refl infinitief, nominaal	
 222	WW(od,e-refl,zonder)	3	ontstekend  bevindend  wijzigend	ww refl od, onverbogen	
 223	WW(od,e-refl,met-e,zonder-n)	13	respecterende  wijzigende  ontwikkelende  misdragende  verkeerende	ww refl od, verbogen	
 224	WW(od,e-refl,met-e,mv-n)	1	voelen	ww refl od, meervoud	
-225	WW(od,e-refl,adv,vrij)	7	omkerend  aansluitend  baserend  verbazend  aansluitende	ww refl od, bijwoordelijk	
+225	WW(od,e-refl,e-adv,vrij)	7	omkerend  aansluitend  baserend  verbazend  aansluitende	ww refl od, bijwoordelijk	
 226	WW(vd,e-refl,zonder)	157	opgewerkt  beschouwd  gesneden  verbonden  opgehouden	ww refl vd, onverbogen	
 230	WW(inf,e-hulp-of-koppel,vrij)	108	raken  lezen  staan  proberen  moeten	ww hulp of koppelwerkwoord infinitief,verbaal	
 231	WW(inf,e-hulp-of-koppel,nom)	12	worden  blijven  zijn  houden	ww hulp of koppelwerkwoord infinitief, nominaal	
 232	WW(od,e-hulp-of-koppel,prenom|vrij,zonder)	3	wordend  lijkend	ww hulp of koppelwerkwoord od, onverbogen	
 233	WW(od,e-hulp-of-koppel,met-e,zonder-n)	9	wordende  zijnde  luidende	ww hulp of koppelwerkwoord od, verbogen	
 234	WW(od,e-hulp-of-koppel,met-e,mv-n)	1	moeten	ww hulp of koppelwerkwoord od, meervoud	TAGFOUT
-235	WW(od,e-hulp-of-koppel,adv,vrij)	3	zijnde  wordend  trachtend	ww hulp of koppelwerkwoord od, bijwoordelijk	
+235	WW(od,e-hulp-of-koppel,e-adv,vrij)	3	zijnde  wordend  trachtend	ww hulp of koppelwerkwoord od, bijwoordelijk	
 236	WW(vd,e-hulp-of-koppel,prenom|vrij,zonder)	35	geheten  geprobeerd  geworden  gekomen  getracht	ww hulp of koppelwerkwoord vd, onverbogen	
 237	WW(vd,e-hulp-of-koppel,met-e,zonder-n)	1	geraakte	ww hulp of koppelwerkwoord vd, verbogen	
 240	WW(pv,e-intrans,??)	4	stoppen  uitkomen  opgeven  steken	ww pv, intrans 	TAGFOUT
@@ -140,7 +140,7 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 413	VNW(vb,det,prenom,stan,met-e)	5	welke  Welke	vnw vragend, bijvoeglijk overige buiging	
 420	VNW(betr,pron,stan)	35	Wie  dat  WIE  Hetgeen  wie	vnw betrekkelijk, zelfstandig basisvorm	
 422	VNW(betr,pron,gen)	5	welks  wiens  wier  welker	vnw betrekkelijk, zelfstandig genitief	
-423	VNW(betr,pron,overig-of-e)	3	welke  dien	vnw betrekkelijk, zelfstandig overige buiging	
+423	VNW(betr,pron,met-e|met-n)	3	welke  dien	vnw betrekkelijk, zelfstandig overige buiging	?
 430	VNW(betr,det,stan,prenom,zonder)	3	welk  tweede	vnw betrekkelijk, bijvoeglijk basisvorm	
 433	VNW(betr,det,stan,prenom,met-e)	3	welke  Welke	vnw betrekkelijk, bijvoeglijk overige buiging	
 440	VNW(onbep,pron,stan)	108	Iedereen  gemaakt  teveel  genoeg  alles	vnw onbepaald, zelfstandig basisvorm	
@@ -168,7 +168,7 @@ code	CGN tag	aantal (beetje onbegrijpelijk, staat voor aantal verschillende woor
 473	TW(hoofd,prenom,stan,met-e)	7	achtenhalve  drieen'nhalve  Anderhalve  vele  tweeen	tw hoofd, bijvoeglijk overige buiging	
 480	TW(rang,nom,stan)	39	3e  vierenzeventigste  tiende  d.  17e	tw rang, zelfstandig basisvorm	
 481	TW(rang,nom,mv-n)	5	zesden  eersten  derden  miljoenen	tw rang, zelfstandig meervoud	
-483	TW(rang,nom,overig-of-e)	5	eersten  eerste  Eerste  tweede	tw rang, zelfstandig overige buiging	
+483	TW(rang,nom,met-e)	5	eersten  eerste  Eerste  tweede	tw rang, zelfstandig overige buiging	?
 490	TW(rang,prenom,stan)	102	12  negentiende  19e  6e  12e	tw rang, bijvoeglijk basisvorm	
 491	TW(rang,prenom,mv-n)	1	eersten	tw rang, bijvoeglijk meervoud	onzin?
 493	TW(rang,prenom,bijz)	10	tweeden  eerste  1e  Eerste	tw rang, bijvoeglijk overige buiging	
