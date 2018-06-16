@@ -510,7 +510,7 @@ object Eindhoven {
     n.copy(child = n.child.map(
       c => c match {
         case w: Elem if (w.label == "w") =>
-          w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", "SPEC(deeleigen", Null)))
+          w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", "SPEC(deeleigen)", Null)))
         case x: Any => x
       }
     ))
