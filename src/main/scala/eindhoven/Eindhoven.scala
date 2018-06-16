@@ -165,13 +165,15 @@ object Eindhoven {
 
   def vuPatchName(w: Elem): Seq[Node] = {
     val txt = w.text
-    val n = w.text.split("\\s+").length
+
 
     val id = getId(w).getOrElse("noId")
     val typ = (w \ "@type").text
     val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
+      val replacement = namenMap(txt).split("\\s+").toSeq
+      val n = replacement.size
       val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "@pos").text
-      val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>
+      val sequence = replacement.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>
       })
       <name key={txt} resp="namenKlus">
         {sequence}
@@ -243,7 +245,7 @@ object Eindhoven {
             else w1Lemma
           } else w1Lemma
 
-          Console.err.println(s"Lemma patch in: $redPatch for $word, $pos")
+          // Console.err.println(s"Lemma patch in: $redPatch for $word, $pos")
 
           List(new UnprefixedAttribute("lemma", redPatch, Null))
         }
