@@ -6,6 +6,7 @@ import java.text.Normalizer
 import eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
 import posmapping.ProcessFolder
 
+import scala.util.Failure
 import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String) {
@@ -65,6 +66,32 @@ object Eindhoven {
   }
 
   val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
+
+
+  def featureOrder(pos: String) =
+  {
+    val twp = cgnTags.filter(_.pos == pos).toList
+    val relations:List[(String,String)] = twp.flatMap(
+      tag => {
+        val fi = tag.features.zipWithIndex
+        fi.flatMap({ case (f, i) => fi.filter(_._2 == i+1).map(f1 => f ->  f1._1) })
+      }
+    )
+
+    import sparql2xquery.TopologicalSort._
+
+    scala.util.Try(
+    { val possibleOrder = tsort(relations)
+    Console.err.println(s"$pos -> $possibleOrder") } ) match
+      {
+      case Failure(e) => Console.err.println(s"Failure for $pos: $e")
+      case scala.util.Success(_) =>
+    }
+  }
+
+  cgnTags.map(_.pos).foreach(p => featureOrder(p))
+  System.exit(1)
+
   val verkleinvormen = fromFile("data/verkleinwoordvormen.txt").getLines.toSet
 
   val geslachtenMap = fromFile("data/geslacht.txt").getLines.toList.map(l => l.split("\\t")).map(r => r(0) -> r(1)).toMap
