@@ -148,6 +148,7 @@ case class CGNMiddleDutchTag(tag: String) extends CGNStyleTag(tag, CGMMiddleDutc
 object testje
 {
   val tagset = "data/tagset-CorpGysseling-CRM_allTags.overzichtje.csv"
+
   def main(args:Array[String]) =
   {
     scala.io.Source.fromFile(tagset).getLines.toStream.map(l => l.split("\t").toList).filter(_.size >= 5).foreach(l => {

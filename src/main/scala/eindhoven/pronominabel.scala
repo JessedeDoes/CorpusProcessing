@@ -20,6 +20,92 @@ object pronominabel {
     veels
     zovele
     vaak""".split("\\s+").toSet // waarom 'beide' grad??
+
+
+
+  implicit def makeList(s: String):List[String] = s.split(",").toList
+
+  val wordformFeatureMap:Map[String,List[String]] = Map(
+    "ik" -> "vol",
+    "ikke" -> "nadr",
+    "'k" -> "red",
+
+    "wij" -> "vol",
+    "we" -> "red",
+
+    "je" -> "red",
+    "jij" -> "vol",
+    "jou" -> "vol,obl",
+
+    "ge" -> "red",
+    "gij" -> "vol",
+
+
+    "de" -> "rest",
+
+    "hij"-> "vol",
+    "ie" -> "red",
+    "hem" -> "obl",
+    "hemzelf" -> "nadr,obl",
+    "'m" -> "red,obl",
+
+    "ze" -> "red",
+    "zij" -> "vol",
+
+    "haar" -> "obl,vol,3",
+    "haarzelf" -> "obl,nadr,3v,fem", // VNW(pers,pron,obl,nadr,3v,getal,fem)
+
+    "hen" -> "obl,vol,3p",
+    "hun" -> "obl,vol,3p",
+    "henzelf" -> "obl,nadr,3p",
+    "hun" -> "obl,nadr,3p"
+  )
+
+  val lemmaFeatureMap:Map[String,List[String]] = Map(
+    "ik" -> "1,ev",
+    "ikzelf" -> "nadr,1,ev",
+    "wij" -> "1,mv",
+    "wijzelf" -> "nadr,1,mv",
+
+    "jij" -> "2v,ev",
+    "jijzelf" -> "nadr,2v,ev",
+
+
+
+    "u" -> "vol,2b",
+
+    "gij" -> "2,getal",
+    "gijzelf" -> "nadr,2",
+
+    "hij" -> "3,ev,masc",
+    "hijzelf" -> "nadr,3m,ev,masc",
+    "men" -> "red,3p,ev,masc",
+
+    "zij_ev"  -> "3,fem",
+    "zij_mv" -> "3,x-mv",
+
+    "uzelf" -> "nadr,2b,getal",
+    "jullie" -> "2,mv",
+    "ikzelf" -> "1,ev,nadruk",
+    // "het" -> "evon", // alleen bij LID
+  )
+
+  import Eindhoven._
+
+  def enhancePronFeatures(word: String, lemma: String, tag: String) =
+    {
+      val lem1 = if (Set("ze","zij").contains(lemma.toLowerCase)) {
+        if (tag.matches(".*pers.*nomin.*") && tag.contains("ev"))
+          "zij_ev" else if (tag.contains("mv") || tag.contains("obl"))
+          "zij_mv" else "zij"
+      } else lemma
+
+      val lemExtra:List[String] = lemmaFeatureMap.getOrElse(lem1.toLowerCase(),List())
+      val wordExtra:List[String] = wordformFeatureMap.getOrElse(word.toLowerCase(),List())
+
+
+      addFeatures(tag, lemExtra ++ wordExtra)
+    }
 }
 
 

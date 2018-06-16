@@ -1,4 +1,5 @@
 package eindhoven
+
 import java.io.{File, FileWriter}
 import java.text.Normalizer
 
@@ -7,24 +8,22 @@ import posmapping.ProcessFolder
 
 import scala.xml._
 
-case class Word(word: String, lemma: String, pos: String)
-{
-  def matches(mp: Int, sp: Int, ssp: Int):Boolean =
-  {
+case class Word(word: String, lemma: String, pos: String) {
+  def matches(mp: Int, sp: Int, ssp: Int): Boolean = {
 
     mp match {
-      case 0 => if (List(0,2,8,9).contains(sp)) pos.startsWith("NOU-C") &&
-        !(ssp == 0 && ! pos.contains("sg")) && !(ssp == 1 && ! pos.contains("pl"))
+      case 0 => if (List(0, 2, 8, 9).contains(sp)) pos.startsWith("NOU-C") &&
+        !(ssp == 0 && !pos.contains("sg")) && !(ssp == 1 && !pos.contains("pl"))
       else pos.startsWith("NOU-P")
       case 1 => pos.startsWith("AA")
-      case 2 => pos.startsWith("VRB") && !((ssp == 5 || ssp == 6) && ! pos.contains("past")) &&
-        !(List(1,2,3,4).contains(ssp) && ! pos.contains("pres")) &&
-        !(List(0,1,2,3).contains(sp) && ! (pos.contains("=inf") || pos.contains("part")))
+      case 2 => pos.startsWith("VRB") && !((ssp == 5 || ssp == 6) && !pos.contains("past")) &&
+        !(List(1, 2, 3, 4).contains(ssp) && !pos.contains("pres")) &&
+        !(List(0, 1, 2, 3).contains(sp) && !(pos.contains("=inf") || pos.contains("part")))
       case 3 => pos.startsWith("PD") &&
-        !(List(2,3).contains(sp) && ! pos.contains("poss")) &&
-        !(List(4,5).contains(sp) && ! pos.contains("ref")) &&
-        !(List(0).contains(sp) && ! pos.contains("per"))
-      case 4 => (pos.startsWith("PD") || pos.startsWith("NUM"))  && !(pos.contains("poss"))
+        !(List(2, 3).contains(sp) && !pos.contains("poss")) &&
+        !(List(4, 5).contains(sp) && !pos.contains("ref")) &&
+        !(List(0).contains(sp) && !pos.contains("per"))
+      case 4 => (pos.startsWith("PD") || pos.startsWith("NUM")) && !(pos.contains("poss"))
       case 5 => pos.startsWith("ADV")
       case 6 => pos.startsWith("ADP")
       case 7 => pos.startsWith("CONJ")
@@ -35,7 +34,9 @@ case class Word(word: String, lemma: String, pos: String)
 }
 
 object Eindhoven {
+
   import scala.io.Source._
+
   val atHome = true
 
   val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
@@ -43,34 +44,33 @@ object Eindhoven {
 
   val baseDir = if (atHome) baseDirAtHome else baseDirAtWork
 
-  def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
+  def noAccents(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
 
 
   val hulpDataDir = baseDir + "hulpdata/"
   val xmlDir = baseDir + "xml-with-word-ids/"
-  val patchDir =baseDir + "xml-tagged/"
+  val patchDir = baseDir + "xml-tagged/"
   val outputDir = baseDir + "tkvPatch/"
 
-  case class Tag(tag: String)
-  {
-    val pos = tag.replaceAll("\\(.*","")
-    val features = tag.replaceAll(".*\\(","").replaceAll("\\).*","").split(",").toList
-    val cgnFeatures = features.filter(! _.startsWith("e-"))
+  case class Tag(tag: String) {
+    val pos = tag.replaceAll("\\(.*", "")
+    val features = tag.replaceAll(".*\\(", "").replaceAll("\\).*", "").split(",").toList
+    val cgnFeatures = features.filter(!_.startsWith("e-"))
     val extFeatures = features.filter(_.startsWith("e-"))
   }
-  val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
 
-  def orderFeatures(t: String):String =
-  {
+  val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
+  val verkleinvormen = fromFile("data/verkleinwoordvormen.txt").getLines.toSet
+
+  def orderFeatures(t: String): String = {
     val t1 = Tag(t)
-    val matchingCGNTag = cgnTags.find(t => t.pos == t1.pos &&  t1.cgnFeatures.forall(f => t.cgnFeatures.contains(f)))
-    if (matchingCGNTag.isDefined)
-      {
-        s"${t1.pos}(${(matchingCGNTag.get.features ++ t1.extFeatures).mkString(",")}"
-      } else t
+    val matchingCGNTag = cgnTags.find(t => t.pos == t1.pos && t1.cgnFeatures.forall(f => t.cgnFeatures.contains(f)))
+    if (matchingCGNTag.isDefined) {
+      s"${t1.pos}(${(matchingCGNTag.get.features ++ t1.extFeatures).mkString(",")}"
+    } else t
   }
 
-  val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size>1).map(l => l(0).trim -> l(1).trim).toMap
+  val namenMap = scala.io.Source.fromFile("data/namenKlus.txt").getLines.toStream.map(l => l.split("\\s*->\\s*")).filter(_.size > 1).map(l => l(0).trim -> l(1).trim).toMap
 
   val files = new java.io.File(xmlDir).listFiles.toStream.flatMap(f => f.listFiles().toList).filter(f => f.getName().endsWith(("xml")))
 
@@ -78,52 +78,54 @@ object Eindhoven {
     .map(r => r.map(_.trim.replaceAll(""""""", ""))).map(r => Word(r(1), r(0), r(2))
   )
 
-  val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >=2)
-    .map(l => l(0) -> l(1).replaceAll("\\s.*","")).toMap
+  val deelwoorden = goodies.filter(w => w.pos.contains("=part") && !w.word.endsWith("n"))
+  val extraDeelwoorden = deelwoorden.map(w => w.copy(word = w.word + "e"))
 
-  def mapTag(t: String)  = tagMapping.getOrElse(t,s"UNDEF($t)")
+  val goodiesPlus = goodies ++ extraDeelwoorden
+
+  val tagMapping = io.Source.fromFile("data/vu.taginfo.csv").getLines().map(l => l.split("\\s+")).filter(_.size >= 2)
+    .map(l => l(0) -> l(1).replaceAll("\\s.*", "")).toMap
+
+  def mapTag(t: String) = tagMapping.getOrElse(t, s"UNDEF($t)")
 
   // ‹vu 000›‹hvh-kort N(soort,ev,neut) ›‹hvh-lang N(com,numgen=singn,case=unm,Psynuse=nom)›
   val hvh_kort = "‹hvh-kort\\s*(.*?)\\s*›".r
   val hvh_lang = "‹hvh-lang\\s*(.*?)\\s*›".r
   val vu_pos = "‹vu\\s*(.*?)\\s*›".r
 
-  def hvhKort(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+  def hvhKort(e: Node): Option[String] = (e \\ "@pos").flatMap(a =>
     hvh_kort.findFirstMatchIn(a.text).map(_.group(1))
-  ).headOption.map(x => x.replaceAll(":.*",  ""))
+  ).headOption.map(x => x.replaceAll(":.*", ""))
 
-  def hvhLang(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+  def hvhLang(e: Node): Option[String] = (e \\ "@pos").flatMap(a =>
     hvh_lang.findFirstMatchIn(a.text).map(_.group(1))
   ).headOption
 
 
-  def vuPos(e: Node):Option[String]  = (e \\ "@pos").flatMap( a =>
+  def vuPos(e: Node): Option[String] = (e \\ "@pos").flatMap(a =>
     vu_pos.findFirstMatchIn(a.text).map(_.group(1))
   ).headOption
 
 
+  val goodMap: Map[String, List[Word]] = goodiesPlus.groupBy(w => noAccents(w.word))
 
-  val goodMap:Map[String,List[Word]] = goodies.groupBy(w => noAccents(w.word))
-
-  def updateElement(e: Elem, condition: Elem=>Boolean, f: Elem => Elem):Elem =
-  {
+  def updateElement(e: Elem, condition: Elem => Boolean, f: Elem => Elem): Elem = {
     if (condition(e))
       f(e)
     else
       e.copy(child = e.child.map({
         {
-          case e1: Elem => updateElement(e1,condition,f)
-          case n:Node => n
+          case e1: Elem => updateElement(e1, condition, f)
+          case n: Node => n
         }
       }))
   }
 
-  def updateElement5(e: Elem, condition: Elem=>Boolean, f: Elem => NodeSeq):NodeSeq =
-  {
-    val newChildren =  e.child.flatMap({
+  def updateElement5(e: Elem, condition: Elem => Boolean, f: Elem => NodeSeq): NodeSeq = {
+    val newChildren = e.child.flatMap({
       {
-        case e1: Elem => updateElement5(e1,condition,f)
-        case n:Node => Seq(n)
+        case e1: Elem => updateElement5(e1, condition, f)
+        case n: Node => Seq(n)
       }
     })
 
@@ -135,20 +137,19 @@ object Eindhoven {
   }
 
 
-  def capFirst(s: String) = s.substring(0,1).toUpperCase + s.substring(1, s.length)
+  def capFirst(s: String) = s.substring(0, 1).toUpperCase + s.substring(1, s.length)
 
-  def vuPatchS(d: Elem):Elem =
-  {
+  def vuPatchS(d: Elem): Elem = {
     val numberedChildren = d.child.zipWithIndex
-    val firstWordIndex:Int = numberedChildren.find(_._1.label=="w").get._2
-    val firstWord:Elem = numberedChildren(firstWordIndex)._1.asInstanceOf[Elem]
+    val firstWordIndex: Int = numberedChildren.find(_._1.label == "w").get._2
+    val firstWord: Elem = numberedChildren(firstWordIndex)._1.asInstanceOf[Elem]
     val newFirstWord = firstWord.copy(child = Text(capFirst(firstWord.text)))
     //val newChild = .map({case (e,i) => if (i==firstWord) e.copy(child = Seq())}
     //)
     val newChildren = numberedChildren.map({
-      case (c,i) => if (i==firstWordIndex) newFirstWord else c
+      case (c, i) => if (i == firstWordIndex) newFirstWord else c
     })
-    d.copy(child=newChildren)
+    d.copy(child = newChildren)
   }
 
   val xml = "@{http://www.w3.org/XML/1998/namespace}"
@@ -159,8 +160,7 @@ object Eindhoven {
     val id = folia \ s"${xml}id"
 */
 
-  def vuPatchName(w: Elem):Seq[Node] =
-  {
+  def vuPatchName(w: Elem): Seq[Node] = {
     val txt = w.text
     val n = w.text.split("\\s+").length
 
@@ -168,21 +168,24 @@ object Eindhoven {
     val typ = (w \ "@type").text
     val s1 = if ((w \ "@type").text.startsWith("01") && namenMap.contains(txt)) {
       val tagje = if (n > 1) "SPEC(deeleigen)" else (w \ "@pos").text
-      val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>})
-        <name key={txt} resp="namenKlus">{sequence}</name> <note resp="namenKlus">De vu-naam was: {txt}</note>
+      val sequence = namenMap(txt).split("\\s+").toSeq.zipWithIndex.map({ case (t, i) => <w xml:id={s"$id.part.$i"} type={typ} pos={tagje}>{t}</w>
+      })
+      <name key={txt} resp="namenKlus">
+        {sequence}
+      </name> <note resp="namenKlus">De vu-naam was:
+        {txt}
+      </note>
     } else w
     s1
   }
 
-  def vuPatch(d: Elem):Elem =
-    {
-      val v0 = updateElement5(d, x => x.label == "w", vuPatchName).head.asInstanceOf[Elem]
-      val v1 = updateElement(v0, x => x.label=="s" && (x \ "w").nonEmpty, vuPatchS)
-      v1
-    }
+  def vuPatch(d: Elem): Elem = {
+    val v0 = updateElement5(d, x => x.label == "w", vuPatchName).head.asInstanceOf[Elem]
+    val v1 = updateElement(v0, x => x.label == "s" && (x \ "w").nonEmpty, vuPatchS)
+    v1
+  }
 
-  def useAutomaticTagging(d: Elem, f: File) =
-  {
+  def useAutomaticTagging(d: Elem, f: File) = {
     val f1 = f.getCanonicalPath.replaceAll("xml-with-word-ids", "xml-tagged")
 
     val d1 = XML.load(f1)
@@ -192,9 +195,13 @@ object Eindhoven {
     }).toMap
 
 
-
-    def doW(w: Elem) =
+    def pronomExtra(w: Elem):Elem =
     {
+      val t1 = pronominabel.enhancePronFeatures(word=w.text, lemma=(w \ "@lemma").text, tag = (w \ "@pos").text)
+      w.copy(attributes = w.attributes.filter(_.key != "pos").append( new UnprefixedAttribute("pos", t1, Null)  ))
+    }
+
+    def doW(w: Elem) = {
       val id = getId(w)
       if (id.isDefined && mappie.contains(id.get)) {
         val w1: Elem = mappie(id.get)
@@ -203,34 +210,39 @@ object Eindhoven {
         val word = w.text
         Console.err.println(s"$word $pos $w1Pos")
         val newPos = {
+          if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
+            addFeature(pos, "x-ev") else
+          if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))
+            addFeature(pos, "x-mv") else
           if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "gewoon", "x-prenom")
           else if (pos.matches("ADJ.*gewoon.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "gewoon", "x-vrij,x-pred")
-          else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*"))
-            { if (w1Pos.matches(".*prenom.*"))
-            replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-prenom")  else  replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-vrij") }
-          else if (pos.matches("WW.*(vd|od).*(prenom.*nom|nom.*prenom).*"))
-          { if (w1Pos.matches(".*prenom.*"))
-            replaceFeature(pos,"prenom.vrij|vrij.prenom", "x-prenom")  else  replaceFeature(pos,"prenom.nom|nom.prenom", "x-nom") }
+          else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*")) {
+            if (w1Pos.matches(".*prenom.*"))
+              replaceFeature(pos, "prenom.vrij|vrij.prenom", "x-prenom") else replaceFeature(pos, "prenom.vrij|vrij.prenom", "x-vrij")
+          }
+          else if (pos.matches("WW.*(vd|od).*(prenom.*nom|nom.*prenom).*")) {
+            if (w1Pos.matches(".*prenom.*"))
+              replaceFeature(pos, "prenom.vrij|vrij.prenom", "x-prenom") else replaceFeature(pos, "prenom.nom|nom.prenom", "x-nom")
+          }
           else pos
         }
         w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", newPos, Null)))
       } else w
     }
 
-    updateElement(d, _.label == "w", doW)
+    updateElement(d, _.label == "w", w => pronomExtra(doW(w)))
   }
 
-  def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
+  def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
 
-  def noNotes(d: Elem) = updateElement5(d, _.label=="note", n => Seq()).head.asInstanceOf[Elem]
+  def noNotes(d: Elem) = updateElement5(d, _.label == "note", n => Seq()).head.asInstanceOf[Elem]
 
-  def doFile(f: File, fOut: File):Unit =
-  {
+  def doFile(f: File, fOut: File): Unit = {
     val doc = XML.loadFile(f)
     (doc \\ "w").map(_.asInstanceOf[Elem])
-    val d1 = updateElement(doc, x => x.label == "w" || x.label == "pc" , x => if (x.label == "w") doWord(x) else doPunct(x))
+    val d1 = updateElement(doc, x => x.label == "w" || x.label == "pc", x => if (x.label == "w") doWord(x) else doPunct(x))
 
     val d2 = updateElement(d1, _.label == "name", doName)
 
@@ -239,7 +251,9 @@ object Eindhoven {
     val d3 = if (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName))
       vuPatch(d2) else d2
 
-    val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>{e.child}</s>))
+    val d4 = updateElement(d3, _.label == "p", e => e.copy(child = <s>
+      {e.child}
+    </s>))
 
     val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
 
@@ -249,22 +263,21 @@ object Eindhoven {
   }
 
   def doFile(f: String, f1: String): Unit = doFile(new File(f), new File(f1))
+
   val m0 = <x y="1"/>.attributes.filter(p => p.key != "y")
   println(m0)
 
-  def append(m: MetaData, l:List[UnprefixedAttribute]):MetaData =
-  {
-    val m1 = if (m==Null) m0 else m
-    
+  def append(m: MetaData, l: List[UnprefixedAttribute]): MetaData = {
+    val m1 = if (m == Null) m0 else m
 
-    l.foldLeft(m1)( (m,u) => m.append(u))
+
+    l.foldLeft(m1)((m, u) => m.append(u))
   }
 
   import util.matching.Regex._
 
-  def findVuPos(pos: String):(Int,Int,Int) =
-  {
-    val vuPos0:Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
+  def findVuPos(pos: String): (Int, Int, Int) = {
+    val vuPos0: Int = "vu ([0-9]{3})".r.findFirstMatchIn(pos).map(m => m.group(1)).getOrElse("999").toInt
 
     val vuPos = vuPos0 % 1000
     val vuMainPos = (vuPos - vuPos % 100) / 100
@@ -275,13 +288,12 @@ object Eindhoven {
     (vuMainPos, vuSubPos, vuSubSubPos)
   }
 
-  def doPunct(pc: Elem):Elem =
-  {
+  def doPunct(pc: Elem): Elem = {
     val id = getId(pc).get
     <pc xml:id={id} pos="LET()">{pc.text}</pc>
   }
 
-  def doWord(w: Elem):Elem = {
+  def doWord(w: Elem): Elem = {
     val word = w.text
 
     val lemma0 = (w \\ "@lemma").text
@@ -291,9 +303,11 @@ object Eindhoven {
 
     val (vuMainPos, vuSubPos, vuSubSubPos) = findVuPos(pos)
 
-    val de_vu_pos = List(vuMainPos,vuSubPos,vuSubSubPos).map(_.toString).mkString
+    val de_vu_pos = List(vuMainPos, vuSubPos, vuSubSubPos).map(_.toString).mkString
 
-    val (lemma, supply):(String, Boolean) =  { if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word,true); else (lemma1,false) }
+    val (lemma, supply): (String, Boolean) = {
+      if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word, true); else (lemma1, false)
+    }
 
 
     val lemmaIsWord = new UnprefixedAttribute("lemma", lemma, Null)
@@ -305,7 +319,7 @@ object Eindhoven {
     val candidates = goodMap.get(word.toLowerCase())
 
     val mappedPoS = mapTag(de_vu_pos)
-    val cleanedAttributes = w.attributes.filter(a => !(a.key == "pos") && !(a.key=="lemma" && a.value.text=="_")).append(
+    val cleanedAttributes = w.attributes.filter(a => !(a.key == "pos") && !(a.key == "lemma" && a.value.text == "_")).append(
       new UnprefixedAttribute("pos", mappedPoS, Null)
     ).append(new UnprefixedAttribute("type", de_vu_pos, Null))
 
@@ -317,7 +331,9 @@ object Eindhoven {
 
         val molexPos = c.map(_.pos)
 
-        val molexPosAttribute = if (molexPos.isEmpty || {val noMolexPos = true; noMolexPos}) List()
+        val molexPosAttribute = if (molexPos.isEmpty || {
+          val noMolexPos = true; noMolexPos
+        }) List()
         else
           List(new UnprefixedAttribute("molex_pos", molexPos.mkString("|"), Null))
 
@@ -342,87 +358,99 @@ object Eindhoven {
           }
         } else lAdd ++ molexPosAttribute
       } else if (supply) List(lemmaIsWord) else List.empty[UnprefixedAttribute]
-    addDetailsToPos(w.copy(attributes = append(cleanedAttributes,extraAttributes)))
+    addDetailsToPos(w.copy(attributes = append(cleanedAttributes, extraAttributes)))
   }
 
-  def addDetailsToPos(w: Elem):Elem =
-  {
+  def addDetailsToPos(w: Elem): Elem = {
     val word = w.text
-    val lemma = (w \  "@lemma").text
-    val pos = (w \  "@pos").text
-
-    w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", orderFeatures(addDetailsToPos(word,lemma,pos)),Null)) )
+    val lemma = (w \ "@lemma").text
+    val pos = (w \ "@pos").text
+    val pos1 = addDetailsToPos(word, lemma, pos)
+    val a = new UnprefixedAttribute("pos", pos1, Null)
+    w.copy(attributes = w.attributes.filter(_.key != "pos").append(a))
   }
 
-  def removeFeature(tag: String, feature: String) = tag.replaceAll(s"([,(])$feature([,)])","$1$2")
-    .replaceAll(",+",",").replaceAll(",\\)",")")
+  def removeFeature(tag: String, feature: String):String = tag.replaceAll(s"([,(])$feature([,)])", "$1$2")
+    .replaceAll(",+", ",").replaceAll(",\\)", ")")
 
-  def replaceFeature(tag: String, f1: String, f2: String) = tag.replaceAll(s"([,(])$f1([,)])",s"$$1$f2$$2")
+  def replaceFeature(tag: String, f1: String, f2: String):String = tag.replaceAll(s"([,(])$f1([,)])", s"$$1$f2$$2")
 
-  def removeFeatures(tag: String, features: Set[String]) = features.foldLeft(tag)(removeFeature)
+  def removeFeatures(tag: String, features: Set[String]):String = features.foldLeft(tag)(removeFeature)
 
+  def addFeature(tag: String, feature: String):String =
+    {
+      if (tag.contains(feature))
+        tag else
+      tag.replaceAll("\\)", s",$feature)").replaceAll("\\(,", "(")
+    }
 
+  def addFeatures(tag: String, features: List[String]):String = features.foldLeft(tag)(addFeature)
 
-  def addDetailsToPos(word: String, lemma: String, tag: String):String =
-  {
-    if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n"))
-      {
-        if (word.endsWith("t") && !lemma.endsWith("ten"))
-          {
-            return tag.replaceAll("\\)$", ",met-t)")
-          }
+  val nodims = Set("franje", "plunje", "bonje")
+
+  def addDetailsToPos(word: String, lemma: String, tag: String): String = {
+    if (tag.matches("N.*soort.*")) {
+      if (verkleinvormen.contains(word.toLowerCase()))
+        return addFeature(tag, "x-dim")
+      else if (word.endsWith("je") && !nodims.exists(word.toLowerCase.endsWith(_)))
+        return addFeature(tag, "x-dim")// voor onbekende woorden: lijstje
+      else
+        return addFeature(tag, "x-basis")
+    }
+
+    if (tag.matches(".*WW.*pv.*tgw.*") && tag.matches(".*[23].*") && lemma.endsWith("n")) {
+      if (word.endsWith("t") && !lemma.endsWith("ten")) {
+        return tag.replaceAll("\\)$", ",met-t)")
       }
-    if (tag.matches("VNW.*refl.*") && tag.matches(".*pr.*"))
-      {
-        if (lemma.contains("kaar") || word.contains("kander") || word.contains("kaar"))
-          return tag.replaceAll("\\(.*?,", "(recip,")
-        if (lemma.contains("zich"))
-          return tag.replaceAll("\\(.*?,", "(refl,")
-        else
-          return tag.replaceAll("\\(.*?,", "(pr,")
-      }
-    if (tag.matches("VNW.*aanw.*prenom.*") && (lemma == "het" || lemma == "de"))
-      {
-        val t1 = removeFeatures(tag.replaceAll("VNW", "LID").replaceAll("aanw", "bep"), Set("prenom","det"))
-        return t1
-      }
-    if (tag.matches("VNW.*onbep.*prenom.*") && lemma == "een")
-      {
-        val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom","det"))
-        return t1
-      }
+    }
+
+    if (tag.matches("VNW.*refl.*") && tag.matches(".*pr.*")) {
+      if (lemma.contains("kaar") || word.contains("kander") || word.contains("kaar"))
+        return tag.replaceAll("\\(.*?,", "(recip,")
+      if (lemma.contains("zich"))
+        return tag.replaceAll("\\(.*?,", "(refl,")
+      else
+        return tag.replaceAll("\\(.*?,", "(pr,")
+    }
+
+    if (tag.matches("VNW.*aanw.*prenom.*") && (lemma == "het" || lemma == "de")) {
+      val t1 = removeFeatures(tag.replaceAll("VNW", "LID").replaceAll("aanw", "bep"), Set("prenom", "det"))
+      return t1
+    }
+
+    if (tag.matches("VNW.*onbep.*prenom.*") && lemma == "een") {
+      val t1 = removeFeatures(tag.replaceAll("VNW", "LID"), Set("prenom", "det"))
+      return t1
+    }
+
     if (tag.matches("VNW.*det.*") && pronominabel.gradables.contains(lemma))
       return tag.replaceAll("det", "grad")
     tag
   }
 
-  def doName(n: Elem) =
-  {
+  def doName(n: Elem) = {
     n.copy(child = n.child.map(
-      c => c match
-        {
+      c => c match {
         case w: Elem if (w.label == "w") =>
           w.copy(attributes = w.attributes.filter(_.key != "pos").append(new UnprefixedAttribute("pos", "SPEC(deeleigen", Null)))
-        case x:Any => x
+        case x: Any => x
       }
     ))
   }
 
   import posmapping.ProcessFolder
 
-  def main(args: Array[String]) =
-  {
+  def main(args: Array[String]) = {
     val d = new File(xmlDir)
     val d1 = new File(outputDir)
     ProcessFolder.processFolder(d, d1, doFile)
   }
 }
 
-object namenKlus
-{
+object namenKlus {
   val xmlDir = Eindhoven.outputDir
 
-  def extractNames(d: Elem):Seq[(String, String)]  = (d \\ "name").map(n => {
+  def extractNames(d: Elem): Seq[(String, String)] = (d \\ "name").map(n => {
     val txt = (n \\ "w").map(_.text)
     val t1 = txt.mkString("").trim.toLowerCase
     val t2 = txt.mkString(" ")
@@ -430,37 +458,33 @@ object namenKlus
   })
 
   def extractNameParts(d: Elem) = (d \\ "w").filter(x => (x \ "@type").text.startsWith("01")).map(
-    x =>
-      {
-        val txt = x.text.trim
-        val t1 = txt.toLowerCase
-        t1 -> txt
-      }
+    x => {
+      val txt = x.text.trim
+      val t1 = txt.toLowerCase
+      t1 -> txt
+    }
   ) ++ extractNames(d)
 
 
-
-
-  val allFiles =  posmapping.ProcessFolder.processFolder(new File(xmlDir), identity).toSet.filter(_.isFile)
+  val allFiles = posmapping.ProcessFolder.processFolder(new File(xmlDir), identity).toSet.filter(_.isFile)
   val hansLoos = allFiles.filter(f => (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName)))
   val hanzig = allFiles.diff(hansLoos)
 
-  lazy val resolvedNames:Map[String, Set[String]] = hanzig.toStream.map(f => extractNameParts(XML.loadFile(f))).flatten.groupBy(_._1).
+  lazy val resolvedNames: Map[String, Set[String]] = hanzig.toStream.map(f => extractNameParts(XML.loadFile(f))).flatten.groupBy(_._1).
     mapValues(_.map(_._2).toSet)
 
   val unresolvedNames = hansLoos.flatMap(
-    f =>
-      {
-        val shortPath = f.getParentFile.getName + "/" + f.getName
-        val d = XML.loadFile(f)
-        (d \\ "w").filter(x => (x \ "@type").text.startsWith("01")).map((shortPath, _))
-      }
+    f => {
+      val shortPath = f.getParentFile.getName + "/" + f.getName
+      val d = XML.loadFile(f)
+      (d \\ "w").filter(x => (x \ "@type").text.startsWith("01")).map((shortPath, _))
+    }
   )
 
   def main(args: Array[String]): Unit = {
     //hansLoos.foreach(println)
     unresolvedNames.foreach(
-      { case (f,n) => {
+      { case (f, n) => {
         val t = n.text
         val id = getId(n).getOrElse("?")
         val t1 = n.text.replaceAll("-", "")
@@ -472,53 +496,51 @@ object namenKlus
   }
 }
 
-object allTags
-{
-  case class TaggedWord(word: String, kort: Option[String], lang: Option[String], vu: Option[String])
-  {
+object allTags {
+
+  case class TaggedWord(word: String, kort: Option[String], lang: Option[String], vu: Option[String]) {
     override def toString() = s"$word,${vu.getOrElse("_")},${kort.getOrElse("_")},${lang.getOrElse("_")}"
   }
 
   def listAllTags() = files.flatMap(f => (XML.loadFile(f) \\ "w").map(n => TaggedWord(n.text, hvhKort(n), hvhLang(n), vuPos(n))))
 
-  def vert() = listAllTags().foreach({ case TaggedWord(w,k,l,v) =>
-    println(s"$w\t${k.getOrElse("_")}\t${l.getOrElse("_")}\t${v.getOrElse("_")}") })
+  def vert() = listAllTags().foreach({ case TaggedWord(w, k, l, v) =>
+    println(s"$w\t${k.getOrElse("_")}\t${l.getOrElse("_")}\t${v.getOrElse("_")}")
+  })
 
-  def byVuTag() = listAllTags().filter(w => w.vu.isDefined&& w.vu.get.length == 3).groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
-    //.map({ case (w,k,l,v) =>  s"$w\t${k}\t${l.getOrElse("_")}\t${v.getOrElse("_")}" }
+  def byVuTag() = listAllTags().filter(w => w.vu.isDefined && w.vu.get.length == 3).groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
+
+  //.map({ case (w,k,l,v) =>  s"$w\t${k}\t${l.getOrElse("_")}\t${v.getOrElse("_")}" }
   // )
 
   def byKorteTag = listAllTags().groupBy(_.kort).mapValues(l => scala.util.Random.shuffle(l).toSet)
 
-  def splitLangetags:Stream[TaggedWord] = listAllTags().filter(_.lang.isDefined).flatMap(w => w.lang.getOrElse("").split("\\|").toList.map(l
-  => w.copy(lang = Some(l.replaceAll("\\{.*?\\}", "").replaceAll("\\[.*?\\]", "").replaceAll("MTU.[0-9]*_L[0-9]+_", "")  ))))
+  def splitLangetags: Stream[TaggedWord] = listAllTags().filter(_.lang.isDefined).flatMap(w => w.lang.getOrElse("").split("\\|").toList.map(l
+  => w.copy(lang = Some(l.replaceAll("\\{.*?\\}", "").replaceAll("\\[.*?\\]", "").replaceAll("MTU.[0-9]*_L[0-9]+_", "")))))
 
   // splitLangetags.foreach(println)
 
   def byLangeTag = splitLangetags.groupBy(_.lang).mapValues(l => scala.util.Random.shuffle(l).toSet)
 
 
-  def main(args: Array[String]) =
-  {
-     val files = List("vu", "kort", "lang").map(s => new FileWriter("/tmp/" + s + ".taginfo.txt"))
-     val (vuFile,kortFile, langFile) = (files(0), files(1), files(2))
+  def main(args: Array[String]) = {
+    val files = List("vu", "kort", "lang").map(s => new FileWriter("/tmp/" + s + ".taginfo.txt"))
+    val (vuFile, kortFile, langFile) = (files(0), files(1), files(2))
 
     byVuTag.toList.sortBy(_._1).foreach(
-       {
-         case (v, w) if (v.isDefined && v.get.length < 4) =>
-           {
-             val allekortjes = w.filter(_.kort.isDefined).map(_.kort.get).toSet.mkString(",")
-             vuFile.write(s"${v.get}\t${w.size}\t${w.take(5).map(_.word).mkString("  ")}\n")
-           }
+      {
+        case (v, w) if (v.isDefined && v.get.length < 4) => {
+          val allekortjes = w.filter(_.kort.isDefined).map(_.kort.get).toSet.mkString(",")
+          vuFile.write(s"${v.get}\t${w.size}\t${w.take(5).map(_.word).mkString("  ")}\n")
+        }
 
-         case _ =>
-       }
-     )
+        case _ =>
+      }
+    )
 
     byKorteTag.toList.sortBy(_._1).foreach(
       {
-        case (v, w) =>
-        {
+        case (v, w) => {
           kortFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
         }
 
@@ -528,8 +550,7 @@ object allTags
 
     byLangeTag.toList.sortBy(_._1).foreach(
       {
-        case (v, w) =>
-        {
+        case (v, w) => {
           langFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
         }
 
