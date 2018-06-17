@@ -10,6 +10,7 @@ import scala.util.{Try,Success,Failure}
 import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String) {
+
   def matches(mp: Int, sp: Int, ssp: Int): Boolean = {
 
     mp match {
@@ -306,6 +307,7 @@ object Eindhoven {
           if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))
             addFeature(pos, "x-mv") else
           if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "prenom.e-pred", "x-prenom")
+          // else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches("NOU-C.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")
           else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")
           else if (pos.matches("WW.*(vd|od).*(prenom.*vrij|vrij.*prenom).*")) {
             if (w1Pos.matches(".*prenom.*"))
@@ -431,7 +433,6 @@ object Eindhoven {
     val (lemma, supply): (String, Boolean) = {
       if (lemma1 == "" && vuMainPos == 0 && vuSubSubPos == 0) (word, true); else (lemma1, false)
     }
-
 
     val lemmaIsWord = new UnprefixedAttribute("lemma", lemma, Null)
 
@@ -591,119 +592,7 @@ object Eindhoven {
   }
 }
 
-object namenKlus {
-  val xmlDir = Eindhoven.outputDir
-
-  def extractNames(d: Elem): Seq[(String, String)] = (d \\ "name").map(n => {
-    val txt = (n \\ "w").map(_.text)
-    val t1 = txt.mkString("").trim.toLowerCase
-    val t2 = txt.mkString(" ")
-    t1 -> t2
-  })
-
-  def extractNameParts(d: Elem) = (d \\ "w").filter(x => (x \ "@type").text.startsWith("01")).map(
-    x => {
-      val txt = x.text.trim
-      val t1 = txt.toLowerCase
-      t1 -> txt
-    }
-  ) ++ extractNames(d)
 
 
-  val allFiles = posmapping.ProcessFolder.processFolder(new File(xmlDir), identity).toSet.filter(_.isFile)
-  val hansLoos = allFiles.filter(f => (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName)))
-  val hanzig = allFiles.diff(hansLoos)
-
-  lazy val resolvedNames: Map[String, Set[String]] = hanzig.toStream.map(f => extractNameParts(XML.loadFile(f))).flatten.groupBy(_._1).
-    mapValues(_.map(_._2).toSet)
-
-  val unresolvedNames = hansLoos.flatMap(
-    f => {
-      val shortPath = f.getParentFile.getName + "/" + f.getName
-      val d = XML.loadFile(f)
-      (d \\ "w").filter(x => (x \ "@type").text.startsWith("01")).map((shortPath, _))
-    }
-  )
-
-  def main(args: Array[String]): Unit = {
-    //hansLoos.foreach(println)
-    unresolvedNames.foreach(
-      { case (f, n) => {
-        val t = n.text
-        val id = getId(n).getOrElse("?")
-        val t1 = n.text.replaceAll("-", "")
-        val candidates = resolvedNames.getOrElse(t1, Set.empty).mkString("|")
-        println(s"$f $id $t -> $candidates")
-      }
-      }
-    )
-  }
-}
-
-object allTags {
-
-  case class TaggedWord(word: String, kort: Option[String], lang: Option[String], vu: Option[String]) {
-    override def toString() = s"$word,${vu.getOrElse("_")},${kort.getOrElse("_")},${lang.getOrElse("_")}"
-  }
-
-  def listAllTags() = files.flatMap(f => (XML.loadFile(f) \\ "w").map(n => TaggedWord(n.text, hvhKort(n), hvhLang(n), vuPos(n))))
-
-  def vert() = listAllTags().foreach({ case TaggedWord(w, k, l, v) =>
-    println(s"$w\t${k.getOrElse("_")}\t${l.getOrElse("_")}\t${v.getOrElse("_")}")
-  })
-
-  def byVuTag() = listAllTags().filter(w => w.vu.isDefined && w.vu.get.length == 3).groupBy(_.vu).mapValues(l => scala.util.Random.shuffle(l).toSet)
-
-  //.map({ case (w,k,l,v) =>  s"$w\t${k}\t${l.getOrElse("_")}\t${v.getOrElse("_")}" }
-  // )
-
-  def byKorteTag = listAllTags().groupBy(_.kort).mapValues(l => scala.util.Random.shuffle(l).toSet)
-
-  def splitLangetags: Stream[TaggedWord] = listAllTags().filter(_.lang.isDefined).flatMap(w => w.lang.getOrElse("").split("\\|").toList.map(l
-  => w.copy(lang = Some(l.replaceAll("\\{.*?\\}", "").replaceAll("\\[.*?\\]", "").replaceAll("MTU.[0-9]*_L[0-9]+_", "")))))
-
-  // splitLangetags.foreach(println)
-
-  def byLangeTag = splitLangetags.groupBy(_.lang).mapValues(l => scala.util.Random.shuffle(l).toSet)
-
-
-  def main(args: Array[String]) = {
-    val files = List("vu", "kort", "lang").map(s => new FileWriter("/tmp/" + s + ".taginfo.txt"))
-    val (vuFile, kortFile, langFile) = (files(0), files(1), files(2))
-
-    byVuTag.toList.sortBy(_._1).foreach(
-      {
-        case (v, w) if (v.isDefined && v.get.length < 4) => {
-          val allekortjes = w.filter(_.kort.isDefined).map(_.kort.get).toSet.mkString(",")
-          vuFile.write(s"${v.get}\t${w.size}\t${w.take(5).map(_.word).mkString("  ")}\n")
-        }
-
-        case _ =>
-      }
-    )
-
-    byKorteTag.toList.sortBy(_._1).foreach(
-      {
-        case (v, w) => {
-          kortFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
-        }
-
-        case _ =>
-      }
-    )
-
-    byLangeTag.toList.sortBy(_._1).foreach(
-      {
-        case (v, w) => {
-          langFile.write(s"${v.getOrElse("_")}\t${w.size}\t${w.take(5).map(_.toString).mkString("  ")}\n")
-        }
-
-        case _ =>
-      }
-    )
-    files.foreach(_.close())
-
-  }
-}
 
 // leeuwenberg et al 2016 minimally supervised approach for  synonym extraction with word embeddings

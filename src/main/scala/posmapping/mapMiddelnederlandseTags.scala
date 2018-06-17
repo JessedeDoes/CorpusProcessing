@@ -109,9 +109,13 @@ object mapMiddelnederlandseTags {
 
 object ProcessFolder {
 
-  def processFolder[T](input: File, action: File => T):Stream[T] =
+  def processFolder[T](input: File, action: File => T):Seq[T] =
   {
-    if (input.isFile) Stream(action(input)) else input.listFiles.toStream.flatMap(x => processFolder(x,action))
+
+    if (input.isDirectory) Console.err.println(input.listFiles().toList)
+    if (input.isFile)
+      Stream(action(input))
+    else input.listFiles.toList.flatMap(x => processFolder(x,action) )
   }
 
   def processFolder(input: File, outputFolder: File, base: (String,String) => Unit): Unit =

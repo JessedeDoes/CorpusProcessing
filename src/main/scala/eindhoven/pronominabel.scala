@@ -29,6 +29,9 @@ object pronominabel {
     "ik" -> "vol",
     "ikke" -> "nadr",
     "'k" -> "red",
+    "me" -> "red",
+    "mij" -> "vol",
+
 
     "wij" -> "vol",
     "we" -> "red",
@@ -105,7 +108,7 @@ object pronominabel {
     "zij_ev" -> "3,x-fem",
     "zij_mv" -> "3,x-mv",
 
-    "uzelf" -> "nadr,2b,getal",
+    "uzelf" -> "nadr,2b",
     "jullie" -> "2,mv",
     "ikzelf" -> "1,ev,nadruk",
     // "het" -> "evon", // alleen bij LID
@@ -113,17 +116,18 @@ object pronominabel {
 
   import Eindhoven._
 
+  val volMap = Map("je"->"jij", "we"->"wij", "ge"->"gij")
   def enhancePronFeatures(word: String, lemma: String, tag: String) = {
     if (tag.matches("VNW.*pers.*")) {
+
       val lem1 = if (Set("ze", "zij").contains(lemma.toLowerCase)) {
         if (tag.matches(".*pers.*nomin.*") && tag.contains("ev"))
           "zij_ev" else if (tag.contains("mv") || tag.contains("obl"))
           "zij_mv" else "zij"
-      } else lemma
+      } else if (volMap.contains(lemma)) volMap(lemma) else lemma
 
       val lemExtra: List[String] = lemmaFeatureMap.getOrElse(lem1.toLowerCase(), List())
       val wordExtra: List[String] = wordformFeatureMap.getOrElse(word.toLowerCase(), List())
-
 
       addFeatures(tag, lemExtra ++ wordExtra)
     } else tag
