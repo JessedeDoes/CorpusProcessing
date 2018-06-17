@@ -17,7 +17,7 @@ object klussen {
     val relative = base.relativize(Paths.get(f.getCanonicalPath))
     val theWord = word(w.asInstanceOf[Elem])
 
-    def kwic = (s.descendant.filter(x => x.label == "w" || x.label == "pc")).map(w1 => if (w1 == w) <b>{w1.text}</b>.toString else w1.text).mkString(" ")
+    def kwic = (s.descendant.filter(x => x.label == "w" || x.label == "pc")).map(w1 => if (w1 == w) <b>{w1.text.replaceAll("\\s+", " ").trim}</b>.toString else {w1.text.replaceAll("\\s+", " ").trim}).mkString(" ")
 
     def toString(g: Word => String) = s"$relative\t${getId(w).getOrElse("NOID")}\t${g(theWord)}\t${theWord.pos}\t$kwic"
   }
@@ -47,7 +47,7 @@ object klussen {
 object zezijklus {
   def main (args: Array[String] ): Unit = {
     klussen.maakKlus(new File(outputDir),
-      w => Set("ze","zij").contains(w.word.toLowerCase),
+      w => Set("ze","zij").contains(w.word.toLowerCase) && w.pos.matches("VNW.*pers.*nomin.*"),
       w => if (w.pos.contains("fem")) "true" else "false")
   }
 }
