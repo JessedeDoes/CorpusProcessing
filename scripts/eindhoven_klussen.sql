@@ -4,6 +4,8 @@ create table zezij (file text, word_id text, mark boolean, pos text, kwic text);
 \cd 'lexit';
 \copy zezij from 'zezij.txt' with delimiter E'\t';
 alter table zezij add column comment text;
+alter table zezij add column mark_org boolean;
+update zezij set mark_org=mark;
 alter table zezij add column tellertje serial primary key;
 
 drop table if exists adjectief;
@@ -12,5 +14,7 @@ create table adjectief (file text, word_id text, mark boolean, pos text, kwic te
 \cd 'lexit';
 \copy adjectief from 'adjectiefklus.txt' with delimiter E'\t';
 alter table adjectief add column comment text;
+alter table adjectief add column mark_org boolean;
+update adjectief set mark_org=mark;
 alter table adjectief add column tellertje serial primary key;
 
