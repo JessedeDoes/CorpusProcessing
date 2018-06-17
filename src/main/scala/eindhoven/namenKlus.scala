@@ -25,7 +25,7 @@ object namenKlus {
   ) ++ extractNames(d)
 
 
-  val allFiles = posmapping.ProcessFolder.processFolder(new File(xmlDir), identity).toSet.filter(_.isFile)
+  val allFiles = utils.ProcessFolder.processFolder(new File(xmlDir), identity).toSet.filter(_.isFile)
   val hansLoos = allFiles.filter(f => (Set("camb", "cgtl1", "cgtl2").contains(f.getParentFile().getName)))
   val hanzig = allFiles.diff(hansLoos)
 

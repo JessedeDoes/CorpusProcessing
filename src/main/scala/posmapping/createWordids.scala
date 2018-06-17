@@ -83,6 +83,6 @@ object createWordids {
 
   def main(args: Array[String]): Unit = {
 
-    ProcessFolder.processFolder(new java.io.File(args(0)), new java.io.File(args(1)), doit)
+    utils.ProcessFolder.processFolder(new java.io.File(args(0)), new java.io.File(args(1)), doit)
   }
 }

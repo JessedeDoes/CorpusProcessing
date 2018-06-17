@@ -103,40 +103,8 @@ object mapMiddelnederlandseTags {
 
 
   def fixFile(in: String, out:String) = XML.save(out, fixEm(XML.load(in)),  enc="UTF-8")
-  def main(args: Array[String]) = ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
+  def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
 }
 
 
-object ProcessFolder {
 
-  def processFolder[T](input: File, action: File => T):Seq[T] =
-  {
-
-    if (input.isDirectory) Console.err.println(input.listFiles().toList)
-    if (input.isFile)
-      Stream(action(input))
-    else input.listFiles.toList.flatMap(x => processFolder(x,action) )
-  }
-
-  def processFolder(input: File, outputFolder: File, base: (String,String) => Unit): Unit =
-  {
-    if (!outputFolder.exists())
-      outputFolder.mkdir()
-
-    if (input.isDirectory)
-    {
-      input.listFiles().toList.par.foreach(f =>
-      {
-        if (f.isFile && f.getName.endsWith(".xml"))
-          processFolder(f, outputFolder, base)
-        else if (f.isDirectory)
-          processFolder(f, new File(outputFolder + "/" + f.getName), base)
-      })
-    } else if (input.isFile)
-    {
-      Console.err.println(input.getName)
-      val outFile = outputFolder + "/" + input.getName()
-      base(input.getCanonicalPath, outFile)
-    }
-  }
-}

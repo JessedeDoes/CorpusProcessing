@@ -4,7 +4,7 @@ import java.io.{File, FileWriter}
 import java.text.Normalizer
 
 import eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
-import posmapping.ProcessFolder
+import utils.ProcessFolder
 
 import scala.util.{Try,Success,Failure}
 import scala.xml._
@@ -586,7 +586,7 @@ object Eindhoven {
     ))
   }
 
-  import posmapping.ProcessFolder
+  import utils.ProcessFolder
 
   def main(args: Array[String]) = {
     val d = new File(xmlDir)

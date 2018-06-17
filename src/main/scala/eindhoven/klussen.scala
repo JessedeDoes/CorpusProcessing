@@ -4,7 +4,7 @@ import scala.xml._
 import Eindhoven._
 import java.io.File
 import java.nio.file._
-import posmapping.ProcessFolder
+import utils.ProcessFolder
 
 object klussen {
   case class Kwic(f: File, w: Node, s: Node, h:Option[Word => Boolean]=None)
