@@ -106,6 +106,8 @@ object bab {
 
   def simplifyPC(pc: Elem):Elem = <pc>{pc.text}</pc>
 
+  def addFeature(pos: String, f: String) = if (pos.contains(")")) pos.replaceAll("[)]", s",$f)") else s"$pos($f)"
+
   def markWordformGroups(d: Elem):Elem =
   {
     val wordOrder = (d \\ "w").zipWithIndex.map({case (w,i) => w -> i}).toMap
@@ -145,9 +147,9 @@ object bab {
         val partAttribute = new UnprefixedAttribute("part", part, Null)
         val nAttribute = new UnprefixedAttribute("n", partNumber.toString, Null)
         val oldPos = (w \ "@pos").text
-        val newPos = if (partAnalysis.isEmpty || !oldPos.contains("WW")) oldPos else {
-          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "mainVerbPart" else "otherVerbPart"
-          if (oldPos.contains(")")) oldPos.replaceAll("[)]", s",$partDesc)") else s"$oldPos($partDesc)"
+        val newPos = if (partAnalysis.isEmpty || !oldPos.contains("WW")) if (oldPos.contains("deeleigen")) oldPos else addFeature(oldPos,"deel") else {
+          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "hoofddeel-ww" else "anderdeel-ww"
+          addFeature(oldPos, partDesc)
         }
         val newPosAttribute = new UnprefixedAttribute("pos", newPos, Null)
         val newAtts = w.attributes.append( new UnprefixedAttribute("corresp", newCor, Null)).append(partAttribute)
