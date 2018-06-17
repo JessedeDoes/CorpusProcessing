@@ -150,8 +150,7 @@ object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag; misschie
 
     //Console.err.println(sequences)
     val matchingSequences = sequences.filter(seq => seq.forall({ case (w1, j) => filters(j - seq.head._2)(w1) }))
-    if (matchingSequences.nonEmpty)
-      Console.err.println(matchingSequences)
+    //if (matchingSequences.nonEmpty) Console.err.println(matchingSequences)
     matchingSequences
   }
 
@@ -163,8 +162,7 @@ object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag; misschie
     val matches = findWordSequence(words, filters)
     val confirmations: Set[Int] = matches.map(_.head._2).toSet
 
-    if (confirmations.nonEmpty)
-      Console.err.println(confirmations)
+    // if (confirmations.nonEmpty) Console.err.println(confirmations)
 
     val wordsToConfirm = wordElements.filter({case (w,i) => confirmations.contains(i)}).map(_._1)
 
@@ -220,8 +218,8 @@ object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag; misschie
       val pos = (w \ "@pos").text
       val newPos = g match
         {
-        case Some("mv") => pos.replaceAll("ev|mv", "mv")
-        case Some("ev") => pos.replaceAll("mv|ev", "ev")
+        case Some("mv") => addFeature(pos.replaceAll("ev|mv", "mv"),"x-mv") // getver
+        case Some("ev") => addFeature(pos.replaceAll("mv|ev", "ev"), "x-ev")
         case _ => pos
         }
       if (g.isDefined) Console.err.println(s"new PoS: $newPos")

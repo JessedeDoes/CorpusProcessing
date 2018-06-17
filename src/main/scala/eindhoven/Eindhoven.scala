@@ -304,8 +304,7 @@ object Eindhoven {
                 pos
             } else if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
             addFeature(pos, "x-ev") else
-          if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))
-            addFeature(pos, "x-mv") else
+          // if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))  addFeature(pos, "x-mv") else
           if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "prenom.e-pred", "x-prenom")
           // else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches("NOU-C.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")
           else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*=adv.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")

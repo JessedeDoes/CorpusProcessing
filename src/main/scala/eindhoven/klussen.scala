@@ -30,8 +30,8 @@ object klussen {
 
   def extract(file: File, f: Word => Boolean, g: Word => String, h:Option[Word => Boolean] = None) = {
     //Console.err.println(file)
-    val d = raadZe.confirmPrenom(XML.loadFile(file)) // ahem hackje ...
-
+    val d = XML.loadFile(file)
+    
     val sentences = (d \\ "s").filter(s => (s \\ "w").exists(w => f(word(w))))
     val kwics = sentences.flatMap(s =>
     {
@@ -64,7 +64,7 @@ object adjectiefklus {
   def main (args: Array[String] ): Unit = {
     klussen.maakKlus(new File(outputDir),
       w => w.pos.matches("ADJ.*(x-|\\|).*"),
-      w => if (w.pos.contains("vrij")) "true" else "false",
+      w => if (w.pos.contains("vrij")) "false" else "true",
       Some(w => w.pos.matches("N.*")))
   }
 }
