@@ -134,7 +134,7 @@ object pronominabel {
 
 import Eindhoven._
 
-object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag
+object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag; misschien maar beter laten
 {
   def word(w: Node): Word = Word(w.text, (w \ "@lemma").text, (w \ "@pos").text)
 
