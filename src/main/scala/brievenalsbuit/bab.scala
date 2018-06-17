@@ -87,7 +87,6 @@ object bab {
         val r = (if (t.leading.nonEmpty) Seq(<pc>{t.leading}</pc>) else Seq()) ++
           Seq(w.copy( child = Text(t.token))) ++
           (if (t.trailing.nonEmpty) Seq(<pc>{t.trailing}</pc>) else Seq())
-        Console.err.println(r)
         r
       }
   }
@@ -106,6 +105,9 @@ object bab {
     val partAssignments = stermatten.values.flatMap(l =>
     {
       val sorted:Seq[Node] = l.sortBy(wordOrder)
+      val pos = (sorted.head \ "@pos").text
+      if (Set("WW", "BW").contains(pos))
+         Console.err.println(sorted.map(_.text).mkString(" ") + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
       sorted.zipWithIndex.map({case (w,i) =>
           {
             val part = if (i == 0) "I" else if (i==l.length-1) "F" else "M"
