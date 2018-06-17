@@ -25,7 +25,7 @@ object klussen {
 
   def extract(file: File, f: Word => Boolean, g: Word => String) = {
     //Console.err.println(file)
-    val d = XML.loadFile(file)
+    val d = raadZe.raadZeInDoc(XML.loadFile(file)) // ahem hackje ...
 
     val sentences = (d \\ "s").filter(s => (s \\ "w").exists(w => f(word(w))))
     val kwics = sentences.flatMap(s =>
@@ -45,10 +45,12 @@ object klussen {
 }
 
 object zezijklus {
+
+  def interessant(w: Word) = Set("ze","zij").contains(w.word.toLowerCase) && w.pos.matches("VNW.*pers.*nomin.*")
   def main (args: Array[String] ): Unit = {
     klussen.maakKlus(new File(outputDir),
-      w => Set("ze","zij").contains(w.word.toLowerCase) && w.pos.matches("VNW.*pers.*nomin.*"),
-      w => if (w.pos.contains("fem")) "true" else "false")
+      w => interessant(w),
+      w => if (w.pos.contains("ev")) "true" else "false")
   }
 }
 

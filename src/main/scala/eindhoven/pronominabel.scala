@@ -1,17 +1,15 @@
 package eindhoven
 
+import scala.xml._
+
 object pronominabel {
+
   val gradables =
-    """veel
-    weinig
-    beide
-    meer
-    teveel
-    minder
-    keiveel
+    """veel weinig beide
+    meer teveel
+    minder keiveel
     meeste
-    evenveel
-    zoveel
+    evenveel zoveel
     mindere
     vele
     superveel
@@ -134,6 +132,64 @@ object pronominabel {
   }
 }
 
+import Eindhoven._
+
+object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag
+{
+  def word(w: Node): Word = Word(w.text, (w \ "@lemma").text, (w \ "@pos").text)
+
+  def raadZe(s: Elem): Elem =
+  {
+    val wordElements = (s \\ "w").zipWithIndex
+    val words = wordElements.map({ case (w,i) => (word(w), i)})
+    val ze = words.filter(w => zezijklus.interessant(w._1))
+
+    val guesses:Map[Int,Option[String]] = ze.map(
+      {
+        case (w,i) =>
+          if (i > 0 && words(i-1)._1.pos.matches("WW.*pv.*"))
+          {
+            val pos_1 = words(i-1)._1.pos
+            Console.err.println(s"prev: $pos_1")
+            if (pos_1.matches(".*ev.*")) i -> Some("ev") else i -> Some("mv")
+          } else
+          {
+            val nextPV = words.find(w => w._2 > i && w._1.pos.matches("WW.*pv.*"))
+            if (nextPV.isDefined)
+              {
+                Console.err.println(s"next: $nextPV")
+                val pos_1 = nextPV.get._1.pos
+                if (pos_1.matches(".*ev.*")) i -> Some("ev") else i -> Some("mv")
+              } else i -> None
+          }
+      }
+    ).toMap
+
+
+
+    val wordElem2Guess  = wordElements.map( {
+      case (w,i) =>  w -> guesses.getOrElse(i,None)
+    }).toMap
+
+    def doGuess(w: Elem): Elem =
+    {
+      val g = wordElem2Guess(w)
+      val pos = (w \ "@pos").text
+      val newPos = g match
+        {
+        case Some("mv") => pos.replaceAll("ev|mv", "mv")
+        case Some("ev") => pos.replaceAll("mv|ev", "ev")
+        case _ => pos
+        }
+      if (g.isDefined) Console.err.println(s"new PoS: $newPos")
+      replaceAttribute(w, "pos",  x => newPos)
+    }
+
+    updateElement(s, _.label=="w", doGuess)
+  }
+
+  def raadZeInDoc(d: Elem):Elem = updateElement(d, _.label=="s", raadZe)
+}
 
 /*
 [T501a]	VNW(pers,pron,nomin,vol,1,ev)	ik
