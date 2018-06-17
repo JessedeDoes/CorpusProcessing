@@ -29,7 +29,7 @@ object ProcessFolder {
       })
     } else if (input.isFile)
     {
-      Console.err.println(input.getName)
+      //Console.err.println(input.getName)
       val outFile = outputFolder + "/" + input.getName()
       base(input.getCanonicalPath, outFile)
     }
