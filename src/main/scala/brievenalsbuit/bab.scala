@@ -12,6 +12,17 @@ object bab {
   val discardSubElemsOfWord = true
   val multivalSep = "⊕"
 
+
+  case class Analysis(word: String, lemmaParts: String, verbalWordPart: String, verbalLemmaPart: String)
+  {
+
+  }
+
+  val wwAnalyses:Map[String,Analysis] = fromFile("data/bab/ww.analyse.txt").getLines()
+    .map(l => l.split("\\t"))
+    .map(l => Analysis(l(0), l(1), l(2), l(3)))
+    .toList.groupBy(_.word).mapValues(_.head)
+
   val veiligePunten:Set[(String,String)] = fromFile("data/bab_veilige_punten.txt").getLines.map(l => l.split("\\t")).map(l => l(0) -> l(1)).toSet
 
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
@@ -95,7 +106,7 @@ object bab {
 
   def simplifyPC(pc: Elem):Elem = <pc>{pc.text}</pc>
 
-  def fixEm(d: Elem):Elem =
+  def markWordformGroups(d: Elem):Elem =
   {
     val wordOrder = (d \\ "w").zipWithIndex.map({case (w,i) => w -> i}).toMap
 
@@ -106,12 +117,15 @@ object bab {
     {
       val sorted:Seq[Node] = l.sortBy(wordOrder)
       val pos = (sorted.head \ "@pos").text
-      if (Set("WW", "BW").contains(pos))
-         Console.err.println(sorted.map(_.text).mkString(" ") + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
+      val word = sorted.map(_.text).mkString(" ")
+      val analysis = wwAnalyses.get(word)
+
+      if (Set("WW", "BW").contains(pos)) Console.err.println(word + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
+
       sorted.zipWithIndex.map({case (w,i) =>
           {
             val part = if (i == 0) "I" else if (i==l.length-1) "F" else "M"
-            w -> part
+            w -> (part,i,analysis)
           }
       })
     }).toMap
@@ -125,10 +139,19 @@ object bab {
         val id = idUnsafe(w)
         val setje = sterMatMap(cor).toSet.diff(Set(id))
         val newCor = setje.map(x => s"#$x").mkString(" ")
-        val part = partAssignments(w)
+        val (part,partNumber,partAnalysis) = partAssignments(w)
+
+        val word = w.text
         val partAttribute = new UnprefixedAttribute("part", part, Null)
+        val nAttribute = new UnprefixedAttribute("n", partNumber.toString, Null)
+        val oldPos = (w \ "@pos").text
+        val newPos = if (partAnalysis.isEmpty || !oldPos.contains("WW")) oldPos else {
+          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "mainVerbPart" else "otherVerbPart"
+          if (oldPos.contains(")")) oldPos.replaceAll("[)]", s",$partDesc)") else s"$oldPos($partDesc)"
+        }
+        val newPosAttribute = new UnprefixedAttribute("pos", newPos, Null)
         val newAtts = w.attributes.append( new UnprefixedAttribute("corresp", newCor, Null)).append(partAttribute)
-        w.copy(attributes =  newAtts.filter(_.key != "n"))
+        w.copy(attributes =  newAtts.filter(a => a.key != "n" && a.key != "pos").append(newPosAttribute).append(nAttribute))
       } else w
     }
     updateElement(d, _.label=="w", newCorresp)
@@ -141,7 +164,7 @@ object bab {
     val d2b = updateElement(d2, _.label=="pc", simplifyPC)
     val d3 = updateElement2(d2b, _.label=="c", x => Seq(Text(" "))).asInstanceOf[Elem]
     val d4 = updateElement2(d3, _.label=="w", tokenize).head.asInstanceOf[Elem]
-    val d5 = fixEm(d4)
+    val d5 = markWordformGroups(d4)
     XML.save(out,d5,"UTF-8")
   }
 
