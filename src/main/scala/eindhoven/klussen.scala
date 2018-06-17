@@ -64,7 +64,7 @@ object adjectiefklus {
   def main (args: Array[String] ): Unit = {
     klussen.maakKlus(new File(outputDir),
       w => w.pos.matches("ADJ.*(x-|\\|).*"),
-      w => if (w.pos.contains("vrij")) "false" else "true",
+      w => if (w.pos.contains("vrij") || w.pos.contains("prenom|e-pred")) "false" else "true",
       Some(w => w.pos.matches("N.*")))
   }
 }
