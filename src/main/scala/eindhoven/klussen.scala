@@ -25,7 +25,7 @@ object klussen {
 
   def extract(file: File, f: Word => Boolean, g: Word => String) = {
     //Console.err.println(file)
-    val d = raadZe.raadZeInDoc(XML.loadFile(file)) // ahem hackje ...
+    val d = raadZe.confirmPrenom(XML.loadFile(file)) // ahem hackje ...
 
     val sentences = (d \\ "s").filter(s => (s \\ "w").exists(w => f(word(w))))
     val kwics = sentences.flatMap(s =>

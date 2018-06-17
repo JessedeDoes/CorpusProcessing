@@ -138,6 +138,49 @@ object raadZe // heeft het nog zin dit na te kijken? Foutmarge is laag; misschie
 {
   def word(w: Node): Word = Word(w.text, (w \ "@lemma").text, (w \ "@pos").text)
 
+  def findWordSequence(words: Seq[(Word, Int)], filters: List[Word => Boolean])=
+  {
+    val k = filters.size
+    val startingPoints = words.filter({ case (w, i) => filters.head(w) && i + k <= words.size })
+
+    val sequences = startingPoints.map(
+      { case (w, i) =>
+        words.slice(i, i + k)
+      });
+
+    //Console.err.println(sequences)
+    val matchingSequences = sequences.filter(seq => seq.forall({ case (w1, j) => filters(j - seq.head._2)(w1) }))
+    if (matchingSequences.nonEmpty)
+      Console.err.println(matchingSequences)
+    matchingSequences
+  }
+
+  def confirmPrenom(s: Elem) =
+  {
+    val wordElements = (s \\ "w").zipWithIndex
+    val words = wordElements.map({ case (w,i) => (word(w), i)})
+    val filters:List[Word => Boolean] = List(_.pos.matches("ADJ.*x-prenom.*"), _.pos.matches("N.*"))
+    val matches = findWordSequence(words, filters)
+    val confirmations: Set[Int] = matches.map(_.head._2).toSet
+
+    if (confirmations.nonEmpty)
+      Console.err.println(confirmations)
+
+    val wordsToConfirm = wordElements.filter({case (w,i) => confirmations.contains(i)}).map(_._1)
+
+    def confirm(w: Elem): Elem =
+    {
+
+      if (wordsToConfirm.contains(w)) {
+        replaceAttribute(w, "pos", x => x.replaceAll("x-prenom", "prenom"))
+      } else w
+    }
+
+    updateElement(s, _.label=="w", confirm)
+  }
+
+  def confirmPrenomInDoc(d: Elem):Elem = updateElement(d, _.label=="s", confirmPrenom)
+
   def raadZe(s: Elem): Elem =
   {
     val wordElements = (s \\ "w").zipWithIndex

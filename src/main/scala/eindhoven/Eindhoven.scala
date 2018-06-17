@@ -355,6 +355,7 @@ object Eindhoven {
   def doFile(f: File, fOut: File): Unit = {
     val doc = XML.loadFile(f)
     (doc \\ "w").map(_.asInstanceOf[Elem])
+
     val d1 = updateElement(doc, x => x.label == "w" || x.label == "pc", x => if (x.label == "w") doWord(x) else doPunct(x))
 
     val d2 = updateElement(d1, _.label == "name", doName)
@@ -368,9 +369,13 @@ object Eindhoven {
       {e.child}
     </s>))
 
-    val d5 = useAutomaticTagging(d4.asInstanceOf[Elem], f)
+    lazy val d4b = raadZe.raadZeInDoc(d4)
 
-    val d6 = noNotes(d5)
+    val d5 = useAutomaticTagging(d4b.asInstanceOf[Elem], f)
+
+    lazy val d5b = raadZe.confirmPrenomInDoc(d5)
+
+    val d6 = noNotes(d5b)
 
     lazy val d7 = updateElement(d6, _.label == "w", e => replaceAttribute(e, "pos", orderFeatures ))
 
