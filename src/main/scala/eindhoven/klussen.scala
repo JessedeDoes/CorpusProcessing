@@ -31,7 +31,7 @@ object klussen {
   def extract(file: File, f: Word => Boolean, g: Word => String, h:Option[Word => Boolean] = None) = {
     //Console.err.println(file)
     val d = XML.loadFile(file)
-    
+
     val sentences = (d \\ "s").filter(s => (s \\ "w").exists(w => f(word(w))))
     val kwics = sentences.flatMap(s =>
     {

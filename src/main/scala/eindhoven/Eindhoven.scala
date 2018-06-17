@@ -302,8 +302,8 @@ object Eindhoven {
                 addFeature(pos,"x-" + g.get)// gender uit corpustagging moet wel gewantrouwd worden
               else
                 pos
-            } else if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg"))
-            addFeature(pos, "x-ev") else
+            } else
+          // if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("sg")) addFeature(pos, "x-ev") else
           // if (pos.matches("VNW.*") && Set("ze","zij").contains(word.toLowerCase) && w1Pos.contains("pl"))  addFeature(pos, "x-mv") else
           if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches(".*prenom.*")) replaceFeature(pos, "prenom.e-pred", "x-prenom")
           // else if (pos.matches("ADJ.*prenom.e-pred.*") && w1Pos.matches("NOU-C.*")) replaceFeature(pos, "prenom.e-pred", "x-vrij,e-pred")
