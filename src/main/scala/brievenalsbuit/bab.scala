@@ -6,7 +6,10 @@ import utils.ProcessFolder
 import scala.io.Source._
 
 object bab {
-  val babDir = "/mnt/DiskStation/homes/jesse/work/BaB/"
+  val atHome = false
+  val babDir = if (atHome) "/mnt/DiskStation/homes/jesse/work/BaB/" else
+    "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/LexiconToolCorpora/Zeebrieven/TKV/"
+
   val input = new File(babDir + "2.0")
   val output = new File(babDir + "2.1")
   val discardSubElemsOfWord = true

@@ -43,13 +43,17 @@ object tagList {
     val tagFrequency = wordsInAllFiles(bab.output).groupBy(_.tag).mapValues(_.size)
 
     val allExamples  = wordsInAllFiles(bab.output).groupBy(_.tag).mapValues(scala.util.Random.shuffle(_).toSet.take(10))
-    allExamples.toList.sortBy(_._1).foreach({case (k,v) => println(s"$k (${tagFrequency(k)})\t${v.map(_.word).mkString("; ")}") })
+    val simpleExamples = allExamples.filter(x => !(x._1.contains(bab.multivalSep) || x._1.contains("|")))
+
+    List(simpleExamples, allExamples).foreach(
+    _.toList.sortBy(_._1).foreach({case (k,v) => println(s"$k (${tagFrequency(k)})\t${v.map(_.word).mkString("; ")}") })
+    )
 
     //allWithContext(bab.output).foreach(println)༽༽༼ ༽ ⟅ ⟆
     val allExamplesWithContext = allWithContext(bab.output).filter(_.size == contextSize).groupBy(_(center).tag).mapValues(scala.util.Random.shuffle(_).toSet.take(5))
 
     def marked(l: Seq[Word]) = l.zipWithIndex.map({case (word,i) => val w = word.word; val l = word.lemma; if (i == center) s"⟅$w⟿$l⟆" else w}).mkString(" ")
-    allExamplesWithContext.toList.sortBy(_._1).foreach({case (k,v) => println(s"$k (${tagFrequency(k)})\t${v.map(marked).mkString(" || ")}") })
+    allExamplesWithContext.toList.sortBy(_._1).foreach({case (k,v) => println(s"$k (${tagFrequency(k)})\n${v.map(marked).mkString("\n")}") })
   }
 
 }
