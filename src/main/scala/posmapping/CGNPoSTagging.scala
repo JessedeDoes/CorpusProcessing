@@ -5,6 +5,7 @@ import propositional.{And, Literal, Proposition}
 
 import scala.util.Success
 import scala.util.matching._
+import scala.xml._
 
 case class Feature(name: String, value: String)
 {
@@ -56,6 +57,13 @@ abstract case class TagSet(prefix: String,
     features
   }
   def fromString(t: String):Tag
+
+  def asTEIFeatureStructure(s: String):Elem = asTEIFeatureStructure(fromString(s))
+
+  def asTEIFeatureStructure(t:Tag):Elem = <fs type={prefix}>
+    <f name="pos"><symbol value={t.pos}/></f>
+    {t.features.map(f => <f name={f.name}><symbol value={f.value}/></f>)}
+  </fs>
 }
 
 object UDTagSet extends TagSet("ud")

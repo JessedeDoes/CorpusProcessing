@@ -2,6 +2,7 @@ package posmapping
 import scala.xml._
 import java.io.File
 import scala.util.matching.Regex._
+import scala.xml._
 
 object mapMiddelnederlandseTags {
 
@@ -21,13 +22,13 @@ object mapMiddelnederlandseTags {
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  def mapTag(s: String) =
+  def mapTag(s: String):String =
     {
       val s0 = s.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999").replaceAll("[A-Za-z]","")
 
       val s1 =  "0" * Math.max(0, 3 - s0.length) + s0
 
-      tagMapping.getOrElse(s1, tagMapping.get("999")) // s"MISSING_MAPPING($s/($s1))")
+      tagMapping.getOrElse(s1, tagMapping("999")) // s"MISSING_MAPPING($s/($s1))")
     }
 
   val morfcodeAttribuut = "@type"
@@ -58,12 +59,13 @@ object mapMiddelnederlandseTags {
 
   def updateTag(e: Elem):Elem =
   {
-    val morfcodes = (e \ morfcodeAttribuut).text.split("\\+")
+    val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
     val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(new UnprefixedAttribute("pos", f, Null))}
     val n = (e \ "@n").text
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
-    val cgnTag = morfcodes.map(mapTag).mkString("+")
+    val cgnTags:List[String] = morfcodes.map(mapTag)
+    val cgnTag = cgnTags.mkString("+")
 
     val newMSDAttribute = new UnprefixedAttribute(msdAttribuut, cgnTag, Null)
 
@@ -72,7 +74,10 @@ object mapMiddelnederlandseTags {
     val stm = sterretjeMatje(e)
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
-    e.copy(attributes = afterStm)
+
+    val featureStructures = cgnTags.map(s => CGMMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
+      .map({ case (fs,i) => fs.copy(attributes=fs.attributes.append( new UnprefixedAttribute(n, i.toString, Null) ))} )
+    e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
