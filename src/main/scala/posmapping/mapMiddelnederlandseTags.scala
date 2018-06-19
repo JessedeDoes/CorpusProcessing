@@ -75,8 +75,8 @@ object mapMiddelnederlandseTags {
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
-    val featureStructures = cgnTags.map(s => CGMMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
-      .map({ case (fs,i) => fs.copy(attributes=fs.attributes.append( new UnprefixedAttribute(n, i.toString, Null) ))} )
+    val featureStructures = cgnTags.map(s => CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
+      .map({ case (fs,i) => fs.copy(attributes=fs.attributes.append( new UnprefixedAttribute("n", i.toString, Null) ))} )
     e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 

@@ -137,13 +137,13 @@ object CGNMiddleDutch
   ).toMap
 }
 
-object CGMMiddleDutchTagset extends TagSet("mnl", CGNLite.posTags, CGNMiddleDutch.partitions, CGNMiddleDutch.pos2partitions)
+object CGNMiddleDutchTagset extends TagSet("mnl", CGNLite.posTags, CGNMiddleDutch.partitions, CGNMiddleDutch.pos2partitions)
 {
   override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = fromPropositionCGN(p, posIsSpecial)
-  override def fromString(t: String): Tag = CGNTag(CGNMiddleDutch.preprocess(t))
+  override def fromString(t: String): Tag = CGNMiddleDutchTag(CGNMiddleDutch.preprocess(t))
 }
 
-case class CGNMiddleDutchTag(tag: String) extends CGNStyleTag(tag, CGMMiddleDutchTagset)
+case class CGNMiddleDutchTag(tag: String) extends CGNStyleTag(tag, CGNMiddleDutchTagset)
 
 object testje
 {
