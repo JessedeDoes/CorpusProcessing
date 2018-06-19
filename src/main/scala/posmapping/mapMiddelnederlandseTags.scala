@@ -62,6 +62,7 @@ object mapMiddelnederlandseTags {
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
     val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(new UnprefixedAttribute("pos", f, Null))}
     val n = (e \ "@n").text
+    val lemmata = (e \ "@lemma").text.split("\\+").toList
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
     val cgnTags:List[String] = morfcodes.map(mapTag)
@@ -76,7 +77,7 @@ object mapMiddelnederlandseTags {
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
     val featureStructures = cgnTags.map(s => CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
-      .map({ case (fs,i) => fs.copy(attributes=fs.attributes.append( new UnprefixedAttribute("n", i.toString, Null) ))} )
+      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmata(i)}</string></f>, attributes=fs.attributes.append(new UnprefixedAttribute("n", i.toString, Null) ))} )
     e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 

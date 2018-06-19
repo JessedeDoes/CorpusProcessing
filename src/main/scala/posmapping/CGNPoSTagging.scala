@@ -61,7 +61,6 @@ abstract case class TagSet(prefix: String,
   def asTEIFeatureStructure(s: String):Elem = asTEIFeatureStructure(fromString(s))
 
   def asTEIFeatureStructure(t:Tag):Elem = <fs type={prefix}>
-    <f name="pos"><symbol value={t.pos}/></f>
     {t.features.map(f => <f name={f.name}><symbol value={f.value}/></f>)}
   </fs>
 }
