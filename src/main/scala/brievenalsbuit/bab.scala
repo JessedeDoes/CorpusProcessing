@@ -76,14 +76,40 @@ object bab {
     val id = getId(w)
 
     val word = w.text
-    val newLemma = (w \ "@lemma").text.replaceAll("_", multivalSep)
+
+    val newLemma = (w \ "@lemma").text.replaceAll("_", multivalSep).toLowerCase()
+
+    val lemmaNum = if (possen1.contains("TW") && (w \ "@n").isEmpty) maakLemmaWeerGetal(word, newLemma, possen1) else newLemma
 
     w.copy(child=if (discardSubElemsOfWord) Text(word) else w.child,
       attributes = w.attributes.filter(a => !overbodigeAttributen.contains(a.key))
         .append(new UnprefixedAttribute("pos", possen1.mkString(multivalSep), Null) )
-        .append(new UnprefixedAttribute("lemma", newLemma, Null)))
+        .append(new UnprefixedAttribute("lemma", lemmaNum, Null)))
   }
 
+ //  <w n="0" pos="TW⊕TW(deel)" part="I" corresp="" lemma="drieëndertig⊕vierendertig " xml:id="w.71">3</w>
+ // ook niet goed: Terug naar decimaal! 7 voor (7, zeveneneenhalf, TW) Dus altijd als deel dan blokkeren!
+
+  def maakLemmaWeerGetal(w: String, l: String, possen: Seq[String]): String =
+  {
+    val lemmata = l.split(multivalSep)
+
+    if (possen.count(_.contains("TW")) != 1)
+      l
+    else
+    if (w.matches("[0-9]+")) // klopt niet!
+    {
+
+      val lNew = lemmata.zipWithIndex.map(
+        { case (l, i)
+           => if (possen(i).contains("TW") && !l.matches(".*(de|ste)$")) w else l }
+      ).mkString(multivalSep)
+      Console.err.println(s"Terug naar decimaal! $lNew voor ($w, $l, ${possen.mkString(multivalSep)})")
+      lNew
+    }
+      else
+      l
+  }
 
   def tokenize(w: Elem):Seq[Node] =
   {
@@ -125,7 +151,7 @@ object bab {
       val word = sorted.map(_.text).mkString(" ")
       val analysis = wwAnalyses.get(word)
 
-      if (Set("WW", "BW").contains(pos)) Console.err.println(word + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
+      // if (Set("WW", "BW").contains(pos)) Console.err.println(word + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
 
       sorted.zipWithIndex.map({case (w,i) =>
           {
