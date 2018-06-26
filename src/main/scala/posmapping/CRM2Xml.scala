@@ -153,7 +153,7 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
-  val printWTags = false
+  val printWTags = true
 
   case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, unclear: String = null, grouping: String = null, syntCode: String=null)
   {
