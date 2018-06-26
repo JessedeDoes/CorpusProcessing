@@ -153,6 +153,8 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
+  val printWTags = false
+
   case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, unclear: String = null, grouping: String = null, syntCode: String=null)
   {
     import ents._
@@ -163,7 +165,7 @@ object CRM2Xml {
     def isSeparator:Boolean = tag.equals("Markup(sep)")
     def isComment:Boolean = tag.equals("Markup(com)")
 
-    def asXML:Elem =
+    def asXML:Node =
       if (isLine) <lb/>
       else if (isSic) <sic/> // hoort bij voorgaande woord
       else if (isComment) <note>{lemma}</note>
@@ -174,7 +176,8 @@ object CRM2Xml {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
             val corresp = if (grouping != null) Some(Text(grouping)) else None
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            <w xml:id={s"w.$n"} n={n.toString} corresp={corresp} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            if (printWTags) <w xml:id={s"w.$n"} corresp={corresp} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            else Text(w.text + " ")
           }
   }
 
@@ -347,11 +350,18 @@ object CRM2Xml {
 
   val white = Text(" ")
 
-  val clauseMap = Map("1" -> "hoofdzin", "4" -> "betrekkelijke bijzin", "8" -> "voegwoordelijke bijzin")
+  val clauseMap = Map(
+    "1" -> "hoofdzin (1)",
+    "2" -> "hervatting hoofzin na bijzin (2)",
+    "4" -> "betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoord (4)",
+    "5" -> "betrekkelijke bijzin ingeleid door betrekkelijk bijwoord (5)",
+    "6" -> "betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoordelijk bijwoord (6)",
+    "8" -> "voegwoordelijke bijzin (8)"
+  )
 
   def clauseType(s: String) = clauseMap.getOrElse(s,s)
 
-  def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.syntCode != null && t.syntCode.matches("[0-9]"))
+  def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.syntCode != null && t.syntCode.matches("[0-8]"))
 
   def sentenceXML(s: Seq[Token]) =
   {
