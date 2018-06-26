@@ -138,7 +138,7 @@ object CRM2Xml {
 
   val metaMap:Map[String,Meta] = metaList.groupBy(_.idPlus).mapValues(_.head)
 
-  lazy val rawTokens:Stream[Token] = getRows(CRM).zipWithIndex.filter({case (x,n) => x.size > 4}).map({ case (x,n) => token(n,x) })
+  lazy val rawTokens:Stream[Token] = getRows(CRM).zipWithIndex.map({case (x,i) => (x,i+1)}).filter({case (x,n) => x.size > 4}).map({ case (x,n) => token(n,x) })
 
   val puncMap:Map[String,String] =  <pc x=":">&amp;colon;</pc>
     <pc x="/">&amp;duitsekomma;</pc>
@@ -172,8 +172,9 @@ object CRM2Xml {
         <pc>{rewritePunc(word)}</pc>
           else {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
+            val corresp = if (grouping != null) Some(Text(grouping)) else None
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            <w n={n.toString} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            <w xml:id={s"w.$n"} n={n.toString} corresp={corresp} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
           }
   }
 
@@ -322,6 +323,47 @@ object CRM2Xml {
   }
 
 
+  def findSeparables(s: Seq[Token]):Seq[Token] =
+  {
+    val si = s.zipWithIndex
+    val startPoints = si.filter({ case (t,i)  => t.grouping != null && t.grouping.startsWith("b")})
+    val endPoints = si.filter({ case (t,i)  => t.grouping != null && t.grouping.startsWith("e")})
+    val pairings:Seq[(Int,Int)] = startPoints.map(
+      { case (t, i) =>
+        val ep = endPoints.find({ case (t1, i1) => i1 > i })
+        t.n -> ep.map(_._1.n)}
+        ).filter(_._2.isDefined).map(x => x._1 ->  x._2.get)
+
+    val s2x = pairings.map(x => x._1 -> s"${x._1}.${x._2}").toMap
+    val e2x = pairings.map(x => x._2 -> s"${x._1}.${x._2}").toMap
+
+    si.map({ case (t,i)  =>
+        if (s2x.contains(t.n)) t.copy(grouping = s2x(t.n)) else
+        if (e2x.contains(t.n)) t.copy(grouping = e2x(t.n)) else
+          t.copy(grouping=null)
+    })
+  }
+
+
+  val white = Text(" ")
+
+  val clauseMap = Map("1" -> "hoofdzin", "4" -> "betrekkelijke bijzin", "8" -> "voegwoordelijke bijzin")
+
+  def clauseType(s: String) = clauseMap.getOrElse(s,s)
+
+  def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.syntCode != null && t.syntCode.matches("[0-9]"))
+
+  def sentenceXML(s: Seq[Token]) =
+  {
+    val clauses = markClauses(s)
+    <s>
+      {clauses.map(c =>
+        { val typ = clauseType(c.head.syntCode)
+          <clause type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</clause>
+        })}
+    </s>
+  }
+
   def process():Unit =
   {
     val documents:Stream[Document] = makeGroup[Token](rawTokens, t => t.isHeader)
@@ -335,7 +377,7 @@ object CRM2Xml {
         }
       )
 
-    val white = Text(" ")
+
 
     val xmlDocs = withMetadataOriginal.map(
       d =>
@@ -349,7 +391,7 @@ object CRM2Xml {
               <body>
               {
                 // d.tokens.map(_.asXML).map(e => Seq(e,white))
-                d.sentences.map( s=> <s> {s.map(_.asXML).map(e => Seq(e,white))} </s>)
+                d.sentences.map(findSeparables).map( s=> sentenceXML(s) )
                 }
               </body>
             </text>
