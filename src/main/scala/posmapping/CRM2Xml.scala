@@ -153,7 +153,7 @@ object CRM2Xml {
 
   def mapTag(codes: String):String = codes.split("\\+").map(c => tagMap.getOrElse(c, "U" + c)).mkString("+")
 
-  case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, syntCode: String=null)
+  case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, unclear: String = null, grouping: String = null, syntCode: String=null)
   {
     import ents._
 
@@ -179,11 +179,22 @@ object CRM2Xml {
 
   case class Document(id: String, tokens: List[Token], metadata: Option[Meta])
   {
-
+    lazy val sentences = makeGroup[Token](tokens.toStream, t => t.syntCode == "1")
   }
 
-  def token(n: Int, c:Array[String]):Token = { Token(n, c(0), c(1), c(2), c(3), c(4)) }
-  def token(n: Int, s:String):Token = { val c = s.split("\\s+");  Token(n, c(0), c(1), c(2), c(3), c(4)) }
+  def token(n: Int, c:Array[String]):Token = { Token(n, c(0), c(1), c(2), c(3), c(4))
+    c.size match {
+      case 5 => Token(n, c(0), c(1), c(2), c(3), c(4))
+      case 6 => Token(n, c(0), c(1), c(2), c(3), c(4), c(5))
+      case 7 => Token(n, c(0), c(1), c(2), c(3), c(4), c(5), c(6))
+      case x:Int if x >= 8 => Token(n, c(0), c(1), c(2), c(3), c(4), c(5), c(6), c(7))
+    }
+  }
+
+  def token(n: Int, s:String):Token = {
+    val c = s.split("\\s+")
+    token(n,c)
+  }
 
 
   def makeGroupx[T](s: Stream[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
@@ -337,7 +348,8 @@ object CRM2Xml {
             <text>
               <body>
               {
-                d.tokens.map(_.asXML).map(e => Seq(e,white))
+                // d.tokens.map(_.asXML).map(e => Seq(e,white))
+                d.sentences.map( s=> <s> {s.map(_.asXML).map(e => Seq(e,white))} </s>)
                 }
               </body>
             </text>
