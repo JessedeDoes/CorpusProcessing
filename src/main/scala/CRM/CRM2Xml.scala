@@ -1,7 +1,9 @@
 package CRM
 
 import CRM.CRM2Xml.{kloekeByCode, optXML}
+import brievenalsbuit.bab.{addFeature, idUnsafe, wwAnalyses}
 import org.incava.util.diff.Difference
+import utils.PostProcessXML.updateElement
 import utils.alignment.comp
 import utils.{Alignment, SimOrDiff}
 
@@ -156,7 +158,8 @@ object CRM2Xml {
 
   val printWTags = true
 
-  case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String, unclear: String = null, grouping: String = null, syntCode: String=null)
+  case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String,
+                   unclear: String = null, grouping: String = null, syntCode: String=null)
   {
     import ents._
 
@@ -184,6 +187,12 @@ object CRM2Xml {
 
   case class Document(id: String, tokens: List[Token], metadata: Option[Meta])
   {
+    if (metadata.isEmpty)
+      {
+        // foutje op regel 172938 @ @ @ _n:sic Markup(sic) bedoeld.is.godes? - - #correctie: Markup en 'bedoeld is'  omgekeerd
+        Console.err.println(s"ERROR: No metadata for $id AT ${tokens.head}!")
+        System.exit(1)
+      }
     lazy val sentences = makeGroup[Token](tokens.toStream, t => t.syntCode == "1")
   }
 
@@ -348,6 +357,56 @@ object CRM2Xml {
     })
   }
 
+  def markWordformGroups(d: Elem):Elem =
+  {
+    val wordOrder = (d \\ "w").zipWithIndex.map({case (w,i) => w -> i}).toMap
+
+    val stermatten = (d \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e =>  (e \ "@corresp").text)
+    // stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
+
+    val partAssignments = stermatten.values.flatMap(l =>
+    {
+      val sorted:Seq[Node] = l.sortBy(wordOrder)
+      val pos = (sorted.head \ "@pos").text
+      val word = sorted.map(_.text).mkString(" ")
+      val analysis = wwAnalyses.get(word)
+
+      // if (Set("WW", "BW").contains(pos)) Console.err.println(word + " / " + (sorted.head \ "@lemma").text + " /  " + pos )
+
+      sorted.zipWithIndex.map({case (w,i) =>
+      {
+        val part = if (i == 0) "I" else if (i==l.length-1) "F" else "M"
+        w -> (part,i,analysis)
+      }
+      })
+    }).toMap
+
+    val sterMatMap = stermatten.mapValues(l => l.map(idUnsafe))
+
+    def newCorresp(w: Elem): Elem = {
+      if ((w \ "@corresp").nonEmpty)
+      {
+        val cor = (w \ "@corresp").text
+        val id = idUnsafe(w)
+        val setje = sterMatMap(cor).toSet.diff(Set(id))
+        val newCor = setje.map(x => s"#$x").mkString(" ")
+        val (part,partNumber,partAnalysis) = partAssignments(w)
+
+        val word = w.text
+        val partAttribute = new UnprefixedAttribute("part", part, Null)
+        val nAttribute = new UnprefixedAttribute("n", partNumber.toString, Null)
+        val oldPos = (w \ "@pos").text
+        val newPos = if (true || partAnalysis.isEmpty || !oldPos.contains("WW")) if (oldPos.contains("deeleigen")) oldPos else addFeature(oldPos,"deel") else {
+          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "hoofddeel-ww" else "anderdeel-ww"
+          addFeature(oldPos, partDesc)
+        }
+        val newPosAttribute = new UnprefixedAttribute("pos", newPos, Null)
+        val newAtts = w.attributes.filter(_.key != "corresp").append( new UnprefixedAttribute("corresp", newCor, Null)).append(partAttribute)
+        w.copy(attributes =  newAtts.filter(a => a.key != "n" && a.key != "pos").append(newPosAttribute).append(nAttribute))
+      } else w
+    }
+    updateElement(d, _.label=="w", newCorresp)
+  }
 
   val white = Text(" ")
 
@@ -393,6 +452,7 @@ object CRM2Xml {
     val xmlDocs = withMetadataOriginal.map(
       d =>
         {
+
           <TEI xmlns="http://www.tei-c.org/ns/1.0">
             <teiHeader>
             <title>{d.id}</title>
@@ -420,8 +480,9 @@ object CRM2Xml {
     } else {
       xmlDocs.foreach(d => {
         val title = (d \\ "title").head.text.replaceAll("/", "_")
+        val d1 = markWordformGroups(d)
         val outputFile = outputDir + "/" + title + ".xml"
-        XML.save(outputFile, d, "UTF-8")
+        XML.save(outputFile, d1, "UTF-8")
       }
       )
     }
