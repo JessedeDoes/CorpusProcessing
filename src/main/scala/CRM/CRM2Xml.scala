@@ -13,7 +13,7 @@ import scala.xml.{XML, _}
 
 case class Location(kloeke_code1: String, kloeke_code_oud: String, plaats: String, gemeentecode_2007: String, gemeente: String,
                     streek: String, provincie: String, postcode: String, land: String, rd_x: String, rd_y: String, lat: String, lng: String,
-                    topocode: String, std_spelling: String, volgnr: String)
+                    topocode: String, std_spelling: String, volgnr: String, asRegion: Boolean = false)
 
 object Location
 {
@@ -70,36 +70,67 @@ object Meta
 
   def locationInfo(c: String) = kloekeByCode.get(c)
 
-  def locationFields(c: String):NodeSeq =
-    optXML(
-      kloekeByCode.get(c).map(
-        l => Seq(
-          interp("localization_provinceLevel1", l.provincie),
-          interp("localization_placeLevel1", l.plaats),
-          interp("localization_latLevel1", l.lat),
-          interp("localization_longLevel1", l.lng),
-        )
+  def locationFields(o: Option[Location]):NodeSeq = {
+    val z:Option[Seq[Node]] = o.map( l =>
+    if (l.asRegion)
+      Seq(
+        interp("localization_provinceLevel1", l.provincie),
+        interp("localization_regionLevel1", "regio-" + l.plaats),
+        interp("localization_latLevel1", l.lat),
+        interp("localization_longLevel1", l.lng)
+      )
+      else
+      Seq(
+        interp("localization_provinceLevel1", l.provincie),
+        interp("localization_regionLevel1", l.streek),
+        interp("localization_placeLevel1", l.plaats),
+        interp("localization_latLevel1", l.lat),
+        interp("localization_longLevel1", l.lng)
       ))
+
+    optXML(z)
+
+  }
 }
 
 case class Meta(locPlus: String, status: String, kloeke: String, year: String, number: String, id: String)
 {
   def idPlus:String = s"$locPlus.$id".replaceAll(s"^${status}_",s"_$status:")
 
+  val numbr = "[0-9]+".r
+
   lazy val location =  kloekeByCode.get(kloeke)
+
+  lazy val backupLocation = if (location.isDefined) None
+  else if (kloeke.endsWith("r"))
+  {
+    val cijfers:String = java.lang.String.format("%03d", (numbr.findFirstMatchIn(kloeke).get.group(0).toInt - 500).asInstanceOf[Object])
+    val pkloeke = kloeke.replaceAll("[0-9]+", cijfers).replaceAll("r","p")
+    Console.err.println(s"PROBEER: $pkloeke")
+    val x = kloekeByCode.get(pkloeke).map(x => x.copy(asRegion = true))
+    Console.err.println(s"PROBEER: $pkloeke: $x")
+    x
+  } else None
 
   lazy val title:String = {
     if (location.isDefined)
     {
       val l = location.get
       s"${l.provincie}, ${l.plaats}, $year-$number"
-    } else
+    } else if (backupLocation.isDefined)
+      {
+        val l = backupLocation.get
+        s"${l.provincie}, Regio ${l.plaats} ${kloeke}, $year-$number"
+      } else
       s"${kloeke}, $year-$number"
   }
 
+  Console.err.println(s"Document: $title")
 
   val metaWithNames:List[(String,String)] = List(
     ("pid", uuid()),
+    ("sourceID", id),
+    ("corpusProvenance", "CRM"),
     ("witnessIsOriginalOrNot", status),
     ("localization_kloekecodeLevel1", kloeke),
     ("witnessYearLevel1_from", year),
@@ -110,7 +141,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
   def asXML:NodeSeq = <listBibl type="metadata">
     <bibl>
       {metaWithNames.map({case (k,v) => Meta.interp(k,v)})  }
-      {Meta.locationFields(kloeke)}
+      {Meta.locationFields(if (!location.isDefined) backupLocation else location)}
     </bibl>
   </listBibl>
 
@@ -134,7 +165,7 @@ object CRM2Xml {
   val index:String = dir + "index"
   private val kloekeCodes = Location.allKloekeCodes(dir + "kloeke_cumul.csv")
 
-  val kloekeByCode:Map[String, Location] = kloekeCodes.groupBy(_.kloeke_code1).mapValues(_.head)
+  val kloekeByCode:Map[String, Location] = kloekeCodes.groupBy(_.kloeke_code1.trim).mapValues(_.head)
 
 
   val squareCup = "⊔"
@@ -148,7 +179,7 @@ object CRM2Xml {
   // o_I222p30601    o       I222p   1306    01      StBernardHemiksem.Summarium113.VlpNr6
   //@ @ @ _o:I222p30601.StBernardHemiksem.Summarium113.VlpNr6 Markup(samp) - - -
 
-  def optXML(x: Option[NodeSeq]):NodeSeq = if (x.isEmpty) <none/> else x.get
+  def optXML(x: Option[Seq[Node]]):NodeSeq = if (x.isEmpty) <none/> else x.get
 
 
   def meta(c: Array[String]):Meta = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
@@ -528,7 +559,8 @@ object CRM2Xml {
       xmlDocs.foreach(d => {
         val title = (d \\ "title").head.text.replaceAll("[/, ()]+", "_")
         val d1 = markWordformGroups(d)
-        val outputFile = outputDir + "/" + title + ".xml"
+        val pid = (((d \\ "interpGrp").filter(i => (i \ "@type").text == "pid").head) \ "interp").head.text
+        val outputFile = outputDir + "/Meertens-CRM-1-1." + pid + ".xml"
         XML.save(outputFile, d1, "UTF-8")
       }
       )
