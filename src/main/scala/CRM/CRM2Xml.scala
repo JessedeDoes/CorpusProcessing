@@ -66,28 +66,46 @@ object Meta
 {
   def interp(n:String, v:String):Elem  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
 
+  val corpusUUID = "791f2c97-5ff3-441e-9e1c-5421f9230b67"
+
+  def locationInfo(c: String) = kloekeByCode.get(c)
+
   def locationFields(c: String):NodeSeq =
     optXML(
       kloekeByCode.get(c).map(
         l => Seq(
-          interp("witnessLocalization_province", l.provincie),
-          interp("witnessLocalization_place", l.plaats),
-          interp("witnessLocalization_lat", l.lat),
-          interp("witnessLocalization_long", l.lng),
+          interp("localization_provinceLevel1", l.provincie),
+          interp("localization_placeLevel1", l.plaats),
+          interp("localization_latLevel1", l.lat),
+          interp("localization_longLevel1", l.lng),
         )
       ))
 }
 
-case class Meta(locPlus: String, status: String, kloeke: String, year: String, month: String, id: String)
+case class Meta(locPlus: String, status: String, kloeke: String, year: String, number: String, id: String)
 {
   def idPlus:String = s"$locPlus.$id".replaceAll(s"^${status}_",s"_$status:")
 
-  val metaWithNames = List(
+  lazy val location =  kloekeByCode.get(kloeke)
+
+  lazy val title:String = {
+    if (location.isDefined)
+    {
+      val l = location.get
+      s"${l.provincie}, ${l.plaats}, $year-$number"
+    } else
+      s"${kloeke}, $year-$number"
+  }
+
+
+  val metaWithNames:List[(String,String)] = List(
     ("pid", uuid()),
     ("witnessIsOriginalOrNot", status),
-    ("witnessLocalization_kloeke", kloeke),
-    ("witnessYear_from", year),
-    ("titleLevel1", id))
+    ("localization_kloekecodeLevel1", kloeke),
+    ("witnessYearLevel1_from", year),
+    ("witnessYearLevel1_to", year),
+    ("titleLevel1", title)
+  )
 
   def asXML:NodeSeq = <listBibl type="metadata">
     <bibl>
@@ -96,9 +114,10 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, m
     </bibl>
   </listBibl>
 
+
   def uuid():String =
   {
-    val source = idPlus
+    val source = Meta.corpusUUID + "." + idPlus
     val bytes = source.getBytes("UTF-8")
     java.util.UUID.nameUUIDFromBytes(bytes).toString
   }
@@ -158,6 +177,20 @@ object CRM2Xml {
 
   val printWTags = true
 
+  val synCorrMap = Map("-r8" -> "8",
+    "0" -> "8",
+    "A1" -> "1",
+    "A2" -> "2",
+    "A4" -> "4",
+    "A4444" -> "4",
+    "A5" -> "5",
+    "A6" -> "6",
+    "A8" -> "8",
+    "C1" -> "1",
+    "C8" -> "8",
+    "Q8" -> "8"
+  )
+
   case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String,
                    unclear: String = null, grouping: String = null, syntCode: String=null)
   {
@@ -168,6 +201,8 @@ object CRM2Xml {
     def isSic:Boolean =  tag.equals("Markup(sic)")
     def isSeparator:Boolean = tag.equals("Markup(sep)")
     def isComment:Boolean = tag.equals("Markup(com)")
+
+    lazy val correctedSyntCode = synCorrMap.getOrElse(syntCode, syntCode)
 
     def asXML:Node =
       if (isLine) <lb/>
@@ -410,25 +445,37 @@ object CRM2Xml {
 
   val white = Text(" ")
 
+
+  /*
+  Toelichting op de cijfercode:
+1 Hoofdzin
+2 Vervolg van onderbroken zin
+4 bijvoegelijke bijzin: hangt af van bv "die 421" => 4 (1e codecijfer)
+5 bijwoordelijke bijzin
+6 samengesteld bijwoord, bv "daar 520 .... door". Kan dus 5 worden
+8 bijzin beginnend met voegwoord
+9 hopeloos
+   */
+
   val clauseMap = Map(
-    "1" -> "hoofdzin (1)",
-    "2" -> "hervatting hoofzin na bijzin (2)",
-    "4" -> "betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoord (4)",
-    "5" -> "betrekkelijke bijzin ingeleid door betrekkelijk bijwoord (5)",
-    "6" -> "betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoordelijk bijwoord (6)",
-    "8" -> "voegwoordelijke bijzin (8)"
+    "1" -> "1_hoofdzin",
+    "2" -> "2_hervatting_hoofzin",
+    "4" -> "4_betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoord",
+    "5" -> "5_betrekkelijke bijzin ingeleid door betrekkelijk bijwoord",
+    "6" -> "6_betrekkelijke bijzin ingeleid door betrekkelijk voornaamwoordelijk bijwoord",
+    "8" -> "8_voegwoordelijke_bijzin"
   )
 
   def clauseType(s: String) = clauseMap.getOrElse(s,s)
 
-  def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.syntCode != null && t.syntCode.matches("[0-8]"))
+  def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.correctedSyntCode != null && t.correctedSyntCode.matches("[0-8]"))
 
   def sentenceXML(s: Seq[Token]) =
   {
     val clauses = markClauses(s)
     <s>
       {clauses.map(c =>
-        { val typ = clauseType(c.head.syntCode)
+        { val typ = clauseType(c.head.correctedSyntCode)
           <clause type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</clause>
         })}
     </s>
@@ -455,7 +502,7 @@ object CRM2Xml {
 
           <TEI xmlns="http://www.tei-c.org/ns/1.0">
             <teiHeader>
-            <title>{d.id}</title>
+            <title>{d.metadata.get.title}</title>
               {optXML(d.metadata.map(_.asXML))}
             </teiHeader>
             <text>
@@ -479,7 +526,7 @@ object CRM2Xml {
       XML.save(xml, corpus, "UTF-8")
     } else {
       xmlDocs.foreach(d => {
-        val title = (d \\ "title").head.text.replaceAll("/", "_")
+        val title = (d \\ "title").head.text.replaceAll("[/, ()]+", "_")
         val d1 = markWordformGroups(d)
         val outputFile = outputDir + "/" + title + ".xml"
         XML.save(outputFile, d1, "UTF-8")

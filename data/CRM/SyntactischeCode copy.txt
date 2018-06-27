@@ -1,0 +1,52 @@
+Syntactische codering CRM14
+
+De codering betreft alleenzinsafbakening. Deze is halfautomatisch tot stand gebracht en pretendeert niet foutloos te zijn, maar de interpunctieplaatsen, dus de afbakening van (hoofd- en bij)zinnen is meestal goed.
+
+In de laatste regelpositie komt voor:
+
+aantal code:
+1091048 -
+   1 -?  
+21854 1
+   4 1?
+3079 2 
+16490 4
+1504 5
+1807 6
+25643 8
+  10 9
+
+De volgende codes moeten nog verbeterd/vereenvoudigd:
+
+   1 -r8 ==> 8
+   1 0 ==> 8
+5377 A1 ==> 1
+   1 A2 ==> 2
+ 183 A4 ==> 4
+   3 A4444 ==> 4
+   8 A5 ==> 5
+  25 A6 ==> 6
+ 484 A8 ==> 8
+   1 C1 ==> 1
+ 211 C8 ==> 8
+1446 Q8 ==> 8
+
+Toelichting op de cijfercode:
+1 Hoofdzin
+2 Vervolg van onderbroken zin
+4 bijvoegelijke bijzin: hangt af van bv "die 421" => 4 (1e codecijfer)
+5 bijwoordelijke bijzin
+6 samengesteld bijwoord, bv "daar 520 .... door". Kan dus 5 worden
+8 bijzin beginnend met voegwoord
+9 hopeloos
+
+Nadere opmerkingen:
+Cijfers verdelen in hoofdzin en soorten bijzin, waarbij het vervoegde ww het kriterium is
+Staat 2x een vervoegd ww achter elkaar, dan 2x een cijfertoekenning.
+1 is hoofdzin, soms ook voltooid deelwoordzin: "Gegeven in het jaar ...."
+De "In oorkonde"-constructie heeft op basis van voltooid deelwoord (soms?) : 1 gekregen. 8 kan soms 1 moeten zijn vooral na ende, 1 kan 8 moeten zijn.
+Vaak niet uit te maken of een zin hoofdzin of bijzin is: dan is in principe voor hoofdzin gekozen.
+De code staat soms een regel lager, bv niet na "ende" maar na het volgende "dat". Zo gewenst kan de code dus een regel omhoog.
+Nrs als 4, 5, 6, 8 zijn (vaak) afgeleid van het lemma dat de zin inleidt:
+had "dat" code 420, dan code 4; had "dat" 810, dan code 8.
+2 herneemt een door een bijzin onderbroken hoofd- of bijzin.
