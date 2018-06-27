@@ -1,11 +1,12 @@
-package posmapping
+package CRM
 
+import CRM.CRM2Xml.{kloekeByCode, optXML}
 import org.incava.util.diff.Difference
-import posmapping.CRM2Xml.{kloekeByCode, optXML}
-import utils.{Alignment, Chunk, SimOrDiff}
 import utils.alignment.comp
+import utils.{Alignment, SimOrDiff}
+
 import scala.collection.JavaConverters._
-import scala.xml._
+import scala.xml.{XML, _}
 
 
 case class Location(kloeke_code1: String, kloeke_code_oud: String, plaats: String, gemeentecode_2007: String, gemeente: String,
@@ -104,15 +105,15 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, m
 case class CRMTag(code: String, cgTag: String, cgnTag: String, description: String)
 
 object CRM2Xml {
-  val atHome = true
+  val atHome = false
+  val lumpIt = false
   val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
+  val outputDir = dir + "/TEI"
   val CRM:String = dir + "CRM14Alfabetisch.txt"
   val index:String = dir + "index"
   private val kloekeCodes = Location.allKloekeCodes(dir + "kloeke_cumul.csv")
 
   val kloekeByCode:Map[String, Location] = kloekeCodes.groupBy(_.kloeke_code1).mapValues(_.head)
-
-  import Meta._
 
 
   val squareCup = "⊔"
@@ -392,7 +393,7 @@ object CRM2Xml {
     val xmlDocs = withMetadataOriginal.map(
       d =>
         {
-          <TEI>
+          <TEI xmlns="http://www.tei-c.org/ns/1.0">
             <teiHeader>
             <title>{d.id}</title>
               {optXML(d.metadata.map(_.asXML))}
@@ -401,7 +402,9 @@ object CRM2Xml {
               <body>
               {
                 // d.tokens.map(_.asXML).map(e => Seq(e,white))
-                d.sentences.map(findSeparables).map( s=> sentenceXML(s) )
+                <p>
+                {d.sentences.map(findSeparables).map( s=> sentenceXML(s) )}
+                </p>
                 }
               </body>
             </text>
@@ -409,10 +412,19 @@ object CRM2Xml {
         }
     )
 
-    val corpus = <teiCorpus>{xmlDocs}</teiCorpus>
+    lazy val corpus = <teiCorpus>{xmlDocs}</teiCorpus>
 
-    val xml = CRM.replaceAll("txt$", "xml")
-    XML.save(xml, corpus, "UTF-8")
+    if (lumpIt) {
+      val xml = CRM.replaceAll("txt$", "xml")
+      XML.save(xml, corpus, "UTF-8")
+    } else {
+      xmlDocs.foreach(d => {
+        val title = (d \\ "title").head.text.replaceAll("/", "_")
+        val outputFile = outputDir + "/" + title + ".xml"
+        XML.save(outputFile, d, "UTF-8")
+      }
+      )
+    }
   }
 
   def main(args: Array[String]): Unit = {
