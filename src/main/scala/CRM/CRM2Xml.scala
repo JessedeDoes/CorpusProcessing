@@ -137,18 +137,20 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 
   val numbr = "[0-9]+".r
 
-  lazy val location =  kloekeByCode.get(kloeke)
+  lazy val location =  kloekeByCode.get(kloeke) //  kloekeByCode.get(kloeke.replaceAll("a$", "p")))
 
   lazy val backupLocation = if (location.isDefined) None
-  else if (kloeke.endsWith("r"))
+  else if (kloekeByCode.contains(kloeke.replaceAll("a$", "p"))) 
+  	kloekeByCode.get(kloeke.replaceAll("a$", "p"))
+  else 
   {
     val cijfers:String = java.lang.String.format("%03d", (numbr.findFirstMatchIn(kloeke).get.group(0).toInt - 500).asInstanceOf[Object])
-    val pkloeke = kloeke.replaceAll("[0-9]+", cijfers).replaceAll("r","p")
-    Console.err.println(s"PROBEER: $pkloeke")
+    val pkloeke = kloeke.replaceAll("[0-9]+", cijfers).replaceAll("r$","p").replaceAll("a$", "p")
+    // Console.err.println(s"PROBEER: $pkloeke")
     val x = kloekeByCode.get(pkloeke).map(x => x.copy(asRegion = true))
     Console.err.println(s"PROBEER: $pkloeke: $x")
     x
-  } else None
+  } 
 
   lazy val title:String = {
     if (location.isDefined)
