@@ -14,9 +14,45 @@ import scala.xml.{XML, _}
 case class Location(kloeke_code1: String, kloeke_code_oud: String, plaats: String, gemeentecode_2007: String, gemeente: String,
                     streek: String, provincie: String, postcode: String, land: String, rd_x: String, rd_y: String, lat: String, lng: String,
                     topocode: String, std_spelling: String, volgnr: String, asRegion: Boolean = false)
+{
+  import Location._
+  val (landnaam,provincienaam) = provinciecodes(provincie)
+  val provNaamTitel = if (provincienaam.nonEmpty) provincienaam else landnaam
+}
 
 object Location
 {
+  val provinciecodes: Map[String,(String,String)] = Map (
+    "Be" -> ("België",""),
+    "BeAnt" -> ("België","Antwerpen"),
+    "BeBr" -> ("België","Brabant"),
+    "BeHe" -> ("België","Henegouwen"),
+    "Belb" -> ("België","Limburg"),
+    "BeLb" -> ("België","Limburg"),
+    "BeLb, Luik" -> ("België","Limburg|Luik"),
+    "BeLu" -> ("België","Luik"), /* ?? */
+    "Be, Luik" -> ("België","Luik"),
+    "BeOv" -> ("België","Oost-Vlaanderen"),
+    "BeWv" -> ("België","West-Vlaanderen"),
+    "Dr" -> ("Nederland", "Drenthe"),
+    "Dui" -> ("Duitsland", ""),
+    "Fl" -> ("Nederland","Flevoland"),
+    "Fr" -> ("Nederland","Friesland"),
+    "Fra" -> ("Frankrijk",""),
+    "FrVl" -> ("Frankrijk","Vlaanderen"),
+    "Gl" -> ("Nederland","Gelderland"),
+    "Gn" -> ("Nederland","Groningen"),
+    "Lb" -> ("Nederland","Limburg"),
+    "NB" -> ("Nederland","Noord-Brabant"),
+    "NH" -> ("Nederland","Noord-Holland"),
+    "Ov" -> ("Nederland","Overijssel"),
+    "Ri" -> ("Duitsland","Rijnland"),
+    "Ut" -> ("Nederland","Utrecht"),
+    "WaBr" -> ("België","Waals Brabant"),
+    "Ze" -> ("Nederland","Zeeland"),
+    "ZH" -> ("Nederland","Zuid-Holland")
+  )
+
   def makeLocation(a: Array[String]): Location =
     Location(a(0), a(1), a(2), a(3), a(4), a(5), a(6), a(7), a(8), a(9), a(10), a(11), a(12), a(13), a(14), a(15))
 
@@ -74,14 +110,16 @@ object Meta
     val z:Option[Seq[Node]] = o.map( l =>
     if (l.asRegion)
       Seq(
-        interp("localization_provinceLevel1", l.provincie),
+        interp("localization_countryLevel1", l.landnaam),
+        interp("localization_provinceLevel1", l.provincienaam),
         interp("localization_regionLevel1", "regio-" + l.plaats),
         interp("localization_latLevel1", l.lat),
         interp("localization_longLevel1", l.lng)
       )
       else
       Seq(
-        interp("localization_provinceLevel1", l.provincie),
+        interp("localization_countryLevel1", l.landnaam),
+        interp("localization_provinceLevel1", l.provincienaam),
         interp("localization_regionLevel1", l.streek),
         interp("localization_placeLevel1", l.plaats),
         interp("localization_latLevel1", l.lat),
@@ -116,13 +154,13 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     if (location.isDefined)
     {
       val l = location.get
-      s"${l.provincie}, ${l.plaats}, $year-$number"
+      s"${l.provNaamTitel}, ${l.plaats}, $year-$number"
     } else if (backupLocation.isDefined)
       {
         val l = backupLocation.get
-        s"${l.provincie}, Regio ${l.plaats} ${kloeke}, $year-$number"
+        s"${l.provNaamTitel}, regio ${l.plaats}, $year-$number"
       } else
-      s"${kloeke}, $year-$number"
+      s"UnknownLocation(${kloeke}), $year-$number"
   }
 
   Console.err.println(s"Document: $title")
@@ -131,7 +169,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     ("pid", uuid()),
     ("sourceID", id),
     ("corpusProvenance", "CRM"),
-    ("witnessIsOriginalOrNot", status),
+    //("witnessIsOriginalOrNot", status),
     ("localization_kloekecodeLevel1", kloeke),
     ("witnessYearLevel1_from", year),
     ("witnessYearLevel1_to", year),
