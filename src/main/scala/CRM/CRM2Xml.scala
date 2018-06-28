@@ -293,9 +293,13 @@ object CRM2Xml {
         <pc>{rewritePunc(word)}</pc>
           else {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
-            val correspT = if (corresp.nonEmpty) Some(Text(corresp.toString)) else None
+            val optCorresp = if (corresp.nonEmpty) Some(Text(corresp.map("#w." + _.target).mkString(" "))) else None
+            val (optN,optPart) =
+              if (corresp.exists(_.direction == forward)) (Some(Text("0")),Some(Text("I")))
+              else if (corresp.exists(_.direction == backward)) (Some(Text("1")), Some(Text("F"))) else (None,None)
+
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            if (printWTags) <w xml:id={s"w.$n"} corresp={correspT} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            if (printWTags) <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
             else Text(w.text + " ")
           }
   }
@@ -564,7 +568,7 @@ object CRM2Xml {
     updateElement(d, _.label=="w", newCorresp)
   }
 
-  val white = Text(" ")
+  val white = Text("\n")
 
 
   /*
