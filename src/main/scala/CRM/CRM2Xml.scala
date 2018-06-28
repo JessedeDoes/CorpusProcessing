@@ -275,6 +275,9 @@ object CRM2Xml {
 
     lazy val correctedSyntCode = synCorrMap.getOrElse(syntCode, syntCode)
 
+    val sepjes:List[String] = if (grouping == null) List() else grouping.replaceAll("[+=]","").split("/").toList
+
+    val betterLemma = if (lemma == "lemma") "ZZZ" else lemma
     def asXML:Node =
       if (isLine) <lb/>
       else if (isSic) <sic/> // hoort bij voorgaande woord
@@ -286,7 +289,7 @@ object CRM2Xml {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
             val corresp = if (grouping != null) Some(Text(grouping)) else None
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            if (printWTags) <w xml:id={s"w.$n"} corresp={corresp} lemma={lemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            if (printWTags) <w xml:id={s"w.$n"} corresp={corresp} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
             else Text(w.text + " ")
           }
   }
@@ -447,6 +450,7 @@ object CRM2Xml {
     val si = s.zipWithIndex
     val startPoints = si.filter({ case (t,i)  => t.grouping != null && t.grouping.startsWith("b")})
     val endPoints = si.filter({ case (t,i)  => t.grouping != null && t.grouping.startsWith("e")})
+
     val pairings:Seq[(Int,Int)] = startPoints.map(
       { case (t, i) =>
         val ep = endPoints.find({ case (t1, i1) => i1 > i })
@@ -462,6 +466,33 @@ object CRM2Xml {
           t.copy(grouping=null)
     })
   }
+
+
+  def findSeparables2(s: Seq[Token]):Seq[Token] =
+  {
+    val si = s.zipWithIndex
+    val startPoints = si.filter({ case (t,i)  => t.sepjes.nonEmpty && t.sepjes.exists(_.startsWith("b"))})
+    val endPoints = si.filter({ case (t,i)  => t.sepjes.nonEmpty && t.sepjes.exists(_.startsWith("e"))})
+
+    def matching(s: String, s1: String) =
+      {
+        s1.length > 1 && s1.length > 1 &&
+        s1(1) == s(1) &&
+        Set("b","e").forall(l => Set(s,s1).exists(s => s.head == l))
+      }
+
+    val pairings = startPoints.flatMap(
+      { case (t, i) =>
+        t.sepjes.map(s => {
+             val ep = endPoints.find({ case (t1, i1) => i1 > i && t1.sepjes.exists( s1 => matching(s,s1)   )   })
+             t.n -> ep.map(_._1.n)})
+      }
+    ).filter(_._2.isDefined).map(x => x._1 ->  x._2.get)
+
+    val s2x:Map[Token,String] = pairings.groupBy(_._1).mapValues(_.map(_._2)) // .mapValues(_.map(_.n))
+    Seq()
+  }
+
 
   def markWordformGroups(d: Elem):Elem =
   {

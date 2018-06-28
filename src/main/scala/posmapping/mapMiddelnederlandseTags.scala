@@ -65,19 +65,30 @@ object mapMiddelnederlandseTags {
     val lemmata = (e \ "@lemma").text.split("\\+").toList
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
+
     val cgnTags:List[String] = morfcodes.map(mapTag)
+
+    val lemmataPatched = if (cgnTags.size <= lemmata.size) lemmata else {
+      val d = cgnTags.size - lemmata.size
+      val extra = (0 until d).map(x => "ZZZ")
+      lemmata ++ extra
+    }
+
     val cgnTag = cgnTags.mkString("+")
 
     val newMSDAttribute = new UnprefixedAttribute(msdAttribuut, cgnTag, Null)
 
-    val newatts0 = e.attributes.filter(a => !weg.contains(a.key)).append(newMSDAttribute).append(newId)
+    val newatts0 = {
+      val a = e.attributes.filter(a => !weg.contains(a.key)).append(newMSDAttribute)
+      if (getId(e).nonEmpty || n.isEmpty) a else a.append(newId)
+    }
 
     val stm = sterretjeMatje(e)
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
     val featureStructures = cgnTags.map(s => CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
-      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmata(i)}</string></f>, attributes=fs.attributes.append(new UnprefixedAttribute("n", i.toString, Null) ))} )
+      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmataPatched(i)}</string></f>, attributes=fs.attributes.append(new UnprefixedAttribute("n", i.toString, Null) ))} )
     e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 
