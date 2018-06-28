@@ -1,0 +1,50 @@
+<CMD_Component name="Actor">
+  <CMD_Element name="firstName" ValueScheme="string"
+               ConceptLink="http://www.isocat.org/datcat/CMD-123">
+  <CMD_Element name="lastName" ValueScheme="string"
+               ConceptLink="http://www.isocat.org/datcat/CMD-124"/>
+  <CMD_Component name="ActorLanguage" id="ActorLanguage"
+                 CardinalityMin="0" CardinalityMax="unbounded">
+    <CMD_Element name="ActorLanguageName" ValueScheme="string"
+                 ConceptLink="http://www.isocat.org/datcat/DC-1766"/>
+  </CMD_Component>
+</CMD_Component>
+
+
+<Actor>
+  <firstName>Foo</firstName>
+  <lastName>Bar</lastName>
+  <ActorLanguage>
+    <ActorLanguageName>Kilivila</ActorLanguageName>
+    <ActorLanguageName>French</ActorLanguageName>
+  </ActorLanguage>
+</Actor>
+
+
+
+<CMD_Component name="Actor" CardinalityMin="0"
+CardinalityMax="unbounded" ComponentId="ex_compid_actor">
+ <Documentation xml:lang="en">
+ This is a person or entity that plays a role in the resource
+ </Documentation>
+ <Documentation xml:lang="nl">
+ Dit is een persoon of entiteit die een rol speelt in de bron
+ </Documentation>
+ <CMD_Element name="firstName" ValueScheme="string"
+ DisplayPriority="0" CardinalityMax="1">
+ <Documentation xml:lang="en">
+ This is the given name of a person
+ </Documentation>
+ <Documentation xml:lang="nl">
+ Dit is de voornaam van een persoon
+ </Documentation>
+ <AttributeList>
+ <Attribute name="nickname" Type="string">
+ <Documentation xml:lang="nl">
+ Bijnaam van een persoon
+ </Documentation>
+ </Attribute>
+ </AttributeList>
+ </CMD_Element>
+</CMD_Component>
+

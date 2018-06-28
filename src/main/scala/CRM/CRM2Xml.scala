@@ -478,6 +478,10 @@ object CRM2Xml {
   }
 
 
+  /*
+  In Piets codering weet je wel wel deellemma van een clitische combinatie meedoet aan het groepje
+  Dat verdwijnt in de TEI zoals nu gedaan
+   */
   def findSeparables2(s: Seq[Token]):Seq[Token] =
   {
     val si = s.zipWithIndex
