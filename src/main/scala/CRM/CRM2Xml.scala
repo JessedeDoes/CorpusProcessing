@@ -197,8 +197,8 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 case class CRMTag(code: String, cgTag: String, cgnTag: String, description: String)
 
 object CRM2Xml {
-  val atHome = false
-  val lumpIt = false
+  val atHome = true
+  val lumpIt = false // corpus in een XML?
   val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
   val outputDir = dir + "/TEI"
   val CRM:String = dir + "CRM14Alfabetisch.txt"
@@ -262,8 +262,14 @@ object CRM2Xml {
     "Q8" -> "8"
   )
 
+  trait direction
+  object forward extends direction
+  object backward extends direction
+
+  case class SepRef(direction: direction, target: String)
+
   case class Token(n: Int, word: String, wordLC: String, wordExpanded: String, lemma: String, tag: String,
-                   unclear: String = null, grouping: String = null, syntCode: String=null)
+                   unclear: String = null, grouping: String = null, syntCode: String=null, corresp: Seq[SepRef] = Seq.empty)
   {
     import ents._
 
@@ -287,9 +293,9 @@ object CRM2Xml {
         <pc>{rewritePunc(word)}</pc>
           else {
             val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
-            val corresp = if (grouping != null) Some(Text(grouping)) else None
+            val correspT = if (corresp.nonEmpty) Some(Text(corresp.toString)) else None
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            if (printWTags) <w xml:id={s"w.$n"} corresp={corresp} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            if (printWTags) <w xml:id={s"w.$n"} corresp={correspT} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
             else Text(w.text + " ")
           }
   }
@@ -474,11 +480,12 @@ object CRM2Xml {
     val startPoints = si.filter({ case (t,i)  => t.sepjes.nonEmpty && t.sepjes.exists(_.startsWith("b"))})
     val endPoints = si.filter({ case (t,i)  => t.sepjes.nonEmpty && t.sepjes.exists(_.startsWith("e"))})
 
+    // Console.err.println(startPoints + "<:>" + endPoints)
+
     def matching(s: String, s1: String) =
       {
-        s1.length > 1 && s1.length > 1 &&
-        s1(1) == s(1) &&
-        Set("b","e").forall(l => Set(s,s1).exists(s => s.head == l))
+        s1.length > 1 && s.length > 1 &&
+        s1(1) == s(1) // && Set("b","e").forall(l => Set(s,s1).exists(s => s.head == l))
       }
 
     val pairings = startPoints.flatMap(
@@ -489,10 +496,22 @@ object CRM2Xml {
       }
     ).filter(_._2.isDefined).map(x => x._1 ->  x._2.get)
 
-    val s2x:Map[Token,String] = pairings.groupBy(_._1).mapValues(_.map(_._2)) // .mapValues(_.map(_.n))
-    Seq()
+    val s2x:Map[Int,Seq[Int]] = pairings.groupBy(_._1).mapValues(_.map(_._2)) // .mapValues(_.map(_.n))
+    val e2x:Map[Int,Seq[Int]] = pairings.groupBy(_._2).mapValues(_.map(_._1))
+
+    if (s2x.nonEmpty) Console.err.println(s2x + "   " + e2x)
+
+    si.map({ case (t,i)  =>
+      if (s2x.contains(t.n))
+        t.copy(corresp = s2x(t.n).map(j => SepRef(forward, j.toString))) else
+        if (e2x.contains(t.n))
+        t.copy(corresp = e2x(t.n).map(j => SepRef(backward, j.toString))) else
+        t
+    })
   }
 
+
+  /* dit kan niet meer zo .... */
 
   def markWordformGroups(d: Elem):Elem =
   {
@@ -612,7 +631,7 @@ object CRM2Xml {
               {
                 // d.tokens.map(_.asXML).map(e => Seq(e,white))
                 <p>
-                {d.sentences.map(findSeparables).map( s=> sentenceXML(s) )}
+                {d.sentences.map(findSeparables2).map( s=> sentenceXML(s) )}
                 </p>
                 }
               </body>
@@ -629,7 +648,7 @@ object CRM2Xml {
     } else {
       xmlDocs.foreach(d => {
         val title = (d \\ "title").head.text.replaceAll("[/, ()]+", "_")
-        val d1 = markWordformGroups(d)
+        val d1 = d // markWordformGroups(d)
         val pid = (((d \\ "interpGrp").filter(i => (i \ "@type").text == "pid").head) \ "interp").head.text
         val outputFile = outputDir + "/Meertens-CRM-1-1." + pid + ".xml"
         XML.save(outputFile, d1, "UTF-8")
