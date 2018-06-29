@@ -95,7 +95,7 @@ object ents {
 
 
   val entityPattern = entities.keySet.mkString("|").r
-  def replaceEnts(s: String):String = entityPattern.replaceAllIn(s, m => entities(m.group(0)))
+  def replaceEnts(s: String):String = replacements.replacements(s) // entityPattern.replaceAllIn(s, m => entities(m.group(0))) // LASTIG MET ALIGNMENTS!!!
 }
 
 object Meta
@@ -288,6 +288,7 @@ object CRM2Xml {
     val sepjes:List[String] = if (grouping == null) List() else grouping.replaceAll("[+=]","").split("/").toList
 
     val betterLemma = if (lemma == "lemma") "ZZZ" else lemma
+    val cleanedWord = word.replaceAll("^%","")
 
     def asXML:Node =
       if (isLine) <lb/>
@@ -297,15 +298,19 @@ object CRM2Xml {
       else if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
           else {
-            val w = alignExpansionWithOriginal(replaceEnts(word), replaceEnts(wordExpanded))
+            val w = alignExpansionWithOriginal(replaceEnts(cleanedWord), replaceEnts(wordExpanded))
             val optCorresp = if (corresp.nonEmpty) Some(Text(corresp.map("#w." + _.target).mkString(" "))) else None
             val (optN,optPart) =
               if (corresp.exists(_.direction == forward)) (Some(Text("0")),Some(Text("I")))
               else if (corresp.exists(_.direction == backward)) (Some(Text("1")), Some(Text("F"))) else (None,None)
 
             val (reg,orig) = if (keepRegOrig) (Some(Text(wordExpanded)), Some(Text(word))) else (None,None)
-            if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            if (printWTags) <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={orig} reg={reg}>{w}</w>
+            val usedW = if ((w \\ "choice").nonEmpty)
+              {
+                Console.err.println(s"BUMMER: $word / $wordExpanded / $w"); Text(wordExpanded)
+              } else w
+            if (printWTags)
+              <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={orig} reg={reg}>{usedW}</w>
             else Text(w.text + " ")
           }
   }
