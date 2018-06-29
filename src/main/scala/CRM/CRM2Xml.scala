@@ -167,7 +167,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 
   Console.err.println(s"Document: $title")
 
-  val metaWithNames:List[(String,String)] = List(
+  val metaWithNames:Map[String,String] = List(
     ("pid", uuid()),
     ("sourceID", id),
     ("corpusProvenance", "CRM"),
@@ -176,7 +176,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     ("witnessYearLevel1_from", year),
     ("witnessYearLevel1_to", year),
     ("titleLevel1", title)
-  )
+  ).toMap
 
   def asXML:NodeSeq = <listBibl type="metadata">
     <bibl>
@@ -197,8 +197,12 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 case class CRMTag(code: String, cgTag: String, cgnTag: String, description: String)
 
 object CRM2Xml {
-  val atHome = true
+
+  val atHome = false
   val lumpIt = false // corpus in een XML?
+  val keepRegOrig = false
+
+
   val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
   val outputDir = dir + "/TEI"
   val CRM:String = dir + "CRM14Alfabetisch.txt"
@@ -284,11 +288,12 @@ object CRM2Xml {
     val sepjes:List[String] = if (grouping == null) List() else grouping.replaceAll("[+=]","").split("/").toList
 
     val betterLemma = if (lemma == "lemma") "ZZZ" else lemma
+
     def asXML:Node =
       if (isLine) <lb/>
       else if (isSic) <sic/> // hoort bij voorgaande woord
       else if (isComment) <note>{lemma}</note>
-      else if (isSeparator) <milestone type="separator"/> // ?? wat is dit precies
+      else if (isSeparator) <milestone unit="separator"/> // ?? wat is dit precies
       else if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
           else {
@@ -298,8 +303,9 @@ object CRM2Xml {
               if (corresp.exists(_.direction == forward)) (Some(Text("0")),Some(Text("I")))
               else if (corresp.exists(_.direction == backward)) (Some(Text("1")), Some(Text("F"))) else (None,None)
 
+            val (reg,orig) = if (keepRegOrig) (Some(Text(wordExpanded)), Some(Text(word))) else (None,None)
             if ((w \\ "choice").nonEmpty) Console.err.println(s"BUMMER: $word / $wordExpanded / $w")
-            if (printWTags) <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={word} reg={wordExpanded}>{w}</w>
+            if (printWTags) <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={orig} reg={reg}>{w}</w>
             else Text(w.text + " ")
           }
   }
@@ -455,6 +461,7 @@ object CRM2Xml {
   }
 
 
+  /*
   def findSeparables(s: Seq[Token]):Seq[Token] =
   {
     val si = s.zipWithIndex
@@ -476,7 +483,7 @@ object CRM2Xml {
           t.copy(grouping=null)
     })
   }
-
+ */
 
   /*
   In Piets codering weet je wel wel deellemma van een clitische combinatie meedoet aan het groepje
@@ -493,7 +500,7 @@ object CRM2Xml {
     def matching(s: String, s1: String) =
       {
         s1.length > 1 && s.length > 1 &&
-        s1(1) == s(1) // && Set("b","e").forall(l => Set(s,s1).exists(s => s.head == l))
+        s1(1) == s(1)
       }
 
     val pairings = startPoints.flatMap(
@@ -595,7 +602,7 @@ object CRM2Xml {
     "8" -> "8_voegwoordelijke_bijzin"
   )
 
-  def clauseType(s: String) = clauseMap.getOrElse(s,s)
+  def clauseType(s: String) = clauseMap.getOrElse(s,s).replaceAll(" ", "_")
 
   def markClauses(s: Seq[Token]) = makeGroup[Token](s.toStream, t => t.correctedSyntCode != null && t.correctedSyntCode.matches("[0-8]"))
 
@@ -605,7 +612,7 @@ object CRM2Xml {
     <s>
       {clauses.map(c =>
         { val typ = clauseType(c.head.correctedSyntCode)
-          <clause type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</clause>
+          <cl type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</cl>
         })}
     </s>
   }
@@ -628,19 +635,37 @@ object CRM2Xml {
     val xmlDocs = withMetadataOriginal.map(
       d =>
         {
-
+          val props  = d.metadata.get.metaWithNames
           <TEI xmlns="http://www.tei-c.org/ns/1.0">
             <teiHeader>
-            <title>{d.metadata.get.title}</title>
-              {optXML(d.metadata.map(_.asXML))}
+              <fileDesc>
+                <titleStmt>
+                  <title>{d.metadata.get.title}</title>
+                </titleStmt>
+                <publicationStmt>
+                  <p>
+                    <date></date>
+                    <idno type="sourceID">{props("sourceID")}</idno>
+                    <idno type="pid">{props("pid")}</idno>
+                  </p>
+                </publicationStmt>
+                <notesStmt>
+                  <note/>
+                </notesStmt>
+                <sourceDesc>
+                  {optXML(d.metadata.map(_.asXML))}
+                </sourceDesc>
+              </fileDesc>
             </teiHeader>
+
+
             <text>
               <body>
               {
                 // d.tokens.map(_.asXML).map(e => Seq(e,white))
-                <p>
+                <ab>
                 {d.sentences.map(findSeparables2).map( s=> sentenceXML(s) )}
-                </p>
+                </ab>
                 }
               </body>
             </text>
