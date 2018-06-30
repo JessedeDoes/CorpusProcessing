@@ -1,4 +1,43 @@
 package CRM
+
+object ents {
+
+  val entities:Map[String, String] = List(
+    ("&komma;", ","),
+    ("&excl;", "!"),
+    ("&2periods;", ".."),
+
+    ("u&uml;", "ü"),
+    ("ouml;", "ö"),
+    ("a&uml;", "ä"),
+    ("y&uml;", "ÿ"),
+    ("e&uml;", "ë"),
+    ("v&uml;", "v̈"),
+    ("&duitsekomma;", "/"),
+
+    ("&super;", ""), // ahem nog iets mee doen, weet niet precies wat
+
+    ("o&grave;", "ò"),
+    ("&period;", "."),
+    ("&semi;", ";"),
+    ("&tilde;", "~"),
+
+    //("&scheider;", 17664)
+    ("&r;", "°"), // soms samen met vorige karakter, zie crm.xml
+    ("&hyph;", "-"),
+    ("&unreadable;", "?"),
+    ("&colon;", ":"),
+    ("&quest;", "?")
+  ).toMap;
+
+  import java.text.Normalizer
+  def noAccents(s: String):String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
+
+
+  val entityPattern = entities.keySet.mkString("|").r
+  def replaceEnts(s: String):String = replacements.replacements(s) // entityPattern.replaceAllIn(s, m => entities(m.group(0))) // LASTIG MET ALIGNMENTS!!!
+}
+
 object replacements {
   val filters =     <filters>
     <!--
