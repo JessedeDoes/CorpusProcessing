@@ -1,6 +1,6 @@
 package CRM
 
-import CRM.CRM2Xml.{kloekeByCode, optXML}
+
 import brievenalsbuit.bab.{addFeature, idUnsafe, wwAnalyses}
 import org.incava.util.diff.Difference
 import utils.PostProcessXML.updateElement
@@ -11,24 +11,17 @@ import scala.collection.JavaConverters._
 import scala.xml.{XML, _}
 
 
-
-
-
+import Location._
+import Meta._
 
 
 case class CRMTag(code: String, cgTag: String, cgnTag: String, description: String)
 
+
+import Settings._
+
 object CRM2Xml {
 
-  val atHome = false
-  val lumpIt = false // corpus in een XML?
-  val keepRegOrig = false
-
-
-  val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
-  val outputDir = dir + "/TEI"
-  val CRM:String = dir + "CRM14Alfabetisch.txt"
-  val index:String = dir + "index"
 
 
   val squareCup = "⊔"
@@ -42,7 +35,7 @@ object CRM2Xml {
   // o_I222p30601    o       I222p   1306    01      StBernardHemiksem.Summarium113.VlpNr6
   //@ @ @ _o:I222p30601.StBernardHemiksem.Summarium113.VlpNr6 Markup(samp) - - -
 
-  def optXML(x: Option[Seq[Node]]):NodeSeq = if (x.isEmpty) <none/> else x.get
+
 
 
   def meta(c: Array[String]):Meta = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
@@ -116,32 +109,49 @@ object CRM2Xml {
       else if (isSeparator) <milestone unit="separator"/> // ?? wat is dit precies
       else if (tag.contains("Punc"))
         <pc>{rewritePunc(word)}</pc>
-          else {
-            val w = alignExpansionWithOriginal(replaceEnts(cleanedWord), replaceEnts(wordExpanded))
-            val optCorresp = if (corresp.nonEmpty) Some(Text(corresp.map("#w." + _.target).mkString(" "))) else None
-            val (optN,optPart) =
-              if (corresp.exists(_.direction == forward)) (Some(Text("0")),Some(Text("I")))
-              else if (corresp.exists(_.direction == backward)) (Some(Text("1")), Some(Text("F"))) else (None,None)
+      else {
+        val w = alignExpansionWithOriginal(replaceEnts(cleanedWord), replaceEnts(wordExpanded))
+        val optCorresp = if (corresp.nonEmpty) Some(Text(corresp.map("#w." + _.target).mkString(" "))) else None
 
-            val (reg,orig) = if (keepRegOrig) (Some(Text(wordExpanded)), Some(Text(word))) else (None,None)
-            val usedW = if ((w \\ "choice").nonEmpty)
-              {
-                Console.err.println(s"BUMMER: $word / $wordExpanded / $w"); Text(wordExpanded)
-              } else w
-            if (printWTags)
-              <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={mapTag(tag)} orig={orig} reg={reg}>{usedW}</w>
-            else Text(w.text + " ")
-          }
+        val pos = mapTag(tag)
+
+        val posAdapted =
+          if (corresp.isEmpty) pos else {
+          if (pos.contains("VRB")) {
+            if (tag.equals("285")) "ADV(part=verbal-particle)" else pos.replaceAll("\\)", ",part=with-particle)")
+          } else if (pos.contains("AD"))
+            if (tag.equals("655")) "ADV(advType=pronominal,part=abverbial-particle)" else pos.replaceAll("\\)", ",part=with-particle)")
+          else pos
+        }
+
+
+        val (optN,optPart) =
+          if (corresp.exists(_.direction == forward)) (Some(Text("0")),Some(Text("I")))
+          else if (corresp.exists(_.direction == backward)) (Some(Text("1")), Some(Text("F")))
+          else (None,None)
+
+        val (reg,orig) = if (keepRegOrig) (Some(Text(wordExpanded)), Some(Text(word))) else (None,None)
+
+
+        val usedW = if ((w \\ "choice" ++ w \\ "orig").nonEmpty)
+        {
+          Console.err.println(s"$n: $word | $wordExpanded | $w");
+          Text(wordExpanded)
+        } else w
+        if (printWTags)
+          <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={posAdapted} orig={orig} reg={reg}>{usedW}</w>
+        else Text(w.text + " ")
+      }
   }
 
   case class Document(id: String, tokens: List[Token], metadata: Option[Meta])
   {
     if (metadata.isEmpty)
-      {
-        // foutje op regel 172938 @ @ @ _n:sic Markup(sic) bedoeld.is.godes? - - #correctie: Markup en 'bedoeld is'  omgekeerd
-        Console.err.println(s"ERROR: No metadata for $id AT ${tokens.head}!")
-        System.exit(1)
-      }
+    {
+      // foutje op regel 172938 @ @ @ _n:sic Markup(sic) bedoeld.is.godes? - - #correctie: Markup en 'bedoeld is'  omgekeerd
+      Console.err.println(s"ERROR: No metadata for $id AT ${tokens.head}!")
+      System.exit(1)
+    }
     lazy val sentences = makeGroup[Token](tokens.toStream, t => t.syntCode == "1")
   }
 
@@ -264,7 +274,7 @@ object CRM2Xml {
       val s2 = ents.noAccents(y.toString)
       if (s1 == s2)
         0 else
-      super.replaceCost(x, y)
+        super.replaceCost(x, y)
     }
   }
 
@@ -322,28 +332,28 @@ object CRM2Xml {
     // Console.err.println(startPoints + "<:>" + endPoints)
 
     def matching(s: String, s1: String) =
-      {
-        s1.length > 1 && s.length > 1 &&
+    {
+      s1.length > 1 && s.length > 1 &&
         s1(1) == s(1)
-      }
+    }
 
     val pairings = startPoints.flatMap(
       { case (t, i) =>
         t.sepjes.map(s => {
-             val ep = endPoints.find({ case (t1, i1) => i1 > i && t1.sepjes.exists( s1 => matching(s,s1)   )   })
-             t.n -> ep.map(_._1.n)})
+          val ep = endPoints.find({ case (t1, i1) => i1 > i && t1.sepjes.exists( s1 => matching(s,s1)   )   })
+          t.n -> ep.map(_._1.n)})
       }
     ).filter(_._2.isDefined).map(x => x._1 ->  x._2.get)
 
     val s2x:Map[Int,Seq[Int]] = pairings.groupBy(_._1).mapValues(_.map(_._2)) // .mapValues(_.map(_.n))
-    val e2x:Map[Int,Seq[Int]] = pairings.groupBy(_._2).mapValues(_.map(_._1))
+  val e2x:Map[Int,Seq[Int]] = pairings.groupBy(_._2).mapValues(_.map(_._1))
 
-    if (s2x.nonEmpty) Console.err.println(s2x + "   " + e2x)
+    // if (s2x.nonEmpty) Console.err.println(s2x + "   " + e2x)
 
     si.map({ case (t,i)  =>
       if (s2x.contains(t.n))
         t.copy(corresp = s2x(t.n).map(j => SepRef(forward, j.toString))) else
-        if (e2x.contains(t.n))
+      if (e2x.contains(t.n))
         t.copy(corresp = e2x(t.n).map(j => SepRef(backward, j.toString))) else
         t
     })
@@ -435,9 +445,9 @@ object CRM2Xml {
     val clauses = markClauses(s)
     <s>
       {clauses.map(c =>
-        { val typ = clauseType(c.head.correctedSyntCode)
-          <cl type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</cl>
-        })}
+    { val typ = clauseType(c.head.correctedSyntCode)
+      <cl type={typ}>{c.map(_.asXML).map(e => Seq(e,white))}</cl>
+    })}
     </s>
   }
 
@@ -448,53 +458,53 @@ object CRM2Xml {
 
     val withMetadataOriginal = makeGroup[Document](documents, d => d.metadata.isDefined)
       .flatMap(g =>
-        {
-          val meta = g.head.metadata.get.copy(status="n")
-          g.head :: g.tail.map(x => x.copy(metadata=Some(meta.copy(id=x.id))))
-        }
+      {
+        val meta = g.head.metadata.get.copy(status="n")
+        g.head :: g.tail.map(x => x.copy(metadata=Some(meta.copy(id=x.id))))
+      }
       )
 
 
 
     val xmlDocs = withMetadataOriginal.map(
       d =>
-        {
-          val props  = d.metadata.get.metaWithNames
-          <TEI xmlns="http://www.tei-c.org/ns/1.0">
-            <teiHeader>
-              <fileDesc>
-                <titleStmt>
-                  <title>{d.metadata.get.title}</title>
-                </titleStmt>
-                <publicationStmt>
-                  <p>
-                    <date></date>
-                    <idno type="sourceID">{props("sourceID")}</idno>
-                    <idno type="pid">{props("pid")}</idno>
-                  </p>
-                </publicationStmt>
-                <notesStmt>
-                  <note/>
-                </notesStmt>
-                <sourceDesc>
-                  {optXML(d.metadata.map(_.asXML))}
-                </sourceDesc>
-              </fileDesc>
-            </teiHeader>
+      {
+        val props  = d.metadata.get.metaWithNames
+        <TEI xmlns="http://www.tei-c.org/ns/1.0">
+          <teiHeader>
+            <fileDesc>
+              <titleStmt>
+                <title>{d.metadata.get.title}</title>
+              </titleStmt>
+              <publicationStmt>
+                <p>
+                  <date></date>
+                  <idno type="sourceID">{props("sourceID")}</idno>
+                  <idno type="pid">{props("pid")}</idno>
+                </p>
+              </publicationStmt>
+              <notesStmt>
+                <note/>
+              </notesStmt>
+              <sourceDesc>
+                {optXML(d.metadata.map(_.asXML))}
+              </sourceDesc>
+            </fileDesc>
+          </teiHeader>
 
 
-            <text>
-              <body>
+          <text>
+            <body>
               {
-                // d.tokens.map(_.asXML).map(e => Seq(e,white))
-                <ab>
+              // d.tokens.map(_.asXML).map(e => Seq(e,white))
+              <ab>
                 {d.sentences.map(findSeparables2).map( s=> sentenceXML(s) )}
-                </ab>
-                }
-              </body>
-            </text>
-          </TEI>
-        }
+              </ab>
+              }
+            </body>
+          </text>
+        </TEI>
+      }
     )
 
     lazy val corpus = <teiCorpus>{xmlDocs}</teiCorpus>
@@ -503,7 +513,7 @@ object CRM2Xml {
       val xml = CRM.replaceAll("txt$", "xml")
       XML.save(xml, corpus, "UTF-8")
     } else {
-      xmlDocs.foreach(d => {
+      xmlDocs.take(maxDocs).foreach(d => {
         val title = (d \\ "title").head.text.replaceAll("[/, ()]+", "_")
         val d1 = d // markWordformGroups(d)
         val pid = (((d \\ "interpGrp").filter(i => (i \ "@type").text == "pid").head) \ "interp").head.text
@@ -516,6 +526,6 @@ object CRM2Xml {
 
   def main(args: Array[String]): Unit = {
 
-   process()
+    process()
   }
 }

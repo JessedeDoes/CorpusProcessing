@@ -54,6 +54,8 @@ object replacements {
     <filter type="replace" name="0,1,2,3" value="&amp;colon;" replace=":" />
     <filter type="replace" name="0,1,2,3" value="&amp;2periods;" replace=".." />
     <filter type="replace" name="0,1,2,3" value="&amp;tilde;" replace="~" />
+
+
     <filter type="replace" name="0,1,2,3" value="&amp;quest;" replace="?" />
     <filter type="replace" name="0,1,2,3" value="u&amp;r;" replace="ů" />
     <filter type="replace" name="0,1,2,3" value="U&amp;r;" replace="Ů" />
@@ -61,6 +63,7 @@ object replacements {
     <filter type="replace" name="0,1,2,3" value="O&amp;r;" replace="O̊" />
     <filter type="replace" name="0,1,2,3" value="a&amp;r;" replace="å" />
     <filter type="replace" name="0,1,2,3" value="A&amp;r;" replace="Å" />
+
     <filter type="replace" name="0,1,2,3" value="d&amp;r;" replace="d̊̊" />
     <filter type="replace" name="0,1,2,3" value="D&amp;r;" replace="D̊" />
     <filter type="replace" name="0,1,2,3" value="e&amp;r;" replace="e̊" />
@@ -73,6 +76,8 @@ object replacements {
     <filter type="replace" name="0,1,2,3" value="S&amp;r;" replace="S̊̊" />
     <filter type="replace" name="0,1,2,3" value="w&amp;r;" replace="ẘ" />
     <filter type="replace" name="0,1,2,3" value="W&amp;r;" replace="W̊" />
+
+
     <filter type="replace" name="0,1,2,3" value="h&amp;r;" replace="h°" />
     <filter type="replace" name="0,1,2,3" value="H&amp;r;" replace="H°" />
     <filter type="replace" name="0,1,2,3" value="t&amp;r;" replace="t°" />

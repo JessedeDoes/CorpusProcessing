@@ -1,6 +1,9 @@
 package CRM
 
-import CRM.CRM2Xml.{kloekeByCode, optXML}
+import Settings._
+import Location._
+
+
 
 import scala.xml.{Elem, Node, NodeSeq}
 
@@ -8,6 +11,8 @@ import scala.xml.{Elem, Node, NodeSeq}
 object Meta
 {
   def interp(n:String, v:String):Elem  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
+
+  def optXML(x: Option[Seq[Node]]):NodeSeq = if (x.isEmpty) <none/> else x.get
 
   val corpusUUID = "791f2c97-5ff3-441e-9e1c-5421f9230b67"
 
@@ -55,7 +60,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     val pkloeke = kloeke.replaceAll("[0-9]+", cijfers).replaceAll("r$","p").replaceAll("a$", "p")
     // Console.err.println(s"PROBEER: $pkloeke")
     val x = kloekeByCode.get(pkloeke).map(x => x.copy(asRegion = true))
-    Console.err.println(s"PROBEER: $pkloeke: $x")
+    // Console.err.println(s"PROBEER: $pkloeke: $x")
     x
   }
 
@@ -72,7 +77,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
       s"UnknownLocation(${kloeke}), $year-$number"
   }
 
-  Console.err.println(s"Document: $title")
+  // Console.err.println(s"Document: $title")
 
   val metaWithNames:Map[String,String] = List(
     ("pid", uuid()),

@@ -1,14 +1,15 @@
 package CRM
 
-import CRM.CRM2Xml.dir
+import Settings._
+
 
 case class Location(kloeke_code1: String, kloeke_code_oud: String, plaats: String, gemeentecode_2007: String, gemeente: String,
                     streek: String, provincie: String, postcode: String, land: String, rd_x: String, rd_y: String, lat: String, lng: String,
                     topocode: String, std_spelling: String, volgnr: String, asRegion: Boolean = false)
 {
   import Location._
-  val (landnaam,provincienaam) = provinciecodes(provincie)
-  val provNaamTitel = if (provincienaam.nonEmpty) provincienaam else landnaam
+  lazy val (landnaam,provincienaam) = provinciecodes(provincie)
+  lazy val provNaamTitel = if (provincienaam.nonEmpty) provincienaam else landnaam
 }
 
 object Location
