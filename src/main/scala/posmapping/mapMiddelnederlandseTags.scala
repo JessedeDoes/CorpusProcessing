@@ -7,6 +7,8 @@ import scala.xml._
 object mapMiddelnederlandseTags {
   val rearrangeCorresp = false
 
+  def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
+
   def updateElement(e: Elem, condition: Elem=>Boolean, f: Elem => Elem):Elem =
   {
     if (condition(e))
@@ -61,7 +63,7 @@ object mapMiddelnederlandseTags {
   def updateTag(e: Elem):Elem =
   {
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
-    val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(new UnprefixedAttribute("pos", f, Null))}
+    val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(Ѧ("pos", f))}
     val n = (e \ "@n").text
     val lemmata = (e \ "@lemma").text.split("\\+").toList
 
@@ -89,13 +91,13 @@ object mapMiddelnederlandseTags {
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
     val featureStructures = cgnTags.map(s => CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
-      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmataPatched(i)}</string></f>, attributes=fs.attributes.append(new UnprefixedAttribute("n", i.toString, Null) ))} )
+      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmataPatched(i)}</string></f>, attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
     e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
   def queryLemma(w: Node)  = s"[lemma='${w \ "@lemma"}']"
-  def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(new UnprefixedAttribute(name, value, Null))
+  def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
 
   def fixEm(d: Elem):Elem =
     {
