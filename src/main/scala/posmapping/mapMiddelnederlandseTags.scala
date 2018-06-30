@@ -5,6 +5,7 @@ import scala.util.matching.Regex._
 import scala.xml._
 
 object mapMiddelnederlandseTags {
+  val rearrangeCorresp = false
 
   def updateElement(e: Elem, condition: Elem=>Boolean, f: Elem => Elem):Elem =
   {
@@ -35,7 +36,7 @@ object mapMiddelnederlandseTags {
   val msdAttribuut = "msd"
   val posAttribuut = "pos"
   val functionAttribuut = "function"
-  val maartenVersie = true
+  val maartenVersie = false
 
   val wegVoorMaarten = Set(posAttribuut, functionAttribuut, msdAttribuut)
   val wegVoorNederlab = Set(msdAttribuut, functionAttribuut)
@@ -99,23 +100,27 @@ object mapMiddelnederlandseTags {
   def fixEm(d: Elem):Elem =
     {
       val f1 = updateElement(d, _.label=="w", updateTag)
-      val stermatten = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e =>  (e \ "@corresp").text)
-      stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
 
-      val sterMatMap = stermatten.mapValues(l => l.map(getId))
 
-      def newCorresp(w: Elem): Elem = {
-        if ((w \ "@corresp").nonEmpty)
-          {
+      if (rearrangeCorresp) {
+        val stermatten = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e => (e \ "@corresp").text)
+        stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
+
+        val sterMatMap = stermatten.mapValues(l => l.map(getId))
+
+        def newCorresp(w: Elem): Elem = {
+          if ((w \ "@corresp").nonEmpty) {
             val cor = (w \ "@corresp").text
             val id = getId(w)
             val setje = sterMatMap(cor).toSet.diff(Set(id))
             val newCor = setje.map(x => s"#$x").mkString(" ")
-            val newAtts = replaceAtt(w.attributes,  "corresp", newCor)
-            w.copy(attributes =  newAtts)
+            val newAtts = replaceAtt(w.attributes, "corresp", newCor)
+            w.copy(attributes = newAtts)
           } else w
-      }
-      updateElement(f1, _.label=="w", newCorresp)
+        }
+
+        updateElement(f1, _.label == "w", newCorresp)
+      } else f1
     }
 
 
