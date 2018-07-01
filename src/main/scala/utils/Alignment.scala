@@ -67,6 +67,7 @@ class Alignment[T](c: Comparator[T]) {
     (diffs.toList, sims.toList)
   }
 
+
   private def processDiffs(tokensFromPlainText: List[T], tokensFromXMLFile: List[T], diffs: List[Difference]): ArrayList[Similarity] = {
     var end1 = 0
     var end2 = 0
