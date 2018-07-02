@@ -382,6 +382,7 @@ class UDStyleTag(tag: String, tagset: TagSet=defaultTagset) extends Tag(tag,tags
 class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 {
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+
   val Tag(pos,feats) = tag
 
   val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
@@ -395,7 +396,11 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     val p: String = this.pos
     val V: List[String] = this.tagset.inSubsets(f)
 
-    val fn = if (V.isEmpty) "UNK"
+    val fn = if (V.isEmpty) {
+      Console.err.println("Fatal error: tag cannot be parsed from tagset")
+      System.exit(1)
+      "UNK"
+    }
     else if (V.size == 1) V.head
     else {
       val V1 = V.filter(n => tagset.pos2partitions(p).contains(n))

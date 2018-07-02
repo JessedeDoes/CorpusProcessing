@@ -64,8 +64,11 @@ object mapMiddelnederlandseTags {
   def updateTag(e: Elem):Elem =
   {
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
+
     val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(Ѧ("pos", f))}
+
     val n = (e \ "@n").text
+
     val lemmata = (e \ "@lemma").text.split("\\+").toList
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)

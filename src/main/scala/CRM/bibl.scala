@@ -95,15 +95,13 @@ val template =
     <interpGrp type="mediumLevel3">
       <interp>digitale uitgave</interp>
     </interpGrp>
-    <interpGrp type="resourceURILevel1"> <!-- link naar paper slaat nergens op; er is gewoon nog geen resource URI -->
-      <interp>http://lexikos.journals.ac.za/pub/article/download/1110/626</interp>
+    <interpGrp type="resourceURILevel1">
+      <interp>http://www.diachronie.nl/corpora/crm14</interp>
     </interpGrp>
     <interpGrp type="resourceURILevel2">
-      <interp>http://lexikos.journals.ac.za/pub/article/download/1110/626</interp>
+      <interp>http://www.diachronie.nl/corpora/crm14</interp>
     </interpGrp>
-    <interpGrp type="resourceURILevel3">
-      <interp>http://lexikos.journals.ac.za/pub/article/download/1110/626</interp>
-    </interpGrp>
+
     <interpGrp type="placePublicationLevel1">
       <interp></interp>
     </interpGrp>
@@ -114,36 +112,14 @@ val template =
       <interp>Amsterdam</interp>
     </interpGrp>
     <interpGrp type="publisherLevel1">
-      <interp>Meertens Instituut</interp>
+      <interp>Pieter van Reenen</interp>
     </interpGrp>
     <interpGrp type="publisherLevel2">
-      <interp>Meertens Instituut</interp>
+      <interp>Pieter van Reenen</interp>
     </interpGrp>
     <interpGrp type="publisherLevel3">
-      <interp>Meertens Instituut</interp>
+      <interp>Pieter van Reenen</interp>
     </interpGrp>
-
-    <!--
-    <interpGrp type="pubYearLevel1_from">
-      <interp>?</interp>
-    </interpGrp>
-    <interpGrp type="pubYearLevel1_to">
-      <interp>?</interp>
-    </interpGrp>
-    <interpGrp type="pubYearLevel2_from">
-      <interp>?</interp>
-    </interpGrp>
-    <interpGrp type="pubYearLevel2_to">
-      <interp>?</interp>
-    </interpGrp>
-    <interpGrp type="pubYearLevel3_from">
-      <interp>?</interp>
-    </interpGrp>
-    <interpGrp type="pubYearLevel3_to">
-      <interp>?</interp>
-    </interpGrp>
-    -->
-
     <interpGrp type="witnessYearLevel1_from">
       <interp></interp>
     </interpGrp>
@@ -304,22 +280,24 @@ val template =
       <interp/>
     </interpGrp>
     <interpGrp type="primaryLanguageLevel1">
-      <interp>odt</interp>
+      <interp>nld</interp>
     </interpGrp>
     <interpGrp type="primaryLanguageLevel2">
-      <interp>odt</interp>
+      <interp>nld</interp>
     </interpGrp>
     <interpGrp type="primaryLanguageLevel3">
-      <interp>odt</interp>
+      <interp>nld</interp>
     </interpGrp>
     <interpGrp type="ipr">
       <interp>extern</interp>
     </interpGrp>
     <interpGrp type="copyrightHolder">
-      <interp>????</interp>
+      <interp>Pieter van Reenen</interp>
+      <interp>Maaike Mulder</interp>
     </interpGrp>
     <interpGrp type="copyrightOwner">
-      <interp>????</interp>
+      <interp>Pieter van Reenen</interp>
+      <interp>Maaike Mulder</interp>
     </interpGrp>
     <interpGrp type="corpusProvenance">
       <interp>CRM</interp>
@@ -336,8 +314,9 @@ val template =
     <interpGrp type="biblScope_volumeLevel2">
       <interp/>
     </interpGrp>
-    <interpGrp type="processingMethod"> <!-- was born digital -->
-      <interp>transcription</interp>
+    <interpGrp type="processingMethod"> 
+      <interp>digitized</interp>
+      <interp>born digital</interp>
     </interpGrp>
   </bibl>
 }
