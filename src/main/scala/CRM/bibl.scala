@@ -16,12 +16,12 @@ object bibl
         {
           if (realStuff.contains( name(i) )) (instance \ "interpGrp").filter(i1 => name(i1) == name(i)).head
           else i
-        })
+        }).filter(i => value(i).nonEmpty && !(value(i).matches("\\{.*\\}")))
+
       template.copy(child = filledOut ++ template.child.filter(_.name != "interpGrp"))
    }
 
 val template = 
-<listBibl xml:id="inlMetadata">
   <bibl>
     <interpGrp type="sourceID">
       <interp>corpusgysseling.0001</interp>
@@ -65,7 +65,8 @@ val template =
       <interp>Maaike Mulder</interp>
     </interpGrp>
     <interpGrp type="editorLevel3">
-      <interp/>
+      <interp>Pieter van Reenen</interp>
+      <interp>Maaike Mulder</interp>
     </interpGrp>
     <interpGrp type="categoryLevel1">
       <interp>uitgave</interp>
