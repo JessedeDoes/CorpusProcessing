@@ -4,7 +4,7 @@ import scala.xml._
 object bibl
 {
 
-   def value(interpGrp: Node):String = (interGrp \ "interp").map(_.text.trim).mkString("|")
+   def value(interpGrp: Node):String = (interpGrp \ "interp").map(_.text.trim).mkString("|")
    def name(interpGrp: Node): String = (interpGrp \ "@type").text.trim
 
 
@@ -16,9 +16,9 @@ object bibl
         {
           if (realStuff.contains( name(i) )) (instance \ "interpGrp").filter(i1 => name(i1) == name(i)).head
           else i
-        }).filter(i => value(i).nonEmpty && !(value(i).matches("\\{.*\\}")))
+        }).filter(i => value(i).nonEmpty && !value(i).matches("\\{.*\\}")).filter(i => !name(i).contains("Level3")) // blokkeer voorlopig level 3
 
-      template.copy(child = filledOut ++ template.child.filter(_.name != "interpGrp"))
+      template.copy(child = filledOut ++ template.child.filter(n => n.label != "interpGrp"))
    }
 
 val template = 
@@ -27,10 +27,10 @@ val template =
       <interp>corpusgysseling.0001</interp>
     </interpGrp>
     <interpGrp type="pid">
-      <interp>{pid}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="titleLevel1">
-      <interp>{titel}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="titleLevel2">
       <interp>Corpus van Reenen-Mulder</interp>
@@ -95,7 +95,7 @@ val template =
     <interpGrp type="mediumLevel3">
       <interp>digitale uitgave</interp>
     </interpGrp>
-    <interpGrp type="resourceURILevel1">
+    <interpGrp type="resourceURILevel1"> <!-- link naar paper slaat nergens op; er is gewoon nog geen resource URI -->
       <interp>http://lexikos.journals.ac.za/pub/article/download/1110/626</interp>
     </interpGrp>
     <interpGrp type="resourceURILevel2">
@@ -122,6 +122,8 @@ val template =
     <interpGrp type="publisherLevel3">
       <interp>Meertens Instituut</interp>
     </interpGrp>
+
+    <!--
     <interpGrp type="pubYearLevel1_from">
       <interp>?</interp>
     </interpGrp>
@@ -140,11 +142,13 @@ val template =
     <interpGrp type="pubYearLevel3_to">
       <interp>?</interp>
     </interpGrp>
+    -->
+
     <interpGrp type="witnessYearLevel1_from">
-      <interp>{jaar}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessYearLevel1_to">
-      <interp>{jaar}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessYearLevel2_from">
       <interp>1300</interp>
@@ -159,10 +163,10 @@ val template =
       <interp/>
     </interpGrp>
     <interpGrp type="textYearLevel1_from">
-      <interp>{jaar}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textYearLevel1_to">
-      <interp>{jaar}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textMonthLevel1_from">
       <interp/>
@@ -189,16 +193,16 @@ val template =
       <interp/>
     </interpGrp>
     <interpGrp type="witnessLocalization_placeLevel1">
-      <interp>{plaats}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessLocalization_countryLevel1">
-      <interp>{land}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessLocalization_regionLevel1">
-      <interp>{regio}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessLocalization_kloekecodeLevel1">
-      <interp>{kloekecode}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="witnessLocalization_placeLevel2">
       <interp/>
@@ -225,16 +229,16 @@ val template =
       <interp/>
     </interpGrp>
     <interpGrp type="textLocalization_placeLevel1">
-      <interp>{plaats}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textLocalization_countryLevel1">
-      <interp>{land}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textLocalization_regionLevel1">
-      <interp>{regio}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textLocalization_kloekecodeLevel1">
-      <interp>{kloekecode}</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="textLocalization_placeLevel2">
       <interp/>
@@ -312,10 +316,10 @@ val template =
       <interp>extern</interp>
     </interpGrp>
     <interpGrp type="copyrightHolder">
-      <interp>?</interp>
+      <interp>????</interp>
     </interpGrp>
     <interpGrp type="copyrightOwner">
-      <interp>?</interp>
+      <interp>????</interp>
     </interpGrp>
     <interpGrp type="corpusProvenance">
       <interp>CRM</interp>
@@ -332,7 +336,7 @@ val template =
     <interpGrp type="biblScope_volumeLevel2">
       <interp/>
     </interpGrp>
-    <interpGrp type="processingMethod">
+    <interpGrp type="processingMethod"> <!-- was born digital -->
       <interp>transcription</interp>
     </interpGrp>
   </bibl>

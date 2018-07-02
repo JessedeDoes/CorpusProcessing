@@ -135,15 +135,19 @@ object CGNMiddleDutch
     "TW"  -> List("numtype", "graad", "positie", /**/   "buiging"),
     "SPEC" -> List("spectype",   /**/ "buiging")
   ).toMap
+
+  val CGNMiddleDutchTagset = TagSet.fromXML("data/CRM/tagset.xml")
+
+  object CGNMiddleDutchTagsetOld extends TagSet("mnl", CGNLite.posTags, CGNMiddleDutch.partitions, CGNMiddleDutch.pos2partitions)
+  {
+    //override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = fromPropositionCGN(p, posIsSpecial)
+    override def fromString(t: String): Tag = CGNMiddleDutchTag(CGNMiddleDutch.preprocess(t))
+  }
 }
 
-object CGNMiddleDutchTagset extends TagSet("mnl", CGNLite.posTags, CGNMiddleDutch.partitions, CGNMiddleDutch.pos2partitions)
-{
-  override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = fromPropositionCGN(p, posIsSpecial)
-  override def fromString(t: String): Tag = CGNMiddleDutchTag(CGNMiddleDutch.preprocess(t))
-}
 
-case class CGNMiddleDutchTag(tag: String) extends CGNStyleTag(tag, CGNMiddleDutchTagset)
+
+case class CGNMiddleDutchTag(tag: String) extends CGNStyleTag(tag, CGNMiddleDutch.CGNMiddleDutchTagset)
 
 object testje
 {
@@ -151,15 +155,15 @@ object testje
 
   def main(args:Array[String]) =
   {
+    Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.toXML)
+    // System.exit(0)
     scala.io.Source.fromFile(tagset).getLines.toStream.map(l => l.split("\t").toList).filter(_.size >= 5).foreach(l => {
       val t = CGNMiddleDutch.preprocess(l(4))
       val t1 = CGNMiddleDutchTag(t)
       val toelichting = l(3)
-      //Console.err.println(l(4))
-      //Console.err.flush()
+  
       Console.err.println(l(4) + ", " + t + " --> " + t1.proposition)
       println(s"${l(0)}\t$t1\t$toelichting")
     })
   }
-
 }

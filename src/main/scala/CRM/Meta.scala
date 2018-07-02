@@ -90,12 +90,17 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     ("titleLevel1", title)
   ).toMap
 
-  def asXML:NodeSeq = <listBibl type="metadata">
-    <bibl>
-      {metaWithNames.map({case (k,v) => Meta.interp(k,v)})  }
-      {Meta.locationFields(if (!location.isDefined) backupLocation else location)}
+  def asXML:NodeSeq = {
+    val instance =  <bibl>
+      {metaWithNames.map({ case (k, v) => Meta.interp(k, v) })}{Meta.locationFields(if (!location.isDefined) backupLocation else location)}
     </bibl>
-  </listBibl>
+
+    val merged = bibl.mergeBibl(instance)
+
+    <listBibl type="metadata">
+      {merged}
+    </listBibl>
+  }
 
 
   def uuid():String =

@@ -48,6 +48,7 @@ object mapMiddelnederlandseTags {
   def getId(e: Node) = e.attributes.filter(_.key == "id").value.text
 
   val stermat = "\\{([#*])([0-9]+)\\}".r
+
   case class SterretjeMatje(typ: String, id: String, lemma: String)
   {
     def attribute = new UnprefixedAttribute("corresp", "#" + id, Null)
@@ -90,13 +91,15 @@ object mapMiddelnederlandseTags {
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
-    val featureStructures = cgnTags.map(s => CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
+    val featureStructures = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
       .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmataPatched(i)}</string></f>, attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
     e.copy(attributes = afterStm, child = e.child ++ featureStructures)
   }
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
+
   def queryLemma(w: Node)  = s"[lemma='${w \ "@lemma"}']"
+
   def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
 
   def fixEm(d: Elem):Elem =
@@ -127,6 +130,7 @@ object mapMiddelnederlandseTags {
 
 
   def fixFile(in: String, out:String) = XML.save(out, fixEm(XML.load(in)),  enc="UTF-8")
+
   def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
 }
 

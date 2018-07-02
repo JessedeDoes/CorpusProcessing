@@ -20,11 +20,51 @@ abstract class Tag(tag: String, tagset: TagSet)
   def proposition:Proposition
 }
 
-abstract case class TagSet(prefix: String,
-                           val posTags: List[String] = List.empty,
-                  partitions:Map[String,Set[String]] = Map.empty,
-                  pos2partitions: Map[String,List[String]] = Map.empty)
+
+trait TagParser
 {
+  def parseTag(ts: TagSet, t: String): Tag
+}
+
+object  defaultTagParser extends TagParser
+{
+  override def parseTag(ts: TagSet, t: String): Tag = new CGNStyleTag(t, ts)
+}
+
+object TagSet
+{
+  def fromXML(d: Elem):TagSet =
+  {
+    val prefix = (d \ "prefix").text
+    val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
+    val partitions = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
+    val pos2partitions = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
+    TagSet(prefix, posTags, partitions, pos2partitions)
+  }
+
+  def fromXML(f: String):TagSet = fromXML(XML.load(f))
+}
+
+case class TagSet(prefix: String,
+                  val posTags: List[String] = List.empty,
+                  partitions:Map[String,Set[String]] = Map.empty,
+                  pos2partitions: Map[String,List[String]] = Map.empty, parser: TagParser=defaultTagParser)
+{
+
+  def toXML =
+    <tagset>
+      <prefix>{prefix}</prefix>
+      <mainPoS>
+      {posTags.map(p => <pos>{p}</pos>)}
+      </mainPoS>
+      <partitions>
+        {partitions.map( { case (f, vs) => <feature><name>{f}</name><values>{vs.map(v => <value>{v}</value>)}</values></feature>} )}
+      </partitions>
+      <constraints>
+        {pos2partitions.map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.map(f => <feature>{f}</feature>)}</features></constraint>} )}
+      </constraints>
+    </tagset>
+
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
 
   def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =
@@ -47,7 +87,7 @@ abstract case class TagSet(prefix: String,
     x
   }
 
-  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag
+  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = fromPropositionCGN(p,posIsSpecial)
 
 
   def featuresFromProposition(p:Proposition): Set[Feature] =
@@ -56,7 +96,8 @@ abstract case class TagSet(prefix: String,
     val features = vars.map(v => v.replaceAll(s"^${this.prefix}:", "")).map(x => {val r = x.split("="); Feature(r(0), r(1))})
     features
   }
-  def fromString(t: String):Tag
+
+  def fromString(t: String):Tag = parser.parseTag(this,t)
 
   def asTEIFeatureStructure(s: String):Elem = asTEIFeatureStructure(fromString(s))
 
@@ -67,7 +108,7 @@ abstract case class TagSet(prefix: String,
 
 object UDTagSet extends TagSet("ud")
 {
-  def fromProposition(p:Proposition, posIsSpecial: Boolean = true):Tag =
+  override def fromProposition(p:Proposition, posIsSpecial: Boolean = true):Tag =
   {
     val vars = p.varsIn
     val pos = vars.find(v => v.startsWith(s"${this.prefix}:pos=")).getOrElse("UNK").replaceAll(".*=", "")
@@ -79,7 +120,7 @@ object UDTagSet extends TagSet("ud")
 
 object MolexTagSet extends TagSet("molex")
 {
-  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = UDTagSet.fromProposition(p)
+  override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = UDTagSet.fromProposition(p)
   override def fromString(t: String): Tag = new UDStyleTag(t, this)
 }
 
@@ -244,7 +285,7 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
 {
   //Console.err.println(s"blurk $posTags")
 
-  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
+  override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
   {
     val vars = p.varsIn
 
@@ -292,7 +333,7 @@ object CGNLite
 
 object CGNLiteTagset extends TagSet("cgnl", CGNLite.posTags, CGNLite.partitions, CGNLite.pos2partitions)
 {
-  def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
+  override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag =
   {
     val vars = p.varsIn
 

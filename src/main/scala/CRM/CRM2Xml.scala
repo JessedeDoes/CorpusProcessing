@@ -36,8 +36,6 @@ object CRM2Xml {
   //@ @ @ _o:I222p30601.StBernardHemiksem.Summarium113.VlpNr6 Markup(samp) - - -
 
 
-
-
   def meta(c: Array[String]):Meta = { Meta(c(0), c(1), c(2), c(3), c(4), c(5))}
 
 
@@ -478,7 +476,6 @@ object CRM2Xml {
               </titleStmt>
               <publicationStmt>
                 <p>
-                  <date></date>
                   <idno type="sourceID">{props("sourceID")}</idno>
                   <idno type="pid">{props("pid")}</idno>
                 </p>
