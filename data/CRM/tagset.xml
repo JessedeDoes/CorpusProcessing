@@ -257,6 +257,16 @@
         <value>imp</value>
       </values>
     </feature>
+    <feature>
+      <name>deel</name>
+      <values>
+	<value>deel</value>
+	<value>vz-deel-bw</value>
+        <value>hoofddeel-bw</value>
+        <value>vz-deel-ww</value>
+        <value>hoofddeel-ww</value>
+      </value>
+    </feature>
   </partitions>
   <constraints>
     <constraint>
@@ -320,6 +330,7 @@
         <feature>status</feature>
         <feature>pdtype</feature>
         <feature>buiging</feature>
+        <feature>deel</feature>
       </features>
     </constraint>
     <constraint>
@@ -351,6 +362,7 @@
         <feature>getal-n</feature>
         <feature>wwtype</feature>
         <feature>buiging</feature>
+        <feature>deel</feature>
       </features>
     </constraint>
     <constraint>
