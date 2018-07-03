@@ -48,11 +48,11 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
             pos.replaceAll("\\)", ",vz-deel-bw)")
           else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",bw-deel-ww)") // PAS OP, CHECK DEZE
           else pos
-        } else {
+        } else { // FOUT kijken WELK stukje de part heeft (of mogelijk hebben)
           val deelSoort = gysParticles.get(n)
-          if (deelSoort.isEmpty)
+          if (deelSoort.isEmpty || !morfcode.contains("{"))
             {
-              Console.err.println(s"Geen deelinfo gevonden voor $n!!!!")
+              // Console.err.println(s"Geen deelinfo gevonden voor $n!!!!")
               pos
             } else {
             val soort = deelSoort.get
@@ -140,6 +140,18 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
 
+  def fixType(w: Elem): Elem = // haal de sterretjematjes uit het attribuut en maak overal drie cijfers van
+  {
+    val normType = (w \ "@type").text
+      .replaceAll("\\{.*?\\}","")
+      .split("\\+")
+      .map(t => t.replaceAll("[^0-9]",""))
+      .map(t => (0 until Math.max(0, 3 - t.length)).map(x => "0").mkString + t)
+      .mkString("+")
+    val newType = replaceAtt(w.attributes, "type", normType)
+    w.copy(attributes = newType)
+  }
+
   def fixEm(d: Elem):Elem =
     {
       val f1 = updateElement(d, _.label=="w", updateTag)
@@ -155,22 +167,17 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           if ((w \ "@corresp").nonEmpty) {
             val cor = (w \ "@corresp").text
             val id = getId(w).get
-            val normType = (w \ "@type").text
-              .replaceAll("\\{.*?\\}","")
-              .split("\\+")
-              .map(t => t.replaceAll("[^0-9]",""))
-              .map(t => (0 until Math.max(0, 3 - t.length)).map(x => "0").mkString + t)
-              .mkString("+")
+
 
             val setje = sterMatMap(cor).toSet.diff(Set(id))
             val newCor = setje.map(x => s"#$x").mkString(" ")
             val newAtts = replaceAtt(w.attributes, "corresp", newCor)
-            val newType = replaceAtt(newAtts, "type", normType)
-            w.copy(attributes = newType)
+
+            w.copy(attributes = newAtts)
           } else w
         }
 
-        updateElement(f1, _.label == "w", newCorresp)
+        updateElement(f1, _.label == "w", w => fixType(newCorresp(w)))
       } else f1
     }
 
