@@ -28,7 +28,9 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  def morfcode2tag(morfcode: String, isPart: Boolean):String =
+  val gysParticles = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
+
+  def morfcode2tag(morfcode: String, isPart: Boolean, n: String):String =
     {
       val s0 = morfcode.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999").replaceAll("[A-Za-z]","")
 
@@ -46,7 +48,21 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
             pos.replaceAll("\\)", ",vz-deel-bw)")
           else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",bw-deel-ww)") // PAS OP, CHECK DEZE
           else pos
-        } else pos
+        } else {
+          val deelSoort = gysParticles.get(n)
+          if (deelSoort.isEmpty)
+            {
+              Console.err.println(s"Geen deelinfo gevonden voor $n!!!!")
+              pos
+            } else {
+            val soort = deelSoort.get
+            if (pos.contains("WW")) {
+              if (soort == "bw-deel-ww") "ADV(bw-deel-ww)" else pos.replaceAll("\\)", ",hoofddeel-ww)")
+            } else if (pos.contains("BW")) {
+              if (soort == "vz-deel-bw") "BW(adv-pron,vz-deel-bw)" else pos.replaceAll("\\)", ",hoofddeel-bw)")
+            } else pos.replaceAll("\\)", "," + "deel" + ")").replaceAll("\\(,", "(")
+          }
+        }
 
       posAdapted
     }
@@ -62,7 +78,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   val weg = if (maartenVersie) wegVoorMaarten else wegVoorNederlab
 
-  def getId(e: Node) = e.attributes.filter(_.key == "id").value.text
+  def getId(e: Node) = e.attributes.filter(_.key == "id").headOption.map(_.value.text)
 
   val stermat = "\\{([#*])([0-9]+)\\}".r
 
@@ -90,9 +106,9 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
 
-    val hasCorresp = (e \ "@corresp").nonEmpty
+    val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
 
-    val cgnTags:List[String] = morfcodes.map(m => morfcode2tag(m, hasCorresp))
+    val cgnTags:List[String] = morfcodes.map(m => morfcode2tag(m, isPartOfSomethingGreater, n))
 
     val lemmataPatched = if (cgnTags.size <= lemmata.size) lemmata else {
       val d = cgnTags.size - lemmata.size
@@ -133,16 +149,24 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         val stermatten = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e => (e \ "@corresp").text)
         stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
 
-        val sterMatMap = stermatten.mapValues(l => l.map(getId))
+        val sterMatMap = stermatten.mapValues(l => l.map(x => getId(x).get))
 
         def newCorresp(w: Elem): Elem = {
           if ((w \ "@corresp").nonEmpty) {
             val cor = (w \ "@corresp").text
-            val id = getId(w)
+            val id = getId(w).get
+            val normType = (w \ "@type").text
+              .replaceAll("\\{.*?\\}","")
+              .split("\\+")
+              .map(t => t.replaceAll("[^0-9]",""))
+              .map(t => (0 until Math.max(0, 3 - t.length)).map(x => "0").mkString + t)
+              .mkString("+")
+
             val setje = sterMatMap(cor).toSet.diff(Set(id))
             val newCor = setje.map(x => s"#$x").mkString(" ")
             val newAtts = replaceAtt(w.attributes, "corresp", newCor)
-            w.copy(attributes = newAtts)
+            val newType = replaceAtt(newAtts, "type", normType)
+            w.copy(attributes = newType)
           } else w
         }
 

@@ -56,7 +56,7 @@ object allTags {
   }
 
   def w2W(i: Node) = {
-    val word: String = i.child.filter(x => !(x.label == "fs")).text.trim
+    val word: String = i.child.filter(x => !(x.label == "fs")).text.trim.replaceAll("\\s+", " ")
     val id = i.attributes.filter(a => a.key == "id" || a.key == "n").head.value.text
 
     TaggedWord(
@@ -95,7 +95,7 @@ object sterretjeMatje {
 
     groups.foreach({ case (id, g) =>
 
-      classify(g).zipWithIndex.foreach({ case (x, i) => println(s"[$i] $x") })
+      classify(g).zipWithIndex.foreach({ case (x, i) => val y = x._2; println(s"[$i]\t${x._1}\t${y._1}\t${y._2}\t${y._3}") })
     })
   }
 
@@ -110,7 +110,7 @@ object sterretjeMatje {
 
     if (pos.contains("ADP")) {
       l.zipWithIndex.map({case (w,i) =>
-          val feature = if (i == 0) "eerste-deel-omzetsel" else  "laatste-deel-omzetsel"
+          val feature = if (i == 0) "deel-vz" else  "deel-vz"
           w.id -> (feature, w.word, plakLemma)
       })
     } else if (pos.contains("CON")) {
