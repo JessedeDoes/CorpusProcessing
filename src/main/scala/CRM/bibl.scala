@@ -241,7 +241,7 @@ val template =
       <interp/>
     </interpGrp>
     <interpGrp type="ingestTime">
-      <interp>?</interp>
+      <interp></interp>
     </interpGrp>
     <interpGrp type="genreLevel1">
       <interp>geschiedenis</interp>

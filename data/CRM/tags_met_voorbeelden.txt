@@ -1,0 +1,819 @@
+ADJ(ev,met-e)	X101	UX101	[1]	leuende
+ADJ(ev,met-e)	101	ADJ(number=sg,inflection=e)	[20035]	voreghescreuene, halfpilde, ghenghe, leghe, erffelike
+ADJ(ev,met-e)+ADJ(ev,met-n)	101+104	ADJ(number=sg,inflection=e)+ADJ(number=sg,inflection=n)	[1]	likegůden
+ADJ(ev,met-e)+ADJ(ev,zonder)	101+100	ADJ(number=sg,inflection=e)+ADJ(number=sg,inflection=0)	[1]	likegůt
+ADJ(ev,met-e)+N(soort,ev,met-s-of-th)	101+002	ADJ(number=sg,inflection=e)+NOU(type=common,number=sg,inflection=s/th)	[2]	heylighegheests, heleghees
+ADJ(ev,met-e)+N(soort,ev,zonder)	101+000	ADJ(number=sg,inflection=e)+NOU(type=common,number=sg,inflection=0)	[6]	heylighegheest, heylegheest
+ADJ(ev,met-e)+N(soort,ev,zonder)+N(soort,mv,met-s-of-th)	101+000+012	ADJ(number=sg,inflection=e)+NOU(type=common,number=sg,inflection=0)+NOU(type=common,number=pl,inflection=s/th)	[4]	heylighegheestmeesters, heijlijghegeestmeysters, heijlijghegheestmeijsters
+ADJ(ev,met-e,bw-deel-ww)	101	ADJ(number=sg,inflection=e,part=abverbial-particle)	[11]	quite, quijte
+ADJ(ev,met-n)	104	ADJ(number=sg,inflection=n)	[13883]	guden, eeuwelicken, ghecoernen, heuweliken, witachtighen
+ADJ(ev,met-n)+N(soort,ev,met-e)	104+001	ADJ(number=sg,inflection=n)+NOU(type=common,number=sg,inflection=e)	[1]	heyligengheeste
+ADJ(ev,met-n)+N(soort,ev,zonder)	104+000	ADJ(number=sg,inflection=n)+NOU(type=common,number=sg,inflection=0)	[3]	heylighengheest, heleghengheest, heyleghengheest
+ADJ(ev,met-n)+VG(neven,zonder)	104+800	ADJ(number=sg,inflection=n)+CON(type=coordinating,inflection=0)	[1]	goeden
+ADJ(ev,met-r-of-re)	105	ADJ(number=sg,inflection=r/re)	[4815]	clenre, leefvender, wiser, ghewoen↩leker, tideghere
+ADJ(ev,met-r-of-re)+N(soort,ev,zonder)	105+000	ADJ(number=sg,inflection=r/re)+NOU(type=common,number=sg,inflection=0)	[5]	ghelikerwijs, doderhant, doder⊔hant
+ADJ(ev,met-s-of-th)	102	ADJ(number=sg,inflection=s/th)	[2409]	gans, originaels, gheistlichs, voergheseets, Ewelijx
+ADJ(ev,met-s-of-th)+N(soort,ev,met-s-of-th)	102+002	ADJ(number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[1]	heylicghees
+ADJ(ev,met-s-of-th)+N(soort,ev,zonder)	102+000	ADJ(number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[1]	hilichsgheest
+ADJ(ev,met-t)	103	ADJ(number=sg,inflection=t)	[3]	jeseit, onbescaedt, ghemoedt
+ADJ(ev,overig)	109	ADJ(number=sg,inflection=other)	[805]	kenlijk, voernoemde, voorseide, parijss, grot
+ADJ(ev,overig)+N(soort,ev,met-e)	109+001	ADJ(number=sg,inflection=other)+NOU(type=common,number=sg,inflection=e)	[2]	halbonre
+ADJ(ev,overig)+VG(neven,zonder)	109+800	ADJ(number=sg,inflection=other)+CON(type=coordinating,inflection=0)	[1]	grotof
+ADJ(ev,zonder)	100	ADJ(number=sg,inflection=0)	[28999]	gans, vorgenomet, ledych, voer⊔noemt, voer↩ghenoemt
+ADJ(ev,zonder)+N(eigen,met-e)	100+021	ADJ(number=sg,inflection=0)+NOU(type=proper,inflection=e)	[1]	alfmaerte
+ADJ(ev,zonder)+N(soort,ev,met-e)	100+001	ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=e)	[3]	anderzide, heyligheeste
+ADJ(ev,zonder)+N(soort,ev,met-s-of-th)	100+002	ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[8]	heilechgheests, heyligheests, Hilghestes, anderdaeghs
+ADJ(ev,zonder)+N(soort,ev,zonder)	100+000	ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=0)	[18]	heligheest, heiligegheist, heylicgeest, heyligheest, anderhant
+ADJ(ev,zonder)+N(soort,ev,zonder)+N(soort,mv,met-n)	100+000+014	ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=0)+NOU(type=common,number=pl,inflection=n)	[2]	heylichgeestmeesteren, heylichgheestmeesteren
+ADJ(ev,zonder)+N(soort,mv,met-n)	100+014	ADJ(number=sg,inflection=0)+NOU(type=common,number=pl,inflection=n)	[1]	dijtschgheren
+ADJ(ev,zonder)+VG(neven,zonder)	100+800	ADJ(number=sg,inflection=0)+CON(type=coordinating,inflection=0)	[1]	achterhaelden
+ADJ(ev,zonder,bw-deel-ww)	100	ADJ(number=sg,inflection=0,part=abverbial-particle)	[6]	quijt, qvijt, quiit
+ADJ(mv,met-e)	111	ADJ(number=pl,inflection=e)	[378]	wise, erachtighe, wetteghe, stane, vornomde
+ADJ(mv,met-n)	114	ADJ(number=pl,inflection=n)	[158]	guldine, wisen, neuwen, vtehanghenden, louenscen
+ADJ(mv,met-r-of-re)	115	ADJ(number=pl,inflection=r/re)	[98]	ghemeinder, vlaendersscher, vaster, ghenseder, vlemscher
+ADJ(mv,overig)	119	ADJ(number=pl,inflection=other)	[2]	parisis
+ADJ(mv,zonder)	110	ADJ(number=pl,inflection=0)	[31]	gezwoeren, gulden, ander, ghesworen, grot
+ADV(bw-deel-ww)	285	ADV(part=verbal-particle)	[962]	aene, Af, aff, in, weder
+BW(aanw,overig)	519	ADV(type=dem,inflection=other)	[22]	alsoe, dar⊔bynnen, daer⊔in, daervyt, nu
+BW(aanw,zonder)	510	ADV(type=dem,inflection=0)	[12635]	Dair⊔na, hi⊔bouen, heer⊔ane, Daer⊔tue, daer⊔neuen
+BW(aanw,zonder)+BW(alg,zonder)	510+500	ADV(type=dem,inflection=0)+ADV(type=general,inflection=0)	[2]	zoeveer
+BW(aanw,zonder)+VG(onder,zonder)+VNW(pers,3,ev)	510+810+403	ADV(type=dem,inflection=0)+CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=sg)	[3]	al⊔soest, alsoest
+BW(aanw,zonder)+VNW(onbep,zonder)	510+440	ADV(type=dem,inflection=0)+PD(type=indef,inflection=0)	[2]	alsomen
+BW(aanw,zonder)+VNW(pers,3,ev)	510+403	ADV(type=dem,inflection=0)+PD(type=pers,person=3,number=sg)	[3]	al⊔soet, soot, alsoot
+BW(aanw,zonder,hoofddeel-bw)	510	ADV(type=dem,inflection=0,part=with-particle)	[15]	hyraen, Daer⊔ouer, doe, daer⊔bouen, dar⊔ouer
+BW(adv-pron,aanw,met-r-of-re)	615	ADV(advType=pronominal,type=dem,inflection=r/re)	[32]	Daer, hier, dair, hiir, daer
+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)	615	ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)	[873]	daer⊔af, tjeghen, der⊔toe, al⊔hier, hyr
+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)+BW(neg,zonder,hoofddeel-bw)	615+560	ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)+ADV(type=negative,inflection=0,part=with-particle)	[1]	donne
+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)+LID(bep,met-n)	615+474	ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)+PD(type=art,subtype=def,inflection=n,part=with-particle)	[3]	toten
+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)+VNW(pers,3,ev)	615+403	ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)+PD(type=pers,person=3,number=sg,part=with-particle)	[1]	daart
+BW(adv-pron,aanw,overig,hoofddeel-bw)	619	ADV(advType=pronominal,type=dem,inflection=other,part=with-particle)	[3]	dar, daer
+BW(adv-pron,alg,met-e,hoofddeel-bw)	601	ADV(advType=pronominal,type=general,inflection=e,part=with-particle)	[25]	re
+BW(adv-pron,alg,met-r-of-re)	605	ADV(advType=pronominal,type=general,inflection=r/re)	[1]	op
+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	605	ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[10]	er, ere
+BW(adv-pron,betr,met-r-of-re)	625	ADV(advType=pronominal,type=rel,inflection=r/re)	[22]	daer, Daer, dair
+BW(adv-pron,betr,met-r-of-re)+VNW(pers,3,ev)	625+403	ADV(advType=pronominal,type=rel,inflection=r/re)+PD(type=pers,person=3,number=sg)	[9]	daert, dart
+BW(adv-pron,betr,met-r-of-re,hoofddeel-bw)	625	ADV(advType=pronominal,type=rel,inflection=r/re,part=with-particle)	[1517]	Daer, dår, dare, do, der
+BW(adv-pron,betr,met-r-of-re,hoofddeel-bw)+LID(bep,zonder)	625+470	ADV(advType=pronominal,type=rel,inflection=r/re,part=with-particle)+PD(type=art,subtype=def,inflection=0,part=with-particle)	[5]	daert, dairt
+BW(adv-pron,betr,met-r-of-re,hoofddeel-bw)+VNW(onbep,zonder)	625+440	ADV(advType=pronominal,type=rel,inflection=r/re,part=with-particle)+PD(type=indef,inflection=0,part=with-particle)	[1]	daermen
+BW(adv-pron,betr,met-r-of-re,hoofddeel-bw)+VNW(pers,3,ev)	625+403	ADV(advType=pronominal,type=rel,inflection=r/re,part=with-particle)+PD(type=pers,person=3,number=sg,part=with-particle)	[27]	daert, dart
+BW(adv-pron,betr,overig,hoofddeel-bw)	629	ADV(advType=pronominal,type=rel,inflection=other,part=with-particle)	[12]	daer, dr, dar, dair
+BW(adv-pron,betr,overig,hoofddeel-bw)+VNW(overig)	629+409	ADV(advType=pronominal,type=rel,inflection=other,part=with-particle)+PD(type=pers,other,part=with-particle)	[1]	daert
+BW(adv-pron,betr,zonder)	620	ADV(advType=pronominal,type=rel,inflection=0)	[1]	daer⊔in
+BW(adv-pron,ellips,met-n)	655	ADV(advType=pronominal,type=resumptive,inflection=r/re)	[496]	in, vte, inne, ane, up
+BW(adv-pron,ellips,met-n)+LID(bep,met-n)	655+474	ADV(advType=pronominal,type=resumptive,inflection=r/re)+PD(type=art,subtype=def,inflection=n)	[1]	ten
+BW(adv-pron,ellips,met-n)+LID(bep,met-r-of-re)	655+475	ADV(advType=pronominal,type=resumptive,inflection=r/re)+PD(type=art,subtype=def,inflection=r/re)	[4]	ter
+BW(adv-pron,ellips,overig,hoofddeel-bw)	659	ADV(advType=pronominal,type=resumptive,inflection=other,part=with-particle)	[14]	mede, vp, oue, af, naest
+BW(adv-pron,ellips,zonder)	650	ADV(advType=pronominal,type=resumptive,inflection=0)	[2]	en, ware
+BW(adv-pron,vb,zonder,hoofddeel-bw)	630	ADV(advType=pronominal,type=int,inflection=0,part=with-particle)	[1]	waer
+BW(adv-pron,vz-deel-bw)	655	ADV(advType=pronominal,part=abverbial-particle)	[2780]	uppe, beneuen, vo̊r, aene, aver
+BW(alg,met-e)	501	ADV(type=general,inflection=e)	[89]	vriendeleke, elre, aruelike, Elre, reckelicke
+BW(alg,met-n)	504	ADV(type=general,inflection=n)	[1]	trouweliken
+BW(alg,met-r-of-re)	505	ADV(type=general,inflection=r/re)	[7]	nembermer, nemmer
+BW(alg,met-s-of-th)	502	ADV(type=general,inflection=s/th)	[2]	stappans, iaer↩lex
+BW(alg,overig)	509	ADV(type=general,inflection=other)	[71]	vri, alien, talhants, in, eers
+BW(alg,zonder)	500	ADV(type=general,inflection=0)	[28576]	lancghe, gans, claerliker, erflijcken, zuutoest
+BW(alg,zonder)+ADJ(mv,met-n)	500+114	ADV(type=general,inflection=0)+ADJ(number=pl,inflection=n)	[1]	euengroten
+BW(alg,zonder)+BW(alg,zonder)	500+500	ADV(type=general,inflection=0)+ADV(type=general,inflection=0)	[4]	alte, alticste, alto
+BW(alg,zonder)+VG(neven,zonder)	500+800	ADV(type=general,inflection=0)+CON(type=coordinating,inflection=0)	[1]	lutlof
+BW(alg,zonder)+VNW(pers,3,ev)	500+403	ADV(type=general,inflection=0)+PD(type=pers,person=3,number=sg)	[1]	ghelijct
+BW(alg,zonder)+VZ(zonder)	500+700	ADV(type=general,inflection=0)+ADP(type=general,inflection=0)	[1]	van
+BW(alg,zonder)+WW(hoofd,part,met-e)	500+271	ADV(type=general,inflection=0)+VRB(type=main,finiteness=part,inflection=e)	[5]	herstcomende, herstcoemt, naestcommende, ondervolgende
+BW(alg,zonder)+WW(hoofd,part,met-t)	500+273	ADV(type=general,inflection=0)+VRB(type=main,finiteness=part,inflection=t)	[1]	medeghelauet
+BW(alg,zonder)+WW(hulp-of-koppel,pv,tgw,zonder)	500+210	ADV(type=general,inflection=0)+VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	[1]	beters
+BW(alg,zonder)+WW(zonder)	500+290	ADV(type=general,inflection=0)+VRB(type=other,inflection=0)	[1]	tvorenwonen
+BW(alg,zonder,hoofddeel-bw)	500	ADV(type=general,inflection=0,part=with-particle)	[5]	achter⊔wert, mede, vore, to, onder
+BW(betr,overig)	529	ADV(type=rel,inflection=other)	[3]	daer, daeraf
+BW(betr,zonder)	520	ADV(type=rel,inflection=0)	[984]	waerbi, dar⊔van, daer⊔af, Wer⊔bi, waer↩bi
+BW(betr,zonder)+VNW(aanw,met-s-of-th)	520+412	ADV(type=rel,inflection=0)+PD(type=dem,inflection=s/th)	[12]	waers, daers
+BW(betr,zonder)+VNW(onbep,zonder)	520+440	ADV(type=rel,inflection=0)+PD(type=indef,inflection=0)	[3]	daermen, doemen
+BW(betr,zonder)+VNW(onbep,zonder)+VNW(pers,3,mv)	520+440+406	ADV(type=rel,inflection=0)+PD(type=indef,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	daermense
+BW(betr,zonder)+VNW(pers,3,ev)	520+403	ADV(type=rel,inflection=0)+PD(type=pers,person=3,number=sg)	[27]	dairt, daertt, daerse, aldaert, daers
+BW(betr,zonder)+VNW(pers,3,mv)	520+406	ADV(type=rel,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	daerse
+BW(herv,overig)	559	ADV(type=resumptive,inflection=other)	[8]	so, zo, soe
+BW(herv,zonder)	550	ADV(type=resumptive,inflection=0)	[4986]	Zo, Zoe, sou, soo, so
+BW(herv,zonder)+BW(neg,zonder)	550+560	ADV(type=resumptive,inflection=0)+ADV(type=negative,inflection=0)	[2]	sone, soen
+BW(herv,zonder)+VNW(pers,3,ev)	550+403	ADV(type=resumptive,inflection=0)+PD(type=pers,person=3,number=sg)	[3]	soet
+BW(neg,met-n)	564	ADV(type=negative,inflection=n)	[1]	malc⊔anderen
+BW(neg,overig)	569	ADV(type=negative,inflection=other)	[5]	nyet, en, niet
+BW(neg,zonder)	560	ADV(type=negative,inflection=0)	[3981]	nijet, niete, in, niit, nemmer
+BW(neg,zonder)+BW(neg,zonder)	560+560	ADV(type=negative,inflection=0)+ADV(type=negative,inflection=0)	[8]	nine, niene, nien
+BW(neg,zonder)+LID(onbep,zonder)	560+480	ADV(type=negative,inflection=0)+PD(type=art,subtype=indef,inflection=0)	[1]	nien
+BW(neg,zonder)+WW(hoofd,pv,verl,met-n)	560+224	ADV(type=negative,inflection=0)+VRB(type=main,finiteness=finite,tense=past,inflection=n)	[5]	engouden
+BW(onbep,met-r-of-re)	545	ADV(type=indef,inflection=r/re)	[3]	erghent
+BW(onbep,zonder)	540	ADV(type=indef,inflection=0)	[424]	nyges, nerghent, war, so, anders⊔waer
+BW(onbep,zonder)+VNW(pers,3,ev)	540+403	ADV(type=indef,inflection=0)+PD(type=pers,person=3,number=sg)	[8]	waert, wairt
+BW(vrag,overig)	539	ADV(type=int,inflection=other)	[1]	war
+BW(vrag,zonder)	530	ADV(type=int,inflection=0)	[292]	hoe, wi, ho, woir, Waer
+BW(vrag,zonder)+BW(alg,zonder)	530+500	ADV(type=int,inflection=0)+ADV(type=general,inflection=0)	[1]	wieuele
+BW(vrag,zonder)+VNW(aanw,met-s-of-th)	530+412	ADV(type=int,inflection=0)+PD(type=dem,inflection=s/th)	[3]	wors, wores, wanneers
+BW(vrag,zonder)+VNW(aanw,zonder)	530+410	ADV(type=int,inflection=0)+PD(type=dem,inflection=0)	[1]	wart
+BW(vrag,zonder)+VNW(pers,3,ev)	530+403	ADV(type=int,inflection=0)+PD(type=pers,person=3,number=sg)	[20]	waert, hoet, wijt, waerd
+LID(bep,met-e)	471	PD(type=art,subtype=def,inflection=e)	[18497]	Die, dye, tie, dee, dien
+LID(bep,met-e)+ADJ(ev,met-e)	471+101	PD(type=art,subtype=def,inflection=e)+ADJ(number=sg,inflection=e)	[4]	tvoorseide, tvorseide, dieuorseide
+LID(bep,met-e)+ADJ(ev,met-n)	471+104	PD(type=art,subtype=def,inflection=e)+ADJ(number=sg,inflection=n)	[1]	deuorseiden
+LID(bep,met-e)+N(eigen,met-e)	471+021	PD(type=art,subtype=def,inflection=e)+NOU(type=proper,inflection=e)	[7]	Degreve, derechtre, Desuetere, Desutere
+LID(bep,met-e)+N(eigen,zonder)	471+020	PD(type=art,subtype=def,inflection=e)+NOU(type=proper,inflection=0)	[2]	dmersen, Dekoudenber
+LID(bep,met-e)+N(soort,ev,zonder)	471+000	PD(type=art,subtype=def,inflection=e)+NOU(type=common,number=sg,inflection=0)	[2]	dweder⊔ghedeel, deport
+LID(bep,met-e)+N(soort,mv,met-e)	471+011	PD(type=art,subtype=def,inflection=e)+NOU(type=common,number=pl,inflection=e)	[1]	deede
+LID(bep,met-e)+VNW(aanw,met-e)	471+411	PD(type=art,subtype=def,inflection=e)+PD(type=dem,inflection=e)	[48]	dieselue, dieghene, dezelue, de↩ghene, deghene
+LID(bep,met-e)+VNW(aanw,met-n)	471+414	PD(type=art,subtype=def,inflection=e)+PD(type=dem,inflection=n)	[1]	deghenen
+LID(bep,met-e)+VNW(betr,met-e)	471+421	PD(type=art,subtype=def,inflection=e)+PD(type=rel,inflection=e)	[61]	Dewelke, De↩welke, dat⊔welke, dewelcke, dewelke
+LID(bep,met-e)+VNW(betr,met-n)	471+424	PD(type=art,subtype=def,inflection=e)+PD(type=rel,inflection=n)	[1]	dewelken
+LID(bep,met-e)+VNW(bez,met-e)	471+451	PD(type=art,subtype=def,inflection=e)+PD(type=poss,inflection=e)	[1]	donse
+LID(bep,met-n)	474	PD(type=art,subtype=def,inflection=n)	[20685]	deren, Den, deen, Dien, deenen
+LID(bep,met-n)+ADJ(ev,met-n)	474+104	PD(type=art,subtype=def,inflection=n)+ADJ(number=sg,inflection=n)	[3]	denuorseiden
+LID(bep,met-n)+N(eigen,met-n)	474+024	PD(type=art,subtype=def,inflection=n)+NOU(type=proper,inflection=n)	[2]	den⊔Vroliken, dentommen
+LID(bep,met-n)+N(soort,mv,met-e)	474+011	PD(type=art,subtype=def,inflection=n)+NOU(type=common,number=pl,inflection=e)	[1]	dingelage
+LID(bep,met-n)+VNW(aanw,met-n)	474+414	PD(type=art,subtype=def,inflection=n)+PD(type=dem,inflection=n)	[41]	denghenen, denzeluen, denselven, denseluen, dengenen
+LID(bep,met-n)+VNW(betr,met-n)	474+424	PD(type=art,subtype=def,inflection=n)+PD(type=rel,inflection=n)	[1]	den⊔welcken
+LID(bep,met-r-of-re)	475	PD(type=art,subtype=def,inflection=r/re)	[13998]	dijr, deer, tier, Der, ter
+LID(bep,met-r-of-re)+ADJ(ev,met-r-of-re)	475+105	PD(type=art,subtype=def,inflection=r/re)+ADJ(number=sg,inflection=r/re)	[2]	dervoernoemder, derredeliker
+LID(bep,met-r-of-re)+N(eigen,met-e)	475+021	PD(type=art,subtype=def,inflection=r/re)+NOU(type=proper,inflection=e)	[3]	dermeere, reaghe, derbeike
+LID(bep,met-r-of-re)+N(eigen,met-n)	475+024	PD(type=art,subtype=def,inflection=r/re)+NOU(type=proper,inflection=n)	[1]	derhaghen
+LID(bep,met-r-of-re)+N(eigen,zonder)	475+020	PD(type=art,subtype=def,inflection=r/re)+NOU(type=proper,inflection=0)	[2]	dernoet, derflechter
+LID(bep,met-r-of-re)+N(soort,ev,met-e)	475+001	PD(type=art,subtype=def,inflection=r/re)+NOU(type=common,number=sg,inflection=e)	[3]	derwile, dersteide, derwedewe
+LID(bep,met-r-of-re)+N(soort,ev,met-n)	475+004	PD(type=art,subtype=def,inflection=r/re)+NOU(type=common,number=sg,inflection=n)	[2]	derhaghen, derhulpen
+LID(bep,met-r-of-re)+N(soort,ev,zonder)	475+000	PD(type=art,subtype=def,inflection=r/re)+NOU(type=common,number=sg,inflection=0)	[4]	der
+LID(bep,met-r-of-re)+VNW(aanw,met-e)	475+411	PD(type=art,subtype=def,inflection=r/re)+PD(type=dem,inflection=e)	[1]	derghene
+LID(bep,met-r-of-re)+VNW(aanw,met-r-of-re)	475+415	PD(type=art,subtype=def,inflection=r/re)+PD(type=dem,inflection=r/re)	[5]	derseluer, dergherre
+LID(bep,met-r-of-re)+VNW(aanw,overig)	475+419	PD(type=art,subtype=def,inflection=r/re)+PD(type=dem,inflection=other)	[1]	derseluer
+LID(bep,met-r-of-re)+VNW(betr,met-e)	475+421	PD(type=art,subtype=def,inflection=r/re)+PD(type=rel,inflection=e)	[1]	derwelke
+LID(bep,met-s-of-th)	472	PD(type=art,subtype=def,inflection=s/th)	[4774]	des, das, ts, Dez, dies
+LID(bep,met-s-of-th)+ADJ(ev,met-e)	472+101	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=e)	[11]	tsvorseide, svorseide, sionghe
+LID(bep,met-s-of-th)+ADJ(ev,met-n)	472+104	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=n)	[15]	tshouden, sionghen, svorseiden, sriken, tsanderen
+LID(bep,met-s-of-th)+ADJ(ev,met-s-of-th)	472+102	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=s/th)	[53]	tsuorseids, sforseits, tsvorseids, tsuorseits, sfoerseits
+LID(bep,met-s-of-th)+ADJ(ev,met-s-of-th)+N(soort,ev,met-s-of-th)	472+102+002	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[3]	tsheylichsgeests, sheylichs⊔ghees
+LID(bep,met-s-of-th)+ADJ(ev,met-s-of-th)+N(soort,ev,zonder)+N(soort,ev,zonder)	472+102+000+000	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=0)+NOU(type=common,number=sg,inflection=0)	[1]	tsheylichsgeestmeester
+LID(bep,met-s-of-th)+ADJ(ev,overig)	472+109	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=other)	[8]	svorseide, svoorseide, sforseide, sfors
+LID(bep,met-s-of-th)+ADJ(ev,zonder)	472+100	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=0)	[4]	theylech, tshelich, svorseit, tsvorseit
+LID(bep,met-s-of-th)+ADJ(ev,zonder)+N(soort,ev,met-s-of-th)	472+100+002	PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[6]	tsheylechgheests, Sanderdachs, Tseylegheests, tsanderdaechs, sheyligheests
+LID(bep,met-s-of-th)+N(eigen,met-e)	472+021	PD(type=art,subtype=def,inflection=s/th)+NOU(type=proper,inflection=e)	[13]	tsheren⊔strate, skeghelaren⊔dreue, serbeeids⊔wegh, sroesers⊔hoeue, skoele⊔heide
+LID(bep,met-s-of-th)+N(eigen,met-n)	472+024	PD(type=art,subtype=def,inflection=s/th)+NOU(type=proper,inflection=n)	[70]	spapen, skranen, sbrunen, squaden, tshasen
+LID(bep,met-s-of-th)+N(eigen,met-r-of-re)	472+025	PD(type=art,subtype=def,inflection=s/th)+NOU(type=proper,inflection=r/re)	[1]	slanghen
+LID(bep,met-s-of-th)+N(eigen,met-s-of-th)	472+022	PD(type=art,subtype=def,inflection=s/th)+NOU(type=proper,inflection=s/th)	[121]	Svlemincs, sionx, shamers, svos, tsbrieders
+LID(bep,met-s-of-th)+N(eigen,zonder)	472+020	PD(type=art,subtype=def,inflection=s/th)+NOU(type=proper,inflection=0)	[21]	sfriendaech, skeysers, sconincxs, sbrunenlant, tstlieuers
+LID(bep,met-s-of-th)+N(soort,ev,met-e)	472+001	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=e)	[24]	shere, Shere, tshere, tshertoghe, tspeilsers
+LID(bep,met-s-of-th)+N(soort,ev,met-n)	472+004	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=n)	[339]	spapen, sertoghen, sheren, Sheren, tsioncheren
+LID(bep,met-s-of-th)+N(soort,ev,met-n)+N(soort,ev,zonder)	472+004+000	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=n)+NOU(type=common,number=sg,inflection=0)	[1]	tsgrauenheerwech
+LID(bep,met-s-of-th)+N(soort,ev,met-s-of-th)	472+002	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[3065]	smesters, tsmesmakers, tsdonresdaghes, Sbysscops, tsaterdaechs
+LID(bep,met-s-of-th)+N(soort,ev,met-s-of-th)+N(soort,ev,met-e)	472+002+001	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=e)	[1]	tsconinx⊔brucghe
+LID(bep,met-s-of-th)+N(soort,ev,met-s-of-th)+N(soort,ev,zonder)	472+002+000	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[1]	sroesers⊔dijc
+LID(bep,met-s-of-th)+N(soort,ev,met-t)	472+003	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=t)	[1]	tsclerx
+LID(bep,met-s-of-th)+N(soort,ev,overig)	472+009	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=other)	[4]	tsdinxdaghes, siaers, tscouents
+LID(bep,met-s-of-th)+N(soort,ev,zonder)	472+000	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[263]	sfriendaech, tsaeterdaegh, ser, tseeghen, cher
+LID(bep,met-s-of-th)+N(soort,ev,zonder)+N(eigen,met-s-of-th)	472+000+022	PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=0)+NOU(type=proper,inflection=s/th)	[2]	serwillems, tserdamans
+LID(bep,met-s-of-th)+TW(rang,met-s-of-th)	472+312	PD(type=art,subtype=def,inflection=s/th)+NUM(type=ordinal,inflection=s/th)	[1]	zeyrstes
+LID(bep,met-s-of-th)+TW(rang,zonder)+N(soort,ev,met-s-of-th)	472+310+002	PD(type=art,subtype=def,inflection=s/th)+NUM(type=ordinal,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[1]	sderdags
+LID(bep,met-s-of-th)+VNW(aanw,met-e)	472+411	PD(type=art,subtype=def,inflection=s/th)+PD(type=dem,inflection=e)	[1]	schens
+LID(bep,met-s-of-th)+VNW(aanw,met-n)	472+414	PD(type=art,subtype=def,inflection=s/th)+PD(type=dem,inflection=n)	[1]	desghenen
+LID(bep,met-s-of-th)+VNW(aanw,met-s-of-th)	472+412	PD(type=art,subtype=def,inflection=s/th)+PD(type=dem,inflection=s/th)	[12]	tsgheens, sgheens, tsghuens, sghoens, scgheens
+LID(bep,overig)	479	PD(type=art,subtype=def,inflection=other)	[142]	des, de?, der, dien, dat
+LID(bep,overig)+ADJ(ev,met-e)	479+101	PD(type=art,subtype=def,inflection=other)+ADJ(number=sg,inflection=e)	[1]	dende
+LID(bep,overig)+N(eigen,overig)	479+029	PD(type=art,subtype=def,inflection=other)+NOU(type=proper,inflection=other)	[1]	tstratelinc
+LID(bep,overig)+N(soort,ev,overig)	479+009	PD(type=art,subtype=def,inflection=other)+NOU(type=common,number=sg,inflection=other)	[5]	tsheren, tsonnendaghes, siaers, sere
+LID(bep,overig)+N(soort,ev,zonder)	479+000	PD(type=art,subtype=def,inflection=other)+NOU(type=common,number=sg,inflection=0)	[1]	sher
+LID(bep,overig)+SPEC(overig)	479+909	PD(type=art,subtype=def,inflection=other)+RES(type=other,inflection=other)	[1]	tseghelen
+LID(bep,overig)+VNW(aanw,overig)	479+419	PD(type=art,subtype=def,inflection=other)+PD(type=dem,inflection=other)	[2]	deghene, dergheenre
+LID(bep,zonder)	470	PD(type=art,subtype=def,inflection=0)	[1789]	det, dy, dad, tselue, danscoe
+LID(bep,zonder)+ADJ(ev,met-e)	470+101	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=e)	[641]	tvoerghenoemde, dmeeste, theylighe, tforseide, toude
+LID(bep,zonder)+ADJ(ev,met-n)	470+104	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=n)	[14]	touden, tvoirseiden, tforseiden, douden, dandren
+LID(bep,zonder)+ADJ(ev,met-r-of-re)	470+105	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=r/re)	[9]	tvorseider, douder, touder, danderer
+LID(bep,zonder)+ADJ(ev,met-s-of-th)	470+102	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=s/th)	[12]	tghemeins, tvorseits, theylechs, they↩lechs, tghemeyns
+LID(bep,zonder)+ADJ(ev,overig)	470+109	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=other)	[20]	dvorseid, tvorseide, tfors, tvoerseide, danderre
+LID(bep,zonder)+ADJ(ev,zonder)	470+100	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=0)	[879]	dan↩der, tghemeyn, tander, tdander, tgemeen
+LID(bep,zonder)+ADJ(ev,zonder)+N(soort,ev,met-e)	470+100+001	PD(type=art,subtype=def,inflection=0)+ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=e)	[1]	danderside
+LID(bep,zonder)+LID(onbep,met-e)	470+481	PD(type=art,subtype=def,inflection=0)+PD(type=art,subtype=indef,inflection=e)	[313]	Deene, Dene, diene, deene, dene
+LID(bep,zonder)+LID(onbep,met-t)	470+483	PD(type=art,subtype=def,inflection=0)+PD(type=art,subtype=indef,inflection=t)	[1]	deenre
+LID(bep,zonder)+LID(onbep,zonder)	470+480	PD(type=art,subtype=def,inflection=0)+PD(type=art,subtype=indef,inflection=0)	[496]	Deen, deen, deyn, theen, teen
+LID(bep,zonder)+N(eigen,met-e)	470+021	PD(type=art,subtype=def,inflection=0)+NOU(type=proper,inflection=e)	[44]	tgoere, dingelsche, toude↩bunre, tommeken, tSomppeke
+LID(bep,zonder)+N(eigen,met-n)	470+024	PD(type=art,subtype=def,inflection=0)+NOU(type=proper,inflection=n)	[2]	Theideken, tstarken
+LID(bep,zonder)+N(eigen,met-s-of-th)	470+022	PD(type=art,subtype=def,inflection=0)+NOU(type=proper,inflection=s/th)	[12]	tcokers, smeerseniers, tfroys, sman↩daechs, tverwers
+LID(bep,zonder)+N(eigen,zonder)	470+020	PD(type=art,subtype=def,inflection=0)+NOU(type=proper,inflection=0)	[56]	Doudelf, triepen↩hallincstraetkin, dellebroec, tnieweland, dinghelscheman
+LID(bep,zonder)+N(soort,ev,met-e)	470+001	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=e)	[134]	dende, dendelduere, ordinanche, touerste, twesthende
+LID(bep,zonder)+N(soort,ev,met-n)	470+004	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=n)	[25]	dbisscoppen, srenten, tstraetken, tfersoeken, sdrossaten
+LID(bep,zonder)+N(soort,ev,met-s-of-th)	470+002	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[217]	tghasthuus, thoys, dolslaghes, spaeus, tgasthuis
+LID(bep,zonder)+N(soort,ev,overig)	470+009	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=other)	[1]	thambochte
+LID(bep,zonder)+N(soort,ev,zonder)	470+000	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=0)	[736]	dolislagher, tconuent, tmeerredeel, tseggen, djair
+LID(bep,zonder)+N(soort,mv,met-e)	470+011	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=pl,inflection=e)	[13]	douste, deruachtichede, darme, dherfghenote, terfghenote
+LID(bep,zonder)+N(soort,mv,met-n)	470+014	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=pl,inflection=n)	[13]	theren, dbeuelen, deeruen, ordinanchien, doutaren
+LID(bep,zonder)+N(soort,mv,zonder)	470+010	PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=pl,inflection=0)	[1]	doer
+LID(bep,zonder)+SPEC(overig)	470+400	PD(type=art,subtype=def,inflection=0)+U400	[32]	deen
+LID(bep,zonder)+TW(hoofd,zonder)	470+300	PD(type=art,subtype=def,inflection=0)+NUM(type=cardinal,inflection=0)	[3]	dander⊔half, deen
+LID(bep,zonder)+TW(rang,met-e)	470+311	PD(type=art,subtype=def,inflection=0)+NUM(type=ordinal,inflection=e)	[93]	terde, dierste, deerste, deer↩ste, derste
+LID(bep,zonder)+TW(rang,met-n)	470+314	PD(type=art,subtype=def,inflection=0)+NUM(type=ordinal,inflection=n)	[1]	tvierden
+LID(bep,zonder)+TW(rang,zonder)	470+310	PD(type=art,subtype=def,inflection=0)+NUM(type=ordinal,inflection=0)	[4]	tyerst, teerst, tzestienden
+LID(bep,zonder)+VNW(aanw,met-e)	470+411	PD(type=art,subtype=def,inflection=0)+PD(type=dem,inflection=e)	[15]	tselue
+LID(bep,zonder)+VNW(aanw,met-s-of-th)	470+412	PD(type=art,subtype=def,inflection=0)+PD(type=dem,inflection=s/th)	[2]	tghens
+LID(bep,zonder)+VNW(aanw,met-t)	470+413	PD(type=art,subtype=def,inflection=0)+PD(type=dem,inflection=t)	[2]	tgeen, tgheent
+LID(bep,zonder)+VNW(betr,met-e)	470+421	PD(type=art,subtype=def,inflection=0)+PD(type=rel,inflection=e)	[120]	dwelighe, twelcke, Dewelke, Twilke, Dwelke
+LID(bep,zonder)+VNW(betr,met-n)	470+424	PD(type=art,subtype=def,inflection=0)+PD(type=rel,inflection=n)	[1]	dwelken
+LID(bep,zonder)+VNW(betr,zonder)	470+420	PD(type=art,subtype=def,inflection=0)+PD(type=rel,inflection=0)	[18]	Dwelc, twelk, dwelech, dwelc, duelc
+LID(bep,zonder)+VNW(bez,met-e)	470+451	PD(type=art,subtype=def,inflection=0)+PD(type=poss,inflection=e)	[35]	thare, tsine, tmine, dmine, tonse
+LID(bep,zonder)+VNW(bez,zonder)	470+450	PD(type=art,subtype=def,inflection=0)+PD(type=poss,inflection=0)	[1]	tsijn
+LID(bep,zonder)+VNW(onbep,met-e)	470+321	PD(type=art,subtype=def,inflection=0)+NUM(type=indefinite,inflection=e)	[1]	dachterstalle
+LID(bep,zonder)+VNW(onbep,met-r-of-re)+TW(rang,zonder)	470+325+310	PD(type=art,subtype=def,inflection=0)+NUM(type=indefinite,inflection=r/re)+NUM(type=ordinal,inflection=0)	[1]	talreerst
+LID(bep,zonder)+VNW(onbep,zonder)	470+440	PD(type=art,subtype=def,inflection=0)+PD(type=indef,inflection=0)	[1]	tal
+LID(bep,zonder)+VNW(onbep,zonder)	470+320	PD(type=art,subtype=def,inflection=0)+NUM(type=indefinite,inflection=0)	[1]	tal
+LID(bep,zonder)+VNW(pers,1,ev)	470+401	PD(type=art,subtype=def,inflection=0)+PD(type=pers,person=1,number=sg)	[23]	dene, deene
+LID(onbep,met-e)	481	PD(type=art,subtype=indef,inflection=e)	[1531]	Eyne, eenne, eyme, hene, eine
+LID(onbep,met-n)	484	PD(type=art,subtype=indef,inflection=n)	[2788]	einen, jenen, yenen, eenen, eynen
+LID(onbep,met-r-of-re)	485	PD(type=art,subtype=indef,inflection=r/re)	[576]	Eer, ienre, eener, eijnre, erer
+LID(onbep,met-r-of-re)+N(soort,ev,zonder)	485+000	PD(type=art,subtype=indef,inflection=r/re)+NOU(type=common,number=sg,inflection=0)	[1]	eyrehant
+LID(onbep,met-s-of-th)	482	PD(type=art,subtype=indef,inflection=s/th)	[149]	eins, Enes, eyns, ens, eens
+LID(onbep,overig)	489	PD(type=art,subtype=indef,inflection=other)	[28]	eynen, een, eyner, eyn, ene
+LID(onbep,zonder)	480	PD(type=art,subtype=indef,inflection=0)	[4334]	in, En, ein, Eyen, een
+LID(onbep,zonder)+N(soort,ev,met-s-of-th)	480+002	PD(type=art,subtype=indef,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[1]	eyghetugenes
+LID(onbep,zonder)+TW(rang,met-n)	480+314	PD(type=art,subtype=indef,inflection=0)+NUM(type=ordinal,inflection=n)	[1]	entwintichsten
+LID(onbep,zonder)+VG(neven,zonder)	480+800	PD(type=art,subtype=indef,inflection=0)+CON(type=coordinating,inflection=0)	[1]	enen
+LID(onbep,zonder)+VG(neven,zonder)+TW(hoofd,zonder)	480+800+300	PD(type=art,subtype=indef,inflection=0)+CON(type=coordinating,inflection=0)+NUM(type=cardinal,inflection=0)	[5]	enentwintich, enentwintech, Eenenzistich, enentachtentech, Enentwintich
+LID(onbep,zonder)+VNW(onbep,met-e)	480+441	PD(type=art,subtype=indef,inflection=0)+PD(type=indef,inflection=e)	[1]	enighelike
+LID(onbep,zonder)+VNW(onbep,met-n)	480+444	PD(type=art,subtype=indef,inflection=0)+PD(type=indef,inflection=n)	[12]	ennyegheliken, en⊔yegheliken, enyegheliken, Enyegheliken, enygewelken
+LID(onbep,zonder)+VNW(onbep,met-s-of-th)	480+442	PD(type=art,subtype=indef,inflection=0)+PD(type=indef,inflection=s/th)	[3]	eenyghelijx, enyghelex
+LID(onbep,zonder)+VNW(onbep,zonder)	480+440	PD(type=art,subtype=indef,inflection=0)+PD(type=indef,inflection=0)	[5]	eynyghelic, een⊔yeghelic, enyeghelijc, Enyegelijc
+N(eigen,met-a)	026	NOU(type=proper,inflection=a)	[1]	aghata
+N(eigen,met-e)	021	NOU(type=proper,inflection=e)	[25760]	Enghelberne, hoelbeke, taye, Florense, Boxbrake
+N(eigen,met-e)+N(eigen,met-s-of-th)	021+022	NOU(type=proper,inflection=e)+NOU(type=proper,inflection=s/th)	[1]	hughejans
+N(eigen,met-e)+N(soort,ev,zonder)	021+000	NOU(type=proper,inflection=e)+NOU(type=common,number=sg,inflection=0)	[1]	vrouwen↩dach
+N(eigen,met-n)	024	NOU(type=proper,inflection=n)	[9372]	cammen, zyllen, huben, Hillen, Riquen
+N(eigen,met-n)+N(soort,ev,met-e)	024+001	NOU(type=proper,inflection=n)+NOU(type=common,number=sg,inflection=e)	[1]	katelinen↩houe
+N(eigen,met-r-of-re)	25o	U25o	[1]	sijn
+N(eigen,met-r-of-re)	025	NOU(type=proper,inflection=r/re)	[19]	kinder, lichter, licht⊔messer, ludeker, duefler
+N(eigen,met-s-of-th)	022	NOU(type=proper,inflection=s/th)	[22134]	Kennens, oitgods, gans, littelmans, assen↩tioens
+N(eigen,met-s-of-th)+N(soort,ev,met-e)	022+001	NOU(type=proper,inflection=s/th)+NOU(type=common,number=sg,inflection=e)	[68]	Jhansmesse, baues↩messe, iansmisse, pietersdaghe, bauesdaghe
+N(eigen,met-s-of-th)+N(soort,ev,met-s-of-th)	022+002	NOU(type=proper,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[1]	jansmis
+N(eigen,met-s-of-th)+N(soort,ev,zonder)	022+000	NOU(type=proper,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[2]	bauesdach, janshuus
+N(eigen,met-t)	23	U23	[1]	heuet
+N(eigen,met-t)	023	NOU(type=proper,inflection=t)	[4]	vrint, bent, dellet, zuttert
+N(eigen,overig)	029	NOU(type=proper,inflection=other)	[821]	berroninghen, oextmaent, rolde, alistoc, goessen
+N(eigen,zonder)	020	NOU(type=proper,inflection=0)	[48157]	zuytland, scieveen, Aerscot, gans, gherste⊔maent
+N(eigen,zonder)+N(soort,ev,met-e)	020+001	NOU(type=proper,inflection=0)+NOU(type=common,number=sg,inflection=e)	[75]	bamesse, bausmesse, bamisse, bameesse, Bamisse
+N(eigen,zonder)+N(soort,ev,met-n)	020+004	NOU(type=proper,inflection=0)+NOU(type=common,number=sg,inflection=n)	[1]	bamissen
+N(eigen,zonder)+N(soort,mv,met-n)	020+014	NOU(type=proper,inflection=0)+NOU(type=common,number=pl,inflection=n)	[5]	Bamissen, Ba↩messen, bamissen
+N(soort,ev,met-e)	001	NOU(type=common,number=sg,inflection=e)	[57367]	teen↩ghietere, genechte, gherfnesse, můnde, helftscede
+N(soort,ev,met-e)+N(soort,ev,met-s-of-th)	001+002	NOU(type=common,number=sg,inflection=e)+NOU(type=common,number=sg,inflection=s/th)	[1]	werelants
+N(soort,ev,met-n)	004	NOU(type=common,number=sg,inflection=n)	[22770]	guden, stegen, wariden, jncarnation, Euselken
+N(soort,ev,met-r-of-re)	005	NOU(type=common,number=sg,inflection=r/re)	[81]	kinder, sclatre, zlachter, lombaerder, kemenneder
+N(soort,ev,met-s-of-th)	002	NOU(type=common,number=sg,inflection=s/th)	[16997]	gans, Cortscoofs, gers, ers, torfveens
+N(soort,ev,met-s-of-th)+N(soort,mv,met-s-of-th)	002+012	NOU(type=common,number=sg,inflection=s/th)+NOU(type=common,number=pl,inflection=s/th)	[1]	gheestsmeesters
+N(soort,ev,met-t)	003	NOU(type=common,number=sg,inflection=t)	[2]	horet, kinnessen
+N(soort,ev,overig)	009	NOU(type=common,number=sg,inflection=other)	[634]	helfte, stads, geboerten, mombaers, goetduncken
+N(soort,ev,zonder)	liggen	Uliggen	[1]	ligghen
+N(soort,ev,zonder)	000	NOU(type=common,number=sg,inflection=0)	[61048]	senger, verbeiden, Rait, vrieghen, tebat
+N(soort,ev,zonder)+LID(bep,met-s-of-th)	000+472	NOU(type=common,number=sg,inflection=0)+PD(type=art,subtype=def,inflection=s/th)	[1]	houders
+N(soort,ev,zonder)+N(eigen,met-e)	000+021	NOU(type=common,number=sg,inflection=0)+NOU(type=proper,inflection=e)	[3]	veraechte, sloetmase
+N(soort,ev,zonder)+N(eigen,met-n)	000+024	NOU(type=common,number=sg,inflection=0)+NOU(type=proper,inflection=n)	[4]	verkkatelinen, veraechten, vraechte
+N(soort,ev,zonder)+N(soort,ev,zonder)	zijn+het	Uzijn+Uhet	[1]	werd
+N(soort,ev,zonder)+N(soort,mv,met-n)	000+014	NOU(type=common,number=sg,inflection=0)+NOU(type=common,number=pl,inflection=n)	[1]	geestmeesteren
+N(soort,ev,zonder)+N(soort,mv,met-s-of-th)	000+012	NOU(type=common,number=sg,inflection=0)+NOU(type=common,number=pl,inflection=s/th)	[2]	gheestmeijsters, geestmeysters
+N(soort,ev,zonder)+VNW(aanw,met-s-of-th)	000+412	NOU(type=common,number=sg,inflection=0)+PD(type=dem,inflection=s/th)	[2]	houders, orcon↩des
+N(soort,ev,zonder)+WW(hoofd,part,met-e)	000+271	NOU(type=common,number=sg,inflection=0)+VRB(type=main,finiteness=part,inflection=e)	[2]	hantslaende
+N(soort,mv,met-a)	016	NOU(type=common,number=pl,inflection=a)	[1]	lb
+N(soort,mv,met-e)	011	NOU(type=common,number=pl,inflection=e)	[14763]	tseinse, erf↩ghename, Camme, watere, aneruende
+N(soort,mv,met-e)+BW(neg,zonder)	011+560	NOU(type=common,number=pl,inflection=e)+ADV(type=negative,inflection=0)	[1]	catteilene
+N(soort,mv,met-n)	014	NOU(type=common,number=pl,inflection=n)	[26052]	guden, waerburghen, spraken, bestorften, maeghden
+N(soort,mv,met-r-of-re)	015	NOU(type=common,number=pl,inflection=r/re)	[1268]	erfkinder, haermar, huisarmer, kinder, huusarmeren
+N(soort,mv,met-s-of-th)	012	NOU(type=common,number=pl,inflection=s/th)	[2119]	poorters, ghasthůysmeysters, colcackers, Prouisoers, Ghildebroeders
+N(soort,mv,overig)	019	NOU(type=common,number=pl,inflection=other)	[469]	kersen, scepenen, hellinghen, tresoriers, s
+N(soort,mv,zonder)	010	NOU(type=common,number=pl,inflection=0)	[4757]	Maůder, voder, wiser, boender, dink
+SPEC(met-e)	901	RES(type=other,inflection=e)	[4]	singerre, ghestede, de, deghede
+SPEC(met-n)	904	RES(type=other,inflection=n)	[1]	baptisten
+SPEC(overig)	373	U373	[1]	ghemect
+SPEC(overig)	-	U-	[2]	onter⊔thiit, vader
+SPEC(overig)	400	U400	[1]	al
+SPEC(overig)	775	U775	[1]	der
+SPEC(overig)	2?4	U2?4	[1]	ouer⊔leede
+SPEC(overig)	747	U747	[1]	den
+SPEC(overig)	909	RES(type=other,inflection=other)	[69]	des, s, dinenland, wortantwoerde, onde
+SPEC(overig)	227	U227	[1]	kundighent
+SPEC(overig)	034	U034	[3]	meyen, paesdaghen, Sinxendagen
+SPEC(overig)	999	RES(type=other,inflection=other)	[92]	doch, xx, vo?s, bet?, ziin
+SPEC(overig)	031	U031	[2]	medewintre, paschedaghe
+SPEC(overig)+N(soort,ev,met-e)	770+001	U770+NOU(type=common,number=sg,inflection=e)	[1]	daerde
+SPEC(overig)+N(soort,ev,met-s-of-th)	772+002	U772+NOU(type=common,number=sg,inflection=s/th)	[1]	stemmersmans
+SPEC(overig)+N(soort,ev,zonder)	770+000	U770+NOU(type=common,number=sg,inflection=0)	[1]	tpro↩fit
+SPEC(overig)+N(soort,ev,zonder)	742+000	U742+NOU(type=common,number=sg,inflection=0)	[2]	ser
+SPEC(zonder)	900	RES(type=other,inflection=0)	[1138]	octava, natiutas, e, Sacramenti, Domini
+TW(hoofd,met-e)	301	NUM(type=cardinal,inflection=e)	[8427]	viirtiene, Elleuene, thue, tualeue, tyene
+TW(hoofd,met-e)+N(soort,mv,met-e)	301+011	NUM(type=cardinal,inflection=e)+NOU(type=common,number=pl,inflection=e)	[1]	drieschellinghe
+TW(hoofd,met-e)+N(soort,mv,met-n)	301+014	NUM(type=cardinal,inflection=e)+NOU(type=common,number=pl,inflection=n)	[2]	twemilen, twelinen
+TW(hoofd,met-e)+VG(neven,zonder)+TW(hoofd,met-s-of-th)	301+800+302	NUM(type=cardinal,inflection=e)+CON(type=coordinating,inflection=0)+NUM(type=cardinal,inflection=s/th)	[1]	tweentachtechtes
+TW(hoofd,met-n)	304	NUM(type=cardinal,inflection=n)	[990]	vierde⊔halven, tsestighen, tween, achtienen, viren
+TW(hoofd,met-r-of-re)	305	NUM(type=cardinal,inflection=r/re)	[105]	twigher, tweyer, haluer, dryer, drier
+TW(hoofd,met-s-of-th)	302	NUM(type=cardinal,inflection=s/th)	[7]	twintichs, twintechs, neghentiens, elfs, alfs
+TW(hoofd,overig)	309	NUM(type=cardinal,inflection=other)	[126]	se, vief, tich, s, tachtich
+TW(hoofd,zonder)	300	NUM(type=cardinal,inflection=0)	[20803]	xxvii, uiertech, xiij, du↩sentich, hondart
+TW(hoofd,zonder)+N(eigen,met-e)	300+021	NUM(type=cardinal,inflection=0)+NOU(type=proper,inflection=e)	[2]	halfmerte, halfmaerte
+TW(hoofd,zonder)+N(eigen,zonder)	300+020	NUM(type=cardinal,inflection=0)+NOU(type=proper,inflection=0)	[3]	halfmeye, halfmeert
+TW(hoofd,zonder)+N(soort,ev,met-e)	300+001	NUM(type=cardinal,inflection=0)+NOU(type=common,number=sg,inflection=e)	[7]	halbunre, halboenre, halfbuenre, halbuenre, halfbunre
+TW(hoofd,zonder)+N(soort,ev,zonder)	300+000	NUM(type=cardinal,inflection=0)+NOU(type=common,number=sg,inflection=0)	[2]	sestalpont, halfvijrdendeel
+TW(hoofd,zonder)+N(soort,mv,met-e)	300+011	NUM(type=cardinal,inflection=0)+NOU(type=common,number=pl,inflection=e)	[6]	vifscellinghe, zestienschellinghe, tienscellinghe, visschellinghe, viermuelene
+TW(hoofd,zonder)+N(soort,mv,met-n)	300+014	NUM(type=cardinal,inflection=0)+NOU(type=common,number=pl,inflection=n)	[3]	zesbuenren, twintescellinghen, vierpasdaghen
+TW(hoofd,zonder)+N(soort,mv,zonder)	300+010	NUM(type=cardinal,inflection=0)+NOU(type=common,number=pl,inflection=0)	[3]	dripont, tienpont, vijftienpont
+TW(hoofd,zonder)+VG(neven,zonder)	300+800	NUM(type=cardinal,inflection=0)+CON(type=coordinating,inflection=0)	[12]	Tweende, seuende, zessen, viuende, sessen
+TW(hoofd,zonder)+VG(neven,zonder)+TW(hoofd,zonder)	300+800+300	NUM(type=cardinal,inflection=0)+CON(type=coordinating,inflection=0)+NUM(type=cardinal,inflection=0)	[19]	sessentwintechsten, viuentwin↩tich, viventsestich, tweenviertech, viuentwintich
+TW(hoofd,zonder)+VG(neven,zonder)+TW(rang,met-e)	300+800+311	NUM(type=cardinal,inflection=0)+CON(type=coordinating,inflection=0)+NUM(type=ordinal,inflection=e)	[3]	drientwintechsten, viuentwintichsten
+TW(hoofd,zonder)+VG(neven,zonder)+TW(rang,met-n)	300+800+314	NUM(type=cardinal,inflection=0)+CON(type=coordinating,inflection=0)+NUM(type=ordinal,inflection=n)	[3]	tuentuintechsten, tweentwintichsten, viuentwintechsten
+TW(overig)	399	NUM(type=other,inflection=other)	[1]	xx
+TW(rang,met-e)	311	NUM(type=ordinal,inflection=e)	[397]	tweendedertichste, derdere, erste, dertyende, Elftende
+TW(rang,met-n)	314	NUM(type=ordinal,inflection=n)	[1391]	achtiensten, elleuensten, xiiij⊔sten, twelfden, xxiijten
+TW(rang,met-r-of-re)	315	NUM(type=ordinal,inflection=r/re)	[101]	vierder, vijrder, twelfder, sester, Eerster
+TW(rang,met-s-of-th)	312	NUM(type=ordinal,inflection=s/th)	[21]	sevendes, derdes, achtteendes, Twyntichstes, vijfdes
+TW(rang,overig)	319	NUM(type=ordinal,inflection=other)	[13]	twiintichden, vichtiensten, acht, vierde, eersten
+TW(rang,zonder)	310	NUM(type=ordinal,inflection=0)	[188]	xiij, xxvjsten, Elft, twiintichden, viij
+VG(expl,zonder)	840	CON(type=explicative,inflection=0)	[247]	dane, dan, Dan, danne, den
+VG(expl,zonder)+VNW(betr,zonder)	840+420	CON(type=explicative,inflection=0)+PD(type=rel,inflection=0)	[1]	dan
+VG(expl,zonder)+VNW(pers,3,ev)	840+403	CON(type=explicative,inflection=0)+PD(type=pers,person=3,number=sg)	[2]	dant
+VG(kwal,overig)	869	CON(type=quality,inflection=other)	[1]	als
+VG(kwal,zonder)	860	CON(type=quality,inflection=0)	[2559]	als, al↩se, hals, aes, alsse
+VG(neg,met-e)	831	CON(type=negative,inflection=e)	[30]	enware, en⊔ware, het⊔enware, etenware, En⊔ware
+VG(neg,met-n)	834	CON(type=negative,inflection=n)	[1]	ne⊔weren
+VG(neg,zonder)	830	CON(type=negative,inflection=0)	[4]	en⊔weer, ne⊔waer, en⊔waer, ne⊔war
+VG(neven,met-e)	801	CON(type=coordinating,inflection=e)	[2]	naer⊔dat, oechte
+VG(neven,overig)	809	CON(type=coordinating,inflection=other)	[156]	mer, ende, vnde, maer, et
+VG(neven,zonder)	800	CON(type=coordinating,inflection=0)	[78292]	jof⊔te, e, oghte, Maere, iofte
+VG(neven,zonder)+BW(aanw,zonder)	800+510	CON(type=coordinating,inflection=0)+ADV(type=dem,inflection=0)	[1]	ofter⊔buten
+VG(neven,zonder)+LID(bep,met-e)	800+471	CON(type=coordinating,inflection=0)+PD(type=art,subtype=def,inflection=e)	[44]	ente, ende, entie, ofte, Ente
+VG(neven,zonder)+LID(bep,met-n)	800+474	CON(type=coordinating,inflection=0)+PD(type=art,subtype=def,inflection=n)	[24]	often, enten, ochten, enden
+VG(neven,zonder)+LID(bep,met-r-of-re)	800+475	CON(type=coordinating,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[36]	Ender, ender, Enter, enter
+VG(neven,zonder)+LID(bep,met-s-of-th)	800+472	CON(type=coordinating,inflection=0)+PD(type=art,subtype=def,inflection=s/th)	[2]	entes
+VG(neven,zonder)+LID(bep,zonder)	800+470	CON(type=coordinating,inflection=0)+PD(type=art,subtype=def,inflection=0)	[7]	ent, enent, oft
+VG(neven,zonder)+N(eigen,zonder)	800+020	CON(type=coordinating,inflection=0)+NOU(type=proper,inflection=0)	[1]	ewouter
+VG(neven,zonder)+TW(hoofd,zonder)	800+300	CON(type=coordinating,inflection=0)+NUM(type=cardinal,inflection=0)	[67]	enweertech, enneghentich, entsestech, enderthtech, endertich
+VG(neven,zonder)+TW(rang,met-n)	800+314	CON(type=coordinating,inflection=0)+NUM(type=ordinal,inflection=n)	[5]	vierentwintechsten, entwintechsten, entwintechten, entwintichsten
+VG(neven,zonder)+VNW(aanw,met-s-of-th)	800+412	CON(type=coordinating,inflection=0)+PD(type=dem,inflection=s/th)	[2]	ofs, Ents
+VG(neven,zonder)+VNW(pers,3,ev)	800+403	CON(type=coordinating,inflection=0)+PD(type=pers,person=3,number=sg)	[35]	ent, Oft, ente, endet, Endet
+VG(neven,zonder)+VNW(pers,3,mv)	800+406	CON(type=coordinating,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	ochten
+VG(neven,zonder)+VZ(zonder)	800+700	CON(type=coordinating,inflection=0)+ADP(type=general,inflection=0)	[30]	ente, ofte, ochtot
+VG(neven,zonder)+VZ(zonder)+LID(bep,met-r-of-re)	800+700+475	CON(type=coordinating,inflection=0)+ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[1]	enter
+VG(onder,met-e)	811	CON(type=subordinating,inflection=e)	[1]	alse
+VG(onder,met-n)	814	CON(type=subordinating,inflection=n)	[1]	vrou↩wen
+VG(onder,overig)	819	CON(type=subordinating,inflection=other)	[31]	als, want, dat, doe, alse
+VG(onder,overig)+VNW(overig)	819+409	CON(type=subordinating,inflection=other)+PD(type=pers,other)	[2]	alst, alse
+VG(onder,zonder)	810	CON(type=subordinating,inflection=0)	[20956]	etsie, Op⊔dat, waeneer, Eer, to⊔dat
+VG(onder,zonder)+BW(aanw,zonder)	810+510	CON(type=subordinating,inflection=0)+ADV(type=dem,inflection=0)	[13]	alsser⊔op, datter⊔toe, alser⊔af, datter⊔op, na⊔datteraf
+VG(onder,zonder)+BW(adv-pron,aanw,met-r-of-re)	810+615	CON(type=subordinating,inflection=0)+ADV(advType=pronominal,type=dem,inflection=r/re)	[1]	alser
+VG(onder,zonder)+BW(adv-pron,alg,met-r-of-re)	810+605	CON(type=subordinating,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[70]	alsser, alser, op⊔datter, dattere, soe⊔datter
+VG(onder,zonder)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	810+605	CON(type=subordinating,inflection=0,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[2]	op⊔datter, datter
+VG(onder,zonder)+BW(alg,met-r-of-re)	810+505	CON(type=subordinating,inflection=0)+ADV(type=general,inflection=r/re)	[1]	datter
+VG(onder,zonder)+BW(alg,zonder)	810+500	CON(type=subordinating,inflection=0)+ADV(type=general,inflection=0)	[48]	alsser, alser, op⊔datter, dattere, datter
+VG(onder,zonder)+LID(bep,met-e)	810+471	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=e)	[8]	dattie, alse
+VG(onder,zonder)+LID(bep,met-n)	810+474	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=n)	[6]	datten, Datten
+VG(onder,zonder)+LID(bep,met-r-of-re)	810+475	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[3]	datter
+VG(onder,zonder)+LID(bep,met-s-of-th)	810+472	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=s/th)	[2]	dats
+VG(onder,zonder)+LID(bep,zonder)	810+470	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=0)	[28]	dat, alst, dattet, alzet
+VG(onder,zonder)+LID(bep,zonder)+N(soort,ev,met-s-of-th)	810+470+002	CON(type=subordinating,inflection=0)+PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[1]	alsteenhuus
+VG(onder,zonder)+VNW(aanw,met-s-of-th)	810+412	CON(type=subordinating,inflection=0)+PD(type=dem,inflection=s/th)	[26]	Om⊔dats, om⊔dats, ofts, wants, Ofts
+VG(onder,zonder)+VNW(aanw,met-t)	810+413	CON(type=subordinating,inflection=0)+PD(type=dem,inflection=t)	[1]	dattet
+VG(onder,zonder)+VNW(aanw,zonder)	810+410	CON(type=subordinating,inflection=0)+PD(type=dem,inflection=0)	[2]	dat, datti
+VG(onder,zonder)+VNW(betr,met-s-of-th)	810+422	CON(type=subordinating,inflection=0)+PD(type=rel,inflection=s/th)	[2]	op⊔dats
+VG(onder,zonder)+VNW(bez,met-e)	810+451	CON(type=subordinating,inflection=0)+PD(type=poss,inflection=e)	[1]	datsine
+VG(onder,zonder)+VNW(bez,zonder)	810+450	CON(type=subordinating,inflection=0)+PD(type=poss,inflection=0)	[1]	datsin
+VG(onder,zonder)+VNW(onbep,zonder)	810+440	CON(type=subordinating,inflection=0)+PD(type=indef,inflection=0)	[76]	datmen, almer, alstment, alsemen, alsmen
+VG(onder,zonder)+VNW(onbep,zonder)+VNW(pers,3,mv)	810+440+406	CON(type=subordinating,inflection=0)+PD(type=indef,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	almensen
+VG(onder,zonder)+VNW(pers,1,ev)	810+401	CON(type=subordinating,inflection=0)+PD(type=pers,person=1,number=sg)	[1]	dattic
+VG(onder,zonder)+VNW(pers,3,ev)	810+403	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=sg)	[814]	dathi, alsoe, datsoe, wantet, op⊔dattet
+VG(onder,zonder)+VNW(pers,3,ev)+VNW(pers,3,ev)	810+403+403	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=sg)+PD(type=pers,person=3,number=sg)	[1]	alsijt
+VG(onder,zonder)+VNW(pers,3,mv)	810+406	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=pl)	[122]	Jofer, alssi, al⊔sij, alsy, om⊔datter
+VG(onder,zonder)+VNW(pers,3,mv)+BW(aanw,zonder)	810+406+510	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=pl)+ADV(type=dem,inflection=0)	[1]	alsire⊔omme
+VG(onder,zonder)+VNW(pers,3,mv)+VNW(aanw,met-s-of-th)	810+406+412	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=pl)+PD(type=dem,inflection=s/th)	[2]	alsijs
+VG(onder,zonder)+VNW(pers,3,mv)+VNW(pers,3,ev)	810+406+403	CON(type=subordinating,inflection=0)+PD(type=pers,person=3,number=pl)+PD(type=pers,person=3,number=sg)	[1]	al⊔zijs
+VG(verg,overig)	829	CON(type=comparison,inflection=other)	[1]	gelijc
+VG(verg,zonder)	820	CON(type=comparison,inflection=0)	[431]	ghelijc, Gheliic, geliic, gheliich, ghelijclic
+VG(verg,zonder)+VNW(pers,3,mv)	820+406	CON(type=comparison,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	ghelijcse
+VNW(aanw,met-e)	411	PD(type=dem,inflection=e)	[7236]	zosulke, Die, desen, deenre, alsoelke
+VNW(aanw,met-e)+ADJ(ev,met-e)	411+101	PD(type=dem,inflection=e)+ADJ(number=sg,inflection=e)	[4]	deseuorseide, dierghelijcke
+VNW(aanw,met-n)	414	PD(type=dem,inflection=n)	[8105]	al⊔zelken, desen, alsolighen, dusdanighen, alsoliken
+VNW(aanw,met-r-of-re)	415	PD(type=dem,inflection=r/re)	[1848]	alsoe⊔sulker, gherre, dijr, diser, alsuelker
+VNW(aanw,met-r-of-re)+ADJ(ev,met-e)	415+101	PD(type=dem,inflection=r/re)+ADJ(number=sg,inflection=e)	[1]	dierghelike
+VNW(aanw,met-s-of-th)	412	PD(type=dem,inflection=s/th)	[1185]	Dies, des, zulx, selues, zelues
+VNW(aanw,met-s-of-th)+N(soort,ev,met-n)	412+004	PD(type=dem,inflection=s/th)+NOU(type=common,number=sg,inflection=n)	[1]	tsgylden
+VNW(aanw,overig)	419	PD(type=dem,inflection=other)	[57]	desen, des, selues, dit, deser
+VNW(aanw,zonder)	410	PD(type=dem,inflection=0)	[5279]	DJt, ghen, zulc, al⊔zulc, alzelc
+VNW(aanw,zonder)+ADJ(ev,met-e)	410+101	PD(type=dem,inflection=0)+ADJ(number=sg,inflection=e)	[1]	dituorseide
+VNW(aanw,zonder)+BW(aanw,zonder)	410+510	PD(type=dem,inflection=0)+ADV(type=dem,inflection=0)	[1]	dier⊔in
+VNW(aanw,zonder)+N(eigen,zonder)	410+020	PD(type=dem,inflection=0)+NOU(type=proper,inflection=0)	[1]	twouter
+VNW(aanw,zonder)+N(soort,ev,met-e)	410+001	PD(type=dem,inflection=0)+NOU(type=common,number=sg,inflection=e)	[1]	disside
+VNW(aanw,zonder)+VNW(aanw,met-s-of-th)	410+412	PD(type=dem,inflection=0)+PD(type=dem,inflection=s/th)	[6]	dats
+VNW(aanw,zonder)+VNW(pers,3,mv)	410+406	PD(type=dem,inflection=0)+PD(type=pers,person=3,number=pl)	[1]	datse
+VNW(aanw,zonder)+WW(hoofd,part,met-t)	410+273	PD(type=dem,inflection=0)+VRB(type=main,finiteness=part,inflection=t)	[1]	tghewiset
+VNW(aanw,zonder)+WW(hoofd,pv,tgw,met-e)	410+201	PD(type=dem,inflection=0)+VRB(type=main,finiteness=finite,tense=present,inflection=e)	[2]	tgoede
+VNW(aanw,zonder)+WW(hoofd,pv,tgw,zonder)+VZ(zonder)	410+200+700	PD(type=dem,inflection=0)+VRB(type=main,finiteness=finite,tense=present,inflection=0)+ADP(type=general,inflection=0)	[5]	datste, Datste
+VNW(aanw,zonder)+WW(hulp-of-koppel,pv,tgw,zonder)	410+210	PD(type=dem,inflection=0)+VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	[392]	wats, dits, Dits, dasts, datz
+VNW(betr,met-e)	421	PD(type=rel,inflection=e)	[9310]	weleghe, Die, welige, dye, willege
+VNW(betr,met-e)+BW(aanw,zonder)	421+510	PD(type=rel,inflection=e)+ADV(type=dem,inflection=0)	[147]	diere⊔wt, dier⊔tusschen, diere⊔jeghe, diere⊔mede, diere⊔Op
+VNW(betr,met-e)+BW(aanw,zonder,hoofddeel-bw)	421+510	PD(type=rel,inflection=e,part=with-particle)+ADV(type=dem,inflection=0,part=with-particle)	[1]	diere⊔op
+VNW(betr,met-e)+BW(adv-pron,alg,met-r-of-re)	421+605	PD(type=rel,inflection=e)+ADV(advType=pronominal,type=general,inflection=r/re)	[134]	diere, dier, dierre
+VNW(betr,met-e)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	421+605	PD(type=rel,inflection=e,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[5]	diere, dier
+VNW(betr,met-e)+BW(alg,zonder)	421+500	PD(type=rel,inflection=e)+ADV(type=general,inflection=0)	[15]	dier, diere
+VNW(betr,met-e)+LID(bep,zonder)	421+470	PD(type=rel,inflection=e)+PD(type=art,subtype=def,inflection=0)	[10]	diet
+VNW(betr,met-e)+N(soort,ev,zonder)+BW(aanw,zonder)	421++510	PD(type=rel,inflection=e)+U+ADV(type=dem,inflection=0)	[1]	diere⊔toe
+VNW(betr,met-e)+VNW(aanw,met-s-of-th)	421+412	PD(type=rel,inflection=e)+PD(type=dem,inflection=s/th)	[48]	dies, dyes, dees, dijs
+VNW(betr,met-e)+VNW(aanw,zonder)	421+410	PD(type=rel,inflection=e)+PD(type=dem,inflection=0)	[4]	diet
+VNW(betr,met-e)+VNW(onbep,zonder)	421+440	PD(type=rel,inflection=e)+PD(type=indef,inflection=0)	[13]	diemen
+VNW(betr,met-e)+VNW(pers,3,ev)	421+403	PD(type=rel,inflection=e)+PD(type=pers,person=3,number=sg)	[31]	diehi, diet, diese, Diet, dyet
+VNW(betr,met-e)+VNW(pers,3,mv)	421+406	PD(type=rel,inflection=e)+PD(type=pers,person=3,number=pl)	[1]	diese
+VNW(betr,met-n)	424	PD(type=rel,inflection=n)	[952]	Willegen, wolken, winen, Wilgen, deen
+VNW(betr,met-n)+BW(aanw,zonder)	424+510	PD(type=rel,inflection=n)+ADV(type=dem,inflection=0)	[1]	denre⊔af
+VNW(betr,met-n)+VNW(pers,3,ev)	424+403	PD(type=rel,inflection=n)+PD(type=pers,person=3,number=sg)	[3]	dient, wient, diint
+VNW(betr,met-r-of-re)	425	PD(type=rel,inflection=r/re)	[269]	diert, williker, deer, wilcire, wilger
+VNW(betr,met-r-of-re)+BW(aanw,zonder)	425+510	PD(type=rel,inflection=r/re)+ADV(type=dem,inflection=0)	[4]	dier⊔op
+VNW(betr,met-r-of-re)+BW(aanw,zonder,hoofddeel-bw)	425+510	PD(type=rel,inflection=r/re,part=with-particle)+ADV(type=dem,inflection=0,part=with-particle)	[1]	dier⊔op
+VNW(betr,met-r-of-re)+BW(adv-pron,alg,met-r-of-re)	425+605	PD(type=rel,inflection=r/re)+ADV(advType=pronominal,type=general,inflection=r/re)	[1]	dier
+VNW(betr,met-s-of-th)	422	PD(type=rel,inflection=s/th)	[150]	des, welichs, welks, wiens, welcs
+VNW(betr,met-s-of-th)+VNW(pers,3,ev)	422+403	PD(type=rel,inflection=s/th)+PD(type=pers,person=3,number=sg)	[1]	wessi
+VNW(betr,overig)	429	PD(type=rel,inflection=other)	[31]	ze, des, dien, dat, de
+VNW(betr,overig)+BW(aanw,zonder)	429+510	PD(type=rel,inflection=other)+ADV(type=dem,inflection=0)	[1]	dier⊔af
+VNW(betr,zonder)	420	PD(type=rel,inflection=0)	[3357]	welick, datt, wellig, welic, Wellic
+VNW(betr,zonder)+BW(aanw,zonder)	420+510	PD(type=rel,inflection=0)+ADV(type=dem,inflection=0)	[264]	datter⊔to, datter⊔neffens, der⊔toe, datere⊔toe, datter⊔ane
+VNW(betr,zonder)+BW(adv-pron,alg,met-r-of-re)	420+605	PD(type=rel,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[86]	dattre, dire, welker, dattere, datter
+VNW(betr,zonder)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	420+605	PD(type=rel,inflection=0,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[25]	datter, dattere
+VNW(betr,zonder)+BW(alg,zonder)	420+500	PD(type=rel,inflection=0)+ADV(type=general,inflection=0)	[16]	datter, watter, dattre, datter⊔toe
+VNW(betr,zonder)+LID(bep,met-n)	420+474	PD(type=rel,inflection=0)+PD(type=art,subtype=def,inflection=n)	[6]	datten
+VNW(betr,zonder)+LID(bep,met-r-of-re)	420+475	PD(type=rel,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[3]	datter
+VNW(betr,zonder)+LID(bep,met-s-of-th)	420+472	PD(type=rel,inflection=0)+PD(type=art,subtype=def,inflection=s/th)	[1]	datz
+VNW(betr,zonder)+LID(bep,zonder)	420+470	PD(type=rel,inflection=0)+PD(type=art,subtype=def,inflection=0)	[1]	dat
+VNW(betr,zonder)+VG(onder,zonder)	420+810	PD(type=rel,inflection=0)+CON(type=subordinating,inflection=0)	[1]	dat
+VNW(betr,zonder)+VNW(aanw,met-s-of-th)	420+412	PD(type=rel,inflection=0)+PD(type=dem,inflection=s/th)	[6]	dats, wats, dijs
+VNW(betr,zonder)+VNW(aanw,zonder)	420+410	PD(type=rel,inflection=0)+PD(type=dem,inflection=0)	[1]	dijt
+VNW(betr,zonder)+VNW(onbep,zonder)	420+440	PD(type=rel,inflection=0)+PD(type=indef,inflection=0)	[6]	datmen
+VNW(betr,zonder)+VNW(pers,3,ev)	420+403	PD(type=rel,inflection=0)+PD(type=pers,person=3,number=sg)	[26]	dathi, wattet, diet, dattet, dien
+VNW(betr,zonder)+VNW(pers,3,mv)	420+406	PD(type=rel,inflection=0)+PD(type=pers,person=3,number=pl)	[4]	datsij, dise
+VNW(betr,zonder)+VZ(zonder)+LID(bep,met-r-of-re)	420+700+475	PD(type=rel,inflection=0)+ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[1]	datter
+VNW(betr,zonder)+WW(hulp-of-koppel,pv,tgw,zonder)	420+210	PD(type=rel,inflection=0)+VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	[1]	datse
+VNW(bez,met-a)	456	PD(type=poss,inflection=a)	[4]	haer, haren, haerre
+VNW(bez,met-e)	451	PD(type=poss,inflection=e)	[4289]	sijn, syne, hoere, onze, Syne
+VNW(bez,met-n)	454	PD(type=poss,inflection=n)	[9773]	ons, znen, haen, onserleden, hůorn
+VNW(bez,met-r-of-re)	455	PD(type=poss,inflection=r/re)	[3161]	uuwer, herrer, onzer, orer, sier
+VNW(bez,met-r-of-re)+BW(adv-pron,alg,met-r-of-re)	455+605	PD(type=poss,inflection=r/re)+ADV(advType=pronominal,type=general,inflection=r/re)	[1]	ziinre
+VNW(bez,met-s-of-th)	452	PD(type=poss,inflection=s/th)	[5440]	sjjns, ons, ors, mins, mints
+VNW(bez,met-s-of-th)+N(soort,ev,met-e)	452+001	PD(type=poss,inflection=s/th)+NOU(type=common,number=sg,inflection=e)	[1]	onshere
+VNW(bez,met-s-of-th)+N(soort,ev,zonder)	452+000	PD(type=poss,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[2]	mijnser, miinsher
+VNW(bez,overig)	459	PD(type=poss,inflection=other)	[77]	ons, mijn, sijn, onses, sine
+VNW(bez,zonder)	450	PD(type=poss,inflection=0)	[5361]	ons, mijn, oir, oer, sijn
+VNW(bez,zonder)+N(soort,ev,met-n)	450+004	PD(type=poss,inflection=0)+NOU(type=common,number=sg,inflection=n)	[9]	miinheren, mijnheren, onsheeren
+VNW(bez,zonder)+N(soort,ev,zonder)	450+000	PD(type=poss,inflection=0)+NOU(type=common,number=sg,inflection=0)	[3]	mer, miinher
+VNW(onbep,met-e)	321	NUM(type=indefinite,inflection=e)	[4983]	en⊔gheene, Egeyne, enghene, viele, meerdre
+VNW(onbep,met-e)	441	PD(type=indef,inflection=e)	[463]	yeghelijcke, elckermalke, ighelike, altema↩le, ymande
+VNW(onbep,met-e)+VNW(aanw,met-s-of-th)	441+412	PD(type=indef,inflection=e)+PD(type=dem,inflection=s/th)	[1]	wyes
+VNW(onbep,met-n)	324	NUM(type=indefinite,inflection=n)	[4905]	elliken, engheenen, tween, elcken, beyen
+VNW(onbep,met-n)	444	PD(type=indef,inflection=n)	[553]	enighen, yegelijcken, jghelichgen, ighe↩welken, yegeleken
+VNW(onbep,met-r-of-re)	325	NUM(type=indefinite,inflection=r/re)	[685]	beeder, engheenre, egheynre, negheenre, velre
+VNW(onbep,met-r-of-re)	445	PD(type=indef,inflection=r/re)	[126]	ygeliker, enegher, jenigher, enighere, eynichgher
+VNW(onbep,met-r-of-re)+N(soort,ev,met-s-of-th)	445+002	PD(type=indef,inflection=r/re)+NOU(type=common,number=sg,inflection=s/th)	[22]	enegher⊔wijs, eyniger⊔wijs, eynigerwijs, enigher⊔wijs, eynegher⊔wijs
+VNW(onbep,met-r-of-re)+N(soort,ev,zonder)	445+000	PD(type=indef,inflection=r/re)+NOU(type=common,number=sg,inflection=0)	[2]	enigerwijs, enigherwijs
+VNW(onbep,met-s-of-th)	442	PD(type=indef,inflection=s/th)	[269]	Eenechts, yements, ijeghewelcken, alremallix, ymants
+VNW(onbep,met-s-of-th)	322	NUM(type=indefinite,inflection=s/th)	[711]	allens, ellics, beydens, elkes, jeghelijcs
+VNW(onbep,met-s-of-th)+N(soort,ev,met-s-of-th)	322+002	NUM(type=indefinite,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[2]	elkessiaers
+VNW(onbep,overig)	449	PD(type=indef,inflection=other)	[24]	enighen, eynich, eynger, men, yemants
+VNW(onbep,overig)	329	NUM(type=indefinite,inflection=other)	[26]	allen, alle, elker, elc, al
+VNW(onbep,zonder)	320	NUM(type=indefinite,inflection=0)	[3536]	en⊔gheen, engheyn, ghen, ol, eghein
+VNW(onbep,zonder)	440	PD(type=indef,inflection=0)	[4969]	eynegh, en⊔gheen, yegherlic, Jenich, alremallic
+VNW(onbep,zonder)+BW(aanw,zonder)	440+510	PD(type=indef,inflection=0)+ADV(type=dem,inflection=0)	[5]	menre⊔af, mer⊔mede, menre⊔op, menre⊔toe
+VNW(onbep,zonder)+BW(adv-pron,alg,met-r-of-re)	440+605	PD(type=indef,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[11]	menre, mer, mene
+VNW(onbep,zonder)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	440+605	PD(type=indef,inflection=0,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[2]	menre
+VNW(onbep,zonder)+BW(alg,zonder)	440+500	PD(type=indef,inflection=0)+ADV(type=general,inflection=0)	[3]	menre, wiere
+VNW(onbep,zonder)+LID(bep,zonder)	440+470	PD(type=indef,inflection=0)+PD(type=art,subtype=def,inflection=0)	[1]	ment
+VNW(onbep,zonder)+LID(bep,zonder)	320+470	NUM(type=indefinite,inflection=0)+PD(type=art,subtype=def,inflection=0)	[27]	alt, allet
+VNW(onbep,zonder)+VNW(aanw,met-s-of-th)	440+412	PD(type=indef,inflection=0)+PD(type=dem,inflection=s/th)	[29]	mens
+VNW(onbep,zonder)+VNW(aanw,met-t)	440+413	PD(type=indef,inflection=0)+PD(type=dem,inflection=t)	[2]	mens
+VNW(onbep,zonder)+VNW(bez,met-n)	320+454	NUM(type=indefinite,inflection=0)+PD(type=poss,inflection=n)	[1]	alsinen
+VNW(onbep,zonder)+VNW(pers,3,ev)	440+403	PD(type=indef,inflection=0)+PD(type=pers,person=3,number=sg)	[78]	mend, menne, ment, met, mene
+VNW(onbep,zonder)+VNW(pers,3,mv)	440+406	PD(type=indef,inflection=0)+PD(type=pers,person=3,number=pl)	[8]	mense
+VNW(onbep,zonder)+VZ(zonder)	320+700	NUM(type=indefinite,inflection=0)+ADP(type=general,inflection=0)	[1]	alte
+VNW(overig)	499	PD(type=other,inflection=other)	[1]	haer
+VNW(overig)	409	PD(type=pers,other)	[59]	ons, hemlieden, wi, hem, si
+VNW(overig)+BW(neg,overig)	409+569	PD(type=pers,other)+ADV(type=negative,inflection=other)	[1]	hine
+VNW(pers,1,ev)	401	PD(type=pers,person=1,number=sg)	[3039]	mins, mir, mii, mj, mines
+VNW(pers,1,ev)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	401+605	PD(type=pers,person=1,number=sg,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[1]	Jcker
+VNW(pers,1,ev)+VNW(aanw,met-s-of-th)	401+412	PD(type=pers,person=1,number=sg)+PD(type=dem,inflection=s/th)	[5]	ics, ickes, Jcs
+VNW(pers,1,ev)+VNW(pers,3,ev)	401+403	PD(type=pers,person=1,number=sg)+PD(type=pers,person=3,number=sg)	[26]	ict, icker, ickt, jct, icse
+VNW(pers,1,mv)	404	PD(type=pers,person=1,number=pl)	[12539]	ons, WiE, Vy, Weir, Wer
+VNW(pers,1,mv)	404T	U404T	[14]	ons, Ons
+VNW(pers,1,mv)+BW(aanw,zonder)	404+510	PD(type=pers,person=1,number=pl)+ADV(type=dem,inflection=0)	[3]	wire⊔over, wiere⊔of, wiere⊔toe
+VNW(pers,1,mv)+BW(adv-pron,alg,met-r-of-re)	404+605	PD(type=pers,person=1,number=pl)+ADV(advType=pronominal,type=general,inflection=r/re)	[17]	wire, wiere
+VNW(pers,1,mv)+LID(bep,zonder)	404+470	PD(type=pers,person=1,number=pl)+PD(type=art,subtype=def,inflection=0)	[1]	wijt
+VNW(pers,1,mv)+VNW(aanw,met-r-of-re)	404+415	PD(type=pers,person=1,number=pl)+PD(type=dem,inflection=r/re)	[1]	onseluer
+VNW(pers,1,mv)+VNW(aanw,met-s-of-th)	404+412	PD(type=pers,person=1,number=pl)+PD(type=dem,inflection=s/th)	[6]	wiis, wijs
+VNW(pers,1,mv)+VNW(pers,3,ev)	404+403	PD(type=pers,person=1,number=pl)+PD(type=pers,person=3,number=sg)	[46]	wise, wiit, wit, wiet, wine
+VNW(pers,1,mv)+VNW(pers,3,mv)	404+406	PD(type=pers,person=1,number=pl)+PD(type=pers,person=3,number=pl)	[22]	wise, wijse, wiis, wijs, wiese
+VNW(pers,2,mv)	405	PD(type=pers,person=2,number=pl)	[72]	Ghi, hem, uwer, u, ghij
+VNW(pers,2,mv)+BW(neg,zonder)	405+560	PD(type=pers,person=2,number=pl)+ADV(type=negative,inflection=0)	[1]	ghine
+VNW(pers,2,mv)+VNW(aanw,met-s-of-th)	405+412	PD(type=pers,person=2,number=pl)+PD(type=dem,inflection=s/th)	[1]	ghijs
+VNW(pers,2,mv)+VNW(aanw,met-t)	405+413	PD(type=pers,person=2,number=pl)+PD(type=dem,inflection=t)	[1]	ghiis
+VNW(pers,2,mv)+VNW(pers,3,ev)	405+403	PD(type=pers,person=2,number=pl)+PD(type=pers,person=3,number=sg)	[1]	ghijt
+VNW(pers,3,ev)	403	PD(type=pers,person=3,number=sg)	[6967]	ze, hy, sie, se, oer
+VNW(pers,3,ev)+BW(aanw,zonder)	403+510	PD(type=pers,person=3,number=sg)+ADV(type=dem,inflection=0)	[42]	hierean, hire⊔omme, hiere⊔af, siere⊔af, soere⊔an
+VNW(pers,3,ev)+BW(adv-pron,aanw,met-r-of-re)	403+615	PD(type=pers,person=3,number=sg)+ADV(advType=pronominal,type=dem,inflection=r/re)	[1]	hijter
+VNW(pers,3,ev)+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)	403+615	PD(type=pers,person=3,number=sg,part=with-particle)+ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)	[1]	hire
+VNW(pers,3,ev)+BW(adv-pron,alg,met-r-of-re)	403+605	PD(type=pers,person=3,number=sg)+ADV(advType=pronominal,type=general,inflection=r/re)	[25]	hier, siere, sore, soere, hiere
+VNW(pers,3,ev)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	403+605	PD(type=pers,person=3,number=sg,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[3]	zijre, hire, hiere
+VNW(pers,3,ev)+BW(alg,zonder)	403+500	PD(type=pers,person=3,number=sg)+ADV(type=general,inflection=0)	[11]	harewaerts, teerst, hijre, hire, sire
+VNW(pers,3,ev)+BW(neg,zonder)	403+560	PD(type=pers,person=3,number=sg)+ADV(type=negative,inflection=0)	[66]	Ten, hen, En, en, ten
+VNW(pers,3,ev)+LID(bep,met-s-of-th)	403+472	PD(type=pers,person=3,number=sg)+PD(type=art,subtype=def,inflection=s/th)	[2]	hijs
+VNW(pers,3,ev)+LID(bep,zonder)	403+470	PD(type=pers,person=3,number=sg)+PD(type=art,subtype=def,inflection=0)	[2]	hijt
+VNW(pers,3,ev)+N(soort,ev,met-e)	403+001	PD(type=pers,person=3,number=sg)+NOU(type=common,number=sg,inflection=e)	[2]	tzaecke, tsake
+VNW(pers,3,ev)+TW(rang,zonder)	403+310	PD(type=pers,person=3,number=sg)+NUM(type=ordinal,inflection=0)	[1]	tierst
+VNW(pers,3,ev)+VNW(aanw,met-s-of-th)	403+412	PD(type=pers,person=3,number=sg)+PD(type=dem,inflection=s/th)	[40]	hijs, hiis, siis, hies, sijs
+VNW(pers,3,ev)+VNW(aanw,met-t)	403+413	PD(type=pers,person=3,number=sg)+PD(type=dem,inflection=t)	[1]	zijs
+VNW(pers,3,ev)+VNW(bez,met-e)	403+451	PD(type=pers,person=3,number=sg)+PD(type=poss,inflection=e)	[1]	thare
+VNW(pers,3,ev)+VNW(pers,2,mv)	403+405	PD(type=pers,person=3,number=sg)+PD(type=pers,person=2,number=pl)	[1]	sire
+VNW(pers,3,ev)+VNW(pers,3,ev)	403+403	PD(type=pers,person=3,number=sg)+PD(type=pers,person=3,number=sg)	[143]	sijn, sine, hijs, hyt, hise
+VNW(pers,3,ev)+VNW(pers,3,mv)	403+406	PD(type=pers,person=3,number=sg)+PD(type=pers,person=3,number=pl)	[16]	hise
+VNW(pers,3,ev)+VZ(zonder)	403+700	PD(type=pers,person=3,number=sg)+ADP(type=general,inflection=0)	[1]	te
+VNW(pers,3,ev)+WW(hoofd,part,met-n)	403+274	PD(type=pers,person=3,number=sg)+VRB(type=main,finiteness=part,inflection=n)	[4]	tgheleghen, tgelegen
+VNW(pers,3,ev)+WW(hoofd,pv,verl,met-e)	403+221	PD(type=pers,person=3,number=sg)+VRB(type=main,finiteness=finite,tense=past,inflection=e)	[1]	tweere
+VNW(pers,3,ev)+WW(hulp-of-koppel,pv,tgw,zonder)	403+210	PD(type=pers,person=3,number=sg)+VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	[1]	hets
+VNW(pers,3,ev)+WW(hulp-of-koppel,pv,verl,zonder)	403+230	PD(type=pers,person=3,number=sg)+VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)	[4]	twaer, t↩was, tweer
+VNW(pers,3,mv)	406	PD(type=pers,person=3,number=pl)	[4556]	ze, sie, se, oer, ors
+VNW(pers,3,mv)+BW(aanw,zonder)	406+510	PD(type=pers,person=3,number=pl)+ADV(type=dem,inflection=0)	[7]	siere⊔op, sijre⊔omme, sire⊔omme, ziere⊔of, sire⊔ane
+VNW(pers,3,mv)+BW(adv-pron,alg,met-r-of-re)	406+605	PD(type=pers,person=3,number=pl)+ADV(advType=pronominal,type=general,inflection=r/re)	[4]	sire, siere, ziere, siir
+VNW(pers,3,mv)+BW(alg,zonder)	406+500	PD(type=pers,person=3,number=pl)+ADV(type=general,inflection=0)	[1]	zier
+VNW(pers,3,mv)+BW(neg,zonder)	406+560	PD(type=pers,person=3,number=pl)+ADV(type=negative,inflection=0)	[1]	sine
+VNW(pers,3,mv)+VNW(aanw,met-s-of-th)	406+412	PD(type=pers,person=3,number=pl)+PD(type=dem,inflection=s/th)	[52]	zijs, Sijs, siis, sys, selfs
+VNW(pers,3,mv)+VNW(aanw,met-t)	406+413	PD(type=pers,person=3,number=pl)+PD(type=dem,inflection=t)	[4]	sijns, ziis, hoers
+VNW(pers,3,mv)+VNW(onbep,met-n)	406+324	PD(type=pers,person=3,number=pl)+NUM(type=indefinite,inflection=n)	[2]	hembeeden, hembeden
+VNW(pers,3,mv)+VNW(onbep,zonder)	406+440	PD(type=pers,person=3,number=pl)+PD(type=indef,inflection=0)	[1]	harengheen
+VNW(pers,3,mv)+VNW(pers,3,ev)	406+403	PD(type=pers,person=3,number=pl)+PD(type=pers,person=3,number=sg)	[75]	sijd, Siit, Ziit, zeet, siit
+VNW(pers,3,mv)+VNW(pers,3,mv)	406+406	PD(type=pers,person=3,number=pl)+PD(type=pers,person=3,number=pl)	[13]	siese, sise, zise, siere
+VNW(refl-of-recip)	469	PD(type=refl/recp,other)	[6]	ome, him, hom, hem
+VNW(refl-of-recip)	460	PD(type=refl/recp)	[1]	malc
+VNW(refl-of-recip,1,ev)	461	PD(type=refl/recp,person=1,number=sg)	[108]	mii, mj, mij, Mi, my
+VNW(refl-of-recip,1,mv)	464	PD(type=refl/recp,person=1,number=pl)	[149]	ons, malcanderen, mal↩canderen, hem, malc⊔anderen
+VNW(refl-of-recip,2,mv)	465	PD(type=refl/recp,person=2,number=pl)	[9]	malcanderen, malc⊔anders, malcander, malc⊔anderen, malc⊔ander
+VNW(refl-of-recip,3,ev)	463	PD(type=refl/recp,person=3,number=sg)	[739]	oer, hoere, hem, hoem, Sich
+VNW(refl-of-recip,3,ev)+VZ(zonder)	463+700	PD(type=refl/recp,person=3,number=sg)+ADP(type=general,inflection=0)	[1]	hemwaert
+VNW(refl-of-recip,3,mv)	466	PD(type=refl/recp,person=3,number=pl)	[308]	oer, hemlieden, hem, huen, hun
+VNW(refl-of-recip,3,mv)+BW(alg,zonder)	466+500	PD(type=refl/recp,person=3,number=pl)+ADV(type=general,inflection=0)	[2]	hemwaert, hemwaerd
+VNW(refl-of-recip,3,mv)+VNW(aanw,met-n)	466+414	PD(type=refl/recp,person=3,number=pl)+PD(type=dem,inflection=n)	[1]	hemseluen
+VNW(refl-of-recip,3,mv)+VNW(onbep,met-n)	466+324	PD(type=refl/recp,person=3,number=pl)+NUM(type=indefinite,inflection=n)	[1]	hembeden
+VNW(refl-of-recip,3,mv)+VZ(zonder)	466+700	PD(type=refl/recp,person=3,number=pl)+ADP(type=general,inflection=0)	[3]	hemwaerd
+VNW(vb,met-e)	431	PD(type=int,inflection=e)	[83]	wyen, wij, wye, wee, we
+VNW(vb,met-e)+VNW(pers,3,ev)	431+403	PD(type=int,inflection=e)+PD(type=pers,person=3,number=sg)	[1]	wet
+VNW(vb,met-n)	434	PD(type=int,inflection=n)	[37]	wen, wijen, wien, welken, welcken
+VNW(vb,met-r-of-re)	435	PD(type=int,inflection=r/re)	[6]	wilger, welicher, wilker, welker, wilcoer
+VNW(vb,met-s-of-th)	432	PD(type=int,inflection=s/th)	[45]	wes, wies
+VNW(vb,overig)	439	PD(type=int,inflection=other)	[3]	wyem, weem, wa
+VNW(vb,zonder)	430	PD(type=int,inflection=0)	[190]	wi, welic, welcx, willich, wattere
+VNW(vb,zonder)+N(soort,ev,zonder)	430+000	PD(type=int,inflection=0)+NOU(type=common,number=sg,inflection=0)	[2]	weltijt
+VNW(vb,zonder)+VNW(aanw,met-s-of-th)	430+412	PD(type=int,inflection=0)+PD(type=dem,inflection=s/th)	[3]	wijs, wats, Wats
+VNW(vb,zonder)+VNW(pers,3,ev)	430+403	PD(type=int,inflection=0)+PD(type=pers,person=3,number=sg)	[1]	wient
+VZ(met-e)	701	ADP(type=general,inflection=e)	[8]	bute, ghehende, tussche, toete
+VZ(met-n)	704	ADP(type=general,inflection=n)	[10]	boosten, vorn, jeghen, behoesten
+VZ(met-n)+VNW(onbep,met-n)	704+444	ADP(type=general,inflection=n)+PD(type=indef,inflection=n)	[1]	telken
+VZ(met-s-of-th)	702	ADP(type=general,inflection=s/th)	[1]	voers
+VZ(overig)	709	ADP(type=general,inflection=other)	[255]	ze, in, bij, teghens, voir
+VZ(overig)+LID(bep,met-r-of-re)	709+475	ADP(type=general,inflection=other)+PD(type=art,subtype=def,inflection=r/re)	[1]	ter
+VZ(overig)+LID(bep,overig)	709+479	ADP(type=general,inflection=other)+PD(type=art,subtype=def,inflection=other)	[24]	jnt, ter, vyten, opte, int
+VZ(overig)+LID(onbep,overig)	709+489	ADP(type=general,inflection=other)+PD(type=art,subtype=indef,inflection=other)	[1]	tenen
+VZ(overig)+N(eigen,overig)	709+029	ADP(type=general,inflection=other)+NOU(type=proper,inflection=other)	[1]	tutrecht
+VZ(zonder)	700	ADP(type=general,inflection=0)	[130613]	tieghe, ons, oevermitz, uppe, omme⊔trent
+VZ(zonder)+ADJ(ev,met-e)	700+101	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=e)	[76]	tsunte, tingaende, tsente, tesente, tsinte
+VZ(zonder)+ADJ(ev,met-n)	700+104	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=n)	[95]	teeuweliken, teeweleken, teewelleken, teeuweleken, tanderen
+VZ(zonder)+ADJ(ev,met-r-of-re)	700+105	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=r/re)	[9]	tsenter, terueliker, tsunter
+VZ(zonder)+ADJ(ev,met-s-of-th)	700+102	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=s/th)	[1]	tvoorseits
+VZ(zonder)+ADJ(ev,overig)	700+109	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=other)	[2]	tvorseide
+VZ(zonder)+ADJ(ev,zonder)	700+100	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=0)	[28]	thalf, bander, tsint, talf, tsent
+VZ(zonder)+ADJ(ev,zonder)+N(soort,ev,met-e)	700+100+001	ADP(type=general,inflection=0)+ADJ(number=sg,inflection=0)+NOU(type=common,number=sg,inflection=e)	[1]	banderside
+VZ(zonder)+ADJ(mv,met-n)	700+114	ADP(type=general,inflection=0)+ADJ(number=pl,inflection=n)	[2]	teweliken, teuweliken
+VZ(zonder)+BW(alg,zonder)	700+500	ADP(type=general,inflection=0)+ADV(type=general,inflection=0)	[6]	tyerst, tons⊔wert, Teerst, tierst, tonswert
+VZ(zonder)+LID(bep,met-e)	700+471	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=e)	[133]	Mette, vte, metten, vptie, inde
+VZ(zonder)+LID(bep,met-n)	700+474	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=n)	[3766]	tien, vytten, wten, metten, Toten
+VZ(zonder)+LID(bep,met-n)+N(eigen,met-e)	700+474+021	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=n)+NOU(type=proper,inflection=e)	[1]	tenversteenbeke
+VZ(zonder)+LID(bep,met-r-of-re)	700+475	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=r/re)	[2679]	vpter, huter, tOnser, Metter, metter
+VZ(zonder)+LID(bep,met-r-of-re)+ADJ(ev,met-r-of-re)	700+475+105	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=r/re)+ADJ(number=sg,inflection=r/re)	[1]	teruorseider
+VZ(zonder)+LID(bep,met-r-of-re)+N(soort,ev,zonder)	700+475+000	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=r/re)+NOU(type=common,number=sg,inflection=0)	[1]	boester⊔poort
+VZ(zonder)+LID(bep,met-s-of-th)	700+472	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)	[91]	tots, optes, tees, jns, totes
+VZ(zonder)+LID(bep,met-s-of-th)+ADJ(ev,met-s-of-th)	700+472+102	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=s/th)	[4]	tsuorseids, tsghemeens
+VZ(zonder)+LID(bep,met-s-of-th)+ADJ(ev,overig)	700+472+109	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)+ADJ(number=sg,inflection=other)	[1]	tsvoerseide
+VZ(zonder)+LID(bep,met-s-of-th)+N(soort,ev,met-s-of-th)	700+472+002	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=s/th)	[16]	tscouents, tsgodshuus, sdischs, tsheerenscaps, tsconvents
+VZ(zonder)+LID(bep,met-s-of-th)+N(soort,ev,zonder)	700+472+000	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[1]	tsgoetshus
+VZ(zonder)+LID(bep,met-s-of-th)+VNW(aanw,met-s-of-th)	700+472+412	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=s/th)+PD(type=dem,inflection=s/th)	[2]	tesgheens
+VZ(zonder)+LID(bep,met-t)+N(soort,ev,met-s-of-th)	700+473+002	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=t)+NOU(type=common,number=sg,inflection=s/th)	[1]	tsheerenscaps
+VZ(zonder)+LID(bep,overig)	700+479	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=other)	[6]	ter, jnt, metter, ten
+VZ(zonder)+LID(bep,zonder)	700+470	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=0)	[4225]	ent, upt, jnt, opt, Jnt
+VZ(zonder)+LID(bep,zonder)+N(soort,ev,met-s-of-th)	700+470+002	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=0)+NOU(type=common,number=sg,inflection=s/th)	[4]	tspetaels, tspittaels, tospitaels
+VZ(zonder)+LID(bep,zonder)+TW(rang,met-n)	700+470+314	ADP(type=general,inflection=0)+PD(type=art,subtype=def,inflection=0)+NUM(type=ordinal,inflection=n)	[1]	inter↩den
+VZ(zonder)+LID(onbep,met-e)	700+481	ADP(type=general,inflection=0)+PD(type=art,subtype=indef,inflection=e)	[13]	tere, tene, Tere
+VZ(zonder)+LID(onbep,met-n)	700+484	ADP(type=general,inflection=0)+PD(type=art,subtype=indef,inflection=n)	[269]	teynen, teenen, tenen, thenen, teennen
+VZ(zonder)+LID(onbep,met-r-of-re)	700+485	ADP(type=general,inflection=0)+PD(type=art,subtype=indef,inflection=r/re)	[13]	Teenre, teerre, tere, Tenre, there
+VZ(zonder)+LID(onbep,zonder)	700+480	ADP(type=general,inflection=0)+PD(type=art,subtype=indef,inflection=0)	[8]	teyn, been, totten, teen, toten
+VZ(zonder)+N(eigen,met-e)	700+021	ADP(type=general,inflection=0)+NOU(type=proper,inflection=e)	[67]	tsent⊔jansberghe, teyne, tobbrucele, taudenaerde, typre
+VZ(zonder)+N(eigen,met-n)	700+024	ADP(type=general,inflection=0)+NOU(type=proper,inflection=n)	[1]	tasscen
+VZ(zonder)+N(eigen,zonder)	700+020	ADP(type=general,inflection=0)+NOU(type=proper,inflection=0)	[329]	Tanderlecht, tardenbourgh, talst, thumelghem, talcmaer
+VZ(zonder)+N(soort,ev,met-e)	700+001	ADP(type=general,inflection=0)+NOU(type=common,number=sg,inflection=e)	[124]	tonder⊔pande, Tonderpande, beenside, teyrfceyse, terve
+VZ(zonder)+N(soort,ev,met-e)+WW(hoofd,pv,tgw,met-e)	700+001+201	ADP(type=general,inflection=0)+NOU(type=common,number=sg,inflection=e)+VRB(type=main,finiteness=finite,tense=present,inflection=e)	[1]	te⊔radeworde
+VZ(zonder)+N(soort,ev,met-n)	700+004	ADP(type=general,inflection=0)+NOU(type=common,number=sg,inflection=n)	[1]	bi
+VZ(zonder)+N(soort,ev,met-n)+N(soort,ev,met-e)	700+004+001	ADP(type=general,inflection=0)+NOU(type=common,number=sg,inflection=n)+NOU(type=common,number=sg,inflection=e)	[1]	tsherenstrate
+VZ(zonder)+N(soort,ev,zonder)	700+000	ADP(type=general,inflection=0)+NOU(type=common,number=sg,inflection=0)	[6]	tonderpand, Terfpacht, oppaert, torber, tehalf
+VZ(zonder)+N(soort,mv,met-n)	700+014	ADP(type=general,inflection=0)+NOU(type=common,number=pl,inflection=n)	[1]	talreheileghen
+VZ(zonder)+N(soort,mv,met-r-of-re)	700+015	ADP(type=general,inflection=0)+NOU(type=common,number=pl,inflection=r/re)	[1]	Talrehelegher
+VZ(zonder)+TW(hoofd,met-n)	700+304	ADP(type=general,inflection=0)+NUM(type=cardinal,inflection=n)	[1]	tenen
+VZ(zonder)+TW(hoofd,zonder)	700+300	ADP(type=general,inflection=0)+NUM(type=cardinal,inflection=0)	[1]	thalf
+VZ(zonder)+TW(rang,zonder)	700+310	ADP(type=general,inflection=0)+NUM(type=ordinal,inflection=0)	[2]	tierst
+VZ(zonder)+VNW(aanw,met-n)	700+414	ADP(type=general,inflection=0)+PD(type=dem,inflection=n)	[18]	tien, mettien, talselken, ghenen, andien
+VZ(zonder)+VNW(aanw,met-r-of-re)	700+415	ADP(type=general,inflection=0)+PD(type=dem,inflection=r/re)	[3]	tier, tiere, terre
+VZ(zonder)+VNW(bez,met-e)	700+451	ADP(type=general,inflection=0)+PD(type=poss,inflection=e)	[8]	thore, tsine
+VZ(zonder)+VNW(bez,met-n)	700+454	ADP(type=general,inflection=0)+PD(type=poss,inflection=n)	[60]	tonsen, tesinen, Tonsen, tzinen, tsinen
+VZ(zonder)+VNW(bez,met-r-of-re)	700+455	ADP(type=general,inflection=0)+PD(type=poss,inflection=r/re)	[47]	tsijnre, tonser, tharer, thaerleider, tsire
+VZ(zonder)+VNW(bez,met-s-of-th)	700+452	ADP(type=general,inflection=0)+PD(type=poss,inflection=s/th)	[9]	thaers, tons, tsins, tziins, tsijns
+VZ(zonder)+VNW(onbep,met-e)	700+321	ADP(type=general,inflection=0)+NUM(type=indefinite,inflection=e)	[6]	telke, talle, tolle
+VZ(zonder)+VNW(onbep,met-e)	700+441	ADP(type=general,inflection=0)+PD(type=indef,inflection=e)	[1]	tenieute
+VZ(zonder)+VNW(onbep,met-n)	700+324	ADP(type=general,inflection=0)+NUM(type=indefinite,inflection=n)	[329]	tallen, Tallen, talken, tollen, tenighen
+VZ(zonder)+VNW(onbep,met-n)	700+444	ADP(type=general,inflection=0)+PD(type=indef,inflection=n)	[447]	Telken, tel↩ken, tenegen, teeneghen, telcken
+VZ(zonder)+VNW(onbep,met-r-of-re)	700+445	ADP(type=general,inflection=0)+PD(type=indef,inflection=r/re)	[24]	telker, teneger, Telker
+VZ(zonder)+VNW(onbep,met-r-of-re)	700+325	ADP(type=general,inflection=0)+NUM(type=indefinite,inflection=r/re)	[4]	telkens, telker, talre
+VZ(zonder)+VNW(onbep,overig)	700+449	ADP(type=general,inflection=0)+PD(type=indef,inflection=other)	[1]	telk
+VZ(zonder)+VNW(onbep,zonder)	700+320	ADP(type=general,inflection=0)+NUM(type=indefinite,inflection=0)	[6]	tal
+VZ(zonder)+VNW(pers,1,mv)	700+404	ADP(type=general,inflection=0)+PD(type=pers,person=1,number=pl)	[3]	tons
+VZ(zonder)+VNW(pers,3,ev)	700+403	ADP(type=general,inflection=0)+PD(type=pers,person=3,number=sg)	[2]	jnt
+VZ(zonder)+VNW(refl-of-recip,3,mv)	700+466	ADP(type=general,inflection=0)+PD(type=refl/recp,person=3,number=pl)	[2]	them
+VZ(zonder)+WW(hoofd,inf,met-e)	700+251	ADP(type=general,inflection=0)+VRB(type=main,finiteness=finite,inflection=e)	[92]	tonthutene, teruene, tehebbene, tedoene, teleuerne
+VZ(zonder)+WW(hoofd,inf,met-n)	700+254	ADP(type=general,inflection=0)+VRB(type=main,finiteness=finite,inflection=n)	[1]	torconden
+VZ(zonder)+WW(hoofd,inf,zonder)	700+250	ADP(type=general,inflection=0)+VRB(type=main,finiteness=finite,inflection=0)	[25]	tontvromen, terven, tonterven, tonsetten, torboren
+VZ(zonder)+WW(hoofd,part,met-n)	700+274	ADP(type=general,inflection=0)+VRB(type=main,finiteness=part,inflection=n)	[16]	vanden
+VZ(zonder)+WW(hoofd,part,met-r-of-re)	700+275	ADP(type=general,inflection=0)+VRB(type=main,finiteness=part,inflection=r/re)	[2]	metter
+VZ(zonder)+WW(hulp-of-koppel,inf,met-e)	700+261	ADP(type=general,inflection=0)+VRB(type=auxiliary,finiteness=inf/ger,inflection=e)	[1]	tebliuene
+VZ(zonder,vz-deel-bw)	700	ADP(type=general,inflection=0,part=with-particle)	[51]	in, tote, tod, thent, to
+VZ(zonder,vz-deel-bw)+LID(bep,met-n)	700+474	ADP(type=general,inflection=0,part=with-particle)+PD(type=art,subtype=def,inflection=n,part=with-particle)	[2]	ten
+VZ(zonder,vz-deel-bw)+LID(bep,met-r-of-re)	700+475	ADP(type=general,inflection=0,part=with-particle)+PD(type=art,subtype=def,inflection=r/re,part=with-particle)	[1]	ter
+WW(hoofd,inf,met-e)	251	VRB(type=main,finiteness=finite,inflection=e)	[6246]	verwaerenne, dienne, uerrekenne, starkene, betimmerne
+WW(hoofd,inf,met-e,hoofddeel-ww)	251	VRB(type=main,finiteness=finite,inflection=e,part=with-particle)	[154]	ghereekene, loepene, heffene, brenchene, verhaelne
+WW(hoofd,inf,met-n)	254	VRB(type=main,finiteness=finite,inflection=n)	[37]	geuenen, gheldenen, betaelnen, warandeernen, zuekenen
+WW(hoofd,inf,met-n,hoofddeel-ww)	254	VRB(type=main,finiteness=finite,inflection=n,part=with-particle)	[2]	sprekenen, schenkenen
+WW(hoofd,inf,met-s-of-th)	252	VRB(type=main,finiteness=finite,inflection=s/th)	[2]	wechdraghens, draghens
+WW(hoofd,inf,met-t)	253	VRB(type=main,finiteness=finite,inflection=t)	[1]	beseghelt
+WW(hoofd,inf,overig)	259	VRB(type=main,finiteness=finite,inflection=other)	[132]	versetten, hebbe, stane, betalen, mogen
+WW(hoofd,inf,overig,hoofddeel-ww)	259	VRB(type=main,finiteness=finite,inflection=other,part=with-particle)	[1]	donde
+WW(hoofd,inf,zonder)	250	VRB(type=main,finiteness=finite,inflection=0)	[22306]	guden, pronuncieren, verbeiden, ouerdragen, vort⊔varen
+WW(hoofd,inf,zonder)+BW(aanw,zonder)	250+510	VRB(type=main,finiteness=finite,inflection=0)+ADV(type=dem,inflection=0)	[1]	doenre⊔mede
+WW(hoofd,inf,zonder)+VNW(aanw,zonder)	250+410	VRB(type=main,finiteness=finite,inflection=0)+PD(type=dem,inflection=0)	[1]	voerent
+WW(hoofd,inf,zonder)+VNW(pers,3,ev)	250+403	VRB(type=main,finiteness=finite,inflection=0)+PD(type=pers,person=3,number=sg)	[73]	houdense, besettense, houdent, verhurent, copent
+WW(hoofd,inf,zonder,hoofddeel-ww)	250	VRB(type=main,finiteness=finite,inflection=0,part=with-particle)	[507]	heffene, betalen, copen, rechten, hangen
+WW(hoofd,part,met-e)	271	VRB(type=main,finiteness=part,inflection=e)	[5213]	veruolghende, vte⊔ganghende, vuthanende, lig↩ghende, důerende
+WW(hoofd,part,met-e)+LID(bep,met-n)	271+474	VRB(type=main,finiteness=part,inflection=e)+PD(type=art,subtype=def,inflection=n)	[1]	gaende⊔vten
+WW(hoofd,part,met-e,hoofddeel-ww)	271	VRB(type=main,finiteness=part,inflection=e,part=with-particle)	[3]	borende, Scheldende, commende
+WW(hoofd,part,met-n)	274	VRB(type=main,finiteness=part,inflection=n)	[19267]	af⊔gheghaen, ouerdragen, dore⊔ghesteken, doerghesteken, bescrieven
+WW(hoofd,part,met-n,hoofddeel-ww)	274	VRB(type=main,finiteness=part,inflection=n,part=with-particle)	[52]	ghedreghen, ghelaten, ghegaen, ghegheuen, gedregen
+WW(hoofd,part,met-s-of-th)	272	VRB(type=main,finiteness=part,inflection=s/th)	[7]	geldens, blivens, doerghaens, vorghenoemt
+WW(hoofd,part,met-s-of-th)+N(eigen,met-s-of-th)	272+022	VRB(type=main,finiteness=part,inflection=s/th)+NOU(type=proper,inflection=s/th)	[1]	svadders
+WW(hoofd,part,met-s-of-th)+N(soort,ev,met-e)	272+001	VRB(type=main,finiteness=part,inflection=s/th)+NOU(type=common,number=sg,inflection=e)	[1]	goensdaghe
+WW(hoofd,part,met-s-of-th)+N(soort,ev,zonder)	272+000	VRB(type=main,finiteness=part,inflection=s/th)+NOU(type=common,number=sg,inflection=0)	[73]	ser, tser
+WW(hoofd,part,met-t)	273	VRB(type=main,finiteness=part,inflection=t)	[13579]	verkent, an⊔gheerůet, ghetinset, ghefundeert, ghedistribuert
+WW(hoofd,part,met-t,hoofddeel-ww)	273	VRB(type=main,finiteness=part,inflection=t,part=with-particle)	[7]	ghewest, ghe↩wait, ghe↩erft, ghewayt, ghearft
+WW(hoofd,part,overig)	279	VRB(type=main,finiteness=part,inflection=other)	[766]	rorenne, ghesat, gheleghen, vercreghen, besproken
+WW(hoofd,part,zonder)	270	VRB(type=main,finiteness=part,inflection=0)	[43]	vernouch, ghesat, gheset, gheseghet, ghelach
+WW(hoofd,part,zonder)+ADJ(ev,met-e)	270+101	VRB(type=main,finiteness=part,inflection=0)+ADJ(number=sg,inflection=e)	[1]	tvoorseide
+WW(hoofd,part,zonder)+ADJ(ev,zonder)	270+100	VRB(type=main,finiteness=part,inflection=0)+ADJ(number=sg,inflection=0)	[1]	tvoerscreuen
+WW(hoofd,part,zonder)+N(eigen,met-n)	270+024	VRB(type=main,finiteness=part,inflection=0)+NOU(type=proper,inflection=n)	[1]	tdmersschelken
+WW(hoofd,part,zonder)+N(eigen,zonder)	270+020	VRB(type=main,finiteness=part,inflection=0)+NOU(type=proper,inflection=0)	[1]	dbloc
+WW(hoofd,part,zonder)+N(soort,ev,zonder)	270+000	VRB(type=main,finiteness=part,inflection=0)+NOU(type=common,number=sg,inflection=0)	[1]	tinhouden
+WW(hoofd,part,zonder)+N(soort,mv,met-e)	270+011	VRB(type=main,finiteness=part,inflection=0)+NOU(type=common,number=pl,inflection=e)	[3]	derfachtechede
+WW(hoofd,pv,tgw,met-e)	201	VRB(type=main,finiteness=finite,tense=present,inflection=e)	[1493]	leghe, vercoupe, versuke, wise, hebbe
+WW(hoofd,pv,tgw,met-e)+VNW(pers,3,mv)	201+406	VRB(type=main,finiteness=finite,tense=present,inflection=e)+PD(type=pers,person=3,number=pl)	[1]	biddehem
+WW(hoofd,pv,tgw,met-e,hoofddeel-ww)	201	VRB(type=main,finiteness=finite,tense=present,inflection=e,part=with-particle)	[22]	scilde, drage, schelde, segge, scheide
+WW(hoofd,pv,tgw,met-e,hoofddeel-ww)+VNW(pers,1,ev)	201+401	VRB(type=main,finiteness=finite,tense=present,inflection=e,part=with-particle)+PD(type=pers,person=1,number=sg,part=with-particle)	[1]	sceldic
+WW(hoofd,pv,tgw,met-n)	204	VRB(type=main,finiteness=finite,tense=present,inflection=n)	[7208]	leighen, ghedragen, tugen, aennemen, jn⊔houden
+WW(hoofd,pv,tgw,met-n)+BW(adv-pron,alg,met-r-of-re)	204+605	VRB(type=main,finiteness=finite,tense=present,inflection=n)+ADV(advType=pronominal,type=general,inflection=r/re)	[1]	sinre
+WW(hoofd,pv,tgw,met-n)+BW(alg,zonder)	204+500	VRB(type=main,finiteness=finite,tense=present,inflection=n)+ADV(type=general,inflection=0)	[1]	belouenre
+WW(hoofd,pv,tgw,met-n)+VNW(aanw,met-s-of-th)	204+412	VRB(type=main,finiteness=finite,tense=present,inflection=n)+PD(type=dem,inflection=s/th)	[1]	utens
+WW(hoofd,pv,tgw,met-n)+VNW(pers,3,ev)	204+403	VRB(type=main,finiteness=finite,tense=present,inflection=n)+PD(type=pers,person=3,number=sg)	[6]	tughent, gheloůent, hebbedet, beuelent, makent
+WW(hoofd,pv,tgw,met-n)+VNW(pers,3,mv)	204+406	VRB(type=main,finiteness=finite,tense=present,inflection=n)+PD(type=pers,person=3,number=pl)	[4]	hebbense, belouense, houdense
+WW(hoofd,pv,tgw,met-n,hoofddeel-ww)	204	VRB(type=main,finiteness=finite,tense=present,inflection=n,part=with-particle)	[18]	zegghen, ghaen, segghen, gaen, panden
+WW(hoofd,pv,tgw,met-nt)	207	U207	[9]	willent, sint, doent, haent
+WW(hoofd,pv,tgw,met-nt)+VNW(pers,3,ev)	207+403	U207+PD(type=pers,person=3,number=sg)	[1]	sint
+WW(hoofd,pv,tgw,met-r-of-re)	205	VRB(type=main,finiteness=finite,tense=present,inflection=r/re)	[1]	helpen
+WW(hoofd,pv,tgw,met-s-of-th)	202	VRB(type=main,finiteness=finite,tense=present,inflection=s/th)	[1]	gaen
+WW(hoofd,pv,tgw,met-t)	203	VRB(type=main,finiteness=finite,tense=present,inflection=t)	[4450]	behoirt, ghaed, Gheuallet, gehoert, behoert
+WW(hoofd,pv,tgw,met-t)+BW(adv-pron,alg,met-r-of-re)	203+605	VRB(type=main,finiteness=finite,tense=present,inflection=t)+ADV(advType=pronominal,type=general,inflection=r/re)	[3]	heeftre, hefter, heefter
+WW(hoofd,pv,tgw,met-t)+BW(alg,zonder)	203+500	VRB(type=main,finiteness=finite,tense=present,inflection=t)+ADV(type=general,inflection=0)	[1]	beloeftere
+WW(hoofd,pv,tgw,met-t)+VNW(aanw,met-s-of-th)	203+412	VRB(type=main,finiteness=finite,tense=present,inflection=t)+PD(type=dem,inflection=s/th)	[33]	leghets, verandwordets, andwordets, leighets, gheloefts
+WW(hoofd,pv,tgw,met-t)+VNW(pers,3,ev)	203+403	VRB(type=main,finiteness=finite,tense=present,inflection=t)+PD(type=pers,person=3,number=sg)	[10]	breechtet, braechet, leghet, heeftet, heftse
+WW(hoofd,pv,tgw,met-t,hoofddeel-ww)	203	VRB(type=main,finiteness=finite,tense=present,inflection=t,part=with-particle)	[14]	staet, vyt⊔gheet, gheet, behort, doet
+WW(hoofd,pv,tgw,met-t,hoofddeel-ww)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	203+605	VRB(type=main,finiteness=finite,tense=present,inflection=t,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[2]	brecter, hef↩ter
+WW(hoofd,pv,tgw,overig)	209	VRB(type=main,finiteness=finite,tense=present,inflection=other)	[65]	tugen, lijnd, heuet, staet, coept
+WW(hoofd,pv,tgw,overig)+VNW(pers,3,ev)	209+403	VRB(type=main,finiteness=finite,tense=present,inflection=other)+PD(type=pers,person=3,number=sg)	[1]	wout
+WW(hoofd,pv,tgw,zonder)	200	VRB(type=main,finiteness=finite,tense=present,inflection=0)	[1421]	buedt, heeff, se, jnhout, achterlat
+WW(hoofd,pv,tgw,zonder)+BW(aanw,zonder)	200+510	VRB(type=main,finiteness=finite,tense=present,inflection=0)+ADV(type=dem,inflection=0)	[1]	vertegher⊔op
+WW(hoofd,pv,tgw,zonder)+BW(adv-pron,alg,met-r-of-re)	200+605	VRB(type=main,finiteness=finite,tense=present,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[1]	scelder
+WW(hoofd,pv,tgw,zonder)+VNW(aanw,met-s-of-th)	200+412	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=dem,inflection=s/th)	[9]	heues, leghes, beters
+WW(hoofd,pv,tgw,zonder)+VNW(onbep,zonder)	200+440	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=indef,inflection=0)	[6]	eest, haudmen, eist
+WW(hoofd,pv,tgw,zonder)+VNW(pers,1,ev)	200+401	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=1,number=sg)	[87]	segghic, ghevic, ghelouic, makic, begheric
+WW(hoofd,pv,tgw,zonder)+VNW(pers,1,ev)+VNW(pers,3,mv)	200+401+406	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=1,number=sg)+PD(type=pers,person=3,number=pl)	[1]	setticken
+WW(hoofd,pv,tgw,zonder)+VNW(pers,3,ev)	200+403	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=3,number=sg)	[32]	est, ist, eist, haudet, lathet
+WW(hoofd,pv,tgw,zonder)+VNW(pers,3,mv)	200+406	VRB(type=main,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=3,number=pl)	[3]	houtse, kense
+WW(hoofd,pv,tgw,zonder,hoofddeel-ww)	200	VRB(type=main,finiteness=finite,tense=present,inflection=0,part=with-particle)	[4]	ga, scelt, schelt, sceld
+WW(hoofd,pv,tgw,zonder,hoofddeel-ww)+BW(aanw,zonder,hoofddeel-bw)	200+510	VRB(type=main,finiteness=finite,tense=present,inflection=0,part=with-particle)+ADV(type=dem,inflection=0,part=with-particle)	[2]	doender, scelder⊔af
+WW(hoofd,pv,tgw,zonder,hoofddeel-ww)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	200+605	VRB(type=main,finiteness=finite,tense=present,inflection=0,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[2]	vertegher, scaltere
+WW(hoofd,pv,verl,met-e)	221	VRB(type=main,finiteness=finite,tense=past,inflection=e)	[4782]	wiesede, ghenghe, erscheyne, toehoerde, geliede
+WW(hoofd,pv,verl,met-e)+BW(aanw,zonder)	221+510	VRB(type=main,finiteness=finite,tense=past,inflection=e)+ADV(type=dem,inflection=0)	[10]	erfder⊔inne, ghelieder⊔of, verhalmeder⊔na, dedere⊔toe
+WW(hoofd,pv,verl,met-e)+BW(alg,zonder)	221+500	VRB(type=main,finiteness=finite,tense=past,inflection=e)+ADV(type=general,inflection=0)	[1]	beloefter
+WW(hoofd,pv,verl,met-e)+VNW(aanw,met-s-of-th)	221+412	VRB(type=main,finiteness=finite,tense=past,inflection=e)+PD(type=dem,inflection=s/th)	[3]	ghelouedes, vertigedes
+WW(hoofd,pv,verl,met-e)+VNW(onbep,zonder)	221+440	VRB(type=main,finiteness=finite,tense=past,inflection=e)+PD(type=indef,inflection=0)	[1]	vondemen
+WW(hoofd,pv,verl,met-e)+VNW(pers,3,ev)	221+403	VRB(type=main,finiteness=finite,tense=past,inflection=e)+PD(type=pers,person=3,number=sg)	[14]	wouder, erfdene, louedet, goetdene, dedene
+WW(hoofd,pv,verl,met-e)+VNW(pers,3,mv)	221+406	VRB(type=main,finiteness=finite,tense=past,inflection=e)+PD(type=pers,person=3,number=pl)	[1]	dreyghese
+WW(hoofd,pv,verl,met-e,hoofddeel-ww)	221	VRB(type=main,finiteness=finite,tense=past,inflection=e,part=with-particle)	[7]	scolde, sprake, stonde, liete, ghinghe
+WW(hoofd,pv,verl,met-e,hoofddeel-ww)+BW(aanw,zonder,hoofddeel-bw)	221+510	VRB(type=main,finiteness=finite,tense=past,inflection=e,part=with-particle)+ADV(type=dem,inflection=0,part=with-particle)	[2]	verhalmeder⊔na
+WW(hoofd,pv,verl,met-n)	224	VRB(type=main,finiteness=finite,tense=past,inflection=n)	[3507]	guden, spraken, ane⊔hadden, Seden, geloveden
+WW(hoofd,pv,verl,met-n)+VNW(aanw,met-s-of-th)	224+412	VRB(type=main,finiteness=finite,tense=past,inflection=n)+PD(type=dem,inflection=s/th)	[13]	hiesschens, worpens, ghinchens, woorpens, ghinghens
+WW(hoofd,pv,verl,met-n)+VNW(aanw,met-t)	224+413	VRB(type=main,finiteness=finite,tense=past,inflection=n)+PD(type=dem,inflection=t)	[1]	ervedens
+WW(hoofd,pv,verl,met-n)+VNW(betr,zonder)	224+420	VRB(type=main,finiteness=finite,tense=past,inflection=n)+PD(type=rel,inflection=0)	[1]	erfdent
+WW(hoofd,pv,verl,met-n)+VNW(pers,3,ev)	224+403	VRB(type=main,finiteness=finite,tense=past,inflection=n)+PD(type=pers,person=3,number=sg)	[20]	droghent, drogent, vestedent, lauedent, weddents
+WW(hoofd,pv,verl,met-n)+VZ(zonder)	224+700	VRB(type=main,finiteness=finite,tense=past,inflection=n)+ADP(type=general,inflection=0)	[1]	ghelouedentte
+WW(hoofd,pv,verl,met-n,hoofddeel-ww)	224	VRB(type=main,finiteness=finite,tense=past,inflection=n,part=with-particle)	[73]	vertieghen, lethen, gyengen, ghenghen, lyeten
+WW(hoofd,pv,verl,met-n,hoofddeel-ww)+VNW(pers,3,ev)	224+403	VRB(type=main,finiteness=finite,tense=past,inflection=n,part=with-particle)+PD(type=pers,person=3,number=sg,part=with-particle)	[4]	scheldent, droghent, droughent
+WW(hoofd,pv,verl,met-r-of-re)+BW(adv-pron,alg,met-r-of-re)	225+605	VRB(type=main,finiteness=finite,tense=past,inflection=r/re)+ADV(advType=pronominal,type=general,inflection=r/re)	[1]	kinder
+WW(hoofd,pv,verl,met-t)	223	VRB(type=main,finiteness=finite,tense=past,inflection=t)	[51]	vermat, gheliedt, voertbracht, liept, stoent
+WW(hoofd,pv,verl,met-t)+VNW(pers,2,mv)	223+405	VRB(type=main,finiteness=finite,tense=past,inflection=t)+PD(type=pers,person=2,number=pl)	[1]	waerdi
+WW(hoofd,pv,verl,met-t)+VNW(pers,3,ev)	223+403	VRB(type=main,finiteness=finite,tense=past,inflection=t)+PD(type=pers,person=3,number=sg)	[2]	droucht, brachti
+WW(hoofd,pv,verl,met-t)+VNW(pers,3,mv)	223+406	VRB(type=main,finiteness=finite,tense=past,inflection=t)+PD(type=pers,person=3,number=pl)	[1]	ghelovedse
+WW(hoofd,pv,verl,met-t,hoofddeel-ww)	223	VRB(type=main,finiteness=finite,tense=past,inflection=t,part=with-particle)	[2]	dreghedet, stoent
+WW(hoofd,pv,verl,overig)	229	VRB(type=main,finiteness=finite,tense=past,inflection=other)	[45]	geliede, verteech, gheplogh, loefde, oerloghede
+WW(hoofd,pv,verl,zonder)	220	VRB(type=main,finiteness=finite,tense=past,inflection=0)	[4035]	ghaf, zwoir, verteech, gheuoer, vermat
+WW(hoofd,pv,verl,zonder)+BW(aanw,zonder)	220+510	VRB(type=main,finiteness=finite,tense=past,inflection=0)+ADV(type=dem,inflection=0)	[23]	ghelieder⊔of, ghelieder⊔af, dader⊔toe, quamer⊔toe, ghelider⊔of
+WW(hoofd,pv,verl,zonder)+BW(adv-pron,alg,met-r-of-re)	220+605	VRB(type=main,finiteness=finite,tense=past,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[3]	quaemmer, worper, dader
+WW(hoofd,pv,verl,zonder)+BW(alg,zonder)	220+500	VRB(type=main,finiteness=finite,tense=past,inflection=0)+ADV(type=general,inflection=0)	[2]	vertegher, loueder
+WW(hoofd,pv,verl,zonder)+VNW(aanw,met-s-of-th)	220+412	VRB(type=main,finiteness=finite,tense=past,inflection=0)+PD(type=dem,inflection=s/th)	[17]	ghincs, ghinx, verteechs, warps, hads
+WW(hoofd,pv,verl,zonder)+VNW(onbep,zonder)+BW(alg,zonder)	220+440+500	VRB(type=main,finiteness=finite,tense=past,inflection=0)+PD(type=indef,inflection=0)+ADV(type=general,inflection=0)	[1]	vondemer
+WW(hoofd,pv,verl,zonder)+VNW(pers,1,ev)	220+401	VRB(type=main,finiteness=finite,tense=past,inflection=0)+PD(type=pers,person=1,number=sg)	[5]	maendic, woudic, haddic
+WW(hoofd,pv,verl,zonder)+VNW(pers,3,ev)	220+403	VRB(type=main,finiteness=finite,tense=past,inflection=0)+PD(type=pers,person=3,number=sg)	[198]	vilt, wildi, wouder, ghevielt, Gheuielt
+WW(hoofd,pv,verl,zonder,hoofddeel-ww)	220	VRB(type=main,finiteness=finite,tense=past,inflection=0,part=with-particle)	[103]	ghaf, verteech, droech, nam, scoudt
+WW(hoofd,pv,verl,zonder,hoofddeel-ww)+BW(aanw,zonder,hoofddeel-bw)	220+510	VRB(type=main,finiteness=finite,tense=past,inflection=0,part=with-particle)+ADV(type=dem,inflection=0,part=with-particle)	[2]	verteechter⊔na
+WW(hoofd,pv,verl,zonder,hoofddeel-ww)+BW(adv-pron,aanw,met-r-of-re,hoofddeel-bw)	220+615	VRB(type=main,finiteness=finite,tense=past,inflection=0,part=with-particle)+ADV(advType=pronominal,type=dem,inflection=r/re,part=with-particle)	[1]	bleuer
+WW(hoofd,pv,verl,zonder,hoofddeel-ww)+VNW(aanw,met-s-of-th)	220+412	VRB(type=main,finiteness=finite,tense=past,inflection=0,part=with-particle)+PD(type=dem,inflection=s/th,part=with-particle)	[2]	ghincs, ghinx
+WW(hoofd,pv,verl,zonder,hoofddeel-ww)+VNW(pers,3,ev)	220+403	VRB(type=main,finiteness=finite,tense=past,inflection=0,part=with-particle)+PD(type=pers,person=3,number=sg,part=with-particle)	[14]	ghijncs, scelet, gaft, scouttet, scoutet
+WW(hulp-of-koppel,inf,zonder)	260	VRB(type=auxiliary,finiteness=inf/ger,inflection=0)	[1]	is
+WW(hulp-of-koppel,overig)	219	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=other)	[64]	hebbe, ebben, wordt, heeft, heuet
+WW(hulp-of-koppel,part,met-r-of-re)	285	VRB(type=auxiliary,finiteness=part,inflection=r/re)	[21]	vte, ane, quite, vp, af
+WW(hulp-of-koppel,part,overig,hoofddeel-ww)	289	VRB(type=auxiliary,finiteness=part,inflection=other,part=with-particle)	[3]	uut, an, of
+WW(hulp-of-koppel,pv,tgw,met-e)	211	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)	[1452]	sie, hebbe, soele, zelle, bleue
+WW(hulp-of-koppel,pv,tgw,met-e)+BW(aanw,zonder)	211+510	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)+ADV(type=dem,inflection=0)	[1]	zalre⊔bij
+WW(hulp-of-koppel,pv,tgw,met-e)+BW(alg,zonder)	211+500	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)+ADV(type=general,inflection=0)	[2]	zalre
+WW(hulp-of-koppel,pv,tgw,met-e)+VNW(pers,1,ev)	211+401	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)+PD(type=pers,person=1,number=sg)	[2]	hebbic
+WW(hulp-of-koppel,pv,tgw,met-e)+VNW(pers,1,mv)	211+404	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=e)+PD(type=pers,person=1,number=pl)	[3]	hebbewi, hebbewij
+WW(hulp-of-koppel,pv,tgw,met-n)	214	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)	[11145]	Mueghen, hebt, hebbe, heijbbe, in⊔hebben
+WW(hulp-of-koppel,pv,tgw,met-n)+BW(aanw,zonder)	214+510	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+ADV(type=dem,inflection=0)	[2]	zijnre⊔jn, siinre⊔toe
+WW(hulp-of-koppel,pv,tgw,met-n)+BW(adv-pron,alg,met-r-of-re)	214+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+ADV(advType=pronominal,type=general,inflection=r/re)	[2]	sijnre, hebbere
+WW(hulp-of-koppel,pv,tgw,met-n)+BW(alg,zonder)	214+500	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+ADV(type=general,inflection=0)	[2]	sinre, hebbere
+WW(hulp-of-koppel,pv,tgw,met-n)+VNW(aanw,met-s-of-th)	214+412	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+PD(type=dem,inflection=s/th)	[9]	Ebbens, ebbens, heb↩bens, hebbens
+WW(hulp-of-koppel,pv,tgw,met-n)+VNW(pers,1,mv)	214+404	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+PD(type=pers,person=1,number=pl)	[1]	solewy
+WW(hulp-of-koppel,pv,tgw,met-n)+VNW(pers,3,ev)	214+403	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+PD(type=pers,person=3,number=sg)	[73]	sellent, zind, zoelent, sijnt, sient
+WW(hulp-of-koppel,pv,tgw,met-n)+VNW(pers,3,mv)	214+406	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n)+PD(type=pers,person=3,number=pl)	[5]	sullense, hebbense, siinse, moetense
+WW(hulp-of-koppel,pv,tgw,met-n,hoofddeel-ww)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	214+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=n,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[1]	hebbenre
+WW(hulp-of-koppel,pv,tgw,met-nt)	217	U217	[121]	sellent, haent, zijnt, Sint, sijnt
+WW(hulp-of-koppel,pv,tgw,met-nt)+VNW(pers,3,ev)	217+403	U217+PD(type=pers,person=3,number=sg)	[1]	sijnt
+WW(hulp-of-koppel,pv,tgw,met-r-of-re)	215	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=r/re)	[2]	tieghen⊔ghinghe, sine
+WW(hulp-of-koppel,pv,tgw,met-s-of-th)	212	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=s/th)	[3]	es, heet
+WW(hulp-of-koppel,pv,tgw,met-t)	213	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)	[4630]	est, hebt, heyft, heift, cont
+WW(hulp-of-koppel,pv,tgw,met-t)+BW(aanw,zonder)	213+510	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+ADV(type=dem,inflection=0)	[2]	heefter⊔af
+WW(hulp-of-koppel,pv,tgw,met-t)+BW(adv-pron,aanw,met-r-of-re)	213+615	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+ADV(advType=pronominal,type=dem,inflection=r/re)	[1]	heeftter
+WW(hulp-of-koppel,pv,tgw,met-t)+BW(adv-pron,alg,met-r-of-re)	213+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+ADV(advType=pronominal,type=general,inflection=r/re)	[54]	heefter, heeftere
+WW(hulp-of-koppel,pv,tgw,met-t)+BW(alg,zonder)	213+500	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+ADV(type=general,inflection=0)	[2]	heeftere
+WW(hulp-of-koppel,pv,tgw,met-t)+VNW(aanw,met-s-of-th)	213+412	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+PD(type=dem,inflection=s/th)	[1]	heuets
+WW(hulp-of-koppel,pv,tgw,met-t)+VNW(pers,2,mv)	213+405	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+PD(type=pers,person=2,number=pl)	[1]	zuldi
+WW(hulp-of-koppel,pv,tgw,met-t)+VNW(pers,3,ev)	213+403	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+PD(type=pers,person=3,number=sg)	[20]	heuets, heeftene, selt, heten, heeftet
+WW(hulp-of-koppel,pv,tgw,met-t)+VNW(pers,3,mv)	213+406	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t)+PD(type=pers,person=3,number=pl)	[1]	heeftse
+WW(hulp-of-koppel,pv,tgw,met-t,hoofddeel-ww)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	213+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=t,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[6]	heefter, heeftere
+WW(hulp-of-koppel,pv,tgw,zonder)	210	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)	[12687]	se, zij, wordt, bůn, darf
+WW(hulp-of-koppel,pv,tgw,zonder)+ADJ(ev,zonder)	210+100	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADJ(number=sg,inflection=0)	[3]	essculdech, Esschuldich
+WW(hulp-of-koppel,pv,tgw,zonder)+BW(aanw,zonder)	210+510	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADV(type=dem,inflection=0)	[23]	esser⊔af, eeser⊔in, eser⊔in, essere⊔Jn, esser⊔of
+WW(hulp-of-koppel,pv,tgw,zonder)+BW(adv-pron,aanw,met-r-of-re)	210+615	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADV(advType=pronominal,type=dem,inflection=r/re)	[1]	esser
+WW(hulp-of-koppel,pv,tgw,zonder)+BW(adv-pron,alg,met-r-of-re)	210+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[34]	hessere, hebber, eesser, eeser, essere
+WW(hulp-of-koppel,pv,tgw,zonder)+BW(alg,zonder)	210+500	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADV(type=general,inflection=0)	[3]	esser, essere, eeser
+WW(hulp-of-koppel,pv,tgw,zonder)+LID(bep,zonder)	210+470	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=art,subtype=def,inflection=0)	[1]	saelt
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(aanw,met-s-of-th)	210+412	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=dem,inflection=s/th)	[2]	heues, zaels
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(aanw,met-t)	210+413	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=dem,inflection=t)	[2]	ist
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(aanw,zonder)	210+410	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=dem,inflection=0)	[1]	zalt
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(onbep,zonder)	210+440	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=indef,inflection=0)	[24]	eest, salmen, selmen, eist
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(pers,1,ev)	210+401	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=1,number=sg)	[107]	ebbic, hebbich, willic, hebbic, hebic
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(pers,1,mv)	210+404	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=1,number=pl)	[5]	sulwi, hebwi
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(pers,3,ev)	210+403	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=3,number=sg)	[223]	est, heuets, zelt, Eest, selt
+WW(hulp-of-koppel,pv,tgw,zonder)+VNW(pers,3,mv)	210+406	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+PD(type=pers,person=3,number=pl)	[4]	salse, selse, heefse
+WW(hulp-of-koppel,pv,tgw,zonder)+VZ(zonder)+WW(hoofd,inf,met-e)	210+700+251	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0)+ADP(type=general,inflection=0)+VRB(type=main,finiteness=finite,inflection=e)	[2]	estewetene
+WW(hulp-of-koppel,pv,tgw,zonder,hoofddeel-ww)+BW(adv-pron,alg,met-r-of-re,hoofddeel-bw)	210+605	VRB(type=auxiliary,finiteness=finite,tense=present,inflection=0,part=with-particle)+ADV(advType=pronominal,type=general,inflection=r/re,part=with-particle)	[3]	essere, esser
+WW(hulp-of-koppel,pv,verl,met-e)	231	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=e)	[3231]	we↩re, viele, soudde, Mochte, Soude
+WW(hulp-of-koppel,pv,verl,met-e)+VNW(onbep,zonder)	231+440	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=e)+PD(type=indef,inflection=0)	[2]	soudemen
+WW(hulp-of-koppel,pv,verl,met-e)+VNW(pers,3,ev)	231+403	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=e)+PD(type=pers,person=3,number=sg)	[9]	weret, Weret, soudene, soldet
+WW(hulp-of-koppel,pv,verl,met-e,hoofddeel-ww)	231	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=e,part=with-particle)	[1]	hadde
+WW(hulp-of-koppel,pv,verl,met-n)	234	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=n)	[2018]	moch↩ten, hedden, wurden, conden, waerden
+WW(hulp-of-koppel,pv,verl,met-n)+VNW(pers,3,ev)	234+403	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=n)+PD(type=pers,person=3,number=sg)	[5]	soudent, mochtent, Warent, woudent
+WW(hulp-of-koppel,pv,verl,met-nt)	237	U237	[1]	woldent
+WW(hulp-of-koppel,pv,verl,met-t)	233	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=t)	[17]	werdet, wardt, můcht, mucht, zoud
+WW(hulp-of-koppel,pv,verl,met-t)+VNW(pers,3,ev)	233+403	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=t)+PD(type=pers,person=3,number=sg)	[2]	weret, waert
+WW(hulp-of-koppel,pv,verl,overig)	239	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=other)	[33]	worden, wart, mochten, was, ware
+WW(hulp-of-koppel,pv,verl,zonder)	230	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)	[4311]	Wer, moght, můcht, moch, mucht
+WW(hulp-of-koppel,pv,verl,zonder)+BW(aanw,zonder)	230+510	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+ADV(type=dem,inflection=0)	[12]	wasser⊔of, warter⊔in, wasser⊔af, waersoe, wasser⊔in
+WW(hulp-of-koppel,pv,verl,zonder)+BW(adv-pron,alg,met-r-of-re)	230+605	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+ADV(advType=pronominal,type=general,inflection=r/re)	[7]	mochter, wassere, warter, wasser, hadder
+WW(hulp-of-koppel,pv,verl,zonder)+BW(alg,zonder)	230+500	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+ADV(type=general,inflection=0)	[11]	waerre, wartere, wassere, warter, wertter
+WW(hulp-of-koppel,pv,verl,zonder)+LID(bep,zonder)	230+470	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=art,subtype=def,inflection=0)	[1]	waert
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(aanw,met-s-of-th)	230+412	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=dem,inflection=s/th)	[12]	saudts, wars, waers, souts, soudts
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(aanw,met-t)	230+413	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=dem,inflection=t)	[2]	warts
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(aanw,zonder)	230+410	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=dem,inflection=0)	[14]	weert, Weert
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(onbep,zonder)	230+440	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=indef,inflection=0)	[2]	soudmen, soumen
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(pers,3,ev)	230+403	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=pers,person=3,number=sg)	[502]	Wert, weert, ist, wa↩ert, eist
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(pers,3,ev)+VNW(pers,3,ev)	230+403+403	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=pers,person=3,number=sg)+PD(type=pers,person=3,number=sg)	[1]	soudijt
+WW(hulp-of-koppel,pv,verl,zonder)+VNW(pers,3,mv)	230+406	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+PD(type=pers,person=3,number=pl)	[3]	soudse
+WW(hulp-of-koppel,pv,verl,zonder)+WW(hoofd,pv,tgw,met-t)	230+203	VRB(type=auxiliary,finiteness=finite,tense=past,inflection=0)+VRB(type=main,finiteness=finite,tense=present,inflection=t)	[1]	waert
+WW(met-e)	291	VRB(type=other,inflection=e)	[1]	houdenne
+WW(met-t)	293	VRB(type=other,inflection=t)	[1]	ghilt
+WW(pv,imp,met-t)	243	VRB(type=-,finiteness=finite,mood=imperative,inflection=t)	[16]	weert, gheloft, vercoepet, gheet, doet
+WW(pv,imp,zonder)	240	VRB(type=-,finiteness=finite,mood=imperative,inflection=0)	[11]	wet, Wet, ghebiet, weet

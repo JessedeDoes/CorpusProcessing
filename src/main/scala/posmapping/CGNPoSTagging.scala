@@ -65,6 +65,15 @@ case class TagSet(prefix: String,
       </constraints>
     </tagset>
 
+  def asPlainText =
+    s"""
+       |[features]
+       |${partitions.map( {case (f,vs) => s"$f=${vs.mkString(", ")}" } ).mkString("\n")}
+       |
+       |[constraints]
+       |${pos2partitions.map( {case (p,fs) => s"$p=${fs.mkString(", ")}" } ).mkString("\n")}
+     """.stripMargin
+
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
 
   def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =
@@ -397,7 +406,7 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     val V: List[String] = this.tagset.inSubsets(f)
 
     val fn = if (V.isEmpty) {
-      Console.err.println("Fatal error: tag cannot be parsed from tagset")
+      Console.err.println(s"Fatal error: tag cannot be parsed from tagset: $tag")
       System.exit(1)
       "UNK"
     }

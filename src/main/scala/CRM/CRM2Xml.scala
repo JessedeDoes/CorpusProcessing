@@ -117,8 +117,9 @@ object CRM2Xml {
           if (corresp.isEmpty) pos else {
           if (pos.contains("VRB")) {
             if (tag.equals("285")) "ADV(part=verbal-particle)" else pos.replaceAll("\\)", ",part=with-particle)")
-          } else if (pos.contains("AD"))
+          } else if (pos.contains("ADP") || pos.contains("ADV"))
             if (tag.equals("655")) "ADV(advType=pronominal,part=abverbial-particle)" else pos.replaceAll("\\)", ",part=with-particle)")
+          else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",part=abverbial-particle)")
           else pos
         }
 

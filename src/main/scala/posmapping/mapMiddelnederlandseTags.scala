@@ -25,13 +25,27 @@ object mapMiddelnederlandseTags {
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  def mapTag(s: String):String =
+  def morfcode2tag(morfcode: String, isPart: Boolean):String =
     {
-      val s0 = s.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999").replaceAll("[A-Za-z]","")
+      val s0 = morfcode.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999").replaceAll("[A-Za-z]","")
 
       val s1 =  "0" * Math.max(0, 3 - s0.length) + s0
 
-      tagMapping.getOrElse(s1, tagMapping("999")) // s"MISSING_MAPPING($s/($s1))")
+      val pos = tagMapping.getOrElse(s1, tagMapping("999")) // s"MISSING_MAPPING($s/($s1))")
+
+      val posAdapted = // pas op deze code werkt alleen voor CRM!!!
+        if (!isPart) pos else {
+          if (pos.contains("WW")) {
+            if (morfcode.equals("285")) "ADV(bw-deel-ww)" else pos.replaceAll("\\)", ",hoofddeel-ww)")
+          } else if (pos.contains("BW"))
+            { if (morfcode.equals("655")) "BW(adv-pron,vz-deel-bw)" else pos.replaceAll("\\)", ",hoofddeel-bw)") }
+          else if (pos.contains("VZ"))
+            pos.replaceAll("\\)", ",vz-deel-bw)")
+          else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",bw-deel-ww)") // PAS OP, CHECK DEZE
+          else pos
+        }
+
+      posAdapted
     }
 
   val morfcodeAttribuut = "@type"
@@ -73,7 +87,9 @@ object mapMiddelnederlandseTags {
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
 
-    val cgnTags:List[String] = morfcodes.map(mapTag)
+    val hasCorresp = (e \ "@corresp").nonEmpty
+
+    val cgnTags:List[String] = morfcodes.map(m => morfcode2tag(m, hasCorresp))
 
     val lemmataPatched = if (cgnTags.size <= lemmata.size) lemmata else {
       val d = cgnTags.size - lemmata.size

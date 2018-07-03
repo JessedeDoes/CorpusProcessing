@@ -156,7 +156,9 @@ object testje
   def main(args:Array[String]) =
   {
     Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.toXML)
-    // System.exit(0)
+    Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.asPlainText)
+
+    System.exit(0)
     scala.io.Source.fromFile(tagset).getLines.toStream.map(l => l.split("\t").toList).filter(_.size >= 5).foreach(l => {
       val t = CGNMiddleDutch.preprocess(l(4))
       val t1 = CGNMiddleDutchTag(t)

@@ -7,6 +7,10 @@ import Location._
 
 import scala.xml.{Elem, Node, NodeSeq}
 
+import java.text.DateFormat
+import java.text.SimpleDateFormat
+import java.text.ParseException
+import java.util.Date
 
 object Meta
 {
@@ -79,6 +83,20 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 
   // Console.err.println(s"Document: $title")
 
+  // 2018-06-22T08:03
+
+  def datetime():String =
+  {
+    val now = new Date
+    import java.text.SimpleDateFormat
+    val yearf = new SimpleDateFormat("yyyy-MM-dd")
+    val timef = new SimpleDateFormat("HH:mm")
+    val year =  yearf.format(now)
+    val time = timef.format(now)
+
+    s"${year}T$time"
+  }
+
   val metaWithNames:Map[String,String] = List(
     ("pid", uuid()),
     ("sourceID", id),
@@ -87,7 +105,8 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
     ("localization_kloekecodeLevel1", kloeke),
     ("witnessYearLevel1_from", year),
     ("witnessYearLevel1_to", year),
-    ("titleLevel1", title)
+    ("titleLevel1", title),
+    ("ingestTime", datetime())
   ).toMap
 
   def asXML:NodeSeq = {

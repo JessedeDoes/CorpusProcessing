@@ -2,11 +2,11 @@ package CRM
 
 object Settings
 {
-  val atHome = true
+  val atHome = false
   val lumpIt = false // corpus in een XML?
   val keepRegOrig = false
 
-  val doAll = false
+  val doAll = true
   val maxDocs = if (doAll) Int.MaxValue else 100
   val dir:String = if (atHome) "/home/jesse/data/CRM/" else "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/"
   val outputDir = dir + "/TEI"
