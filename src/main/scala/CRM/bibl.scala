@@ -314,7 +314,7 @@ val template =
     <interpGrp type="biblScope_volumeLevel2">
       <interp/>
     </interpGrp>
-    <interpGrp type="processingMethod"> 
+    <interpGrp type="processingMethod">
       <interp>digitized</interp>
       <interp>born digital</interp>
     </interpGrp>
