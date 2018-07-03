@@ -17,7 +17,7 @@ object allPids
   }
 }
 
-case class TaggedWord(gigantTag: String, cgnTag: String, morfcode: String, word: String, lemma: String)
+case class TaggedWord(id: String, gigantTag: String, cgnTag: String, morfcode: String, word: String, lemma: String)
 {
   def tagjes = (cgnTag, morfcode, gigantTag)
   lazy val codes = morfcode.split("\\+").toList
@@ -36,7 +36,10 @@ object allTags {
 
   def w2W(i : Node) = {
     val word:String = i.child.filter(x => !(x.label == "fs")).text.trim
+    val id = i.attributes.filter(a => a.key == "id" || a.key=="n").head.value.text
+
     TaggedWord(
+      id,
       (i \ "@pos" ++ i \ "@function").text ,
       (i \ "@msd").text,
       (i \ "@type").text,
@@ -77,6 +80,10 @@ object sterretjeMatje
 
   def groupId(m: String) = m.replaceAll(".*\\{","").replaceAll("[}*#]","")
 
+  val particleTF = io.Source.fromFile("data/Gys/particles.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(0).toInt).toMap
+  val particles = particleTF.keySet
+
+
   def classify(l: Seq[TaggedWord]) =
   {
     val h = l.head
@@ -85,13 +92,30 @@ object sterretjeMatje
     val lemma = h.starryLemma.get
     val pos = h.starryPos.get
 
-    if (pos.contains("WW"))
+    if (pos.contains("VRB"))
       {
-
+        val particle = l.find(w => particles.contains(w.starryLemma.get.replaceAll("-","")))
+        val otherParts = particle.map(p => l.diff(Seq(p)))
+        Console.err.println(l.map(w => s"${w.morfcode}:${w.lemma}").mkString(" "))
+        Console.err.println(s"WW: $particle ////  $otherParts")
+        if (particle.isDefined)
+          List(particle.get.id -> "bw-deel-ww") ++ otherParts.getOrElse(List()).map(w => w.id -> "hoofddeel-ww")
+          else
+          List()
       }
     else if (pos.matches("ADV.*pron.*"))
       {
-
+        val pronominalPart = l.find(_.starryLemma.get.matches(".*(HIER|DAAR|WAAR|ER).*"))
+        val otherParts = pronominalPart.map(p => l.diff(Seq(p)))
+        Console.err.println(l.map(w => s"${w.morfcode}:${w.lemma}").mkString(" "))
+        Console.err.println(s"ADVPRON: $pronominalPart ////  $otherParts")
+        if (pronominalPart.isDefined)
+          List(pronominalPart.get.id -> "hoofddeel-bw") ++ otherParts.getOrElse(List()).map(w => w.id -> "vz-deel-bw")
+        else
+          List()
+      } else
+      {
+          List()
       }
   }
   def main(args: Array[String]): Unit = {
@@ -101,6 +125,9 @@ object sterretjeMatje
 
     val groups = allWords.groupBy(m => m.groupId)
 
-    groups.foreach({case (id,g) => println(g.map(w => s"${w.morfcode}:${w.lemma}").mkString(" "))})
+    groups.foreach({case (id,g) =>
+
+      classify(g).foreach(println)
+    })
   }
 }
