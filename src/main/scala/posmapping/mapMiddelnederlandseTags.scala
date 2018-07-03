@@ -4,8 +4,11 @@ import java.io.File
 import scala.util.matching.Regex._
 import scala.xml._
 
-object mapMiddelnederlandseTags {
-  val rearrangeCorresp = false
+object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
+object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
+
+class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
+  val rearrangeCorresp = gysMode
 
   def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
 
@@ -34,7 +37,7 @@ object mapMiddelnederlandseTags {
       val pos = tagMapping.getOrElse(s1, tagMapping("999")) // s"MISSING_MAPPING($s/($s1))")
 
       val posAdapted = // pas op deze code werkt alleen voor CRM!!!
-        if (!isPart) pos else {
+        if (!isPart) pos else if (!gysMode) {
           if (pos.contains("WW")) {
             if (morfcode.equals("285")) "ADV(bw-deel-ww)" else pos.replaceAll("\\)", ",hoofddeel-ww)")
           } else if (pos.contains("BW"))
@@ -43,7 +46,7 @@ object mapMiddelnederlandseTags {
             pos.replaceAll("\\)", ",vz-deel-bw)")
           else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",bw-deel-ww)") // PAS OP, CHECK DEZE
           else pos
-        }
+        } else pos
 
       posAdapted
     }
