@@ -29,11 +29,19 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
   val gysParticles = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
-  val gysParticleLemmata = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(4) ).toMap
+
+  val gysParticleLemmata = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
+    .map(l => l.split("\\t"))
+    .map(l => {
+      val lem = l(4)
+      val deel = l(2)
+      val lemPatched = if (deel.contains("ww") || deel.contains("bw")) lem.replaceAll("\\|","") else lem.replaceAll("\\|","-")
+      l(1) -> lemPatched }  )
+    .toMap
 
   def gysFixPartLemma(n: String):Option[String] =
   {
-    gysParticleLemmata.get(n).map(_.replaceAll("\\|",""))
+    gysParticleLemmata.get(n)
   }
 
   def morfcode2tag(morfcode: String, isPart: Boolean, n: String):String =
@@ -112,6 +120,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val lemmata = (e \ "@lemma").text.split("\\+").toList
 
+    // TODO aanvullen van de lemmata alleen bij scheidbare WW en ADV en directe opeenvolgingen?
     val completedLemmata = lemmata.zipWithIndex.map({case (l,i) =>
       if (partPart.map(_ == i) == Some(true)) gysFixPartLemma(n).getOrElse(l) else l
     })
@@ -155,7 +164,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       .zipWithIndex
       .map({ case (fs,i) => fs.copy(
         child=fs.child ++ <f name="lemma"><string>{completedLemmataPatched(i)}</string></f> ++
-          (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma">{lemmataPatched(i)}</f> else Seq()),
+          (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
 
     e.copy(attributes = withCompletedLemma, child = e.child ++ featureStructures)

@@ -116,7 +116,7 @@ case class Meta(locPlus: String, status: String, kloeke: String, year: String, n
 
     val merged = bibl.mergeBibl(instance)
 
-    <listBibl type="metadata">
+    <listBibl type="metadata" xml:id="inlMetadata">
       {merged}
     </listBibl>
   }
