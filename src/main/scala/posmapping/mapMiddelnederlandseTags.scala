@@ -29,6 +29,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
   val gysParticles = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
+  val gysParticleLemmata = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(4) ).toMap
+
+  def gysFixPartLemma(n: String):Option[String] =
+  {
+    gysParticleLemmata.get(n).map(_.replaceAll("\\|",""))
+  }
 
   def morfcode2tag(morfcode: String, isPart: Boolean, n: String):String =
     {
@@ -102,7 +108,13 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val n = (e \ "@n").text
 
+    val partPart:Option[Int] = morfcodes.zipWithIndex.find(_._1.contains("{")).map(_._2)
+
     val lemmata = (e \ "@lemma").text.split("\\+").toList
+
+    val completedLemmata = lemmata.zipWithIndex.map({case (l,i) =>
+      if (partPart.map(_ == i) == Some(true)) gysFixPartLemma(n).getOrElse(l) else l
+    })
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
 
@@ -116,6 +128,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       lemmata ++ extra
     }
 
+    val completedLemmataPatched = if (cgnTags.size <= completedLemmata.size) completedLemmata else {
+      val d = cgnTags.size - completedLemmata.size
+      val extra = (0 until d).map(x => "ZZZ")
+      completedLemmata ++ extra
+    }
+
     val cgnTag = cgnTags.mkString("+")
 
     val newMSDAttribute = new UnprefixedAttribute(msdAttribuut, cgnTag, Null)
@@ -126,12 +144,21 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     }
 
     val stm = sterretjeMatje(e)
+
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
+
     val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
-    val featureStructures = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s)).zipWithIndex
-      .map({ case (fs,i) => fs.copy(child=fs.child ++ <f name="lemma"><string>{lemmataPatched(i)}</string></f>, attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
-    e.copy(attributes = afterStm, child = e.child ++ featureStructures)
+    val withCompletedLemma = afterStm.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
+
+    val featureStructures = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+      .zipWithIndex
+      .map({ case (fs,i) => fs.copy(
+        child=fs.child ++ <f name="lemma"><string>{completedLemmataPatched(i)}</string></f> ++
+          (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma">{lemmataPatched(i)}</f> else Seq()),
+        attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
+
+    e.copy(attributes = withCompletedLemma, child = e.child ++ featureStructures)
   }
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
@@ -166,21 +193,61 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         def newCorresp(w: Elem): Elem = {
           if ((w \ "@corresp").nonEmpty) {
             val cor = (w \ "@corresp").text
-            val id = getId(w).get
+            val moi = getId(w).get
 
+            val lesAutres = sterMatMap(cor).toSet.diff(Set(moi))
 
-            val setje = sterMatMap(cor).toSet.diff(Set(id))
-            val newCor = setje.map(x => s"#$x").mkString(" ")
-            val newAtts = replaceAtt(w.attributes, "corresp", newCor)
-
-            w.copy(attributes = newAtts)
+            if (lesAutres.isEmpty)
+              w else {
+              val newCor = lesAutres.map(x => s"#$x").mkString(" ")
+              val newAtts = replaceAtt(w.attributes, "corresp", newCor)
+              w.copy(attributes = newAtts)
+            }
           } else w
         }
 
-        updateElement(f1, _.label == "w", w => fixType(newCorresp(w)))
+        updateElement(f1, _.label == "w", w => wrapContentInSeg(fixType(newCorresp(w))))
       } else f1
     }
 
+  def makeGroupx[T](s: Seq[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
+  {
+    if (s.isEmpty) Stream(currentGroup)
+    else if (f(s.head))
+      Stream.cons(currentGroup, makeGroupx(s.tail, List(s.head), f))
+    else
+      makeGroupx(s.tail, currentGroup :+ s.head, f)
+  }
+
+  def makeGroup[T](s: Seq[T], f: T=>Boolean):Seq[List[T]] =
+  {
+    makeGroupx[T](s, List.empty, f).filter(_.nonEmpty)
+  }
+
+  def removeUselessWhite(n: Seq[(Node,Int)]) = n.filter({ case (x,i) =>  !(x.isInstanceOf[Text] && x.text.trim.isEmpty  &&  (i==0 || i == n.size-1)) })
+
+
+  def wrapContentInSeg(w: Elem): Elem =
+  {
+    val children = w.child.zipWithIndex
+
+    val groupedChildren = makeGroup[(Node,Int)](children, {case (c,i) => !(c.isInstanceOf[Text] || c.label == "hi" || c.label == "expan")})
+
+    val newChildren = groupedChildren.flatMap(
+      g => {
+        if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall( {case (c,i) => c.isInstanceOf[Text] || c.label == "hi" || c.label == "expan"})) {
+
+          val contents = removeUselessWhite(g).map(_._1)
+          val ctext:String = contents.text.trim.replaceAll("\\s+", " ")
+
+          <seg type='orth'>{contents}</seg>
+
+        }
+        else g.map(_._1)
+      }
+    )
+    w.copy(child = newChildren)
+  }
 
   def fixFile(in: String, out:String) = XML.save(out, fixEm(XML.load(in)),  enc="UTF-8")
 
