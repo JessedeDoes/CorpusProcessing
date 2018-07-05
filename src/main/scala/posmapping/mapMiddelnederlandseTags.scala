@@ -10,6 +10,8 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val rearrangeCorresp = gysMode
 
+  val squareCup = "⊔"
+
   def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
 
   def updateElement(e: Elem, condition: Elem=>Boolean, f: Elem => Elem):Elem =
@@ -216,7 +218,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         }
 
         updateElement(f1, _.label == "w", w => wrapContentInSeg(fixType(newCorresp(w))))
-      } else f1
+      } else updateElement(f1, _.label == "w", w => wrapContentInSeg(w))
     }
 
   def makeGroupx[T](s: Seq[T], currentGroup:List[T], f: T=>Boolean):Stream[List[T]] =
@@ -244,6 +246,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val newChildren = groupedChildren.flatMap(
       g => {
+
         if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall( {case (c,i) => c.isInstanceOf[Text] || c.label == "hi" || c.label == "expan"})) {
 
           val contents = removeUselessWhite(g).map(_._1)
@@ -258,7 +261,8 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     w.copy(child = newChildren)
   }
 
-  def fixFile(in: String, out:String) = XML.save(out, fixEm(XML.load(in)),  enc="UTF-8")
+
+  def fixFile(in: String, out:String) = XML.save(out, wordSplitting.splitWords(fixEm(XML.load(in))),  enc="UTF-8")
 
   def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
 }
