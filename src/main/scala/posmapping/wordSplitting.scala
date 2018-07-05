@@ -15,8 +15,7 @@ object wordSplitting {
     val pos = (w \ "@msd").text
 
     val parts = word.split(s"(\\s+|$squareCup)")
-
-    Console.err.println(parts.toList)
+    
     if (parts.size == 1)
       {
         Seq(w)
@@ -36,9 +35,16 @@ object wordSplitting {
 
           val pw =w.copy(child=newChild, attributes = newAtts)
 
-          Console.err.println(pw)
-          pw
+          val fs = (w \ "fs").toSeq
+          val fsNew = if (fs.nonEmpty)
+            {
+              val hd = fs.head.asInstanceOf[Elem]
+              Seq(hd.copy(child = hd.child ++ Seq(<f name="deel">{partClass}</f>))) ++ fs.tail }
+          else
+            Seq()
 
+            // Console.err.println(pw)
+          pw.copy(child = pw.child.filter(c => !(c.label == "fs")) ++ fsNew)
         }
       )
     }
