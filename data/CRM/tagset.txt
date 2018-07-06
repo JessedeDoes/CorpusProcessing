@@ -18,7 +18,7 @@ ntype=eigen, soort
 status=nadr, red, vol, ellips
 variatie=dial
 persoon=3o, 2v, 2b, 1, 3m, 3v, 2, persoon, 3, 3p
-deel=hoofddeel-bw, bw-deel-ww, vz-deel-bw, deel, hoofddeel-ww
+deel=hoofddeel-bw, deel-f, bw-deel-ww, deel-i, vz-deel-bw, deel, hoofddeel-ww, deel-b
 getal-n=getal-n, mv-n, ev-n, zonder-n
 conjtype=verg, expl, neg, neven, kwal, betr, onder
 buiging=zonder, met-a, met-s-of-th, met-t, overig, met-nt, met-n, met-s, met-r-of-re, met-e
@@ -27,15 +27,14 @@ pvtijd=tgw, verl, conj, imp
 
 [constraints]
 LID=lwtype, naamval, npagr, buiging
-TW=numtype, graad, positie, buiging
-N=ntype, getal, graad, genus, naamval, buiging
-VG=conjtype, buiging
-TSW=buiging
+TW=numtype, graad, positie, buiging, deel
+N=ntype, getal, graad, genus, naamval, buiging, deel
+VG=conjtype, buiging, deel
+TSW=buiging, deel
 ADJ=positie, graad, buiging, getal-n, naamval, getal, buiging, deel
 BW=bwtype, status, pdtype, buiging, deel
 VZ=vztype, buiging, deel
-NUM=numtype, positie, graad, getal-n, naamval, buiging
 WW=wvorm, pvtijd, pvagr, positie, buiging, getal-n, wwtype, buiging, deel
-VNW=vwtype, pdtype, naamval, status, persoon, getal, genus, positie, buiging, npagr, getal-n, graad, buiging
-SPEC=spectype, buiging
-     
+VNW=vwtype, pdtype, naamval, status, persoon, getal, genus, positie, buiging, npagr, getal-n, graad, buiging, deel
+SPEC=spectype, buiging, deel
+
