@@ -345,7 +345,7 @@ object CRM2Xml {
     ).filter(_._2.isDefined).map(x => x._1 ->  x._2.get)
 
     val s2x:Map[Int,Seq[Int]] = pairings.groupBy(_._1).mapValues(_.map(_._2)) // .mapValues(_.map(_.n))
-  val e2x:Map[Int,Seq[Int]] = pairings.groupBy(_._2).mapValues(_.map(_._1))
+    val e2x:Map[Int,Seq[Int]] = pairings.groupBy(_._2).mapValues(_.map(_._1))
 
     // if (s2x.nonEmpty) Console.err.println(s2x + "   " + e2x)
 
@@ -361,12 +361,13 @@ object CRM2Xml {
 
   /* dit kan niet meer zo .... */
 
-  def markWordformGroups(d: Elem):Elem =
+  def markWordformGroups_deprecated(d: Elem):Elem =
   {
     val wordOrder = (d \\ "w").zipWithIndex.map({case (w,i) => w -> i}).toMap
 
-    val stermatten = (d \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e =>  (e \ "@corresp").text)
+    val stermatten:Map[String, Seq[Node]] = (d \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e =>  (e \ "@corresp").text)
     // stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
+
 
     val partAssignments = stermatten.values.flatMap(l =>
     {

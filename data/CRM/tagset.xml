@@ -1,6 +1,7 @@
 <?xml version="1.0"?>
 <tagset>
     <prefix>mnl</prefix>
+    <separator>+</separator>
     <mainPoS>
         <pos>TW</pos>
         <pos>N</pos>
@@ -9,7 +10,6 @@
         <pos>ADJ</pos>
         <pos>BW</pos>
         <pos>VZ</pos>
-        <pos>NUM</pos>
         <pos>LET</pos>
         <pos>WW</pos>
         <pos>VNW</pos>
@@ -265,6 +265,9 @@
                 <value>hoofddeel-bw</value>
                 <value>bw-deel-ww</value>
                 <value>hoofddeel-ww</value>
+                <value>deel-b</value>
+                <value>deel-i</value>
+                <value>deel-f</value>
             </values>
         </feature>
     </partitions>
@@ -285,6 +288,7 @@
                 <feature>graad</feature>
                 <feature>positie</feature>
                 <feature>buiging</feature>
+                <feature>deel</feature>
             </features>
         </constraint>
         <constraint>
@@ -304,12 +308,14 @@
             <features>
                 <feature>conjtype</feature>
                 <feature>buiging</feature>
+                <feature>deel</feature>
             </features>
         </constraint>
         <constraint>
             <pos>TSW</pos>
             <features>
                 <feature>buiging</feature>
+                <feature>deel</feature>
             </features>
         </constraint>
         <constraint>
@@ -344,17 +350,6 @@
             </features>
         </constraint>
         <constraint>
-            <pos>NUM</pos>
-            <features>
-                <feature>numtype</feature>
-                <feature>positie</feature>
-                <feature>graad</feature>
-                <feature>getal-n</feature>
-                <feature>naamval</feature>
-                <feature>buiging</feature>
-            </features>
-        </constraint>
-        <constraint>
             <pos>WW</pos>
             <features>
                 <feature>wvorm</feature>
@@ -384,6 +379,7 @@
                 <feature>getal-n</feature>
                 <feature>graad</feature>
                 <feature>buiging</feature>
+                <feature>deel</feature>
             </features>
         </constraint>
         <constraint>
@@ -391,6 +387,7 @@
             <features>
                 <feature>spectype</feature>
                 <feature>buiging</feature>
+                <feature>deel</feature>
             </features>
         </constraint>
     </constraints>
