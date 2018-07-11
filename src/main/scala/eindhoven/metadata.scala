@@ -24,7 +24,7 @@ object doubleFields
 
   def fixFile(in: String, out: String) =
   {
-    val d = pidFix.fixPid(fixDoubles(XML.load(in)))
+    val d = pidFix.fixPids(fixDoubles(XML.load(in)))
     XML.save(out, d, "UTF-8")
   }
 
@@ -67,7 +67,9 @@ object checkDoubleFields
 object pidFix
 {
   def fixPid(b: Elem):Elem = {
-    val idno = ((b \ "idno").filter(i => (i \ "@type").text == "pid") \ "interp").text
+    //Console.err.println(b)
+    val idno = ((b \ "idno").filter(i => (i \ "@type").text == "pid")).text
+    Console.err.println(idno + " " + b \ "idno")
     val extra = <interpGrp type="pid">
       <interp>{idno}</interp>
     </interpGrp>
