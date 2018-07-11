@@ -19,7 +19,7 @@ class Schema(fileName: String) {
   val dataProperties = ontology.getDataPropertiesInSignature().asScala.toSet
   val axioms = ontology.getTBoxAxioms(null).asScala.toSet
 
-  //axioms.foreach(println)
+  axioms.foreach(println)
 
   val objectPropertyNames = objectProperties.map(op => op.getIRI.toString)
   val dataPropertyNames = dataProperties.map(op => op.getIRI.toString)
@@ -44,7 +44,9 @@ class Schema(fileName: String) {
 
 object testSchema
 {
-  val s = new Schema("data/Diamant/diamant.fss")
+  val olia = "data/olia/olia.nt"
+  val diamant = "data/Diamant/diamant.fss"
+  val s = new Schema(olia)
 
   def main(args: Array[String]): Unit =
   {

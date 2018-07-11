@@ -10,7 +10,16 @@ object metadata {
 object doubleFields
 {
 
+
   import PostProcessXML._
+
+  def someOtherPostfixes(d: Elem) =
+  {
+    val d1 = updateElement(d, _.label=="w", e => e.copy(attributes = e.attributes.filter(a => a.key != "sic" && a.key != "corr" && a.key != "maybenot")))
+    val d2 = updateElement(d1, _.label=="teiHeader", e => updateElement(e, _.label=="s", e => e.copy(label = "p")))
+    val d3 = updateElement(d2, _.label == "notesStmt", e => e.copy(child = <note/>))
+    d3
+  }
 
   def fixDoubles(d: Elem) =
     updateElement(d,
@@ -24,7 +33,7 @@ object doubleFields
 
   def fixFile(in: String, out: String) =
   {
-    val d = pidFix.fixPids(fixDoubles(XML.load(in)))
+    val d = someOtherPostfixes(pidFix.fixPids(in)(fixDoubles(XML.load(in))))
     XML.save(out, d, "UTF-8")
   }
 
@@ -66,17 +75,32 @@ object checkDoubleFields
 
 object pidFix
 {
-  def fixPid(b: Elem):Elem = {
+  def uuid(pid: String, title: String):String =
+  {
+    val source = pid + "." + title
+    val bytes = source.getBytes("UTF-8")
+    java.util.UUID.nameUUIDFromBytes(bytes).toString
+  }
+
+  def fixPid(f: String)(b: Elem):Elem = {
     //Console.err.println(b)
-    val idno = ((b \ "idno").filter(i => (i \ "@type").text == "pid")).text
-    Console.err.println(idno + " " + b \ "idno")
-    val extra = <interpGrp type="pid">
-      <interp>{idno}</interp>
-    </interpGrp>
+    val file = new java.io.File(f)
+    val fileName = file.getParentFile.getName + "::" + file.getName
+    val idno = ((b \ "idno").filter(i => (i \ "@type").text == "pid")).text.trim
+    val title = (b \ "interpGrp").filter(i => (i \ "@type").text == "titleLevel1").text.trim
+    val newUUID = uuid(idno,fileName)
+    Console.err.println(s"$idno $fileName s$title $newUUID")
+
+    val extra = <interpGrp type="pid"><interp>INT_{newUUID}</interp></interpGrp>
+
     b.copy(child = extra ++ b.child.filter(c => !(c.label == "idno")))
   }
 
-  def fixPids(d: Elem) = PostProcessXML.updateElement(d, _.label == "bibl", fixPid)
+  def fixPids(f: String)(d: Elem) = {
+    val d1 = PostProcessXML.updateElement(d, _.label == "bibl", fixPid(f))
+    val pid = (d1 \\ "interpGrp").filter(i => (i \ "@type").text == "pid").text.trim
+    PostProcessXML.updateElement(d1, n => (n.label == "idno") && (n \ "@type").text == "pid", x =>  <idno type="pid">{pid}</idno> )
+  }
 }
 
 /*
