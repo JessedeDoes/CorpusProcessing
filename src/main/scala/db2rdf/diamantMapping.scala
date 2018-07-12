@@ -9,6 +9,11 @@ import db2rdf.Ω.{ϝ, ⊕}
 import db2rdf.IRI
 import org.slf4j._
 
+/*
+ToDo vergelijk met database thuis!!
+Senses enzo van thuis halen, daar wel met nummers in de database zoals het moet?
+ */
+
 object posConversion {
 
   import java.util
