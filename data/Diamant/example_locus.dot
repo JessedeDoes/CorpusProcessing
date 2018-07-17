@@ -1,0 +1,29 @@
+digraph G {
+  fontname = "Bitstream Vera Sans"
+    fontsize = 8
+
+    node [
+      fontname = "Bitstream Vera Sans"
+      fontsize = 8
+      shape = "record"
+    ]
+
+    edge [
+      fontname = "Bitstream Vera Sans"
+      fontsize = 8
+    ]
+ 
+l0 [ label="{l0 : Form|writtenRep=koe}" ]
+e0 -> l0 [ label="canonicalForm" ] 
+q0 [ label="{q0 : Citation|quotationText=de koei zei boe}" ]
+a0 -> q0 [ label="text" ] 
+a0 [ label="{a0 : Locus|endIndex=6\lbeginIndex=3}" ]
+f0 -> a0 [ label="locus" ] 
+f0 [ label="{f0 : Form|writtenForm=koei}" ]
+e0 -> f0 [ label="lexicalForm" ] 
+s0 -> q0 [ label="attestation" ] 
+s0 -> a0 [ label="locus" ] 
+s0 [ label="{s0 : LexicalSense|definition=De koe is een nuttig dier}" ]
+e0 -> s0 [ label="sense" ] 
+e0 [ label="{e0 : LexicalEntry}" ]
+}
