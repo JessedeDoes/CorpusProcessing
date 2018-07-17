@@ -1,0 +1,42 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/#> . 
+@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> . 
+@prefix owl: <http://www.w3.org/2002/07/owl#> . 
+@prefix pwn: <http://wordnet-rdf.princeton.edu/ontology#> . 
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> . 
+@prefix xml: <http://www.w3.org/XML/1998/namespace> . 
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> . 
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> . 
+@prefix quest: <http://obda.org/quest#> . 
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> . 
+@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> . 
+@prefix lemon: <http://lemon-model.net/lemon#> . 
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> . 
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> . 
+@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> . 
+@prefix olia_top: <http://purl.org/olia/olia-top.owl> . 
+@prefix prov: <http://www.w3.org/ns/prov#> . 
+@prefix ud: <http://universaldependencies.org/u/> . 
+@prefix : <#> .  
+
+:e0 a ontolex:LexicalEntry .
+:e0 ontolex:sense :s0 .
+:l0 a ontolex:Form .
+:e0 ontolex:canonicalForm :l0 .
+:l0 ontolex:writtenRep "koe" .
+:f0 a ontolex:Form .
+:f0 ontolex:writtenForm "koei" .
+:e0 ontolex:lexicalForm :f0 .
+:s0 a ontolex:LexicalSense .
+:s0 ontolex:definition  "De koe is een nuttig dier" .
+:a0 a diamant:Attestation .
+:s0 diamant:attestation :a0 .
+:f0 diamant:attestation :a0 .
+:q0 a diamant:Quotation .
+:q0 a diamant:Text .
+:q0 diamant:quotationText "de koei zei boe" .
+:s0 diamant:citation :q0 .
+:a0 diamant:text :q0 .
+:a0 nif:beginIndex 3 .
+:a0 nif:endIndex 6 .
+
+
