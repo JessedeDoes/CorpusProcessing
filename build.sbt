@@ -48,6 +48,9 @@ libraryDependencies += "javax.servlet" % "javax.servlet-api" % "4.0.0" % "provid
 
 libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
 
+// https://mvnrepository.com/artifact/guru.nidi/graphviz-java
+libraryDependencies += "guru.nidi" % "graphviz-java" % "0.5.2"
+
 enablePlugins(TomcatPlugin)
 
 assemblyMergeStrategy in assembly := {
