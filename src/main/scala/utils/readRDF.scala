@@ -62,6 +62,8 @@ object readRDF
     val myGraph = new org.openrdf.model.impl.GraphImpl
 
     val collector = new StatementCollector(myGraph)
+
+
     rdfParser.setRDFHandler(collector)
 
     rdfParser.parse(inputStream, "http://")
@@ -139,6 +141,10 @@ object readRDF
 
   def makeDot(seq: Seq[Statement]):String = {
     val bySubject = seq.groupBy(_.getSubject)
+
+    val isAs = seq.filter(isIsA)
+
+    isAs.foreach(println)
 
     val subjectInfo:List[String] = bySubject.toList.map(
       {
