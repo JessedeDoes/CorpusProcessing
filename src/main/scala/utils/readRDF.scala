@@ -101,17 +101,17 @@ object readRDF
   val prelude =
     """
       |digraph G {
-      |  fontname = "Bitstream Vera Sans"
+      |  //fontname = "Bitstream Vera Sans"
       |    fontsize = 8
       |
       |    node [
-      |      fontname = "Bitstream Vera Sans"
+      |      //fontname = "Bitstream Vera Sans"
       |      fontsize = 8
       |      shape = "record"
       |    ]
       |
       |    edge [
-      |      fontname = "Bitstream Vera Sans"
+      |      //fontname = "Bitstream Vera Sans"
       |      fontsize = 8
       |    ]
     """.stripMargin
@@ -198,14 +198,11 @@ object example extends App
 {
   import readRDF.exampleWithDiagram
 
-
-
-
   val stuff = <div>
     <head>The basic attestation model</head>
 <example>
-      :e0 a ontolex:LexicalEntry .
-      :e0 ontolex:sense :s0 .
+      :e0 a ontolex:LexicalEntry ;
+          ontolex:sense :s0 .
       :l0 a ontolex:Form .
       :e0 ontolex:canonicalForm :l0 .
       :l0 ontolex:writtenRep "koe" .
@@ -227,5 +224,6 @@ object example extends App
 </example>
   </div>
 
-  println(processExamples(stuff))
+  val xstuff = processExamples(stuff).asInstanceOf[Elem]
+  XML.save("aap.html", xstuff, "UTF-8")
 }
