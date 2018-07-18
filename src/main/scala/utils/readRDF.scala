@@ -104,11 +104,11 @@ object readRDF
     """
       |digraph G {
       |  //fontname = "Bitstream Vera Sans"
-      |    fontsize = 8
+      |    fontsize = 10
       |
       |    node [
       |      //fontname = "Bitstream Vera Sans"
-      |      fontsize = 8
+      |      fontsize = 10
       |      shape = rectangle
       |      style="rounded"
       |      //fillcolor = "#40e0d0"
@@ -116,7 +116,7 @@ object readRDF
       |
       |    edge [
       |      //fontname = "Bitstream Vera Sans"
-      |      fontsize = 6
+      |      fontsize = 8
       |    ]
     """.stripMargin
 
@@ -170,11 +170,11 @@ object readRDF
           val dataPropertyLabelPart = dataProperties.map(dp => s"${shortName(dp.getPredicate)}=${shortName(dp.getObject)}").mkString("\\l")
           val label = if (dataPropertyLabelPart.isEmpty) className else s"$className|$dataPropertyLabelPart"
 
-          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="pink" colspan="2">{n}:{className}</td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
+          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="pink" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
 
           (s"""\n$n [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
-            objectProperties.toList.map( o => s"$n -> ${shortName(o.getObject)} [ label = ${objectPropertyLabel(o)}] "))
+            objectProperties.toList.map( o => s"""$n -> ${shortName(o.getObject)} [ color="#000088", arrowhead=vee, label = ${objectPropertyLabel(o)}] """))
             .mkString("\n")
       }
     )
