@@ -139,6 +139,9 @@ class Schema(fileName: String) {
   (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
 
   lazy val dot = utils.readRDF.makeDot(classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions)
+  def  createImage = {
+    utils.readRDF.createSVG(dot, "./test.svg")
+  }
 
   Console.err.println(dot)
 
@@ -170,6 +173,7 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
+    s.createImage
     System.exit(0)
     println("#classes:")
     s.classNames.toList.sortBy(identity).foreach(println)

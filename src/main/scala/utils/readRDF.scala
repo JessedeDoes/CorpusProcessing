@@ -109,12 +109,14 @@ object readRDF
       |    node [
       |      //fontname = "Bitstream Vera Sans"
       |      fontsize = 8
-      |      shape = "record"
+      |      shape = rectangle
+      |      style="rounded"
+      |      //fillcolor = "#40e0d0"
       |    ]
       |
       |    edge [
       |      //fontname = "Bitstream Vera Sans"
-      |      fontsize = 8
+      |      fontsize = 6
       |    ]
     """.stripMargin
 
@@ -146,6 +148,15 @@ object readRDF
 
     isAs.foreach(println)
 
+    def objectPropertyLabel(s: Statement) =
+    {
+      val n = shortName(s.getPredicate)
+      if (s.getObject == s.getSubject)
+        """"""" + n.replaceAll(".", "$0\\\\n") + """""""
+      else
+        n
+    }
+
     val subjectInfo:List[String] = bySubject.toList.map(
       {
         case (s,l) =>
@@ -159,9 +170,11 @@ object readRDF
           val dataPropertyLabelPart = dataProperties.map(dp => s"${shortName(dp.getPredicate)}=${shortName(dp.getObject)}").mkString("\\l")
           val label = if (dataPropertyLabelPart.isEmpty) className else s"$className|$dataPropertyLabelPart"
 
-          (s"""\n$n [label="{$n : $label}"]"""
+          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="pink" colspan="2">{n}:{className}</td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
+
+          (s"""\n$n [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
-            objectProperties.toList.map( o => s"$n -> ${shortName(o.getObject)} [ label = ${shortName(o.getPredicate)}] "))
+            objectProperties.toList.map( o => s"$n -> ${shortName(o.getObject)} [ label = ${objectPropertyLabel(o)}] "))
             .mkString("\n")
       }
     )

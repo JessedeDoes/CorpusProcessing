@@ -58,7 +58,7 @@ Declaration(Class(diamant:Quotation))
 Declaration(Class(diamant:Similarity))
   AnnotationAssertion(rdfs:comment diamant:Similarity "Similarity (real-valued) between to terms")
 
-Declaration(Class(diamant:Set))
+#Declaration(Class(diamant:Set))
 #Declaration(Class(diamant:SemanticRelation))
 Declaration(Class(dcterms:PeriodOfTime))
 Declaration(Class(dcterms:Location))
@@ -70,9 +70,9 @@ Declaration(Class(diamant:LocationType))
 
 # object properties
 
-Declaration(ObjectProperty(diamant:elementOf))
-	ObjectPropertyDomain(diamant:elementOf ontolex:LexicalEntry)
-        ObjectPropertyRange(diamant:elementOf diamant:Set)
+#Declaration(ObjectProperty(diamant:elementOf))
+#	ObjectPropertyDomain(diamant:elementOf ontolex:LexicalEntry)
+#       ObjectPropertyRange(diamant:elementOf diamant:Set)
 
 Declaration(ObjectProperty(ontolex:sense))
 	ObjectPropertyDomain(ontolex:sense ontolex:LexicalEntry)
@@ -91,7 +91,7 @@ Declaration(ObjectProperty(ontolex:senseRelation))
 
 Declaration(ObjectProperty(ontolex:reference))
 	ObjectPropertyDomain(ontolex:reference ontolex:LexicalSense)
-	ObjectPropertyRange(ontolex:reference rdfs:Resource)
+	ObjectPropertyRange(ontolex:reference skos:Concept)
 
 Declaration(ObjectProperty(lemon:definition))
    ObjectPropertyDomain(lemon:definition ontolex:LexicalSense)
@@ -258,12 +258,12 @@ Declaration(ObjectProperty(diamant:hyperonym))
 # data properties
 Declaration(DataProperty(ontolex:writtenRep))
   DataPropertyDomain(ontolex:writtenRep ontolex:Form)
-  DataPropertyDomain(ontolex:writtenRep xsd:string)
+  DataPropertyRange(ontolex:writtenRep xsd:string)
 
 Declaration(DataProperty(diamant:senseOrder))
   DataPropertyDomain(diamant:senseOrder ontolex:LexicalSense)
-  DataPropertyDomain(diamant:senseOrder xsd:integer)
- AnnotationAssertion(rdfs:comment diamant:senseOrder "n-th child in the subsense relation")
+  DataPropertyRange(diamant:senseOrder xsd:integer)
+AnnotationAssertion(rdfs:comment diamant:senseOrder "n-th child in the subsense relation")
 
 # dit klopt niet met de data
 Declaration(DataProperty(diamant:synonymDefinition))
@@ -306,9 +306,9 @@ Declaration(DataProperty(diamant:witnessYearTo))
 DataPropertyDomain(ontolex:writtenRep ontolex:Form)
 DataPropertyRange(ontolex:writtenRep xsd:string)
 
-Declaration(DataProperty(rdfs:label))
-DataPropertyRange(rdfs:label xsd:string)
-DataPropertyDomain(rdfs:label rdfs:Resource)
+#Declaration(DataProperty(rdfs:label))
+#DataPropertyRange(rdfs:label xsd:string)
+#DataPropertyDomain(rdfs:label rdfs:Resource)
 
 ####### de eigenlijke ontologiezooi voor de obdatool
 
