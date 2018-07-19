@@ -54,7 +54,7 @@ case class Schema(inputStream: java.io.InputStream) {
 
     parser.setRDFHandler(collector)
 
-    Console.err.println(s)
+
     parser.parse(in, "http://")
 
     myGraph.iterator().next()
@@ -62,12 +62,16 @@ case class Schema(inputStream: java.io.InputStream) {
 
   def classDeclarations = classes.map(c => {
      val name = c.toString
-     val stmt = s"$name <${utils.readRDF.isA}> <http://Class> ."
-      Console.err.println(stmt)
+     val n1 = if (name.contains("<")) name else s"<$name>"
+
+     val stmt = s"$n1 <${utils.readRDF.isA}> <http://Class> ."
+     //Console.err.println(stmt)
      scala.util.Try(parse(stmt))
   }).toSeq.filter(_.isSuccess).map(_.asInstanceOf[Success[org.openrdf.model.Statement]]).map(_.value.asInstanceOf[org.openrdf.model.Statement])
 
-  classDeclarations.foreach(println)
+  //classDeclarations.foreach(println)
+
+
   def subClassDefinitions:Seq[org.openrdf.model.Statement] =
   {
     val subClassAxioms = axioms.filter(a => a.getAxiomType==AxiomType.SUBCLASS_OF).map(_.asInstanceOf[OWLSubClassOfAxiom])
@@ -75,15 +79,31 @@ case class Schema(inputStream: java.io.InputStream) {
     val subClassDefinitions =subClassAxioms.map(
       a =>
         {
-          val sub = a.getSubClass.toString
+          val sub = getNameForClass(a.getSubClass)
+
           val p = "<http://subClassOf>"
-          val supy = a.getSuperClass.toString
+
+          val supy = getNameForClass(a.getSuperClass)
+
           val stmt = s"$sub $p $supy ."
           println(stmt)
           scala.util.Try(parse(stmt))
         }
     )
     subClassDefinitions.toList.filter(_.isSuccess).map(_.asInstanceOf[Success[org.openrdf.model.Statement]]).map(_.value.asInstanceOf[org.openrdf.model.Statement]).toSeq
+  }
+
+
+  def getNameForClass(c: OWLClassExpression):String  =
+  {
+    val dtype = c.getClassExpressionType
+    val d1 = if (dtype == ClassExpressionType.OWL_CLASS)
+      c.toString
+    else "<http://ComplexClassExpression>"
+
+      //"<http://x" + c.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
+
+    if (d1.contains("<")) d1 else s"<$d1>"
   }
 
   def dataPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
@@ -104,17 +124,17 @@ case class Schema(inputStream: java.io.InputStream) {
 
     val dataPropertyDefinitions: List[org.openrdf.model.Statement] = dataPropertyDomainAxioms.map(a => {
       val prop = a.getDataPropertiesInSignature.iterator().next().toString
-      val domain = a.getDomain.toString
+      val domain = getNameForClass(a.getDomain)
 
       val range = rangeMap.getOrElse(prop.toString, "http://whaddever")
 
       val r1 = s""""${if (range.contains("<")) range.replaceAll("[<>]","") else range}""""
 
-      val d1 = if (domain.contains("<")) domain else s"<$domain>"
+
 
       val p1 = if (prop.contains("<")) prop else s"<$prop>"
 
-      val stmt = s"${d1} ${p1} ${r1} ."
+      val stmt = s"${domain} ${p1} ${r1} ."
 
       parse(stmt)
 
@@ -122,6 +142,8 @@ case class Schema(inputStream: java.io.InputStream) {
     dataPropertyDefinitions.toSeq
   }
 
+  //dataPropertyDefinitions.foreach(println)
+  //System.exit(0)
 
   def objectPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
@@ -135,39 +157,30 @@ case class Schema(inputStream: java.io.InputStream) {
     val rangeMap = obectPropertyRangeAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next()
       val range = a.getRange
-      val rtype = range.getClassExpressionType
 
-      val r1 = if (rtype == ClassExpressionType.OWL_CLASS)
-        range.toString
-      else
-        "<http://x" + range.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
-
-      prop.toString -> r1
+      prop.toString -> getNameForClass(range)
     }).toMap
 
     val objectPropertyDefinitions: List[org.openrdf.model.Statement] = objectPropertyDomainAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next()
 
-      val domain = a.getDomain
-      val range = rangeMap.getOrElse(prop.toString, "http://range.not.found")
-
-      val dtype = domain.getClassExpressionType
+      val domain = getNameForClass(a.getDomain)
+      val range = rangeMap.getOrElse(prop.toString, "<http://www.w3.org/2000/01/rdf-schema#Resource>")
 
 
-      val d1 = if (dtype == ClassExpressionType.OWL_CLASS)
-        domain.toString
-      else
-        "<http://x" + domain.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
-      //Console.err.println()
 
-      val d2 = if (d1.contains("<")) d1 else s"<$d1>"
+
+
       val r2 = if (range.contains("<")) range else s"<$range>"
-      val stmt = s"${d2} ${prop} ${r2} ."
+      val stmt = s"${domain} ${prop} ${r2} ."
       //println(stmt)
       parse(stmt)
     })
     objectPropertyDefinitions
   }
+
+  //objectPropertyDefinitions.foreach(println)
+  //System.exit(0)
 
   (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
 
@@ -204,6 +217,7 @@ object testSchema
   val diamant = "data/Diamant/diamant.fss"
   lazy val diamantSchema = Schema.fromFile(diamant)
   lazy val ontolex = Schema.fromURL("http://www.w3.org/ns/lemon/ontolex#")
+  lazy val ontoAll = Schema.fromURL("http://www.w3.org/ns/lemon/all")
 
   def main(args: Array[String]): Unit =
   {
