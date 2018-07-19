@@ -158,6 +158,17 @@ Declaration(ObjectProperty(skos:semanticRelation))
 SubClassOf(diamant:SynonymDefinition lemon:SenseDefinition)
 SubClassOf(diamant:SynonymDefinition prov:Entity)
 
+Declaration(ObjectProperty(prov:wasGeneratedBy))
+	ObjectPropertyDomain(prov:wasGeneratedBy prov:Entity)
+	ObjectPropertyRange(prov:wasGeneratedBy prov:Activity)
+
+Declaration(ObjectProperty(prov:wasAssociatedWith))
+        ObjectPropertyDomain(prov:wasAssociatedWith prov:Activity)
+        ObjectPropertyRange(prov:wasAssociatedWith prov:Agent)
+
+SubClassOf(prov:Agent prov:SoftwareAgent)
+SubClassOf(prov:Agent prov:Organization)
+
 Declaration(ObjectProperty(diamant:attestation))
 	ObjectPropertyDomain(diamant:attestation diamant:LexicalPhenomenon)
 	ObjectPropertyRange(diamant:attestation diamant:Attestation)
