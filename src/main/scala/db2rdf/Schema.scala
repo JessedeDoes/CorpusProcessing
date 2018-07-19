@@ -215,6 +215,7 @@ object testSchema
 {
   val olia = "data/olia/olia.nt"
   val diamant = "data/Diamant/diamant.fss"
+  val metadata = Schema.fromFile("data/Diamant/metadata.fss")
   lazy val diamantSchema = Schema.fromFile(diamant)
   lazy val ontolex = Schema.fromURL("http://www.w3.org/ns/lemon/ontolex#")
   lazy val ontoAll = Schema.fromURL("http://www.w3.org/ns/lemon/all")
@@ -223,7 +224,7 @@ object testSchema
   {
     val s = diamantSchema
     s.createImage
-    System.exit(0)
+
     println("#classes:")
     s.classNames.toList.sortBy(identity).foreach(println)
     println("#object properties")

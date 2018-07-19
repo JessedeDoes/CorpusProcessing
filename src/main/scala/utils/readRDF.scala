@@ -251,12 +251,24 @@ object example extends App
       :s0 diamant:attestation :a0 .
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
-      :q0 a diamant:Text .
       :q0 diamant:quotationText "de koei zei boe" .
       :s0 diamant:citation :q0 .
       :a0 diamant:text :q0 .
       :a0 nif:beginIndex 3 .
       :a0 nif:endIndex 6 .
+      :q0 a diamant:DependentTitle .
+      :q0 diamant:containedInTitle :t0 .
+      :t0 a diamant:Title .
+      :t0 diamant:title "Hinderlijke diertjes " .
+      :q0 diamant:witness :w0 .
+      :q0 diamant:title "Over pissebedden" .
+      :w0 a diamant:Witness .
+      :w0 diamant:yearFrom 1810 .
+      :w0 diamant:yearTo 1812 .
+      :q0 diamant:platonicText :p0 .
+      :p0 a diamant:PlatonicText .
+      :p0 diamant:yearFrom 1810 .
+      :p0 diamant:yearTo 1812 .
 </example>
   </div>
 
