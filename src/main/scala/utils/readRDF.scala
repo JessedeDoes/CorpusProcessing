@@ -11,10 +11,11 @@ import org.openrdf.model.Resource
 import scala.collection.JavaConverters._
 import guru.nidi.graphviz.model.Factory._
 import guru.nidi.graphviz.parse._
-import guru.nidi.graphviz.engine.Graphviz
-import guru.nidi.graphviz.engine.Format
+import guru.nidi.graphviz.engine.{Format, Graphviz, GraphvizJdkEngine}
 import org.postgresql.util.ReaderInputStream
 import org.openrdf.model.Graph
+
+import scala.util.Try
 import scala.xml._
 
 object Settings
@@ -44,30 +45,44 @@ object Settings
 
 object readRDF
 {
-  val rdfParser: RDFParser = Rio.createParser(RDFFormat.TURTLE)
+  val formatsToTry = List(RDFFormat.RDFXML, RDFFormat.NTRIPLES, RDFFormat.N3, RDFFormat.NQUADS, RDFFormat.TURTLE, RDFFormat.JSONLD, RDFFormat.RDFJSON)
 
-  def parseToGraph(f: java.io.File):Graph = parseToGraph(new FileInputStream(f))
+  val rdfParsers = formatsToTry.map(Rio.createParser(_)).toStream
+
+  //val rdfParser: RDFParser = Rio.createParser(RDFFormat.TURTLE)
+
+  def parseToGraph(f: java.io.File):Graph = parseToGraph(() => new FileInputStream(f))
 
   def parseToGraph(fileName: String):Graph = parseToGraph(new java.io.File(fileName))
 
   def parseStringToGraph(s: String):Graph =
   {
-    val sr = new StringReader(s)
-    val x = new ReaderInputStream(sr)
-    parseToGraph(x)
+    def inputStream():java.io.InputStream = {
+      val sr = new StringReader(s)
+
+      val x = new ReaderInputStream(sr)
+      x
+    }
+    parseToGraph(() => inputStream)
   }
 
-  def parseToGraph(inputStream: java.io.InputStream):org.openrdf.model.Graph  = {
+  def parseToGraph(inputStream: ()=>java.io.InputStream):org.openrdf.model.Graph  = {
     import org.openrdf.rio.helpers.StatementCollector
-    val myGraph = new org.openrdf.model.impl.GraphImpl
-
-    val collector = new StatementCollector(myGraph)
 
 
-    rdfParser.setRDFHandler(collector)
+    val attempts = rdfParsers.map(
+      rdfParser => {
+        Try({
+        val myGraph = new org.openrdf.model.impl.GraphImpl
 
-    rdfParser.parse(inputStream, "http://")
-    myGraph
+        val collector = new StatementCollector(myGraph)
+
+        rdfParser.setRDFHandler(collector)
+        rdfParser.parse(inputStream(), "http://")
+
+        myGraph})
+      })
+    attempts.find(_.isSuccess).map(_.asInstanceOf[scala.util.Success[Graph]].value).get
   }
 
   def exampleWithDiagram(f: String, s:String):NodeSeq = {
@@ -170,7 +185,7 @@ object readRDF
           val dataPropertyLabelPart = dataProperties.map(dp => s"${shortName(dp.getPredicate)}=${shortName(dp.getObject)}").mkString("\\l")
           val label = if (dataPropertyLabelPart.isEmpty) className else s"$className|$dataPropertyLabelPart"
 
-          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="pink" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
+          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
 
           (s"""\n$n [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
@@ -244,5 +259,6 @@ object example extends App
   </div>
 
   val xstuff = processExamples(stuff).asInstanceOf[Elem]
+  Console.err.println(xstuff)
   XML.save("aap.html", xstuff, "UTF-8")
 }

@@ -5,20 +5,32 @@ import org.openrdf.rio.helpers.StatementCollector
 import org.openrdf.rio.{RDFFormat, Rio}
 import org.semanticweb.owlapi.model._
 import propositional._
-import utils.readRDF.rdfParser
+
 
 import scala.collection.JavaConverters._
 import scala.util.Success
 import org.openrdf.model.Statement
+import org.openrdf.model.URI
 
-class Schema(fileName: String) {
+
+object Schema
+{
+  def fromFile(fileName: String) = Schema(new java.io.FileInputStream(fileName))
+  def fromURL(url: String) = {
+    val u = new java.net.URL(url)
+    Schema(u.openStream())
+  }
+}
+
+case class Schema(inputStream: java.io.InputStream) {
 
   import org.semanticweb.owlapi.apibinding.OWLManager
   import org.semanticweb.owlapi.model.OWLOntology
   import org.semanticweb.owlapi.model.OWLOntologyManager
 
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager
-  val ontology: OWLOntology = manager.loadOntologyFromOntologyDocument(new java.io.File(fileName))
+
+  val ontology: OWLOntology = manager.loadOntologyFromOntologyDocument(inputStream)
 
   val classes:Set[OWLClass] = ontology.getClassesInSignature().asScala.toSet
 
@@ -42,6 +54,7 @@ class Schema(fileName: String) {
 
     parser.setRDFHandler(collector)
 
+    Console.err.println(s)
     parser.parse(in, "http://")
 
     myGraph.iterator().next()
@@ -98,6 +111,7 @@ class Schema(fileName: String) {
       val r1 = s""""${if (range.contains("<")) range.replaceAll("[<>]","") else range}""""
 
       val d1 = if (domain.contains("<")) domain else s"<$domain>"
+
       val p1 = if (prop.contains("<")) prop else s"<$prop>"
 
       val stmt = s"${d1} ${p1} ${r1} ."
@@ -121,15 +135,34 @@ class Schema(fileName: String) {
     val rangeMap = obectPropertyRangeAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next()
       val range = a.getRange
-      prop.toString -> range.toString
+      val rtype = range.getClassExpressionType
+
+      val r1 = if (rtype == ClassExpressionType.OWL_CLASS)
+        range.toString
+      else
+        "<http://x" + range.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
+
+      prop.toString -> r1
     }).toMap
 
     val objectPropertyDefinitions: List[org.openrdf.model.Statement] = objectPropertyDomainAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next()
+
       val domain = a.getDomain
-      val range = rangeMap(prop.toString)
-      val r1 = if (range.contains("<")) range else s"<$range>"
-      val stmt = s"${domain} ${prop} ${r1} ."
+      val range = rangeMap.getOrElse(prop.toString, "http://range.not.found")
+
+      val dtype = domain.getClassExpressionType
+
+
+      val d1 = if (dtype == ClassExpressionType.OWL_CLASS)
+        domain.toString
+      else
+        "<http://x" + domain.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
+      //Console.err.println()
+
+      val d2 = if (d1.contains("<")) d1 else s"<$d1>"
+      val r2 = if (range.contains("<")) range else s"<$range>"
+      val stmt = s"${d2} ${prop} ${r2} ."
       //println(stmt)
       parse(stmt)
     })
@@ -169,10 +202,12 @@ object testSchema
 {
   val olia = "data/olia/olia.nt"
   val diamant = "data/Diamant/diamant.fss"
-  val s = new Schema(diamant)
+  lazy val diamantSchema = Schema.fromFile(diamant)
+  lazy val ontolex = Schema.fromURL("http://www.w3.org/ns/lemon/ontolex#")
 
   def main(args: Array[String]): Unit =
   {
+    val s = diamantSchema
     s.createImage
     System.exit(0)
     println("#classes:")

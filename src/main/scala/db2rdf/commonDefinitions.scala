@@ -1,7 +1,7 @@
 package db2rdf
 
 object commonDefinitions {
-  implicit val schema = new Schema("data/Diamant/diamant.fss")
+  implicit val schema = Schema.fromFile("data/Diamant/diamant.fss")
   implicit val sort = Sort.DataPropertyType
 
   val INTBaseURI = "http://rdf.ivdnt.org/"
