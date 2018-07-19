@@ -63,6 +63,7 @@ object readRDF
       val x = new ReaderInputStream(sr)
       x
     }
+
     parseToGraph(() => inputStream)
   }
 
@@ -82,6 +83,7 @@ object readRDF
 
         myGraph})
       })
+    //attempts.filter(_.isFailure).map(_.asInstanceOf[scala.util.Failure[Graph]]).foreach(println)
     attempts.find(_.isSuccess).map(_.asInstanceOf[scala.util.Success[Graph]].value).get
   }
 
