@@ -13,7 +13,7 @@ import scala.util.Success
 import org.openrdf.model.Statement
 import org.openrdf.model.URI
 import org.semanticweb.owlapi.apibinding.OWLManager
-
+import org.semanticweb.owlapi.model.parameters.Imports
 
 object Schema
 {
@@ -59,6 +59,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 
   def createIRI(s: String) = org.semanticweb.owlapi.model.IRI.create(s)
 
+  this.addObjectProperty("http://www.w3.org/2000/01/rdf-schema#Resource", guessSchema.isA, "class")
   val df: OWLDataFactory = new OWLDataFactoryImpl()
 
   def addAxiom() =
@@ -87,6 +88,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     //val axiom = df.getOWLCl
   }
 
+
   def addObjectProperty(domain: String, propName: String, range: String): Unit =
   {
     val domainClass = createClass(domain)
@@ -107,11 +109,12 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     manager.applyChange(addAxiom1)
   }
 
-  def addUnionOfClasses(disjuncts: Set[OWLClassExpression]): String =
+  def addUnionOfClasses(disjuncts: Set[OWLClass]): String =
   {
     val union:OWLObjectUnionOf = df.getOWLObjectUnionOf(disjuncts.asJava) // nee veel te simpel
 
-    val newName = (disjuncts.head.toString.replaceAll(">","")  :: disjuncts.tail.map(_.toString.replaceAll(".*[/#:]","")).toList).mkString("V")
+    val newName =  (disjuncts.head.toString.replaceAll(">","")  ::
+      disjuncts.tail.map(_.toString.replaceAll(".*[/#:]","")).toList).mkString("V").replaceAll("[<>]","")
 
     val newClass = createClass(newName)
 
@@ -173,11 +176,14 @@ case class Schema(inputStream: java.io.InputStream) {
   val management = OntologyManagement(ontology, manager)
 
 
-  val classes:Set[OWLClass] = ontology.getClassesInSignature().asScala.toSet
+
+  val cc:Set[OWLAxiom] = ontology.getTBoxAxioms(Imports.INCLUDED).asScala.toSet //.flatMap(o => o.getClassesInSignature())
+  val cc1 = cc.flatMap(o => o.getClassesInSignature.asScala.toSet)
+  val classes:Set[OWLClass] = cc1 ++ ontology.getClassesInSignature(Imports.INCLUDED).asScala.toSet
 
   val objectProperties = ontology.getObjectPropertiesInSignature().asScala.toSet
   val dataProperties = ontology.getDataPropertiesInSignature().asScala.toSet
-  val axioms = ontology.getTBoxAxioms(null).asScala.toSet
+  val axioms = ontology.getTBoxAxioms(Imports.INCLUDED).asScala.toSet
 
   val parser = Rio.createParser(RDFFormat.NTRIPLES)
 
@@ -242,11 +248,11 @@ case class Schema(inputStream: java.io.InputStream) {
       c.toString
     else if (dtype == ClassExpressionType.OBJECT_UNION_OF)
       {
-        val z = c.asDisjunctSet()
-        val newName = management.addUnionOfClasses(z.asScala.toSet)
+        val z = c.asDisjunctSet().asScala.map(_.asOWLClass)
+        val newName = management.addUnionOfClasses(z.toSet)
         newName
       }
-    else "<http://ComplexClassExpression>" // hier zou je dus het een een ander kunnen bijmaken.......
+    else "<http://aap.noot#ComplexClassExpression>" // hier zou je dus het een een ander kunnen bijmaken.......
 
       //"<http://x" + c.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
 
@@ -367,7 +373,7 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = ontolex
+    val s = diamantSchema
     s.createImage
 
     println("#classes:")

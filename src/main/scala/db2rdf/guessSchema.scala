@@ -24,9 +24,19 @@ object guessSchema {
   def sample[T](s: Stream[T], n: Int) =
     s.zipWithIndex.filter({case (t,i) => i % n == 0}).map(_._1)
 
+  def createUnion(o: OntologyManagement, s: Set[Resource]) =
+    if (s.size == 1) s.head.toString else
+      {
+        val classes = s.map(x => o.createClass(x.toString))
+        val union = o.addUnionOfClasses(classes)
+        union
+      }
+
   def guess(s0: Stream[org.openrdf.model.Statement], sampleRate: Option[Int] = None) = {
 
     val s = if (sampleRate.isDefined) sample(s0,sampleRate.get) else s0
+
+    Console.err.println(s.size)
 
     val isAs = s.filter(isIsA)
 
@@ -67,13 +77,24 @@ object guessSchema {
 
     // classes.foreach(println)
 
-    objectPropertyDomainsAndRanges.groupBy(_._2).foreach(println)
+    //objectPropertyDomainsAndRanges.groupBy(_._2).foreach(println)
+    val opGrouped = objectPropertyDomainsAndRanges.groupBy(_._2).mapValues(s => (s.map(_._1), s.map(_._3)))
 
     val o = Schema.newOntology()
 
-    objectPropertyDomainsAndRanges.foreach(
-      {case (d,p,r) => o.addObjectProperty(d.toString,p.toString,r.toString)}
+    opGrouped.foreach(
+      {
+        case (p, (d,r)) =>
+          val domain = createUnion(o,d)
+          val range = createUnion(o,r)
+          o.addObjectProperty(domain, p.toString, range)
+      }
     )
+
+
+    //objectPropertyDomainsAndRanges.foreach(
+    //  {case (d,p,r) => o.addObjectProperty(d.toString,p.toString,r.toString)}
+    // )
 
     dataPropertyDomainsAndRanges.foreach(
       {case (d,p,r) => o.addDataProperty(d.toString,p.toString,r.toString)}
@@ -87,6 +108,6 @@ object guessSchema {
 
   def main(args: Array[String]): Unit = {
     val s = parseToStatements(args(0))
-    guess(s,Some(40))
+    guess(s, if (args.size > 1) Some(args(1).toInt) else None)
   }
 }
