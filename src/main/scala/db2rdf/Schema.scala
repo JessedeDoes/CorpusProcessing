@@ -391,7 +391,8 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = ontoCleaned
+    val s = if (args.size > 0) Schema.fromFile(args(0)) else ontoCleaned
+
     s.createImage
 
     println("#classes:")
