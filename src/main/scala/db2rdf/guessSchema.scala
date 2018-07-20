@@ -21,7 +21,13 @@ object guessSchema {
 
   val thing:Resource = parseStringToStatements("<http://www.w3.org/1999/02/22-rdf-syntax-ns#Resource> <http://is> <http://gek> . ")(0).getSubject
 
-  def guess(s: Stream[org.openrdf.model.Statement]) = {
+  def sample[T](s: Stream[T], n: Int) =
+    s.zipWithIndex.filter({case (t,i) => i % n == 0}).map(_._1)
+
+  def guess(s0: Stream[org.openrdf.model.Statement], sampleRate: Option[Int] = None) = {
+
+    val s = if (sampleRate.isDefined) sample(s0,sampleRate.get) else s0
+
     val isAs = s.filter(isIsA)
 
     val classMemberships:Map[Resource, Set[Resource]] = isAs.groupBy(_.getSubject).mapValues(l => l.map(_.getObject.asInstanceOf[Resource]).toSet)
@@ -81,6 +87,6 @@ object guessSchema {
 
   def main(args: Array[String]): Unit = {
     val s = parseToStatements(args(0))
-    guess(s)
+    guess(s,Some(40))
   }
 }
