@@ -33,7 +33,6 @@ object Schema
   val String = "http://www.w3.org/2001/XMLSchema#string"
   val Integer = "http://www.w3.org/2001/XMLSchema#integer"
 
-
   def test() =
   {
     val om = newOntology()
@@ -70,6 +69,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 
     val clsA = df.getOWLClass(createIRI(pizza_iri + "#Calzone"))
     val clsB = df.getOWLClass(createIRI(pizza_iri + "#Pizza"))
+
     // Now create the axiom
 
     val axiom = df.getOWLSubClassOfAxiom(clsA, clsB)
@@ -107,6 +107,22 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     manager.applyChange(addAxiom1)
   }
 
+  def addUnionOfClasses(disjuncts: Set[OWLClassExpression]): String =
+  {
+    val union:OWLObjectUnionOf = df.getOWLObjectUnionOf(disjuncts.asJava) // nee veel te simpel
+
+    val newName = (disjuncts.head.toString.replaceAll(">","")  :: disjuncts.tail.map(_.toString.replaceAll(".*[/#:]","")).toList).mkString("V")
+
+    val newClass = createClass(newName)
+
+    val equivAxiom = df.getOWLEquivalentClassesAxiom(newClass, union)
+
+    val addAxiom = new AddAxiom(ontology, equivAxiom)
+    manager.applyChange(addAxiom)
+    Console.err.println("JOEHOE: " + newName)
+    newName
+  }
+
   def addDataProperty(domain: String, propName: String, range: String): Unit =
   {
     val domainClass = createClass(domain)
@@ -135,12 +151,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
   def saveToFile(fileName: String) = {
     import org.semanticweb.owlapi.model.IRI
     val formatTo = new  FunctionalSyntaxDocumentFormat
-    // Some ontology formats support prefix names and prefix IRIs. In our
-    // case we loaded the pizza ontology from an rdf/xml format, which
-    // supports prefixes. When we save the ontology in the new format we
-    // will copy the prefixes over so that we have nicely abbreviated IRIs
-    // in the new ontology document
-    //if (format.isPrefixOWLOntologyFormat) formatTo.copyPrefixesFrom(format.asPrefixOWLOntologyFormat)
+
     manager.saveOntology(ontology, formatTo, IRI.create(new java.io.File(fileName).toURI))
   }
 }
@@ -229,7 +240,13 @@ case class Schema(inputStream: java.io.InputStream) {
     val dtype = c.getClassExpressionType
     val d1 = if (dtype == ClassExpressionType.OWL_CLASS)
       c.toString
-    else "<http://ComplexClassExpression>"
+    else if (dtype == ClassExpressionType.OBJECT_UNION_OF)
+      {
+        val z = c.asDisjunctSet()
+        val newName = management.addUnionOfClasses(z.asScala.toSet)
+        newName
+      }
+    else "<http://ComplexClassExpression>" // hier zou je dus het een een ander kunnen bijmaken.......
 
       //"<http://x" + c.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
 
@@ -271,7 +288,6 @@ case class Schema(inputStream: java.io.InputStream) {
     })
     dataPropertyDefinitions.toSeq
   }
-
 
   // TODO proper treatment of unions etc..
   // maybe add a placeholder class for each union and other complex class expression
@@ -351,7 +367,7 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = diamantSchema
+    val s = ontolex
     s.createImage
 
     println("#classes:")
