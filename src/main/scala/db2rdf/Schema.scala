@@ -29,6 +29,23 @@ object Schema
     val o = manager.createOntology()
     OntologyManagement(o,manager)
   }
+
+  val String = "http://www.w3.org/2001/XMLSchema#string"
+  val Integer = "http://www.w3.org/2001/XMLSchema#integer"
+
+
+  def test() =
+  {
+    val om = newOntology()
+    om.addAxiom()
+    om.addDataProperty("http://kwiep", "http://kwap", Schema.String)
+    om.addObjectProperty("http://kwiep", "http://kwap", "http://kwup")
+    om.saveToFile("/tmp/test.fss")
+  }
+
+  def main(args: Array[String]): Unit = {
+    test()
+  }
 }
 
 
@@ -37,8 +54,12 @@ import org.semanticweb.owlapi.model.IRI
 import org.semanticweb.owlapi.model.OWLAxiom
 import org.semanticweb.owlapi.model.{OWLClass}
 
+
 case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager )
 {
+
+  def createIRI(s: String) = org.semanticweb.owlapi.model.IRI.create(s)
+
   val df: OWLDataFactory = new OWLDataFactoryImpl()
 
   def addAxiom() =
@@ -47,8 +68,8 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     val pizza_iri = "http://pizza.org"
 
 
-    val clsA = df.getOWLClass(IRI.create(pizza_iri + "#Calzone"))
-    val clsB = df.getOWLClass(IRI.create(pizza_iri + "#Pizza"))
+    val clsA = df.getOWLClass(createIRI(pizza_iri + "#Calzone"))
+    val clsB = df.getOWLClass(createIRI(pizza_iri + "#Pizza"))
     // Now create the axiom
 
     val axiom = df.getOWLSubClassOfAxiom(clsA, clsB)
@@ -61,7 +82,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 
   def createClass(iri: String):OWLClass =
   {
-    val cls = df.getOWLClass(IRI.create(iri))
+    val cls = df.getOWLClass(createIRI(iri))
     cls
     //val axiom = df.getOWLCl
   }
@@ -70,7 +91,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
   {
     val domainClass = createClass(domain)
     val rangeClass = createClass(range)
-    val piri = IRI.create(propName)
+    val piri = createIRI(propName)
     val property = df.getOWLObjectProperty(piri)
 
     val axiom = df.getOWLObjectPropertyDomainAxiom(property, domainClass)
@@ -85,6 +106,31 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     // We now use the manager to apply the change
     manager.applyChange(addAxiom1)
   }
+
+  def addDataProperty(domain: String, propName: String, range: String): Unit =
+  {
+    val domainClass = createClass(domain)
+    val rangeIRI = createIRI(range)
+    val rangeType = df.getOWLDatatype(rangeIRI)
+
+    val piri = createIRI(propName)
+
+    val property = df.getOWLDataProperty(piri)
+
+
+    val axiom = df.getOWLDataPropertyDomainAxiom(property, domainClass)
+
+    val addAxiom = new AddAxiom(ontology, axiom)
+    // We now use the manager to apply the change
+    manager.applyChange(addAxiom)
+
+    val axiom1 = df.getOWLDataPropertyRangeAxiom(property, rangeType)
+
+    val addAxiom1 = new AddAxiom(ontology, axiom1)
+    // We now use the manager to apply the change
+    manager.applyChange(addAxiom1)
+  }
+
 
   def saveToFile(fileName: String) = {
     import org.semanticweb.owlapi.model.IRI
@@ -107,17 +153,14 @@ case class Schema(inputStream: java.io.InputStream) {
 
   // http://owlcs.github.io/owlapi/apidocs_5/uk/ac/manchester/cs/owl/owlapi/OWLDataFactoryImpl.html
 
-
   //df.getOWLClass()
-
-
 
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager
 
   val ontology: OWLOntology = manager.loadOntologyFromOntologyDocument(inputStream)
 
   val management = OntologyManagement(ontology, manager)
-  management.addAxiom()
+
 
   val classes:Set[OWLClass] = ontology.getClassesInSignature().asScala.toSet
 
@@ -229,8 +272,9 @@ case class Schema(inputStream: java.io.InputStream) {
     dataPropertyDefinitions.toSeq
   }
 
-  //dataPropertyDefinitions.foreach(println)
-  //System.exit(0)
+
+  // TODO proper treatment of unions etc..
+  // maybe add a placeholder class for each union and other complex class expression
 
   def objectPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
@@ -254,10 +298,6 @@ case class Schema(inputStream: java.io.InputStream) {
       val domain = getNameForClass(a.getDomain)
       val range = rangeMap.getOrElse(prop.toString, "<http://www.w3.org/2000/01/rdf-schema#Resource>")
 
-
-
-
-
       val r2 = if (range.contains("<")) range else s"<$range>"
       val stmt = s"${domain} ${prop} ${r2} ."
       //println(stmt)
@@ -272,9 +312,11 @@ case class Schema(inputStream: java.io.InputStream) {
   (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
 
   lazy val dot = utils.readRDF.makeDot(classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions)
-  def  createImage = {
-    utils.readRDF.createSVG(dot, "./test.svg")
-  }
+
+  def  createImage:Unit = createImage("./test.svg")
+
+
+  def createImage(fileName: String) = utils.readRDF.createSVG(dot, fileName)
 
   Console.err.println(dot)
 
