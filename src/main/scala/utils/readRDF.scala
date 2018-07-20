@@ -1,6 +1,7 @@
 package utils
 
 import java.io.{FileInputStream, StringReader}
+import java.util.zip.GZIPInputStream
 
 import org.openrdf.model.Statement
 import org.openrdf.rio.RDFFormat
@@ -51,7 +52,11 @@ object readRDF
 
   //val rdfParser: RDFParser = Rio.createParser(RDFFormat.TURTLE)
 
-  def parseToGraph(f: java.io.File):Graph = parseToGraph(() => new FileInputStream(f))
+  def parseToGraph(f: java.io.File):Graph = parseToGraph(() =>
+  {
+    val i = new FileInputStream(f)
+    if (f.getName.endsWith(".gz")) new GZIPInputStream(i) else i
+  } )
 
   def parseToGraph(fileName: String):Graph = parseToGraph(new java.io.File(fileName))
 
