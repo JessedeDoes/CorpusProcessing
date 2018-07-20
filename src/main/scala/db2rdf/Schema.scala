@@ -4,13 +4,15 @@ import org.openrdf.model.Statement
 import org.openrdf.rio.helpers.StatementCollector
 import org.openrdf.rio.{RDFFormat, Rio}
 import org.semanticweb.owlapi.model._
+import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl
 import propositional._
-
+import org.semanticweb.owlapi.formats.FunctionalSyntaxDocumentFormat
 
 import scala.collection.JavaConverters._
 import scala.util.Success
 import org.openrdf.model.Statement
 import org.openrdf.model.URI
+import org.semanticweb.owlapi.apibinding.OWLManager
 
 
 object Schema
@@ -20,6 +22,81 @@ object Schema
     val u = new java.net.URL(url)
     Schema(u.openStream())
   }
+
+  def newOntology(): OntologyManagement =
+  {
+    val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager
+    val o = manager.createOntology()
+    OntologyManagement(o,manager)
+  }
+}
+
+
+import org.semanticweb.owlapi.model.AddAxiom
+import org.semanticweb.owlapi.model.IRI
+import org.semanticweb.owlapi.model.OWLAxiom
+import org.semanticweb.owlapi.model.{OWLClass}
+
+case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager )
+{
+  val df: OWLDataFactory = new OWLDataFactoryImpl()
+
+  def addAxiom() =
+  {
+
+    val pizza_iri = "http://pizza.org"
+
+
+    val clsA = df.getOWLClass(IRI.create(pizza_iri + "#Calzone"))
+    val clsB = df.getOWLClass(IRI.create(pizza_iri + "#Pizza"))
+    // Now create the axiom
+
+    val axiom = df.getOWLSubClassOfAxiom(clsA, clsB)
+    // add the axiom to the ontology.
+    val addAxiom = new AddAxiom(ontology, axiom)
+    // We now use the manager to apply the change
+    manager.applyChange(addAxiom)
+    // remove the axiom from th
+  }
+
+  def createClass(iri: String):OWLClass =
+  {
+    val cls = df.getOWLClass(IRI.create(iri))
+    cls
+    //val axiom = df.getOWLCl
+  }
+
+  def addObjectProperty(domain: String, propName: String, range: String): Unit =
+  {
+    val domainClass = createClass(domain)
+    val rangeClass = createClass(range)
+    val piri = IRI.create(propName)
+    val property = df.getOWLObjectProperty(piri)
+
+    val axiom = df.getOWLObjectPropertyDomainAxiom(property, domainClass)
+
+    val addAxiom = new AddAxiom(ontology, axiom)
+    // We now use the manager to apply the change
+    manager.applyChange(addAxiom)
+
+    val axiom1 = df.getOWLObjectPropertyRangeAxiom(property, rangeClass)
+
+    val addAxiom1 = new AddAxiom(ontology, axiom1)
+    // We now use the manager to apply the change
+    manager.applyChange(addAxiom1)
+  }
+
+  def saveToFile(fileName: String) = {
+    import org.semanticweb.owlapi.model.IRI
+    val formatTo = new  FunctionalSyntaxDocumentFormat
+    // Some ontology formats support prefix names and prefix IRIs. In our
+    // case we loaded the pizza ontology from an rdf/xml format, which
+    // supports prefixes. When we save the ontology in the new format we
+    // will copy the prefixes over so that we have nicely abbreviated IRIs
+    // in the new ontology document
+    //if (format.isPrefixOWLOntologyFormat) formatTo.copyPrefixesFrom(format.asPrefixOWLOntologyFormat)
+    manager.saveOntology(ontology, formatTo, IRI.create(new java.io.File(fileName).toURI))
+  }
 }
 
 case class Schema(inputStream: java.io.InputStream) {
@@ -28,9 +105,19 @@ case class Schema(inputStream: java.io.InputStream) {
   import org.semanticweb.owlapi.model.OWLOntology
   import org.semanticweb.owlapi.model.OWLOntologyManager
 
+  // http://owlcs.github.io/owlapi/apidocs_5/uk/ac/manchester/cs/owl/owlapi/OWLDataFactoryImpl.html
+
+
+  //df.getOWLClass()
+
+
+
   val manager: OWLOntologyManager = OWLManager.createOWLOntologyManager
 
   val ontology: OWLOntology = manager.loadOntologyFromOntologyDocument(inputStream)
+
+  val management = OntologyManagement(ontology, manager)
+  management.addAxiom()
 
   val classes:Set[OWLClass] = ontology.getClassesInSignature().asScala.toSet
 
