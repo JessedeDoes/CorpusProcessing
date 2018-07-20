@@ -36,7 +36,7 @@ object Schema
   def test() =
   {
     val om = newOntology()
-    om.addAxiom()
+
     om.addDataProperty("http://kwiep", "http://kwap", Schema.String)
     om.addObjectProperty("http://kwiep", "http://kwap", "http://kwup")
     om.saveToFile("/tmp/test.fss")
@@ -63,14 +63,11 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
   val df: OWLDataFactory = new OWLDataFactoryImpl()
 
 
-
-  def addAxiom() =
+  def addSubclassAxiom(clsA: OWLClass, clsB: OWLClass) =
   {
 
-    val pizza_iri = "http://pizza.org"
-
-    val clsA = df.getOWLClass(createIRI(pizza_iri + "#Calzone"))
-    val clsB = df.getOWLClass(createIRI(pizza_iri + "#Pizza"))
+    //val clsA = df.getOWLClass(createIRI(pizza_iri + "#Calzone"))
+    //val clsB = df.getOWLClass(createIRI(pizza_iri + "#Pizza"))
 
     // Now create the axiom
 
@@ -116,15 +113,17 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
     val union:OWLObjectUnionOf = df.getOWLObjectUnionOf(disjuncts.asJava) // nee veel te simpel
 
     val newName =  (disjuncts.head.toString.replaceAll(">","")  ::
-      disjuncts.tail.map(_.toString.replaceAll(".*[/#:]","")).toList).mkString("V").replaceAll("[<>]","")
+      disjuncts.tail.map(_.toString.replaceAll(".*[/#:]","")).toList).mkString("∪").replaceAll("[<>]","")
 
     val newClass = createClass(newName)
+
+    disjuncts.foreach(addSubclassAxiom(_, newClass)) // dit doe je eigenlijk te laat hier
 
     val equivAxiom = df.getOWLEquivalentClassesAxiom(newClass, union)
 
     val addAxiom = new AddAxiom(ontology, equivAxiom)
     manager.applyChange(addAxiom)
-    Console.err.println("JOEHOE: " + newName)
+
     newName
   }
 
@@ -187,7 +186,12 @@ case class Schema(inputStream: java.io.InputStream) {
 
   val objectProperties = ontology.getObjectPropertiesInSignature().asScala.toSet
   val dataProperties = ontology.getDataPropertiesInSignature().asScala.toSet
+
   val axioms = ontology.getTBoxAxioms(Imports.INCLUDED).asScala.toSet
+
+  //val bla = ontology.getNestedClassExpressions
+  //bla.asScala.foreach(println)
+  //System.exit(1)
 
   val parser = Rio.createParser(RDFFormat.NTRIPLES)
 
@@ -258,8 +262,11 @@ case class Schema(inputStream: java.io.InputStream) {
       }
     else
       {
-        Console.err.println("COMPLEX!" + c.toString)
-        val c1 = c.toString.replaceAll("<http://[^<>]*#(.*?)>","$1").replaceAll("[^A-Za-z0-9#]","")
+        //Console.err.println("COMPLEX!" + c.toString)
+        val c1 = c.toString.replaceAll("<http://[^<>]*#(.*?)>","$1")
+          .replaceAll("(Object|Data)(Min|Max|Exact)Cardinality","$2")
+          .replaceAll(" ","༐")
+          .replaceAll("\\(","⟨").replaceAll("\\)","⟩").replaceAll("[^A-Za-z0-9⟨⟩#༐]","_")
 
         s"<http://complex#$c1>"
       }// hier zou je dus het een een ander kunnen bijmaken.......
@@ -377,14 +384,14 @@ object testSchema
 {
   val olia = "data/olia/olia.nt"
   val diamant = "data/Diamant/diamant.fss"
-  val metadata = Schema.fromFile("data/Diamant/metadata.fss")
+  lazy val metadata = Schema.fromFile("data/Diamant/metadata.fss")
   lazy val diamantSchema = Schema.fromFile(diamant)
   lazy val ontolex = Schema.fromURL("http://www.w3.org/ns/lemon/ontolex#")
-  lazy val ontoAll = Schema.fromURL("http://www.w3.org/ns/lemon/all")
+  lazy val ontoCleaned = Schema.fromFile("data/Diamant/ontolex.cleaned.rdf")
 
   def main(args: Array[String]): Unit =
   {
-    val s = ontolex
+    val s = ontoCleaned
     s.createImage
 
     println("#classes:")

@@ -165,6 +165,8 @@ object readRDF
 
   def makeLabel(n: String, className: String, dataProperties: Seq[Statement]) = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
 
+  def makeIdentifier(str: String) = str.replaceAll("[^A-Za-z0-9]","")
+
   def makeDot(seq: Seq[Statement]):String = {
     val bySubject = seq.groupBy(_.getSubject)
 
@@ -185,7 +187,7 @@ object readRDF
       {
         case (s,l) =>
           val n = shortName(s)
-
+          val n1 = makeIdentifier(n)
           val className = l.find(isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
 
           val dataProperties = l.filter(isDataProperty)
@@ -198,9 +200,9 @@ object readRDF
 
           //  <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
 
-          (s"""\n$n [label=<$htmlLabel>]// [label="{$n : $label}"]"""
+          (s"""\n$n1 [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
-            objectProperties.toList.map( o => s"""$n -> ${shortName(o.getObject)} [ color="#000088", arrowhead=vee, label = ${objectPropertyLabel(o)}] """))
+            objectProperties.toList.map( o => s"""${n1} -> ${makeIdentifier(shortName(o.getObject))} [ color="#000088", arrowhead=vee, label = ${objectPropertyLabel(o)}] """))
             .mkString("\n")
       }
     )
@@ -216,7 +218,7 @@ object readRDF
       o =>
       {
         val n = shortName(o)
-        s"""$n [label=<${makeLabel(n,"Class", Seq.empty)}>]"""
+        s"""${makeIdentifier(n)} [label=<${makeLabel(n,"Class", Seq.empty)}>]"""
       }
     ).toList
 
