@@ -163,6 +163,8 @@ object readRDF
     makeDot(parseStringToStatements(rdf))
   }
 
+  def makeLabel(n: String, className: String, dataProperties: Seq[Statement]) = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
+
   def makeDot(seq: Seq[Statement]):String = {
     val bySubject = seq.groupBy(_.getSubject)
 
@@ -192,7 +194,9 @@ object readRDF
           val dataPropertyLabelPart = dataProperties.map(dp => s"${shortName(dp.getPredicate)}=${shortName(dp.getObject)}").mkString("\\l")
           val label = if (dataPropertyLabelPart.isEmpty) className else s"$className|$dataPropertyLabelPart"
 
-          val htmlLabel = <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
+          val htmlLabel = makeLabel(n,className,dataProperties)
+
+          //  <table BORDER="0" CELLBORDER="0" CELLSPACING="0"><tr bgcolor="pink"><td bgcolor="lightblue" colspan="2"><i>{n}:{className}</i></td></tr>{dataProperties.map(dp => <tr><td>{shortName(dp.getPredicate)}</td><td>{shortName(dp.getObject)}</td></tr>)}</table>
 
           (s"""\n$n [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
@@ -212,7 +216,7 @@ object readRDF
       o =>
       {
         val n = shortName(o)
-        s"""$n [label = "{$n : UNK}"]"""
+        s"""$n [label=<${makeLabel(n,"Class", Seq.empty)}>]"""
       }
     ).toList
 

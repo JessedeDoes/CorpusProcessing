@@ -58,15 +58,16 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 {
 
   def createIRI(s: String) = org.semanticweb.owlapi.model.IRI.create(s)
+  val isA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 
-  this.addObjectProperty("http://www.w3.org/2000/01/rdf-schema#Resource", guessSchema.isA, "class")
   val df: OWLDataFactory = new OWLDataFactoryImpl()
+
+
 
   def addAxiom() =
   {
 
     val pizza_iri = "http://pizza.org"
-
 
     val clsA = df.getOWLClass(createIRI(pizza_iri + "#Calzone"))
     val clsB = df.getOWLClass(createIRI(pizza_iri + "#Pizza"))
@@ -91,6 +92,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 
   def addObjectProperty(domain: String, propName: String, range: String): Unit =
   {
+    Console.err.println(s"ADD: $domain $propName $range")
     val domainClass = createClass(domain)
     val rangeClass = createClass(range)
     val piri = createIRI(propName)
@@ -151,6 +153,8 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
   }
 
 
+  def initResource() = addObjectProperty("http://www.w3.org/2000/01/rdf-schema#Resource", isA , "http://Class")
+
   def saveToFile(fileName: String) = {
     import org.semanticweb.owlapi.model.IRI
     val formatTo = new  FunctionalSyntaxDocumentFormat
@@ -174,7 +178,7 @@ case class Schema(inputStream: java.io.InputStream) {
   val ontology: OWLOntology = manager.loadOntologyFromOntologyDocument(inputStream)
 
   val management = OntologyManagement(ontology, manager)
-
+  //management.initResource
 
 
   val cc:Set[OWLAxiom] = ontology.getTBoxAxioms(Imports.INCLUDED).asScala.toSet //.flatMap(o => o.getClassesInSignature())
@@ -201,7 +205,7 @@ case class Schema(inputStream: java.io.InputStream) {
 
     parser.setRDFHandler(collector)
 
-
+    Console.err.println(s)
     parser.parse(in, "http://")
 
     myGraph.iterator().next()
@@ -252,7 +256,13 @@ case class Schema(inputStream: java.io.InputStream) {
         val newName = management.addUnionOfClasses(z.toSet)
         newName
       }
-    else "<http://aap.noot#ComplexClassExpression>" // hier zou je dus het een een ander kunnen bijmaken.......
+    else
+      {
+        Console.err.println("COMPLEX!" + c.toString)
+        val c1 = c.toString.replaceAll("<http://[^<>]*#(.*?)>","$1").replaceAll("[^A-Za-z0-9#]","")
+
+        s"<http://complex#$c1>"
+      }// hier zou je dus het een een ander kunnen bijmaken.......
 
       //"<http://x" + c.toString.replaceAll("[^A-Za-z0-9#]","") + ">"
 
@@ -315,14 +325,15 @@ case class Schema(inputStream: java.io.InputStream) {
     }).toMap
 
     val objectPropertyDefinitions: List[org.openrdf.model.Statement] = objectPropertyDomainAxioms.map(a => {
-      val prop = a.getObjectPropertiesInSignature.iterator().next()
+      val prop = a.getObjectPropertiesInSignature.iterator().next().toString
 
       val domain = getNameForClass(a.getDomain)
       val range = rangeMap.getOrElse(prop.toString, "<http://www.w3.org/2000/01/rdf-schema#Resource>")
 
       val r2 = if (range.contains("<")) range else s"<$range>"
-      val stmt = s"${domain} ${prop} ${r2} ."
-      //println(stmt)
+      val p2 = if (prop.contains("<")) prop else s"<$prop>"
+      val stmt = s"${domain} ${p2} ${r2} ."
+      println("WADDE:" + stmt)
       parse(stmt)
     })
     objectPropertyDefinitions
@@ -373,7 +384,7 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = diamantSchema
+    val s = ontolex
     s.createImage
 
     println("#classes:")
