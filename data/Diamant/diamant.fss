@@ -31,7 +31,6 @@ Prefix(ud:=<http://universaldependencies.org/u/>)
 
 Ontology(<http://rdf.ivdnt.org/schema/diamant/diamant.fss>
 Import(<file:data/Diamant/metadata.fss>)
-
 # class declarations
 Declaration(Class(ontolex:Form))
 Declaration(Class(ontolex:LexicalEntry))
