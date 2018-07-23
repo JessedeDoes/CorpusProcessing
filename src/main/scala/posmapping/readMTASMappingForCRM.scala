@@ -8,7 +8,7 @@ package posmapping
 
 import scala.xml._
 
-object CRM {
+object readMTASMappingForCRM {
 
   val mappingFile = "data/CG/crm.xml"
 

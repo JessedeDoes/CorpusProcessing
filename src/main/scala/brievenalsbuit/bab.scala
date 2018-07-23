@@ -2,7 +2,10 @@ package brievenalsbuit
 import scala.xml._
 import utils.PostProcessXML._
 import java.io.File
+
+import eindhoven.createWordids
 import utils.ProcessFolder
+
 import scala.io.Source._
 
 object bab {
@@ -190,7 +193,7 @@ object bab {
 
   def doFile(in:String, out:String) = {
     val d = XML.load(in)
-    val d1 = posmapping.createWordids.createWordIds(d)
+    val d1 = createWordids.createWordIds(d)
     val d2 = updateElement(d1, _.label=="w", doW)
     val d2b = updateElement(d2, _.label=="pc", simplifyPC)
     val d3 = updateElement2(d2b, _.label=="c", x => Seq(Text(" "))).asInstanceOf[Elem]

@@ -1,4 +1,4 @@
-package posmapping
+package eindhoven
 
 import scala.xml._
 

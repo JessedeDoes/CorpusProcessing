@@ -115,6 +115,15 @@ Declaration(DataProperty(dcterms:title))
         DataPropertyDomain(dcterms:title dcterms:BibliographicResource)
         DataPropertyRange(dcterms:title xsd:string)
 
+Declaration(DataProperty(diamant:pid))
+        DataPropertyDomain(diamant:pid diamant:Text)
+        DataPropertyRange(diamant:pid xsd:string)
+
+Declaration(DataProperty(diamant:sourceID))
+        DataPropertyDomain(diamant:sourceID diamant:Text)
+        DataPropertyRange(diamant:sourceID xsd:string)
+
+
 
 Declaration(Class(diamant:DocumentPart))
 SubClassOf(diamant:DocumentPart diamant:Text)

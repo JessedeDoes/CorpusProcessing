@@ -1,4 +1,5 @@
-package posmapping
+package eindhoven
+
 import scala.util.{Failure, Success, Try}
 object explainVuTags {
 

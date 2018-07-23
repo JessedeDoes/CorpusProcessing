@@ -1,6 +1,6 @@
 package posmapping
 
-import CRM._
+import readMTASMappingForCRM._
 
 
 import scala.xml._

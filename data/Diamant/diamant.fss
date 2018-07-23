@@ -31,6 +31,7 @@ Prefix(ud:=<http://universaldependencies.org/u/>)
 
 Ontology(<http://rdf.ivdnt.org/schema/diamant/diamant.fss>
 Import(<file:data/Diamant/metadata.fss>)
+Import(<file:data/Diamant/attestation.fss>)
 # class declarations
 Declaration(Class(ontolex:Form))
 Declaration(Class(ontolex:LexicalEntry))
@@ -47,17 +48,7 @@ Declaration(Class(diamant:SynonymDefinition))
 #Declaration(Class(lemon:UsageExample))
 Declaration(Class(diamant:LexicalPhenomenon))
   AnnotationAssertion(rdfs:comment diamant:LexicalPhenomenon "Union of Sense and Form. Used as domain for the attestation data property")
-Declaration(Class(diamant:PointerIntoText))
 
-Declaration(Class(diamant:Attestation))
-  AnnotationAssertion(rdfs:comment diamant:Attestation "Pointer to evidence in dictionary quotation or corpus text for a word form or sense")
-
-Declaration(Class(diamant:Locus))
-
-Declaration(Class(diamant:Text))
-  AnnotationAssertion(rdfs:comment diamant:Text "Common superclass for dictionary quotations and corpus text, range for the attestation object property")
-Declaration(Class(diamant:Quotation))
-  AnnotationAssertion(rdfs:comment diamant:Quotation "A dictionary quotation with metadata")
 
 Declaration(Class(diamant:Similarity))
   AnnotationAssertion(rdfs:comment diamant:Similarity "Similarity (real-valued) between to terms")
@@ -159,9 +150,6 @@ Declaration(ObjectProperty(skos:semanticRelation))
 
 #SubClassOf(diamant:Quotation lemon:UsageExample)
 
-SubClassOf(diamant:Locus diamant:PointerIntoText)
-SubClassOf(diamant:Attestation diamant:PointerIntoText)
-
 SubClassOf(diamant:SynonymDefinition lemon:SenseDefinition)
 SubClassOf(diamant:SynonymDefinition prov:Entity)
 
@@ -176,39 +164,6 @@ Declaration(ObjectProperty(prov:wasAssociatedWith))
 SubClassOf(prov:Agent prov:SoftwareAgent)
 SubClassOf(prov:Agent prov:Organization)
 
-Declaration(ObjectProperty(diamant:citation))
-        ObjectPropertyDomain(diamant:citation diamant:LexicalPhenomenon)
-        ObjectPropertyRange(diamant:citation diamant:Quotation)
-
-Declaration(ObjectProperty(diamant:attestation))
-	ObjectPropertyDomain(diamant:attestation diamant:LexicalPhenomenon)
-	ObjectPropertyRange(diamant:attestation diamant:Attestation)
-    AnnotationAssertion(rdfs:comment diamant:attestation "relation between that which evidence is provided for and the provided evidence")
-
-#SubObjectPropertyOf(ObjectPropertyChain( diamant:attestation diamant:text) lemon:example)	
-
-SubClassOf(diamant:Quotation diamant:Text)
-SubClassOf(diamant:Quotation lemon:UsageExample)
-
-FunctionalDataProperty(diamant:quotationText)
-#    SubDataPropertyOf(diamant:quotationText lemon:value)
-    DataPropertyDomain(diamant:quotationText diamant:Quotation)
-    DataPropertyRange(diamant:quotationText xsd:string)
-  AnnotationAssertion(rdfs:comment  diamant:quotationText "data property: text content of quotation")
-
-FunctionalDataProperty(nif:beginIndex)
-	DataPropertyDomain(nif:beginIndex diamant:PointerIntoText)
-	DataPropertyRange(nif:beginIndex xsd:integer)
-	
-
-FunctionalDataProperty(nif:endIndex)
-	DataPropertyDomain(nif:endIndex diamant:PointerIntoText)
-	DataPropertyRange(nif:endIndex xsd:integer)
-
-Declaration(ObjectProperty(diamant:text))
-    ObjectPropertyDomain(diamant:text diamant:PointerIntoText)
-    ObjectPropertyRange(diamant:text diamant:Text)
-
 #Declaration(ObjectProperty(diamant:witness))
 #    ObjectPropertyDomain(diamant:witness diamant:Text)
 #    ObjectPropertyRange(diamant:witness diamant:Text)
@@ -217,9 +172,6 @@ Declaration(ObjectProperty(diamant:text))
 
 # http://dublincore.org/documents/dcmi-period/
 
-
-Declaration(Class(dcterms:BibliographicResource))
-	SubClassOf(diamant:Text dcterms:BibliographicResource)
 
 # nee, spatial en temporary deugen niet
 	
