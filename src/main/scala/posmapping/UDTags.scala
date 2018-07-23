@@ -18,7 +18,7 @@ object UDTags {
      a.groupBy(_._1).mapValues(l => l.map(_._2)).mapValues(_.toSet)
    }
 
-  def pos2partitions  = List( // this is language dependent
+  val pos2partitions:Map[String, List[String]]  = List( // this is language dependent
     "NOUN"    -> List("Abbr", "Animacy", "Case", "Gender", "Number", "X-Inflection"),
     "ADJ"  -> List("Abbr", "Case", "Gender", "Number", "Degree", "X-Inflection"),
     "VERB"   -> List("Abbr", "Mood", "Tense", "Number", "Person", "Polite", "VerbForm", "Voice", "Reflex",  "X-Inflection"),
@@ -28,6 +28,8 @@ object UDTags {
     "DET"  -> List("Abbr", "PronType", "Case", "x-status", "Person",
       "Number", "Gender", "Degree", "X-Inflection"),
     "ADP"   -> List("Abbr"),
+    "PART" -> List(),
+    "AUX" -> pos2partitions("VERB"),
     "SCONJ"   -> List("Abbr"),
     "CCONJ"   -> List("Abbr"),
     "ADV"   -> List("Abbr","Degree", "X-Inflection"),

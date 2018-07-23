@@ -72,12 +72,13 @@ Declaration(ObjectProperty(diamant:locus))
 #SubObjectPropertyOf(ObjectPropertyChain( diamant:attestation diamant:text) lemon:example)      
 
 SubClassOf(diamant:Quotation lemon:UsageExample)
+SubClassOf(diamant:Quotation diamant:Text)
 
-FunctionalDataProperty(diamant:quotationText)
-#    SubDataPropertyOf(diamant:quotationText lemon:value)
-    DataPropertyDomain(diamant:quotationText diamant:Quotation)
-    DataPropertyRange(diamant:quotationText xsd:string)
-  AnnotationAssertion(rdfs:comment  diamant:quotationText "data property: text content of quotation")
+FunctionalDataProperty(diamant:snippet)
+#    SubDataPropertyOf(diamant:snippet lemon:value)
+    DataPropertyDomain(diamant:snippet diamant:Quotation)
+    DataPropertyRange(diamant:snippet xsd:string)
+  AnnotationAssertion(rdfs:comment  diamant:snippet "data property: text content of quotation")
 
 FunctionalDataProperty(nif:beginIndex)
         DataPropertyDomain(nif:beginIndex diamant:PointerIntoText)
