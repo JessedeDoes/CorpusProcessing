@@ -1,0 +1,112 @@
+@prefix dc: <http://purl.org/dc/elements/1.1/#> .
+@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix pwn: <http://wordnet-rdf.princeton.edu/ontology#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix quest: <http://obda.org/quest#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> .
+@prefix lemon: <http://lemon-model.net/lemon#> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+@prefix olia_top: <http://purl.org/olia/olia-top.owl> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix ud: <http://universaldependencies.org/u/> .
+@prefix int: <http://rdf.ivdnt.org/schema/anw/> .
+@prefix vartrans: <http://www.w3.org/ns/lemon/vartrans#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix fabio: <http://purl.org/spar/fabio/> .
+@prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
+@prefix lmf: <http://www.lexinfo.net/lmf> .
+@prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
+@prefix celex: <http://ws-boelhouwer:8080/fuseki/celex/> .
+@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix olia: <http://www.w3.org/ns/olia#> .
+@prefix olio: <http://www.w3.org/ns/olia#> .
+@prefix gold: <http://www.w3.org/ns/gold#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
+
+@prefix dcterms: <http://purl.org/dc/terms/> .
+
+@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+@prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex> .
+@prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
+
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
+@prefix : <http://rdf.ivdnt.org/schema/anw/> . 
+:lemma_78332 a ontolex:LexicalEntry .
+
+:lemma_78332 ontolex:canonicalForm :lemmavorm_78332 .
+:lemma_78332 rdfs:label "kat"@nl .
+:lemma_78332 rdf:type ontolex:Word .
+:lemmavorm_78332 rdf:type ontolex:Form .
+:lemmavorm_78332 ontolex:writtenRepresentation "kat"@nl .
+:lemmavorm_78332 ontolex:phoneticRepresentation "*k ɑ t"@nl-ReadSpeaker-fonipa .
+:lemma_78332 ontolex:sense :sensebet1.0_78333 .
+:sensebet1.0_78333 lemon:definition :sensebet1.0_78333_definition .
+:sensebet1.0_78333 int:senseOrder 1 .
+:sensebet1.0_78333 a ontolex:LexicalSense .
+
+:sensebet1.0_78333_definition lemon:value "klein huisdier dat miauwt en spint en dat gehouden wordt als gezelschapsdier of voor het vangen van muizen en ratten; huiskat; poes"@nl .
+:sensebet1.0_78333_definition int:definitionComplement "Zowel in toepassing op dieren van het vrouwelijk als van het mannelijk geslacht."@nl .
+
+:lemma_78332 ontolex:sense :sensebet1.1_195644 .
+:sensebet1.1_195644 lemon:definition :sensebet1.1_195644_definition .
+:sensebet1.1_195644 int:subsenseOrder 1 .
+:sensebet1.1_195644 a ontolex:LexicalSense .
+:sensebet1.1_195644_definition lemon:value "beeld of afbeelding van een kat, bv. in de kunst"@nl .
+
+:relation_sensebet1.1_195644 rdf:type vartrans:SenseRelation .
+:relation_sensebet1.1_195644 vartrans:source :sensebet1.0_78333  .
+:relation_sensebet1.1_195644 vartrans:target :sensebet1.1_195644  .
+:relation_sensebet1.1_195644 vartrans:category :metonymie  .
+
+:lemma_78332 ontolex:sense :sensebet2.0_78334 .
+:sensebet2.0_78334 a ontolex:LexicalSense .
+:sensebet2.0_78334 lemon:definition :sensebet2.0_78334_definition .
+:sensebet2.0_78334 int:senseOrder 2 .
+:sensebet2.0_78334_definition lemon:value "roofdier dat behoort tot de familie van de katachtigen (Felidae), bv. een tijger, leeuw of huiskat; katachtige"@nl .
+:sensebet2.0_78334_definition int:definitionComplement "Vaak in het meervoud."@nl .
+:lemma_78332 ontolex:sense :sensebet3.0_78335 .
+:sensebet3.0_78335 a ontolex:LexicalSense .
+:sensebet3.0_78335 lemon:definition :sensebet3.0_78335_definition .
+:sensebet3.0_78335 int:senseOrder 3 .
+:sensebet3.0_78335_definition lemon:value "bitse, vinnige vrouw; bits of vinnig meisje"@nl .
+
+:lemma_78332 ontolex:sense :sensebet4.0_78336 .
+:sensebet4.0_78336  a ontolex:LexicalSense .
+:sensebet4.0_78336 lemon:definition :sensebet4.0_78336_definition .
+:sensebet4.0_78336 int:senseOrder 4 .
+:sensebet4.0_78336_definition lemon:value "bitse opmerking; snauw"@nl .
+:lemma_78332 ontolex:sense :sensebet5.0_204707 .
+:sensebet5.0_204707 a ontolex:LexicalSense .
+:sensebet5.0_204707 lemon:definition :sensebet5.0_204707_definition .
+:sensebet5.0_204707 int:senseOrder 5 .
+:sensebet5.0_204707_definition lemon:value "middeleeuws belegeringswerktuig in de vorm van een lage, langwerpige houten constructie op rollen, die de aanvallers tegen een vestingmuur plaatsten om beschut en ongehinderd een bres in de muur te slaan, een muur te ondergraven of een vestinggracht te dempen"@nl .
+:sensebet5.0_204707_definition int:definitionComplement "Alleen in historiserend taalgebruik."@nl .
+:lemma_78332 ontolex:sense :sensebet6.0_204722 .
+:sensebet6.0_204722 lemon:definition :sensebet6.0_204722_definition .
+:sensebet6.0_204722 int:senseOrder 6 .
+:sensebet6.0_204722_definition lemon:value "hoog boven de wal uitstekende opstellingsplaats voor geschut, op een bastion of elders in een verdedigingswerk"@nl .
+:sensebet6.0_204722_definition int:definitionComplement "Alleen in historiserend taalgebruik."@nl .
+:lemma_78332 ontolex:sense :sensebet7.0_204817 .
+:sensebet7.0_204817 lemon:definition :sensebet7.0_204817_definition .
+:sensebet7.0_204817 int:senseOrder 7 .
+:sensebet7.0_204817_definition lemon:value "toestel waaraan een takel hangt en dat langs een geleidingsbaan wordt voortbewogen om lasten tussen vaste punten te vervoeren; loopkat"@nl .
+:lemma_78332 ontolex:sense :sensebet8.0_204831 .
+:sensebet8.0_204831 lemon:definition :sensebet8.0_204831_definition .
+:sensebet8.0_204831 int:senseOrder 8 .
+:sensebet8.0_204831_definition lemon:value "gesel van touwen met geknoopte uiteinden waarmee men vroeger misdadige matrozen of slaven strafte; geselkat"@nl .
+:sensebet8.0_204831_definition int:definitionComplement "Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten."@nl .
