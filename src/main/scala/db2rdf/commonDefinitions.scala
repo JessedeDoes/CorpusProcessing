@@ -1,5 +1,7 @@
 package db2rdf
 
+import rdf.Schema
+
 object commonDefinitions {
   implicit val schema = Schema.fromFile("data/Diamant/diamant.fss")
   implicit val sort = Sort.DataPropertyType

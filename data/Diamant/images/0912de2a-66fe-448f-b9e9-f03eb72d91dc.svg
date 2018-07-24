@@ -1,0 +1,164 @@
+<svg width="475pt" height="421pt"
+ viewBox="0.00 0.00 474.50 421.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 417)">
+<title>G</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-417 470.5,-417 470.5,4 -4,4"/>
+<!-- q0 -->
+<g id="node1" class="node">
+<title>q0</title>
+<path fill="none" stroke="#000000" d="M249.5,-151C249.5,-151 117.5,-151 117.5,-151 111.5,-151 105.5,-145 105.5,-139 105.5,-139 105.5,-110 105.5,-110 105.5,-104 111.5,-98 117.5,-98 117.5,-98 249.5,-98 249.5,-98 255.5,-98 261.5,-104 261.5,-110 261.5,-110 261.5,-139 261.5,-139 261.5,-145 255.5,-151 249.5,-151"/>
+<polygon fill="#add8e6" stroke="transparent" points="113.5,-131.5 113.5,-146.5 253.5,-146.5 253.5,-131.5 113.5,-131.5"/>
+<text text-anchor="start" x="155" y="-137.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">q0:Quotation</text>
+<text text-anchor="start" x="115.5" y="-121.5" font-family="Times,serif" font-size="10.00" fill="#000000">quotationText</text>
+<text text-anchor="start" x="184" y="-121.5" font-family="Times,serif" font-size="10.00" fill="#000000">de koei zei boe</text>
+<text text-anchor="start" x="136.5" y="-106.5" font-family="Times,serif" font-size="10.00" fill="#000000">title</text>
+<text text-anchor="start" x="178.5" y="-106.5" font-family="Times,serif" font-size="10.00" fill="#000000">Over pissebedden</text>
+</g>
+<!-- t0 -->
+<g id="node2" class="node">
+<title>t0</title>
+<path fill="none" stroke="#000000" d="M111,-45.5C111,-45.5 12,-45.5 12,-45.5 6,-45.5 0,-39.5 0,-33.5 0,-33.5 0,-19.5 0,-19.5 0,-13.5 6,-7.5 12,-7.5 12,-7.5 111,-7.5 111,-7.5 117,-7.5 123,-13.5 123,-19.5 123,-19.5 123,-33.5 123,-33.5 123,-39.5 117,-45.5 111,-45.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="8.5,-26.5 8.5,-41.5 115.5,-41.5 115.5,-26.5 8.5,-26.5"/>
+<text text-anchor="start" x="46.5" y="-32.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">t0:Title</text>
+<text text-anchor="start" x="10.5" y="-16.5" font-family="Times,serif" font-size="10.00" fill="#000000">title</text>
+<text text-anchor="start" x="31.5" y="-16.5" font-family="Times,serif" font-size="10.00" fill="#000000">Hinderlijke diertjes </text>
+</g>
+<!-- q0&#45;&gt;t0 -->
+<g id="edge1" class="edge">
+<title>q0&#45;&gt;t0</title>
+<path fill="none" stroke="#000088" d="M148.3519,-97.9083C140.7689,-92.067 132.8302,-85.8716 125.5,-80 114.3313,-71.0537 102.2495,-61.043 91.6234,-52.1224"/>
+<polygon fill="#000088" stroke="#000088" points="83.8205,-45.549 94.3677,-48.5503 87.6445,-48.7704 91.4684,-51.9919 91.4684,-51.9919 91.4684,-51.9919 87.6445,-48.7704 88.5691,-55.4334 83.8205,-45.549 83.8205,-45.549"/>
+<text text-anchor="middle" x="152.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">containedInTitle</text>
+</g>
+<!-- w0 -->
+<g id="node3" class="node">
+<title>w0</title>
+<path fill="none" stroke="#000000" d="M214,-53C214,-53 153,-53 153,-53 147,-53 141,-47 141,-41 141,-41 141,-12 141,-12 141,-6 147,0 153,0 153,0 214,0 214,0 220,0 226,-6 226,-12 226,-12 226,-41 226,-41 226,-47 220,-53 214,-53"/>
+<polygon fill="#add8e6" stroke="transparent" points="149.5,-33.5 149.5,-48.5 218.5,-48.5 218.5,-33.5 149.5,-33.5"/>
+<text text-anchor="start" x="160.5" y="-39.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">w0:Witness</text>
+<text text-anchor="start" x="151.5" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000">yearFrom</text>
+<text text-anchor="start" x="194.5" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000">1810</text>
+<text text-anchor="start" x="156.5" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000">yearTo</text>
+<text text-anchor="start" x="194.5" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000">1812</text>
+</g>
+<!-- q0&#45;&gt;w0 -->
+<g id="edge2" class="edge">
+<title>q0&#45;&gt;w0</title>
+<path fill="none" stroke="#000088" d="M183.5,-97.9798C183.5,-87.3034 183.5,-74.8091 183.5,-63.2792"/>
+<polygon fill="#000088" stroke="#000088" points="183.5,-53.0414 188.0001,-63.0414 183.5,-58.0414 183.5001,-63.0414 183.5001,-63.0414 183.5001,-63.0414 183.5,-58.0414 179.0001,-63.0415 183.5,-53.0414 183.5,-53.0414"/>
+<text text-anchor="middle" x="196" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">witness</text>
+</g>
+<!-- p0 -->
+<g id="node4" class="node">
+<title>p0</title>
+<path fill="none" stroke="#000000" d="M319,-53C319,-53 256,-53 256,-53 250,-53 244,-47 244,-41 244,-41 244,-12 244,-12 244,-6 250,0 256,0 256,0 319,0 319,0 325,0 331,-6 331,-12 331,-12 331,-41 331,-41 331,-47 325,-53 319,-53"/>
+<polygon fill="#add8e6" stroke="transparent" points="252.5,-33.5 252.5,-48.5 323.5,-48.5 323.5,-33.5 252.5,-33.5"/>
+<text text-anchor="start" x="254.5" y="-39.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">p0:PlatonicText</text>
+<text text-anchor="start" x="255" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000">yearFrom</text>
+<text text-anchor="start" x="299" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000">1810</text>
+<text text-anchor="start" x="260" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000">yearTo</text>
+<text text-anchor="start" x="299" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000">1812</text>
+</g>
+<!-- q0&#45;&gt;p0 -->
+<g id="edge3" class="edge">
+<title>q0&#45;&gt;p0</title>
+<path fill="none" stroke="#000088" d="M211.6439,-97.9798C224.0145,-86.3229 238.6848,-72.4989 251.8119,-60.1291"/>
+<polygon fill="#000088" stroke="#000088" points="259.3336,-53.0414 255.1418,-63.1745 255.6947,-56.4704 252.0557,-59.8994 252.0557,-59.8994 252.0557,-59.8994 255.6947,-56.4704 248.9696,-56.6244 259.3336,-53.0414 259.3336,-53.0414"/>
+<text text-anchor="middle" x="260" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">platonicText</text>
+</g>
+<!-- e0 -->
+<g id="node5" class="node">
+<title>e0</title>
+<path fill="none" stroke="#000000" d="M342.5,-413C342.5,-413 280.5,-413 280.5,-413 274.5,-413 268.5,-407 268.5,-401 268.5,-401 268.5,-389 268.5,-389 268.5,-383 274.5,-377 280.5,-377 280.5,-377 342.5,-377 342.5,-377 348.5,-377 354.5,-383 354.5,-389 354.5,-389 354.5,-401 354.5,-401 354.5,-407 348.5,-413 342.5,-413"/>
+<polygon fill="#add8e6" stroke="transparent" points="276.5,-387 276.5,-402 346.5,-402 346.5,-387 276.5,-387"/>
+<text text-anchor="start" x="278.5" y="-393" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">e0:LexicalEntry</text>
+</g>
+<!-- s0 -->
+<g id="node6" class="node">
+<title>s0</title>
+<path fill="none" stroke="#000000" d="M238,-332C238,-332 97,-332 97,-332 91,-332 85,-326 85,-320 85,-320 85,-306 85,-306 85,-300 91,-294 97,-294 97,-294 238,-294 238,-294 244,-294 250,-300 250,-306 250,-306 250,-320 250,-320 250,-326 244,-332 238,-332"/>
+<polygon fill="#add8e6" stroke="transparent" points="93.5,-313 93.5,-328 242.5,-328 242.5,-313 93.5,-313"/>
+<text text-anchor="start" x="135" y="-319" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">s0:LexicalSense</text>
+<text text-anchor="start" x="95.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">definition</text>
+<text text-anchor="start" x="140.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">De koe is een nuttig dier</text>
+</g>
+<!-- e0&#45;&gt;s0 -->
+<g id="edge4" class="edge">
+<title>e0&#45;&gt;s0</title>
+<path fill="none" stroke="#000088" d="M279.5417,-376.8015C259.0051,-365.1071 232.0958,-349.7837 209.7961,-337.0853"/>
+<polygon fill="#000088" stroke="#000088" points="200.8701,-332.0024 211.7868,-333.0404 205.215,-334.4766 209.56,-336.9509 209.56,-336.9509 209.56,-336.9509 205.215,-334.4766 207.3332,-340.8613 200.8701,-332.0024 200.8701,-332.0024"/>
+<text text-anchor="middle" x="257.5" y="-352.6" font-family="Times,serif" font-size="8.00" fill="#000000">sense</text>
+</g>
+<!-- l0 -->
+<g id="node8" class="node">
+<title>l0</title>
+<path fill="none" stroke="#000000" d="M342.5,-332C342.5,-332 280.5,-332 280.5,-332 274.5,-332 268.5,-326 268.5,-320 268.5,-320 268.5,-306 268.5,-306 268.5,-300 274.5,-294 280.5,-294 280.5,-294 342.5,-294 342.5,-294 348.5,-294 354.5,-300 354.5,-306 354.5,-306 354.5,-320 354.5,-320 354.5,-326 348.5,-332 342.5,-332"/>
+<polygon fill="#add8e6" stroke="transparent" points="276.5,-313 276.5,-328 346.5,-328 346.5,-313 276.5,-313"/>
+<text text-anchor="start" x="294.5" y="-319" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">l0:Form</text>
+<text text-anchor="start" x="278.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">writtenRep</text>
+<text text-anchor="start" x="328.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">koe</text>
+</g>
+<!-- e0&#45;&gt;l0 -->
+<g id="edge5" class="edge">
+<title>e0&#45;&gt;l0</title>
+<path fill="none" stroke="#000088" d="M311.5,-376.8015C311.5,-366.6144 311.5,-353.6734 311.5,-342.1128"/>
+<polygon fill="#000088" stroke="#000088" points="311.5,-332.0024 316.0001,-342.0024 311.5,-337.0024 311.5001,-342.0024 311.5001,-342.0024 311.5001,-342.0024 311.5,-337.0024 307.0001,-342.0025 311.5,-332.0024 311.5,-332.0024"/>
+<text text-anchor="middle" x="336" y="-352.6" font-family="Times,serif" font-size="8.00" fill="#000000">canonicalForm</text>
+</g>
+<!-- f0 -->
+<g id="node9" class="node">
+<title>f0</title>
+<path fill="none" stroke="#000000" d="M454.5,-332C454.5,-332 384.5,-332 384.5,-332 378.5,-332 372.5,-326 372.5,-320 372.5,-320 372.5,-306 372.5,-306 372.5,-300 378.5,-294 384.5,-294 384.5,-294 454.5,-294 454.5,-294 460.5,-294 466.5,-300 466.5,-306 466.5,-306 466.5,-320 466.5,-320 466.5,-326 460.5,-332 454.5,-332"/>
+<polygon fill="#add8e6" stroke="transparent" points="380.5,-313 380.5,-328 458.5,-328 458.5,-313 380.5,-313"/>
+<text text-anchor="start" x="402.5" y="-319" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">f0:Form</text>
+<text text-anchor="start" x="382.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">writtenForm</text>
+<text text-anchor="start" x="437.5" y="-303" font-family="Times,serif" font-size="10.00" fill="#000000">koei</text>
+</g>
+<!-- e0&#45;&gt;f0 -->
+<g id="edge6" class="edge">
+<title>e0&#45;&gt;f0</title>
+<path fill="none" stroke="#000088" d="M339.3752,-376.8278C347.5871,-371.2713 356.5098,-365.0313 364.5,-359 372.9202,-352.6441 381.7931,-345.455 389.8962,-338.681"/>
+<polygon fill="#000088" stroke="#000088" points="397.6974,-332.0916 392.9617,-341.9822 393.8777,-335.318 390.0579,-338.5445 390.0579,-338.5445 390.0579,-338.5445 393.8777,-335.318 387.1542,-335.1067 397.6974,-332.0916 397.6974,-332.0916"/>
+<text text-anchor="middle" x="394.5" y="-352.6" font-family="Times,serif" font-size="8.00" fill="#000000">lexicalForm</text>
+</g>
+<!-- s0&#45;&gt;q0 -->
+<g id="edge8" class="edge">
+<title>s0&#45;&gt;q0</title>
+<path fill="none" stroke="#000088" d="M168.8437,-293.9406C170.5051,-270.7754 173.4844,-230.5017 176.5,-196 177.4793,-184.795 178.6374,-172.6118 179.7266,-161.53"/>
+<polygon fill="#000088" stroke="#000088" points="180.7418,-151.3105 184.2311,-161.7064 180.2475,-156.2861 179.7532,-161.2616 179.7532,-161.2616 179.7532,-161.2616 180.2475,-156.2861 175.2752,-160.8167 180.7418,-151.3105 180.7418,-151.3105"/>
+<text text-anchor="middle" x="189" y="-220.6" font-family="Times,serif" font-size="8.00" fill="#000000">citation</text>
+</g>
+<!-- a0 -->
+<g id="node7" class="node">
+<title>a0</title>
+<path fill="none" stroke="#000000" d="M278,-249C278,-249 223,-249 223,-249 217,-249 211,-243 211,-237 211,-237 211,-208 211,-208 211,-202 217,-196 223,-196 223,-196 278,-196 278,-196 284,-196 290,-202 290,-208 290,-208 290,-237 290,-237 290,-243 284,-249 278,-249"/>
+<polygon fill="#add8e6" stroke="transparent" points="219.5,-229.5 219.5,-244.5 282.5,-244.5 282.5,-229.5 219.5,-229.5"/>
+<text text-anchor="start" x="221.5" y="-235.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">a0:Attestation</text>
+<text text-anchor="start" x="222" y="-219.5" font-family="Times,serif" font-size="10.00" fill="#000000">beginIndex</text>
+<text text-anchor="start" x="274" y="-219.5" font-family="Times,serif" font-size="10.00" fill="#000000">3</text>
+<text text-anchor="start" x="226" y="-204.5" font-family="Times,serif" font-size="10.00" fill="#000000">endIndex</text>
+<text text-anchor="start" x="274" y="-204.5" font-family="Times,serif" font-size="10.00" fill="#000000">6</text>
+</g>
+<!-- s0&#45;&gt;a0 -->
+<g id="edge7" class="edge">
+<title>s0&#45;&gt;a0</title>
+<path fill="none" stroke="#000088" d="M185.1022,-293.8073C194.9539,-283.0653 207.5313,-269.3514 219.0192,-256.8254"/>
+<polygon fill="#000088" stroke="#000088" points="225.9972,-249.2169 222.5545,-259.6284 222.6176,-252.9019 219.2381,-256.5868 219.2381,-256.5868 219.2381,-256.5868 222.6176,-252.9019 215.9216,-253.5452 225.9972,-249.2169 225.9972,-249.2169"/>
+<text text-anchor="middle" x="226.5" y="-269.6" font-family="Times,serif" font-size="8.00" fill="#000000">attestation</text>
+</g>
+<!-- a0&#45;&gt;q0 -->
+<g id="edge9" class="edge">
+<title>a0&#45;&gt;q0</title>
+<path fill="none" stroke="#000088" d="M232.3688,-195.9798C224.6972,-184.7587 215.6528,-171.5295 207.4438,-159.5223"/>
+<polygon fill="#000088" stroke="#000088" points="201.6457,-151.0414 211.0043,-156.7568 204.4676,-155.169 207.2895,-159.2966 207.2895,-159.2966 207.2895,-159.2966 204.4676,-155.169 203.5747,-161.8363 201.6457,-151.0414 201.6457,-151.0414"/>
+<text text-anchor="middle" x="226" y="-171.6" font-family="Times,serif" font-size="8.00" fill="#000000">text</text>
+</g>
+<!-- f0&#45;&gt;a0 -->
+<g id="edge10" class="edge">
+<title>f0&#45;&gt;a0</title>
+<path fill="none" stroke="#000088" d="M383.6594,-293.8073C359.024,-280.6149 326.0181,-262.9402 299.0305,-248.4882"/>
+<polygon fill="#000088" stroke="#000088" points="290.1297,-243.7218 301.0696,-244.4756 294.5375,-246.0822 298.9452,-248.4426 298.9452,-248.4426 298.9452,-248.4426 294.5375,-246.0822 296.8209,-252.4096 290.1297,-243.7218 290.1297,-243.7218"/>
+<text text-anchor="middle" x="366.5" y="-269.6" font-family="Times,serif" font-size="8.00" fill="#000000">attestation</text>
+</g>
+</g>
+</svg>

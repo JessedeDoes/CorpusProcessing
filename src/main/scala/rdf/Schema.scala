@@ -1,19 +1,16 @@
-package db2rdf
+package rdf
 
-import org.openrdf.model.Statement
 import org.openrdf.rio.helpers.StatementCollector
 import org.openrdf.rio.{RDFFormat, Rio}
-import org.semanticweb.owlapi.model._
-import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl
-import propositional._
+import org.semanticweb.owlapi.apibinding.OWLManager
 import org.semanticweb.owlapi.formats.FunctionalSyntaxDocumentFormat
+import org.semanticweb.owlapi.model._
+import org.semanticweb.owlapi.model.parameters.Imports
+import propositional._
+import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl
 
 import scala.collection.JavaConverters._
 import scala.util.Success
-import org.openrdf.model.Statement
-import org.openrdf.model.URI
-import org.semanticweb.owlapi.apibinding.OWLManager
-import org.semanticweb.owlapi.model.parameters.Imports
 
 object Schema
 {
@@ -48,10 +45,7 @@ object Schema
 }
 
 
-import org.semanticweb.owlapi.model.AddAxiom
-import org.semanticweb.owlapi.model.IRI
-import org.semanticweb.owlapi.model.OWLAxiom
-import org.semanticweb.owlapi.model.{OWLClass}
+import org.semanticweb.owlapi.model.{AddAxiom, OWLAxiom, OWLClass}
 
 
 case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager )
@@ -165,8 +159,7 @@ case class OntologyManagement(ontology: OWLOntology, manager: OWLOntologyManager
 case class Schema(inputStream: java.io.InputStream) {
 
   import org.semanticweb.owlapi.apibinding.OWLManager
-  import org.semanticweb.owlapi.model.OWLOntology
-  import org.semanticweb.owlapi.model.OWLOntologyManager
+  import org.semanticweb.owlapi.model.{OWLOntology, OWLOntologyManager}
 
   // http://owlcs.github.io/owlapi/apidocs_5/uk/ac/manchester/cs/owl/owlapi/OWLDataFactoryImpl.html
 
@@ -219,7 +212,7 @@ case class Schema(inputStream: java.io.InputStream) {
      val name = c.toString
      val n1 = if (name.contains("<")) name else s"<$name>"
 
-     val stmt = s"$n1 <${utils.readRDF.isA}> <http://Class> ."
+     val stmt = s"$n1 <${readRDF.isA}> <http://Class> ."
      //Console.err.println(stmt)
      scala.util.Try(parse(stmt))
   }).toSeq.filter(_.isSuccess).map(_.asInstanceOf[Success[org.openrdf.model.Statement]]).map(_.value.asInstanceOf[org.openrdf.model.Statement])
@@ -351,12 +344,12 @@ case class Schema(inputStream: java.io.InputStream) {
 
   (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
 
-  lazy val dot = utils.readRDF.makeDot(classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions)
+  lazy val dot = rdf.diagrams.makeDot(classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions)
 
   def  createImage:Unit = createImage("./test.svg")
 
 
-  def createImage(fileName: String) = utils.readRDF.createSVG(dot, fileName)
+  def createImage(fileName: String) = rdf.diagrams.createSVG(dot, fileName)
 
   Console.err.println(dot)
 

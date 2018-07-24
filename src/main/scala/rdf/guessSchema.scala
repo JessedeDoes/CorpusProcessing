@@ -1,18 +1,7 @@
-package db2rdf
+package rdf
 
-import org.openrdf.model.{Statement,Resource,Value,Literal}
-import org.openrdf.rio.helpers.StatementCollector
-import org.openrdf.rio.{RDFFormat, Rio}
-import org.semanticweb.owlapi.model._
-
-import propositional._
-
-
-import scala.collection.JavaConverters._
-import scala.util.Success
-import org.openrdf.model.Statement
-import org.openrdf.model.URI
-import utils.readRDF._
+import org.openrdf.model.Resource
+import readRDF._
 
 object guessSchema {
 

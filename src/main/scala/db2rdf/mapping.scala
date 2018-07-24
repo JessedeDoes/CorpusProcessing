@@ -16,11 +16,12 @@ import database.DatabaseUtilities.makeMapping
 import database.DatabaseUtilities.ResultMapping
 import database.Configuration
 import net.sf.jsqlparser.schema.Database
-
 import org.openrdf.rio.RDFFormat
 import org.openrdf.rio.RDFParser
 import org.openrdf.rio.Rio
-import scala.util.{Try, Failure, Success}
+import rdf.Schema
+
+import scala.util.{Failure, Success, Try}
 
 trait Literal
 trait Statement

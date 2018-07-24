@@ -1,6 +1,7 @@
 package posmapping
 
-import db2rdf.Schema
+import rdf.Schema
+
 import scala.collection.JavaConverters._
 
 object ontologyFromTagset {
