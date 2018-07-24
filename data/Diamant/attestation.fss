@@ -60,7 +60,7 @@ Declaration(ObjectProperty(diamant:citation))
         ObjectPropertyRange(diamant:citation diamant:Quotation)
 
 Declaration(ObjectProperty(diamant:attestation))
-	SubObjectPropertyOf(diamant:attestation diamant:Quotation)
+	SubObjectPropertyOf(diamant:attestation diamant:citation)
         ObjectPropertyDomain(diamant:attestation diamant:LexicalPhenomenon)
         ObjectPropertyRange(diamant:attestation diamant:Quotation)
 
