@@ -7,7 +7,63 @@
             <h1>Federated search lexica: data model(s) and examples</h1>
             <div>
                 <h2>CGN Lexicon</h2>
-                
+                <example>
+                    
+                    :cgnlex_lemma_47751 a ontolex:LexicalEntry .
+                    :cgnlex_lemma_47751 ontolex:form [ontolex:writtenRep "kat"@nl] .
+                    :cgnlex_lemma_47751 lexinfo:MorphosyntacticProperty [lexinfo:partOfSpeech lexinfo:noun] .
+                    :cgnlex_lemma_47751 lexinfo:MorphosyntacticProperty [lexinfo:Gender lexinfo:commonGender] .
+                    :cgnlex_lemma_47751 lexinfo:MorphosyntacticProperty [lexinfo:Gender lexinfo:neuter] .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_147297 .
+                    :cgnlex_wform_147297 a ontolex:word .
+                    :cgnlex_wform_147297 ontolex:writtenRep "kat"@nl .
+                    :cgnlex_wform_147297 ontolex:phoneticRep "kAt"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_147297 ontolex:phoneticRep "kAt"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_147297 lexinfo:number lexinfo:singular .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_807576 .
+                    :cgnlex_wform_807576 a ontolex:word .
+                    :cgnlex_wform_807576 ontolex:writtenRep "katje"@nl .
+                    :cgnlex_wform_807576 ontolex:phoneticRep "kAtj@"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_807576 ontolex:phoneticRep "kAtj@"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_807576 ontolex:phoneticRep "kAtj@"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:formalRegister .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_862734 .
+                    :cgnlex_wform_862734 a ontolex:word .
+                    :cgnlex_wform_862734 ontolex:writtenRep "katje"@nl .
+                    :cgnlex_wform_862734 ontolex:phoneticRep "kAtj@"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_862734 ontolex:phoneticRep "kAtj@"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_862734 ontolex:phoneticRep "kAtj@"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:formalRegister .
+                    :cgnlex_wform_862734 lexinfo:number lexinfo:singular .
+                    :cgnlex_wform_862734 a lexinfo:diminutiveNoun .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_862735 .
+                    :cgnlex_wform_862735 a ontolex:word .
+                    :cgnlex_wform_862735 ontolex:writtenRep "katjes"@nl .
+                    :cgnlex_wform_862735 ontolex:phoneticRep "kAtj@s"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_862735 ontolex:phoneticRep "kAtj@s"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_862735 ontolex:phoneticRep "kAtj@s"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:formalRegister .
+                    :cgnlex_wform_862735 lexinfo:number lexinfo:plural .
+                    :cgnlex_wform_862735 a lexinfo:diminutiveNoun .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_147514 .
+                    :cgnlex_wform_147514 a ontolex:word .
+                    :cgnlex_wform_147514 ontolex:writtenRep "katten"@nl .
+                    :cgnlex_wform_147514 ontolex:writtenRep "katten"@nl .
+                    :cgnlex_wform_147514 ontolex:phoneticRep "kAt@"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_147514 ontolex:phoneticRep "kAt@n"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_147514 ontolex:phoneticRep "kAt@"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:formalRegister .
+                    :cgnlex_wform_147514 lexinfo:number lexinfo:plural .
+                    
+                    :cgnlex_lemma_47751 ontolex:form :cgnlex_wform_802537 .
+                    :cgnlex_wform_802537 ontolex:writtenRep "Kat"@nl .
+                    :cgnlex_wform_802537 ontolex:phoneticRep "kAt"@nl-fonipa; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_802537 ontolex:phoneticRep "ka:t"@nl-fonipa; madsrdf:variantLabel "Flemish"@en; lexinfo:Register lexinfo:neutralRegister .
+                    :cgnlex_wform_802537 lexinfo:number lexinfo:singular .
+                    
+                    
+                </example>
             </div>
 
     <div>
@@ -278,27 +334,34 @@
     </example>
 </div>
 <div>
+    <div>
+        <h2>Diamant</h2>
+        
+        <ontology source="data/Diamant/diamant.fss">
+            
+        </ontology>
+        <div>
     <h3>Diamant attestation model</h3>
     <example>
       :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
       :l0 a ontolex:Form .
       :e0 ontolex:canonicalForm :l0 .
-      :l0 ontolex:writtenRep "koe" .
+      :l0 ontolex:writtenRep "cow" .
       :f0 a ontolex:Form .
-      :f0 ontolex:writtenForm "koei" .
+      :f0 ontolex:writtenForm "kine" .
       :e0 ontolex:lexicalForm :f0 .
       :s0 a ontolex:LexicalSense .
-      :s0 ontolex:definition  "De koe is een nuttig dier" .
+      :s0 ontolex:definition  "Cows are useful animals" .
       :a0 a diamant:Attestation .
       :s0 diamant:attestation :a0 .
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
-      :q0 diamant:quotationText "de koei zei boe" .
+      :q0 diamant:snippet "The kine all said boo" .
       :s0 diamant:citation :q0 .
       :a0 diamant:text :q0 .
-      :a0 nif:beginIndex 3 .
-      :a0 nif:endIndex 6 .
+      :a0 nif:beginIndex 5 .
+      :a0 nif:endIndex 8 .
       :q0 a diamant:DependentTitle .
       :q0 diamant:containedInTitle :t0 .
       :t0 a diamant:Title .
@@ -313,6 +376,8 @@
       :p0 diamant:yearFrom 1810 .
       :p0 diamant:yearTo 1812 .
     </example>
+    </div>
+    </div>
 </div>
 </div>
     </body>

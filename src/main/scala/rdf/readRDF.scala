@@ -120,8 +120,14 @@ object readRDF
   def parseToStatements(url: String): Stream[Statement] = parseToGraph(url).iterator().asScala.toStream
   def parseStringToStatements(rdf: String): Stream[Statement] = parseStringToGraph(rdf).iterator().asScala.toStream
 
-  def shortName(r: org.openrdf.model.Value) = r.stringValue().replaceAll(".*(#|/)", "")
-  def shortName(r:  org.openrdf.model.URI) = r.stringValue().replaceAll(".*(#|/)", "")
+  def shortName(r: org.openrdf.model.Value) = {
+    val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z]","") else s
+  }
+  def shortName(r:  org.openrdf.model.URI) = {
+    val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z]","") else s
+  }
 
   val isA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
 

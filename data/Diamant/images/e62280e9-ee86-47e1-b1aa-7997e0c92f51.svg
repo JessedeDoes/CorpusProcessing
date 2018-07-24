@@ -1,0 +1,772 @@
+<svg width="1556pt" height="1064pt"
+ viewBox="0.00 0.00 1556.00 1064.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 1060)">
+<title>G</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-1060 1552,-1060 1552,4 -4,4"/>
+<!-- TitlePart -->
+<g id="node1" class="node">
+<title>TitlePart</title>
+<path fill="none" stroke="#000000" d="M256,-601C256,-601 196,-601 196,-601 190,-601 184,-595 184,-589 184,-589 184,-577 184,-577 184,-571 190,-565 196,-565 196,-565 256,-565 256,-565 262,-565 268,-571 268,-577 268,-577 268,-589 268,-589 268,-595 262,-601 256,-601"/>
+<polygon fill="#add8e6" stroke="transparent" points="192,-575 192,-590 260,-590 260,-575 192,-575"/>
+<text text-anchor="start" x="194.5" y="-581" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">TitlePart:Class</text>
+</g>
+<!-- Text -->
+<g id="node2" class="node">
+<title>Text</title>
+<path fill="none" stroke="#000000" d="M412.5,-368C412.5,-368 295.5,-368 295.5,-368 289.5,-368 283.5,-362 283.5,-356 283.5,-356 283.5,-282 283.5,-282 283.5,-276 289.5,-270 295.5,-270 295.5,-270 412.5,-270 412.5,-270 418.5,-270 424.5,-276 424.5,-282 424.5,-282 424.5,-356 424.5,-356 424.5,-362 418.5,-368 412.5,-368"/>
+<polygon fill="#add8e6" stroke="transparent" points="292,-349 292,-364 417,-364 417,-349 292,-349"/>
+<text text-anchor="start" x="333" y="-355" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Text:Class</text>
+<text text-anchor="start" x="306.5" y="-339" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;pid &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="371.5" y="-339" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="294" y="-324" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;textLevel &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="369" y="-324" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+<text text-anchor="start" x="295" y="-309" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;sourceID &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="371.5" y="-309" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="299" y="-294" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;yearTo &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="369" y="-294" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+<text text-anchor="start" x="294.5" y="-279" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;yearFrom &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="369" y="-279" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+</g>
+<!-- TitlePart&#45;&gt;Text -->
+<g id="edge1" class="edge">
+<title>TitlePart&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M231.3977,-564.7352C243.5801,-523.7082 272.7146,-426.7501 280,-413 286.5728,-400.5948 294.8337,-388.1871 303.433,-376.6432"/>
+<polygon fill="#000088" stroke="#000088" points="309.7351,-368.4025 307.2349,-379.0796 306.6977,-372.3742 303.6603,-376.3459 303.6603,-376.3459 303.6603,-376.3459 306.6977,-372.3742 300.0858,-373.6123 309.7351,-368.4025 309.7351,-368.4025"/>
+<text text-anchor="middle" x="298.5" y="-437.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Title -->
+<g id="node9" class="node">
+<title>Title</title>
+<path fill="none" stroke="#000000" d="M218,-457.5C218,-457.5 176,-457.5 176,-457.5 170,-457.5 164,-451.5 164,-445.5 164,-445.5 164,-433.5 164,-433.5 164,-427.5 170,-421.5 176,-421.5 176,-421.5 218,-421.5 218,-421.5 224,-421.5 230,-427.5 230,-433.5 230,-433.5 230,-445.5 230,-445.5 230,-451.5 224,-457.5 218,-457.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="172,-431.5 172,-446.5 222,-446.5 222,-431.5 172,-431.5"/>
+<text text-anchor="start" x="174.5" y="-437.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Title:Class</text>
+</g>
+<!-- TitlePart&#45;&gt;Title -->
+<g id="edge2" class="edge">
+<title>TitlePart&#45;&gt;Title</title>
+<path fill="none" stroke="#000088" d="M218.6444,-564.7518C211.8225,-546.8245 202.1231,-518.5238 198,-493 196.7021,-484.9654 196.1754,-476.1643 196.0441,-468.0623"/>
+<polygon fill="#000088" stroke="#000088" points="196.0677,-457.9374 200.5443,-467.9479 196.056,-462.9374 196.0443,-467.9374 196.0443,-467.9374 196.0443,-467.9374 196.056,-462.9374 191.5443,-467.9269 196.0677,-457.9374 196.0677,-457.9374"/>
+<text text-anchor="middle" x="225" y="-486.6" font-family="Times,serif" font-size="8.00" fill="#000000">containedInTitle</text>
+</g>
+<!-- TextComponent -->
+<g id="node3" class="node">
+<title>TextComponent</title>
+<path fill="none" stroke="#000000" d="M100,-171C100,-171 12,-171 12,-171 6,-171 0,-165 0,-159 0,-159 0,-147 0,-147 0,-141 6,-135 12,-135 12,-135 100,-135 100,-135 106,-135 112,-141 112,-147 112,-147 112,-159 112,-159 112,-165 106,-171 100,-171"/>
+<polygon fill="#add8e6" stroke="transparent" points="8,-145 8,-160 104,-160 104,-145 8,-145"/>
+<text text-anchor="start" x="10.5" y="-151" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">TextComponent:Class</text>
+</g>
+<!-- Text&#45;&gt;TextComponent -->
+<g id="edge3" class="edge">
+<title>Text&#45;&gt;TextComponent</title>
+<path fill="none" stroke="#000088" d="M283.4034,-292.2655C242.0665,-275.3619 189.5914,-251.7019 146,-225 123.7114,-211.3471 100.7362,-192.8813 83.5781,-178.0688"/>
+<polygon fill="#000088" stroke="#000088" points="75.6508,-171.1277 86.1388,-174.3297 79.4126,-174.4215 83.1744,-177.7153 83.1744,-177.7153 83.1744,-177.7153 79.4126,-174.4215 80.21,-181.1009 75.6508,-171.1277 75.6508,-171.1277"/>
+<text text-anchor="middle" x="208.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- BibliographicResource -->
+<g id="node4" class="node">
+<title>BibliographicResource</title>
+<path fill="none" stroke="#000000" d="M284.5,-187C284.5,-187 167.5,-187 167.5,-187 161.5,-187 155.5,-181 155.5,-175 155.5,-175 155.5,-131 155.5,-131 155.5,-125 161.5,-119 167.5,-119 167.5,-119 284.5,-119 284.5,-119 290.5,-119 296.5,-125 296.5,-131 296.5,-131 296.5,-175 296.5,-175 296.5,-181 290.5,-187 284.5,-187"/>
+<polygon fill="#add8e6" stroke="transparent" points="164,-168 164,-183 289,-183 289,-168 164,-168"/>
+<text text-anchor="start" x="166" y="-174" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">BibliographicResource:Class</text>
+<text text-anchor="start" x="170" y="-158" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;creator &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="242" y="-158" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="175.5" y="-143" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;title &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="242" y="-143" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="171" y="-128" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;author &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="242" y="-128" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+</g>
+<!-- Text&#45;&gt;BibliographicResource -->
+<g id="edge4" class="edge">
+<title>Text&#45;&gt;BibliographicResource</title>
+<path fill="none" stroke="#000088" d="M286.9552,-269.7081C281.198,-264.083 275.7635,-258.1485 271,-252 258.2584,-235.5536 248.1481,-214.9225 240.7647,-196.7565"/>
+<polygon fill="#000088" stroke="#000088" points="237.0486,-187.2395 244.8777,-194.9178 238.8672,-191.897 240.6859,-196.5546 240.6859,-196.5546 240.6859,-196.5546 238.8672,-191.897 236.4941,-198.1914 237.0486,-187.2395 237.0486,-187.2395"/>
+<text text-anchor="middle" x="289.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Witness -->
+<g id="node5" class="node">
+<title>Witness</title>
+<path fill="none" stroke="#000000" d="M381,-171C381,-171 327,-171 327,-171 321,-171 315,-165 315,-159 315,-159 315,-147 315,-147 315,-141 321,-135 327,-135 327,-135 381,-135 381,-135 387,-135 393,-141 393,-147 393,-147 393,-159 393,-159 393,-165 387,-171 381,-171"/>
+<polygon fill="#add8e6" stroke="transparent" points="323,-145 323,-160 385,-160 385,-145 323,-145"/>
+<text text-anchor="start" x="325" y="-151" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Witness:Class</text>
+</g>
+<!-- Text&#45;&gt;Witness -->
+<g id="edge5" class="edge">
+<title>Text&#45;&gt;Witness</title>
+<path fill="none" stroke="#000088" d="M354,-269.644C354,-240.9682 354,-205.8431 354,-181.6757"/>
+<polygon fill="#000088" stroke="#000088" points="354,-171.4054 358.5001,-181.4054 354,-176.4054 354.0001,-181.4054 354.0001,-181.4054 354.0001,-181.4054 354,-176.4054 349.5001,-181.4054 354,-171.4054 354,-171.4054"/>
+<text text-anchor="middle" x="366.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">witness</text>
+</g>
+<!-- PlatonicText -->
+<g id="node6" class="node">
+<title>PlatonicText</title>
+<path fill="none" stroke="#000000" d="M499,-171C499,-171 423,-171 423,-171 417,-171 411,-165 411,-159 411,-159 411,-147 411,-147 411,-141 417,-135 423,-135 423,-135 499,-135 499,-135 505,-135 511,-141 511,-147 511,-147 511,-159 511,-159 511,-165 505,-171 499,-171"/>
+<polygon fill="#add8e6" stroke="transparent" points="419,-145 419,-160 503,-160 503,-145 419,-145"/>
+<text text-anchor="start" x="421.5" y="-151" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">PlatonicText:Class</text>
+</g>
+<!-- Text&#45;&gt;PlatonicText -->
+<g id="edge6" class="edge">
+<title>Text&#45;&gt;PlatonicText</title>
+<path fill="none" stroke="#000088" d="M424.5723,-271.3656C430.3914,-265.372 435.6839,-258.8998 440,-252 453.3303,-230.6899 458.3199,-202.2799 460.128,-181.3605"/>
+<polygon fill="#000088" stroke="#000088" points="460.8108,-171.1811 464.6314,-181.4599 460.4762,-176.1699 460.1415,-181.1587 460.1415,-181.1587 460.1415,-181.1587 460.4762,-176.1699 455.6516,-180.8575 460.8108,-171.1811 460.8108,-171.1811"/>
+<text text-anchor="middle" x="465.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">platonicText</text>
+</g>
+<!-- Location -->
+<g id="node7" class="node">
+<title>Location</title>
+<path fill="none" stroke="#000000" d="M677,-194.5C677,-194.5 541,-194.5 541,-194.5 535,-194.5 529,-188.5 529,-182.5 529,-182.5 529,-123.5 529,-123.5 529,-117.5 535,-111.5 541,-111.5 541,-111.5 677,-111.5 677,-111.5 683,-111.5 689,-117.5 689,-123.5 689,-123.5 689,-182.5 689,-182.5 689,-188.5 683,-194.5 677,-194.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="537,-175 537,-190 681,-190 681,-175 537,-175"/>
+<text text-anchor="start" x="577.5" y="-181" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Location:Class</text>
+<text text-anchor="start" x="539" y="-165" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;locationName &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="635.5" y="-165" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="543" y="-150" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;kloekeCode &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="635.5" y="-150" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="562.5" y="-135" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;lat &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="633" y="-135" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:double</text>
+<text text-anchor="start" x="558.5" y="-120" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;long &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="633" y="-120" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:double</text>
+</g>
+<!-- Text&#45;&gt;Location -->
+<g id="edge7" class="edge">
+<title>Text&#45;&gt;Location</title>
+<path fill="none" stroke="#000088" d="M424.5749,-288.1442C446.1599,-277.6819 469.5794,-265.2576 490,-252 512.8841,-237.1431 536.333,-218.5 556.2998,-201.4103"/>
+<polygon fill="#000088" stroke="#000088" points="564.0576,-194.6993 559.4388,-204.645 560.2761,-197.9705 556.4947,-201.2417 556.4947,-201.2417 556.4947,-201.2417 560.2761,-197.9705 553.5506,-197.8384 564.0576,-194.6993 564.0576,-194.6993"/>
+<text text-anchor="middle" x="514" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">location</text>
+</g>
+<!-- TextComponent&#45;&gt;TextComponent -->
+<g id="edge8" class="edge">
+<title>TextComponent&#45;&gt;TextComponent</title>
+<path fill="none" stroke="#000088" d="M112.1461,-169.7203C122.6221,-167.6613 130,-162.0879 130,-153 130,-147.0361 126.8226,-142.5857 121.6774,-139.6489"/>
+<polygon fill="#000088" stroke="#000088" points="112.1461,-136.2797 123.0742,-135.3698 116.8603,-137.9461 121.5744,-139.6125 121.5744,-139.6125 121.5744,-139.6125 116.8603,-137.9461 120.0747,-143.8553 112.1461,-136.2797 112.1461,-136.2797"/>
+<text text-anchor="middle" x="133.5" y="-218.6" font-family="Times,serif" font-size="8.00" fill="#000000">h</text>
+<text text-anchor="middle" x="133.5" y="-209.6" font-family="Times,serif" font-size="8.00" fill="#000000">a</text>
+<text text-anchor="middle" x="133.5" y="-200.6" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="133.5" y="-191.6" font-family="Times,serif" font-size="8.00" fill="#000000">T</text>
+<text text-anchor="middle" x="133.5" y="-182.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="133.5" y="-173.6" font-family="Times,serif" font-size="8.00" fill="#000000">x</text>
+<text text-anchor="middle" x="133.5" y="-164.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+<text text-anchor="middle" x="133.5" y="-155.6" font-family="Times,serif" font-size="8.00" fill="#000000">C</text>
+<text text-anchor="middle" x="133.5" y="-146.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="133.5" y="-137.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+<text text-anchor="middle" x="133.5" y="-128.6" font-family="Times,serif" font-size="8.00" fill="#000000">p</text>
+<text text-anchor="middle" x="133.5" y="-119.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="133.5" y="-110.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="133.5" y="-101.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="133.5" y="-92.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="133.5" y="-83.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+</g>
+<!-- Witness&#45;&gt;Text -->
+<g id="edge9" class="edge">
+<title>Witness&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M338.4435,-171.1475C323.6482,-190.658 304.7782,-222.8128 313,-252 313.7973,-254.8303 314.7511,-257.6592 315.8295,-260.4668"/>
+<polygon fill="#000088" stroke="#000088" points="319.9292,-269.9016 311.8167,-262.5235 317.9365,-265.3158 315.9439,-260.7301 315.9439,-260.7301 315.9439,-260.7301 317.9365,-265.3158 320.0711,-258.9367 319.9292,-269.9016 319.9292,-269.9016"/>
+<text text-anchor="middle" x="331.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- PlatonicText&#45;&gt;Text -->
+<g id="edge10" class="edge">
+<title>PlatonicText&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M448.0415,-171.0249C435.233,-189.021 415.2521,-217.5837 399,-243 395.3369,-248.7286 391.5927,-254.7529 387.9053,-260.7987"/>
+<polygon fill="#000088" stroke="#000088" points="382.5596,-269.6398 383.883,-258.754 385.1467,-265.3611 387.7338,-261.0824 387.7338,-261.0824 387.7338,-261.0824 385.1467,-265.3611 391.5846,-263.4108 382.5596,-269.6398 382.5596,-269.6398"/>
+<text text-anchor="middle" x="417.5" y="-245.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- LocationType -->
+<g id="node8" class="node">
+<title>LocationType</title>
+<path fill="none" stroke="#000000" d="M648,-36C648,-36 570,-36 570,-36 564,-36 558,-30 558,-24 558,-24 558,-12 558,-12 558,-6 564,0 570,0 570,0 648,0 648,0 654,0 660,-6 660,-12 660,-12 660,-24 660,-24 660,-30 654,-36 648,-36"/>
+<polygon fill="#add8e6" stroke="transparent" points="566,-10 566,-25 652,-25 652,-10 566,-10"/>
+<text text-anchor="start" x="568" y="-16" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">LocationType:Class</text>
+</g>
+<!-- Location&#45;&gt;LocationType -->
+<g id="edge11" class="edge">
+<title>Location&#45;&gt;LocationType</title>
+<path fill="none" stroke="#000088" d="M609,-111.394C609,-90.1827 609,-64.9505 609,-46.0631"/>
+<polygon fill="#000088" stroke="#000088" points="609,-36.0218 613.5001,-46.0218 609,-41.0218 609.0001,-46.0218 609.0001,-46.0218 609.0001,-46.0218 609,-41.0218 604.5001,-46.0219 609,-36.0218 609,-36.0218"/>
+<text text-anchor="middle" x="630.5" y="-56.6" font-family="Times,serif" font-size="8.00" fill="#000000">locationType</text>
+</g>
+<!-- Title&#45;&gt;Text -->
+<g id="edge12" class="edge">
+<title>Title&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M199.4473,-421.3377C201.7862,-410.0424 206.3106,-395.8457 215,-386 230.821,-368.0738 252.5052,-354.5034 274.0416,-344.4305"/>
+<polygon fill="#000088" stroke="#000088" points="283.2449,-340.3252 275.9455,-348.5087 278.6786,-342.3621 274.1123,-344.3991 274.1123,-344.3991 274.1123,-344.3991 278.6786,-342.3621 272.279,-340.2894 283.2449,-340.3252 283.2449,-340.3252"/>
+<text text-anchor="middle" x="233.5" y="-388.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- SenseDefinition -->
+<g id="node10" class="node">
+<title>SenseDefinition</title>
+<path fill="none" stroke="#000000" d="M1294,-759.5C1294,-759.5 1162,-759.5 1162,-759.5 1156,-759.5 1150,-753.5 1150,-747.5 1150,-747.5 1150,-733.5 1150,-733.5 1150,-727.5 1156,-721.5 1162,-721.5 1162,-721.5 1294,-721.5 1294,-721.5 1300,-721.5 1306,-727.5 1306,-733.5 1306,-733.5 1306,-747.5 1306,-747.5 1306,-753.5 1300,-759.5 1294,-759.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1158,-740.5 1158,-755.5 1298,-755.5 1298,-740.5 1158,-740.5"/>
+<text text-anchor="start" x="1182" y="-746.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">SenseDefinition:Class</text>
+<text text-anchor="start" x="1160" y="-730.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;definitionText &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1255" y="-730.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+</g>
+<!-- Agent -->
+<g id="node11" class="node">
+<title>Agent</title>
+<path fill="none" stroke="#000000" d="M1119,-457.5C1119,-457.5 1073,-457.5 1073,-457.5 1067,-457.5 1061,-451.5 1061,-445.5 1061,-445.5 1061,-433.5 1061,-433.5 1061,-427.5 1067,-421.5 1073,-421.5 1073,-421.5 1119,-421.5 1119,-421.5 1125,-421.5 1131,-427.5 1131,-433.5 1131,-433.5 1131,-445.5 1131,-445.5 1131,-451.5 1125,-457.5 1119,-457.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1069,-431.5 1069,-446.5 1123,-446.5 1123,-431.5 1069,-431.5"/>
+<text text-anchor="start" x="1071" y="-437.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Agent:Class</text>
+</g>
+<!-- Organization -->
+<g id="node12" class="node">
+<title>Organization</title>
+<path fill="none" stroke="#000000" d="M1073,-337C1073,-337 995,-337 995,-337 989,-337 983,-331 983,-325 983,-325 983,-313 983,-313 983,-307 989,-301 995,-301 995,-301 1073,-301 1073,-301 1079,-301 1085,-307 1085,-313 1085,-313 1085,-325 1085,-325 1085,-331 1079,-337 1073,-337"/>
+<polygon fill="#add8e6" stroke="transparent" points="991,-311 991,-326 1077,-326 1077,-311 991,-311"/>
+<text text-anchor="start" x="993" y="-317" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Organization:Class</text>
+</g>
+<!-- Agent&#45;&gt;Organization -->
+<g id="edge13" class="edge">
+<title>Agent&#45;&gt;Organization</title>
+<path fill="none" stroke="#000088" d="M1086.718,-421.4599C1076.4451,-401.4941 1059.7778,-369.1003 1047.9359,-346.0852"/>
+<polygon fill="#000088" stroke="#000088" points="1043.3455,-337.1634 1051.9221,-343.9966 1045.6331,-341.6094 1047.9207,-346.0554 1047.9207,-346.0554 1047.9207,-346.0554 1045.6331,-341.6094 1043.9193,-348.1143 1043.3455,-337.1634 1043.3455,-337.1634"/>
+<text text-anchor="middle" x="1090.5" y="-388.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- SoftwareAgent -->
+<g id="node13" class="node">
+<title>SoftwareAgent</title>
+<path fill="none" stroke="#000000" d="M1199,-337C1199,-337 1115,-337 1115,-337 1109,-337 1103,-331 1103,-325 1103,-325 1103,-313 1103,-313 1103,-307 1109,-301 1115,-301 1115,-301 1199,-301 1199,-301 1205,-301 1211,-307 1211,-313 1211,-313 1211,-325 1211,-325 1211,-331 1205,-337 1199,-337"/>
+<polygon fill="#add8e6" stroke="transparent" points="1111,-311 1111,-326 1203,-326 1203,-311 1111,-311"/>
+<text text-anchor="start" x="1113.5" y="-317" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">SoftwareAgent:Class</text>
+</g>
+<!-- Agent&#45;&gt;SoftwareAgent -->
+<g id="edge14" class="edge">
+<title>Agent&#45;&gt;SoftwareAgent</title>
+<path fill="none" stroke="#000088" d="M1105.1323,-421.4599C1115.1946,-401.5828 1131.4924,-369.388 1143.1332,-346.3926"/>
+<polygon fill="#000088" stroke="#000088" points="1147.8053,-337.1634 1147.3036,-348.1178 1145.547,-341.6244 1143.2887,-346.0854 1143.2887,-346.0854 1143.2887,-346.0854 1145.547,-341.6244 1139.2738,-344.0529 1147.8053,-337.1634 1147.8053,-337.1634"/>
+<text text-anchor="middle" x="1140.5" y="-388.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- DependentTitle -->
+<g id="node14" class="node">
+<title>DependentTitle</title>
+<path fill="none" stroke="#000000" d="M340,-758.5C340,-758.5 254,-758.5 254,-758.5 248,-758.5 242,-752.5 242,-746.5 242,-746.5 242,-734.5 242,-734.5 242,-728.5 248,-722.5 254,-722.5 254,-722.5 340,-722.5 340,-722.5 346,-722.5 352,-728.5 352,-734.5 352,-734.5 352,-746.5 352,-746.5 352,-752.5 346,-758.5 340,-758.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="250,-732.5 250,-747.5 344,-747.5 344,-732.5 250,-732.5"/>
+<text text-anchor="start" x="252" y="-738.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">DependentTitle:Class</text>
+</g>
+<!-- DependentTitle&#45;&gt;TitlePart -->
+<g id="edge15" class="edge">
+<title>DependentTitle&#45;&gt;TitlePart</title>
+<path fill="none" stroke="#000088" d="M288.8554,-722.4327C276.5097,-695.0462 252.9645,-642.8155 238.4578,-610.6353"/>
+<polygon fill="#000088" stroke="#000088" points="234.2683,-601.3417 242.4805,-608.6088 236.3232,-605.8999 238.378,-610.4582 238.378,-610.4582 238.378,-610.4582 236.3232,-605.8999 234.2756,-612.3076 234.2683,-601.3417 234.2683,-601.3417"/>
+<text text-anchor="middle" x="288.5" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- DependentTitle&#45;&gt;Text -->
+<g id="edge16" class="edge">
+<title>DependentTitle&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M302.0312,-722.4548C305.0582,-710.9602 308.7491,-695.7056 311,-682 325.3202,-594.8052 318.3766,-571.722 329,-484 333.2589,-448.8326 339.1523,-409.6197 344.1475,-378.2475"/>
+<polygon fill="#000088" stroke="#000088" points="345.7345,-368.3523 348.5941,-378.9388 344.9427,-373.2892 344.1508,-378.2262 344.1508,-378.2262 344.1508,-378.2262 344.9427,-373.2892 339.7076,-377.5135 345.7345,-368.3523 345.7345,-368.3523"/>
+<text text-anchor="middle" x="347.5" y="-486.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- LexicalSense -->
+<g id="node15" class="node">
+<title>LexicalSense</title>
+<path fill="none" stroke="#000000" d="M932,-911C932,-911 774,-911 774,-911 768,-911 762,-905 762,-899 762,-899 762,-870 762,-870 762,-864 768,-858 774,-858 774,-858 932,-858 932,-858 938,-858 944,-864 944,-870 944,-870 944,-899 944,-899 944,-905 938,-911 932,-911"/>
+<polygon fill="#add8e6" stroke="transparent" points="770,-891.5 770,-906.5 936,-906.5 936,-891.5 770,-891.5"/>
+<text text-anchor="start" x="813.5" y="-897.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">LexicalSense:Class</text>
+<text text-anchor="start" x="789.5" y="-881.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;senseOrder &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="888" y="-881.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+<text text-anchor="start" x="772" y="-866.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;synonymDefinition &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="890.5" y="-866.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+</g>
+<!-- LexicalSense&#45;&gt;SenseDefinition -->
+<g id="edge21" class="edge">
+<title>LexicalSense&#45;&gt;SenseDefinition</title>
+<path fill="none" stroke="#000088" d="M905.4569,-857.8732C944.2588,-839.1104 998.8505,-814.6382 1049,-799 1088.7752,-786.5969 1101.3787,-793.8863 1141,-781 1154.8966,-776.4803 1169.4835,-770.3034 1182.6564,-764.1355"/>
+<polygon fill="#000088" stroke="#000088" points="1191.9683,-759.6697 1184.8975,-768.0515 1187.46,-761.8319 1182.9516,-763.994 1182.9516,-763.994 1182.9516,-763.994 1187.46,-761.8319 1181.0057,-759.9365 1191.9683,-759.6697 1191.9683,-759.6697"/>
+<text text-anchor="middle" x="1064.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">definition</text>
+</g>
+<!-- LexicalSense&#45;&gt;LexicalSense -->
+<g id="edge18" class="edge">
+<title>LexicalSense&#45;&gt;LexicalSense</title>
+<path fill="none" stroke="#000088" d="M944.0374,-890.9453C954.9036,-889.7734 962,-887.625 962,-884.5 962,-882.498 959.0877,-880.8969 954.1375,-879.6965"/>
+<polygon fill="#000088" stroke="#000088" points="944.0374,-878.0547 954.6298,-875.2175 948.9726,-878.857 953.9078,-879.6592 953.9078,-879.6592 953.9078,-879.6592 948.9726,-878.857 953.1858,-884.1009 944.0374,-878.0547 944.0374,-878.0547"/>
+<text text-anchor="middle" x="964" y="-914.1" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="964" y="-905.1" font-family="Times,serif" font-size="8.00" fill="#000000">u</text>
+<text text-anchor="middle" x="964" y="-896.1" font-family="Times,serif" font-size="8.00" fill="#000000">b</text>
+<text text-anchor="middle" x="964" y="-887.1" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="964" y="-878.1" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="964" y="-869.1" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="964" y="-860.1" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="964" y="-851.1" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+</g>
+<!-- LexicalSense&#45;&gt;LexicalSense -->
+<g id="edge20" class="edge">
+<title>LexicalSense&#45;&gt;LexicalSense</title>
+<path fill="none" stroke="#000088" d="M944.0427,-899.1519C964.7913,-897.8605 980,-892.9766 980,-884.5 980,-877.4803 969.57,-872.9245 954.2012,-870.8324"/>
+<polygon fill="#000088" stroke="#000088" points="944.0427,-869.8481 954.4301,-866.3336 949.0194,-870.3304 953.9961,-870.8126 953.9961,-870.8126 953.9961,-870.8126 949.0194,-870.3304 953.5621,-875.2916 944.0427,-869.8481 944.0427,-869.8481"/>
+<text text-anchor="middle" x="983" y="-936.6" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="983" y="-927.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="983" y="-918.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="983" y="-909.6" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="983" y="-900.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="983" y="-891.6" font-family="Times,serif" font-size="8.00" fill="#000000">R</text>
+<text text-anchor="middle" x="983" y="-882.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="983" y="-873.6" font-family="Times,serif" font-size="8.00" fill="#000000">l</text>
+<text text-anchor="middle" x="983" y="-864.6" font-family="Times,serif" font-size="8.00" fill="#000000">a</text>
+<text text-anchor="middle" x="983" y="-855.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+<text text-anchor="middle" x="983" y="-846.6" font-family="Times,serif" font-size="8.00" fill="#000000">i</text>
+<text text-anchor="middle" x="983" y="-837.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="983" y="-828.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+</g>
+<!-- LexicalPhenomenon -->
+<g id="node16" class="node">
+<title>LexicalPhenomenon</title>
+<path fill="none" stroke="#000000" d="M694,-758.5C694,-758.5 588,-758.5 588,-758.5 582,-758.5 576,-752.5 576,-746.5 576,-746.5 576,-734.5 576,-734.5 576,-728.5 582,-722.5 588,-722.5 588,-722.5 694,-722.5 694,-722.5 700,-722.5 706,-728.5 706,-734.5 706,-734.5 706,-746.5 706,-746.5 706,-752.5 700,-758.5 694,-758.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="584,-732.5 584,-747.5 698,-747.5 698,-732.5 584,-732.5"/>
+<text text-anchor="start" x="586" y="-738.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">LexicalPhenomenon:Class</text>
+</g>
+<!-- LexicalSense&#45;&gt;LexicalPhenomenon -->
+<g id="edge17" class="edge">
+<title>LexicalSense&#45;&gt;LexicalPhenomenon</title>
+<path fill="none" stroke="#000088" d="M826.8453,-857.7913C808.3729,-839.8152 782.4659,-816.3233 757,-799 736.9464,-785.3585 713.273,-772.8555 692.5588,-762.9414"/>
+<polygon fill="#000088" stroke="#000088" points="683.2733,-758.5737 694.2377,-758.7582 687.7978,-760.7019 692.3222,-762.8302 692.3222,-762.8302 692.3222,-762.8302 687.7978,-760.7019 690.4068,-766.9022 683.2733,-758.5737 683.2733,-758.5737"/>
+<text text-anchor="middle" x="787.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Concept -->
+<g id="node21" class="node">
+<title>Concept</title>
+<path fill="none" stroke="#000000" d="M847,-601C847,-601 789,-601 789,-601 783,-601 777,-595 777,-589 777,-589 777,-577 777,-577 777,-571 783,-565 789,-565 789,-565 847,-565 847,-565 853,-565 859,-571 859,-577 859,-577 859,-589 859,-589 859,-595 853,-601 847,-601"/>
+<polygon fill="#add8e6" stroke="transparent" points="785,-575 785,-590 851,-590 851,-575 785,-575"/>
+<text text-anchor="start" x="787.5" y="-581" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Concept:Class</text>
+</g>
+<!-- LexicalSense&#45;&gt;Concept -->
+<g id="edge19" class="edge">
+<title>LexicalSense&#45;&gt;Concept</title>
+<path fill="none" stroke="#000088" d="M907.6429,-857.9864C929.538,-845.2618 953.6364,-828.3276 971,-808 1002.3676,-771.2778 1005.1731,-742.9045 983,-700 959.1185,-653.7896 907.6324,-621.8843 868.4818,-603.2008"/>
+<polygon fill="#000088" stroke="#000088" points="859.3243,-598.9616 870.2896,-599.0789 863.8617,-601.0621 868.3992,-603.1626 868.3992,-603.1626 868.3992,-603.1626 863.8617,-601.0621 866.5087,-607.2462 859.3243,-598.9616 859.3243,-598.9616"/>
+<text text-anchor="middle" x="1013" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">reference</text>
+</g>
+<!-- LexicalConcept -->
+<g id="node22" class="node">
+<title>LexicalConcept</title>
+<path fill="none" stroke="#000000" d="M862,-758.5C862,-758.5 774,-758.5 774,-758.5 768,-758.5 762,-752.5 762,-746.5 762,-746.5 762,-734.5 762,-734.5 762,-728.5 768,-722.5 774,-722.5 774,-722.5 862,-722.5 862,-722.5 868,-722.5 874,-728.5 874,-734.5 874,-734.5 874,-746.5 874,-746.5 874,-752.5 868,-758.5 862,-758.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="770,-732.5 770,-747.5 866,-747.5 866,-732.5 770,-732.5"/>
+<text text-anchor="start" x="772.5" y="-738.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">LexicalConcept:Class</text>
+</g>
+<!-- LexicalSense&#45;&gt;LexicalConcept -->
+<g id="edge22" class="edge">
+<title>LexicalSense&#45;&gt;LexicalConcept</title>
+<path fill="none" stroke="#000088" d="M846.4988,-857.7522C840.348,-832.4461 831.1487,-794.5976 824.8773,-768.7952"/>
+<polygon fill="#000088" stroke="#000088" points="822.4675,-758.8805 829.2021,-767.5348 823.6484,-763.7391 824.8294,-768.5976 824.8294,-768.5976 824.8294,-768.5976 823.6484,-763.7391 820.4567,-769.6605 822.4675,-758.8805 822.4675,-758.8805"/>
+<text text-anchor="middle" x="870" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">isLexicalizedSenseOf</text>
+</g>
+<!-- Quotation -->
+<g id="node17" class="node">
+<title>Quotation</title>
+<path fill="none" stroke="#000000" d="M635.5,-602C635.5,-602 532.5,-602 532.5,-602 526.5,-602 520.5,-596 520.5,-590 520.5,-590 520.5,-576 520.5,-576 520.5,-570 526.5,-564 532.5,-564 532.5,-564 635.5,-564 635.5,-564 641.5,-564 647.5,-570 647.5,-576 647.5,-576 647.5,-590 647.5,-590 647.5,-596 641.5,-602 635.5,-602"/>
+<polygon fill="#add8e6" stroke="transparent" points="529,-583 529,-598 640,-598 640,-583 529,-583"/>
+<text text-anchor="start" x="550" y="-589" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Quotation:Class</text>
+<text text-anchor="start" x="531" y="-573" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;snippet &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="597" y="-573" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+</g>
+<!-- LexicalPhenomenon&#45;&gt;Quotation -->
+<g id="edge23" class="edge">
+<title>LexicalPhenomenon&#45;&gt;Quotation</title>
+<path fill="none" stroke="#000088" d="M635.3894,-722.3578C631.0973,-708.7155 624.9273,-689.5989 619,-673 611.6477,-652.4108 602.7039,-629.444 595.6978,-611.8645"/>
+<polygon fill="#000088" stroke="#000088" points="591.8233,-602.1952 599.72,-609.8039 593.6831,-606.8364 595.5428,-611.4777 595.5428,-611.4777 595.5428,-611.4777 593.6831,-606.8364 591.3657,-613.1515 591.8233,-602.1952 591.8233,-602.1952"/>
+<text text-anchor="middle" x="634.5" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">citation</text>
+</g>
+<!-- LexicalPhenomenon&#45;&gt;Quotation -->
+<g id="edge24" class="edge">
+<title>LexicalPhenomenon&#45;&gt;Quotation</title>
+<path fill="none" stroke="#000088" d="M614.2474,-722.3854C601.6177,-712.1768 587.8394,-698.2206 581,-682 571.6698,-659.8722 573.4123,-632.4243 576.9232,-612.0462"/>
+<polygon fill="#000088" stroke="#000088" points="578.871,-602.0999 581.3652,-612.7784 577.91,-607.0067 576.9491,-611.9135 576.9491,-611.9135 576.9491,-611.9135 577.91,-607.0067 572.533,-611.0486 578.871,-602.0999 578.871,-602.0999"/>
+<text text-anchor="middle" x="598" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">attestation</text>
+</g>
+<!-- Locus -->
+<g id="node19" class="node">
+<title>Locus</title>
+<path fill="none" stroke="#000000" d="M736,-601C736,-601 690,-601 690,-601 684,-601 678,-595 678,-589 678,-589 678,-577 678,-577 678,-571 684,-565 690,-565 690,-565 736,-565 736,-565 742,-565 748,-571 748,-577 748,-577 748,-589 748,-589 748,-595 742,-601 736,-601"/>
+<polygon fill="#add8e6" stroke="transparent" points="686,-575 686,-590 740,-590 740,-575 686,-575"/>
+<text text-anchor="start" x="688" y="-581" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Locus:Class</text>
+</g>
+<!-- LexicalPhenomenon&#45;&gt;Locus -->
+<g id="edge25" class="edge">
+<title>LexicalPhenomenon&#45;&gt;Locus</title>
+<path fill="none" stroke="#000088" d="M649.2593,-722.4327C661.7789,-695.0462 685.6558,-642.8155 700.3667,-610.6353"/>
+<polygon fill="#000088" stroke="#000088" points="704.6152,-601.3417 704.5502,-612.3074 702.5364,-605.8891 700.4576,-610.4364 700.4576,-610.4364 700.4576,-610.4364 702.5364,-605.8891 696.3649,-608.5655 704.6152,-601.3417 704.6152,-601.3417"/>
+<text text-anchor="middle" x="679.5" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">locus</text>
+</g>
+<!-- Quotation&#45;&gt;Text -->
+<g id="edge27" class="edge">
+<title>Quotation&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M581.3383,-563.9984C575.7213,-530.0981 559.8232,-458.4882 521,-413 497.8051,-385.8231 464.6826,-364.9056 434.0433,-349.7784"/>
+<polygon fill="#000088" stroke="#000088" points="424.628,-345.2692 435.5908,-345.5302 429.1375,-347.4289 433.647,-349.5887 433.647,-349.5887 433.647,-349.5887 429.1375,-347.4289 431.7032,-353.6473 424.628,-345.2692 424.628,-345.2692"/>
+<text text-anchor="middle" x="571.5" y="-437.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Quotation&#45;&gt;Text -->
+<g id="edge28" class="edge">
+<title>Quotation&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M592.0659,-563.9144C604.9255,-530.1946 625.5764,-459.2794 594,-413 575.1772,-385.4127 496.7127,-358.0391 434.5555,-340.0087"/>
+<polygon fill="#000088" stroke="#000088" points="424.7313,-337.1966 435.5836,-335.6223 429.5383,-338.5726 434.3452,-339.9486 434.3452,-339.9486 434.3452,-339.9486 429.5383,-338.5726 433.1068,-344.2748 424.7313,-337.1966 424.7313,-337.1966"/>
+<text text-anchor="middle" x="630" y="-437.6" font-family="Times,serif" font-size="8.00" fill="#000000">quotesFrom</text>
+</g>
+<!-- UsageExample -->
+<g id="node18" class="node">
+<title>UsageExample</title>
+<path fill="none" stroke="#000000" d="M500,-457.5C500,-457.5 416,-457.5 416,-457.5 410,-457.5 404,-451.5 404,-445.5 404,-445.5 404,-433.5 404,-433.5 404,-427.5 410,-421.5 416,-421.5 416,-421.5 500,-421.5 500,-421.5 506,-421.5 512,-427.5 512,-433.5 512,-433.5 512,-445.5 512,-445.5 512,-451.5 506,-457.5 500,-457.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="412,-431.5 412,-446.5 504,-446.5 504,-431.5 412,-431.5"/>
+<text text-anchor="start" x="414" y="-437.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">UsageExample:Class</text>
+</g>
+<!-- Quotation&#45;&gt;UsageExample -->
+<g id="edge26" class="edge">
+<title>Quotation&#45;&gt;UsageExample</title>
+<path fill="none" stroke="#000088" d="M563.8298,-563.7216C545.6473,-545.9808 518.5391,-518.6148 497,-493 489.8984,-484.5546 482.6386,-474.9198 476.338,-466.1753"/>
+<polygon fill="#000088" stroke="#000088" points="470.3984,-457.8046 479.8553,-463.356 473.2919,-461.8824 476.1853,-465.9601 476.1853,-465.9601 476.1853,-465.9601 473.2919,-461.8824 472.5153,-468.5643 470.3984,-457.8046 470.3984,-457.8046"/>
+<text text-anchor="middle" x="515.5" y="-486.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- PointerIntoText -->
+<g id="node20" class="node">
+<title>PointerIntoText</title>
+<path fill="none" stroke="#000000" d="M814.5,-466C814.5,-466 689.5,-466 689.5,-466 683.5,-466 677.5,-460 677.5,-454 677.5,-454 677.5,-425 677.5,-425 677.5,-419 683.5,-413 689.5,-413 689.5,-413 814.5,-413 814.5,-413 820.5,-413 826.5,-419 826.5,-425 826.5,-425 826.5,-454 826.5,-454 826.5,-460 820.5,-466 814.5,-466"/>
+<polygon fill="#add8e6" stroke="transparent" points="686,-446.5 686,-461.5 819,-461.5 819,-446.5 686,-446.5"/>
+<text text-anchor="start" x="707" y="-452.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">PointerIntoText:Class</text>
+<text text-anchor="start" x="692.5" y="-436.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;endIndex &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="771" y="-436.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+<text text-anchor="start" x="688" y="-421.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;beginIndex &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="771" y="-421.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:integer</text>
+</g>
+<!-- Locus&#45;&gt;PointerIntoText -->
+<g id="edge29" class="edge">
+<title>Locus&#45;&gt;PointerIntoText</title>
+<path fill="none" stroke="#000088" d="M717.9394,-564.8256C723.9818,-542.5927 734.3577,-504.4146 742.0738,-476.0235"/>
+<polygon fill="#000088" stroke="#000088" points="744.7832,-466.0541 746.503,-476.8843 743.4719,-470.8791 742.1605,-475.704 742.1605,-475.704 742.1605,-475.704 743.4719,-470.8791 737.818,-474.5238 744.7832,-466.0541 744.7832,-466.0541"/>
+<text text-anchor="middle" x="758.5" y="-486.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- PointerIntoText&#45;&gt;Text -->
+<g id="edge30" class="edge">
+<title>PointerIntoText&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M699.5987,-412.8981C679.7167,-403.5114 656.6475,-393.4504 635,-386 568.9023,-363.2512 491.4813,-345.4128 434.6607,-333.8813"/>
+<polygon fill="#000088" stroke="#000088" points="424.6557,-331.8727 435.3458,-329.4291 429.5579,-332.8569 434.4601,-333.8411 434.4601,-333.8411 434.4601,-333.8411 429.5579,-332.8569 433.5743,-338.2531 424.6557,-331.8727 424.6557,-331.8727"/>
+<text text-anchor="middle" x="665.5" y="-388.6" font-family="Times,serif" font-size="8.00" fill="#000000">text</text>
+</g>
+<!-- Concept&#45;&gt;Concept -->
+<g id="edge31" class="edge">
+<title>Concept&#45;&gt;Concept</title>
+<path fill="none" stroke="#000088" d="M859.0831,-600.383C869.3363,-599.1674 877,-593.373 877,-583 877,-576.3548 873.8548,-571.5886 868.8985,-568.7016"/>
+<polygon fill="#000088" stroke="#000088" points="859.0831,-565.617 869.9723,-564.3222 863.8531,-567.1161 868.6231,-568.6152 868.6231,-568.6152 868.6231,-568.6152 863.8531,-567.1161 867.274,-572.9082 859.0831,-565.617 859.0831,-565.617"/>
+<text text-anchor="middle" x="880.5" y="-648.6" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="880.5" y="-639.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="880.5" y="-630.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+<text text-anchor="middle" x="880.5" y="-621.6" font-family="Times,serif" font-size="8.00" fill="#000000">a</text>
+<text text-anchor="middle" x="880.5" y="-612.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="880.5" y="-603.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+<text text-anchor="middle" x="880.5" y="-594.6" font-family="Times,serif" font-size="8.00" fill="#000000">i</text>
+<text text-anchor="middle" x="880.5" y="-585.6" font-family="Times,serif" font-size="8.00" fill="#000000">c</text>
+<text text-anchor="middle" x="880.5" y="-576.6" font-family="Times,serif" font-size="8.00" fill="#000000">R</text>
+<text text-anchor="middle" x="880.5" y="-567.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="880.5" y="-558.6" font-family="Times,serif" font-size="8.00" fill="#000000">l</text>
+<text text-anchor="middle" x="880.5" y="-549.6" font-family="Times,serif" font-size="8.00" fill="#000000">a</text>
+<text text-anchor="middle" x="880.5" y="-540.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+<text text-anchor="middle" x="880.5" y="-531.6" font-family="Times,serif" font-size="8.00" fill="#000000">i</text>
+<text text-anchor="middle" x="880.5" y="-522.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="880.5" y="-513.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+</g>
+<!-- LexicalConcept&#45;&gt;LexicalSense -->
+<g id="edge35" class="edge">
+<title>LexicalConcept&#45;&gt;LexicalSense</title>
+<path fill="none" stroke="#000088" d="M864.827,-758.5837C882.2484,-767.8707 900.16,-781.0821 910,-799 919.6677,-816.604 909.8094,-835.2596 895.7289,-850.6375"/>
+<polygon fill="#000088" stroke="#000088" points="888.5446,-857.9044 892.3751,-847.6292 892.0599,-854.3487 895.5752,-850.793 895.5752,-850.793 895.5752,-850.793 892.0599,-854.3487 898.7753,-853.9568 888.5446,-857.9044 888.5446,-857.9044"/>
+<text text-anchor="middle" x="939.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">lexicalizedSense</text>
+</g>
+<!-- LexicalConcept&#45;&gt;Concept -->
+<g id="edge32" class="edge">
+<title>LexicalConcept&#45;&gt;Concept</title>
+<path fill="none" stroke="#000088" d="M818,-722.4327C818,-695.2823 818,-643.7142 818,-611.4719"/>
+<polygon fill="#000088" stroke="#000088" points="818,-601.3417 822.5001,-611.3416 818,-606.3417 818.0001,-611.3417 818.0001,-611.3417 818.0001,-611.3417 818,-606.3417 813.5001,-611.3417 818,-601.3417 818,-601.3417"/>
+<text text-anchor="middle" x="836.5" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- LexicalConcept&#45;&gt;LexicalConcept -->
+<g id="edge33" class="edge">
+<title>LexicalConcept&#45;&gt;LexicalConcept</title>
+<path fill="none" stroke="#000088" d="M874.1461,-743.2571C884.6221,-742.9176 892,-741.9985 892,-740.5 892,-739.5634 889.118,-738.8532 884.3989,-738.3694"/>
+<polygon fill="#000088" stroke="#000088" points="874.1461,-737.7429 884.402,-733.8612 879.1368,-738.0479 884.1275,-738.3529 884.1275,-738.3529 884.1275,-738.3529 879.1368,-738.0479 883.853,-742.8445 874.1461,-737.7429 874.1461,-737.7429"/>
+<text text-anchor="middle" x="895.5" y="-765.6" font-family="Times,serif" font-size="8.00" fill="#000000">h</text>
+<text text-anchor="middle" x="895.5" y="-756.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="895.5" y="-747.6" font-family="Times,serif" font-size="8.00" fill="#000000">p</text>
+<text text-anchor="middle" x="895.5" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="895.5" y="-729.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="895.5" y="-720.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="895.5" y="-711.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+</g>
+<!-- LexicalConcept&#45;&gt;LexicalConcept -->
+<g id="edge34" class="edge">
+<title>LexicalConcept&#45;&gt;LexicalConcept</title>
+<path fill="none" stroke="#000088" d="M874.1462,-746.3093C893.9395,-746.4023 910,-744.4658 910,-740.5 910,-737.2468 899.1927,-735.3592 884.3829,-734.8372"/>
+<polygon fill="#000088" stroke="#000088" points="874.1462,-734.6907 884.2096,-730.3343 879.1457,-734.7623 884.1452,-734.8339 884.1452,-734.8339 884.1452,-734.8339 879.1457,-734.7623 884.0807,-739.3334 874.1462,-734.6907 874.1462,-734.6907"/>
+<text text-anchor="middle" x="913.5" y="-765.6" font-family="Times,serif" font-size="8.00" fill="#000000">s</text>
+<text text-anchor="middle" x="913.5" y="-756.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="913.5" y="-747.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="913.5" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="913.5" y="-729.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="913.5" y="-720.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="913.5" y="-711.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+</g>
+<!-- LexicalConcept&#45;&gt;LexicalConcept -->
+<g id="edge36" class="edge">
+<title>LexicalConcept&#45;&gt;LexicalConcept</title>
+<path fill="none" stroke="#000088" d="M874.0323,-748.9372C902.4862,-750.1693 928,-747.3569 928,-740.5 928,-734.4734 908.2912,-731.5711 884.1996,-731.7931"/>
+<polygon fill="#000088" stroke="#000088" points="874.0323,-732.0628 883.9094,-727.2991 879.0305,-731.9301 884.0288,-731.7975 884.0288,-731.7975 884.0288,-731.7975 879.0305,-731.9301 884.1481,-736.2959 874.0323,-732.0628 874.0323,-732.0628"/>
+<text text-anchor="middle" x="931.5" y="-765.6" font-family="Times,serif" font-size="8.00" fill="#000000">a</text>
+<text text-anchor="middle" x="931.5" y="-756.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="931.5" y="-747.6" font-family="Times,serif" font-size="8.00" fill="#000000">t</text>
+<text text-anchor="middle" x="931.5" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="931.5" y="-729.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="931.5" y="-720.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="931.5" y="-711.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+</g>
+<!-- LexicalConcept&#45;&gt;LexicalConcept -->
+<g id="edge37" class="edge">
+<title>LexicalConcept&#45;&gt;LexicalConcept</title>
+<path fill="none" stroke="#000088" d="M874.2575,-751.1797C910.7653,-754.0199 946,-750.46 946,-740.5 946,-731.4738 917.0621,-727.7039 884.4637,-729.1902"/>
+<polygon fill="#000088" stroke="#000088" points="874.2575,-729.8203 883.9612,-724.7126 879.248,-729.5122 884.2385,-729.2041 884.2385,-729.2041 884.2385,-729.2041 879.248,-729.5122 884.5158,-733.6955 874.2575,-729.8203 874.2575,-729.8203"/>
+<text text-anchor="middle" x="949.5" y="-774.6" font-family="Times,serif" font-size="8.00" fill="#000000">h</text>
+<text text-anchor="middle" x="949.5" y="-765.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="949.5" y="-756.6" font-family="Times,serif" font-size="8.00" fill="#000000">p</text>
+<text text-anchor="middle" x="949.5" y="-747.6" font-family="Times,serif" font-size="8.00" fill="#000000">e</text>
+<text text-anchor="middle" x="949.5" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">r</text>
+<text text-anchor="middle" x="949.5" y="-729.6" font-family="Times,serif" font-size="8.00" fill="#000000">o</text>
+<text text-anchor="middle" x="949.5" y="-720.6" font-family="Times,serif" font-size="8.00" fill="#000000">n</text>
+<text text-anchor="middle" x="949.5" y="-711.6" font-family="Times,serif" font-size="8.00" fill="#000000">y</text>
+<text text-anchor="middle" x="949.5" y="-702.6" font-family="Times,serif" font-size="8.00" fill="#000000">m</text>
+</g>
+<!-- PartOfSpeech -->
+<g id="node23" class="node">
+<title>PartOfSpeech</title>
+<path fill="none" stroke="#000000" d="M1244,-902.5C1244,-902.5 1164,-902.5 1164,-902.5 1158,-902.5 1152,-896.5 1152,-890.5 1152,-890.5 1152,-878.5 1152,-878.5 1152,-872.5 1158,-866.5 1164,-866.5 1164,-866.5 1244,-866.5 1244,-866.5 1250,-866.5 1256,-872.5 1256,-878.5 1256,-878.5 1256,-890.5 1256,-890.5 1256,-896.5 1250,-902.5 1244,-902.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1160,-876.5 1160,-891.5 1248,-891.5 1248,-876.5 1160,-876.5"/>
+<text text-anchor="start" x="1162" y="-882.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">PartOfSpeech:Class</text>
+</g>
+<!-- Activity -->
+<g id="node24" class="node">
+<title>Activity</title>
+<path fill="none" stroke="#000000" d="M1123,-601C1123,-601 1069,-601 1069,-601 1063,-601 1057,-595 1057,-589 1057,-589 1057,-577 1057,-577 1057,-571 1063,-565 1069,-565 1069,-565 1123,-565 1123,-565 1129,-565 1135,-571 1135,-577 1135,-577 1135,-589 1135,-589 1135,-595 1129,-601 1123,-601"/>
+<polygon fill="#add8e6" stroke="transparent" points="1065,-575 1065,-590 1127,-590 1127,-575 1065,-575"/>
+<text text-anchor="start" x="1067" y="-581" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Activity:Class</text>
+</g>
+<!-- Activity&#45;&gt;Agent -->
+<g id="edge38" class="edge">
+<title>Activity&#45;&gt;Agent</title>
+<path fill="none" stroke="#000088" d="M1096,-564.8256C1096,-540.3496 1096,-496.5486 1096,-467.7556"/>
+<polygon fill="#000088" stroke="#000088" points="1096,-457.5268 1100.5001,-467.5268 1096,-462.5268 1096.0001,-467.5268 1096.0001,-467.5268 1096.0001,-467.5268 1096,-462.5268 1091.5001,-467.5268 1096,-457.5268 1096,-457.5268"/>
+<text text-anchor="middle" x="1128" y="-486.6" font-family="Times,serif" font-size="8.00" fill="#000000">wasAssociatedWith</text>
+</g>
+<!-- LexicalEntry -->
+<g id="node25" class="node">
+<title>LexicalEntry</title>
+<path fill="none" stroke="#000000" d="M759,-1040C759,-1040 683,-1040 683,-1040 677,-1040 671,-1034 671,-1028 671,-1028 671,-1016 671,-1016 671,-1010 677,-1004 683,-1004 683,-1004 759,-1004 759,-1004 765,-1004 771,-1010 771,-1016 771,-1016 771,-1028 771,-1028 771,-1034 765,-1040 759,-1040"/>
+<polygon fill="#add8e6" stroke="transparent" points="679,-1014 679,-1029 763,-1029 763,-1014 679,-1014"/>
+<text text-anchor="start" x="681.5" y="-1020" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">LexicalEntry:Class</text>
+</g>
+<!-- LexicalEntry&#45;&gt;LexicalSense -->
+<g id="edge45" class="edge">
+<title>LexicalEntry&#45;&gt;LexicalSense</title>
+<path fill="none" stroke="#000088" d="M738.5286,-1003.7411C759.3621,-982.0394 794.5566,-945.3786 820.4335,-918.4234"/>
+<polygon fill="#000088" stroke="#000088" points="827.4654,-911.0986 823.7863,-921.4289 824.0027,-914.7055 820.54,-918.3125 820.54,-918.3125 820.54,-918.3125 824.0027,-914.7055 817.2937,-915.1961 827.4654,-911.0986 827.4654,-911.0986"/>
+<text text-anchor="middle" x="789" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">sense</text>
+</g>
+<!-- LexicalEntry&#45;&gt;LexicalPhenomenon -->
+<g id="edge40" class="edge">
+<title>LexicalEntry&#45;&gt;LexicalPhenomenon</title>
+<path fill="none" stroke="#000088" d="M714.3346,-1003.9754C709.5183,-991.6104 702.5531,-974.9764 695,-961 690.4288,-952.5414 686.711,-951.8698 683,-943 658.2466,-883.8359 647.5887,-808.6478 643.4073,-768.601"/>
+<polygon fill="#000088" stroke="#000088" points="642.4147,-758.5117 647.8722,-768.023 642.9043,-763.4877 643.3939,-768.4636 643.3939,-768.4636 643.3939,-768.4636 642.9043,-763.4877 638.9155,-768.9043 642.4147,-758.5117 642.4147,-758.5117"/>
+<text text-anchor="middle" x="701.5" y="-882.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Concept -->
+<g id="edge48" class="edge">
+<title>LexicalEntry&#45;&gt;Concept</title>
+<path fill="none" stroke="#000088" d="M720.7506,-1003.9853C720.4556,-965.9414 720.9712,-874.6842 731,-799 736.9208,-754.3172 737.0002,-742.138 753,-700 765.379,-667.3979 785.583,-632.8107 800.1829,-609.7705"/>
+<polygon fill="#000088" stroke="#000088" points="805.6694,-601.2373 804.0463,-612.0825 802.9653,-605.4431 800.2612,-609.6488 800.2612,-609.6488 800.2612,-609.6488 802.9653,-605.4431 796.4761,-607.2151 805.6694,-601.2373 805.6694,-601.2373"/>
+<text text-anchor="middle" x="742" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">evokes</text>
+</g>
+<!-- LexicalEntry&#45;&gt;PartOfSpeech -->
+<g id="edge47" class="edge">
+<title>LexicalEntry&#45;&gt;PartOfSpeech</title>
+<path fill="none" stroke="#000088" d="M747.2432,-1003.8698C757.1053,-997.8826 768.6773,-991.7907 780,-988 934.1582,-936.389 996.1879,-1012.8187 1143,-943 1158.8702,-935.4527 1173.2422,-922.1633 1184.0443,-910.1564"/>
+<polygon fill="#000088" stroke="#000088" points="1190.6071,-902.5246 1187.4989,-913.0408 1187.3471,-906.3157 1184.087,-910.1067 1184.087,-910.1067 1184.087,-910.1067 1187.3471,-906.3157 1180.675,-907.1727 1190.6071,-902.5246 1190.6071,-902.5246"/>
+<text text-anchor="middle" x="1116" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">partOfSpeech</text>
+</g>
+<!-- Min1lexicalFormowlThing -->
+<g id="node26" class="node">
+<title>Min1lexicalFormowlThing</title>
+<path fill="none" stroke="#000000" d="M1458,-902.5C1458,-902.5 1286,-902.5 1286,-902.5 1280,-902.5 1274,-896.5 1274,-890.5 1274,-890.5 1274,-878.5 1274,-878.5 1274,-872.5 1280,-866.5 1286,-866.5 1286,-866.5 1458,-866.5 1458,-866.5 1464,-866.5 1470,-872.5 1470,-878.5 1470,-878.5 1470,-890.5 1470,-890.5 1470,-896.5 1464,-902.5 1458,-902.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1282,-876.5 1282,-891.5 1462,-891.5 1462,-876.5 1282,-876.5"/>
+<text text-anchor="start" x="1284.5" y="-882.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Min⟨1༐lexicalForm༐owl_Thing⟩:Class</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Min1lexicalFormowlThing -->
+<g id="edge39" class="edge">
+<title>LexicalEntry&#45;&gt;Min1lexicalFormowlThing</title>
+<path fill="none" stroke="#000088" d="M746.225,-1003.9454C756.2561,-997.7327 768.205,-991.4706 780,-988 857.4813,-965.2016 1062.9547,-980.7641 1143,-970 1198.0388,-962.5986 1213.0074,-962.5147 1265,-943 1289.4081,-933.8388 1315.0922,-919.9554 1335.1772,-908.0124"/>
+<polygon fill="#000088" stroke="#000088" points="1343.9868,-902.6855 1337.758,-911.7106 1339.7082,-905.2727 1335.4295,-907.8598 1335.4295,-907.8598 1335.4295,-907.8598 1339.7082,-905.2727 1333.1011,-904.0091 1343.9868,-902.6855 1343.9868,-902.6855"/>
+<text text-anchor="middle" x="1223.5" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Form -->
+<g id="node27" class="node">
+<title>Form</title>
+<path fill="none" stroke="#000000" d="M579.5,-911C579.5,-911 454.5,-911 454.5,-911 448.5,-911 442.5,-905 442.5,-899 442.5,-899 442.5,-870 442.5,-870 442.5,-864 448.5,-858 454.5,-858 454.5,-858 579.5,-858 579.5,-858 585.5,-858 591.5,-864 591.5,-870 591.5,-870 591.5,-899 591.5,-899 591.5,-905 585.5,-911 579.5,-911"/>
+<polygon fill="#add8e6" stroke="transparent" points="451,-891.5 451,-906.5 584,-906.5 584,-891.5 451,-891.5"/>
+<text text-anchor="start" x="493" y="-897.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Form:Class</text>
+<text text-anchor="start" x="456" y="-881.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;writtenRep &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="541" y="-881.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="453" y="-866.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;hyphenation &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="541" y="-866.5" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Form -->
+<g id="edge41" class="edge">
+<title>LexicalEntry&#45;&gt;Form</title>
+<path fill="none" stroke="#000088" d="M670.9483,-1019.927C599.5627,-1015.8008 474.0181,-1003.8125 446,-970 431.6094,-952.6333 445.1645,-933.2997 464.1445,-917.4164"/>
+<polygon fill="#000088" stroke="#000088" points="472.2397,-911.062 467.1522,-920.7763 468.3067,-914.1493 464.3736,-917.2366 464.3736,-917.2366 464.3736,-917.2366 468.3067,-914.1493 461.5951,-913.6969 472.2397,-911.062 472.2397,-911.062"/>
+<text text-anchor="middle" x="470.5" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">canonicalForm</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Form -->
+<g id="edge42" class="edge">
+<title>LexicalEntry&#45;&gt;Form</title>
+<path fill="none" stroke="#000088" d="M670.7734,-1016.1101C616.9527,-1008.6499 536.7095,-993.8173 518,-970 507.3683,-956.4658 506.1613,-937.6542 508.023,-921.1212"/>
+<polygon fill="#000088" stroke="#000088" points="509.522,-911.1891 512.4792,-921.7486 508.7758,-916.1331 508.0296,-921.0771 508.0296,-921.0771 508.0296,-921.0771 508.7758,-916.1331 503.58,-920.4055 509.522,-911.1891 509.522,-911.1891"/>
+<text text-anchor="middle" x="554.5" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">canonicalModernForm</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Form -->
+<g id="edge43" class="edge">
+<title>LexicalEntry&#45;&gt;Form</title>
+<path fill="none" stroke="#000088" d="M677.1093,-1003.9146C657.1656,-994.8912 633.6846,-983.1064 614,-970 591.4373,-954.9772 568.5786,-935.1041 550.7229,-918.2986"/>
+<polygon fill="#000088" stroke="#000088" points="543.3922,-911.3071 553.7345,-914.9524 547.0105,-914.758 550.6288,-918.2088 550.6288,-918.2088 550.6288,-918.2088 547.0105,-914.758 547.523,-921.4653 543.3922,-911.3071 543.3922,-911.3071"/>
+<text text-anchor="middle" x="654.5" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">canonicalHistoricalForm</text>
+</g>
+<!-- LexicalEntry&#45;&gt;Form -->
+<g id="edge46" class="edge">
+<title>LexicalEntry&#45;&gt;Form</title>
+<path fill="none" stroke="#000088" d="M670.811,-1017.4757C584.4975,-1009.1842 415.4725,-990.5104 398,-970 378.6309,-947.2633 402.0595,-927.3977 433.103,-912.5523"/>
+<polygon fill="#000088" stroke="#000088" points="442.4849,-908.3048 435.2309,-916.5286 437.9299,-910.367 433.375,-912.4292 433.375,-912.4292 433.375,-912.4292 437.9299,-910.367 431.519,-908.3297 442.4849,-908.3048 442.4849,-908.3048"/>
+<text text-anchor="middle" x="418" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">lexicalForm</text>
+</g>
+<!-- pos -->
+<g id="node28" class="node">
+<title>pos</title>
+<path fill="none" stroke="#000000" d="M1536,-902.5C1536,-902.5 1500,-902.5 1500,-902.5 1494,-902.5 1488,-896.5 1488,-890.5 1488,-890.5 1488,-878.5 1488,-878.5 1488,-872.5 1494,-866.5 1500,-866.5 1500,-866.5 1536,-866.5 1536,-866.5 1542,-866.5 1548,-872.5 1548,-878.5 1548,-878.5 1548,-890.5 1548,-890.5 1548,-896.5 1542,-902.5 1536,-902.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1496,-876.5 1496,-891.5 1540,-891.5 1540,-876.5 1496,-876.5"/>
+<text text-anchor="start" x="1498" y="-882.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">pos:Class</text>
+</g>
+<!-- LexicalEntry&#45;&gt;pos -->
+<g id="edge44" class="edge">
+<title>LexicalEntry&#45;&gt;pos</title>
+<path fill="none" stroke="#000088" d="M746.2051,-1003.8771C756.2338,-997.656 768.1862,-991.406 780,-988 929.5629,-944.8794 1346.2256,-1024.2366 1479,-943 1490.9128,-935.7113 1499.9674,-923.2525 1506.339,-911.7008"/>
+<polygon fill="#000088" stroke="#000088" points="1510.877,-902.7472 1510.37,-913.7014 1508.6166,-907.2071 1506.3561,-911.667 1506.3561,-911.667 1506.3561,-911.667 1508.6166,-907.2071 1502.3422,-909.6325 1510.877,-902.7472 1510.877,-902.7472"/>
+<text text-anchor="middle" x="1436.5" y="-963.6" font-family="Times,serif" font-size="8.00" fill="#000000">pos</text>
+</g>
+<!-- Form&#45;&gt;LexicalPhenomenon -->
+<g id="edge49" class="edge">
+<title>Form&#45;&gt;LexicalPhenomenon</title>
+<path fill="none" stroke="#000088" d="M540.0328,-857.7522C562.4053,-831.7712 596.1619,-792.5701 618.3897,-766.7572"/>
+<polygon fill="#000088" stroke="#000088" points="625.1723,-758.8805 622.057,-769.3946 621.9097,-762.6694 618.6471,-766.4582 618.6471,-766.4582 618.6471,-766.4582 621.9097,-762.6694 615.2371,-763.5219 625.1723,-758.8805 625.1723,-758.8805"/>
+<text text-anchor="middle" x="609.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Similarity -->
+<g id="node29" class="node">
+<title>Similarity</title>
+<path fill="none" stroke="#000000" d="M918.5,-1056C918.5,-1056 801.5,-1056 801.5,-1056 795.5,-1056 789.5,-1050 789.5,-1044 789.5,-1044 789.5,-1000 789.5,-1000 789.5,-994 795.5,-988 801.5,-988 801.5,-988 918.5,-988 918.5,-988 924.5,-988 930.5,-994 930.5,-1000 930.5,-1000 930.5,-1044 930.5,-1044 930.5,-1050 924.5,-1056 918.5,-1056"/>
+<polygon fill="#add8e6" stroke="transparent" points="798,-1037 798,-1052 923,-1052 923,-1037 798,-1037"/>
+<text text-anchor="start" x="827" y="-1043" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Similarity:Class</text>
+<text text-anchor="start" x="808" y="-1027" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;target &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="877.5" y="-1027" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="806.5" y="-1012" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;source &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="877.5" y="-1012" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:string</text>
+<text text-anchor="start" x="800" y="-997" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;similarity &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="875" y="-997" font-family="Times,serif" font-size="10.00" fill="#000000">xsd:double</text>
+</g>
+<!-- DocumentPart -->
+<g id="node30" class="node">
+<title>DocumentPart</title>
+<path fill="none" stroke="#000000" d="M319,-902.5C319,-902.5 235,-902.5 235,-902.5 229,-902.5 223,-896.5 223,-890.5 223,-890.5 223,-878.5 223,-878.5 223,-872.5 229,-866.5 235,-866.5 235,-866.5 319,-866.5 319,-866.5 325,-866.5 331,-872.5 331,-878.5 331,-878.5 331,-890.5 331,-890.5 331,-896.5 325,-902.5 319,-902.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="231,-876.5 231,-891.5 323,-891.5 323,-876.5 231,-876.5"/>
+<text text-anchor="start" x="233.5" y="-882.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">DocumentPart:Class</text>
+</g>
+<!-- DocumentPart&#45;&gt;TitlePart -->
+<g id="edge50" class="edge">
+<title>DocumentPart&#45;&gt;TitlePart</title>
+<path fill="none" stroke="#000088" d="M256.3914,-866.3125C236.5656,-847.3151 207.8999,-815.5138 196,-781 175.8274,-722.4924 198.2126,-649.619 213.7253,-610.6453"/>
+<polygon fill="#000088" stroke="#000088" points="217.5876,-601.2699 217.9393,-612.2302 215.683,-605.893 213.7785,-610.5161 213.7785,-610.5161 213.7785,-610.5161 215.683,-605.893 209.6177,-608.802 217.5876,-601.2699 217.5876,-601.2699"/>
+<text text-anchor="middle" x="214.5" y="-738.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- DocumentPart&#45;&gt;Text -->
+<g id="edge51" class="edge">
+<title>DocumentPart&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M309.7126,-866.4313C330.0431,-853.1992 354.4387,-833.1828 366,-808 431.5322,-665.258 396.1094,-473.5261 371.4011,-378.1004"/>
+<polygon fill="#000088" stroke="#000088" points="368.8231,-368.3375 375.7272,-376.8572 370.0997,-373.1718 371.3763,-378.0061 371.3763,-378.0061 371.3763,-378.0061 370.0997,-373.1718 367.0255,-379.1551 368.8231,-368.3375 368.8231,-368.3375"/>
+<text text-anchor="middle" x="422.5" y="-581.1" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- DocumentPart&#45;&gt;DependentTitle -->
+<g id="edge52" class="edge">
+<title>DocumentPart&#45;&gt;DependentTitle</title>
+<path fill="none" stroke="#000088" d="M275.6375,-866.3478C274.701,-848.9451 274.2209,-821.9979 278,-799 279.6963,-788.6769 282.8769,-777.6874 286.1573,-768.0535"/>
+<polygon fill="#000088" stroke="#000088" points="289.5539,-758.5893 290.4113,-769.5217 287.8649,-763.2954 286.1759,-768.0015 286.1759,-768.0015 286.1759,-768.0015 287.8649,-763.2954 281.9404,-766.4814 289.5539,-758.5893 289.5539,-758.5893"/>
+<text text-anchor="middle" x="322" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">containedInDependentTitle</text>
+</g>
+<!-- rdfsResource -->
+<g id="node31" class="node">
+<title>rdfsResource</title>
+<path fill="none" stroke="#000000" d="M1039,-1040C1039,-1040 961,-1040 961,-1040 955,-1040 949,-1034 949,-1028 949,-1028 949,-1016 949,-1016 949,-1010 955,-1004 961,-1004 961,-1004 1039,-1004 1039,-1004 1045,-1004 1051,-1010 1051,-1016 1051,-1016 1051,-1028 1051,-1028 1051,-1034 1045,-1040 1039,-1040"/>
+<polygon fill="#add8e6" stroke="transparent" points="957,-1014 957,-1029 1043,-1029 1043,-1014 957,-1014"/>
+<text text-anchor="start" x="959" y="-1020" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">rdfs:Resource:Class</text>
+</g>
+<!-- SynonymDefinition -->
+<g id="node32" class="node">
+<title>SynonymDefinition</title>
+<path fill="none" stroke="#000000" d="M1122,-902.5C1122,-902.5 1020,-902.5 1020,-902.5 1014,-902.5 1008,-896.5 1008,-890.5 1008,-890.5 1008,-878.5 1008,-878.5 1008,-872.5 1014,-866.5 1020,-866.5 1020,-866.5 1122,-866.5 1122,-866.5 1128,-866.5 1134,-872.5 1134,-878.5 1134,-878.5 1134,-890.5 1134,-890.5 1134,-896.5 1128,-902.5 1122,-902.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1016,-876.5 1016,-891.5 1126,-891.5 1126,-876.5 1016,-876.5"/>
+<text text-anchor="start" x="1018" y="-882.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">SynonymDefinition:Class</text>
+</g>
+<!-- SynonymDefinition&#45;&gt;SenseDefinition -->
+<g id="edge54" class="edge">
+<title>SynonymDefinition&#45;&gt;SenseDefinition</title>
+<path fill="none" stroke="#000088" d="M1090.8842,-866.2623C1118.4202,-841.0063 1168.3123,-795.2454 1199.7191,-766.4392"/>
+<polygon fill="#000088" stroke="#000088" points="1207.2807,-759.5037 1202.9528,-769.5794 1203.5959,-762.8834 1199.9111,-766.2631 1199.9111,-766.2631 1199.9111,-766.2631 1203.5959,-762.8834 1196.8693,-762.9468 1207.2807,-759.5037 1207.2807,-759.5037"/>
+<text text-anchor="middle" x="1181.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Entity -->
+<g id="node33" class="node">
+<title>Entity</title>
+<path fill="none" stroke="#000000" d="M1120,-758.5C1120,-758.5 1072,-758.5 1072,-758.5 1066,-758.5 1060,-752.5 1060,-746.5 1060,-746.5 1060,-734.5 1060,-734.5 1060,-728.5 1066,-722.5 1072,-722.5 1072,-722.5 1120,-722.5 1120,-722.5 1126,-722.5 1132,-728.5 1132,-734.5 1132,-734.5 1132,-746.5 1132,-746.5 1132,-752.5 1126,-758.5 1120,-758.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1068,-732.5 1068,-747.5 1124,-747.5 1124,-732.5 1068,-732.5"/>
+<text text-anchor="start" x="1070.5" y="-738.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Entity:Class</text>
+</g>
+<!-- SynonymDefinition&#45;&gt;Entity -->
+<g id="edge53" class="edge">
+<title>SynonymDefinition&#45;&gt;Entity</title>
+<path fill="none" stroke="#000088" d="M1074.1663,-866.2623C1078.4492,-841.5928 1086.1285,-797.3598 1091.1436,-768.4731"/>
+<polygon fill="#000088" stroke="#000088" points="1092.8594,-758.5896 1095.5825,-769.212 1092.0041,-763.5159 1091.1488,-768.4422 1091.1488,-768.4422 1091.1488,-768.4422 1092.0041,-763.5159 1086.7152,-767.6725 1092.8594,-758.5896 1092.8594,-758.5896"/>
+<text text-anchor="middle" x="1103.5" y="-801.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+<!-- Entity&#45;&gt;Activity -->
+<g id="edge55" class="edge">
+<title>Entity&#45;&gt;Activity</title>
+<path fill="none" stroke="#000088" d="M1096,-722.4327C1096,-695.2823 1096,-643.7142 1096,-611.4719"/>
+<polygon fill="#000088" stroke="#000088" points="1096,-601.3417 1100.5001,-611.3416 1096,-606.3417 1096.0001,-611.3417 1096.0001,-611.3417 1096.0001,-611.3417 1096,-606.3417 1091.5001,-611.3417 1096,-601.3417 1096,-601.3417"/>
+<text text-anchor="middle" x="1124" y="-675.6" font-family="Times,serif" font-size="8.00" fill="#000000">wasGeneratedBy</text>
+</g>
+<!-- PeriodOfTime -->
+<g id="node34" class="node">
+<title>PeriodOfTime</title>
+<path fill="none" stroke="#000000" d="M1163,-1040C1163,-1040 1081,-1040 1081,-1040 1075,-1040 1069,-1034 1069,-1028 1069,-1028 1069,-1016 1069,-1016 1069,-1010 1075,-1004 1081,-1004 1081,-1004 1163,-1004 1163,-1004 1169,-1004 1175,-1010 1175,-1016 1175,-1016 1175,-1028 1175,-1028 1175,-1034 1169,-1040 1163,-1040"/>
+<polygon fill="#add8e6" stroke="transparent" points="1077,-1014 1077,-1029 1167,-1029 1167,-1014 1077,-1014"/>
+<text text-anchor="start" x="1079.5" y="-1020" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">PeriodOfTime:Class</text>
+</g>
+<!-- owlThing -->
+<g id="node35" class="node">
+<title>owlThing</title>
+<path fill="none" stroke="#000000" d="M1269,-1040C1269,-1040 1205,-1040 1205,-1040 1199,-1040 1193,-1034 1193,-1028 1193,-1028 1193,-1016 1193,-1016 1193,-1010 1199,-1004 1205,-1004 1205,-1004 1269,-1004 1269,-1004 1275,-1004 1281,-1010 1281,-1016 1281,-1016 1281,-1028 1281,-1028 1281,-1034 1275,-1040 1269,-1040"/>
+<polygon fill="#add8e6" stroke="transparent" points="1201,-1014 1201,-1029 1273,-1029 1273,-1014 1201,-1014"/>
+<text text-anchor="start" x="1203" y="-1020" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">owl:Thing:Class</text>
+</g>
+<!-- Publication -->
+<g id="node36" class="node">
+<title>Publication</title>
+<path fill="none" stroke="#000000" d="M134,-457.5C134,-457.5 62,-457.5 62,-457.5 56,-457.5 50,-451.5 50,-445.5 50,-445.5 50,-433.5 50,-433.5 50,-427.5 56,-421.5 62,-421.5 62,-421.5 134,-421.5 134,-421.5 140,-421.5 146,-427.5 146,-433.5 146,-433.5 146,-445.5 146,-445.5 146,-451.5 140,-457.5 134,-457.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="58,-431.5 58,-446.5 138,-446.5 138,-431.5 58,-431.5"/>
+<text text-anchor="start" x="60.5" y="-437.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Publication:Class</text>
+</g>
+<!-- Publication&#45;&gt;Text -->
+<g id="edge56" class="edge">
+<title>Publication&#45;&gt;Text</title>
+<path fill="none" stroke="#000088" d="M118.2799,-421.3143C131.669,-410.0098 150.0046,-395.8114 168,-386 201.05,-367.9806 239.92,-353.1036 273.5573,-341.9838"/>
+<polygon fill="#000088" stroke="#000088" points="283.3549,-338.8013 275.2343,-346.1706 278.5995,-340.346 273.8441,-341.8907 273.8441,-341.8907 273.8441,-341.8907 278.5995,-340.346 272.4538,-337.6109 283.3549,-338.8013 283.3549,-338.8013"/>
+<text text-anchor="middle" x="186.5" y="-388.6" font-family="Times,serif" font-size="8.00" fill="#000000">subClassOf</text>
+</g>
+</g>
+</svg>

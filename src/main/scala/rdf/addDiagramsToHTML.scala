@@ -56,7 +56,7 @@ object addDiagramsToHTML extends App
     d
   }
 
-  val xstuff = diagrams.processExamples(document, imageDirectory).asInstanceOf[Elem]
+  val xstuff = diagrams.processOntologies(diagrams.processExamples(document, imageDirectory).asInstanceOf[Elem],imageDirectory)
   Console.err.println(xstuff)
   XML.save(outputDocument, xstuff, "UTF-8")
 }

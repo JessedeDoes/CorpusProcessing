@@ -13,7 +13,7 @@ object diagrams {
     val rdf = Settings.prefixes + "\n" + s
     // val g = parseStringToGraph(rdf)
 
-    Console.err.println(rdf)
+    //Console.err.println(rdf)
     val dot:String = makeDot(rdf)
     createSVG(dot, f.getCanonicalPath)
     val imgLink = f.getParentFile.getParentFile.toPath().relativize(f.toPath).toString
@@ -25,6 +25,20 @@ object diagrams {
 
 
   def processExamples(e: Elem, imageDir: java.io.File) = PostProcessXML.updateElement2(e, _.label=="example", e => exampleWithDiagram(e.text, imageDir))
+
+  def processOntologies(e: Elem, imageDir: java.io.File) = PostProcessXML.updateElement(e, _.label=="ontology", e => ontologyDiagram((e \\ "@source").text, imageDir))
+
+
+  def ontologyDiagram(source: String, dir: java.io.File) =
+  {
+    val o = Schema.fromFile(source)
+    val file = new java.io.File(dir.getCanonicalPath + "/" +  java.util.UUID.randomUUID + ".svg")
+
+    val imgLink = file.getParentFile.getParentFile.toPath().relativize(file.toPath).toString
+    o.createImage(file.getCanonicalPath)
+
+    <img src={imgLink}/>
+  }
 
   def exampleWithDiagram(rdf: String, imageDir: java.io.File):NodeSeq =
   {
