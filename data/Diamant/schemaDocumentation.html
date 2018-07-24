@@ -343,6 +343,7 @@
         </ontology>
         <div>
     <h3>Diamant attestation model</h3>
+    More or less the model we had in the globalex paper:
     <example>
       :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
@@ -358,17 +359,18 @@
       :s0 diamant:attestation :a0 .
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
-      :q0 diamant:snippet "The kine all said boo" .
+      :q0 diamant:snippet "The kine spake booh" .
       :s0 diamant:citation :q0 .
       :a0 diamant:text :q0 .
       :a0 nif:beginIndex 5 .
       :a0 nif:endIndex 8 .
       :q0 a diamant:DependentTitle .
       :q0 diamant:containedInTitle :t0 .
+      :q0 dcterms:author "Bovina Korovina" .
       :t0 a diamant:Title .
-      :t0 diamant:title "Hinderlijke diertjes " .
+      :t0 diamant:title "Bovilicious!" .
       :q0 diamant:witness :w0 .
-      :q0 diamant:title "Over pissebedden" .
+      :q0 diamant:title "Meadow Meanderings" .
       :w0 a diamant:Witness .
       :w0 diamant:yearFrom 1810 .
       :w0 diamant:yearTo 1812 .
@@ -376,6 +378,44 @@
       :p0 a diamant:PlatonicText .
       :p0 diamant:yearFrom 1810 .
       :p0 diamant:yearTo 1812 .
+    </example>
+    <p>
+    Here the "Attestation" object points to the character offsets of the relevant word in the quotation. 
+    Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
+</p>
+<p>
+    However, if we would like to include <i>All</i> quotations in the lexicon, this would not be sufficient. Besides, a quotation which does not include a snippet can still be considered "evidence", so there is no reason not to label it as attestation.   
+    </p> 
+    <example>
+    	 :e0 a ontolex:LexicalEntry ;
+      ontolex:sense :s0 .
+      :l0 a ontolex:Form .
+      :e0 ontolex:canonicalForm :l0 .
+      :l0 ontolex:writtenRep "cow" .
+      :f0 a ontolex:Form .
+      :f0 ontolex:writtenForm "kine" .
+      :e0 ontolex:lexicalForm :f0 .
+      :s0 a ontolex:LexicalSense .
+      :s0 ontolex:definition  "Cows are useful animals" .
+      :c0 a diamant:Locus .
+      :s0 diamant:attestation :q0 .
+      :f0 diamant:attestation :q0 .
+      :s0 diamant:citesAsEvidence :q0 .
+      :f0 diamant:citesAsEvidence :q0 .
+      :s0 diamant:locus :c0 .
+      :f0 diamant:locus :c0 . 
+      :q0 a diamant:Quotation .
+      :q0 diamant:snippet "The kine spake booh" .
+      :q0 diamant:citesFrom :dt0 .
+      :s0 diamant:citation :q0 .
+      :c0 diamant:text :q0 .
+      :c0 nif:beginIndex 5 .
+      :c0 nif:endIndex 8 .
+      :dt0 a diamant:Text .
+      :dt0 dcterms:author "Bovina Korovina" .
+      :dt0 diamant:title "Meadow Meanderings" .
+      :dt0 diamant:witnessYearFrom 1810 .
+      :dt0 diamant:witnessYearTo 1812 .
     </example>
     </div>
     </div>
