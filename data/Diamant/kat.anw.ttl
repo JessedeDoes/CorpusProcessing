@@ -33,19 +33,18 @@
 @prefix olia: <http://www.w3.org/ns/olia#> .
 @prefix olio: <http://www.w3.org/ns/olia#> .
 @prefix gold: <http://www.w3.org/ns/gold#> .
-@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
 @prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
 
 @prefix dcterms: <http://purl.org/dc/terms/> .
 
 @prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
 @prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
-@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex> .
 @prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
 
 @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
 @prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
 @prefix : <http://rdf.ivdnt.org/schema/anw/> . 
+
 :lemma_78332 a ontolex:LexicalEntry .
 
 :lemma_78332 ontolex:canonicalForm :lemmavorm_78332 .

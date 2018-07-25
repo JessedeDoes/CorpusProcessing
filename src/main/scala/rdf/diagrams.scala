@@ -101,9 +101,11 @@ object diagrams {
     </tr>)}
     </table>
   }
-  def makeIdentifier(str: String) = str.replaceAll("[^A-Za-z0-9]","")
 
-  def makeDot(seq: Seq[Statement]):String = {
+  def makeIdentifier(str: String) = str.replaceAll("[^A-Za-z0-9:]","")
+
+
+  def makeDot(seq: Seq[Statement], includeClassInLabel: Boolean = true):String = {
     val bySubject = seq.groupBy(_.getSubject)
 
     val isAs = seq.filter(isIsA)
@@ -169,9 +171,9 @@ object diagrams {
   def main(args: Array[String]):Unit = {
     //println(prelude)
     val s = parseToStatements(args(0))
+    s.foreach(println)
     val dot = makeDot(s)
-
-    println(makeDot(s))
-    createSVG(dot,"test.png")
+    // println(makeDot(s))
+    createSVG(dot,"test.svg")
   }
 }

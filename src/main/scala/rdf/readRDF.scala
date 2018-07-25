@@ -17,55 +17,41 @@ import scala.xml._
 object Settings
 {
   val prefixes =  s"""
-                    |@prefix dc: <http://purl.org/dc/elements/1.1/#> .
-                    |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
-                    |@prefix owl: <http://www.w3.org/2002/07/owl#> .
-                    |@prefix pwn: <http://wordnet-rdf.princeton.edu/ontology#> .
-                    |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-                    |@prefix xml: <http://www.w3.org/XML/1998/namespace> .
-                    |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
-                    |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-                    |@prefix quest: <http://obda.org/quest#> .
-                    |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-                    |@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> .
-                    |@prefix lemon: <http://lemon-model.net/lemon#> .
-                    |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
-                    |@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
-                    |@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
-                    |@prefix olia_top: <http://purl.org/olia/olia-top.owl> .
-                    |@prefix prov: <http://www.w3.org/ns/prov#> .
-                    |@prefix ud: <http://universaldependencies.org/u/> .
-                    |@prefix int: <http://rdf.ivdnt.org/schema/anw/> .
-                    |@prefix vartrans: <http://www.w3.org/ns/lemon/vartrans#> .
-                    |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
-                    |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-                    |@prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
-                    |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo> .
-                    |@prefix dcterms: <http://purl.org/dc/terms/> .
-                    |@prefix fabio: <http://purl.org/spar/fabio/> .
-                    |@prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
-                    |@prefix lmf: <http://www.lexinfo.net/lmf> .
-                    |@prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
-                    |@prefix celex: <http://ws-boelhouwer:8080/fuseki/celex/> .
-                    |@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
-                    |@prefix prov: <http://www.w3.org/ns/prov#> .
-                    |@prefix olia: <http://www.w3.org/ns/olia#> .
-                    |@prefix olio: <http://www.w3.org/ns/olia#> .
-                    |@prefix gold: <http://www.w3.org/ns/gold#> .
-                    |@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
-                    |            @prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
-
-                    |            @prefix dcterms: <http://purl.org/dc/terms/> .
-
-                    |            @prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
-                    |            @prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
-                    |            @prefix ontolex: <http://www.w3.org/ns/lemon/ontolex> .
-                    |            @prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
-
-                    |            @prefix skos: <http://www.w3.org/2004/02/skos/core#> .
-                    |            @prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
-
-                    |@prefix : <#> .\n""".stripMargin
+                     |@prefix celex: <http://ws-boelhouwer:8080/fuseki/celex/> .
+                     |@prefix dc: <http://purl.org/dc/elements/1.1/#> .
+                     |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
+                     |@prefix dcterms: <http://purl.org/dc/terms/> .
+                     |@prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
+                     |@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> .
+                     |@prefix fabio: <http://purl.org/spar/fabio/> .
+                     |@prefix gold: <http://www.w3.org/ns/gold#> .
+                     |@prefix int: <http://rdf.ivdnt.org/schema/anw/> .
+                     |@prefix intskos: <http://ws-boelhouwer:8080/fuseki/intskos/> .
+                     |@prefix lemon: <http://lemon-model.net/lemon#> .
+                     |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo> .
+                     |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+                     |@prefix lmf: <http://www.lexinfo.net/lmf> .
+                     |@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
+                     |@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
+                     |@prefix olia: <http://www.w3.org/ns/olia#> .
+                     |@prefix olia_top: <http://purl.org/olia/olia-top.owl> .
+                     |@prefix olio: <http://www.w3.org/ns/olia#> .
+                     |@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+                     |@prefix owl: <http://www.w3.org/2002/07/owl#> .
+                     |@prefix prov: <http://www.w3.org/ns/prov#> .
+                     |@prefix pwn: <http://wordnet-rdf.princeton.edu/ontology#> .
+                     |@prefix quest: <http://obda.org/quest#> .
+                     |@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+                     |@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+                     |@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+                     |@prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
+                     |@prefix ud: <http://universaldependencies.org/u/> .
+                     |@prefix vartrans: <http://www.w3.org/ns/lemon/vartrans#> .
+                     |@prefix wordnet: <http://wordnet-rdf.princeton.edu/wn31/> .
+                     |@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+                     |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+                     |@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+                     |@prefix : <#> .\n""".stripMargin
 }
 
 
@@ -122,11 +108,12 @@ object readRDF
 
   def shortName(r: org.openrdf.model.Value) = {
     val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
-    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z]","") else s
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
   }
+
   def shortName(r:  org.openrdf.model.URI) = {
     val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
-    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z]","") else s
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
   }
 
   val isA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"

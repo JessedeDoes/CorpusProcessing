@@ -38,7 +38,7 @@ object addDiagramsToHTML extends App
       :w0 diamant:yearTo 1812 .
       :q0 diamant:platonicText :p0 .
       :p0 a diamant:PlatonicText .
-      :p0 diamant:yearFrom 1810 .
+      :p0 diamant:yearFrom 1810wel .
       :p0 diamant:yearTo 1812 .
     </example>
   </div>
