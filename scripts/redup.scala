@@ -36,11 +36,11 @@ object o extends App
       }) ||
      {
        val lSkel = l.replaceAll("[aeiou]+","V")
-      val rSkel = r.replaceAll("[aeiou]+","V")
+       val rSkel = r.replaceAll("[aeiou]+","V")
 
       (lSkel.contains("V") && lSkel == rSkel) ||
       {
-        val l1Skel = lSkel.replaceAll("V$","")
+        val l1Skel = lSkel.replaceAll("V(n?)$","")
         val r1Skel = rSkel.replaceAll("(Vn|Vg)$", "")
         l1Skel == r1Skel
       }
