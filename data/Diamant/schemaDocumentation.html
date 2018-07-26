@@ -1,8 +1,13 @@
 <html>
     <head>
+    	<style type="text/css">
+    	.pretty *::before {
+          content: "[Element]"
+    	}
+    </style>
     </head>
     <body>
-        
+
         <div>
             <h1>Federated search lexica: data model(s) and examples</h1>
             <div>
@@ -338,6 +343,21 @@
     <div>
         <h2>Diamant</h2>
         
+        <pre>
+        	<![CDATA[ 
+<entry>
+<form xml:id="l0" type="lemma"><orth>koe</orth></form>
+<form xml:id="f0" type="inflected"><orth>koei</orth></form>
+<sense n="1"><def>De koe is een nuttig dier</def>
+<cit xml:id="q0" type='example'>
+<quote>De <xref type="headwordAttestation"><ref target="#f0">koei</ref></xref> zei boe</quote>
+<bibl><title>Greta: herinneringen van een herkauwer</title>
+<author>Bovina Korovina</author>
+</bibl>
+</cit>
+</sense>
+</entry>]]>
+        </pre>
         <ontology source="data/Diamant/diamant.fss">
             
         </ontology>
@@ -356,28 +376,20 @@
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  "Cows are useful animals" .
       :a0 a diamant:Attestation .
+      :a0 nif:beginIndex 5 .
+      :a0 nif:endIndex 8 .
+      :a0 diamant:text :q0 .
       :s0 diamant:attestation :a0 .
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
       :q0 diamant:snippet "The kine spake booh" .
+      :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
-      :a0 diamant:text :q0 .
-      :a0 nif:beginIndex 5 .
-      :a0 nif:endIndex 8 .
-      :q0 a diamant:DependentTitle .
-      :q0 diamant:containedInTitle :t0 .
-      :q0 dcterms:author "Bovina Korovina" .
-      :t0 a diamant:Title .
-      :t0 diamant:title "Bovilicious!" .
-      :q0 diamant:witness :w0 .
-      :q0 diamant:title "Meadow Meanderings" .
-      :w0 a diamant:Witness .
-      :w0 diamant:yearFrom 1810 .
-      :w0 diamant:yearTo 1812 .
-      :q0 diamant:platonicText :p0 .
-      :p0 a diamant:PlatonicText .
-      :p0 diamant:yearFrom 1810 .
-      :p0 diamant:yearTo 1812 .
+      :dt0 a diamant:Text .
+      :dt0 dcterms:author "Bovina Korovina" .
+      :dt0 diamant:title "Meadow Meanderings" .
+      :dt0 diamant:witnessYearFrom 1810 .
+      :dt0 diamant:witnessYearTo 1812 .
     </example>
     <p>
     Here the "Attestation" object points to the character offsets of the relevant word in the quotation. 
@@ -419,6 +431,7 @@
     </example>
     </div>
     </div>
+    <!-- https://github.com/gcelano/LSJ_GreekUnicode -->
 </div>
 </div>
     </body>

@@ -1,8 +1,13 @@
 <html>
     <head>
+    	<style type="text/css">
+    	.pretty *::before {
+          content: &quot;[Element]&quot;
+    	}
+    </style>
     </head>
     <body>
-        
+
         <div>
             <h1>Federated search lexica: data model(s) and examples</h1>
             <div>
@@ -65,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/25b7fcd0-a8a4-4dee-a95e-6f588275ba0a.svg"/>
+    </pre><img src="images/020fa111-dbcd-4e50-9b0a-578ce63309fb.svg"/>
             </div>
 
     <div>
@@ -115,7 +120,7 @@
 
 
         
-    </pre><img src="images/33d3109f-c8a2-48a2-945b-f7cb0671a0ba.svg"/>
+    </pre><img src="images/6bd487d1-ed6e-4527-8820-b563ea622bfd.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -274,11 +279,11 @@
             ];
             .
         
-    </pre><img src="images/739ba741-b969-4363-8cfa-22347bbb8513.svg"/>
+    </pre><img src="images/ed638b6c-87ce-47d8-8dfc-b8e2975b956d.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
-    <img src="images/87bc4159-bd3f-49f8-af19-0b98e4fb51ac.svg"/>
+    <img src="images/0938d3b0-5ea0-4f39-be8a-34b7396b482e.svg"/>
     <pre>
       
         :lemma_78332 a ontolex:LexicalEntry .
@@ -340,13 +345,28 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/e69ca7a5-e0fd-4319-9c38-5fcf69cb51bc.svg"/>
+    </pre><img src="images/1a08309d-6f61-4ea8-83d5-b0f9ebc8cb75.svg"/>
 </div>
 <div>
     <div>
         <h2>Diamant</h2>
         
-        <img src="images/3cea4ba5-d7fe-4d9e-bae6-969601fe9e24.svg"/>
+        <pre>
+        	 
+&lt;entry&gt;
+&lt;form xml:id=&quot;l0&quot; type=&quot;lemma&quot;&gt;&lt;orth&gt;koe&lt;/orth&gt;&lt;/form&gt;
+&lt;form xml:id=&quot;f0&quot; type=&quot;inflected&quot;&gt;&lt;orth&gt;koei&lt;/orth&gt;&lt;/form&gt;
+&lt;sense n=&quot;1&quot;&gt;&lt;def&gt;De koe is een nuttig dier&lt;/def&gt;
+&lt;cit xml:id=&quot;q0&quot; type='example'&gt;
+&lt;quote&gt;De &lt;xref type=&quot;headwordAttestation&quot;&gt;&lt;ref target=&quot;#f0&quot;&gt;koei&lt;/ref&gt;&lt;/xref&gt; zei boe&lt;/quote&gt;
+&lt;bibl&gt;&lt;title&gt;Greta: herinneringen van een herkauwer&lt;/title&gt;
+&lt;author&gt;Bovina Korovina&lt;/author&gt;
+&lt;/bibl&gt;
+&lt;/cit&gt;
+&lt;/sense&gt;
+&lt;/entry&gt;
+        </pre>
+        <img src="images/8178a40d-a437-4e79-a2c5-e4f42ba16003.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -363,30 +383,22 @@
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  &quot;Cows are useful animals&quot; .
       :a0 a diamant:Attestation .
+      :a0 nif:beginIndex 5 .
+      :a0 nif:endIndex 8 .
+      :a0 diamant:text :q0 .
       :s0 diamant:attestation :a0 .
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
       :q0 diamant:snippet &quot;The kine spake booh&quot; .
+      :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
-      :a0 diamant:text :q0 .
-      :a0 nif:beginIndex 5 .
-      :a0 nif:endIndex 8 .
-      :q0 a diamant:DependentTitle .
-      :q0 diamant:containedInTitle :t0 .
-      :q0 dcterms:author &quot;Bovina Korovina&quot; .
-      :t0 a diamant:Title .
-      :t0 diamant:title &quot;Bovilicious!&quot; .
-      :q0 diamant:witness :w0 .
-      :q0 diamant:title &quot;Meadow Meanderings&quot; .
-      :w0 a diamant:Witness .
-      :w0 diamant:yearFrom 1810 .
-      :w0 diamant:yearTo 1812 .
-      :q0 diamant:platonicText :p0 .
-      :p0 a diamant:PlatonicText .
-      :p0 diamant:yearFrom 1810 .
-      :p0 diamant:yearTo 1812 .
+      :dt0 a diamant:Text .
+      :dt0 dcterms:author &quot;Bovina Korovina&quot; .
+      :dt0 diamant:title &quot;Meadow Meanderings&quot; .
+      :dt0 diamant:witnessYearFrom 1810 .
+      :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/38bc6f83-8458-472a-a097-1fd51040e58f.svg"/>
+    </pre><img src="images/30ceac67-8895-4dec-8f4c-fc7ff02e96e9.svg"/>
     <p>
     Here the &quot;Attestation&quot; object points to the character offsets of the relevant word in the quotation. 
     Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
@@ -426,7 +438,7 @@
       :dt0 diamant:witnessYearFrom 1810 .
       :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/7a09bec1-4b96-4ccc-8ebf-6cbb9972239c.svg"/>
+    </pre><img src="images/8e7ed9db-4037-488f-ba60-12c338eabae9.svg"/>
     </div>
     </div>
 </div>
