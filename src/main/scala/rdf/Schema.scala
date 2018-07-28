@@ -356,6 +356,12 @@ case class Schema(inputStream: java.io.InputStream) {
   val dataPropertyNames = dataProperties.map(op => op.getIRI.toString)
   val classNames = classes.map(op => op.getIRI.toString)
 
+  
+  def readableVersion(friendlyString: String=>String = Settings.friendlyName) =
+  {
+    val classes = this.classNames.map(friendlyString)
+
+  }
   def validObjectProperty(s: String):Boolean = objectPropertyNames.contains(s)
   def validDataProperty(s: String):Boolean = dataPropertyNames.contains(s)
   def validClass(s: String):Boolean = classNames.contains(s)

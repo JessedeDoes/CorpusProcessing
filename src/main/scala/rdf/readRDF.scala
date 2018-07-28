@@ -8,6 +8,7 @@ import guru.nidi.graphviz.parse._
 import org.openrdf.model.{Graph, Resource, Statement}
 import org.openrdf.rio.{RDFFormat, Rio}
 import org.postgresql.util.ReaderInputStream
+import rdf.Settings.prefixMap
 import utils.PostProcessXML
 
 import scala.collection.JavaConverters._
@@ -52,6 +53,40 @@ object Settings
                      |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
                      |@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
                      |@prefix : <#> .\n""".stripMargin
+
+
+  lazy val prefixMap:Map[String,org.semanticweb.owlapi.model.IRI] = prefixes.split("\n").filter(_.contains("@")).toStream.map(l => {
+     val l1 = l.replaceAll("^\\s*@prefix\\s*","").split("\\s*:\\s+")
+     l1(0) -> org.semanticweb.owlapi.model.IRI.create(l1(1).replaceAll("[<>]",""))
+  }).toMap
+
+  lazy val prefixNames = prefixMap.keySet
+
+  lazy val prefixIRIS = prefixMap.values.toList.sortBy(x => -1 * x.toString.length)
+
+  def friendlyName(prefixMap: Map[String,org.semanticweb.owlapi.model.IRI] = prefixMap): String => String =
+  {
+    val prefixNames = prefixMap.keySet
+    val prefixIRIS = prefixMap.values.toList.sortBy(x => -1 * x.toString.length)
+    val reverse = prefixMap.map(_.swap)
+
+    s => {
+      val bestMatch = prefixIRIS.find(p => s.startsWith(p.toString))
+      if (bestMatch.isDefined)
+        s.replace(bestMatch.get.toString, reverse(bestMatch.get))
+      else
+        s
+    }
+  }
+
+  val fn = friendlyName(this.prefixMap)
+  def friendlyName(s: String): String =  fn(s)
+
+
+  def main(args: Array[String]): Unit = {
+    prefixMap.foreach(println)
+    println(prefixIRIS)
+  }
 }
 
 
