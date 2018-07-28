@@ -93,6 +93,7 @@ object guessSchema {
 
     val schema = Schema(new java.io.FileInputStream("/tmp/test.fss"))
     schema.createImage
+    schema.readableVersion()
   }
 
   def main(args: Array[String]): Unit = {

@@ -72,7 +72,7 @@ object Settings
     val prefixNames = prefixMap.keySet
     val prefixIRIS = prefixMap.values.toList.sortBy(x => -1 * x.toString.length)
 
-    println(prefixIRIS)
+
     val reverse = prefixMap.map(_.swap)
 
     s => {

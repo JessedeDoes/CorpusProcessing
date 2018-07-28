@@ -202,13 +202,13 @@ case class Schema(inputStream: java.io.InputStream) {
 
     parser.setRDFHandler(collector)
 
-    Console.err.println(s)
+    //Console.err.println(s)
     parser.parse(in, "http://")
 
     myGraph.iterator().next()
   }
 
-  def classDeclarations = classes.map(c => {
+  lazy val  classDeclarations = classes.map(c => {
      val name = c.toString
      val n1 = if (name.contains("<")) name else s"<$name>"
 
@@ -220,7 +220,7 @@ case class Schema(inputStream: java.io.InputStream) {
   //classDeclarations.foreach(println)
 
 
-  def subClassDefinitions:Seq[org.openrdf.model.Statement] =
+  lazy val subClassDefinitions:Seq[org.openrdf.model.Statement] =
   {
     val subClassAxioms = axioms.filter(a => a.getAxiomType==AxiomType.SUBCLASS_OF).map(_.asInstanceOf[OWLSubClassOfAxiom])
 
@@ -234,7 +234,7 @@ case class Schema(inputStream: java.io.InputStream) {
           val supy = getNameForClass(a.getSuperClass)
 
           val stmt = s"$sub $p $supy ."
-          println(stmt)
+         //  println(stmt)
           scala.util.Try(parse(stmt))
         }
     )
@@ -287,7 +287,7 @@ case class Schema(inputStream: java.io.InputStream) {
   }).toMap
 
 
-  def dataPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
+  lazy val dataPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
 
 
@@ -318,15 +318,13 @@ case class Schema(inputStream: java.io.InputStream) {
   // TODO proper treatment of unions etc..
   // maybe add a placeholder class for each union and other complex class expression
 
-  def objectPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
+  lazy val objectPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
 
 
     val types = axioms.groupBy(_.getAxiomType).mapValues(x => x.size)
 
     //println(types)
-
-
 
     val objectPropertyDefinitions: List[org.openrdf.model.Statement] = objectPropertyDomainAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next().toString
@@ -337,7 +335,7 @@ case class Schema(inputStream: java.io.InputStream) {
       val r2 = if (range.contains("<")) range else s"<$range>"
       val p2 = if (prop.contains("<")) prop else s"<$prop>"
       val stmt = s"${domain} ${p2} ${r2} ."
-      println("WADDE:" + stmt)
+      // println("WADDE:" + stmt)
       parse(stmt)
     })
     objectPropertyDefinitions
@@ -346,7 +344,7 @@ case class Schema(inputStream: java.io.InputStream) {
   //objectPropertyDefinitions.foreach(println)
   //System.exit(0)
 
-  (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
+  // (classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions).foreach(println)
 
   lazy val dot = rdf.diagrams.makeDot(classDeclarations ++ subClassDefinitions ++ objectPropertyDefinitions ++ dataPropertyDefinitions)
 
@@ -364,6 +362,12 @@ case class Schema(inputStream: java.io.InputStream) {
   def friendlyString(s: String)  = Settings.friendlyName(s)
 
   def getReadableNameForProperty(p: OWLObjectProperty) = friendlyString(p.toString)
+
+  def getReadableNameForDataRange(p: OWLDataRange) = friendlyString(p.toString)
+
+
+
+  def getReadableNameForDataProperty(p: OWLDataProperty) = friendlyString(p.toString)
 
   def getReadableNameForClass(c: OWLClassExpression):String  = {
     val dtype = c.getClassExpressionType
@@ -389,7 +393,7 @@ case class Schema(inputStream: java.io.InputStream) {
   def readableVersion(friendlyString: String=>String = Settings.friendlyName) =
   {
     val classes = this.classes.map(c => getReadableNameForClass(c)).toList.sortBy(identity)
-    classes.foreach(println)
+
     val op = objectProperties.map(
       o =>
         {
@@ -400,11 +404,32 @@ case class Schema(inputStream: java.io.InputStream) {
           val range  = ra.map(a => getReadableNameForClass(a.getRange)).getOrElse("rdfs:Resource")
           val name = getReadableNameForProperty(o)
 
-          s"${getReadableNameForProperty(o)} ⊆ $domain × $range "
+          s"${name} ⊆ $domain × $range "
         }
     ).toList.sortBy(identity)
 
+
+    val dp = dataProperties.map(
+      o =>
+      {
+        val da = dataPropertyDomainAxioms.find(_.getProperty.asOWLDataProperty() == o)
+        val ra = dataPropertyRangeAxioms.find(_.getProperty.asOWLDataProperty() == o)
+
+        val domain = da.map(a => getReadableNameForClass(a.getDomain)).getOrElse("rdfs:Resource")
+        val range  = ra.map(a => getReadableNameForDataRange(a.getRange)).getOrElse("rdfs:Literal")
+        val name = getReadableNameForDataProperty(o)
+
+        s"${name} ⊆ $domain × $range "
+      }
+    ).toList.sortBy(identity)
+
+    println("## Classes:")
+    classes.foreach(println)
+    println("## Object properties:")
     op.foreach(println)
+
+    println("## Data properties:")
+    dp.foreach(println)
   }
 
 
@@ -436,7 +461,7 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = if (args.size > 0) Schema.fromFile(args(0)) else diamantSchema
+    val s = if (args.size > 0) Schema.fromFile(args(0)) else ontoCleaned
 
     s.readableVersion()
 
