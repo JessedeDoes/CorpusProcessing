@@ -5,7 +5,7 @@ import sparql2xquery.SparqlToXquery.parseResult
 object TestSparql2XQuery {
   def main(args: Array[String]):Unit =
   {
-    val t = new SparqlToXquery(Mappings.testje)
+    val t = new SparqlToXquery(Mappings.testAlpinoMapping)
     val q =
       s"""prefix : <http://example.org/>
          |prefix ud: <${Mappings.udPrefix}>

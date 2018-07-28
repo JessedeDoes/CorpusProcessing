@@ -136,5 +136,5 @@ object Mappings
     s"http://example.org/rel_$s" -> BasicPattern(Set("subject←//node", s"object←${dollar}subject/node[@rel='$s']")))
     .toMap
 
-  val testje = TripleMapping(testMap ++ lassyRelMap ++ udRelMap)
+  val testAlpinoMapping = TripleMapping(testMap ++ lassyRelMap ++ udRelMap)
 }

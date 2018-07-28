@@ -80,7 +80,7 @@ object Settings
 
       val bestMatch = prefixIRIS.find(p => s1.startsWith(p.toString.replaceAll("[<>]","")))
       if (bestMatch.isDefined)
-        s1.replace(bestMatch.get.toString, reverse(bestMatch.get) + ":")
+        s1.replace(bestMatch.get.toString, reverse(bestMatch.get) + ":").replaceAll("^:", "")
       else
         s1
     }

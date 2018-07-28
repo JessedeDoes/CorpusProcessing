@@ -138,7 +138,7 @@ object SparqlToXquery
 
   def translateAndRunQuery(q: String):QueryResults.Response =
   {
-    val t = new SparqlToXquery(Mappings.testje)
+    val t = new SparqlToXquery(Mappings.testAlpinoMapping)
     val xqn = t.translate(q)
     val xquery = xqn.toQuery
     val bx = basex.BaseXConnection.default()

@@ -48,6 +48,7 @@ trait XQuerySelect extends XQueryNode
   private lazy val pathMap:Map[Variable,Set[String]] = pathExpressions.map(p =>
   {
     val cols = p.split("\\s*←\\s*")
+    Console.err.println(cols.toList)
     val (varName, path) = (cols(0), cols(1))
     varName -> path
   }).groupBy(_._1).mapValues(l => l.map(_._2))
