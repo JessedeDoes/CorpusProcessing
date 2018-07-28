@@ -140,7 +140,7 @@ object diagrams {
 
           (s"""\n$n1 [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
-            objectProperties.toList.map( o => s"""${n1} -> ${makeIdentifier(shortName(o.getObject))} [ color="#000088", arrowhead=vee, label = ${objectPropertyLabel(o)}] """))
+            objectProperties.toList.map( o => s"""${n1} -> ${makeIdentifier(shortName(o.getObject))} [ color="#000088", arrowhead=vee, label = "${objectPropertyLabel(o)}"] """))
             .mkString("\n")
       }
     )

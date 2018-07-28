@@ -1,5 +1,7 @@
 package rdf
 
+import java.io.FileWriter
+
 import org.openrdf.rio.helpers.StatementCollector
 import org.openrdf.rio.{RDFFormat, Rio}
 import org.semanticweb.owlapi.apibinding.OWLManager
@@ -249,9 +251,12 @@ case class Schema(inputStream: java.io.InputStream) {
       c.toString
     else if (dtype == ClassExpressionType.OBJECT_UNION_OF)
       {
-        val z = c.asDisjunctSet().asScala.map(_.asOWLClass)
-        val newName = management.addUnionOfClasses(z.toSet)
-        newName
+        val z0 = c.asDisjunctSet().asScala
+        if (!z0.exists(_.isAnonymous)) {
+          val z = c.asDisjunctSet().asScala.filter(!_.isAnonymous).map(_.asOWLClass)
+          val newName = management.addUnionOfClasses(z.toSet)
+          newName
+        }  else "Some_Union"
       }
     else
       {
@@ -335,7 +340,7 @@ case class Schema(inputStream: java.io.InputStream) {
       val r2 = if (range.contains("<")) range else s"<$range>"
       val p2 = if (prop.contains("<")) prop else s"<$prop>"
       val stmt = s"${domain} ${p2} ${r2} ."
-      // println("WADDE:" + stmt)
+      //println("WADDE:" + stmt)
       parse(stmt)
     })
     objectPropertyDefinitions
@@ -351,7 +356,14 @@ case class Schema(inputStream: java.io.InputStream) {
   def  createImage:Unit = createImage("./test.svg")
 
 
-  def createImage(fileName: String) = rdf.diagrams.createSVG(dot, fileName)
+  def createImage(fileName: String) =
+    {
+      val fw = new FileWriter("/tmp/test.dot")
+      fw.write(dot)
+      fw.close()
+
+      rdf.diagrams.createSVG(dot, fileName)
+    }
 
   // Console.err.println(dot)
 
@@ -457,24 +469,28 @@ object testSchema
   lazy val metadata = Schema.fromFile("data/Diamant/metadata.fss")
   lazy val diamantSchema = Schema.fromFile(diamant)
   lazy val ontolex = Schema.fromURL("http://www.w3.org/ns/lemon/ontolex#")
+  lazy val lexinfo = Schema.fromURL("http://lexinfo.net/ontology/2.0/lexinfo.owl")
+  lazy val lmf = Schema.fromFile("data/Diamant/TagmaticaLMF.owl")
   lazy val ontoCleaned = Schema.fromFile("data/Diamant/ontolex.cleaned.rdf")
 
   def main(args: Array[String]): Unit =
   {
-    val s = if (args.size > 0) Schema.fromFile(args(0)) else ontoCleaned
+    val s = if (args.size > 0) Schema.fromFile(args(0)) else lmf
 
     s.readableVersion()
 
-    System.exit(1)
+
     s.createImage
 
-    println("#classes:")
-    s.classNames.toList.sortBy(identity).foreach(println)
-    println("#object properties")
-    s.objectPropertyNames.toList.sortBy(identity).foreach(println)
-    println("#data properties")
-    s.dataPropertyNames.toList.sortBy(identity).foreach(println)
-    println("#axioms")
-    s.axioms.foreach(a => println(s"$a ${a.getAxiomType}"))
+    if (false) {
+      println("#classes:")
+      s.classNames.toList.sortBy(identity).foreach(println)
+      println("#object properties")
+      s.objectPropertyNames.toList.sortBy(identity).foreach(println)
+      println("#data properties")
+      s.dataPropertyNames.toList.sortBy(identity).foreach(println)
+      println("#axioms")
+      s.axioms.foreach(a => println(s"$a ${a.getAxiomType}"))
+    }
   }
 }

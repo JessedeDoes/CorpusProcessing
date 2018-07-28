@@ -31,7 +31,7 @@ object Settings
                      |@prefix lemon: <http://lemon-model.net/lemon#> .
                      |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo> .
                      |@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
-                     |@prefix lmf: <http://www.lexinfo.net/lmf> .
+                     |@prefix lmf: <http://www.lexinfo.net/lmf#> .
                      |@prefix madsrdf: <http://www.loc.gov/mads/rdf/v1#> .
                      |@prefix nif: <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#> .
                      |@prefix olia: <http://www.w3.org/ns/olia#> .

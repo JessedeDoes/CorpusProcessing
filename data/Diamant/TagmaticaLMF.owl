@@ -1,0 +1,1006 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns="http://www.lexinfo.net/lmf#" xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:lmf="http://www.lexinfo.net/lmf#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#">
+<owl:Ontology rdf:about="">
+  <rdfs:comment>Specification of Lexical Markup Framework (ISO 24613 rev 14)</rdfs:comment>
+  <rdfs:label>Lexical Markup Framework Ontology version 14</rdfs:label>
+</owl:Ontology>
+<!--all classes inherit from LMFClass.-->
+<!--LMFClass may be adorned by a pairs of attribute value-->
+<!--###########################################core package-->
+<owl:Class rdf:ID="lmf:LMFClass"/>
+
+<owl:Class rdf:ID="lmf:LexicalResourcex">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+</owl:Class>
+<owl:Class rdf:ID="lmf:GlobalInformation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalResource"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Lexicon">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalResource"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:LexicalEntry">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+
+  <rdfs:subClassOf>
+    <!--for related form, see package for morphology-->
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+      <!--restriction=LexicalEntry-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+      <!--restriction=ParadigmPattern-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+      <!--restriction=MWEPattern-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+
+</owl:Class>
+<owl:Class rdf:ID="lmf:Form">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:FormRepresentation">
+  <!--no need to directly inherit from LMFClass-->
+  <rdfs:subClassOf rdf:resource="lmf:Representation"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Form"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!--see paradigm pattern section-->
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:AffixAllomorph"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Representation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Sense">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!--self aggregation-->
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Definition">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SemanticPredicate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Synset"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Statement">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Definition"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:TextRepresentation">
+  <!--no need to directly inherit from LMFClass-->
+  <rdfs:subClassOf rdf:resource="lmf:Representation"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Definition"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Statement"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Equivalent"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Context"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--################################package for morphology-->
+<owl:Class rdf:ID="lmf:Lemma">
+  <rdfs:subClassOf rdf:resource="lmf:Form"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:WordForm">
+  <rdfs:subClassOf rdf:resource="lmf:Form"/>
+</owl:Class>
+<owl:Class rdf:ID="lmf:StemOrRoot">
+  <rdfs:subClassOf rdf:resource="lmf:Form"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:ListOfComponents">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Component">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ListOfComponents"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=LexicalEntry-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:RelatedForm">
+  <rdfs:subClassOf rdf:resource="lmf:Form"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=LexicalEntry-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:DerivedForm">
+  <rdfs:subClassOf rdf:resource="lmf:RelatedForm"/>
+</owl:Class>
+<owl:Class rdf:ID="lmf:ReferredRoot">
+  <rdfs:subClassOf rdf:resource="lmf:RelatedForm"/>
+</owl:Class>
+<!--###########################################package for MRD-->
+<owl:Class rdf:ID="lmf:Equivalent">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Context">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SubjectField">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!--self aggregation-->
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SubjectField"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--####################################package for syntax-->
+<owl:Class rdf:ID="lmf:SyntacticBehaviour">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Sense-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SubcategorizationFrame-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SubcategorizationFrameSet-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=PredicativeRepresentation-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SubcategorizationFrame">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!--self inheritance-->
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+    <!--restriction=SubcategorizationFrame-->
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:LexemProperty">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SubcategorizationFrame"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SyntacticArgument">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SubcategorizationFrame"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+       <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SubcategorizationFrame-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SynSemArgMap-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SubcategorizationFrameSet">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SubcategorizationFrame-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <!--self inheritance-->
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+       <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SubcategorizationFrameSet-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SynArgMap">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SubcategorizationFrameSet"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SyntacticArgument-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--#################################package for semantics-->
+<owl:Class rdf:ID="lmf:PredicativeRepresentation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SemanticPredicate-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SynSemCorrespondence-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SemanticArgument">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SemanticPredicate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SynSemArgMap-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SynSemArgMap">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SynSemCorrespondence"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SynSemCorrespondence">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SemanticPredicate">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:PredicateRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SemanticPredicate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SemanticPredicate-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SenseExample">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SenseRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Sense-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Synset">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Sense-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SynsetRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Synset"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Synset-->
+
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:MonolingualExternalRef">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Sense"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Synset"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--##########################package for multilingual notations-->
+<owl:Class rdf:ID="lmf:SenseAxis">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalResource"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Sense-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Synset-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SenseAxisRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SenseAxis"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SenseAxis-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:MultilingualExternalRef">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:SenseAxis"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--warning there is a tiny typo in the rev-14 diagram-->
+<!--the lexicon aggregation should be for TransferAxis et not for-->
+<!--TargetTest-->
+<owl:Class rdf:ID="lmf:TransferAxis">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalResource"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SyntacticBehaviour-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:TransferAxisRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransferAxisRelation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=TransferAxis-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:SourceTest">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransferAxis"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SyntacticBehaviour-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--warning see note on TransferAxis-->
+<owl:Class rdf:ID="lmf:TargetTest">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransferAxis"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SyntacticBehaviour-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:ExampleAxis">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalResource"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=SenseExample-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:ExampleAxisRelation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ExampleAxis"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=ExampleAxis-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--########################package for paradigm pattern-->
+<owl:Class rdf:ID="lmf:TransformCategory">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LexicalEntry"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransformSet"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Process"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Affix"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:ParadigmPattern">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Affix">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ParadigmPattern"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:AffixSlot"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:StemRef">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Affix"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=StemOrRoot-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:AffixAllomorph"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:AffixAllomorph">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Affix"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:AffixTemplate">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ParadigmPattern"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:AffixSlot">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:AffixTemplate"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:TransformSet">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ParadigmPattern"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:GrammaticalFeatures">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:StemOrRoot"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Affix"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransformSet"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Condition">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:AffixAllomorph"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Process"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Process">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:TransformSet"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--###################package for multiword expression pattern-->
+<owl:Class rdf:ID="lmf:MWEPattern">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:MWENode">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:MWEPattern"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:MWEEdge"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:MWEEdge">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:MWENode"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:MWELex">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:MWENode"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Component-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--##########################package for constraint expression-->
+<owl:Class rdf:ID="lmf:ConstrainSet">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Lexicon"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:Constraint">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:ConstrainSet"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:LogicalOperation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:Constraint"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAssociated"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    <!--restriction=Constraint-->
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<owl:Class rdf:ID="lmf:AttributeValuation">
+  <rdfs:subClassOf rdf:resource="lmf:LMFClass"/>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isPartOf"/>
+      <owl:allValuesFrom rdf:resource="lmf:LogicalOperation"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!--###########################################part of-->
+<owl:TransitiveProperty rdf:ID="lmf:isPartOf"/>
+<!--##################################associated with-->
+<owl:DataTypeProperty rdf:ID="lmf:isAssociated"/>
+<!--##################################adornment by data categories-->
+<!--The attribute is a data category. The value is either a data category or a string value.-->
+<owl:Class rdf:ID="lmf:LMFClass">
+<!-- Restrictie klopte niet
+  <owl:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:isAdorned"/>
+    </owl:Restriction>
+  </owl:subClassOf>
+-->
+</owl:Class>
+<owl:ObjectProperty rdf:ID="lmf:isAdorned">
+  <rdfs:domain rdf:resource="lmf:LMFClass"/>
+  <rdfs:range rdf:resource="lmf:attVal"/>
+</owl:ObjectProperty>
+<!-- an attVal is a pair comprising an attribute and a value -->
+<owl:Class rdf:ID="lmf:attVal">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:att"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="lmf:val"/>
+      <owl:allValuesFrom rdf:resource="lmf:LMFClass"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+</owl:Class>
+<!-- the attribute : always a data category-->
+<owl:ObjectProperty rdf:ID="lmf:att">
+  <rdfs:domain rdf:resource="lmf:attVal"/>
+  <rdfs:range rdf:resource="lmf:dataCategory"/>
+</owl:ObjectProperty>
+<!-- the value: either a datacategory or a string -->
+<owl:ObjectProperty rdf:ID="lmf:val">
+  <rdfs:domain rdf:resource="lmf:attVal"/>
+  <rdf:Alt>
+    <rdfs:range rdf:resource="lmf:dataCategory"/>
+    <rdfs:range rdf:resource="lmf:string"/>
+  </rdf:Alt>
+</owl:ObjectProperty>
+<owl:ObjectProperty rdf:ID="lmf:isPartOf"/>
+
+<owl:Class rdf:ID="lmf:dataCategory"/>
+<!--##########################################################-->
+</rdf:RDF>
+
