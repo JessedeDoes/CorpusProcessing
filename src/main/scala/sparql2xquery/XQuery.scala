@@ -61,6 +61,7 @@ trait XQuerySelect extends XQueryNode
 
   lazy val dependencies = pathMap.map({case (v,p) => dep(v,p)}).flatten
 
+
   lazy val variablesSorted = TopologicalSort.tsort(dependencies).toList.reverse
 
   //ToDo: Maak niet geselecteerde variabelen verborgen (hernoem naar iets globaal unieks)

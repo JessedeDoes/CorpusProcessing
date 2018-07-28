@@ -10,25 +10,21 @@ object TEIMapping {
   val testMap:PredicateMapping = Map(
     s"${ontolex}lexicalForm" ->
       BasicPattern(
-        Set("subject←//entry/@id",
-          "object←$subject//oVar/generate-id()")
+        Set("entry←//entry",
+          "subject←$entry/@id",
+          "object←$entry//oVar/generate-id()")
       ),
 
     s"${ontolex}canonicalForm" ->
       BasicPattern(
         Set("subject←//entry/@id",
-          "object←$subject//form[@type='lemma' and not ancestor::re]/generate-id()")
+          "object←$subject//form[@type='lemma' and not (ancestor::re)]/generate-id()")
       ),
 
     s"${ontolex}writtenRep" ->
       BasicPattern(
         Set("subject←//form[@type='lemma'/generate-id()|//oVar/generate-id()",
           "object←$subject//text()")
-      ),
-
-    s"${ontolex}lexicalForm" ->
-      BasicPattern(
-        Set("subject←//node[@cat='smain']", "object←$subject/node[@rel='obj1']")
       ),
   )
 
@@ -44,9 +40,18 @@ object TEIMapping {
        |   ?lf ontolex:writtenRep ?w }
      """.stripMargin
 
+  val q1 =
+    s"""
+       |prefix ontolex: <$ontolex>
+       |select ?e0 ?f0 where
+       |{
+       |  ?e0 ontolex:lexicalForm ?f0
+       |}
+     """.stripMargin
+
   def main(args: Array[String]): Unit = {
     val t = new SparqlToXquery(teiMapping)
-    val x = t.translate(q0)
+    val x = t.translate(q1)
     Console.err.println(x.toQuery())
     val bx = basex.BaseXConnection.wnt
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
