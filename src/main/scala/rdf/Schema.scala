@@ -269,31 +269,41 @@ case class Schema(inputStream: java.io.InputStream) {
     if (d1.contains("<")) d1 else s"<$d1>"
   }
 
+  lazy val dataPropertyDomainAxioms:List[OWLDataPropertyDomainAxiom] = axioms.filter(a => a.getAxiomType == AxiomType.DATA_PROPERTY_DOMAIN).map(_.asInstanceOf[OWLDataPropertyDomainAxiom]).toList
+  lazy val dataPropertyRangeAxioms:List[OWLDataPropertyRangeAxiom] = axioms.filter(a => a.getAxiomType == AxiomType.DATA_PROPERTY_RANGE).map(_.asInstanceOf[OWLDataPropertyRangeAxiom]).toList
+  lazy val objectPropertyDomainAxioms:List[OWLObjectPropertyDomainAxiom] = axioms.filter(a => a.getAxiomType == AxiomType.OBJECT_PROPERTY_DOMAIN).map(_.asInstanceOf[OWLObjectPropertyDomainAxiom]).toList
+  lazy val objectPropertyRangeAxioms:List[OWLObjectPropertyRangeAxiom] = axioms.filter(a => a.getAxiomType == AxiomType.OBJECT_PROPERTY_RANGE).map(_.asInstanceOf[OWLObjectPropertyRangeAxiom]).toList
+
+  lazy val dataPropertyRangeMap = dataPropertyRangeAxioms.map(a => {
+    val prop = a.getDataPropertiesInSignature.iterator().next()
+    val range = a.getRange
+    prop.toString -> range.toString
+  }).toMap
+
+  lazy val objectPropertyRangeMap = objectPropertyRangeAxioms.map(a => {
+    val prop = a.getObjectPropertiesInSignature.iterator().next()
+    val range = a.getRange
+    prop.toString -> getNameForClass(range)
+  }).toMap
+
+
   def dataPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
 
-    val dataPropertyDomainAxioms = axioms.filter(a => a.getAxiomType == AxiomType.DATA_PROPERTY_DOMAIN).map(_.asInstanceOf[OWLDataPropertyDomainAxiom]).toList
-    val dataPropertyRangeAxioms = axioms.filter(a => a.getAxiomType == AxiomType.DATA_PROPERTY_RANGE).map(_.asInstanceOf[OWLDataPropertyRangeAxiom]).toList
 
     val types = axioms.groupBy(_.getAxiomType).mapValues(x => x.size)
 
     //println(types)
 
-    val rangeMap = dataPropertyRangeAxioms.map(a => {
-      val prop = a.getDataPropertiesInSignature.iterator().next()
-      val range = a.getRange
-      prop.toString -> range.toString
-    }).toMap
+
 
     val dataPropertyDefinitions: List[org.openrdf.model.Statement] = dataPropertyDomainAxioms.map(a => {
       val prop = a.getDataPropertiesInSignature.iterator().next().toString
       val domain = getNameForClass(a.getDomain)
 
-      val range = rangeMap.getOrElse(prop.toString, "http://whaddever")
+      val range = dataPropertyRangeMap.getOrElse(prop.toString, "http://whaddever")
 
       val r1 = s""""${if (range.contains("<")) range.replaceAll("[<>]","") else range}""""
-
-
 
       val p1 = if (prop.contains("<")) prop else s"<$prop>"
 
@@ -310,25 +320,19 @@ case class Schema(inputStream: java.io.InputStream) {
 
   def objectPropertyDefinitions:Seq[org.openrdf.model.Statement] = {
 
-    val objectPropertyDomainAxioms = axioms.filter(a => a.getAxiomType == AxiomType.OBJECT_PROPERTY_DOMAIN).map(_.asInstanceOf[OWLObjectPropertyDomainAxiom]).toList
-    val obectPropertyRangeAxioms = axioms.filter(a => a.getAxiomType == AxiomType.OBJECT_PROPERTY_RANGE).map(_.asInstanceOf[OWLObjectPropertyRangeAxiom]).toList
+
 
     val types = axioms.groupBy(_.getAxiomType).mapValues(x => x.size)
 
     //println(types)
 
-    val rangeMap = obectPropertyRangeAxioms.map(a => {
-      val prop = a.getObjectPropertiesInSignature.iterator().next()
-      val range = a.getRange
 
-      prop.toString -> getNameForClass(range)
-    }).toMap
 
     val objectPropertyDefinitions: List[org.openrdf.model.Statement] = objectPropertyDomainAxioms.map(a => {
       val prop = a.getObjectPropertiesInSignature.iterator().next().toString
 
       val domain = getNameForClass(a.getDomain)
-      val range = rangeMap.getOrElse(prop.toString, "<http://www.w3.org/2000/01/rdf-schema#Resource>")
+      val range = objectPropertyRangeMap.getOrElse(prop.toString, "<http://www.w3.org/2000/01/rdf-schema#Resource>")
 
       val r2 = if (range.contains("<")) range else s"<$range>"
       val p2 = if (prop.contains("<")) prop else s"<$prop>"
@@ -351,17 +355,59 @@ case class Schema(inputStream: java.io.InputStream) {
 
   def createImage(fileName: String) = rdf.diagrams.createSVG(dot, fileName)
 
-  Console.err.println(dot)
+  // Console.err.println(dot)
 
   val dataPropertyNames = dataProperties.map(op => op.getIRI.toString)
   val classNames = classes.map(op => op.getIRI.toString)
 
-  
+
+  def friendlyString(s: String)  = Settings.friendlyName(s)
+
+  def getReadableNameForProperty(p: OWLObjectProperty) = friendlyString(p.toString)
+
+  def getReadableNameForClass(c: OWLClassExpression):String  = {
+    val dtype = c.getClassExpressionType
+    dtype match {
+      case ClassExpressionType.OWL_CLASS => friendlyString(c.toString)
+      case ClassExpressionType.OBJECT_UNION_OF =>
+        val disjuncts = c.asDisjunctSet().asScala.map(_.asOWLClass)
+        disjuncts.map(c => friendlyString(c.toString)).mkString(" ∪ ")
+      case ClassExpressionType.OBJECT_INTERSECTION_OF =>
+        val conjuncts = c.asConjunctSet().asScala.map(_.asOWLClass)
+        conjuncts.map(c => friendlyString(c.toString)).mkString(" ∩ ")
+      case ClassExpressionType.OBJECT_EXACT_CARDINALITY =>
+        val x = c.asInstanceOf[OWLObjectExactCardinality]
+        val i = x.getCardinality
+        val p = x.getProperty
+        s"∃!$i ${getReadableNameForProperty(p.asOWLObjectProperty())}"
+    }
+  }
+
+
+
+
   def readableVersion(friendlyString: String=>String = Settings.friendlyName) =
   {
-    val classes = this.classNames.map(friendlyString)
+    val classes = this.classes.map(c => getReadableNameForClass(c)).toList.sortBy(identity)
+    classes.foreach(println)
+    val op = objectProperties.map(
+      o =>
+        {
+          val da = objectPropertyDomainAxioms.find(_.getProperty.asOWLObjectProperty() == o)
+          val ra = objectPropertyRangeAxioms.find(_.getProperty.asOWLObjectProperty() == o)
 
+          val domain = da.map(a => getReadableNameForClass(a.getDomain)).getOrElse("rdfs:Resource")
+          val range  = ra.map(a => getReadableNameForClass(a.getRange)).getOrElse("rdfs:Resource")
+          val name = getReadableNameForProperty(o)
+
+          s"${getReadableNameForProperty(o)} ⊆ $domain × $range "
+        }
+    ).toList.sortBy(identity)
+
+    op.foreach(println)
   }
+
+
   def validObjectProperty(s: String):Boolean = objectPropertyNames.contains(s)
   def validDataProperty(s: String):Boolean = dataPropertyNames.contains(s)
   def validClass(s: String):Boolean = classNames.contains(s)
@@ -390,8 +436,11 @@ object testSchema
 
   def main(args: Array[String]): Unit =
   {
-    val s = if (args.size > 0) Schema.fromFile(args(0)) else ontoCleaned
+    val s = if (args.size > 0) Schema.fromFile(args(0)) else diamantSchema
 
+    s.readableVersion()
+
+    System.exit(1)
     s.createImage
 
     println("#classes:")

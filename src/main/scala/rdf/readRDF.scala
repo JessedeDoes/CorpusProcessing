@@ -52,12 +52,15 @@ object Settings
                      |@prefix xml: <http://www.w3.org/XML/1998/namespace> .
                      |@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
                      |@prefix xs: <http://www.w3.org/2001/XMLSchema#> .
+                     |@prefix odp: <http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#> .
+                     |@prefix voaf: <http://purl.org/vocommons/voaf#> .
+                     |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
                      |@prefix : <#> .\n""".stripMargin
 
 
   lazy val prefixMap:Map[String,org.semanticweb.owlapi.model.IRI] = prefixes.split("\n").filter(_.contains("@")).toStream.map(l => {
      val l1 = l.replaceAll("^\\s*@prefix\\s*","").split("\\s*:\\s+")
-     l1(0) -> org.semanticweb.owlapi.model.IRI.create(l1(1).replaceAll("[<>]",""))
+     l1(0) -> org.semanticweb.owlapi.model.IRI.create(l1(1).replaceAll(">\\s*\\.\\s*","").replaceAll("[<>]",""))
   }).toMap
 
   lazy val prefixNames = prefixMap.keySet
@@ -68,14 +71,18 @@ object Settings
   {
     val prefixNames = prefixMap.keySet
     val prefixIRIS = prefixMap.values.toList.sortBy(x => -1 * x.toString.length)
+
+    println(prefixIRIS)
     val reverse = prefixMap.map(_.swap)
 
     s => {
-      val bestMatch = prefixIRIS.find(p => s.startsWith(p.toString))
+      val s1 = s.replaceAll("[<>]","")
+
+      val bestMatch = prefixIRIS.find(p => s1.startsWith(p.toString.replaceAll("[<>]","")))
       if (bestMatch.isDefined)
-        s.replace(bestMatch.get.toString, reverse(bestMatch.get))
+        s1.replace(bestMatch.get.toString, reverse(bestMatch.get) + ":")
       else
-        s
+        s1
     }
   }
 
