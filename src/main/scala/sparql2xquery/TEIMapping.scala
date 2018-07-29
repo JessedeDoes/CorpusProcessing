@@ -46,9 +46,26 @@ object TEIMapping {
         Set(
           "subject←//oVar",
           "q0←($subject/ancestor::q)[1]",
-          //"object←$q0//text()[1]/index-of($q0/text(),.)"
           "object←string-join($q0//text()[. << $subject],'.')",
-          //"object←string-join($q0//text()[index-of($q0//node(),.)[1] < index-of($q0//node(),($subject//text())[1])[1]],'')"
+        ),
+        Set("q0", "subject", "object")),
+
+    s"${ontolex}beginIndex" -> // dit komt niet door xql heen, maar mag wel in basex ....
+      BasicPattern(
+        Set(
+          "subject←//oVar",
+          "q0←($subject/ancestor::q)[1]",
+          "object←string-length(string-join($q0//text()[. << $subject],'.'))",
+        ),
+        Set("q0", "subject", "object")),
+
+
+    s"${ontolex}endIndex" -> // dit komt niet door xql heen, maar mag wel in basex ....
+      BasicPattern(
+        Set(
+          "subject←//oVar",
+          "q0←($subject/ancestor::q)[1]",
+          "object←string-length($subject) + string-length(string-join($q0//text()[. << $subject],'.'))",
         ),
         Set("q0", "subject", "object")),
 
@@ -62,6 +79,16 @@ object TEIMapping {
     s"${ontolex}citation" ->
       BasicPattern(
         Set("object←$subject/eg/cit"),
+        Set("subject", "object")),
+
+    s"${ontolex}locus" ->
+      BasicPattern(
+        Set("object←$subject/eg/cit//oVar"),
+        Set("subject", "object")),
+
+    s"${ontolex}text" -> // locus moet naar quotation verwijzen voor snippet
+      BasicPattern(
+        Set("object←$subject/ancestor::cit"),
         Set("subject", "object")),
 
     s"${ontolex}usageExample" ->
@@ -116,9 +143,11 @@ object TEIMapping {
   val q2 =
     s"""
        |prefix ontolex: <$ontolex>
-       |select ?v0 ?t where
+       |select ?v0 ?t ?bi ?ei where
        |{
        |  ?v0 ontolex:textBefore ?t .
+       |  ?v0 ontolex:beginIndex ?bi .
+       |  ?v0 ontolex:endIndex ?ei
        |}
      """.stripMargin
 
