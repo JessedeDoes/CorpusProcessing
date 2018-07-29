@@ -47,7 +47,8 @@ object TEIMapping {
           "subject←//oVar",
           "q0←($subject/ancestor::q)[1]",
           //"object←$q0//text()[1]/index-of($q0/text(),.)"
-          "object←string-join($q0//text()[index-of($q0//node(),.)[1] < index-of($q0//node(),($subject//text())[1])[1]],'')"
+          "object←string-join($q0//text()[. << $subject],'.')",
+          //"object←string-join($q0//text()[index-of($q0//node(),.)[1] < index-of($q0//node(),($subject//text())[1])[1]],'')"
         ),
         Set("q0", "subject", "object")),
 
@@ -61,6 +62,16 @@ object TEIMapping {
     s"${ontolex}citation" ->
       BasicPattern(
         Set("object←$subject/eg/cit"),
+        Set("subject", "object")),
+
+    s"${ontolex}usageExample" ->
+      BasicPattern(
+        Set("object←$subject/eg/cit"),
+        Set("subject", "object")),
+
+    s"${ontolex}snippet" ->
+      BasicPattern(
+        Set("object←$subject/q"),
         Set("subject", "object")),
 
     s"${skos}definition" ->
@@ -115,23 +126,25 @@ object TEIMapping {
     s"""
        |prefix ontolex: <$ontolex>
        |prefix skos: <$skos>
-       |select ?i0  ?sid ?l  ?d where
+       |select ?i0  ?sid ?l  ?d ?snip where
        |{
        |  ?e0 ontolex:sense ?s0 .
        |  ?s0 ontolex:id ?sid .
        |  ?e0 ontolex:id ?i0 .
        |  ?e0 ontolex:canonicalForm ?c0 .
        |  ?c0 ontolex:writtenRep ?l .
-       |  ?s0 skos:definition ?d
+       |  ?s0 skos:definition ?d .
+       |  ?s0 ontolex:usageExample ?cit .
+       |  ?cit ontolex:snippet ?snip
        |}
      """.stripMargin
 
   def main(args: Array[String]): Unit = {
     val t = new SparqlToXquery(teiMapping)
-    val x = t.translate(q3)
+    val x = t.translate(q2)
     Console.err.println(x.toQuery())
     val bx = basex.BaseXConnection.wnt
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
-    println(QueryResults.response(resultStream.take(1000)))
+    println(QueryResults.response(resultStream.take(10)))
   }
 }
