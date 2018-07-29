@@ -34,7 +34,7 @@ resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
 
 libraryDependencies += "net.xqj" % "basex-xqj" % "1.4.0"
 
-libraryDependencies += "com.xqj2" % "xqj2" % "0.1.0"
+libraryDependencies += "com.xqj2" % "xqj2" % "0.2.0"
 
 libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
 

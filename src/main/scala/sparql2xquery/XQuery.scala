@@ -79,7 +79,7 @@ trait XQuerySelect extends XQueryNode
   def toQuery():String =
   {
 
-    println("restrictions: " + valueRestrictions)
+    println("restrictions: " + valueRestrictions + " dependencies:" + dependencies)
     //val forPart:String = variablesSorted.map(v => s"$dollar$v in ${pathMap(v).toList(0)} ").mkString(",\n")
     val forPart =  variablesSorted.map(v => forWhere(v)).mkString(",\n")
     val returnPart = variables.filter(isSelected).map(v => s"<var><name>$v</name><value>{$dollar$v}</value></var>").mkString("\n")
@@ -145,6 +145,7 @@ case class SimpleSelect(pathExpressions: Set[String],
       v => if (isSelected(v)) (v,v) else (v, XQueryNode.getNewVarName()))
       .toMap
     val b = renameVars(m)
+    Console.err.println("Bee:" + b + " variables:" + this.variables)
     SimpleSelect(b.pathExpressions, b.variables, this.selected)
   }
 }

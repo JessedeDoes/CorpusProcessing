@@ -44,16 +44,18 @@ object QueryResults {
   {
      val vars = results.flatMap(_.keySet).distinct.toList
      val head = Head(vars)
+    Console.err.println(results)
      val bindings = results.map(
-       m => m.map( { case (k,v) => (k -> Value("literal", v.text ) )  }).toMap
+       m => m.map({
+         case (k,v) if (v.attributes.nonEmpty) => (k -> Value("literal",  v.attributes.head.value.text)  )
+         case (k,v)  => { k -> Value("literal", v.text ) }
+         }).toMap
      ).toList
      val r = Results(bindings)
      val response = Response(head, r)
      response
      //return response.toJSON()
   }
-
-
 
   def main(args: Array[String]) =
   {

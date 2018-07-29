@@ -21,7 +21,7 @@ object BaseXConnection
 
 case class BaseXConnection(server: String, port: String, user: String, password: String, database: String)
 {
-  lazy val ds = Class.forName(DRIVER).newInstance.asInstanceOf[XQDataSource]
+  lazy val ds = Class.forName(DRIVER).newInstance.asInstanceOf[net.xqj.basex.BaseXXQDataSource]
   lazy val connection =
   {
     ds.setProperty("serverName", server)
