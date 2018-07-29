@@ -45,9 +45,9 @@ object TEIMapping {
       BasicPattern(
         Set(
           "subject←//oVar",
-          "q0←$subject/ancestor::q",
-          "object←$q0//text()[1]/index-of($q0/text(),.)"
-          //"object←string-join($q0//text()[index-of($q0//node(),.) < index-of($q0//node(),$subject)],'')"
+          "q0←($subject/ancestor::q)[1]",
+          //"object←$q0//text()[1]/index-of($q0/text(),.)"
+          "object←string-join($q0//text()[index-of($q0//node(),.)[1]+1 < index-of($q0//node(),($subject//text())[1])[1]],'')"
         ),
         Set("q0", "subject", "object")),
 
