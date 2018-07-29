@@ -54,6 +54,7 @@ object TEIMapping {
     s"${ontolex}sense" ->
       BasicPattern(
         Set(
+          "subject←//entry",
           "object←$subject[self::entry]//sense"),
         Set("subject", "object")),
 
@@ -64,7 +65,7 @@ object TEIMapping {
 
     s"${skos}definition" ->
       BasicPattern(
-        Set("object←$subject[self::sense]/def/text()"),
+        Set("object←string-join($subject[self::sense]/def//text(),'')"),
         Set("subject", "object")),
 
     s"${ontolex}writtenRep" ->
@@ -114,9 +115,10 @@ object TEIMapping {
     s"""
        |prefix ontolex: <$ontolex>
        |prefix skos: <$skos>
-       |select ?i0  ?l  ?d where
+       |select ?i0  ?sid ?l  ?d where
        |{
        |  ?e0 ontolex:sense ?s0 .
+       |  ?s0 ontolex:id ?sid .
        |  ?e0 ontolex:id ?i0 .
        |  ?e0 ontolex:canonicalForm ?c0 .
        |  ?c0 ontolex:writtenRep ?l .
