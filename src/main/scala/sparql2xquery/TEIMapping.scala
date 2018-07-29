@@ -41,13 +41,13 @@ object TEIMapping {
           "object←$subject/ancestor::entry//oVar[./text()=$subject/orth/text()"), // klopt niet helemaal
         Set("subject", "object")),
 
-    s"${ontolex}textBefore" ->
+    s"${ontolex}textBefore" -> // dit komt niet door xql heen, maar mag wel in basex ....
       BasicPattern(
         Set(
           "subject←//oVar",
           "q0←($subject/ancestor::q)[1]",
           //"object←$q0//text()[1]/index-of($q0/text(),.)"
-          "object←string-join($q0//text()[index-of($q0//node(),.)[1]+1 < index-of($q0//node(),($subject//text())[1])[1]],'')"
+          "object←string-join($q0//text()[index-of($q0//node(),.)[1] < index-of($q0//node(),($subject//text())[1])[1]],'')"
         ),
         Set("q0", "subject", "object")),
 
@@ -57,10 +57,14 @@ object TEIMapping {
           "object←$subject[self::entry]//sense"),
         Set("subject", "object")),
 
+    s"${ontolex}citation" ->
+      BasicPattern(
+        Set("object←$subject/eg/cit"),
+        Set("subject", "object")),
+
     s"${skos}definition" ->
       BasicPattern(
-        Set(
-          "object←$subject[self::sense]/def/text()"),
+        Set("object←$subject[self::sense]/def/text()"),
         Set("subject", "object")),
 
     s"${ontolex}writtenRep" ->
