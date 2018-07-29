@@ -168,9 +168,22 @@ object TEIMapping {
        |}
      """.stripMargin
 
+  val q4 =
+    s"""
+       |prefix ontolex: <$ontolex>
+       |select ?lem ?snip ?bi where
+       |{
+       |  ?e ontolex:canonicalForm ?f . ?f ontolex:writtenRep ?lem .
+       |  ?e ontolex:sense ?s . ?s ontolex:locus ?loc .
+       |  ?loc ontolex:text ?q .
+       |  ?loc ontolex:beginIndex ?bi .
+       |  ?q ontolex:snippet ?snip .
+       |  ?loc ontolex:endIndex ?ei
+       |}
+     """.stripMargin
   def main(args: Array[String]): Unit = {
     val t = new SparqlToXquery(teiMapping)
-    val x = t.translate(q2)
+    val x = t.translate(q4)
     Console.err.println(x.toQuery())
     val bx = basex.BaseXConnection.wnt
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
