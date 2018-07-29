@@ -67,7 +67,7 @@ trait XQuerySelect extends XQueryNode
   //ToDo: Maak niet geselecteerde variabelen verborgen (hernoem naar iets globaal unieks)
 
 
-  def forWhere(v: Variable):String =
+  def forWhere(v: Variable):String = // eerste variabelen zonder restricties??
   {
     val l = pathMap(v).toList
     val clauses = l.map(x => s"($x)")

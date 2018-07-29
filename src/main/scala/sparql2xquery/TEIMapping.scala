@@ -32,7 +32,7 @@ object TEIMapping {
     s"${ontolex}canonicalForm" ->
       BasicPattern(
         Set(
-          "object←$subject[self::entry]//form[@type='lemma' and not (ancestor::re)]|$subject[self:re]//form[@type='lemma']"),
+          "object←$subject[self::entry]//form[@type='lemma' and not (ancestor::re)]|$subject[self::re]//form[@type='lemma']"),
        Set("subject", "object")),
 
     s"${ontolex}attestation" ->
@@ -89,14 +89,15 @@ object TEIMapping {
   val q1 =
     s"""
        |prefix ontolex: <$ontolex>
-       |select ?i0 ?f0 ?w ?l ?r where
+       |prefix skos: <$skos>
+       |select ?i0 ?f0 ?w ?l ?r  where
        |{
        |  ?e0 ontolex:lexicalForm ?f0 .
        |  ?e0 ontolex:id ?i0 .
        |  ?e0 ontolex:canonicalForm ?c0 .
        |  ?c0 ontolex:writtenRep ?l .
        |  ?f0 ontolex:writtenRep ?w .
-       |  ?f0 ontolex:resource ?r
+       |  ?f0 ontolex:resource ?r .
        |}
      """.stripMargin
 
@@ -109,10 +110,23 @@ object TEIMapping {
        |}
      """.stripMargin
 
+  val q3 =
+    s"""
+       |prefix ontolex: <$ontolex>
+       |prefix skos: <$skos>
+       |select ?i0  ?l  ?d where
+       |{
+       |  ?e0 ontolex:sense ?s0 .
+       |  ?e0 ontolex:id ?i0 .
+       |  ?e0 ontolex:canonicalForm ?c0 .
+       |  ?c0 ontolex:writtenRep ?l .
+       |  ?s0 skos:definition ?d
+       |}
+     """.stripMargin
 
   def main(args: Array[String]): Unit = {
     val t = new SparqlToXquery(teiMapping)
-    val x = t.translate(q2)
+    val x = t.translate(q3)
     Console.err.println(x.toQuery())
     val bx = basex.BaseXConnection.wnt
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
