@@ -7,16 +7,16 @@ Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
 
 Ontology(
 Declaration(Class(rdf:Resource))
-Declaration(Class(<http://www.w3.org/ns/lemon/ontolexForm>))
-Declaration(Class(<http://www.w3.org/ns/lemon/ontolexLexicalEntry>))
-Declaration(Class(<http://www.w3.org/ns/lemon/ontolexLexicalSense>))
-Declaration(Class(<http://www.w3.org/ns/lemon/ontolexWord>))
-Declaration(Class(<http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex:Form>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex:LexicalEntry>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex:LexicalSense>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex:Word>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>))
 Declaration(Class(<http://www.w3.org/ns/lemon/vartrans#SenseRelation>))
-Declaration(Class(<rdf:Resource∪ontolexLexicalSense>))
+Declaration(Class(<rdf:Resource∪ontolex:LexicalSense>))
 Declaration(ObjectProperty(<http://lemon-model.net/lemon#definition>))
-Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolexcanonicalForm>))
-Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolexsense>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex:canonicalForm>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex:sense>))
 Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/vartrans#category>))
 Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/vartrans#source>))
 Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/vartrans#target>))
@@ -25,26 +25,26 @@ Declaration(DataProperty(<http://rdf.ivdnt.org/schema/anw/definitionComplement>)
 Declaration(DataProperty(<http://rdf.ivdnt.org/schema/anw/senseOrder>))
 Declaration(DataProperty(<http://rdf.ivdnt.org/schema/anw/subsenseOrder>))
 Declaration(DataProperty(rdfs:label))
-Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolexphoneticRepresentation>))
-Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolexwrittenRepresentation>))
+Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolex:phoneticRepresentation>))
+Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolex:writtenRepresentation>))
 ############################
 #   Object Properties
 ############################
 
 # Object Property: <http://lemon-model.net/lemon#definition> (<http://lemon-model.net/lemon#definition>)
 
-ObjectPropertyDomain(<http://lemon-model.net/lemon#definition> <rdf:Resource∪ontolexLexicalSense>)
+ObjectPropertyDomain(<http://lemon-model.net/lemon#definition> <rdf:Resource∪ontolex:LexicalSense>)
 ObjectPropertyRange(<http://lemon-model.net/lemon#definition> rdf:Resource)
 
-# Object Property: <http://www.w3.org/ns/lemon/ontolexcanonicalForm> (<http://www.w3.org/ns/lemon/ontolexcanonicalForm>)
+# Object Property: <http://www.w3.org/ns/lemon/ontolex:canonicalForm> (<http://www.w3.org/ns/lemon/ontolex:canonicalForm>)
 
-ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolexcanonicalForm> <http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>)
-ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolexcanonicalForm> <http://www.w3.org/ns/lemon/ontolexForm>)
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex:canonicalForm> <http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex:canonicalForm> <http://www.w3.org/ns/lemon/ontolex:Form>)
 
-# Object Property: <http://www.w3.org/ns/lemon/ontolexsense> (<http://www.w3.org/ns/lemon/ontolexsense>)
+# Object Property: <http://www.w3.org/ns/lemon/ontolex:sense> (<http://www.w3.org/ns/lemon/ontolex:sense>)
 
-ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolexsense> <http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>)
-ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolexsense> <rdf:Resource∪ontolexLexicalSense>)
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex:sense> <http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex:sense> <rdf:Resource∪ontolex:LexicalSense>)
 
 # Object Property: <http://www.w3.org/ns/lemon/vartrans#category> (<http://www.w3.org/ns/lemon/vartrans#category>)
 
@@ -54,12 +54,12 @@ ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#category> rdf:Resource)
 # Object Property: <http://www.w3.org/ns/lemon/vartrans#source> (<http://www.w3.org/ns/lemon/vartrans#source>)
 
 ObjectPropertyDomain(<http://www.w3.org/ns/lemon/vartrans#source> <http://www.w3.org/ns/lemon/vartrans#SenseRelation>)
-ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#source> <http://www.w3.org/ns/lemon/ontolexLexicalSense>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#source> <http://www.w3.org/ns/lemon/ontolex:LexicalSense>)
 
 # Object Property: <http://www.w3.org/ns/lemon/vartrans#target> (<http://www.w3.org/ns/lemon/vartrans#target>)
 
 ObjectPropertyDomain(<http://www.w3.org/ns/lemon/vartrans#target> <http://www.w3.org/ns/lemon/vartrans#SenseRelation>)
-ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#target> <http://www.w3.org/ns/lemon/ontolexLexicalSense>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#target> <http://www.w3.org/ns/lemon/ontolex:LexicalSense>)
 
 
 ############################
@@ -79,29 +79,29 @@ DataPropertyRange(<http://rdf.ivdnt.org/schema/anw/definitionComplement> xsd:str
 # Data Property: <http://rdf.ivdnt.org/schema/anw/senseOrder> (<http://rdf.ivdnt.org/schema/anw/senseOrder>)
 
 DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/senseOrder> rdf:Resource)
-DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/senseOrder> <http://www.w3.org/ns/lemon/ontolexLexicalSense>)
+DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/senseOrder> <http://www.w3.org/ns/lemon/ontolex:LexicalSense>)
 DataPropertyRange(<http://rdf.ivdnt.org/schema/anw/senseOrder> xsd:integer)
 
 # Data Property: <http://rdf.ivdnt.org/schema/anw/subsenseOrder> (<http://rdf.ivdnt.org/schema/anw/subsenseOrder>)
 
-DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/subsenseOrder> <http://www.w3.org/ns/lemon/ontolexLexicalSense>)
+DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/subsenseOrder> <http://www.w3.org/ns/lemon/ontolex:LexicalSense>)
 DataPropertyRange(<http://rdf.ivdnt.org/schema/anw/subsenseOrder> xsd:integer)
 
 # Data Property: rdfs:label (rdfs:label)
 
-DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolexLexicalEntry>)
-DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolexWord>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex:LexicalEntry>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex:Word>)
 DataPropertyRange(rdfs:label xsd:string)
 
-# Data Property: <http://www.w3.org/ns/lemon/ontolexphoneticRepresentation> (<http://www.w3.org/ns/lemon/ontolexphoneticRepresentation>)
+# Data Property: <http://www.w3.org/ns/lemon/ontolex:phoneticRepresentation> (<http://www.w3.org/ns/lemon/ontolex:phoneticRepresentation>)
 
-DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolexphoneticRepresentation> <http://www.w3.org/ns/lemon/ontolexForm>)
-DataPropertyRange(<http://www.w3.org/ns/lemon/ontolexphoneticRepresentation> xsd:string)
+DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolex:phoneticRepresentation> <http://www.w3.org/ns/lemon/ontolex:Form>)
+DataPropertyRange(<http://www.w3.org/ns/lemon/ontolex:phoneticRepresentation> xsd:string)
 
-# Data Property: <http://www.w3.org/ns/lemon/ontolexwrittenRepresentation> (<http://www.w3.org/ns/lemon/ontolexwrittenRepresentation>)
+# Data Property: <http://www.w3.org/ns/lemon/ontolex:writtenRepresentation> (<http://www.w3.org/ns/lemon/ontolex:writtenRepresentation>)
 
-DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolexwrittenRepresentation> <http://www.w3.org/ns/lemon/ontolexForm>)
-DataPropertyRange(<http://www.w3.org/ns/lemon/ontolexwrittenRepresentation> xsd:string)
+DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolex:writtenRepresentation> <http://www.w3.org/ns/lemon/ontolex:Form>)
+DataPropertyRange(<http://www.w3.org/ns/lemon/ontolex:writtenRepresentation> xsd:string)
 
 
 
@@ -111,27 +111,27 @@ DataPropertyRange(<http://www.w3.org/ns/lemon/ontolexwrittenRepresentation> xsd:
 
 # Class: rdf:Resource (rdf:Resource)
 
-SubClassOf(rdf:Resource <rdf:Resource∪ontolexLexicalSense>)
+SubClassOf(rdf:Resource <rdf:Resource∪ontolex:LexicalSense>)
 
-# Class: <http://www.w3.org/ns/lemon/ontolexLexicalEntry> (<http://www.w3.org/ns/lemon/ontolexLexicalEntry>)
+# Class: <http://www.w3.org/ns/lemon/ontolex:LexicalEntry> (<http://www.w3.org/ns/lemon/ontolex:LexicalEntry>)
 
-SubClassOf(<http://www.w3.org/ns/lemon/ontolexLexicalEntry> <http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex:LexicalEntry> <http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>)
 
-# Class: <http://www.w3.org/ns/lemon/ontolexLexicalSense> (<http://www.w3.org/ns/lemon/ontolexLexicalSense>)
+# Class: <http://www.w3.org/ns/lemon/ontolex:LexicalSense> (<http://www.w3.org/ns/lemon/ontolex:LexicalSense>)
 
-SubClassOf(<http://www.w3.org/ns/lemon/ontolexLexicalSense> <rdf:Resource∪ontolexLexicalSense>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex:LexicalSense> <rdf:Resource∪ontolex:LexicalSense>)
 
-# Class: <http://www.w3.org/ns/lemon/ontolexWord> (<http://www.w3.org/ns/lemon/ontolexWord>)
+# Class: <http://www.w3.org/ns/lemon/ontolex:Word> (<http://www.w3.org/ns/lemon/ontolex:Word>)
 
-SubClassOf(<http://www.w3.org/ns/lemon/ontolexWord> <http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex:Word> <http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>)
 
-# Class: <http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry> (<http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry>)
+# Class: <http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry> (<http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry>)
 
-EquivalentClasses(<http://www.w3.org/ns/lemon/ontolexWord∪ontolexLexicalEntry> ObjectUnionOf(<http://www.w3.org/ns/lemon/ontolexLexicalEntry> <http://www.w3.org/ns/lemon/ontolexWord>))
+EquivalentClasses(<http://www.w3.org/ns/lemon/ontolex:Word∪ontolex:LexicalEntry> ObjectUnionOf(<http://www.w3.org/ns/lemon/ontolex:LexicalEntry> <http://www.w3.org/ns/lemon/ontolex:Word>))
 
-# Class: <rdf:Resource∪ontolexLexicalSense> (<rdf:Resource∪ontolexLexicalSense>)
+# Class: <rdf:Resource∪ontolex:LexicalSense> (<rdf:Resource∪ontolex:LexicalSense>)
 
-EquivalentClasses(<rdf:Resource∪ontolexLexicalSense> ObjectUnionOf(rdf:Resource <http://www.w3.org/ns/lemon/ontolexLexicalSense>))
+EquivalentClasses(<rdf:Resource∪ontolex:LexicalSense> ObjectUnionOf(rdf:Resource <http://www.w3.org/ns/lemon/ontolex:LexicalSense>))
 
 
 )
