@@ -22,7 +22,6 @@ object TEIMapping {
         Set("subject", "object")
       ),
 
-
     s"${ontolex}resource" ->
       BasicPattern(
         Set("object←concat('http://rdf.ivdnt.org/wnt/genid/',$subject/generate-id())"),
@@ -181,6 +180,7 @@ object TEIMapping {
        |  ?loc ontolex:endIndex ?ei
        |}
      """.stripMargin
+
   def main(args: Array[String]): Unit = {
     val t = new SparqlToXquery(teiMapping)
     val x = t.translate(q4)
@@ -189,4 +189,10 @@ object TEIMapping {
     val resultStream = bx.getAsScalaNodes(x.toQuery()).map(parseResult)
     println(QueryResults.response(resultStream.take(10)))
   }
+}
+
+object printTeiMapping extends App{
+  TEIMapping.testMap.foreach(
+    { case (k,v) => println(s"$k : $v ")}
+  )
 }

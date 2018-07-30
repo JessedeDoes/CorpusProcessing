@@ -125,7 +125,7 @@ trait XQuerySelect extends XQueryNode
 
 case class BasicPattern(pathExpressions: Set[String], variables: Set[Variable]=Set("subject", "object")) extends XQuerySelect
 {
-
+  override def toString = s"${pathExpressions.mkString(", ")}"
   // def union
 }
 
