@@ -6,7 +6,7 @@
   <xsl:strip-space elements="*" />
 
 <xsl:function name="fun:triple"><xsl:param name="subject"/><xsl:param name="predicate"/><xsl:param name="object"/>
-<xsl:value-of select="$subject"/> <xsl:value-of select="$object"/> <xsl:value-of select="$predicate"/> <xsl:text> .
+<xsl:value-of select="$subject"/><xsl:text> </xsl:text> <xsl:value-of select="$predicate"/> <xsl:text> </xsl:text>  <xsl:value-of select="$object"/> <xsl:text> .
 </xsl:text>
 </xsl:function>
   
@@ -62,128 +62,132 @@
   </xsl:template>
 
   <xsl:template match="MweNode">
-    <xsl:text>  lmf:hasMWENode [</xsl:text>
-    <xsl:text>    a lmf:MWENode;</xsl:text>
+    <xsl:variable name="me">http://rdf.ivdnt.org/duelme/node/<xsl:value-of select="generate-id(.)"/></xsl:variable>
+    <xsl:value-of select="fun:triple($me,'a','node')"/>
+    <xsl:variable name="type">
     <xsl:if test="./@syntacticCategory='A'">
-      <xsl:text>    a intskos:NotModifiableAdjective;&#xa;</xsl:text>
+      <xsl:text>intskos:NotModifiableAdjective;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='A1'">
-      <xsl:text>    a intskos:ModifiableAdjective;&#xa;</xsl:text>
+      <xsl:text>intskos:ModifiableAdjective;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='Adv'">
-      <xsl:text>    a olia:Adverb;&#xa;</xsl:text>
+      <xsl:text>olia:Adverb;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='AdvP'">
-      <xsl:text>    a olia:Adverbial;&#xa;</xsl:text>
+      <xsl:text>olia:Adverbial;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='AP'">
-      <xsl:text>    a olia:AdjectivePhrase;&#xa;</xsl:text>
+      <xsl:text>olia:AdjectivePhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='C'">
-      <xsl:text>    a intskos:Complementizer;&#xa;</xsl:text>
+      <xsl:text>intskos:Complementizer;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='CP'">
-      <xsl:text>    a intskos:ComplementizerPhrase;&#xa;</xsl:text>
+      <xsl:text>intskos:ComplementizerPhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='D'">
-      <xsl:text>    a olia:Determiner;&#xa;</xsl:text>
+      <xsl:text>olia:Determiner;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='INF'">
-      <xsl:text>    a olia:Infinitive;&#xa;</xsl:text>
+      <xsl:text>olia:Infinitive;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='N'">
-      <xsl:text>    a intskos:NotFreelyModifiableNoun;&#xa;</xsl:text>
+      <xsl:text>intskos:NotFreelyModifiableNoun;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='N1'">
-      <xsl:text>    a intskos:ModifiableNoun;&#xa;</xsl:text>
+      <xsl:text>intskos:ModifiableNoun;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='NP'">
-      <xsl:text>    a olia:NounPhrase;&#xa;</xsl:text>
+      <xsl:text>olia:NounPhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='OTI'">
-      <xsl:text>    a intskos:OmTeInfinitivePhrase;&#xa;</xsl:text>
+      <xsl:text>intskos:OmTeInfinitivePhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='P'">
-      <xsl:text>    a olia:Preposition;&#xa;</xsl:text>
+      <xsl:text>olia:Preposition;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='PP'">
-      <xsl:text>    a olia:PrepositionalPhrase;&#xa;</xsl:text>
+      <xsl:text>olia:PrepositionalPhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='PRON'">
-      <xsl:text>    a olia:Pronoun;&#xa;</xsl:text>
+      <xsl:text>olia:Pronoun;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='REFLV'">
-      <xsl:text>    a olia:Verb; olia:hasVoice olia:Reflexive;&#xa;</xsl:text>
+      <xsl:text>olia:Verb; olia:hasVoice olia:Reflexive;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='SSUB'">
-      <xsl:text>    a olia:SubordicateClause;&#xa;</xsl:text>
+      <xsl:text>olia:SubordicateClause;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='TI'">
-      <xsl:text>    a intskos:TeInfinitePhrase;&#xa;</xsl:text>
+      <xsl:text>intskos:TeInfinitePhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='V'">
-      <xsl:text>    a olia:Verb;&#xa;</xsl:text>
+      <xsl:text>olia:Verb;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticCategory='VP'">
-      <xsl:text>    a olia:VerbPhrase;&#xa;</xsl:text>
+      <xsl:text>olia:VerbPhrase;&#xa;</xsl:text>
     </xsl:if>
-    <xsl:apply-templates />
-    <xsl:text>  ];&#xa;</xsl:text>
+    </xsl:variable>
+    <xsl:value-of select="fun:triple($me,'a', $type)"/>
+    <xsl:for-each select="./MweEdge"><xsl:call-template name="MweEdge"><xsl:with-param name="node"><xsl:value-of select="$me"/></xsl:with-param></xsl:call-template></xsl:for-each>
   </xsl:template>
 
-  <xsl:template match="MweEdge">
-    <xsl:text>lmf:hasMWEEdge [&#xa;</xsl:text>
-    <xsl:text>    a lmf:MWEEdge;</xsl:text>
+  <xsl:template name="MweEdge">
+    <xsl:param name="node"/>
+    <xsl:variable name="me">http://rdf.ivdnt.org/duelme/egde/<xsl:value-of select="generate-id(.)"/></xsl:variable>
+    <xsl:value-of select="fun:triple($me,'a','edge')"/>
+    <xsl:variable name="type">
     <xsl:if test="./@syntacticFunction='body'">
-      <xsl:text>  a intskos:BodyOfComplementizerPhrase;&#xa;</xsl:text>
+      <xsl:text> intskos:BodyOfComplementizerPhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='cmp'">
-      <xsl:text>  a intskos:HeadOfComplementizerPhrase;&#xa;</xsl:text>
+      <xsl:text>intskos:HeadOfComplementizerPhrase;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='det'">
-      <xsl:text>  a olia:Determiner;&#xa;</xsl:text>
+      <xsl:text>olia:Determiner;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='hd'">
-      <xsl:text>  a olia:Head;&#xa;</xsl:text>
+      <xsl:text>olia:Head;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='ld'">
-      <xsl:text>  a intskos:LocativeDirectionalComplement;&#xa;</xsl:text>
+      <xsl:text>intskos:LocativeDirectionalComplement;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='mod'">
-      <xsl:text>  a olia:Modifier;&#xa;</xsl:text>
+      <xsl:text>olia:Modifier;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='obcomp'">
-      <xsl:text>  a intskos:comparisonComplement;&#xa;</xsl:text>
+      <xsl:text>intskos:comparisonComplement;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='obj1'">
-      <xsl:text>  a olia:DirectObject;&#xa;</xsl:text>
+      <xsl:text>olia:DirectObject;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='obj2'">
-      <xsl:text>  a olia:IndirectObject;&#xa;</xsl:text>
+      <xsl:text>olia:IndirectObject;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='pc'">
-      <xsl:text>  a intskos:PPArgument;&#xa;</xsl:text>
+      <xsl:text>intskos:PPArgument;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='ppcomp'">
-      <xsl:text>  a intskos:ComplementOfAPreposition;&#xa;</xsl:text>
+      <xsl:text>intskos:ComplementOfAPreposition;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='predc'">
-      <xsl:text>  a intskos:PredicativeComplement;&#xa;</xsl:text>
+      <xsl:text>intskos:PredicativeComplement;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='rpron'">
-      <xsl:text>  a intskos:PredicativeAdjunct;&#xa;</xsl:text>
+      <xsl:text>intskos:PredicativeAdjunct;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='se'">
-      <xsl:text>  a intskos:ObligatoryReflexive;&#xa;</xsl:text>
+      <xsl:text>intskos:ObligatoryReflexive;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='su'">
-      <xsl:text>  a olia:SyntacticSubject;&#xa;</xsl:text>
+      <xsl:text>olia:SyntacticSubject;&#xa;</xsl:text>
     </xsl:if>
     <xsl:if test="./@syntacticFunction='vc'">
-      <xsl:text>  a intskos:VerbalComplement;&#xa;</xsl:text>
+      <xsl:text>intskos:VerbalComplement;&#xa;</xsl:text>
     </xsl:if>
-    <xsl:apply-templates />
-    <xsl:text>];&#xa;</xsl:text>
+    </xsl:variable>
+    <xsl:value-of select="./
   </xsl:template>
 
   <xsl:template match="DataRecords/DataRecord/CorpusExamples/CorpusExample">
