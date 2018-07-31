@@ -158,11 +158,15 @@ object readRDF
     if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
   }
 
-  val isA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type"
+  val isA = "http://www.w3.org/1999/02/22-rdf-syntax-ns#type" // http://www.w3.org/2000/01/rdf-schema#type
+  val isA2 = "http://www.w3.org/2000/01/rdf-schema#type"
+
+  val isaas = List(isA,isA2)
 
   def isObjectProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Resource]
   def isDataProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Literal]
-  def isIsA(st:Statement) = st.getPredicate.toString.equals(isA)
+  def isIsA(st:Statement) =
+    isaas.exists(x => st.getPredicate.toString.replaceAll("[<>]","").equals(x.replaceAll("[<>]","")))
 
 
 }

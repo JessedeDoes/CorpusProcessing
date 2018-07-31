@@ -110,7 +110,9 @@ object diagrams {
 
     val isAs = seq.filter(isIsA)
 
-    isAs.foreach(println)
+    Console.err.println("isAs:")
+    isAs.foreach(x => Console.err.println(x))
+
 
     def objectPropertyLabel(s: Statement) =
     {
@@ -135,7 +137,7 @@ object diagrams {
           val className = l.find(isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
 
           val dataProperties = l.filter(isDataProperty)
-          val objectProperties = l.filter(isObjectProperty).filter(!isIsA(_))
+          val objectProperties = l.filter(isObjectProperty).filter(!isIsA(_)).sortBy(_.getPredicate.toString)
 
           val dataPropertyLabelPart = dataProperties.map(dp => s"${shortName(dp.getPredicate)}=${shortName(dp.getObject)}").mkString("\\l")
           val label = if (dataPropertyLabelPart.isEmpty) className else s"$className|$dataPropertyLabelPart"

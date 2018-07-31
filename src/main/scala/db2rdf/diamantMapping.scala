@@ -122,7 +122,7 @@ object diamantMapping {
       Δ(writtenRep, awf, !"wordform"))
   }
 
-  val senses: Mappings = { // je bent totaal vergeten lexical entries aan senses te koppelen oen!!
+  val senses: Mappings = { // je bent totaal vergeten lexical entries aan senses te koppelen; verder null als supersense als er geen supersense is
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
@@ -145,7 +145,7 @@ object diamantMapping {
       synonymQuery,
       Ω(senseDefinition, sense, synonymDef),
       Ω(isA, synonymDef, synonymDefinitionType),
-      Δ(definitionText, senseDefinition, !"synonym"))
+      Δ(definitionText, synonymDef, !"synonym"))
   }
 
 
