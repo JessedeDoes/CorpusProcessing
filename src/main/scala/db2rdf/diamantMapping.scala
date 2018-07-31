@@ -74,6 +74,8 @@ object diamantMapping {
 
   val senseQuery = "select * from senses"
 
+  val subSenseQuery = "select * from senses where parent_id is not null"
+
   val synonymQuery = "select *, dictionary as wdb from diamant.synonym_definitions where correct=true"
 
   val synsetQuery = "select synset_id, unnest(synset) as sense_id, 'WNT' as wdb from diamant.synsets"
@@ -130,11 +132,20 @@ object diamantMapping {
       senseQuery,
       Ω(commonDefinitions.sense, lemmaFromSense, sense),
       Ω(isA, sense, senseType),
-      Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
+      //Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
       Δ(definitionText, definition, !"definition"),
       Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
         // Δ(senseLabel, sense, !"sense_label")
+    )
+  }
+
+  val subsenses: Mappings = {
+    val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
+
+    ⊕(
+      subSenseQuery,
+      Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense)
     )
   }
 
@@ -303,6 +314,7 @@ object diamantMapping {
     Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
 
     write(senses,senseOutput)
+    write(subsenses, senseOutput)
     write(synonyms, senseOutput)
 
     //senses.triplesIterator(db, senseQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
@@ -310,7 +322,6 @@ object diamantMapping {
 
     senseOutput.close()
 
-    System.exit(0)
 
     Console.err.println("###################################################### attestations en quotations")
 
