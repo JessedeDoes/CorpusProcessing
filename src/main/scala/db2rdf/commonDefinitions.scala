@@ -47,6 +47,8 @@ object commonDefinitions {
   val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
   val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
   val canonicalForm:IRI = objectProperty(s"${ontolexPrefix}canonicalForm")
+  val sense:IRI = objectProperty(s"${ontolexPrefix}sense")
+
   val canonicalHistoricalForm:IRI = objectProperty(s"${diamantSchemaPrefix}canonicalHistoricalForm")
   val canonicalModernForm:IRI = objectProperty(s"${diamantSchemaPrefix}canonicalModernForm")
   val hyphenation:IRI = dataProperty(s"${diamantSchemaPrefix}hyphenation")

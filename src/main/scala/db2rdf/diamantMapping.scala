@@ -96,6 +96,7 @@ object diamantMapping {
 
 
   val lemma:ResultSet=>IRI = ~s"$entryResourcePrefix$$wdb/$$persistent_id"
+  val lemmaFromSense:ResultSet=>IRI = ~s"$entryResourcePrefix$$wdb/$$lemma_id"
 
   val lemmata:Mappings = {
     val cf = ~s"$canonicalFormResourcePrefix$$wdb/$$persistent_id"
@@ -121,11 +122,12 @@ object diamantMapping {
       Δ(writtenRep, awf, !"wordform"))
   }
 
-  val senses: Mappings = {
+  val senses: Mappings = { // je bent totaal vergeten lexical entries aan senses te koppelen oen!!
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(
       senseQuery,
+      Ω(commonDefinitions.sense, lemmaFromSense, sense),
       Ω(isA, sense, senseType),
       Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
@@ -180,7 +182,7 @@ object diamantMapping {
       Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
       Ω(text, theAttestation, document),
       Ω(isA, theAttestation, attestationType),
-      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation),
+      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos"))))
   }
@@ -190,7 +192,7 @@ object diamantMapping {
     val quotation = ~s"${quotationResourcePrefix}$$document_id"
 
     ⊕(senseAttestationQuery,
-      Ω(attestation, ~s"$senseResourcePrefix$$sense_id", theAttestation))
+      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation))
   }
 
   val quotations: Mappings = {
@@ -306,6 +308,8 @@ object diamantMapping {
     // synonyms.triplesIterator(db, synonymQuery).take(limit).foreach(x => senseOutput.write(x.toString + "\n"))
 
     senseOutput.close()
+
+    System.exit(0)
 
     Console.err.println("###################################################### attestations en quotations")
 
