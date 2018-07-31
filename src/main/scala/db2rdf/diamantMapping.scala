@@ -74,7 +74,7 @@ object diamantMapping {
 
   val senseQuery = "select * from senses"
 
-  val synonymQuery = "select *, 'MNW' as wdb from diamant.synonym_definitions where correct=true"
+  val synonymQuery = "select *, dictionary as wdb from diamant.synonym_definitions where correct=true"
 
   val synsetQuery = "select synset_id, unnest(synset) as sense_id, 'WNT' as wdb from diamant.synsets"
 
@@ -123,6 +123,7 @@ object diamantMapping {
   }
 
   val senses: Mappings = { // je bent totaal vergeten lexical entries aan senses te koppelen; verder null als supersense als er geen supersense is
+    // en soms foute wdb-indicatie in senses in database ....
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
     ⊕(

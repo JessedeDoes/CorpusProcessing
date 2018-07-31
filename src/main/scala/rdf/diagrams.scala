@@ -134,6 +134,7 @@ object diagrams {
         case (s,l) =>
           val n = shortName(s)
           val n1 = makeIdentifier(n)
+          Console.err.println(s"Subject: $s $n / $n1")
           val className = l.find(isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
 
           val dataProperties = l.filter(isDataProperty)
