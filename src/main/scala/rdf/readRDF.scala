@@ -78,19 +78,19 @@ object readRDF
   def parseToStatements(url: String): Stream[Statement] = parseToGraph(url).iterator().asScala.toStream
   def parseStringToStatements(rdf: String): Stream[Statement] = parseStringToGraph(rdf).iterator().asScala.toStream
 
-  def shortName(r: org.openrdf.model.Value) = {
+  def shortName(r: org.openrdf.model.Value):String = {
     val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
     if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
   }
 
-  def shortName(r:  org.openrdf.model.URI) = {
+  def shortName(r:  org.openrdf.model.URI):String = {
     val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
     if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
   }
 
 
-  def isObjectProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Resource]
-  def isDataProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Literal]
+  def isObjectProperty(st: Statement):Boolean = st.getObject.isInstanceOf[org.openrdf.model.Resource]
+  def isDataProperty(st: Statement):Boolean = st.getObject.isInstanceOf[org.openrdf.model.Literal]
 
 
   def toStream(r: GraphQueryResult):Stream[Statement] =
@@ -172,7 +172,43 @@ object readRDF
     remoteGraphQuery(sesameServer, queryString).foreach(println)
   }
 
+  def stopLogback() =
+  {
+
+    import ch.qos.logback.classic.LoggerContext
+    /*
+      import org.slf4j.LoggerFactory
+    import ch.qos.logback.classic.Level
+    import ch.qos.logback.classic.Logger
+    val loggers = Seq(
+      "org.apache.http",
+      "groovyx.net.http",
+      "oh ja"
+    )
+
+    loggers.foreach { name =>
+      val logger = LoggerFactory.getLogger(name)
+      if (logger.isInstanceOf[Logger]) {
+        val l1 = logger.asInstanceOf[Logger]
+        l1.setLevel(Level.WARN)
+        l1.setAdditive(false)
+      } else
+        {
+          Console.err.println(logger)
+        }
+    }
+    */
+    import org.slf4j.LoggerFactory
+    val loggerContext = LoggerFactory.getILoggerFactory.asInstanceOf[LoggerContext]
+    loggerContext.stop()
+    //System.exit(1)
+  }
+
+  //stopLogback()
+
   def main(args: Array[String]): Unit = {
+    //org.apache.logging.log4j.LogManager.get
+
     testjeG()
   }
 }
