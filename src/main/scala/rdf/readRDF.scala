@@ -206,9 +206,9 @@ object readRDF {
     else {
       Console.err.println(depth)
       val q = s"construct { <$i> ?p ?o } where { <$i> ?p ?o} limit 10"
-      Console.err.println(q)
+      //Console.err.println(q)
       val s = remoteGraphQuery(endpoint, q)
-      s.zipWithIndex.foreach(x => Console.err.println(x))
+      //s.zipWithIndex.foreach(x => Console.err.println(x))
       val objects = s.filter(isObjectProperty).map(_.getObject.asInstanceOf[Resource])
       val down = objects.flatMap(r => collectStuff(endpoint, r.toString, depth - 1))
       s ++ down
@@ -221,7 +221,16 @@ object readRDF {
     //org.apache.logging.log4j.LogManager.get
     val s = collectStuff(dbpedia, huw, 4)
     println(s.size)
-    s.toSet.foreach(println)
+    import org.openrdf.rio.RDFFormat
+    import org.openrdf.rio.RDFWriter
+    import org.openrdf.rio.Rio
+    val writer = Rio.createWriter(RDFFormat.NQUADS, System.out)
+    writer.startRDF
+    s.toSet.foreach(st => writer.handleStatement(st))
+    writer.endRDF
+
+    // connecties moeten worden afgesloten -- hoe netjes te doen?
+
     //testjeG()
   }
 }
