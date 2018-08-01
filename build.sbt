@@ -51,6 +51,9 @@ libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
 // https://mvnrepository.com/artifact/guru.nidi/graphviz-java
 libraryDependencies += "guru.nidi" % "graphviz-java" % "0.5.2"
 
+libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
+libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+
 enablePlugins(TomcatPlugin)
 
 assemblyMergeStrategy in assembly := {

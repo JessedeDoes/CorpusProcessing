@@ -22,6 +22,8 @@ import org.openrdf.query.TupleQueryResult
 import org.openrdf.query.BindingSet
 import org.openrdf.query.QueryLanguage
 
+import org.apache.commons.logging.Log
+import org.apache.commons.logging.LogFactory
 
 object readRDF
 {
@@ -89,6 +91,14 @@ object readRDF
   def isDataProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Literal]
 
 
+  def toStream(r: TupleQueryResult):Stream[BindingSet] =
+  {
+    if (r.hasNext)
+      Stream.cons(r.next(), toStream(r))
+    else
+      Stream.empty[BindingSet]
+  }
+
    def remote() =
    {
      import org.openrdf.repository.Repository
@@ -98,24 +108,34 @@ object readRDF
      val query = "select distinct ?Concept where {[] a ?Concept} LIMIT 100"
      val repo = new HTTPRepository(sesameServer)
 
+     Console.err.println(LogFactory.getFactory.getClass)
      System.exit(1)
+
      try {
        val con = repo.getConnection()
        try {
-         val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y } ";
-         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, queryString);
+         val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10000 "
+         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, queryString)
 
-         val result = tupleQuery.evaluate();
-         try {
+         val result= toStream(tupleQuery.evaluate())
+         result.foreach(bindingSet =>
+         {
+           val valueOfX = bindingSet.getValue("x")
+           val valueOfY = bindingSet.getValue("y")
+           Console.err.println(s"YOO: $valueOfX $valueOfY")
+         }
+         )
+/*         try {
            val bindingSet = result.next();
            val valueOfX = bindingSet.getValue("x");
            val valueOfY = bindingSet.getValue("y");
-           Console.err.println(s"$valueOfX $valueOfY")
+           Console.err.println(s"YOO: $valueOfX $valueOfY")
            // do something interesting with the values here...
          }
          finally {
            result.close();
          }
+         */
        }
        finally {
          con.close();
@@ -123,7 +143,6 @@ object readRDF
      }
      catch  {
        case e: Exception => e.printStackTrace()
-
      }
    }
 

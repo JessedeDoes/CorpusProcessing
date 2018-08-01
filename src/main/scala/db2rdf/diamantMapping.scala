@@ -274,7 +274,7 @@ object diamantMapping {
 
     System.setProperty("org.slf4j.simpleLogger.logFile", "/tmp/loggertje.log")
     System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off")
-    System.setProperty("log4j.rootLogge", "DEBUG, file")
+    System.setProperty("log4j.rootLogger", "WARN, file")
     //val logger = LoggerFactory.getLogger(classOf[Nothing])
     //logger.info("Hello World")
 
