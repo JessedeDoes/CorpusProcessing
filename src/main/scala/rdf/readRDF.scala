@@ -119,7 +119,7 @@ object readRDF
 
      val con = repo.getConnection
      val q = con.prepareGraphQuery(
-       QueryLanguage.SPARQL, "CONSTRUCT { ?s ?p ?o } WHERE {?s ?p ?o . ?o a skos:Concept} limit 100")
+       QueryLanguage.SPARQL, query)
 
      q.setIncludeInferred(false)
 
@@ -153,13 +153,14 @@ object readRDF
      Stream.empty
    }
 
+  val dbpedia = "https://dbpedia.org/sparql"
 
   def testje(): Unit =
   {
-    val sesameServer = "https://dbpedia.org/sparql"
+
     val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10000 "
 
-    remoteTupleQuery(sesameServer, queryString).foreach(bindingSet =>
+    remoteTupleQuery(dbpedia, queryString).foreach(bindingSet =>
     {
       val valueOfX = bindingSet.getValue("x")
       val valueOfY = bindingSet.getValue("y")
@@ -168,9 +169,9 @@ object readRDF
   }
 
   def testjeG() = {  // inference uit!
-    val sesameServer = "https://dbpedia.org/sparql"
+
     val queryString = "CONSTRUCT { ?x ?p ?y } WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10 "
-    remoteGraphQuery(sesameServer, queryString).foreach(println)
+    remoteGraphQuery(dbpedia, queryString).foreach(println)
   }
 
   def stopLogback() =
@@ -207,10 +208,29 @@ object readRDF
 
   //stopLogback()
 
+  def collectStuff(endpoint: String, i: String, depth: Int):Stream[Statement] =
+  {
+    if (depth <= 0) Stream.empty[Statement]
+    else {
+      Console.err.println(depth)
+      val q = s"construct { <$i> ?p ?o } where { <$i> ?p ?o} limit 10"
+      Console.err.println(q)
+      val s = remoteGraphQuery(endpoint, q)
+      s.zipWithIndex.foreach(x => Console.err.println(x))
+      val objects = s.filter(isObjectProperty).map(_.getObject.asInstanceOf[Resource])
+      val down = objects.flatMap(r => collectStuff(endpoint, r.toString, depth - 1))
+      s ++ down
+    }
+  }
+
+  val huw = "http://dbpedia.org/resource/Horse_Under_Water"
+
   def main(args: Array[String]): Unit = {
     //org.apache.logging.log4j.LogManager.get
-
-    testjeG()
+    val s = collectStuff(dbpedia, huw, 4)
+    println(s.size)
+    s.toSet.foreach(println)
+    //testjeG()
   }
 }
 
