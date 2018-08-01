@@ -21,6 +21,8 @@ import org.openrdf.query.TupleQuery
 import org.openrdf.query.TupleQueryResult
 import org.openrdf.query.BindingSet
 import org.openrdf.query.QueryLanguage
+import org.openrdf.query.GraphQueryResult
+
 
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
@@ -91,6 +93,14 @@ object readRDF
   def isDataProperty(st: Statement) = st.getObject.isInstanceOf[org.openrdf.model.Literal]
 
 
+  def toStream(r: GraphQueryResult):Stream[Statement] =
+  {
+    if (r.hasNext)
+      Stream.cons(r.next(), toStream(r))
+    else
+      Stream.empty[Statement]
+  }
+
   def toStream(r: TupleQueryResult):Stream[BindingSet] =
   {
     if (r.hasNext)
@@ -99,14 +109,24 @@ object readRDF
       Stream.empty[BindingSet]
   }
 
-   def remote() =
+
+   def remoteGraphQuery(endpoint: String, query: String):Stream[Statement] =
+   {
+     val repo = new HTTPRepository(endpoint)
+
+     val con = repo.getConnection()
+     val graphResult: GraphQueryResult  = con.prepareGraphQuery(
+       QueryLanguage.SPARQL, "CONSTRUCT { ?s ?p ?o } WHERE {?s ?p ?o }").evaluate()
+
+     toStream(graphResult)
+   }
+
+   def remoteTupleQuery(endpoint: String, query: String):Stream[BindingSet] =
    {
      import org.openrdf.repository.Repository
      import org.openrdf.repository.http.HTTPRepository
-     val sesameServer = "https://dbpedia.org/sparql"
-     val repositoryID = "example-db"
-     val query = "select distinct ?Concept where {[] a ?Concept} LIMIT 100"
-     val repo = new HTTPRepository(sesameServer)
+
+     val repo = new HTTPRepository(endpoint) // er kan nog een repoID bij, wwaarschijnlijk nodig voor onze virtuoso?
 
      Console.err.println(LogFactory.getFactory.getClass)
      System.exit(1)
@@ -114,28 +134,11 @@ object readRDF
      try {
        val con = repo.getConnection()
        try {
-         val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10000 "
-         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, queryString)
+
+         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
 
          val result= toStream(tupleQuery.evaluate())
-         result.foreach(bindingSet =>
-         {
-           val valueOfX = bindingSet.getValue("x")
-           val valueOfY = bindingSet.getValue("y")
-           Console.err.println(s"YOO: $valueOfX $valueOfY")
-         }
-         )
-/*         try {
-           val bindingSet = result.next();
-           val valueOfX = bindingSet.getValue("x");
-           val valueOfY = bindingSet.getValue("y");
-           Console.err.println(s"YOO: $valueOfX $valueOfY")
-           // do something interesting with the values here...
-         }
-         finally {
-           result.close();
-         }
-         */
+         result
        }
        finally {
          con.close();
@@ -144,10 +147,31 @@ object readRDF
      catch  {
        case e: Exception => e.printStackTrace()
      }
+     Stream.empty
    }
 
+
+  def testje(): Unit =
+  {
+    val sesameServer = "https://dbpedia.org/sparql"
+    val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10000 "
+
+    remoteTupleQuery(sesameServer, queryString).foreach(bindingSet =>
+    {
+      val valueOfX = bindingSet.getValue("x")
+      val valueOfY = bindingSet.getValue("y")
+      Console.err.println(s"YOO: $valueOfX $valueOfY")
+    })
+  }
+
+  def testjeG() = {  // inference uit!
+    val sesameServer = "https://dbpedia.org/sparql"
+    val queryString = "CONSTRUCT { ?x ?p ?y } WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10 "
+    remoteGraphQuery(sesameServer, queryString).foreach(println)
+  }
+
   def main(args: Array[String]): Unit = {
-    remote()
+    testjeG()
   }
 }
 
