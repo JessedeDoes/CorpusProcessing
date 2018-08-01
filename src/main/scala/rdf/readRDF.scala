@@ -26,25 +26,22 @@ import org.apache.commons.logging.LogFactory
 
 import scala.annotation.tailrec
 
-object readRDF
-{
-  val formatsToTry = List(RDFFormat.TURTLE, RDFFormat.RDFXML, RDFFormat.NTRIPLES, RDFFormat.N3, RDFFormat.NQUADS,  RDFFormat.JSONLD, RDFFormat.RDFJSON)
+object readRDF {
+  val formatsToTry = List(RDFFormat.TURTLE, RDFFormat.RDFXML, RDFFormat.NTRIPLES, RDFFormat.N3, RDFFormat.NQUADS, RDFFormat.JSONLD, RDFFormat.RDFJSON)
 
   val rdfParsers = formatsToTry.map(Rio.createParser(_)).toStream
 
   //val rdfParser: RDFParser = Rio.createParser(RDFFormat.TURTLE)
 
-  def parseToGraph(f: java.io.File):Graph = parseToGraph(() =>
-  {
+  def parseToGraph(f: java.io.File): Graph = parseToGraph(() => {
     val i = new FileInputStream(f)
     if (f.getName.endsWith(".gz")) new GZIPInputStream(i) else i
-  } )
+  })
 
-  def parseToGraph(fileName: String):Graph = parseToGraph(new java.io.File(fileName))
+  def parseToGraph(fileName: String): Graph = parseToGraph(new java.io.File(fileName))
 
-  def parseStringToGraph(s: String):Graph =
-  {
-    def inputStream():java.io.InputStream = {
+  def parseStringToGraph(s: String): Graph = {
+    def inputStream(): java.io.InputStream = {
       val sr = new StringReader(s)
 
       val x = new ReaderInputStream(sr)
@@ -54,20 +51,21 @@ object readRDF
     parseToGraph(() => inputStream)
   }
 
-  def parseToGraph(inputStream: ()=>java.io.InputStream):org.openrdf.model.Graph  = {
+  def parseToGraph(inputStream: () => java.io.InputStream): org.openrdf.model.Graph = {
     import org.openrdf.rio.helpers.StatementCollector
 
     val attempts = rdfParsers.map(
       rdfParser => {
         Try({
-        val myGraph = new org.openrdf.model.impl.GraphImpl
+          val myGraph = new org.openrdf.model.impl.GraphImpl
 
-        val collector = new StatementCollector(myGraph)
+          val collector = new StatementCollector(myGraph)
 
-        rdfParser.setRDFHandler(collector)
-        rdfParser.parse(inputStream(), "http://")
+          rdfParser.setRDFHandler(collector)
+          rdfParser.parse(inputStream(), "http://")
 
-        myGraph})
+          myGraph
+        })
       })
     attempts.filter(_.isFailure).map(_.asInstanceOf[scala.util.Failure[Graph]]).foreach(println)
     attempts.find(_.isSuccess).map(_.asInstanceOf[scala.util.Success[Graph]].value).get
@@ -75,37 +73,37 @@ object readRDF
 
 
   def parseToStatements(url: String): Stream[Statement] = parseToGraph(url).iterator().asScala.toStream
+
   def parseStringToStatements(rdf: String): Stream[Statement] = parseStringToGraph(rdf).iterator().asScala.toStream
 
-  def shortName(r: org.openrdf.model.Value):String = {
-    val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
-    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
+  def shortName(r: org.openrdf.model.Value): String = {
+    val s = r.stringValue().replaceAll("[#/]$", "").replaceAll(".*(#|/)", "")
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]", "") else s
   }
 
-  def shortName(r:  org.openrdf.model.URI):String = {
-    val s = r.stringValue().replaceAll("[#/]$","").replaceAll(".*(#|/)", "")
-    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]","") else s
+  def shortName(r: org.openrdf.model.URI): String = {
+    val s = r.stringValue().replaceAll("[#/]$", "").replaceAll(".*(#|/)", "")
+    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]", "") else s
   }
 
 
-  def isObjectProperty(st: Statement):Boolean = st.getObject.isInstanceOf[org.openrdf.model.Resource]
-  def isDataProperty(st: Statement):Boolean = st.getObject.isInstanceOf[org.openrdf.model.Literal]
+  def isObjectProperty(st: Statement): Boolean = st.getObject.isInstanceOf[org.openrdf.model.Resource]
+
+  def isDataProperty(st: Statement): Boolean = st.getObject.isInstanceOf[org.openrdf.model.Literal]
 
 
   // def toStream[A](iter: Iterator[A]) = Stream.unfold(iter)(i=>if(i.hasNext) Some((i.next,i)) else None)
 
   // stack overflow als te vaak aangeroepen
 
-  def toStream(r: GraphQueryResult):Stream[Statement] =
-  {
+  def toStream(r: GraphQueryResult): Stream[Statement] = {
     if (r.hasNext)
       Stream.cons(r.next(), toStream(r))
     else
       Stream.empty[Statement]
   }
 
-  def toStream(r: TupleQueryResult):Stream[BindingSet] =
-  {
+  def toStream(r: TupleQueryResult): Stream[BindingSet] = {
     if (r.hasNext)
       Stream.cons(r.next(), toStream(r))
     else
@@ -113,69 +111,64 @@ object readRDF
   }
 
 
-   def remoteGraphQuery(endpoint: String, query: String):Stream[Statement] =
-   {
-     val repo = new HTTPRepository(endpoint)
+  def remoteGraphQuery(endpoint: String, query: String): Stream[Statement] = {
+    val repo = new HTTPRepository(endpoint)
 
-     val con = repo.getConnection
-     val q = con.prepareGraphQuery(
-       QueryLanguage.SPARQL, query)
+    val con = repo.getConnection
+    val q = con.prepareGraphQuery(
+      QueryLanguage.SPARQL, query)
 
-     q.setIncludeInferred(false)
+    q.setIncludeInferred(false)
 
-     val graphResult: GraphQueryResult  = q.evaluate()
+    val graphResult: GraphQueryResult = q.evaluate()
 
-     toStream(graphResult)
-   }
+    toStream(graphResult)
+  }
 
-   def remoteTupleQuery(endpoint: String, query: String):Stream[BindingSet] =
-   {
-     import org.openrdf.repository.Repository
-     import org.openrdf.repository.http.HTTPRepository
+  def remoteTupleQuery(endpoint: String, query: String): Stream[BindingSet] = {
+    import org.openrdf.repository.Repository
+    import org.openrdf.repository.http.HTTPRepository
 
-     val repo = new HTTPRepository(endpoint) // er kan nog een repoID bij, wwaarschijnlijk nodig voor onze virtuoso?
+    val repo = new HTTPRepository(endpoint) // er kan nog een repoID bij, wwaarschijnlijk nodig voor onze virtuoso?
 
 
-     try {
-       val con = repo.getConnection
-       try {
-         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
-         val result= toStream(tupleQuery.evaluate())
-         result
-       }
-       finally {
-         con.close();
-       }
-     }
-     catch  {
-       case e: Exception => e.printStackTrace()
-     }
-     Stream.empty
-   }
+    try {
+      val con = repo.getConnection
+      try {
+        val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
+        val result = toStream(tupleQuery.evaluate())
+        result
+      }
+      finally {
+        con.close();
+      }
+    }
+    catch {
+      case e: Exception => e.printStackTrace()
+    }
+    Stream.empty
+  }
 
   val dbpedia = "https://dbpedia.org/sparql"
 
-  def testje(): Unit =
-  {
+  def testje(): Unit = {
 
     val queryString = "SELECT ?x ?y WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10000 "
 
-    remoteTupleQuery(dbpedia, queryString).foreach(bindingSet =>
-    {
+    remoteTupleQuery(dbpedia, queryString).foreach(bindingSet => {
       val valueOfX = bindingSet.getValue("x")
       val valueOfY = bindingSet.getValue("y")
       Console.err.println(s"YOO: $valueOfX $valueOfY")
     })
   }
 
-  def testjeG() = {  // inference uit!
+  def testjeG() = { // inference uit!
 
     val queryString = "CONSTRUCT { ?x ?p ?y } WHERE { ?x ?p ?y . ?x a skos:Concept }  limit 10 "
     remoteGraphQuery(dbpedia, queryString).foreach(println)
   }
 
-  def stopLogback() =
-  {
+  def stopLogback() = {
 
     import ch.qos.logback.classic.LoggerContext
     /*
@@ -208,8 +201,7 @@ object readRDF
 
   //stopLogback()
 
-  def collectStuff(endpoint: String, i: String, depth: Int):Stream[Statement] =
-  {
+  def collectStuff(endpoint: String, i: String, depth: Int): Stream[Statement] = {
     if (depth <= 0) Stream.empty[Statement]
     else {
       Console.err.println(depth)
