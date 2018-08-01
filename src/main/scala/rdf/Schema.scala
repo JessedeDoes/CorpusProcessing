@@ -14,6 +14,8 @@ import uk.ac.manchester.cs.owl.owlapi.OWLDataFactoryImpl
 import scala.collection.JavaConverters._
 import scala.util.Success
 
+import Settings._
+
 object Schema
 {
   def fromFile(fileName: String) = Schema(new java.io.FileInputStream(fileName))
@@ -214,7 +216,7 @@ case class Schema(inputStream: java.io.InputStream) {
      val name = c.toString
      val n1 = if (name.contains("<")) name else s"<$name>"
 
-     val stmt = s"$n1 <${readRDF.isA}> <http://Class> ."
+     val stmt = s"$n1 <${Settings.isA}> <http://Class> ."
      //Console.err.println(stmt)
      scala.util.Try(parse(stmt))
   }).toSeq.filter(_.isSuccess).map(_.asInstanceOf[Success[org.openrdf.model.Statement]]).map(_.value.asInstanceOf[org.openrdf.model.Statement])

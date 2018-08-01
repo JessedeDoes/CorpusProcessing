@@ -3,6 +3,8 @@ package rdf
 import org.openrdf.model.Resource
 import readRDF._
 
+import Settings._
+
 object guessSchema {
 
   val duelme = "/mnt/Projecten/CLARIAH/WP3_Linguistics/Search/LLOD/Data/DUELME/rdf/duelme.ttl"

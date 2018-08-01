@@ -108,7 +108,7 @@ object diagrams {
   def makeDot(seq: Seq[Statement], includeClassInLabel: Boolean = true):String = {
     val bySubject = seq.groupBy(_.getSubject)
 
-    val isAs = seq.filter(isIsA)
+    val isAs = seq.filter(Settings.isIsA)
 
     Console.err.println("isAs:")
     isAs.foreach(x => Console.err.println(x))
@@ -129,13 +129,14 @@ object diagrams {
       s""""${s.replaceAll("\"","")}""""
     }
 
+    import Settings.isIsA
     val subjectInfo:List[String] = bySubject.toList.map(
       {
         case (s,l) =>
           val n = shortName(s)
           val n1 = makeIdentifier(n)
           Console.err.println(s"Subject: $s $n / $n1")
-          val className = l.find(isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
+          val className = l.find(Settings.isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
 
           val dataProperties = l.filter(isDataProperty)
           val objectProperties = l.filter(isObjectProperty).filter(!isIsA(_)).sortBy(_.getPredicate.toString)

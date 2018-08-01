@@ -187,12 +187,12 @@ object diamantMapping {
 
   val attestations: Mappings = {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
-    val document = ~"http://quotation/$document_id"
+    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
 
     ⊕(
       attestationQuery,
       Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
-      Ω(text, theAttestation, document),
+      Ω(text, theAttestation, quotation),
       Ω(isA, theAttestation, attestationType),
       Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation),
       Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
@@ -201,7 +201,7 @@ object diamantMapping {
 
   val senseAttestations: Mappings = {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
-    val quotation = ~s"${quotationResourcePrefix}$$document_id"
+    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
 
     ⊕(senseAttestationQuery,
       Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation))
