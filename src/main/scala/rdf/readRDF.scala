@@ -115,8 +115,12 @@ object readRDF
      val repo = new HTTPRepository(endpoint)
 
      val con = repo.getConnection()
-     val graphResult: GraphQueryResult  = con.prepareGraphQuery(
-       QueryLanguage.SPARQL, "CONSTRUCT { ?s ?p ?o } WHERE {?s ?p ?o }").evaluate()
+     val q = con.prepareGraphQuery(
+       QueryLanguage.SPARQL, "CONSTRUCT { ?s ?p ?o } WHERE {?s ?p ?o . ?o a skos:Concept} limit 100")
+
+     q.setIncludeInferred(false)
+
+     val graphResult: GraphQueryResult  = q.evaluate()
 
      toStream(graphResult)
    }
@@ -134,9 +138,7 @@ object readRDF
      try {
        val con = repo.getConnection()
        try {
-
          val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
-
          val result= toStream(tupleQuery.evaluate())
          result
        }
