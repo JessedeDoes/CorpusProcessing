@@ -14,7 +14,6 @@ import utils.PostProcessXML
 import scala.collection.JavaConverters._
 import scala.util.Try
 import scala.xml._
-
 import org.openrdf.repository.Repository
 import org.openrdf.repository.http.HTTPRepository
 import org.openrdf.query.TupleQuery
@@ -22,10 +21,10 @@ import org.openrdf.query.TupleQueryResult
 import org.openrdf.query.BindingSet
 import org.openrdf.query.QueryLanguage
 import org.openrdf.query.GraphQueryResult
-
-
 import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
+
+import scala.annotation.tailrec
 
 object readRDF
 {
@@ -93,6 +92,10 @@ object readRDF
   def isDataProperty(st: Statement):Boolean = st.getObject.isInstanceOf[org.openrdf.model.Literal]
 
 
+  // def toStream[A](iter: Iterator[A]) = Stream.unfold(iter)(i=>if(i.hasNext) Some((i.next,i)) else None)
+
+  // stack overflow als te vaak aangeroepen
+
   def toStream(r: GraphQueryResult):Stream[Statement] =
   {
     if (r.hasNext)
@@ -114,7 +117,7 @@ object readRDF
    {
      val repo = new HTTPRepository(endpoint)
 
-     val con = repo.getConnection()
+     val con = repo.getConnection
      val q = con.prepareGraphQuery(
        QueryLanguage.SPARQL, "CONSTRUCT { ?s ?p ?o } WHERE {?s ?p ?o . ?o a skos:Concept} limit 100")
 
@@ -132,11 +135,9 @@ object readRDF
 
      val repo = new HTTPRepository(endpoint) // er kan nog een repoID bij, wwaarschijnlijk nodig voor onze virtuoso?
 
-     Console.err.println(LogFactory.getFactory.getClass)
-     System.exit(1)
 
      try {
-       val con = repo.getConnection()
+       val con = repo.getConnection
        try {
          val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
          val result= toStream(tupleQuery.evaluate())
