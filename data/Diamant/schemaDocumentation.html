@@ -400,6 +400,7 @@
 <p>
     However, if we would like to include <i>All</i> quotations in the lexicon, this would not be sufficient. Besides, a quotation which does not include a snippet can still be considered "evidence", so there is no reason not to label it as attestation.   
     </p> 
+    <p>Conjectural attestations could include a certainty attribute in the Quotation object, cf. teidata.certainty = "high" | "medium" | "low" | "unknown"</p>
     <example>
     	 :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
@@ -414,18 +415,21 @@
       :c0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
+      :f0 diamant:citation :q0 .
       :s0 diamant:citesAsEvidence :q0 .
       :f0 diamant:citesAsEvidence :q0 .
       :s0 diamant:locus :c0 .
       :f0 diamant:locus :c0 . 
-      :q0 a diamant:Quotation .
-      :q0 diamant:snippet "The kine spake booh" .
+      :q0 a diamant:Citation .
+      :q0 diamant:quotationText "The kine spake booh" .
+      :q0 diamant:readingCertain "true" .
+      :q0 diamant:interpretationCertain "false" .
       :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
       :c0 diamant:text :q0 .
       :c0 nif:beginIndex 5 .
       :c0 nif:endIndex 8 .
-      :dt0 a diamant:Text .
+      :dt0 a diamant:Work .
       :dt0 dcterms:author "Bovina Korovina" .
       :dt0 diamant:title "Meadow Meanderings" .
       :dt0 diamant:witnessYearFrom 1810 .

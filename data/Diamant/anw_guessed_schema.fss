@@ -1,0 +1,184 @@
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(
+Declaration(Class(<http://lemon-model.net/lemon#SenseDefinition>))
+Declaration(Class(<http://rdf.ivdnt.org/schema/anw/ANWSymbol>))
+Declaration(Class(rdf:Resource))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#Affix>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#Form>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#LexicalConcept>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#LexicalEntry>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#LexicalSense>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#MultiwordExpression>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#Word>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>))
+Declaration(Class(<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>))
+Declaration(Class(<http://www.w3.org/ns/lemon/vartrans#SenseRelation>))
+Declaration(Class(<rdf:Resource∪LexicalEntry∪LexicalSense>))
+Declaration(ObjectProperty(<http://lemon-model.net/lemon#definition>))
+Declaration(ObjectProperty(<http://rdf.ivdnt.org/schema/anw/subsense>))
+Declaration(ObjectProperty(<http://rdf.ivdnt.org/tagsets/ud#pos>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex#canonicalForm>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex#evokes>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex#reference>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/ontolex#sense>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/vartrans#source>))
+Declaration(ObjectProperty(<http://www.w3.org/ns/lemon/vartrans#target>))
+Declaration(DataProperty(<http://lemon-model.net/lemon#value>))
+Declaration(DataProperty(<http://rdf.ivdnt.org/schema/anw/definitionComplement>))
+Declaration(DataProperty(<http://rdf.ivdnt.org/schema/anw/senseOrder>))
+Declaration(DataProperty(rdfs:label))
+Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolex#phoneticRep>))
+Declaration(DataProperty(<http://www.w3.org/ns/lemon/ontolex#writtenRep>))
+Declaration(DataProperty(<http://www.w3.org/ns/lemon/vartrans#category>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://lemon-model.net/lemon#definition> (<http://lemon-model.net/lemon#definition>)
+
+ObjectPropertyDomain(<http://lemon-model.net/lemon#definition> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+ObjectPropertyRange(<http://lemon-model.net/lemon#definition> <http://lemon-model.net/lemon#SenseDefinition>)
+
+# Object Property: <http://rdf.ivdnt.org/schema/anw/subsense> (<http://rdf.ivdnt.org/schema/anw/subsense>)
+
+ObjectPropertyDomain(<http://rdf.ivdnt.org/schema/anw/subsense> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+ObjectPropertyRange(<http://rdf.ivdnt.org/schema/anw/subsense> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+
+# Object Property: <http://rdf.ivdnt.org/tagsets/ud#pos> (<http://rdf.ivdnt.org/tagsets/ud#pos>)
+
+ObjectPropertyDomain(<http://rdf.ivdnt.org/tagsets/ud#pos> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+ObjectPropertyRange(<http://rdf.ivdnt.org/tagsets/ud#pos> rdf:Resource)
+
+# Object Property: <http://www.w3.org/ns/lemon/ontolex#canonicalForm> (<http://www.w3.org/ns/lemon/ontolex#canonicalForm>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#canonicalForm> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex#canonicalForm> <http://www.w3.org/ns/lemon/ontolex#Form>)
+
+# Object Property: <http://www.w3.org/ns/lemon/ontolex#evokes> (<http://www.w3.org/ns/lemon/ontolex#evokes>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#evokes> <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex#evokes> <http://www.w3.org/ns/lemon/ontolex#LexicalConcept>)
+
+# Object Property: <http://www.w3.org/ns/lemon/ontolex#reference> (<http://www.w3.org/ns/lemon/ontolex#reference>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#reference> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex#reference> <http://www.w3.org/ns/lemon/ontolex#LexicalConcept>)
+
+# Object Property: <http://www.w3.org/ns/lemon/ontolex#sense> (<http://www.w3.org/ns/lemon/ontolex#sense>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#sense> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/ontolex#sense> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+
+# Object Property: <http://www.w3.org/ns/lemon/vartrans#source> (<http://www.w3.org/ns/lemon/vartrans#source>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/vartrans#source> <http://www.w3.org/ns/lemon/vartrans#SenseRelation>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#source> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+
+# Object Property: <http://www.w3.org/ns/lemon/vartrans#target> (<http://www.w3.org/ns/lemon/vartrans#target>)
+
+ObjectPropertyDomain(<http://www.w3.org/ns/lemon/vartrans#target> <http://www.w3.org/ns/lemon/vartrans#SenseRelation>)
+ObjectPropertyRange(<http://www.w3.org/ns/lemon/vartrans#target> <rdf:Resource∪LexicalEntry∪LexicalSense>)
+
+
+############################
+#   Data Properties
+############################
+
+# Data Property: <http://lemon-model.net/lemon#value> (<http://lemon-model.net/lemon#value>)
+
+DataPropertyDomain(<http://lemon-model.net/lemon#value> <http://lemon-model.net/lemon#SenseDefinition>)
+DataPropertyRange(<http://lemon-model.net/lemon#value> xsd:string)
+
+# Data Property: <http://rdf.ivdnt.org/schema/anw/definitionComplement> (<http://rdf.ivdnt.org/schema/anw/definitionComplement>)
+
+DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/definitionComplement> <http://lemon-model.net/lemon#SenseDefinition>)
+DataPropertyRange(<http://rdf.ivdnt.org/schema/anw/definitionComplement> xsd:string)
+
+# Data Property: <http://rdf.ivdnt.org/schema/anw/senseOrder> (<http://rdf.ivdnt.org/schema/anw/senseOrder>)
+
+DataPropertyDomain(<http://rdf.ivdnt.org/schema/anw/senseOrder> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+DataPropertyRange(<http://rdf.ivdnt.org/schema/anw/senseOrder> xsd:integer)
+
+# Data Property: rdfs:label (rdfs:label)
+
+DataPropertyDomain(rdfs:label <http://rdf.ivdnt.org/schema/anw/ANWSymbol>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex#Affix>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex#LexicalEntry>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex#MultiwordExpression>)
+DataPropertyDomain(rdfs:label <http://www.w3.org/ns/lemon/ontolex#Word>)
+DataPropertyRange(rdfs:label xsd:string)
+
+# Data Property: <http://www.w3.org/ns/lemon/ontolex#phoneticRep> (<http://www.w3.org/ns/lemon/ontolex#phoneticRep>)
+
+DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#phoneticRep> <http://www.w3.org/ns/lemon/ontolex#Form>)
+DataPropertyRange(<http://www.w3.org/ns/lemon/ontolex#phoneticRep> xsd:string)
+
+# Data Property: <http://www.w3.org/ns/lemon/ontolex#writtenRep> (<http://www.w3.org/ns/lemon/ontolex#writtenRep>)
+
+DataPropertyDomain(<http://www.w3.org/ns/lemon/ontolex#writtenRep> <http://www.w3.org/ns/lemon/ontolex#Form>)
+DataPropertyRange(<http://www.w3.org/ns/lemon/ontolex#writtenRep> xsd:string)
+
+# Data Property: <http://www.w3.org/ns/lemon/vartrans#category> (<http://www.w3.org/ns/lemon/vartrans#category>)
+
+DataPropertyDomain(<http://www.w3.org/ns/lemon/vartrans#category> <http://www.w3.org/ns/lemon/vartrans#SenseRelation>)
+DataPropertyRange(<http://www.w3.org/ns/lemon/vartrans#category> xsd:string)
+
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://rdf.ivdnt.org/schema/anw/ANWSymbol> (<http://rdf.ivdnt.org/schema/anw/ANWSymbol>)
+
+SubClassOf(<http://rdf.ivdnt.org/schema/anw/ANWSymbol> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+SubClassOf(<http://rdf.ivdnt.org/schema/anw/ANWSymbol> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+
+# Class: rdf:Resource (rdf:Resource)
+
+SubClassOf(rdf:Resource <rdf:Resource∪LexicalEntry∪LexicalSense>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#Affix> (<http://www.w3.org/ns/lemon/ontolex#Affix>)
+
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#Affix> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> (<http://www.w3.org/ns/lemon/ontolex#LexicalEntry>)
+
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <rdf:Resource∪LexicalEntry∪LexicalSense>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#LexicalSense> (<http://www.w3.org/ns/lemon/ontolex#LexicalSense>)
+
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#LexicalSense> <rdf:Resource∪LexicalEntry∪LexicalSense>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#MultiwordExpression> (<http://www.w3.org/ns/lemon/ontolex#MultiwordExpression>)
+
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#MultiwordExpression> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#MultiwordExpression> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#Word> (<http://www.w3.org/ns/lemon/ontolex#Word>)
+
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#Word> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+SubClassOf(<http://www.w3.org/ns/lemon/ontolex#Word> <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol> (<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol>)
+
+EquivalentClasses(<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪ANWSymbol> ObjectUnionOf(<http://rdf.ivdnt.org/schema/anw/ANWSymbol> <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <http://www.w3.org/ns/lemon/ontolex#MultiwordExpression> <http://www.w3.org/ns/lemon/ontolex#Word>))
+
+# Class: <http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol> (<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol>)
+
+EquivalentClasses(<http://www.w3.org/ns/lemon/ontolex#Word∪MultiwordExpression∪LexicalEntry∪Affix∪ANWSymbol> ObjectUnionOf(<http://rdf.ivdnt.org/schema/anw/ANWSymbol> <http://www.w3.org/ns/lemon/ontolex#Affix> <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <http://www.w3.org/ns/lemon/ontolex#MultiwordExpression> <http://www.w3.org/ns/lemon/ontolex#Word>))
+
+# Class: <rdf:Resource∪LexicalEntry∪LexicalSense> (<rdf:Resource∪LexicalEntry∪LexicalSense>)
+
+EquivalentClasses(<rdf:Resource∪LexicalEntry∪LexicalSense> ObjectUnionOf(rdf:Resource <http://www.w3.org/ns/lemon/ontolex#LexicalEntry> <http://www.w3.org/ns/lemon/ontolex#LexicalSense>))
+
+
+)

@@ -51,8 +51,21 @@ libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
 // https://mvnrepository.com/artifact/guru.nidi/graphviz-java
 libraryDependencies += "guru.nidi" % "graphviz-java" % "0.5.2"
 
-libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
-libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
+/*
+https://github.com/iovka/shex-java
+
+<dependency>
+  	<groupId>fr.inria.lille.shexjava</groupId>
+  	<artifactId>shexjava-core</artifactId>
+  	<version>1.0</version>
+ </dependency>
+*/
+
+// https://mvnrepository.com/artifact/fr.inria.lille.shexjava/shexjava-core
+// libraryDependencies += "fr.inria.lille.shexjava" % "shexjava-core" % "1.0"
+
+//libraryDependencies += "org.apache.logging.log4j" % "log4j-api" % "2.11.1"
+//libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
 
 enablePlugins(TomcatPlugin)
 

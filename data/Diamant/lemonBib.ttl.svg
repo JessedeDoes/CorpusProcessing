@@ -1,0 +1,253 @@
+<svg width="1916pt" height="204pt"
+ viewBox="0.00 0.00 1916.00 204.00" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(1 1) rotate(0) translate(4 200)">
+<title>G</title>
+<polygon fill="#ffffff" stroke="transparent" points="-4,4 -4,-200 1912,-200 1912,4 -4,4"/>
+<!-- Attestation -->
+<g id="node1" class="node">
+<title>Attestation</title>
+<path fill="none" stroke="#000000" d="M727,-53C727,-53 585,-53 585,-53 579,-53 573,-47 573,-41 573,-41 573,-12 573,-12 573,-6 579,0 585,0 585,0 727,0 727,0 733,0 739,-6 739,-12 739,-12 739,-41 739,-41 739,-47 733,-53 727,-53"/>
+<polygon fill="#add8e6" stroke="transparent" points="581,-33.5 581,-48.5 731,-48.5 731,-33.5 581,-33.5"/>
+<text text-anchor="start" x="620.5" y="-39.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">Attestation:Class</text>
+<text text-anchor="start" x="583" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="657" y="-23.5" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;Attestation&#39; is a c</text>
+<text text-anchor="start" x="592" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="670" y="-8.5" font-family="Times,serif" font-size="10.00" fill="#000000">Attestation</text>
+</g>
+<!-- hasContext -->
+<g id="node2" class="node">
+<title>hasContext</title>
+<path fill="none" stroke="#000000" d="M160,-173.5C160,-173.5 12,-173.5 12,-173.5 6,-173.5 0,-167.5 0,-161.5 0,-161.5 0,-132.5 0,-132.5 0,-126.5 6,-120.5 12,-120.5 12,-120.5 160,-120.5 160,-120.5 166,-120.5 172,-126.5 172,-132.5 172,-132.5 172,-161.5 172,-161.5 172,-167.5 166,-173.5 160,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="8,-154 8,-169 164,-169 164,-154 8,-154"/>
+<text text-anchor="start" x="43" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">hasContext:Property</text>
+<text text-anchor="start" x="10" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="84" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;hasContext&#39; is a da</text>
+<text text-anchor="start" x="19" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="99.5" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">has context</text>
+</g>
+<!-- hasContext&#45;&gt;Attestation -->
+<g id="edge1" class="edge">
+<title>hasContext&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M130.119,-120.4399C145.7185,-112.0889 163.6959,-103.5965 181,-98 309.3645,-56.4844 465.1797,-38.8862 562.4906,-31.5558"/>
+<polygon fill="#000088" stroke="#000088" points="572.5983,-30.8155 562.9537,-36.034 567.6116,-31.1808 562.625,-31.5461 562.625,-31.5461 562.625,-31.5461 567.6116,-31.1808 562.2962,-27.0581 572.5983,-30.8155 572.5983,-30.8155"/>
+<text text-anchor="middle" x="282" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">domain</text>
+</g>
+<!-- string -->
+<g id="node3" class="node">
+<title>string</title>
+<path fill="none" stroke="#000000" d="M109,-44.5C109,-44.5 63,-44.5 63,-44.5 57,-44.5 51,-38.5 51,-32.5 51,-32.5 51,-20.5 51,-20.5 51,-14.5 57,-8.5 63,-8.5 63,-8.5 109,-8.5 109,-8.5 115,-8.5 121,-14.5 121,-20.5 121,-20.5 121,-32.5 121,-32.5 121,-38.5 115,-44.5 109,-44.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="59,-18.5 59,-33.5 113,-33.5 113,-18.5 59,-18.5"/>
+<text text-anchor="start" x="61" y="-24.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">string:Class</text>
+</g>
+<!-- hasContext&#45;&gt;string -->
+<g id="edge2" class="edge">
+<title>hasContext&#45;&gt;string</title>
+<path fill="none" stroke="#000088" d="M86,-120.2571C86,-100.8343 86,-74.5994 86,-54.8206"/>
+<polygon fill="#000088" stroke="#000088" points="86,-44.5808 90.5001,-54.5808 86,-49.5808 86.0001,-54.5808 86.0001,-54.5808 86.0001,-54.5808 86,-49.5808 81.5001,-54.5808 86,-44.5808 86,-44.5808"/>
+<text text-anchor="middle" x="95.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">range</text>
+</g>
+<!-- conjectural -->
+<g id="node4" class="node">
+<title>conjectural</title>
+<path fill="none" stroke="#000000" d="M1300.5,-173.5C1300.5,-173.5 1157.5,-173.5 1157.5,-173.5 1151.5,-173.5 1145.5,-167.5 1145.5,-161.5 1145.5,-161.5 1145.5,-132.5 1145.5,-132.5 1145.5,-126.5 1151.5,-120.5 1157.5,-120.5 1157.5,-120.5 1300.5,-120.5 1300.5,-120.5 1306.5,-120.5 1312.5,-126.5 1312.5,-132.5 1312.5,-132.5 1312.5,-161.5 1312.5,-161.5 1312.5,-167.5 1306.5,-173.5 1300.5,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1154,-154 1154,-169 1305,-169 1305,-154 1154,-154"/>
+<text text-anchor="start" x="1186" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">conjectural:Property</text>
+<text text-anchor="start" x="1156" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1230" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;conjectural&#39; is a d</text>
+<text text-anchor="start" x="1165" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1243.5" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">conjectural</text>
+</g>
+<!-- conjectural&#45;&gt;Attestation -->
+<g id="edge3" class="edge">
+<title>conjectural&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M1185.8753,-120.4036C1170.6095,-112.0497 1152.9971,-103.5647 1136,-98 1005.8857,-55.4013 847.5514,-38.0737 749.2493,-31.0989"/>
+<polygon fill="#000088" stroke="#000088" points="739.0422,-30.3966 749.3275,-26.5937 744.0304,-30.7399 749.0186,-31.0831 749.0186,-31.0831 749.0186,-31.0831 744.0304,-30.7399 748.7097,-35.5725 739.0422,-30.3966 739.0422,-30.3966"/>
+<text text-anchor="middle" x="1085" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">domain</text>
+</g>
+<!-- boolean -->
+<g id="node5" class="node">
+<title>boolean</title>
+<path fill="none" stroke="#000000" d="M1257,-44.5C1257,-44.5 1201,-44.5 1201,-44.5 1195,-44.5 1189,-38.5 1189,-32.5 1189,-32.5 1189,-20.5 1189,-20.5 1189,-14.5 1195,-8.5 1201,-8.5 1201,-8.5 1257,-8.5 1257,-8.5 1263,-8.5 1269,-14.5 1269,-20.5 1269,-20.5 1269,-32.5 1269,-32.5 1269,-38.5 1263,-44.5 1257,-44.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1197,-18.5 1197,-33.5 1261,-33.5 1261,-18.5 1197,-18.5"/>
+<text text-anchor="start" x="1199" y="-24.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">boolean:Class</text>
+</g>
+<!-- conjectural&#45;&gt;boolean -->
+<g id="edge4" class="edge">
+<title>conjectural&#45;&gt;boolean</title>
+<path fill="none" stroke="#000088" d="M1229,-120.2571C1229,-100.8343 1229,-74.5994 1229,-54.8206"/>
+<polygon fill="#000088" stroke="#000088" points="1229,-44.5808 1233.5001,-54.5808 1229,-49.5808 1229.0001,-54.5808 1229.0001,-54.5808 1229.0001,-54.5808 1229,-49.5808 1224.5001,-54.5808 1229,-44.5808 1229,-44.5808"/>
+<text text-anchor="middle" x="1238.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">range</text>
+</g>
+<!-- hasURN -->
+<g id="node6" class="node">
+<title>hasURN</title>
+<path fill="none" stroke="#000000" d="M1494,-173.5C1494,-173.5 1342,-173.5 1342,-173.5 1336,-173.5 1330,-167.5 1330,-161.5 1330,-161.5 1330,-132.5 1330,-132.5 1330,-126.5 1336,-120.5 1342,-120.5 1342,-120.5 1494,-120.5 1494,-120.5 1500,-120.5 1506,-126.5 1506,-132.5 1506,-132.5 1506,-161.5 1506,-161.5 1506,-167.5 1500,-173.5 1494,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1338,-154 1338,-169 1498,-169 1498,-154 1338,-154"/>
+<text text-anchor="start" x="1381" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">hasURN:Property</text>
+<text text-anchor="start" x="1340" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1414" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;hasURN&#39; is a dataty</text>
+<text text-anchor="start" x="1349" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1436" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">has URN</text>
+</g>
+<!-- isAttestedBy -->
+<g id="node7" class="node">
+<title>isAttestedBy</title>
+<path fill="none" stroke="#000000" d="M350,-173.5C350,-173.5 202,-173.5 202,-173.5 196,-173.5 190,-167.5 190,-161.5 190,-161.5 190,-132.5 190,-132.5 190,-126.5 196,-120.5 202,-120.5 202,-120.5 350,-120.5 350,-120.5 356,-120.5 362,-126.5 362,-132.5 362,-132.5 362,-161.5 362,-161.5 362,-167.5 356,-173.5 350,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="198,-154 198,-169 354,-169 354,-154 198,-154"/>
+<text text-anchor="start" x="231" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">isAttestedBy:Property</text>
+<text text-anchor="start" x="200" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="274" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;isAttestedBy&#39; is an</text>
+<text text-anchor="start" x="209" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="286" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">is attested by</text>
+</g>
+<!-- isAttestedBy&#45;&gt;Attestation -->
+<g id="edge5" class="edge">
+<title>isAttestedBy&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M322.3747,-120.37C337.5366,-112.4047 354.6801,-104.1615 371,-98 433.3545,-74.4583 506.2977,-56.3223 562.7792,-44.2064"/>
+<polygon fill="#000088" stroke="#000088" points="572.769,-42.0892 563.9193,-48.5648 567.8776,-43.1259 562.9863,-44.1626 562.9863,-44.1626 562.9863,-44.1626 567.8776,-43.1259 562.0533,-39.7604 572.769,-42.0892 572.769,-42.0892"/>
+<text text-anchor="middle" x="457.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">range</text>
+</g>
+<!-- lemonBib -->
+<g id="node8" class="node">
+<title>lemonBib</title>
+<path fill="none" stroke="#000000" d="M1702,-196C1702,-196 1536,-196 1536,-196 1530,-196 1524,-190 1524,-184 1524,-184 1524,-110 1524,-110 1524,-104 1530,-98 1536,-98 1536,-98 1702,-98 1702,-98 1708,-98 1714,-104 1714,-110 1714,-110 1714,-184 1714,-184 1714,-190 1708,-196 1702,-196"/>
+<polygon fill="#add8e6" stroke="transparent" points="1532,-177 1532,-192 1706,-192 1706,-177 1532,-177"/>
+<text text-anchor="start" x="1578" y="-183" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">lemonBib:Ontology</text>
+<text text-anchor="start" x="1534.5" y="-167" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;description &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1617" y="-167" font-family="Times,serif" font-size="10.00" fill="#000000">lemonBib is an exten</text>
+<text text-anchor="start" x="1544.5" y="-152" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;issued &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1636" y="-152" font-family="Times,serif" font-size="10.00" fill="#000000">2018&#45;05&#45;24</text>
+<text text-anchor="start" x="1546" y="-137" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;rights &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1645" y="-137" font-family="Times,serif" font-size="10.00" fill="#000000">CC&#45;BY</text>
+<text text-anchor="start" x="1549" y="-122" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;title &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1640" y="-122" font-family="Times,serif" font-size="10.00" fill="#000000">lemonBib</text>
+<text text-anchor="start" x="1534" y="-107" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;versionInfo &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1633" y="-107" font-family="Times,serif" font-size="10.00" fill="#000000">Version 0.1.0</text>
+</g>
+<!-- anasfahadkhan -->
+<g id="node9" class="node">
+<title>anasfahadkhan</title>
+<path fill="none" stroke="#000000" d="M1550,-44.5C1550,-44.5 1454,-44.5 1454,-44.5 1448,-44.5 1442,-38.5 1442,-32.5 1442,-32.5 1442,-20.5 1442,-20.5 1442,-14.5 1448,-8.5 1454,-8.5 1454,-8.5 1550,-8.5 1550,-8.5 1556,-8.5 1562,-14.5 1562,-20.5 1562,-20.5 1562,-32.5 1562,-32.5 1562,-38.5 1556,-44.5 1550,-44.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1450,-18.5 1450,-33.5 1554,-33.5 1554,-18.5 1450,-18.5"/>
+<text text-anchor="start" x="1452" y="-24.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">anas_fahad_khan:Class</text>
+</g>
+<!-- lemonBib&#45;&gt;anasfahadkhan -->
+<g id="edge6" class="edge">
+<title>lemonBib&#45;&gt;anasfahadkhan</title>
+<path fill="none" stroke="#000088" d="M1571.4116,-97.988C1556.0746,-82.1922 1539.7002,-65.328 1526.7091,-51.9482"/>
+<polygon fill="#000088" stroke="#000088" points="1519.4845,-44.5075 1529.6791,-48.5473 1522.9675,-48.0948 1526.4506,-51.682 1526.4506,-51.682 1526.4506,-51.682 1522.9675,-48.0948 1523.2221,-54.8168 1519.4845,-44.5075 1519.4845,-44.5075"/>
+<text text-anchor="middle" x="1572" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">contributor</text>
+</g>
+<!-- ontolex -->
+<g id="node10" class="node">
+<title>ontolex</title>
+<path fill="none" stroke="#000000" d="M1646,-44.5C1646,-44.5 1592,-44.5 1592,-44.5 1586,-44.5 1580,-38.5 1580,-32.5 1580,-32.5 1580,-20.5 1580,-20.5 1580,-14.5 1586,-8.5 1592,-8.5 1592,-8.5 1646,-8.5 1646,-8.5 1652,-8.5 1658,-14.5 1658,-20.5 1658,-20.5 1658,-32.5 1658,-32.5 1658,-38.5 1652,-44.5 1646,-44.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1588,-18.5 1588,-33.5 1650,-33.5 1650,-18.5 1588,-18.5"/>
+<text text-anchor="start" x="1590.5" y="-24.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">ontolex:Class</text>
+</g>
+<!-- lemonBib&#45;&gt;ontolex -->
+<g id="edge7" class="edge">
+<title>lemonBib&#45;&gt;ontolex</title>
+<path fill="none" stroke="#000088" d="M1619,-97.988C1619,-83.2256 1619,-67.5299 1619,-54.6176"/>
+<polygon fill="#000088" stroke="#000088" points="1619,-44.5075 1623.5001,-54.5075 1619,-49.5075 1619.0001,-54.5075 1619.0001,-54.5075 1619.0001,-54.5075 1619,-49.5075 1614.5001,-54.5075 1619,-44.5075 1619,-44.5075"/>
+<text text-anchor="middle" x="1631.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">imports</text>
+</g>
+<!-- all -->
+<g id="node11" class="node">
+<title>all</title>
+<path fill="none" stroke="#000000" d="M1722,-44.5C1722,-44.5 1688,-44.5 1688,-44.5 1682,-44.5 1676,-38.5 1676,-32.5 1676,-32.5 1676,-20.5 1676,-20.5 1676,-14.5 1682,-8.5 1688,-8.5 1688,-8.5 1722,-8.5 1722,-8.5 1728,-8.5 1734,-14.5 1734,-20.5 1734,-20.5 1734,-32.5 1734,-32.5 1734,-38.5 1728,-44.5 1722,-44.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1684,-18.5 1684,-33.5 1726,-33.5 1726,-18.5 1684,-18.5"/>
+<text text-anchor="start" x="1686.5" y="-24.5" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">all:Class</text>
+</g>
+<!-- lemonBib&#45;&gt;all -->
+<g id="edge8" class="edge">
+<title>lemonBib&#45;&gt;all</title>
+<path fill="none" stroke="#000088" d="M1653.9795,-97.988C1665.0421,-82.4875 1676.8391,-65.958 1686.2997,-52.7021"/>
+<polygon fill="#000088" stroke="#000088" points="1692.1482,-44.5075 1690.0018,-55.2613 1689.2436,-48.5773 1686.3389,-52.6471 1686.3389,-52.6471 1686.3389,-52.6471 1689.2436,-48.5773 1682.6761,-50.033 1692.1482,-44.5075 1692.1482,-44.5075"/>
+<text text-anchor="middle" x="1684.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">imports</text>
+</g>
+<!-- foundIn -->
+<g id="node12" class="node">
+<title>foundIn</title>
+<path fill="none" stroke="#000000" d="M539.5,-173.5C539.5,-173.5 392.5,-173.5 392.5,-173.5 386.5,-173.5 380.5,-167.5 380.5,-161.5 380.5,-161.5 380.5,-132.5 380.5,-132.5 380.5,-126.5 386.5,-120.5 392.5,-120.5 392.5,-120.5 539.5,-120.5 539.5,-120.5 545.5,-120.5 551.5,-126.5 551.5,-132.5 551.5,-132.5 551.5,-161.5 551.5,-161.5 551.5,-167.5 545.5,-173.5 539.5,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="389,-154 389,-169 544,-169 544,-154 389,-154"/>
+<text text-anchor="start" x="430.5" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">foundIn:Property</text>
+<text text-anchor="start" x="391" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="465" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;foundIn&#39; is an obje</text>
+<text text-anchor="start" x="400" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="486" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">found in</text>
+</g>
+<!-- foundIn&#45;&gt;Attestation -->
+<g id="edge9" class="edge">
+<title>foundIn&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M508.1672,-120.2571C536.8246,-102.0823 574.8868,-77.9429 605.2127,-58.7098"/>
+<polygon fill="#000088" stroke="#000088" points="613.9507,-53.1681 607.916,-62.3241 609.7283,-55.846 605.5059,-58.524 605.5059,-58.524 605.5059,-58.524 609.7283,-55.846 603.0957,-54.7238 613.9507,-53.1681 613.9507,-53.1681"/>
+<text text-anchor="middle" x="596" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">domain</text>
+</g>
+<!-- hasBiblScope -->
+<g id="node13" class="node">
+<title>hasBiblScope</title>
+<path fill="none" stroke="#000000" d="M1896,-173.5C1896,-173.5 1744,-173.5 1744,-173.5 1738,-173.5 1732,-167.5 1732,-161.5 1732,-161.5 1732,-132.5 1732,-132.5 1732,-126.5 1738,-120.5 1744,-120.5 1744,-120.5 1896,-120.5 1896,-120.5 1902,-120.5 1908,-126.5 1908,-132.5 1908,-132.5 1908,-161.5 1908,-161.5 1908,-167.5 1902,-173.5 1896,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="1740,-154 1740,-169 1900,-169 1900,-154 1740,-154"/>
+<text text-anchor="start" x="1772" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">hasBiblScope:Property</text>
+<text text-anchor="start" x="1742" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1818" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;hasBiblScope&#39; is a </text>
+<text text-anchor="start" x="1751" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1816" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">has bibliographic sc</text>
+</g>
+<!-- attestationCitation -->
+<g id="node14" class="node">
+<title>attestationCitation</title>
+<path fill="none" stroke="#000000" d="M730.5,-173.5C730.5,-173.5 581.5,-173.5 581.5,-173.5 575.5,-173.5 569.5,-167.5 569.5,-161.5 569.5,-161.5 569.5,-132.5 569.5,-132.5 569.5,-126.5 575.5,-120.5 581.5,-120.5 581.5,-120.5 730.5,-120.5 730.5,-120.5 736.5,-120.5 742.5,-126.5 742.5,-132.5 742.5,-132.5 742.5,-161.5 742.5,-161.5 742.5,-167.5 736.5,-173.5 730.5,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="578,-154 578,-169 735,-169 735,-154 578,-154"/>
+<text text-anchor="start" x="597.5" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">attestationCitation:Property</text>
+<text text-anchor="start" x="580" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="654" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;attestationCitation</text>
+<text text-anchor="start" x="589" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="655" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">attestation citation</text>
+</g>
+<!-- attestationCitation&#45;&gt;Attestation -->
+<g id="edge10" class="edge">
+<title>attestationCitation&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M656,-120.2571C656,-103.4864 656,-81.637 656,-63.2501"/>
+<polygon fill="#000088" stroke="#000088" points="656,-53.1681 660.5001,-63.1681 656,-58.1681 656.0001,-63.1681 656.0001,-63.1681 656.0001,-63.1681 656,-58.1681 651.5001,-63.1681 656,-53.1681 656,-53.1681"/>
+<text text-anchor="middle" x="668" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">domain</text>
+</g>
+<!-- involvedinAttestation -->
+<g id="node15" class="node">
+<title>involvedinAttestation</title>
+<path fill="none" stroke="#000000" d="M925,-173.5C925,-173.5 773,-173.5 773,-173.5 767,-173.5 761,-167.5 761,-161.5 761,-161.5 761,-132.5 761,-132.5 761,-126.5 767,-120.5 773,-120.5 773,-120.5 925,-120.5 925,-120.5 931,-120.5 937,-126.5 937,-132.5 937,-132.5 937,-161.5 937,-161.5 937,-167.5 931,-173.5 925,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="769,-154 769,-169 929,-169 929,-154 769,-154"/>
+<text text-anchor="start" x="785" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">involvedinAttestation:Property</text>
+<text text-anchor="start" x="771" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="845" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;involvedinAttestati</text>
+<text text-anchor="start" x="780" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="846.5" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">involved in attesati</text>
+</g>
+<!-- involvedinAttestation&#45;&gt;Attestation -->
+<g id="edge11" class="edge">
+<title>involvedinAttestation&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M806.167,-120.2571C777.0572,-102.0823 738.394,-77.9429 707.5892,-58.7098"/>
+<polygon fill="#000088" stroke="#000088" points="698.7132,-53.1681 709.5789,-54.6471 702.9545,-55.8161 707.1957,-58.4642 707.1957,-58.4642 707.1957,-58.4642 702.9545,-55.8161 704.8124,-62.2813 698.7132,-53.1681 698.7132,-53.1681"/>
+<text text-anchor="middle" x="750.5" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">range</text>
+</g>
+<!-- attests -->
+<g id="node16" class="node">
+<title>attests</title>
+<path fill="none" stroke="#000000" d="M1115,-173.5C1115,-173.5 967,-173.5 967,-173.5 961,-173.5 955,-167.5 955,-161.5 955,-161.5 955,-132.5 955,-132.5 955,-126.5 961,-120.5 967,-120.5 967,-120.5 1115,-120.5 1115,-120.5 1121,-120.5 1127,-126.5 1127,-132.5 1127,-132.5 1127,-161.5 1127,-161.5 1127,-167.5 1121,-173.5 1115,-173.5"/>
+<polygon fill="#add8e6" stroke="transparent" points="963,-154 963,-169 1119,-169 1119,-154 963,-154"/>
+<text text-anchor="start" x="1008" y="-160" font-family="Times,serif" font-style="italic" font-size="10.00" fill="#000000">attests:Property</text>
+<text text-anchor="start" x="965" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;comment &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1039" y="-144" font-family="Times,serif" font-size="10.00" fill="#000000">&#39;isAttestedBy&#39; is an</text>
+<text text-anchor="start" x="974" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000"> &#160;&#160;&#160;&#160;&#160;&#160;&#160;label &#160;&#160;&#160;&#160;&#160;</text>
+<text text-anchor="start" x="1065" y="-129" font-family="Times,serif" font-size="10.00" fill="#000000">attests</text>
+</g>
+<!-- attests&#45;&gt;Attestation -->
+<g id="edge12" class="edge">
+<title>attests&#45;&gt;Attestation</title>
+<path fill="none" stroke="#000088" d="M994.6403,-120.3301C979.4792,-112.3626 962.3324,-104.1283 946,-98 881.8622,-73.9341 806.6928,-55.6658 748.9573,-43.6202"/>
+<polygon fill="#000088" stroke="#000088" points="739.1177,-41.5922 749.8202,-39.2035 744.0147,-42.6015 748.9118,-43.6109 748.9118,-43.6109 748.9118,-43.6109 744.0147,-42.6015 748.0034,-48.0183 739.1177,-41.5922 739.1177,-41.5922"/>
+<text text-anchor="middle" x="904" y="-73.6" font-family="Times,serif" font-size="8.00" fill="#000000">domain</text>
+</g>
+</g>
+</svg>

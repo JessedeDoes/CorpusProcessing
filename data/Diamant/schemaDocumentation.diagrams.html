@@ -70,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/e4a13537-96e2-477e-9e92-da8bebd0a0c1.svg"/>
+    </pre><img src="images/3da2728c-00ef-4976-ae71-089c041f4bca.svg"/>
             </div>
 
     <div>
@@ -120,7 +120,7 @@
 
 
         
-    </pre><img src="images/9fcf7065-1a3d-4dce-9b66-09824f1a3d6b.svg"/>
+    </pre><img src="images/baee25ef-a770-4f5f-ad22-dbe90386d345.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -279,7 +279,7 @@
             ];
             .
         
-    </pre><img src="images/1112f927-15b2-4c8b-91a4-145333b1e6d4.svg"/>
+    </pre><img src="images/86288354-cb55-4a9d-8fb6-e03031982db4.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
@@ -345,7 +345,7 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/26608b4b-ed73-4b91-a455-0361e4df0257.svg"/>
+    </pre><img src="images/ac91b8dc-9ecb-43c3-a98e-4fd8ca5a429a.svg"/>
 </div>
 <div>
     <div>
@@ -366,7 +366,7 @@
 &lt;/sense&gt;
 &lt;/entry&gt;
         </pre>
-        <img src="images/1fe23e07-e462-4a0c-8656-c7ef04ceed37.svg"/>
+        <img src="images/8bd8c0cf-5034-4154-b5b7-ec84a0f334e0.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -398,7 +398,7 @@
       :dt0 diamant:witnessYearFrom 1810 .
       :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/454df636-8845-4a5e-8e2d-fbaa6dadd671.svg"/>
+    </pre><img src="images/ec466c4f-0b78-44fb-8ed3-56d560600dc9.svg"/>
     <p>
     Here the &quot;Attestation&quot; object points to the character offsets of the relevant word in the quotation. 
     Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
@@ -406,6 +406,7 @@
 <p>
     However, if we would like to include <i>All</i> quotations in the lexicon, this would not be sufficient. Besides, a quotation which does not include a snippet can still be considered &quot;evidence&quot;, so there is no reason not to label it as attestation.   
     </p> 
+    <p>Conjectural attestations could include a certainty attribute in the Quotation object, cf. teidata.certainty = &quot;high&quot; | &quot;medium&quot; | &quot;low&quot; | &quot;unknown&quot;</p>
     <pre>
       
     	 :e0 a ontolex:LexicalEntry ;
@@ -425,20 +426,22 @@
       :f0 diamant:citesAsEvidence :q0 .
       :s0 diamant:locus :c0 .
       :f0 diamant:locus :c0 . 
-      :q0 a diamant:Quotation .
-      :q0 diamant:snippet &quot;The kine spake booh&quot; .
+      :q0 a diamant:Citation .
+      :q0 diamant:quotationText &quot;The kine spake booh&quot; .
+      :q0 diamant:readingCertain &quot;true&quot; .
+      :q0 diamant:interpretationCertain &quot;false&quot; .
       :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
       :c0 diamant:text :q0 .
       :c0 nif:beginIndex 5 .
       :c0 nif:endIndex 8 .
-      :dt0 a diamant:Text .
+      :dt0 a diamant:Work .
       :dt0 dcterms:author &quot;Bovina Korovina&quot; .
       :dt0 diamant:title &quot;Meadow Meanderings&quot; .
       :dt0 diamant:witnessYearFrom 1810 .
       :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/b2ad53e8-5a6f-4a21-8538-20c973fba66f.svg"/>
+    </pre><img src="images/ce035f56-3b93-4437-b630-a058ac49bf1e.svg"/>
     </div>
     </div>
     

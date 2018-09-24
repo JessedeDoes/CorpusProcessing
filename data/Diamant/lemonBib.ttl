@@ -1,0 +1,73 @@
+@prefix dct:   <http://purl.org/dc/terms/> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix owl:   <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#>
+        a                owl:Ontology ;
+        dct:contributor  <http://www.ilc.cnr.it/en/content/anas_fahad_khan> ;
+        dct:description  "lemonBib is an extension of the ontolex-lemon model that provides concepts and properties that are useful in representing lexical attestations."@en ;
+        dct:issued       "2018-05-24" ;
+        dct:rights       "CC-BY" ;
+        dct:title        "lemonBib"@en ;
+        owl:imports      <http://www.w3.org/ns/lemon/ontolex> , <http://www.w3.org/ns/lemon/all> ;
+        owl:versionInfo  "Version 0.1.0" .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#involvedinAttestation>
+        a             rdf:Property , owl:ObjectProperty ;
+        rdfs:comment  "'involvedinAttestation' is an object property that relates a citation with an Attestation."@en ;
+        rdfs:label    "involved in attesation"@en ;
+        rdfs:range    <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#Attestation>
+        a             rdfs:Class ;
+        rdfs:comment  "'Attestation' is a class that consists of individuals that reifies the relationship of lexical attestation between an element in a lexicon and a bibliographic element"@en ;
+        rdfs:label    "Attestation"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#isAttestedBy>
+        a             rdf:Property , owl:ObjectProperty ;
+        rdfs:comment  "'isAttestedBy' is an object property that relates a lexical element with an individual of the class Attestation."@en ;
+        rdfs:label    "is attested by"@en ;
+        rdfs:range    <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#hasContext>
+        a             rdf:Property , owl:DatatypeProperty ;
+        rdfs:comment  "'hasContext' is a datatype property that relates an Attestation with a string."@en ;
+        rdfs:domain   <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> ;
+        rdfs:label    "has context"@en ;
+        rdfs:range    <http://www.w3.org/2001/XMLSchema#string> .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#conjectural>
+        a             rdf:Property , owl:DatatypeProperty ;
+        rdfs:comment  "'conjectural' is a datatype property that relates an Attestation with a boolean value that specifies if it refers to a conjectural text or not."@en ;
+        rdfs:domain   <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> ;
+        rdfs:label    "conjectural"@en ;
+        rdfs:range    <http://www.w3.org/2001/XMLSchema#boolean> .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#attests>
+        a             rdf:Property , owl:ObjectProperty ;
+        rdfs:comment  "'isAttestedBy' is an object property that relates an individual of the class with a lexical element."@en ;
+        rdfs:domain   <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> ;
+        rdfs:label    "attests"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#hasBiblScope>
+        a             rdf:Property , owl:DatatypeProperty ;
+        rdfs:comment  "'hasBiblScope' is a datatype property that relates a bibliographic entity with specific bibliographic information."@en ;
+        rdfs:label    "has bibliographic scope"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#attestationCitation>
+        a             rdf:Property , owl:ObjectProperty ;
+        rdfs:comment  "'attestationCitation' is an object property that relates an Attestation with a citation."@en ;
+        rdfs:domain   <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> ;
+        rdfs:label    "attestation citation"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#hasURN>
+        a             rdf:Property , owl:DatatypeProperty ;
+        rdfs:comment  "'hasURN' is a datatype property that relates a bibliographic entity with a string URN."@en ;
+        rdfs:label    "has URN"@en .
+
+<http://lari-datasets.ilc.cnr.it/lemonBib#foundIn>
+        a             rdf:Property , owl:ObjectProperty ;
+        rdfs:comment  "'foundIn' is an object property that relates an Attestation with a location in a text where it can be found."@en ;
+        rdfs:domain   <http://lari-datasets.ilc.cnr.it/lemonBib#Attestation> ;
+        rdfs:label    "found in"@en .

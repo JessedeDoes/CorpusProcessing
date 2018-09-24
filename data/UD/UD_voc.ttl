@@ -1,0 +1,553 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix lemon: <http://lemon-model.net/lemon#> .
+@prefix : <http://rdf.ivdnt.org/vocabs/UniversalDependencies2#> .
+
+<http://rdf.ivdnt.org/vocabs/UniversalDependencies2>
+    a owl:Ontology .
+
+:ADJ
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "adjective" .
+
+:ADP
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "adposition".
+
+:ADV
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "adverb".
+
+:AUX
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "auxiliary".
+
+:CCONJ
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "coordinating conjunction".
+
+:DET
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "determiner".
+
+:INTJ
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "interjection".
+
+:NOUN
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "noun".
+
+:NUM
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "numeral".
+
+:PART
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "participle".
+
+:PRON
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "pronoun".
+
+:PROPN
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "proper noun".
+
+:PUNCT
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "punctuation".
+
+:SCONJ
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "subordinating conjunction".
+
+:SYM
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "symbol".
+
+:VERB
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "verb".
+
+:X
+    a owl:Class ;
+    rdfs:subClassOf lemon:Word ;
+    :hasPOS "other".
+
+:hasPOS a owl:dataTypeProperty ;
+    rdfs:domain lemon:Word .
+
+:Degree
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+#    rdfs:domain owl:unionOf (:ADJ :NOUN) ;
+    rdfs:range :DegreeVal ;
+    rdfs:label "feature degree"@en .
+
+:DegreeVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Pos_Degree :Abs_Degree :Cmp_Degree :Equ_Degree :Sup_Degree :Dim_Degree)] ;
+    rdfs:label "degree of comparison"@en .
+
+:Pos_Degree
+    a :DegreeVal, owl:NamedIndividual ;    
+    rdfs:label "positive"@en .
+
+:Abs_Degree
+    a :DegreeVal, owl:NamedIndividual ;
+    rdfs:label "absolute superlative"@en .
+
+:Cmp_Degree
+    a :DegreeVal, owl:NamedIndividual ;
+    rdfs:label "comparative, second degree"@en .
+
+:Equ_Degree
+    a :DegreeVal, owl:NamedIndividual ;
+    rdfs:label "equative"@en .
+
+:Sup_Degree
+    a :DegreeVal, owl:NamedIndividual ;
+    rdfs:label "superlative, third degree"@en .
+
+:Dim_Degree
+    a :DegreeVal, owl:NamedIndividual ;
+    rdfs:label "diminutive (used for nouns e.g. in Dutch: stoeltje, huisje, nippertje"@en .
+
+:Gender
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+#    rdfs:domain owl:unionOf (:Noun :PRON) ;
+    rdfs:range :GenderVal ;
+    rdfs:label "feature gender"@en .
+    
+:GenderVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class; owl:oneOf (:Masc_Gender :Fem_Gender :Neut_Gender :Com_Gender)] ;
+    rdfs:label "values for the feature gender"@en .
+
+:Masc_Gender
+    a :GenderVal, owl:NamedIndividual ;
+    rdfs:label "masculine gender"@en .
+
+:Fem_Gender
+    a :GenderVal, owl:NamedIndividual ;
+    rdfs:label "feminine gender"@en .
+
+:Neut_Gender
+    a :GenderVal, owl:NamedIndividual ;
+    rdfs:label "neuter gender"@en .
+
+:Com_Gender
+    a :GenderVal, owl:NamedIndividual ;
+    rdfs:label "common gender"@en .
+
+:Animacy
+    a owl:ObjectProperty, owl:FunctionalProperty ;
+    rdfs:domain :NOUN ;
+    rdfs:range :AnimacyVal ;
+    rdfs:label "feature animacy"@en .
+
+:AnimacyVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Anim_Animacy :Inan_Animacy :Hum_Animacy :Nhum_Animacy)] ;
+    rdfs:label "values for feature animacy"@en .
+
+:Anim_Animacy
+    a :AnimacyVal, owl:NamedIndividual ;
+    rdfs:label "animate"@en .
+
+:Inan_Animacy
+    a :AnimacyVal, owl:NamedIndividual ;
+    rdfs:label "inanimate"@en .
+
+:Hum_Animacy
+    a :AnimacyVal, owl:NamedIndividual ;
+    rdfs:label "human"@en .
+
+:Nhum_Animacy
+    a :AnimacyVal, owl:NamedIndividual ;
+    rdfs:label "non-human"@en .
+
+:Number
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+#    rdfs:domain owl:unionOf (:NOUN :VERB :PRON :NUM) ;
+    rdfs:range :NumberVal ;
+    rdfs:label "feature number"@en .
+    
+:NumberVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Sing_Number :Plur_Number :Dual_Number :Tri_Number :Pauc_Number :Grpa_Number :Grpl_Number :Inv_Number :Count_Number :Ptan_Number :Coll_Number)] ;
+    rdfs:label "values for feature number"@en .
+
+:Sing_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "singular number"@en .
+
+:Plur_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "plural number"@en .
+
+:Dual_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "dual number"@en .
+
+:Tri_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "trial number"@en .
+
+:Pauc_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "Paucal number"@en .
+
+:Grpa_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "greater paucal number"@en .
+
+:Grpl_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "greater plural number"@en .
+
+:Inv_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "inverse number"@en .
+
+:Count_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "count plural"@en .
+
+:Ptan_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "plurale tantum"@en .
+
+:Coll_Number
+    a :NumberVal, owl:NamedIndividual ;
+    rdfs:label "collective / mass / singulare tantum"@en .
+
+:Case
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :NOUN ;
+    rdfs:range :CaseVal ;
+    rdfs:label "feature case"@en .
+    
+:CaseVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Nom_Case :Acc_Case :Abs_Case :Erg_Case :Dat_Case :Gen_Case :Voc_Case :Loc_Case :Ins_Case :Par_Case :Dis_Case :Ess_Case :Tra_Case :Com_Case :Abs_Case :Ine_Case :Ill_Case :Ela_Case :Add_Case :Ade_Case :All_Case :Abl_Case :Sub_Case :Del_Case :Lat_Case :Per_Case :Tem_Case :Ter_Case :Cau_Case :Ben_Case :Cns_Case :Cmp_Case :Equ_Case)] ;
+    rdfs:label "values for the feature case"@en .
+
+:Nom_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "nominative / direct"@en .
+
+:Acc_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "accusative / oblique"@en .
+
+:Abs_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "absolutive"@en .
+
+:Erg_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "ergative"@en .
+
+:Dat_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "dative"@en .
+
+:Gen_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "genitive"@en .
+
+:Voc_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "vocative"@en .
+
+:Loc_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "locative"@en .
+
+:Ins_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "instrumental / instructive"@en .
+
+:Par_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "partitive"@en .
+
+:Dis_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "distributive"@en .
+
+:Ess_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "essive / prolative"@en .
+
+:Tra_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "translative / factive"@en .
+
+:Com_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "comitative / associative"@en .
+
+:Abe_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "abessive"@en .
+
+:Ine_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "inessive"@en .
+
+:Ill_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "illative"@en .
+
+:Ela_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "elative"@en .
+
+:Add_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "additive"@en .
+
+:Ade_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "adessive"@en .
+
+:All_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "allative"@en .
+
+:Abl_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "ablative"@en .
+
+:Sup_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "superessive"@en .
+
+:Sub_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "sublative"@en .
+
+:Del_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "delative"@en .
+
+:Lat_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "lative / directional allative"@en .
+
+:Per_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "perlative"@en .
+
+:Tem_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "temporal"@en .
+
+:Ter_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "terminative / terminal allative"@en .
+
+:Cau_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "causative / motivative / purposive"@en .
+
+:Ben_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "benefactive / destinative"@en .
+
+:Cns_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "considerative"@en .
+
+:Cmp_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "comparative"@en .
+
+:Equ_Case
+    a :CaseVal, owl:NamedIndividual ;
+    rdfs:label "equative"@en .
+
+:Mood
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VERB ;
+    rdfs:range :MoodVal ;
+    rdfs:label "mood feature"@en .
+
+:MoodVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Ind_Mood :Imp_Mood :Cnd_Mood :Pot_Mood :Sub_Mood :Jus_Mood :Prp_Mood :Qot_Mood :Opt_Mood :Des_Mood :Nec_Mood :Adm_Mood)] ;
+    rdfs:label "values for feature mood"@en .
+
+:Ind_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "indicative"@en .
+
+:Imp_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "imperative"@en .
+
+:Cnd_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "conditional"@en .
+
+:Pot_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "potential"@en .
+
+:Sub_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "subjunctive / conjunctive"@en .
+
+:Jus_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "jussive / injunctive"@en .
+
+:Prp_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "purposive"@en .
+
+:Qot_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "quotative"@en .
+
+:Opt_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "optative"@en .
+
+:Des_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "desiderative"@en .
+
+:Nec_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "necessitative"@en .
+
+:Adm_Mood
+    a :MoodVal, owl:NamedIndividual ;
+    rdfs:label "admirative"@en .
+
+:VerbForm
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VERB ;
+    rdfs:range :VerbFormVal ;
+    rdfs:label "form of verb or deverbative"@en .
+
+:VerbFormVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Fin_VerbForm :Inf_VerbForm :Sup_VerbForm :Part_VerbForm :Conv_VerbForm :Gdv_VerbForm :Ger_VerbForm :Vnoun_VerbForm)] ;
+    rdfs:label "values for the feature VerbForm"@en .
+
+:Fin_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "finite verb"@en .
+
+:Inf_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "infinitive"@en .
+
+:Sup_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "supine"@en .
+
+:Part_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "participle, verbal adjective"@en .
+
+:Conv_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "converb, transgressive, adverbial participle, verbal adverb"@en .
+
+:Gdv_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "gerundive"@en .
+
+:Ger_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "gerund"@en .
+
+:Vnoun_VerbForm
+    a :VerbFormVal, owl:NamedIndividual ;
+    rdfs:label "verbal noun, masdar"@en .
+
+:Tense 
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+    rdfs:domain :VERB ;
+    rdfs:range :TenseVal ;
+    rdfs:label "form of verb or deverbative"@en .
+    
+:TenseVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:Past_Tense :Pres_Tense :Fut_Tense :Imp_Tense :Pqp_Tense)] ;
+    rdfs:label "values for feature Tense"@en .
+    
+:Past_Tense
+    a :TenseVal, owl:NamedIndividual ;
+    rdfs:label "past tense / preterite / aorist"@en .
+
+:Pres_Tense
+    a :TenseVal, owl:NamedIndividual ;
+    rdfs:label "present tense"@en .
+
+:Fut_Tense
+    a :TenseVal, owl:NamedIndividual ;
+    rdfs:label "future tense"@en .
+
+:Imp_Tense
+    a :TenseVal, owl:NamedIndividual ;
+    rdfs:label "imperfect"@en .
+
+:Pqp_Tense
+    a :TenseVal, owl:NamedIndividual ;
+    rdfs:label "pluperfect"@en .
+
+:Person
+    a owl:ObjectProperty , owl:FunctionalProperty ;
+#    rdfs:domain owl:unionOf (:PRON :DET :VERB ) ;
+    rdfs:range :PersonVal ;
+    rdfs:label "feature person"@en .
+
+:PersonVal
+    a owl:Class ;
+    owl:equivalentClass [a owl:Class ; owl:oneOf (:0_Person :1_Person :2_Person :3_Person :4_Person)] ;
+    rdfs:label "value for the feature person"@en .
+
+:0_Person
+    a :PersonVal, owl:NamedIndividual ;
+    rdfs:label "zero person"@en .
+
+:1_Person
+    a :PersonVal, owl:NamedIndividual ;
+    rdfs:label "first person"@en .
+
+:2_Person
+    a :PersonVal, owl:NamedIndividual ;
+    rdfs:label "second person"@en .
+
+:3_Person
+    a :PersonVal, owl:NamedIndividual ;
+    rdfs:label "third person"@en .
+
+:4_Person
+    a :PersonVal, owl:NamedIndividual ;
+    rdfs:label "fourth person"@en .
+
