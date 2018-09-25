@@ -4,9 +4,11 @@ import java.io.{File, FileWriter}
 import java.text.Normalizer
 
 import eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
+import posmapping.CGNMiddleDutch
 import utils.ProcessFolder
 
-import scala.util.{Try,Success,Failure}
+import scala.util.matching.Regex
+import scala.util.{Failure, Success, Try}
 import scala.xml._
 
 case class Word(word: String, lemma: String, pos: String) {
@@ -69,6 +71,33 @@ object Eindhoven {
   }
 
   val cgnTags = fromFile("data/cgn.tagset").getLines.toSet.map(Tag(_))
+
+  case class Cache[A,B](f: A=>B)
+  {
+    val map = scala.collection.mutable.HashMap.empty[A,B]
+    def apply(a: A):B = map.getOrElseUpdate(a, f(a))
+  }
+
+  val x:String => Elem = s => { Console.err.println(s); Console.err.flush(); CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s) }
+  val fsCached = Cache(x)
+
+  def addFeatureStructure(w: Elem):Elem =
+  {
+    val pos = (w \ "@pos").text.replaceAll("e-[^,)]*","").replaceAll(",,",",").replaceAll(",\\)",")").replaceAll("x-","").replaceAll("\\|[a-z0-9]*", "")
+      .replaceAll(",\\?\\?","").replaceAll("comment","meta").replaceAll("\\?\\?", "UNDEF")
+
+    val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+    val pos1 = if (Tag.findFirstIn(pos).isEmpty || pos.contains("UNDEF") || pos.contains("?")) "SPEC(overig)" else pos
+
+    if (pos1.contains("UNDEF") || pos1.contains("?"))
+      {
+      w
+      }
+    else {
+      val featureStructures = fsCached(pos1)
+      replaceAttribute(w.copy(child = w.child ++ featureStructures),"msd", s => pos1)
+    }
+  }
 
 
   import sparql2xquery.TopologicalSort._
@@ -378,8 +407,9 @@ object Eindhoven {
     val d6 = noNotes(d5c)
 
     lazy val d7 = updateElement(d6, _.label == "w", e => replaceAttribute(e, "pos", orderFeatures ))
+    lazy val d8 = updateElement(d7, _.label == "w", addFeatureStructure )
 
-    XML.save(fOut.getCanonicalPath, d7, "UTF-8")
+    XML.save(fOut.getCanonicalPath, d8, "UTF-8")
   }
 
   def replaceAttribute(e: Elem, name: String, f: String=>String):Elem = {

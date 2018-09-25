@@ -111,9 +111,11 @@ object klussen {
       } else pos
 
 
+    //VNW(pers,pron,nomin,vol) -> true -> VNW(pers,pron,nomin,vol)
+    //VNW(pers,pron,nomin,red) -> true -> VNW(pers,pron,nomin,red)
 
     // Console.err.println(f + "." + getId(w))
-    val newPos2 = if (zinfo.isDefined)
+    val newPos2:String = if (zinfo.isDefined)
     {
       //System.exit(1)
       val pos = newPos1
@@ -123,14 +125,16 @@ object klussen {
         val posNew = pos.replaceAll("x-mv", "ev,fem").replaceAll("x-ev","ev").replaceAll("x-fem","fem")
         //val posNew = Eindhoven.replaceFeature(pos, "x-vrij", newVal)
         // val posNew = Eindhoven.replaceFeature(pos.replaceAll("x-vrij|x-prenom|prenom.e-[a-z]+", newVal), "e-pred", "").replaceAll(",,",",")
+
+
         Console.err.println(s"############# ${zinfo.get} $pos -> ${zinfo.get.isSingular} -> $posNew")
-        posNew
+        if (posNew == "VNW(pers,pron,nomin,vol)" || posNew=="VNW(pers,pron,nomin,red)") posNew.replaceAll("\\)", ",ev,fem)") else posNew
       } else
       {
 
         val posNew = pos.replaceAll("x-ev,x-fem", "mv").replaceAll("x-ev","mv").replaceAll("x-fem","").replaceAll("x-mv","mv").replaceAll(",,",",")
         Console.err.println(s"############# ${zinfo.get} $pos -> ${zinfo.get.isSingular} -> $posNew")
-        posNew
+        if (posNew == "VNW(pers,pron,nomin,vol)" || posNew=="VNW(pers,pron,nomin,red)") posNew.replaceAll("\\)", ",mv)") else posNew
       }
       // Console.err.println(info + " " + w)
       //System.exit(1)

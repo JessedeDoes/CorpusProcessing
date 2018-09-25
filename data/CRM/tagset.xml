@@ -230,6 +230,7 @@
                 <value>met-nt</value>
                 <value>met-t</value>
                 <value>met-r-of-re</value>
+		<value>met-e-n</value> <!-- eindhoven, slordig -->
                 <value>met-e</value>
                 <value>met-a</value>
                 <value>zonder</value>
@@ -245,7 +246,8 @@
                 <value>deeleigen</value>
                 <value>onverst</value>
                 <value>symb</value>
-                <value>meta</value>
+		<value>meta</value>
+		<value>overig</value> <!-- eindhoven, slordig -->
             </values>
         </feature>
         <feature>
@@ -254,7 +256,8 @@
                 <value>tgw</value>
                 <value>verl</value>
                 <value>conj</value>
-                <value>imp</value>
+                <value>imper</value>
+		<value>imp</value> <!-- imp is ws niet goed!! -->
             </values>
         </feature>
         <feature>
