@@ -374,7 +374,8 @@ object Eindhoven {
 
     lazy val d5b = raadZe.confirmPrenomInDoc(d5)
 
-    val d6 = noNotes(d5b)
+    lazy val d5c = klussen.nabewerking(d5b, klussen.relative(f))
+    val d6 = noNotes(d5c)
 
     lazy val d7 = updateElement(d6, _.label == "w", e => replaceAttribute(e, "pos", orderFeatures ))
 
