@@ -1,5 +1,9 @@
 package eindhoven
+import java.io.File
+import java.nio.file.Paths
+
 import utils.PostProcessXML
+
 import scala.xml._
 import utils.ProcessFolder
 
@@ -103,6 +107,73 @@ object pidFix
   }
 }
 
+object repairWordIds
+{
+  val fallbackDir = Eindhoven.outputDir.replaceAll("/[^/]*/?$","/") + "xml-tussenresultaat-2018-05-04/"
+
+  val baseXML  = Paths.get(Eindhoven.outputDir).toAbsolutePath
+
+  def relative(f:File) = baseXML.relativize(Paths.get(f.getCanonicalPath)).toString
+
+  Console.err.println(fallbackDir)
+
+  def findBuddy(f: java.io.File) =
+  {
+    val r = relative(f)
+    new java.io.File(fallbackDir + r)
+  }
+
+  import Eindhoven.getId
+
+
+  def fixIds(in: String, out:String) =
+  {
+    val fin = new java.io.File(in)
+    val buddy = findBuddy(fin)
+
+    val din = XML.loadFile(fin)
+    val dbuddy = XML.loadFile(buddy)
+
+    val words = (din \\ "w").map(_.asInstanceOf[Elem])
+    val buddywords = (dbuddy \\ "w").map(_.asInstanceOf[Elem])
+
+    val badIds = words.map(w => getId(w).get)
+    val goodIds = buddywords.map(w => getId(w))
+
+    val d1 = if (badIds.size == goodIds.size)
+      {
+        val idMap = badIds.zip(goodIds).filter(_._2.isDefined).toMap
+
+        // Console.err.println(idMap)
+
+        def setId(w: Elem) =
+        {
+          val id = getId(w).get
+          if (idMap.get(id).isDefined)
+            {
+              val newId:String = "gered_" + idMap.get(id).get.get
+              val w1 = w.copy(attributes=w.attributes.filter(_.key!="id").append( new UnprefixedAttribute("xml:id", newId , Null)))
+              w1
+            } else w
+        }
+        PostProcessXML.updateElement(din, _.label=="w",  setId)
+      } else
+      {
+        Console.err.println("Balen!!!: word count mismatch in " + in)
+        //System.exit(1)
+        din
+      }
+
+     XML.save(out,d1, "UTF-8")
+  }
+
+
+  val a0 = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/tkvPatch"
+  val a1 = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/helpMePlease"
+  def main(args: Array[String]): Unit = {
+    ProcessFolder.processFolder(new java.io.File(a0), new java.io.File(a1), fixIds)
+  }
+}
 /*
 Er zit nog een foutje in deze versie:
 In de <bibl> hoort de pid-type net als de rest binnen een <interpGrp> te worden aangeboden, maar hier zit in een een <idno>.

@@ -43,7 +43,7 @@ object Eindhoven {
   import scala.io.Source._
 
 
-  val atHome = false
+  val atHome = true
 
 
   val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
