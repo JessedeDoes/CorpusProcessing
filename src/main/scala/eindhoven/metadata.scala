@@ -137,8 +137,11 @@ object repairWordIds
     val words = (din \\ "w").map(_.asInstanceOf[Elem])
     val buddywords = (dbuddy \\ "w").map(_.asInstanceOf[Elem])
 
-    val badIds = words.map(w => getId(w).get)
-    val goodIds = buddywords.map(w => getId(w))
+    val cwords = words.filter(w => (w \ "@corresp").nonEmpty)
+    val cbuddywords = buddywords.filter(w => (w \ "@corresp").nonEmpty)
+
+    val badIds = cwords.map(w => getId(w).get)
+    val goodIds = cbuddywords.map(w => getId(w))
 
     val d1 = if (badIds.size == goodIds.size)
       {
