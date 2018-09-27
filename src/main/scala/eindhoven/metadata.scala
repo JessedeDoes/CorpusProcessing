@@ -111,7 +111,7 @@ object repairWordIds
 {
   val fallbackDir = Eindhoven.outputDir.replaceAll("/[^/]*/?$","/") + "xml-tussenresultaat-2018-05-04/"
 
-  val baseXML  = Paths.get(Eindhoven.outputDir).toAbsolutePath
+  val baseXML  = Paths.get(Eindhoven.xmlDir).toAbsolutePath
 
   def relative(f:File) = baseXML.relativize(Paths.get(f.getCanonicalPath)).toString
 
@@ -140,8 +140,8 @@ object repairWordIds
     val cwords = words.filter(w => (w \ "@corresp").nonEmpty)
     val cbuddywords = buddywords.filter(w => (w \ "@corresp").nonEmpty)
 
-    val badIds = cwords.map(w => getId(w).get)
-    val goodIds = cbuddywords.map(w => getId(w))
+    val badIds = words.map(w => getId(w).get)
+    val goodIds = buddywords.map(w => getId(w))
 
     val d1 = if (badIds.size == goodIds.size)
       {
@@ -154,8 +154,8 @@ object repairWordIds
           val id = getId(w).get
           if (idMap.get(id).isDefined)
             {
-              val newId:String = "gered_" + idMap.get(id).get.get
-              val w1 = w.copy(attributes=w.attributes.filter(_.key!="id").append( new UnprefixedAttribute("xml:id", newId , Null)))
+              val newId:String = idMap.get(id).get.get
+              val w1 = w.copy(attributes=w.attributes.append( new UnprefixedAttribute("original_id", newId , Null)))
               w1
             } else w
         }
@@ -171,10 +171,10 @@ object repairWordIds
   }
 
 
-  val a0 = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/tkvPatch"
-  val a1 = "/mnt/DiskStation/homes/jesse/work/Eindhoven/TKV_Eindhoven/helpMePlease"
+  val a0 = Eindhoven.xmlDir
+  val a1 = Eindhoven.baseDir + "/xml-with-original-word-ids"
   def main(args: Array[String]): Unit = {
-    ProcessFolder.processFolder(new java.io.File(a0), new java.io.File(a1), fixIds)
+   // ProcessFolder.processFolder(new java.io.File(a0), new java.io.File(a1), fixIds)
   }
 }
 /*

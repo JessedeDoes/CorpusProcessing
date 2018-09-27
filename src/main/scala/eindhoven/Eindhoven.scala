@@ -43,7 +43,7 @@ object Eindhoven {
   import scala.io.Source._
 
 
-  val atHome = true
+  val atHome = false
 
 
   val baseDirAtWork = "/mnt/Projecten/Nederlab/Tagging/TKV_Eindhoven/"
@@ -56,8 +56,12 @@ object Eindhoven {
   def noAccents(s: String): String = Normalizer.normalize(s, Normalizer.Form.NFD).replaceAll("\\p{M}", "").toLowerCase.trim
 
 
+  val xmlSubDir = "xml-with-original-word-ids"
   val hulpDataDir = baseDir + "hulpdata/"
-  val xmlDir = baseDir + "xml-with-word-ids/"
+  val xmlDir = baseDir + xmlSubDir // "xml-with-word-ids/"
+
+  Console.err.println(xmlDir)
+
   val patchDir = baseDir + "xml-tagged/"
   val outputDir = baseDir + "tkvPatch/"
 
@@ -287,7 +291,7 @@ object Eindhoven {
   }
 
   def useAutomaticTagging(d: Elem, f: File) = {
-    val f1 = f.getCanonicalPath.replaceAll("xml-with-word-ids", "xml-tagged")
+    val f1 = f.getCanonicalPath.replaceAll(xmlSubDir, "xml-tagged")
 
     val d1 = XML.load(f1)
     val mappie = (d1 \\ "w").map(w => {
@@ -408,8 +412,39 @@ object Eindhoven {
 
     lazy val d7 = updateElement(d6, _.label == "w", e => replaceAttribute(e, "pos", orderFeatures ))
     lazy val d8 = updateElement(d7, _.label == "w", addFeatureStructure )
+    lazy val d9 = redeemCorresps(d8)
+    XML.save(fOut.getCanonicalPath, d9, "UTF-8")
+  }
 
-    XML.save(fOut.getCanonicalPath, d8, "UTF-8")
+  def redeemCorresps(d: Elem) =
+  {
+    val idMap = (d \\ "w").filter(x => (x \ "@corresp").nonEmpty).map(x =>  (x \ "@original_id").text -> getId(x)).filter(x => x._1.nonEmpty && x._2.isDefined)
+      .map({ case (a,b) => a -> b.get}).toMap
+
+    def poetsIdEnCorrespOp(w: Elem) =
+    {
+      val org =(w \ "@original_id").text
+      val corresp = (w \ "@corresp").text.replaceAll("#", "")
+      if (org.nonEmpty && corresp.nonEmpty && idMap.contains(corresp))
+        {
+          val newCorresp = "#" + idMap(corresp)
+          val newAtts = w.attributes.filter(x => x.key != "corresp" && x.key != "original_id").append(new UnprefixedAttribute("corresp", newCorresp, Null))
+          w.copy(attributes = newAtts)
+        } else w
+    }
+    lazy val d9 = updateElement(d, _.label == "w", poetsIdEnCorrespOp )
+    d9
+  }
+
+  def fixBadIds(w: Elem):Elem =
+  {
+     val orig = (w \ "@original_id")
+     if (orig.isEmpty)
+       w
+    else{
+       val newAtts = w.attributes.filter(_.key != "id").append(new UnprefixedAttribute("xml:id", orig.text, Null))
+       w.copy(attributes = newAtts)
+     }
   }
 
   def replaceAttribute(e: Elem, name: String, f: String=>String):Elem = {
