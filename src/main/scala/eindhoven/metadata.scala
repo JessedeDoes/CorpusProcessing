@@ -11,6 +11,16 @@ object metadata {
 
 }
 
+/*
+We hebben de VU-versie van het corpus, met de bestanden van Van Halteren: die partijen staan erbij en correct.
+Maar het oorspronkelijke corpus bestond uit het corpus samengesteld door  P.C. Uit
+den Boogaart, E.D. de Jong, A.M. van Mierlo. De VU heeft daar het Renkemacorpus aan toegevoegd, heeft alles opgeschoond, en Van Halteren is daar ook nog eens overheen gegaan.
+
+Wat moet er gebeuren:
+Bij alle titles moet, behalve voor CAMB de drie bovengenoemde samenstellers worden toegevoegd.
+Bij CAMB moet J. Renkema toegevoegd worden.
+Mathieu: kun jij checken of we die namen al in de Thesaurus hebben van personen? Anders Boukje even vragen om te helpen.
+ */
 object doubleFields
 {
 
@@ -79,6 +89,10 @@ object checkDoubleFields
 
 object pidFix
 {
+  val extraKnakkers = <interp>P.C. Uit den Boogaart</interp><interp>E.D. de Jong</interp><interp>A.M. van Mierlo</interp>
+  val renkema = <interp>J. Renkema</interp>
+
+
   def uuid(pid: String, title: String):String =
   {
     val source = pid + "." + title
@@ -88,6 +102,15 @@ object pidFix
 
   def fixPid(f: String)(b: Elem):Elem = {
     //Console.err.println(b)
+
+    def fixEditor(g: Elem) =
+    {
+      val typ  = (g \ "@type").text
+      val extra = if (typ == "editorLevel3") extraKnakkers ++ renkema else
+      if (f.toLowerCase.contains("camb")) renkema else extraKnakkers
+      g.copy(child = g.child ++ extra)
+    }
+
     val file = new java.io.File(f)
     val fileName = file.getParentFile.getName + "::" + file.getName
     val idno = ((b \ "idno").filter(i => (i \ "@type").text == "pid")).text.trim
@@ -97,7 +120,8 @@ object pidFix
 
     val extra = <interpGrp type="pid"><interp>INT_{newUUID}</interp></interpGrp>
 
-    b.copy(child = extra ++ b.child.filter(c => !(c.label == "idno")))
+    val b0 = b.copy(child = extra ++ b.child.filter(c => !(c.label == "idno")))
+    PostProcessXML.updateElement(b, x => x.label == "interpGrp" && (x \ "@type").text.contains("ditor"), fixEditor)
   }
 
   def fixPids(f: String)(d: Elem) = {
