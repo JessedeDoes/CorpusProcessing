@@ -86,11 +86,21 @@ object checkDoubleFields
   }
 }
 
+/*
+E.D. de Jong : 813eba06-011b-11e4-b0ff-51bcbd7c379f
+P.C. uit den Boogaart : 7f8f0166-011b-11e4-b0ff-51bcbd7c379f
+A.M. van Mierlo : cd31daea-3540-a4b3-8de4-77dd70c6acdc
+J. Renkema : 8086ea84-011b-11e4-b0ff-51bcbd7c379f
+
+ */
 
 object pidFix
 {
-  val extraKnakkers = <interp>P.C. Uit den Boogaart</interp><interp>E.D. de Jong</interp><interp>A.M. van Mierlo</interp>
-  val renkema = <interp>J. Renkema</interp>
+  val extraKnakkers = <interp n="7f8f0166-011b-11e4-b0ff-51bcbd7c379f">P.C. Uit den Boogaart</interp>
+    <interp n="813eba06-011b-11e4-b0ff-51bcbd7c379f">E.D. de Jong</interp>
+    <interp n="cd31daea-3540-a4b3-8de4-77dd70c6acdc">A.M. van Mierlo</interp>
+
+  val renkema = <interp n="8086ea84-011b-11e4-b0ff-51bcbd7c379f">J. Renkema</interp>
 
 
   def uuid(pid: String, title: String):String =
@@ -121,7 +131,7 @@ object pidFix
     val extra = <interpGrp type="pid"><interp>INT_{newUUID}</interp></interpGrp>
 
     val b0 = b.copy(child = extra ++ b.child.filter(c => !(c.label == "idno")))
-    PostProcessXML.updateElement(b, x => x.label == "interpGrp" && (x \ "@type").text.contains("ditor"), fixEditor)
+    PostProcessXML.updateElement(b0, x => x.label == "interpGrp" && (x \ "@type").text.contains("ditor"), fixEditor)
   }
 
   def fixPids(f: String)(d: Elem) = {
