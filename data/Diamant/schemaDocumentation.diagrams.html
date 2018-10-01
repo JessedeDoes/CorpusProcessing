@@ -70,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/559e23c5-a10f-45c4-9033-22740eae6fbd.svg"/>
+    </pre><img src="images/809084af-4d1d-4012-a4ef-163316c84fee.svg"/>
             </div>
 
     <div>
@@ -120,7 +120,7 @@
 
 
         
-    </pre><img src="images/f85ecf80-c257-4dd3-911b-89826b03e7fb.svg"/>
+    </pre><img src="images/fdd5c537-0ac4-48b3-928d-1f0ac26975c6.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -279,7 +279,7 @@
             ];
             .
         
-    </pre><img src="images/e003855e-b5f7-4429-9fb2-793f5d045147.svg"/>
+    </pre><img src="images/e0a3ba1d-b0df-4f1c-b563-7141073c64bf.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
@@ -345,7 +345,7 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/84351102-2213-46e3-92e0-8a5debc9f030.svg"/>
+    </pre><img src="images/65dc94d3-78d7-4fff-b85c-214f7996184a.svg"/>
 </div>
 <div>
     <div>
@@ -366,7 +366,7 @@
 &lt;/sense&gt;
 &lt;/entry&gt;
         </pre>
-        <img src="images/55d8cde4-09a4-4e4b-bd17-22184817fd52.svg"/>
+        <img src="images/37bc8925-bc3e-47a4-9dc8-90e3045c7b03.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -390,7 +390,6 @@
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
       :q0 diamant:snippet &quot;The kine spake booh&quot; .
-      :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
       :dt0 a diamant:Text .
       :dt0 dcterms:author &quot;Bovina Korovina&quot; .
@@ -398,7 +397,7 @@
       :dt0 diamant:witnessYearFrom 1810 .
       :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/ea992671-7ae3-412e-a1fb-a6c488f50e59.svg"/>
+    </pre><img src="images/d3be0bae-a8ca-4073-a284-6aba6d8b43aa.svg"/>
     <p>
     Here the &quot;Attestation&quot; object points to the character offsets of the relevant word in the quotation. 
     Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
@@ -406,7 +405,42 @@
 <p>
     However, if we would like to include <i>All</i> quotations in the lexicon, this would not be sufficient. Besides, a quotation which does not include a snippet can still be considered &quot;evidence&quot;, so there is no reason not to label it as attestation.   
     </p> 
-    <p>Conjectural attestations could include a certainty attribute in the Quotation object, cf. teidata.certainty = &quot;high&quot; | &quot;medium&quot; | &quot;low&quot; | &quot;unknown&quot;</p>
+
+     <pre>
+      
+         :e0 a ontolex:LexicalEntry ;
+      ontolex:sense :s0 .
+      :l0 a ontolex:Form .
+      :e0 ontolex:canonicalForm :l0 .
+      :l0 ontolex:writtenRep &quot;cow&quot; .
+      :s0 a ontolex:LexicalSense .
+      :s0 ontolex:definition  &quot;Cows are useful animals&quot; .
+      :lc0 a diamant:Locus .
+      :s0 diamant:attestation :q0 .
+      :s0 cito:cites :tw0 .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitedEntity :tw0 .
+      :s0 cito:citesAsEvidence :tw0 .
+      :s0 diamant:locus :lc0 .
+      :q0 diamant:quotation &quot;The kine spake booh&quot; .
+      :q0 diamant:readingCertain &quot;true&quot; .
+      :q0 diamant:interpretationCertain &quot;false&quot; .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
+      :dt0 a frbr:Expression .
+      :dt0 dcterms:author &quot;Bovina Korovina&quot; .
+      :dt0 diamant:title &quot;Meadow Meanderings&quot; .
+      :dt0 frbr:embodiment :tw0 .
+      :tw0 a frbr:Manifestation .
+      :tw0 diamant:notBefore 1810 .
+      :tw0 diamant:notAfter 1812 .
+    
+    </pre><img src="images/d90c0761-8c82-44e6-8ef2-f4d995d79253.svg"/>
+
     <pre>
       
     	 :e0 a ontolex:LexicalEntry ;
@@ -419,23 +453,27 @@
       :e0 ontolex:lexicalForm :f0 .
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  &quot;Cows are useful animals&quot; .
-      :c0 a diamant:Locus .
+      :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
-      :f0 diamant:citation :q0 .
-      :s0 cito:citesAsEvidence :q0 .
-      :f0 cito:citesAsEvidence :q0 .
-      :s0 diamant:locus :c0 .
-      :f0 diamant:locus :c0 . 
-      :q0 a diamant:Citation .
-      :q0 diamant:quotationText &quot;The kine spake booh&quot; .
+      :s0 cito:cites :tw0 .
+      :f0 cito:cites :tw0 .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitingEntity :f0 .
+      :q0 cito:hasCitedEntity :tw0 .
+      :s0 cito:citesAsEvidence :tw0 .
+      :f0 cito:citesAsEvidence :tw0 .
+      :s0 diamant:locus :lc0 .
+      :f0 diamant:locus :lc0 .
+      :q0 diamant:quotation &quot;The kine spake booh&quot; .
       :q0 diamant:readingCertain &quot;true&quot; .
       :q0 diamant:interpretationCertain &quot;false&quot; .
-      :q0 diamant:citesFrom :dt0 .
-      :s0 diamant:citation :q0 .
-      :c0 diamant:text :q0 .
-      :c0 nif:beginIndex 5 .
-      :c0 nif:endIndex 8 .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
       :dt0 a frbr:Expression .
       :dt0 dcterms:author &quot;Bovina Korovina&quot; .
       :dt0 diamant:title &quot;Meadow Meanderings&quot; .
@@ -444,7 +482,7 @@
       :tw0 diamant:notBefore 1810 .
       :tw0 diamant:notAfter 1812 .
     
-    </pre><img src="images/92175151-55b1-48cb-a5d5-ac28dad736ff.svg"/>
+    </pre><img src="images/4075d094-2cc1-4d02-8232-cb3c9f2add40.svg"/>
     </div>
     </div>
     

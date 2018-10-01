@@ -385,7 +385,6 @@
       :f0 diamant:attestation :a0 .
       :q0 a diamant:Quotation .
       :q0 diamant:snippet "The kine spake booh" .
-      :q0 diamant:citesFrom :dt0 .
       :s0 diamant:citation :q0 .
       :dt0 a diamant:Text .
       :dt0 dcterms:author "Bovina Korovina" .
@@ -400,7 +399,40 @@
 <p>
     However, if we would like to include <i>All</i> quotations in the lexicon, this would not be sufficient. Besides, a quotation which does not include a snippet can still be considered "evidence", so there is no reason not to label it as attestation.   
     </p> 
-    <p>Conjectural attestations could include a certainty attribute in the Quotation object, cf. teidata.certainty = "high" | "medium" | "low" | "unknown"</p>
+
+     <example>
+         :e0 a ontolex:LexicalEntry ;
+      ontolex:sense :s0 .
+      :l0 a ontolex:Form .
+      :e0 ontolex:canonicalForm :l0 .
+      :l0 ontolex:writtenRep "cow" .
+      :s0 a ontolex:LexicalSense .
+      :s0 ontolex:definition  "Cows are useful animals" .
+      :lc0 a diamant:Locus .
+      :s0 diamant:attestation :q0 .
+      :s0 cito:cites :tw0 .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitedEntity :tw0 .
+      :s0 cito:citesAsEvidence :tw0 .
+      :s0 diamant:locus :lc0 .
+      :q0 diamant:quotation "The kine spake booh" .
+      :q0 diamant:readingCertain "true" .
+      :q0 diamant:interpretationCertain "false" .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
+      :dt0 a frbr:Expression .
+      :dt0 dcterms:author "Bovina Korovina" .
+      :dt0 diamant:title "Meadow Meanderings" .
+      :dt0 frbr:embodiment :tw0 .
+      :tw0 a frbr:Manifestation .
+      :tw0 diamant:notBefore 1810 .
+      :tw0 diamant:notAfter 1812 .
+    </example>
+
     <example>
     	 :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
@@ -412,23 +444,27 @@
       :e0 ontolex:lexicalForm :f0 .
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  "Cows are useful animals" .
-      :c0 a diamant:Locus .
+      :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
-      :f0 diamant:citation :q0 .
-      :s0 cito:citesAsEvidence :q0 .
-      :f0 cito:citesAsEvidence :q0 .
-      :s0 diamant:locus :c0 .
-      :f0 diamant:locus :c0 . 
-      :q0 a diamant:Citation .
-      :q0 diamant:quotationText "The kine spake booh" .
+      :s0 cito:cites :tw0 .
+      :f0 cito:cites :tw0 .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitingEntity :f0 .
+      :q0 cito:hasCitedEntity :tw0 .
+      :s0 cito:citesAsEvidence :tw0 .
+      :f0 cito:citesAsEvidence :tw0 .
+      :s0 diamant:locus :lc0 .
+      :f0 diamant:locus :lc0 .
+      :q0 diamant:quotation "The kine spake booh" .
       :q0 diamant:readingCertain "true" .
       :q0 diamant:interpretationCertain "false" .
-      :q0 diamant:citesFrom :dt0 .
-      :s0 diamant:citation :q0 .
-      :c0 diamant:text :q0 .
-      :c0 nif:beginIndex 5 .
-      :c0 nif:endIndex 8 .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
       :dt0 a frbr:Expression .
       :dt0 dcterms:author "Bovina Korovina" .
       :dt0 diamant:title "Meadow Meanderings" .
