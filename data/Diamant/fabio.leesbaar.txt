@@ -1,0 +1,364 @@
+## Classes:
+frbr:Concept
+frbr:CorporateBody
+frbr:Endeavour
+frbr:Event
+frbr:Expression
+frbr:Item
+frbr:Manifestation
+frbr:Object
+frbr:Person
+frbr:Place
+frbr:ResponsibleEntity
+frbr:Subject
+frbr:Work
+http://purl.org/spar/fabio/Abstract
+http://purl.org/spar/fabio/AcademicProceedings
+http://purl.org/spar/fabio/Addendum
+http://purl.org/spar/fabio/Algorithm
+http://purl.org/spar/fabio/AnalogItem
+http://purl.org/spar/fabio/AnalogManifestation
+http://purl.org/spar/fabio/AnalogStorageMedium
+http://purl.org/spar/fabio/Announcement
+http://purl.org/spar/fabio/Anthology
+http://purl.org/spar/fabio/ApplicationProfile
+http://purl.org/spar/fabio/ApplicationProgrammingInterface
+http://purl.org/spar/fabio/Article
+http://purl.org/spar/fabio/ArtisticWork
+http://purl.org/spar/fabio/AudioDocument
+http://purl.org/spar/fabio/AuthorityFile
+http://purl.org/spar/fabio/BachelorsThesis
+http://purl.org/spar/fabio/BibliographicDatabase
+http://purl.org/spar/fabio/BibliographicMetadata
+http://purl.org/spar/fabio/Biography
+http://purl.org/spar/fabio/Blog
+http://purl.org/spar/fabio/BlogPost
+http://purl.org/spar/fabio/Book
+http://purl.org/spar/fabio/BookChapter
+http://purl.org/spar/fabio/BookReview
+http://purl.org/spar/fabio/BookSeries
+http://purl.org/spar/fabio/BookSet
+http://purl.org/spar/fabio/BriefReport
+http://purl.org/spar/fabio/CallForApplications
+http://purl.org/spar/fabio/CaseForSupport
+http://purl.org/spar/fabio/CaseForSupportDocument
+http://purl.org/spar/fabio/CaseReport
+http://purl.org/spar/fabio/Catalog
+http://purl.org/spar/fabio/Chapter
+http://purl.org/spar/fabio/CitationMetadata
+http://purl.org/spar/fabio/ClinicalCaseReport
+http://purl.org/spar/fabio/ClinicalGuideline
+http://purl.org/spar/fabio/ClinicalTrialDesign
+http://purl.org/spar/fabio/ClinicalTrialReport
+http://purl.org/spar/fabio/CollectedWorks
+http://purl.org/spar/fabio/Comment
+http://purl.org/spar/fabio/CompleteWorks
+http://purl.org/spar/fabio/ComputerApplication
+http://purl.org/spar/fabio/ComputerFile
+http://purl.org/spar/fabio/ComputerProgram
+http://purl.org/spar/fabio/ConferencePaper
+http://purl.org/spar/fabio/ConferencePoster
+http://purl.org/spar/fabio/ConferenceProceedings
+http://purl.org/spar/fabio/ControlledVocabulary
+http://purl.org/spar/fabio/Correction
+http://purl.org/spar/fabio/Corrigendum
+http://purl.org/spar/fabio/Cover
+http://purl.org/spar/fabio/CriticalEdition
+http://purl.org/spar/fabio/DataFile
+http://purl.org/spar/fabio/DataManagementPolicy
+http://purl.org/spar/fabio/DataManagementPolicyDocument
+http://purl.org/spar/fabio/DataMangementPlan
+http://purl.org/spar/fabio/DataRepository
+http://purl.org/spar/fabio/Database
+http://purl.org/spar/fabio/DatabaseManagementSystem
+http://purl.org/spar/fabio/Dataset
+http://purl.org/spar/fabio/DefinitiveVersion
+http://purl.org/spar/fabio/DemoPaper
+http://purl.org/spar/fabio/Diary
+http://purl.org/spar/fabio/DigitalItem
+http://purl.org/spar/fabio/DigitalManifestation
+http://purl.org/spar/fabio/DigitalStorageMedium
+http://purl.org/spar/fabio/Directory
+http://purl.org/spar/fabio/DisciplineDictionary
+http://purl.org/spar/fabio/DoctoralThesis
+http://purl.org/spar/fabio/DocumentRepository
+http://purl.org/spar/fabio/DustJacket
+http://purl.org/spar/fabio/Editorial
+http://purl.org/spar/fabio/Email
+http://purl.org/spar/fabio/EntityMetadata
+http://purl.org/spar/fabio/Entry
+http://purl.org/spar/fabio/Erratum
+http://purl.org/spar/fabio/Essay
+http://purl.org/spar/fabio/ExaminationPaper
+http://purl.org/spar/fabio/Excerpt
+http://purl.org/spar/fabio/ExecutiveSummary
+http://purl.org/spar/fabio/ExperimentalProtocol
+http://purl.org/spar/fabio/Expression
+http://purl.org/spar/fabio/ExpressionCollection
+http://purl.org/spar/fabio/Figure
+http://purl.org/spar/fabio/Film
+http://purl.org/spar/fabio/Folksonomy
+http://purl.org/spar/fabio/GanttChart
+http://purl.org/spar/fabio/GrantApplication
+http://purl.org/spar/fabio/GrantApplicationDocument
+http://purl.org/spar/fabio/Hardback
+http://purl.org/spar/fabio/Image
+http://purl.org/spar/fabio/InBrief
+http://purl.org/spar/fabio/InUsePaper
+http://purl.org/spar/fabio/Index
+http://purl.org/spar/fabio/InstructionManual
+http://purl.org/spar/fabio/InstructionalWork
+http://purl.org/spar/fabio/Item
+http://purl.org/spar/fabio/ItemCollection
+http://purl.org/spar/fabio/Journal
+http://purl.org/spar/fabio/JournalArticle
+http://purl.org/spar/fabio/JournalEditorial
+http://purl.org/spar/fabio/JournalIssue
+http://purl.org/spar/fabio/JournalNewsItem
+http://purl.org/spar/fabio/JournalVolume
+http://purl.org/spar/fabio/LaboratoryNotebook
+http://purl.org/spar/fabio/LectureNotes
+http://purl.org/spar/fabio/LegalOpinion
+http://purl.org/spar/fabio/Letter
+http://purl.org/spar/fabio/LibraryCatalog
+http://purl.org/spar/fabio/LiteraryArtisticWork
+http://purl.org/spar/fabio/Magazine
+http://purl.org/spar/fabio/MagazineArticle
+http://purl.org/spar/fabio/MagazineEditorial
+http://purl.org/spar/fabio/MagazineIssue
+http://purl.org/spar/fabio/MagazineNewsItem
+http://purl.org/spar/fabio/Manifestation
+http://purl.org/spar/fabio/ManifestationCollection
+http://purl.org/spar/fabio/Manuscript
+http://purl.org/spar/fabio/MastersThesis
+http://purl.org/spar/fabio/MeetingReport
+http://purl.org/spar/fabio/Metadata
+http://purl.org/spar/fabio/MetadataDocument
+http://purl.org/spar/fabio/MethodsPaper
+http://purl.org/spar/fabio/Microblog
+http://purl.org/spar/fabio/Micropost
+http://purl.org/spar/fabio/MinimalInformationStandard
+http://purl.org/spar/fabio/Model
+http://purl.org/spar/fabio/Movie
+http://purl.org/spar/fabio/MovingImage
+http://purl.org/spar/fabio/MusicalComposition
+http://purl.org/spar/fabio/Nanopublication
+http://purl.org/spar/fabio/NewsItem
+http://purl.org/spar/fabio/NewsReport
+http://purl.org/spar/fabio/Newspaper
+http://purl.org/spar/fabio/NewspaperArticle
+http://purl.org/spar/fabio/NewspaperEditorial
+http://purl.org/spar/fabio/NewspaperIssue
+http://purl.org/spar/fabio/NewspaperNewsItem
+http://purl.org/spar/fabio/Notebook
+http://purl.org/spar/fabio/NotificationOfReceipt
+http://purl.org/spar/fabio/Novel
+http://purl.org/spar/fabio/Obituary
+http://purl.org/spar/fabio/Ontology
+http://purl.org/spar/fabio/OntologyDocument
+http://purl.org/spar/fabio/Opinion
+http://purl.org/spar/fabio/Oration
+http://purl.org/spar/fabio/Page
+http://purl.org/spar/fabio/Paperback
+http://purl.org/spar/fabio/Patent
+http://purl.org/spar/fabio/PatentApplication
+http://purl.org/spar/fabio/PatentApplicationDocument
+http://purl.org/spar/fabio/PatentDocument
+http://purl.org/spar/fabio/Periodical
+http://purl.org/spar/fabio/PeriodicalIssue
+http://purl.org/spar/fabio/PeriodicalItem
+http://purl.org/spar/fabio/PeriodicalVolume
+http://purl.org/spar/fabio/PersonalCommunication
+http://purl.org/spar/fabio/PhDSymposiumPaper
+http://purl.org/spar/fabio/Play
+http://purl.org/spar/fabio/Poem
+http://purl.org/spar/fabio/Policy
+http://purl.org/spar/fabio/PolicyDocument
+http://purl.org/spar/fabio/PositionPaper
+http://purl.org/spar/fabio/PosterPaper
+http://purl.org/spar/fabio/Postprint
+http://purl.org/spar/fabio/Preprint
+http://purl.org/spar/fabio/Presentation
+http://purl.org/spar/fabio/PressRelease
+http://purl.org/spar/fabio/PrintObject
+http://purl.org/spar/fabio/ProceedingsPaper
+http://purl.org/spar/fabio/ProductReview
+http://purl.org/spar/fabio/ProjectMetadata
+http://purl.org/spar/fabio/ProjectPlan
+http://purl.org/spar/fabio/ProjectReport
+http://purl.org/spar/fabio/ProjectReportDocument
+http://purl.org/spar/fabio/Proof
+http://purl.org/spar/fabio/Proposition
+http://purl.org/spar/fabio/Questionnaire
+http://purl.org/spar/fabio/Quotation
+http://purl.org/spar/fabio/RapidCommunication
+http://purl.org/spar/fabio/ReferenceBook
+http://purl.org/spar/fabio/ReferenceEntry
+http://purl.org/spar/fabio/ReferenceWork
+http://purl.org/spar/fabio/RelationalDatabase
+http://purl.org/spar/fabio/Reply
+http://purl.org/spar/fabio/Report
+http://purl.org/spar/fabio/ReportDocument
+http://purl.org/spar/fabio/ReportingStandard
+http://purl.org/spar/fabio/Repository
+http://purl.org/spar/fabio/ResearchPaper
+http://purl.org/spar/fabio/ResourcePaper
+http://purl.org/spar/fabio/Retraction
+http://purl.org/spar/fabio/Review
+http://purl.org/spar/fabio/ReviewArticle
+http://purl.org/spar/fabio/ReviewPaper
+http://purl.org/spar/fabio/ScholarlyWork
+http://purl.org/spar/fabio/Screenplay
+http://purl.org/spar/fabio/Script
+http://purl.org/spar/fabio/Series
+http://purl.org/spar/fabio/ShortStory
+http://purl.org/spar/fabio/Song
+http://purl.org/spar/fabio/SoundRecording
+http://purl.org/spar/fabio/Specification
+http://purl.org/spar/fabio/SpecificationDocument
+http://purl.org/spar/fabio/Spreadsheet
+http://purl.org/spar/fabio/StandardOperatingProcedure
+http://purl.org/spar/fabio/StillImage
+http://purl.org/spar/fabio/StorageMedium
+http://purl.org/spar/fabio/StructuredSummary
+http://purl.org/spar/fabio/SubjectDiscipline
+http://purl.org/spar/fabio/SubjectTerm
+http://purl.org/spar/fabio/Supplement
+http://purl.org/spar/fabio/SupplementaryInformation
+http://purl.org/spar/fabio/SystematicReview
+http://purl.org/spar/fabio/Table
+http://purl.org/spar/fabio/TableOfContents
+http://purl.org/spar/fabio/Taxonomy
+http://purl.org/spar/fabio/TechnicalReport
+http://purl.org/spar/fabio/TechnicalStandard
+http://purl.org/spar/fabio/TermDictionary
+http://purl.org/spar/fabio/Textbook
+http://purl.org/spar/fabio/Thesaurus
+http://purl.org/spar/fabio/Thesis
+http://purl.org/spar/fabio/Timetable
+http://purl.org/spar/fabio/TrialReport
+http://purl.org/spar/fabio/Triplestore
+http://purl.org/spar/fabio/Tweet
+http://purl.org/spar/fabio/UncontrolledVocabulary
+http://purl.org/spar/fabio/Vocabulary
+http://purl.org/spar/fabio/VocabularyDocument
+http://purl.org/spar/fabio/VocabularyMapping
+http://purl.org/spar/fabio/VocabularyMappingDocument
+http://purl.org/spar/fabio/WebArchive
+http://purl.org/spar/fabio/WebContent
+http://purl.org/spar/fabio/WebManifestation
+http://purl.org/spar/fabio/WebPage
+http://purl.org/spar/fabio/WebSite
+http://purl.org/spar/fabio/WhitePaper
+http://purl.org/spar/fabio/Wiki
+http://purl.org/spar/fabio/WikiEntry
+http://purl.org/spar/fabio/WikipediaEntry
+http://purl.org/spar/fabio/Work
+http://purl.org/spar/fabio/WorkCollection
+http://purl.org/spar/fabio/WorkPackage
+http://purl.org/spar/fabio/Workflow
+http://purl.org/spar/fabio/WorkingPaper
+http://purl.org/spar/fabio/WorkshopPaper
+http://purl.org/spar/fabio/WorkshopProceedings
+owl:Thing
+skos:Concept
+skos:ConceptScheme
+## Object properties:
+frbr:embodiment ⊆ frbr:Expression × frbr:Manifestation 
+frbr:embodimentOf ⊆ rdfs:Resource × rdfs:Resource 
+frbr:exemplar ⊆ frbr:Manifestation × frbr:Item 
+frbr:exemplarOf ⊆ rdfs:Resource × rdfs:Resource 
+frbr:part ⊆ rdfs:Resource × rdfs:Resource 
+frbr:partOf ⊆ rdfs:Resource × rdfs:Resource 
+frbr:realization ⊆ frbr:Work × frbr:Expression 
+frbr:realizationOf ⊆ rdfs:Resource × rdfs:Resource 
+frbr:relatedEndeavour ⊆ frbr:Endeavour × frbr:Endeavour 
+http://purl.org/dc/terms/creator ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/dc/terms/format ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/dc/terms/language ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/dc/terms/license ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/dc/terms/publisher ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/dc/terms/rights ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/spar/fabio/hasDiscipline ⊆ http://purl.org/spar/fabio/TermDictionary ∪ frbr:Endeavour × http://purl.org/spar/fabio/SubjectDiscipline 
+http://purl.org/spar/fabio/hasManifestation ⊆ frbr:Work × frbr:Manifestation 
+http://purl.org/spar/fabio/hasPortrayal ⊆ frbr:Work × frbr:Item 
+http://purl.org/spar/fabio/hasPrimarySubjectTerm ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/spar/fabio/hasRepresentation ⊆ frbr:Expression × frbr:Item 
+http://purl.org/spar/fabio/hasSubjectTerm ⊆ frbr:Endeavour × http://purl.org/spar/fabio/SubjectTerm 
+http://purl.org/spar/fabio/isDisciplineOf ⊆ http://purl.org/spar/fabio/SubjectDiscipline × http://purl.org/spar/fabio/TermDictionary ∪ frbr:Endeavour 
+http://purl.org/spar/fabio/isManifestationOf ⊆ frbr:Manifestation × frbr:Work 
+http://purl.org/spar/fabio/isPortrayalOf ⊆ frbr:Item × frbr:Work 
+http://purl.org/spar/fabio/isRepresentationOf ⊆ frbr:Item × frbr:Expression 
+http://purl.org/spar/fabio/isSchemeOf ⊆ skos:ConceptScheme × skos:Concept 
+http://purl.org/spar/fabio/isStoredOn ⊆ http://purl.org/spar/fabio/Item × http://purl.org/spar/fabio/StorageMedium 
+http://purl.org/spar/fabio/stores ⊆ http://purl.org/spar/fabio/StorageMedium × http://purl.org/spar/fabio/Item 
+owl:topObjectProperty ⊆ rdfs:Resource × rdfs:Resource 
+skos:inScheme ⊆ skos:Concept × skos:ConceptScheme 
+## Data properties:
+http://prismstandard.org/namespaces/basic/2.0/alternateTitle ⊆ rdfs:Resource × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/doi ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/eIssn ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/edition ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/endingPage ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/isbn ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/issn ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/issueIdentifier ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/keyword ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/pageRange ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/publicationDate ⊆ frbr:Endeavour × DataUnionOf(xsd:date xsd:gYear xsd:gYearMonth ) 
+http://prismstandard.org/namespaces/basic/2.0/section ⊆ rdfs:Resource × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/startingPage ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/versionIdentifier ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/volume ⊆ frbr:Endeavour × rdfs:Literal 
+http://prismstandard.org/namespaces/basic/2.0/wordCount ⊆ frbr:Endeavour × xsd:positiveInteger 
+http://purl.org/dc/terms/abstract ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/dc/terms/created ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/dc/terms/date ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/dc/terms/dateAccepted ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/dc/terms/dateCopyrighted ⊆ rdfs:Resource × xsd:date 
+http://purl.org/dc/terms/dateSubmitted ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/dc/terms/identifier ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/dc/terms/issued ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/dc/terms/modified ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/dc/terms/title ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/dc/terms/valid ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/dateLastUpdated ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasAccessDate ⊆ http://purl.org/spar/fabio/Item × xsd:dateTime 
+http://purl.org/spar/fabio/hasArXivId ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasCODEN ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasCharacterCount ⊆ frbr:Endeavour × xsd:positiveInteger 
+http://purl.org/spar/fabio/hasCopyrightYear ⊆ frbr:Endeavour × xsd:gYear 
+http://purl.org/spar/fabio/hasCorrectionDate ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasDateCollected ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasDateReceived ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasDeadline ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasDecisionDate ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasDepositDate ⊆ http://purl.org/spar/fabio/Item × xsd:dateTime 
+http://purl.org/spar/fabio/hasDistributionDate ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasElectronicArticleIdentifier ⊆ frbr:Endeavour × rdfs:Literal 
+http://purl.org/spar/fabio/hasEmbargoDate ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasEmbargoDuration ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasHandle ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasIssnL ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasNLMJournalTitleAbbreviation ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasNationalLibraryOfMedicineJournalId ⊆ frbr:Endeavour × rdfs:Literal 
+http://purl.org/spar/fabio/hasPII ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasPageCount ⊆ frbr:Endeavour × xsd:positiveInteger 
+http://purl.org/spar/fabio/hasPatentNumber ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasPubMedCentralId ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasPubMedId ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasPublicationYear ⊆ rdfs:Resource × xsd:gYear 
+http://purl.org/spar/fabio/hasRequestDate ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasRetractionDate ⊆ rdfs:Resource × xsd:dateTime 
+http://purl.org/spar/fabio/hasSICI ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasSeason ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasSequenceIdentifier ⊆ frbr:Endeavour × rdfs:Literal 
+http://purl.org/spar/fabio/hasShortTitle ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasStandardNumber ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasSubtitle ⊆ frbr:Endeavour × xsd:string 
+http://purl.org/spar/fabio/hasTranslatedSubtitle ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasTranslatedTitle ⊆ rdfs:Resource × rdfs:Literal 
+http://purl.org/spar/fabio/hasURL ⊆ frbr:Endeavour × xsd:anyURI 
+http://purl.org/spar/fabio/hasVolumeCount ⊆ frbr:Endeavour × xsd:nonNegativeInteger 
+http://purl.org/spar/fabio/usesCalendar ⊆ rdfs:Resource × rdfs:Literal 
+owl:topDataProperty ⊆ rdfs:Resource × rdfs:Literal 

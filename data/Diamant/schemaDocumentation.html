@@ -416,8 +416,8 @@
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
       :f0 diamant:citation :q0 .
-      :s0 diamant:citesAsEvidence :q0 .
-      :f0 diamant:citesAsEvidence :q0 .
+      :s0 cito:citesAsEvidence :q0 .
+      :f0 cito:citesAsEvidence :q0 .
       :s0 diamant:locus :c0 .
       :f0 diamant:locus :c0 . 
       :q0 a diamant:Citation .
@@ -429,11 +429,13 @@
       :c0 diamant:text :q0 .
       :c0 nif:beginIndex 5 .
       :c0 nif:endIndex 8 .
-      :dt0 a diamant:Work .
+      :dt0 a frbr:Expression .
       :dt0 dcterms:author "Bovina Korovina" .
       :dt0 diamant:title "Meadow Meanderings" .
-      :dt0 diamant:witnessYearFrom 1810 .
-      :dt0 diamant:witnessYearTo 1812 .
+      :dt0 frbr:embodiment :tw0 .
+      :tw0 a frbr:Manifestation .
+      :tw0 diamant:notBefore 1810 .
+      :tw0 diamant:notAfter 1812 .
     </example>
     </div>
     </div>

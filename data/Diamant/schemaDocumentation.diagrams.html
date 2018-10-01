@@ -70,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/3da2728c-00ef-4976-ae71-089c041f4bca.svg"/>
+    </pre><img src="images/559e23c5-a10f-45c4-9033-22740eae6fbd.svg"/>
             </div>
 
     <div>
@@ -120,7 +120,7 @@
 
 
         
-    </pre><img src="images/baee25ef-a770-4f5f-ad22-dbe90386d345.svg"/>
+    </pre><img src="images/f85ecf80-c257-4dd3-911b-89826b03e7fb.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -279,7 +279,7 @@
             ];
             .
         
-    </pre><img src="images/86288354-cb55-4a9d-8fb6-e03031982db4.svg"/>
+    </pre><img src="images/e003855e-b5f7-4429-9fb2-793f5d045147.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
@@ -345,7 +345,7 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/ac91b8dc-9ecb-43c3-a98e-4fd8ca5a429a.svg"/>
+    </pre><img src="images/84351102-2213-46e3-92e0-8a5debc9f030.svg"/>
 </div>
 <div>
     <div>
@@ -366,7 +366,7 @@
 &lt;/sense&gt;
 &lt;/entry&gt;
         </pre>
-        <img src="images/8bd8c0cf-5034-4154-b5b7-ec84a0f334e0.svg"/>
+        <img src="images/55d8cde4-09a4-4e4b-bd17-22184817fd52.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -398,7 +398,7 @@
       :dt0 diamant:witnessYearFrom 1810 .
       :dt0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/ec466c4f-0b78-44fb-8ed3-56d560600dc9.svg"/>
+    </pre><img src="images/ea992671-7ae3-412e-a1fb-a6c488f50e59.svg"/>
     <p>
     Here the &quot;Attestation&quot; object points to the character offsets of the relevant word in the quotation. 
     Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
@@ -422,8 +422,9 @@
       :c0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
-      :s0 diamant:citesAsEvidence :q0 .
-      :f0 diamant:citesAsEvidence :q0 .
+      :f0 diamant:citation :q0 .
+      :s0 cito:citesAsEvidence :q0 .
+      :f0 cito:citesAsEvidence :q0 .
       :s0 diamant:locus :c0 .
       :f0 diamant:locus :c0 . 
       :q0 a diamant:Citation .
@@ -435,13 +436,15 @@
       :c0 diamant:text :q0 .
       :c0 nif:beginIndex 5 .
       :c0 nif:endIndex 8 .
-      :dt0 a diamant:Work .
+      :dt0 a frbr:Expression .
       :dt0 dcterms:author &quot;Bovina Korovina&quot; .
       :dt0 diamant:title &quot;Meadow Meanderings&quot; .
-      :dt0 diamant:witnessYearFrom 1810 .
-      :dt0 diamant:witnessYearTo 1812 .
+      :dt0 frbr:embodiment :tw0 .
+      :tw0 a frbr:Manifestation .
+      :tw0 diamant:notBefore 1810 .
+      :tw0 diamant:notAfter 1812 .
     
-    </pre><img src="images/ce035f56-3b93-4437-b630-a058ac49bf1e.svg"/>
+    </pre><img src="images/92175151-55b1-48cb-a5d5-ac28dad736ff.svg"/>
     </div>
     </div>
     

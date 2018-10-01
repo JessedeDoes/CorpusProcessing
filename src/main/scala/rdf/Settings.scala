@@ -11,6 +11,8 @@ object Settings
                      |@prefix dcterms: <http://purl.org/dc/terms/> .
                      |@prefix decomp: <http://www.w3.org/ns/lemon/decomp#> .
                      |@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> .
+                     |@prefix int: <http://rdf.ivdnt.org/schema/int#> .
+                     |@prefix anw: <http://rdf.ivdnt.org/schema/anw#> .
                      |@prefix fabio: <http://purl.org/spar/fabio/> .
                      |@prefix gold: <http://www.w3.org/ns/gold#> .
                      |@prefix int: <http://rdf.ivdnt.org/schema/anw/> .
@@ -42,7 +44,10 @@ object Settings
                      |@prefix odp: <http://www.ontologydesignpatterns.org/cp/owl/semiotics.owl#> .
                      |@prefix voaf: <http://purl.org/vocommons/voaf#> .
                      |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
+                     |@prefix frbr: <http://purl.org/vocab/frbr/core#> .
+                     |@prefix cito: <http://purl.org/spar/cito/> .
                      |@prefix : <#> .\n""".stripMargin
+
 
 
   lazy val prefixMap:Map[String,org.semanticweb.owlapi.model.IRI] = prefixes.split("\n").filter(_.contains("@")).toStream.map(l => {

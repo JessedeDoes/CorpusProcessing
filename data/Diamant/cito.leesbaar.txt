@@ -1,0 +1,116 @@
+## Classes:
+cito:AffilationSelfCitation
+cito:AuthorNetworkSelfCitation
+cito:AuthorSelfCitation
+cito:Citation
+cito:DistantCitation
+cito:FunderSelfCitation
+cito:JournalCartelCitation
+cito:JournalSelfCitation
+cito:SelfCitation
+http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation
+owl:Thing
+## Object properties:
+cito:agreesWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:cites ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsAuthority ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsDataSource ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsEvidence ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsMetadataDocument ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsPotentialSolution ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsRecommendedReading ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsRelated ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesAsSourceDocument ⊆ rdfs:Resource × rdfs:Resource 
+cito:citesForInformation ⊆ rdfs:Resource × rdfs:Resource 
+cito:compiles ⊆ rdfs:Resource × rdfs:Resource 
+cito:confirms ⊆ rdfs:Resource × rdfs:Resource 
+cito:containsAssertionFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:corrects ⊆ rdfs:Resource × rdfs:Resource 
+cito:credits ⊆ rdfs:Resource × rdfs:Resource 
+cito:critiques ⊆ rdfs:Resource × rdfs:Resource 
+cito:derides ⊆ rdfs:Resource × rdfs:Resource 
+cito:describes ⊆ rdfs:Resource × rdfs:Resource 
+cito:disagreesWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:discusses ⊆ rdfs:Resource × rdfs:Resource 
+cito:disputes ⊆ rdfs:Resource × rdfs:Resource 
+cito:documents ⊆ rdfs:Resource × rdfs:Resource 
+cito:extends ⊆ rdfs:Resource × rdfs:Resource 
+cito:givesBackgroundTo ⊆ rdfs:Resource × rdfs:Resource 
+cito:givesSupportTo ⊆ rdfs:Resource × rdfs:Resource 
+cito:hasCitationCharacterization ⊆ rdfs:Resource × rdfs:Resource 
+cito:hasCitedEntity ⊆ rdfs:Resource × rdfs:Resource 
+cito:hasCitingEntity ⊆ rdfs:Resource × rdfs:Resource 
+cito:hasReplyFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:includesExcerptFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:includesQuotationFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:isAgreedWithBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsAuthorityBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsDataSourceBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsEvidenceBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsMetadataDocumentBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsPontentialSolutionBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsRecommendedReadingBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsRelatedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedAsSourceDocumentBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCitedForInformationBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCompiledBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isConfirmedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCorrectedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCreditedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isCritiquedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDeridedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDescribedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDisagreedWithBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDiscussedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDisputedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isDocumentedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isExtendedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isLinkedToBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isParodiedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isPlagiarizedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isQualifiedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isRefutedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isRetractedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isReviewedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isRidiculedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isSpeculatedOnBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isSupportedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:isUpdatedBy ⊆ rdfs:Resource × rdfs:Resource 
+cito:likes ⊆ rdfs:Resource × rdfs:Resource 
+cito:linksTo ⊆ rdfs:Resource × rdfs:Resource 
+cito:obtainsBackgroundFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:obtainsSupportFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:parodies ⊆ rdfs:Resource × rdfs:Resource 
+cito:plagiarizes ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesAssertionFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesConclusionsFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesDataFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesExcerptFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesMethodFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:providesQuotationFor ⊆ rdfs:Resource × rdfs:Resource 
+cito:qualifies ⊆ rdfs:Resource × rdfs:Resource 
+cito:refutes ⊆ rdfs:Resource × rdfs:Resource 
+cito:repliesTo ⊆ rdfs:Resource × rdfs:Resource 
+cito:retracts ⊆ rdfs:Resource × rdfs:Resource 
+cito:reviews ⊆ rdfs:Resource × rdfs:Resource 
+cito:ridicules ⊆ rdfs:Resource × rdfs:Resource 
+cito:sharesAuthorInstitutionWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:sharesAuthorWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:sharesFundingAgencyWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:sharesJournalWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:sharesPublicationVenueWith ⊆ rdfs:Resource × rdfs:Resource 
+cito:speculatesOn ⊆ rdfs:Resource × rdfs:Resource 
+cito:supports ⊆ rdfs:Resource × rdfs:Resource 
+cito:updates ⊆ rdfs:Resource × rdfs:Resource 
+cito:usesConclusionsFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:usesDataFrom ⊆ rdfs:Resource × rdfs:Resource 
+cito:usesMethodIn ⊆ rdfs:Resource × rdfs:Resource 
+http://purl.org/swan/2.0/discourse-relationships/refersTo ⊆ rdfs:Resource × rdfs:Resource 
+http://schema.org/citation ⊆ rdfs:Resource × rdfs:Resource 
+http://www.ontologydesignpatterns.org/cp/owl/situation.owl#isSettingFor ⊆ http://www.ontologydesignpatterns.org/cp/owl/situation.owl#Situation × owl:Thing 
+owl:topObjectProperty ⊆ rdfs:Resource × rdfs:Resource 
+## Data properties:
+cito:hasCitationCreationDate ⊆ rdfs:Resource × rdfs:Literal 
+cito:hasCitationTimeSpan ⊆ cito:Citation × xsd:duration 
+cito:hasCoAuthorshipCitationLevel ⊆ cito:AuthorNetworkSelfCitation × xsd:positiveInteger 
