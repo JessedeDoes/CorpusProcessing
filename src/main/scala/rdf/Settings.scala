@@ -46,6 +46,7 @@ object Settings
                      |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
                      |@prefix frbr: <http://purl.org/vocab/frbr/core#> .
                      |@prefix cito: <http://purl.org/spar/cito/> .
+		     |@prefix time: <http://www.w3.org/2006/time#> .
                      |@prefix : <#> .\n""".stripMargin
 
 
