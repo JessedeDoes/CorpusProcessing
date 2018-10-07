@@ -50,6 +50,8 @@ object diamantMapping {
   import commonDefinitions._
   ////// queries //////
 
+  val senseTable = "diamant.senses"
+
   val wordformQuery =
     """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
@@ -72,9 +74,9 @@ object diamantMapping {
 
   val documentQuery = "select * from documents"
 
-  val senseQuery = "select * from senses"
+  val senseQuery = s"select * from $senseTable"
 
-  val subSenseQuery = "select * from senses where parent_id is not null"
+  val subSenseQuery = s"select * from $senseTable where parent_id is not null"
 
   val synonymQuery = "select *, dictionary as wdb from diamant.synonym_definitions where correct=true"
 
