@@ -20,9 +20,9 @@ object FoliaToCoNLL_U {
   def printWord(w: Node) =
   {
     val word = (w \ "t").text
-    val lemma = ((w \\ "lemma").head \ "@class").text
+    val lemma = ((w \\ "lemma").filter(x => (x \ "@class").text != "_") .head \ "@class").text
     val pos = ((w \ "pos").head \ "@class").text
-    val mainPos = pos.replaceAll("[(].*", "")
+    val mainPos = pos.replaceAll("[(].*", "").replaceAll("UNK", "X")
     val features = pos.replaceAll(".*[(]", "").replaceAll("[()]","").replaceAll("[|]", "_").replaceAll(",", "|")
     s"$word\t$lemma\t$mainPos\t${if (features.nonEmpty) features else "_"}"
   }
@@ -44,7 +44,7 @@ object FoliaToCoNLL_U {
          {
            val wid = getId(w)
            val sense = (w \ "@sense").text
-           s"# semcor_sense $i : $wid : $sense"
+           s"# semcor_sense for token $i: $wid => $sense"
          }
      }).toList
      val tokens = (s \\ "w").map(printWord).zipWithIndex.map({case (l,i) => (i+1).toString + "\t" + l }).toList.map(padToTen)

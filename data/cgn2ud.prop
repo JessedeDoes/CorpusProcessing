@@ -100,16 +100,19 @@ ud:pos=CCONJ ↔ cgn:pos=VG ∧ cgn:feat.conjtype=neven
 
 ud:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det ∧ ¬cgn:feat.positie=nom) ∨ (cgn:pos=VNW ∧ cgn:feat.positie=prenom)
 ud:pos=INTJ ↔ cgn:pos=TSW
-ud:pos=NOUN ↔ cgn:pos=N ∧ cgn:feat.ntype=soort
+#ud:pos=NOUN ↔  cgn:pos=N ∧ cgn:feat.ntype=soort ∧  ¬cgn:feat.ntype=eigen
 ud:pos=NUM ↔ cgn:pos=TW
 ud:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron) ∨ (cgn:pos=VNW ∧ (cgn:feat.positie=vrij ∨ cgn:feat.positie=nom))
-#ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (cgn:feat.spectype=deeleigen)
+#ud:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (¬cgn:pos=N ∧ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen)
+cgn:feat.ntype=eigen → ud:pos=PROPN
+cgn:feat.ntype=soort → ud:pos=NOUN
+cgn:feat.spectype=deeleigen → ud:pos=PROPN
 ud:pos=PUNCT ↔ cgn:pos=LET
-ud:pos=PROPN ↔ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen
+#ud:pos=PROPN ↔ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen
 ud:pos=SCONJ ↔ cgn:pos=VG ∧ cgn:feat.conjtype=onder
 ud:pos=SYM → cgn:pos=SPEC
 ud:pos=VERB ↔ cgn:pos=WW
-ud:pos=X → cgn:pos=SPEC
+ud:pos=X →  cgn:pos=SPEC
 
 #ud:pos=SCONJ|CCONJ ↔ ud:pos=SCONJ ∨ ud:pos=CCONJ
 
@@ -119,11 +122,12 @@ ud:pos=X → cgn:pos=SPEC
 # Zouden eigenlijk voor alles opgenomen moeten worden
 
 #¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
-cgn:pos=N → cgn:feat.ntype=soort
+#cgn:pos=N → cgn:feat.ntype=soort Hoe kan je dit nou weer verzinnen???
 ¬(cgn:pos=VNW ∧ cgn:pos=LID)
 
 # moet dit echt?
 
+#¬(cgn:pos=N ∧ cgn:feat.ntype=soort ∧ cgn:feat.ntype=eigen)
 ¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=imp)
 ¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=conj)
 ¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=imp)
