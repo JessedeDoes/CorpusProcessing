@@ -29,7 +29,7 @@ object UDTags {
       "Number", "Gender", "Degree", "X-Inflection"),
     "ADP"   -> List("Abbr"),
     "PART" -> List(),
-    "AUX" -> pos2partitions("VERB"),
+    "AUX" ->  List("Abbr", "Mood", "Tense", "Number", "Person", "Polite", "VerbForm", "Voice", "Reflex",  "X-Inflection"),
     "SCONJ"   -> List("Abbr"),
     "CCONJ"   -> List("Abbr"),
     "ADV"   -> List("Abbr","Degree", "X-Inflection"),

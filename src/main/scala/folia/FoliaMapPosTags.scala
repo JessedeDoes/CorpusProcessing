@@ -42,11 +42,16 @@ case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
 
   def updatePoS(d: Elem):Elem = updateElement(d, e => e.label == "pos", mapPosElement)
 
+  def mapPoS(fileName: String): Elem =
+  {
+    val in = new FileInputStream(fileName)
+    val zin = if (fileName.endsWith("gz")) new GZIPInputStream(in) else in
+    updatePoS(XML.load(zin))
+  }
+
   def updatePoS(fileName: String):Unit =
     {
-      val in = new FileInputStream(fileName)
-      val zin = if (fileName.endsWith("gz")) new GZIPInputStream(in) else in
-      println(updatePoS(XML.load(zin)))
+      println(mapPoS(fileName))
     }
 }
 
@@ -66,3 +71,4 @@ object TestSimplify
   def cgnParse(t: String):Tag = CGNTagset.fromString(t)
   def main(args: Array[String]):Unit = FoliaMapPosTags(cgnParse, toLite).updatePoS(args(0))
 }
+
