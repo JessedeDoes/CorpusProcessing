@@ -11,7 +11,7 @@ ud:AdpType=Prep ↔ cgn:feat.vztype=init
 ud:Aspect=Imp ↔ cgn:feat.wvorm=od
 ud:Aspect=Perf ↔ cgn:feat.wvorm=vd
 
-ud:Case=Acc|Nom ↔ cgn:feat.naamval=stan
+#ud:Case=Acc|Nom ↔ cgn:feat.naamval=stan
 ud:Case=Acc ↔ cgn:feat.naamval=obl
 ud:Case=Dat ↔ cgn:feat.naamval=dat
 ud:Case=Gen ↔ cgn:feat.naamval=gen

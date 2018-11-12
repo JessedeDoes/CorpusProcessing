@@ -271,8 +271,8 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     val V: List[String] = this.tagset.inSubsets(f)
 
     val fn = if (V.isEmpty) {
-      Console.err.println(s"Fatal error: tag cannot be parsed from tagset: $tag")
-      System.exit(1)
+      Console.err.println(s"Should be fatal error but we will let you off the hook for now: tag cannot be parsed from tagset: $tag")
+      //System.exit(1)
       "UNK"
     }
     else if (V.size == 1) V.head

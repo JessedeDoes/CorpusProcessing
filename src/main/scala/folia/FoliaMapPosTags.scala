@@ -4,6 +4,7 @@ import java.util.zip.GZIPInputStream
 
 import scala.xml._
 import posmapping._
+import utils.PostProcessXML
 
 /*
 ToDo: houd rekening met de sets.
@@ -11,7 +12,7 @@ ToDo: houd rekening met de sets.
 - Pas de setdeclaratie in de header aan
  */
 
-case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
+case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag, targetSet: String = "UDv2.0") {
 
   val cachedMapping = Cache(tagMapping)
 
@@ -28,25 +29,30 @@ case class FoliaMapPosTags(parseTag: String=>Tag, tagMapping: Tag => Tag) {
       }))
   }
 
-  def mapPosElement(e:Elem):Elem =
+  def mapPosElement(e:Elem):NodeSeq =
   {
     val tag = parseTag((e \ "@class").toString)
     val newTag = cachedMapping(tag)
     val features = newTag.features.map({case Feature(n,v) => <feat class={n} value={v}/>})
-    e.copy(child=features,
+    val sourceSet = (e \ "@set").text
+
+    val translated = e.copy(child=features,
       attributes = e.attributes
         .remove("class")
         .remove("confidence")
-        .append(new UnprefixedAttribute("class", newTag.toString, Null)) )
+        .remove("set")
+        .append(new UnprefixedAttribute("class", newTag.toString, Null))
+        .append(new UnprefixedAttribute("set", sourceSet + "=>" + targetSet, Null)))
+    Seq(translated, e)
   }
 
-  def updatePoS(d: Elem):Elem = updateElement(d, e => e.label == "pos", mapPosElement)
+  def updatePoS(d: Elem):Elem = PostProcessXML.updateElement2(d, e => e.label == "pos", mapPosElement).asInstanceOf[Elem] // nee zo wil ik het niet ...
 
   def mapPoS(fileName: String): Elem =
   {
     val in = new FileInputStream(fileName)
     val zin = if (fileName.endsWith("gz")) new GZIPInputStream(in) else in
-    updatePoS(XML.load(zin))
+    updatePoS(XML.load(zin)).asInstanceOf[Elem]
   }
 
   def updatePoS(fileName: String):Unit =

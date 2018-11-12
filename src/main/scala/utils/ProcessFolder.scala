@@ -22,7 +22,7 @@ object ProcessFolder {
     {
       input.listFiles().toList.par.foreach(f =>
       {
-        if (f.isFile && f.getName.endsWith(".xml"))
+        if (f.isFile && (f.getName.endsWith(".xml") || f.getName.endsWith(".xml.gz")))
           processFolder(f, outputFolder, base)
         else if (f.isDirectory)
           processFolder(f, new File(outputFolder + "/" + f.getName), base)
