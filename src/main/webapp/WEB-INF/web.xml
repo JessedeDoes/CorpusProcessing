@@ -4,10 +4,21 @@
     <servlet-name>sparql2xquery</servlet-name>
     <servlet-class>servlet.BogusEndpoint</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>DSDD</servlet-name>
+    <servlet-class>servlet.DSDDProxy</servlet-class>
+  </servlet>
+
+
 
   <servlet-mapping>
     <servlet-name>sparql2xquery</servlet-name>
     <url-pattern>/sparql2xquery</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>DSDD</servlet-name>
+    <url-pattern>/DSDD</url-pattern>
   </servlet-mapping>
 
 </web-app>

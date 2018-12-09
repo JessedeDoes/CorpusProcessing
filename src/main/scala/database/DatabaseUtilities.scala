@@ -140,6 +140,8 @@ class Database(configuration: Configuration) {
   import org.postgresql.copy.CopyManager
   import org.postgresql.ds._
 
+  def getConfiguration = configuration
+
   def makeHandle(conf: Configuration): (Handle, javax.sql.DataSource) = {
 
     val (dbi,source) = if (conf.driver.equalsIgnoreCase("postgres")) {
