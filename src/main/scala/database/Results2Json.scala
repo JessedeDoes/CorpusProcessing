@@ -61,7 +61,7 @@ object Results2Json {
       val column_name = rsmd.getColumnName(i)
       val column_type = rsmd.getColumnType(i)
       val column_data = column_type match {
-        case java.sql.Types.ARRAY => rs.getArray(column_name)
+        case java.sql.Types.ARRAY => rs.getArray(column_name).getArray()
         case java.sql.Types.BIGINT => rs.getInt(column_name)
         case java.sql.Types.BOOLEAN => rs.getBoolean(column_name)
         case java.sql.Types.BLOB => rs.getBlob(column_name)
