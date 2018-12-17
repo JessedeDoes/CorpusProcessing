@@ -32,7 +32,7 @@ class Results2JsonServlet(db: Database) extends HttpServlet {
 object Stuff
 {
   val testje = Configuration(name="oefen", server="localhost", database="oefen", user="postgres", password="postgres")
-  val dsdd = testje.copy(database="hercules",password="inl")
+  val dsdd = testje.copy(server="svowdb02", database="hercules",password="inl")
   val testDB = new Database(dsdd)
 }
 
