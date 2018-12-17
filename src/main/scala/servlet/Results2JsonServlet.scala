@@ -27,6 +27,8 @@ class Results2JsonServlet(db: Database) extends HttpServlet {
       response.getWriter.write(r)
     }
   }
+
+  override def doPost(request: HttpServletRequest, response: HttpServletResponse)  = doGet(request, response)
 }
 
 object Stuff
