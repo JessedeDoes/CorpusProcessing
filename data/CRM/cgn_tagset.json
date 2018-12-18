@@ -1,0 +1,330 @@
+{
+  "pos": {
+    "id": "LID",
+    "subAnnotations": [
+      "buiging",
+      "lwtype",
+      "naamval",
+      "npagr"
+    ],
+    "TW": {
+      "id": "TW",
+      "subAnnotations": [
+        "buiging",
+        "graad",
+        "numtype",
+        "positie"
+      ]
+    },
+    "N": {
+      "id": "N",
+      "subAnnotations": [
+        "buiging",
+        "genus",
+        "getal",
+        "graad",
+        "naamval",
+        "ntype"
+      ]
+    },
+    "VG": {
+      "id": "VG",
+      "subAnnotations": [
+        "conjtype"
+      ]
+    },
+    "TSW": {
+      "id": "TSW",
+      "subAnnotations": []
+    },
+    "ADJ": {
+      "id": "ADJ",
+      "subAnnotations": [
+        "buiging",
+        "getal",
+        "getal-n",
+        "graad",
+        "naamval",
+        "positie"
+      ]
+    },
+    "BW": {
+      "id": "BW",
+      "subAnnotations": [
+        "bwtype",
+        "pdtype",
+        "status"
+      ]
+    },
+    "VZ": {
+      "id": "VZ",
+      "subAnnotations": [
+        "vztype"
+      ]
+    },
+    "WW": {
+      "id": "WW",
+      "subAnnotations": [
+        "buiging",
+        "getal-n",
+        "positie",
+        "pvagr",
+        "pvtijd",
+        "wvorm"
+      ]
+    },
+    "VNW": {
+      "id": "VNW",
+      "subAnnotations": [
+        "buiging",
+        "genus",
+        "getal",
+        "getal-n",
+        "graad",
+        "naamval",
+        "npagr",
+        "pdtype",
+        "persoon",
+        "positie",
+        "status",
+        "vwtype"
+      ]
+    },
+    "SPEC": {
+      "id": "SPEC",
+      "subAnnotations": [
+        "spectype"
+      ]
+    }
+  },
+  "subAnnotations": {
+    "id": "lwtype",
+    "values": [
+      "bep",
+      "onbep"
+    ],
+    "vztype": {
+      "id": "vztype",
+      "values": [
+        "fin",
+        "init",
+        "versm"
+      ]
+    },
+    "pdtype": {
+      "id": "pdtype",
+      "values": [
+        "adv-pron",
+        "det",
+        "grad",
+        "pron"
+      ]
+    },
+    "graad": {
+      "id": "graad",
+      "values": [
+        "basis",
+        "comp",
+        "dim",
+        "sup"
+      ]
+    },
+    "numtype": {
+      "id": "numtype",
+      "values": [
+        "hoofd",
+        "onbep",
+        "rang"
+      ]
+    },
+    "vwtype": {
+      "id": "vwtype",
+      "values": [
+        "aanw",
+        "betr",
+        "bez",
+        "excl",
+        "onbep",
+        "pers",
+        "pr",
+        "recip",
+        "refl",
+        "vb",
+        "vrag"
+      ]
+    },
+    "positie": {
+      "id": "positie",
+      "values": [
+        "nom",
+        "postnom",
+        "prenom",
+        "vrij"
+      ]
+    },
+    "pvagr": {
+      "id": "pvagr",
+      "values": [
+        "ev",
+        "met-t",
+        "mv"
+      ]
+    },
+    "bwtype": {
+      "id": "bwtype",
+      "values": [
+        "aanw",
+        "alg",
+        "betr",
+        "herv",
+        "neg",
+        "onbep",
+        "vrag"
+      ]
+    },
+    "wvorm": {
+      "id": "wvorm",
+      "values": [
+        "inf",
+        "od",
+        "part",
+        "pv",
+        "vd"
+      ]
+    },
+    "getal": {
+      "id": "getal",
+      "values": [
+        "ev",
+        "mv"
+      ]
+    },
+    "npagr": {
+      "id": "npagr",
+      "values": [
+        "agr",
+        "agr3",
+        "evf",
+        "evmo",
+        "evon",
+        "evz",
+        "mv",
+        "rest",
+        "rest3"
+      ]
+    },
+    "naamval": {
+      "id": "naamval",
+      "values": [
+        "bijz",
+        "dat",
+        "gen",
+        "nomin",
+        "obl",
+        "stan"
+      ]
+    },
+    "wwtype": {
+      "id": "wwtype",
+      "values": [
+        "hoofd",
+        "hulp-of-koppel"
+      ]
+    },
+    "genus": {
+      "id": "genus",
+      "values": [
+        "fem",
+        "genus",
+        "masc",
+        "onz",
+        "zijd"
+      ]
+    },
+    "ntype": {
+      "id": "ntype",
+      "values": [
+        "eigen",
+        "soort"
+      ]
+    },
+    "status": {
+      "id": "status",
+      "values": [
+        "ellips",
+        "nadr",
+        "red",
+        "vol"
+      ]
+    },
+    "variatie": {
+      "id": "variatie",
+      "values": [
+        "dial"
+      ]
+    },
+    "persoon": {
+      "id": "persoon",
+      "values": [
+        "1",
+        "2",
+        "2b",
+        "2v",
+        "3",
+        "3m",
+        "3o",
+        "3p",
+        "3v"
+      ]
+    },
+    "getal-n": {
+      "id": "getal-n",
+      "values": [
+        "ev-n",
+        "mv-n",
+        "zonder-n"
+      ]
+    },
+    "conjtype": {
+      "id": "conjtype",
+      "values": [
+        "neven",
+        "onder"
+      ]
+    },
+    "buiging": {
+      "id": "buiging",
+      "values": [
+        "met-e",
+        "met-n",
+        "met-s",
+        "met-t",
+        "overig",
+        "zonder"
+      ]
+    },
+    "spectype": {
+      "id": "spectype",
+      "values": [
+        "afgebr",
+        "afk",
+        "deeleigen",
+        "meta",
+        "onverst",
+        "overig",
+        "symb",
+        "vreemd"
+      ]
+    },
+    "pvtijd": {
+      "id": "pvtijd",
+      "values": [
+        "conj",
+        "imp",
+        "imper",
+        "tgw",
+        "verl"
+      ]
+    }
+  }
+}
