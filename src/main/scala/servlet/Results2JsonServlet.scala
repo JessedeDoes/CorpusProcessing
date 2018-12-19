@@ -23,7 +23,7 @@ class Results2JsonServlet(db: Database) extends HttpServlet {
     if (query != null)
     {
       System.err.println(query)
-      val r = Results2Json.resultsAsJsonString(db, query)
+      val r = Results2Json.resultsAsJsonString(db, query, Some("gis"))
       response.getWriter.write(r)
     }
   }

@@ -84,24 +84,52 @@ object Results2Json {
 
   def queryJson(q: String):AlmostQuery[JValue] = db => db.createQuery(q).map(ResultMapping(convert))
 
-  def resultsAsJson(db: Database, q: String) =
+  def resultsAsJson(db: Database, q: String, schema: Option[String]=None) =
   {
+    if (schema.isDefined) db.runStatement(s"set schema '${schema.get}';")
     val x = ("results" -> db.slurp(queryJson(q))) ~ ("query" -> q) ~ ("database" -> db.getConfiguration.toString)
     render(x)
   }
 
-  def resultsAsJsonString(db: Database, q: String) = compact(resultsAsJson(db,q))
+  def resultsAsJsonString(db: Database, q: String, s:Option[String]=None) = compact(resultsAsJson(db,q,s))
 
+
+  //val testje = Configuration(name="oefen", server="localhost", database="oefen", user="postgres", password="postgres")
+
+  //val testDB = new Database(testje)
 
   val testje = Configuration(name="oefen", server="localhost", database="oefen", user="postgres", password="postgres")
-
-  val testDB = new Database(testje)
+  val dsdd = testje.copy(server="svowdb02", database="hercules",password="inl")
+  val testDB = new Database(dsdd)
 
   val qTest = queryJson("select * from bla")
 
+  val gisTest =
+    """
+      |select max(keywords.lemma) as lemma,
+      |    string_agg(distinct keywords.dictionary, ',') as dict,
+      |    max(keywords.keyword) as keyword,
+      |    max(keywords.definition) as definition,
+      |    string_agg(distinct location_area, ', ') as area,
+      |    string_agg(distinct location_subarea, ', ') as subarea,
+      |    string_agg(distinct provincie, ', ') as province,
+      |    string_agg(distinct streek, ', ') as region,
+      |    string_agg(distinct land, ', ') as country,
+      |    string_agg(distinct location_place, ', ') as place,
+      |    string_agg(distinct kloeke_new,', ') as kloeke,
+      |    string_agg(distinct lng || ',' || lat, '; ') as points
+      |from integratie.keywords keywords, integratie.union_table union_table, gis.kloeke_cumul coords
+      |where (keywords.keyword='kikker' or keywords.lemma='kikker')
+      | and  union_table.lemma_id=keywords.lemma_id
+      | and union_table.keyword=keywords.keyword_org
+      | and coords.kloeke_code1=union_table.kloeke_new
+      | and st_contains( st_setsrid(ST_GEOMFROMTEXT('polygon((2.4446895211046775 50.581492622208735, 2.999461692166681 50.581492622208735, 2.999461692166681 50.78336517951859, 2.4446895211046775 50.78336517951859,  2.4446895211046775 50.581492622208735))'),4326), point)
+      | group by keywords.lemma_id, keyword_id;
+      |
+    """.stripMargin
   def main(args: Array[String]): Unit = {
     //testDB.slurp(qTest).foreach(x => println(compact(x)))
-    val jResults = resultsAsJson(testDB, "select * from bla")
+    val jResults = resultsAsJson(testDB, gisTest, Some("gis"))
     println(compact(jResults))
   }
 }
