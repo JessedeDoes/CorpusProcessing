@@ -189,16 +189,19 @@ object diamantMapping {
 
   val attestations: Mappings = {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
-    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
+    val theLocus = ~s"$locusResourcePrefix$$attestation_id"
+    val theQuotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id" // doen we die nou nog?
 
     ⊕(
       attestationQuery,
       Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
-      Ω(text, theAttestation, quotation),
+      Ω(hasCitedEntity, theAttestation, theQuotation),
       Ω(isA, theAttestation, attestationType),
+      Ω(isA, theLocus, locusType),
       Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation),
-      Δ(beginIndex, theAttestation, r => IntLiteral(r.getInt("start_pos"))),
-      Δ(endIndex, theAttestation, r => IntLiteral(r.getInt("end_pos"))))
+      Ω(locus, theAttestation, theLocus),
+      Δ(beginIndex, theLocus, r => IntLiteral(r.getInt("start_pos"))),
+      Δ(endIndex, theLocus, r => IntLiteral(r.getInt("end_pos"))))
   }
 
   val senseAttestations: Mappings = {
@@ -206,18 +209,23 @@ object diamantMapping {
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
 
     ⊕(senseAttestationQuery,
-      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation))
+      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation)) // dit lijkt 2 keer te gebeuren?
   }
 
   val quotations: Mappings = {
-    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"// ϝ("document_id", "http://document/" + _)
+    val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id" // ϝ("document_id", "http://document/" + _)
+    val expression = ~s"${expressionResourcePrefix}$$wdb/$$document_id"
     ⊕(
       documentQuery,
       Ω(isA, quotation, quotationType),
+      Ω(isA, quotation, manifestationType),
+      Ω(isA, expression, expressionType),
+      Ω(embodiment, expression, quotation),
+      Ω(embodimentOf, quotation, expression),
       Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
       Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
-      Δ(dcTitle, quotation, !"title"),
-      Δ(dcAuthor, quotation, !"author")
+      Δ(dcTitle, expression, !"title"),
+      Δ(dcAuthor, expression, !"author")
     )
   }
 
@@ -252,7 +260,7 @@ object diamantMapping {
 
   val serpens = List(serpensConcepts, serpensWNT)
 
-  val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_clean", "postgres", "inl"))
+  val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_candidate", "postgres", "inl"))
 
   val limit = Int.MaxValue
 
