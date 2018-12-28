@@ -198,7 +198,7 @@ object diagramsInLatex
 {
   import diagrams._
 
-  def exampleWithDiagram(f: java.io.File, s:String):String = {
+  def exampleWithDiagram(options: String, f: java.io.File, s:String):String = {
     val rdf = Settings.prefixes + "\n" + s
     // val g = parseStringToGraph(rdf)
 
@@ -211,14 +211,14 @@ object diagramsInLatex
     </pre>
         <img src={imgLink}/>
     val pdfName = f.getName.replaceAll("svg$", "pdf")
-    s"\\\\includegraphics[width=\\\\textwidth]{${pdfName}}"
+    s"\\\\includegraphics[$options]{${pdfName}}"
   }
 
-  def exampleWithDiagram(imagePrefix: String, rdf: String, imageDir: java.io.File):String =
+  def exampleWithDiagram(options: String, imagePrefix: String, rdf: String, imageDir: java.io.File):String =
   {
     Console.err.println(rdf)
     val imgFile = new java.io.File(imageDir.getCanonicalPath + "/" +  imagePrefix + ".svg")
-    exampleWithDiagram(imgFile, rdf)
+    exampleWithDiagram(options, imgFile, rdf)
   }
 
   def main(args: Array[String]): Unit = {
@@ -226,8 +226,8 @@ object diagramsInLatex
     val dirForfIn = new java.io.File(fIn).getParentFile
     val contents = scala.io.Source.fromFile(fIn).mkString
     Console.err.println(contents.length)
-    val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?)\\](.*?)\\\\end\\{rdf\\}")
-    val newContents = r1.replaceAllIn(contents, m => s"${exampleWithDiagram(m.group(1), m.group(2),dirForfIn)}")
+    val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?),prefix=(.*?)\\](.*?)\\\\end\\{rdf\\}")
+    val newContents = r1.replaceAllIn(contents, m => s"${exampleWithDiagram(m.group(1), m.group(2), m.group(3),dirForfIn)}")
     val fOut = args(1)
     ((x:PrintWriter) => {x.write(newContents); x.close }).apply( new PrintWriter(fOut))
     //System.out.println(newContents)
