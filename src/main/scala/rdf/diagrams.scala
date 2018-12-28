@@ -1,5 +1,7 @@
 package rdf
 
+import java.io.PrintWriter
+
 import guru.nidi.graphviz.engine.{Format, Graphviz}
 import guru.nidi.graphviz.parse.Parser
 import org.openrdf.model.{Resource, Statement}
@@ -79,8 +81,8 @@ object diagrams {
     val viz = Graphviz.fromGraph(g)
     viz.render(Format.SVG).toFile(new java.io.File(outFile))
     if (makePDF) {
-      val pdfOut = if (outFile.endsWith("pdf")) outFile.replaceAll("svg$", "pdf") else outFile + ".pdf"
-      Runtime.getRuntime.exec(s"rsvg-convert $outFile  -o $pdfOut")
+      val pdfOut = outFile.replaceAll("\\.[A-Z-a-z0-9]*$", ".pdf")
+      Runtime.getRuntime.exec(s"rsvg-convert --dpi-x 600 --dpi-y 600 $outFile  -o $pdfOut")
     }
   }
 
@@ -189,5 +191,45 @@ object diagrams {
     val dot = makeDot(s)
     // println(makeDot(s))
     createSVG(dot,"test.svg")
+  }
+}
+
+object diagramsInLatex
+{
+  import diagrams._
+
+  def exampleWithDiagram(f: java.io.File, s:String):String = {
+    val rdf = Settings.prefixes + "\n" + s
+    // val g = parseStringToGraph(rdf)
+
+    //Console.err.println(rdf)
+    val dot:String = makeDot(rdf)
+    createSVG(dot, f.getCanonicalPath, true)
+    val imgLink = f.getParentFile.getParentFile.toPath().relativize(f.toPath).toString
+    <pre>
+      {s}
+    </pre>
+        <img src={imgLink}/>
+    val pdfName = f.getName.replaceAll("svg$", "pdf")
+    s"\\\\includegraphics[width=\\\\textwidth]{${pdfName}}"
+  }
+
+  def exampleWithDiagram(imagePrefix: String, rdf: String, imageDir: java.io.File):String =
+  {
+    Console.err.println(rdf)
+    val imgFile = new java.io.File(imageDir.getCanonicalPath + "/" +  imagePrefix + ".svg")
+    exampleWithDiagram(imgFile, rdf)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val fIn = args(0)
+    val dirForfIn = new java.io.File(fIn).getParentFile
+    val contents = scala.io.Source.fromFile(fIn).mkString
+    Console.err.println(contents.length)
+    val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?)\\](.*?)\\\\end\\{rdf\\}")
+    val newContents = r1.replaceAllIn(contents, m => s"${exampleWithDiagram(m.group(1), m.group(2),dirForfIn)}")
+    val fOut = args(1)
+    ((x:PrintWriter) => {x.write(newContents); x.close }).apply( new PrintWriter(fOut))
+    //System.out.println(newContents)
   }
 }
