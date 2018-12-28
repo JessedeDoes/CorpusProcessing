@@ -70,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/58868ad1-eb9b-42cc-b126-8d6525c870a6.svg"/>
+    </pre><img src="images/4a4bed86-c81b-4e20-b742-3bca520b4526.svg"/>
             </div>
 
     <div>
@@ -120,7 +120,7 @@
 
 
         
-    </pre><img src="images/c8683b6b-2406-417f-9429-353c1e0563e2.svg"/>
+    </pre><img src="images/9391a441-18e0-41ff-83bd-206f7b461958.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -279,7 +279,7 @@
             ];
             .
         
-    </pre><img src="images/95e2ef6e-cd3e-452e-aef0-0ed174c5eaf3.svg"/>
+    </pre><img src="images/f8486135-9f88-4148-acf1-3a65ea34ebe0.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
@@ -345,7 +345,7 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/1ff61ffb-dcaf-4f4e-aff5-3f643ee3fde4.svg"/>
+    </pre><img src="images/72235490-b8ef-42db-9ded-f23fc0f5d7ab.svg"/>
 </div>
 <div>
     <div>
@@ -366,7 +366,7 @@
 &lt;/sense&gt;
 &lt;/entry&gt;
         </pre>
-        <img src="images/2d2a87b5-9cb1-4100-85f2-68dbaddfc0ef.svg"/>
+        <img src="images/4cb5ac70-d72f-48d6-8a85-825c61718f2e.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -391,13 +391,13 @@
       :q0 a diamant:Quotation .
       :q0 diamant:snippet &quot;The kine spake booh&quot; .
       :s0 diamant:citation :q0 .
-      :dt0 a diamant:Text .
-      :dt0 dcterms:author &quot;Bovina Korovina&quot; .
-      :dt0 diamant:title &quot;Meadow Meanderings&quot; .
-      :dt0 diamant:witnessYearFrom 1810 .
-      :dt0 diamant:witnessYearTo 1812 .
+      :exp0 a diamant:Text .
+      :exp0 dcterms:author &quot;Bovina Korovina&quot; .
+      :exp0 diamant:title &quot;Meadow Meanderings&quot; .
+      :exp0 diamant:witnessYearFrom 1810 .
+      :exp0 diamant:witnessYearTo 1812 .
     
-    </pre><img src="images/d089b2ed-bf6c-434b-af3e-42abfd9db8c8.svg"/>
+    </pre><img src="images/8f6bfb60-89fd-446e-89ba-1edfe158a02b.svg"/>
     <p>
     Here the &quot;Attestation&quot; object points to the character offsets of the relevant word in the quotation. 
     Since our lexicon only contains those dictionary quotations which have a snippet in which the word form can actually be found, this model works fine for us.
@@ -415,31 +415,33 @@
       :l0 ontolex:writtenRep &quot;cow&quot; .
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  &quot;Cows are useful animals&quot; .
+
       :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
-      :s0 cito:cites :tw0 .
+      :s0 cito:cites :textWitness .
       :q0 a diamant:Attestation .
       :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
       cito:citesAsEvidence a cito:CitationCharacterization .
       :q0 cito:hasCitingEntity :s0 .
-      :q0 cito:hasCitedEntity :tw0 .
-      :s0 cito:citesAsEvidence :tw0 .
-      :s0 diamant:locus :lc0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :q0 diamant:locus :lc0 .
       :q0 diamant:quotation &quot;The kine spake booh&quot; .
       :q0 diamant:readingCertain &quot;true&quot; .
       :q0 diamant:interpretationCertain &quot;false&quot; .
       :lc0 diamant:locusIn :q0 .
       :lc0 nif:beginIndex 5 .
       :lc0 nif:endIndex 8 .
-      :dt0 a frbr:Expression .
-      :dt0 dcterms:author &quot;Bovina Korovina&quot; .
-      :dt0 diamant:title &quot;Meadow Meanderings&quot; .
-      :dt0 frbr:embodiment :tw0 .
-      :tw0 a frbr:Manifestation .
-      :tw0 diamant:notBefore 1810 .
-      :tw0 diamant:notAfter 1812 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author &quot;Bovina Korovina&quot; .
+      :exp0 diamant:title &quot;Meadow Meanderings&quot; .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness frbr:embodimentOf :exp0 .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
     
-    </pre><img src="images/e6c7bb6f-3422-4ed5-b942-a1313595b832.svg"/>
+    </pre><img src="images/05276c24-d48b-4310-a3ac-7402fd964cde.svg"/>
 
     <pre>
       
@@ -456,33 +458,31 @@
       :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
-      :s0 cito:cites :tw0 .
-      :f0 cito:cites :tw0 .
+      :s0 cito:cites :textWitness .
+      :f0 cito:cites :textWitness .
       :q0 a diamant:Attestation .
       :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
       cito:citesAsEvidence a cito:CitationCharacterization .
       :q0 cito:hasCitingEntity :s0 .
       :q0 cito:hasCitingEntity :f0 .
-      :q0 cito:hasCitedEntity :tw0 .
-      :s0 cito:citesAsEvidence :tw0 .
-      :f0 cito:citesAsEvidence :tw0 .
-      :s0 diamant:locus :lc0 .
-      :f0 diamant:locus :lc0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :f0 cito:citesAsEvidence :textWitness .
       :q0 diamant:quotation &quot;The kine spake booh&quot; .
       :q0 diamant:readingCertain &quot;true&quot; .
       :q0 diamant:interpretationCertain &quot;false&quot; .
       :lc0 diamant:locusIn :q0 .
       :lc0 nif:beginIndex 5 .
       :lc0 nif:endIndex 8 .
-      :dt0 a frbr:Expression .
-      :dt0 dcterms:author &quot;Bovina Korovina&quot; .
-      :dt0 diamant:title &quot;Meadow Meanderings&quot; .
-      :dt0 frbr:embodiment :tw0 .
-      :tw0 a frbr:Manifestation .
-      :tw0 diamant:notBefore 1810 .
-      :tw0 diamant:notAfter 1812 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author &quot;Bovina Korovina&quot; .
+      :exp0 diamant:title &quot;Meadow Meanderings&quot; .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
     
-    </pre><img src="images/9245a428-0836-4156-904e-61e05f87a08a.svg"/>
+    </pre><img src="images/b1496402-71df-43ce-93cd-d0f9b7f0faf5.svg"/>
     </div>
     </div>
     

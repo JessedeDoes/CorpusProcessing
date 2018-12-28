@@ -15,7 +15,7 @@ object diagrams {
 
     //Console.err.println(rdf)
     val dot:String = makeDot(rdf)
-    createSVG(dot, f.getCanonicalPath)
+    createSVG(dot, f.getCanonicalPath, true)
     val imgLink = f.getParentFile.getParentFile.toPath().relativize(f.toPath).toString
     <pre>
       {s}
@@ -71,13 +71,17 @@ object diagrams {
 
   // scala rewrite of convert_to_dot.py from the ontolex github
 
-  def createSVG(dot: String, outFile: String) =
+  def createSVG(dot: String, outFile: String, makePDF: Boolean=false) =
   {
     val s:java.io.StringReader = new java.io.StringReader(dot)
     val g = Parser.read(dot)
 
     val viz = Graphviz.fromGraph(g)
     viz.render(Format.SVG).toFile(new java.io.File(outFile))
+    if (makePDF) {
+      val pdfOut = if (outFile.endsWith("pdf")) outFile.replaceAll("svg$", "pdf") else outFile + ".pdf"
+      Runtime.getRuntime.exec(s"rsvg-convert $outFile  -o $pdfOut")
+    }
   }
 
   def makeDot(rdf: String):String =

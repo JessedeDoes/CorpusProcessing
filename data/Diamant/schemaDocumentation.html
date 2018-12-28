@@ -386,11 +386,11 @@
       :q0 a diamant:Quotation .
       :q0 diamant:snippet "The kine spake booh" .
       :s0 diamant:citation :q0 .
-      :dt0 a diamant:Text .
-      :dt0 dcterms:author "Bovina Korovina" .
-      :dt0 diamant:title "Meadow Meanderings" .
-      :dt0 diamant:witnessYearFrom 1810 .
-      :dt0 diamant:witnessYearTo 1812 .
+      :exp0 a diamant:Text .
+      :exp0 dcterms:author "Bovina Korovina" .
+      :exp0 diamant:title "Meadow Meanderings" .
+      :exp0 diamant:witnessYearFrom 1810 .
+      :exp0 diamant:witnessYearTo 1812 .
     </example>
     <p>
     Here the "Attestation" object points to the character offsets of the relevant word in the quotation. 
@@ -408,29 +408,31 @@
       :l0 ontolex:writtenRep "cow" .
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  "Cows are useful animals" .
+
       :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
-      :s0 cito:cites :tw0 .
+      :s0 cito:cites :textWitness .
       :q0 a diamant:Attestation .
       :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
       cito:citesAsEvidence a cito:CitationCharacterization .
       :q0 cito:hasCitingEntity :s0 .
-      :q0 cito:hasCitedEntity :tw0 .
-      :s0 cito:citesAsEvidence :tw0 .
-      :s0 diamant:locus :lc0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :q0 diamant:locus :lc0 .
       :q0 diamant:quotation "The kine spake booh" .
       :q0 diamant:readingCertain "true" .
       :q0 diamant:interpretationCertain "false" .
       :lc0 diamant:locusIn :q0 .
       :lc0 nif:beginIndex 5 .
       :lc0 nif:endIndex 8 .
-      :dt0 a frbr:Expression .
-      :dt0 dcterms:author "Bovina Korovina" .
-      :dt0 diamant:title "Meadow Meanderings" .
-      :dt0 frbr:embodiment :tw0 .
-      :tw0 a frbr:Manifestation .
-      :tw0 diamant:notBefore 1810 .
-      :tw0 diamant:notAfter 1812 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author "Bovina Korovina" .
+      :exp0 diamant:title "Meadow Meanderings" .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness frbr:embodimentOf :exp0 .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
     </example>
 
     <example>
@@ -447,31 +449,29 @@
       :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
       :f0 diamant:attestation :q0 .
-      :s0 cito:cites :tw0 .
-      :f0 cito:cites :tw0 .
+      :s0 cito:cites :textWitness .
+      :f0 cito:cites :textWitness .
       :q0 a diamant:Attestation .
       :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
       cito:citesAsEvidence a cito:CitationCharacterization .
       :q0 cito:hasCitingEntity :s0 .
       :q0 cito:hasCitingEntity :f0 .
-      :q0 cito:hasCitedEntity :tw0 .
-      :s0 cito:citesAsEvidence :tw0 .
-      :f0 cito:citesAsEvidence :tw0 .
-      :s0 diamant:locus :lc0 .
-      :f0 diamant:locus :lc0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :f0 cito:citesAsEvidence :textWitness .
       :q0 diamant:quotation "The kine spake booh" .
       :q0 diamant:readingCertain "true" .
       :q0 diamant:interpretationCertain "false" .
       :lc0 diamant:locusIn :q0 .
       :lc0 nif:beginIndex 5 .
       :lc0 nif:endIndex 8 .
-      :dt0 a frbr:Expression .
-      :dt0 dcterms:author "Bovina Korovina" .
-      :dt0 diamant:title "Meadow Meanderings" .
-      :dt0 frbr:embodiment :tw0 .
-      :tw0 a frbr:Manifestation .
-      :tw0 diamant:notBefore 1810 .
-      :tw0 diamant:notAfter 1812 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author "Bovina Korovina" .
+      :exp0 diamant:title "Meadow Meanderings" .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
     </example>
     </div>
     </div>
