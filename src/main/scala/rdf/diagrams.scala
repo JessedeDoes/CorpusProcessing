@@ -211,7 +211,7 @@ object diagramsInLatex
     </pre>
         <img src={imgLink}/>
     val pdfName = f.getName.replaceAll("svg$", "pdf")
-    s"\\\\includegraphics[$options]{${pdfName}}"
+    s"""\\\\begin\\{verbatim\\}$s\\\\end\\{verbatim\\}\\\\begin\\{figure\\}\\\\includegraphics[$options]{${pdfName}}\\\\label\\{fig:${f.getName}\\}\\\\end\\{figure\\}"""
   }
 
   def exampleWithDiagram(options: String, imagePrefix: String, rdf: String, imageDir: java.io.File):String =
@@ -223,7 +223,8 @@ object diagramsInLatex
 
   def main(args: Array[String]): Unit = {
     val fIn = args(0)
-    val dirForfIn = new java.io.File(fIn).getParentFile
+    val dirForfIn = new java.io.File(fIn).getCanonicalFile.getParentFile
+    Console.err.println("image dir " + dirForfIn)
     val contents = scala.io.Source.fromFile(fIn).mkString
     Console.err.println(contents.length)
     val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?),prefix=(.*?)\\](.*?)\\\\end\\{rdf\\}")
