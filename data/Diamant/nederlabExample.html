@@ -1,0 +1,29 @@
+<html>
+ <example>
+   :title a diamant:Title .
+   :dependentTitle a diamant:dependentTitle .
+   :dependentTitle diamant:containedIn :title .
+   :dte a frbr:Expression .
+   :dte frbr:expressionOf :dependentTitle .
+   :te a frbr:Expression .
+   :te frbr:expressionOf :title .
+   :te diamant:yearFrom 1450 .
+   :te diamant:yearTo 1475 .
+   :tm a frbr:Manifestation .
+   :dtm a frbr:Manifestation .
+   :te frbr:embodiment :tm .
+   :dte frbr:embodiment :dtm .
+   :a a diamant:Person .
+   :te diamant:author :a .
+   :dtm diamant:yearFrom 1510 .
+   :dtm diamant:yearTo 1520 .
+   :edition a frbr:Manifestation .
+   :dtm diamant:publishedIn :edition .
+   :edition frbr:embodimentOf :dte .
+   :printer a diamant:Person .
+   :tm diamant:printedBy :printer .
+   :editor a diamant:Person .
+   :edition diamant:editor :editor .
+                </example>
+
+</html>

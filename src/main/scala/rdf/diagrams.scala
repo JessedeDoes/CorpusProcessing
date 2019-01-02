@@ -198,7 +198,7 @@ object diagramsInLatex
 {
   import diagrams._
 
-  def exampleWithDiagram(options: String, f: java.io.File, s:String):String = {
+  def exampleWithDiagram(options: String, f: java.io.File, s:String, caption: String):String = {
     val rdf = Settings.prefixes + "\n" + s
     // val g = parseStringToGraph(rdf)
 
@@ -211,26 +211,26 @@ object diagramsInLatex
     </pre>
         <img src={imgLink}/>
     val pdfName = f.getName.replaceAll("svg$", "pdf")
-    s"""\\\\begin\\{verbatim\\}$s\\\\end\\{verbatim\\}\\\\begin\\{figure\\}\\\\includegraphics[$options]{${pdfName}}\\\\label\\{fig:${f.getName}\\}\\\\end\\{figure\\}"""
+    s"""\\\\begin\\{verbatim\\}$s\\\\end\\{verbatim\\}\\\\begin\\{figure\\}\\\\includegraphics[$options]{${pdfName}}\\\\caption\\{$caption\\}\\\\label\\{fig:${f.getName}\\}\\\\end\\{figure\\}"""
   }
 
-  def exampleWithDiagram(options: String, imagePrefix: String, rdf: String, imageDir: java.io.File):String =
+  def exampleWithDiagram(options: String, imagePrefix: String, rdf: String, caption: String, imageDir: java.io.File):String =
   {
     Console.err.println(rdf)
     val imgFile = new java.io.File(imageDir.getCanonicalPath + "/" +  imagePrefix + ".svg")
-    exampleWithDiagram(options, imgFile, rdf)
+    exampleWithDiagram(options, imgFile, rdf, caption)
   }
 
   def main(args: Array[String]): Unit = {
     val fIn = args(0)
     val dirForfIn = new java.io.File(fIn).getCanonicalFile.getParentFile
-    Console.err.println("image dir " + dirForfIn)
+    //Console.err.println("image dir " + dirForfIn)
     val contents = scala.io.Source.fromFile(fIn).mkString
-    Console.err.println(contents.length)
-    val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?),prefix=(.*?)\\](.*?)\\\\end\\{rdf\\}")
-    val newContents = r1.replaceAllIn(contents, m => s"${exampleWithDiagram(m.group(1), m.group(2), m.group(3),dirForfIn)}")
+    //Console.err.println(contents.length)
+    val r1 = new scala.util.matching.Regex("(?s)\\\\begin\\{rdf\\}\\[(.*?),prefix=(.*?)\\](.*?)\\\\caption\\{(.*?)\\}\\s*\\\\end\\{rdf\\}")
+    val newContents = r1.replaceAllIn(contents, m => s"${exampleWithDiagram(m.group(1), m.group(2), m.group(3), m.group(4), dirForfIn)}")
     val fOut = args(1)
-    ((x:PrintWriter) => {x.write(newContents); x.close }).apply( new PrintWriter(fOut))
+    ((x:PrintWriter) => {x.write(newContents); x.close }).apply(new PrintWriter(fOut))
     //System.out.println(newContents)
   }
 }
