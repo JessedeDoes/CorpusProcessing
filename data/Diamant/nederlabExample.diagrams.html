@@ -5,22 +5,26 @@
    :dependentTitle a diamant:dependentTitle .
    :dependentTitle diamant:containedIn :title .
    :dte a frbr:Expression .
-   :dte frbr:expressionOf :dependentTitle .
+   :dependentTitle frbr:expression  :dte .
    :te a frbr:Expression .
-   :te frbr:expressionOf :title .
+   :title frbr:expression :te  .
    :te diamant:yearFrom 1450 .
    :te diamant:yearTo 1475 .
+   :dte diamant:yearFrom 1450 .
+   :dte diamant:yearTo 1475 .
    :tm a frbr:Manifestation .
    :dtm a frbr:Manifestation .
    :te frbr:embodiment :tm .
    :dte frbr:embodiment :dtm .
-   :a a diamant:Person .
-   :dte diamant:author :a .
+   :author a diamant:Person .
+   :author diamant:birthYear 1425 .
+   :author diamant:surName  &quot;Claessen&quot; .
+   :dte diamant:author :author .
    :dtm diamant:yearFrom 1510 .
    :dtm diamant:yearTo 1520 .
    :edition a frbr:Manifestation .
    :dtm diamant:publishedIn :edition .
-   :edition frbr:embodimentOf :dte .
+   :dte  frbr:embodiment :edition.
    :edition diamant:yearFrom 1970 .
    :edition diamant:yearTo 1970 .
    :printer a diamant:Person .
@@ -28,6 +32,6 @@
    :editor a diamant:Person .
    :edition diamant:editor :editor .
                 
-    </pre><img src="images/db7af2f6-fbe0-4413-9a73-48d9924c6e13.svg"/>
+    </pre><img src="images/4e5ebb5f-3e70-4d9b-bd0a-2212b5f7468f.svg"/>
 
 </html>
