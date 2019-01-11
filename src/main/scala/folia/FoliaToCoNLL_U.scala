@@ -36,7 +36,8 @@ object FoliaToCoNLL_U {
     val originalPoS = (((w \ "pos").filter(x => !(x \ "@set").text.contains("UD" ))).head \ "@class").text
     val mainPos = pos.replaceAll("[(].*", "").replaceAll("UNK", "X")
     val features = pos.replaceAll(".*[(]", "").replaceAll("[()]","").replaceAll("[|]", "_").replaceAll(",", "|")
-    s"$word\t$lemma\t$mainPos\t$originalPoS\t${if (features.nonEmpty) features else "_"}"
+    val senseId = (w \ "@sense").headOption.map(_.text).map(s => s"${getId(w)}=>$s")
+    s"$word\t$lemma\t$mainPos\t$originalPoS\t${if (senseId.nonEmpty) senseId.get else "_"}"
   }
 
   def padToTen(s: String) =
@@ -59,7 +60,7 @@ object FoliaToCoNLL_U {
            s"# semcor_sense for token $i: $wid => $sense"
          }
      }).toList
-     val tokens = (s \\ "w").map(printWord).zipWithIndex.map({case (l,i) => (i+1).toString + "\t" + l }).toList.map(padToTen)
+     val tokens = (s \\ "w").map(printWord).zipWithIndex.map({case (l,i) => (i+1).toString + "\t" + l }).toList.map(identity) // was padtoTen
      s"# sent_id = $id" ::  (sense_lines ++ tokens) ++ List("\n")
   }
 
