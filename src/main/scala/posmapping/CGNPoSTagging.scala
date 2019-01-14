@@ -168,7 +168,7 @@ object CGNPoSTagging
   //Console.err.println("peek!!")
 }
 
-object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.partitions, CGNPoSTagging.pos2partitions)
+object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.partitions, CGNPoSTagging.pos2partitions, defaultTagParser, CGNPoSTagging.partitionConditions)
 {
   //Console.err.println(s"blurk $posTags")
 
