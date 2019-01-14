@@ -49,10 +49,13 @@ object TagSet
   def fromXML(f: String):TagSet = fromXML(XML.load(f))
 }
 
+case class PartitionCondition(pos: String, featureName: String, conditions: List[String])
+
 case class TagSet(prefix: String,
                   val posTags: List[String] = List.empty,
                   partitions:Map[String,Set[String]] = Map.empty,
-                  pos2partitions: Map[String,List[String]] = Map.empty, parser: TagParser=defaultTagParser)
+                  pos2partitions: Map[String,List[String]] = Map.empty, parser: TagParser=defaultTagParser,
+                  partitionConditions: List[PartitionCondition] = List.empty)
 {
 
   def toXML =
@@ -117,4 +120,6 @@ case class TagSet(prefix: String,
   def asTEIFeatureStructure(t:Tag):Elem = <fs type={prefix}>
     {t.features.map(f => <f name={f.name}><symbol value={f.value}/></f>)}
   </fs>
+
+  def consistentPartitions(pos: String, n: String, f: List[String]) = true
 }

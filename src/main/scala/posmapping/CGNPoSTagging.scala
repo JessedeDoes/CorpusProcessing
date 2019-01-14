@@ -161,6 +161,9 @@ object CGNPoSTagging
     println(s"$t\t$p\t$p1")
   })
 
+  val partitionConditions = List(
+    PartitionCondition("VNW", "getal", List("bez", "pron")),
+    PartitionCondition("VNW", "npagr", List("det")))
   def main(args: Array[String]):Unit = { printEenLeukOverzichtje; compacterOverzichtje}
   //Console.err.println("peek!!")
 }
@@ -179,6 +182,12 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
   }
 
   override def fromString(t: String): Tag = CGNTag(t)
+
+  override def consistentPartitions(pos: String, n: String, f: List[String]): Boolean =
+    {
+      if (!this.partitionConditions.exists(x => x.pos == pos && x.featureName == n)) true;
+      else (this.partitionConditions.exists(x => x.pos == pos && x.featureName == n && x.conditions.intersect(f).nonEmpty))
+    }
 }
 
 object CGNLite
@@ -277,7 +286,7 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     }
     else if (V.size == 1) V.head
     else {
-      val V1 = V.filter(n => tagset.pos2partitions(p).contains(n))
+      val V1 = V.filter(n => tagset.pos2partitions(p).contains(n) && tagset.consistentPartitions(pos, n, featureValues.toList))
       if (V1.nonEmpty) V1.head else V.mkString("|")
     }
     fn
