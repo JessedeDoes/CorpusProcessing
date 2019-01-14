@@ -25,8 +25,9 @@ object MakePosFeaturesExplicit {
   {
     val p = (e \ "@class").text
     val t = cgnParse(p)
-    val featureTags = t.features.map(f => <feat class={f.value} subset={f.name}/>)
-    e.copy(child = e.child ++ featureTags)
+    val head = t.pos
+    val featureTags = t.features.filter(_.name != "pos").map(f => <feat subset={f.name} class={f.value}/>)
+    e.copy(child = e.child ++ featureTags, attributes=e.attributes.append(new UnprefixedAttribute("head", head, Null)))
   }
 
   def updateDocument(d: Elem) =

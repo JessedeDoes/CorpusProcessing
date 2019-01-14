@@ -33,7 +33,7 @@ object CGNPoSTagging
     "npagr"    -> Set("agr", "agr3", "evf", "evmo", "evon", "evz", "mv", "rest", "rest3"),
     "wvorm"    -> Set("inf", "od", "pv", "vd"),
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
-    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst"),
+    "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst", "comment", "achter"), // achter slaat nergens op!
     "variatie" -> Set("dial") // officiele naam??
   )
 
