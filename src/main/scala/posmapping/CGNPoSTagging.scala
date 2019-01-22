@@ -293,7 +293,7 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
       if (V1.nonEmpty) V1.head else
         {
           Console.err.println(s"Unable to find feature name for pos=$p, feature value=$f, candidates $V, all features=${featureValues.toList}")
-          System.exit(1)
+          //System.exit(1)
           V.headOption.getOrElse("unknown_feature")
         }
     }
