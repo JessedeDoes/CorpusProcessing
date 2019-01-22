@@ -161,9 +161,11 @@ object CGNPoSTagging
     println(s"$t\t$p\t$p1")
   })
 
+  // Unable to find feature name for pos=VNW, feature value=mv, candidates List(pvagr, getal, npagr), all features=List(onbep, grad, stan, prenom, met-e, mv, basis)
+
   val partitionConditions = List(
-    PartitionCondition("VNW", "getal", List("bez", "pron")),
-    PartitionCondition("VNW", "npagr", List("det")))
+    PartitionCondition("VNW", "getal", List("bez", "pron", "nom")),
+    PartitionCondition("VNW", "npagr", List("det", "prenom")))
   def main(args: Array[String]):Unit = { printEenLeukOverzichtje; compacterOverzichtje}
   //Console.err.println("peek!!")
 }
@@ -185,6 +187,7 @@ object CGNTagset extends TagSet("cgn", CGNPoSTagging.posTags, CGNPoSTagging.part
 
   override def consistentPartitions(pos: String, n: String, f: List[String]): Boolean =
     {
+      //Console.err.println(s"$pos, $n, $f, $partitionConditions")
       if (!this.partitionConditions.exists(x => x.pos == pos && x.featureName == n)) true;
       else (this.partitionConditions.exists(x => x.pos == pos && x.featureName == n && x.conditions.intersect(f).nonEmpty))
     }
@@ -287,7 +290,12 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     else if (V.size == 1) V.head
     else {
       val V1 = V.filter(n => tagset.pos2partitions(p).contains(n) && tagset.consistentPartitions(pos, n, featureValues.toList))
-      if (V1.nonEmpty) V1.head else V.mkString("|")
+      if (V1.nonEmpty) V1.head else
+        {
+          Console.err.println(s"Unable to find feature name for pos=$p, feature value=$f, candidates $V, all features=${featureValues.toList}")
+          System.exit(1)
+          V.headOption.getOrElse("unknown_feature")
+        }
     }
     fn
   }
