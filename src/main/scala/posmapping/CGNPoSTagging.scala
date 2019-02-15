@@ -34,7 +34,7 @@ object CGNPoSTagging
     "wvorm"    -> Set("inf", "od", "pv", "vd"),
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst", "comment", "achter"), // achter slaat nergens op!
-    "variatie" -> Set("dial") // officiele naam??
+    "dial" -> Set("dial") // officiele naam??
   )
 
   def pos2partitions = List( // fix volgorde....

@@ -32,7 +32,23 @@ object MakePosFeaturesExplicit {
 
   def updateDocument(d: Elem) =
   {
-    PostProcessXML.updateElement(d, _.label=="pos", makePosFeatures)
+    val d1 = PostProcessXML.updateElement(d, _.label=="pos", makePosFeatures)
+    PostProcessXML.updateElement3(d1, x => true, unescapeCGN)
+  }
+
+  def unescapeCGN(e: Elem): Elem =
+  {
+    val newChildren = e.child.map({
+      case t: Text => Text(entityReplacement.replace(t.text))
+      case x:Any => x })
+
+    val newMeta = e.attributes.filter(x => false)
+
+    val newAttributes =e.attributes.map(a => new UnprefixedAttribute(a.key, entityReplacement.replace(a.value.text),Null))
+
+    val zz = newAttributes.foldLeft(newMeta)({case (z,a) => z.append(a)})
+
+    e.copy(child = newChildren, attributes =  zz)
   }
 
   def doOneFile(fIn: String, fout: String): Unit =
