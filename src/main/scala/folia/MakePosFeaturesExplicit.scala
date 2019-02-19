@@ -36,6 +36,15 @@ object MakePosFeaturesExplicit {
     PostProcessXML.updateElement3(d1, x => true, unescapeCGN)
   }
 
+  def replaceAttributeValue(a: MetaData, v: String): Attribute =
+  {
+    a match {
+      case p: PrefixedAttribute => new PrefixedAttribute(pre = p.pre, key=a.key, v, Null)
+      case u: UnprefixedAttribute => new UnprefixedAttribute(a.key, v,Null)
+      case x: Any => new UnprefixedAttribute(a.key, v,Null)
+    }
+  }
+
   def unescapeCGN(e: Elem): Elem =
   {
     val newChildren = e.child.map({
@@ -44,7 +53,7 @@ object MakePosFeaturesExplicit {
 
     val newMeta = e.attributes.filter(x => false)
 
-    val newAttributes =e.attributes.map(a => new UnprefixedAttribute(a.key, entityReplacement.replace(a.value.text),Null))
+    val newAttributes =e.attributes.map(a => replaceAttributeValue(a, entityReplacement.replace(a.value.text)))
 
     val zz = newAttributes.foldLeft(newMeta)({case (z,a) => z.append(a)})
 
