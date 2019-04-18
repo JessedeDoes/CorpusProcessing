@@ -46,7 +46,7 @@ object molexMapping {
     posmapping.molexTagMapping.mapTagCached(pos1)
   }
 
-  def createPosFeaturesForLemma(r: ResultSet): List[Statement] = {
+  def createPosFeaturesForLemma(r: ResultSet): List[Statement] = { // ToDo add gender
     Try(
       {
         val lemma_id = r.getString("lemma_id")
@@ -79,7 +79,11 @@ object molexMapping {
             else
               ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
         }
-        ).toList
+        ).toList ++ posToUD(r.getString("lemma_gigpos")).filter(_.name.toLowerCase.contains("gender")).map({
+          case posmapping.Feature(name, value) =>
+              ObjectProperty(s"${wordformResourcePrefix}molex/$wordform_id", s"${udPrefix}$name", s"${udPrefix}feat/$name.html#$value")
+        }
+        )
       })
     match {
       case Success(x) => x

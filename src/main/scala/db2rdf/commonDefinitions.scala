@@ -82,10 +82,11 @@ object commonDefinitions {
 
 
 
-  val rdfsType = IRI(s"${rdfsPrefix}type")
+  val rdfType = IRI(s"${rdfPrefix}type")
 
   val prefLabel = dataProperty(s"${skosPrefix}prefLabel")
   val altLabel = dataProperty(s"${skosPrefix}altLabel")
+  val skosDefinition = objectProperty(s"${skosPrefix}definition")
   val skosBroader = objectProperty(s"${skosPrefix}broader")
   val skosNarrower = objectProperty(s"${skosPrefix}narrower")
   val skosRelated = objectProperty(s"${skosPrefix}related")
@@ -96,7 +97,7 @@ object commonDefinitions {
   val dcAuthor = dataProperty(s"${dcTermsPrefix}creator")
 
 
-  val isA = rdfsType
+  val isA = rdfType
 
   // classes
   val entryType = owlClass(s"${ontolexPrefix}LexicalEntry")

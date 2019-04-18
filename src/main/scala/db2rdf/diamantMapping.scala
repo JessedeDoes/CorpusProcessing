@@ -136,6 +136,7 @@ object diamantMapping {
       Ω(isA, sense, senseType),
       //Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
+      Δ(skosDefinition, sense, !"definition"),
       Δ(definitionText, definition, !"definition"),
       Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
         // Δ(senseLabel, sense, !"sense_label")
