@@ -68,7 +68,7 @@ object bab {
 
     val possen0 =   possen.map(p0 => p0.split("\\|").map(p => tagMap.getOrElse(p, s"POS_UNDEF:$p")).mkString("|"))
 
-    val possen1 = if ((w \ "@n").nonEmpty) possen0.map(_.replaceAll("N.eigen", "SPEC(deeleigen")) else possen
+    val possen1 = if ((w \ "@n").nonEmpty) possen0.map(_.replaceAll("N.eigen", "SPEC(deeleigen")) else possen0
 
     if (possen1.exists(_.contains("UNDEF")))
       {
