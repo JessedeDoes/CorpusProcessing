@@ -14,7 +14,7 @@ object bab {
     "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/LexiconToolCorpora/Zeebrieven/TKV/"
 
   val input = new File(babDir + "2.0")
-  val output = new File(babDir + "2.1")
+  val output = new File(babDir + "2.2")
   val discardSubElemsOfWord = true
   val multivalSep = "⊕"
 
@@ -57,15 +57,18 @@ object bab {
     "UNRESOLVED" -> "SPEC(onverst)"
   )
 
-  val overbodigeAttributen = Set("xtype", "time", "resp",  "subtype", "original", "mform", "type", "nform", "lemma") // misAlignent, changed
+  val overbodigeAttributen = Set("xtype", "time", "resp",  "subtype", "original", "type", "mform", "nform", "lemma") // misAlignent, changed
 
 
   def doW(w: Elem) =
   {
-    val possen = (w \ "@type").text.split("_").toList.filter(_.matches(".*[A-Z].*")).map(p => p.replaceAll("[?\\]]",""))
-      .map(p0 => p0.split("\\|").map(p => tagMap.getOrElse(p, s"POS_UNDEF:$p")).mkString("|"))
+    val possen = (w \ "@type").text.split("_").toList
+      .filter(_.matches(".*[A-Z].*"))
+      .map(p => p.replaceAll("[?\\]]",""))
 
-    val possen1 = if ((w \ "@n").nonEmpty) possen.map(_.replaceAll("N.eigen", "SPEC(deeleigen")) else possen
+    val possen0 =   possen.map(p0 => p0.split("\\|").map(p => tagMap.getOrElse(p, s"POS_UNDEF:$p")).mkString("|"))
+
+    val possen1 = if ((w \ "@n").nonEmpty) possen0.map(_.replaceAll("N.eigen", "SPEC(deeleigen")) else possen
 
     if (possen1.exists(_.contains("UNDEF")))
       {
@@ -87,6 +90,7 @@ object bab {
     w.copy(child=if (discardSubElemsOfWord) Text(word) else w.child,
       attributes = w.attributes.filter(a => !overbodigeAttributen.contains(a.key))
         .append(new UnprefixedAttribute("pos", possen1.mkString(multivalSep), Null) )
+        .append(new UnprefixedAttribute("type", possen.mkString(multivalSep), Null) )
         .append(new UnprefixedAttribute("lemma", lemmaNum, Null)))
   }
 
