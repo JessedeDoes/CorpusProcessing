@@ -162,12 +162,18 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val withCompletedLemma = afterStm.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
-    val featureStructures = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+    val gysTagFS = (e \ "@function").text.split("\\+").toList.map(s => CHNStyleTags.parseTag(s)).map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t))
+    val cgnTagFs = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+
+    def makeFS(n: Seq[Elem]) = n
       .zipWithIndex
       .map({ case (fs,i) => fs.copy(
         child=fs.child ++ <f name="lemma"><string>{completedLemmataPatched(i)}</string></f> ++
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
+
+    val featureStructures = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
+
 
     e.copy(attributes = withCompletedLemma, child = e.child ++ featureStructures)
   }

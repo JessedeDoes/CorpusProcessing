@@ -1,0 +1,12 @@
+<tagset>
+      <prefix>gys</prefix>
+      <mainPoS>
+        <pos>PD</pos><pos>VRB</pos><pos>ADJ</pos><pos>CON</pos><pos>NOU</pos><pos>NUM</pos><pos>RES</pos><pos>ADP</pos><pos>INT</pos><pos>ADV</pos><pos>SPEC</pos>
+      </mainPoS>
+      <partitions>
+        <feature><name>number</name><values><value>pl</value><value>sg</value><value>other</value></values></feature><feature><name>mood</name><values><value>imperative</value></values></feature><feature><name>subtype</name><values><value>def</value><value>indef</value></values></feature><feature><name>pos</name><values><value>SPEC</value><value>RES</value><value>VRB</value><value>PD</value><value>NUM</value><value>CON</value><value>ADV</value><value>NOU</value><value>INT</value><value>ADJ</value><value>ADP</value></values></feature><feature><name>kwip</name><values><value>overig</value><value>other</value></values></feature><feature><name>person</name><values><value>1</value><value>3</value><value>2</value></values></feature><feature><name>advType</name><values><value>pronominal</value></values></feature><feature><name>inflection</name><values><value>a</value><value>s/th</value><value>e</value><value>n</value><value>r/re</value><value>t</value><value>other</value><value>0</value></values></feature><feature><name>finiteness</name><values><value>finite</value><value>part</value><value>inf/ger</value></values></feature><feature><name>type</name><values><value>indefinite</value><value>comparison</value><value>common</value><value>poss</value><value>-</value><value>indef</value><value>quality</value><value>negative</value><value>resumptive</value><value>proper</value><value>auxiliary</value><value>cardinal</value><value>general</value><value>rel</value><value>pers</value><value>explicative</value><value>ordinal</value><value>art</value><value>subordinating</value><value>other</value><value>refl/recp</value><value>main</value><value>coordinating</value><value>int</value><value>dem</value><value>interjection</value></values></feature><feature><name>tense</name><values><value>past</value><value>present</value></values></feature>
+      </partitions>
+      <constraints>
+        
+      </constraints>
+    </tagset>
