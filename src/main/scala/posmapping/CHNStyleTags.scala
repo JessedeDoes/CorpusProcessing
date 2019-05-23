@@ -1,5 +1,5 @@
 package posmapping
-import java.io.File
+import java.io.{File, PrintWriter}
 
 import propositional.{And, Literal, Proposition}
 
@@ -39,17 +39,18 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
 }
 
 object CHNStyleTags {
+
   def tagsetFromSetOfStrings(prefix: String, s: Set[String]) =
   {
-    val tags = s.map(s => new CHNStyleTag(s))
-    val posTags = tags.map(_.pos).toList
-    val partitions:Map[String,Set[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value))
-    val pos2partitions:Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
-
-    TagSet(prefix, posTags, partitions)
+    val tags = s.map(s => CHNStyleTags.parseTag(s))
+    TagSet.tagsetFromSetOfTags(prefix,tags)
   }
 
   def parseTag(s: String): Tag = new CHNStyleTag(s)
+
+  object parser extends TagParser {
+    def parseTag(ts: TagSet, s: String)  = CHNStyleTags.parseTag(s)
+  }
 
   val gysTagset = TagSet.fromXML("data/CRM/gys.tagset.xml")
 }
@@ -65,11 +66,16 @@ object distinctTagsFromGysseling
 
         val combiposjes = (doc \\ "w").map(x => (x \ "@function").text).toSet
         val posjes = combiposjes.flatMap(p => p.split("\\+").toSet)
-        println(posjes)
+        //println(posjes)
         posjes
       }
     )
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("gys", allDistinctTags)
-    println(tagset.toXML)
+    val tagset = CHNStyleTags.tagsetFromSetOfStrings("chnpos", allDistinctTags)
+    val xmlWriter = new PrintWriter("/tmp/tagset.xml")
+    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
+    xmlWriter.close()
+    val jsonWriter = new PrintWriter("/tmp/tagset.json")
+    jsonWriter.println(tagset.asJSON)
+    jsonWriter.close()
   }
 }

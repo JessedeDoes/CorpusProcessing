@@ -1,0 +1,619 @@
+{
+    "values": {
+        "adj": {
+            "value": "adj",
+            "displayName": "Adjective",
+            "subAnnotationIds": [
+                "pos_buiging",
+                "pos_getal_n",
+                "pos_graad",
+                "pos_positie",
+                "pos_dial"
+            ]
+        },
+        "vz": {
+            "value": "vz",
+            "displayName": "Adposition",
+            "subAnnotationIds": [
+                "pos_vztype",
+                "pos_dial"
+            ]
+        },
+        "bw": {
+            "value": "bw",
+            "displayName": "Adverb",
+            "subAnnotationIds": [
+                "pos_dial"
+            ]
+        },
+        "lid": {
+            "value": "lid",
+            "displayName": "Article",
+            "subAnnotationIds": [
+                "pos_lwtype",
+                "pos_naamval",
+                "pos_npagr",
+                "pos_dial"
+            ]
+        },
+        "vg": {
+            "value": "vg",
+            "displayName": "Conjunction",
+            "subAnnotationIds": [
+                "pos_conjtype",
+                "pos_dial"
+            ]
+        },
+        "tsw": {
+            "value": "tsw",
+            "displayName": "Interjection",
+            "subAnnotationIds": [
+                "pos_dial"
+            ]
+        },
+        "n": {
+            "value": "n",
+            "displayName": "Noun",
+            "subAnnotationIds": [
+                "pos_ntype",
+                "pos_naamval",
+                "pos_genus",
+                "pos_getal",
+                "pos_graad",
+                "pos_dial"
+            ]
+        },
+        "tw": {
+            "value": "tw",
+            "displayName": "Numeral",
+            "subAnnotationIds": [
+                "pos_numtype",
+                "pos_naamval",
+                "pos_getal_n",
+                "pos_positie",
+                "pos_graad",
+                "pos_dial"
+            ]
+        },
+        "vnw": {
+            "value": "vnw",
+            "displayName": "Pronoun",
+            "subAnnotationIds": [
+                "pos_buiging",
+                "pos_genus",
+                "pos_getal",
+                "pos_getal_n",
+                "pos_graad",
+                "pos_naamval",
+                "pos_npagr",
+                "pos_pdtype",
+                "pos_persoon",
+                "pos_positie",
+                "pos_status",
+                "pos_vwtype",
+                "pos_dial"
+            ]
+        },
+        "ww": {
+            "value": "ww",
+            "displayName": "Verb",
+            "subAnnotationIds": [
+                "pos_buiging",
+                "pos_getal_n",
+                "pos_positie",
+                "pos_pvagr",
+                "pos_pvtijd",
+                "pos_wvorm",
+                "pos_dial"
+            ]
+        },
+        "spec": {
+            "value": "spec",
+            "displayName": "Special",
+            "subAnnotationIds": [
+                "pos_spectype"
+            ]
+        },
+        "let": {
+            "value": "let",
+            "displayName": "Punctuation",
+            "subAnnotationIds": []
+        }
+    },
+    "subAnnotations": {
+        "pos_lwtype": {
+            "id": "pos_lwtype",
+            "values": [
+                {
+                    "value": "bep",
+                    "displayName": "definite"
+                },
+                {
+                    "value": "onbep",
+                    "displayName": "indefinite"
+                }
+            ]
+        },
+        "pos_vztype": {
+            "id": "pos_vztype",
+            "values": [
+                {
+                    "value": "init",
+                    "displayName": "initial"
+                },
+                {
+                    "value": "fin",
+                    "displayName": "final"
+                },
+                {
+                    "value": "versm",
+                    "displayName": "contraction"
+                }
+            ]
+        },
+        "pos_pdtype": {
+            "id": "pos_pdtype",
+            "values": [
+                {
+                    "value": "pron",
+                    "displayName": "pronoun"
+                },
+                {
+                    "value": "det",
+                    "displayName": "determiner"
+                },
+                {
+                    "value": "grad",
+                    "displayName": "gradable"
+                },
+                {
+                    "value": "adv-pron",
+                    "displayName": "pronominal adverb"
+                }
+            ]
+        },
+        "pos_graad": {
+            "id": "pos_graad",
+            "values": [
+                {
+                    "value": "basis",
+                    "displayName": "base"
+                },
+                {
+                    "value": "comp",
+                    "displayName": "comparative",
+                    "pos": [
+                        "adj", "vnw"
+                    ]
+                },
+                {
+                    "value": "sup",
+                    "displayName": "superlative",
+                    "pos": [
+                        "adj","vnw"
+                    ]
+                },
+                {
+                    "value": "dim",
+                    "displayName": "diminutive"
+                }
+            ]
+        },
+        "pos_numtype": {
+            "id": "pos_numtype",
+            "values": [
+                {
+                    "value": "hoofd",
+                    "displayName": "cardinal"
+                },
+                {
+                    "value": "rang",
+                    "displayName": "ordinal"
+                }
+            ]
+        },
+        "pos_vwtype": {
+            "id": "pos_vwtype",
+            "values": [
+                {
+                    "value": "pers",
+                    "displayName": "personal"
+                },
+                {
+                    "value": "aanw",
+                    "displayName": "demonstrative"
+                },
+                {
+                    "value": "betr",
+                    "displayName": "relative"
+                },
+                {
+                    "value": "bez",
+                    "displayName": "possessive"
+                },
+                {
+                    "value": "excl",
+                    "displayName": "exclamatory"
+                },
+                {
+                    "value": "onbep",
+                    "displayName": "indefinite"
+                },
+                {
+                    "value": "refl",
+                    "displayName": "reflexive"
+                },
+                {
+                    "value": "pr",
+                    "displayName": "personal/reflexive"
+                },
+                {
+                    "value": "recip",
+                    "displayName": "reciprocal"
+                },
+                {
+                    "value": "vrag",
+                    "displayName": "interrogative"
+                },
+                {
+                    "value": "vb",
+                    "displayName": "interrogative/relative"
+                }
+            ]
+        },
+        "pos_positie": {
+            "id": "pos_positie",
+            "values": [
+                {
+                    "value": "prenom",
+                    "displayName": "prenominal"
+                },
+                {
+                    "value": "postnom",
+                    "displayName": "postnominal",
+                    "pos" : ["ADJ", "WW?"]
+                },
+                {
+                    "value": "nom",
+                    "displayName": "nominal"
+                },
+                {
+                    "value": "vrij",
+                    "displayName": "free"
+                }
+            ]
+        },
+        "pos_pvagr": {
+            "id": "pos_pvagr",
+            "values": [
+                {
+                    "value": "ev",
+                    "displayName": "singular"
+                },
+                {
+                    "value": "mv",
+                    "displayName": "plural"
+                },
+                {
+                    "value": "met-t",
+                    "displayName": "with -t"
+                }
+            ]
+        },
+        "pos_wvorm": {
+            "id": "pos_wvorm",
+            "values": [
+                {
+                    "value": "pv",
+                    "displayName": "finite"
+                },
+                {
+                    "value": "inf",
+                    "displayName": "infinitive"
+                },
+                {
+                    "value": "od",
+                    "displayName": "present participle"
+                },
+                {
+                    "value": "vd",
+                    "displayName": "past participle"
+                }
+            ]
+        },
+        "pos_getal": {
+            "id": "pos_getal",
+            "values": [
+                {
+                    "value": "ev",
+                    "displayName": "singular"
+                },
+                {
+                    "value": "mv",
+                    "displayName": "plural"
+                }
+            ]
+        },
+        "pos_npagr": {
+            "id": "pos_npagr",
+            "values": [
+                {
+                    "value": "agr",
+                    "displayName": "agreement"
+                },
+                {
+                    "value": "evf",
+                    "displayName": "singular feminine"
+                },
+                {
+                    "value": "evz",
+                    "displayName": "singular fem/masc",
+                    "pos": ["vnw"]
+                },
+                {
+                    "value": "evmo",
+                    "displayName": "singular masc/neuter"
+                },
+                {
+                    "value": "evon",
+                    "displayName": "singular neuter"
+                },
+                {
+                    "value": "mv",
+                    "displayName": "plural",
+                    "pos" : []
+                },
+                {
+                    "value": "rest",
+                    "displayName": "fem/masc sg or plur"
+                },
+                {
+                    "value": "rest3",
+                    "displayName": "fem sg or plur"
+                }
+            ]
+        },
+        "pos_naamval": {
+            "id": "pos_naamval",
+            "values": [
+                {
+                    "value": "nomin",
+                    "displayName": "nominative",
+                    "pos": [
+                        "vnw"
+                    ]
+                },
+                {
+                    "value": "gen",
+                    "displayName": "genitive",
+                    "pos" : ["n", "vnw", "lid"]
+                },
+                {
+                    "value": "dat",
+                    "displayName": "dative",
+                    "pos" : ["n", "vnw", "lid"]
+                },
+                {
+                    "value": "obl",
+                    "displayName": "oblique",
+                    "pos": [
+                        "vnw"
+                    ]
+                },
+                {
+                    "value": "bijz",
+                    "displayName": "special",
+                    "pos": [
+                        "tw"
+                    ]
+                },
+                {
+                    "value": "stan",
+                    "displayName": "standard"
+                }
+            ]
+        },
+        "pos_genus": {
+            "id": "pos_genus",
+            "values": [
+                {
+                    "value": "fem",
+                    "displayName": "feminine",
+                    "pos" : ["vnw"]
+                },
+                {
+                    "value": "masc",
+                    "displayName": "masculine",
+                    "pos" : ["vnw"]
+                },
+                {
+                    "value": "onz",
+                    "displayName": "neuter"
+                },
+                {
+                    "value": "zijd",
+                    "displayName": "fem/masc",
+                    "pos" : ["n"]
+                }
+            ]
+        },
+        "pos_ntype": {
+            "id": "pos_ntype",
+            "values": [
+                {
+                    "value": "eigen",
+                    "displayName": "proper"
+                },
+                {
+                    "value": "soort",
+                    "displayName": "common"
+                }
+            ]
+        },
+        "pos_status": {
+            "id": "pos_status",
+            "values": [
+                {
+                    "value": "nadr",
+                    "displayName": "emphatic"
+                },
+                {
+                    "value": "red",
+                    "displayName": "reduced"
+                },
+                {
+                    "value": "vol",
+                    "displayName": "full"
+                }
+            ]
+        },
+        "pos_persoon": {
+            "id": "pos_persoon",
+            "values": [
+                {
+                    "value": "1",
+                    "displayName": "1"
+                },
+                {
+                    "value": "2",
+                    "displayName": "2"
+                },
+                {
+                    "value": "2b",
+                    "displayName": "2 polite"
+                },
+                {
+                    "value": "2v",
+                    "displayName": "2 familiar"
+                },
+                {
+                    "value": "3",
+                    "displayName": "3"
+                },
+                {
+                    "value": "3m",
+                    "displayName": "3 masculine"
+                },
+                {
+                    "value": "3o",
+                    "displayName": "3 neuter"
+                },
+                {
+                    "value": "3p",
+                    "displayName": "3 personal"
+                },
+                {
+                    "value": "3v",
+                    "displayName": "3 feminine"
+                }
+            ]
+        },
+        "pos_getal_n": {
+            "id": "pos_getal_n",
+            "values": [
+                {
+                    "value": "mv-n",
+                    "displayName": "plural -n"
+                },
+                {
+                    "value": "zonder-n",
+                    "displayName": "without -n"
+                }
+            ]
+        },
+        "pos_conjtype": {
+            "id": "pos_conjtype",
+            "values": [
+                {
+                    "value": "neven",
+                    "displayName": "coordinating"
+                },
+                {
+                    "value": "onder",
+                    "displayName": "subordinating"
+                }
+            ]
+        },
+        "pos_buiging": {
+            "id": "pos_buiging",
+            "values": [
+                {
+                    "value": "met-e",
+                    "displayName": "with -e"
+                },
+                {
+                    "value": "met-s",
+                    "displayName": "with -s",
+                    "pos" : ["adj"]
+                },
+                {
+                    "value": "zonder",
+                    "displayName": "none"
+                }
+            ]
+        },
+        "pos_spectype": {
+            "id": "pos_spectype",
+            "values": [
+                {
+                    "value": "afgebr",
+                    "displayName": "truncation"
+                },
+                {
+                    "value": "deeleigen",
+                    "displayName": "part proper noun"
+                },
+                {
+                    "value": "meta",
+                    "displayName": "meta"
+                },
+                {
+                    "value": "onverst",
+                    "displayName": "unclear"
+                },
+                {
+                    "value": "overig",
+                    "displayName": "other"
+                },
+                {
+                    "value": "symb",
+                    "displayName": "symbol"
+                },
+                {
+                    "value": "vreemd",
+                    "displayName": "foreign"
+                },
+                {
+                    "value": "comment",
+                    "displayName": "comment"
+                }
+            ]
+        },
+        "pos_dial": {
+            "id": "pos_dial",
+            "values": [
+                {
+                    "value": "dial",
+                    "displayName": "dialect"
+                }
+            ]
+        },
+        "pos_pvtijd": {
+            "id": "pos_pvtijd",
+            "values": [
+                {
+                    "value": "conj",
+                    "displayName": "conjunctive"
+                },
+                {
+                    "value": "tgw",
+                    "displayName": "present"
+                },
+                {
+                    "value": "verl",
+                    "displayName": "past"
+                }
+            ]
+        }
+    }
+}

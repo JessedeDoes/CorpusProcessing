@@ -2,7 +2,16 @@ package posmapping
 
 import propositional.Proposition
 
-import scala.xml.{Elem, XML}
+import scala.xml._
+import org.json4s.JsonDSL._
+import org.json4s.Xml.{toJson, toXml}
+import org.json4s._
+import org.json4s.native.JsonMethods._
+import org.json4s.native.Serialization.writePretty
+import posmapping.CHNStyleTags.parser
+import sparql2xquery.ValueRestrictionSet
+
+
 
 case class Feature(name: String, value: String)
 {
@@ -37,6 +46,8 @@ object MolexTagSet extends TagSet("molex")
 
 object TagSet
 {
+  val pretty = new scala.xml.PrettyPrinter(300, 4)
+
   def fromXML(d: Elem):TagSet =
   {
     val prefix = (d \ "prefix").text
@@ -47,15 +58,43 @@ object TagSet
   }
 
   def fromXML(f: String):TagSet = fromXML(XML.load(f))
+
+  def fromJSON(json: String) = {
+    val xml = <tagset>{toXml(parse(json))}</tagset>
+    println(pretty.format(xml))
+  }
+
+  def tagsetFromSetOfTags(prefix: String, tags: Set[Tag]) = {
+    val posTags = tags.map(_.pos).toList
+    val partitions:Map[String,Set[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value))
+    val pos2partitions:Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
+    val valueRestrictions:List[ValueRestriction] =
+      tags.groupBy(_.pos).flatMap(
+        { case (p,thisPos) => {
+          val features = thisPos.flatMap(_.features.toSet.toList)
+          features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
+
+        } }
+      ).toList
+    Console.err.println(valueRestrictions)
+    TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions)
+  }
+
+  def main(args: Array[String]): Unit = {
+    val test = "data/CRM/tagset.json"
+    fromJSON(io.Source.fromFile(test).getLines().mkString("\n"))
+  }
 }
 
 case class PartitionCondition(pos: String, featureName: String, conditions: List[String])
+case class ValueRestriction(pos: String, featureName: String, values: List[String])
 
 case class TagSet(prefix: String,
                   val posTags: List[String] = List.empty,
                   partitions:Map[String,Set[String]] = Map.empty,
                   pos2partitions: Map[String,List[String]] = Map.empty, parser: TagParser=defaultTagParser,
-                  partitionConditions: List[PartitionCondition] = List.empty)
+                  partitionConditions: List[PartitionCondition] = List.empty,
+                  valueRestrictions: List[ValueRestriction] = List.empty)
 {
 
   def toXML =
@@ -71,6 +110,44 @@ case class TagSet(prefix: String,
         {pos2partitions.map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
     </tagset>
+
+  def elem(label: String, child: Seq[Node]) = Elem(null, label, Null, scala.xml.TopScope, child: _*)
+
+  def asJSON =
+  {
+
+    import org.json4s.Extraction
+
+    def encodeJson(src: Any): JValue = {
+      import org.json4s.{ Extraction, NoTypeHints }
+      import org.json4s.JsonDSL.WithDouble._
+      import org.json4s.jackson.Serialization
+      implicit val formats = Serialization.formats(NoTypeHints)
+      Extraction.decompose(src)
+    }
+
+    def pos2J(p: String) =
+      p -> Map(
+        "value" -> p,
+        "displayName" -> p,
+        "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + p))
+
+    val values = "values" -> posTags.map(pos2J).toMap
+    val json = encodeJson(values)
+    pretty(render(json))
+
+    val subannotations = partitions.map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
+      "values" -> vals.map(v => Map("value" -> v, "displayName" -> v, "pos" -> this.posForFeature(f,v)))).toMap
+    })
+
+    val JSON =
+      Map("values" -> posTags.map(pos2J).toMap,
+       "subAnnotations" -> subannotations)
+
+
+    pretty(render(encodeJson(JSON)))
+    //pretty(render(toJson(xml)))
+  }
 
   def asPlainText =
     s"""
@@ -122,4 +199,12 @@ case class TagSet(prefix: String,
   </fs>
 
   def consistentPartitions(pos: String, n: String, f: List[String]) = true
+
+  def posForFeature(n: String, v: String) =
+    {
+
+      val r= valueRestrictions.filter(r => r.featureName == n && r.values.contains(v)).map(_.pos)
+      Console.err.println(s"Pos for $n $v: $r")
+      r
+    }
 }
