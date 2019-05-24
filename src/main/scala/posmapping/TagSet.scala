@@ -158,6 +158,14 @@ case class TagSet(prefix: String,
        |${pos2partitions.map( {case (p,fs) => s"$p=${fs.mkString(", ")}" } ).mkString("\n")}
      """.stripMargin
 
+  def forBlacklab = partitions.keySet.map( p =>
+    s"""
+       |      - name: $p
+       |        displayName: $p
+       |        uiType: select
+       |        multipleValues: true
+     """.stripMargin).mkString("\n")
+
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
 
   def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =

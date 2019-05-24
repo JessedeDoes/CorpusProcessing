@@ -53,18 +53,27 @@ object CHNStyleTags {
   }
 
   val gysTagset = TagSet.fromXML("data/CRM/gys.tagset.xml")
+
+  //val onwTagset = TagSet.fromXML("data/ONW/onw.tagset.xml").copy(parser=CHNStyleTags.parser)
 }
 
 object distinctTagsFromGysseling
 {
   def main(args: Array[String]): Unit = {
     val dir = args(0)
+
+    val attribute = "function"
+    tagsetFromCorpusFiles(dir, attribute)
+  }
+
+
+  def tagsetFromCorpusFiles(dir: String, attribute: String) = {
     val files:Set[File] = new File(dir).listFiles().toSet
     val allDistinctTags = files.flatMap(
       f => {
         val doc = XML.loadFile(f)
 
-        val combiposjes = (doc \\ "w").map(x => (x \ "@function").text).toSet
+        val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
         val posjes = combiposjes.flatMap(p => p.split("\\+").toSet)
         //println(posjes)
         posjes
@@ -77,5 +86,18 @@ object distinctTagsFromGysseling
     val jsonWriter = new PrintWriter("/tmp/tagset.json")
     jsonWriter.println(tagset.asJSON)
     jsonWriter.close()
+
+    val blfWriter =  new PrintWriter("/tmp/tagset.blf")
+    blfWriter.println(tagset.forBlacklab)
+    blfWriter.close()
+  }
+}
+
+
+object distinctTagsFromONW {
+  val dir = "/home/jesse/workspace/data-historische-corpora/ONW/TEI-postprocessed"
+
+  def main(args: Array[String]): Unit = {
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "msd")
   }
 }
