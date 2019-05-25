@@ -9,19 +9,18 @@ object splitONWTagsInFeatures {
   val sourceDir = "/home/jesse/workspace/data-historische-corpora/ONW/TEI-postprocessed/"
   val targetDir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-tagsplit/"
 
-  val files = new File(sourceDir).listFiles()
 
   def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
 
-  def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
+  def replaceAtt(m: MetaData, name: String, value: String): MetaData = m.filter(a => a.key != name).append(Ѧ(name, value))
 
 
-  def splitFS(fs: Elem, lemma: String) =
+  def splitFS(fs: Elem, lemma: String): Seq[Elem] =
   {
     val fs1 = fs.copy(
       attributes = replaceAtt(fs.attributes, "type", "chnpos"),
       child = fs.child.flatMap({
-        case e: Elem if (e.label == "f" && (e \ "@name").text.startsWith("pos.") ) => {
+        case e: Elem if e.label == "f" && (e \ "@name").text.startsWith("pos.")  => {
           val newName = (e \ "@name").text.replaceAll("pos.","")
           e.copy(attributes = replaceAtt(e.attributes, "name", newName)) }
         case _ => Seq()
@@ -42,7 +41,7 @@ object splitONWTagsInFeatures {
     w.copy(child = newChild)
   }
 
-  val noNo = new Character(133).toString
+  val noNo: String = new Character(133).toString
 
   def cleanText(n: Node): Node =
   {
