@@ -16,7 +16,7 @@ object splitONWTagsInFeatures {
   def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
 
 
-  def splitFS(fs: Elem) =
+  def splitFS(fs: Elem, lemma: String) =
   {
     val fs1 = fs.copy(
       attributes = replaceAtt(fs.attributes, "type", "chnpos"),
@@ -25,21 +25,46 @@ object splitONWTagsInFeatures {
           val newName = (e \ "@name").text.replaceAll("pos.","")
           e.copy(attributes = replaceAtt(e.attributes, "name", newName)) }
         case _ => Seq()
-      })
+      }) ++ Seq(<f name="lemma">{lemma}</f>)
     )
     Seq(fs,fs1)
   }
 
-  def updateTag(d: Elem):Node =
+  def updateTag(w: Elem):Node =
   {
-    updateElement2(d, _.label=="fs", splitFS).head
+    val lemma = (w \ "@lemma").text
+    val lemmata = lemma.split("\\+").toSeq
+    val fsjes = (w \ "fs").zip(lemmata).flatMap(
+      {case (fs, l) =>  splitFS(fs.asInstanceOf[Elem], l)}
+    )
+    val newChild = w.child.filter(_.label != "fs") ++ fsjes
+    // Console.err.println(newChild)
+    w.copy(child = newChild)
+  }
+
+  val noNo = new Character(133).toString
+
+  def cleanText(n: Node): Node =
+  {
+    n match {
+      case e: Elem => {
+        e.copy(child = e.child.map(cleanText))
+      }
+      case t: Text => Text(t.text.replaceAll(noNo, " "))
+      case _ => n
+    }
+  }
+
+  def updateTags(d: Elem):Node =
+  {
+    updateElement2(d, _.label=="w", updateTag).head
   }
 
   def doFile(f1: String, f2: String) =
   {
     val d = XML.load(f1)
-    val d1 = updateTag(d)
-    XML.save(f2,d1,"UTF-8")
+    val d1 = updateTags(d)
+    XML.save(f2,cleanText(d1),"UTF-8")
   }
 
   def main(args: Array[String]): Unit = {
