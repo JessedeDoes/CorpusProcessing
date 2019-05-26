@@ -14,6 +14,22 @@ object splitONWTagsInFeatures {
 
   def replaceAtt(m: MetaData, name: String, value: String): MetaData = m.filter(a => a.key != name).append(Ѧ(name, value))
 
+  def padYear(s: String) = {
+    val s1 = s.trim
+    if (s1.matches("^[0-9]{1,4}$")) {
+      val s2 = (0 until (4 - s.length)).map(x => "0").mkString("") + s1
+      Console.err.println(s"$s1 --> $s2")
+      s2
+    }
+    else s1
+  }
+
+  def padYears(grp: Elem) = {
+     val r = grp.copy(child = grp.child.map(cleanText(padYear)))
+     if ((r \ "@type").text.toLowerCase().contains("year"))
+       Console.err.println(r)
+    r
+  }
 
   def splitFS(fs: Elem, lemma: String): Seq[Elem] =
   {
@@ -43,13 +59,13 @@ object splitONWTagsInFeatures {
 
   val noNo: String = new Character(133).toString
 
-  def cleanText(n: Node): Node =
+  def cleanText(f: String => String)(n: Node): Node =
   {
     n match {
       case e: Elem => {
-        e.copy(child = e.child.map(cleanText))
+        e.copy(child = e.child.map(cleanText(f)))
       }
-      case t: Text => Text(t.text.replaceAll(noNo, " "))
+      case t: Text => Text(f(t.text))
       case _ => n
     }
   }
@@ -63,7 +79,8 @@ object splitONWTagsInFeatures {
   {
     val d = XML.load(f1)
     val d1 = updateTags(d)
-    XML.save(f2,cleanText(d1),"UTF-8")
+    val d2 = updateElement(d1.asInstanceOf[Elem], x => x.label=="interpGrp" && (x \ "@type").text.toLowerCase.contains("year"), padYears )
+    XML.save(f2,cleanText(s => s.replaceAll(noNo, " "))(d2.asInstanceOf[Elem]),"UTF-8")
   }
 
   def main(args: Array[String]): Unit = {
