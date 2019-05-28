@@ -27,171 +27,7 @@ import posmapping.VMNWdb.QuotationReference
 
  */
 
-object VMNWdb {
-  object vmnwconfig extends Configuration("vmnw", "svowdb02", "VMNW", "impact", "impact", driver="mysql")
 
-  val mainPoS = List("vnw.bw.", "bw.", "bnw.", "lidw.", "ww.", "znw.", "vnw.", "vw.", "vz.", "az.", "telw.")
-
-  case class QuotationReference(woordvorm_nr: Int, citaat_id: Int, ldb_lemma_nr: Int)
-
-
-  case class LemmaWoordvorm(ldb_lemma_nr: Int, woordvorm_nr: Int, lemmatekst_cg: String, lemmatekst_vmnw: String,
-                            woordsoort_afk: String, morfkode: Int, clitisch_deel_nr: Int, status_lemma_vmnw: Int, korte_bet: String, citaatLinks: Set[QuotationReference] = Set.empty)
-  {
-    lazy val mainPos: Option[String] = mainPoS.find(s => woordsoort_afk.contains(s))
-
-    lazy val compatible: Boolean = {
-      if (mainPos.isDefined) // ToDo also match features, e.g. relative pronoun etc
-        {
-          val ws = mainPos.get
-          ws match {
-            case "vnw.bw." => morfkode >= 600 & morfkode < 700
-            case "bw." => morfkode >= 500 & morfkode < 600
-            case "znw." => morfkode < 100
-            case "ww." => morfkode >= 200 & morfkode < 300
-            case "bnw." => morfkode >= 100 & morfkode < 200
-            case "telw." => morfkode >= 300 & morfkode < 400
-            case "vnw." => morfkode >= 400 & morfkode < 470 | morfkode >= 490 & morfkode < 500
-            case "lidw." => morfkode >= 400 & morfkode < 490
-            case "vz." => morfkode >= 700 & morfkode < 800
-            case "az." => morfkode >= 700 & morfkode < 800 // ?
-            case "vw." => morfkode >= 800 & morfkode < 900
-            case _ => true
-          }
-        } else true;
-    }
-
-    /*
-    +----------------+
-| woordsoort_afk |
-+----------------+
-| aanw.vnw.      |
-| aanw.vnw.bw.   |
-| betr.vnw.      |
-| betr.vnw.bw.   |
-| bez.vnw.       |
-| onbep.vnw.     |
-| onbep.vnw.bw.  |
-| pers.vnw.      |
-| vnw.           |
-| vnw.bw.        |
-| vr.vnw.        |
-| vr.vnw.bw.     |
-| wdk.vnw.       |
-| wkg.vnw.       |
-+----------------+
-
-+----------------+
-| woordsoort_afk |
-+----------------+
-| aanw.vnw.bw.   |
-| betr.vnw.bw.   |
-| onbep.vnw.bw.  |
-| vnw.bw.        |
-| vr.vnw.bw.     |
-+----------------+
-
-     */
-    lazy val featureCompatible = compatible &&
-    {
-      mainPos match {
-        case Some("vnw.") =>
-          val klopt = if (woordsoort_afk.contains("aanw")) morfkode >= 410 & morfkode < 420
-          else if (woordsoort_afk.contains("betr")) morfkode >= 420 & morfkode < 440
-          else if (woordsoort_afk.contains("bez")) morfkode >= 450 & morfkode < 460
-          else if (woordsoort_afk.contains("onbep")) morfkode >= 440 & morfkode < 450
-          else if (woordsoort_afk.contains("pers")) morfkode >= 401 & morfkode < 407
-          else if (woordsoort_afk.contains("vr")) morfkode >= 420 & morfkode < 440
-          else if (woordsoort_afk.contains("wdk")) morfkode >= 460 & morfkode < 470
-          else if (woordsoort_afk.contains("wkg")) morfkode >= 460 & morfkode < 470
-          else true
-          klopt
-        case Some("vnw.bw.") =>
-          val klopt = if (woordsoort_afk.contains("aanw")) morfkode >= 610 & morfkode < 620
-          else if (woordsoort_afk.contains("betr")) morfkode >= 620 & morfkode < 640
-          //else if (woordsoort_afk.contains("bez")) morfkode >= 450 & morfkode < 460
-          else if (woordsoort_afk.contains("onbep")) morfkode >= 640 & morfkode < 650
-          else if (woordsoort_afk.contains("vr")) morfkode >= 620 & morfkode < 640
-          else true
-          klopt
-        case Some("bw.") =>
-          val klopt = if (woordsoort_afk.contains("aanw")) morfkode >= 510 & morfkode < 520
-          else if (woordsoort_afk.contains("betr")) morfkode >= 520 & morfkode < 540
-          //else if (woordsoort_afk.contains("bez")) morfkode >= 450 & morfkode < 460
-          else if (woordsoort_afk.contains("onbep")) morfkode >= 540 & morfkode < 550
-          else if (woordsoort_afk.contains("vr")) morfkode >= 520 & morfkode < 540
-          else true
-          klopt
-        case _ => true
-      }
-    }
-
-    lazy val supportedByAttestation = citaatLinks.exists(_.ldb_lemma_nr == this.ldb_lemma_nr)
-    lazy val element = <ref type="dictionary.VMNW" citaatId={citaatLinks.headOption.map(x => Text(x.citaat_id.toString))} n={clitisch_deel_nr.toString} target={ldb_lemma_nr.toString}>{lemmatekst_vmnw} [{korte_bet}] ({woordsoort_afk} {morfkode} compatible:{compatible},{featureCompatible} status:{status_lemma_vmnw})</ref>
-  }
-
-  val db = new Database(vmnwconfig)
-
-  lazy val lemmaWoordvormQuery = Select(r => LemmaWoordvorm(
-    r.getInt("ldb_lemma_nr"),
-    r.getInt("woordvorm_nr"),
-    r.getString("lemmatekst_cg").replaceAll("-[Xx]$","").toLowerCase(),
-    r.getString("lemmatekst_vmnw"),
-    r.getString("woordsoort_afk"),
-    r.getInt("morfkode"),
-    r.getInt("clitisch_deel_nr"),
-    r.getInt("status_lemma_vmnw"),
-    r.getString("korte_bet")
-  ), "lemma_woordvorm_view_alt")
-
-  lazy val citaatLinkQuery = Select(r => QuotationReference(
-    r.getInt("woordvorm_nr"),
-    r.getInt("citaat_id"),
-    r.getInt("ldb_lemma_nr")
-  ),   "citaat_tokens where is_attestatie=true")
-
-  lazy val citaatLinks = db.iterator(citaatLinkQuery)
-
-  lazy val citaatLinkMap: Map[Int,Set[QuotationReference]] = citaatLinks.toSet.groupBy(_.woordvorm_nr)
-
-  lazy val allemaal = db.iterator(lemmaWoordvormQuery)
-  lazy val woordvormLemma = {
-    val z = allemaal.toList.groupBy(_.woordvorm_nr)
-    Console.err.println("Yoho links collected!!!")
-    z
-  }
-
-  def prefer[T](s: Set[T], f: T => Boolean) = if (s.exists(f)) s.filter(f) else s
-
-  def preferList[T](s0: Set[T], fs: List[T => Boolean]) = fs.foldLeft(s0)({case (s,f) => prefer[T](s,f)})
-
-  def findDictionaryLinks(wordId: String) =
-  {
-    val woordvorm_nr = wordId.replaceAll("[^0-9]", "").toInt
-    val candidates = woordvormLemma.get(woordvorm_nr).getOrElse(Set())
-
-    val filtered0 = candidates.map(_.copy(citaatLinks = citaatLinkMap.getOrElse(woordvorm_nr, Set()))).toSet
-
-    val wouldBeNice:List[LemmaWoordvorm => Boolean] =
-      List(_.compatible,
-        _.status_lemma_vmnw == 0,
-        _.supportedByAttestation,
-        _.featureCompatible)
-
-    preferList(filtered0, wouldBeNice)
-  }
-
-  def linkXML(wordId: String) =
-  {
-    val l = findDictionaryLinks(wordId)
-    val n = l.size
-    if (l.isEmpty) <nolink/> else <xr type="dictionaryLinks" extent={n.toString}>{l.map(_.element).toSeq}</xr>
-  }
-
-  def main(args: Array[String]): Unit = {
-    allemaal.filter(x => x.mainPos.isEmpty).foreach(x => println(s"$x -->  ${x.mainPos}"))
-  }
-}
 
 object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
@@ -215,6 +51,17 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         }
       }))
   }
+
+  val partTranslations = Map(
+     "deel" -> "part",
+     "vz-deel-bw" -> "adp",
+     "hoofddeel-bw" -> "adv",
+     "bw-deel-ww" -> "adv",
+     "hoofddeel-ww" -> "vrb",
+     "deel-b" -> "initial",
+     "deel-i" -> "internal",
+     "deel-f" -> "final"
+  )
 
   val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
@@ -322,6 +169,11 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val cgnTags:List[String] = morfcodes.map(m => morfcode2tag(m, isPartOfSomethingGreater, n))
 
+    val cgnTagsAstags = cgnTags.map(t => CGNMiddleDutch.CGNMiddleDutchTagset.parser.parseTag(CGNMiddleDutch.CGNMiddleDutchTagset, t))
+
+    val deeltjes = cgnTagsAstags.map(t => t.features.filter(_.name == "deel").map(_.value))
+    val erZijnDeeltjes = deeltjes.exists(_.nonEmpty)
+
     val lemmataPatched = if (cgnTags.size <= lemmata.size) lemmata else {
       val d = cgnTags.size - lemmata.size
       val extra = (0 until d).map(x => "ZZZ")
@@ -351,8 +203,33 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val withCompletedLemma = afterStm.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
-    val gysTagFS = (e \ "@function").text.split("\\+").toList.map(s => CHNStyleTags.parseTag(s)).map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t))
+    val gysTagsCHNStyle: Seq[Tag] =  (e \ "@function").text.split("\\+").toList.zipWithIndex.map(
+      {
+        case (t,i) =>
+          val p  = partTranslations.get(deeltjes(i).headOption.getOrElse("none")).getOrElse("none")
+          val z = if (deeltjes(i).nonEmpty) t.replaceAll("\\)", s",wordpart=$p)") else t
+
+          if (erZijnDeeltjes)
+            {
+              System.err.println(cgnTags)
+              System.err.println(z)
+              System.err.println(e)
+              // System.exit(1)
+            }
+          z
+      }
+    ) map(s => CHNStyleTags.parseTag(s))
+
+
+
+    val gysTagFS = gysTagsCHNStyle.map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t))
     val cgnTagFs = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+
+    if (deeltjes.exists(_.nonEmpty)) {
+      System.err.println("DEELTJES " + deeltjes)
+      System.err.println("DEELTJES.... " + gysTagsCHNStyle.map(_.toString))
+      System.err.println(gysTagFS)
+    }
 
     def makeFS(n: Seq[Elem]) = n
       .zipWithIndex
@@ -393,7 +270,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
       if (rearrangeCorresp) {
         val stermatten = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e => (e \ "@corresp").text)
-        stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
+        //stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
 
         val sterMatMap = stermatten.mapValues(l => l.map(x => getId(x).get))
 
@@ -458,7 +335,13 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   }
 
 
-  def fixFile(in: String, out:String) = XML.save(out, wordSplitting.splitWords(fixEm(XML.load(in))),  enc="UTF-8")
+  val splitWords = false
+
+  def fixFile(in: String, out:String) = {
+    val d1 = fixEm(XML.load(in))
+    val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
+    XML.save(out, d2,  enc="UTF-8")
+  }
 
   def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
 }
