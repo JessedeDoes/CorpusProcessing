@@ -1,0 +1,161 @@
+# Mapping tussen CGN en CHN
+# dit werkt niet echt..
+#
+chn:AdpType=Comprep ↔ cgn:feat.vztype=versm
+chn:AdpType=Post ↔ cgn:feat.vztype=fin
+chn:AdpType=Prep ↔ cgn:feat.vztype=init
+
+chn:Aspect=Imp ↔ cgn:feat.wvorm=od
+chn:Aspect=Perf ↔ cgn:feat.wvorm=vd
+
+#chn:Case=Acc|Nom ↔ cgn:feat.naamval=stan
+chn:Case=Acc ↔ cgn:feat.naamval=obl
+chn:Case=Dat ↔ cgn:feat.naamval=dat
+chn:Case=Gen ↔ cgn:feat.naamval=gen
+chn:Case=Nom ↔ cgn:feat.naamval=nomin
+
+chn:Subtype_art=Def ↔ (cgn:feat.lwtype=bep ∧ cgn:pos=LID)
+chn:Subtype_art=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID)
+
+chn:Degree=Cmp ↔ cgn:feat.graad=comp
+chn:Degree=Dim ↔ cgn:feat.graad=dim
+chn:Degree=Pos ↔ cgn:feat.graad=basis
+chn:Degree=Sup ↔ cgn:feat.graad=sup
+
+chn:Gender=Com ↔ (cgn:feat.genus=zijd)
+chn:Gender=Fem ↔ (cgn:feat.genus=fem) ∨ (cgn:feat.npagr=evf) ∨ (cgn:feat.persoon=2v|3v)
+chn:Gender=Masc ↔ (cgn:feat.genus=masc) ∨ (cgn:feat.persoon=3m)
+chn:Gender=Neut ↔ (cgn:feat.genus=onz) ∨ (cgn:feat.npagr=evon) ∨ (cgn:feat.graad=dim ∧ cgn:pos=N)
+
+# CGN stopt conj en imp in een kenmerk met de tijd (historisch niet houdbaar, zie bijvoorbeeld http://gtb.inl.nl/iWDB/search?actie=article&wdb=VMNW&id=ID92682&article=beghote)
+
+chn:Mood=Ind ↔ cgn:feat.wvorm=pv ∧ (cgn:feat.pvtijd=tgw  ∨  cgn:feat.pvtijd=verl)
+chn:Mood=Sub ↔ cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=conj
+chn:Mood=Imp ↔ cgn:feat.wvorm=pv ∧ cgn:feat.pvtijd=imp
+
+chn:NumType=Card ↔ cgn:feat.numtype=hoofd
+chn:NumType=Ord ↔ cgn:feat.numtype=rang
+
+chn:Number=Plur ↔ (cgn:feat.getal=mv ∨ cgn:feat.npagr=mv ∨ cgn:feat.pvagr=mv)
+chn:Number=Sing ↔ (cgn:feat.getal=ev ∨ cgn:feat.pvagr=ev ∨ cgn:feat.npagr=ev ∨ cgn:feat.npagr=evon ∨ cgn:feat.npagr=evf)
+
+chn:Person=1 ↔ cgn:feat.persoon=1
+chn:Person=2 ↔ cgn:feat.persoon=2 ∨ cgn:feat.persoon=2v ∨ cgn:feat.persoon=2b
+chn:Person=3 ↔ cgn:feat.persoon=3 ∨ cgn:feat.persoon=3p ∨ cgn:feat.persoon=3v ∨ cgn:feat.persoon=3m ∨ cgn:feat.persoon=3o ∨ cgn:feat.persoon=3
+
+# introduceer voor die boolean ors op een feature automatisch een alias = a|b|c|... ?
+
+chn:Polite=Inf ↔ cgn:feat.persoon=2v
+chn:Polite=Pol → (cgn:feat.persoon=2b ∨ cgn:feat.pvagr=met-t)
+cgn:feat.persoon=2b → chn:Polite=Pol
+
+chn:Position=Free ↔ cgn:feat.positie=vrij
+chn:Position=Nom ↔ cgn:feat.positie=nom
+chn:Position=Postnom ↔ cgn:feat.positie=postnom
+chn:Position=Attributive ↔ cgn:feat.positie=prenom
+
+chn:Poss=Yes ↔ cgn:pos=VNW ∧ cgn:feat.vwtype=bez
+
+chn:PronType=Art ↔ cgn:pos=LID
+chn:PronType=Dem ↔ cgn:feat.vwtype=aanw ∧ cgn:pos=VNW
+chn:PronType=Exc ↔ cgn:feat.vwtype=excl ∧ cgn:pos=VNW
+chn:PronType=Ind ↔ (cgn:feat.lwtype=onbep ∧ cgn:pos=LID) ∨ (cgn:feat.vwtype=onbep ∧ cgn:pos=VNW)
+chn:PronType=Int ↔ cgn:feat.vwtype=vrag
+chn:PronType=Int|Rel ↔ cgn:feat.vwtype=vb
+chn:PronType=NegTot ↔ cgn:feat.lwtype=onbep ∧ cgn:lemma=geen
+chn:PronType=Prs  ↔ cgn:feat.vwtype=pers
+chn:PronType=Rcp ↔ cgn:feat.vwtype=recip
+chn:PronType=Rel ↔ cgn:feat.vwtype=betr
+chn:PronType=Tot ↔ cgn:feat.lwtype=onbep ∧ cgn:lemma=iedereen|ieder|al|alles|elk|elke
+
+chn:Reflex=Yes ↔ (cgn:feat.vwtype=refl) ∨ (cgn:feat.vwtype=pr)
+
+chn:Tense=Past ↔  (cgn:feat.pvtijd=verl ∧ cgn:feat.wvorm=pv) ∨ cgn:feat.wvorm=vd
+chn:Tense=Pres ↔ cgn:feat.pvtijd=tgw
+
+chn:Variant=Long ↔ cgn:feat.status=vol
+chn:Variant=Short ↔ cgn:feat.status=red
+
+chn:VerbForm=Fin ↔ cgn:feat.wvorm=pv
+chn:VerbForm=Inf ↔ cgn:feat.wvorm=inf
+chn:VerbForm=Part ↔ cgn:feat.wvorm=od ∨ cgn:feat.wvorm=vd
+
+### main part of speech
+
+chn:pos=ADJ ↔ cgn:pos=ADJ
+  chn:pos=ADJ ↔ gigant:pos=AA
+chn:pos=ADP ↔ cgn:pos=VZ
+  chn:pos=ADP ↔ gigant:pos=ADP
+chn:pos=ADV ↔ cgn:pos=BW ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=adv-pron)
+  chn:pos=ADV ↔ gigant:pos=ADV
+# wat doen we met pdtype=grad (weinig, veel, etc...)
+
+chn:pos=DET ↔ cgn:pos=LID ∨ (cgn:pos=VNW ∧ cgn:feat.pdtype=det ∧ ¬cgn:feat.positie=nom) ∨ (cgn:pos=VNW ∧ cgn:feat.positie=prenom)
+chn:pos=INTJ ↔ cgn:pos=TSW
+#chn:pos=NOUN ↔  cgn:pos=N ∧ cgn:feat.ntype=soort ∧  ¬cgn:feat.ntype=eigen
+chn:pos=NUM ↔ cgn:pos=TW
+chn:pos=PRON ↔ (cgn:pos=VNW ∧ cgn:feat.pdtype=pron) ∨ (cgn:pos=VNW ∧ (cgn:feat.positie=vrij ∨ cgn:feat.positie=nom))
+#chn:pos=PROPN ↔ (cgn:pos=N ∧ cgn:feat.ntype=eigen) ∨ (¬cgn:pos=N ∧ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen)
+cgn:feat.ntype=eigen → chn:pos=PROPN
+cgn:feat.ntype=soort → chn:pos=NOUN
+cgn:feat.spectype=deeleigen → chn:pos=PROPN
+chn:pos=PUNCT ↔ cgn:pos=LET
+#chn:pos=PROPN ↔ cgn:pos=SPEC ∧ cgn:feat.spectype=deeleigen
+chn:pos=CONJ ↔ cgn:pos=VG
+chn:type=sub ↔ cgn:pos=VG ∧ cgn:feat.conjtype=neven
+chn:type=coor ↔ cgn:pos=VG ∧ cgn:feat.conjtype=neven
+chn:pos=RES → cgn:pos=SPEC
+chn:pos=VRB ↔ cgn:pos=WW
+chn:pos=X →  cgn:pos=SPEC
+
+#chn:pos=SCONJ|CCONJ ↔ chn:pos=SCONJ ∨ chn:pos=CCONJ
+
+#### helaas zijn er wat cgn-interne implicaties nodig om de conversie op gang te krijgen
+
+# mutual exclusions. 
+# Zouden eigenlijk voor alles opgenomen moeten worden
+
+#¬(cgn:pos=N ∧ cgn:feat.ntype=eigen)
+#cgn:pos=N → cgn:feat.ntype=soort Hoe kan je dit nou weer verzinnen???
+¬(cgn:pos=VNW ∧ cgn:pos=LID)
+
+# moet dit echt?
+
+#¬(cgn:pos=N ∧ cgn:feat.ntype=soort ∧ cgn:feat.ntype=eigen)
+¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=imp)
+¬(cgn:feat.pvtijd=verl ∧ cgn:feat.pvtijd=conj)
+¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=imp)
+¬(cgn:feat.pvtijd=tgw ∧ cgn:feat.pvtijd=conj)
+
+((¬cgn:feat.wvorm=vd) ∨ ¬cgn:feat.wvorm=od)
+((¬cgn:feat.wvorm=pv) ∨ ¬cgn:feat.wvorm=od)
+((¬cgn:feat.wvorm=vd) ∨ ¬cgn:feat.wvorm=pv)
+
+
+# tagsetinterne implicaties
+
+cgn:feat.vwtype=bep → cgn:pos=VNW
+cgn:feat.vwtype=bez → cgn:pos=VNW
+cgn:feat.vwtype=aanw → cgn:pos=VNW
+cgn:feat.vwtype=vrag → cgn:pos=VNW
+cgn:feat.vwtype=recip → cgn:pos=VNW
+cgn:feat.vwtype=betr → cgn:pos=VNW
+cgn:feat.vwtype=refl → cgn:pos=VNW
+cgn:feat.vwtype=pr → cgn:pos=VNW
+cgn:feat.vwtype=excl → cgn:pos=VNW
+cgn:feat.vwtype=onbep → cgn:pos=VNW
+
+#cgn:feat.conjtype=onder → cgn:pos=VG
+#cgn:feat.conjtype=neven → cgn:pos=VG
+
+cgn:feat.lwtype=bep → cgn:pos=LID
+cgn:feat.lwtype=onbep → cgn:pos=LID
+
+cgn:feat.ntype=soort → cgn:pos=N
+cgn:feat.ntype=eigen → cgn:pos=N
+
+cgn:feat.pdtype=det → cgn:pos=VNW
+cgn:feat.pdtype=pron → cgn:pos=VNW
+# let op, geen positie als pdtype=pron
+
+(cgn:feat.pvtijd=tgw ∨ cgn:feat.pvtijd=verl ∨ cgn:feat.pvtijd=conj ∨ cgn:feat.pvtijd=imp) → cgn:feat.wvorm=pv

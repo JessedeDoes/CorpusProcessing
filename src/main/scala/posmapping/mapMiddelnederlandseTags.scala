@@ -30,7 +30,21 @@ import posmapping.VMNWdb.QuotationReference
 
 
 object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
+
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
+{
+  val bronnenlijst = "/mnt/Projecten/Taalbank/Woordenboeken/VMNW/VMNWdb/Bronnenlijst/vmnw_bronnen.xml"
+  lazy val bronMap: Map[String, Node] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
+    b => (b \\ "docid").text -> b
+  ).toMap
+
+  def voegBronInfoTo(d: Elem) = {
+    val sourceID = ((d \\ "interpGrp").filter(g => (g \ "@type").text == "sourceID") \ "interp").text.replaceAll("corpusgysseling.","")
+    val bron = bronMap.get(sourceID).getOrElse(<bron_not_found/>)
+
+    updateElement(d, _.label=="teiHeader", x => x.copy(child = x.child ++ Seq(bron)))
+  }
+}
 
 class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val rearrangeCorresp = gysMode
@@ -340,7 +354,8 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   def fixFile(in: String, out:String) = {
     val d1 = fixEm(XML.load(in))
     val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
-    XML.save(out, d2,  enc="UTF-8")
+    val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoTo(d2) else d2
+    XML.save(out, d3,  enc="UTF-8")
   }
 
   def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
