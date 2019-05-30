@@ -35,7 +35,10 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 {
   val bronnenlijst = "/mnt/Projecten/Taalbank/Woordenboeken/VMNW/VMNWdb/Bronnenlijst/vmnw_bronnen.xml"
   lazy val bronMap: Map[String, Node] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
-    b => (b \\ "docid").text -> b
+    b => (b \\ "docid").text -> {
+      val b1 = XML.loadString("<bron><![CDATA[" + b.toString + "]]></bron>")
+      b1
+    }
   ).toMap
 
   def voegBronInfoTo(d: Elem) = {
