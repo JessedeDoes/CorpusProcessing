@@ -44,7 +44,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 
   def addMetadataField(bibl: Elem, name: String, value: String) =
   {
-    Console.err.println(s"$name = $value")
+     // Console.err.println(s"$name = $value")
      bibl.copy(child = bibl.child ++ Seq(
         <interpGrp type={name}><interp>{value}</interp></interpGrp>
      ))
@@ -72,7 +72,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
     val authenticity = (bronxml \\ "document" \\ "type").text
     val verblijfplaats = (bronxml \\ "document" \\ "verblijfplaats").text
 
-    Console.err.println(s"Authenticity: $authenticity")
+    // Console.err.println(s"Authenticity: $authenticity")
 
     val m = Map("authenticityLevel1" -> authenticity, "signatureLevel1" -> verblijfplaats)
 
@@ -219,7 +219,14 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       val patches = lemmaPatches.filter(_.omspelling_uit_hilex.nonEmpty).groupBy(_.clitisch_deel_nr)
       lemmata.indices.map(i => if (!patches.contains(i)) completedLemmata(i) else {
         val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
-        possiblePatches.mkString("|")
+        if (possiblePatches.size > 1 || possiblePatches.isEmpty) {
+          Console.err.println(s"Ambiguity for modern lemma form ${completedLemmata(i)}: $possiblePatches")
+          if (!possiblePatches.contains(completedLemmata(i).toLowerCase))
+            {
+              Console.err.println(s"Mismatch for lemma form ${completedLemmata(i)}, not in $possiblePatches")
+            }
+          completedLemmata(i)
+        } else possiblePatches.mkString("|")
       })
     }
 
