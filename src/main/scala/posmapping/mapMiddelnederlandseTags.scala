@@ -6,7 +6,7 @@ import scala.util.matching.Regex._
 import scala.xml._
 import database.DatabaseUtilities.Select
 import database.{Configuration, Database}
-import posmapping.VMNWdb.QuotationReference
+import posmapping.VMNWdb.{LemmaWoordvorm, QuotationReference}
 
 /*
 +----------------+-------------+------+-----+---------+-------+
@@ -34,18 +34,49 @@ object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 {
   val bronnenlijst = "/mnt/Projecten/Taalbank/Woordenboeken/VMNW/VMNWdb/Bronnenlijst/vmnw_bronnen.xml"
-  lazy val bronMap: Map[String, Node] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
+
+  lazy val bronMap: Map[String, (Node,Node)] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
     b => (b \\ "docid").text -> {
       val b1 = XML.loadString("<bron><![CDATA[" + b.toString + "]]></bron>")
-      b1
+      (b1,b)
     }
   ).toMap
 
-  def voegBronInfoTo(d: Elem) = {
-    val sourceID = ((d \\ "interpGrp").filter(g => (g \ "@type").text == "sourceID") \ "interp").text.replaceAll("corpusgysseling.","")
-    val bron = bronMap.get(sourceID).getOrElse(<bron_not_found/>)
+  def addMetadataField(bibl: Elem, name: String, value: String) =
+  {
+    Console.err.println(s"$name = $value")
+     bibl.copy(child = bibl.child ++ Seq(
+        <interpGrp type={name}><interp>{value}</interp></interpGrp>
+     ))
+  }
 
-    updateElement(d, _.label=="teiHeader", x => x.copy(child = x.child ++ Seq(bron)))
+  def addMeta(d: Elem, name: String, value: String): Elem =
+  {
+    updateElement(d, e => e.label=="listBibl" && getId(e).nonEmpty && getId(e).get == "inlMetadata", lb =>
+      updateElement(lb, _.label == "bibl", x => addMetadataField(x, name, value) )
+    )
+  }
+
+  def addMeta(d: Elem, extra: Map[String,String]): Elem =
+  {
+    updateElement(d, e => e.label=="listBibl" && getId(e).nonEmpty && getId(e).get == "inlMetadata", lb =>
+      updateElement(lb, _.label == "bibl", x => extra.foldLeft(x)({ case (bibl, (n,v)) => addMetadataField(bibl,n,v)}) )
+    )
+  }
+
+
+  def voegBronInfoToe(d: Elem) = {
+    val sourceID = ((d \\ "interpGrp").filter(g => (g \ "@type").text == "sourceID") \ "interp").text.replaceAll("corpusgysseling.","")
+    val (brontxt, bronxml): (Node,Node) = bronMap.get(sourceID).getOrElse((<bron_not_found/>, <nee-echt-niet/>))
+
+    val authenticity = (bronxml \\ "document" \\ "type").text
+    val verblijfplaats = (bronxml \\ "document" \\ "verblijfplaats").text
+
+    Console.err.println(s"Authenticity: $authenticity")
+
+    val m = Map("authenticityLevel1" -> authenticity, "signatureLevel1" -> verblijfplaats)
+
+    updateElement(addMeta(d, m), _.label=="teiHeader", x => x.copy(child = x.child ++ Seq(brontxt)))
   }
 }
 
@@ -182,6 +213,16 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
 
+    val (dictionaryLinks:Seq[Node], lemmaPatches: Set[LemmaWoordvorm]) = if (gysMode) VMNWdb.linkXML(newId.value.text) else (Seq[Node](),Set[LemmaWoordvorm]())
+
+    val hilexedLemmata = if (!gysMode) completedLemmata else {
+      val patches = lemmaPatches.filter(_.omspelling_uit_hilex.nonEmpty).groupBy(_.clitisch_deel_nr)
+      lemmata.indices.map(i => if (!patches.contains(i)) completedLemmata(i) else {
+        val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
+        possiblePatches.mkString("|")
+      })
+    }
+
     val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
 
     val cgnTags:List[String] = morfcodes.map(m => morfcode2tag(m, isPartOfSomethingGreater, n))
@@ -197,10 +238,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       lemmata ++ extra
     }
 
-    val completedLemmataPatched = if (cgnTags.size <= completedLemmata.size) completedLemmata else {
-      val d = cgnTags.size - completedLemmata.size
+    val completedLemmataPatched = if (cgnTags.size <= completedLemmata.size) hilexedLemmata else { // pas op nu hilexedLemmata gebruik ipv completedLemmata
+      val d = cgnTags.size - hilexedLemmata.size
       val extra = (0 until d).map(x => "ZZZ")
-      completedLemmata ++ extra
+      hilexedLemmata ++ extra
     }
 
     val cgnTag = cgnTags.mkString("+")
@@ -228,10 +269,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
           if (erZijnDeeltjes)
             {
-              System.err.println(cgnTags)
-              System.err.println(z)
-              System.err.println(e)
-              // System.exit(1)
+              //System.err.println(cgnTags)
+              //System.err.println(z)
+              //System.err.println(e)
+              //System.exit(1)
             }
           z
       }
@@ -243,9 +284,9 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val cgnTagFs = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
 
     if (deeltjes.exists(_.nonEmpty)) {
-      System.err.println("DEELTJES " + deeltjes)
-      System.err.println("DEELTJES.... " + gysTagsCHNStyle.map(_.toString))
-      System.err.println(gysTagFS)
+      //System.err.println("DEELTJES " + deeltjes)
+      //System.err.println("DEELTJES.... " + gysTagsCHNStyle.map(_.toString))
+      //System.err.println(gysTagFS)
     }
 
     def makeFS(n: Seq[Elem]) = n
@@ -257,10 +298,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val featureStructures = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
 
-    val dictionaryLinks:Seq[Node] = if (gysMode) VMNWdb.linkXML(newId.value.text) else Seq[Node]()
+
+
 
     e.copy(attributes = withCompletedLemma, child = e.child ++ featureStructures ++ dictionaryLinks)
   }
+
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
 
@@ -357,7 +400,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   def fixFile(in: String, out:String) = {
     val d1 = fixEm(XML.load(in))
     val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
-    val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoTo(d2) else d2
+    val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoToe(d2) else d2
     XML.save(out, d3,  enc="UTF-8")
   }
 

@@ -3,14 +3,60 @@ package posmapping
 import database.{Configuration, Database}
 import database.DatabaseUtilities.Select
 
+import scala.collection.immutable
 import scala.xml.Text
+import scala.util.{Try, Failure, Success}
+
+object Hilex
+{
+  object hilexconfig extends Configuration("hilex", "svowdb06", "gigant_hilex_candidate", "fannee", "Cric0topus")
+  lazy val db = new Database(hilexconfig)
+  case class Omspellemma(hist_lemma_id: String, hist_lemma: String, modern_lemma: String)
+  {
+    lazy val ldb_lemma_nr: Try[Int] = Try(hist_lemma_id.replaceAll("VMNW","").toInt)
+  }
+
+  val q = Select( r => Omspellemma(
+    r.getString("hist_lemma_id"),
+    r.getString("hist_lemma"),
+    r.getString("modern_lemma")
+  ), "marijke_spelling.spelling where hist_lemma_id ~ 'VMNW'")
+
+  lazy val vmnw_omspellingen = db.slurp(q).filter(_.ldb_lemma_nr.isInstanceOf[Success[Int]]).map(x => x.ldb_lemma_nr.get -> x).toMap
+
+  def main(args: Array[String]): Unit = {
+    vmnw_omspellingen.foreach(println)
+  }
+}
 
 object VMNWdb {
+
   object vmnwconfig extends Configuration("vmnw", "svowdb02", "VMNW", "impact", "impact", driver="mysql")
+
+
+
 
   val mainPoS = List("vnw.bw.", "bw.", "bnw.", "lidw.", "ww.", "znw.", "vnw.", "vw.", "vz.", "az.", "telw.")
 
   case class QuotationReference(woordvorm_nr: Int, citaat_id: Int, ldb_lemma_nr: Int)
+
+
+  case class Lemma(ldb_lemma_nr: Int, lemmatekst_cg: String, lemmatekst_vmnw: String,
+                                             woordsoort_afk: String, status_lemma_vmnw: Int, korte_bet: String)
+
+  lazy val lemmaQuery = Select(r => Lemma(
+    r.getInt("ldb_lemma_nr"),
+
+    r.getString("lemmatekst_cg").replaceAll("-[Xx]$","").toLowerCase(),
+    r.getString("lemmatekst_vmnw"),
+    r.getString("woordsoort_afk"),
+    r.getInt("status_lemma_vmnw"),
+    r.getString("korte_bet")
+  ), "ldb_lemma")
+
+
+  lazy val allLemmata: Map[Int, Lemma] = db.slurp(lemmaQuery).map(x => x.ldb_lemma_nr -> x).toMap
+
 
 
   case class LemmaWoordvorm(ldb_lemma_nr: Int, woordvorm_nr: Int, lemmatekst_cg: String, lemmatekst_vmnw: String,
@@ -39,40 +85,10 @@ object VMNWdb {
       } else true;
     }
 
-    /*
-    +----------------+
-| woordsoort_afk |
-+----------------+
-| aanw.vnw.      |
-| aanw.vnw.bw.   |
-| betr.vnw.      |
-| betr.vnw.bw.   |
-| bez.vnw.       |
-| onbep.vnw.     |
-| onbep.vnw.bw.  |
-| pers.vnw.      |
-| vnw.           |
-| vnw.bw.        |
-| vr.vnw.        |
-| vr.vnw.bw.     |
-| wdk.vnw.       |
-| wkg.vnw.       |
-+----------------+
-
-+----------------+
-| woordsoort_afk |
-+----------------+
-| aanw.vnw.bw.   |
-| betr.vnw.bw.   |
-| onbep.vnw.bw.  |
-| vnw.bw.        |
-| vr.vnw.bw.     |
-+----------------+
-
-     */
     lazy val featureCompatible = compatible &&
       {
         mainPos match {
+
           case Some("vnw.") =>
             val klopt = if (woordsoort_afk.contains("aanw")) morfkode >= 410 & morfkode < 420
             else if (woordsoort_afk.contains("betr")) morfkode >= 420 & morfkode < 440
@@ -104,14 +120,44 @@ object VMNWdb {
         }
       }
 
+    def patchVerwijzing = {
+      val vw = verwijzingen.get(this.ldb_lemma_nr)
+      if (vw.isEmpty || this.status_lemma_vmnw != 5) // 5 is verwijslemma ?
+        this
+      else
+        {
+           val lem = allLemmata.get(vw.get.target_lemma_nr)
+           if (lem.isEmpty)
+             this
+          else
+             {
+               val l = lem.get
+               Console.err.println(s"Jawel, Patching $this to $l")
+               this.copy(ldb_lemma_nr = l.ldb_lemma_nr,
+                 lemmatekst_vmnw = l.lemmatekst_vmnw,
+                 lemmatekst_cg = l.lemmatekst_cg,
+                 korte_bet = l.korte_bet,
+                 woordsoort_afk = l.woordsoort_afk,
+                 status_lemma_vmnw = l.status_lemma_vmnw)
+             }
+        }
+    }
+
+    lazy val omspelling_uit_hilex: Option[String] = Hilex.vmnw_omspellingen.get(ldb_lemma_nr).map(_.modern_lemma)
+
+    lazy val betere_omspelling = omspelling_uit_hilex.getOrElse(lemmatekst_cg)
+
     lazy val supportedByAttestation = citaatLinks.exists(_.ldb_lemma_nr == this.ldb_lemma_nr)
     lazy val element = <ref type="dictionary.VMNW"
                             citaatId={citaatLinks.headOption.map(x => Text(x.citaat_id.toString))}
                             n={clitisch_deel_nr.toString}
-                            target={ldb_lemma_nr.toString}><lemma>{lemmatekst_vmnw}</lemma> <def>{korte_bet}</def> <pos>{woordsoort_afk}</pos></ref>
+                            target={ldb_lemma_nr.toString}><modern_lemma>{betere_omspelling}</modern_lemma><lemma>{lemmatekst_vmnw}</lemma> <def>{korte_bet}</def> <pos>{woordsoort_afk}</pos></ref>
+
+
   }
 
   val db = new Database(vmnwconfig)
+
 
   lazy val lemmaWoordvormQuery = Select(r => LemmaWoordvorm(
     r.getInt("ldb_lemma_nr"),
@@ -131,11 +177,42 @@ object VMNWdb {
     r.getInt("ldb_lemma_nr")
   ),   "citaat_tokens where is_attestatie=true")
 
+  /*
+  select verwijzing.*, ldb_lemma.ldb_lemma_nr from verwijzing, ldb_lemma where verwijzing.soort_vw ='zie' and verwijzing.verw_tekst=ldb_lemma.lemmatekst_vmnw and verwijzing.attr_naam='LEMMATEKST_VMNW';
+
+  +--------------------+-------------+------+-----+---------+-------+
+| Field              | Type        | Null | Key | Default | Extra |
++--------------------+-------------+------+-----+---------+-------+
+| ldb_lemma_nr       | int(11)     | NO   |     | 0       |       |
+| attr_naam          | varchar(25) | NO   |     |         |       |
+| identificatie_attr | varchar(25) | NO   |     |         |       |
+| soort_vw           | varchar(10) | YES  |     | NULL    |       |
+| verw_tekst         | mediumtext  | YES  |     | NULL    |       |
+| verw_volgnr        | smallint(6) | NO   |     | 0       |       |
+| target_lemma_nr    | int(11)     | NO   |     | 0       |       |
++--------------------+-------------+------+-----+---------+-------+
+
+   */
+
+  case class Verwijzing(
+                       ldb_lemma_nr: Int,
+                       verw_tekst: String,
+                       target_lemma_nr: Int,
+                       )
+
+  lazy val verwijsLemmaQuery = Select(
+    r => Verwijzing(r.getInt("ldb_lemma_nr"), r.getString("verw_tekst"), r.getInt("target_lemma_nr")),
+    "lemma_verwijzingen"
+  )
+
+  lazy val verwijzingen: Map[Int, Verwijzing] = db.slurp(verwijsLemmaQuery).map(x => x.ldb_lemma_nr -> x).toMap
+
   lazy val citaatLinks = db.iterator(citaatLinkQuery)
 
   lazy val citaatLinkMap: Map[Int,Set[QuotationReference]] = citaatLinks.toSet.groupBy(_.woordvorm_nr)
 
-  lazy val allemaal = db.iterator(lemmaWoordvormQuery)
+  lazy val allemaal = db.iterator(lemmaWoordvormQuery).map(_.patchVerwijzing)
+
   lazy val woordvormLemma = {
     val z = allemaal.toList.groupBy(_.woordvorm_nr)
     Console.err.println("Yoho links collected!!!")
@@ -149,7 +226,7 @@ object VMNWdb {
   def findDictionaryLinks(wordId: String) =
   {
     val woordvorm_nr = wordId.replaceAll("[^0-9]", "").toInt
-    val candidates = woordvormLemma.get(woordvorm_nr).getOrElse(Set())
+    val candidates: immutable.Iterable[LemmaWoordvorm] with (Nothing => Any) = woordvormLemma.get(woordvorm_nr).getOrElse(Set())
 
     val filtered0 = candidates.map(_.copy(citaatLinks = citaatLinkMap.getOrElse(woordvorm_nr, Set()))).toSet
 
@@ -162,12 +239,17 @@ object VMNWdb {
     preferList(filtered0, wouldBeNice)
   }
 
-  def linkXML(wordId: String) =
+  def linkXML(wordId: String) = // dit is niet goed, moet je per clitisch deeltje doen
   {
-    val l = findDictionaryLinks(wordId)
+    val l: Set[LemmaWoordvorm] = findDictionaryLinks(wordId)
+    val mogelijke_marijkes = l.map(_.omspelling_uit_hilex).filter(_.nonEmpty).map(_.get).toSet
+    //System.err.println("Hilex moderne lemmavormen:"  + mogelijke_marijkes)
     val n = l.size
-    if (l.isEmpty) <nolink/> else <xr type="dictionaryLinks" extent={n.toString}>{l.map(_.element).toSeq}</xr>
+
+    val elem = if (l.isEmpty) <nolink/> else <xr type="dictionaryLinks" extent={n.toString}>{l.map(_.element).toSeq}</xr>
+    (elem, l)
   }
+
 
   def main(args: Array[String]): Unit = {
     allemaal.filter(x => x.mainPos.isEmpty).foreach(x => println(s"$x -->  ${x.mainPos}"))
