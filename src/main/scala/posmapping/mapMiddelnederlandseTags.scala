@@ -8,6 +8,8 @@ import database.DatabaseUtilities.Select
 import database.{Configuration, Database}
 import posmapping.VMNWdb.{LemmaWoordvorm, QuotationReference}
 
+import scala.collection.immutable
+
 /*
 +----------------+-------------+------+-----+---------+-------+
 | Field          | Type        | Null | Key | Default | Extra |
@@ -42,7 +44,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
     }
   ).toMap
 
-  def addMetadataField(bibl: Elem, name: String, value: String) =
+  def addMetadataField(bibl: Elem, name: String, value: String): Elem =
   {
      // Console.err.println(s"$name = $value")
      bibl.copy(child = bibl.child ++ Seq(
@@ -65,7 +67,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
   }
 
 
-  def voegBronInfoToe(d: Elem) = {
+  def voegBronInfoToe(d: Elem): Elem = {
     val sourceID = ((d \\ "interpGrp").filter(g => (g \ "@type").text == "sourceID") \ "interp").text.replaceAll("corpusgysseling.","")
     val (brontxt, bronxml): (Node,Node) = bronMap.get(sourceID).getOrElse((<bron_not_found/>, <nee-echt-niet/>))
 
@@ -81,7 +83,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 }
 
 class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
-  val rearrangeCorresp = gysMode
+  val rearrangeCorresp: Boolean = gysMode
 
   val squareCup = "⊔"
 
@@ -111,12 +113,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
      "deel-f" -> "final"
   )
 
-  val tagMapping  = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
+  val tagMapping: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
-  val gysParticles = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
+  val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
 
-  val gysParticleLemmata = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
+  val gysParticleLemmata: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
     .map(l => l.split("\\t"))
     .map(l => {
       val lem = l(4)
@@ -219,14 +221,20 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       val patches = lemmaPatches.filter(_.omspelling_uit_hilex.nonEmpty).groupBy(_.clitisch_deel_nr)
       lemmata.indices.map(i => if (!patches.contains(i)) completedLemmata(i) else {
         val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
+        val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet) // voor gevalletjes "Heer, heer"
         if (possiblePatches.size > 1 || possiblePatches.isEmpty) {
           Console.err.println(s"Ambiguity for modern lemma form ${completedLemmata(i)}: $possiblePatches")
-          if (!possiblePatches.contains(completedLemmata(i).toLowerCase))
+          if (!p2.contains(completedLemmata(i).toLowerCase))
             {
+              val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet)
               Console.err.println(s"Mismatch for lemma form ${completedLemmata(i)}, not in $possiblePatches")
             }
           completedLemmata(i)
-        } else possiblePatches.mkString("|")
+        } else {
+          val adapted = possiblePatches.mkString("|").split("\\s*,\\s").map(_.toLowerCase).toSet.mkString("|")
+          if (adapted.toLowerCase != completedLemmata(i).toLowerCase) Console.err.println(s"Adapt lemma: ${completedLemmata(i)} -> $adapted")
+          adapted
+        }
       })
     }
 
@@ -336,10 +344,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
 
       if (rearrangeCorresp) {
-        val stermatten = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e => (e \ "@corresp").text)
+        val stermatten: Map[String, NodeSeq] = (f1 \\ "w").filter(x => (x \ "@corresp").nonEmpty).groupBy(e => (e \ "@corresp").text)
         //stermatten.values.foreach(l => Console.err.println(l.sortBy(e => (e \ "@n").text.toInt).map(show(_))))
 
-        val sterMatMap = stermatten.mapValues(l => l.map(x => getId(x).get))
+        val sterMatMap: Map[String, immutable.Seq[String]] = stermatten.mapValues(l => l.map(x => getId(x).get))
 
         def newCorresp(w: Elem): Elem = {
           if ((w \ "@corresp").nonEmpty) {
@@ -347,11 +355,13 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
             val moi = getId(w).get
 
             val lesAutres = sterMatMap(cor).toSet.diff(Set(moi))
-
+            val tous: Set[String] = (sterMatMap(cor).toSet)
+            val lemmaRef = tous.map(x => s"#$x").mkString(" ")
             if (lesAutres.isEmpty)
               w else {
               val newCor = lesAutres.map(x => s"#$x").mkString(" ")
               val newAtts = replaceAtt(w.attributes, "corresp", newCor)
+                .append(new UnprefixedAttribute("lemmaRef", lemmaRef, Null)) // beetje lelijk maar handig om ook te hebben als groupid?
               w.copy(attributes = newAtts)
             }
           } else w
@@ -405,10 +415,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val splitWords = false
 
   def fixFile(in: String, out:String) = {
-    val d1 = fixEm(XML.load(in))
-    val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
-    val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoToe(d2) else d2
-    XML.save(out, d3,  enc="UTF-8")
+    if (true || in.contains("3000")) {
+      val d1 = fixEm(XML.load(in))
+      val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
+      val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoToe(d2) else d2
+      XML.save(out, scanLinks.addScanLinks(d3).head.asInstanceOf[Elem], enc = "UTF-8")
+    }
   }
 
   def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
