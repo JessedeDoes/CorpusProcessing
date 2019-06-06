@@ -177,22 +177,6 @@ object VMNWdb {
     r.getInt("ldb_lemma_nr")
   ),   "citaat_tokens where is_attestatie=true")
 
-  /*
-  select verwijzing.*, ldb_lemma.ldb_lemma_nr from verwijzing, ldb_lemma where verwijzing.soort_vw ='zie' and verwijzing.verw_tekst=ldb_lemma.lemmatekst_vmnw and verwijzing.attr_naam='LEMMATEKST_VMNW';
-
-  +--------------------+-------------+------+-----+---------+-------+
-| Field              | Type        | Null | Key | Default | Extra |
-+--------------------+-------------+------+-----+---------+-------+
-| ldb_lemma_nr       | int(11)     | NO   |     | 0       |       |
-| attr_naam          | varchar(25) | NO   |     |         |       |
-| identificatie_attr | varchar(25) | NO   |     |         |       |
-| soort_vw           | varchar(10) | YES  |     | NULL    |       |
-| verw_tekst         | mediumtext  | YES  |     | NULL    |       |
-| verw_volgnr        | smallint(6) | NO   |     | 0       |       |
-| target_lemma_nr    | int(11)     | NO   |     | 0       |       |
-+--------------------+-------------+------+-----+---------+-------+
-
-   */
 
   case class Verwijzing(
                        ldb_lemma_nr: Int,
@@ -211,10 +195,10 @@ object VMNWdb {
 
   lazy val citaatLinkMap: Map[Int,Set[QuotationReference]] = citaatLinks.toSet.groupBy(_.woordvorm_nr)
 
-  lazy val allemaal = db.iterator(lemmaWoordvormQuery).map(_.patchVerwijzing)
+  lazy val alleLemmaWoordvormen: Iterator[LemmaWoordvorm] = db.iterator(lemmaWoordvormQuery).map(_.patchVerwijzing).map(lwv => lwv.copy(citaatLinks = citaatLinkMap.getOrElse(lwv.woordvorm_nr, Set())))
 
-  lazy val woordvormLemma = {
-    val z = allemaal.toList.groupBy(_.woordvorm_nr)
+  lazy val woordvormnr2Lemma: Map[Int, List[LemmaWoordvorm]] = {
+    val z = alleLemmaWoordvormen.toList.groupBy(_.woordvorm_nr)
     Console.err.println("Yoho links collected!!!")
     z
   }
@@ -226,9 +210,11 @@ object VMNWdb {
   def findDictionaryLinks(wordId: String) =
   {
     val woordvorm_nr = wordId.replaceAll("[^0-9]", "").toInt
-    val candidates: immutable.Iterable[LemmaWoordvorm] with (Nothing => Any) = woordvormLemma.get(woordvorm_nr).getOrElse(Set())
+    val candidates: immutable.Iterable[LemmaWoordvorm] with (Nothing => Any) = woordvormnr2Lemma.get(woordvorm_nr).getOrElse(Set())
 
-    val filtered0 = candidates.map(_.copy(citaatLinks = citaatLinkMap.getOrElse(woordvorm_nr, Set()))).toSet
+    //val filtered0 = candidates.map(_.copy(citaatLinks = citaatLinkMap.getOrElse(woordvorm_nr, Set()))).toSet
+
+    val filtered0 = candidates.toSet
 
     val wouldBeNice:List[LemmaWoordvorm => Boolean] =
       List(_.compatible,
@@ -252,6 +238,6 @@ object VMNWdb {
 
 
   def main(args: Array[String]): Unit = {
-    allemaal.filter(x => x.mainPos.isEmpty).foreach(x => println(s"$x -->  ${x.mainPos}"))
+    alleLemmaWoordvormen.filter(x => x.mainPos.isEmpty).foreach(x => println(s"$x -->  ${x.mainPos}"))
   }
 }

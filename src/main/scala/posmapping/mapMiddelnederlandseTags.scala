@@ -223,16 +223,16 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
         val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet) // voor gevalletjes "Heer, heer"
         if (possiblePatches.size > 1 || possiblePatches.isEmpty) {
-          Console.err.println(s"Ambiguity for modern lemma form ${completedLemmata(i)}: $possiblePatches")
+          //Console.err.println(s"Ambiguity for modern lemma form ${completedLemmata(i)}: $possiblePatches")
           if (!p2.contains(completedLemmata(i).toLowerCase))
             {
               val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet)
-              Console.err.println(s"Mismatch for lemma form ${completedLemmata(i)}, not in $possiblePatches")
+              //Console.err.println(s"Mismatch for lemma form ${completedLemmata(i)}, not in $possiblePatches")
             }
           completedLemmata(i)
         } else {
           val adapted = possiblePatches.mkString("|").split("\\s*,\\s").map(_.toLowerCase).toSet.mkString("|")
-          if (adapted.toLowerCase != completedLemmata(i).toLowerCase) Console.err.println(s"Adapt lemma: ${completedLemmata(i)} -> $adapted")
+          // if (adapted.toLowerCase != completedLemmata(i).toLowerCase) Console.err.println(s"Adapt lemma: ${completedLemmata(i)} -> $adapted")
           adapted
         }
       })
@@ -272,11 +272,11 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val newAtts = if (newPoSAttribuut.isEmpty || maartenVersie) newatts0 else newatts0.append(newPoSAttribuut.get)
 
-    val afterStm = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
+    val attributesWithUpdatedStermatStuff = stm.map(x => newAtts.append(x.attribute)).getOrElse(newAtts)
 
-    val withCompletedLemma = afterStm.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
+    val withCompletedLemma = attributesWithUpdatedStermatStuff.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
-    val gysTagsCHNStyle: Seq[Tag] =  (e \ "@function").text.split("\\+").toList.zipWithIndex.map(
+    val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] =  (e \ "@function").text.split("\\+").toList.zipWithIndex.map(
       {
         case (t,i) =>
           val p  = partTranslations.get(deeltjes(i).headOption.getOrElse("none")).getOrElse("none")
@@ -285,18 +285,19 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           if (erZijnDeeltjes)
             {
               //System.err.println(cgnTags)
-              //System.err.println(z)
+              // System.err.println(z)
               //System.err.println(e)
               //System.exit(1)
             }
           z
       }
-    ) map(s => CHNStyleTags.parseTag(s))
+    ) map(s => s -> CHNStyleTags.parseTag(s))
 
+    val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
 
-
-    val gysTagFS = gysTagsCHNStyle.map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t))
-    val cgnTagFs = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+    val attributesWithUpdatedGysTags = withCompletedLemma.filter(_.key != "pos").append(updatedGysPosAttribute)
+    val gysTagFS: Seq[Elem] = gysTagsCHNStylewithAnnotatedWordParts.map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t._2))
+    val cgnTagFs: Seq[Elem] = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
 
     if (deeltjes.exists(_.nonEmpty)) {
       //System.err.println("DEELTJES " + deeltjes)
@@ -311,12 +312,9 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
 
-    val featureStructures = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
+    val featureStructures: Seq[Elem] = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
 
-
-
-
-    e.copy(attributes = withCompletedLemma, child = e.child ++ featureStructures ++ dictionaryLinks)
+    e.copy(attributes = attributesWithUpdatedGysTags, child = e.child ++ featureStructures ++ dictionaryLinks)
   }
 
 

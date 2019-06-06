@@ -113,6 +113,8 @@ case class TagSet(prefix: String,
 
   def elem(label: String, child: Seq[Node]) = Elem(null, label, Null, scala.xml.TopScope, child: _*)
 
+  def blacklabName(n: String) = n.replaceAll("[-.]", "_")
+
   def asJSON =
   {
 
@@ -130,7 +132,7 @@ case class TagSet(prefix: String,
       p -> Map(
         "value" -> p,
         "displayName" -> p,
-        "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + p))
+        "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + blacklabName(p)))
 
     val values = "values" -> posTags.map(pos2J).toMap
     val json = encodeJson(values)
@@ -160,7 +162,7 @@ case class TagSet(prefix: String,
 
   def forBlacklab = partitions.keySet.map( p =>
     s"""
-       |      - name: $p
+       |      - name: ${blacklabName(p)}
        |        displayName: $p
        |        uiType: select
        |        multipleValues: true

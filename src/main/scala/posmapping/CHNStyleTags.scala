@@ -62,14 +62,14 @@ object distinctTagsFromGysseling
   def main(args: Array[String]): Unit = {
     val dir = args(0)
 
-    val attribute = "function"
+    val attribute = "pos"
     tagsetFromCorpusFiles(dir, attribute)
   }
 
 
   def tagsetFromCorpusFiles(dir: String, attribute: String) = {
     val files:Set[File] = new File(dir).listFiles().toSet
-    val allDistinctTags = files.flatMap(
+    val allDistinctTags: Set[String] = files.flatMap(
       f => {
         val doc = XML.loadFile(f)
 
