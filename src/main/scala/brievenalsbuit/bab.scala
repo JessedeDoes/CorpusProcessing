@@ -57,6 +57,29 @@ object bab {
     "UNRESOLVED" -> "SPEC(onverst)"
   )
 
+  val tagMapCHNStyle = Map(
+    "NOU-C" -> "NOU-C",
+    "NOU" -> "NOU-C",  "NOUEN" -> "NOU-C",
+    "NEPER" -> "NOU-P(type=per)", "GEB.WENDEL" -> "NOU-P(type=per)",
+    "PER" -> "NOU-P(type=per)",
+    "NELOC" -> "NOU-P(type=loc)",
+    "NEOTHER" -> "NOU-P(type=other)",
+    "NEORG" -> "NOU-P(type=per)",
+    "CON" -> "CON",
+    "VRB" -> "VRB", "VRN" -> "VRB",
+    "ADP" -> "ADP",
+    "ADJ" -> "AA",
+    "ADV" -> "ADV",
+    "PRN" -> "PD",
+    "PR" -> "PD",
+    "ART" -> "PD(type=art)", "RT" -> "PD(type=art)",
+    "NUM" -> "NUM",
+    "INT" -> "INT",
+    "RES" -> "RES",
+    "FOREIGN" -> "RES(type=foreign)",
+    "UNRESOLVED" -> "RES(type=unknown)"
+  )
+
   val overbodigeAttributen = Set("xtype", "time", "resp",  "subtype", "original", "type", "mform", "nform", "lemma") // misAlignent, changed
 
 

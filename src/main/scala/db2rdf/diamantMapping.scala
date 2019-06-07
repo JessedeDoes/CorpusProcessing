@@ -261,7 +261,9 @@ object diamantMapping {
 
   val serpens = List(serpensConcepts, serpensWNT)
 
-  val db = new database.Database(Configuration("x", "svprre02","gigant_hilex_candidate", "postgres", "inl"))
+  import Settings._
+
+
 
   val limit = Int.MaxValue
 
@@ -289,13 +291,13 @@ object diamantMapping {
     //val logger = LoggerFactory.getLogger(classOf[Nothing])
     //logger.info("Hello World")
 
-    db.runStatement(("set schema 'data'"))
+    gigantHilexDB.runStatement(("set schema 'data'"))
 
     //Console.err.println(s"######################################################lemmata en PoS voor ${lemmata.triplesIterator(db, lemmaQuery).size} lemmata")
 
     def write(m: Mappings, w: java.io.Writer, graph:IRI = diamantGraph): Unit =
     {
-      m.triplesIterator(db).map(x => x.withGraph(graph)).filter(_.valid()).foreach(x => w.write(x.toString + "\n"))
+      m.triplesIterator(gigantHilexDB).map(x => x.withGraph(graph)).filter(_.valid()).foreach(x => w.write(x.toString + "\n"))
     }
 
     val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(outputFolder + "/" + "lemmata.nq.gz")))
@@ -322,7 +324,7 @@ object diamantMapping {
 
     wordformOutput.close()
 
-    Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(db, synonymQuery).size}")
+    Console.err.println(s"###################################################### senses synonym stuk: ${synonyms.triplesStream(gigantHilexDB, synonymQuery).size}")
 
     write(senses,senseOutput)
     write(subsenses, senseOutput)
