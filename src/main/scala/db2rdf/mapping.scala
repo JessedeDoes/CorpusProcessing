@@ -49,9 +49,17 @@ object Sort extends Enumeration {
 }
 import Sort._
 
+case class UndefinedLiteral(s: String, lang: String="nl") extends Literal
+
 case class StringLiteral(s: String, lang: String="nl") extends Literal
 {
-  lazy val escaped: String = s.replaceAll("\"", "\\\\\"").replaceAll("\\s", " ") ;
+  lazy val escaped: String = Try(s.replaceAll("\"", "\\\\\"").replaceAll("\\s", " ")) match {
+    case Success(x) => x
+    case Failure(e) => {
+      e.printStackTrace()
+      "DIKKE_EXCEPTION"
+    }
+  } ;
   override def toString = s""""$escaped"@$lang"""
 }
 
@@ -89,6 +97,7 @@ case class DataProperty(s: IRI, p: IRI, o: Literal, g:Option[IRI]=None) extends 
   override def isQuad: Boolean = g.isDefined
   override def toString = if (valid()) toString1 else "<an> <error> <occured>"
   override def withGraph(i: IRI): Statement = this.copy(g = Some(i))
+  def objectIsDefined: Boolean = !o.isInstanceOf[UndefinedLiteral]
 }
 
 trait Mapping
@@ -107,7 +116,7 @@ case class Δ(p: IRI, s: ResultSet => IRI, o: ResultSet => Literal) extends Mapp
   def triples(db: database.Database, q: String) : Stream[DataProperty] =
     {
       val query: AlmostQuery[DataProperty] = db => db.createQuery(q).map(ResultMapping(r => DataProperty(s(r) ,p, o(r))))
-      db.stream(query)
+      db.stream(query).filter(dp => !dp.o.isInstanceOf[UndefinedLiteral]) // beperkt dit tot gevallen waar het object gedefineerd is....
     }
 }
 
@@ -115,9 +124,10 @@ case class Mappings(query: String, mappings:Seq[Mapping])
 {
   def multiMapping(mappings:Seq[Mapping]): ResultMapping[Set[Statement]] =
   {
-    val dps = mappings.filter(_.isInstanceOf[Δ]).map(_.asInstanceOf[Δ]).toSet
-    val ops = mappings.filter(_.isInstanceOf[Ω]).map(_.asInstanceOf[Ω]).toSet
-    ResultMapping(r => ops.map(x => ObjectProperty(x.s(r) ,x.p(r), x.o(r))) ++ dps.map(x => DataProperty(x.s(r) ,x.p, x.o(r)))  )
+    val dps: Set[Δ] = mappings.filter(_.isInstanceOf[Δ]).map(_.asInstanceOf[Δ]).toSet
+    val ops: Set[Ω] = mappings.filter(_.isInstanceOf[Ω]).map(_.asInstanceOf[Ω]).toSet
+    ResultMapping(r => ops.map(x => ObjectProperty(x.s(r) ,x.p(r), x.o(r))) ++
+      dps.map(x => DataProperty(x.s(r) ,x.p, x.o(r))).filter(_.objectIsDefined)  )
   }
 
   def triplesStream(db: database.Database, q: String): Stream[Statement] =
@@ -155,7 +165,11 @@ object Ω {
   case class XXX(s: String)
   {
     import scala.util.matching.Regex
-    val f:ResultSet => StringLiteral = r =>  StringLiteral(r.getString(s))
+    val f:ResultSet => Literal = r =>  {
+      val x = r.getString(s)
+      if (x == null || x.trim.isEmpty) UndefinedLiteral("UNDEFINED") else
+      StringLiteral(r.getString(s))
+    }
 
     lazy val asTemplate: ResultSet => IRI  =
     {

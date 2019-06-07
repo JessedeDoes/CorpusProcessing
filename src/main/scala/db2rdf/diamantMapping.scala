@@ -226,7 +226,7 @@ object diamantMapping {
       Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
       Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
       Δ(dcTitle, expression, !"title"),
-      Δ(dcAuthor, expression, !"author")
+      Δ(dcAuthor, expression, !"author") // wat doen we hier eigenlijk als iets niet gedefinieerd is....
     )
   }
 
@@ -283,11 +283,12 @@ object diamantMapping {
     import org.slf4j.Logger
     import org.slf4j.LoggerFactory
 
-    val outputFolder = args(0)
+    val outputFolder = if (args.length > 0) args(0) else "/tmp/"
 
     System.setProperty("org.slf4j.simpleLogger.logFile", "/tmp/loggertje.log")
     System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off")
     System.setProperty("log4j.rootLogger", "WARN, file")
+
     //val logger = LoggerFactory.getLogger(classOf[Nothing])
     //logger.info("Hello World")
 
