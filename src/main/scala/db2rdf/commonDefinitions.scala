@@ -12,7 +12,8 @@ object commonDefinitions {
 
   val INTBaseURI = "http://rdf.ivdnt.org/"
 
-
+  val diamantGraphURL: String = "http://rdf.ivdnt.org/lexica/diamant/v1.5/"
+  val molexGraphURL = "http://rdf.ivdnt.org/lexica/molex/v1.0/"
   // prefixes
 
   val owlPrefix = "http://www.w3.org/2002/07/owl#"
@@ -40,13 +41,12 @@ object commonDefinitions {
 
 
 
-  val diamantGraphURL = "http://rdf.ivdnt.org/lexica/diamant/v1.0/"
-  val molexGraphURL = "http://rdf.ivdnt.org/lexica/molex/v1.0/"
+
 
   val odwnGraphURL = "http://odwn-rdf.vu.nl/odwn13/"
   val distanceGraphURL: String = diamantSchemaPrefix + "/similarity/"
 
-  val diamantGraph = IRI("http://rdf.ivdnt.org/lexica/diamant/v1.0/")
+  val diamantGraph = IRI(diamantGraphURL)
 
   val writtenRep:IRI = dataProperty(s"${ontolexPrefix}writtenRep")
   val lexicalForm:IRI = objectProperty(s"${ontolexPrefix}lexicalForm")
@@ -72,7 +72,8 @@ object commonDefinitions {
 
   val senseOrder = dataProperty(s"${diamantSchemaPrefix}senseOrder")
   val senseLabel = dataProperty(s"${diamantSchemaPrefix}senseLabel")
-
+  val gtbId = dataProperty(s"${diamantSchemaPrefix}gtbId")
+  val gtbDictionary = dataProperty(s"${diamantSchemaPrefix}dictionary")
   val reference = objectProperty(s"${ontolexPrefix}reference")
   val senseDefinition = objectProperty(s"${lemonPrefix}definition")
   val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")

@@ -109,6 +109,8 @@ object diamantMapping {
       Ω(isA, lemma, entryType),
       Ω(isA, cf, formType),
       Ω(canonicalForm, lemma, cf),
+      Δ(gtbId, lemma, !"persistent_id"),
+      Δ(gtbDictionary, lemma, !"wdb"),
       Δ(writtenRep, cf, !"modern_lemma"))
   }
 
@@ -138,6 +140,8 @@ object diamantMapping {
       Ω(senseDefinition, sense, definition),
       Δ(skosDefinition, sense, !"definition"),
       Δ(definitionText, definition, !"definition"),
+      Δ(gtbId, sense, !"persistent_id"),
+      Δ(gtbDictionary, sense, !"wdb"),
       Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
         // Δ(senseLabel, sense, !"sense_label")
     )
