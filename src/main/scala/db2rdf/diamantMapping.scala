@@ -140,6 +140,7 @@ object diamantMapping {
       Ω(senseDefinition, sense, definition),
       Δ(skosDefinition, sense, !"definition"),
       Δ(definitionText, definition, !"definition"),
+      Δ(rdfsLabel,  sense, !"path"),
       Δ(gtbId, sense, !"persistent_id"),
       Δ(gtbDictionary, sense, !"wdb"),
       Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
@@ -227,6 +228,8 @@ object diamantMapping {
       Ω(isA, expression, expressionType),
       Ω(embodiment, expression, quotation),
       Ω(embodimentOf, quotation, expression),
+      Δ(gtbId, quotation, !"persistent_id"),
+      Δ(gtbDictionary, quotation, !"wdb"),
       Δ(yearFrom, quotation, r => IntLiteral(r.getInt("year_from"))),
       Δ(yearTo, quotation, r => IntLiteral(r.getInt("year_to"))),
       Δ(dcTitle, expression, !"title"),

@@ -40,7 +40,7 @@ object commonDefinitions {
   // properties
 
 
-
+  val rdfsLabel: IRI = dataProperty(s"${rdfsPrefix}label")
 
 
   val odwnGraphURL = "http://odwn-rdf.vu.nl/odwn13/"
