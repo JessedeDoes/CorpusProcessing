@@ -20,8 +20,9 @@ object commonDefinitions {
   val lemonPrefix = "http://lemon-model.net/lemon#"
   val ontolexPrefix = "http://www.w3.org/ns/lemon/ontolex#" // lemon of ontolex ????
 
+
   val diamantSchemaPrefix: String = INTBaseURI + "schema/diamant#"
-  val lexcitSchemaPrefix: String = INTBaseURI + "schema/lexcit#"
+  val lexcitSchemaPrefix: String = if (Settings.doLexCit) INTBaseURI + "schema/lexcit#" else diamantSchemaPrefix
   val rdfPrefix = "http://www.w3.org/1999/02/22-rdf-syntax-ns#"
   val rdfsPrefix = "http://www.w3.org/2000/01/rdf-schema#"
   val wnPrefix = "http://wordnet-rdf.princeton.edu/ontology#"
