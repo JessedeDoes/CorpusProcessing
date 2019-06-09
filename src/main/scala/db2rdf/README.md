@@ -17,14 +17,28 @@ Proces om diamant rdf in elkaar te sleutelen
  (anders heeft MNW helemaal geen sense attestaties!)
     * Die tabel lijkt overigens voor het MNW niet compleet te zijn en moet dus uit de woordenboeken 
     opnieuw worden gemaakt! (zie weer Hilex/diamant, senseAttestation.scala)
+    * We hebben nu een tabel diamant.sense_attestations_reloaded direct uit de woordenboekdata
+      * todo documenteer diamant schema en schoon op wat niet meer gebruikt wordt
     * Wat deden we precies met attestatie en subbetekenissen? Niet toevoegen toch?
-    
-    
-    
-    
-Overige narigheid
-=================
 
-In aanvullingsdelen zijn senses gemist (peetjes gebleven) Zoet bijvoorbeeld naar A009723.eg.extra.1, en bestandje
+* We maken afzonderlijke nq.gz dumps
+  * lemmata
+     * tabel data.lemmata
+  * wordforms
+     * tabellen data.lemmata, data.analyzed_wordforms, data.wordforms
+  * senses 
+     * tabel diamant.senses
+  * attestations
+     * voor de woordvormattestaties: 
+     * voor de senseattestaties: 
+  * ezels
+  * serpens
+* How maken we een jena database uit de dumps?
+    
+    
+Overige zaken
+=============
+
+In aanvullingsdelen zijn senses gemist (peetjes gebleven) Zoek bijvoorbeeld naar A009723.eg.extra.1, en bestandje
 gemiste_citaten_niet_in_sense in Hilex/data
  
