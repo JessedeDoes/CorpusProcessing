@@ -73,9 +73,9 @@ object diamantMapping {
       |   and d.document_id=t.document_id and t.sense_id is not null""".stripMargin
 
   val senseAttestationQuery: String =
-    """select t.attestation_id, sa.sense_id from token_attestations t left join diamant.sense_attestations_reloaded sa
+    """select t.attestation_id, sa.sense_id, sa.wdb from token_attestations t left join diamant.sense_attestations_reloaded sa
       | on
-      |   sa.quotation_section_id = t.analyzed_wordform_id
+      |   sa.quotation_section_id = t.quotation_section_id
       |   where sa.sense_id is not null""".stripMargin
 
   val documentQuery = "select * from documents"
@@ -319,6 +319,8 @@ object diamantMapping {
     val attestationOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "attestations.nq.gz")))
     val ezelOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "ezels.nq.gz")))
     val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "serpens.nq.gz")))
+
+
 
 
     write(lemmata, lemmaOutput)
