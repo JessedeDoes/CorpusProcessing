@@ -66,11 +66,17 @@ object diamantMapping {
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id""".stripMargin
 
-  val senseAttestationQuery: String =
+  val senseAttestationQueryOld: String =
     """select * from analyzed_wordforms a, token_attestations t, documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id and t.sense_id is not null""".stripMargin
+
+  val senseAttestationQuery: String =
+    """select t.attestation_id, sa.sense_id from token_attestations t left join diamant.sense_attestations_reloaded sa
+      | on
+      |   sa.quotation_section_id = t.analyzed_wordform_id
+      |   where sa.sense_id is not null""".stripMargin
 
   val documentQuery = "select * from documents"
 
@@ -202,9 +208,10 @@ object diamantMapping {
       attestationQuery,
       Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
       Ω(hasCitedEntity, theAttestation, theQuotation),
+      Ω(diamantTextOfAttestation, theAttestation, theQuotation), // TODO haal weg in lexcit mode
       Ω(isA, theAttestation, attestationType),
       Ω(isA, theLocus, locusType),
-      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation),
+      // Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation), // hier zinloos?
       Ω(locus, theAttestation, theLocus),
       Δ(beginIndex, theLocus, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theLocus, r => IntLiteral(r.getInt("end_pos"))))
@@ -269,8 +276,6 @@ object diamantMapping {
   val serpens = List(serpensConcepts, serpensWNT)
 
   import Settings._
-
-
 
   val limit = Int.MaxValue
 

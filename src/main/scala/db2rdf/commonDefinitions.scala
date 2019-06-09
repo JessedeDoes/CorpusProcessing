@@ -61,7 +61,7 @@ object commonDefinitions {
   val attestation:IRI = objectProperty(s"${lexcitSchemaPrefix}attestation")
   val locus:IRI = objectProperty(s"${lexcitSchemaPrefix}locus")
 
-  val text = objectProperty(s"${diamantSchemaPrefix}text")
+  val diamantTextOfAttestation = objectProperty(s"${diamantSchemaPrefix}text")
   val hasCitedEntity = objectProperty(s"${citoPrefix}hasCitedEntity")
   val pos = objectProperty(s"${udPrefix}pos")
 
