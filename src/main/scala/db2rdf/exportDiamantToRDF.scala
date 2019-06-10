@@ -7,7 +7,7 @@ import java.util.zip.GZIPOutputStream
 import db2rdf.Settings.gigantHilexDB
 import db2rdf.commonDefinitions.diamantGraph
 
-class exportDiamantToRDF {
+object exportDiamantToRDF {
 
 
   import Settings._
