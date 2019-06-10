@@ -26,7 +26,7 @@ object posConversion {
     ("ADV", "ADV"),
     ("ADJ", "ADJ"),
     ("ART", "pos=PRON&PronType=Art"),
-    ("CONJ", "SCONJ|CCONJ"),
+    ("CONJ", "SCONJ_CCONJ"),
     ("INT", "INTJ"),
     ("NOU", "NOUN"),
     ("NOU-C", "NOUN"),
@@ -39,7 +39,7 @@ object posConversion {
     ("PRN", "PRON"),
     ("VRB", "VERB")).toMap
 
-  def convertPos(p: String): String = conversionTable.getOrElse(p, s"unknown:$p")
+  def convertPos(p: String): String = conversionTable.getOrElse(p, s"unknown")// conversionTable.getOrElse(p, s"unknown:$p")
 }
 
 object diamantMapping {
@@ -57,6 +57,8 @@ object diamantMapping {
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
 
   val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\\s+') as lemma_part_of_speech from data.lemmata"""
+
+  val distinctPosQuery = """select distinct regexp_split_to_table(lemma_part_of_speech,E'\\s+|\\s*[+,]\\s*') as lemma_part_of_speech from data.lemmata"""
 
   val lemmaQuery = """select * from lemmata"""
 
@@ -120,6 +122,19 @@ object diamantMapping {
       Δ(writtenRep, cf, !"modern_lemma"))
   }
 
+  val distinctPosMapping: Mappings = {
+    def convertPoS(r: ResultSet): IRI = IRI(s"${udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
+    def convertedPoS(r: ResultSet) = {
+      val udpos = posConversion.convertPos(r.getString("lemma_part_of_speech"))
+      if (udpos.contains("unknown")) UndefinedLiteral("udpos")
+      else StringLiteral(udpos, None)
+    }
+
+    ⊕(distinctPosQuery,
+      Ω(isA, convertPoS, r => IRI(s"${udPrefix}part_of_speech")),
+      Δ(rdfsLabel, convertPoS, convertedPoS))
+  }
+
   val posMapping: Mappings = {
     def convertPoS(r: ResultSet): IRI = IRI(s"${udPrefix}pos/${posConversion.convertPos(r.getString("lemma_part_of_speech"))}")
     ⊕(posQuery,
@@ -144,6 +159,7 @@ object diamantMapping {
       Ω(isA, sense, senseType),
       //Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
+      Ω(isA, senseDefinition, senseDefinitionType),
       Δ(skosDefinition, sense, !"definition"),
       Δ(definitionText, definition, !"definition"),
       Δ(rdfsLabel,  sense, !"path"),
@@ -312,6 +328,12 @@ object diamantMapping {
     {
       m.triplesIterator(gigantHilexDB).map(x => x.withGraph(graph)).filter(_.valid()).foreach(x => w.write(x.toString + "\n"))
     }
+
+    val distinctPosOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "poslist.nq.gz")))
+    write(distinctPosMapping, distinctPosOutput)
+    distinctPosOutput.close()
+    // System.exit(0)
+
 
     val lemmaOutput = new OutputStreamWriter(new GZIPOutputStream(new FileOutputStream(outputFolder + "/" + "lemmata.nq.gz")))
     val wordformOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "wordforms.nq.gz")))

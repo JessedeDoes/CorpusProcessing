@@ -93,8 +93,8 @@ object commonDefinitions {
   val skosNarrower = objectProperty(s"${skosPrefix}narrower")
   val skosRelated = objectProperty(s"${skosPrefix}related")
   val skosCloseMatch = objectProperty(s"${skosPrefix}closeMatch")
-  val yearFrom = dataProperty(s"${diamantSchemaPrefix}notBefore")
-  val yearTo = dataProperty(s"${diamantSchemaPrefix}notAfter")
+  val yearFrom = if (Settings.doLexCit) dataProperty(s"${diamantSchemaPrefix}notBefore") else dataProperty(s"${diamantSchemaPrefix}witnessYearFrom")
+  val yearTo = if (Settings.doLexCit) dataProperty(s"${diamantSchemaPrefix}notAfter")else dataProperty(s"${diamantSchemaPrefix}witnessYearTo")
   val dcTitle = dataProperty(s"${dcTermsPrefix}title")
   val dcAuthor = dataProperty(s"${dcTermsPrefix}creator")
 
@@ -102,6 +102,7 @@ object commonDefinitions {
   val isA = rdfType
 
   // classes
+  val senseDefinitionType = owlClass(s"${lemonPrefix}SenseDefinition")
   val entryType = owlClass(s"${ontolexPrefix}LexicalEntry")
   val conceptType = owlClass(s"${skosPrefix}Concept")
   val lexicalConceptType = owlClass(s"${ontolexPrefix}LexicalConcept")

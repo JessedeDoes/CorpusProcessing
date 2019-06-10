@@ -22,6 +22,8 @@ Proces om diamant rdf in elkaar te sleutelen
     * Wat deden we precies met attestatie en subbetekenissen? Niet toevoegen toch?
 
 * We maken afzonderlijke nq.gz dumps
+  * poslist
+     * distincte pos uit data.lemmata
   * lemmata
      * tabel data.lemmata
   * wordforms
@@ -29,7 +31,7 @@ Proces om diamant rdf in elkaar te sleutelen
   * senses 
      * tabel diamant.senses
   * attestations
-     * voor de woordvormattestaties: 
+     * voor de woordvormattestaties:  
      * voor de senseattestaties: 
   * ezels
   * serpens
@@ -39,6 +41,8 @@ Proces om diamant rdf in elkaar te sleutelen
 Overige zaken
 =============
 
-In aanvullingsdelen zijn senses gemist (peetjes gebleven) Zoek bijvoorbeeld naar A009723.eg.extra.1, en bestandje
+* In aanvullingsdelen zijn senses gemist (peetjes gebleven) Zoek bijvoorbeeld naar A009723.eg.extra.1, en bestandje
 gemiste_citaten_niet_in_sense in Hilex/data
+* In de query: voor pos liever geen eindslash, dus 
+  ```<http://rdf.ivdnt.org/lexica/diamant/entry/MNW/74555> <http://universaldependencies.org/u/pos> <http://universaldependencies.org/u/pos/ADJ> <http://rdf.ivdnt.org/lexica/diamant/v1.5/>```
  

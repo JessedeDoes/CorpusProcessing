@@ -51,16 +51,16 @@ import Sort._
 
 case class UndefinedLiteral(s: String, lang: String="nl") extends Literal
 
-case class StringLiteral(s: String, lang: String="nl") extends Literal
+case class StringLiteral(s: String, lang: Option[String]=Some("nl")) extends Literal
 {
-  lazy val escaped: String = Try(s.replaceAll("\"", "\\\\\"").replaceAll("\\s", " ")) match {
+  lazy val escaped: String = Try(s.replaceAll("\"", "\\\\\"").replaceAll("\\s+", " ").trim) match {
     case Success(x) => x
     case Failure(e) => {
       e.printStackTrace()
       "DIKKE_EXCEPTION"
     }
-  } ;
-  override def toString = s""""$escaped"@$lang"""
+  }
+  override def toString = if (Settings.useLangStrings && lang.isDefined) s""""$escaped"@$lang""" else s""""$escaped""""
 }
 
 case class IntLiteral(k: Int) extends Literal  { override def toString = s""""$k"^^<http://www.w3.org/2001/XMLSchema#int>""";   }
