@@ -1,6 +1,7 @@
 package posmapping
 import java.io.{File, PrintWriter}
 
+import posmapping.distinctTagsFromONW.dir
 import propositional.{And, Literal, Proposition}
 
 import scala.util.matching.Regex
@@ -74,7 +75,7 @@ object distinctTagsFromGysseling
         val doc = XML.loadFile(f)
 
         val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
-        val posjes = combiposjes.flatMap(p => p.split("\\+").toSet)
+        val posjes = combiposjes.flatMap(p => p.split("[+|]").toSet)
         //println(posjes)
         posjes
       }
@@ -99,5 +100,14 @@ object distinctTagsFromONW {
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "msd")
+  }
+}
+
+object distinctTagsFromBaB
+{
+  val dir = brievenalsbuit.Settings.output.getCanonicalPath
+
+  def main(args: Array[String]): Unit = {
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos")
   }
 }
