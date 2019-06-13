@@ -9,62 +9,6 @@ import utils.ProcessFolder
 
 import scala.io.Source._
 
-trait Annotation {
-  def featureStructure() : NodeSeq
-  def valid(): Boolean = true
-}
-
-case class LemPos(lemma: String, pos: String)  extends Annotation {
-  def featureStructure(): Elem =
-  {
-    val tag = CHNStyleTags.parseTag(pos)
-    val features = CHNStyleTags.gysTagset.asTEIFeatureStructure(tag)
-    val lem = <f name="lemma">{lemma}</f>
-    features.copy(child = features.child ++ lem)
-  }
-
-  def valid() = 
-}
-case class Alt(x: Seq[Annotation]) extends Annotation
-{
-  def featureStructure(): NodeSeq =
-  {
-    val percent = (1 / x.size.toDouble) * 100
-    x.flatMap(_.featureStructure()).map(f => f.asInstanceOf[Elem]).zipWithIndex.map(
-      { case (e,n) =>
-        e.copy(attributes=e.attributes.append(new UnprefixedAttribute("cert", percent.toString , Null)))
-      }
-    )
-  }
-}
-
-case class Clitic(x: Seq[Annotation]) extends Annotation
-{
-  def featureStructure(): NodeSeq =
-  {
-    x.flatMap(_.featureStructure()).map(f => f.asInstanceOf[Elem]).zipWithIndex.map(
-      { case (e,n) =>
-        e.copy(attributes=e.attributes.append(new UnprefixedAttribute("n", n.toString , Null)))
-      }
-    )
-  }
-}
-
-object TagStuff {
-    def parseLemPos(t: String, l: String): Annotation = {
-      if (t.contains(Settings.alternativePrint)) {
-        val ts = t.split(Settings.alternativeSep)
-        val ls = l.split(Settings.alternativeSep)
-        Alt(ts.zip(ls).map({case (t,l) => parseLemPos(t,l)}))
-      }
-      else if (t.contains(Settings.multivalSepSplit))
-        {
-          val ts = t.split(Settings.alternativeSep)
-          val ls = l.split(Settings.alternativeSep)
-          Clitic(ts.zip(ls).map({case (t,l) => parseLemPos(t,l)}))
-        } else LemPos(t,l)
-    }
-}
 
 import TagStuff._
 
@@ -87,51 +31,6 @@ object bab {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  val tagMapCGNStyle = Map(
-    "NOU-C" -> "N(soort)",
-    "NOU" -> "N(soort)",  "NOUEN" -> "N(soort)",
-    "NEPER" -> "N(eigen,per)", "GEB.WENDEL" -> "N(eigen,per)",
-    "PER" -> "N(eigen,per)",
-    "NELOC" -> "N(eigen,loc)",
-    "NEOTHER" -> "N(eigen,overig)",
-    "NEORG" -> "N(eigen,org)",
-    "CON" -> "VG",
-    "VRB" -> "WW", "VRN" -> "WW",
-    "ADP" -> "VZ",
-    "ADJ" -> "ADJ",
-    "ADV" -> "BW",
-    "PRN" -> "VNW",
-    "PR" -> "VNW",
-    "ART" -> "LID", "RT" -> "LID",
-    "NUM" -> "TW",
-    "INT" -> "TSW",
-    "RES" -> "SPEC",
-    "FOREIGN" -> "SPEC(vreemd)",
-    "UNRESOLVED" -> "SPEC(onverst)"
-  )
-
-  val tagMapCHNStyle = Map(
-    "NOU-C" -> "NOU-C",
-    "NOU" -> "NOU-C",  "NOUEN" -> "NOU-C",
-    "NEPER" -> "NOU-P(type=per)", "GEB.WENDEL" -> "NOU-P(type=per)",
-    "PER" -> "NOU-P(type=per)",
-    "NELOC" -> "NOU-P(type=loc)",
-    "NEOTHER" -> "NOU-P(type=other)",
-    "NEORG" -> "NOU-P(type=per)",
-    "CON" -> "CON",
-    "VRB" -> "VRB", "VRN" -> "VRB",
-    "ADP" -> "ADP",
-    "ADJ" -> "AA",
-    "ADV" -> "ADV",
-    "PRN" -> "PD",
-    "PR" -> "PD",
-    "ART" -> "PD(type=art)", "RT" -> "PD(type=art)",
-    "NUM" -> "NUM",
-    "INT" -> "INT",
-    "RES" -> "RES",
-    "FOREIGN" -> "RES(type=foreign)",
-    "UNRESOLVED" -> "RES(type=unknown)"
-  )
 
   val tagMap = if (Settings.useCGNStyle) tagMapCGNStyle  else tagMapCHNStyle
   val overbodigeAttributen = Set("xtype", "time", "resp",  "subtype", "original", "type", "mform", "nform", "lemma") // misAlignent, changed
@@ -139,7 +38,15 @@ object bab {
 
   def doW(w: Elem) =
   {
-    val annotation = TagStuff.parseLemPos((w \ "@type").text, (w \ "@lemma").text)
+    val annotation = TagStuff.parseLemPos((w \ "@lemma").text, (w \ "@type").text).toCHN.map(x => x match
+      {
+        case LemPos(l,t) if  ((w \ "@n").nonEmpty && t.contains("NOU-P")) => LemPos(l, t.replaceAll("\\)", ",wordpart=proper)"))
+        case _ => x
+      }
+    )
+
+    /*
+    if (!annotation.isInstanceOf[LemPos]) println(annotation)
 
     val possen = (w \ "@type").text.split("_").toList
       .filter(_.matches(".*[A-Z].*"))
@@ -158,62 +65,52 @@ object bab {
       }
 
 
-    val id = getId(w)
 
-    val word = w.text
 
     val newLemma = (w \ "@lemma").text.replaceAll("_", multivalSepSplit).toLowerCase()
 
     val lemmaNum = if (cgnPossen2.contains("TW") && (w \ "@n").isEmpty) maakLemmaWeerGetal(word, newLemma, cgnPossen2) else newLemma
+    */
 
 
-    w.copy(child=if (discardSubElemsOfWord) Text(word) else w.child,
+    val id = getId(w)
+
+    val word = w.text
+
+    val LemPos(lemma, pos) = annotation.toStrings
+    val fs = annotation.featureStructure
+
+    w.copy(child=(if (discardSubElemsOfWord) <seg>{word}</seg> else <seg>{w.child}</seg>) ++ fs,
       attributes = w.attributes.filter(a => !overbodigeAttributen.contains(a.key))
-        .append(new UnprefixedAttribute("msd", cgnPossen2.mkString(multivalSepPrint), Null) )
-        .append(new UnprefixedAttribute("pos", chnPossen1.mkString(multivalSepPrint), Null) )
-        .append(new UnprefixedAttribute("type", possen.mkString(multivalSepPrint), Null) )
-        .append(new UnprefixedAttribute("lemma", lemmaNum, Null)))
+        //.append(new UnprefixedAttribute("msd", cgnPossen2.mkString(multivalSepPrint), Null) )
+        .append(new UnprefixedAttribute("pos", pos, Null) )
+        //.append(new UnprefixedAttribute("type", possen.mkString(multivalSepPrint), Null) )
+        .append(new UnprefixedAttribute("lemma", lemma, Null)))
   }
 
  //  <w n="0" pos="TW⊕TW(deel)" part="I" corresp="" lemma="drieëndertig⊕vierendertig " xml:id="w.71">3</w>
  // ook niet goed: Terug naar decimaal! 7 voor (7, zeveneneenhalf, TW) Dus altijd als deel dan blokkeren!
 
-  def maakLemmaWeerGetal(w: String, l: String, possen: Seq[String]): String =
-  {
-    val lemmata = l.split(multivalSepSplit)
 
-    if (possen.count(_.contains("TW")) != 1)
-      l
-    else
-    if (w.matches("[0-9]+")) // klopt niet!
-    {
-
-      val lNew = lemmata.zipWithIndex.map(
-        { case (l, i)
-           => if (possen(i).contains("TW") && !l.matches(".*(de|ste)$")) w else l }
-      ).mkString(multivalSepSplit)
-      Console.err.println(s"Terug naar decimaal! $lNew voor ($w, $l, ${possen.mkString(multivalSepSplit)})")
-      lNew
-    }
-      else
-      l
-  }
 
   def tokenize(w: Elem):Seq[Node] =
   {
-    val t = Tokenizer.tokenizeOne(w.text)
+    //System.err.println("tokenize: " + w)
+    val t = Tokenizer.tokenizeOne((w \ "seg").text)
+    val seg = (w \ "seg").head.asInstanceOf[Elem]
+
     val nonTriv = (t.token.nonEmpty  && (t.leading.nonEmpty || t.trailing.nonEmpty))
 
     val word = w.text
     val lemma = (w \ "@lemma").text
 
-    val safe = (!t.trailing.startsWith(".") || veiligePunten.contains(word,lemma)) && (discardSubElemsOfWord || w.child.filter(_.isInstanceOf[Elem]).isEmpty)
+    val safe = (!t.trailing.startsWith(".") || veiligePunten.contains(word,lemma)) && (discardSubElemsOfWord || seg.child.filter(_.isInstanceOf[Elem]).isEmpty)
     if (!safe || !nonTriv)
       w
     else
       {
         val r = (if (t.leading.nonEmpty) Seq(<pc>{t.leading}</pc>) else Seq()) ++
-          Seq(w.copy( child = Text(t.token))) ++
+          Seq(w.copy( child = <seg>{t.token}</seg> ++ w.child.filter(_.label != "seg")  )) ++
           (if (t.trailing.nonEmpty) Seq(<pc>{t.trailing}</pc>) else Seq())
         r
       }
@@ -261,6 +158,7 @@ object bab {
         val (part, partNumber, partAnalysis) = partAssignments(w)
 
         val word = w.text
+
         val partAttribute = new UnprefixedAttribute("part", part, Null)
         val nAttribute = new UnprefixedAttribute("n", partNumber.toString, Null)
 
@@ -273,15 +171,24 @@ object bab {
 
         val oldCHNPoS = (w \ "@pos").text
 
-        val newCHNPoS = if (partAnalysis.isEmpty || !oldCHNPoS.contains("VRB")) if (oldCGNPoS.contains("deeleigen")) addFeature(oldCHNPoS,"wordpart=proper") else addFeature(oldCHNPoS,"wordpart=part") else {
+        val newCHNPoS = if (partAnalysis.isEmpty || !oldCHNPoS.contains("VRB")) if (oldCHNPoS.contains("wordpart")) oldCHNPoS
+                else addFeature(oldCHNPoS,"wordpart=part") else {
           val partDesc = if (word  == partAnalysis.get.verbalWordPart) "wordpart=vrb" else "wordpart=adv"
           addFeature(oldCHNPoS, partDesc)
         }
 
         val newCGNPosAttribute = new UnprefixedAttribute("msd", newCGNPoS, Null)
+
         val newCHPosAttribute = new UnprefixedAttribute("pos", newCHNPoS, Null)
+
         val newAtts = w.attributes.append( new UnprefixedAttribute("corresp", newCor, Null)).append(partAttribute)
-        w.copy(attributes =  newAtts.filter(a => a.key != "n" && a.key != "msd" && a.key != "pos").append(newCGNPosAttribute).append(newCHPosAttribute).append(nAttribute))
+
+        val annotation = parseLemPos((w \ "@lemma").text, newCHNPoS)
+
+        val fs = annotation.featureStructure()
+        w.copy(
+          child  = w.child.filter(_.label != "fs") ++ fs,
+          attributes =  newAtts.filter(a => a.key != "n" && a.key != "msd" && a.key != "pos").append(newCHPosAttribute).append(nAttribute))
       } else w
     }
     updateElement(d, _.label=="w", newCorresp)

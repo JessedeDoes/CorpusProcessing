@@ -9,11 +9,13 @@ import scala.xml._
 
 class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
 {
-  val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+  val Tag = new Regex("^([A-Z]+-?[A-Z]*)\\((.*?)\\)")
 
 
+  val patchedTag = if (!tag.endsWith(")")) s"$tag()" else tag
 
-  val tagToParse = if (Tag.findFirstIn(tag).isEmpty) "RES(type=other)" else tag.replaceAll(",other", ",type=other")
+
+  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=other)" else patchedTag.replaceAll(",other", ",type=other")
 
   if (Tag.findFirstIn(tagToParse).isEmpty)
   {
@@ -69,15 +71,21 @@ object distinctTagsFromGysseling
 
 
   def tagsetFromCorpusFiles(dir: String, attribute: String) = {
-    val files:Set[File] = new File(dir).listFiles().toSet
+    val files: Set[File] = new File(dir).listFiles().toSet
     val allDistinctTags: Set[String] = files.flatMap(
       f => {
-        val doc = XML.loadFile(f)
+        scala.util.Try(
+          {
+            val doc = XML.loadFile(f)
 
-        val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
-        val posjes = combiposjes.flatMap(p => p.split("[+|]").toSet)
-        //println(posjes)
-        posjes
+            val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
+            val posjes = combiposjes.flatMap(p => p.split("[+|]").toSet)
+            //println(posjes)
+            posjes
+          }) match {
+          case scala.util.Success(x) => x
+          case _ => Set[String]()
+        }
       }
     )
     val tagset = CHNStyleTags.tagsetFromSetOfStrings("chnpos", allDistinctTags)
@@ -88,7 +96,7 @@ object distinctTagsFromGysseling
     jsonWriter.println(tagset.asJSON)
     jsonWriter.close()
 
-    val blfWriter =  new PrintWriter("/tmp/tagset.blf")
+    val blfWriter = new PrintWriter("/tmp/tagset.blf")
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
   }

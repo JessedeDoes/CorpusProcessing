@@ -11,8 +11,8 @@ object Settings {
 
   val input = new File(babDir + "2.0")
   val output = new File(babDir + (if (useCGNStyle) "2.5CGN/" else "2.5CHN/"))
-  val discardSubElemsOfWord = true
-  val multivalSepSplit = "[+]"
+  val discardSubElemsOfWord = false
+  val multivalSepSplit = "[_+]"
   val multivalSepPrint = "+"
   val alternativeSep = "[|]"
   val alternativePrint = "|"
