@@ -70,7 +70,7 @@ object distinctTagsFromGysseling
   }
 
 
-  def tagsetFromCorpusFiles(dir: String, attribute: String) = {
+  def tagsetFromCorpusFiles(dir: String, attribute: String, separator: String = "[+|]") = {
     val files: Set[File] = new File(dir).listFiles().toSet
     val allDistinctTags: Set[String] = files.flatMap(
       f => {
@@ -79,7 +79,7 @@ object distinctTagsFromGysseling
             val doc = XML.loadFile(f)
 
             val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
-            val posjes = combiposjes.flatMap(p => p.split("[+|]").toSet)
+            val posjes = combiposjes.flatMap(p => p.split(separator).toSet)
             //println(posjes)
             posjes
           }) match {
@@ -107,7 +107,7 @@ object distinctTagsFromONW {
   val dir = "/home/jesse/workspace/data-historische-corpora/ONW/TEI-postprocessed"
 
   def main(args: Array[String]): Unit = {
-    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "msd")
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "msd", "[+]")
   }
 }
 
