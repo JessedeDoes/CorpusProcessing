@@ -9,7 +9,10 @@ import database.{Configuration, Database}
 import posmapping.VMNWdb.{LemmaWoordvorm, QuotationReference}
 
 import scala.collection.immutable
+import utils.PostProcessXML.updateElement4
+import utils.Tokenizer
 
+import scala.util.Try
 /*
 +----------------+-------------+------+-----+---------+-------+
 | Field          | Type        | Null | Key | Default | Extra |
@@ -409,14 +412,98 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     w.copy(child = newChildren)
   }
 
+  def brack2supplied(w: Elem) = {
+    val seg = (w \ "seg")
+    if (seg.isEmpty) w else {
+      val theseg = (w \\ "seg").head.asInstanceOf[Elem]
 
-  val splitWords = false
+      val childXML = theseg.child.text.replaceAll("\\[", "<supplied>").replaceAll("\\]", "</supplied>")
+      val newSeg = Try(XML.loadString("<seg type='orth'>" + childXML + "</seg>")) match {
+        case scala.util.Success(x) => x
+        case _ => theseg
+      }
+      if (theseg.text.contains("["))
+        {
+          Console.err.println(s"$theseg => $childXML => $newSeg")
+        }
+      w.copy(child = w.child.map(
+        {
+          case e:Elem if e.label == "seg" => newSeg
+          case x => x
+        }
+      ))
+    }
+  }
+
+  def tokenizeOne(w: Elem): NodeSeq = {
+    val seg = (w \ "seg")
+    if (seg.isEmpty || seg.text.contains("[") || seg.text.contains("]") || (w \ "@pos").text.matches(".*(NUM|PD).*")) Seq(w)
+    else {
+
+      val theseg = (w \\ "seg").head.asInstanceOf[Elem]
+      if (theseg.child.exists(_.isInstanceOf[Elem])) {
+        val z: Seq[(Int, Option[Elem], Node)] = theseg.child.zipWithIndex.map(
+          { case (n, i) if (i ==0 && n.isInstanceOf[Text]) => {
+             val t = Tokenizer.tokenizeOne(n.text)
+               if (t.leading.nonEmpty)
+                 (-1, Some(<pc type="preX">{t.leading}</pc>), Text(t.leading))
+               else (0, None, n)
+            }
+          case (n,i) if (i == theseg.child.size -1 && n.isInstanceOf[Text]) => {
+            val t = Tokenizer.tokenizeOne(n.text)
+            if (t.trailing.nonEmpty)
+              (1, Some(<pc type="postX">{t.trailing}</pc>), Text(t.trailing))
+            else (0, None, n)
+          }
+          case (n,i) => (0, None, n)
+          }
+        )
+        if (!z.exists(_._1 != 0)) Seq(w) else
+          {
+            val newSeg = theseg.copy(child = z.map(_._3))
+            val w1 = w.copy(child = w.child.map(
+              {
+                case e:Elem if e.label == "seg" => newSeg
+                case x => x
+              }
+            ))
+            val pref = z.filter(x => x._1 == -1).map(_._2.get)
+            val post = z.filter(x => x._1 == 1).map(_._2.get)
+            pref ++ Seq(w1) ++ post
+          }
+      } else {
+        val token = (w \\ "seg").text.replaceAll("\\s+", " ")
+        val t = Tokenizer.tokenizeOne(token)
+        val leading = if (t.leading.nonEmpty) Some(<pc type="pre">
+          {t.leading}
+        </pc>) else None
+        val trailing = if (t.trailing.nonEmpty) Some(<pc type="post">
+          {t.trailing}
+        </pc>) else None
+        val word = if (t.token.nonEmpty) Some(w.copy(child = w.child.map(
+          { case e: Elem if e.label == "seg" => <seg type="orth">
+            {t.token}
+          </seg>
+          case x => x
+          }
+        ))) else None
+        //val x = brievenalsbuit.
+        Seq(leading, word, trailing).filter(_.nonEmpty).map(_.get)
+      }
+    }
+  }
+
+  def tokenize(d: Elem):Elem = {
+    val f1 = updateElement4(d, _.label == "w", w => tokenizeOne(brack2supplied(w)))
+    f1.head.asInstanceOf[Elem]
+  }
+    val splitWords = false
 
   def fixFile(in: String, out:String) = {
     if (true || in.contains("3000")) {
       val d1 = fixEm(XML.load(in))
       val d2 = if (splitWords) wordSplitting.splitWords(d1) else d1
-      val d3 = if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoToe(d2) else d2
+      val d3 = tokenize(if (gysMode) mapMiddelnederlandseTagsGys.voegBronInfoToe(d2) else d2)
       XML.save(out, scanLinks.addScanLinks(d3).head.asInstanceOf[Elem], enc = "UTF-8")
     }
   }
