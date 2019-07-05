@@ -139,11 +139,11 @@ case class TagSet(prefix: String,
     pretty(render(json))
 
     val subannotations = partitions.map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
-      "values" -> vals.map(v => Map("value" -> v, "displayName" -> v, "pos" -> this.posForFeature(f,v)))).toMap
+      "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> v, "pos" -> this.posForFeature(f,v)))).toMap
     })
 
     val JSON =
-      Map("values" -> posTags.map(pos2J).toMap,
+      Map("values" -> posTags.toList.sorted.map(pos2J).toList.sortBy(_._1).toMap, // hier stond nog een toMap bij??
        "subAnnotations" -> subannotations)
 
 

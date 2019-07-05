@@ -220,7 +220,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val (dictionaryLinks:Seq[Node], lemmaPatches: Set[LemmaWoordvorm]) = if (gysMode) VMNWdb.linkXML(newId.value.text) else (Seq[Node](),Set[LemmaWoordvorm]())
 
-    val hilexedLemmata = if (!gysMode) completedLemmata else {
+    val hilexedLemmata: immutable.Seq[String] = if (!gysMode) completedLemmata else {
       val patches = lemmaPatches.filter(_.omspelling_uit_hilex.nonEmpty).groupBy(_.clitisch_deel_nr)
       lemmata.indices.map(i => if (!patches.contains(i)) completedLemmata(i) else {
         val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
@@ -238,7 +238,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           // if (adapted.toLowerCase != completedLemmata(i).toLowerCase) Console.err.println(s"Adapt lemma: ${completedLemmata(i)} -> $adapted")
           adapted
         }
-      })
+      }).map(_.toUpperCase())
     }
 
     val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
@@ -386,21 +386,26 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     makeGroupx[T](s, List.empty, f).filter(_.nonEmpty)
   }
 
-  def removeUselessWhite(n: Seq[(Node,Int)]) = n.filter({ case (x,i) =>  !(x.isInstanceOf[Text] && x.text.trim.isEmpty  &&  (i==0 || i == n.size-1)) })
+  def removeUselessWhite(n: Seq[(Node,Int)]) =
+    n.filter({ case (x,i) =>  !(x.isInstanceOf[Text] && x.text.trim.isEmpty  &&  (i==0 || i == n.size-1)) }).map(
+      {
+        case (x:Text,i) if (i==0 || i == n.size-1) => (Text(x.text.trim),i)
+        case (x,i) => (x,i)}
+    )
 
 
   def wrapContentInSeg(w: Elem): Elem =
   {
     val children = w.child.zipWithIndex
 
-    val groupedChildren = makeGroup[(Node,Int)](children, {case (c,i) => !(c.isInstanceOf[Text] || c.label == "hi" || c.label == "expan" || c.label=="c")})
+    val groupedChildren = makeGroup[(Node,Int)](children, {case (c,i) => !(c.isInstanceOf[Text] || c.label == "hi" || c.label == "supplied" || c.label == "expan" || c.label=="c")})
 
     val newChildren = groupedChildren.flatMap(
       g => {
 
-        if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall( {case (c,i) => c.isInstanceOf[Text] || c.label == "hi" || c.label == "expan" || c.label == "c"})) {
+        if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall( {case (c,i) => c.isInstanceOf[Text] || c.label == "hi" || c.label == "supplied" || c.label == "expan" || c.label == "c"})) {
 
-          val contents = removeUselessWhite(g).map(_._1)
+          val contents: Seq[Node] = removeUselessWhite(g).map(_._1)
           val ctext:String = contents.text.trim.replaceAll("\\s+", " ")
 
           <seg type='orth'>{contents}</seg>
@@ -437,7 +442,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   def tokenizeOne(w: Elem): NodeSeq = {
     val seg = (w \ "seg")
-    if (seg.isEmpty || seg.text.contains("[") || seg.text.contains("]") || (w \ "@pos").text.matches(".*(NUM|PD).*")) Seq(w)
+    if (seg.isEmpty ||
+      seg.text.contains("[") ||
+      seg.text.contains("]") ||
+      (w \ "@pos").text.matches(".*NUM.*") ||
+       (w \ "@pos").text.matches(".*PD.*") && w.text.trim.toLowerCase.matches("^([.]?)[ij]([.]?)"))
+    Seq(w)
     else {
 
       val theseg = (w \\ "seg").head.asInstanceOf[Elem]
@@ -446,13 +456,13 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           { case (n, i) if (i ==0 && n.isInstanceOf[Text]) => {
              val t = Tokenizer.tokenizeOne(n.text)
                if (t.leading.nonEmpty)
-                 (-1, Some(<pc type="preX">{t.leading}</pc>), Text(t.leading))
+                 (-1, Some(<pc type="pre">{t.leading}</pc>), Text(t.leading))
                else (0, None, n)
             }
           case (n,i) if (i == theseg.child.size -1 && n.isInstanceOf[Text]) => {
             val t = Tokenizer.tokenizeOne(n.text)
             if (t.trailing.nonEmpty)
-              (1, Some(<pc type="postX">{t.trailing}</pc>), Text(t.trailing))
+              (1, Some(<pc type="post">{t.trailing}</pc>), Text(t.trailing))
             else (0, None, n)
           }
           case (n,i) => (0, None, n)
@@ -481,9 +491,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           {t.trailing}
         </pc>) else None
         val word = if (t.token.nonEmpty) Some(w.copy(child = w.child.map(
-          { case e: Elem if e.label == "seg" => <seg type="orth">
-            {t.token}
-          </seg>
+          { case e: Elem if e.label == "seg" => <seg type="orth">{t.token}</seg>
           case x => x
           }
         ))) else None
@@ -508,7 +516,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     }
   }
 
-  def main(args: Array[String]) = utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
+  def main(args: Array[String]) = {
+
+    utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
+  }
 }
 
 
