@@ -42,7 +42,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 
   lazy val bronMap: Map[String, (Node,Node)] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
     b => (b \\ "docid").text -> {
-      val b1 = XML.loadString("<bron><![CDATA[" + b.toString + "]]></bron>")
+      val b1 = XML.loadString("<bron><![CDATA[" + b.toString.trim + "]]></bron>")
       (b1,b)
     }
   ).toMap
@@ -298,6 +298,11 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
 
+    val msd = updatedGysPosAttribute.value.text
+    val multimainpos = msd.replaceAll("\\(.*?\\)", "")
+    val multimainattribute = new UnprefixedAttribute("groupingMainPos", multimainpos, Null)
+
+
     val attributesWithUpdatedGysTags = withCompletedLemma.filter(_.key != "pos").append(updatedGysPosAttribute)
     val gysTagFS: Seq[Elem] = gysTagsCHNStylewithAnnotatedWordParts.map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t._2))
     val cgnTagFs: Seq[Elem] = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
@@ -313,7 +318,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       .map({ case (fs,i) => fs.copy(
         child=fs.child ++ <f name="lemma"><string>{completedLemmataPatched(i)}</string></f> ++
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
-        attributes=fs.attributes.append(Ѧ("n", i.toString) ))} )
+        attributes=fs.attributes.append(Ѧ("n", i.toString).append(multimainattribute) ))} )
 
     val featureStructures: Seq[Elem] = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
 
