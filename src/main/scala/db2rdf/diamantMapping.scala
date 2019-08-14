@@ -263,7 +263,7 @@ object diamantMapping {
   val typeForConcept: ResultSet => IRI =
     r => if (r.getString("ontology").equalsIgnoreCase("wnt")) lexicalConceptType else conceptType
 
-  val serpensRelMap:Map[String, IRI] = Map("=" -> skosCloseMatch, ">" -> skosBroader, "<" -> skosNarrower)
+  val serpensRelMap:Map[String, IRI] = Map("=" -> skosCloseMatch, ">" -> skosNarrower, "<" -> skosBroader)
 
   val serpensConcepts = {
     val concept = ~"$iri"
