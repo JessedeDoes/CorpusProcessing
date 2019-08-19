@@ -32,7 +32,7 @@ object exportDiamantToRDF {
     import org.slf4j.Logger
     import org.slf4j.LoggerFactory
 
-    val outputFolder = if (args.length > 0) args(0) else "/tmp/"
+    val outputFolder = if (args.length > 0) args(0) else Settings.outputFolderForDiamantRDF
 
     System.setProperty("org.slf4j.simpleLogger.logFile", "/tmp/loggertje.log")
     System.setProperty("org.slf4j.simpleLogger.defaultLogLevel", "off")

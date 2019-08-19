@@ -95,12 +95,12 @@ object diamantMapping {
   val serpensConceptQuery = "select * from serpens.concepts"
 
   val serpensWntQuery: String =
-    """select serpens.concepts.*, data.lemmata.modern_lemma, data.lemmata.lemma_part_of_speech, data.lemmata.wdb, data.lemmata.persistent_id
+    """select distinct serpens.concepts.*, data.lemmata.modern_lemma, data.lemmata.lemma_part_of_speech, data.lemmata.wdb, data.lemmata.persistent_id
       | from serpens.concepts,data.lemmata
       | where serpens.concepts.concept_id=data.lemmata.persistent_id""".stripMargin
 
   val conceptRelationQuery: String =
-    """select cl.*, s1.iri as parent_iri, s2.iri as child_iri
+    """select distinct cl.*, s1.iri as parent_iri, s2.iri as child_iri
       | from serpens.concept_links cl, serpens.concepts s1, serpens.concepts s2
       | where s1.concept_id = cl.parent_id and s2.concept_id = cl.child_id""".stripMargin
 
@@ -153,6 +153,7 @@ object diamantMapping {
     // en soms foute wdb-indicatie in senses in database ....
     val sense = ~s"$senseResourcePrefix$$wdb/$$persistent_id"
     val definition = ~"http://rdf.ivdnt.org/definition/$wdb/$persistent_id"
+    val nope:Mapping = NopeMapping()
     ⊕(
       senseQuery,
       Ω(commonDefinitions.sense, lemmaFromSense, sense),
@@ -160,8 +161,8 @@ object diamantMapping {
       //Ω(subsense, ~s"$senseResourcePrefix$$wdb/$$parent_id", sense),
       Ω(senseDefinition, sense, definition),
       Ω(isA, definition, senseDefinitionType),
-      Δ(skosDefinition, sense, !"definition"),
-      Δ(definitionText, definition, !"definition"),
+      if (!Settings.outputDefinitionsAndQuotations) nope else Δ(skosDefinition, sense, !"definition").asInstanceOf[Mapping],
+      if (!Settings.outputDefinitionsAndQuotations) nope else Δ(definitionText, definition, !"definition"),
       Δ(rdfsLabel,  sense, !"path"),
       Δ(gtbId, sense, !"persistent_id"),
       Δ(gtbDictionary, sense, !"wdb"),

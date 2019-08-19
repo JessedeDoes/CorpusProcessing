@@ -91,6 +91,10 @@ case class ObjectProperty(s: IRI, p: IRI, o: IRI, g:Option[IRI]=None) extends St
   override def withGraph(i: IRI): Statement = this.copy(g = Some(i))
 }
 
+case class NoStatement() extends Statement {
+  override def valid(): Boolean = false
+}
+
 case class DataProperty(s: IRI, p: IRI, o: Literal, g:Option[IRI]=None) extends Statement
 {
   override def toString1 = s"$s $p $o ${if (g.isDefined) g.get.toString else ""} ."
@@ -101,6 +105,10 @@ case class DataProperty(s: IRI, p: IRI, o: Literal, g:Option[IRI]=None) extends 
 }
 
 trait Mapping
+
+case class NopeMapping() extends Mapping {
+  def triples(db: database.Database, q: String) : Stream[ObjectProperty] = Stream.empty
+}
 
 case class Ω(p: ResultSet => IRI, s: ResultSet => IRI, o: ResultSet => IRI) extends Mapping
 {
