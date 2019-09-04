@@ -22,7 +22,7 @@ object molexMapping {
     """select *, 'molex' as wdb
         from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id and l.keurmerk=true
-          and is_parent=false and wordform_gigpos ~ '[A-Z]' and a.keurmerk=true"""
+          and is_parent=false and wordform_gigpos ~ '[A-Z]' and a.keurmerk=true and not w.wordform ~ 'нельзя'"""
 
   val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\s+') as lemma_part_of_speech from data.lemmata"""
 
