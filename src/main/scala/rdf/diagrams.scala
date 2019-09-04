@@ -26,7 +26,9 @@ object diagrams {
   }
 
 
-  def processExamples(e: Elem, imageDir: java.io.File) = PostProcessXML.updateElement2(e, _.label=="example", e => exampleWithDiagram(e.text, imageDir))
+  def processExamples(e: Elem, imageDir: java.io.File) = PostProcessXML.updateElement2(e, _.label=="example",
+
+    e => exampleWithDiagram(e.text, imageDir, (e \ "@name").headOption.map(_.text)))
 
   def processOntologies(e: Elem, imageDir: java.io.File) = PostProcessXML.updateElement(e, _.label=="ontology", e => ontologyDiagram((e \\ "@source").text, imageDir))
 
@@ -42,9 +44,9 @@ object diagrams {
     <img src={imgLink}/>
   }
 
-  def exampleWithDiagram(rdf: String, imageDir: java.io.File):NodeSeq =
+  def exampleWithDiagram(rdf: String, imageDir: java.io.File, name:Option[String] = None):NodeSeq =
   {
-    val imgFile = new java.io.File(imageDir.getCanonicalPath + "/" +  java.util.UUID.randomUUID + ".svg")
+    val imgFile = new java.io.File(imageDir.getCanonicalPath + "/" +  name.getOrElse(java.util.UUID.randomUUID) + ".svg")
     exampleWithDiagram(imgFile, rdf)
   }
 
@@ -82,7 +84,9 @@ object diagrams {
     viz.render(Format.SVG).toFile(new java.io.File(outFile))
     if (makePDF) {
       val pdfOut = outFile.replaceAll("\\.[A-Z-a-z0-9]*$", ".pdf")
-      Runtime.getRuntime.exec(s"rsvg-convert --dpi-x 600 --dpi-y 600 $outFile  -o $pdfOut")
+      Runtime.getRuntime.exec(s"/usr/bin/perl -pe 's/.#160;/ /g' $outFile > $outFile.subst")
+      Console.err.println(s"PDF from $outFile")
+      Runtime.getRuntime.exec(s"rsvg-convert --dpi-x 600 --dpi-y 600 $outFile.subst  -o $pdfOut")
     }
   }
 

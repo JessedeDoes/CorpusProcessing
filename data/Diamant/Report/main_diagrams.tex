@@ -133,12 +133,12 @@
 \addcontentsline{toc}{section}{Introduction}
 Lexicographers use examples  to support their analysis of the headword. The examples can either be authentic (exact quotations), adapted (modified versions of authentic examples) or invented examples (\cite{Svensen}, p. 283-285). Authentic examples are attributed quotations (citations), which not only elucidate meaning and illustrate features of the headword (spelling, syntax, collocation, register etc.), but also function as attestations and are used provide evidence of the existence of a headword (\cite{AtkinsRundell}, p. 453-458). We therefore call these examples ``attestations''. Adapted examples, (cf\.~a.o.~\cite{ColloCaid}, p. 251) or invented examples, which often occur in learner's dictionaries and bilingual dictionaries (\cite{Kernerman}), will not be discussed here.  \par
 
-%\section{Application of ontolex in Diamant}
+\section{Application of ontolex in Diamant}
 
-%\begin{rdf}[width=3cm,prefix=voorbeeld1]:aap a diamant:Beast .
-%:aap diamant:eats diamant:Nuts .
-%:Nuts diamant:kindof diamant:Food .
-%\end{rdf}
+\begin{rdf}[width=3cm,prefix=voorbeeld1]:aap a diamant:Beast .
+:aap diamant:eats diamant:Nuts .
+:Nuts diamant:kindof diamant:Food .
+\end{rdf}
 
 
 \section{Citations and attestations in scholarly dictionaries}
@@ -519,16 +519,48 @@ The examples (figure \ref{fig:ex2}), illustrate an attestation of a word sense, 
 % \end{figure}
  
  \begin{figure}
-% \begin{tabular}{cc}
-     	\includegraphics[width=\textheight, angle=90]{./example_1.pdf} % &  
-%     	\includegraphics[width=\textheight, angle=90]{./example_2.pdf}
-% \end{tabular}
+ \begin{tabular}{cc}
+     	\includegraphics[width=\textheight, angle=90]{./example_1.pdf}  &  
+     	\includegraphics[width=\textheight, angle=90]{./example_2.pdf}
+ \end{tabular}
 
-\caption{Attestation of a sense}
+\caption{Attestation of a sense (left); attestation of a sense \textit{and} a form (right) }
 \label{fig:ex2}
  \end{figure}
 
 
+\begin{rdf}:e0 a ontolex:LexicalEntry ;
+      ontolex:sense :s0 .
+      :l0 a ontolex:Form .
+      :e0 ontolex:canonicalForm :l0 .
+      :l0 ontolex:writtenRep "cow" .
+      :s0 a ontolex:LexicalSense .
+      :s0 ontolex:definition  "Cows are useful animals" .
+      :lc0 a diamant:Locus .
+      :s0 diamant:attestation :q0 .
+      :s0 cito:cites :textWitness .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :q0 diamant:locus :lc0 .
+      :q0 diamant:quotation "The kine spake booh" .
+      :q0 diamant:readingCertain "true" .
+      :q0 diamant:interpretationCertain "false" .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author "Bovina Korovina" .
+      :exp0 diamant:title "Meadow Meanderings" .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness frbr:embodimentOf :exp0 .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
+\end{rdf}
 %%%%%%%%%%%%%%%%%%%% Table No: 1 ends here %%%%%%%%%%%%%%%%%%%%
 
 
