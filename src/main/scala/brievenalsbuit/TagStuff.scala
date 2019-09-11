@@ -111,7 +111,7 @@ object TagStuff {
     "CON" -> "CON",
     "VRB" -> "VRB", "VRN" -> "VRB",
     "ADP" -> "ADP",
-    "ADJ" -> "AA",
+    "ADJ" -> "ADJ", // Niet AA dus
     "ADV" -> "ADV",
     "PRN" -> "PD",
     "PR" -> "PD",

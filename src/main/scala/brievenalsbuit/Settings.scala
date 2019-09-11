@@ -9,8 +9,10 @@ object Settings {
   val babDir = if (atHome) "/mnt/DiskStation/homes/jesse/work/BaB/" else
     "/mnt/Projecten/Taalbank/CL-SE-data/Corpora/LexiconToolCorpora/Zeebrieven/TKV/"
 
-  val input = new File(babDir + "2.0")
-  val output = new File(babDir + (if (useCGNStyle) "2.5CGN/" else "2.5CHN/"))
+  val babDirOpCorpora = "/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuit/"
+
+  val input = new File(babDirOpCorpora + "XML")
+  val output = new File(babDirOpCorpora + (if (useCGNStyle) "2.5CGN/" else "2.6CHN/"))
   val discardSubElemsOfWord = false
   val multivalSepSplit = "[_+]"
   val multivalSepPrint = "+"
