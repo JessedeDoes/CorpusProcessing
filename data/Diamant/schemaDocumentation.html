@@ -435,7 +435,42 @@
       :textWitness diamant:notAfter 1812 .
     </example>
 
-    <example name="lexcit_2">
+     <example name="lexcit_1">
+         :e0 a ontolex:LexicalEntry ;
+      ontolex:sense :s0 .
+      :l0 a ontolex:Form .
+      :e0 ontolex:canonicalForm :l0 .
+      :l0 ontolex:writtenRep "cow" .
+      :s0 a ontolex:LexicalSense .
+      :s0 ontolex:definition  "Cows are useful animals" .
+
+      :lc0 a diamant:Locus .
+      :s0 diamant:attestation :q0 .
+      :s0 cito:cites :textWitness .
+      :q0 a diamant:Attestation .
+      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
+      cito:citesAsEvidence a cito:CitationCharacterization .
+      :q0 cito:hasCitingEntity :s0 .
+      :q0 cito:hasCitedEntity :textWitness .
+      :s0 cito:citesAsEvidence :textWitness .
+      :q0 diamant:locus :lc0 .
+      :q0 diamant:quotation "The kine spake booh" .
+      :q0 diamant:readingCertain "true" .
+      :q0 diamant:interpretationCertain "false" .
+      :lc0 diamant:locusIn :q0 .
+      :lc0 nif:beginIndex 5 .
+      :lc0 nif:endIndex 8 .
+      :exp0 a frbr:Expression .
+      :exp0 dcterms:author "Bovina Korovina" .
+      :exp0 diamant:title "Meadow Meanderings" .
+      :exp0 frbr:embodiment :textWitness .
+      :textWitness frbr:embodimentOf :exp0 .
+      :textWitness a frbr:Manifestation .
+      :textWitness diamant:notBefore 1810 .
+      :textWitness diamant:notAfter 1812 .
+    </example>
+
+    <example name="lexcit_oa">
     	 :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
       :l0 a ontolex:Form .
