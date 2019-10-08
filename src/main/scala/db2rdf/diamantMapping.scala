@@ -222,20 +222,32 @@ object diamantMapping {
       Ω(rel, parent, child), Ω(isA, rel, semanticRelationType))
   }
 
+  /*
+  <http://example.org/anno13> a oa:Annotation ;
+    oa:hasBody <http://example.org/review1> ;
+    oa:hasTarget [
+        oa:hasSource <http://example.org/ebook1> ;
+        oa:hasSelector [
+            a oa:TextPositionSelector ;
+            oa:start 412 ;
+            oa:end 795 ] ] .
+   */
+
   val attestations: Mappings = {
     val theAttestation = ~s"$attestationResourcePrefix$$attestation_id"
     val theLocus = ~s"$locusResourcePrefix$$attestation_id"
-    val theQuotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id" // doen we die nou nog?
-
+    val theQuotation = ~s"$quotationResourcePrefix$$wdb/$$document_id" // doen we die nou nog?
+    val nope:Mapping = NopeMapping()
     ⊕(
       attestationQuery,
-      Ω(attestation, ~s"${wordformResourcePrefix}$$wdb$$analyzed_wordform_id", theAttestation),
+      if (!Settings.miniDiamant) Ω(attestation, ~s"$wordformResourcePrefix$$wdb$$analyzed_wordform_id", theAttestation) else nope,
       Ω(hasCitedEntity, theAttestation, theQuotation),
-      Ω(diamantTextOfAttestation, theAttestation, theQuotation), // TODO haal weg in lexcit mode
+      if (Settings.outputDefinitionsAndQuotations) Ω(diamantTextOfAttestation, theAttestation, theQuotation) else nope, // TODO haal weg in lexcit mode
       Ω(isA, theAttestation, attestationType),
       Ω(isA, theLocus, locusType),
       // Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation), // hier zinloos?
       Ω(locus, theAttestation, theLocus),
+      Δ(quotationText, theAttestation, !"quote"),
       Δ(beginIndex, theLocus, r => IntLiteral(r.getInt("start_pos"))),
       Δ(endIndex, theLocus, r => IntLiteral(r.getInt("end_pos"))))
   }
@@ -243,9 +255,11 @@ object diamantMapping {
   val senseAttestations: Mappings = {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
-
+    val theSense = ~s"$senseResourcePrefix$$wdb/$$sense_id"
     ⊕(senseAttestationQuery,
-      Ω(attestation, ~s"$senseResourcePrefix$$wdb/$$sense_id", theAttestation)) // dit lijkt 2 keer te gebeuren?
+      Ω(attestation, theSense, theAttestation),
+      Ω(hasCitingEntity, theAttestation, theSense),
+    ) // dit lijkt 2 keer te gebeuren?
   }
 
   val quotations: Mappings = {

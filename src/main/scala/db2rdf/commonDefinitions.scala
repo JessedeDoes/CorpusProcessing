@@ -37,7 +37,7 @@ object commonDefinitions {
 
   val udPrefix = "http://universaldependencies.org/u/"
   val udFeatPrefix = "http://universaldependencies.org/u/feat/"
-
+  val oaPrefix = "http://www.w3.org/ns/oa#"
   // properties
 
 
@@ -63,7 +63,16 @@ object commonDefinitions {
 
   val diamantTextOfAttestation = objectProperty(s"${diamantSchemaPrefix}text")
   val hasCitedEntity = objectProperty(s"${citoPrefix}hasCitedEntity")
+  val hasCitingEntity = objectProperty(s"${citoPrefix}hasCitingEntity")
   val pos = objectProperty(s"${udPrefix}pos")
+
+  val hasBody = objectProperty(s"${oaPrefix}hasBody")
+  val hasTarget = objectProperty(s"${oaPrefix}hasTarget")
+  val hasSource = objectProperty(s"${oaPrefix}hasSource")
+  val hasSelector = objectProperty(s"${oaPrefix}hasSelector")
+  val oaStart = objectProperty(s"${oaPrefix}start")
+  val oaEnd = objectProperty(s"${oaPrefix}end")
+
 
 
   val beginIndex = dataProperty(s"${nifPrefix}beginIndex")
@@ -80,7 +89,7 @@ object commonDefinitions {
   val reference = objectProperty(s"${ontolexPrefix}reference")
   val senseDefinition = objectProperty(s"${lemonPrefix}definition")
   val definitionText = dataProperty(s"${diamantSchemaPrefix}definitionText")
-
+  val quotationText = dataProperty(s"${diamantSchemaPrefix}quotation")
 
   val evokes = objectProperty(s"${ontolexPrefix}evokes")
 
