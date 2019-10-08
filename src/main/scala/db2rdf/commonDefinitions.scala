@@ -72,6 +72,8 @@ object commonDefinitions {
   val subsense = objectProperty(s"${diamantSchemaPrefix}subsense")
 
   val senseOrder = dataProperty(s"${diamantSchemaPrefix}senseOrder")
+  val isPolyLexical = dataProperty(s"${diamantSchemaPrefix}polyLexical")
+  val isCoreSense = dataProperty(s"${diamantSchemaPrefix}isCoreSense")
   val senseLabel = dataProperty(s"${diamantSchemaPrefix}senseLabel")
   val gtbId = dataProperty(s"${diamantSchemaPrefix}gtbId")
   val gtbDictionary = dataProperty(s"${diamantSchemaPrefix}dictionary")

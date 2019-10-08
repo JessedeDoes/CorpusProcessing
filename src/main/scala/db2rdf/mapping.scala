@@ -64,6 +64,7 @@ case class StringLiteral(s: String, lang: Option[String]=Some("nl")) extends Lit
 }
 
 case class IntLiteral(k: Int) extends Literal  { override def toString = s""""$k"^^<http://www.w3.org/2001/XMLSchema#int>""";   }
+case class BooleanLiteral(k: Boolean) extends Literal  { override def toString = s""""$k"^^<http://www.w3.org/2001/XMLSchema#boolean>""";   }
 
 case class IRI(s: String, implicit val schema: Schema=null)(implicit val sort:Sort = Noop)
 {

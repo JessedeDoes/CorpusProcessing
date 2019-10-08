@@ -166,7 +166,11 @@ object diamantMapping {
       Δ(rdfsLabel,  sense, !"path"),
       Δ(gtbId, sense, !"persistent_id"),
       Δ(gtbDictionary, sense, !"wdb"),
-      Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt))
+      Δ(isPolyLexical, sense, r => BooleanLiteral(r.getBoolean("is_verbinding"))),
+      Δ(isCoreSense, sense, r => BooleanLiteral(r.getBoolean("is_core"))),
+      Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt),
+      )
+
         // Δ(senseLabel, sense, !"sense_label")
     )
   }

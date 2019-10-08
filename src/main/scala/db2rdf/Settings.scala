@@ -7,5 +7,5 @@ object Settings {
   val doLexCit = false
   val useLangStrings = false
   val outputDefinitionsAndQuotations = true
-  val outputFolderForDiamantRDF = "/mnt/Projecten/CLARIAH/Scratch"
+  val outputFolderForDiamantRDF =  "/data/Diamant/RDF" // "/mnt/Projecten/CLARIAH/Scratch"
 }
