@@ -50,43 +50,45 @@ object diamantMapping {
   import commonDefinitions._
   ////// queries //////
 
-  val senseTable = "diamant.senses"
+  import Settings.{data_schema,sense_schema}
+
+  val senseTable = s"$sense_schema.senses"
 
   val wordformQuery =
-    """select * from data.lemmata l, data.analyzed_wordforms a, data.wordforms w
+    s"""select * from $data_schema.lemmata l, $data_schema.analyzed_wordforms a, $data_schema.wordforms w
         where l.lemma_id=a.lemma_id and w.wordform_id=a.wordform_id"""
 
-  val posQuery = """select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\\s+') as lemma_part_of_speech from data.lemmata"""
+  val posQuery = s"""select wdb, persistent_id,regexp_split_to_table(lemma_part_of_speech,E'\\s+') as lemma_part_of_speech from $data_schema.lemmata"""
 
   val distinctPosQuery = """select distinct regexp_split_to_table(lemma_part_of_speech,E'\\s+|\\s*[+,]\\s*') as lemma_part_of_speech from data.lemmata"""
 
-  val lemmaQuery = """select * from lemmata"""
+  val lemmaQuery = s"""select * from $data_schema.lemmata"""
 
   val attestationQuery: String =
-    """select * from analyzed_wordforms a, token_attestations t, documents d
+    s"""select * from $data_schema.analyzed_wordforms a, $data_schema.token_attestations t, $data_schema.documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id""".stripMargin
 
   val senseAttestationQueryOld: String =
-    """select * from analyzed_wordforms a, token_attestations t, documents d
+    s"""select * from $data_schema.analyzed_wordforms a, $data_schema.token_attestations t, $data_schema.documents d
       | where
       |   a.analyzed_wordform_id = t.analyzed_wordform_id
       |   and d.document_id=t.document_id and t.sense_id is not null""".stripMargin
 
   val senseAttestationQuery: String =
-    """select t.attestation_id, sa.sense_id, sa.wdb from token_attestations t left join diamant.sense_attestations_reloaded sa
+    s"""select t.attestation_id, sa.sense_id, sa.wdb from $data_schema.token_attestations t left join $sense_schema.sense_attestations_reloaded sa
       | on
       |   sa.quotation_section_id = t.quotation_section_id
       |   where sa.sense_id is not null""".stripMargin
 
-  val documentQuery = "select * from documents"
+  val documentQuery = s"select * from $data_schema.documents"
 
   val senseQuery = s"select * from $senseTable"
 
   val subSenseQuery = s"select * from $senseTable where parent_id is not null"
 
-  val synonymQuery = "select *, dictionary as wdb from diamant.synonym_definitions where correct=true"
+  val synonymQuery = s"select *, dictionary as wdb from $sense_schema.synonym_definitions where correct=true"
 
   val synsetQuery = "select synset_id, unnest(synset) as sense_id, 'WNT' as wdb from diamant.synsets"
 
@@ -95,9 +97,10 @@ object diamantMapping {
   val serpensConceptQuery = "select * from serpens.concepts"
 
   val serpensWntQuery: String =
-    """select distinct serpens.concepts.*, data.lemmata.modern_lemma, data.lemmata.lemma_part_of_speech, data.lemmata.wdb, data.lemmata.persistent_id
-      | from serpens.concepts,data.lemmata
-      | where serpens.concepts.concept_id=data.lemmata.persistent_id""".stripMargin
+    s"""select distinct serpens.concepts.*, $data_schema.lemmata.modern_lemma,
+      |     $data_schema.lemmata.lemma_part_of_speech, $data_schema.lemmata.wdb, $data_schema.lemmata.persistent_id
+      | from serpens.concepts,$data_schema.lemmata
+      | where serpens.concepts.concept_id=$data_schema.lemmata.persistent_id""".stripMargin
 
   val conceptRelationQuery: String =
     """select distinct cl.*, s1.iri as parent_iri, s2.iri as child_iri
@@ -168,10 +171,9 @@ object diamantMapping {
       Δ(gtbDictionary, sense, !"wdb"),
       Δ(isPolyLexical, sense, r => BooleanLiteral(r.getBoolean("is_verbinding"))),
       Δ(isCoreSense, sense, r => BooleanLiteral(r.getBoolean("is_core"))),
-      Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_number").toInt),
+      Δ(senseOrder, sense, r => IntLiteral(r.getString("sense_order").toInt),
       )
-
-        // Δ(senseLabel, sense, !"sense_label")
+      // Δ(senseLabel, sense, !"sense_label")
     )
   }
 
