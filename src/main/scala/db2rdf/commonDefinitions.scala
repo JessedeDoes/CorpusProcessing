@@ -60,7 +60,7 @@ object commonDefinitions {
   val hyphenation:IRI = dataProperty(s"${diamantSchemaPrefix}hyphenation")
   val attestation:IRI = objectProperty(s"${lexcitSchemaPrefix}attestation")
   val locus:IRI = objectProperty(s"${lexcitSchemaPrefix}locus")
-
+  val rdfValue:IRI = dataProperty(s"${rdfPrefix}value")
   val diamantTextOfAttestation = objectProperty(s"${diamantSchemaPrefix}text")
   val hasCitedEntity = objectProperty(s"${citoPrefix}hasCitedEntity")
   val hasCitingEntity = objectProperty(s"${citoPrefix}hasCitingEntity")
@@ -120,6 +120,7 @@ object commonDefinitions {
   val formType = owlClass(s"${ontolexPrefix}Form")
   val attestationType = owlClass(s"${lexcitSchemaPrefix}Attestation")
   val locusType = owlClass(s"${lexcitSchemaPrefix}Locus")
+  val textSelectorType = owlClass(s"${oaPrefix}TextPositionSelector")
   val senseType = owlClass(s"${ontolexPrefix}LexicalSense")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
   val semanticRelationType  = owlClass(s"${diamantSchemaPrefix}SemanticRelation")
@@ -138,6 +139,9 @@ object commonDefinitions {
   val canonicalFormResourcePrefix = diamantBaseURI + "canonicalform/"
   val attestationResourcePrefix: String = diamantBaseURI + "attestation/"
   val locusResourcePrefix: String = diamantBaseURI + "locus/"
+  val selectorResourcePrefix: String = diamantBaseURI + "selector/"
+  val sourceResourcePrefix: String = diamantBaseURI + "oa_source/"
+  val targetResourcePrefix: String = diamantBaseURI + "oa_target/"
   val synsetResourcePrefix: String = diamantBaseURI + "synset/"
   val wordformResourcePrefix: String = diamantBaseURI + "wordform/"
   val conceptResourcePrefix: String = diamantBaseURI + "concept/"

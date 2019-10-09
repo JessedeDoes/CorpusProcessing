@@ -434,7 +434,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
       }
       if (theseg.text.contains("["))
         {
-          Console.err.println(s"$theseg => $childXML => $newSeg")
+          // Console.err.println(s"$theseg => $childXML => $newSeg")
         }
       w.copy(child = w.child.map(
         {
@@ -447,6 +447,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   def tokenizeOne(w: Elem): NodeSeq = {
     val seg = (w \ "seg")
+
     if (seg.isEmpty ||
       seg.text.contains("[") ||
       seg.text.contains("]") ||
@@ -456,26 +457,37 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     else {
 
       val theseg = (w \\ "seg").head.asInstanceOf[Elem]
+      val brun = theseg.text.contains("brun")
       if (theseg.child.exists(_.isInstanceOf[Elem])) {
-        val z: Seq[(Int, Option[Elem], Node)] = theseg.child.zipWithIndex.map(
+        if (brun) println(s"Tokenizing $seg")
+        val z: Seq[(Int, Option[Elem], Node)] = theseg.child.zipWithIndex.toSeq.flatMap(
           { case (n, i) if (i ==0 && n.isInstanceOf[Text]) => {
-             val t = Tokenizer.tokenizeOne(n.text)
-               if (t.leading.nonEmpty)
-                 (-1, Some(<pc type="pre">{t.leading}</pc>), Text(t.leading))
-               else (0, None, n)
-            }
+            val t = Tokenizer.tokenizeOne(n.text)
+            if (t.leading.nonEmpty)
+              Seq(
+                (-1, Some(<pc type="pre">{t.leading}</pc>), Text(t.leading)),
+                  (0, None, Text(t.token)),
+                  (0, None, Text(t.trailing))
+              )
+            else Seq((0, None, n))
+          }
           case (n,i) if (i == theseg.child.size -1 && n.isInstanceOf[Text]) => {
             val t = Tokenizer.tokenizeOne(n.text)
             if (t.trailing.nonEmpty)
-              (1, Some(<pc type="post">{t.trailing}</pc>), Text(t.trailing))
-            else (0, None, n)
+              Seq(
+                (0, None, Text(t.leading)),
+                (0, None, Text(t.token)),
+                (1, Some(<pc type="post">{t.trailing}</pc>), Text(t.trailing))
+              )
+            else Seq((0, None, n))
           }
-          case (n,i) => (0, None, n)
+          case (n,i) => Seq((0, None, n))
           }
         )
+        if (brun) println(z)
         if (!z.exists(_._1 != 0)) Seq(w) else
           {
-            val newSeg = theseg.copy(child = z.map(_._3))
+            val newSeg = theseg.copy(child = z.filter(_._1 == 0).map(_._3))
             val w1 = w.copy(child = w.child.map(
               {
                 case e:Elem if e.label == "seg" => newSeg
@@ -484,7 +496,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
             ))
             val pref = z.filter(x => x._1 == -1).map(_._2.get)
             val post = z.filter(x => x._1 == 1).map(_._2.get)
-            pref ++ Seq(w1) ++ post
+            val r = pref ++ Seq(w1) ++ post
+            if (brun) println(w1.text)
+            if (brun) println(r)
+            r
           }
       } else {
         val token = (w \\ "seg").text.replaceAll("\\s+", " ")

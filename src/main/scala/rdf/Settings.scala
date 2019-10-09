@@ -46,14 +46,15 @@ object Settings
                      |@prefix dcterms: <http://dublincore.org/2012/06/14/dcterms.ttl#> .
                      |@prefix frbr: <http://purl.org/vocab/frbr/core#> .
                      |@prefix cito: <http://purl.org/spar/cito/> .
-		     |@prefix time: <http://www.w3.org/2006/time#> .
-                     |@prefix oa <http://www.w3.org/ns/oa#> .
+                     |@prefix time: <http://www.w3.org/2006/time#> .
+                     |@prefix oa: <http://www.w3.org/ns/oa#> .
                      |@prefix : <#> .\n""".stripMargin
 
 
 
   lazy val prefixMap:Map[String,org.semanticweb.owlapi.model.IRI] = prefixes.split("\n").filter(_.contains("@")).toStream.map(l => {
     val l1 = l.replaceAll("^\\s*@prefix\\s*","").split("\\s*:\\s+")
+    println(l1.toList)
     l1(0) -> org.semanticweb.owlapi.model.IRI.create(l1(1).replaceAll(">\\s*\\.\\s*","").replaceAll("[<>]",""))
   }).toMap
 
@@ -73,10 +74,12 @@ object Settings
       val s1 = s.replaceAll("[<>]","")
 
       val bestMatch = prefixIRIS.find(p => s1.startsWith(p.toString.replaceAll("[<>]","")))
-      if (bestMatch.isDefined)
+      val s2 = if (bestMatch.isDefined)
         s1.replace(bestMatch.get.toString, reverse(bestMatch.get) + ":").replaceAll("^:", "")
       else
         s1
+      Console.err.println("Friendly: " + s2)
+      s2
     }
   }
 

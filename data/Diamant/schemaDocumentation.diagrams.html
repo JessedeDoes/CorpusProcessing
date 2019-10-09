@@ -70,7 +70,7 @@
                     
                     
                 
-    </pre><img src="images/a2f6d673-2e7e-4f62-ba2d-0f5e2cc7f5a2.svg"/>
+    </pre><img src="images/9db5d43a-3a97-4057-8647-dd4c121a9b98.svg"/>
             </div>
 
     <div>
@@ -120,7 +120,7 @@
 
 
         
-    </pre><img src="images/59c3c47d-979e-44a8-8b5a-09fabcdfb71a.svg"/>
+    </pre><img src="images/85244d4c-85a7-453f-8b92-c1a2e41cf76f.svg"/>
     </div>
     <div>
         <h2>DUELME</h2>
@@ -279,7 +279,7 @@
             ];
             .
         
-    </pre><img src="images/10c60fdc-4674-478a-b0a2-4824d8f0bbf8.svg"/>
+    </pre><img src="images/efcba4ff-ed42-4ac3-9fe3-e8007d46a6f5.svg"/>
     </div>
 <div>
 <h2>ANW</h2>
@@ -345,7 +345,7 @@
         :sensebet8.0_204831_definition int:definitionComplement &quot;Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten.&quot;@nl .
 
     
-    </pre><img src="images/67ecd4da-a9ac-49e4-aff0-523bddd41efd.svg"/>
+    </pre><img src="images/b5a9f59c-ad67-46b6-ab09-18edec25f510.svg"/>
 </div>
 <div>
     <div>
@@ -366,7 +366,7 @@
 &lt;/sense&gt;
 &lt;/entry&gt;
         </pre>
-        <img src="images/33da144d-2dc8-4d44-89a1-2118a3ed1433.svg"/>
+        <img src="images/410ad33f-adec-42ec-8c97-bc8ac9448338.svg"/>
         <div>
     <h3>Diamant attestation model</h3>
     More or less the model we had in the globalex paper:
@@ -443,31 +443,26 @@
     
     </pre><img src="images/lexcit_1.svg"/>
 
-    <pre>
+     <pre>
       
-    	 :e0 a ontolex:LexicalEntry ;
+         :e0 a ontolex:LexicalEntry ;
       ontolex:sense :s0 .
       :l0 a ontolex:Form .
       :e0 ontolex:canonicalForm :l0 .
       :l0 ontolex:writtenRep &quot;cow&quot; .
-      :f0 a ontolex:Form .
-      :f0 ontolex:writtenForm &quot;kine&quot; .
-      :e0 ontolex:lexicalForm :f0 .
       :s0 a ontolex:LexicalSense .
       :s0 ontolex:definition  &quot;Cows are useful animals&quot; .
+
       :lc0 a diamant:Locus .
       :s0 diamant:attestation :q0 .
-      :f0 diamant:attestation :q0 .
       :s0 cito:cites :textWitness .
-      :f0 cito:cites :textWitness .
       :q0 a diamant:Attestation .
       :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
       cito:citesAsEvidence a cito:CitationCharacterization .
       :q0 cito:hasCitingEntity :s0 .
-      :q0 cito:hasCitingEntity :f0 .
       :q0 cito:hasCitedEntity :textWitness .
       :s0 cito:citesAsEvidence :textWitness .
-      :f0 cito:citesAsEvidence :textWitness .
+      :q0 diamant:locus :lc0 .
       :q0 diamant:quotation &quot;The kine spake booh&quot; .
       :q0 diamant:readingCertain &quot;true&quot; .
       :q0 diamant:interpretationCertain &quot;false&quot; .
@@ -478,11 +473,66 @@
       :exp0 dcterms:author &quot;Bovina Korovina&quot; .
       :exp0 diamant:title &quot;Meadow Meanderings&quot; .
       :exp0 frbr:embodiment :textWitness .
+      :textWitness frbr:embodimentOf :exp0 .
       :textWitness a frbr:Manifestation .
       :textWitness diamant:notBefore 1810 .
       :textWitness diamant:notAfter 1812 .
     
-    </pre><img src="images/lexcit_2.svg"/>
+    </pre><img src="images/lexcit_1.svg"/>
+
+    <pre>
+      
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#attestation&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; a &lt;http://www.w3.org/ns/oa#TextPositionSelector&gt; ;
+	&lt;http://www.w3.org/ns/oa#end&gt; &quot;110&quot;^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://www.w3.org/ns/oa#hasBody&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#value&gt; &quot;Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen,&quot; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; &lt;http://www.w3.org/ns/oa#start&gt; &quot;107&quot;^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; &lt;http://www.w3.org/ns/oa#hasSource&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; ;
+	&lt;http://www.w3.org/ns/oa#hasSelector&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://purl.org/spar/cito/hasCitingEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; ;
+	&lt;http://www.w3.org/ns/oa#hasTarget&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; ;
+	&lt;http://purl.org/spar/cito/hasCitedEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; a &lt;http://rdf.ivdnt.org/schema/diamant#Locus&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#text&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#locus&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#beginIndex&gt; &quot;107&quot;^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#quotation&gt; &quot;Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen,&quot; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#endIndex&gt; &quot;110&quot;^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; a &lt;http://rdf.ivdnt.org/schema/diamant#Attestation&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2004/02/skos/core#definition&gt; &quot;Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes �� quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen.&quot; ;
+	&lt;http://lemon-model.net/lemon#definition&gt; &lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#gtbId&gt; &quot;M030758.bet.207&quot; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#senseOrder&gt; &quot;216&quot;^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#polyLexical&gt; &quot;true&quot;^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+
+&lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#definitionText&gt; &quot;Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes �� quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen.&quot; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#isCoreSense&gt; &quot;false&quot;^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/entry/WNT/M030758&gt; &lt;http://www.w3.org/ns/lemon/ontolex#sense&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; &quot;V.���&quot; ;
+	a &lt;http://www.w3.org/ns/lemon/ontolex#LexicalSense&gt; .
+
+&lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; a &lt;http://lemon-model.net/lemon#SenseDefinition&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#dictionary&gt; &quot;WNT&quot; .
+    
+    </pre><img src="images/lexcit_oa.svg"/>
     </div>
     </div>
     

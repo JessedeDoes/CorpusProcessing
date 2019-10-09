@@ -5,7 +5,7 @@ import java.util.zip.GZIPInputStream
 
 import guru.nidi.graphviz.engine.{Format, Graphviz}
 import guru.nidi.graphviz.parse._
-import org.openrdf.model.{Graph, Resource, Statement}
+import org.openrdf.model._
 import org.openrdf.rio.{RDFFormat, Rio}
 import org.postgresql.util.ReaderInputStream
 import rdf.Settings.prefixMap
@@ -76,9 +76,35 @@ object readRDF {
 
   def parseStringToStatements(rdf: String): Stream[Statement] = parseStringToGraph(rdf).iterator().asScala.toStream
 
+  def lcp(list: String*) = list.foldLeft("")((_,_) =>
+    (list.min.view,list.max.view).zipped.takeWhile(v => v._1 == v._2).unzip._1.mkString)
+
+  def uniqueSuffix(all: Set[String], s: String) = {
+    val maxCommonSufLen = all.filter(_ != s).map(z => lcp(s.reverse, z.reverse).length).max
+    val start = s.length - maxCommonSufLen-1
+    val x = s.zipWithIndex.filter({case (c,i) => c== '/' || c == '#' && i <= start}).lastOption.map(_._2)
+    if (x.isDefined) s.substring(x.get,s.length) else s.substring(start,s.length)
+  }
+
+  def getShortNameMapR(r: Set[org.openrdf.model.Resource]): Map[Value, String] = {
+    val allNames = r.map(_.stringValue())
+    r.map(r => r -> uniqueSuffix(allNames, r.stringValue())).toMap
+  }
+
+  def getShortNameMapV(r: Set[org.openrdf.model.Value]): Map[Value, String] = {
+     val allNames = r.map(_.stringValue())
+     r.map(r => r -> uniqueSuffix(allNames, r.stringValue())).toMap
+  }
+  def getShortNameMapU(r: Set[org.openrdf.model.URI]): Map[URI, String] = {
+    val allNames = r.map(_.stringValue())
+    r.map(r => r -> uniqueSuffix(allNames, r.stringValue())).toMap
+  }
+  // Bug: short name moet uniek gemaakt worden ...
   def shortName(r: org.openrdf.model.Value): String = {
     val s = r.stringValue().replaceAll("[#/]$", "").replaceAll(".*(#|/)", "")
-    if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]", "") else s
+    val x = if (s.isEmpty) r.stringValue().replaceAll("^[A-Za-z:]", "") else s
+    Console.err.println(s"${r.stringValue()} --> $x")
+    x
   }
 
   def shortName(r: org.openrdf.model.URI): String = {

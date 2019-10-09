@@ -112,7 +112,7 @@ object diagrams {
     </table>
   }
 
-  def makeIdentifier(str: String) = str.replaceAll("[^A-Za-z0-9:]","")
+  def makeIdentifier(str: String) = str.replaceAll("[^A-Za-z0-9:]","").replaceAll("^:","")
 
 
   def makeDot(seq: Seq[Statement], includeClassInLabel: Boolean = true):String = {
@@ -140,10 +140,22 @@ object diagrams {
     }
 
     import Settings.isIsA
+
+    val allResources: Set[Resource] = bySubject.keySet ++ bySubject.values.flatMap(l =>
+      l.flatMap(s =>  {
+        val obj = if (isObjectProperty(s)) Set(s.getObject.asInstanceOf[Resource]) else Set()
+        Set(s.getPredicate) ++ obj
+      }
+    ))
+
+    val resourceShortNameMap = getShortNameMapR(allResources)
+
+    Console.err.println(resourceShortNameMap)
+
     val subjectInfo:List[String] = bySubject.toList.map(
       {
         case (s,l) =>
-          val n = shortName(s)
+          val n = resourceShortNameMap(s)
           val n1 = makeIdentifier(n)
           Console.err.println(s"Subject: $s $n / $n1")
           val className = l.find(Settings.isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
@@ -160,7 +172,7 @@ object diagrams {
 
           (s"""\n$n1 [label=<$htmlLabel>]// [label="{$n : $label}"]"""
             ::
-            objectProperties.toList.map( o => s"""${n1} -> ${makeIdentifier(shortName(o.getObject))} [ color="#000088", arrowhead=vee, label = ${quote(objectPropertyLabel(o))}] """))
+            objectProperties.toList.map( o => s"""${n1} -> ${makeIdentifier(resourceShortNameMap(o.getObject))} [ color="#000088", arrowhead=vee, label = ${quote(objectPropertyLabel(o))}] """))
             .mkString("\n")
       }
     )
@@ -181,11 +193,13 @@ object diagrams {
     ).toList
 
 
-    s"""
+    val r = s"""
        |$prelude
          ${subjectInfo.mkString("\n")}
          ${objectInfo.mkString("\n")}
        |}""".stripMargin
+    println(r)
+    r
   }
 
   def main(args: Array[String]):Unit = {

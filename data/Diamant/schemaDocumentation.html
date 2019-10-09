@@ -471,42 +471,55 @@
     </example>
 
     <example name="lexcit_oa">
-    	 :e0 a ontolex:LexicalEntry ;
-      ontolex:sense :s0 .
-      :l0 a ontolex:Form .
-      :e0 ontolex:canonicalForm :l0 .
-      :l0 ontolex:writtenRep "cow" .
-      :f0 a ontolex:Form .
-      :f0 ontolex:writtenForm "kine" .
-      :e0 ontolex:lexicalForm :f0 .
-      :s0 a ontolex:LexicalSense .
-      :s0 ontolex:definition  "Cows are useful animals" .
-      :lc0 a diamant:Locus .
-      :s0 diamant:attestation :q0 .
-      :f0 diamant:attestation :q0 .
-      :s0 cito:cites :textWitness .
-      :f0 cito:cites :textWitness .
-      :q0 a diamant:Attestation .
-      :q0 cito:hasCitationCharacterization cito:citesAsEvidence .
-      cito:citesAsEvidence a cito:CitationCharacterization .
-      :q0 cito:hasCitingEntity :s0 .
-      :q0 cito:hasCitingEntity :f0 .
-      :q0 cito:hasCitedEntity :textWitness .
-      :s0 cito:citesAsEvidence :textWitness .
-      :f0 cito:citesAsEvidence :textWitness .
-      :q0 diamant:quotation "The kine spake booh" .
-      :q0 diamant:readingCertain "true" .
-      :q0 diamant:interpretationCertain "false" .
-      :lc0 diamant:locusIn :q0 .
-      :lc0 nif:beginIndex 5 .
-      :lc0 nif:endIndex 8 .
-      :exp0 a frbr:Expression .
-      :exp0 dcterms:author "Bovina Korovina" .
-      :exp0 diamant:title "Meadow Meanderings" .
-      :exp0 frbr:embodiment :textWitness .
-      :textWitness a frbr:Manifestation .
-      :textWitness diamant:notBefore 1810 .
-      :textWitness diamant:notAfter 1812 .
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#attestation&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; a &lt;http://www.w3.org/ns/oa#TextPositionSelector&gt; ;
+	&lt;http://www.w3.org/ns/oa#end&gt; "110"^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://www.w3.org/ns/oa#hasBody&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#value&gt; "Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; &lt;http://www.w3.org/ns/oa#start&gt; "107"^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; &lt;http://www.w3.org/ns/oa#hasSource&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; ;
+	&lt;http://www.w3.org/ns/oa#hasSelector&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://purl.org/spar/cito/hasCitingEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; ;
+	&lt;http://www.w3.org/ns/oa#hasTarget&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; ;
+	&lt;http://purl.org/spar/cito/hasCitedEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; a &lt;http://rdf.ivdnt.org/schema/diamant#Locus&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#text&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#locus&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#beginIndex&gt; "107"^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#quotation&gt; "Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#endIndex&gt; "110"^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; a &lt;http://rdf.ivdnt.org/schema/diamant#Attestation&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2004/02/skos/core#definition&gt; "Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes �� quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." ;
+	&lt;http://lemon-model.net/lemon#definition&gt; &lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#gtbId&gt; "M030758.bet.207" ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#senseOrder&gt; "216"^^&lt;http://www.w3.org/2001/XMLSchema#int&gt; ;
+	&lt;http://rdf.ivdnt.org/schema/diamant#polyLexical&gt; "true"^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+
+&lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#definitionText&gt; "Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes �� quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#isCoreSense&gt; "false"^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/entry/WNT/M030758&gt; &lt;http://www.w3.org/ns/lemon/ontolex#sense&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2000/01/rdf-schema#label&gt; "V.���" ;
+	a &lt;http://www.w3.org/ns/lemon/ontolex#LexicalSense&gt; .
+
+&lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; a &lt;http://lemon-model.net/lemon#SenseDefinition&gt; .
+
+&lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#dictionary&gt; "WNT" .
     </example>
     </div>
     </div>

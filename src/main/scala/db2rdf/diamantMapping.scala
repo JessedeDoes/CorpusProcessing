@@ -77,7 +77,7 @@ object diamantMapping {
       |   and d.document_id=t.document_id and t.sense_id is not null""".stripMargin
 
   val senseAttestationQuery: String =
-    s"""select t.attestation_id, sa.sense_id, sa.wdb from $data_schema.token_attestations t left join $sense_schema.sense_attestations_reloaded sa
+    s"""select t.attestation_id, t.quote, t.start_pos, t.end_pos, sa.sense_id, sa.wdb from $data_schema.token_attestations t left join $sense_schema.sense_attestations_reloaded sa
       | on
       |   sa.quotation_section_id = t.quotation_section_id
       |   where sa.sense_id is not null""".stripMargin
@@ -238,6 +238,7 @@ object diamantMapping {
     val theLocus = ~s"$locusResourcePrefix$$attestation_id"
     val theQuotation = ~s"$quotationResourcePrefix$$wdb/$$document_id" // doen we die nou nog?
     val nope:Mapping = NopeMapping()
+
     ⊕(
       attestationQuery,
       if (!Settings.miniDiamant) Ω(attestation, ~s"$wordformResourcePrefix$$wdb$$analyzed_wordform_id", theAttestation) else nope,
@@ -254,11 +255,27 @@ object diamantMapping {
 
   val senseAttestations: Mappings = {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
+    val theSelector = ~s"${selectorResourcePrefix}$$attestation_id"
+    val theSource = ~s"${sourceResourcePrefix}$$attestation_id"
+    val theTarget = ~s"${targetResourcePrefix}$$attestation_id"
     val quotation = ~s"${quotationResourcePrefix}$$wdb/$$document_id"
     val theSense = ~s"$senseResourcePrefix$$wdb/$$sense_id"
+
+    val basics = List(Ω(attestation, theSense, theAttestation),
+      Ω(hasCitingEntity, theAttestation, theSense))
+
+    val oaStuff: Seq[Mapping] = if (Settings.miniDiamant) List(
+      Ω(hasBody, theAttestation, theSense),
+      Ω(hasTarget, theAttestation, theTarget),
+      Ω(hasSource, theTarget, theSource),
+      Δ(rdfValue, theSource, !"quote"),
+      Ω(hasSelector, theTarget, theSelector),
+      Ω(isA, theSelector, textSelectorType),
+      Δ(oaStart, theSelector, r => IntLiteral(r.getInt("start_pos"))),
+      Δ(oaEnd, theSelector, r => IntLiteral(r.getInt("end_pos")))
+    ) else List()
     ⊕(senseAttestationQuery,
-      Ω(attestation, theSense, theAttestation),
-      Ω(hasCitingEntity, theAttestation, theSense),
+      (basics ++  oaStuff):_*
     ) // dit lijkt 2 keer te gebeuren?
   }
 

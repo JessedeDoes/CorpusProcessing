@@ -194,15 +194,26 @@ object bab {
     updateElement(d, _.label=="w", newCorresp)
   }
 
+  def fixWeirdLinebreaksIn(e: Elem) = {
+    val childElements = e.child.zipWithIndex.filter(_._1.isInstanceOf[Elem]).toSeq
+    val dinges = childElements.zipWithIndex
+    val fixes: Set[Int] = dinges.filter({case ((n, i),j) =>
+        n.label == "lb" && (!((n \ "@rend").text == "lineBreak")) && ((j > 0 && childElements(j-1)._1.label=="lb")||
+        (j > dinges.size -1 && childElements(j+1)._1.label=="lb"))  }).map(_._1._2).toSet
+    val newChildren = e.child.zipWithIndex.map({case (n,i) => if (fixes.contains(i)) n.asInstanceOf[Elem].copy(label="pb") else n})
+    e.copy(child = newChildren)
+  }
+
   def doFile(in:String, out:String) = {
     val d = XML.load(in)
-    val d1 = createWordids.createWordIds(d)
+    val d1 = createWordids.createWordIds(d,false)
     val d2 = updateElement(d1, _.label=="w", doW)
     val d2b = updateElement(d2, _.label=="pc", simplifyPC)
     val d3 = updateElement2(d2b, _.label=="c", x => Seq(Text(" "))).asInstanceOf[Elem]
     val d4 = updateElement2(d3, _.label=="w", tokenize).head.asInstanceOf[Elem]
     val d5 = markWordformGroups(d4)
-    XML.save(out,d5,"UTF-8")
+    val d6 = updateElement3(d5, e => true, fixWeirdLinebreaksIn)
+    XML.save(out,d6,"UTF-8")
   }
 
   def main(args: Array[String]): Unit = {

@@ -66,10 +66,10 @@ object createWordids {
     else e
   }
 
-  def createWordIds(d: Elem) =
+  def createWordIds(d: Elem, eindhoven: Boolean = true) =
     {
       val d1 = createNumberedWordIds(d, 0)._1.asInstanceOf[Elem]
-      updateElement3(d1, x => x.label.startsWith("div") || x.label=="p", doDivOfPee)
+      if (eindhoven) updateElement3(d1, x => x.label.startsWith("div") || x.label=="p", doDivOfPee) else d1
     }
 
 
