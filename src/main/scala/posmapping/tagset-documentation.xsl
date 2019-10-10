@@ -2,7 +2,7 @@
                 xmlns:xsl="http://www.w3.org/1999/XSL/Transform"
                 xmlns:fun="http://some.functions.nl"
                 xmlns="http://www.w3.org/1999/xhtml">
-  <xsl:output method="text"/>
+  <xsl:output method="html"/>
   <xsl:strip-space elements="*" />
 
 <xsl:function name="fun:triple"><xsl:param name="subject"/><xsl:param name="predicate"/><xsl:param name="object"/>
@@ -12,7 +12,7 @@
   
 <xsl:template match="/">
   <xsl:for-each select=".//mainPoS/pos">
-    
+    <h1><xsl:value-of select="./text()"/> (<xsl:value-of select="./@desc"/>)</h1>
   </xsl:for-each>
 </xsl:template>
  
