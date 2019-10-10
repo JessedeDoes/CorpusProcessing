@@ -166,7 +166,7 @@
         <feature desc="Verb mood. Only imperative has been distinguished from the indicative; tagging subjunctives turned out to be problematic">
             <name>mood</name>
             <values>
-                <featureValue>
+                <featureValue desc="Imperative">
                     <value>imperative</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -356,7 +356,7 @@
                         <pos>NOU</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue desc="Comparing conjunction (als)">
+                <featureValue desc="Comparing conjunction (als, dan, gelijk-dat, alsof, ...)">
                     <value>comparison</value>
                     <posForValue>
                         <pos>CON</pos>
@@ -381,7 +381,7 @@
                         <pos>CON</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue desc="General ?" >
+                <featureValue desc="General" >
                     <value>general</value>
                     <posForValue>
                         <pos>ADP</pos>
@@ -403,7 +403,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue  desc="Interjective">
+                <featureValue  desc="Interjective (this is useless, omit?)">
                     <value>interjection</value>
                     <posForValue>
                         <pos>INT</pos>
