@@ -121,17 +121,20 @@ object commonDefinitions {
   val attestationType = owlClass(s"${lexcitSchemaPrefix}Attestation")
   val locusType = owlClass(s"${lexcitSchemaPrefix}Locus")
   val textSelectorType = owlClass(s"${oaPrefix}TextPositionSelector")
+  val annotationType = owlClass(s"${oaPrefix}Annotation")
   val senseType = owlClass(s"${ontolexPrefix}LexicalSense")
   val synonymDefinitionType = owlClass(s"${diamantSchemaPrefix}SynonymDefinition")
   val semanticRelationType  = owlClass(s"${diamantSchemaPrefix}SemanticRelation")
   val quotationType  = owlClass(s"${diamantSchemaPrefix}Quotation")
   val manifestationType  = owlClass(s"${frbrPrefix}Manifestation")
   val expressionType  = owlClass(s"${frbrPrefix}Expression")
+
   // resource prefixes
 
   val diamantBaseURI: String = INTBaseURI + "lexica/diamant/"
   val quotationResourcePrefix: String = diamantBaseURI + "quotation/"
   val expressionResourcePrefix: String = diamantBaseURI + "expression/"
+  val annotationResourcePrefix: String = diamantBaseURI + "annotation/"
   val senseResourcePrefix: String = diamantBaseURI + "sense/"
   val definitionResourcePrefix: String = diamantBaseURI + "definition/"
   val synonymDefinitionResourcePrefix: String = diamantBaseURI + "synonymdefinition/"

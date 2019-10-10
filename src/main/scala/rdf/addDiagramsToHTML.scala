@@ -7,67 +7,52 @@ object addDiagramsToHTML extends App
 
   val stuff = <div>
     <head>The basic attestation model</head>
-    <ontology source="data/Diamant/diamant.fss"></ontology>
+
     <example>
-      :lemma_78332 a ontolex:LexicalEntry .
-      :lemma_78332 ontolex:canonicalForm :lemmavorm_78332 .
-      :lemma_78332 rdfs:label "kat"@nl .
-      :lemma_78332 rdf:type ontolex:Word .
-      :lemmavorm_78332 rdf:type ontolex:Form .
-      :lemmavorm_78332 ontolex:writtenRepresentation "kat"@nl .
-      :lemmavorm_78332 ontolex:phoneticRepresentation "*k ɑ t"@nl-ReadSpeaker-fonipa .
-      :lemma_78332 ontolex:sense :sensebet1.0_78333 .
-      :sensebet1.0_78333 lemon:definition :sensebet1.0_78333_definition .
-      :sensebet1.0_78333 int:senseOrder 1 .
-
-      :sensebet1.0_78333_definition lemon:value "klein huisdier dat miauwt en spint en dat gehouden wordt als gezelschapsdier of voor het vangen van muizen en ratten; huiskat; poes"@nl .
-      :sensebet1.0_78333_definition int:definitionComplement "Zowel in toepassing op dieren van het vrouwelijk als van het mannelijk geslacht."@nl .
-
-      :lemma_78332 ontolex:sense :sensebet1.1_195644 .
-      :sensebet1.1_195644 lemon:definition :sensebet1.1_195644_definition .
-      :sensebet1.1_195644 int:subsenseOrder 1 .
-
-      :sensebet1.1_195644_definition lemon:value "beeld of afbeelding van een kat, bv. in de kunst"@nl .
-
-      :relation_sensebet1.1_195644 rdf:type vartrans:SenseRelation .
-      :relation_sensebet1.1_195644 vartrans:source :sense_bet1.0_78333  .
-      :relation_sensebet1.1_195644 vartrans:target :sense_bet1.1_195644  .
-      :relation_sensebet1.1_195644 vartrans:category :metonymie  .
-
-      :lemma_78332 ontolex:sense :sensebet2.0_78334 .
-      :sensebet2.0_78334 lemon:definition :sensebet2.0_78334_definition .
-      :sensebet2.0_78334 int:senseOrder 2 .
-      :sensebet2.0_78334_definition lemon:value "roofdier dat behoort tot de familie van de katachtigen (Felidae), bv. een tijger, leeuw of huiskat; katachtige"@nl .
-      :sensebet2.0_78334_definition int:definitionComplement "Vaak in het meervoud."@nl .
-      :lemma_78332 ontolex:sense :sensebet3.0_78335 .
-      :sensebet3.0_78335 lemon:definition :sensebet3.0_78335_definition .
-      :sensebet3.0_78335 int:senseOrder 3 .
-      :sensebet3.0_78335_definition lemon:value "bitse, vinnige vrouw; bits of vinnig meisje"@nl .
-      :lemma_78332 ontolex:sense :sensebet4.0_78336 .
-      :sensebet4.0_78336 lemon:definition :sensebet4.0_78336_definition .
-      :sensebet4.0_78336 int:senseOrder 4 .
-      :sensebet4.0_78336_definition lemon:value "bitse opmerking; snauw"@nl .
-      :lemma_78332 ontolex:sense :sensebet5.0_204707 .
-      :sensebet5.0_204707 lemon:definition :sensebet5.0_204707_definition .
-      :sensebet5.0_204707 int:senseOrder 5 .
-      :sensebet5.0_204707_definition lemon:value "middeleeuws belegeringswerktuig in de vorm van een lage, langwerpige houten constructie op rollen, die de aanvallers tegen een vestingmuur plaatsten om beschut en ongehinderd een bres in de muur te slaan, een muur te ondergraven of een vestinggracht te dempen"@nl .
-      :sensebet5.0_204707_definition int:definitionComplement "Alleen in historiserend taalgebruik."@nl .
-      :lemma_78332 ontolex:sense :sensebet6.0_204722 .
-      :sensebet6.0_204722 lemon:definition :sensebet6.0_204722_definition .
-      :sensebet6.0_204722 int:senseOrder 6 .
-      :sensebet6.0_204722_definition lemon:value "hoog boven de wal uitstekende opstellingsplaats voor geschut, op een bastion of elders in een verdedigingswerk"@nl .
-      :sensebet6.0_204722_definition int:definitionComplement "Alleen in historiserend taalgebruik."@nl .
-      :lemma_78332 ontolex:sense :sensebet7.0_204817 .
-      :sensebet7.0_204817 lemon:definition :sensebet7.0_204817_definition .
-      :sensebet7.0_204817 int:senseOrder 7 .
-      :sensebet7.0_204817_definition lemon:value "toestel waaraan een takel hangt en dat langs een geleidingsbaan wordt voortbewogen om lasten tussen vaste punten te vervoeren; loopkat"@nl .
-      :lemma_78332 ontolex:sense :sensebet8.0_204831 .
-      :sensebet8.0_204831 lemon:definition :sensebet8.0_204831_definition .
-      :sensebet8.0_204831 int:senseOrder 8 .
-      :sensebet8.0_204831_definition lemon:value "gesel van touwen met geknoopte uiteinden waarmee men vroeger misdadige matrozen of slaven strafte; geselkat"@nl .
-      :sensebet8.0_204831_definition int:definitionComplement "Alleen in historiserend taalgebruik en meestal in de verbinding kat met de negen (of zeven) staarten."@nl .
-
-    </example>
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.org/vocab/frbr/core#Manifestation&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://rdf.ivdnt.org/schema/diamant#Quotation&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://purl.org/vocab/frbr/core#embodimentOf&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://rdf.ivdnt.org/schema/diamant#dictionary&gt;	"WNT" .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://rdf.ivdnt.org/schema/diamant#gtbId&gt;	"M030758.eg.31647" .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://rdf.ivdnt.org/schema/diamant#witnessYearFrom&gt;	"1621"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; &lt;http://rdf.ivdnt.org/schema/diamant#witnessYearTo&gt;	"1621"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#value&gt;	"Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://purl.org/vocab/frbr/core#Expression&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819&gt; &lt;http://dublincore.org/2012/06/14/dcterms.ttl#creator&gt;	"N. V. REIGERSB." .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819&gt; &lt;http://dublincore.org/2012/06/14/dcterms.ttl#title&gt;	"Br." .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819&gt; &lt;http://purl.org/vocab/frbr/core#embodiment&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/annotation/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/oa#Annotation&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/annotation/2108540&gt; &lt;http://www.w3.org/ns/oa#hasBody&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/annotation/2108540&gt; &lt;http://www.w3.org/ns/oa#hasTarget&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://rdf.ivdnt.org/schema/diamant#Attestation&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://purl.org/spar/cito/hasCitedEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://purl.org/spar/cito/hasCitingEntity&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#locus&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#quotation&gt;	"Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; &lt;http://rdf.ivdnt.org/schema/diamant#text&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/entry/WNT/M030758&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/lemon/ontolex#LexicalEntry&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/entry/WNT/M030758&gt; &lt;http://www.w3.org/ns/lemon/ontolex#sense&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/oa#TextPositionSelector&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; &lt;http://www.w3.org/ns/oa#end&gt;	"110"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; &lt;http://www.w3.org/ns/oa#start&gt;	"107"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; &lt;http://www.w3.org/ns/oa#hasSelector&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/selector/2108540&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540&gt; &lt;http://www.w3.org/ns/oa#hasSource&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://www.w3.org/ns/lemon/ontolex#LexicalSense&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2000/01/rdf-schema#label&gt;	"V.—" .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://lemon-model.net/lemon#definition&gt; &lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#attestation&gt; &lt;http://rdf.ivdnt.org/lexica/diamant/attestation/2108540&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#dictionary&gt;	"WNT" .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#gtbId&gt;	"M030758.bet.207" .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#isCoreSense&gt;	"false"^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#polyLexical&gt;	"true"^^&lt;http://www.w3.org/2001/XMLSchema#boolean&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#senseOrder&gt;	"216"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/2004/02/skos/core#definition&gt;	"Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes à quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." .
+      &lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://lemon-model.net/lemon#SenseDefinition&gt; .
+      &lt;http://rdf.ivdnt.org/definition/WNT/M030758.bet.207&gt; &lt;http://rdf.ivdnt.org/schema/diamant#definitionText&gt;	"Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes à quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://www.w3.org/1999/02/22-rdf-syntax-ns#type&gt; &lt;http://rdf.ivdnt.org/schema/diamant#Locus&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#beginIndex&gt;	"107"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+      &lt;http://rdf.ivdnt.org/lexica/diamant/locus/2108540&gt; &lt;http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#endIndex&gt;	"110"^^&lt;http://www.w3.org/2001/XMLSchema#integer&gt; .
+        </example>
   </div>
 
   val document = if (args.size > 0) XML.load(args(0)) else stuff

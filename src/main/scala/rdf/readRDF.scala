@@ -82,8 +82,12 @@ object readRDF {
   def uniqueSuffix(all: Set[String], s: String) = {
     val maxCommonSufLen = all.filter(_ != s).map(z => lcp(s.reverse, z.reverse).length).max
     val start = s.length - maxCommonSufLen-1
-    val x = s.zipWithIndex.filter({case (c,i) => c== '/' || c == '#' && i <= start}).lastOption.map(_._2)
-    if (x.isDefined) s.substring(x.get,s.length) else s.substring(start,s.length)
+    val x = s.zipWithIndex.filter({case (c,i) => (c== '/' || c == '#') && i < start}).lastOption.map(_._2)
+    if (x.isDefined) {
+      val z = s.substring(x.get, s.length)
+      Console.err.println(s"HOO $start -> $x ($z)")
+      z
+    } else s.substring(start,s.length)
   }
 
   def getShortNameMapR(r: Set[org.openrdf.model.Resource]): Map[Value, String] = {

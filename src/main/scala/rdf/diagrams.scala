@@ -158,7 +158,7 @@ object diagrams {
           val n = resourceShortNameMap(s)
           val n1 = makeIdentifier(n)
           Console.err.println(s"Subject: $s $n / $n1")
-          val className = l.find(Settings.isIsA).map(s => shortName(s.getObject)).getOrElse("UNK")
+          val className = l.find(Settings.isIsA).map(s => shortName(s.getObject)).getOrElse("Resource")
 
           val dataProperties = l.filter(isDataProperty)
           val objectProperties = l.filter(isObjectProperty).filter(!isIsA(_)).sortBy(_.getPredicate.toString)

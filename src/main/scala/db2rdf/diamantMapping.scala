@@ -255,6 +255,7 @@ object diamantMapping {
 
   val senseAttestations: Mappings = {
     val theAttestation = ~s"${attestationResourcePrefix}$$attestation_id"
+    val theAnnotation = ~s"${annotationResourcePrefix}$$attestation_id"
     val theSelector = ~s"${selectorResourcePrefix}$$attestation_id"
     val theSource = ~s"${sourceResourcePrefix}$$attestation_id"
     val theTarget = ~s"${targetResourcePrefix}$$attestation_id"
@@ -265,8 +266,9 @@ object diamantMapping {
       Ω(hasCitingEntity, theAttestation, theSense))
 
     val oaStuff: Seq[Mapping] = if (Settings.miniDiamant) List(
-      Ω(hasBody, theAttestation, theSense),
-      Ω(hasTarget, theAttestation, theTarget),
+      Ω(hasBody, theAnnotation, theSense),
+      Ω(isA, theAnnotation, annotationType),
+      Ω(hasTarget, theAnnotation, theTarget),
       Ω(hasSource, theTarget, theSource),
       Δ(rdfValue, theSource, !"quote"),
       Ω(hasSelector, theTarget, theSelector),
