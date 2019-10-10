@@ -34,6 +34,8 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
     val x = f.split("=")
     Try(Feature(x(0),x(1))) match
       {
+      case Success(f) if f.value == "auxiliary" => f.copy(value="aux/cop") // HM.....
+      case Success(f) if f.value == "indefinite" => f.copy(value="indef") // HM.....
       case Success(f) => f
       case _ => Feature("kwip", f)
     }

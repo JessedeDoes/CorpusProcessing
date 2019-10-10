@@ -1,0 +1,232 @@
+<tagset>
+    <prefix>chnpos</prefix>
+    <mainPoS>
+        <pos desc="Adjective">ADJ</pos>
+        <pos desc="Adposition">ADP</pos>
+        <pos desc="Adverb">ADV</pos>
+        <pos desc="Conjunction">CON</pos>
+        <pos desc="Interjection">INT</pos>
+        <pos desc="Noun">NOU</pos>
+        <pos desc="Numeral">NUM</pos>
+	<pos desc="Pronoun/determiner">PD</pos>
+        <pos desc="Residual">RES</pos>
+        <pos desc="Verb">VRB</pos>
+    </mainPoS>
+    <partitions>
+        <feature>
+            <name desc="Adverb type">advType</name>
+            <values>
+                <value desc="Pronominal adverb">pronominal</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Finiteness">finiteness</name>
+            <values>
+                <value desc="Finite verb">finite</value>
+                <value desc="Infinitive or gerund">inf/ger</value>
+                <value des="Participle">part</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Inflection">inflection</name>
+            <values>
+                <value desc="No inflection">0</value>
+                <value desc="Inflection -a">a</value>
+                <value desc="Inflection -e">e</value>
+                <value desc="Inflection -n">n</value>
+                <value desc="Other values">other</value>
+		<value desc="Inflection -r or -re">r/re</value>
+		<value desc="Inflection -s or -th">s/th</value>
+                <value desc="Inflection -t">t</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Verb mood">mood</name>
+            <values>
+                <value desc="Imperative">imperative</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Number">number</name>
+            <values>
+                <value desc="Other values">other</value>
+                <value desc="Plural">pl</value>
+                <value desc="Singular">sg</value>
+            </values>
+        </feature>
+        <feature>
+            <name>person</name>
+            <values>
+                <value desc="First person">1</value>
+                <value desc="Second person">2</value>
+                <value desc="Third person">3</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Part of speech">pos</name>
+	    <values>
+	       <value desc="Adjective">ADJ</value>
+ 	       <value desc="Adposktion">ADP</value>
+               <value desc="Adverb">ADV</value>
+               <value desc="Conjunction">CON</value>
+               <value desc="Interjection">INT</value>
+               <value desc="Noun">NOU</value>
+               <value desc="Numeral">NUM</value>
+               <value desc="Pronoun/determiner">PD</value>
+               <value desc="Residual">RES</value>
+               <value desc="Verb">VRB</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Subtype (for determiners)">subtype</name>
+            <values>
+                <value>def</value>
+                <value>indef</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Verb tense">tense</name>
+            <values>
+                <value desc="Past tense">past</value>
+                <value desc="Present tense">present</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Type: subcategorisation, depending on part of speech">type</name>
+            <values>
+                <value desc="Unspecified">-</value>
+                <value desc="Article">art</value>
+                <value desc="Auxiliary or copula">aux/cop</value>
+                <value desc="Cardinal">cardinal</value>
+                <value desc="Common noun">common</value>
+                <value desc="Comparing conjunction (als)">comparison</value>
+                <value desc="Coordinating conjunction">coordinating</value>
+                <value desc="Demonstrative">dem</value>
+                <value desc="Explicative">explicative</value>
+                <value desc="General ?">general</value>
+		<value desc="Indefinite (pronoun/determiner)">indef</value>
+                <value desc="Interjective">int</value>
+                <value desc="Interjective">interjection</value>
+                <value desc="Main verb (not auxiliary of copula)">main</value>
+                <value desc="Negative">negative</value>
+                <value desc="Ordinal">ordinal</value>
+                <value desc="Other">other</value>
+		<value desc="Personal (pronoun/determiner)">pers</value>
+                <value desc="Possessive">poss</value>
+                <value desc="Proper noun">proper</value>
+                <value desc="Qualitative adverb">quality</value>
+                <value desc="Reflective of reciprocal">refl/recp</value>
+		<value desc="Relative (pronoun/determiner)">rel</value>
+                <value desc="Resumptive">resumptive</value>
+                <value desc="Subordinating conjunction">subordinating</value>
+            </values>
+        </feature>
+        <feature>
+            <name desc="Description of role of token as part of a multi-token word (e.g. a separable verb)">wordpart</name>
+            <values>
+                <value desc="Adpositional part of word">adp</value>
+                <value desc="Adverbial part of word">adv</value>
+                <value desc="Unspecified part of word">part</value>
+                <value desc="Verbal part of word">vrb</value>
+            </values>
+        </feature>
+    </partitions>
+    <constraints>
+        <constraint>
+            <pos>ADJ</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADP</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADV</pos>
+            <features>
+                <feature>advType</feature>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>CON</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>INT</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NUM</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>PD</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>person</feature>
+                <feature>pos</feature>
+                <feature>subtype</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>RES</pos>
+            <features>
+                <feature>inflection</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>VRB</pos>
+            <features>
+                <feature>finiteness</feature>
+                <feature>inflection</feature>
+                <feature>mood</feature>
+                <feature>pos</feature>
+                <feature>tense</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+    </constraints>
+</tagset>

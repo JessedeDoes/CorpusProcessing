@@ -101,13 +101,13 @@ case class TagSet(prefix: String,
     <tagset>
       <prefix>{prefix}</prefix>
       <mainPoS>
-        {posTags.map(p => <pos>{p}</pos>)}
+        {posTags.sorted.map(p => <pos>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.map( { case (f, vs) => <feature><name>{f}</name><values>{vs.map(v => <value>{v}</value>)}</values></feature>} )}
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature><name>{f}</name><values>{vs.toList.sorted.map(v => <value>{v}</value>)}</values></feature>} )}
       </partitions>
       <constraints>
-        {pos2partitions.map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.map(f => <feature>{f}</feature>)}</features></constraint>} )}
+        {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
     </tagset>
 

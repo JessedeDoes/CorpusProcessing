@@ -203,7 +203,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   {
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
 
-    val newPoSAttribuut = {val f = (e \ "@function").text; if (f.isEmpty) None else Some(Ѧ("pos", f))}
+    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop"); if (f.isEmpty) None else Some(Ѧ("pos", f))}
 
     val n = (e \ "@n").text
 
