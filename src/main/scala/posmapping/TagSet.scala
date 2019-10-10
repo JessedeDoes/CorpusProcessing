@@ -104,7 +104,8 @@ case class TagSet(prefix: String,
         {posTags.sorted.map(p => <pos>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature><name>{f}</name><values>{vs.toList.sorted.map(v => <value>{v}</value>)}</values></feature>} )}
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature><name>{f}</name><values>{vs.toList.sorted.map(v =>
+        <featureValue><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
