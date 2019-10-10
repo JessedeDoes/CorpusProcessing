@@ -24,7 +24,7 @@
             <values>
                 <value desc="Finite verb">finite</value>
                 <value desc="Infinitive or gerund">inf/ger</value>
-                <value des="Participle">part</value>
+                <value desc="Participle">part</value>
             </values>
         </feature>
         <feature>
@@ -35,8 +35,8 @@
                 <value desc="Inflection -e">e</value>
                 <value desc="Inflection -n">n</value>
                 <value desc="Other values">other</value>
-		<value desc="Inflection -r or -re">r/re</value>
-		<value desc="Inflection -s or -th">s/th</value>
+		         <value desc="Inflection -r or -re">r/re</value>
+		        <value desc="Inflection -s or -th">s/th</value>
                 <value desc="Inflection -t">t</value>
             </values>
         </feature>
@@ -66,7 +66,7 @@
             <name desc="Part of speech">pos</name>
 	    <values>
 	       <value desc="Adjective">ADJ</value>
- 	       <value desc="Adposktion">ADP</value>
+ 	       <value desc="Adposition">ADP</value>
                <value desc="Adverb">ADV</value>
                <value desc="Conjunction">CON</value>
                <value desc="Interjection">INT</value>
