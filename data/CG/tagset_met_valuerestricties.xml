@@ -1,16 +1,16 @@
 <tagset>
     <prefix>chnpos</prefix>
     <mainPoS>
-        <pos>ADJ</pos>
-        <pos>ADP</pos>
-        <pos>ADV</pos>
-        <pos>CON</pos>
-        <pos>INT</pos>
-        <pos>NOU</pos>
-        <pos>NUM</pos>
-        <pos>PD</pos>
-        <pos>RES</pos>
-        <pos>VRB</pos>
+        <pos desc="Adjective">ADJ</pos>
+        <pos desc="Adposition">ADP</pos>
+        <pos desc="Adverb">ADV</pos>
+        <pos desc="Conjunction">CON</pos>
+        <pos desc="Interjection">INT</pos>
+        <pos desc="Noun">NOU</pos>
+        <pos desc="Numeral">NUM</pos>
+        <pos desc="Pronoun/determiner">PD</pos>
+        <pos desc="Residual">RES</pos>
+        <pos desc="Verb">VRB</pos>
     </mainPoS>
     <partitions>
         <feature>

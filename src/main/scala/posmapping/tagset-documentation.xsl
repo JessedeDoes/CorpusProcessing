@@ -12,7 +12,15 @@
   
 <xsl:template match="/">
   <xsl:for-each select=".//mainPoS/pos">
+    <xsl:variable name="pos"><xsl:value-of select="./text()"/></xsl:variable>
     <h1><xsl:value-of select="./text()"/> (<xsl:value-of select="./@desc"/>)</h1>
+    <xsl:for-each select="//constraint[./pos=$pos]">
+      <xsl:for-each select=".//feature">
+        <xsl:variable name="feature"><xsl:value-of select="./text()"/></xsl:variable>
+        <h3><xsl:value-of select="$feature"/></h3>
+        <ul><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[.//pos=$pos]"><li><xsl:value-of select="./value"/></li></xsl:for-each></ul>
+      </xsl:for-each>
+    </xsl:for-each>
   </xsl:for-each>
 </xsl:template>
  
