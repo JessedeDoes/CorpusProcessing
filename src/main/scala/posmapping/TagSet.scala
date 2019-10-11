@@ -11,6 +11,8 @@ import org.json4s.native.Serialization.writePretty
 import posmapping.CHNStyleTags.parser
 import sparql2xquery.ValueRestrictionSet
 
+import scala.collection.immutable
+
 
 
 case class Feature(name: String, value: String)
@@ -44,6 +46,14 @@ object MolexTagSet extends TagSet("molex")
   override def fromString(t: String): Tag = new UDStyleTag(t, this)
 }
 
+case class TagDescription(posDescriptions: Map[String, String] = Map.empty,
+                          featureDescriptions: Map[String, String] = Map.empty, valueDescriptions: Map[(String, String), String] = Map.empty )
+{
+  def posDescription(p: String) = posDescriptions.getOrElse(p, "")
+  def featureDescription(p: String) = featureDescriptions.getOrElse(p, "")
+  def valueDescription(f: String, v: String) = valueDescriptions.getOrElse((f,v), "")
+}
+
 object TagSet
 {
   val pretty = new scala.xml.PrettyPrinter(300, 4)
@@ -52,9 +62,25 @@ object TagSet
   {
     val prefix = (d \ "prefix").text
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
-    val partitions = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
-    val pos2partitions = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
-    TagSet(prefix, posTags, partitions, pos2partitions)
+    val partitions: Map[String, Set[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
+    val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
+    val valueRestrictions: List[ValueRestriction] = (d \\ "partitions " \ "feature").flatMap(
+      f => {
+        val name = (f \ "name").text
+        val valpos = (f \\ "featureValue").flatMap(fv => (fv \\ "pos").map(p => ValueRestriction(p.text, name,   List((fv \ "value").text)) ))
+        val regrouped = valpos.groupBy(v => (v.pos, v.featureName)).map({case ((p,n),l) => ValueRestriction(p,n, l.flatMap(x => x.values).toList)})
+        regrouped
+      }
+    ).toList
+
+    val posDescriptions: Map[String, String] = (d \\ "mainPoS" \ "pos").map(p => p.text -> (p \ "@desc").text).toMap
+    val featureDescriptions: Map[String, String] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \ "@desc").text).toMap
+    val valueDescriptions: Map[(String, String), String] = (d \\ "partitions" \ "feature").flatMap(f => {
+      val name = (f \ "name").text
+      val valuedescs = (f \\ "featureValue").map(fv =>  ( (name, (fv \ "value").text), (fv \ "@desc").text))
+      valuedescs
+    }).toMap
+    TagSet(prefix, posTags, partitions, pos2partitions, defaultTagParser, List(), valueRestrictions, TagDescription(posDescriptions, featureDescriptions, valueDescriptions)) // tag parser should also be specified in XML
   }
 
   def fromXML(f: String):TagSet = fromXML(XML.load(f))
@@ -73,7 +99,6 @@ object TagSet
         { case (p,thisPos) => {
           val features = thisPos.flatMap(_.features.toSet.toList)
           features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
-
         } }
       ).toList
     Console.err.println(valueRestrictions)
@@ -92,20 +117,22 @@ case class ValueRestriction(pos: String, featureName: String, values: List[Strin
 case class TagSet(prefix: String,
                   val posTags: List[String] = List.empty,
                   partitions:Map[String,Set[String]] = Map.empty,
-                  pos2partitions: Map[String,List[String]] = Map.empty, parser: TagParser=defaultTagParser,
+                  pos2partitions: Map[String,List[String]] = Map.empty,
+                  parser: TagParser=defaultTagParser,
                   partitionConditions: List[PartitionCondition] = List.empty,
-                  valueRestrictions: List[ValueRestriction] = List.empty)
+                  valueRestrictions: List[ValueRestriction] = List.empty,
+                  descriptions: TagDescription = TagDescription())
 {
 
   def toXML =
     <tagset>
       <prefix>{prefix}</prefix>
       <mainPoS>
-        {posTags.sorted.map(p => <pos>{p}</pos>)}
+        {posTags.sorted.map(p => <pos desc={descriptions.posDescription(p)}>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature><name>{f}</name><values>{vs.toList.sorted.map(v =>
-        <featureValue><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
+        <featureValue desc={descriptions.valueDescription(f,v)}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}

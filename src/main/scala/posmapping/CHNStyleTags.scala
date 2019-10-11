@@ -131,3 +131,23 @@ object distinctTagsFromMolex
     distinctTagsFromGysseling.tagsetFromCorpusFiles(file, "pos")
   }
 }
+
+
+object compareGysselingToMolex
+{
+
+  def pretty(tagset: TagSet): Unit = {
+    val xmlWriter = new PrintWriter(System.out)
+    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
+    xmlWriter.close()
+  }
+
+  val molexTagset = TagSet.fromXML("data/Molex/tagset.xml")
+  val gysTagset = TagSet.fromXML("data/CG/tagset_met_valuerestricties.xml")
+  val molexEnhanced = molexTagset.copy(descriptions = gysTagset.descriptions)
+
+  def main(args: Array[String]): Unit = {
+    pretty(molexEnhanced)
+    //println(gysTagset.descriptions)
+  }
+}
