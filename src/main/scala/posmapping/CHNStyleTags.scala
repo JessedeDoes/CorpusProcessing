@@ -72,8 +72,9 @@ object distinctTagsFromGysseling
   }
 
 
-  def tagsetFromCorpusFiles(dir: String, attribute: String, separator: String = "[+|]") = {
-    val files: Set[File] = new File(dir).listFiles().toSet
+  def tagsetFromCorpusFiles(dirName: String, attribute: String, separator: String = "[+|]") = {
+    val dir = new File(dirName)
+    val files: Set[File] = if (dir.isDirectory) dir.listFiles().toSet else Set(dir)
     val allDistinctTags: Set[String] = files.flatMap(
       f => {
         scala.util.Try(
@@ -106,7 +107,7 @@ object distinctTagsFromGysseling
 
 
 object distinctTagsFromONW {
-  val dir = "/home/jesse/workspace/data-historische-corpora/ONW/TEI-postprocessed"
+  val dir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata"
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "msd", "[+]")
@@ -119,5 +120,14 @@ object distinctTagsFromBaB
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos")
+  }
+}
+
+object distinctTagsFromMolex
+{
+  val file = "data/Molex/fakeDocument.xml"
+
+  def main(args: Array[String]): Unit = {
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(file, "pos")
   }
 }
