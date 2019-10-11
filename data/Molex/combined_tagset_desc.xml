@@ -1,4 +1,4 @@
-<tagset>
+<tagset desc="Molex, combining lemma and wordform gigpos">
     <prefix>chnpos</prefix>
     <mainPoS>
         <pos desc="Adjective/adverb">AA</pos>
@@ -18,13 +18,13 @@
         <feature desc="Number subject agreement (Verbs)">
             <name>NA</name>
             <values>
-                <featureValue desc="">
+                <featureValue desc="Plural">
                     <value>pl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue desc="">
+                <featureValue desc="Singular">
                     <value>sg</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -35,19 +35,19 @@
         <feature desc="Person subject agreement (Verbs)">
             <name>PA</name>
             <values>
-                <featureValue desc="">
+                <featureValue desc="First person">
                     <value>1</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue desc="">
+                <featureValue desc="Second person">
                     <value>2</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue desc="">
+                <featureValue desc="Third person">
                     <value>3</value>
                     <posForValue>
                         <pos>VRB</pos>

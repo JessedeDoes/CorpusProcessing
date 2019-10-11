@@ -1,10 +1,10 @@
-<tagset>
+<tagset desc="Tagset for Corpus Gysseling in CHN style">
     <prefix>chnpos</prefix>
     <mainPoS>
         <pos desc="Adjective">ADJ</pos>
         <pos desc="Adposition">ADP</pos>
         <pos desc="Adverb">ADV</pos>
-        <pos desc="Conjunction">CON</pos>
+        <pos desc="Conjunction" corr="CONJ">CON</pos>
         <pos desc="Interjection">INT</pos>
         <pos desc="Noun">NOU</pos>
         <pos desc="Numeral">NUM</pos>
@@ -27,7 +27,7 @@
         <feature desc="Finiteness">
             <name>finiteness</name>
             <values>
-                <featureValue desc="Finite verb">
+                <featureValue desc="Finite verb" corr="fin">
                     <value>finite</value>
                     <posForValue>
                         <pos>VRB</pos>
