@@ -1,7 +1,7 @@
 <tagset>
-    <prefix>molex</prefix>
+    <prefix>chnpos</prefix>
     <mainPoS>
-	    <pos desc="Adjective/adverb">AA</pos>
+        <pos desc="Adjective/adverb">AA</pos>
         <pos desc="Adposition">ADP</pos>
         <pos desc="Adverb">ADV</pos>
         <pos desc="Polylexical">COLL</pos>
@@ -10,11 +10,51 @@
         <pos desc="Common noun">NOU-C</pos>
         <pos desc="Proper noun">NOU-P</pos>
         <pos desc="Numeral">NUM</pos>
-	<pos desc="Pronoun/determiner">PD</pos>
+        <pos desc="Pronoun/determiner">PD</pos>
         <pos desc="Residual">RES</pos>
         <pos desc="Verb">VRB</pos>
     </mainPoS>
     <partitions>
+        <feature desc="Number subject agreement (Verbs)">
+            <name>NA</name>
+            <values>
+                <featureValue desc="">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>sg</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Person subject agreement (Verbs)">
+            <name>PA</name>
+            <values>
+                <featureValue desc="">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>2</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>3</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
         <feature desc="Preferred article">
             <name>art</name>
             <values>
@@ -29,6 +69,29 @@
                     <value>het</value>
                     <posForValue>
                         <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Case">
+            <name>case</name>
+            <values>
+                <featureValue desc="Dative or accusative">
+                    <value>dat/acc</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Non-genitive (adjectives)">
+                    <value>norm</value>
+                    <posForValue>
+                        <pos>AA</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -59,8 +122,26 @@
         <feature desc="Verb finiteness (finite is default)">
             <name>finiteness</name>
             <values>
+                <featureValue desc="Finite forms">
+                    <value>fin</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue desc="Infinitive">
                     <value>inf</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Infinitive or gerund (!NORMALIZE)">
+                    <value>inf/ger</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Participle">
+                    <value>part</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -119,6 +200,35 @@
                 </featureValue>
             </values>
         </feature>
+        <feature desc="Inflection">
+            <name>infl</name>
+            <values>
+                <featureValue desc="Inflection of -e (singular with definite determiner and singular indefinite neuter)">
+                    <value>e</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Uninflected form (adjectives)">
+                    <value>norm</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Mood (subjunctives and imperatives are not in the database)">
+            <name>mood</name>
+            <values>
+                <featureValue desc="Indicative">
+                    <value>ind</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
         <feature desc="Number">
             <name>number</name>
             <values>
@@ -134,12 +244,24 @@
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-		<featureValue desc="ERROR"> <!-- ERROR -->
+                <featureValue desc="ERROR">
                     <value>sg(</value>
                     <posForValue>
                         <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Person?">
+            <name>person</name>
+            <values>
+                <featureValue desc="??">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -221,6 +343,23 @@
                 </featureValue>
             </values>
         </feature>
+        <feature desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
+            <name>position</name>
+            <values>
+                <featureValue desc="After subject (normal SV[O] order, 'je loopt')">
+                    <value>as</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Before subject, in questions, object-first sentences, or sentences starting with an adverbial clause  ('loop je?', 'Dat zie je', 'Daarom loop je')">
+                    <value>bs</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
         <feature desc="Separability: default is non-separable">
             <name>sep</name>
             <values>
@@ -260,6 +399,23 @@
                 </featureValue>
             </values>
         </feature>
+        <feature desc="Verb tense">
+            <name>tense</name>
+            <values>
+                <featureValue desc="past tense; also (mis)used to characterize perfect participle">
+                    <value>past</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="present tense">
+                    <value>pres</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
         <feature desc="Subcategorization">
             <name>type</name>
             <values>
@@ -288,7 +444,7 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-		<featureValue desc="Demonstrative/relative from the 'd'-series">
+                <featureValue desc="Demonstrative/relative from the 'd'-series">
                     <value>d-p</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -392,6 +548,17 @@
                 </featureValue>
             </values>
         </feature>
+        <feature desc="Politeness indicator">
+            <name>usage</name>
+            <values>
+                <featureValue desc="Polite form ('loopt u?' vs. 'loop je?')">
+                    <value>u</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
         <feature desc="Written form">
             <name>wf</name>
             <values>
@@ -422,7 +589,9 @@
         <constraint>
             <pos>AA</pos>
             <features>
+                <feature>case</feature>
                 <feature>degree</feature>
+                <feature>infl</feature>
                 <feature>pos</feature>
                 <feature>type</feature>
                 <feature>wf</feature>
@@ -488,6 +657,7 @@
         <constraint>
             <pos>NUM</pos>
             <features>
+                <feature>infl</feature>
                 <feature>pos</feature>
                 <feature>subtype</feature>
                 <feature>type</feature>
@@ -496,6 +666,9 @@
         <constraint>
             <pos>PD</pos>
             <features>
+                <feature>case</feature>
+                <feature>number</feature>
+                <feature>person</feature>
                 <feature>pos</feature>
                 <feature>subtype_art</feature>
                 <feature>type</feature>
@@ -513,10 +686,16 @@
         <constraint>
             <pos>VRB</pos>
             <features>
+                <feature>NA</feature>
+                <feature>PA</feature>
                 <feature>finiteness</feature>
+                <feature>mood</feature>
                 <feature>pos</feature>
+                <feature>position</feature>
                 <feature>sep</feature>
+                <feature>tense</feature>
                 <feature>type</feature>
+                <feature>usage</feature>
             </features>
         </constraint>
     </constraints>

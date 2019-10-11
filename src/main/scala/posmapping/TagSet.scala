@@ -64,14 +64,17 @@ object TagSet
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
     val partitions: Map[String, Set[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
     val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
-    val valueRestrictions: List[ValueRestriction] = (d \\ "partitions " \ "feature").flatMap(
+    val valueRestrictions: List[ValueRestriction] = (d \\ "partitions" \ "feature").flatMap(
       f => {
         val name = (f \ "name").text
         val valpos = (f \\ "featureValue").flatMap(fv => (fv \\ "pos").map(p => ValueRestriction(p.text, name,   List((fv \ "value").text)) ))
+        Console.err.println(s"valpos: $valpos")
         val regrouped = valpos.groupBy(v => (v.pos, v.featureName)).map({case ((p,n),l) => ValueRestriction(p,n, l.flatMap(x => x.values).toList)})
         regrouped
       }
     ).toList
+
+    Console.err.println(s"Value restrictions = $valueRestrictions")
 
     val posDescriptions: Map[String, String] = (d \\ "mainPoS" \ "pos").map(p => p.text -> (p \ "@desc").text).toMap
     val featureDescriptions: Map[String, String] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \ "@desc").text).toMap
@@ -101,7 +104,7 @@ object TagSet
           features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
         } }
       ).toList
-    Console.err.println(valueRestrictions)
+
     TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions)
   }
 

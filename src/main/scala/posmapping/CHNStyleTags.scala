@@ -136,18 +136,20 @@ object distinctTagsFromMolex
 object compareGysselingToMolex
 {
 
-  def pretty(tagset: TagSet): Unit = {
-    val xmlWriter = new PrintWriter(System.out)
-    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
-    xmlWriter.close()
+  def pretty(tagset: TagSet, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
+    //val xmlWriter = new PrintWriter(System.out)
+    pw.println(TagSet.pretty.format(tagset.toXML))
+    pw.close()
   }
 
-  val molexTagset = TagSet.fromXML("data/Molex/tagset.xml")
+  val molexLemmaTagset = TagSet.fromXML("data/Molex/lemma_tagset.xml")
+  val molexCompleteTagset = TagSet.fromXML("data/Molex/combined_tagset.xml")
   val gysTagset = TagSet.fromXML("data/CG/tagset_met_valuerestricties.xml")
-  val molexEnhanced = molexTagset.copy(descriptions = gysTagset.descriptions)
+  val molexCompleteTagsetPlus = molexCompleteTagset.copy(descriptions = molexLemmaTagset.descriptions)
 
   def main(args: Array[String]): Unit = {
-    pretty(molexEnhanced)
+    pretty(molexCompleteTagsetPlus)
+    pretty(molexCompleteTagsetPlus, new PrintWriter("/tmp/tagset_plus.xml"))
     //println(gysTagset.descriptions)
   }
 }
