@@ -83,7 +83,19 @@ object TagSet
       val valuedescs = (f \\ "featureValue").map(fv =>  ( (name, (fv \ "value").text), (fv \ "@desc").text))
       valuedescs
     }).toMap
-    TagSet(prefix, posTags, partitions, pos2partitions, defaultTagParser, List(), valueRestrictions, TagDescription(posDescriptions, featureDescriptions, valueDescriptions)) // tag parser should also be specified in XML
+
+    val posDisplayNames: Map[String, String] = (d \\ "mainPoS" \ "pos").map(p => p.text -> (p \ "@displayName").text).toMap
+    val featureDisplayNames: Map[String, String] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \ "@displayName").text).toMap
+
+    val valueDisplayNames: Map[(String, String), String] = (d \\ "partitions" \ "feature").flatMap(f => {
+      val name = (f \ "name").text
+      val valuedescs = (f \\ "featureValue").map(fv =>  ( (name, (fv \ "value").text), (fv \ "@displayName").text))
+      valuedescs
+    }).toMap
+
+    TagSet(prefix, posTags, partitions, pos2partitions, defaultTagParser, List(), valueRestrictions,
+      TagDescription(posDescriptions, featureDescriptions, valueDescriptions),
+      TagDescription(posDisplayNames, featureDisplayNames, valueDisplayNames)) // tag parser should also be specified in XML
   }
 
   def fromXML(f: String):TagSet = fromXML(XML.load(f))
@@ -124,7 +136,8 @@ case class TagSet(prefix: String,
                   parser: TagParser=defaultTagParser,
                   partitionConditions: List[PartitionCondition] = List.empty,
                   valueRestrictions: List[ValueRestriction] = List.empty,
-                  descriptions: TagDescription = TagDescription())
+                  descriptions: TagDescription = TagDescription(),
+                  displayNames: TagDescription = TagDescription())
 {
 
   def toXML =
@@ -243,7 +256,6 @@ case class TagSet(prefix: String,
 
   def posForFeature(n: String, v: String) =
     {
-
       val r= valueRestrictions.filter(r => r.featureName == n && r.values.contains(v)).map(_.pos)
       Console.err.println(s"Pos for $n $v: $r")
       r

@@ -2,7 +2,7 @@
   "values": {
     "ADJ": {
       "value": "ADJ",
-      "displayName": "Adjective",
+      displayName= "Adjective",
       "subAnnotationIds": [
         "pos_number",
         "pos_inflection",
@@ -11,7 +11,7 @@
     },
     "ADP": {
       "value": "ADP",
-      "displayName": "Adposition",
+      displayName= "Adposition",
       "subAnnotationIds": [
         "pos_type",
         "pos_inflection",
@@ -20,7 +20,7 @@
     },
     "ADV": {
       "value": "ADV",
-      "displayName": "Adverb",
+      displayName= "Adverb",
       "subAnnotationIds": [
         "pos_advType",
         "pos_type",
@@ -30,7 +30,7 @@
     },
     "CON": {
       "value": "CON",
-      "displayName": "Conjunction",
+      displayName= "Conjunction",
       "subAnnotationIds": [
         "pos_type",
         "pos_inflection",
@@ -39,7 +39,7 @@
     },
     "INT": {
       "value": "INT",
-      "displayName": "Interjection",
+      displayName= "Interjection",
       "subAnnotationIds": [
         "pos_type",
         "pos_inflection"
@@ -47,7 +47,7 @@
     },
     "NOU": {
       "value": "NOU",
-      "displayName": "Noun",
+      displayName= "Noun",
       "subAnnotationIds": [
         "pos_type",
         "pos_number",
@@ -57,7 +57,7 @@
     },
     "NUM": {
       "value": "NUM",
-      "displayName": "Numeral",
+      displayName= "Numeral",
       "subAnnotationIds": [
         "pos_type",
         "pos_inflection",
@@ -66,7 +66,7 @@
     },
     "PD": {
       "value": "PD",
-      "displayName": "Pronoun",
+      displayName= "Pronoun",
       "subAnnotationIds": [
         "pos_type",
         "pos_subtype",
@@ -78,7 +78,7 @@
     },
     "RES": {
       "value": "RES",
-      "displayName": "Residual",
+      displayName= "Residual",
       "subAnnotationIds": [
         "pos_type",
         "pos_inflection"
@@ -86,7 +86,7 @@
     },
     "VRB": {
       "value": "VRB",
-      "displayName": "Verb",
+      displayName= "Verb",
       "subAnnotationIds": [
         "pos_type",
         "pos_finiteness",
@@ -103,70 +103,70 @@
       "values": [
         {
           "value": "ADJ",
-          "displayName": "ADJ",
+          displayName= "ADJ",
           "pos": [
             "ADJ"
           ]
         },
         {
           "value": "ADP",
-          "displayName": "ADP",
+          displayName= "ADP",
           "pos": [
             "ADP"
           ]
         },
         {
           "value": "ADV",
-          "displayName": "ADV",
+          displayName= "ADV",
           "pos": [
             "ADV"
           ]
         },
         {
           "value": "CON",
-          "displayName": "CON",
+          displayName= "CON",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "INT",
-          "displayName": "INT",
+          displayName= "INT",
           "pos": [
             "INT"
           ]
         },
         {
           "value": "NOU",
-          "displayName": "NOU",
+          displayName= "NOU",
           "pos": [
             "NOU"
           ]
         },
         {
           "value": "NUM",
-          "displayName": "NUM",
+          displayName= "NUM",
           "pos": [
             "NUM"
           ]
         },
         {
           "value": "PD",
-          "displayName": "PD",
+          displayName= "PD",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "RES",
-          "displayName": "RES",
+          displayName= "RES",
           "pos": [
             "RES"
           ]
         },
         {
           "value": "VRB",
-          "displayName": "VRB",
+          displayName= "VRB",
           "pos": [
             "VRB"
           ]
@@ -178,7 +178,7 @@
       "values": [
         {
           "value": "sg",
-          "displayName": "sg",
+          displayName= "sg",
           "pos": [
             "PD",
             "ADJ",
@@ -187,7 +187,7 @@
         },
         {
           "value": "pl",
-          "displayName": "pl",
+          displayName= "pl",
           "pos": [
             "PD",
             "ADJ",
@@ -196,7 +196,7 @@
         },
         {
           "value": "other",
-          "displayName": "other",
+          displayName= "other",
           "pos": [
             "ADJ"
           ]
@@ -208,14 +208,14 @@
       "values": [
         {
           "value": "adp",
-          "displayName": "adpositional part",
+          displayName= "adpositional part",
           "pos": [
             "ADV"
           ]
         },
         {
           "value": "adv",
-          "displayName": "adverbial part",
+          displayName= "adverbial part",
           "pos": [
             "VRB",
             "ADV"
@@ -223,7 +223,7 @@
         },
         {
           "value": "part",
-          "displayName": "part of word",
+          displayName= "part of word",
           "pos": [
             "PD",
             "ADJ",
@@ -235,7 +235,7 @@
         },
         {
           "value": "vrb",
-          "displayName": "verbal part",
+          displayName= "verbal part",
           "pos": [
             "VRB"
           ]
@@ -247,14 +247,14 @@
       "values": [
         {
           "value": "past",
-          "displayName": "past",
+          displayName= "past",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "present",
-          "displayName": "present",
+          displayName= "present",
           "pos": [
             "VRB"
           ]
@@ -266,7 +266,7 @@
       "values": [
         {
           "value": "imperative",
-          "displayName": "imperative",
+          displayName= "imperative",
           "pos": [
             "VRB"
           ]
@@ -278,7 +278,7 @@
       "values": [
         {
           "value": "pronominal",
-          "displayName": "pronominal",
+          displayName= "pronominal",
           "pos": [
             "ADV"
           ]
@@ -290,21 +290,21 @@
       "values": [
         {
           "value": "finite",
-          "displayName": "finite",
+          displayName= "finite",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "inf/ger",
-          "displayName": "infinitive/gerund",
+          displayName= "infinitive/gerund",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "part",
-          "displayName": "participle",
+          displayName= "participle",
           "pos": [
             "VRB"
           ]
@@ -316,7 +316,7 @@
       "values": [
         {
           "value": "a",
-          "displayName": "-a",
+          displayName= "-a",
           "pos": [
             "PD",
             "VRB",
@@ -328,7 +328,7 @@
         },
         {
           "value": "e",
-          "displayName": "-e",
+          displayName= "-e",
           "pos": [
             "PD",
             "VRB",
@@ -344,7 +344,7 @@
         },
         {
           "value": "n",
-          "displayName": "-n",
+          displayName= "-n",
           "pos": [
             "PD",
             "VRB",
@@ -360,7 +360,7 @@
         },
         {
           "value": "r/re",
-          "displayName": "-r/re",
+          displayName= "-r/re",
           "pos": [
             "PD",
             "VRB",
@@ -374,7 +374,7 @@
         },
         {
           "value": "s/th",
-          "displayName": "-s/th",
+          displayName= "-s/th",
           "pos": [
             "PD",
             "VRB",
@@ -389,7 +389,7 @@
         },
         {
           "value": "t",
-          "displayName": "-t",
+          displayName= "-t",
           "pos": [
             "PD",
             "VRB",
@@ -403,7 +403,7 @@
         },
         {
           "value": "0",
-          "displayName": "no inflection",
+          displayName= "no inflection",
           "pos": [
             "PD",
             "VRB",
@@ -419,7 +419,7 @@
         },
         {
           "value": "other",
-          "displayName": "other",
+          displayName= "other",
           "pos": [
             "PD",
             "VRB",
@@ -440,14 +440,14 @@
       "values": [
         {
           "value": "def",
-          "displayName": "definite",
+          displayName= "definite",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "indef",
-          "displayName": "indefinite",
+          displayName= "indefinite",
           "pos": [
             "PD"
           ]
@@ -459,21 +459,21 @@
       "values": [
         {
           "value": "1",
-          "displayName": "1",
+          displayName= "1",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "2",
-          "displayName": "2",
+          displayName= "2",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "3",
-          "displayName": "3",
+          displayName= "3",
           "pos": [
             "PD"
           ]
@@ -485,35 +485,35 @@
       "values": [
         {
           "value": "-",
-          "displayName": "-",
+          displayName= "-",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "art",
-          "displayName": "article",
+          displayName= "article",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "auxiliary",
-          "displayName": "auxiliary or copula",
+          displayName= "auxiliary or copula",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "cardinal",
-          "displayName": "cardinal",
+          displayName= "cardinal",
           "pos": [
             "NUM"
           ]
         },
         {
           "value": "general",
-          "displayName": "general",
+          displayName= "general",
           "pos": [
             "ADP",
             "ADV"
@@ -521,28 +521,28 @@
         },
         {
           "value": "common",
-          "displayName": "common",
+          displayName= "common",
           "pos": [
             "NOU"
           ]
         },
         {
           "value": "comparison",
-          "displayName": "comparison",
+          displayName= "comparison",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "coordinating",
-          "displayName": "coordinating",
+          displayName= "coordinating",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "dem",
-          "displayName": "demonstrative",
+          displayName= "demonstrative",
           "pos": [
             "PD",
             "ADV"
@@ -550,21 +550,21 @@
         },
         {
           "value": "explicative",
-          "displayName": "explicative",
+          displayName= "explicative",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "indefinite",
-          "displayName": "indefinite",
+          displayName= "indefinite",
           "pos": [
             "NUM"
           ]
         },
         {
           "value": "indef",
-          "displayName": "indefinite",
+          displayName= "indefinite",
           "pos": [
             "PD",
             "ADV"
@@ -572,14 +572,14 @@
         },
         {
           "value": "interjection",
-          "displayName": "interjection",
+          displayName= "interjection",
           "pos": [
             "INT"
           ]
         },
         {
           "value": "int",
-          "displayName": "interrogative",
+          displayName= "interrogative",
           "pos": [
             "PD",
             "ADV"
@@ -587,14 +587,14 @@
         },
         {
           "value": "main",
-          "displayName": "main",
+          displayName= "main",
           "pos": [
             "VRB"
           ]
         },
         {
           "value": "negative",
-          "displayName": "negative",
+          displayName= "negative",
           "pos": [
             "CON",
             "ADV"
@@ -602,49 +602,49 @@
         },
         {
           "value": "ordinal",
-          "displayName": "ordinal",
+          displayName= "ordinal",
           "pos": [
             "NUM"
           ]
         },
         {
           "value": "pers",
-          "displayName": "personal",
+          displayName= "personal",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "poss",
-          "displayName": "possessive",
+          displayName= "possessive",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "proper",
-          "displayName": "proper",
+          displayName= "proper",
           "pos": [
             "NOU"
           ]
         },
         {
           "value": "quality",
-          "displayName": "quality",
+          displayName= "quality",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "refl/recp",
-          "displayName": "refl/recp",
+          displayName= "refl/recp",
           "pos": [
             "PD"
           ]
         },
         {
           "value": "rel",
-          "displayName": "relative",
+          displayName= "relative",
           "pos": [
             "PD",
             "CON",
@@ -653,21 +653,21 @@
         },
         {
           "value": "resumptive",
-          "displayName": "resumptive",
+          displayName= "resumptive",
           "pos": [
             "ADV"
           ]
         },
         {
           "value": "subordinating",
-          "displayName": "subordinating",
+          displayName= "subordinating",
           "pos": [
             "CON"
           ]
         },
         {
           "value": "other",
-          "displayName": "other",
+          displayName= "other",
           "pos": [
             "PD",
             "VRB",
