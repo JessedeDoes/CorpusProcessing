@@ -422,20 +422,28 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     w.copy(child = newChildren)
   }
 
+  /* Deze haalt de expan weg!! */
+
   def brack2supplied(w: Elem) = {
     val seg = (w \ "seg")
     if (seg.isEmpty) w else {
       val theseg = (w \\ "seg").head.asInstanceOf[Elem]
 
-      val childXML = theseg.child.text.replaceAll("\\[", "<supplied>").replaceAll("\\]", "</supplied>")
+      val childXML: String = theseg.child.map(x => x match {
+        case t: Text => t.text.replaceAll("\\[", "<supplied>").replaceAll("\\]", "</supplied>")
+        case _ => x
+      }).mkString("")
+
       val newSeg = Try(XML.loadString("<seg type='orth'>" + childXML + "</seg>")) match {
         case scala.util.Success(x) => x
         case _ => theseg
       }
+
       if (theseg.text.contains("["))
         {
           // Console.err.println(s"$theseg => $childXML => $newSeg")
         }
+
       w.copy(child = w.child.map(
         {
           case e:Elem if e.label == "seg" => newSeg
@@ -525,7 +533,8 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val f1 = updateElement4(d, _.label == "w", w => tokenizeOne(brack2supplied(w)))
     f1.head.asInstanceOf[Elem]
   }
-    val splitWords = false
+
+  val splitWords = false
 
   def fixFile(in: String, out:String) = {
     if (true || in.contains("3000")) {
@@ -536,11 +545,31 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     }
   }
 
+
   def main(args: Array[String]) = {
 
     utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
   }
 }
 
+
+object tests extends mapMiddelnederlandseTagsClass(false) {
+  def test1 = {
+    val w = <w><seg>aap<expan>je</expan></seg></w>
+    println(tokenizeOne(w))
+  }
+
+  def test2 = {
+    val w =  <w lemma="CONFESSOR" function="NOU(type=common,number=sg,inflection=other)" type="9" n="1074665">conf<expan resp="editor">essoris.</expan>
+    </w>
+    //println(updateTag(w))
+    val d = <doc>{w}</doc>
+    println(tokenizeOne(brack2supplied(wrapContentInSeg(updateTag(w)))))
+  }
+  override def main(args: Array[String]) = {
+    test2
+    //utils.ProcessFolder.processFolder(new File(args(0)), new File(args(1)), fixFile)
+  }
+}
 
 
