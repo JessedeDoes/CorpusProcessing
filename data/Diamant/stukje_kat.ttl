@@ -1,0 +1,85 @@
+@prefix oa:    <http://www.w3.org/ns/oa#> .
+@prefix lemon: <http://lemon-model.net/lemon#> .
+@prefix diamant: <http://rdf.ivdnt.org/schema/diamant#> .
+@prefix rdf:   <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xsd:   <http://www.w3.org/2001/XMLSchema#> .
+@prefix dcterms: <http://purl.org/dc/terms/> .
+@prefix skos:  <http://www.w3.org/2004/02/skos/core#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix rdfs:  <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix lexinfo: <http://www.lexinfo.net/ontology/2.0/lexinfo#> .
+@prefix prov:  <http://www.w3.org/ns/prov#> .
+@prefix dc:    <http://purl.org/dc/terms/> .
+@prefix ud:    <http://universaldependencies.org/u/pos/> .
+
+<http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819>
+        a                        diamant:Quotation , <http://purl.org/vocab/frbr/core#Manifestation> ;
+        <http://purl.org/vocab/frbr/core#embodimentOf>
+                <http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819> ;
+        diamant:dictionary       "WNT" ;
+        diamant:gtbId            "M030758.eg.31647" ;
+        diamant:witnessYearFrom  1621 ;
+        diamant:witnessYearTo    1621 .
+
+<http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540>
+        rdf:value  "Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," .
+
+<http://rdf.ivdnt.org/lexica/diamant/expression/WNT/332819>
+        a       <http://purl.org/vocab/frbr/core#Expression> ;
+        <http://dublincore.org/2012/06/14/dcterms.ttl#creator>
+                "N. V. REIGERSB." ;
+        <http://dublincore.org/2012/06/14/dcterms.ttl#title>
+                "Br." ;
+        <http://purl.org/vocab/frbr/core#embodiment>
+                <http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819> .
+
+<http://rdf.ivdnt.org/lexica/diamant/entry/WNT/M030758>
+        a              ontolex:LexicalEntry ;
+        ontolex:sense  <http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207> .
+
+<http://rdf.ivdnt.org/lexica/diamant/attestation/2108540>
+        a                  diamant:Attestation ;
+        <http://purl.org/spar/cito/hasCitedEntity>
+                <http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819> ;
+        <http://purl.org/spar/cito/hasCitingEntity>
+                <http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207> ;
+        diamant:locus      <http://rdf.ivdnt.org/lexica/diamant/locus/2108540> ;
+        diamant:quotation  "Meene met dien man wat te doen sal zijn; voechde bij sijn seggen dat hij wel weet, dat men licht yemant de eat aen het been kan werpen," ;
+        diamant:text       <http://rdf.ivdnt.org/lexica/diamant/quotation/WNT/332819> .
+
+<http://rdf.ivdnt.org/lexica/diamant/annotation/2108540>
+        a             oa:Annotation ;
+        oa:hasBody    <http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207> ;
+        oa:hasTarget  <http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540> .
+
+<http://rdf.ivdnt.org/lexica/diamant/selector/2108540>
+        a         oa:TextPositionSelector ;
+        oa:end    110 ;
+        oa:start  107 .
+
+<http://rdf.ivdnt.org/lexica/diamant/oa_target/2108540>
+        oa:hasSelector  <http://rdf.ivdnt.org/lexica/diamant/selector/2108540> ;
+        oa:hasSource    <http://rdf.ivdnt.org/lexica/diamant/oa_source/2108540> .
+
+<http://rdf.ivdnt.org/lexica/diamant/sense/WNT/M030758.bet.207>
+        a                    ontolex:LexicalSense ;
+        rdfs:label           "V.—" ;
+        lemon:definition     <http://rdf.ivdnt.org/definition/WNT/M030758.bet.207> ;
+        diamant:attestation  <http://rdf.ivdnt.org/lexica/diamant/attestation/2108540> ;
+        diamant:dictionary   "WNT" ;
+        diamant:gtbId        "M030758.bet.207" ;
+        diamant:isCoreSense  false ;
+        diamant:polyLexical  true ;
+        diamant:senseOrder   216 ;
+        skos:definition      "Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes à quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." .
+
+<http://rdf.ivdnt.org/definition/WNT/M030758.bet.207>
+        a                       lemon:SenseDefinition ;
+        diamant:definitionText  "Iemand een kat (of de kat) aan het been jagen (HARREB. 1, 40 b [1858]) of werpen (naar fra. jeter le chat aux jambes à quelqu'un, of de quelqu'un), iemand in moeilijkheden brengen." .
+
+<http://rdf.ivdnt.org/lexica/diamant/locus/2108540>
+        a       diamant:Locus ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#beginIndex>
+                107 ;
+        <http://persistence.uni-leipzig.org/nlp2rdf/ontologies/nif-core#endIndex>
+                110 .
