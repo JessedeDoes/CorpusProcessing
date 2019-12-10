@@ -21,6 +21,10 @@ object SimplifyAndConcatenateTEI {
   case class TocItem(volume: Int, pageNumber: String, title: String)
   {
     lazy val page = pageNumber.toInt
+    lazy val date = title.replaceAll(".*, *", "")
+    lazy val authors = title.replaceAll(",[^,]*$","")
+
+    def toXML = <bibl><page>{page}</page><author>{authors}</author><date>{date}</date></bibl>
   }
 
   lazy val tocItems = tocjes.flatMap(
@@ -102,7 +106,7 @@ object SimplifyAndConcatenateTEI {
         )
         val newAtts = e.attributes.filter(_.key != "rend")
           .append(new UnprefixedAttribute("rend", newRend, Null))
-        e.copy(child = newChild)
+        e.copy(child = newChild, attributes = newAtts)
       } else e
   }
 
@@ -211,7 +215,7 @@ object SimplifyAndConcatenateTEI {
         {
           val byToc =
             l.map(loadAndInsertPageNumber(n)).groupBy({case (e,k) => findTocItem(n,k)}).toList.sortBy(_._1.page).map(
-              {case (t, l) => <div toc={t.toString}>{l.flatMap(x => (x._1 \\ "body").map(_.child))}</div>}
+              {case (t, l) => <div>{t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}</div>}
             ).toSeq
           n -> concatenate(byToc.map(simplify))}})
 
