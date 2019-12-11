@@ -313,7 +313,7 @@ object SimplifyAndConcatenateTEI {
       {d1.child}
     </TEI>
   }
-  val doAll = false
+  val doAll = true
 
   lazy val volumes: Map[Int, Elem] =
     allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
@@ -328,7 +328,7 @@ object SimplifyAndConcatenateTEI {
 
   def main(args: Array[String]): Unit = {
     tocItems(6).foreach(println)
-    return
+
     volumes.foreach({ case (n, v) =>
       XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
     })
