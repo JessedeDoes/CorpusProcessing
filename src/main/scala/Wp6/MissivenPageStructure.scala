@@ -35,7 +35,7 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
 
     candidateKopregels.foreach(kr => Console.err.println(kr.text + " " + findZone(kr.asInstanceOf[Elem])))
 
-    val p2 = PostProcessXML.updateElement3(page, x => x.label == "p" || x.label == "ab",
+    val p2 = PostProcessXML.updateElement3(page, x => x.label == "p" || x.label == "div",
       p => if (candidateKopregels.contains(p))
         p.copy(label = "fw", attributes =
           p.attributes.append(new UnprefixedAttribute("type", "head", Null)).append(new UnprefixedAttribute("place", "top", Null))) else p)

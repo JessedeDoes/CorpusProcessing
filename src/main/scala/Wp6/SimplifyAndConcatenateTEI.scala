@@ -91,8 +91,9 @@ object SimplifyAndConcatenateTEI {
               case x => x
             } )
 
-            val label = if (ital > 0.7) "note" else p.label
-            val newAtts = if (label == "note") p.attributes
+            val convertToNote = ital > 0.7
+            val label = if (convertToNote) "note" else p.label
+            val newAtts = if (convertToNote) p.attributes
               .append(new UnprefixedAttribute("place", "inline", Null))
               .append(new UnprefixedAttribute("type", "editorial-summary", Null))
               .append(new UnprefixedAttribute("resp", "editor", Null)) else p.attributes
