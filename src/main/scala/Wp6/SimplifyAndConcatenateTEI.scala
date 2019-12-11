@@ -64,7 +64,9 @@ object SimplifyAndConcatenateTEI {
     { case (n, f) => (XML.loadFile(f) \\ "item").map(
       item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
     )}
-  ).filter(_.pageNumber.matches("[0-9]+")).groupBy(_.volume).mapValues(l => l.sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
+  ).filter(_.pageNumber.matches("[0-9]+"))
+    .groupBy(_.volume)
+    .mapValues(l => l.sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
 
 
@@ -74,15 +76,13 @@ object SimplifyAndConcatenateTEI {
     bestMatch.getOrElse(TocItem(0, "0", "no match", 0))
   }
 
-
-
   def simplifyOneElement(p: Elem): NodeSeq = {
         val r = p.label match {
-          case "w" => Text(p.text + (if ((p \ "@type").text == "last") "" else " "))
+          case "w" => Text(p.text + (if ((p \ "@type").text == "last") "" else ""))
           case "editionStmt" => Seq()
           case "sourceDoc" => Seq()
           case "pb" => if ((p \ "@unit").text == "external") p else Seq()
-
+          case "fw" => p.copy(child = Text(p.text.trim))
           case _ =>
             val ital = if (p.label == "p") PageStructure.italicity(p) else 0
 
@@ -98,9 +98,8 @@ object SimplifyAndConcatenateTEI {
               .append(new UnprefixedAttribute("type", "editorial-summary", Null))
               .append(new UnprefixedAttribute("resp", "editor", Null)) else p.attributes
 
-              if (p.label == "div" && (p \\ "w").nonEmpty)
-              c else
-            p.copy(child=c, label=label, attributes = newAtts.filter(_.key != "facs"))
+            if (p.label == "div") (if ((p \\ "w").nonEmpty) c else Seq())
+               else p.copy(child=c, label=label, attributes = newAtts.filter(_.key != "facs"))
         }
     r
   }
@@ -222,7 +221,7 @@ object SimplifyAndConcatenateTEI {
         {d.child.filter(_.label != "bibl")}
       </div>
     }
-    val d1 = updateElement(d, _.label == "div", fixDivje)
+    val d1 = updateElement(d, x => x.label == "div" && (x \ "@type").text == "missive", fixDivje)
 
     <TEI>
       {header}
@@ -235,9 +234,10 @@ object SimplifyAndConcatenateTEI {
     allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0 ))
       .map({ case (volumeNr, l) => {
-        val byToc =
-          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => findTocItem(volumeNr, k) }).toList.sortBy(_._1.page).map(
-            { case (t, l) => <div>
+        val byToc: immutable.Seq[Elem] =
+          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => findTocItem(volumeNr, k) })
+            .toList.sortBy(_._1.page).map(
+            { case (t, l) => <div type="missive">
               {t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}
             </div>
             }
