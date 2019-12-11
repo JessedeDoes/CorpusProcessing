@@ -12,34 +12,19 @@ object SimplifyAndConcatenateTEI {
   // file:///home/jesse/workspace/xml2rdf/data/Missiven/7/toc.xml
 
 
-  val XMLDirectory = "data/Missiven"
-  val rootAtHome = "/data/CLARIAH/WP6/generalemissiven/generalemissiven/"
-
-  val inputDirectoryatHome = "/data/CLARIAH/WP6/generalemissiven/generalemissiven/"
-  val inputDirectoryatWork = "/mnt/Nederlab/Corpusdata/2-PreTEI/generalemissiven/"
-
-  val outputDirectoryatHome = "/data/CLARIAH/WP6/generalemissiven/generalemissiven/Simplified/"
-  val outputDirectoryAtWork = "/mnt/Nederlab/Corpusdata/5-TEI/generalemissiven/"
-
-  val inputs = List(inputDirectoryatHome, inputDirectoryatWork)
-  val outputs = List(outputDirectoryatHome, outputDirectoryAtWork)
-
-  val inputDirectory = inputs.filter(new File(_).exists()).head
-  val outputDirectory = outputs.filter(new File(_).exists()).head
-
-  println(s"$inputDirectory $outputDirectory")
+  import Settings._
 
   val tocjes = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
     .map(f => (f.getName().toInt ->  new File(f.getCanonicalPath() + "/" + "toc.xml")))
 
-  case class TocItem(volume: Int, pageNumber: String, title: String)
+  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int)
   {
     lazy val page = pageNumber.toInt
     lazy val date = title.replaceAll(".*, *", "")
     lazy val author = title.replaceAll(",[^,]*$","")
     lazy val authors = author.split("\\s*,\\s*")
 
-    def toXML = <bibl><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
+    def toXML = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
 
     def toTEI = <listBibl><bibl>
       <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
@@ -60,11 +45,12 @@ object SimplifyAndConcatenateTEI {
     def inst  = s"#$pid"
   }
 
-  def tocItemFromBibl(b: Elem) =  {
+  def tocItemFromBibl(b: Elem) =  { //
     val volume = (b \ "volume").text.toInt
     val pageNumber = (b \ "page").text
     val title =  (b \ "title").text
-    TocItem(volume, pageNumber, title)
+    val level = (b \ "level").text.toInt
+    TocItem(volume, pageNumber, title, level)
   }
 
 
@@ -76,42 +62,19 @@ object SimplifyAndConcatenateTEI {
 
   lazy val tocItems: Map[Int, Array[TocItem]] = tocjes.flatMap(
     { case (n, f) => (XML.loadFile(f) \\ "item").map(
-      item => TocItem(n, (item \\ "page").text, (item \\ "title").text)
+      item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
     )}
-  ).filter(_.pageNumber.matches("[0-9]+")).groupBy(_.volume)
+  ).filter(_.pageNumber.matches("[0-9]+")).groupBy(_.volume).mapValues(l => l.sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
 
 
   def findTocItem(v: Int, p: Int) =
   {
     val bestMatch = tocItems(v).filter(_.page <= p).lastOption
-    bestMatch.getOrElse(TocItem(0, "0", "no match"))
+    bestMatch.getOrElse(TocItem(0, "0", "no match", 0))
   }
 
-  def italicity(e: Elem) = {
-    val c1 = ((e \\ "hi").filter(x => (x \ "@rend").text.contains("italic")) \\ "w").size
-    val c2 = ((e \\ "hi").filter(x => !(x \ "@rend").text.contains("italic")) \\ "w").size
-    if (c1 + c2 == 0) 0.0 else c1 / (c1 + c2).asInstanceOf[Double]
-  }
 
-  def uppercaseity(e: Node) = {
-    val t = e.text
-    val u = t.count(_.isUpper)
-    val l = t.count(_.isLower)
-    if (u + l == 0) 0.0 else (u / (u+l).asInstanceOf[Double])
-  }
-
-  def parseRend(r: String): Map[String, String] = {
-    //Console.err.println(r)
-    r.split("\\s*;\\s*").filter(x => x.trim.nonEmpty && x.contains(":")).map(
-      pv => {
-        val a = pv.split("\\s*:\\s*")
-        a(0) -> a(1)
-      }
-    ).toMap
-  }
-
-  def css(m: Map[String,String]) = m.map({case (k,v) => s"$k: $v"}).mkString("; ")
 
   def simplifyOneElement(p: Elem): NodeSeq = {
         val r = p.label match {
@@ -121,7 +84,7 @@ object SimplifyAndConcatenateTEI {
           case "pb" => if ((p \ "@unit").text == "external") p else Seq()
 
           case _ =>
-            val ital = if (p.label == "p") italicity(p) else 0
+            val ital = if (p.label == "p") PageStructure.italicity(p) else 0
 
             val c = p.child.flatMap({
               case e: Elem => simplifyOneElement(e)
@@ -134,7 +97,7 @@ object SimplifyAndConcatenateTEI {
               .append(new UnprefixedAttribute("type", "editorial-summary", Null))
               .append(new UnprefixedAttribute("resp", "editor", Null)) else p.attributes
 
-              if (p.label == "ab" && (p \\ "w").nonEmpty)
+              if (p.label == "div" && (p \\ "w").nonEmpty)
               c else
             p.copy(child=c, label=label, attributes = newAtts.filter(_.key != "facs"))
         }
@@ -149,9 +112,9 @@ object SimplifyAndConcatenateTEI {
 
     if (true)
       {
-        val m1 = parseRend(mfr).filter(_._1 != "font-family")
-        val m2 = parseRend((e \ "@rend").text).filter(_._1 != "font-family")
-        val newRend = css(m1 ++ m2)
+        val m1 = PageStructure.parseRend(mfr).filter(_._1 != "font-family")
+        val m2 =  PageStructure.parseRend((e \ "@rend").text).filter(_._1 != "font-family")
+        val newRend =  PageStructure.css(m1 ++ m2)
 
         val newChild = e.child.flatMap(c => c match {
           case h:Elem if h.label == "hi" && ((h \ "@rend").text == mfr)=> h.child
@@ -179,7 +142,7 @@ object SimplifyAndConcatenateTEI {
     d2
   }
 
-  lazy val allFiles = new File(inputDirectory).listFiles().filter(_.getName.endsWith(".xml")).toStream
+
 
   def volumeNumber(f: File) = {
     val r = "_([0-9]+)_".r
@@ -212,65 +175,17 @@ object SimplifyAndConcatenateTEI {
 
   }
 
-  def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
-    a.key.equals("id")).map(a => a.value.toString).headOption
-
-  case class Box(uly: Int, ulx: Int, lry: Int, lrx: Int)
-
-  def zoneX(p: Elem, b: Node) = {
-    val facs = (b \ "@facs").text.replaceAll("#","")
-    //println(facs)
-    val zone = p.descendant.filter(z => z.label=="zone" && getId(z).get == facs).head
-    def ai(s: String): Int = (zone \ s).text.toInt
-    Box(ai("@uly"), ai("@ulx"), ai("@lry"), ai("@lrx"))
-  }
-
-  def zone(p: Elem, b: Node) = {
-    if (b.label == "p")
-      zoneX(p, (b \\ "lb").head)
-    else
-      zoneX(p, b)
-  }
 
   def loadAndInsertPageNumber(v:Integer)(f: File) = {
     val n = pageNumber(f)
     Console.err.println("#### Page "  + n)
-    val x = XML.loadFile(f)
+    val page = XML.loadFile(f)
     def insertPB(b: Elem) = b.copy(child = Seq(<pb unit='external' n={n.toString}/>) ++ b.child)
-    val peetjes = (x \\ "p").zipWithIndex
-    val candidateHeaders = peetjes.filter({case (p,i) => i <= 2 && uppercaseity(p) >=  0.8}).map(_._1)
-
-    if (candidateHeaders.nonEmpty)
-      {
-        // Console.err.println("\n####### HEADER\n" + candidateHeaders.head)
-      }
-
-    val candidateKopregels1 = (x \\ "ab").take(2).filter(ab => {
-      val b = zone(x,ab)
-      b.uly < 300 && b.lry < 600
-    })
-
-    val candidateKopregels2 = (x \\ "p").take(2).filter(ab => {
-      if ((ab \\ "lb").isEmpty) false else {
-        val b = zone(x, ab)
-        b.uly < 250
-      }
-    })
-
-    val candidateKopregels = if (candidateKopregels1.nonEmpty) candidateKopregels1 else candidateKopregels2
-
-    candidateKopregels.foreach(kr => Console.err.println(kr.text + " " + zone(x,kr)))
-
-    val p1 = PostProcessXML.updateElement(x, _.label=="body", insertPB)
-
-    val p2 = PostProcessXML.updateElement3(p1, x => x.label=="p" || x.label=="ab",
-      p => if (candidateKopregels.contains(p))
-        p.copy(label="fw", attributes=
-        p.attributes.append(new UnprefixedAttribute("type", "head", Null)).append(new UnprefixedAttribute("place", "top", Null) )) else p)
-    val p3 = PostProcessXML.updateElement(p2, _.label=="p",
-      p => if (candidateHeaders.contains(p)) p.copy(label="head") else p)
+    val p1 = PostProcessXML.updateElement(page, _.label=="body", insertPB)
+    val p3: Elem = simplifyPreTEI(MissivenPageStructure(PageStructure.zone(page), p1).basicPageStructuring())
     (p3, n)
   }
+
 
   def createHeader(v: Int, d: Elem) = {
     val allTocItems = (d \\ "bibl").map(b => tocItemFromBibl(b.asInstanceOf[Elem]))
@@ -313,18 +228,22 @@ object SimplifyAndConcatenateTEI {
       {d1.child}
     </TEI>
   }
-  val doAll = true
+  val doAll = false
 
   lazy val volumes: Map[Int, Elem] =
     allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0 ))
-      .map({ case (n,l) =>
-        {
-          val byToc =
-            l.map(loadAndInsertPageNumber(n)).groupBy({case (e,k) => findTocItem(n,k)}).toList.sortBy(_._1.page).map(
-              {case (t, l) => <div>{t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}</div>}
-            ).toSeq
-          n -> createHeader(n, concatenatePages(byToc.map(simplifyPreTEI)))}})
+      .map({ case (volumeNr, l) => {
+        val byToc =
+          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => findTocItem(volumeNr, k) }).toList.sortBy(_._1.page).map(
+            { case (t, l) => <div>
+              {t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}
+            </div>
+            }
+          ).toSeq
+        volumeNr -> createHeader(volumeNr, concatenatePages(byToc))
+      }
+      })
 
   def main(args: Array[String]): Unit = {
     tocItems(6).foreach(println)
