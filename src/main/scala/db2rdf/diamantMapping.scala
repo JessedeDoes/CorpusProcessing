@@ -88,7 +88,7 @@ object diamantMapping {
 
   val subSenseQuery = s"select * from $senseTable where parent_id is not null"
 
-  val synonymQuery = s"select *, dictionary as wdb from $sense_schema.synonym_definitions where correct=true"
+  val synonymQuery = s"select *, dictionary as wdb from $sense_schema.synonym_definitions where correct=true and synonym_modern_lemma is not null"
 
   val synsetQuery = "select synset_id, unnest(synset) as sense_id, 'WNT' as wdb from diamant.synsets"
 
@@ -194,7 +194,7 @@ object diamantMapping {
       synonymQuery,
       Ω(senseDefinition, sense, synonymDef),
       Ω(isA, synonymDef, synonymDefinitionType),
-      Δ(definitionText, synonymDef, !"synonym"))
+      Δ(definitionText, synonymDef, !"synonym_modern_lemma"))
   }
 
 

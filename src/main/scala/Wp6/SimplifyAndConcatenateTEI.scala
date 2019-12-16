@@ -26,7 +26,7 @@ object SimplifyAndConcatenateTEI {
 
     def toXML = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
 
-    def toTEI = <listBibl><bibl>
+    def toTEI = <listBibl><bibl inst={inst}>
       <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       <interpGrp inst={inst} type="dateLevel1"><interp>{date}</interp></interpGrp>
       <interpGrp inst={inst} type="authorLevel1">{authors.map(z => <interp>{z}</interp>)}</interpGrp>
@@ -109,7 +109,6 @@ object SimplifyAndConcatenateTEI {
     val mfr = rends.toList.sortBy(_._2).last._1
 
     //System.err.println(s"Renditions: ${rends.size} : $rends")
-
     if (true)
       {
         val m1 = PageStructure.parseRend(mfr).filter(_._1 != "font-family")
@@ -141,8 +140,6 @@ object SimplifyAndConcatenateTEI {
     val d2 = updateElement(d1, e => (e \ "hi").nonEmpty, simplifyRendition)
     d2
   }
-
-
 
   def volumeNumber(f: File) = {
     val r = "_([0-9]+)_".r
@@ -228,7 +225,7 @@ object SimplifyAndConcatenateTEI {
       {d1.child}
     </TEI>
   }
-  val doAll = false
+
 
   lazy val volumes: Map[Int, Elem] =
     allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
@@ -249,7 +246,7 @@ object SimplifyAndConcatenateTEI {
   def main(args: Array[String]): Unit = {
     tocItems(6).foreach(println)
 
-    volumes.foreach({ case (n, v) =>
+    volumes.par.foreach({ case (n, v) =>
       XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
     })
   }

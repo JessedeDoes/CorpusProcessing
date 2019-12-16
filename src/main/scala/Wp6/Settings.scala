@@ -12,7 +12,7 @@ object Settings {
   val outputDirectoryatHome = "/data/CLARIAH/WP6/generalemissiven/generalemissiven/Simplified/"
   val outputDirectoryAtWork = "/mnt/Nederlab/Corpusdata/5-TEI/generalemissiven/"
 
-  val inputs = List("/tmp/TestConversion/", inputDirectoryatHome, inputDirectoryatWork)
+  val inputs = List(inputDirectoryatHome, inputDirectoryatWork)
   val outputs = List(outputDirectoryatHome, outputDirectoryAtWork)
 
   val inputDirectory = inputs.filter(new File(_).exists()).head
@@ -22,4 +22,6 @@ object Settings {
   println(s"$inputDirectory $outputDirectory")
 
   lazy val allFiles = new File(inputDirectory).listFiles().filter(_.getName.endsWith(".xml")).toStream
+
+  val doAll = true
 }
