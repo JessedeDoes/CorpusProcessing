@@ -5,17 +5,18 @@ import java.io.{File, PrintWriter}
 import Wp6.Settings.XMLDirectory
 import utils.PostProcessXML.updateElement
 
-import scala.xml.{Elem, Node, XML}
+import scala.xml.{Elem, Node, NodeSeq, XML}
 import scala.util.matching.Regex
 import scala.util.{Success, Try}
 object MissivenMetadata {
-  def pushOptionInside(o: Option[(Node,Int)]):(Option[Node], Int) =
-    o.map(x => (Some(x._1).asInstanceOf[Option[Node]],x._2)).getOrElse( (None, 0) )
+  def pushOptionInside[T](o: Option[(T,Int)]):(Option[T], Int) =
+    o.map(x => (Some(x._1).asInstanceOf[Option[T]],x._2)).getOrElse( (None, 0) )
 
   def groupWithFirst[T](l: Seq[T], f: T => Boolean): Seq[Seq[T]] =
   {
-    val numberedChild:List[(Node, Int)] = l.toList.zipWithIndex
-    def lastBefore(i:Int):(Option[Node],Int) = pushOptionInside(numberedChild.filter({case (n,j) => j <= i && f(n)}).lastOption)
+    val numberedChild:List[(T, Int)] = l.toList.zipWithIndex
+    def lastBefore(i:Int):(Option[T],Int) =
+      pushOptionInside(numberedChild.filter({case (n,j) => j <= i && f(n)}).lastOption)
     val grouped = numberedChild.groupBy({case (n,i) => lastBefore(i)})
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
   }
@@ -35,8 +36,23 @@ object MissivenMetadata {
   val tocjes: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
     .map(f => (f.getName.toInt ->  new File(f.getCanonicalPath + "/" + "toc.xml")))
 
-  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int, parent: Option[TocItem]  = None)
+
+
+  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int,
+                     parent: Option[TocItem]  = None, parsedTitle: Option[NodeSeq] = None)
   {
+    def parseTitle = if (parsedTitle.nonEmpty) parsedTitle.get else {
+      val t0 = title.replaceAll("(,\\s*geheim\\s*)$", "<secret>$1</secret>")
+      val t1 = t0.replaceAll(",\\s*([^<,]*)(<|$)", "<date>$1</date>$2")
+      val t2 = t1.replaceAll("(^[^<]*)", "<author>$1</author>")
+      val t3 = if (titleIsLocationDate) t2.replaceAll("author>", "place>") else t2
+
+      Try(XML.loadString(s"<e>$t3</e>").child) match {
+        case util.Success(x) => x
+        case util.Failure(k) => println(k); scala.xml.Text(title)
+      }
+    }
+
     lazy val page: Int = pageNumber.toInt
     private lazy val titleZonderGeheim = title.replaceAll(",\\s*geheim\\s*$", "")
     lazy val date: String = titleZonderGeheim.replaceAll(".*, *", "").trim // dit werkt niet altijd...
@@ -44,22 +60,45 @@ object MissivenMetadata {
     lazy val day: Option[Int] = tryOrNone(() => date.replaceAll("\\s.*","").toInt)
     lazy val month: Option[Int] = parseMonth(date.replaceAll("[0-9]+", "").trim)
 
-    lazy val author: String = titleZonderGeheim.replaceAll(",[^,]*$","")
+    lazy val author: String = (parseTitle \\ "author").text // titleZonderGeheim.replaceAll(",[^,]*$","")
     lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
-    def interp[T](name: String, value: Option[T]): Seq[Node] = if (value.isEmpty) Seq() else  <interpGrp inst={inst} type={name}><interp>{value.get.toString}</interp></interpGrp>
 
-    def toXML: Elem = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
+    def interp[T](name: String, value: Option[T]): Seq[Node] =
+      if (value.isEmpty)
+        Seq()
+      else
+        <interpGrp inst={inst} type={name}><interp>{value.get.toString}</interp></interpGrp>
+
+    def parentInfo = interp("parent_title", parent.map(_.title))
+
+    def toXML: Elem = if (level == 1) <item level={level.toString}>
+      <title>{title}</title>
+      <parsedTitle>{parseTitle}</parsedTitle>
+      <level>{level}</level>
+      <volume>{volume}</volume>
+      <page>{page}</page>
+      <author>{author}</author>
+      <date>{date}</date>
+      </item> else
+      <item level={level.toString}><title>{title}</title><level>{level}</level>
+        <volume>{volume}</volume>
+        <page>{page}</page>
+      </item>
 
     def isIndex: Boolean = title.trim.toLowerCase().startsWith("index")
 
+    def titleIsLocationDate = (volume == 1 && page < 97 && level==1)
+    def titleIsAuthorlocationDate = (volume ==1 && (page >= 97 && page <= 121))
+
     def toTEI: Elem = if (isIndex || level == 0)
       <listBibl><bibl level={level.toString} inst={inst}>
-        {interp("page", Some(page))}() =>
+        {interp("page", Some(page))}
         <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       </bibl></listBibl>
       else
-      <listBibl><bibl level={level.toString} inst={inst}>
+      <listBibl>{parseTitle}<bibl level={level.toString} inst={inst}>
         {interp("page", Some(page) )}
+        {parentInfo}
       <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       <interpGrp inst={inst} type="dateLevel1"><interp>{date}</interp></interpGrp>
       {interp(value=Some(volume), name = "volume")}
@@ -101,16 +140,23 @@ object MissivenMetadata {
   }
 
 
-  lazy val tocItems_unsorted: Map[Int, Array[TocItem]] = tocjes.flatMap(
+  lazy val tocItems_unsorted: Map[Int, Seq[TocItem]] = tocjes.flatMap(
     { case (n, f) => (XML.loadFile(f) \\ "item").map(
       item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
     )}
-  ).groupBy(_.volume)
+  ).groupBy(_.volume).mapValues(l => findParents(l))
 
   def findParents(l: Seq[TocItem]) = {
-    l.zipWithIndex
+    val grouped: Seq[Seq[TocItem]] = groupWithFirst[TocItem](l, t => t.level == 0 )
+    grouped.flatMap(
+      g => { if (g.head.level == 0) {
+        g.map(t => if (t.level == 1) t.copy(parent=Some(g.head)) else t)
+      } else g}
+    )
   }
-  lazy val tocItems: Map[Int, Array[TocItem]] =  tocItems_unsorted.mapValues(l => l.filter(_.pageNumber.matches("[0-9]+")).sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
+
+  lazy val tocItems: Map[Int, Seq[TocItem]] =
+    tocItems_unsorted.mapValues(l => l.filter(_.pageNumber.matches("[0-9]+")).sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
   def findTocItem(v: Int, p: Int): TocItem =
   {
@@ -160,7 +206,22 @@ object MissivenMetadata {
     </TEI>
   }
 
+  def parseTitles() = {
+    val p = new PrintWriter("/tmp/parsed.xml")
+    p.println("<bibls>")
+    tocItems.toList.sortBy(_._1).foreach(
+      {
+        case (v, l) =>
+          val volumeXML = <book n={v.toString}>{l.map(_.toXML)}</book>
+          p.println(pretty.format(volumeXML))
+      }
+    )
+    p.println("</bibls>")
+    p.close()
+  }
+
   def main(args: Array[String]): Unit = {
+    parseTitles()
     val p = new PrintWriter("/tmp/bibls.xml")
     p.println("<bibls>")
     tocItems.toList.sortBy(_._1).foreach(
