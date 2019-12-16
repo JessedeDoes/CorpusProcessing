@@ -38,7 +38,7 @@ object MissivenMetadata {
 
 
 
-  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int,
+  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int, n: String,
                      parent: Option[TocItem]  = None, parsedTitle: Option[NodeSeq] = None)
   {
     def parseTitle = if (parsedTitle.nonEmpty) parsedTitle.get else {
@@ -129,7 +129,8 @@ object MissivenMetadata {
     val pageNumber = (b \ "page").text
     val title =  (b \ "title").text
     val level = (b \ "level").text.toInt
-    TocItem(volume, pageNumber, title, level)
+    val n = (b \ "n").text.toInt
+    TocItem(volume, pageNumber, title, level, n)
   }
 
 
