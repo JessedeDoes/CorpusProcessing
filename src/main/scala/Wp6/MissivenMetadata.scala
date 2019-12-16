@@ -9,41 +9,52 @@ import scala.xml.{Elem, Node, XML}
 import scala.util.matching.Regex
 import scala.util.{Success, Try}
 object MissivenMetadata {
+  def pushOptionInside(o: Option[(Node,Int)]):(Option[Node], Int) =
+    o.map(x => (Some(x._1).asInstanceOf[Option[Node]],x._2)).getOrElse( (None, 0) )
+
+  def groupWithFirst[T](l: Seq[T], f: T => Boolean): Seq[Seq[T]] =
+  {
+    val numberedChild:List[(Node, Int)] = l.toList.zipWithIndex
+    def lastBefore(i:Int):(Option[Node],Int) = pushOptionInside(numberedChild.filter({case (n,j) => j <= i && f(n)}).lastOption)
+    val grouped = numberedChild.groupBy({case (n,i) => lastBefore(i)})
+    grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
+  }
+
 
   val pretty = new scala.xml.PrettyPrinter(300, 4)
 
-  val maanden  = List("jan", "feb", "maart", "apr", "mei", "jun", "jul", "aug", "sep", "o[kc]t", "nov", "dec").zipWithIndex
+  val maanden: List[(String, Int)] = List("jan", "feb", "maart", "apr", "mei", "jun", "jul", "aug", "sep", "o[kc]t", "nov", "dec").zipWithIndex
 
-  def parseMonth(s: String) = maanden.find(x => s.toLowerCase.matches(x._1 + ".*")).map(_._2 + 1)
+  def parseMonth(s: String): Option[Int] = maanden.find(x => s.toLowerCase.matches(x._1 + ".*")).map(_._2 + 1)
 
-  def tryOrElse[T](x: () => T): Option[T]  = Try(x()) match {
+  def tryOrNone[T](x: () => T): Option[T]  = Try(x()) match {
     case Success(z) =>  Some(z)
     case _ => None
   }
 
   val tocjes: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
-    .map(f => (f.getName().toInt ->  new File(f.getCanonicalPath() + "/" + "toc.xml")))
+    .map(f => (f.getName.toInt ->  new File(f.getCanonicalPath + "/" + "toc.xml")))
 
-  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int)
+  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int, parent: Option[TocItem]  = None)
   {
-    lazy val page = pageNumber.toInt
+    lazy val page: Int = pageNumber.toInt
     private lazy val titleZonderGeheim = title.replaceAll(",\\s*geheim\\s*$", "")
-    lazy val date = titleZonderGeheim.replaceAll(".*, *", "").trim // dit werkt niet altijd...
+    lazy val date: String = titleZonderGeheim.replaceAll(".*, *", "").trim // dit werkt niet altijd...
     lazy val year: Option[Int] = "[0-9]{4}".r.findAllIn(date).toList.headOption.map(_.toInt)
-    lazy val day: Option[Int] = tryOrElse(() => date.replaceAll("\\s.*","").toInt)
-    lazy val month = parseMonth(date.replaceAll("[0-9]+", "").trim)
+    lazy val day: Option[Int] = tryOrNone(() => date.replaceAll("\\s.*","").toInt)
+    lazy val month: Option[Int] = parseMonth(date.replaceAll("[0-9]+", "").trim)
 
-    lazy val author = titleZonderGeheim.replaceAll(",[^,]*$","")
-    lazy val authors = author.split("\\s*(,|\\sen\\s)\\s*")
-    def interp[T](name: String, value: Option[T])  = if (value.isEmpty) Seq() else  <interpGrp inst={inst} type={name}><interp>{value.get.toString}</interp></interpGrp>
+    lazy val author: String = titleZonderGeheim.replaceAll(",[^,]*$","")
+    lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
+    def interp[T](name: String, value: Option[T]): Seq[Node] = if (value.isEmpty) Seq() else  <interpGrp inst={inst} type={name}><interp>{value.get.toString}</interp></interpGrp>
 
-    def toXML = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
+    def toXML: Elem = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
 
-    def isIndex = title.trim.toLowerCase().startsWith("index")
+    def isIndex: Boolean = title.trim.toLowerCase().startsWith("index")
 
-    def toTEI = if (isIndex || level == 0)
+    def toTEI: Elem = if (isIndex || level == 0)
       <listBibl><bibl level={level.toString} inst={inst}>
-        {interp("page", Some(page) )}
+        {interp("page", Some(page))}() =>
         <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       </bibl></listBibl>
       else
@@ -69,12 +80,12 @@ object MissivenMetadata {
       java.util.UUID.nameUUIDFromBytes(bytes).toString
     }
 
-    def pid() = s"INT_${uuid()}"
+    lazy val pid = s"INT_${uuid()}"
 
     def inst  = s"#$pid"
   }
 
-  def tocItemFromBibl(b: Elem) =  { //
+  def tocItemFromBibl(b: Elem): TocItem =  { //
     val volume = (b \ "volume").text.toInt
     val pageNumber = (b \ "page").text
     val title =  (b \ "title").text
@@ -83,7 +94,7 @@ object MissivenMetadata {
   }
 
 
-  def uuidForVolume(n: Int) = {
+  def uuidForVolume(n: Int): String = {
     val source = "INT-generalemissiven-deeltje" + n
     val bytes = source.getBytes("UTF-8")
     java.util.UUID.nameUUIDFromBytes(bytes).toString
@@ -94,20 +105,20 @@ object MissivenMetadata {
     { case (n, f) => (XML.loadFile(f) \\ "item").map(
       item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
     )}
-  ) //.filter(_.pageNumber.matches("[0-9]+"))
-    .groupBy(_.volume)
+  ).groupBy(_.volume)
 
-  lazy val tocItems =  tocItems_unsorted.mapValues(l => l.sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
+  def findParents(l: Seq[TocItem]) = {
+    l.zipWithIndex
+  }
+  lazy val tocItems: Map[Int, Array[TocItem]] =  tocItems_unsorted.mapValues(l => l.filter(_.pageNumber.matches("[0-9]+")).sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
-
-
-  def findTocItem(v: Int, p: Int) =
+  def findTocItem(v: Int, p: Int): TocItem =
   {
     val bestMatch = tocItems(v).filter(_.page <= p).lastOption
     bestMatch.getOrElse(TocItem(0, "0", "no match", 0))
   }
 
-  def createHeader(v: Int, d: Elem) = {
+  def createHeader(v: Int, d: Elem): Elem = {
     val allTocItems = (d \\ "bibl").map(b => tocItemFromBibl(b.asInstanceOf[Elem]))
 
     val header = <teiHeader>
@@ -137,7 +148,7 @@ object MissivenMetadata {
 
     def fixDivje(d: Node) = {
       val t = tocItemFromBibl((d \ "bibl").head.asInstanceOf[Elem])
-      <div xml:id={t.pid()}>
+      <div xml:id={t.pid}>
         {d.child.filter(_.label != "bibl")}
       </div>
     }
