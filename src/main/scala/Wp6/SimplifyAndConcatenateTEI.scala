@@ -7,6 +7,8 @@ import utils.PostProcessXML
 
 import scala.collection.immutable
 import scala.util.matching.Regex._
+
+
 object SimplifyAndConcatenateTEI {
 
   // file:///home/jesse/workspace/xml2rdf/data/Missiven/7/toc.xml
@@ -14,67 +16,6 @@ object SimplifyAndConcatenateTEI {
 
   import Settings._
 
-  val tocjes = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
-    .map(f => (f.getName().toInt ->  new File(f.getCanonicalPath() + "/" + "toc.xml")))
-
-  case class TocItem(volume: Int, pageNumber: String, title: String, level: Int)
-  {
-    lazy val page = pageNumber.toInt
-    lazy val date = title.replaceAll(".*, *", "")
-    lazy val author = title.replaceAll(",[^,]*$","")
-    lazy val authors = author.split("\\s*,\\s*")
-
-    def toXML = <bibl><level>{level}</level><volume>{volume}</volume><page>{page}</page><author>{author}</author><date>{date}</date><title>{title}</title></bibl>
-
-    def toTEI = <listBibl><bibl inst={inst}>
-      <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
-      <interpGrp inst={inst} type="dateLevel1"><interp>{date}</interp></interpGrp>
-      <interpGrp inst={inst} type="authorLevel1">{authors.map(z => <interp>{z}</interp>)}</interpGrp>
-      <interpGrp inst={inst} type="pid"><interp>{pid}</interp></interpGrp>
-    </bibl></listBibl>
-
-    def uuid():String =
-    {
-      val source = this.toString
-      val bytes = source.getBytes("UTF-8")
-      java.util.UUID.nameUUIDFromBytes(bytes).toString
-    }
-
-    def pid() = s"INT_${uuid()}"
-
-    def inst  = s"#$pid"
-  }
-
-  def tocItemFromBibl(b: Elem) =  { //
-    val volume = (b \ "volume").text.toInt
-    val pageNumber = (b \ "page").text
-    val title =  (b \ "title").text
-    val level = (b \ "level").text.toInt
-    TocItem(volume, pageNumber, title, level)
-  }
-
-
-  def uuidForVolume(n: Int) = {
-    val source = "INT-generalemissiven-deeltje" + n
-    val bytes = source.getBytes("UTF-8")
-    java.util.UUID.nameUUIDFromBytes(bytes).toString
-  }
-
-  lazy val tocItems: Map[Int, Array[TocItem]] = tocjes.flatMap(
-    { case (n, f) => (XML.loadFile(f) \\ "item").map(
-      item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
-    )}
-  ).filter(_.pageNumber.matches("[0-9]+"))
-    .groupBy(_.volume)
-    .mapValues(l => l.sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
-
-
-
-  def findTocItem(v: Int, p: Int) =
-  {
-    val bestMatch = tocItems(v).filter(_.page <= p).lastOption
-    bestMatch.getOrElse(TocItem(0, "0", "no match", 0))
-  }
 
   def simplifyOneElement(p: Elem): NodeSeq = {
         val r = p.label match {
@@ -184,67 +125,24 @@ object SimplifyAndConcatenateTEI {
   }
 
 
-  def createHeader(v: Int, d: Elem) = {
-    val allTocItems = (d \\ "bibl").map(b => tocItemFromBibl(b.asInstanceOf[Elem]))
-
-    val header = <teiHeader>
-      <fileDesc>
-        <titleStmt>
-          <title>Tweede boek, deel I</title>
-        </titleStmt>
-        <publicationStmt>
-          <p>
-            <date></date>
-            <idno type="sourceID">missiven:vol{v}</idno>
-            <idno type="pid">INT_{uuidForVolume(v)}</idno>
-          </p>
-        </publicationStmt>
-        <notesStmt>
-          <note/>
-        </notesStmt>
-        <sourceDesc>
-          <listBibl xml:id="inlMetadata">
-            <bibl>
-            </bibl>
-          </listBibl>
-          {allTocItems.map(t => t.toTEI)}
-        </sourceDesc>
-      </fileDesc>
-    </teiHeader>
-
-    def fixDivje(d: Node) = {
-      val t = tocItemFromBibl((d \ "bibl").head.asInstanceOf[Elem])
-      <div xml:id={t.pid()}>
-        {d.child.filter(_.label != "bibl")}
-      </div>
-    }
-    val d1 = updateElement(d, x => x.label == "div" && (x \ "@type").text == "missive", fixDivje)
-
-    <TEI>
-      {header}
-      {d1.child}
-    </TEI>
-  }
-
-
   lazy val volumes: Map[Int, Elem] =
     allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0 ))
       .map({ case (volumeNr, l) => {
         val byToc: immutable.Seq[Elem] =
-          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => findTocItem(volumeNr, k) })
+          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => MissivenMetadata.findTocItem(volumeNr, k) })
             .toList.sortBy(_._1.page).map(
             { case (t, l) => <div type="missive">
               {t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}
             </div>
             }
           ).toSeq
-        volumeNr -> createHeader(volumeNr, concatenatePages(byToc))
+        volumeNr -> MissivenMetadata.createHeader(volumeNr, concatenatePages(byToc))
       }
       })
 
   def main(args: Array[String]): Unit = {
-    tocItems(6).foreach(println)
+    MissivenMetadata.tocItems(6).foreach(println)
 
     volumes.par.foreach({ case (n, v) =>
       XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
