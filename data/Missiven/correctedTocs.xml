@@ -127,14 +127,12 @@
     <item level="1">
         <n>X</n>
         <title>Ongedateerd en zonder plaats</title>
-        <parsedTitle>
-            <place>Ongedateerd en zonder plaats</place>
-        </parsedTitle>
+        <parsedTitle>Ongedateerd en zonder plaats</parsedTitle>
         <level>1</level>
         <volume>1</volume>
         <page>18</page>
         <author></author>
-        <date>Ongedateerd en zonder plaats</date>
+        <date></date>
     </item>
     <item level="1">
         <n>XI</n>
@@ -178,14 +176,12 @@
     <item level="1">
         <n>XIV</n>
         <title>Zonder plaats en datum</title>
-        <parsedTitle>
-            <place>Zonder plaats en datum</place>
-        </parsedTitle>
+        <parsedTitle>Zonder plaats en datum</parsedTitle>
         <level>1</level>
         <volume>1</volume>
         <page>20</page>
         <author></author>
-        <date>Zonder plaats en datum</date>
+        <date></date>
     </item>
     <item level="1">
         <n>XV</n>
@@ -506,7 +502,7 @@
         <parsedTitle>
               <author>Coen</author>
               <place>Kasteel Jakatra</place>
-            <date>15 okt. 1619</date>
+             <date>15 okt. 1619</date>
         </parsedTitle>
         <level>1</level>
         <volume>1</volume>
@@ -4650,9 +4646,7 @@
         <parsedTitle>
             <author>Van Hoorn, Van Riebeeck, Van Swoll, De Wilde, Douglas, Van Rijn, Van der Stel, Zwaardecroon, Chasteleyn en De Haan</author>
             <date>30 nov. 1705</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>6</volume>
@@ -5365,14 +5359,15 @@
         <n>XVIIa</n>
         <title>geheim, zelfde ondertekenaars en datum</title>
         <parsedTitle>
-            <author>geheim</author>
-            <date>zelfde ondertekenaars en datum</date>
+            <author>Van Swoll, Castelijn, De Haan, Zwaardecroon, De Haeze, Timmerman, Faes, Tolling, d'Ableing, De Groot, Six en Hasselaar</author>
+            <date>20 maart 1718</date>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>7</volume>
         <page>351</page>
-        <author>geheim</author>
-        <date>zelfde ondertekenaars en datum</date>
+        <author>Van Swoll, Castelijn, De Haan, Zwaardecroon, De Haeze, Timmerman, Faes, Tolling, d'Ableing, De Groot, Six en Hasselaar</author>
+        <date>20 maart 1718</date>
     </item>
     <item level="1">
         <n>I</n>
@@ -5961,9 +5956,7 @@
             <N>IXa</N>
             <author> De Haan, Huysman, Hasselaar, Blom, Durven, Gabry, Dubbeldekop, Van der Schuer, Versluys, Westpalm, Van Baerle, De Witte van Schooten en Van Heyningen</author>
             <date>27 oktober 1727</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>8</volume>
@@ -6048,9 +6041,7 @@
             <N>XIVa</N>
             <author> De Haan, Huysman, Hasselaar, Blom, Durven, Van der Schuer, Versluys, Westpalm, Van Baerle, De Witte van Schooten en Van Heyningen</author>
             <date>8 december 1728</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>8</volume>
@@ -6182,9 +6173,7 @@
         <parsedTitle>
             <author>Durven, Hasselaar, Blom, Van der Schuer, Westpalm, Van Baerle, De Witte van Schooten, Van Heyningen, Van Bayen en Oostwalt</author>
             <date>30 september 1729</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>9</volume>
@@ -6224,9 +6213,7 @@
         <parsedTitle>
             <author>Durven, Hasselaar, Blom, Van der Schuer, Westpalm, Van Baerle, De Witte van Schooten, Van Heyningen, Van Bayen en Oostwalt</author>
             <date>(30 november)</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>9</volume>
@@ -6292,9 +6279,7 @@
         <parsedTitle>
             <author>Durven, Hasselaar, Blom, Van der Schuer, Westpalm, Van Baerle, De Witte van Schooten, Van Heyningen, Van Bayen, Oostwalt, Valckenier, Van Cloon en Hendrix</author>
             <date>17 oktober 1730</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>9</volume>
@@ -6470,9 +6455,7 @@
         <parsedTitle>
             <author>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Wouters en Sautijn</author>
             <date>25 januari 1738</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>10</volume>
@@ -6537,26 +6520,26 @@
         <title>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius, 12 december 1739. Kopie</title>
         <parsedTitle>
             <author>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius</author>
-            <date>12 december 1739. Kopie</date>
+	    <date>12 december 1739</date><copy>Kopie</copy>
         </parsedTitle>
         <level>1</level>
         <volume>10</volume>
         <page>297</page>
         <author>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius</author>
-        <date>12 december 1739. Kopie</date>
+	<date>12 december 1739</date><copy>Kopie</copy>
     </item>
     <item level="1">
         <n>VIIa.</n>
         <title>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius, 12 december 1739. Kopie. Geheim</title>
         <parsedTitle>
             <author>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius</author>
-            <date>12 december 1739. Kopie. Geheim</date>
+	    <date>12 december 1739</date><copy>Kopie</copy><secret>Geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>10</volume>
         <page>399</page>
         <author>Valckenier, Schaghen, Thedens, De Haeze, Van Schinne, Van Suchtelen, Pasques de Chavonnes, Duquesne, Guillot, Van Berendregt, Crul, Macaré en Nolthenius</author>
-        <date>12 december 1739. Kopie. Geheim</date>
+	<date>12 december 1739</date><copy>Kopie</copy><secret>Geheim</secret>
     </item>
     <item level="1">
         <n>VIII</n>
@@ -6758,9 +6741,7 @@
         <parsedTitle>
             <author>Van Imhoff, Pasques de Chavonnes, Crul, Nolthenius, Van Aerden en Lakeman</author>
             <date>5 november 1743</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>11</volume>
@@ -6917,9 +6898,7 @@
         <parsedTitle>
             <author>Van Imhoff, Crul, Nolthenius, Van Aerden, Overbeek, Van den Bosch, Schuylenburg, Mossel en Van Broyel</author>
             <date>15 maart 1746</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>11</volume>
@@ -7016,9 +6995,7 @@
         <parsedTitle>
             <author>Mossel, Cluysenaar, Overbeek, Van Broyel, Van der Waeyen, Van der Parra, Van der Spar, Huygens en Loten</author>
             <date>21 januari 1751</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>12</volume>
@@ -7045,9 +7022,7 @@
         <parsedTitle>
             <author>Mossel, Cluysenaar, Overbeek, Van Broyel, Van der Waeyen, Van der Parra, Van der Spar en Loten</author>
             <date>8 april 1751</date>
-            <secret>
-                <date>geheim</date>
-            </secret>
+            <secret>geheim</secret>
         </parsedTitle>
         <level>1</level>
         <volume>12</volume>
