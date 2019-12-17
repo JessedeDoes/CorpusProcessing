@@ -45,6 +45,7 @@ object MissivenMetadata {
       val t0 = title.replaceAll("(,\\s*geheim\\s*)$", "<secret>$1</secret>")
       val t1 = t0.replaceAll(",\\s*([^<,]*)(<|$)", "<date>$1</date>$2")
       val t2 = t1.replaceAll("(^[^<]*)", "<author>$1</author>")
+        .replaceAll("<author>([IVXLC]{0,4}[ab]?)\\.","<N>$1</N><author>")
       val t3 = if (titleIsLocationDate) t2.replaceAll("author>", "place>") else t2
 
       Try(XML.loadString(s"<e>$t3</e>").child) match {
@@ -61,6 +62,7 @@ object MissivenMetadata {
     lazy val month: Option[Int] = parseMonth(date.replaceAll("[0-9]+", "").trim)
 
     lazy val author: String = (parseTitle \\ "author").text // titleZonderGeheim.replaceAll(",[^,]*$","")
+    lazy val better_n = if (n.nonEmpty) n else (parseTitle \\ "N").text
     lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
 
     def interp[T](name: String, value: Option[T]): Seq[Node] =
@@ -72,6 +74,7 @@ object MissivenMetadata {
     def parentInfo = interp("parent_title", parent.map(_.title))
 
     def toXML: Elem = if (level == 1) <item level={level.toString}>
+      <n>{better_n}</n>
       <title>{title}</title>
       <parsedTitle>{parseTitle}</parsedTitle>
       <level>{level}</level>
@@ -79,16 +82,18 @@ object MissivenMetadata {
       <page>{page}</page>
       <author>{author}</author>
       <date>{date}</date>
-      </item> else
-      <item level={level.toString}><title>{title}</title><level>{level}</level>
+      </item>
+    else
+      <item level={level.toString}><n>{better_n}</n><title>{title}</title>
+        <level>{level}</level>
         <volume>{volume}</volume>
         <page>{page}</page>
       </item>
 
     def isIndex: Boolean = title.trim.toLowerCase().startsWith("index")
 
-    def titleIsLocationDate = (volume == 1 && page < 97 && level==1)
-    def titleIsAuthorlocationDate = (volume ==1 && (page >= 97 && page <= 121))
+    def titleIsLocationDate: Boolean = (volume == 1 && page < 97 && level==1)
+    def titleIsAuthorlocationDate: Boolean = (volume ==1 && (page >= 97 && page <= 121))
 
     def toTEI: Elem = if (isIndex || level == 0)
       <listBibl><bibl level={level.toString} inst={inst}>
@@ -129,7 +134,7 @@ object MissivenMetadata {
     val pageNumber = (b \ "page").text
     val title =  (b \ "title").text
     val level = (b \ "level").text.toInt
-    val n = (b \ "n").text.toInt
+    val n = (b \ "n").text
     TocItem(volume, pageNumber, title, level, n)
   }
 
@@ -143,7 +148,8 @@ object MissivenMetadata {
 
   lazy val tocItems_unsorted: Map[Int, Seq[TocItem]] = tocjes.flatMap(
     { case (n, f) => (XML.loadFile(f) \\ "item").map(
-      item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt)
+      item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt,
+        (item \ "n").text)
     )}
   ).groupBy(_.volume).mapValues(l => findParents(l))
 
@@ -157,12 +163,14 @@ object MissivenMetadata {
   }
 
   lazy val tocItems: Map[Int, Seq[TocItem]] =
-    tocItems_unsorted.mapValues(l => l.filter(_.pageNumber.matches("[0-9]+")).sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
+    tocItems_unsorted.mapValues(l =>
+      l.filter(_.pageNumber.matches("[0-9]+"))
+        .sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
   def findTocItem(v: Int, p: Int): TocItem =
   {
     val bestMatch = tocItems(v).filter(_.page <= p).lastOption
-    bestMatch.getOrElse(TocItem(0, "0", "no match", 0))
+    bestMatch.getOrElse(TocItem(0, "0", "no match", 0, "NOPE"))
   }
 
   def createHeader(v: Int, d: Elem): Elem = {
