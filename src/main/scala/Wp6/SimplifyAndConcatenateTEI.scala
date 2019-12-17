@@ -1,7 +1,7 @@
 package Wp6
 import scala.xml._
 import utils.PostProcessXML._
-import java.io.File
+import java.io.{File, PrintWriter}
 
 import utils.PostProcessXML
 
@@ -116,7 +116,7 @@ object SimplifyAndConcatenateTEI {
 
   def loadAndInsertPageNumber(v:Integer)(f: File) = {
     val n = pageNumber(f)
-    Console.err.println("#### Page "  + n)
+    //Console.err.println("#### Page "  + n)
     val page = XML.loadFile(f)
     def insertPB(b: Elem) = b.copy(child = Seq(<pb unit='external' n={n.toString}/>) ++ b.child)
     val p1 = PostProcessXML.updateElement(page, _.label=="body", insertPB)
@@ -125,12 +125,18 @@ object SimplifyAndConcatenateTEI {
   }
 
 
+  // skip pages with just empty missiven headers
+
+  val skipPages = List(1 -> 3, 1->16, 1->20, 1 -> 27, 1 -> 97, 1 -> 98, 1 -> 118, 1->244)
+
+  def skipPage(v: Int, n: Int) = skipPages.contains((v,n))
+
   lazy val volumes: Map[Int, Elem] =
     allFiles.filter(f => doAll || volumeNumber(f) ==1).groupBy(volumeNumber)
-      .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0 ))
+      .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0))
       .map({ case (volumeNr, l) => {
         val byToc: immutable.Seq[Elem] =
-          l.map(loadAndInsertPageNumber(volumeNr)).groupBy({ case (e, k) => MissivenMetadata.findTocItem(volumeNr, k) })
+          l.map(loadAndInsertPageNumber(volumeNr)).filter({case (e,k) => !skipPage(volumeNr,k)}).groupBy({ case (e, k) => MissivenMetadata.findTocItem(volumeNr, k) })
             .toList.sortBy(_._1.page).map(
             { case (t, l) => <div type="missive">
               {t.toXML}{l.flatMap(x => (x._1 \\ "body").map(_.child))}
@@ -138,11 +144,10 @@ object SimplifyAndConcatenateTEI {
             }
           ).toSeq
         volumeNr -> MissivenMetadata.addHeaderForVolume(volumeNr, concatenatePages(byToc))
-      }
-      })
+      }})
 
   def splitVolume(volumeNumber: Int, volume: Node): Unit = {
-    val dir = outputDirectory + s"$volumeNumber"
+    val dir = outputDirectory + s"split/$volumeNumber"
     new File(dir).mkdir()
 
     val divjes = (volume \\ "div")
@@ -151,10 +156,10 @@ object SimplifyAndConcatenateTEI {
         val id = PageStructure.getId(div)
         if (id.nonEmpty)
           {
-            Console.err.println(s"id=$id")
+            //Console.err.println(s"id=$id")
             val bibl = ((volume \ "teiHeader") \\ "bibl").find(x => (x \ "@inst").text == "#" + id.get)
             if (bibl.nonEmpty) {
-              Console.err.println(s"bibl=${bibl.get}")
+              //Console.err.println(s"bibl=${bibl.get}")
               val header = MissivenMetadata.createHeaderForMissive(volumeNumber, bibl.get)
               val tei = <TEI xml:id={id.get} id={id.get}>
                 {header}
@@ -172,11 +177,15 @@ object SimplifyAndConcatenateTEI {
   }
 
   def main(args: Array[String]): Unit = {
-    MissivenMetadata.tocItemsPerVolume(6).foreach(println)
-
+    // MissivenMetadata.tocItemsPerVolume(6).foreach(println)
+    val u = new PrintWriter("/tmp/unused_tocitems.txt")
     volumes.par.foreach({ case (n, v) =>
-        XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
+        val z = MissivenMetadata.unusedTocItemsForVolume(n,v)
+        u.println(s"Unused items for volume $n: ${z.size}")
+        z.foreach(t => u.println("Unused: " + t.pid + " " + t.pageNumber + " " + t.title))
+        XML.save(outputDirectory + s"pervolume/missiven-v$n.xml", v,"utf-8")
         splitVolume(n, v)
     })
+    u.close()
   }
 }

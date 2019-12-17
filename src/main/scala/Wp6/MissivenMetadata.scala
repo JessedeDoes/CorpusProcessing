@@ -64,6 +64,7 @@ object MissivenMetadata {
     lazy val place: Option[String] = (parseTitle \\ "place").headOption.map(_.text)
     lazy val author: String = (parseTitle \\ "author").text // titleZonderGeheim.replaceAll(",[^,]*$","")
     lazy val better_n = if (n.nonEmpty) n else (parseTitle \\ "N").text
+    lazy val key = s"$volume/$n/$title/$level/$pageNumber"
     lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
 
     def interp[T](name: String, value: Option[T]): Seq[Node] =
@@ -121,7 +122,7 @@ object MissivenMetadata {
 
     def uuid():String =
     {
-      val source = this.toString
+      val source = this.key.toString
       val bytes = source.getBytes("UTF-8")
       java.util.UUID.nameUUIDFromBytes(bytes).toString
     }
@@ -179,6 +180,13 @@ object MissivenMetadata {
       l.filter(_.pageNumber.matches("[0-9]+"))
         .sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
+  def unusedTocItemsForVolume(n: Int, volume: Node) =
+  {
+    val usedIds: immutable.Seq[String] = (volume \\ "div").map(PageStructure.getId(_)).filter(_.isDefined).map(_.get)
+    //println(usedIds)
+    tocItemsPerVolume(n).filter(t => !usedIds.contains(t.pid))
+  }
+
   def findTocItem(v: Int, p: Int): TocItem =
   {
     val bestMatch = tocItemsPerVolume(v).filter(_.page <= p).lastOption
@@ -186,8 +194,6 @@ object MissivenMetadata {
   }
 
   def createHeaderForMissive(v: Int, bibl: Node): Elem = {
-
-
     val header = <teiHeader>
       <fileDesc>
         <titleStmt>
@@ -204,7 +210,7 @@ object MissivenMetadata {
           <note/>
         </notesStmt>
         <sourceDesc>
-          <listBibl xml:id="inlMetadata">
+          <listBibl xml:id="inlMetadata" id="inlMetadata">
             {bibl}
           </listBibl>
         </sourceDesc>
@@ -270,7 +276,19 @@ object MissivenMetadata {
     p.close()
   }
 
+  def severalTocsOnAPage = tocItemsPerVolume.toList.sortBy(_._1).foreach({
+    case (n,l) =>
+      val z = l.groupBy(_.page).filter({case (p,k) => k.size > 1})
+      z.foreach({case (p,l)  =>
+          println(
+            s"""###Vol $n Page $p
+               |${l.map(_.key).mkString("\n")}
+               |""".stripMargin)
+      })
+  })
+
   def main(args: Array[String]): Unit = {
+    severalTocsOnAPage
     parseTitles()
     val p = new PrintWriter("/tmp/bibls.xml")
     p.println("<bibls>")
