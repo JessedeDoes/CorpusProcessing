@@ -23,5 +23,6 @@ object Settings {
 
   lazy val allFiles = new File(inputDirectory).listFiles().filter(_.getName.endsWith(".xml")).toStream
 
+  val readCorrectedTocs = true
   val doAll = true
 }

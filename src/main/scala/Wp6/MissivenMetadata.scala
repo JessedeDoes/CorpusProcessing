@@ -5,6 +5,7 @@ import java.io.{File, PrintWriter}
 import Wp6.Settings.XMLDirectory
 import utils.PostProcessXML.updateElement
 
+import scala.collection.immutable
 import scala.xml.{Elem, Node, NodeSeq, XML}
 import scala.util.matching.Regex
 import scala.util.{Success, Try}
@@ -33,7 +34,7 @@ object MissivenMetadata {
     case _ => None
   }
 
-  val tocjes: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
+  val tocFiles: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
     .map(f => (f.getName.toInt ->  new File(f.getCanonicalPath + "/" + "toc.xml")))
 
 
@@ -60,7 +61,7 @@ object MissivenMetadata {
     lazy val year: Option[Int] = "[0-9]{4}".r.findAllIn(date).toList.headOption.map(_.toInt)
     lazy val day: Option[Int] = tryOrNone(() => date.replaceAll("\\s.*","").toInt)
     lazy val month: Option[Int] = parseMonth(date.replaceAll("[0-9]+", "").trim)
-
+    lazy val place: Option[String] = (parseTitle \\ "place").headOption.map(_.text)
     lazy val author: String = (parseTitle \\ "author").text // titleZonderGeheim.replaceAll(",[^,]*$","")
     lazy val better_n = if (n.nonEmpty) n else (parseTitle \\ "N").text
     lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
@@ -101,12 +102,13 @@ object MissivenMetadata {
         <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       </bibl></listBibl>
       else
-      <listBibl>{parseTitle}<bibl level={level.toString} inst={inst}>
+      <listBibl>{parseTitle}<bibl type="missive" level={level.toString} inst={inst}>
         {interp("page", Some(page) )}
         {parentInfo}
       <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       <interpGrp inst={inst} type="dateLevel1"><interp>{date}</interp></interpGrp>
       {interp(value=Some(volume), name = "volume")}
+      {interp("localization_placeLevel1", place )}
       {interp("witnessYearLevel1_from", year )}
       {interp("witnessYearLevel1_to", year )}
       {interp("witnessMonthLevel1_to", month )}
@@ -129,13 +131,14 @@ object MissivenMetadata {
     def inst  = s"#$pid"
   }
 
-  def tocItemFromBibl(b: Elem): TocItem =  { //
-    val volume = (b \ "volume").text.toInt
+  def tocItemFromXML(b: Node, v:Option[Int] = None): TocItem =  { //
+    val volume = v.getOrElse((b \ "volume").text.toInt)
     val pageNumber = (b \ "page").text
     val title =  (b \ "title").text
-    val level = (b \ "level").text.toInt
+    val level = (b \ "@level").text.toInt
     val n = (b \ "n").text
-    TocItem(volume, pageNumber, title, level, n)
+    val parsedTitle = (b \\ "parsedTitle").headOption
+    TocItem(volume, pageNumber, title, level, n, parsedTitle=parsedTitle)
   }
 
 
@@ -146,14 +149,23 @@ object MissivenMetadata {
   }
 
 
-  lazy val tocItems_unsorted: Map[Int, Seq[TocItem]] = tocjes.flatMap(
-    { case (n, f) => (XML.loadFile(f) \\ "item").map(
-      item => TocItem(n, (item \\ "page").text, (item \\ "title").text, (item \ "@level").text.toInt,
-        (item \ "n").text)
-    )}
-  ).groupBy(_.volume).mapValues(l => findParents(l))
+  def getFieldFromBibl(b: Node, f: String) = (b \\ "interpGrp").filter(g => (g \ "@type").text == f).flatMap(g => (g \\ "interp").map(_.text)).mkString("//")
 
-  def findParents(l: Seq[TocItem]) = {
+  private lazy val tocItems_unsorted: Map[Int, Seq[TocItem]] =
+    tocFiles.flatMap({
+          case (n, f) =>
+            val z: immutable.Seq[TocItem] = (XML.loadFile(f) \\ "item").map(x => tocItemFromXML(x,Some(n)))
+            z }
+    ).groupBy(_.volume).mapValues(l => findParents(l))
+
+  private lazy val corrected_tocItems: Map[Int, Seq[TocItem]] = (XML.load("data/Missiven/correctedTocs.xml") \\ "item")
+    .map(x => tocItemFromXML(x,None))
+    .groupBy(_.volume)
+    .mapValues(l => findParents(l))
+
+  private lazy val tocItems_read = if (Settings.readCorrectedTocs) corrected_tocItems else tocItems_unsorted
+
+  private def findParents(l: Seq[TocItem]): Seq[TocItem] = {
     val grouped: Seq[Seq[TocItem]] = groupWithFirst[TocItem](l, t => t.level == 0 )
     grouped.flatMap(
       g => { if (g.head.level == 0) {
@@ -162,19 +174,48 @@ object MissivenMetadata {
     )
   }
 
-  lazy val tocItems: Map[Int, Seq[TocItem]] =
-    tocItems_unsorted.mapValues(l =>
+  lazy val tocItemsPerVolume: Map[Int, Seq[TocItem]] =
+    tocItems_read.mapValues(l =>
       l.filter(_.pageNumber.matches("[0-9]+"))
         .sortBy(x => 10000 * x.page + x.level)) // kies liever een level 1 item (als laatste)
 
   def findTocItem(v: Int, p: Int): TocItem =
   {
-    val bestMatch = tocItems(v).filter(_.page <= p).lastOption
+    val bestMatch = tocItemsPerVolume(v).filter(_.page <= p).lastOption
     bestMatch.getOrElse(TocItem(0, "0", "no match", 0, "NOPE"))
   }
 
-  def createHeader(v: Int, d: Elem): Elem = {
-    val allTocItems = (d \\ "bibl").map(b => tocItemFromBibl(b.asInstanceOf[Elem]))
+  def createHeaderForMissive(v: Int, bibl: Node): Elem = {
+
+
+    val header = <teiHeader>
+      <fileDesc>
+        <titleStmt>
+          <title>{getFieldFromBibl(bibl, "titleLevel1")}</title>
+        </titleStmt>
+        <publicationStmt>
+          <p>
+            <date>{getFieldFromBibl(bibl, "dateLevel1")}</date>
+            <idno type="sourceID">missiven:vol{v}</idno>
+            <idno type="pid">{getFieldFromBibl(bibl, "pid")}</idno>
+          </p>
+        </publicationStmt>
+        <notesStmt>
+          <note/>
+        </notesStmt>
+        <sourceDesc>
+          <listBibl xml:id="inlMetadata">
+            {bibl}
+          </listBibl>
+        </sourceDesc>
+      </fileDesc>
+    </teiHeader>
+
+      header
+    }
+
+  def addHeaderForVolume(v: Int, d: Elem): Elem = {
+    val allTocItems = (d \\ "item").map(b => tocItemFromXML(b.asInstanceOf[Elem]))
 
     val header = <teiHeader>
       <fileDesc>
@@ -202,9 +243,9 @@ object MissivenMetadata {
     </teiHeader>
 
     def fixDivje(d: Node) = {
-      val t = tocItemFromBibl((d \ "bibl").head.asInstanceOf[Elem])
+      val t = tocItemFromXML((d \ "item").head.asInstanceOf[Elem])
       <div xml:id={t.pid}>
-        {d.child.filter(_.label != "bibl")}
+        {d.child.filter(_.label != "item")}
       </div>
     }
     val d1 = updateElement(d, x => x.label == "div" && (x \ "@type").text == "missive", fixDivje)
@@ -218,7 +259,7 @@ object MissivenMetadata {
   def parseTitles() = {
     val p = new PrintWriter("/tmp/parsed.xml")
     p.println("<bibls>")
-    tocItems.toList.sortBy(_._1).foreach(
+    tocItemsPerVolume.toList.sortBy(_._1).foreach(
       {
         case (v, l) =>
           val volumeXML = <book n={v.toString}>{l.map(_.toXML)}</book>
@@ -233,7 +274,7 @@ object MissivenMetadata {
     parseTitles()
     val p = new PrintWriter("/tmp/bibls.xml")
     p.println("<bibls>")
-    tocItems.toList.sortBy(_._1).foreach(
+    tocItemsPerVolume.toList.sortBy(_._1).foreach(
       {
         case (v, l) =>
           val volumeXML = <volume n={v.toString}>{l.map(_.toTEI)}</volume>

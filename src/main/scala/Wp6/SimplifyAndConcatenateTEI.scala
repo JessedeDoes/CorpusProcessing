@@ -126,7 +126,7 @@ object SimplifyAndConcatenateTEI {
 
 
   lazy val volumes: Map[Int, Elem] =
-    allFiles.filter(f => doAll || volumeNumber(f) ==6).groupBy(volumeNumber)
+    allFiles.filter(f => doAll || volumeNumber(f) ==1).groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0 ))
       .map({ case (volumeNr, l) => {
         val byToc: immutable.Seq[Elem] =
@@ -137,15 +137,46 @@ object SimplifyAndConcatenateTEI {
             </div>
             }
           ).toSeq
-        volumeNr -> MissivenMetadata.createHeader(volumeNr, concatenatePages(byToc))
+        volumeNr -> MissivenMetadata.addHeaderForVolume(volumeNr, concatenatePages(byToc))
       }
       })
 
+  def splitVolume(volumeNumber: Int, volume: Node): Unit = {
+    val dir = outputDirectory + s"$volumeNumber"
+    new File(dir).mkdir()
+
+    val divjes = (volume \\ "div")
+    divjes.foreach(
+      div => {
+        val id = PageStructure.getId(div)
+        if (id.nonEmpty)
+          {
+            Console.err.println(s"id=$id")
+            val bibl = ((volume \ "teiHeader") \\ "bibl").find(x => (x \ "@inst").text == "#" + id.get)
+            if (bibl.nonEmpty) {
+              Console.err.println(s"bibl=${bibl.get}")
+              val header = MissivenMetadata.createHeaderForMissive(volumeNumber, bibl.get)
+              val tei = <TEI xml:id={id.get} id={id.get}>
+                {header}
+                <text>
+                  <body>
+                    {div}
+                  </body>
+                </text>
+              </TEI>
+              XML.save(dir + "/" + s"${id.get}.xml", tei, "utf-8")
+            }
+          }
+      }
+    )
+  }
+
   def main(args: Array[String]): Unit = {
-    MissivenMetadata.tocItems(6).foreach(println)
+    MissivenMetadata.tocItemsPerVolume(6).foreach(println)
 
     volumes.par.foreach({ case (n, v) =>
-      XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
+        XML.save(outputDirectory + s"missiven-v$n.xml", v,"utf-8")
+        splitVolume(n, v)
     })
   }
 }
