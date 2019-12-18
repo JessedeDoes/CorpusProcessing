@@ -17,70 +17,6 @@ object SimplifyAndConcatenateTEI {
   import Settings._
 
 
-  def simplifyOneElement(p: Elem): NodeSeq = {
-        val r = p.label match {
-          case "w" => Text(p.text + (if ((p \ "@type").text == "last") "" else ""))
-          case "editionStmt" => Seq()
-          case "sourceDoc" => Seq()
-          case "pb" => if ((p \ "@unit").text == "external") p else Seq()
-          case "fw" => p.copy(child = Text(p.text.trim))
-          case _ =>
-            val ital = if (p.label == "p") PageStructure.italicity(p) else 0
-
-            val c = p.child.flatMap({
-              case e: Elem => simplifyOneElement(e)
-              case x => x
-            } )
-
-            val convertToNote = ital > 0.7
-            val label = if (convertToNote) "note" else p.label
-            val newAtts = if (convertToNote) p.attributes
-              .append(new UnprefixedAttribute("place", "inline", Null))
-              .append(new UnprefixedAttribute("type", "editorial-summary", Null))
-              .append(new UnprefixedAttribute("resp", "editor", Null)) else p.attributes
-
-            if (p.label == "div") (if ((p \\ "w").nonEmpty) c else Seq())
-               else p.copy(child=c, label=label, attributes = newAtts.filter(_.key != "facs"))
-        }
-    r
-  }
-
-  def simplifyRendition(e: Elem) = {
-    val rends = (e \ "hi").map(_ \ "@rend").map(_.text).groupBy(x => x).mapValues(_.size)
-    val mfr = rends.toList.sortBy(_._2).last._1
-
-    //System.err.println(s"Renditions: ${rends.size} : $rends")
-    if (true)
-      {
-        val m1 = PageStructure.parseRend(mfr).filter(_._1 != "font-family")
-        val m2 =  PageStructure.parseRend((e \ "@rend").text).filter(_._1 != "font-family")
-        val newRend =  PageStructure.css(m1 ++ m2)
-
-        val newChild = e.child.flatMap(c => c match {
-          case h:Elem if h.label == "hi" && ((h \ "@rend").text == mfr)=> h.child
-          case _ => Seq(c)}
-        )
-        val newAtts = e.attributes.filter(_.key != "rend")
-          .append(new UnprefixedAttribute("rend", newRend, Null))
-        e.copy(child = newChild, attributes = newAtts)
-      } else e
-  }
-
-  def findLastWordIn(p: Elem) = {
-    if  ((p \\ "w").nonEmpty) {
-      val lastWord = (p \\ "w").last
-      updateElement(p, _.label=="w", w => (if (w==lastWord) w.copy(attributes = w.attributes.append(new UnprefixedAttribute("type", "last", Null))) else w))
-    } else p
-  }
-
-  def simplifyPreTEI(d: Elem):Elem = {
-    // whitespace handling
-
-    val d0 = updateElement(d, _.label == "p", findLastWordIn)
-    val d1 = updateElement2(d0, e=> true, simplifyOneElement).head.asInstanceOf[Elem]
-    val d2 = updateElement(d1, e => (e \ "hi").nonEmpty, simplifyRendition)
-    d2
-  }
 
   def volumeNumber(f: File) = {
     val r = "_([0-9]+)_".r
@@ -120,7 +56,7 @@ object SimplifyAndConcatenateTEI {
     val page = XML.loadFile(f)
     def insertPB(b: Elem) = b.copy(child = Seq(<pb unit='external' n={n.toString}/>) ++ b.child)
     val p1 = PostProcessXML.updateElement(page, _.label=="body", insertPB)
-    val p3: Elem = simplifyPreTEI(MissivenPageStructure(PageStructure.zone(page), p1).basicPageStructuring())
+    val p3: Elem = PageStructure.simplifyPreTEI(MissivenPageStructure(PageStructure.zone(page), p1).basicPageStructuring())
     (p3, n)
   }
 
@@ -132,7 +68,7 @@ object SimplifyAndConcatenateTEI {
   def skipPage(v: Int, n: Int) = skipPages.contains((v,n))
 
   lazy val volumes: Map[Int, Elem] =
-    allFiles.filter(f => doAll || volumeNumber(f) ==1).groupBy(volumeNumber)
+    allFiles.filter(f => doAll || volumeNumber(f) == Settings.theOneToProcess).groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0))
       .map({ case (volumeNr, l) => {
         val byToc: immutable.Seq[Elem] =
@@ -145,6 +81,30 @@ object SimplifyAndConcatenateTEI {
           ).toSeq
         volumeNr -> MissivenMetadata.addHeaderForVolume(volumeNr, concatenatePages(byToc))
       }})
+
+  def assignIds(e: Elem, prefix: String, k: Int): Elem =
+  {
+    val myId = s"$prefix.${e.label}.$k"
+
+    val children: Map[String, Seq[((Node, Int), Int)]] = e.child.toList.zipWithIndex.filter(_._1.isInstanceOf[Elem]).groupBy(_._1.label).mapValues(_.zipWithIndex)
+
+    val indexMapping: Map[Int, Int] = children.values.flatMap(x => x).map( {case ((n,i),j) => i -> j} ).toMap
+
+
+    val newChildren: Seq[Node] = e.child.zipWithIndex.map({
+      case (e1: Elem, i) => val k1 = indexMapping(i); assignIds(e1, myId, k1+1)
+      case (x, y) => x
+    })
+    val newAtts = if (e.label == "TEI") e.attributes else  e.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", myId, Null))
+    e.copy(child=newChildren, attributes = newAtts)
+  }
+
+  def cleanupTEI(tei: Elem, pid: String) = {
+    val e0 = PostProcessXML.updateElement3(tei, e => true, e => {
+      e.copy(attributes = e.attributes.filter(a => a.key != "inst" && !(e.label == "pb" && a.key=="unit")))
+    })
+    assignIds(e0, pid, 1)
+  }
 
   def splitVolume(volumeNumber: Int, volume: Node): Unit = {
     val dir = outputDirectory + s"split/$volumeNumber"
@@ -161,7 +121,7 @@ object SimplifyAndConcatenateTEI {
             if (bibl.nonEmpty) {
               //Console.err.println(s"bibl=${bibl.get}")
               val header = MissivenMetadata.createHeaderForMissive(volumeNumber, bibl.get)
-              val tei = <TEI xml:id={id.get} id={id.get}>
+              val tei = <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={id.get}>
                 {header}
                 <text>
                   <body>
@@ -169,7 +129,7 @@ object SimplifyAndConcatenateTEI {
                   </body>
                 </text>
               </TEI>
-              XML.save(dir + "/" + s"${id.get}.xml", tei, "utf-8")
+              XML.save(dir + "/" + s"${id.get}.xml", cleanupTEI(tei, id.get), "utf-8")
             }
           }
       }
@@ -178,6 +138,7 @@ object SimplifyAndConcatenateTEI {
 
   def main(args: Array[String]): Unit = {
     // MissivenMetadata.tocItemsPerVolume(6).foreach(println)
+    println(assignIds(<TEI xmlns="aapje"><div><p></p><p></p></div></TEI>, "xx", 1))
     val u = new PrintWriter("/tmp/unused_tocitems.txt")
     volumes.par.foreach({ case (n, v) =>
         val z = MissivenMetadata.unusedTocItemsForVolume(n,v)

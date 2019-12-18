@@ -9,6 +9,7 @@ import scala.collection.immutable
 import scala.xml.{Elem, Node, NodeSeq, XML}
 import scala.util.matching.Regex
 import scala.util.{Success, Try}
+
 object MissivenMetadata {
   def pushOptionInside[T](o: Option[(T,Int)]):(Option[T], Int) =
     o.map(x => (Some(x._1).asInstanceOf[Option[T]],x._2)).getOrElse( (None, 0) )
@@ -63,7 +64,7 @@ object MissivenMetadata {
     lazy val month: Option[Int] = parseMonth(date.replaceAll("[0-9]+", "").trim)
     lazy val place: Option[String] = (parseTitle \\ "place").headOption.map(_.text)
     lazy val author: String = (parseTitle \\ "author").text // titleZonderGeheim.replaceAll(",[^,]*$","")
-    lazy val better_n = if (n.nonEmpty) n else (parseTitle \\ "N").text
+    lazy val better_n: String = if (n.nonEmpty) n else (parseTitle \\ "N").text
     lazy val key = s"$volume/$n/$title/$level/$pageNumber"
     lazy val authors: Array[String] = author.split("\\s*(,|\\sen\\s)\\s*")
 
@@ -210,7 +211,7 @@ object MissivenMetadata {
           <note/>
         </notesStmt>
         <sourceDesc>
-          <listBibl xml:id="inlMetadata" id="inlMetadata">
+          <listBibl xml:id="inlMetadata">
             {bibl}
           </listBibl>
         </sourceDesc>

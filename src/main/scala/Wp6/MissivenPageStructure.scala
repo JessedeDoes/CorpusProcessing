@@ -66,6 +66,8 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
 
     val p4 =  PostProcessXML.updateElement(p3, _.label == "p",
       p => if (possibleFolieringen.contains(p)) <pb unit="folio" n={p.text.trim.replaceAll("^Fol(\\.*)\\s*","").trim}/> else p)
+
+
     p4
   }
 }
