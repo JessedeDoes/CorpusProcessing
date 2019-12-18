@@ -99,17 +99,22 @@ object MissivenMetadata {
     def titleIsAuthorlocationDate: Boolean = (volume ==1 && (page >= 97 && page <= 121))
 
     def toTEI: Elem = if (isIndex || level == 0)
-      <listBibl><bibl level={level.toString} inst={inst}>
+      <listBibl><bibl inst={inst}>
         {interp("page", Some(page))}
+        {interp(value=Some(level), name = "tocLevel")}
+        {interp(value=Some(volume), name = "volume")}
+        {interp(value=Some(better_n), name = "n")}
         <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       </bibl></listBibl>
       else
-      <listBibl>{parseTitle}<bibl type="missive" level={level.toString} inst={inst}>
+      <listBibl>{parseTitle}<bibl type="missive" inst={inst}>
         {interp("page", Some(page) )}
         {parentInfo}
       <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       <interpGrp inst={inst} type="dateLevel1"><interp>{date}</interp></interpGrp>
+        {interp(value=Some(level), name = "tocLevel")}
       {interp(value=Some(volume), name = "volume")}
+        {interp(value=Some(better_n), name = "n")}
       {interp("localization_placeLevel1", place )}
       {interp("witnessYearLevel1_from", year )}
       {interp("witnessYearLevel1_to", year )}

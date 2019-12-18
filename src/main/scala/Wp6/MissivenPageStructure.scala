@@ -23,9 +23,9 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
 
     //Console.err.println(statjes)
 
-    val candidateHeaders = peetjes.filter({ case (p, i) => p.text.trim.nonEmpty &&  p.text.trim.length > 5 && uppercaseity(p) >= 0.8 }).take(1).map(_._1)
+    val candidateHeads = peetjes.filter({ case (p, i) => p.text.trim.nonEmpty &&  p.text.trim.length > 5 && uppercaseity(p) >= 0.8 }).take(1).map(_._1)
 
-    if (candidateHeaders.nonEmpty) {
+    if (candidateHeads.nonEmpty) {
       //Console.err.println("\nHEADER\n" + candidateHeaders.head.text)
     }
 
@@ -62,12 +62,13 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
       else p)
 
     val p3 = PostProcessXML.updateElement(p2, _.label == "p",
-      p => if (candidateHeaders.contains(p)) p.copy(label = "head") else p)
+      p => if (candidateHeads.contains(p)) p.copy(label = "head") else p)
 
     val p4 =  PostProcessXML.updateElement(p3, _.label == "p",
       p => if (possibleFolieringen.contains(p)) <pb unit="folio" n={p.text.trim.replaceAll("^Fol(\\.*)\\s*","").trim}/> else p)
 
-
+    // extra rule: anything between preceding first head should be fw
     p4
+
   }
 }

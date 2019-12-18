@@ -121,7 +121,11 @@ object PageStructure {
     val d1 = updateElement2(d0, e=> true, simplifyOneElement).head.asInstanceOf[Elem]
     val d2 = updateElement(d1, e => (e \ "hi").nonEmpty, simplifyRendition)
     val d3 = PostProcessXML.updateElement(d2, x => x.label == "p" || x.label == "note" || x.label == "head", PageStructure.handleLineBreaks)
-    d3
+
+    // dit is niet zo handig zo, maar laat toch maar even lopen
+
+
+      d3
   }
 
   def main(args: Array[String]): Unit = {

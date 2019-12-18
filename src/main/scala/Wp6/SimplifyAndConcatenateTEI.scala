@@ -82,6 +82,8 @@ object SimplifyAndConcatenateTEI {
         volumeNr -> MissivenMetadata.addHeaderForVolume(volumeNr, concatenatePages(byToc))
       }})
 
+  val noIds = Set("hi", "lb", "teiHeader")
+
   def assignIds(e: Elem, prefix: String, k: Int): Elem =
   {
     val myId = s"$prefix.${e.label}.$k"
@@ -91,19 +93,67 @@ object SimplifyAndConcatenateTEI {
     val indexMapping: Map[Int, Int] = children.values.flatMap(x => x).map( {case ((n,i),j) => i -> j} ).toMap
 
 
-    val newChildren: Seq[Node] = e.child.zipWithIndex.map({
+    val newChildren: Seq[Node] = if (noIds.contains(e.label)) e.child else e.child.zipWithIndex.map({
       case (e1: Elem, i) => val k1 = indexMapping(i); assignIds(e1, myId, k1+1)
       case (x, y) => x
     })
-    val newAtts = if (e.label == "TEI") e.attributes else  e.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", myId, Null))
+    val newAtts = if (e.label == "TEI" || noIds.contains(e.label)) e.attributes else  e.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", myId, Null))
     e.copy(child=newChildren, attributes = newAtts)
+  }
+
+  def createSubdivs(div: Elem) = {
+    val groepjes: Seq[Seq[Node]] = PostProcessXML.groupWithFirst(div.child, x => x.label == "head")
+
+    def possiblyMerge(x: Seq[Seq[Node]], y: Seq[Node]) = {
+      if (x.isEmpty) Seq(y)
+      else {
+        val z = x.last
+        if (z.exists(_.label == "p")) x ++ Seq(y)
+        else x.take(x.size -1) ++ Seq(z ++ y)
+      }
+    }
+
+    val groepjes1 = groepjes.foldLeft(Seq[Seq[Node]]())(possiblyMerge)
+
+    if (groepjes1.count(g => g.exists(_.label=="p")) > 1) {
+      div.copy(child = groepjes1.map(g => {
+        <div type="subdivision_for_sake_of_validation">{g}</div>
+      }))
+    } else div
+  }
+
+  def stuffBeforeHead(div : Elem) = {
+
+   val allDescendants = div.descendant.zipWithIndex.toList
+   val firstHead: Option[(Node, Int)] = allDescendants.find(_._1.label == "head")
+   val unPeeMe: Seq[Elem] = firstHead.map({case (n,k) => k}).map(k => allDescendants.filter({case (x,l) => k > l && x.label == "p"  && 300 > x.text.length})).getOrElse(List()).map(_._1.asInstanceOf[Elem])
+   if (unPeeMe.nonEmpty)
+   {
+     Console.err.println(s"p before head: ${unPeeMe.text}")
+     val z = PostProcessXML.updateElement(div, x => unPeeMe.contains(x), x => {  x.copy(label="fw_extra") } )
+     //println(z \\ "fw_extra")
+     z
+   } else div
   }
 
   def cleanupTEI(tei: Elem, pid: String) = {
     val e0 = PostProcessXML.updateElement3(tei, e => true, e => {
       e.copy(attributes = e.attributes.filter(a => a.key != "inst" && !(e.label == "pb" && a.key=="unit")))
     })
-    assignIds(e0, pid, 1)
+    val e1 = updateElement(e0, _.label == "div" , createSubdivs)
+    val withIds = assignIds(e1, pid, 1)
+    val heads = (withIds \\ "head").map(h => PageStructure.getId(h)).toList.drop(1)
+    if (heads.nonEmpty)
+      {
+        println(s"More thane one head: $heads in $pid")
+      }
+    /*
+    val t1 = updateElement(withIds, x => heads.contains(PageStructure.getId(x)), x => x.copy(label="p", attributes =  x.attributes.append(
+      new UnprefixedAttribute("rendition", "nonfirst_head", Null))))
+    */
+    //t1
+    updateElement(withIds, _.label == "div" , createSubdivs)
+    // withIds
   }
 
   def splitVolume(volumeNumber: Int, volume: Node): Unit = {
@@ -138,7 +188,9 @@ object SimplifyAndConcatenateTEI {
 
   def main(args: Array[String]): Unit = {
     // MissivenMetadata.tocItemsPerVolume(6).foreach(println)
-    println(assignIds(<TEI xmlns="aapje"><div><p></p><p></p></div></TEI>, "xx", 1))
+    val testje = assignIds(<TEI xmlns="aapje"><div><p></p><p></p></div></TEI>, "xx", 1)
+    XML.save("/tmp/testje.xml", testje, "utf-8")
+
     val u = new PrintWriter("/tmp/unused_tocitems.txt")
     volumes.par.foreach({ case (n, v) =>
         val z = MissivenMetadata.unusedTocItemsForVolume(n,v)
