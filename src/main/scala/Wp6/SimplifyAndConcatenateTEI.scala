@@ -68,7 +68,8 @@ object SimplifyAndConcatenateTEI {
   def skipPage(v: Int, n: Int) = skipPages.contains((v,n))
 
   lazy val volumes: Map[Int, Elem] =
-    allFiles.filter(f => doAll || volumeNumber(f) == Settings.theOneToProcess).groupBy(volumeNumber)
+    allFiles.filter(f => doAll || volumeNumber(f) == Settings.theOneToProcess)
+      .groupBy(volumeNumber)
       .mapValues(l => l.sortBy(pageNumber).filter(pageNumber(_) >= 0))
       .map({ case (volumeNr, l) => {
         val byToc: immutable.Seq[Elem] =
@@ -115,14 +116,26 @@ object SimplifyAndConcatenateTEI {
 
     val groepjes1 = groepjes.foldLeft(Seq[Seq[Node]]())(possiblyMerge)
 
-    if (groepjes1.count(g => g.exists(_.label=="p")) > 1) {
+    val div1 = if (groepjes1.count(g => g.exists(_.label=="p")) > 1) {
       div.copy(child = groepjes1.map(g => {
         <div type="subdivision_for_sake_of_validation">{g}</div>
       }))
     } else div
+
+    // je moet nu nog alle heads die niet direct in div zitten weghalen....
+    def removeHeads(n: Node) : Node = n match {
+      case e: Elem =>
+        if (e.label == "div")
+          e.copy(child = e.child.map(removeHeads))
+        else e.copy(child = e.child.map(removeHeads).map({ case e1: Elem if e1.label == "head" => e1.copy(label = "p") case z => z}))
+      case x => x
+    }
+
+    removeHeads(div1).asInstanceOf[Elem]
   }
 
-  def stuffBeforeHead(div : Elem) = {
+
+  def unused_stuffBeforeHead(div : Elem) = {
 
    val allDescendants = div.descendant.zipWithIndex.toList
    val firstHead: Option[(Node, Int)] = allDescendants.find(_._1.label == "head")
@@ -152,8 +165,8 @@ object SimplifyAndConcatenateTEI {
       new UnprefixedAttribute("rendition", "nonfirst_head", Null))))
     */
     //t1
-    updateElement(withIds, _.label == "div" , createSubdivs)
-    // withIds
+    //updateElement(withIds, _.label == "div" , createSubdivs)
+    withIds
   }
 
   def splitVolume(volumeNumber: Int, volume: Node): Unit = {
