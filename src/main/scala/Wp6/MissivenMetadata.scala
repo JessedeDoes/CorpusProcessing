@@ -104,6 +104,7 @@ object MissivenMetadata {
         {interp(value=Some(level), name = "tocLevel")}
         {interp(value=Some(volume), name = "volume")}
         {interp(value=Some(better_n), name = "n")}
+        <interpGrp inst={inst} type="pid"><interp>{pid}</interp></interpGrp>
         <interpGrp inst={inst} type="titleLevel1"><interp>{title}</interp></interpGrp>
       </bibl></listBibl>
       else
