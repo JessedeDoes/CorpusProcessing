@@ -49,12 +49,16 @@ object SimplifyAndConcatenateTEI {
 
   }
 
+  // http://resources.huygens.knaw.nl/retroapp/service_vandam/vandam_2_1/images/vandam_2_1_gs74_0001.tiff
+  // http://resources.huygens.knaw.nl/retroapp/service_generalemissiven/gm_01/images/gm_1_104_i.tif
 
   def loadAndInsertPageNumber(v:Integer)(f: File) = {
-    val n = pageNumber(f)
+    val n: Int = pageNumber(f)
     //Console.err.println("#### Page "  + n)
     val page = XML.loadFile(f)
-    def insertPB(b: Elem) = b.copy(child = Seq(<pb unit='external' n={n.toString}/>) ++ b.child)
+    val image_url: String = MissivenMetadata.pageMapping(v, n.toString)
+
+    def insertPB(b: Elem) = b.copy(child = Seq(<pb unit='external' n={n.toString} facs={image_url}/>) ++ b.child)
     val p1 = PostProcessXML.updateElement(page, _.label=="body", insertPB)
     val p3: Elem = PageStructure.simplifyPreTEI(MissivenPageStructure(PageStructure.zone(page), p1).basicPageStructuring())
     (p3, n)
@@ -100,6 +104,54 @@ object SimplifyAndConcatenateTEI {
     })
     val newAtts = if (e.label == "TEI" || noIds.contains(e.label)) e.attributes else  e.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", myId, Null))
     e.copy(child=newChildren, attributes = newAtts)
+  }
+
+  def joinParagraphsIn(d: Node): Node = {
+    if (!d.isInstanceOf[Elem]) d else {
+      val div = d.asInstanceOf[Elem]
+      val children = div.child.zipWithIndex.toSeq
+
+      // last p before pb
+      def startsGroup(n: Node, i: Int): Boolean = n.label == "p" && {
+        val pb  = children.find({ case (m,j) => j > i && m.label == "pb"})
+        if (pb.isEmpty) false else {
+          val (x,k) = pb.get
+          !children.exists({case (n,l)  => n.label == "p" && l > i && k > l})
+        }
+      }
+
+      // not a first p after pb
+      def endsGroup(n: Node, i: Int): Boolean = n.label == "head" || n.label == "p" && ( n.text.matches("^[A-Z].*") || {
+        val pb  = children.find({ case (m,j) => i > j && m.label == "pb"})
+        if (pb.isEmpty) false else {
+          val (x,k) = pb.get
+          !children.exists({case (n,l)  => n.label == "p" && i > l && l > k})
+        }})
+
+
+      def starts(x: (Node, Int)) = startsGroup(x._1, x._2)
+      def ends(x: (Node, Int)) = endsGroup(x._1, x._2)
+
+
+      if (div.label != "div" || (div \\ "p").isEmpty) div.copy(child = div.child.map(joinParagraphsIn)) else {
+        val groups: Seq[(Seq[(Node, Int)], Boolean)] = MissivenMetadata.createGrouping(children, starts, ends)
+        val newChild: Seq[Node] = groups.flatMap(g => {
+          val nodes = g._1.map(_._1)
+          if (g._2 && nodes.count(x => x.label == "p") > 1) {
+            val echo = nodes.takeWhile(_.label != "p")
+            val join = nodes.dropWhile(_.label != "p").flatMap({
+              case p: Elem if (p.label == "p") => p.child
+              case x => Seq(x)
+            })
+            echo ++ <p resp="int_paragraph_joining">
+              {join}
+            </p>
+          } else
+            nodes
+        })
+        div.copy(child = newChild)
+      }
+    }
   }
 
   def createSubdivs(div: Elem) = {
@@ -154,7 +206,8 @@ object SimplifyAndConcatenateTEI {
       e.copy(attributes = e.attributes.filter(a => a.key != "inst" && !(e.label == "pb" && a.key=="unit")))
     })
     val e1 = updateElement(e0, _.label == "div" , createSubdivs)
-    val withIds = assignIds(e1, pid, 1)
+    val e2 = joinParagraphsIn(e1).asInstanceOf[Elem]
+    val withIds = assignIds(e2, pid, 1)
     val heads = (withIds \\ "head").map(h => PageStructure.getId(h)).toList.drop(1)
     if (heads.nonEmpty)
       {

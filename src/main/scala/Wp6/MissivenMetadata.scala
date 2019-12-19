@@ -11,6 +11,20 @@ import scala.util.matching.Regex
 import scala.util.{Success, Try}
 
 object MissivenMetadata {
+
+  def createGrouping[T](l: Seq[T], starts: T => Boolean, ends: T => Boolean): Seq[(Seq[T], Boolean)] = {
+
+      def plak(a: Seq[(Seq[T], Boolean)], b: T) = {
+
+        if ((a.isEmpty)) Seq((Seq(b), starts(b))) else
+        {
+          if (starts(b) || ends(b)) a ++ Seq((Seq(b), starts(b)))
+          else a.dropRight(1) ++ Seq( (a.last._1 ++ Seq(b), a.last._2))
+        }
+      }
+     l.foldLeft(Seq[(Seq[T], Boolean)]())(plak)
+  }
+
   def pushOptionInside[T](o: Option[(T,Int)]):(Option[T], Int) =
     o.map(x => (Some(x._1).asInstanceOf[Option[T]],x._2)).getOrElse( (None, 0) )
 
@@ -38,7 +52,20 @@ object MissivenMetadata {
   val tocFiles: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
     .map(f => (f.getName.toInt ->  new File(f.getCanonicalPath + "/" + "toc.xml")))
 
+  val pageLists: Array[(Int, File)] = new File(XMLDirectory).listFiles.filter(_.getName.matches("[0-9]+"))
+    .map(f => (f.getName.toInt ->  new File(f.getCanonicalPath + "/" + "pagelist.xml")))
 
+  lazy val pageMapping: Map[(Int, String), String] = pageLists.toList.flatMap({ case (v, f) => {
+    val d = XML.loadFile(f)
+    val base_url = ((d \\ "meta") \ "@base_url").text
+    val mapping: Seq[((Int, String), String)] = (d \\ "page").map(p => {
+      val pn = (p \ "@page_number").text;
+      val img = (p \ "@original_image").text
+      val url = s"$base_url/$img"
+      (v, pn) -> url
+    })
+    mapping
+  }}).toMap
 
   case class TocItem(volume: Int, pageNumber: String, title: String, level: Int, n: String,
                      parent: Option[TocItem]  = None, parsedTitle: Option[NodeSeq] = None)

@@ -81,7 +81,7 @@ object PageStructure {
           .append(new UnprefixedAttribute("resp", "editor", Null)) else p.attributes
 
         if (p.label == "div") (if ((p \\ "w").nonEmpty) c else Seq())
-        else p.copy(child=c, label=label, attributes = newAtts.filter(_.key != "facs"))
+        else p.copy(child=c, label=label, attributes = newAtts.filter(x => p.label == "pb" || x.key != "facs"))
     }
     r
   }
