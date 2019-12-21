@@ -25,5 +25,5 @@ object Settings {
 
   val readCorrectedTocs = true
   val theOneToProcess  = 1
-  val doAll = false
+  val doAll = true
 }

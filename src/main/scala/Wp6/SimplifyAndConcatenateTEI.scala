@@ -123,7 +123,7 @@ object SimplifyAndConcatenateTEI {
     else
     {
       val div = d.asInstanceOf[Elem]
-      val children = div.child.zipWithIndex.toSeq
+      val children = div.child.map(joinParagraphsIn).zipWithIndex.toSeq
 
       // last p before pb
       def startsGroup(n: Node, i: Int): Boolean = n.label == "p"  && {
@@ -156,8 +156,8 @@ object SimplifyAndConcatenateTEI {
                     (i == 0 || j > joinableSubsequences(i-1).last._2) && j < s.head._2})
       }
 
-      val others:
-        Seq[Seq[(Node, Int)]] = Z.map(segmentBefore) ++ Seq(children.drop(joinableSubsequences.last.last._2+1))
+      val others : Seq[Seq[(Node, Int)]]  =  (if (joinableSubsequences.isEmpty) Seq(children) else
+        Z.map(segmentBefore) ++ Seq(children.drop(joinableSubsequences.last.last._2+1))).filter(_.nonEmpty)
 
       val all = (joinableSubsequences.map((_,true)) ++ others.map((_,false))).sortBy(x => x._1.head._2)
 
@@ -242,12 +242,6 @@ object SimplifyAndConcatenateTEI {
       {
         println(s"More thane one head: $heads in $pid")
       }
-    /*
-    val t1 = updateElement(withIds, x => heads.contains(PageStructure.getId(x)), x => x.copy(label="p", attributes =  x.attributes.append(
-      new UnprefixedAttribute("rendition", "nonfirst_head", Null))))
-    */
-    //t1
-    //updateElement(withIds, _.label == "div" , createSubdivs)
     withIds
   }
 
