@@ -60,7 +60,7 @@ object MissivenMetadata {
     val base_url = ((d \\ "meta") \ "@base_url").text
     val mapping: Seq[((Int, String), String)] = (d \\ "page").map(p => {
       val pn = (p \ "@page_number").text;
-      val img = (p \ "@original_image").text
+      val img = (p \ "@original_image").text//.replaceAll(".tif$",".jpg")
       val url = s"$base_url/$img"
       (v, pn) -> url
     })

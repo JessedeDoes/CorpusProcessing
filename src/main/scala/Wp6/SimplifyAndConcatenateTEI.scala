@@ -112,27 +112,27 @@ object SimplifyAndConcatenateTEI {
       val children = div.child.zipWithIndex.toSeq
 
       // last p before pb
-      def startsGroup(n: Node, i: Int): Boolean = n.label == "p" && {
+      def startsGroup(n: Node, i: Int): Boolean = n.label == "p"  && {
+        val rend = PageStructure.parseRend((n \ "@rend").text)
+
+        rend.get("text-indent").map(_.replaceAll("^.*?([0-9]+[.]?[0-9]*)pt.*", "$1")).filter(_.matches("([0-9]+[.]?[0-9]*)")).map(_.toDouble).map( _ > 20).getOrElse(false)
+      }/* && {
         val pb  = children.find({ case (m,j) => j > i && m.label == "pb"})
         if (pb.isEmpty) false else {
           val (x,k) = pb.get
           !children.exists({case (n,l)  => n.label == "p" && l > i && k > l})
-        }
-      }
+        } */
+
 
       // not a first p after pb
-      def endsGroup(n: Node, i: Int): Boolean = n.label == "head" || n.label == "p" && ( n.text.matches("^[A-Z].*") || {
-        val pb  = children.find({ case (m,j) => i > j && m.label == "pb"})
-        if (pb.isEmpty) false else {
-          val (x,k) = pb.get
-          !children.exists({case (n,l)  => n.label == "p" && i > l && l > k})
-        }})
-
+      def endsGroup(n: Node, i: Int): Boolean = n.label == "head" || n.label == "note" && (n \ "@type").text == "editorial-summary"
 
       def starts(x: (Node, Int)) = startsGroup(x._1, x._2)
       def ends(x: (Node, Int)) = endsGroup(x._1, x._2)
 
+      val startingPoints = children.filter(starts)
 
+      val joinableSubsequences = startingPoints.map({case (n,i) => children.drop(i).takeWhile()})
       if (div.label != "div" || (div \\ "p").isEmpty) div.copy(child = div.child.map(joinParagraphsIn)) else {
         val groups: Seq[(Seq[(Node, Int)], Boolean)] = MissivenMetadata.createGrouping(children, starts, ends)
         val newChild: Seq[Node] = groups.flatMap(g => {

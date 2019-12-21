@@ -48,7 +48,7 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
     }).take(2)
 
     val candidateKopregels = if (candidateKopregels1.nonEmpty) candidateKopregels1 else candidateKopregels2
-
+    val bottomPagePageNumber = (page \\ "p").lastOption.filter(p => p.text.trim.matches("[0-9]+"))
     //candidateKopregels.foreach(kr => Console.err.println("Pagina FW: " + kr.text + " " + findZone(kr.asInstanceOf[Elem])))
 
     val possibleFolieringen = (page \\ "p").filter(p => p.text.trim.startsWith("Fol."))
@@ -61,14 +61,15 @@ case class MissivenPageStructure(findZone: Elem => Box, page: Elem) {
              .append(new UnprefixedAttribute("place", "top", Null)))
       else p)
 
+
     val p3 = PostProcessXML.updateElement(p2, _.label == "p",
       p => if (candidateHeads.contains(p)) p.copy(label = "head") else p)
 
     val p4 =  PostProcessXML.updateElement(p3, _.label == "p",
       p => if (possibleFolieringen.contains(p)) <pb unit="folio" n={p.text.trim.replaceAll("^Fol(\\.*)\\s*","").trim}/> else p)
 
+    val p5 = PostProcessXML.updateElement3(p4, _.label == "p", p => if (bottomPagePageNumber.contains(p)) <fw type="bottom-page-number">{p.child}</fw>else p)
     // extra rule: anything between preceding first head should be fw
-    p4
-
+    p5
   }
 }
