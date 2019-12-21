@@ -106,35 +106,64 @@ object SimplifyAndConcatenateTEI {
     e.copy(child=newChildren, attributes = newAtts)
   }
 
+  def indentation(p: Node) = {
+    val rend = PageStructure.parseRend((p \ "@rend").text)
+    val z = rend.get("text-indent")
+    //if (z.nonEmpty) println(z)
+    val z1 = z.map(_.replaceAll("pt$",""))
+    .filter(_.matches("-?[0-9]+[.]?[0-9]*")).map(_.toDouble)
+    //if (z.nonEmpty) println(s"$z $z1")
+    z1
+  }
+
   def joinParagraphsIn(d: Node): Node = {
-    if (!d.isInstanceOf[Elem]) d else {
+    if (!d.isInstanceOf[Elem]) d
+    else if ( {d.label != "div" || (d \\ "p").isEmpty })
+      { val div = d.asInstanceOf[Elem]; div.copy(child = div.child.map(joinParagraphsIn)) }
+    else
+    {
       val div = d.asInstanceOf[Elem]
       val children = div.child.zipWithIndex.toSeq
 
       // last p before pb
       def startsGroup(n: Node, i: Int): Boolean = n.label == "p"  && {
-        val rend = PageStructure.parseRend((n \ "@rend").text)
-
-        rend.get("text-indent").map(_.replaceAll("^.*?([0-9]+[.]?[0-9]*)pt.*", "$1")).filter(_.matches("([0-9]+[.]?[0-9]*)")).map(_.toDouble).map( _ > 20).getOrElse(false)
-      }/* && {
-        val pb  = children.find({ case (m,j) => j > i && m.label == "pb"})
-        if (pb.isEmpty) false else {
-          val (x,k) = pb.get
-          !children.exists({case (n,l)  => n.label == "p" && l > i && k > l})
-        } */
-
+        indentation(n).map( _ > 15).getOrElse(false)
+      }
 
       // not a first p after pb
-      def endsGroup(n: Node, i: Int): Boolean = n.label == "head" || n.label == "note" && (n \ "@type").text == "editorial-summary"
+      def endsGroup(n: Node, i: Int):
+         Boolean = n.label == "head" || n.label == "note" && (n \ "@type").text == "editorial-summary"
 
       def starts(x: (Node, Int)) = startsGroup(x._1, x._2)
       def ends(x: (Node, Int)) = endsGroup(x._1, x._2)
 
       val startingPoints = children.filter(starts)
 
-      val joinableSubsequences = startingPoints.map({case (n,i) => children.drop(i).takeWhile()})
-      if (div.label != "div" || (div \\ "p").isEmpty) div.copy(child = div.child.map(joinParagraphsIn)) else {
-        val groups: Seq[(Seq[(Node, Int)], Boolean)] = MissivenMetadata.createGrouping(children, starts, ends)
+      val joinableSubsequences: Seq[Seq[(Node, Int)]] = startingPoints.map({
+          case (n,i) => Seq((n,i)) ++ children.drop(i+1).takeWhile({ case (m,j) =>
+          !starts((m,j)) && !ends((m,j)) })
+        }).filter(s => s.count(x => x._1.label == "p") > 1)
+
+      joinableSubsequences.foreach(s => {
+        val labels = s.map(x => x._1.label + " " + indentation(x._1))
+        println(s"joinable: $labels")
+      })
+      val Z: Seq[(Seq[(Node, Int)], Int)] = joinableSubsequences.zipWithIndex
+      def segmentBefore(S: (Seq[(Node, Int)],Int)): Seq[(Node, Int)] =
+        S match {
+            case (s,i) => children.filter({
+              case (m,j) =>
+                    (i == 0 || j > joinableSubsequences(i-1).last._2) && j < s.head._2})
+      }
+
+      val others:
+        Seq[Seq[(Node, Int)]] = Z.map(segmentBefore) ++ Seq(children.drop(joinableSubsequences.last.last._2+1))
+
+      val all = (joinableSubsequences.map((_,true)) ++ others.map((_,false))).sortBy(x => x._1.head._2)
+
+
+       {
+        val groups: Seq[(Seq[(Node, Int)], Boolean)] = all
         val newChild: Seq[Node] = groups.flatMap(g => {
           val nodes = g._1.map(_._1)
           if (g._2 && nodes.count(x => x.label == "p") > 1) {
@@ -143,7 +172,7 @@ object SimplifyAndConcatenateTEI {
               case p: Elem if (p.label == "p") => p.child
               case x => Seq(x)
             })
-            echo ++ <p resp="int_paragraph_joining">
+            echo ++ <p resp="int_paragraph_joining" rend={(join.head \ "@rend").text}>
               {join}
             </p>
           } else
