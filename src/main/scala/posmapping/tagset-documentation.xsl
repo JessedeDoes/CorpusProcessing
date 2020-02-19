@@ -33,10 +33,15 @@
         <div style="font-style: italic"><xsl:value-of select="//partitions/feature[./name=$feature]/@desc"/></div>
         <ul style="column-count: 3"><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[.//pos=$pos]">
           <li>
-            <xsl:variable name="value"><xsl:value-of select="./value"/></xsl:variable>
+            <xsl:variable name="value"><xsl:value-of select="encode-for-uri(replace(./value, '\|', '\\|'))"/></xsl:variable>
+            <xsl:variable name="displayName"><xsl:choose>
+              <xsl:when test="./@displayName">, '<xsl:value-of select="./@displayName"/>'</xsl:when>
+              <xsl:when test="not(contains(./@desc, ''))"></xsl:when>
+              <xsl:otherwise></xsl:otherwise>
+            </xsl:choose></xsl:variable>
             <a target="_blank" style="text-decoration: none; color: black">
-              <xsl:attribute name="href">http://<xsl:value-of select="$server"/>/corpus-frontend/Gysseling/search/hits?first=0&amp;number=20&amp;patt=%5Bpos%3D%22<xsl:value-of select="$pos"/>%22%26pos_<xsl:value-of select="$feature"/>%3D%22<xsl:value-of select="$value"/>%22%5D&amp;interface=%7B%22form%22%3A%22search%22%2C%22patternMode%22%3A%22extended%22%7D</xsl:attribute>
-              <span class="featureValue"><xsl:value-of select="./value"/>, '<xsl:value-of select="./@displayName"/>'</span><xsl:text>: </xsl:text> <span style="font-style: italic"><xsl:value-of select="./@desc"/></span> 
+              <xsl:attribute name="href">http://<xsl:value-of select="$server"/>/corpus-frontend/<xsl:value-of select="//corpus"/>/search/hits?first=0&amp;number=20&amp;patt=%5Bpos%3D%22<xsl:value-of select="$pos"/>%22%26pos_<xsl:value-of select="$feature"/>%3D%22<xsl:value-of select="$value"/>%22%5D&amp;interface=%7B%22form%22%3A%22search%22%2C%22patternMode%22%3A%22extended%22%7D</xsl:attribute>
+              <span class="featureValue"><xsl:value-of select="./value"/><xsl:value-of select="$displayName"/></span><xsl:text>: </xsl:text> <span style="font-style: italic"><xsl:value-of select="./@desc"/></span> 
             </a>
           </li></xsl:for-each></ul>
       </xsl:for-each>
