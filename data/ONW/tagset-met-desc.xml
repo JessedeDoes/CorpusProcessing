@@ -1,0 +1,1057 @@
+<tagset>
+    <prefix>pos</prefix>
+    <mainPoS>
+        <pos desc="Adjective">ADJ</pos>
+        <pos desc="Adposition">ADP</pos>
+        <pos desc="Adverb">ADV</pos>
+        <pos desc="Conjunction">CON</pos>
+        <pos desc="Interjection">INT</pos>
+        <pos desc="Common noun">NOU-C</pos>
+        <pos desc="Proper noun">NOU-P</pos>
+        <pos desc="Numeral">NUM</pos>
+        <pos desc="Pronoun/determiner">PD</pos>
+        <pos desc="Unknown">UNK</pos>
+        <pos desc="Residual">RES</pos>
+        <pos desc="Verb">VRB</pos>
+    </mainPoS>
+    <partitions>
+        <feature desc="huh?">
+            <name>advType</name>
+            <values>
+                <featureValue desc="part of separable verb?">
+                    <value>particle</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Pronominal adverb">
+                    <value>pronominal</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Case">
+            <name>case</name>
+            <values>
+                <featureValue desc="Accusative">
+                    <value>acc</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos bad='true'>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Accusative or dative">
+                    <value>acc|dat</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Accusative or genitive">
+                    <value>acc|gen</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Accusative of nominative">
+                    <value>acc|nom</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Dative">
+                    <value>dat</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos bad='true'>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Dative or genitive">
+                    <value>dat|gen</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>UNK</pos>
+                        <pos bad='true'>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive or nominative">
+                    <value>gen|nom</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive or vocative">
+                    <value>gen|voc</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Nominative">
+                    <value>nom</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Vocative (does it really exist?)">
+                    <value>voc</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Degree">
+            <name>degree</name>
+            <values>
+                <featureValue desc="Comparative">
+                    <value>comp</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Superlative">
+                    <value>sup</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Finiteness">
+            <name>finiteness</name>
+            <values>
+                <featureValue desc="Gerund">
+                    <value>gerund</value>
+                    <posForValue>
+                        <pos bad="true">NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Gerund or infinitive">
+                    <value>gerund|inf</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Gerund or participle">
+                    <value>gerund|part</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Infinitive">
+                    <value>inf</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Participle">
+                    <value>part</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue bad="true" desc="?Present participle?">
+                    <value>pres</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Gender">
+            <name>gender</name>
+            <values>
+                <featureValue desc="Feminine">
+                    <value>fem</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Feminine or masculine">
+                    <value>fem|masc</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Feminine or neuter">
+                    <value>fem|neut</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Masculine">
+                    <value>masc</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos bad='true'>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Masculine or neuter">
+                    <value>masc|neut</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Neuter">
+                    <value>neut</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Inflection type (verb)">
+            <name>inflection</name>
+            <values>
+                <featureValue desc="Regular">
+                    <value>irregular</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Irregular or preterite present">
+                    <value>irregular|pretpres</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Irregular or preterite present or strong">
+                    <value>irregular|pretpres|strong</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Irregular or strong">
+                    <value>irregular|strong</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Irregular or weak">
+                    <value>irregular|weak</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Preterite present">
+                    <value>pretpres</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Preterite present or strong">
+                    <value>pretpres|strong</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Reduplicating or strong">
+                    <value>redup|strong</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Strong">
+                    <value>strong</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Weak">
+                    <value>weak</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Inflection class">
+            <name>inflection_class</name>
+            <values>
+                <featureValue desc="1">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="1a">
+                    <value>1a</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="1b">
+                    <value>1b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="2a">
+                    <value>2a</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="2b">
+                    <value>2b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="3a">
+                    <value>3a</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="3b">
+                    <value>3b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="4">
+                    <value>4</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="5">
+                    <value>5</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="5b">
+                    <value>5b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="6">
+                    <value>6</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="6b">
+                    <value>6b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="7">
+                    <value>7</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Verb mood">
+            <name>mood</name>
+            <values>
+                <featureValue desc="Conjunctive">
+                    <value>conj</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Conjunctive or indicative">
+                    <value>conj|ind</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Imperative">
+                    <value>imp</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Indicative">
+                    <value>ind</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Number">
+            <name>number</name>
+            <values>
+                <featureValue desc="Plural">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Plural or singular">
+                    <value>pl|sg</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Singular">
+                    <value>sg</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>UNK</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+	<feature desc="Numeral type"> <!-- Indefinites checken en verhuizen naar PD? -->
+            <name>numtype</name>
+            <values>
+                <featureValue desc="Definite cardinal">
+                    <value>def_card</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Definite ordinal">
+                    <value>def_ord</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Indefinite">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Indefinite cardinal">
+                    <value>indef_card</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Person">
+            <name>person</name>
+            <values>
+                <featureValue desc="1">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="1 or 3">
+                    <value>1|3</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="2">
+                    <value>2</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="3">
+                    <value>3</value>
+                    <posForValue>
+                        <pos bad='true'>NOU-C</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>pos</name>
+            <values>
+                <featureValue desc="">
+                    <value>ADJ</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>ADP</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>ADV</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>CON</value>
+                    <posForValue>
+                        <pos>CON</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>INT</value>
+                    <posForValue>
+                        <pos>INT</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NOU-C</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NOU-P</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NUM</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>PD</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>RES</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>UNK</value>
+                    <posForValue>
+                        <pos>UNK</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>VRB</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Position">
+            <name>position</name>
+            <values>
+		    <featureValue desc="Prenominal"> <!-- moet prenom worden etc? -->
+                    <value>prenominal</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Prenominal or free">
+                    <value>prenominal|free</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Prenominal or postnominal">
+                    <value>prenominal|postnom</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Free (adverbial or predicative)">
+                    <value>free</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADV</pos>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Nominal">
+                    <value>nom</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos bad='true'>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Postnominal">
+                    <value>postnom</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+	<feature desc="Subtype (definite/indefinite) ! Different in Molex">
+            <name>subtype</name>
+            <values>
+                <featureValue desc="">
+                    <value>def</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Verb tense">
+            <name>tense</name>
+            <values>
+                <featureValue desc="Past">
+                    <value>past</value>
+                    <posForValue>
+                        <pos bad='true'>ADJ</pos>
+                        <pos bad='true'>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Past or present">
+                    <value>past|pres</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Present">
+                    <value>pres</value>
+                    <posForValue>
+                        <pos bad='true'>ADJ</pos>
+                        <pos bad='true'>NOU-C</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+	<feature desc="type">
+            <name>type</name>
+            <values>
+                <featureValue desc="Article">
+                    <value>art</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Auxiliary">
+                    <value>aux</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Comparing">
+                    <value>comparison</value>
+                    <posForValue>
+                        <pos>CON</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Coordinating">
+                    <value>coordinating</value>
+                    <posForValue>
+                        <pos>CON</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Copula">
+                    <value>cop</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Demonstrative">
+                    <value>dem</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Foreign">
+                    <value>foreign</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Indefinite">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Indefinite or interrogative">
+                    <value>indef|int</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Interrogative">
+                    <value>int</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Location (NE type)">
+                    <value>location</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Negative">
+                    <value>negative</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+		<featureValue desc="Numeral adjective???">
+                    <value>num</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Adjective derived from past participle?">
+                    <value>past_part</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Personal">
+                    <value>pers</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Person (NE type)">
+                    <value>person</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Possessive">
+                    <value>poss</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Adjective derived from present particple?">
+                    <value>pres_part</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Pronominal">
+                    <value>pron</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos bad='true'>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Reciprocal">
+                    <value>recip</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Reflexive">
+                    <value>refl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Relative">
+                    <value>rel</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Subordinating">
+                    <value>subordinating</value>
+                    <posForValue>
+                        <pos>CON</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="Valency (of preposition or verb)">
+            <name>val</name>
+            <values>
+                <featureValue desc="Accusative">
+                    <value>acc</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Accusative or dative">
+                    <value>acc|dat</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Dative">
+                    <value>dat</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive or intransitive">
+                    <value>gen|intr</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Genitive or impersonal">
+                    <value bad='true'>gen|onpers</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Intransitive">
+                    <value>intr</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Intransitive or transitive">
+                    <value>intr|trans</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Impersonal">
+                    <value bad='true'>onpers</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Reflexive">
+                    <value>refl</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Reflexive or transitive">
+                    <value>refl|trans</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="Transitive">
+                    <value>trans</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+    </partitions>
+    <constraints>
+        <constraint>
+            <pos>ADJ</pos>
+            <features>
+                <feature>case</feature>
+                <feature>degree</feature>
+                <feature>finiteness</feature>
+                <feature>gender</feature>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+                <feature>tense</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADP</pos>
+            <features>
+                <feature>pos</feature>
+                <feature>val</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADV</pos>
+            <features>
+                <feature>adverbiality</feature>
+                <feature>degree</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>CON</pos>
+            <features>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>INT</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-C</pos>
+            <features>
+                <feature>case</feature>
+                <feature>finiteness</feature>
+                <feature>gender</feature>
+                <feature>inflection</feature>
+                <feature>mood</feature>
+                <feature>number</feature>
+                <feature>person</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+                <feature>tense</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-P</pos>
+            <features>
+                <feature>case</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NUM</pos>
+            <features>
+                <feature>case</feature>
+                <feature>gender</feature>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>numtype</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>PD</pos>
+            <features>
+                <feature>case</feature>
+                <feature>gender</feature>
+                <feature>inflection</feature>
+                <feature>number</feature>
+                <feature>person</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+                <feature>subtype</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>RES</pos>
+            <features>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>UNK</pos>
+            <features>
+                <feature>case</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>VRB</pos>
+            <features>
+                <feature>case</feature>
+                <feature>finiteness</feature>
+                <feature>gender</feature>
+                <feature>inflection</feature>
+                <feature>inflection_class</feature>
+                <feature>mood</feature>
+                <feature>number</feature>
+                <feature>person</feature>
+                <feature>pos</feature>
+                <feature>position</feature>
+                <feature>tense</feature>
+                <feature>type</feature>
+                <feature>val</feature>
+            </features>
+        </constraint>
+    </constraints>
+</tagset>
