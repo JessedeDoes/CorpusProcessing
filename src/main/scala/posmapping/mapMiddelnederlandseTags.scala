@@ -199,11 +199,23 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     stermat.findFirstMatchIn(code).map(m => SterretjeMatje(m.group(1), m.group(2), lemma))
   }
 
+  def patchPoSMistakes(m: String, p:String): String =
+  {
+    if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf") else p
+  }
+
+  def patchPosMistakes(morfcodes: List[String], pos: List[String]) = {
+     val patchedPos = morfcodes.zip(pos).map{case (a,b) => patchPoSMistakes(a,b)}
+     patchedPos.mkString("+")
+  }
+
   def updateTag(e: Elem):Elem =
   {
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
 
-    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop"); if (f.isEmpty) None else Some(Ѧ("pos", f))}
+    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop");
+      val f1 = patchPosMistakes(morfcodes, f.split("\\+").toList)
+      if (f1.isEmpty) None else Some(Ѧ("pos", f1))}
 
     val n = (e \ "@n").text
 
@@ -287,10 +299,10 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
           if (erZijnDeeltjes)
             {
-              //System.err.println(cgnTags)
+              // System.err.println(cgnTags)
               // System.err.println(z)
-              //System.err.println(e)
-              //System.exit(1)
+              // System.err.println(e)
+              // System.exit(1)
             }
           z
       }
