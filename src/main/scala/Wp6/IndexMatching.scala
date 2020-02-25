@@ -137,18 +137,18 @@ object IndexMatching {
 
         if (upperFirst && (dMin == 0 || dMin == 1 && token.length >= 4 || 2 >= dMin && token.length > 5)) {
           matchedTermSet.add(bestMatch._2)
-          t -> Some(bestMatch)
+          t -> Some(dMin -> bestMatch._2)
+          //t -> Some(bestMatch)
         }
         else {
-          val globalMatches = indices.flatMap(_.findMatch(token))
-          //if (useGlobalMatches && upperFirst && token.length > 4 && globalMatches.nonEmpty)
-          //  {
-          //    Seq(<gname cands={globalMatches.toString}>{t}</gname>, Text(" "))
-          //  }
-          // else
+          val globalMatches: immutable.Seq[IndexTerm] = indices.flatMap(_.findMatch(token))
+          if (useGlobalMatches && upperFirst && token.length > 4 && globalMatches.nonEmpty)
+            {
+              t -> Some(100 -> globalMatches.head)
+            }
+           else
           t -> None // [(Int,IndexTerm)] // Seq(Text(t + " "))
         }
-
       }
       // println(s"\n\n#### $p ### $termsForPage ###")
 
@@ -213,11 +213,13 @@ object IndexMatching {
             // Console.err.println(s"$s $t")
             if (t.isEmpty) {
               s.map(singleTokenMatch).flatMap(x =>   x match {
-                case (w, Some((d,t))) => Seq(<name type={t.tag} norm={t.term} distance={d.toString}>{w}</name>, Text(" "))
+                case (w, Some((d,t))) =>
+                  val (matchType,dx) = if (d==100) ("global",0) else ("local",d)
+                  Seq(<name matchType={matchType} type={t.tag} norm={t.term} distance={d.toString}>{w}</name>, Text(" "))
                 case (w,_) => Seq(Text(w + " ")) })
             } else {
               val t0 = t.get
-              Seq(<name type={t0.tag} norm={t0.term}>{s.mkString(" ")}</name>, Text(" "))
+              Seq(<name matchType="multiWord" type={t0.tag} norm={t0.term}>{s.mkString(" ")}</name>, Text(" "))
             }
         }
 
