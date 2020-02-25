@@ -112,7 +112,7 @@ object IndexMatching {
     })
    }
 
-  val useGlobalMatches = false
+  val useGlobalMatches = true
 
   private def matchIndexTerms(d: Elem) = {
     val allPages = extractPages(d)
