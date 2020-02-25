@@ -28,10 +28,6 @@ object IndexMatching {
     pages.filter(_._1.nonEmpty)
   }
 
-  //lazy val allPages = part6Documents.flatMap(extractPages).filter(_._1.isDefined).sortBy(_._1.get)
-
-  /// allPages.foreach(println)
-
   def makeLines(p: Node) = {
     val lineGroups = groupWithFirst(p.child, x => x.label == "lb").map(c => <l>
       {c}
@@ -102,9 +98,6 @@ object IndexMatching {
   lazy val indices = List(index, pIndex, sIndex)
 
   def main(args: Array[String]): Unit = {
-    /// p2t.foreach(println)
-
-
     part6Files.foreach(f => {
       Console.err.println(f.getCanonicalPath)
       val d = XML.loadFile(f)
@@ -200,7 +193,7 @@ object IndexMatching {
               i -> t
           }.toMap
 
-          def extend(b: Seq[(Seq[String], Option[IndexTerm])], i: Int) = {
+          def extendGrouplet(b: Seq[(Seq[String], Option[IndexTerm])], i: Int) = {
             val t: Option[IndexTerm] = multiTermStartsMap.get(i)
             // Console.err.println(i)
             val z = if (i == 0 || b.last._2.isEmpty || b.last._2.get.length == b.last._1.size) {
@@ -214,7 +207,7 @@ object IndexMatching {
             z
           }
 
-          val grouplets: Seq[(Seq[String], Option[IndexTerm])] = tokens.indices.foldLeft(Seq[(Seq[String], Option[IndexTerm])]())({ case (b, i) => extend(b, i) })
+          val grouplets: Seq[(Seq[String], Option[IndexTerm])] = tokens.indices.foldLeft(Seq[(Seq[String], Option[IndexTerm])]())({ case (b, i) => extendGrouplet(b, i) })
 
           val mp2 = grouplets.flatMap { case (s, t) =>
             // Console.err.println(s"$s $t")
