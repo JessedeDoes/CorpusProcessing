@@ -1,15 +1,63 @@
 package Wp6
 
 import scala.xml._
+import scala.util.matching.Regex._
 
 case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeWithOffsets])
 {
   def label = node.label
   def \(s: String): Seq[NodeWithOffsets] = children.filter(_.node.label == s)
   def \\(s: String): Seq[NodeWithOffsets] = \(s) ++ children.flatMap(x => x.\\(s))
+  def text = node.text
 }
 
 object StandoffMarkup {
+
+  case class Token(word: String, start:Int, end: Int)  {
+
+  }
+
+  val wordPattern = "\\S+".r
+
+  def extend(tokens: Seq[Token], lastTokenClosed: Boolean, m: Match, startOffset: Int, textLength: Int): (Seq[Token], Boolean) = {
+
+    // Console.err.println(s"$m ${m.end} $textLength")
+
+    if (tokens.isEmpty || lastTokenClosed || m.start > 0)
+      {
+        val newT = new Token(m.toString, startOffset + m.start, startOffset +  m.end)
+        (tokens :+ newT) -> (m.end < textLength)
+      } else {
+      val tLast = tokens.last
+      val tNewLast = tLast.copy(word=tLast.word + m.toString, end=startOffset + m.end)
+      (tokens.dropRight(1) :+ tNewLast) -> (m.end < textLength)
+    }
+  }
+
+  def extendWithNode(tokens: Seq[Token], lastTokenClosed: Boolean, n: NodeWithOffsets, isTokenBoundary: Node => Boolean = z => true): (Seq[Token], Boolean)  = {
+    n.node match {
+      case Text(t) =>
+        val words = wordPattern.findAllMatchIn(t).toList
+        if (words.isEmpty)
+          (tokens, t.nonEmpty)
+        else
+        {
+          words.foldLeft(tokens -> lastTokenClosed){case ((t1, b),m) => extend(t1,b,m, n.start, t.length)}
+        }
+      case e: Elem =>
+        // if (e.label == "hi") Console.err.println(e)
+        val b0 = lastTokenClosed || isTokenBoundary(e)
+        // if (e.label == "hi") Console.err.println(b0)
+        val (foldedToks, closed) =  n.children.foldLeft(tokens -> b0){case ((t, b), n1) => extendWithNode(t,b,n1,isTokenBoundary)}
+        // if (e.label == "hi") Console.err.println(s"${ (foldedToks, closed)}")
+        foldedToks -> (closed || isTokenBoundary(e))
+    }
+  }
+
+  def tokenize(n: NodeWithOffsets, isTokenBoundary: Node => Boolean = z => true) = {
+    extendWithNode(Seq(), true, n, isTokenBoundary)
+  }
+
   def createStandoffMarkup(e: Node, startPosition: Int=0): NodeWithOffsets = {
     val initial = (Seq[NodeWithOffsets](), startPosition)
 
@@ -24,10 +72,21 @@ object StandoffMarkup {
   }
 
   def main(args: Array[String]): Unit = {
+
     val x = createStandoffMarkup(example)
-    val text = example.text
-    val names: Seq[NodeWithOffsets] = x \\ "name"
-    names.foreach(n => {
+    val x1 = createStandoffMarkup(XML.loadFile("/tmp/match.INT_d9e3fee8-0b2e-36d9-910b-9681e4d60ef4.xml"))
+
+    val inlineTags = Set("lb", "br", "milestone", "hi", "pb")
+
+    val (s,b) = tokenize(x1, n => !(inlineTags.contains(n.label)))
+
+    val text = x1.text
+    s.foreach(t => {
+      val check = text.substring(t.start, t.end)
+      println(s"$t <$check>")
+    })
+    val names: Seq[NodeWithOffsets] = x1 \\ "name"
+    if (false) names.foreach(n => {
       val check = n.node.text
       val content = text.substring(n.start, n.end)
       Console.err.println(s"$content####$check###${n.start}#${n.end}")
@@ -36,10 +95,10 @@ object StandoffMarkup {
   }
 
   val example = <text>Van  Outhoorn,  Van  Hoorn,  Pijl,  De  Haas,  Van
-  Riebeeck,  enz.  XXIII,  23  november  1699  93  is  het
-    geselen  en  brandmerken  niet  toegepast;  de  tweede
+  Riebeeck,  enz.  XXIII,  23  nove<lb/>mber  1699  93  is  het
+    geselen  en  brandmerken  niet  toe<hi>gepast;  d</hi>e  tweede
     verkocht  zijn  buit  aan  een  Engels  scheepje;  de  water
-    ^  fiskaal  Claus  <name type="person" norm="Alebos, Claas"
+    ^  fiskaal  Claus<name type="person" norm="Alebos, Claas"
   distance="0">Alebos</name>   was  nalatig  ter  zake  ,
   zodat  de  vervolging  aan  den  provisionelen  fiskaal
   <name type="person" norm="Quevellerius, Abraham"
@@ -138,6 +197,4 @@ Mattheus" distance="0">Abouts,</name>   33000  van  <name
   type="person" norm="Lycochthon, Wijbrand"
   distance="0">Lycochthon,</name>   23000  van  den
     boekhouder  Nicolaas  de</text>
-
-
 }
