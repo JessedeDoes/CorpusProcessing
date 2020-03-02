@@ -3,11 +3,25 @@ package Wp6
 import scala.xml._
 import scala.util.matching.Regex._
 import StandoffTokenizing._
+import Wp6.IndexMatching.part6Files
 import utils.PostProcessXML.pushOptionInside
 
-case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeWithOffsets])
+trait Markup {
+  def start: Int
+  def end: Int
+  def name: String
+  def value: Any
+}
+
+case class StandoffMarkup(start: Int, end: Int, name: String, value: Any) {
+
+}
+
+case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeWithOffsets]) extends Markup
 {
+  val name = "label"
   lazy val label = node.label
+  lazy val value = label
   def \(s: String): Seq[NodeWithOffsets] =
     if (s.startsWith("@")) {
       val a = node \ s
@@ -25,17 +39,23 @@ object StandoffMarkup {
     o.map(x => (Some(x._1).asInstanceOf[Option[NodeWithOffsets]],x._2)).getOrElse( (None, 0) )
 
   def extractPages(d: NodeWithOffsets) = {
+
+    //println(d \\ "pb")
+
     val leafSpul = d.descendant.filter(_.children.isEmpty)
-    val pages = groupWithFirst(leafSpul, x => x.label == "pb").map(g =>
-      if (g.head.label == "pb") Some((g.head \ "@n").text.toInt) -> g.map(_.text).mkString(" ") else None -> g.text
+
+    //println(leafSpul.map(_.label).toSet)
+
+    val pages: Seq[(Option[Int], (Int, Int))] = groupWithFirst(leafSpul, x => x.label == "pb").map(g =>
+      (if (g.head.label == "pb") Some((g.head \ "@n").text.toInt) else None) -> (g.head.start -> g.last.end)
     )
-    pages.filter(_._1.nonEmpty)
+    pages.filter(_._1.nonEmpty).map{case (Some(p), (s,e)) => StandoffMarkup(s,e,"page", p)}
   }
 
   def groupWithFirst(l: Seq[NodeWithOffsets], f: Node => Boolean): Seq[Seq[NodeWithOffsets]] =
   {
     val numberedChild:List[(NodeWithOffsets, Int)] = l.toList.zipWithIndex
-    def lastBefore(i:Int):(Option[NodeWithOffsets],Int) = pushOptionInside(numberedChild.filter({case (n,j) => j <= i && f(n)}).lastOption)
+    def lastBefore(i:Int):(Option[NodeWithOffsets],Int) = pushOptionInside(numberedChild.filter({case (n,j) => j <= i && f(n.node)}).lastOption)
     val grouped = numberedChild.groupBy({case (n,i) => lastBefore(i)})
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
   }
@@ -56,13 +76,24 @@ object StandoffMarkup {
 
     val (children, z): (Seq[NodeWithOffsets], Int) = e.child.foldLeft(initial) { case ((seq, p), n) => addNode(seq, p, n) }
     val last = if (children.nonEmpty) children.last.end else startPosition + e.text.length
+
     NodeWithOffsets(e, startPosition, last, children)
   }
 
+  def pageTest = {
+    part6Files.foreach(f => {
+      Console.err.println(f.getCanonicalPath)
+      val d = XML.loadFile(f)
+      println(extractPages(createStandoffMarkup(d)))
+    })
+  }
+
+  val dinges = "/tmp/match.INT_d9e3fee8-0b2e-36d9-910b-9681e4d60ef4.xml"
+  val dattes = "data/CRM/Metadata/Meertens-CRM-1-1.0ab6990f-9605-3a1d-8fc2-74eb0ec445a0.xml"
+
   def main(args: Array[String]): Unit = {
+    val x1 = createStandoffMarkup(XML.loadFile(dinges))
 
-
-    val x1 = createStandoffMarkup(XML.loadFile("data/CRM/Metadata/Meertens-CRM-1-1.0ab6990f-9605-3a1d-8fc2-74eb0ec445a0.xml"))
 
     val inlineTags = Set("lb", "br", "milestone", "hi", "pb", "expan")
 

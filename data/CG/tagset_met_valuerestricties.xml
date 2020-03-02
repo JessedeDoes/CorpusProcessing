@@ -2,6 +2,7 @@
     <!-- we missen de display names -->
     <!-- Helaas toch maar even handmatig toevoegen? -->
     <prefix>chnpos</prefix>
+    <corpus>Gysseling</corpus>
     <mainPoS>
         <pos displayName= "Adjective" desc="Adjective">ADJ</pos>
         <pos displayName= "Adposition" desc="Adposition">ADP</pos>
@@ -49,7 +50,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature desc="Inflection - categorized in an agnostic way, not neccessarily implying morpheme status">
+        <feature desc="Inflection - categorized in an agnostic way, not necessarily implying morpheme status">
             <name>inflection</name>
             <values>
                 <featureValue displayName="none" desc="No inflection">

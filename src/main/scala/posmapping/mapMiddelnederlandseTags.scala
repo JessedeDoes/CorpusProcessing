@@ -199,10 +199,29 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     stermat.findFirstMatchIn(code).map(m => SterretjeMatje(m.group(1), m.group(2), lemma))
   }
 
+
   def patchPoSMistakes(m: String, p:String): String =
   {
     if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf") else p
   }
+
+  /*
+  Hierbij stuur ik je even wat er in Gysseling qua naam veranderd kan worden om het aan de huidige tagset aan te passen.
+Dit werkt niet zo goed voor dingen die we toevoegen of weghalen, aangezien er dan ook aan de tagging zelf gesleuteld moet worden.
+Laat maar weten of het onderstaande (enigszins) is waar je gisteren op doelde met verandering van de naamgeving.
+
+- Adjective -> AA :           in onze tagset hebben we hiernaast graad en positie
+- Adposition:                      in onze tagset maken we een onderscheid tussen voorzetsels, achterzetsels en omzetsels)
+- Adverb:                             onze types van de uitbreidingsset zijn general, dem, indef, int, negative and personal. Komt redelijk overeen, hier is nog resumptive naast other)
+- Conjunction:                   in onze tagset maken we alleen een onderscheid tussen nevenschikkend en onderschikkend. In een uitbreiding eventueel verdere subtypes)
+- Interjection
+- Noun:                                wij doen proper noun als aparte categorie
+- Numeral:                          wij hebben geen categorie ‘other’ en de ‘indefinites’ vallen bij ons onder de ‘indefinite pronouns’. Ook de vorm hebben wij als kenmerk.
+- Pronoun:                          wij hebben dus een iets andere indeling, maar een deel is nog vast te stellen.
+- Residual:                           wij hebben nu vier types: symbol, foreign, formula en unknown. ‘Abbr.’ is iets wat hoort bij alle categorieën in principe.
+- Verb:                                 bij finiteness onderscheiden wij de participia apart. Verder valt hier veel bij ons onder een uitgebreide tagset.
+*/
+
 
   def patchPosMistakes(morfcodes: List[String], pos: List[String]) = {
      val patchedPos = morfcodes.zip(pos).map{case (a,b) => patchPoSMistakes(a,b)}
