@@ -1,0 +1,2 @@
+sort -u /tmp/gys.alltags.txt  | grep -v '#' | grep -v '*'  | grep '^[0-9]' | perl -pe 's/^(.)\t/0$1\t/' |  perl -pe 's/^(..)\t/0$1\t/' | sort -u > data/CG/overzichtje_nu.txt
+join data/CG/overzichtje_nu.txt data/CG/morfcodes-3plaatsen.txt  > data/CG/overzichtje_met_morfcode.txt

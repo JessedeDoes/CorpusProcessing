@@ -120,6 +120,7 @@ object TagSet
     TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions)
   }
 
+
   def main(args: Array[String]): Unit = {
     val test = "data/CRM/tagset.json"
     fromJSON(io.Source.fromFile(test).getLines().mkString("\n"))
@@ -257,7 +258,16 @@ case class TagSet(prefix: String,
   def posForFeature(n: String, v: String) =
     {
       val r= valueRestrictions.filter(r => r.featureName == n && r.values.contains(v)).map(_.pos)
-      Console.err.println(s"Pos for $n $v: $r")
+      // Console.err.println(s"Pos for $n $v: $r")
       r
     }
+
+  def isValid(t: Tag)  = {
+    this.posTags.contains(t.pos) && t.features.forall(f => {
+      val b = this.posForFeature(f.name,f.value).contains(t.pos) || f.value.split("\\||/").forall(x => this.posForFeature(f.name,x).contains(t.pos))
+      if (!b)
+        Console.err.println(s"$f not ok for ${t.pos}")
+      b
+    })
+  }
 }
