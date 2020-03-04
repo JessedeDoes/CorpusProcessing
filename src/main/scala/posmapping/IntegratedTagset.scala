@@ -9,8 +9,8 @@ object IntegratedTagset {
    def main(args: Array[String]): Unit = {
       GysTags.foreach(ts => {
          val (m,t1,t) = (ts(0),ts(1), ts(2))
-         val tPatched = mapMiddelnederlandseTagsGys.patchPoSMistakes(m,t1,"")
-         val tag = IntegratedTag(t)
+         val tPatched =HistoricalTagsetPatching.patchPoSMistakes(m,t1,"")
+         val tag = IntegratedTag(tPatched)
          val v = tagset.isValid(tag)
           // println(tag)
       })
