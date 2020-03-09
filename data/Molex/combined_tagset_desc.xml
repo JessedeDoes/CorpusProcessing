@@ -674,9 +674,15 @@
                 </featureValue>
             </values>
         </feature>
-        <feature desc="Subtype (only for numerals in Molex, now also for ADV en CONJ)">
+        <feature desc="Subtype (only for numerals in Molex, now also for PD, ADV and CONJ)">
             <name>subtype</name>
-            <values>
+	    <values>
+	        <featureValue desc="Article">
+                    <value>art</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                <featureValue desc="Fraction (derde etc)">
                     <value>fraction</value>
                     <posForValue>
@@ -695,10 +701,11 @@
                         <pos>ADV</pos>
                     </posForValue>
 	        </featureValue>
-                <featureValue desc="indefinite pronominal adverb">
+                <featureValue desc="indefinite pronominal adverb or article">
                     <value>indef</value>
                     <posForValue>
                         <pos>ADV</pos>
+			<pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue desc="relative pronominal adverb or conjunction">
@@ -753,7 +760,8 @@
                     </posForValue>
                 </featureValue>
             </values>
-        </feature>
+    </feature>
+    <!--
         <feature desc="Article type (definite or indefinite)">
             <name>subtype_art</name>
             <values>
@@ -771,6 +779,7 @@
                 </featureValue>
             </values>
         </feature>
+    -->
         <feature desc="Verb tense">
             <name>tense</name>
             <values>

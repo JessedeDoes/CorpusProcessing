@@ -19,12 +19,12 @@ object HistoricalTagsetPatching {
     // println(s"$m\t$p")
     val infl = getFeature(p,"inflection").getOrElse("other")
     val p1 = if (p.startsWith("NUM") && p.contains("indef")) {
-      p.replaceAll("NUM", "PD")
+      p.replaceAll("NUM", "PD").replaceAll("indefinite", "indef")
     }
 
     else if (p.startsWith("NOU")) {
-      val posNew = if (p.contains("type=proper")) "NOU-P" else "NOU-C"
-      if (p.matches(".*type=(common|proper).*")) p.replaceAll("type=[a-z]+(,?)","").replaceAll("^[A-Z]+", posNew) else p
+      val posNew = if (p.contains("type=proper")) "NOU-P" else if (p.contains("type=common")) "NOU-C" else "NOU-U"
+       p.replaceAll("type=[a-z]+(,?)","").replaceAll("^[A-Z]+", posNew)
     }
 
     else if (p.startsWith("ADV")) {
@@ -46,7 +46,8 @@ object HistoricalTagsetPatching {
     }
 
     else if (p.startsWith("ADJ")) {
-      p.replaceAll("ADJ","AA").replaceAll("\\)",",position=pred|prenom|postnom)").replaceAll("number=","NA=") // Vervelend!!!
+      val base =  if (bw2aa) p.replaceAll("ADJ","AA").replaceAll("\\)",",position=pred|prenom|postnom)") else p
+      base.replaceAll("number=","NA=") // Vervelend!!!
     }
 
 
@@ -66,9 +67,11 @@ object HistoricalTagsetPatching {
       val typ = getFeature(p,"type").getOrElse("other")
       if (typ == "art")
       {
-        p.replaceAll("type=art", "type=dem").replaceAll("subtype", "subtype_art")
+        val typ = if (p.contains("indef")) "indef" else "dem"
+        p.replaceAll("type=art", "type=" + typ).replaceAll("subtype=[a-z]+", "subtype=art")
       } else p
     }
+
     else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")  else p
 
     val p2 = p1.replaceAll("inflection=","infl=").replaceAll("=main","=mai")
@@ -89,7 +92,7 @@ object HistoricalTagsetPatching {
       case Failure(exception) => Console.err.println(s"exception for $p2: $exception")
     }
 
-    println(s"$m\t$p\t$p2")
+    // println(s"$m\t$p\t$p2")
     p2
   }
 }

@@ -1,0 +1,675 @@
+<tagset>
+    <prefix>pos</prefix>
+    <mainPoS>
+        <pos desc="">ADJ</pos>
+        <pos desc="">ADP</pos>
+        <pos desc="">ADV</pos>
+        <pos desc="">CONJ</pos>
+        <pos desc="">INT</pos>
+        <pos desc="">NOU-C</pos>
+        <pos desc="">NOU-P</pos>
+        <pos desc="">NOU-U</pos>
+        <pos desc="">NUM</pos>
+        <pos desc="">PD</pos>
+        <pos desc="">RES</pos>
+        <pos desc="">VRB</pos>
+    </mainPoS>
+    <partitions>
+        <feature desc="">
+            <name>NA</name>
+            <values>
+                <featureValue desc="">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>sg</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>finiteness</name>
+            <values>
+                <featureValue desc="">
+                    <value>fin</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>inf</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>inf/ger</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>part</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>infl</name>
+            <values>
+                <featureValue desc="">
+                    <value>0</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>INT</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NOU-U</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>a</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>e</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>INT</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NOU-U</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>n</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>INT</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NOU-U</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>INT</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NOU-U</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>r/re</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>s/th</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NOU-U</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>t</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>mood</name>
+            <values>
+                <featureValue desc="">
+                    <value>imp</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>number</name>
+            <values>
+                <featureValue desc="">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>sg</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>person</name>
+            <values>
+                <featureValue desc="">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>2</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>3</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>pos</name>
+            <values>
+                <featureValue desc="">
+                    <value>ADJ</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>ADP</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>ADV</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>CONJ</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>INT</value>
+                    <posForValue>
+                        <pos>INT</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NOU-C</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NOU-P</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NOU-U</value>
+                    <posForValue>
+                        <pos>NOU-U</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>NUM</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>PD</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>RES</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>VRB</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>subtype</name>
+            <values>
+                <featureValue desc="">
+                    <value>art</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>comparison</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>dem</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>explicative</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>int</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>neg</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>quality</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>rel</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>resumptive</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>tense</name>
+            <values>
+                <featureValue desc="">
+                    <value>past</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>pres</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>type</name>
+            <values>
+                <featureValue desc="">
+                    <value>aux/cop</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>card</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>coor</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>dem</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>int</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>mai</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>ord</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                        <pos>CONJ</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>pers</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>poss</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>pron</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>refl/recip</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>rel</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>sub</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature desc="">
+            <name>wordpart</name>
+            <values>
+                <featureValue desc="">
+                    <value>adp</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>adv</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>part</value>
+                    <posForValue>
+                        <pos>ADJ</pos>
+                        <pos>ADP</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue desc="">
+                    <value>vrb</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+    </partitions>
+    <constraints>
+        <constraint>
+            <pos>ADJ</pos>
+            <features>
+                <feature>NA</feature>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADP</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADV</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>subtype</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>CONJ</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>subtype</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>INT</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-C</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>number</feature>
+                <feature>pos</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-P</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-U</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NUM</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>PD</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>number</feature>
+                <feature>person</feature>
+                <feature>pos</feature>
+                <feature>subtype</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>RES</pos>
+            <features>
+                <feature>infl</feature>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>VRB</pos>
+            <features>
+                <feature>finiteness</feature>
+                <feature>infl</feature>
+                <feature>mood</feature>
+                <feature>pos</feature>
+                <feature>tense</feature>
+                <feature>type</feature>
+                <feature>wordpart</feature>
+            </features>
+        </constraint>
+    </constraints>
+</tagset>

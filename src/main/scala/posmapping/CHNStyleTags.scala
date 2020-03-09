@@ -91,7 +91,7 @@ object distinctTagsFromGysseling
         }
       }
     )
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("chnpos", allDistinctTags)
+    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
     val xmlWriter = new PrintWriter("/tmp/tagset.xml")
     xmlWriter.println(TagSet.pretty.format(tagset.toXML))
     xmlWriter.close()
@@ -99,7 +99,7 @@ object distinctTagsFromGysseling
     jsonWriter.println(tagset.asJSON)
     jsonWriter.close()
 
-    val blfWriter = new PrintWriter("/tmp/tagset.blf")
+    val blfWriter = new PrintWriter("/tmp/tagset.blf.yaml")
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
   }
@@ -151,5 +151,17 @@ object compareGysselingToMolex
     pretty(molexCompleteTagsetPlus)
     pretty(molexCompleteTagsetPlus, new PrintWriter("/tmp/tagset_plus.xml"))
     //println(gysTagset.descriptions)
+  }
+}
+
+object addDescriptionsToCorpusBasedGysseling
+{
+  def main(args: Array[String]): Unit = {
+    val corpusBased = TagSet.fromXML("data/CG/tagset_from_corpus.xml")
+    val molexTagest = TagSet.fromXML("data/Molex/combined_tagset_desc.xml")
+
+    val corpusBasedWithDesc = corpusBased.copy(descriptions = molexTagest.descriptions, displayNames = molexTagest.displayNames)
+
+    compareGysselingToMolex.pretty(corpusBasedWithDesc, new PrintWriter("/tmp/tagset_desc.xml"))
   }
 }

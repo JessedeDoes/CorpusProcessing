@@ -145,11 +145,11 @@ case class TagSet(prefix: String,
     <tagset>
       <prefix>{prefix}</prefix>
       <mainPoS>
-        {posTags.sorted.map(p => <pos desc={descriptions.posDescription(p)}>{p}</pos>)}
+        {posTags.sorted.map(p => <pos displayName={displayNames.posDescription(p)} desc={descriptions.posDescription(p)}>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
-        <featureValue desc={descriptions.valueDescription(f,v)}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
+        <featureValue displayName={displayNames.valueDescription(f,v)} desc={descriptions.valueDescription(f,v)}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
