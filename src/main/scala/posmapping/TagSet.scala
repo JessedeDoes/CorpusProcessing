@@ -12,7 +12,7 @@ import posmapping.CHNStyleTags.parser
 import sparql2xquery.ValueRestrictionSet
 
 import scala.collection.immutable
-
+//import scala.Predef.Map
 
 
 case class Feature(name: String, value: String)
@@ -46,12 +46,16 @@ object MolexTagSet extends TagSet("molex")
   override def fromString(t: String): Tag = new UDStyleTag(t, this)
 }
 
-case class TagDescription(posDescriptions: Map[String, String] = Map.empty,
-                          featureDescriptions: Map[String, String] = Map.empty, valueDescriptions: Map[(String, String), String] = Map.empty )
+case class TagDescription(posDescriptions: scala.collection.immutable.Map[String, String] = Map.empty,
+                          featureDescriptions: scala.collection.immutable.Map[String, String] = Map.empty,
+                          valueDescriptions: scala.collection.immutable.Map[(String, String), String] = Map.empty )
 {
   def posDescription(p: String) = posDescriptions.getOrElse(p, "")
   def featureDescription(p: String) = featureDescriptions.getOrElse(p, "")
   def valueDescription(f: String, v: String) = valueDescriptions.getOrElse((f,v), "")
+  def getPosDescription(p: String) = posDescriptions.get(p)
+  def getFeatureDescription(p: String) = featureDescriptions.get(p)
+  def getValueDescription(f: String, v: String) = valueDescriptions.get((f,v))
 }
 
 object TagSet
@@ -61,23 +65,28 @@ object TagSet
   def fromXML(d: Elem):TagSet =
   {
     val prefix = (d \ "prefix").text
+
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
+
     val partitions: Map[String, Set[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
+
     val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
+
     val valueRestrictions: List[ValueRestriction] = (d \\ "partitions" \ "feature").flatMap(
       f => {
         val name = (f \ "name").text
         val valpos = (f \\ "featureValue").flatMap(fv => (fv \\ "pos").map(p => ValueRestriction(p.text, name,   List((fv \ "value").text)) ))
-        Console.err.println(s"valpos: $valpos")
+        //Console.err.println(s"valpos: $valpos")
         val regrouped = valpos.groupBy(v => (v.pos, v.featureName)).map({case ((p,n),l) => ValueRestriction(p,n, l.flatMap(x => x.values).toList)})
         regrouped
       }
     ).toList
 
-    Console.err.println(s"Value restrictions = $valueRestrictions")
+    // Console.err.println(s"Value restrictions = $valueRestrictions")
 
     val posDescriptions: Map[String, String] = (d \\ "mainPoS" \ "pos").map(p => p.text -> (p \ "@desc").text).toMap
     val featureDescriptions: Map[String, String] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \ "@desc").text).toMap
+
     val valueDescriptions: Map[(String, String), String] = (d \\ "partitions" \ "feature").flatMap(f => {
       val name = (f \ "name").text
       val valuedescs = (f \\ "featureValue").map(fv =>  ( (name, (fv \ "value").text), (fv \ "@desc").text))
@@ -93,9 +102,13 @@ object TagSet
       valuedescs
     }).toMap
 
+    val dp = TagDescription(posDisplayNames, featureDisplayNames, valueDisplayNames)
+
+    // if (dp.posDescription("PD").nonEmpty) println(dp)
+
     TagSet(prefix, posTags, partitions, pos2partitions, defaultTagParser, List(), valueRestrictions,
-      TagDescription(posDescriptions, featureDescriptions, valueDescriptions),
-      TagDescription(posDisplayNames, featureDisplayNames, valueDisplayNames)) // tag parser should also be specified in XML
+      TagDescription(posDescriptions, featureDescriptions, valueDescriptions), dp
+      ) // tag parser should also be specified in XML
   }
 
   def fromXML(f: String):TagSet = fromXML(XML.load(f))
@@ -120,6 +133,16 @@ object TagSet
     TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions)
   }
 
+  def simplify(v: String):String  = v // v.replaceAll(" .*", "")
+  def simplifyMap(m: Map[String,String]): Map[String, String] = m.filter(_._2.nonEmpty).map{case (k,v) => (k, simplify(v))}
+  def simplifyMap2(m: Map[(String,String),String]): Map[(String,String), String] = m.filter(_._2.nonEmpty).map{case (k,v) => (k, simplify(v))}
+
+  // waarden van a blijven indien beide gedefinieerd
+  def mergeDescriptions(a: TagDescription, b: TagDescription) = {
+    TagDescription(simplifyMap(b.posDescriptions ++ a.posDescriptions),
+      simplifyMap(b.featureDescriptions ++ a.featureDescriptions),
+      simplifyMap2(b.valueDescriptions ++ a.valueDescriptions))
+  }
 
   def main(args: Array[String]): Unit = {
     val test = "data/CRM/tagset.json"
@@ -149,7 +172,8 @@ case class TagSet(prefix: String,
       </mainPoS>
       <partitions>
         {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
-        <featureValue displayName={displayNames.valueDescription(f,v)} desc={descriptions.valueDescription(f,v)}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
+        <featureValue displayName={val v1 = if (f != "pos") Some(Text(displayNames.valueDescription(f,v))) else None; v1}
+                      desc={val v1 = if (f != "pos") Some(Text(descriptions.valueDescription(f,v))) else None; v1}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
@@ -254,6 +278,8 @@ case class TagSet(prefix: String,
   </fs>
 
   def consistentPartitions(pos: String, n: String, f: List[String]) = true
+
+
 
   def posForFeature(n: String, v: String) =
     {

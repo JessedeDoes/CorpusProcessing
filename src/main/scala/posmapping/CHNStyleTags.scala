@@ -158,10 +158,19 @@ object addDescriptionsToCorpusBasedGysseling
 {
   def main(args: Array[String]): Unit = {
     val corpusBased = TagSet.fromXML("data/CG/tagset_from_corpus.xml")
-    val molexTagest = TagSet.fromXML("data/Molex/combined_tagset_desc.xml")
 
-    val corpusBasedWithDesc = corpusBased.copy(descriptions = molexTagest.descriptions, displayNames = molexTagest.displayNames)
+    val molexTagset = TagSet.fromXML("data/Molex/combined_tagset_desc.xml")
+    val gysselSet = TagSet.fromXML("data/CG/tagset_met_valuerestricties.xml")
 
-    compareGysselingToMolex.pretty(corpusBasedWithDesc, new PrintWriter("/tmp/tagset_desc.xml"))
+    //println(molexTagset.displayNames) // jakkes die hebben we niet ....
+
+    val corpusBasedWithDesc = corpusBased.copy(descriptions = molexTagset.descriptions,
+      displayNames = TagSet.mergeDescriptions(molexTagset.displayNames, molexTagset.descriptions))
+
+    val nogWat = corpusBasedWithDesc.copy(displayNames = TagSet.mergeDescriptions(molexTagset.displayNames, gysselSet.displayNames))
+    //val molexWithDesc = molexTagset.copy(displayNames = TagSet.mergeDescriptions(gysselSet.displayNames, molexTagset.descriptions))
+
+    compareGysselingToMolex.pretty(nogWat, new PrintWriter("/tmp/gys_corpus_tagset_desc.xml"))
+    //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
   }
 }

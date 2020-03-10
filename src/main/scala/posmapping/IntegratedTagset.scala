@@ -22,23 +22,3 @@ object IntegratedTagset {
    }
 }
 
-/*
-mood=imperative not ok for VRB
-number=other not ok for AA
-number=pl not ok for AA
-number=pl not ok for PD
-number=sg not ok for AA
-position=adverbial not ok for AA
-pos=NOU not ok for NOU
-subtype=other not ok for ADV
-subtype=other not ok for CONJ
-subtype=resumptive not ok for ADV
-tense=present not ok for VRB
-type=art not ok for PD
-type=coord not ok for CONJ
-type=general not ok for ADP
-type=general not ok for ADV
-type=interjection not ok for INT
-type=refl/recp not ok for PD
-
- */

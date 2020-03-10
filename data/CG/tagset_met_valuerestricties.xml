@@ -496,7 +496,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature desc="Description of role of token as part of a multi-token word (e.g. a separable verb)">
+        <feature displayName="Word part" desc="Description of role of token as part of a multi-token word (e.g. a separable verb)">
             <name>wordpart</name>
             <values>
                 <featureValue displayName= "adpositional part" desc="Adpositional part of word">
