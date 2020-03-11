@@ -34,8 +34,7 @@ object rdf2db {
     createSchema(d, s"$schema.$tableName")
   }
 
-  val evoke_config = Configuration("x", "svowdb02","evoke_rdf", "postgres", "inl")
-  lazy val evoke_db = new Database(evoke_config)
+
 
 
 
@@ -70,45 +69,11 @@ object rdf2db {
     })
   }
 
-  def addSomeInfo(d: Database, tableName: String)  = {
-    val statements = s"""set schema 'schema';
-                        |create table hierarchy as select * from $tableName where predicate ~ 'skos.core.broader';
-                        |drop table if exists concepts;
-                        |create table concepts as select resource from resource_type where type ~ 'LexicalConcept';
-                        |alter table concepts add column level integer default null;
-                        |alter table concepts add column prefLabel text default null;
-                        |alter table concepts add column parent text default null;
-                        |alter table concepts add column parentLabel text default null;
-                        |alter table concepts add column notation text default null;
-                        |update concepts set prefLabel=$tableName.object from $tableName where predicate ~ 'prefLabel' and concepts.resource = $tableName.subject;
-                        |update concepts set parent=$tableName.object from $tableName where predicate ~ 'skos.core.broader' and concepts.resource = $tableName.subject;
-                        |update concepts set parentLabel=c1.prefLabel from concepts c1 where c1.resource=concepts.parent;
-                        |update concepts set notation=$tableName.object from $tableName where predicate ~ 'skos.core.notation' and concepts.resource = $tableName.subject;
-                        |update concepts set level=0 where resource in (select subject from $tableName where predicate ~'topConceptOf');
-                        |alter table concepts add column ancestors text[] default null;
-                        |update concepts set ancestors = array[resource];
-                        |alter table concepts add column ancestor_text text default '';
-                        |update concepts set ancestor_text = '[' || preflabel || ']';
-                        |update concepts set ancestors = array[resource, parent] where parent is not null;
-                        |alter table concepts add column senses text[];
-                        |alter table concepts add primary key (resource);
-                        |update concepts set senses=s.labels from (select category, array_agg(preflabel) labels from senses group by category) s where s.category=concepts.resource;
-                        |""".stripMargin.split(";") ++
-      (0 to 20).map(i =>
-        s"update concepts set level=${i+1} where resource in (select subject from hierarchy where object in (select resource from concepts where level=$i))")  ++
-      (1 to 20).map(i => s"update concepts set ancestors = concepts.ancestors || p.ancestors from concepts p where p.resource = concepts.parent and concepts.level=$i") ++
-      (1 to 20).map(i => s"update concepts set ancestor_text = concepts.ancestor_text || ' ← ' || p.ancestor_text from concepts p where p.resource = concepts.parent and concepts.level=$i") ++ Seq(
-      "update concepts set prefLabel = repeat('→ ',level) || prefLabel;")
-    statements.foreach(s => {
-      println(s)
-      d.runStatement(s)
-    })
 
-  }
 
   def main(args: Array[String]): Unit = {
     //createSchema(evoke_db,"data.evoke")
-    addSomeInfo(evoke_db,"data.evoke")
+    evoke.evokeSpecificProcessing(evoke.evoke_db,"data.evoke")
   }
 }
 

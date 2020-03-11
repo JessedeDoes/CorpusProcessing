@@ -171,6 +171,14 @@ object addDescriptionsToCorpusBasedGysseling
     //val molexWithDesc = molexTagset.copy(displayNames = TagSet.mergeDescriptions(gysselSet.displayNames, molexTagset.descriptions))
 
     compareGysselingToMolex.pretty(nogWat, new PrintWriter("/tmp/gys_corpus_tagset_desc.xml"))
+
+    val jsonWriter = new PrintWriter("/tmp/gys_corpus_tagset_desc.json")
+    jsonWriter.println(nogWat.asJSON)
+    jsonWriter.close()
+
+    val blfWriter = new PrintWriter("/tmp/gys_corpus_tagset_desc.bl.yaml")
+    blfWriter.println(nogWat.forBlacklab)
+    blfWriter.close()
     //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
   }
 }

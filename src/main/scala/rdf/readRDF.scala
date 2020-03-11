@@ -211,7 +211,7 @@ Pass: Ui8UytKiG0QDo8j
 
    */
 
-  val evoke = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&infer=false&uuid=yvds3u8bd2g7cnvjb665ap&returnQueryMetadata=true&checkVariables=false"
+  val evoke0 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&infer=false&uuid=yvds3u8bd2g7cnvjb665ap&returnQueryMetadata=true&checkVariables=false"
   val evoke2 = "http://142.93.226.251:10035/#"
   val evoke3 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&checkVariables=false"
 
@@ -223,13 +223,13 @@ Pass: Ui8UytKiG0QDo8j
     val allStatements: Stream[Statement] = (0 until nTriples by bunch).toStream.flatMap(i => {
       val queryString = s"construct  { ?s ?p ?o  } where { graph ?g { ?s ?p ?o . }  } limit $bunch offset $i"
       Console.err.println(queryString)
-      val z = remoteGraphQuery(evoke, queryString, Some(("ivdnt", "Ui8UytKiG0QDo8j")))
+      val z = remoteGraphQuery(evoke0, queryString, Some(("ivdnt", "Ui8UytKiG0QDo8j")))
       if (false) z.foreach(s => {
         println(s)
       })
       z
     })
-    rdf2db.insertToTable(rdf2db.evoke_db, "data.evoke", allStatements)
+    rdf2db.insertToTable(evoke.evoke_db, "data.evoke", allStatements)
     quadIt(allStatements, new PrintStream("/tmp/evoke.nq"))
     turtleIt(allStatements, new PrintStream("/tmp/evoke.ttl"))
 

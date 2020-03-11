@@ -1,5 +1,8 @@
 package posmapping
 
+import java.io
+
+import org.json4s
 import propositional.Proposition
 
 import scala.xml._
@@ -146,7 +149,7 @@ object TagSet
 
   def main(args: Array[String]): Unit = {
     val test = "data/CRM/tagset.json"
-    fromJSON(io.Source.fromFile(test).getLines().mkString("\n"))
+    fromJSON(scala.io.Source.fromFile(test).getLines().mkString("\n"))
   }
 }
 
@@ -203,7 +206,9 @@ case class TagSet(prefix: String,
         "displayName" -> p,
         "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + blacklabName(p)))
 
-    val values = "values" -> posTags.map(pos2J).toMap
+    val values: (String, List[(String, Map[String, io.Serializable])]) = "values" -> posTags.sorted.map(pos2J) // how to get this sorted ....
+
+    //println(values)
     val json = encodeJson(values)
     pretty(render(json))
 
@@ -212,11 +217,14 @@ case class TagSet(prefix: String,
     })
 
     val JSON =
-      Map("values" -> posTags.toList.sorted.map(pos2J).toList.sortBy(_._1).toMap, // hier stond nog een toMap bij??
+      Map("values" -> posTags.toList.sorted.map(pos2J), //.toList.sortBy(_._1).toMap, // hier stond nog een toMap bij??
        "subAnnotations" -> subannotations)
 
-
-    pretty(render(encodeJson(JSON)))
+    val jobject: JValue = encodeJson(JSON)
+    val val1 = (jobject \ "values").asInstanceOf[JArray].arr.map{case JObject(l) => l.head}
+    // println(pretty(render(val1)))
+    val jobject1 = JObject("values" -> val1, "subAnnotations" -> jobject \ "subAnnotations")
+    pretty(render(jobject1))
     //pretty(render(toJson(xml)))
   }
 
