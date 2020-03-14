@@ -73,38 +73,6 @@ object rdf2db {
 
   def main(args: Array[String]): Unit = {
     //createSchema(evoke_db,"data.evoke")
-    evoke.evokeSpecificProcessing(evoke.evoke_db,"data.evoke")
   }
 }
 
-
-/*
-
-
-create table schema.resource_type as select  subject as resource, object as type from evoke where predicate ~ 'ns#type';
-create table schema.distinct_types as select type, sum(1) as count from resource_type group by type;
-create table schema.properties as select predicate, sum(1) as count from evoke group by predicate;
-create table property_domains as select type, predicate, sum(1) as count from resource_type, evoke where resource_type.resource=evoke.subject group by type,predicate;
-create table property_ranges as select type, predicate, sum(1) as count from resource_type, evoke where resource_type.resource=evoke.object group by type,predicate;
-create table untyped_objects as select distinct object as resource, cast('unknown' as text) as type from evoke where not (object in (select resource from resource_type))
-create table untyped_subjects as select distinct subject as resource, cast('unknown' as text) as type from evoke where not (subject in (select resource from resource_type))
-
-
-create table senses as select * from resource_type where type='http://www.w3.org/ns/lemon/ontolex#LexicalSense';
-alter table senses add column category text;
-update senses set category=e.object from data.evoke e where e.subject=senses.resource and e.predicate ~ 'isLexicalizedSenseOf';
-
-alter table senses add column preflabel text;
-update senses set preflabel=e.object from data.evoke e where e.subject=senses.resource and e.predicate ~ 'prefLabel';
-alter table senses add column entry text;
-update senses set entry=e.object from data.evoke e where e.subject=senses.resource and e.predicate ~ 'isSenseOf';
-alter table senses add column pos text;
-update senses set pos=e.object from data.evoke e where e.subject=senses.entry and e.predicate ~ '#type$' and e.object ~ '/pos/';
-alter table senses add column distribution text[] default null;
-update senses set distribution=ARRAY[]::text[] where distribution is null;
-update senses set distribution=ARRAY['g'] from data.evoke e where e.subject=senses.entry and e.predicate ~ '#type$' and e.object ~ '/distribution/#g';
-update senses set distribution=distribution || ARRAY['o'] from data.evoke e where e.subject=senses.entry and e.predicate ~ '#type$' and e.object ~ '/distribution/#o';
-update senses set distribution=distribution || ARRAY['p'] from data.evoke e where e.subject=senses.entry and e.predicate ~ '#type$' and e.object ~ '/distribution/#p';
-update senses set distribution=distribution || ARRAY['q'] from data.evoke e where e.subject=senses.entry and e.predicate ~ '#type$' and e.object ~ '/distribution/#q';
-
- */

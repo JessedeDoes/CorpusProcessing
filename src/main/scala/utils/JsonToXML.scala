@@ -48,10 +48,10 @@ object JsonToXML {
       case Success(x) => x
       case _ => <def parsed="false">{t}</def>
     }
-    val beetjes = (newText \\ "B").filter(b => !(b.text.matches("^[IVX]+([. ]|$).*"))).drop(1)
+    val beetjes = (newText \\ "B").filter(b => !(b.text.matches("^[ABCIVX0-9]+([ab,;:. ]|$).*"))).drop(1)
     if (beetjes.nonEmpty) println(beetjes)
     val markExtraHW = PostProcessXML.updateElement(newText, beetjes.contains(_), e => e.copy(label="HW"))
-    newText
+    markExtraHW
   }
 
 
