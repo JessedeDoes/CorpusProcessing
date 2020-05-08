@@ -214,6 +214,8 @@ Pass: Ui8UytKiG0QDo8j
   val evoke0 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&infer=false&uuid=yvds3u8bd2g7cnvjb665ap&returnQueryMetadata=true&checkVariables=false"
   val evoke2 = "http://142.93.226.251:10035/#"
   val evoke3 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&checkVariables=false"
+  val evoke_config = database.Configuration("x", "svowdb02","evoke_rdf", "postgres", "inl")
+  lazy val evoke_db = new database.Database(evoke_config)
 
 
   def testEvoke = {
@@ -229,7 +231,7 @@ Pass: Ui8UytKiG0QDo8j
       })
       z
     })
-    rdf2db.insertToTable(evoke.evoke_db, "data.evoke", allStatements)
+    rdf2db.insertToTable(evoke_db, "data.evoke", allStatements)
     quadIt(allStatements, new PrintStream("/tmp/evoke.nq"))
     turtleIt(allStatements, new PrintStream("/tmp/evoke.ttl"))
 

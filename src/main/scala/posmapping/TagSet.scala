@@ -212,7 +212,7 @@ case class TagSet(prefix: String,
     val json = encodeJson(values)
     pretty(render(json))
 
-    val subannotations = partitions.map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
+    val subannotations = partitions.filter(_._1 != "pos").map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
       "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> v, "pos" -> this.posForFeature(f,v)))).toMap
     })
 

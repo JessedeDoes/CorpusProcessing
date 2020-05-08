@@ -38,6 +38,7 @@ object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
 
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 {
+
   val bronnenlijst = "/mnt/Projecten/Taalbank/Woordenboeken/VMNW/VMNWdb/Bronnenlijst/vmnw_bronnen.xml"
 
   lazy val bronMap: Map[String, (Node,Node)] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
@@ -87,7 +88,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 
 class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val rearrangeCorresp: Boolean = gysMode
-
+  val cgnMode = false
   val squareCup = "⊔"
 
   def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
@@ -116,9 +117,16 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
      "deel-f" -> "final"
   )
 
-  val tagMapping: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
+  val tagMappingOld: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
+  //
+  val tagMappingNew = scala.io.Source.fromFile("data/CG/gystags_newstyle.txt").getLines().toStream
+    .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
+
+
+
+  val tagMapping = if (cgnMode) tagMappingOld else tagMappingNew
   val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
 
   val gysParticleLemmata: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
@@ -313,6 +321,7 @@ Laat maar weten of het onderstaande (enigszins) is waar je gisteren op doelde me
     // OK hier gaat het mis.....
 
     val np = if (newPoSAttribuut.isDefined) newPoSAttribuut.get.value.text  else (e \ "@function").text
+    //println("np=" + np)
     val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] =  np.split("\\+").toList.zipWithIndex.map(
       {
         case (t,i) =>
@@ -329,7 +338,7 @@ Laat maar weten of het onderstaande (enigszins) is waar je gisteren op doelde me
           z
       }
     ) map(s => s -> CHNStyleTags.parseTag(s))
-
+    //println("Tjoep:" + gysTagsCHNStylewithAnnotatedWordParts)
     val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
 
     val msd = updatedGysPosAttribute.value.text
@@ -354,7 +363,7 @@ Laat maar weten of het onderstaande (enigszins) is waar je gisteren op doelde me
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString).append(multimainattribute) ))} )
 
-    val featureStructures: Seq[Elem] = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
+    val featureStructures: Seq[Elem] = (if (cgnMode) makeFS(cgnTagFs) else Seq())  ++ makeFS(gysTagFS)
 
     e.copy(attributes = attributesWithUpdatedGysTags, child = e.child ++ featureStructures ++ dictionaryLinks)
   }
