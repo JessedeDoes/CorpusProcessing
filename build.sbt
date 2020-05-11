@@ -59,6 +59,14 @@ libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
 // https://mvnrepository.com/artifact/guru.nidi/graphviz-java
 libraryDependencies += "guru.nidi" % "graphviz-java" % "0.5.2"
 
+
+// https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html
+
+
+// https://mvnrepository.com/artifact/org.apache.commons/commons-text
+libraryDependencies += "org.apache.commons" % "commons-text" % "1.8"
+
+
 /*
 https://github.com/iovka/shex-java
 

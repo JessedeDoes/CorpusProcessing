@@ -64,8 +64,6 @@ object exportDiamantToRDF {
     val serpensOutput = new OutputStreamWriter(new GZIPOutputStream( new FileOutputStream(outputFolder + "/" + "serpens.nq.gz")))
 
 
-
-
     write(lemmata, lemmaOutput)
     write(posMapping, lemmaOutput)
 

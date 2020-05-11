@@ -138,7 +138,7 @@ object CRM2Xml {
           Text(wordExpanded)
         } else w
         if (printWTags)
-          <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} pos={posAdapted} orig={orig} reg={reg}>{usedW}</w>
+          <w xml:id={s"w.$n"} corresp={optCorresp} n={optN} part={optPart} lemma={betterLemma} type={tag} function={posAdapted} orig={orig} reg={reg}>{usedW}</w>
         else Text(w.text + " ")
       }
   }
@@ -526,5 +526,7 @@ object CRM2Xml {
   def main(args: Array[String]): Unit = {
 
     process()
+    val args = Array(Settings.outputDir, Settings.postProcessedDir)
+    posmapping.mapMiddelnederlandseTags.main(args)
   }
 }

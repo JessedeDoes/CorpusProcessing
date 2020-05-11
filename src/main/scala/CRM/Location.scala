@@ -14,7 +14,7 @@ case class Location(kloeke_code1: String, kloeke_code_oud: String, plaats: Strin
 
 object Location
 {
-  private val kloekeCodes = Location.allKloekeCodes(dir + "kloeke_cumul.csv")
+  private val kloekeCodes = Location.allKloekeCodes(dir + "Bron/kloeke_cumul.csv")
 
   val kloekeByCode:Map[String, Location] = kloekeCodes.groupBy(_.kloeke_code1.trim).mapValues(_.head)
 

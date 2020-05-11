@@ -12,7 +12,7 @@ import scala.collection.immutable
 import utils.PostProcessXML.updateElement4
 import utils.Tokenizer
 
-import scala.util.Try
+import scala.util.{Failure, Success, Try}
 /*
 +----------------+-------------+------+-----+---------+-------+
 | Field          | Type        | Null | Key | Default | Extra |
@@ -38,6 +38,7 @@ object mapMiddelnederlandseTags extends mapMiddelnederlandseTagsClass(false)
 
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 {
+
   val bronnenlijst = "/mnt/Projecten/Taalbank/Woordenboeken/VMNW/VMNWdb/Bronnenlijst/vmnw_bronnen.xml"
 
   lazy val bronMap: Map[String, (Node,Node)] = (XML.load(bronnenlijst) \\ "bron").toStream.map(
@@ -87,7 +88,7 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
 
 class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   val rearrangeCorresp: Boolean = gysMode
-
+  val cgnMode = false
   val squareCup = "⊔"
 
   def Ѧ(n:String, v: String) = new UnprefixedAttribute(n,v,Null)
@@ -116,9 +117,16 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
      "deel-f" -> "final"
   )
 
-  val tagMapping: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
+  val tagMappingOld: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
+  //
+  val tagMappingNew = scala.io.Source.fromFile("data/CG/gystags_newstyle.txt").getLines().toStream
+    .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
+
+
+
+  val tagMapping = if (cgnMode) tagMappingOld else tagMappingNew
   val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
 
   val gysParticleLemmata: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
@@ -199,11 +207,42 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     stermat.findFirstMatchIn(code).map(m => SterretjeMatje(m.group(1), m.group(2), lemma))
   }
 
+
+
+
+
+  /*
+  Hierbij stuur ik je even wat er in Gysseling qua naam veranderd kan worden om het aan de huidige tagset aan te passen.
+Dit werkt niet zo goed voor dingen die we toevoegen of weghalen, aangezien er dan ook aan de tagging zelf gesleuteld moet worden.
+Laat maar weten of het onderstaande (enigszins) is waar je gisteren op doelde met verandering van de naamgeving.
+
+- Adjective -> AA :           in onze tagset hebben we hiernaast graad en positie
+- Adposition:                      in onze tagset maken we een onderscheid tussen voorzetsels, achterzetsels en omzetsels)
+- Adverb:                             onze types van de uitbreidingsset zijn general, dem, indef, int, negative and personal. Komt redelijk overeen, hier is nog resumptive naast other)
+- Conjunction:                   in onze tagset maken we alleen een onderscheid tussen nevenschikkend en onderschikkend. In een uitbreiding eventueel verdere subtypes)
+- Interjection
+- Noun:                                wij doen proper noun als aparte categorie
+- Numeral:                          wij hebben geen categorie ‘other’ en de ‘indefinites’ vallen bij ons onder de ‘indefinite pronouns’. Ook de vorm hebben wij als kenmerk.
+- Pronoun:                          wij hebben dus een iets andere indeling, maar een deel is nog vast te stellen.
+- Residual:                           wij hebben nu vier types: symbol, foreign, formula en unknown. ‘Abbr.’ is iets wat hoort bij alle categorieën in principe.
+- Verb:                                 bij finiteness onderscheiden wij de participia apart. Verder valt hier veel bij ons onder een uitgebreide tagset.
+*/
+
+
+  def patchPosMistakes(morfcodes: List[String], pos: List[String], w: String) = {
+     val patchedPos = morfcodes.zip(pos).map{case (a,b) => HistoricalTagsetPatching.patchPoSMistakes(a,b,w)}
+     patchedPos.mkString("+")
+  }
+
   def updateTag(e: Elem):Elem =
   {
+    val wordform = e.text.trim
+
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
 
-    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop"); if (f.isEmpty) None else Some(Ѧ("pos", f))}
+    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop");
+      val f1 = patchPosMistakes(morfcodes, f.split("\\+").toList, wordform)
+      if (f1.isEmpty) None else Some(Ѧ("pos", f1))}
 
     val n = (e \ "@n").text
 
@@ -279,7 +318,11 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val withCompletedLemma = attributesWithUpdatedStermatStuff.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
-    val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] =  (e \ "@function").text.split("\\+").toList.zipWithIndex.map(
+    // OK hier gaat het mis.....
+
+    val np = if (newPoSAttribuut.isDefined) newPoSAttribuut.get.value.text  else (e \ "@function").text
+    //println("np=" + np)
+    val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] =  np.split("\\+").toList.zipWithIndex.map(
       {
         case (t,i) =>
           val p  = partTranslations.get(deeltjes(i).headOption.getOrElse("none")).getOrElse("none")
@@ -287,15 +330,15 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
           if (erZijnDeeltjes)
             {
-              //System.err.println(cgnTags)
+              // System.err.println(cgnTags)
               // System.err.println(z)
-              //System.err.println(e)
-              //System.exit(1)
+              // System.err.println(e)
+              // System.exit(1)
             }
           z
       }
     ) map(s => s -> CHNStyleTags.parseTag(s))
-
+    //println("Tjoep:" + gysTagsCHNStylewithAnnotatedWordParts)
     val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
 
     val msd = updatedGysPosAttribute.value.text
@@ -320,7 +363,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString).append(multimainattribute) ))} )
 
-    val featureStructures: Seq[Elem] = makeFS(cgnTagFs) ++ makeFS(gysTagFS)
+    val featureStructures: Seq[Elem] = (if (cgnMode) makeFS(cgnTagFs) else Seq())  ++ makeFS(gysTagFS)
 
     e.copy(attributes = attributesWithUpdatedGysTags, child = e.child ++ featureStructures ++ dictionaryLinks)
   }

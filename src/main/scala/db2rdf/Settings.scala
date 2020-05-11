@@ -7,8 +7,8 @@ object Settings {
   val doLexCit = false
   val useLangStrings = false
   val outputDefinitionsAndQuotations = true
-  val miniDiamant = true
-  val outputFolderForDiamantRDF =  if (miniDiamant) "/data/Diamant/RDF_kat" else "/data/Diamant/RDF" // "/mnt/Projecten/CLARIAH/Scratch"
+  val miniDiamant = false
+  val outputFolderForDiamantRDF =  if (miniDiamant) "/data/Diamant/RDF_kat" else "/data/Diamant/RDF_modlem" // "/mnt/Projecten/CLARIAH/Scratch"
 
   val data_schema = if (miniDiamant) "mini_hilex" else "data"
   val sense_schema = if (miniDiamant) "mini_hilex" else "diamant"

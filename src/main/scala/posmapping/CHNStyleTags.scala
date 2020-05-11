@@ -91,7 +91,7 @@ object distinctTagsFromGysseling
         }
       }
     )
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("chnpos", allDistinctTags)
+    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
     val xmlWriter = new PrintWriter("/tmp/tagset.xml")
     xmlWriter.println(TagSet.pretty.format(tagset.toXML))
     xmlWriter.close()
@@ -99,7 +99,7 @@ object distinctTagsFromGysseling
     jsonWriter.println(tagset.asJSON)
     jsonWriter.close()
 
-    val blfWriter = new PrintWriter("/tmp/tagset.blf")
+    val blfWriter = new PrintWriter("/tmp/tagset.blf.yaml")
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
   }
@@ -151,5 +151,34 @@ object compareGysselingToMolex
     pretty(molexCompleteTagsetPlus)
     pretty(molexCompleteTagsetPlus, new PrintWriter("/tmp/tagset_plus.xml"))
     //println(gysTagset.descriptions)
+  }
+}
+
+object addDescriptionsToCorpusBasedGysseling
+{
+  def main(args: Array[String]): Unit = {
+    val corpusBased = TagSet.fromXML("data/CG/tagset_from_corpus.xml")
+
+    val molexTagset = TagSet.fromXML("data/Molex/combined_tagset_desc.xml")
+    val gysselSet = TagSet.fromXML("data/CG/tagset_met_valuerestricties.xml")
+
+    //println(molexTagset.displayNames) // jakkes die hebben we niet ....
+
+    val corpusBasedWithDesc = corpusBased.copy(descriptions = molexTagset.descriptions,
+      displayNames = TagSet.mergeDescriptions(molexTagset.displayNames, molexTagset.descriptions))
+
+    val nogWat = corpusBasedWithDesc.copy(displayNames = TagSet.mergeDescriptions(molexTagset.displayNames, gysselSet.displayNames))
+    //val molexWithDesc = molexTagset.copy(displayNames = TagSet.mergeDescriptions(gysselSet.displayNames, molexTagset.descriptions))
+
+    compareGysselingToMolex.pretty(nogWat, new PrintWriter("/tmp/gys_corpus_tagset_desc.xml"))
+
+    val jsonWriter = new PrintWriter("/tmp/gys_corpus_tagset_desc.json")
+    jsonWriter.println(nogWat.asJSON)
+    jsonWriter.close()
+
+    val blfWriter = new PrintWriter("/tmp/gys_corpus_tagset_desc.bl.yaml")
+    blfWriter.println(nogWat.forBlacklab)
+    blfWriter.close()
+    //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
   }
 }

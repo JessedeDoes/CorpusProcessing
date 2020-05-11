@@ -1,6 +1,6 @@
 package rdf
 
-import java.io.{FileInputStream, StringReader}
+import java.io.{FileInputStream, PrintStream, PrintWriter, StringReader}
 import java.util.zip.GZIPInputStream
 
 import guru.nidi.graphviz.engine.{Format, Graphviz}
@@ -25,6 +25,10 @@ import org.apache.commons.logging.Log
 import org.apache.commons.logging.LogFactory
 
 import scala.annotation.tailrec
+import org.openrdf.model.Model
+import org.openrdf.rio.nquads.NQuadsWriter
+import org.openrdf.rio.turtle.TurtleWriter
+
 
 object readRDF {
   val formatsToTry = List(RDFFormat.TURTLE, RDFFormat.RDFXML, RDFFormat.NTRIPLES, RDFFormat.N3, RDFFormat.NQUADS, RDFFormat.JSONLD, RDFFormat.RDFJSON)
@@ -141,9 +145,9 @@ object readRDF {
   }
 
 
-  def remoteGraphQuery(endpoint: String, query: String): Stream[Statement] = {
+  def remoteGraphQuery(endpoint: String, query: String, credentials: Option[(String,String)] = None): Stream[Statement] = {
     val repo = new HTTPRepository(endpoint)
-
+    credentials.foreach{case (u,p) => repo.setUsernameAndPassword(u, p)}
     val con = repo.getConnection
     val q = con.prepareGraphQuery(
       QueryLanguage.SPARQL, query)
@@ -155,19 +159,27 @@ object readRDF {
     toStream(graphResult)
   }
 
-  def remoteTupleQuery(endpoint: String, query: String): Stream[BindingSet] = {
+  def remoteTupleQuery(endpoint: String, query: String, credentials: Option[(String,String)] = None): Seq[BindingSet] = {
+
     import org.openrdf.repository.Repository
     import org.openrdf.repository.http.HTTPRepository
 
     val repo = new HTTPRepository(endpoint) // er kan nog een repoID bij, wwaarschijnlijk nodig voor onze virtuoso?
+    credentials.foreach{case (u,p) => repo.setUsernameAndPassword(u, p)}
 
-
+    var res= Stream.empty[BindingSet]
     try {
       val con = repo.getConnection
       try {
         val tupleQuery = con.prepareTupleQuery(QueryLanguage.SPARQL, query)
-        val result = toStream(tupleQuery.evaluate())
-        result
+        val iterator: TupleQueryResult = tupleQuery.evaluate()
+        //println(iterator.getBindingNames + " " + iterator.hasNext + " " + iterator.next())
+
+
+        val result = toStream(iterator)
+        //val zz = result.toList
+        //println(zz)
+        res = result
       }
       finally {
         con.close();
@@ -176,7 +188,7 @@ object readRDF {
     catch {
       case e: Exception => e.printStackTrace()
     }
-    Stream.empty
+    res
   }
 
   val dbpedia = "https://dbpedia.org/sparql"
@@ -190,6 +202,39 @@ object readRDF {
       val valueOfY = bindingSet.getValue("y")
       Console.err.println(s"YOO: $valueOfX $valueOfY")
     })
+  }
+
+  /*
+  Triplestore: http://142.93.226.251:10035/#
+User: ivdnt
+Pass: Ui8UytKiG0QDo8j
+
+   */
+
+  val evoke0 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&infer=false&uuid=yvds3u8bd2g7cnvjb665ap&returnQueryMetadata=true&checkVariables=false"
+  val evoke2 = "http://142.93.226.251:10035/#"
+  val evoke3 = "http://142.93.226.251:10035/repositories/evoke?queryLn=SPARQL&checkVariables=false"
+  val evoke_config = database.Configuration("x", "svowdb02","evoke_rdf", "postgres", "inl")
+  lazy val evoke_db = new database.Database(evoke_config)
+
+
+  def testEvoke = {
+    val nTriples = 575368
+    val bunch = 5000
+
+    val allStatements: Stream[Statement] = (0 until nTriples by bunch).toStream.flatMap(i => {
+      val queryString = s"construct  { ?s ?p ?o  } where { graph ?g { ?s ?p ?o . }  } limit $bunch offset $i"
+      Console.err.println(queryString)
+      val z = remoteGraphQuery(evoke0, queryString, Some(("ivdnt", "Ui8UytKiG0QDo8j")))
+      if (false) z.foreach(s => {
+        println(s)
+      })
+      z
+    })
+    rdf2db.insertToTable(evoke_db, "data.evoke", allStatements)
+    quadIt(allStatements, new PrintStream("/tmp/evoke.nq"))
+    turtleIt(allStatements, new PrintStream("/tmp/evoke.ttl"))
+
   }
 
   def testjeG() = { // inference uit!
@@ -248,6 +293,8 @@ object readRDF {
   val huw = "http://dbpedia.org/resource/Horse_Under_Water"
 
   def main(args: Array[String]): Unit = {
+    testEvoke
+    System.exit(0)
     //org.apache.logging.log4j.LogManager.get
     val s = collectStuff(dbpedia, huw, 4)
     println(s.size)
@@ -258,11 +305,60 @@ object readRDF {
     writer.startRDF
     s.toSet.foreach(st => writer.handleStatement(st))
     writer.endRDF
-
     // connecties moeten worden afgesloten -- hoe netjes te doen?
-
     //testjeG()
+  }
+
+  def turtleIt(s: Seq[Statement], writer: PrintStream = System.out) = {
+    val tw: TurtleWriter = new TurtleWriter(writer)
+    tw.startRDF()
+    s.foreach(st => { tw.handleStatement(st) } )
+    tw.endRDF()
+    writer.close()
+  }
+
+  def quadIt(s: Seq[Statement], writer: PrintStream = System.out) = {
+    val q = new NQuadsWriter(writer)
+    q.startRDF()
+    s.foreach(st => { q.handleStatement(st) } )
+    q.endRDF()
+    writer.close()
   }
 }
 
+/*
+import org.openrdf.model.Model
+import org.openrdf.rio.turtle.TurtleWriter
+import java.util
+def ttlToStdout(model: Model): Unit =  { val tw: TurtleWriter = new TurtleWriter(System.out)
+try {tw.startRDF()
+import scala.collection.JavaConversions._
+for (en <- DEFAULTNAMESPACES.entrySet)  { tw.handleNamespace(en.getKey, en.getValue)
+}
+import scala.collection.JavaConversions._
+for (s <- model)  { tw.handleStatement(s)
+}
+tw.endRDF()} catch {
+case e: Exception =>
+log.error(e, e)
+}
+}
 
+public static void ttlToStdout( Model model ) {
+	TurtleWriter tw = new TurtleWriter( System.out );
+	try {
+		tw.startRDF();
+		for ( Map.Entry<String, String> en : DEFAULTNAMESPACES.entrySet() ) {
+			tw.handleNamespace( en.getKey(), en.getValue() );
+		}
+
+		for ( Statement s : model ) {
+			tw.handleStatement( s );
+		}
+		tw.endRDF();
+	}
+	catch ( Exception e ) {
+		log.error( e, e );
+	}
+}
+ */
