@@ -84,8 +84,8 @@ object diagrams {
     viz.render(Format.SVG).toFile(new java.io.File(outFile))
     if (makePDF) {
       val pdfOut = outFile.replaceAll("\\.[A-Z-a-z0-9]*$", ".pdf")
-      Runtime.getRuntime.exec(s"/usr/bin/perl -pe 's/.#160;/ /g' $outFile > $outFile.subst")
-      Console.err.println(s"PDF from $outFile")
+      Runtime.getRuntime.exec(s"/usr/bin/perl -pe 's/.#160;/ /g' $outFile > $outFile.subst") // ok die redirect werkt niet
+      Console.err.println(s"PDF from $outFile, subst in $outFile.subst")
       Runtime.getRuntime.exec(s"rsvg-convert --dpi-x 600 --dpi-y 600 $outFile.subst  -o $pdfOut")
     }
   }
@@ -205,10 +205,11 @@ object diagrams {
   def main(args: Array[String]):Unit = {
     //println(prelude)
     val s = parseToStatements(args(0))
+    val outFile = if (args.length >= 0) args(1) else "test.svg"
     s.foreach(println)
     val dot = makeDot(s)
     // println(makeDot(s))
-    createSVG(dot,"test.svg")
+    createSVG(dot, outFile, true)
   }
 }
 

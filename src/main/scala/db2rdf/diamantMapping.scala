@@ -330,9 +330,6 @@ object diamantMapping {
   }
 
   val serpens = List(serpensConcepts, serpensWNT)
-
-
-
 }
 
 /*
