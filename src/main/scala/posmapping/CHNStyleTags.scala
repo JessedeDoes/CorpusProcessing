@@ -105,6 +105,14 @@ object distinctTagsFromGysseling
   }
 }
 
+object distinctTagsFromCRM {
+  val dir = CRM.Settings.dir + "PostProcessedMetadata"
+
+  def main(args: Array[String]): Unit = {
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos", "[+]")
+  }
+}
+
 
 object distinctTagsFromONW {
   val dir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata"

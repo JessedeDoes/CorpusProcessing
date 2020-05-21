@@ -9,10 +9,9 @@ import utils.{Alignment, SimOrDiff}
 
 import scala.collection.JavaConverters._
 import scala.xml.{XML, _}
-
-
 import Location._
 import Meta._
+import gysseling.mapMiddelnederlandseTags
 
 
 case class CRMTag(code: String, cgTag: String, cgnTag: String, description: String)
@@ -527,6 +526,6 @@ object CRM2Xml {
 
     process()
     val args = Array(Settings.outputDir, Settings.postProcessedDir)
-    posmapping.mapMiddelnederlandseTags.main(args)
+    mapMiddelnederlandseTags.main(args)
   }
 }

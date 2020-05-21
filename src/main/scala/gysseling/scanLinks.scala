@@ -1,7 +1,8 @@
-package posmapping
+package gysseling
 
-import scala.xml._
-import utils.PostProcessXML._
+import utils.PostProcessXML.updateElement4
+
+import scala.xml.{Elem, Text, XML}
 
 object scanLinks {
 
@@ -40,11 +41,3 @@ object scanLinks {
     else d
   }
 }
-
-/*
-  <option value="6246738">[285] 140r</option>
-  <option value="6246739">[286] 140v</option>
-  <option value="6246740">[287] 141r</option>
-  <option value="6246741">[288] 141v</option>
-
- */

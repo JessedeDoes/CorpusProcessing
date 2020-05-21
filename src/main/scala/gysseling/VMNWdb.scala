@@ -1,11 +1,12 @@
-package posmapping
+package gysseling
 
-import database.{Configuration, Database}
 import database.DatabaseUtilities.Select
+import database.{Configuration, Database}
+import gysseling.VMNWdb.LemmaWoordvorm
 
 import scala.collection.immutable
+import scala.util.{Success, Try}
 import scala.xml.Text
-import scala.util.{Try, Failure, Success}
 
 object Hilex
 {
@@ -26,6 +27,29 @@ object Hilex
 
   def main(args: Array[String]): Unit = {
     vmnw_omspellingen.foreach(println)
+  }
+
+  def adaptLemmataWithHilex(lemmata: List[String], completedLemmata: List[String],
+                            lemmaPatches: Set[LemmaWoordvorm]) = {
+
+    val patches = lemmaPatches.filter(_.omspelling_uit_hilex.nonEmpty).groupBy(_.clitisch_deel_nr)
+    lemmata.indices.map(i => if (!patches.contains(i)) completedLemmata(i) else {
+      val possiblePatches = patches(i).map(_.omspelling_uit_hilex).map(_.get)
+      val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet) // voor gevalletjes "Heer, heer"
+      if (possiblePatches.size > 1 || possiblePatches.isEmpty) {
+        //Console.err.println(s"Ambiguity for modern lemma form ${completedLemmata(i)}: $possiblePatches")
+        if (!p2.contains(completedLemmata(i).toLowerCase)) {
+          val p2 = possiblePatches.flatMap(_.split("\\s*,\\s*").map(_.toLowerCase()).toSet)
+          //Console.err.println(s"Mismatch for lemma form ${completedLemmata(i)}, not in $possiblePatches")
+        }
+        completedLemmata(i)
+      } else {
+        val adapted = possiblePatches.mkString("|").split("\\s*,\\s").map(_.toLowerCase).toSet.mkString("|")
+        // if (adapted.toLowerCase != completedLemmata(i).toLowerCase) Console.err.println(s"Adapt lemma: ${completedLemmata(i)} -> $adapted")
+        adapted
+      }
+    }).map(_.toUpperCase())
+
   }
 }
 

@@ -1,4 +1,6 @@
-package posmapping
+package gysseling
+
+import posmapping.IntegratedTagset
 
 import scala.util.{Failure, Success, Try}
 
@@ -14,25 +16,25 @@ object HistoricalTagsetPatching {
     r.findFirstMatchIn(tag).map(_.group(1))
   }
 
-  def patchPoSMistakes(m: String, p:String, w: String): String =
+  def patchPoSMistakes(m: String, p:String, w: String, lemma: String): String =
   {
     // println(s"$m\t$p")
-    val infl = getFeature(p,"inflection").getOrElse("other")
+    val infl = getFeature(p,"infl").getOrElse("other")
     val p1 = if (p.startsWith("NUM") && p.contains("indef")) {
       p.replaceAll("NUM", "PD").replaceAll("indefinite", "indef")
     }
 
-    else if (p.startsWith("NOU")) {
+    else if (false && p.startsWith("NOU")) {
       val posNew = if (p.contains("type=proper")) "NOU-P" else if (p.contains("type=common")) "NOU-C" else "NOU-U"
        p.replaceAll("type=[a-z]+(,?)","").replaceAll("^[A-Z]+", posNew)
     }
 
     else if (p.startsWith("ADV")) {
-      val typ = if (p.contains("pron")) "pron" else "general"
+      val typ = if (p.contains("pron")) "pron" else "gen"
       val st0 = getFeature(p,"type").getOrElse("other")
       val subtype = advSubtypeMap.getOrElse(st0, st0)
 
-      if (st0 == "general" && bw2aa) // dit is een nog twijfelachtige beslissing --- wanneer kan je dit doen?????
+      if (st0 == "gen" && bw2aa) // dit is een nog twijfelachtige beslissing --- wanneer kan je dit doen?????
         s"""AA(position=adverbial,inflection=$infl)""" ;// nee inflectie is weg zo...
       else  {
         if (!subtype.startsWith("gen"))
@@ -42,7 +44,7 @@ object HistoricalTagsetPatching {
     }
 
     else if (p.startsWith("ADP")) {
-      p.replaceAll("type=general(,?)","")
+      p.replaceAll("type=gen(,?)","")
     }
 
     else if (p.startsWith("ADJ")) {
@@ -95,4 +97,44 @@ object HistoricalTagsetPatching {
     // println(s"$m\t$p\t$p2")
     p2
   }
+
+  def morfcode2tag(tagMapping: Map[String,String],
+                   morfcode: String, isPart: Boolean, n: String, gysMode: Boolean,
+                   gysParticles: Map[String, String]):String =
+  {
+    val s0 = morfcode.replaceAll("\\{.*", "").replaceAll("ongeanalyseerd", "999").replaceAll("[A-Za-z]","")
+
+    val s1 =  "0" * Math.max(0, 3 - s0.length) + s0
+
+    val pos = tagMapping.getOrElse(s1, tagMapping("999")) // s"MISSING_MAPPING($s/($s1))")
+
+    val posAdapted = // pas op deze code werkt alleen voor CRM!!!
+      if (!isPart) pos else if (!gysMode) {
+        if (pos.contains("WW")) {
+          if (morfcode.equals("285")) "ADV(bw-deel-ww)" else pos.replaceAll("\\)", ",hoofddeel-ww)")
+        } else if (pos.contains("BW"))
+        { if (morfcode.equals("655")) "BW(adv-pron,vz-deel-bw)" else pos.replaceAll("\\)", ",hoofddeel-bw)") }
+        else if (pos.contains("VZ"))
+          pos.replaceAll("\\)", ",vz-deel-bw)")
+        else if (pos.contains("ADJ")) pos.replaceAll("\\)", ",bw-deel-ww)") // PAS OP, CHECK DEZE
+        else pos
+      } else { // FOUT kijken WELK stukje de part heeft (of mogelijk hebben)
+        val deelSoort = gysParticles.get(n)
+        if (deelSoort.isEmpty || !morfcode.contains("{"))
+        {
+          // Console.err.println(s"Geen deelinfo gevonden voor $n!!!!")
+          pos
+        } else {
+          val soort = deelSoort.get
+          if (pos.contains("WW")) {
+            if (soort == "bw-deel-ww") "ADV(bw-deel-ww)" else pos.replaceAll("\\)", ",hoofddeel-ww)")
+          } else if (pos.contains("BW")) {
+            if (soort == "vz-deel-bw") "BW(adv-pron,vz-deel-bw)" else pos.replaceAll("\\)", ",hoofddeel-bw)")
+          } else pos.replaceAll("\\)", "," + "deel" + ")").replaceAll("\\(,", "(")
+        }
+      }
+
+    posAdapted
+  }
+
 }
