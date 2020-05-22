@@ -55,17 +55,17 @@ object HistoricalTagsetPatching {
 
     else if (p.startsWith("VRB") && p.contains("=part")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
-      p.replaceAll("\\)", s",tense=" + tense + ")").replaceAll("number=","NA=")
+      p.replaceAll("tense=unclear","tense=" + tense).replaceAll("number=","NA=")
     }
 
-    else if (p.startsWith("CON")) {
+    else if (false && p.startsWith("CON")) {
       val typ = getFeature(p,"type").getOrElse("other")
       val ntyp = if (p.contains("coord")) "coord" else if (p.contains("subo")) "sub" else "general"
       val subtype = if (ntyp == "general") Some(typ) else None
       if (subtype.isDefined) s"""CONJ(type=other,subtype=${subtype.get},inflection=$infl)""" else s"""CONJ(type=$ntyp,inflection=$infl)"""
     }
 
-    else if (p.startsWith("PD")) {
+    else if (false && p.startsWith("PD")) {
       val typ = getFeature(p,"type").getOrElse("other")
       if (typ == "art")
       {

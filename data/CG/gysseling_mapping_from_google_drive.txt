@@ -254,11 +254,13 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 619	ADV(type=pron,subtype=dem,infl=other)			aanwijzend voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
 620	ADV(type=pron,subtype=rel,infl=0)			betrekkelijk voornaamwoordelijk bijwoord, geen uitgang
 621	ADV(type=pron,subtype=rel,infl=e)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -e
+622	ADV(type=pron,subtype=rel,infl=s|th)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -s|-th
 623	ADV(type=pron,subtype=rel,infl=t)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -t
 624	ADV(type=pron,subtype=rel,infl=n)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -n
 629	ADV(type=pron,subtype=rel,infl=other)			betrekkelijk voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
 630	ADV(type=pron,subtype=int,infl=0)			vragend voornaamwoordelijk bijwoord, geen uitgang
 631	ADV(type=pron,subtype=int,infl=e)			vragend voornaamwoordelijk bijwoord, uitgang -e
+634	ADV(type=pron,subtype=int,infl=n)			vragend voornaamwoordelijk bijwoord, uitgang -n
 640	ADV(type=pron,subtype=indef,infl=0)			onbepaald voornaamwoordelijk bijwoord, geen uitgang
 641	ADV(type=pron,subtype=indef,infl=e)			onbepaald voornaamwoordelijk bijwoord, uitgang -e
 650	ADV(type=pron,subtype=resumptive,infl=0)			bijwoordelijk deel van voornaamwoordelijk bijwoord, geen uitgang
@@ -280,6 +282,7 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 801	CONJ(type=coor,infl=e)			nevenschikkend voegwoord, uitgang -e
 803	CONJ(type=coor,infl=t)			nevenschikkend voegwoord, uitgang -t
 804	CONJ(type=coor,infl=n)			nevenschikkend voegwoord, uitgang -n
+806	CONJ(type=coor,infl=a)			nevenschikkend voegwoord, uitgang -a
 809	CONJ(type=coor,infl=other)			nevenschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
 810	CONJ(type=sub,infl=0)			onderschikkend voegwoord, geen uitgang
 811	CONJ(type=sub,infl=e)			onderschikkend voegwoord, uitgang -e
