@@ -29,7 +29,7 @@ object HistoricalTagsetPatching {
        p.replaceAll("type=[a-z]+(,?)","").replaceAll("^[A-Z]+", posNew)
     }
 
-    else if (p.startsWith("ADV")) {
+    else if (false && p.startsWith("ADV")) { // dit doen we niet meer ....
       val typ = if (p.contains("pron")) "pron" else "gen"
       val st0 = getFeature(p,"type").getOrElse("other")
       val subtype = advSubtypeMap.getOrElse(st0, st0)

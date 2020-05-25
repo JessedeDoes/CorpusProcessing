@@ -15,7 +15,10 @@ object IntegratedTagset {
   case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
 
   def addDescriptionsFromTDN(prefix: String, fileName: String = "tagset.xml", outputName: String = "tagset_desc"): Unit = {
+
     val corpusBased = TagSet.fromXML(prefix + fileName)
+
+    TagSet.compare(TDNTagset, corpusBased)
 
     val corpusBasedWithDesc = corpusBased.copy(
       descriptions = TDNTagset.descriptions,
@@ -37,7 +40,7 @@ object IntegratedTagset {
   }
 
   def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/",
-                            separator: String = "[+|]") = {
+                            separator: String = "[+]") = { // let op BaB heeft | tussen tags, dat kan misgaan
     val dir = new File(dirName)
 
      val files: Set[File] = if (dir.isDirectory) dir.listFiles().toSet else Set(dir)
@@ -59,7 +62,12 @@ object IntegratedTagset {
       }
     )
 
+    val listWriter = new PrintWriter(prefix + "tagList.txt")
+    allDistinctTags.toList.sorted.foreach(t => listWriter.println(t))
+    listWriter.close()
+
     val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
+
     val xmlWriter = new PrintWriter(prefix + "tagset.xml")
     xmlWriter.println(TagSet.pretty.format(tagset.toXML))
     xmlWriter.close()
@@ -71,7 +79,7 @@ object IntegratedTagset {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-     addDescriptionsFromTDN(prefix,"tagset.xml", "tagset_desc_temp")
+    addDescriptionsFromTDN(prefix,"tagset.xml", "tagset_desc_temp")
   }
 
    def doONW = {
@@ -79,7 +87,7 @@ object IntegratedTagset {
    }
 
   def doGysseling = {
-    tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/")
+     tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/")
   }
 
    def main(args: Array[String]): Unit = {

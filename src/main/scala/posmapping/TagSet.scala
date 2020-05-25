@@ -133,7 +133,26 @@ object TagSet
         } }
       ).toList
 
-    TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions)
+    TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions, listOfTags = tags)
+  }
+
+  def compare(t1: TagSet, t2: TagSet): Unit =
+  {
+    val pos_not_in_t1 = t2.posTags.diff(t1.posTags)
+    val featureNames_t1 = t1.partitions.keySet
+    val featureNames_not_in_t1 = t2.partitions.keySet.diff(t1.partitions.keySet)
+    val featureValues_t1 = t1.partitions.toList.flatMap{x => x._2.map(y => (x._1, y))}
+    val featureValues_t2 = t2.partitions.toList.flatMap{x => x._2.map(y => (x._1, y))}
+    val featureValues_t1_split = t1.partitions.toList.flatMap{ x => x._2.flatMap(y => y.split("\\|").map(y0 => (x._1, y0)))}.toSet
+    val featureValues_not_in_t1 = featureValues_t2.diff(featureValues_t1)
+      .filter{case (n,v) => v.split("\\|").exists(v0 => !featureValues_t1_split.contains((n,v0)))}
+      .filter(x => featureNames_t1.contains(x._1))
+
+    Console.err.println(
+      s"""|Pos: $pos_not_in_t1
+         |Feature names: $featureNames_not_in_t1
+         |Feature values: $featureValues_not_in_t1
+         |""".stripMargin)
   }
 
   def simplify(v: String):String  = v // v.replaceAll(" .*", "")
@@ -164,7 +183,7 @@ case class TagSet(prefix: String,
                   partitionConditions: List[PartitionCondition] = List.empty,
                   valueRestrictions: List[ValueRestriction] = List.empty,
                   descriptions: TagDescription = TagDescription(),
-                  displayNames: TagDescription = TagDescription())
+                  displayNames: TagDescription = TagDescription(), listOfTags: Set[Tag] = Set.empty)
 {
 
   def toXML =

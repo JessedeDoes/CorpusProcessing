@@ -3,7 +3,7 @@
     "AA":{
       "value":"AA",
       "displayName":"AA",
-      "subAnnotationIds":["pos_infl","pos_NA","pos_position"]
+      "subAnnotationIds":["pos_infl","pos_NA","pos_position","pos_wordpart"]
     },
     "ADP":{
       "value":"ADP",
@@ -76,10 +76,6 @@
     "pos_NA":{
       "id":"pos_NA",
       "values":[{
-        "value":"other",
-        "displayName":"other",
-        "pos":["AA"]
-      },{
         "value":"pl",
         "displayName":"pl",
         "pos":["AA"]
@@ -87,13 +83,17 @@
         "value":"sg",
         "displayName":"sg",
         "pos":["AA"]
+      },{
+        "value":"unclear",
+        "displayName":"unclear",
+        "pos":["AA"]
       }]
     },
     "pos_position":{
       "id":"pos_position",
       "values":[{
-        "value":"pred(",
-        "displayName":"pred(",
+        "value":"pred|prenom|postnom",
+        "displayName":"pred|prenom|postnom",
         "pos":["AA"]
       }]
     },
@@ -108,24 +108,32 @@
         "displayName":"comp",
         "pos":["CONJ"]
       },{
-        "value":"exp",
-        "displayName":"exp",
-        "pos":["CONJ"]
+        "value":"dem",
+        "displayName":"dem",
+        "pos":["ADV"]
       },{
         "value":"expl",
         "displayName":"expl",
         "pos":["CONJ"]
       },{
+        "value":"gen",
+        "displayName":"gen",
+        "pos":["ADV"]
+      },{
+        "value":"indef",
+        "displayName":"indef",
+        "pos":["ADV"]
+      },{
+        "value":"inter",
+        "displayName":"inter",
+        "pos":["ADV"]
+      },{
         "value":"neg",
         "displayName":"neg",
-        "pos":["CONJ"]
+        "pos":["CONJ","ADV"]
       },{
         "value":"other",
         "displayName":"other",
-        "pos":["CONJ"]
-      },{
-        "value":"pron",
-        "displayName":"pron",
         "pos":["ADV"]
       },{
         "value":"qual",
@@ -134,14 +142,26 @@
       },{
         "value":"rel",
         "displayName":"rel",
-        "pos":["CONJ"]
+        "pos":["CONJ","ADV"]
+      },{
+        "value":"resump",
+        "displayName":"resump",
+        "pos":["ADV"]
+      },{
+        "value":"unclear",
+        "displayName":"unclear",
+        "pos":["CONJ","ADV"]
       }]
     },
     "pos_type":{
       "id":"pos_type",
       "values":[{
-        "value":"aux(",
-        "displayName":"aux(",
+        "value":"aux|cop",
+        "displayName":"aux|cop",
+        "pos":["VRB"]
+      },{
+        "value":"aux|cop|mai",
+        "displayName":"aux|cop|mai",
         "pos":["VRB"]
       },{
         "value":"card",
@@ -156,16 +176,12 @@
         "displayName":"dem",
         "pos":["PD"]
       },{
-        "value":"gen",
-        "displayName":"gen",
-        "pos":["ADV"]
-      },{
         "value":"indef",
         "displayName":"indef",
         "pos":["PD"]
       },{
-        "value":"int",
-        "displayName":"int",
+        "value":"inter",
+        "displayName":"inter",
         "pos":["PD"]
       },{
         "value":"mai",
@@ -178,7 +194,7 @@
       },{
         "value":"other",
         "displayName":"other",
-        "pos":["PD","CONJ","VRB","RES","ADP"]
+        "pos":["RES","ADP"]
       },{
         "value":"pers",
         "displayName":"pers",
@@ -192,9 +208,13 @@
         "displayName":"pron",
         "pos":["ADV"]
       },{
-        "value":"refl(",
-        "displayName":"refl(",
+        "value":"refl|recip",
+        "displayName":"refl|recip",
         "pos":["PD"]
+      },{
+        "value":"reg",
+        "displayName":"reg",
+        "pos":["ADV"]
       },{
         "value":"rel",
         "displayName":"rel",
@@ -206,7 +226,7 @@
       },{
         "value":"unclear",
         "displayName":"unclear",
-        "pos":["PD","VRB","NUM"]
+        "pos":["PD","CONJ","VRB","NUM","RES"]
       }]
     },
     "pos_mood":{
@@ -216,8 +236,8 @@
         "displayName":"imp",
         "pos":["VRB"]
       },{
-        "value":"ind(",
-        "displayName":"ind(",
+        "value":"ind|conj",
+        "displayName":"ind|conj",
         "pos":["VRB"]
       }]
     },
@@ -226,7 +246,7 @@
       "values":[{
         "value":"part",
         "displayName":"part",
-        "pos":["PD","CONJ","VRB","NUM","ADP","ADV"]
+        "pos":["PD","CONJ","VRB","AA","NUM","ADP","ADV"]
       }]
     },
     "pos_number":{
@@ -242,7 +262,7 @@
       },{
         "value":"unclear",
         "displayName":"unclear",
-        "pos":["NOU-C"]
+        "pos":["PD","NOU-C"]
       }]
     },
     "pos_infl":{
@@ -268,17 +288,21 @@
         "displayName":"other",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
-        "value":"r(",
-        "displayName":"r(",
-        "pos":["PD","CONJ","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+        "value":"r|re",
+        "displayName":"r|re",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
       },{
-        "value":"s(",
-        "displayName":"s(",
+        "value":"s|th",
+        "displayName":"s|th",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","ADV"]
       },{
         "value":"t",
         "displayName":"t",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+      },{
+        "value":"unclear",
+        "displayName":"unclear",
+        "pos":["ADV"]
       }]
     },
     "pos_finiteness":{
@@ -288,8 +312,8 @@
         "displayName":"fin",
         "pos":["VRB"]
       },{
-        "value":"inf(",
-        "displayName":"inf(",
+        "value":"inf|ger",
+        "displayName":"inf|ger",
         "pos":["VRB"]
       },{
         "value":"part",
@@ -314,6 +338,10 @@
       },{
         "value":"3",
         "displayName":"3",
+        "pos":["PD"]
+      },{
+        "value":"unclear",
+        "displayName":"unclear",
         "pos":["PD"]
       }]
     }

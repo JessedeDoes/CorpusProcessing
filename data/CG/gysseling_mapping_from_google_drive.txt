@@ -23,8 +23,8 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 025	NOU-P(infl=r|re)			eigennaam, uitgang -r|-re
 026	NOU-P(infl=a)			eigennaam, uitgang -a
 029	NOU-P(infl=other)			eigennaam, uitgang latijn, onduidelijk of evident fout geschreven
-090	NOU-C(number=unclear,infl=0)	NOU-C(type=unclear,infl=0)	NOU-C(number=unclear,infl=0)	zelfstandig naamwoord probleemgeval, geen uitgang
-091	NOU-C(number=unclear,infl=e)	NOU-C(type=unclear,infl=e)	NOU-C(number=unclear,infl=e)	zelfstandig naamwoord probleemgeval, geen uitgang
+090	NOU-C(number=unclear,infl=0)	NOU-C(number=unclear,infl=0)	NOU-C(number=unclear,infl=0)	zelfstandig naamwoord probleemgeval, geen uitgang
+091	NOU-C(number=unclear,infl=e)	NOU-C(number=unclear,infl=e)	NOU-C(number=unclear,infl=e)	zelfstandig naamwoord probleemgeval, geen uitgang
 092	NOU-C(number=unclear,infl=s|th)	NOU-C(number=unclear,infl=s|th)	NOU-C(number=unclear,infl=s|th)	zelfstandig naamwoord probleemgeval, geen uitgang
 094	NOU-C(number=unclear,infl=n)	NOU-C(number=unclear,infl=n)	NOU-C(number=unclear,infl=n)	zelfstandig naamwoord probleemgeval, uitgang -n
 099	NOU-C(number=unclear,infl=other)	NOU-C(number=unclear,infl=other)	NOU-C(number=unclear,infl=other)	zelfstandig naamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
@@ -43,9 +43,9 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 115	AA(NA=pl,infl=r|re,position=pred|prenom|postnom)			bijvoeglijk naamwoord meervoud, uitgang -r|-re
 116	AA(NA=pl,infl=a,position=pred|prenom|postnom)			bijvoeglijk naamwoord meervoud, uitgang -a
 119	AA(NA=pl,infl=other,position=pred|prenom|postnom)			bijvoeglijk naamwoord meervoud, uitgang latijn, onduidelijk of evident fout geschreven
-190	AA(NA=other,infl=0,position=pred|prenom|postnom)			bijvoeglijk naamwoord probleemgeval, geen uitgang
-191	AA(NA=other,infl=e,position=pred|prenom|postnom)			bijvoeglijk naamwoord probleemgeval, uitgang -e
-194	AA(NA=other,infl=n,position=pred|prenom|postnom)			bijvoeglijk naamwoord probleemgeval, uitgang -n
+190	AA(NA=unclear,infl=0,position=pred|prenom|postnom)		AA(NA=unclear,infl=0,position=pred|prenom|postnom)	bijvoeglijk naamwoord probleemgeval, geen uitgang
+191	AA(NA=unclear,infl=e,position=pred|prenom|postnom)		AA(NA=unclear,infl=e,position=pred|prenom|postnom)	bijvoeglijk naamwoord probleemgeval, uitgang -e
+194	AA(NA=unclear,infl=n,position=pred|prenom|postnom)		AA(NA=unclear,infl=n,position=pred|prenom|postnom)	bijvoeglijk naamwoord probleemgeval, uitgang -n
 200	VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=0)		VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=0)	persoonsvorm o.t.t. (zelfst.ww.), geen uitgang
 201	VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=e)		VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=e)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -e
 202	VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=s|th)		VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,infl=s|th)	persoonsvorm o.t.t. (zelfst.ww.), uitgang -s|-th
@@ -83,7 +83,7 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 242	VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=s|th)		VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=s|th)	imperatief, uitgang -s|-th
 243	VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=t)		VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=t)	imperatief, uitgang -t
 244	VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=n)		VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=n)	imperatief, uitgang -n
-249	VRB(type=other,finiteness=fin,mood=imp,infl=other)		VRB(type=other,finiteness=fin,mood=imp,infl=other)	imperatief, uitgang latijn, onduidelijk of evident fout geschreven
+249	VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=other)		VRB(type=aux|cop|mai,finiteness=fin,mood=imp,infl=other)	imperatief, uitgang latijn, onduidelijk of evident fout geschreven
 250	VRB(type=mai,finiteness=inf|ger,infl=0)		VRB(type=mai,finiteness=inf|ger,infl=0)	infinitief (zelfst.ww.), geen uitgang
 251	VRB(type=mai,finiteness=inf|ger,infl=e)		VRB(type=mai,finiteness=inf|ger,infl=e)	infinitief (zelfst.ww.), uitgang -e
 252	VRB(type=mai,finiteness=inf|ger,infl=s|th)		VRB(type=mai,finiteness=inf|ger,infl=s|th)	infinitief (zelfst.ww.), uitgang -s|-th
@@ -132,23 +132,23 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 314	NUM(type=ord,infl=n)			rangtelwoord, uitgang -n
 315	NUM(type=ord,infl=r|re)			rangtelwoord, uitgang -r|-re
 319	NUM(type=ord,infl=other)			rangtelwoord, uitgang latijn, onduidelijk of evident fout geschreven
-320	PD(type=indef,infl=0)		PD(type=indef,infl=0)	onbepaald telwoord, geen uitgang
-321	PD(type=indef,infl=e)		PD(type=indef,infl=e)	onbepaald telwoord, uitgang -e
-322	PD(type=indef,infl=s|th)		PD(type=indef,infl=s|th)	onbepaald telwoord, uitgang -s|-th
-323	PD(type=indef,infl=t)		PD(type=indef,infl=t)	onbepaald telwoord, uitgang -t
-324	PD(type=indef,infl=n)		PD(type=indef,infl=n)	onbepaald telwoord, uitgang -n
-325	PD(type=indef,infl=r|re)		PD(type=indef,infl=r|re)	onbepaald telwoord, uitgang -r|-re
-329	PD(type=indef,infl=other)		PD(type=indef,infl=other)	onbepaald telwoord, uitgang latijn, onduidelijk of evident fout geschreven
-394	NUM(type=unclear,infl=n)		NUM(type=unclear,infl=n)	telwoord probleemgeval, uitgang -n
-395	NUM(type=unclear,infl=r|re)		NUM(type=unclear,infl=r|re)	telwoord probleemgeval, uitgang -r|-re
-399	NUM(type=unclear,infl=other)		NUM(type=unclear,infl=other)	telwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+320	PD(type=indef,infl=0)	PD(type=indef,infl=0)	PD(type=indef,infl=0)	onbepaald telwoord, geen uitgang
+321	PD(type=indef,infl=e)	PD(type=indef,infl=e)	PD(type=indef,infl=e)	onbepaald telwoord, uitgang -e
+322	PD(type=indef,infl=s|th)	PD(type=indef,infl=s|th)	PD(type=indef,infl=s|th)	onbepaald telwoord, uitgang -s|-th
+323	PD(type=indef,infl=t)	PD(type=indef,infl=t)	PD(type=indef,infl=t)	onbepaald telwoord, uitgang -t
+324	PD(type=indef,infl=n)	PD(type=indef,infl=n)	PD(type=indef,infl=n)	onbepaald telwoord, uitgang -n
+325	PD(type=indef,infl=r|re)	PD(type=indef,infl=r|re)	PD(type=indef,infl=r|re)	onbepaald telwoord, uitgang -r|-re
+329	PD(type=indef,infl=other)	PD(type=indef,infl=other)	PD(type=indef,infl=other)	onbepaald telwoord, uitgang latijn, onduidelijk of evident fout geschreven
+394	NUM(type=unclear,infl=n)	NUM(type=unclear,infl=n)	NUM(type=unclear,infl=n)	telwoord probleemgeval, uitgang -n
+395	NUM(type=unclear,infl=r|re)	NUM(type=unclear,infl=r|re)	NUM(type=unclear,infl=r|re)	telwoord probleemgeval, uitgang -r|-re
+399	NUM(type=unclear,infl=other)	NUM(type=unclear,infl=other)	NUM(type=unclear,infl=other)	telwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
 401	PD(type=pers,person=1,number=sg)			persoonlijk voornaamwoord, 1e persoon enkelvoud
 402	PD(type=pers,person=2,number=sg)			persoonlijk voornaamwoord, 2e persoon enkelvoud
 403	PD(type=pers,person=3,number=sg)			persoonlijk voornaamwoord, 3e persoon enkelvoud
 404	PD(type=pers,person=1,number=pl)			persoonlijk voornaamwoord, 1e persoon meervoud
 405	PD(type=pers,person=2,number=pl)			persoonlijk voornaamwoord, 2e persoon meervoud
 406	PD(type=pers,person=3,number=pl)			persoonlijk voornaamwoord, 3e persoon meervoud
-409	PD(type=pers,other)			probleemgeval
+409	PD(type=pers,person=unclear,number=unclear)	PD(type=pers,person=unclear,number=unclear)	PD(type=pers,person=unclear,number=unclear)	probleemgeval
 410	PD(type=dem,infl=0)			aanwijzend voornaamwoord, geen uitgang
 411	PD(type=dem,infl=e)			aanwijzend voornaamwoord, uitgang -e
 412	PD(type=dem,infl=s|th)			aanwijzend voornaamwoord, uitgang -s|-th
@@ -162,13 +162,13 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 424	PD(type=rel,infl=n)			betrekkelijk voornaamwoord, uitgang -n
 425	PD(type=rel,infl=r|re)			betrekkelijk voornaamwoord, uitgang -r|-re
 429	PD(type=rel,infl=other)			betrekkelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
-430	PD(type=int,infl=0)			vragend voornaamwoord, geen uitgang
-431	PD(type=int,infl=e)			vragend voornaamwoord, uitgang -e
-432	PD(type=int,infl=s|th)			vragend voornaamwoord, uitgang -s|-th
-433	PD(type=int,infl=t)			vragend voornaamwoord, uitgang -t
-434	PD(type=int,infl=n)			vragend voornaamwoord, uitgang -n
-435	PD(type=int,infl=r|re)			vragend voornaamwoord, uitgang -r|-re
-439	PD(type=int,infl=other)			vragend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
+430	PD(type=inter,infl=0)	PD(type=inter,infl=0)	PD(type=inter,infl=0)	vragend voornaamwoord, geen uitgang
+431	PD(type=inter,infl=e)	PD(type=inter,infl=e)	PD(type=inter,infl=e)	vragend voornaamwoord, uitgang -e
+432	PD(type=inter,infl=s|th)	PD(type=inter,infl=s|th)	PD(type=inter,infl=s|th)	vragend voornaamwoord, uitgang -s|-th
+433	PD(type=inter,infl=t)	PD(type=inter,infl=t)	PD(type=inter,infl=t)	vragend voornaamwoord, uitgang -t
+434	PD(type=inter,infl=n)	PD(type=inter,infl=n)	PD(type=inter,infl=n)	vragend voornaamwoord, uitgang -n
+435	PD(type=inter,infl=r|re)	PD(type=inter,infl=r|re)	PD(type=inter,infl=r|re)	vragend voornaamwoord, uitgang -r|-re
+439	PD(type=inter,infl=other)	PD(type=inter,infl=other)	PD(type=inter,infl=other)	vragend voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
 440	PD(type=indef,infl=0)			onbepaald voornaamwoord, geen uitgang
 441	PD(type=indef,infl=e)			onbepaald voornaamwoord, uitgang -e
 442	PD(type=indef,infl=s|th)			onbepaald voornaamwoord, uitgang -s|-th
@@ -185,75 +185,75 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 455	PD(type=poss,infl=r|re)			bezittelijk voornaamwoord, uitgang -r|-re
 456	PD(type=poss,infl=a)			bezittelijk voornaamwoord, uitgang -a
 459	PD(type=poss,infl=other)			bezittelijk voornaamwoord, uitgang latijn, onduidelijk of evident fout geschreven
-460	PD(type=refl|recip)			wederkerend|wederkerig voornaamwoord
+460	PD(type=refl|recip,person=unclear,number=unclear)	PD(type=refl|recip,person=unclear,number=unclear)	PD(type=refl|recip ,person=unclear,number=unclear)	wederkerend|wederkerig voornaamwoord
 461	PD(type=refl|recip,person=1,number=sg)			wederkerend|wederkerig voornaamwoord, 1e persoon enkelvoud
 462	PD(type=refl|recip,person=2,number=sg)			wederkerend|wederkerig voornaamwoord, 2e persoon enkelvoud
 463	PD(type=refl|recip,person=3,number=sg)			wederkerend|wederkerig voornaamwoord, 3e persoon enkelvoud
 464	PD(type=refl|recip,person=1,number=pl)			wederkerend|wederkerig voornaamwoord, 1e persoon meervoud
 465	PD(type=refl|recip,person=2,number=pl)			wederkerend|wederkerig voornaamwoord, 2e persoon meervoud
 466	PD(type=refl|recip,person=3,number=pl)			wederkerend|wederkerig voornaamwoord, 3e persoon meervoud
-469	PD(type=refl|recip,person=1,number=sg)		PD(type=refl|recip,person=1,number=sg)	probleemgeval
-470	PD(type=dem,subtype=art,infl=0)		PD(type=dem,subtype =art,infl=0)	bepaald lidwoord, geen uitgang
-471	PD(type=dem,subtype=art,infl=e)		PD(type=dem,subtype=art,infl=e)	bepaald lidwoord, uitgang -e
-472	PD(type=dem,subtype=art,infl=s|th)		PD(type=dem,subtype=art,infl=s|th)	bepaald lidwoord, uitgang -s|-th
-473	PD(type=dem,subtype=art,infl=t)		PD(type=dem,subtype=art,infl=t)	bepaald lidwoord, uitgang -t
-474	PD(type=dem,subtype=art,infl=n)		PD(type=dem,subtype=art,infl=n)	bepaald lidwoord, uitgang -n
-475	PD(type=dem,subtype=art,infl=r|re)		PD(type=dem,subtype=art,infl=r|re)	bepaald lidwoord, uitgang -r|-re
-479	PD(type=dem,subtype=art,infl=other)		PD(type=dem,subtype=art,infl=other)	bepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
-480	PD(type=indef,subtype=art,infl=0)		PD(type=indef,subtype=art,infl=0)	onbepaald lidwoord, geen uitgang
-481	PD(type=indef,subtype=art,infl=e)		PD(type=indef,subtype=art,infl=e)	onbepaald lidwoord, uitgang -e
-482	PD(type=indef,subtype=art,infl=s|th)		PD(type=indef,subtype=art,infl=s|th)	onbepaald lidwoord, uitgang -s|-th
-483	PD(type=indef,subtype=art,infl=t)		PD(type=indef,subtype=art,infl=t)	onbepaald lidwoord, uitgang -t
-484	PD(type=indef,subtype=art,infl=n)		PD(type=indef,subtype=art,infl=n)	onbepaald lidwoord, uitgang -n
-485	PD(type=indef,subtype=art,infl=r|re)		PD(type=indef,subtype=art,infl=r|re)	onbepaald lidwoord, uitgang -r|-re
-489	PD(type=indef,subtype=art,infl=other)		PD(type=indef,subtype=art,infl=other)	onbepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
-490	PD(type=unclear,infl=0)		PD(type=unclear,infl=0)	voornaamwoord probleemgeval, geen uitgang
-491	PD(type=unclear,infl=e)		PD(type=unclear,infl=e)	voornaamwoord probleemgeval, uitgang -e
-492	PD(type=unclear,infl=s|th)		PD(type=unclear,infl=s|th)	voornaamwoord probleemgeval, uitgang -s|-th
-493	PD(type=unclear,infl=t)		PD(type=unclear,infl=t)	voornaamwoord probleemgeval, uitgang -t
-494	PD(type=unclear,infl=n)		PD(type=unclear,infl=n)	voornaamwoord probleemgeval, uitgang -n
-499	PD(type=unclear,infl=other)		PD(type=unclear,infl=other)	voornaamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
-500	ADV(type=gen,infl=0)			bijwoord, geen uitgang
-501	ADV(type=gen,infl=e)			bijwoord, uitgang -e
-502	ADV(type=gen,infl=s|th)			bijwoord, uitgang -s|-th
-503	ADV(type=gen,infl=t)			bijwoord, uitgang -t
-504	ADV(type=gen,infl=n)			bijwoord, uitgang -n
-505	ADV(type=gen,infl=r|re)			bijwoord, uitgang -r|-re
-509	ADV(type=gen,infl=other)			bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-510	ADV(type=gen,subtype=dem,infl=0)			aanwijzend bijwoord, geen uitgang
-511	ADV(type=gen,subtype=dem,infl=e)			aanwijzend bijwoord, uitgang -e
-512	ADV(type=gen,subtype=dem,infl=s|th)			aanwijzend bijwoord, uitgang -s|-th
-514	ADV(type=gen,subtype=dem,infl=n)			aanwijzend bijwoord, uitgang -n
-519	ADV(type=gen,subtype=dem,infl=other)			aanwijzend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-520	ADV(type=gen,subtype=rel,infl=0)			betrekkelijk bijwoord, geen uitgang
-521	ADV(type=gen,subtype=rel,infl=e)			betrekkelijk bijwoord, uitgang -e
-524	ADV(type=gen,subtype=rel,infl=n)			betrekkelijk bijwoord, uitgang -n
-529	ADV(type=gen,subtype=rel,infl=other)			betrekkelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-530	ADV(type=gen,subtype=inter,infl=0)		ADV(type=gen,subtype=inter,infl=0)	vragend bijwoord, geen uitgang
-531	ADV(type=gen,subtype=inter,infl=e)		ADV(type=gen,subtype=inter,infl=e)	vragend bijwoord, uitgang -e
-534	ADV(type=gen,subtype=inter,infl=n)		ADV(type=gen,subtype=inter,infl=n)	vragend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-539	ADV(type=gen,subtype=inter,infl=other)		ADV(type=gen,subtype=inter,infl=other)	vragend bijwoord, uitgang -n
-540	ADV(type=gen,subtype=indef,infl=0)			onbepaald bijwoord, geen uitgang
-541	ADV(type=gen,subtype=indef,infl=e)			onbepaald bijwoord, uitgang -e
-542	ADV(type=gen,subtype=indef,infl=s|th)			onbepaald bijwoord, uitgang -s|-th
-544	ADV(type=gen,subtype=indef,infl=n)			onbepaald bijwoord, uitgang -n
-545	ADV(type=gen,subtype=indef,infl=r|re)			onbepaald bijwoord, uitgang -r|-re
-549	ADV(type=gen,subtype=indef,infl=other)			onbepaald bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-550	ADV(type=gen,subtype=resump,infl=0)		ADV(type=gen,subtype=resump,infl=0)	hervattend bijwoord, geen uitgang
-551	ADV(type=gen,subtype=resump,infl=e)		ADV(type=gen,subtype=resump,infl=e)	hervattend bijwoord, uitgang -e
-559	ADV(type=gen,subtype=resump,infl=other)		ADV(type=gen,subtype=resump,infl=other)	hervattend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-560	ADV(type=gen,subtype=neg,infl=0)			ontkennend bijwoord, geen uitgang
-561	ADV(type=gen,subtype=neg,infl=e)			ontkennend bijwoord, uitgang -e
-564	ADV(type=gen,subtype=neg,infl=n)			ontkennend bijwoord, uitgang -n
-569	ADV(type=gen,subtype=neg,infl=other)			ontkennend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-590	ADV(type=gen,subtype=other,infl=0)			bijwoord probleemgeval, geen uitgang
-600	ADV(type=pron,infl=0)			voornaamwoordelijk bijwoord, geen uitgang
-601	ADV(type=pron,infl=e)			voornaamwoordelijk bijwoord, uitgang -e
-602	ADV(type=pron,infl=s|th)			voornaamwoordelijk bijwoord, uitgang -s|-th
-603	ADV(type=pron,infl=t)			voornaamwoordelijk bijwoord, uitgang -t
-604	ADV(type=pron,infl=n)			voornaamwoordelijk bijwoord, uitgang -n
-605	ADV(type=pron,infl=r|re)			voornaamwoordelijk bijwoord, uitgang -r|-re
-609	ADV(type=pron,infl=other)			voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+469	PD(type=refl|recip,person=1,number=sg)	weghalen | veld rechts (zie commentaar)	PD(type=refl|recip,person=1,number=sg)	probleemgeval
+470	PD(type=dem,subtype=art,infl=0)	PD(type=dem,subtype=art,infl=0)	PD(type=dem,subtype =art,infl=0)	bepaald lidwoord, geen uitgang
+471	PD(type=dem,subtype=art,infl=e)	PD(type=dem,subtype=art,infl=e)	PD(type=dem,subtype=art,infl=e)	bepaald lidwoord, uitgang -e
+472	PD(type=dem,subtype=art,infl=s|th)	PD(type=dem,subtype=art,infl=s|th)	PD(type=dem,subtype=art,infl=s|th)	bepaald lidwoord, uitgang -s|-th
+473	PD(type=dem,subtype=art,infl=t)	PD(type=dem,subtype=art,infl=t)	PD(type=dem,subtype=art,infl=t)	bepaald lidwoord, uitgang -t
+474	PD(type=dem,subtype=art,infl=n)	PD(type=dem,subtype=art,infl=n)	PD(type=dem,subtype=art,infl=n)	bepaald lidwoord, uitgang -n
+475	PD(type=dem,subtype=art,infl=r|re)	PD(type=dem,subtype=art,infl=r|re)	PD(type=dem,subtype=art,infl=r|re)	bepaald lidwoord, uitgang -r|-re
+479	PD(type=dem,subtype=art,infl=other)	PD(type=dem,subtype=art,infl=other)	PD(type=dem,subtype=art,infl=other)	bepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+480	PD(type=indef,subtype=art,infl=0)	PD(type=indef,subtype=art,infl=0)	PD(type=indef,subtype=art,infl=0)	onbepaald lidwoord, geen uitgang
+481	PD(type=indef,subtype=art,infl=e)	PD(type=indef,subtype=art,infl=e)	PD(type=indef,subtype=art,infl=e)	onbepaald lidwoord, uitgang -e
+482	PD(type=indef,subtype=art,infl=s|th)	PD(type=indef,subtype=art,infl=s|th)	PD(type=indef,subtype=art,infl=s|th)	onbepaald lidwoord, uitgang -s|-th
+483	PD(type=indef,subtype=art,infl=t)	PD(type=indef,subtype=art,infl=t)	PD(type=indef,subtype=art,infl=t)	onbepaald lidwoord, uitgang -t
+484	PD(type=indef,subtype=art,infl=n)	PD(type=indef,subtype=art,infl=n)	PD(type=indef,subtype=art,infl=n)	onbepaald lidwoord, uitgang -n
+485	PD(type=indef,subtype=art,infl=r|re)	PD(type=indef,subtype=art,infl=r|re)	PD(type=indef,subtype=art,infl=r|re)	onbepaald lidwoord, uitgang -r|-re
+489	PD(type=indef,subtype=art,infl=other)	PD(type=indef,subtype=art,infl=other)	PD(type=indef,subtype=art,infl=other)	onbepaald lidwoord, uitgang latijn, onduidelijk of evident fout geschreven
+490	PD(type=unclear,infl=0)	PD(type=unclear,infl=0)	PD(type=unclear,infl=0)	voornaamwoord probleemgeval, geen uitgang
+491	PD(type=unclear,infl=e)	PD(type=unclear,infl=e)	PD(type=unclear,infl=e)	voornaamwoord probleemgeval, uitgang -e
+492	PD(type=unclear,infl=s|th)	PD(type=unclear,infl=s|th)	PD(type=unclear,infl=s|th)	voornaamwoord probleemgeval, uitgang -s|-th
+493	PD(type=unclear,infl=t)	PD(type=unclear,infl=t)	PD(type=unclear,infl=t)	voornaamwoord probleemgeval, uitgang -t
+494	PD(type=unclear,infl=n)	PD(type=unclear,infl=n)	PD(type=unclear,infl=n)	voornaamwoord probleemgeval, uitgang -n
+499	PD(type=unclear,infl=other)	PD(type=unclear,infl=other)	PD(type=unclear,infl=other)	voornaamwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+500	ADV(type=reg,subtype=gen,infl=0)	ADV(type=reg,subtype=gen,infl=0)	ADV(type=reg,subtype=gen,infl=0)	bijwoord, geen uitgang
+501	ADV(type=reg,subtype=gen,infl=e)	ADV(type=reg,subtype=gen,infl=e)	ADV(type=reg,subtype=gen,infl=e)	bijwoord, uitgang -e
+502	ADV(type=reg,subtype=gen,infl=s|th)	ADV(type=reg,subtype=gen,infl=s|th)	ADV(type=reg,subtype=gen,infl=s|th)	bijwoord, uitgang -s|-th
+503	ADV(type=reg,subtype=gen,infl=t)	ADV(type=reg,subtype=gen,infl=t)	ADV(type=reg,subtype=gen,infl=t)	bijwoord, uitgang -t
+504	ADV(type=reg,subtype=gen,infl=n)	ADV(type=reg,subtype=gen,infl=n)	ADV(type=reg,subtype=gen,infl=n)	bijwoord, uitgang -n
+505	ADV(type=reg,subtype=gen,infl=r|re)	ADV(type=reg,subtype=gen,infl=r|re)	ADV(type=reg,subtype=gen,infl=r|re)	bijwoord, uitgang -r|-re
+509	ADV(type=reg,subtype=gen,infl=other)	ADV(type=reg,subtype=gen,infl=other)	ADV(type=reg,subtype=gen,infl=other)	bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+510	ADV(type=reg,subtype=dem,infl=0)	ADV(type=reg,subtype=dem,infl=0)	ADV(type=reg,subtype=dem,infl=0)	aanwijzend bijwoord, geen uitgang
+511	ADV(type=reg,subtype=dem,infl=e)	ADV(type=reg,subtype=dem,infl=e)	ADV(type=reg,subtype=dem,infl=e)	aanwijzend bijwoord, uitgang -e
+512	ADV(type=reg,subtype=dem,infl=s|th)	ADV(type=reg,subtype=dem,infl=s|th)	ADV(type=reg,subtype=dem,infl=s|th)	aanwijzend bijwoord, uitgang -s|-th
+514	ADV(type=reg,subtype=dem,infl=n)	ADV(type=reg,subtype=dem,infl=n)	ADV(type=reg,subtype=dem,infl=n)	aanwijzend bijwoord, uitgang -n
+519	ADV(type=reg,subtype=dem,infl=other)	ADV(type=reg,subtype=dem,infl=other)	ADV(type=reg,subtype=dem,infl=other)	aanwijzend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+520	ADV(type=reg,subtype=rel,infl=0)	ADV(type=reg,subtype=rel,infl=0)	ADV(type=reg,subtype=rel,infl=0)	betrekkelijk bijwoord, geen uitgang
+521	ADV(type=reg,subtype=rel,infl=e)	ADV(type=reg,subtype=rel,infl=e)	ADV(type=reg,subtype=rel,infl=e)	betrekkelijk bijwoord, uitgang -e
+524	ADV(type=reg,subtype=rel,infl=n)	ADV(type=reg,subtype=rel,infl=n)	ADV(type=reg,subtype=rel,infl=n)	betrekkelijk bijwoord, uitgang -n
+529	ADV(type=reg,subtype=rel,infl=other)	ADV(type=reg,subtype=rel,infl=other)	ADV(type=reg,subtype=rel,infl=other)	betrekkelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+530	ADV(type=reg,subtype=inter,infl=0)	ADV(type=reg,subtype=inter,infl=0)	ADV(type=reg,subtype=inter,infl=0)	vragend bijwoord, geen uitgang
+531	ADV(type=reg,subtype=inter,infl=e)	ADV(type=reg,subtype=inter,infl=e)	ADV(type=reg,subtype=inter,infl=e)	vragend bijwoord, uitgang -e
+534	ADV(type=reg,subtype=inter,infl=n)	ADV(type=reg,subtype=inter,infl=n)	ADV(type=reg,subtype=inter,infl=n)	vragend bijwoord, uitgang -n
+539	ADV(type=reg,subtype=inter,infl=other)	ADV(type=reg,subtype=inter,infl=other)	ADV(type=reg,subtype=inter,infl=other)	vragend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+540	ADV(type=reg,subtype=indef,infl=0)	ADV(type=reg,subtype=indef,infl=0)	ADV(type=reg,subtype=indef,infl=0)	onbepaald bijwoord, geen uitgang
+541	ADV(type=reg,subtype=indef,infl=e)	ADV(type=reg,subtype=indef,infl=e)	ADV(type=reg,subtype=indef,infl=e)	onbepaald bijwoord, uitgang -e
+542	ADV(type=reg,subtype=indef,infl=s|th)	ADV(type=reg,subtype=indef,infl=s|th)	ADV(type=reg,subtype=indef,infl=s|th)	onbepaald bijwoord, uitgang -s|-th
+544	ADV(type=reg,subtype=indef,infl=n)	ADV(type=reg,subtype=indef,infl=n)	ADV(type=reg,subtype=indef,infl=n)	onbepaald bijwoord, uitgang -n
+545	ADV(type=reg,subtype=indef,infl=r|re)	ADV(type=reg,subtype=indef,infl=r|re)	ADV(type=reg,subtype=indef,infl=r|re)	onbepaald bijwoord, uitgang -r|-re
+549	ADV(type=reg,subtype=indef,infl=other)	ADV(type=reg,subtype=indef,infl=other)	ADV(type=reg,subtype=indef,infl=other)	onbepaald bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+550	ADV(type=reg,subtype=resump,infl=0)	ADV(type=reg,subtype=resump,infl=0)	ADV(type=reg,subtype=resump,infl=0)	hervattend bijwoord, geen uitgang
+551	ADV(type=reg,subtype=resump,infl=e)	ADV(type=reg,subtype=resump,infl=e)	ADV(type=reg,subtype=resump,infl=e)	hervattend bijwoord, uitgang -e
+559	ADV(type=reg,subtype=resump,infl=other)	ADV(type=reg,subtype=resump,infl=other)	ADV(type=reg,subtype=resump,infl=other)	hervattend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+560	ADV(type=reg,subtype=neg,infl=0)	ADV(type=reg,subtype=neg,infl=0)	ADV(type=reg,subtype=neg,infl=0)	ontkennend bijwoord, geen uitgang
+561	ADV(type=reg,subtype=neg,infl=e)	ADV(type=reg,subtype=neg,infl=e)	ADV(type=reg,subtype=neg,infl=e)	ontkennend bijwoord, uitgang -e
+564	ADV(type=reg,subtype=neg,infl=n)	ADV(type=reg,subtype=neg,infl=n)	ADV(type=reg,subtype=neg,infl=n)	ontkennend bijwoord, uitgang -n
+569	ADV(type=reg,subtype=neg,infl=other)	ADV(type=reg,subtype=neg,infl=other)	ADV(type=reg,subtype=neg,infl=other)	ontkennend bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
+590	ADV(type=reg,subtype=unclear,infl=0)	ADV(type=reg,subtype=other,infl=0)	ADV(type=reg,subtype=unclear,infl=0)	bijwoord probleemgeval, geen uitgang
+600	ADV(type=pron,subtype=unclear,infl=0)	ADV(type=pron,subtype=unclear,infl=0)	ADV(type=pron,subtype=unclear,infl=0)	voornaamwoordelijk bijwoord, geen uitgang
+601	ADV(type=pron,subtype=unclear,infl=e)	ADV(type=pron,subtype=unclear,infl=e)	ADV(type=pron,subtype=unclear,infl=e)	voornaamwoordelijk bijwoord, uitgang -e
+602	ADV(type=pron,subtype=unclear,infl=s|th)	ADV(type=pron,subtype=unclear,infl=s|th)	ADV(type=pron,subtype=unclear,infl=s|th)	voornaamwoordelijk bijwoord, uitgang -s|-th
+603	ADV(type=pron,subtype=unclear,infl=t)	ADV(type=pron,subtype=unclear,infl=t)	ADV(type=pron,subtype=unclear,infl=t)	voornaamwoordelijk bijwoord, uitgang -t
+604	ADV(type=pron,subtype=unclear,infl=n)	ADV(type=pron,subtype=unclear,infl=n)	ADV(type=pron,subtype=unclear,infl=n)	voornaamwoordelijk bijwoord, uitgang -n
+605	ADV(type=pron,subtype=unclear,infl=r|re)	ADV(type=pron,subtype=unclear,infl=r|re)	ADV(type=pron,subtype=unclear,infl=r|re)	voornaamwoordelijk bijwoord, uitgang -r|-re
+609	ADV(type=pron,subtype=unclear,infl=unclear)	ADV(type=pron,subtype=unclear,infl=unclear)	ADV(type=pron,subtype=unclear,infl=unclear)	voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
 610	ADV(type=pron,subtype=dem,infl=0)			aanwijzend voornaamwoordelijk bijwoord, geen uitgang
 611	ADV(type=pron,subtype=dem,infl=e)			aanwijzend voornaamwoordelijk bijwoord, uitgang -e
 612	ADV(type=pron,subtype=dem,infl=s|th)			aanwijzend voornaamwoordelijk bijwoord, uitgang -s|-th
@@ -268,18 +268,18 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 624	ADV(type=pron,subtype=rel,infl=n)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -n
 625	ADV(type=pron,subtype=rel,infl=r|re)			betrekkelijk voornaamwoordelijk bijwoord, uitgang -r|-re
 629	ADV(type=pron,subtype=rel,infl=other)			betrekkelijk voornaamwoordelijk bijwoord, uitgang latijn, onduidelijk of evident fout geschreven
-630	ADV(type=pron,subtype=int,infl=0)			vragend voornaamwoordelijk bijwoord, geen uitgang
-631	ADV(type=pron,subtype=int,infl=e)			vragend voornaamwoordelijk bijwoord, uitgang -e
-634	ADV(type=pron,subtype=int,infl=n)			vragend voornaamwoordelijk bijwoord, uitgang -n
+630	ADV(type=pron,subtype=inter,infl=0)		ADV(type=pron,subtype=inter,infl=0)	vragend voornaamwoordelijk bijwoord, geen uitgang
+631	ADV(type=pron,subtype=inter,infl=e)		ADV(type=pron,subtype=inter,infl=e)	vragend voornaamwoordelijk bijwoord, uitgang -e
+634	ADV(type=pron,subtype=inter,infl=n)		ADV(type=pron,subtype=inter,infl=n)	vragend voornaamwoordelijk bijwoord, uitgang -n
 640	ADV(type=pron,subtype=indef,infl=0)			onbepaald voornaamwoordelijk bijwoord, geen uitgang
 641	ADV(type=pron,subtype=indef,infl=e)			onbepaald voornaamwoordelijk bijwoord, uitgang -e
-650	ADV(type=pron,subtype=resump,infl=0)		ADV(type=pron,subtype=resump,infl=0)	bijwoordelijk deel van voornaamwoordelijk bijwoord, geen uitgang
-651	ADV(type=pron,subtype=resump,infl=e)		ADV(type=pron,subtype=resump,infl=e)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -e
-654	ADV(type=pron,subtype=resump,infl=n)		ADV(type=pron,subtype=resump,infl=n)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -n
-655	ADV(type=pron,subtype=resump,infl=r|re)		ADV(type=pron,subtype=resump,infl=r|re)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang r|-re
-659	ADV(type=pron,subtype=resump,infl=other)		ADV(type=pron,subtype=resump,infl=other)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitganglatijn, onduidelijk of evident fout geschreven
-690	ADV(type=pron,subtype=other,infl=0)			voornaamwoordelijk bijwoord probleemgeval, geen uitgang
-691	ADV(type=pron,subtype=other,infl=e)			voornaamwoordelijk bijwoord probleemgeval, uitgang -e
+650	ADV(type=pron,subtype=resump,infl=0)	ADV(type=pron,subtype=resump,infl=0)	ADV(type=pron,subtype=resump,infl=0)	bijwoordelijk deel van voornaamwoordelijk bijwoord, geen uitgang
+651	ADV(type=pron,subtype=resump,infl=e)	ADV(type=pron,subtype=resump,infl=e)	ADV(type=pron,subtype=resump,infl=e)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -e
+654	ADV(type=pron,subtype=resump,infl=n)	ADV(type=pron,subtype=resump,infl=n)	ADV(type=pron,subtype=resump,infl=n)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang -n
+655	ADV(type=pron,subtype=resump,infl=r|re)	ADV(type=pron,subtype=resump,infl=r|re)	ADV(type=pron,subtype=resump,infl=r|re)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitgang r|-re
+659	ADV(type=pron,subtype=resump,infl=other)	ADV(type=pron,subtype=resump,infl=other)	ADV(type=pron,subtype=resump,infl=other)	bijwoordelijk deel van voornaamwoordelijk bijwoord, uitganglatijn, onduidelijk of evident fout geschreven
+690	ADV(type=pron,subtype=other,infl=0)	ADV(type=pron,subtype=unclear,infl=0)		voornaamwoordelijk bijwoord probleemgeval, geen uitgang
+691	ADV(type=pron,subtype=other,infl=e)	ADV(type=pron,subtype=unclear,infl=e)		voornaamwoordelijk bijwoord probleemgeval, uitgang -e
 700	ADP(infl=0)			voorzetsel, geen uitgang
 701	ADP(infl=e)			voorzetsel, uitgang -e
 702	ADP(infl=s|th)			voorzetsel, uitgang -s|-th
@@ -288,8 +288,8 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 705	ADP(infl=r|re)			voorzetsel, uitgang -r|-re
 706	ADP(infl=a)			voorzetsel, uitgang -a
 709	ADP(infl=other)			voorzetsel, uitgang latijn, onduidelijk of evident fout geschreven
-790	ADP(type=other,infl=0)			voorzetsel (Latijn)
-799	ADP(type=other,infl=other)			voorzetsel (Latijn)
+790	ADP(type=other,infl=0)	ADP(infl=0)		voorzetsel (Latijn)
+799	ADP(type=other,infl=other)	ADP(infl=other)		voorzetsel (Latijn)
 800	CONJ(type=coor,infl=0)			nevenschikkend voegwoord, geen uitgang
 801	CONJ(type=coor,infl=e)			nevenschikkend voegwoord, uitgang -e
 803	CONJ(type=coor,infl=t)			nevenschikkend voegwoord, uitgang -t
@@ -301,37 +301,37 @@ code	correctieJesse	correctie Thomas	correctie Jesse	omschrijving
 812	CONJ(type=sub,infl=s|th)			onderschikkend voegwoord, uitgang -s|-th
 814	CONJ(type=sub,infl=n)			onderschikkend voegwoord, uitgang -n
 819	CONJ(type=sub,infl=other)			onderschikkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
-820	CONJ(type=other,subtype=comp,infl=0)		CONJ(type=other,subtype=comp,infl=0)	vergelijkend voegwoord, geen uitgang
-821	CONJ(type=other,subtype=comp,infl=e)		CONJ(type=other,subtype=comp,infl=e)	vergelijkend voegwoord, uitgang -e
-824	CONJ(type=other,subtype=comp,infl=n)		CONJ(type=other,subtype=comp,infl=n)	vergelijkend voegwoord, uitgang -n
-829	CONJ(type=other,subtype=comp,infl=other)		CONJ(type=other,subtype=comp,infl=other)	vergelijkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
-830	CONJ(type=other,subtype=neg,infl=0)			ontkennend voegwoord, geen uitgang
-831	CONJ(type=other,subtype=neg,infl=e)			ontkennend voegwoord, uitgang -e
-834	CONJ(type=other,subtype=neg,infl=n)			ontkennend voegwoord, uitgang n
-840	CONJ(type=other,subtype=exp,infl=0)		CONJ(type=other,subtype=expl,infl=0)	explicatief voegwoord, geen uitgang
-841	CONJ(type=other,subtype=expl,infl=e)		CONJ(type=other,subtype=expl,infl=e)	explicatief voegwoord, uitgang -e
-845	CONJ(type=other,subtype=expl,infl=r|re)		CONJ(type=other,subtype=expl,infl=r|re)	explicatief voegwoord, uitgang -r|-re
-850	CONJ(type=other,subtype=rel,infl=0)			relatief voegwoord, geen uitgang
-851	CONJ(type=other,subtype=rel,infl=e)			relatief voegwoord, uitgang -e
-859	CONJ(type=other,subtype=rel,infl=other)			relatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
-860	CONJ(type=other,subtype=qual,infl=0)		CONJ(type=other,subtype=qual,infl=0)	voegwoord van hoedanigheid, geen uitgang
-861	CONJ(type=other,subtype=qual,infl=e)		CONJ(type=other,subtype=qual,infl=e)	voegwoord van hoedanigheid, uitgang -e
-869	CONJ(type=other,subtype=qual,infl=other)		CONJ(type=other,subtype=qual,infl=other)	voegwoord van hoedanigheid, uitgang latijn, onduidelijk of evident fout geschreven
-870	CONJ(type=sub,infl=0)			alse + te + infinitief, geen uitgang
-871	CONJ(type=sub,infl=e)			alse + te + infinitief, uitgang -e
-890	CONJ(type=other,subtype=other,infl=0)			voegwoord probleemgeval, geen uitgang
-891	CONJ(type=other,subtype=other,infl=e)			voegwoord probleemgeval, uitgang -e
-899	CONJ(type=other,subtype=other,infl=other)			voegwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
-900	RES(type=other,infl=0)			woordsoort probleemgeval, geen uitgang
-901	RES(type=other,infl=e)			woordsoort probleemgeval, uitgang -e
-904	RES(type=other,infl=n)			woordsoort probleemgeval, uitgang -n
-909	RES(type=other,infl=other)			woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+820	CONJ(type=unclear,subtype=comp,infl=0)	CONJ(type=comp,infl=0)	CONJ(type=unclear ,subtype=comp,infl=0)	vergelijkend voegwoord, geen uitgang
+821	CONJ(type=unclear,subtype=comp,infl=e)	CONJ(type=comp,infl=e)	CONJ(type=unclear,subtype=comp,infl=e)	vergelijkend voegwoord, uitgang -e
+824	CONJ(type=unclear,subtype=comp,infl=n)	CONJ(type=comp,infl=n)	CONJ(type=unclear,subtype=comp,infl=n)	vergelijkend voegwoord, uitgang -n
+829	CONJ(type=unclear,subtype=comp,infl=other)	CONJ(type=comp,infl=other)	CONJ(type=unclear,subtype=comp,infl=other)	vergelijkend voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+830	CONJ(type=unclear,subtype=neg,infl=0)	CONJ(type=neg,infl=0)	CONJ(type=unclear,subtype=neg,infl=0)	ontkennend voegwoord, geen uitgang
+831	CONJ(type=unclear,subtype=neg,infl=e)	CONJ(type=neg,infl=e)	CONJ(type=unclear,subtype=neg,infl=e)	ontkennend voegwoord, uitgang -e
+834	CONJ(type=unclear,subtype=neg,infl=n)	CONJ(type=neg,infl=n)	CONJ(type=unclear,subtype=neg,infl=n)	ontkennend voegwoord, uitgang n
+840	CONJ(type=unclear,subtype=expl,infl=0)	CONJ(type=expl,infl=0)	CONJ(type=unclear,subtype=exp l,infl=0)	explicatief voegwoord, geen uitgang
+841	CONJ(type=unclear,subtype=expl,infl=e)	CONJ(type=expl,infl=e)	CONJ(type=unclear,subtype=expl,infl=e)	explicatief voegwoord, uitgang -e
+845	CONJ(type=unclear,subtype=expl,infl=r|re)	CONJ(type=expl,infl=r|re)	CONJ(type=unclear,subtype=expl,infl=r|re)	explicatief voegwoord, uitgang -r|-re
+850	CONJ(type=unclear,subtype=rel,infl=0)	CONJ(type=rel,infl=0)	CONJ(type=unclear,subtype=rel,infl=0)	relatief voegwoord, geen uitgang
+851	CONJ(type=unclear,subtype=rel,infl=e)	CONJ(type=rel,infl=e)	CONJ(type=unclear,subtype=rel,infl=e)	relatief voegwoord, uitgang -e
+859	CONJ(type=unclear,subtype=rel,infl=other)	CONJ(type=rel,infl=other)	CONJ(type=unclear,subtype=rel,infl=other)	relatief voegwoord, uitgang latijn, onduidelijk of evident fout geschreven
+860	CONJ(type=unclear,subtype=qual,infl=0)	CONJ(type=qual,infl=0)	CONJ(type=unclear,subtype=qual,infl=0)	voegwoord van hoedanigheid, geen uitgang
+861	CONJ(type=unclear,subtype=qual,infl=e)	CONJ(type=qual,infl=e)	CONJ(type=unclear,subtype=qual,infl=e)	voegwoord van hoedanigheid, uitgang -e
+869	CONJ(type=unclear,subtype=qual,infl=other)	CONJ(type=qual,infl=other)	CONJ(type=unclear,subtype=qual,infl=other)	voegwoord van hoedanigheid, uitgang latijn, onduidelijk of evident fout geschreven
+870	CONJ(type=sub,infl=0)	ADP(infl=0)		alse + te + infinitief, geen uitgang
+871	CONJ(type=sub,infl=e)	ADP(infl=e)		alse + te + infinitief, uitgang -e
+890	CONJ(type=unclear,subtype=unclear,infl=0)	CONJ(type=unclear,infl=0)	CONJ(type=unclear,subtype=unclear,infl=0)	voegwoord probleemgeval, geen uitgang
+891	CONJ(type=unclear,subtype=unclear,infl=e)	CONJ(type=unclear,infl=e)	CONJ(type=unclear,subtype=unclear,infl=e)	voegwoord probleemgeval, uitgang -e
+899	CONJ(type=unclear,subtype=unclear,infl=other)	CONJ(type=unclear,infl=other)	CONJ(type=unclear,subtype=unclear,infl=other)	voegwoord probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+900	RES(type=unclear,infl=0)	RES(type=unclear,infl=0)	RES(type=unclear,infl=0)	woordsoort probleemgeval, geen uitgang
+901	RES(type=unclear,infl=e)	RES(type=unclear,infl=e)	RES(type=unclear,infl=e)	woordsoort probleemgeval, uitgang -e
+904	RES(type=unclear,infl=n)	RES(type=unclear,infl=n)	RES(type=unclear,infl=n)	woordsoort probleemgeval, uitgang -n
+909	RES(type=unclear,infl=other)	RES(type=unclear,infl=other)	RES(type=unclear,infl=other)	woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
 910	INT(infl=0)			tussenwerpsel, geen uitgang
 911	INT(infl=e)			tussenwerpsel, uitgang -e
 914	INT(infl=n)			tussenwerpsel, uitgang -n
 919	INT(infl=other)			tussenwerpsel, uitgang latijn, onduidelijk of evident fout geschreven
-990	RES(type=other,infl=0)			woordsoort probleemgeval, geen uitgang
-991	RES(type=other,infl=e)			woordsoort probleemgeval, uitgang -e
-992	RES(type=other,infl=s|th)			woordsoort probleemgeval, uitgang -s|-th
-994	RES(type=other,infl=n)			woordsoort probleemgeval, uitgang -n
-999	RES(type=other,infl=other)			woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
+990	RES(type=other,infl=0)	RES(type=unclear,infl=0)		woordsoort probleemgeval, geen uitgang
+991	RES(type=other,infl=e)	RES(type=unclear,infl=e)		woordsoort probleemgeval, uitgang -e
+992	RES(type=other,infl=s|th)	RES(type=unclear,infl=s|th)		woordsoort probleemgeval, uitgang -s|-th
+994	RES(type=other,infl=n)	RES(type=unclear,infl=n)		woordsoort probleemgeval, uitgang -n
+999	RES(type=other,infl=other)	RES(type=unclear,infl=other)		woordsoort probleemgeval, uitgang latijn, onduidelijk of evident fout geschreven
