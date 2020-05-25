@@ -1,0 +1,39 @@
+<tagset>
+    <prefix>pos</prefix>
+    <mainPoS>
+        <pos displayName="" desc="">RES</pos>
+    </mainPoS>
+    <partitions>
+        <feature displayName="" desc="">
+            <name>pos</name>
+            <values>
+                <featureValue>
+                    <value>RES</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="" desc="">
+            <name>type</name>
+            <values>
+                <featureValue displayName="" desc="">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+    </partitions>
+    <constraints>
+        <constraint>
+            <pos>RES</pos>
+            <features>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+    </constraints>
+</tagset>

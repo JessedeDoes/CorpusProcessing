@@ -1,0 +1,19 @@
+{
+  "values":{
+    "RES":{
+      "value":"RES",
+      "displayName":"RES",
+      "subAnnotationIds":["pos_type"]
+    }
+  },
+  "subAnnotations":{
+    "pos_type":{
+      "id":"pos_type",
+      "values":[{
+        "value":"other",
+        "displayName":"other",
+        "pos":["RES"]
+      }]
+    }
+  }
+}

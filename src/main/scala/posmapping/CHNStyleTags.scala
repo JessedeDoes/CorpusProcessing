@@ -72,37 +72,9 @@ object distinctTagsFromGysseling
   }
 
 
-  def tagsetFromCorpusFiles(dirName: String, attribute: String, separator: String = "[+|]") = {
-    val dir = new File(dirName)
-    val files: Set[File] = if (dir.isDirectory) dir.listFiles().toSet else Set(dir)
-    val allDistinctTags: Set[String] = files.flatMap(
-      f => {
-        scala.util.Try(
-          {
-            val doc = XML.loadFile(f)
-
-            val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
-            val posjes = combiposjes.flatMap(p => p.split(separator).toSet)
-            //println(posjes)
-            posjes
-          }) match {
-          case scala.util.Success(x) => x
-          case _ => Set[String]()
-        }
-      }
-    )
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
-    val xmlWriter = new PrintWriter("/tmp/tagset.xml")
-    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
-    xmlWriter.close()
-    val jsonWriter = new PrintWriter("/tmp/tagset.json")
-    jsonWriter.println(tagset.asJSON)
-    jsonWriter.close()
-
-    val blfWriter = new PrintWriter("/tmp/tagset.blf.yaml")
-    blfWriter.println(tagset.forBlacklab)
-    blfWriter.close()
-  }
+  def tagsetFromCorpusFiles(dirName: String, attribute: String,
+                            separator: String = "[+|]", prefix: String = "/tmp/") =
+    IntegratedTagset.tagsetFromCorpusFiles(dirName, attribute,separator, prefix)
 }
 
 object distinctTagsFromCRM {
