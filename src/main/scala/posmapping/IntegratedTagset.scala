@@ -9,6 +9,7 @@ object DataSettings {
    val onwDir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
    val gysDir = "../data-historische-corpora/gysseling/gysseling-processed-metadata/"
 }
+
 object IntegratedTagset {
   val TDNTagset = TagSet.fromXML("data/TDN/TDN_tagset.xml")
 
@@ -92,7 +93,7 @@ object IntegratedTagset {
 
    def main(args: Array[String]): Unit = {
       doONW
-      doGysseling
+      //doGysseling
    }
 
   def oldMain(args: Array[String]): Unit = {

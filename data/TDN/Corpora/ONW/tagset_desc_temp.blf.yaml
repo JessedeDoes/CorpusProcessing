@@ -29,14 +29,14 @@
         multipleValues: true
      
 
-      - name: gov
-        displayName: gov
+      - name: PA
+        displayName: PA
         uiType: select
         multipleValues: true
      
 
-      - name: xinflclass
-        displayName: xinflclass
+      - name: gov
+        displayName: gov
         uiType: select
         multipleValues: true
      
@@ -59,8 +59,20 @@
         multipleValues: true
      
 
+      - name: GA
+        displayName: GA
+        uiType: select
+        multipleValues: true
+     
+
       - name: finiteness
         displayName: finiteness
+        uiType: select
+        multipleValues: true
+     
+
+      - name: NA
+        displayName: NA
         uiType: select
         multipleValues: true
      
@@ -83,14 +95,32 @@
         multipleValues: true
      
 
+      - name: class
+        displayName: class
+        uiType: select
+        multipleValues: true
+     
+
+      - name: conjugation
+        displayName: conjugation
+        uiType: select
+        multipleValues: true
+     
+
       - name: type
         displayName: type
         uiType: select
         multipleValues: true
      
 
-      - name: xinfl
-        displayName: xinfl
+      - name: declination
+        displayName: declination
+        uiType: select
+        multipleValues: true
+     
+
+      - name: val
+        displayName: val
         uiType: select
         multipleValues: true
      
