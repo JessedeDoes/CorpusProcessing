@@ -52,8 +52,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Participle" desc="Participle">
-                    <value>part</value>
+                <featureValue displayName="Past participle" desc="Past participle">
+                    <value>pastpart</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Present participle" desc="Present participle">
+                    <value>prespart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -235,6 +241,84 @@
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="partType" desc="partType">
+            <name>partType</name>
+            <values>
+                <featureValue displayName="adp" desc="adp">
+                    <value>adp</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="adv" desc="adv">
+                    <value>adv</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="adverbial_part_vrb" desc="adverbial_part_vrb">
+                    <value>adverbial_part_vrb</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>ADP</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part" desc="part">
+                    <value>part</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>ADV</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part_of_adp" desc="part_of_adp">
+                    <value>part_of_adp</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part_of_adverb" desc="part_of_adverb">
+                    <value>part_of_adverb</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part_of_conj" desc="part_of_conj">
+                    <value>part_of_conj</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part_of_ne" desc="part_of_ne">
+                    <value>part_of_ne</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="part_of_noun" desc="part_of_noun">
+                    <value>part_of_noun</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="vrb" desc="vrb">
+                    <value>vrb</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -591,6 +675,8 @@
                         <pos>ADP</pos>
                         <pos>ADV</pos>
                         <pos>CONJ</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                         <pos>VRB</pos>
@@ -605,6 +691,7 @@
             <features>
                 <feature>NA</feature>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>position</feature>
                 <feature>wordpart</feature>
@@ -614,6 +701,7 @@
             <pos>ADP</pos>
             <features>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>type</feature>
                 <feature>wordpart</feature>
@@ -623,6 +711,7 @@
             <pos>ADV</pos>
             <features>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>subtype</feature>
                 <feature>type</feature>
@@ -633,6 +722,7 @@
             <pos>CONJ</pos>
             <features>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>type</feature>
                 <feature>wordpart</feature>
@@ -650,20 +740,25 @@
             <features>
                 <feature>infl</feature>
                 <feature>number</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
+                <feature>wordpart</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NOU-P</pos>
             <features>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
+                <feature>wordpart</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NUM</pos>
             <features>
                 <feature>infl</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>type</feature>
                 <feature>wordpart</feature>
@@ -674,6 +769,7 @@
             <features>
                 <feature>infl</feature>
                 <feature>number</feature>
+                <feature>partType</feature>
                 <feature>person</feature>
                 <feature>pos</feature>
                 <feature>subtype</feature>
@@ -695,6 +791,7 @@
                 <feature>finiteness</feature>
                 <feature>infl</feature>
                 <feature>mood</feature>
+                <feature>partType</feature>
                 <feature>pos</feature>
                 <feature>tense</feature>
                 <feature>type</feature>

@@ -3,22 +3,22 @@
     "AA":{
       "value":"AA",
       "displayName":"Adjective/adverb",
-      "subAnnotationIds":["pos_NA","pos_infl","pos_position","pos_wordpart"]
+      "subAnnotationIds":["pos_NA","pos_infl","pos_partType","pos_position","pos_wordpart"]
     },
     "ADP":{
       "value":"ADP",
       "displayName":"Adposition",
-      "subAnnotationIds":["pos_infl","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_partType","pos_type","pos_wordpart"]
     },
     "ADV":{
       "value":"ADV",
       "displayName":"Adverb",
-      "subAnnotationIds":["pos_infl","pos_subtype","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_partType","pos_subtype","pos_type","pos_wordpart"]
     },
     "CONJ":{
       "value":"CONJ",
       "displayName":"Conjunction",
-      "subAnnotationIds":["pos_infl","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_partType","pos_type","pos_wordpart"]
     },
     "INT":{
       "value":"INT",
@@ -28,22 +28,22 @@
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"Common noun",
-      "subAnnotationIds":["pos_infl","pos_number"]
+      "subAnnotationIds":["pos_infl","pos_number","pos_partType","pos_wordpart"]
     },
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"Proper noun",
-      "subAnnotationIds":["pos_infl"]
+      "subAnnotationIds":["pos_infl","pos_partType","pos_wordpart"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"Numeral",
-      "subAnnotationIds":["pos_infl","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_partType","pos_type","pos_wordpart"]
     },
     "PD":{
       "value":"PD",
       "displayName":"Pronoun",
-      "subAnnotationIds":["pos_infl","pos_number","pos_person","pos_subtype","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_number","pos_partType","pos_person","pos_subtype","pos_type","pos_wordpart"]
     },
     "RES":{
       "value":"RES",
@@ -53,7 +53,7 @@
     "VRB":{
       "value":"VRB",
       "displayName":"Verb",
-      "subAnnotationIds":["pos_finiteness","pos_infl","pos_mood","pos_tense","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_finiteness","pos_infl","pos_mood","pos_partType","pos_tense","pos_type","pos_wordpart"]
     }
   },
   "subAnnotations":{
@@ -250,7 +250,7 @@
       "values":[{
         "value":"part",
         "displayName":"part",
-        "pos":["NUM","ADV","ADP","PD","VRB","AA","CONJ"]
+        "pos":["NUM","ADV","ADP","PD","VRB","NOU-C","NOU-P","AA","CONJ"]
       }]
     },
     "pos_number":{
@@ -320,13 +320,61 @@
         "displayName":"infinitive/gerund",
         "pos":["VRB"]
       },{
-        "value":"part",
-        "displayName":"Participle",
+        "value":"pastpart",
+        "displayName":"Past participle",
+        "pos":["VRB"]
+      },{
+        "value":"prespart",
+        "displayName":"Present participle",
         "pos":["VRB"]
       },{
         "value":"unclear",
         "displayName":"Unclear",
         "pos":["VRB"]
+      }]
+    },
+    "pos_partType":{
+      "id":"pos_partType",
+      "values":[{
+        "value":"adp",
+        "displayName":"adp",
+        "pos":["ADV"]
+      },{
+        "value":"adv",
+        "displayName":"adv",
+        "pos":["ADV"]
+      },{
+        "value":"adverbial_part_vrb",
+        "displayName":"adverbial_part_vrb",
+        "pos":["AA","VRB","ADP"]
+      },{
+        "value":"part",
+        "displayName":"part",
+        "pos":["ADV","AA","PD","NUM","VRB"]
+      },{
+        "value":"part_of_adp",
+        "displayName":"part_of_adp",
+        "pos":["ADP"]
+      },{
+        "value":"part_of_adverb",
+        "displayName":"part_of_adverb",
+        "pos":["ADV","CONJ"]
+      },{
+        "value":"part_of_conj",
+        "displayName":"part_of_conj",
+        "pos":["ADV","CONJ"]
+      },{
+        "value":"part_of_ne",
+        "displayName":"part_of_ne",
+        "pos":["NOU-P"]
+      },{
+        "value":"part_of_noun",
+        "displayName":"part_of_noun",
+        "pos":["ADV","AA","NOU-P","CONJ","NOU-C"]
+      },{
+        "value":"vrb",
+        "displayName":"vrb",
+        "pos":["ADV","VRB"]
       }]
     },
     "pos_person":{

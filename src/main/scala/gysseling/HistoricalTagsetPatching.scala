@@ -10,6 +10,21 @@ object HistoricalTagsetPatching {
 
   val advSubtypeMap = Map("demonstrative" -> "dem", "general" -> "gen", "indefinite" -> "indef", "interrogative" -> "inter", "negative" -> "neg", "relative" -> "rel")
 
+  val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
+
+  val gysParticleLemmata: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
+    .map(l => l.split("\\t"))
+    .map(l => {
+      val lem = l(4)
+      val deel = l(2)
+      val lemPatched = if (deel.contains("ww") || deel.contains("bw")) lem.replaceAll("\\|","") else lem.replaceAll("\\|","-")
+      l(1) -> lemPatched }  )
+    .toMap
+
+  def gysFixPartLemma(n: String):Option[String] =
+  {
+    gysParticleLemmata.get(n)
+  }
 
   def getFeature(tag: String, name: String) = {
     val r = s"$name=([^,()]*)".r
@@ -20,7 +35,8 @@ object HistoricalTagsetPatching {
   {
     // println(s"$m\t$p")
     val infl = getFeature(p,"infl").getOrElse("other")
-    val p1 = if (p.startsWith("NUM") && p.contains("indef")) {
+
+    val p1 = if (false && p.startsWith("NUM") && p.contains("indef")) {
       p.replaceAll("NUM", "PD").replaceAll("indefinite", "indef")
     }
 
@@ -43,11 +59,11 @@ object HistoricalTagsetPatching {
       }
     }
 
-    else if (p.startsWith("ADP")) {
+    else if (false && p.startsWith("ADP")) {
       p.replaceAll("type=gen(,?)","")
     }
 
-    else if (p.startsWith("ADJ")) {
+    else if (false && p.startsWith("ADJ")) {
       val base =  if (bw2aa) p.replaceAll("ADJ","AA").replaceAll("\\)",",position=pred|prenom|postnom)") else p
       base.replaceAll("number=","NA=") // Vervelend!!!
     }
@@ -55,7 +71,7 @@ object HistoricalTagsetPatching {
 
     else if (p.startsWith("VRB") && p.contains("=part")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
-      p.replaceAll("tense=unclear","tense=" + tense).replaceAll("number=","NA=")
+      p.replaceAll("finiteness=part","finiteness=" + tense + "part").replaceAll("number=","NA=")
     }
 
     else if (false && p.startsWith("CON")) {
@@ -73,8 +89,8 @@ object HistoricalTagsetPatching {
         p.replaceAll("type=art", "type=" + typ).replaceAll("subtype=[a-z]+", "subtype=art")
       } else p
     }
-
-    else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")  else p
+    // else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")
+    else p
 
     val p2 = p1.replaceAll("inflection=","infl=").replaceAll("=main","=mai")
       .replaceAll("=finite","=fin")
@@ -97,6 +113,30 @@ object HistoricalTagsetPatching {
     // println(s"$m\t$p\t$p2")
     p2
   }
+
+  def getTaggingFromMorfcodes(tagMapping: Map[String,String], morfcodes: List[String], morfcodes_original: List[String],
+                              w: String, lemmata: Seq[String], n: String, isPartOfSomethingGreater: Boolean) = {
+    val posFromMapping = morfcodes.zip(lemmata).map({case (m,l) =>
+      val m1 = if (l.toLowerCase.equals("beide") && m.equals("321")) "301" else m
+      tagMapping.getOrElse(m1, s"U$m1")})
+
+    val deelSoort = gysParticles.get(n)
+
+    val patchedPos = morfcodes.zip(morfcodes_original).zip(posFromMapping).zip(lemmata).map{
+      case (( (a,o),b),l) =>
+        val t = HistoricalTagsetPatching.patchPoSMistakes(a,b,w,l)
+        if (deelSoort.isEmpty || !o.contains("{"))
+        t else {
+           val soort =  deelSoort.get
+           t.replaceAll( "\\)", ",wordpart=part,partType=" + soort + ")" ).replaceAll("\\(,", "(")
+        }
+    }
+    patchedPos
+    // patchedPos.mkString("+")
+  }
+
+  // deprecate this one, it is a mess.....
+  // maar wel even kijken naar 285 en 655, wat daar ook alweer mee was in CRM
 
   def morfcode2tag(tagMapping: Map[String,String],
                    morfcode: String, isPart: Boolean, n: String, gysMode: Boolean,

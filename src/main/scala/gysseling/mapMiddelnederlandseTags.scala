@@ -51,7 +51,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
         }
       }))
   }
-
+/*
   val partTranslations = Map(
      "deel" -> "part",
      "vz-deel-bw" -> "adp",
@@ -62,6 +62,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
      "deel-i" -> "internal",
      "deel-f" -> "final"
   )
+*/
 
   val tagMappingOld: Map[String, String] = scala.io.Source.fromFile("data/getalletjes2cgn.txt").getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
@@ -76,21 +77,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   val tagMapping = if (cgnMode) tagMappingOld else tagMappingNew
 
-  val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
 
-  val gysParticleLemmata: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines
-    .map(l => l.split("\\t"))
-    .map(l => {
-      val lem = l(4)
-      val deel = l(2)
-      val lemPatched = if (deel.contains("ww") || deel.contains("bw")) lem.replaceAll("\\|","") else lem.replaceAll("\\|","-")
-      l(1) -> lemPatched }  )
-    .toMap
-
-  def gysFixPartLemma(n: String):Option[String] =
-  {
-    gysParticleLemmata.get(n)
-  }
 
 
   val morfcodeAttribuut = "@type"
@@ -122,41 +109,30 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
 
 
-
-
-
-
-
-  def getTaggingFromMorfcodes(morfcodes: List[String], pos: List[String], w: String, lemmata: Seq[String]) = {
-    val posFromMapping = morfcodes.zip(lemmata).map({case (m,l) =>
-      val m1 = if (l.toLowerCase.equals("beide") && m.equals("321")) "301" else m
-      tagMapping.getOrElse(m1, s"U$m1")})
-     val patchedPos = morfcodes.zip(posFromMapping).zip(lemmata).map{case ((a,b),l) =>
-       HistoricalTagsetPatching.patchPoSMistakes(a,b,w,l)}
-     patchedPos.mkString("+")
-  }
-
   def updateTag(e: Elem):Elem =
   {
     val wordform = e.text.trim
 
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
     val morfcodes_normalized = normType((e \ morfcodeAttribuut).text).split("\\+").toList
+    val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
 
     val lemmata = (e \ "@lemma").text.split("\\+").toList
 
-    // hier gaat het al fout
-    val newPoSAttribuut = {val f = (e \ "@function").text.replaceAll("auxiliary", "aux/cop");
-      val f1 = getTaggingFromMorfcodes(morfcodes_normalized, f.split("\\+").toList, wordform, lemmata)
-      if (f1.isEmpty) None else Some(Ѧ("pos", f1))}
-
     val n = (e \ "@n").text
+
+    val chnStylePoStags = HistoricalTagsetPatching.getTaggingFromMorfcodes(tagMapping, morfcodes_normalized, morfcodes, wordform, lemmata, n, isPartOfSomethingGreater)
+    // hier gaat het al fout
+
+    val newPoSAttribuut = {
+      if (chnStylePoStags.isEmpty) None else Some(Ѧ("pos", chnStylePoStags.mkString("+")))}
 
     val partPart:Option[Int] = morfcodes.zipWithIndex.find(_._1.contains("{")).map(_._2)
 
     // TODO aanvullen van de lemmata alleen bij scheidbare WW en ADV en directe opeenvolgingen?
+
     val completedLemmata = lemmata.zipWithIndex.map({case (l,i) =>
-      if (partPart.map(_ == i) == Some(true)) gysFixPartLemma(n).getOrElse(l) else l
+      if (partPart.map(_ == i) == Some(true)) HistoricalTagsetPatching.gysFixPartLemma(n).getOrElse(l) else l
     })
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
@@ -168,36 +144,21 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val hilexedLemmata: immutable.Seq[String] = if (!gysMode || noVMNW) completedLemmata
     else Hilex.adaptLemmataWithHilex(lemmata, completedLemmata, lemmaPatches)
 
-    val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
-
-    val cgnTags:List[String] = morfcodes.map(m => HistoricalTagsetPatching.morfcode2tag(tagMapping, m,
-      isPartOfSomethingGreater, n, gysMode, gysParticles))
-
-    lazy val cgnTagsAstags = cgnTags.map(t => CGNMiddleDutch.CGNMiddleDutchTagset.parser.parseTag(CGNMiddleDutch.CGNMiddleDutchTagset, t))
-
-    lazy val deeltjes = cgnTagsAstags.map(t => t.features.filter(_.name == "deel").map(_.value))
-
-    lazy val erZijnDeeltjes = deeltjes.exists(_.nonEmpty)
-
-    val lemmataPatched = if (cgnTags.size <= lemmata.size) lemmata else {
-      val d = cgnTags.size - lemmata.size
+    val lemmataPatched = if (chnStylePoStags.size <= lemmata.size) lemmata else {
+      val d = chnStylePoStags.size - lemmata.size
       val extra = (0 until d).map(x => "ZZZ")
       lemmata ++ extra
     }
 
-    val completedLemmataPatched = if (cgnTags.size <= completedLemmata.size) hilexedLemmata else { // pas op nu hilexedLemmata gebruik ipv completedLemmata
-      val d = cgnTags.size - hilexedLemmata.size
+    val completedLemmataPatched = if (chnStylePoStags.size <= completedLemmata.size) hilexedLemmata else { // pas op nu hilexedLemmata gebruik ipv completedLemmata
+      val d = chnStylePoStags.size - hilexedLemmata.size
       val extra = (0 until d).map(x => "ZZZ")
       hilexedLemmata ++ extra
     }
 
-    val cgnTag = cgnTags.mkString("+")
-
-    val newMSDAttribute = new UnprefixedAttribute(msdAttribuut, cgnTag, Null)
-
     val newatts0 = {
       val a0 =  e.attributes.filter(a => !weg.contains(a.key))
-      val a = if (addMSD) a0.append(newMSDAttribute) else a0
+      val a = a0 // if (addMSD) a0.append(newMSDAttribute) else a0
       if (getId(e).nonEmpty || n.isEmpty) a else a.append(newId)
     }
 
@@ -209,27 +170,12 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val withCompletedLemma = attributesWithUpdatedStermatStuff.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
-    // OK hier gaat het mis.....
 
-    val np = if (newPoSAttribuut.isDefined) newPoSAttribuut.get.value.text  else (e \ "@function").text
-    //println("np=" + np)
-    val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] =  np.split("\\+").toList.zipWithIndex.map(
-      {
-        case (t,i) =>
-          val p  = partTranslations.get(deeltjes(i).headOption.getOrElse("none")).getOrElse("none")
-          val z = if (deeltjes(i).nonEmpty) t.replaceAll("\\)", s",wordpart=$p)") else t
 
-          if (erZijnDeeltjes)
-            {
-              // System.err.println(cgnTags)
-              // System.err.println(z)
-              // System.err.println(e)
-              // System.exit(1)
-            }
-          z
-      }
-    ) map(s => s -> CHNStyleTags.parseTag(s))
-    //println("Tjoep:" + gysTagsCHNStylewithAnnotatedWordParts)
+    val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] = chnStylePoStags.map(s => s -> CHNStyleTags.parseTag(s))
+
+
+
     val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
 
     val msd = updatedGysPosAttribute.value.text
@@ -239,28 +185,21 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
     val attributesWithUpdatedGysTags = withCompletedLemma.filter(_.key != "pos").append(updatedGysPosAttribute)
     val gysTagFS: Seq[Elem] = gysTagsCHNStylewithAnnotatedWordParts.map(t => CHNStyleTags.gysTagset.asTEIFeatureStructure(t._2))
-    lazy val cgnTagFs: Seq[Elem] = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
+    //lazy val cgnTagFs: Seq[Elem] = cgnTags.map(s => CGNMiddleDutch.CGNMiddleDutchTagset.asTEIFeatureStructure(s))
 
-    if (deeltjes.exists(_.nonEmpty)) {
-      //System.err.println("DEELTJES " + deeltjes)
-      //System.err.println("DEELTJES.... " + gysTagsCHNStyle.map(_.toString))
-      //System.err.println(gysTagFS)
-    }
 
-    def makeFS(n: Seq[Elem]) = n
+
+    def addLemmaInfoToFeatureStructures(n: Seq[Elem]) = n
       .zipWithIndex
       .map({ case (fs,i) => fs.copy(
         child=fs.child ++ <f name="lemma"><string>{completedLemmataPatched(i)}</string></f> ++
           (if (lemmataPatched(i) != completedLemmataPatched(i)) <f name="deellemma"><string>{lemmataPatched(i).replaceAll("-","")}</string></f> else Seq()),
         attributes=fs.attributes.append(Ѧ("n", i.toString).append(multimainattribute) ))} )
 
-    val featureStructures: Seq[Elem] = (if (cgnMode) makeFS(cgnTagFs) else Seq())  ++ makeFS(gysTagFS)
+    val featureStructures: Seq[Elem] = /* (if (cgnMode) makeFS(cgnTagFs) else Seq())  ++ */ addLemmaInfoToFeatureStructures(gysTagFS)
 
     e.copy(attributes = attributesWithUpdatedGysTags, child = e.child ++ featureStructures ++ dictionaryLinks)
   }
-
-
-
 
   def show(w: Node) = s"(${w.text},${(w \ "@lemma").text},${(w \ "@msd").text}, ${sterretjeMatje(w)})"
 
@@ -286,7 +225,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val txt = (w \ "@type").text
 
       val nt = normType(txt)
-      Console.err.println(s"normType=$nt")
+      // Console.err.println(s"normType=$nt")
       val newType = replaceAtt(w.attributes, "type", nt)
       w.copy(attributes = newType)
   }
@@ -325,12 +264,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     }
 
 
-
-
   /* Deze haalt de expan weg!! */
-
-
-
 
   def tokenize(d: Elem):Elem = {
     val f1 = updateElement4(d, _.label == "w", w => GysselingTokenizer.tokenizeOne(GysselingTokenizer.brack2supplied(w)))
