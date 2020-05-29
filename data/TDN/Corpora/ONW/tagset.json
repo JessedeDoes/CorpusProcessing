@@ -3,7 +3,7 @@
     "AA":{
       "value":"AA",
       "displayName":"AA",
-      "subAnnotationIds":["pos_degree","pos_xtype","pos_NA","pos_declination","pos_position","pos_GA","pos_case"]
+      "subAnnotationIds":["pos_degree","pos_NA","pos_declination","pos_position","pos_GA","pos_case"]
     },
     "ADP":{
       "value":"ADP",
@@ -13,7 +13,7 @@
     "ADV":{
       "value":"ADV",
       "displayName":"ADV",
-      "subAnnotationIds":["pos_subtype","pos_position","pos_type"]
+      "subAnnotationIds":["pos_subtype","pos_type"]
     },
     "CONJ":{
       "value":"CONJ",
@@ -28,22 +28,22 @@
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"NOU-C",
-      "subAnnotationIds":["pos_number","pos_mood","pos_declination","pos_person","pos_position","pos_case","pos_gender"]
+      "subAnnotationIds":["pos_number","pos_mood","pos_declination","pos_person","pos_case","pos_gender"]
     },
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"NOU-P",
-      "subAnnotationIds":["pos_number","pos_xtype","pos_case"]
+      "subAnnotationIds":["pos_number","pos_case"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"NUM",
-      "subAnnotationIds":["pos_number","pos_declination","pos_position","pos_case","pos_type","pos_gender"]
+      "subAnnotationIds":["pos_NA","pos_declination","pos_position","pos_GA","pos_case","pos_type"]
     },
     "PD":{
       "value":"PD",
       "displayName":"PD",
-      "subAnnotationIds":["pos_number","pos_subtype","pos_xtype","pos_declination","pos_person","pos_position","pos_case","pos_type","pos_gender"]
+      "subAnnotationIds":["pos_number","pos_subtype","pos_NA","pos_declination","pos_person","pos_position","pos_GA","pos_case","pos_type","pos_gender"]
     },
     "RES":{
       "value":"RES",
@@ -53,7 +53,7 @@
     "VRB":{
       "value":"VRB",
       "displayName":"VRB",
-      "subAnnotationIds":["pos_mood","pos_NA","pos_conjugation","pos_gov","pos_PA","pos_position","pos_class","pos_finiteness","pos_case","pos_type","pos_tense","pos_val","pos_gender"]
+      "subAnnotationIds":["pos_mood","pos_NA","pos_conjugation","pos_PA","pos_position","pos_class","pos_finiteness","pos_case","pos_type","pos_tense","pos_val","pos_gender"]
     }
   },
   "subAnnotations":{
@@ -182,47 +182,23 @@
       "values":[{
         "value":"f",
         "displayName":"f",
-        "pos":["AA"]
+        "pos":["PD","AA","NUM"]
+      },{
+        "value":"f|m",
+        "displayName":"f|m",
+        "pos":["PD"]
       },{
         "value":"m",
         "displayName":"m",
-        "pos":["AA"]
+        "pos":["PD","AA","NUM"]
       },{
         "value":"m|n",
         "displayName":"m|n",
-        "pos":["AA"]
+        "pos":["PD","AA"]
       },{
         "value":"n",
         "displayName":"n",
-        "pos":["AA"]
-      }]
-    },
-    "pos_xtype":{
-      "id":"pos_xtype",
-      "values":[{
-        "value":"location",
-        "displayName":"location",
-        "pos":["NOU-P"]
-      },{
-        "value":"part_pres",
-        "displayName":"part_pres",
-        "pos":["AA"]
-      },{
-        "value":"past_part",
-        "displayName":"past_part",
-        "pos":["AA"]
-      },{
-        "value":"person",
-        "displayName":"person",
-        "pos":["NOU-P"]
-      },{
-        "value":"pres_part",
-        "displayName":"pres_part",
-        "pos":["AA"]
-      },{
-        "value":"znwpron",
-        "displayName":"znwpron",
-        "pos":["PD"]
+        "pos":["PD","AA","NUM"]
       }]
     },
     "pos_NA":{
@@ -230,39 +206,31 @@
       "values":[{
         "value":"pl",
         "displayName":"pl",
-        "pos":["VRB","AA"]
+        "pos":["PD","VRB","AA","NUM"]
       },{
         "value":"sg",
         "displayName":"sg",
-        "pos":["VRB","AA"]
+        "pos":["PD","VRB","AA","NUM"]
       },{
         "value":"unclear",
         "displayName":"unclear",
-        "pos":["VRB","AA"]
+        "pos":["PD","VRB","AA"]
       }]
     },
     "pos_position":{
       "id":"pos_position",
       "values":[{
-        "value":"nom",
-        "displayName":"nom",
-        "pos":["PD","VRB","NOU-C","NUM"]
+        "value":"free",
+        "displayName":"free",
+        "pos":["PD","VRB","NUM"]
       },{
         "value":"postnom",
         "displayName":"postnom",
         "pos":["PD","AA"]
       },{
-        "value":"postnom|prenom",
-        "displayName":"postnom|prenom",
-        "pos":["PD"]
-      },{
         "value":"pred",
         "displayName":"pred",
-        "pos":["PD","NOU-C","AA","ADV"]
-      },{
-        "value":"pred|prenom",
-        "displayName":"pred|prenom",
-        "pos":["PD"]
+        "pos":["PD","AA"]
       },{
         "value":"prenom",
         "displayName":"prenom",
@@ -454,15 +422,15 @@
       "values":[{
         "value":"pl",
         "displayName":"pl",
-        "pos":["PD","NOU-C","NUM"]
+        "pos":["PD","NOU-C"]
       },{
         "value":"sg",
         "displayName":"sg",
-        "pos":["PD","NOU-C","NOU-P","NUM","RES"]
+        "pos":["PD","NOU-C","NOU-P","RES"]
       },{
         "value":"unclear",
         "displayName":"unclear",
-        "pos":["PD","NOU-C"]
+        "pos":["NOU-C"]
       }]
     },
     "pos_declination":{
@@ -490,11 +458,11 @@
       },{
         "value":"dat",
         "displayName":"dat",
-        "pos":["VRB","ADP"]
+        "pos":["ADP"]
       },{
         "value":"gen",
         "displayName":"gen",
-        "pos":["VRB","ADP"]
+        "pos":["ADP"]
       }]
     },
     "pos_gender":{
@@ -502,11 +470,11 @@
       "values":[{
         "value":"f",
         "displayName":"f",
-        "pos":["PD","NOU-C","NUM"]
+        "pos":["PD","NOU-C"]
       },{
         "value":"f|m",
         "displayName":"f|m",
-        "pos":["PD","NOU-C"]
+        "pos":["NOU-C"]
       },{
         "value":"f|n",
         "displayName":"f|n",
@@ -514,15 +482,15 @@
       },{
         "value":"m",
         "displayName":"m",
-        "pos":["PD","VRB","NOU-C","NUM"]
+        "pos":["VRB","NOU-C"]
       },{
         "value":"m|n",
         "displayName":"m|n",
-        "pos":["PD","NOU-C"]
+        "pos":["NOU-C"]
       },{
         "value":"n",
         "displayName":"n",
-        "pos":["PD","NOU-C","NUM"]
+        "pos":["NOU-C"]
       }]
     },
     "pos_PA":{

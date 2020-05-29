@@ -53,12 +53,12 @@ case class TagDescription(posDescriptions: scala.collection.immutable.Map[String
                           featureDescriptions: scala.collection.immutable.Map[String, String] = Map.empty,
                           valueDescriptions: scala.collection.immutable.Map[(String, String), String] = Map.empty )
 {
-  def posDescription(p: String) = posDescriptions.getOrElse(p, "")
-  def featureDescription(p: String) = featureDescriptions.getOrElse(p, "")
-  def valueDescription(f: String, v: String) = valueDescriptions.getOrElse((f,v), "")
-  def getPosDescription(p: String) = posDescriptions.get(p)
-  def getFeatureDescription(p: String) = featureDescriptions.get(p)
-  def getValueDescription(f: String, v: String) = valueDescriptions.get((f,v))
+  def posDescription(p: String) = posDescriptions.getOrElse(p, p)
+  def featureDescription(p: String) = featureDescriptions.getOrElse(p, p)
+  def valueDescription(f: String, v: String) = valueDescriptions.getOrElse((f,v), v)
+  def getPosDescription(p: String) = posDescriptions.getOrElse(p, p)
+  def getFeatureDescription(p: String) = featureDescriptions.getOrElse(p, p)
+  def getValueDescription(f: String, v: String) = valueDescriptions.getOrElse((f,v), v)
 }
 
 object TagSet
@@ -206,6 +206,10 @@ case class TagSet(prefix: String,
 
   def blacklabName(n: String) = n.replaceAll("[-.]", "_")
 
+  def getDescription(p : String)  = displayNames.posDescription(p)
+  def getDisplayName(p: String) = displayNames.posDescription(p)
+  def getDisplayName(f: String, v: String)  = displayNames.valueDescription(f,v)
+
   def asJSON =
   {
 
@@ -222,9 +226,10 @@ case class TagSet(prefix: String,
     def pos2J(p: String) =
       p -> Map(
         "value" -> p,
-        "displayName" -> p,
+        "displayName" -> getDisplayName(p),
         "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + blacklabName(p)))
 
+   
     val values: (String, List[(String, Map[String, io.Serializable])]) = "values" -> posTags.sorted.map(pos2J) // how to get this sorted ....
 
     //println(values)
@@ -232,7 +237,7 @@ case class TagSet(prefix: String,
     pretty(render(json))
 
     val subannotations = partitions.filter(_._1 != "pos").map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
-      "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> v, "pos" -> this.posForFeature(f,v)))).toMap
+      "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> getDisplayName(f,v), "pos" -> this.posForFeature(f,v)))).toMap
     })
 
     val JSON =
