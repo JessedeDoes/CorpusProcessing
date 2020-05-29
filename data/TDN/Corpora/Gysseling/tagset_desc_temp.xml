@@ -6,8 +6,8 @@
         <pos displayName="Adverb" desc="Adverb">ADV</pos>
         <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
         <pos displayName="Interjection" desc="Interjection">INT</pos>
-        <pos displayName="Common" desc="Common noun">NOU-C</pos>
-        <pos displayName="Proper" desc="Proper noun">NOU-P</pos>
+        <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
+        <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
         <pos displayName="Numeral" desc="Numeral">NUM</pos>
         <pos displayName="Pronoun" desc="Pronoun/determiner">PD</pos>
         <pos displayName="Residual" desc="Residual">RES</pos>
@@ -52,7 +52,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="participle" desc="Participle">
+                <featureValue displayName="Participle" desc="Participle">
                     <value>part</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -359,22 +359,10 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Comparing" desc="Comparing conjunction (als, dan, gelijk-dat, alsof, ...)">
-                    <value>comp</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Demonstrative" desc="demonstrative pronominal adverb">
                     <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Explicative" desc="Explicative">
-                    <value>expl</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="General" desc="General (adverb)">
@@ -399,26 +387,12 @@
                     <value>neg</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Other" desc="Other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Qualitative" desc="Qualitative conjunction 'als' in the sense 'in the quality of'">
-                    <value>qual</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="relative" desc="relative pronominal adverb or conjunction">
+                <featureValue displayName="Relative" desc="relative pronominal adverb or conjunction">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Resumptive" desc="Resumptive">
@@ -431,7 +405,6 @@
                     <value>unclear</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -480,6 +453,12 @@
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Comparing" desc="Comparing conjunction (als, dan, gelijk-dat, alsof, ...)">
+                    <value>comp</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Coordinating" desc="Coordinating conjunction">
                     <value>coor</value>
                     <posForValue>
@@ -490,6 +469,12 @@
                     <value>dem</value>
                     <posForValue>
                         <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Explicative" desc="Explicative">
+                    <value>expl</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Indefinite" desc="Indefinite">
@@ -510,6 +495,12 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Negative" desc="Negative">
+                    <value>neg</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Ordinal" desc="Ordinal">
                     <value>ord</value>
                     <posForValue>
@@ -523,7 +514,7 @@
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="personal" desc="Personal">
+                <featureValue displayName="Personal" desc="Personal">
                     <value>pers</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -535,10 +526,22 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="pre|post|circ" desc="pre|post|circ">
+                    <value>pre|post|circ</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Pronominal" desc="Pronominal (adverb)">
                     <value>pron</value>
                     <posForValue>
                         <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Qualitative" desc="Qualitative conjunction 'als' in the sense 'in the quality of'">
+                    <value>qual</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Reflexive or reciprocal" desc="Reflexive or reciprocal">
@@ -556,6 +559,7 @@
                 <featureValue displayName="Relative" desc="Relative">
                     <value>rel</value>
                     <posForValue>
+                        <pos>CONJ</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -577,10 +581,10 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="wordpart" desc="wordpart">
             <name>wordpart</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="part" desc="part">
                     <value>part</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -630,7 +634,6 @@
             <features>
                 <feature>infl</feature>
                 <feature>pos</feature>
-                <feature>subtype</feature>
                 <feature>type</feature>
                 <feature>wordpart</feature>
             </features>

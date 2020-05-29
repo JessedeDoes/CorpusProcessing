@@ -18,7 +18,7 @@
     "CONJ":{
       "value":"CONJ",
       "displayName":"CONJ",
-      "subAnnotationIds":["pos_infl","pos_subtype","pos_type","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_type","pos_wordpart"]
     },
     "INT":{
       "value":"INT",
@@ -104,17 +104,9 @@
         "displayName":"art",
         "pos":["PD"]
       },{
-        "value":"comp",
-        "displayName":"comp",
-        "pos":["CONJ"]
-      },{
         "value":"dem",
         "displayName":"dem",
         "pos":["ADV"]
-      },{
-        "value":"expl",
-        "displayName":"expl",
-        "pos":["CONJ"]
       },{
         "value":"gen",
         "displayName":"gen",
@@ -130,19 +122,11 @@
       },{
         "value":"neg",
         "displayName":"neg",
-        "pos":["CONJ","ADV"]
-      },{
-        "value":"other",
-        "displayName":"other",
         "pos":["ADV"]
-      },{
-        "value":"qual",
-        "displayName":"qual",
-        "pos":["CONJ"]
       },{
         "value":"rel",
         "displayName":"rel",
-        "pos":["CONJ","ADV"]
+        "pos":["ADV"]
       },{
         "value":"resump",
         "displayName":"resump",
@@ -150,7 +134,7 @@
       },{
         "value":"unclear",
         "displayName":"unclear",
-        "pos":["CONJ","ADV"]
+        "pos":["ADV"]
       }]
     },
     "pos_type":{
@@ -168,6 +152,10 @@
         "displayName":"card",
         "pos":["NUM"]
       },{
+        "value":"comp",
+        "displayName":"comp",
+        "pos":["CONJ"]
+      },{
         "value":"coor",
         "displayName":"coor",
         "pos":["CONJ"]
@@ -175,6 +163,10 @@
         "value":"dem",
         "displayName":"dem",
         "pos":["PD"]
+      },{
+        "value":"expl",
+        "displayName":"expl",
+        "pos":["CONJ"]
       },{
         "value":"indef",
         "displayName":"indef",
@@ -187,6 +179,10 @@
         "value":"mai",
         "displayName":"mai",
         "pos":["VRB"]
+      },{
+        "value":"neg",
+        "displayName":"neg",
+        "pos":["CONJ"]
       },{
         "value":"ord",
         "displayName":"ord",
@@ -204,9 +200,17 @@
         "displayName":"poss",
         "pos":["PD"]
       },{
+        "value":"pre|post|circ",
+        "displayName":"pre|post|circ",
+        "pos":["ADP"]
+      },{
         "value":"pron",
         "displayName":"pron",
         "pos":["ADV"]
+      },{
+        "value":"qual",
+        "displayName":"qual",
+        "pos":["CONJ"]
       },{
         "value":"refl|recip",
         "displayName":"refl|recip",
@@ -218,7 +222,7 @@
       },{
         "value":"rel",
         "displayName":"rel",
-        "pos":["PD"]
+        "pos":["PD","CONJ"]
       },{
         "value":"sub",
         "displayName":"sub",

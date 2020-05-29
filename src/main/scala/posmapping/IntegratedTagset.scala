@@ -93,7 +93,7 @@ object IntegratedTagset {
 
    def main(args: Array[String]): Unit = {
       doONW
-      //doGysseling
+      doGysseling
    }
 
   def oldMain(args: Array[String]): Unit = {

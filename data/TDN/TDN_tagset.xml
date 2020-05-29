@@ -980,7 +980,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="relative" desc="relative pronominal adverb or conjunction">
+        <featureValue displayName="Relative" desc="relative pronominal adverb or conjunction">
           <value>rel</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1143,7 +1143,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="personal" desc="Personal">
+        <featureValue displayName="Personal" desc="Personal">
           <value>pers</value>
           <posForValue>
             <pos>PD</pos>
@@ -1171,6 +1171,24 @@
           <value>pron</value>
           <posForValue>
             <pos>ADV</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Qualitative" desc="Qualitative conjunction 'als' in the sense 'in the quality of'">
+          <value>qual</value>
+          <posForValue>
+            <pos>CONJ</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Explicative" desc="Explicative">
+          <value>expl</value>
+          <posForValue>
+            <pos>CONJ</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Negative" desc="Negative">
+          <value>neg</value>
+          <posForValue>
+            <pos>CONJ</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Reciprocal" desc="Reciprocal (elkaar)">

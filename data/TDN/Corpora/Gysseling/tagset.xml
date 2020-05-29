@@ -1,35 +1,35 @@
 <tagset>
     <prefix>pos</prefix>
     <mainPoS>
-        <pos displayName="" desc="">AA</pos>
-        <pos displayName="" desc="">ADP</pos>
-        <pos displayName="" desc="">ADV</pos>
-        <pos displayName="" desc="">CONJ</pos>
-        <pos displayName="" desc="">INT</pos>
-        <pos displayName="" desc="">NOU-C</pos>
-        <pos displayName="" desc="">NOU-P</pos>
-        <pos displayName="" desc="">NUM</pos>
-        <pos displayName="" desc="">PD</pos>
-        <pos displayName="" desc="">RES</pos>
-        <pos displayName="" desc="">VRB</pos>
+        <pos displayName="AA" desc="AA">AA</pos>
+        <pos displayName="ADP" desc="ADP">ADP</pos>
+        <pos displayName="ADV" desc="ADV">ADV</pos>
+        <pos displayName="CONJ" desc="CONJ">CONJ</pos>
+        <pos displayName="INT" desc="INT">INT</pos>
+        <pos displayName="NOU-C" desc="NOU-C">NOU-C</pos>
+        <pos displayName="NOU-P" desc="NOU-P">NOU-P</pos>
+        <pos displayName="NUM" desc="NUM">NUM</pos>
+        <pos displayName="PD" desc="PD">PD</pos>
+        <pos displayName="RES" desc="RES">RES</pos>
+        <pos displayName="VRB" desc="VRB">VRB</pos>
     </mainPoS>
     <partitions>
-        <feature displayName="" desc="">
+        <feature displayName="NA" desc="NA">
             <name>NA</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pl" desc="pl">
                     <value>pl</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -37,28 +37,28 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="finiteness" desc="finiteness">
             <name>finiteness</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="fin" desc="fin">
                     <value>fin</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="inf|ger" desc="inf|ger">
                     <value>inf|ger</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="part" desc="part">
                     <value>part</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -66,10 +66,10 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="infl" desc="infl">
             <name>infl</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="0" desc="0">
                     <value>0</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -85,7 +85,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="a" desc="a">
                     <value>a</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -97,7 +97,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="e" desc="e">
                     <value>e</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -113,7 +113,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="n" desc="n">
                     <value>n</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -129,7 +129,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="other" desc="other">
                     <value>other</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -145,7 +145,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="r|re" desc="r|re">
                     <value>r|re</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -159,7 +159,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="s|th" desc="s|th">
                     <value>s|th</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -174,7 +174,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="t" desc="t">
                     <value>t</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -188,7 +188,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -196,16 +196,16 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="mood" desc="mood">
             <name>mood</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="imp" desc="imp">
                     <value>imp</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="ind|conj" desc="ind|conj">
                     <value>ind|conj</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -213,24 +213,24 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="number" desc="number">
             <name>number</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pl" desc="pl">
                     <value>pl</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -239,28 +239,28 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="person" desc="person">
             <name>person</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="1" desc="1">
                     <value>1</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="2" desc="2">
                     <value>2</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="3" desc="3">
                     <value>3</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -268,7 +268,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="pos" desc="pos">
             <name>pos</name>
             <values>
                 <featureValue>
@@ -339,10 +339,10 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="position" desc="position">
             <name>position</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pred|prenom|postnom" desc="pred|prenom|postnom">
                     <value>pred|prenom|postnom</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -350,108 +350,81 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="subtype" desc="subtype">
             <name>subtype</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="art" desc="art">
                     <value>art</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
-                    <value>comp</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="dem" desc="dem">
                     <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
-                    <value>expl</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="gen" desc="gen">
                     <value>gen</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="indef" desc="indef">
                     <value>indef</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="inter" desc="inter">
                     <value>inter</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="neg" desc="neg">
                     <value>neg</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="" desc="">
-                    <value>qual</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="rel" desc="rel">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="resump" desc="resump">
                     <value>resump</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>ADV</pos>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="tense" desc="tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="past" desc="past">
                     <value>past</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pres" desc="pres">
                     <value>pres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -459,113 +432,144 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="type" desc="type">
             <name>type</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="aux|cop" desc="aux|cop">
                     <value>aux|cop</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="aux|cop|mai" desc="aux|cop|mai">
                     <value>aux|cop|mai</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="card" desc="card">
                     <value>card</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="comp" desc="comp">
+                    <value>comp</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="coor" desc="coor">
                     <value>coor</value>
                     <posForValue>
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="dem" desc="dem">
                     <value>dem</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="expl" desc="expl">
+                    <value>expl</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="indef" desc="indef">
                     <value>indef</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="inter" desc="inter">
                     <value>inter</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="mai" desc="mai">
                     <value>mai</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="neg" desc="neg">
+                    <value>neg</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="ord" desc="ord">
                     <value>ord</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="other" desc="other">
                     <value>other</value>
                     <posForValue>
                         <pos>ADP</pos>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pers" desc="pers">
                     <value>pers</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="poss" desc="poss">
                     <value>poss</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="pre|post|circ" desc="pre|post|circ">
+                    <value>pre|post|circ</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pron" desc="pron">
                     <value>pron</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="qual" desc="qual">
+                    <value>qual</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="refl|recip" desc="refl|recip">
                     <value>refl|recip</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="reg" desc="reg">
                     <value>reg</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="rel" desc="rel">
                     <value>rel</value>
                     <posForValue>
+                        <pos>CONJ</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="sub" desc="sub">
                     <value>sub</value>
                     <posForValue>
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>CONJ</pos>
@@ -577,10 +581,10 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="" desc="">
+        <feature displayName="wordpart" desc="wordpart">
             <name>wordpart</name>
             <values>
-                <featureValue displayName="" desc="">
+                <featureValue displayName="part" desc="part">
                     <value>part</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -630,7 +634,6 @@
             <features>
                 <feature>infl</feature>
                 <feature>pos</feature>
-                <feature>subtype</feature>
                 <feature>type</feature>
                 <feature>wordpart</feature>
             </features>

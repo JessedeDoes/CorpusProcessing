@@ -229,7 +229,7 @@ case class TagSet(prefix: String,
         "displayName" -> getDisplayName(p),
         "subAnnotationIds" -> pos2partitions(p).filter(_ != "pos").map(p => prefix + "_" + blacklabName(p)))
 
-   
+
     val values: (String, List[(String, Map[String, io.Serializable])]) = "values" -> posTags.sorted.map(pos2J) // how to get this sorted ....
 
     //println(values)
