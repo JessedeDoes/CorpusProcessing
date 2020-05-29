@@ -40,25 +40,6 @@ object HistoricalTagsetPatching {
       p.replaceAll("NUM", "PD").replaceAll("indefinite", "indef")
     }
 
-    else if (false && p.startsWith("NOU")) {
-      val posNew = if (p.contains("type=proper")) "NOU-P" else if (p.contains("type=common")) "NOU-C" else "NOU-U"
-       p.replaceAll("type=[a-z]+(,?)","").replaceAll("^[A-Z]+", posNew)
-    }
-
-    else if (false && p.startsWith("ADV")) { // dit doen we niet meer ....
-      val typ = if (p.contains("pron")) "pron" else "gen"
-      val st0 = getFeature(p,"type").getOrElse("other")
-      val subtype = advSubtypeMap.getOrElse(st0, st0)
-
-      if (st0 == "gen" && bw2aa) // dit is een nog twijfelachtige beslissing --- wanneer kan je dit doen?????
-        s"""AA(position=adverbial,inflection=$infl)""" ;// nee inflectie is weg zo...
-      else  {
-        if (!subtype.startsWith("gen"))
-          s"""ADV(type=$typ,subtype=$subtype,inflection=$infl)"""
-        else  s"""ADV(type=$typ,inflection=$infl)"""
-      }
-    }
-
     else if (false && p.startsWith("ADP")) {
       p.replaceAll("type=gen(,?)","")
     }
@@ -72,22 +53,6 @@ object HistoricalTagsetPatching {
     else if (p.startsWith("VRB") && p.contains("=part")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
       p.replaceAll("finiteness=part","finiteness=" + tense + "part").replaceAll("number=","NA=")
-    }
-
-    else if (false && p.startsWith("CON")) {
-      val typ = getFeature(p,"type").getOrElse("other")
-      val ntyp = if (p.contains("coord")) "coord" else if (p.contains("subo")) "sub" else "general"
-      val subtype = if (ntyp == "general") Some(typ) else None
-      if (subtype.isDefined) s"""CONJ(type=other,subtype=${subtype.get},inflection=$infl)""" else s"""CONJ(type=$ntyp,inflection=$infl)"""
-    }
-
-    else if (false && p.startsWith("PD")) {
-      val typ = getFeature(p,"type").getOrElse("other")
-      if (typ == "art")
-      {
-        val typ = if (p.contains("indef")) "indef" else "dem"
-        p.replaceAll("type=art", "type=" + typ).replaceAll("subtype=[a-z]+", "subtype=art")
-      } else p
     }
     // else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")
     else p
@@ -134,8 +99,10 @@ object HistoricalTagsetPatching {
     patchedPos
     // patchedPos.mkString("+")
   }
+}
 
-  // deprecate this one, it is a mess.....
+/*
+ // deprecate this one, it is a mess.....
   // maar wel even kijken naar 285 en 655, wat daar ook alweer mee was in CRM
 
   def morfcode2tag(tagMapping: Map[String,String],
@@ -176,5 +143,4 @@ object HistoricalTagsetPatching {
 
     posAdapted
   }
-
-}
+ */

@@ -114,7 +114,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val wordform = e.text.trim
 
     val morfcodes = (e \ morfcodeAttribuut).text.split("\\+").toList
-    val morfcodes_normalized = normType((e \ morfcodeAttribuut).text).split("\\+").toList
+    val morfcodes_normalized = normalizeMorfcodes((e \ morfcodeAttribuut).text).split("\\+").toList
     val isPartOfSomethingGreater = (e \ "@corresp").nonEmpty || morfcodes.exists(_.contains("{"))
 
     val lemmata = (e \ "@lemma").text.split("\\+").toList
@@ -171,9 +171,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     val withCompletedLemma = attributesWithUpdatedStermatStuff.filter(_.key != "lemma").append(Ѧ("lemma", completedLemmataPatched.mkString("+")))
 
 
-
     val gysTagsCHNStylewithAnnotatedWordParts: Seq[(String, Tag)] = chnStylePoStags.map(s => s -> CHNStyleTags.parseTag(s))
-
 
 
     val updatedGysPosAttribute = Ѧ("pos", gysTagsCHNStylewithAnnotatedWordParts.map(_._1).mkString("+"))
@@ -207,7 +205,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   def replaceAtt(m: MetaData, name: String, value: String) = m.filter(a => a.key != name).append(Ѧ(name, value))
 
-  def normType(txt: String) = {
+  def normalizeMorfcodes(txt: String) = {
     val hasType:Boolean = txt.matches(".*[0-9].*")
 
     val normTyp = if (!hasType) "999" else  txt
@@ -224,7 +222,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
   {
     val txt = (w \ "@type").text
 
-      val nt = normType(txt)
+      val nt = normalizeMorfcodes(txt)
       // Console.err.println(s"normType=$nt")
       val newType = replaceAtt(w.attributes, "type", nt)
       w.copy(attributes = newType)
