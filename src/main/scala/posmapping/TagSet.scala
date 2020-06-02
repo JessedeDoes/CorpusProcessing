@@ -215,6 +215,9 @@ case class TagSet(prefix: String,
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
+      <tags>
+        {listOfTags.toList.sortBy(_.toString).mkString("\n")}
+      </tags>
     </tagset>
 
   def elem(label: String, child: Seq[Node]) = Elem(null, label, Null, scala.xml.TopScope, child: _*)
