@@ -155,7 +155,7 @@ object testje
 
   def main(args:Array[String]) =
   {
-    Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.toXML)
+    Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.toXML())
     Console.err.println(CGNMiddleDutch.CGNMiddleDutchTagset.asPlainText)
 
     System.exit(0)

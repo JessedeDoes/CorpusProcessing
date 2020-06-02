@@ -39,7 +39,7 @@ object UDTags {
   ).toMap
   //
   def main(args: Array[String]): Unit = {
-    println(UDTagSet.toXML)
+    println(UDTagSet.toXML())
   }
 }
 

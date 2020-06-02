@@ -74,7 +74,7 @@ object distinctTagsFromGysseling
 
   def tagsetFromCorpusFiles(dirName: String, attribute: String,
                             separator: String = "[+|]", prefix: String = "/tmp/") =
-    IntegratedTagset.tagsetFromCorpusFiles(dirName, attribute,separator, prefix)
+    TagsetDiachroonNederlands.tagsetFromCorpusFiles(dirName, attribute,separator, prefix)
 }
 
 object distinctTagsFromCRM {
@@ -118,7 +118,7 @@ object compareGysselingToMolex
 
   def pretty(tagset: TagSet, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
     //val xmlWriter = new PrintWriter(System.out)
-    pw.println(TagSet.pretty.format(tagset.toXML))
+    pw.println(TagSet.pretty.format(tagset.toXML()))
     pw.close()
   }
 

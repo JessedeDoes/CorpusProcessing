@@ -10,12 +10,18 @@ object DataSettings {
    val gysDir = "../data-historische-corpora/gysseling/gysseling-processed-metadata/"
 }
 
-object IntegratedTagset {
+object TagsetDiachroonNederlands {
   val TDNTagset = TagSet.fromXML("data/TDN/TDN_tagset.xml")
+  val stylesheet = "/home/jesse/workspace/xml2rdf/src/main/scala/posmapping/tagset-documentation.xsl"
 
   case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
 
-  def addDescriptionsFromTDN(prefix: String, fileName: String = "tagset.xml", outputName: String = "tagset_desc"): Unit = {
+  def pretty(tagset: TagSet, corpusName: String, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
+    //val xmlWriter = new PrintWriter(System.out)
+    pw.println(TagSet.pretty.format(tagset.toXML(corpus=corpusName)))
+    pw.close()
+  }
+  def addDescriptionsFromTDN(prefix: String, fileName: String = "tagset.xml", outputName: String = "tagset_desc", corpusName: String): Unit = {
 
     val corpusBased = TagSet.fromXML(prefix + fileName)
 
@@ -27,7 +33,7 @@ object IntegratedTagset {
         TDNTagset.descriptions))
 
     val outputBase = prefix + outputName
-    compareGysselingToMolex.pretty(corpusBasedWithDesc,
+    pretty(corpusBasedWithDesc, corpusName,
       new PrintWriter(s"$outputBase.xml"))
 
     val jsonWriter = new PrintWriter(s"$outputBase.json")
@@ -37,10 +43,16 @@ object IntegratedTagset {
     val blfWriter = new PrintWriter(s"$outputBase.blf.yaml")
     blfWriter.println(corpusBasedWithDesc.forBlacklab)
     blfWriter.close()
+
+    val z = new File(stylesheet)
+    if (z.exists) {
+      val x = new utils.XSLT(stylesheet)
+      x.transform(s"$outputBase.xml", s"$outputBase.html")
+    }
     //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
   }
 
-  def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/",
+  def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String,
                             separator: String = "[+]") = { // let op BaB heeft | tussen tags, dat kan misgaan
     val dir = new File(dirName)
 
@@ -70,7 +82,7 @@ object IntegratedTagset {
     val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
 
     val xmlWriter = new PrintWriter(prefix + "tagset.xml")
-    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
+    pretty(tagset, corpus, xmlWriter)
     xmlWriter.close()
     val jsonWriter = new PrintWriter(prefix + "tagset.json")
     jsonWriter.println(tagset.asJSON)
@@ -80,15 +92,15 @@ object IntegratedTagset {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-    addDescriptionsFromTDN(prefix,"tagset.xml", "tagset_desc_temp")
+    addDescriptionsFromTDN(prefix,"tagset.xml", "tagset_desc_temp", corpus)
   }
 
    def doONW = {
-      tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/")
+      tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
    }
 
   def doGysseling = {
-     tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/")
+     tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
   }
 
    def main(args: Array[String]): Unit = {

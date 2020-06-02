@@ -1,6 +1,6 @@
 package gysseling
 
-import posmapping.IntegratedTagset
+import posmapping.TagsetDiachroonNederlands
 
 import scala.util.{Failure, Success, Try}
 
@@ -70,7 +70,7 @@ object HistoricalTagsetPatching {
       .replaceAll("recp","recip")
       .replaceAll("=negative","=neg")
 
-    val integratedTag = Try(IntegratedTagset.IntegratedTag(p2)) match {
+    val integratedTag = Try(TagsetDiachroonNederlands.IntegratedTag(p2)) match {
       case Success(t) =>
       case Failure(exception) => Console.err.println(s"exception for $p2: $exception")
     }

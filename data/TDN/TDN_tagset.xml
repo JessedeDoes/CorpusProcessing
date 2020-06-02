@@ -1504,4 +1504,10 @@
       </features>
     </constraint>
   </constraints>
+  <implications>
+	  <declaration>pos=AA=>degree</declaration>
+	  <declaration>pos=NOU-C=>number</declaration>
+	  <declaration>pos=VRB=>finiteness</declaration>
+	  <declaration>pos=VRB,finiteness=fin=>tense,mood</declaration>
+  </implications>
 </tagset>

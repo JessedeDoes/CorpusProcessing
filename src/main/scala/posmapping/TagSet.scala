@@ -105,12 +105,14 @@ object TagSet
       valuedescs
     }).toMap
 
-    val dp = TagDescription(posDisplayNames, featureDisplayNames, valueDisplayNames)
+    val descriptionsAndDisplayNames = TagDescription(posDisplayNames, featureDisplayNames, valueDisplayNames)
+
+    val implications = Implication.fromXML(d)
 
     // if (dp.posDescription("PD").nonEmpty) println(dp)
 
     TagSet(prefix, posTags, partitions, pos2partitions, defaultTagParser, List(), valueRestrictions,
-      TagDescription(posDescriptions, featureDescriptions, valueDescriptions), dp
+      TagDescription(posDescriptions, featureDescriptions, valueDescriptions), descriptionsAndDisplayNames, implications=implications
       ) // tag parser should also be specified in XML
   }
 
@@ -183,12 +185,16 @@ case class TagSet(prefix: String,
                   partitionConditions: List[PartitionCondition] = List.empty,
                   valueRestrictions: List[ValueRestriction] = List.empty,
                   descriptions: TagDescription = TagDescription(),
-                  displayNames: TagDescription = TagDescription(), listOfTags: Set[Tag] = Set.empty)
+                  displayNames: TagDescription = TagDescription(),
+                  listOfTags: Set[Tag] = Set.empty,
+                  implications: Seq[Implication] = Seq.empty)
 {
 
-  def toXML =
+  def toXML(server: String="http://svotmc10.ivdnt.loc/", corpus: String="gysseling_nt") =
     <tagset>
       <prefix>{prefix}</prefix>
+      <corpus>{corpus}</corpus>
+      <server>{server}</server>
       <mainPoS>
         {posTags.sorted.map(p => <pos displayName={displayNames.posDescription(p)} desc={descriptions.posDescription(p)}>{p}</pos>)}
       </mainPoS>
