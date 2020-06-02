@@ -4,9 +4,12 @@ import scala.util.{Try, Success, Failure}
 
 case class Implication(antecedent: Tag => Boolean, consequent: Tag => Boolean, description: String) {
   def apply(t: Tag) = !antecedent(t) || consequent(t)
+
+  override def toString: String = description
 }
 
 object Implication {
+
   implicit def valueFilter(m: Map[String, String]): Tag => Boolean = {
     t => {
       m.forall({case (n,v) =>  t.features.exists(f => f.name == n && f.value == v)})

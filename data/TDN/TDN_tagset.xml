@@ -1505,9 +1505,16 @@
     </constraint>
   </constraints>
   <implications>
-	  <declaration>pos=AA=>degree</declaration>
-	  <declaration>pos=NOU-C=>number</declaration>
-	  <declaration>pos=VRB=>finiteness</declaration>
-	  <declaration>pos=VRB,finiteness=fin=>tense,mood</declaration>
+	  <declaration>pos=AA => degree</declaration>
+	  <declaration>pos=ADV => type,subtype</declaration>
+	  <declaration>pos=CONJ => type</declaration>
+	  <declaration>pos=NOU-C => number</declaration>
+	  <declaration>pos=PD => type</declaration>
+	  <declaration>pos=PD,type=pers => person,number</declaration>
+	  <declaration>pos=PD,type=refl => person,number</declaration>
+	  <declaration>pos=PD,type=poss => person,number</declaration>
+	  <declaration>pos=RES => type</declaration>
+	  <declaration>pos=VRB => finiteness</declaration>
+	  <declaration>pos=VRB,finiteness=fin => tense,mood</declaration>
   </implications>
 </tagset>

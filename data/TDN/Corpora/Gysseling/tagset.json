@@ -3,22 +3,22 @@
     "AA":{
       "value":"AA",
       "displayName":"AA",
-      "subAnnotationIds":["pos_infl","pos_NA","pos_position","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_NA","pos_position"]
     },
     "ADP":{
       "value":"ADP",
       "displayName":"ADP",
-      "subAnnotationIds":["pos_infl","pos_type","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_type"]
     },
     "ADV":{
       "value":"ADV",
       "displayName":"ADV",
-      "subAnnotationIds":["pos_infl","pos_subtype","pos_type","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_subtype","pos_type"]
     },
     "CONJ":{
       "value":"CONJ",
       "displayName":"CONJ",
-      "subAnnotationIds":["pos_infl","pos_type","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_type"]
     },
     "INT":{
       "value":"INT",
@@ -28,22 +28,22 @@
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"NOU-C",
-      "subAnnotationIds":["pos_infl","pos_number","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_number"]
     },
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"NOU-P",
-      "subAnnotationIds":["pos_infl","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"NUM",
-      "subAnnotationIds":["pos_infl","pos_type","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_type"]
     },
     "PD":{
       "value":"PD",
       "displayName":"PD",
-      "subAnnotationIds":["pos_infl","pos_number","pos_subtype","pos_person","pos_type","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_number","pos_subtype","pos_person","pos_type"]
     },
     "RES":{
       "value":"RES",
@@ -53,7 +53,7 @@
     "VRB":{
       "value":"VRB",
       "displayName":"VRB",
-      "subAnnotationIds":["pos_infl","pos_mood","pos_finiteness","pos_type","pos_tense","pos_partType","pos_wordpart"]
+      "subAnnotationIds":["pos_infl","pos_mood","pos_finiteness","pos_type","pos_tense"]
     }
   },
   "subAnnotations":{
@@ -245,14 +245,6 @@
         "pos":["VRB"]
       }]
     },
-    "pos_wordpart":{
-      "id":"pos_wordpart",
-      "values":[{
-        "value":"part",
-        "displayName":"part",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
-      }]
-    },
     "pos_number":{
       "id":"pos_number",
       "values":[{
@@ -331,50 +323,6 @@
         "value":"unclear",
         "displayName":"unclear",
         "pos":["VRB"]
-      }]
-    },
-    "pos_partType":{
-      "id":"pos_partType",
-      "values":[{
-        "value":"adp",
-        "displayName":"adp",
-        "pos":["ADV"]
-      },{
-        "value":"adv",
-        "displayName":"adv",
-        "pos":["ADV"]
-      },{
-        "value":"adverbial_part_vrb",
-        "displayName":"adverbial_part_vrb",
-        "pos":["VRB","AA","ADP"]
-      },{
-        "value":"part",
-        "displayName":"part",
-        "pos":["PD","VRB","AA","NUM","ADV"]
-      },{
-        "value":"part_of_adp",
-        "displayName":"part_of_adp",
-        "pos":["ADP"]
-      },{
-        "value":"part_of_adverb",
-        "displayName":"part_of_adverb",
-        "pos":["CONJ","ADV"]
-      },{
-        "value":"part_of_conj",
-        "displayName":"part_of_conj",
-        "pos":["CONJ","ADV"]
-      },{
-        "value":"part_of_ne",
-        "displayName":"part_of_ne",
-        "pos":["NOU-P"]
-      },{
-        "value":"part_of_noun",
-        "displayName":"part_of_noun",
-        "pos":["CONJ","NOU-C","AA","NOU-P","ADV"]
-      },{
-        "value":"vrb",
-        "displayName":"vrb",
-        "pos":["VRB","ADV"]
       }]
     },
     "pos_person":{

@@ -40,6 +40,8 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
       case _ => Feature("kwip", f)
     }
   }
+
+  override def toString: String = s"$pos($features)"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 

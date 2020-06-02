@@ -21,16 +21,17 @@ object TagsetDiachroonNederlands {
     pw.println(TagSet.pretty.format(tagset.toXML(corpus=corpusName)))
     pw.close()
   }
-  def addDescriptionsFromTDN(prefix: String, fileName: String = "tagset.xml", outputName: String = "tagset_desc", corpusName: String): Unit = {
 
-    val corpusBased = TagSet.fromXML(prefix + fileName)
+  def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc", corpusName: String): Unit = {
+
+    // val corpusBased = TagSet.fromXML(prefix + fileName) // nee, niet goed
 
     TagSet.compare(TDNTagset, corpusBased)
 
     val corpusBasedWithDesc = corpusBased.copy(
       descriptions = TDNTagset.descriptions,
       displayNames = TagSet.mergeDescriptions(TDNTagset.displayNames,
-        TDNTagset.descriptions))
+        TDNTagset.descriptions), implications = TDNTagset.implications)
 
     val outputBase = prefix + outputName
     pretty(corpusBasedWithDesc, corpusName,
@@ -92,7 +93,7 @@ object TagsetDiachroonNederlands {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-    addDescriptionsFromTDN(prefix,"tagset.xml", "tagset_desc_temp", corpus)
+    addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
   }
 
    def doONW = {
@@ -107,8 +108,10 @@ object TagsetDiachroonNederlands {
       doONW
       doGysseling
    }
+}
 
-  def oldMain(args: Array[String]): Unit = {
+/*
+def oldMain(args: Array[String]): Unit = {
     val GysTags = scala.io.Source.fromFile("data/CG/overzichtje_met_morfcode.txt").getLines.map(l => l.split("\\s+")) // .map(l => l(2))
 
     val patchedTagset = new PrintWriter("/tmp/gystags.out")
@@ -124,5 +127,5 @@ object TagsetDiachroonNederlands {
 
     patchedTagset.close()
   }
-}
+ */
 

@@ -8,6 +8,8 @@ object HistoricalTagsetPatching {
 
   val bw2aa = false
 
+  val addPartTypes = false
+
   val advSubtypeMap = Map("demonstrative" -> "dem", "general" -> "gen", "indefinite" -> "indef", "interrogative" -> "inter", "negative" -> "neg", "relative" -> "rel")
 
   val gysParticles: Map[String, String] = io.Source.fromFile("data/Gys/separates.corr.txt").getLines.map(l => l.split("\\t")).map(l => l(1) -> l(2) ).toMap
@@ -90,7 +92,7 @@ object HistoricalTagsetPatching {
     val patchedPos = morfcodes.zip(morfcodes_original).zip(posFromMapping).zip(lemmata).map{
       case (( (a,o),b),l) =>
         val t = HistoricalTagsetPatching.patchPoSMistakes(a,b,w,l)
-        if (deelSoort.isEmpty || !o.contains("{"))
+        if (!addPartTypes || deelSoort.isEmpty || !o.contains("{"))
         t else {
            val soort =  deelSoort.get
            t.replaceAll( "\\)", ",wordpart=part,partType=" + soort + ")" ).replaceAll("\\(,", "(")

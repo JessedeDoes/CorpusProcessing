@@ -141,6 +141,7 @@ object TagSet
   def compare(t1: TagSet, t2: TagSet): Unit =
   {
     val pos_not_in_t1 = t2.posTags.diff(t1.posTags)
+
     val featureNames_t1 = t1.partitions.keySet
     val featureNames_not_in_t1 = t2.partitions.keySet.diff(t1.partitions.keySet)
     val featureValues_t1 = t1.partitions.toList.flatMap{x => x._2.map(y => (x._1, y))}
@@ -155,6 +156,14 @@ object TagSet
          |Feature names: $featureNames_not_in_t1
          |Feature values: $featureValues_not_in_t1
          |""".stripMargin)
+
+    t2.listOfTags.toList.sortBy(_.toString).foreach(t => {
+      val infringed = t1.implications.filter(i => !i(t))
+      if (infringed.nonEmpty)
+        {
+          Console.err.println(s"$t does not satisfy $infringed")
+        }
+    })
   }
 
   def simplify(v: String):String  = v // v.replaceAll(" .*", "")

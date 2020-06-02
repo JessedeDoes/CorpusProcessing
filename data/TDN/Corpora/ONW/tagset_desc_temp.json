@@ -3,7 +3,7 @@
     "AA":{
       "value":"AA",
       "displayName":"Adjective/adverb",
-      "subAnnotationIds":["pos_GA","pos_NA","pos_case","pos_declination","pos_degree","pos_position"]
+      "subAnnotationIds":["pos_degree","pos_NA","pos_declination","pos_position","pos_GA","pos_case"]
     },
     "ADP":{
       "value":"ADP",
@@ -28,32 +28,32 @@
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"Common noun",
-      "subAnnotationIds":["pos_case","pos_declination","pos_gender","pos_mood","pos_number","pos_person"]
+      "subAnnotationIds":["pos_number","pos_mood","pos_declination","pos_person","pos_case","pos_gender"]
     },
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"Proper noun",
-      "subAnnotationIds":["pos_case","pos_number"]
+      "subAnnotationIds":["pos_number","pos_case"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"Numeral",
-      "subAnnotationIds":["pos_GA","pos_NA","pos_case","pos_declination","pos_position","pos_type"]
+      "subAnnotationIds":["pos_NA","pos_declination","pos_position","pos_GA","pos_case","pos_type"]
     },
     "PD":{
       "value":"PD",
       "displayName":"Pronoun",
-      "subAnnotationIds":["pos_GA","pos_NA","pos_case","pos_declination","pos_gender","pos_number","pos_person","pos_position","pos_subtype","pos_type"]
+      "subAnnotationIds":["pos_number","pos_subtype","pos_NA","pos_declination","pos_person","pos_position","pos_GA","pos_case","pos_type","pos_gender"]
     },
     "RES":{
       "value":"RES",
       "displayName":"Residual",
-      "subAnnotationIds":["pos_case","pos_number","pos_type"]
+      "subAnnotationIds":["pos_number","pos_case","pos_type"]
     },
     "VRB":{
       "value":"VRB",
       "displayName":"Verb",
-      "subAnnotationIds":["pos_NA","pos_PA","pos_case","pos_class","pos_conjugation","pos_finiteness","pos_gender","pos_mood","pos_position","pos_tense","pos_type","pos_val"]
+      "subAnnotationIds":["pos_mood","pos_NA","pos_conjugation","pos_PA","pos_position","pos_class","pos_finiteness","pos_case","pos_type","pos_tense","pos_val","pos_gender"]
     }
   },
   "subAnnotations":{
@@ -62,7 +62,7 @@
       "values":[{
         "value":"acc",
         "displayName":"acc",
-        "pos":["VRB","NOU-C","AA","PD","NUM"]
+        "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
         "value":"acc|dat",
         "displayName":"acc|dat",
@@ -74,11 +74,11 @@
       },{
         "value":"acc|nom",
         "displayName":"acc|nom",
-        "pos":["NOU-C","PD"]
+        "pos":["PD","NOU-C"]
       },{
         "value":"dat",
         "displayName":"Dative",
-        "pos":["VRB","NOU-C","AA","PD","NUM","NOU-P"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
       },{
         "value":"dat|gen",
         "displayName":"dat|gen",
@@ -86,7 +86,7 @@
       },{
         "value":"gen",
         "displayName":"Genitive",
-        "pos":["VRB","NOU-C","AA","RES","PD","NUM"]
+        "pos":["PD","VRB","NOU-C","AA","NUM","RES"]
       },{
         "value":"gen|nom",
         "displayName":"gen|nom",
@@ -98,11 +98,11 @@
       },{
         "value":"nom",
         "displayName":"Nominative",
-        "pos":["VRB","NOU-C","AA","PD","NUM"]
+        "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
         "value":"voc",
         "displayName":"Vocative",
-        "pos":["NOU-C","AA","PD"]
+        "pos":["PD","NOU-C","AA"]
       }]
     },
     "pos_class":{
@@ -206,15 +206,15 @@
       "values":[{
         "value":"pl",
         "displayName":"Plural",
-        "pos":["AA","PD","NUM","VRB"]
+        "pos":["PD","VRB","AA","NUM"]
       },{
         "value":"sg",
         "displayName":"Singular",
-        "pos":["AA","PD","NUM","VRB"]
+        "pos":["PD","VRB","AA","NUM"]
       },{
         "value":"unclear",
         "displayName":"Unclear",
-        "pos":["AA","PD","VRB"]
+        "pos":["PD","VRB","AA"]
       }]
     },
     "pos_position":{
@@ -222,7 +222,7 @@
       "values":[{
         "value":"free",
         "displayName":"Free",
-        "pos":["VRB","PD","NUM"]
+        "pos":["PD","VRB","NUM"]
       },{
         "value":"postnom",
         "displayName":"Postnominal",
@@ -358,7 +358,7 @@
       },{
         "value":"ind",
         "displayName":"Indicative",
-        "pos":["NOU-C","VRB"]
+        "pos":["VRB","NOU-C"]
       }]
     },
     "pos_degree":{
@@ -426,7 +426,7 @@
       },{
         "value":"sg",
         "displayName":"Singular",
-        "pos":["PD","NOU-P","RES","NOU-C"]
+        "pos":["PD","NOU-C","NOU-P","RES"]
       },{
         "value":"unclear",
         "displayName":"Unclear",
@@ -442,7 +442,7 @@
       },{
         "value":"weak",
         "displayName":"Weak",
-        "pos":["PD","NUM","NOU-C","AA"]
+        "pos":["PD","NOU-C","AA","NUM"]
       }]
     },
     "pos_gov":{
