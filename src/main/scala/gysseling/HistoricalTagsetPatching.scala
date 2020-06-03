@@ -72,7 +72,7 @@ object HistoricalTagsetPatching {
       .replaceAll("recp","recip")
       .replaceAll("=negative","=neg")
 
-    val integratedTag = Try(TagsetDiachroonNederlands.IntegratedTag(p2)) match {
+    val integratedTag = Try(TagsetDiachroonNederlands.integratedTag(p2)) match {
       case Success(t) =>
       case Failure(exception) => Console.err.println(s"exception for $p2: $exception")
     }

@@ -31,7 +31,6 @@ abstract class Tag(tag: String, tagset: TagSet)
   def proposition:Proposition
 }
 
-
 trait TagParser
 {
   def parseTag(ts: TagSet, t: String): Tag
@@ -161,7 +160,8 @@ object TagSet
       val infringed = t1.implications.filter(i => !i(t))
       if (infringed.nonEmpty)
         {
-          Console.err.println(s"$t does not satisfy $infringed")
+          val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
+          Console.err.println(s"$t does not satisfy $infringed; maybe $fixed??")
         }
     })
   }
@@ -216,7 +216,7 @@ case class TagSet(prefix: String,
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
       <tags>
-        {listOfTags.toList.sortBy(_.toString).mkString("\n")}
+        {listOfTags.toList.sortBy(_.toString).map(t => <tag>{t}</tag>)}
       </tags>
     </tagset>
 

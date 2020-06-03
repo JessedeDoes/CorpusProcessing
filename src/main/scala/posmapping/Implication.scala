@@ -2,11 +2,13 @@ package posmapping
 import scala.xml._
 import scala.util.{Try, Success, Failure}
 
-case class Implication(antecedent: Tag => Boolean, consequent: Tag => Boolean, description: String) {
+case class Implication(antecedent: Tag => Boolean, consequent: Tag => Boolean, description: String, isDeclaration: Boolean=true,
+                       fix: Option[Tag => Tag]  = None) {
   def apply(t: Tag) = !antecedent(t) || consequent(t)
 
   override def toString: String = description
 }
+
 
 object Implication {
 
@@ -20,6 +22,23 @@ object Implication {
     t => {
       m.forall({case n =>  t.features.exists(f => f.name == n)})
     }
+  }
+
+  def addFeature(t: Tag, n: String, v: String) : Tag = {
+    t match {
+      case t1: CHNStyleTag =>
+        if (t1.features.exists(_.name == n)) t1 else {
+          val s = t1.toString
+          val add = if (s.contains("=")) s",$n=$v" else s"$n=$v"
+          val s1 = s.replaceAll("\\)", add + ")")
+          new CHNStyleTag(s1, t1.tagset)
+        }
+
+    }
+  }
+
+  def addFeatures(t: Tag, m: Map[String,String])  = {
+        m.toList.foldLeft(t)({case (t,(n,v)) => addFeature(t,n,v)})
   }
 
   val m = Map("pos" -> "NOU-C")
@@ -40,13 +59,26 @@ object Implication {
 
   def implicationFromText(s: String) = {
     Try ( { val x = s.trim.split("\\s*=>\\s*"); parseFeatures(x(0)) -> parseFeatures(x(1)) }) match {
-      case Success(f) => Implication(f._1, f._2, s"$f")
+      case Success(f) => Implication(f._1, f._2, s"$f", false)
     }
   }
 
   def declarationFromText(s: String) = {
-    Try ( { val x = s.trim.split("\\s*=>\\s*"); parseFeatures(x(0)) -> x(1).split("\\s*,\\s*").toSet }) match {
-      case Success(f) => Implication(f._1, f._2, s"$f")
+    Try ( {
+      val x = s.trim.split("\\s*(=>|\\|\\|)\\s*");
+      val antecedent = parseFeatures(x(0))
+      val consequent  = x(1).split("\\s*,\\s*").toSet
+      val fix: Option[Tag => Tag] = if (x.size <= 2) None else {
+        val addition = parseFeatures(x(2))
+        Some(t => addFeatures(t,addition))
+      }
+      val z = (antecedent, consequent, fix)
+      // Console.err.println(z)
+      // System.exit(1)
+      z
+
+    }) match {
+      case Success(f) => Implication(f._1, f._2, s"$f", fix=f._3)
     }
   }
 

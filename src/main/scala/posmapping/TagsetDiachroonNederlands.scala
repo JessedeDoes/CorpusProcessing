@@ -11,10 +11,11 @@ object DataSettings {
 }
 
 object TagsetDiachroonNederlands {
-  val TDNTagset = TagSet.fromXML("data/TDN/TDN_tagset.xml")
+  lazy val TDNTagset = TagSet.fromXML("data/TDN/TDN_tagset.xml")
   val stylesheet = "/home/jesse/workspace/xml2rdf/src/main/scala/posmapping/tagset-documentation.xsl"
 
-  case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
+  def integratedTag(tag: String) = CHNStyleTag(tag, TDNTagset)
+  //case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
 
   def pretty(tagset: TagSet, corpusName: String, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
     //val xmlWriter = new PrintWriter(System.out)

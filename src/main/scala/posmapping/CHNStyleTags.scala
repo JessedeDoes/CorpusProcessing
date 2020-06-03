@@ -7,7 +7,7 @@ import propositional.{And, Literal, Proposition}
 import scala.util.matching.Regex
 import scala.xml._
 
-class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
+case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
 {
   val Tag = new Regex("^([A-Z]+-?[A-Z]*)\\((.*?)\\)")
 
@@ -41,7 +41,7 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
     }
   }
 
-  override def toString: String = s"$pos($features)"
+  override def toString: String = s"$pos(${features.filter(_.name != "pos").map(f => s"${f.name}=${f.value}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
