@@ -4,9 +4,10 @@ import scala.xml._
 import java.io._
 import java.util.zip._
 
+import folia.TDNTest.CGNForTDNTest.convert
 import posmapping.CGNPoSTagging
 
-object FoliaToRudimentaryTEI
+case class FoliaToRudimentaryTEI(posMapping: String => String)
 {
   val xml = "@{http://www.w3.org/XML/1998/namespace}"
 
@@ -75,9 +76,9 @@ object FoliaToRudimentaryTEI
     val cls = (w \ "@class").toString
 
     val teiw = if (cls !="PUNCTUATION")
-          <w xml:id={id} type={CGNPoSTagging.simplePoS(pos)} lemma={lemma}>{content}</w>
+          <w xml:id={id} type={posMapping(pos)} lemma={lemma}>{content}</w>
        else
-          <pc xml:id={id} type={CGNPoSTagging.simplePoS(pos)}>{content}</pc>
+          <pc xml:id={id} type={posMapping(pos)}>{content}</pc>
     
     val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
  
@@ -88,5 +89,37 @@ object FoliaToRudimentaryTEI
   {
      val folia = XML.load(new GZIPInputStream(new FileInputStream(args(0))))
      println(convert(folia))
+  }
+}
+
+object NederlabToCobalt extends FoliaToRudimentaryTEI(p => CGNPoSTagging.simplePoS(p))
+
+object TDNTest {
+
+  val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/cgn.tsv"
+  val folia = "/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/PartOfCGN/"
+  val tei = "/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/TEI/"
+  lazy val mapping = io.Source.fromFile(mappingFile).getLines.map(l => {
+    val x = l.split("\\t")
+    x(1) -> x(2)
+  }).toMap
+
+  object CGNForTDNTest extends FoliaToRudimentaryTEI(p => {
+    val p1 = mapping.getOrElse(p,"UNK")
+    if (p1 == "UNK") scala.Console.err.println(p)
+    p1
+  }) {
+
+  }
+  def main(args: Array[String]): Unit = {
+    val foliaz = new File(folia).listFiles
+      .filter(_.getName.endsWith(".xml"))
+      .filter(!_.getName.contains("meta"))
+    foliaz.foreach(f => {
+      val d = XML.loadFile(f)
+      val d1= CGNForTDNTest.convert(d)
+      scala.Console.err.println(f.getName)
+      XML.save(s"$tei/${f.getName}", d1, "UTF-8")
+    })
   }
 }

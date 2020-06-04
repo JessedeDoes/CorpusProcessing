@@ -1505,16 +1505,31 @@
     </constraint>
   </constraints>
   <implications>
-	  <declaration>pos=AA => degree || degree=unclear</declaration>
-	  <declaration>pos=ADV => type,subtype</declaration>
+	  <declaration>pos=AA => degree,infl || degree=unclear, infl=unclear</declaration>
+	  <declaration corpus="ONW">pos=AA =>case,number,gender || case=unclear,gender=unclear,number=unclear</declaration>
+
+	  <declaration corpus="ONW,Gysseling">pos=ADV => type,subtype || type=unclear,subtype=unclear</declaration>
+
 	  <declaration>pos=CONJ => type || type=unclear</declaration>
+
 	  <declaration>pos=NOU-C => number || number=unclear</declaration>
+	  <declaration corpus="ONW,CGN">pos=NOU-C, number=sg => gender || gender=unclear</declaration>
+	  <declaration corpus="ONW">pos=NOU-C => case,number,gender || case=unclear,number=unclear,gender=unclear</declaration>
+
+
 	  <declaration>pos=PD => type || type=unclear</declaration>
+
 	  <declaration>pos=PD,type=pers => person,number || person=unclear, number=unclear</declaration>
+	  <declaration corpus="ONW,CGN">pos=PD,type=pers,person=3 => gender</declaration>
 	  <declaration>pos=PD,type=refl => person,number || person=unclear, number=unclear</declaration>
-	  <declaration>pos=PD,type=poss => person,number</declaration>
+
+	  <declaration corpus="ONW">pos=PD,type=poss => GA || GA=unclear</declaration>
+          <declaration corpus="ONW">pos=PD,type=poss,person=3 => gender || gender=unclear</declaration>
+
 	  <declaration>pos=RES => type || type=other</declaration>
-	  <declaration>pos=VRB => finiteness => finiteness=unclear</declaration>
+
+	  <declaration>pos=VRB => finiteness || finiteness=unclear</declaration>
+	  <declaration>pos=VRB,finiteness=fin,mood=imp => tense,mood || tense=pres</declaration>
 	  <declaration>pos=VRB,finiteness=fin => tense,mood || tense=unclear, mood=unclear</declaration>
   </implications>
 </tagset>
