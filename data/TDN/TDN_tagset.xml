@@ -1507,6 +1507,7 @@
   <implications>
 	  <declaration>pos=AA => degree,infl || degree=unclear, infl=unclear</declaration>
 	  <declaration corpus="ONW">pos=AA =>case,number,gender || case=unclear,gender=unclear,number=unclear</declaration>
+	  <declaration corpus="ONW,CGN,Gysseling">pos=AA => position || position=unclear</declaration>
 
 	  <declaration corpus="ONW,Gysseling">pos=ADV => type,subtype || type=unclear,subtype=unclear</declaration>
 
