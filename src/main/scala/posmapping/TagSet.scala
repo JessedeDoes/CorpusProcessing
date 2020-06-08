@@ -157,11 +157,10 @@ object TagSet
          |""".stripMargin)
 
     t2.listOfTags.toList.sortBy(_.toString).foreach(t => {
-      val infringed = t1.implications.filter(i => !i(t))
-      if (infringed.nonEmpty)
-        {
+      val infringed = t2.implications.filter(i => !i(t))
+      if (infringed.nonEmpty) {
           val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
-          Console.err.println(s"$t does not satisfy $infringed; maybe $fixed??")
+          Console.err.println(s"$t does not satisfy $infringed")
         }
     })
   }
@@ -215,6 +214,9 @@ case class TagSet(prefix: String,
       <constraints>
         {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
+      <implications>
+        {this.implications.map{i => <declaration corpus={i.corpus.toString}>{i.description}</declaration>}}
+      </implications>
       <tags>
         {listOfTags.toList.sortBy(_.toString).map(t => <tag>{t}</tag>)}
       </tags>

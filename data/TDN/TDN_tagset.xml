@@ -227,6 +227,13 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Unclear" desc="unclear">
+          <value>unclear</value>
+          <posForValue>
+            <pos>AA</pos>
+	    <pos>PD</pos>
+          </posForValue>
+        </featureValue>
       </values>
     </feature>
     <feature displayName="Number" desc="Number subject agreement (Verbs, adjectives, pronouns, numerals)">
@@ -361,6 +368,15 @@
             <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Unclear" desc="unclear">
+          <value>unclear</value>
+          <posForValue>
+            <pos>AA</pos>
+            <pos>PD</pos>
+	    <pos>NOU-C</pos>
+	    <pos>NOU-P</pos>
+          </posForValue>
+        </featureValue>
       </values>
     </feature>
     <feature displayName="Degree" desc="Degree of comparison">
@@ -380,6 +396,12 @@
         </featureValue>
         <featureValue displayName="Superlative" desc="Superlative">
           <value>sup</value>
+          <posForValue>
+            <pos>AA</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Unclear" desc="unclear">
+          <value>unclear</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
@@ -478,6 +500,13 @@
         </featureValue>
         <featureValue displayName="Neuter" desc="Neuter">
           <value>n</value>
+          <posForValue>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
+          </posForValue>
+        </featureValue>
+       <featureValue displayName="Unclear" desc="Unclear">
+          <value>unclear</value>
           <posForValue>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
@@ -667,6 +696,13 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Unclear" desc="Unclear">
+          <value>unclear</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+
       </values>
     </feature>
     <feature displayName="Number (inherent)" desc="Number">
@@ -1179,10 +1215,22 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Exclamative" desc="Explicative">
+          <value>excl</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Explicative" desc="Explicative">
           <value>expl</value>
           <posForValue>
             <pos>CONJ</pos>
+          </posForValue>
+        </featureValue>
+	<featureValue displayName="Meta" desc="Meta, de SPEC(meta) van het CGN">
+          <value>meta</value>
+          <posForValue>
+            <pos>RES</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Negative" desc="Negative">
@@ -1506,31 +1554,38 @@
   </constraints>
   <implications>
 	  <declaration>pos=AA => degree,infl || degree=unclear, infl=unclear</declaration>
+	  <declaration corpus="CGN">pos=AA =>case, position</declaration>
 	  <declaration corpus="ONW">pos=AA =>case,number,gender || case=unclear,gender=unclear,number=unclear</declaration>
 	  <declaration corpus="ONW,CGN,Gysseling">pos=AA => position || position=unclear</declaration>
+	  
 
 	  <declaration corpus="ONW,Gysseling">pos=ADV => type,subtype || type=unclear,subtype=unclear</declaration>
 
 	  <declaration>pos=CONJ => type || type=unclear</declaration>
 
 	  <declaration>pos=NOU-C => number || number=unclear</declaration>
-	  <declaration corpus="ONW,CGN">pos=NOU-C, number=sg => gender || gender=unclear</declaration>
+	  <declaration corpus="ONW,CGN">pos=NOU-C, number=sg => gender,case || gender=unclear,case=unclear</declaration>
 	  <declaration corpus="ONW">pos=NOU-C => case,number,gender || case=unclear,number=unclear,gender=unclear</declaration>
 
+	  <declaration>pos=NUM => type</declaration>
+	  <declaration corpus="CGN">pos=NUM => type,position</declaration>
+          <declaration corpus="CGN">pos=NUM, position=prenom => case</declaration>
 
 	  <declaration>pos=PD => type || type=unclear</declaration>
+          <declaration corpus="CGN">pos=PD => type,position,case</declaration>
+          <declaration corpus="CGN">pos=PD,position=free => number</declaration>
 
 	  <declaration>pos=PD,type=pers => person,number || person=unclear, number=unclear</declaration>
-	  <declaration corpus="ONW,CGN">pos=PD,type=pers,person=3 => gender</declaration>
+	  <declaration corpus="ONW,CGN">pos=PD,person=3 => gender</declaration>
 	  <declaration>pos=PD,type=refl => person,number || person=unclear, number=unclear</declaration>
 
 	  <declaration corpus="ONW">pos=PD,type=poss => GA || GA=unclear</declaration>
-          <declaration corpus="ONW">pos=PD,type=poss,person=3 => gender || gender=unclear</declaration>
+          <declaration corpus="ONW,CGN">pos=PD,type=poss,person=3 => gender || gender=unclear</declaration>
 
 	  <declaration>pos=RES => type || type=other</declaration>
 
 	  <declaration>pos=VRB => finiteness || finiteness=unclear</declaration>
 	  <declaration>pos=VRB,finiteness=fin,mood=imp => tense,mood || tense=pres</declaration>
-	  <declaration>pos=VRB,finiteness=fin => tense,mood || tense=unclear, mood=unclear</declaration>
+	  <declaration>pos=VRB,finiteness=fin => tense,mood,infl || tense=unclear, mood=unclear, infl=0ZZ</declaration>
   </implications>
 </tagset>

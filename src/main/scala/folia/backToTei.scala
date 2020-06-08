@@ -118,6 +118,7 @@ object BlacklabMeta {
     pid -> bibl
   }).toMap
 }
+
 object TDNTest {
 
   val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/cgn.tsv"
@@ -176,23 +177,29 @@ object TDNTest {
       val newPoS = posMapping(pos)
       val t =  posmapping.CHNStyleTag(newPoS, posmapping.TagsetDiachroonNederlands.TDNTagset)
       val shredded = t.tagset.asTEIFeatureStructure(t)
-      val teiw = if (cls !="PUNCTUATION")
-        <w xml:id={id} msd={pos} os={newPoS} lemma={lemma}><seg>{content}</seg>{shredded}</w>
+
+
+      val teiw = if (cls =="PUNCTUATION" || pos.startsWith("LET"))
+        Seq(<pc xml:id={id} msd={pos} type={newPoS}><seg>{content}</seg>{shredded}</pc>)
       else
-        <pc xml:id={id} msd={pos} type={newPoS}><seg>{content}</seg>{shredded}</pc>
+        <w xml:id={id} msd={pos} pos={newPoS} lemma={lemma}><seg>{content}</seg>{shredded}</w><c> </c>
+
 
       val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
 
-      Seq(teiw) ++ space
+      teiw ++ space
     }
-
   }
+
   def main(args: Array[String]): Unit = {
+    val N = 1000 // Integer.MAX_VALUE
+    val oldResult = new File(tei).listFiles()
+    oldResult.foreach(_.delete())
     val foliaz = new File(folia).listFiles
       .filter(_.getName.endsWith(".xml"))
       .filter(!_.getName.contains("meta")).toList
     val shuffled = scala.util.Random.shuffle(foliaz)
-    shuffled.take(100).foreach(f => {
+    shuffled.take(N).foreach(f => {
       val d = XML.loadFile(f)
       val d1= CGNForTDNTest.convert(d)
       scala.Console.err.println(f.getName)

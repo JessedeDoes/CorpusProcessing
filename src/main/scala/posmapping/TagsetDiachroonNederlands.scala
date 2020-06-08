@@ -23,16 +23,21 @@ object TagsetDiachroonNederlands {
     pw.close()
   }
 
-  def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc", corpusName: String): Unit = {
+  def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
+                             corpusName: String): Unit = {
 
     // val corpusBased = TagSet.fromXML(prefix + fileName) // nee, niet goed
 
-    TagSet.compare(TDNTagset, corpusBased)
+
 
     val corpusBasedWithDesc = corpusBased.copy(
       descriptions = TDNTagset.descriptions,
       displayNames = TagSet.mergeDescriptions(TDNTagset.displayNames,
-        TDNTagset.descriptions), implications = TDNTagset.implications)
+        TDNTagset.descriptions),
+      implications = TDNTagset.implications.filter(x =>
+        x.corpus.isEmpty || x.corpus.get.contains(corpusName)))
+
+    TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
     val outputBase = prefix + outputName
     pretty(corpusBasedWithDesc, corpusName,
@@ -77,6 +82,10 @@ object TagsetDiachroonNederlands {
       }
     )
 
+    tagsetFromSetOfTags(prefix, corpus, allDistinctTags)
+  }
+
+  private def tagsetFromSetOfTags(prefix: String, corpus: String, allDistinctTags: Set[String]) = {
     val listWriter = new PrintWriter(prefix + "tagList.txt")
     allDistinctTags.toList.sorted.foreach(t => listWriter.println(t))
     listWriter.close()
@@ -97,7 +106,7 @@ object TagsetDiachroonNederlands {
     addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
   }
 
-   def doONW = {
+  def doONW = {
       tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
    }
 
@@ -105,9 +114,16 @@ object TagsetDiachroonNederlands {
      tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
   }
 
+  def doCGN = {
+    //folia.TDNTest.main(Array())
+    tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", folia.TDNTest.mapping.values.toSet)
+    // tagsetFromCorpusFiles("/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/TEI", "pos", "data/TDN/Corpora/CGN/", "CGN")
+  }
+
    def main(args: Array[String]): Unit = {
-      doONW
-      doGysseling
+     doCGN
+      //doONW
+      //doGysseling
    }
 }
 
