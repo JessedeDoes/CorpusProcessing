@@ -243,7 +243,6 @@
                     <value>m|n</value>
                     <posForValue>
                         <pos>NOU-C</pos>
-                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Neuter" desc="Neuter">
@@ -959,6 +958,7 @@
         <declaration corpus="None">pos=PD =&gt; type || type=unclear</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD =&gt; type,position,case</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD,position=free =&gt; number</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=PD,position=prenom =&gt; NA,GA</declaration>
         <declaration corpus="None">pos=PD,type=pers =&gt; person,number || person=unclear, number=unclear</declaration>
         <declaration corpus="Some(Set(ONW, CGN))">pos=PD,person=3 =&gt; gender</declaration>
         <declaration corpus="None">pos=PD,type=refl =&gt; person,number || person=unclear, number=unclear</declaration>
@@ -1123,19 +1123,19 @@
         <tag>PD(type=pers|refl,case=dat|acc,person=1,number=pl,position=free)</tag>
         <tag>PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)</tag>
         <tag>PD(type=pers|refl,case=dat|acc,person=2,number=unclear,position=free)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=m|f,number=pl,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=m|f,number=pl,position=prenom,infl=r|re,number=sg,gender=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=m|f,number=sg,position=prenom,infl=n,number=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=m|f,number=sg,position=prenom,infl=r|re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=n,GA=m|n,NA=sg)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r|re,GA=f,NA=sg)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
         <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
         <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
         <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=0,number=sg,GA=m|n,NA=sg)</tag>
@@ -1145,10 +1145,10 @@
         <tag>PD(type=poss,case=gen,person=2,number=unclear,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
         <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
         <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r|re,gender=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s|th,number=pl,NA=sg,gender=m|n)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear,gender=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=sg,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r|re,gender=unclear,GA=unclear,NA=unclear)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s|th,number=pl,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear,gender=unclear)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=s|th,number=sg,NA=sg,GA=m|n)</tag>
         <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=0,number=sg,GA=n,NA=unclear)</tag>
         <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=e,GA=unclear,NA=unclear)</tag>
         <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=unclear,NA=unclear,infl=0)</tag>

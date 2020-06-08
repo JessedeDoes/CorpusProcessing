@@ -192,7 +192,7 @@ object TDNTest {
   }
 
   def main(args: Array[String]): Unit = {
-    val N = 1000 // Integer.MAX_VALUE
+    val N = Integer.MAX_VALUE
     val oldResult = new File(tei).listFiles()
     oldResult.foreach(_.delete())
     val foliaz = new File(folia).listFiles

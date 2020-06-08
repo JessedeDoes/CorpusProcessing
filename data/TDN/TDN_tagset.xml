@@ -1574,6 +1574,7 @@
 	  <declaration>pos=PD => type || type=unclear</declaration>
           <declaration corpus="CGN">pos=PD => type,position,case</declaration>
           <declaration corpus="CGN">pos=PD,position=free => number</declaration>
+          <declaration corpus="CGN">pos=PD,position=prenom => NA,GA</declaration>
 
 	  <declaration>pos=PD,type=pers => person,number || person=unclear, number=unclear</declaration>
 	  <declaration corpus="ONW,CGN">pos=PD,person=3 => gender</declaration>
