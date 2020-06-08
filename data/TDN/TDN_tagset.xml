@@ -1505,13 +1505,18 @@
     </constraint>
   </constraints>
   <implications>
-	  <declaration>pos=AA => degree || degree=unclear</declaration>
+
+	  <declaration corpora="ONW,CGN">pos=AA => degree || degree=unclear</declaration>
 	  <declaration>pos=ADV => type,subtype</declaration>
 	  <declaration>pos=CONJ => type || type=unclear</declaration>
 	  <declaration>pos=NOU-C => number || number=unclear</declaration>
 	  <declaration>pos=PD => type || type=unclear</declaration>
-	  <declaration>pos=PD,type=pers => person,number || person=unclear, number=unclear</declaration>
+
+	  <declaration>pos=PD,type=pers => person, number || person=unclear, number=unclear</declaration>
+	  <declaration>pos=PD,type=pers,person=3 => gender || gender=unclear</declaration>
+
 	  <declaration>pos=PD,type=refl => person,number || person=unclear, number=unclear</declaration>
+
 	  <declaration>pos=PD,type=poss => person,number</declaration>
 	  <declaration>pos=RES => type || type=other</declaration>
 	  <declaration>pos=VRB => finiteness => finiteness=unclear</declaration>
