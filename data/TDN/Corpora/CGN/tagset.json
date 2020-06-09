@@ -8,7 +8,7 @@
     "ADP":{
       "value":"ADP",
       "displayName":"ADP",
-      "subAnnotationIds":["pos_number","pos_subtype","pos_case","pos_type"]
+      "subAnnotationIds":["pos_type"]
     },
     "ADV":{
       "value":"ADV",
@@ -79,11 +79,11 @@
       },{
         "value":"gen|dat",
         "displayName":"gen|dat",
-        "pos":["NOU-C","AA","NUM","ADP"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"nom|acc|dat|voc",
         "displayName":"nom|acc|dat|voc",
-        "pos":["NOU-C","AA"]
+        "pos":["PD","NOU-C","AA"]
       },{
         "value":"nom|acc|voc",
         "displayName":"nom|acc|voc",
@@ -97,8 +97,8 @@
         "displayName":"nom|voc",
         "pos":["PD"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       }]
     },
@@ -113,8 +113,8 @@
         "displayName":"pres",
         "pos":["VRB"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["VRB"]
       }]
     },
@@ -137,8 +137,8 @@
         "displayName":"n",
         "pos":["PD"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","NUM"]
       }]
     },
@@ -153,8 +153,8 @@
         "displayName":"sg",
         "pos":["PD"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD"]
       }]
     },
@@ -177,8 +177,8 @@
         "displayName":"prenom",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["AA","NUM"]
       }]
     },
@@ -199,14 +199,14 @@
       "values":[{
         "value":"art",
         "displayName":"art",
-        "pos":["PD","ADP"]
+        "pos":["PD"]
       },{
         "value":"rel|inter",
         "displayName":"rel|inter",
         "pos":["ADV"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["ADV"]
       }]
     },
@@ -217,10 +217,6 @@
         "displayName":"card",
         "pos":["NUM"]
       },{
-        "value":"comment",
-        "displayName":"comment",
-        "pos":["RES"]
-      },{
         "value":"coor",
         "displayName":"coor",
         "pos":["CONJ"]
@@ -229,12 +225,16 @@
         "displayName":"dem",
         "pos":["PD"]
       },{
+        "value":"dem|indef",
+        "displayName":"dem|indef",
+        "pos":["PD"]
+      },{
         "value":"excl",
         "displayName":"excl",
         "pos":["PD"]
       },{
-        "value":"foreign",
-        "displayName":"foreign",
+        "value":"for",
+        "displayName":"for",
         "pos":["RES"]
       },{
         "value":"indef",
@@ -277,10 +277,6 @@
         "displayName":"pre",
         "pos":["ADP"]
       },{
-        "value":"pre)+PD(type",
-        "displayName":"pre)+PD(type",
-        "pos":["ADP"]
-      },{
         "value":"pron",
         "displayName":"pron",
         "pos":["ADV"]
@@ -313,8 +309,8 @@
         "displayName":"symb",
         "pos":["RES"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["RES","ADV"]
       }]
     },
@@ -333,8 +329,8 @@
         "displayName":"ind|imp",
         "pos":["VRB"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["VRB"]
       }]
     },
@@ -353,8 +349,8 @@
         "displayName":"sup",
         "pos":["AA"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["AA"]
       }]
     },
@@ -367,14 +363,14 @@
       },{
         "value":"sg",
         "displayName":"sg",
-        "pos":["PD","VRB","NOU-C","NOU-P","ADP"]
+        "pos":["PD","VRB","NOU-C","NOU-P"]
       },{
         "value":"sg|pl",
         "displayName":"sg|pl",
         "pos":["PD"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","VRB","NOU-C","NOU-P"]
       }]
     },
@@ -389,56 +385,44 @@
         "displayName":"e",
         "pos":["PD","VRB","NOU-C","AA","NOU-P"]
       },{
-        "value":"en",
-        "displayName":"en",
-        "pos":["VRB"]
-      },{
-        "value":"e|en",
-        "displayName":"e|en",
+        "value":"e|n",
+        "displayName":"e|n",
         "pos":["NOU-C"]
       },{
         "value":"n",
         "displayName":"n",
-        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
       },{
-        "value":"n|r|re",
-        "displayName":"n|r|re",
+        "value":"n|r/re",
+        "displayName":"n|r/re",
         "pos":["AA"]
       },{
-        "value":"n|s",
-        "displayName":"n|s",
+        "value":"n|s/th",
+        "displayName":"n|s/th",
         "pos":["NOU-P"]
       },{
-        "value":"r",
-        "displayName":"r",
-        "pos":["PD"]
-      },{
-        "value":"r|re",
-        "displayName":"r|re",
+        "value":"r/re",
+        "displayName":"r/re",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"r|re|s|th",
-        "displayName":"r|re|s|th",
+        "value":"r/re|s/th",
+        "displayName":"r/re|s/th",
         "pos":["PD"]
       },{
-        "value":"s",
-        "displayName":"s",
+        "value":"s/th",
+        "displayName":"s/th",
         "pos":["PD","NOU-C","NOU-P","NUM"]
       },{
-        "value":"s|n",
-        "displayName":"s|n",
+        "value":"s/th|n",
+        "displayName":"s/th|n",
         "pos":["NUM"]
-      },{
-        "value":"s|th",
-        "displayName":"s|th",
-        "pos":["PD","NOU-C"]
       },{
         "value":"t",
         "displayName":"t",
         "pos":["VRB","NOU-C"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","VRB","NOU-C","AA","NOU-P"]
       }]
     },
@@ -465,8 +449,8 @@
         "displayName":"n",
         "pos":["PD","NOU-C","NOU-P"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","NOU-C","NOU-P"]
       }]
     },
@@ -489,8 +473,8 @@
         "displayName":"prespart",
         "pos":["VRB"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["VRB"]
       }]
     },
@@ -509,8 +493,8 @@
         "displayName":"3",
         "pos":["PD"]
       },{
-        "value":"unclear",
-        "displayName":"unclear",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["PD","VRB"]
       }]
     }

@@ -228,7 +228,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
 	    <pos>PD</pos>
@@ -236,11 +236,11 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Number" desc="Number subject agreement (Verbs, adjectives, pronouns, numerals)">
+    <feature displayName="Number" desc="Number agreement (Verbs, adjectives, pronouns, numerals)">
       <name>NA</name>
       <values>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
@@ -265,7 +265,7 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Person" desc="Person subject agreement (Verbs)">
+    <feature displayName="Person" desc="Person (subject) agreement (Verbs)">
       <name>PA</name>
       <values>
         <featureValue displayName="First" desc="First person">
@@ -287,7 +287,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -369,7 +369,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
             <pos>PD</pos>
@@ -401,7 +401,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
@@ -448,7 +448,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
@@ -506,7 +506,7 @@
           </posForValue>
         </featureValue>
        <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
@@ -605,7 +605,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
             <pos>ADP</pos>
@@ -622,7 +622,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="-r/-re" desc="Inflection -r or -re">
-          <value>r|re</value>
+ 	  <value>r/re</value>
           <posForValue>
             <pos>AA</pos>
             <pos>ADP</pos>
@@ -637,7 +637,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="-s/-th" desc="Inflection -s or -th">
-          <value>s|th</value>
+	  <value>s/th</value>
           <posForValue>
             <pos>AA</pos>
             <pos>ADP</pos>
@@ -697,12 +697,11 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-
       </values>
     </feature>
     <feature displayName="Number (inherent)" desc="Number">
@@ -725,7 +724,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
@@ -756,7 +755,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
@@ -882,7 +881,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Other" desc="Other">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>NUM</pos>
           </posForValue>
@@ -1030,7 +1029,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>ADV</pos>
           </posForValue>
@@ -1053,7 +1052,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -1282,13 +1281,19 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
-          <value>unclear</value>
+          <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Foreign" desc="Foreign word">
-          <value>foreign</value>
+          <value>for</value>
+          <posForValue>
+            <pos>RES</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Symbol" desc="Symbol">
+          <value>symb</value>
           <posForValue>
             <pos>RES</pos>
           </posForValue>
@@ -1404,13 +1409,15 @@
           <posForValue>
             <pos>NUM</pos>
           </posForValue>
-        </featureValue>
+  </featureValue>
+  <!--
         <featureValue displayName="Symbol" desc="Symbol">
           <value>symb</value>
           <posForValue>
             <pos>RES</pos>
           </posForValue>
         </featureValue>
+-->
         <featureValue displayName="Truncated" desc="Truncated">
           <value>trunc</value>
           <posForValue>
@@ -1553,6 +1560,28 @@
     </constraint>
   </constraints>
   <implications>
+
+	  <declaration corpus="max">pos=AA => degree,position,case,NA,GA,infl,wf</declaration>
+	  <declaration corpus="max">pos=NOU-C => case,number,gender,infl,wf</declaration>
+	  <declaration corpus="max">pos=NOU-P => case,number,gender,infl,wf</declaration>
+	  <declaration corpus="max">pos=VRB => finiteness,infl,wf</declaration>
+          <declaration corpus="max">pos=VRB,finiteness=fin => mood,tense,number</declaration>
+	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=ind => person</declaration>
+	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=conj => person</declaration>
+          <declaration corpus="max">pos=PD => type,case,position,infl,wf</declaration> 
+          <declaration corpus="max">pos=PD,position=prenom|postnom => NA,GA</declaration>
+          <declaration corpus="max">pos=PD,position=free => number</declaration>
+          <declaration corpus="max">pos=PD,type=pers|refl => person</declaration>
+          <declaration corpus="max">pos=PD,type=poss => person</declaration>
+          <declaration corpus="max">pos=PD,person=3 => gender</declaration>
+
+          <declaration corpus="max">pos=CONJ => type,infl,wf</declaration>
+          <declaration corpus="max">pos=ADP => type,infl,wf</declaration>
+	  <declaration corpus="max">pos=ADV => type,subtype,infl,wf</declaration>
+	  <declaration corpus="max">pos=NUM => type,position,case,NA,GA,infl,wf</declaration>
+          <declaration corpus="max">pos=INT => infl,wf</declaration>
+	  <declaration corpus="max">pos=RES => type,infl,wf</declaration>
+
 	  <declaration>pos=AA => degree,infl || degree=unclear, infl=unclear</declaration>
 	  <declaration corpus="CGN">pos=AA =>case, position</declaration>
 	  <declaration corpus="ONW">pos=AA =>case,number,gender || case=unclear,gender=unclear,number=unclear</declaration>
@@ -1566,6 +1595,9 @@
 	  <declaration>pos=NOU-C => number || number=unclear</declaration>
 	  <declaration corpus="ONW,CGN">pos=NOU-C, number=sg => gender,case || gender=unclear,case=unclear</declaration>
 	  <declaration corpus="ONW">pos=NOU-C => case,number,gender || case=unclear,number=unclear,gender=unclear</declaration>
+
+          <declaration>pos=NOU-P => number || number=unclear</declaration>
+	  <declaration corpus="CGN">pos=NOU-P, number=sg => gender,case || gender=unclear,case=unclear</declaration>
 
 	  <declaration>pos=NUM => type</declaration>
 	  <declaration corpus="CGN">pos=NUM => type,position</declaration>

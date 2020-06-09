@@ -90,7 +90,7 @@ object TagsetDiachroonNederlands {
     allDistinctTags.toList.sorted.foreach(t => listWriter.println(t))
     listWriter.close()
 
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
+    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags.flatMap(t => t.split("\\s*\\+\\s*").toSet))
 
     val xmlWriter = new PrintWriter(prefix + "tagset.xml")
     pretty(tagset, corpus, xmlWriter)

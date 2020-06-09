@@ -1,0 +1,319 @@
+R201	ADJ(dial)	AA(degree=unclear,position=unclear,case=unclear,infl=unclear)	
+R901	BW(dial)	ADV(type=unclear,subtype=unclear)	
+R601	LID(bep,dial)	PD(type=dem,subtype=art,case=unclear,GA=unclear,NA=unclear,position=prenom)	
+R602	LID(onbep,dial)	PD(type=indef,subtype=art,GA=unclear,NA=unclear,position=prenom,case=unclear)	
+R101	N(eigen,dial)	NOU-P(gender=unclear,number=unclear,case=unclear,infl=unclear)	
+R102	N(soort,dial)	NOU-C(gender=unclear,number=unclear,case=unclear,infl=unclear)	
+R001	TSW(dial)	INT()	
+R401	TW(hoofd,dial)	NUM(type=card,position=unclear,case=unclear)	
+R402	TW(rang,dial)	NUM(type=ord,position=unclear,case=unclear)	
+R802	VG(onder,dial)	CONJ(type=sub)	
+R512	VNW(aanw,det,dial)	PD(type=dem,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)	
+R511	VNW(aanw,pron,dial)	PD(type=dem,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)	
+R508	VNW(betr,det,dial)	PD(type=rel,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)	
+R507	VNW(betr,pron,dial)	PD(type=rel,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)	
+R504	VNW(bez,det,dial)	PD(type=poss,position=prenom,case=unclear,gender=unclear,number=unclear,GA=unclear,NA=unclear,infl=unclear)	
+R514	VNW(onbep,det,dial)	PD(type=indef,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)	
+R513	VNW(onbep,pron,dial)	PD(type=indef,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)	
+R501	VNW(pers,pron,dial)	PD(type=pers,position=free,case=unclear,gender=unclear,number=unclear,person=unclear,infl=unclear)	
+R503	VNW(recip,pron,dial)	PD(type=recip,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)	
+R502	VNW(refl,pron,dial)	PD(type=refl,position=free,case=unclear,gender=unclear,number=unclear,person=unclear,infl=unclear)	
+R506	VNW(vrag,det,dial)	PD(type=inter,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)	
+R505	VNW(vrag,pron,dial)	PD(type=inter,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)	
+R702	VZ(fin,dial)	ADP(type=post)	
+R701	VZ(init,dial)	ADP(type=pre)	
+R301	WW(dial)	VRB(finiteness=unclear,tense=unclear,mood=unclear,person=unclear,number=unclear,infl=unclear)	
+T101	N(soort,ev,basis,zijd,stan)	NOU-C(number=sg,case=nom|dat|acc|voc,gender=m|f,infl=0)	 die stoel, deze muziek, de filter
+T102	N(soort,ev,basis,onz,stan)	NOU-C(number=sg,case=nom|dat|acc|voc,gender=n,infl=0)	 het kind, ons huis, het filter
+T103	N(soort,ev,dim,onz,stan)	NOU-C(number=sg,case=nom|dat|acc|voc,gender=n,infl=0)	 dit stoeltje, op ’t nippertje
+T104	N(soort,ev,basis,gen)	NOU-C(number=sg,case=gen,infl=s,gender=m|n)	 ’s avonds, de heer des huizes
+T105	N(soort,ev,dim,gen)	NOU-C(number=sg,case=gen,infl=s,gender=n)	 vadertjes pijp
+T106	N(soort,ev,basis,dat)	NOU-C(number=sg,case=dat,infl=e,gender=unclear)	 ter plaatse, heden ten dage
+T107	N(soort,mv,basis)	NOU-C(number=pl,infl=unclear)	 stoelen, kinderen, hersenen
+T108	N(soort,mv,dim)	NOU-C(number=pl,infl=s)	 stoeltjes, huisjes, hersentjes
+U117	N(soort,ev,basis,genus,stan)	NOU-C(number=sg,gender=unclear,case=nom|dat|acc|voc,infl=0)	 een riool, geen filter
+T109	N(eigen,ev,basis,zijd,stan)	NOU-P(number=sg,gender=m|f,case=nom|dat|acc|voc,infl=0)	 de Noordzee, de Kemmelberg
+T110	N(eigen,ev,basis,onz,stan)	NOU-P(number=sg,gender=n,case=nom|dat|acc|voc,infl=0)	 het Hageland, het Latijn
+T111	N(eigen,ev,dim,onz,stan)	NOU-P(number=sg,gender=n,case=nom|dat|acc|voc,infl=0)	 het slimme Kareltje
+T112	N(eigen,ev,basis,gen)	NOU-P(number=sg,case=gen,infl=n|s)	 des Heren, Hagelands trots
+T113	N(eigen,ev,dim,gen)	NOU-P(number=sg,case=gen,infl=s)	 Kareltjes fiets
+T114	N(eigen,ev,basis,dat)	NOU-P(number=sg,case=dat,infl=e)	 wat den Here toekomt
+T115	N(eigen,mv,basis)	NOU-P(number=pl,infl=n)	 de Ardennen, de Middeleeuwen, de Kempen
+T116	N(eigen,mv,dim)	NOU-P(number=pl,infl=s)	
+U118	N(eigen,ev,basis,genus,stan)	NOU-P(number=sg,gender=unclear,case=nom|dat|acc|voc,infl=0)	 Linux, Esselte
+T201	ADJ(prenom,basis,zonder)	AA(degree=pos,position=prenom,infl=0,case=nom|acc|dat|voc)	 een mooi huis, een houten pot
+T202	ADJ(prenom,basis,met-e,stan)	AA(degree=pos,position=prenom,infl=e,case=nom|acc|dat|voc)	 mooie huizen, een grote pot
+T203	ADJ(prenom,basis,met-e,bijz)	AA(degree=pos,position=prenom,infl=n|r|re,case=gen|dat)	 van goeden huize
+T204	ADJ(prenom,comp,zonder)	AA(degree=comp,position=prenom,infl=0,case=nom|acc|dat|voc)	 een mooier huis
+T205	ADJ(prenom,comp,met-e,stan)	AA(degree=comp,position=prenom,infl=e,case=nom|acc|dat|voc)	 mooiere huizen, een grotere pot
+T206	ADJ(prenom,comp,met-e,bijz)	AA(degree=comp,position=prenom,infl=n,case=gen|dat)	 van beteren huize
+T207	ADJ(prenom,sup,zonder)	AA(degree=sup,position=prenom,infl=0,case=nom|acc|dat|voc)	 een alleraardigst mens
+T208	ADJ(prenom,sup,met-e,stan)	AA(degree=sup,position=prenom,infl=e,case=nom|acc|dat|voc)	 de mooiste kaas, het grootste bed
+T209	ADJ(prenom,sup,met-e,bijz)	AA(degree=sup,position=prenom,infl=r|re,case=gen|dat)	 bester kwaliteit
+T210	ADJ(nom,basis,zonder,zonder-n)	NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)	 in het groot, het groen
+T211	ADJ(nom,basis,zonder,mv-n)	NOU-C(number=pl,infl=n)	 de timiden, dezelfden
+T212	ADJ(nom,basis,met-e,zonder-n,stan)	NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=unclear)	 het leuke is dat …
+T213	ADJ(nom,basis,met-e,zonder-n,bijz)	NOU-C(number=sg,infl=n,case=gen|dat,gender=unclear)	 hosanna in den hogen
+T214	ADJ(nom,basis,met-e,mv-n)	NOU-C(number=pl,infl=n)	 de rijken
+T215	ADJ(nom,comp,zonder,zonder-n)	NOU-C(number=sg,infl=0,gender=n,case=nom|acc|dat|voc)	
+T216	ADJ(nom,comp,met-e,zonder-n,stan)	NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=unclear)	 een betere
+T217	ADJ(nom,comp,met-e,zonder-n,bijz)	NOU-C(number=sg,infl=unclear,case=gen|dat,gender=unclear)	
+T218	ADJ(nom,comp,met-e,mv-n)	NOU-C(number=pl,infl=n)	 de ouderen
+T219	ADJ(nom,sup,zonder,zonder-n)	NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)	 op z’n best, om ter snelst
+T220	ADJ(nom,sup,met-e,zonder-n,stan)	NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=n)	 het leukste is dat
+T221	ADJ(nom,sup,met-e,zonder-n,bijz)	NOU-C(number=sg,infl=e|en,case=gen|dat,gender=unclear)	 des Allerhoogsten
+T222	ADJ(nom,sup,met-e,mv-n)	NOU-C(number=pl,infl=n)	 de slimsten
+T223	ADJ(postnom,basis,zonder)	AA(degree=pos,position=postnom,infl=0,case=nom|acc|dat|voc)	 rivieren bevaarbaar in de winter
+T224	ADJ(postnom,basis,met-s)	NOU-C(number=sg,infl=s|th,gender=n,case=gen)	 iets moois
+T225	ADJ(postnom,comp,zonder)	AA(degree=comp,position=postnom,infl=0,case=nom|acc|dat|voc)	 een getal groter dan drie
+T226	ADJ(postnom,comp,met-s)	NOU-C(number=sg,infl=s|th,gender=n,case=gen)	 iets gekkers kon ik niet bedenken
+T227	ADJ(vrij,basis,zonder)	AA(degree=pos,position=free,infl=0,case=nom|acc|dat|voc)	 die stok is lang, lang slapen
+T228	ADJ(vrij,comp,zonder)	AA(degree=comp,position=free,infl=0,case=nom|acc|dat|voc)	 deze stok is langer, langer slapen
+T229	ADJ(vrij,sup,zonder)	AA(degree=sup,position=free,infl=0,case=nom|acc|dat|voc)	 welke stok is het langst, het langst slapen
+T230	ADJ(vrij,dim,zonder)	AA(degree=pos,position=free,infl=0,case=nom|acc|dat|voc)	 het is hier stilletjes, stilletjes wegsluipen
+T301	WW(pv,tgw,ev)	VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=0)	 kom, speel
+T302	WW(pv,tgw,mv)	VRB(finiteness=fin,mood=ind,tense=pres,number=pl,infl=en)	 komen, spelen
+T303	WW(pv,tgw,met-t)	VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=t)	 komt, speelt
+T304	WW(pv,verl,ev)	VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=unclear)	 kwam, speelde
+T305	WW(pv,verl,mv)	VRB(finiteness=fin,mood=ind,tense=past,number=pl,infl=en)	 kwamen, speelden
+T306	WW(pv,verl,met-t)	VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=t)	 kwaamt, gingt
+T309	WW(pv,conj,ev)	VRB(finiteness=fin,mood=conj,tense=pres,number=sg,infl=e)	 kome, leve de koning
+T310	WW(inf,prenom,zonder)	VRB(finiteness=inf,infl=0)	 de nog te lezen post
+T311	WW(inf,prenom,met-e)	VRB(finiteness=inf,infl=e)	 een niet te weerstane verleiding
+T312	WW(inf,nom,zonder,zonder-n)	NOU-C(number=sg,infl=0,gender=n,case=nom|acc|dat|voc)	 schaatsen
+T314	WW(inf,vrij,zonder)	VRB(finiteness=inf,infl=0)	 zal komen
+T315	WW(vd,prenom,zonder)	AA(degree=pos,position=prenom,infl=0,case=nom|acc|dat|voc)	 een verwittigd man, een gekregen paard
+T316	WW(vd,prenom,met-e)	AA(degree=pos,position=prenom,infl=e,case=nom|acc|dat|voc)	 een getemde feeks
+T317	WW(vd,nom,met-e,zonder-n)	NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)	 het geschrevene, een gekwetste
+T318	WW(vd,nom,met-e,mv-n)	NOU-C(number=pl,infl=n)	 gekwetsten, gedupeerden
+T320	WW(vd,vrij,zonder)	VRB(finiteness=pastpart,infl=0)	 is gekomen, een boom versierd met slingers
+T321	WW(od,prenom,zonder)	AA(degree=pos,position=prenom,infl=0,case=nom|acc|dat|voc)	 een slapend kind
+T322	WW(od,prenom,met-e)	AA(degree=pos,position=prenom,infl=e,case=nom|acc|dat|voc)	 een piano spelende aap, slapende kinderen
+T323	WW(od,nom,met-e,zonder-n)	NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)	 het resterende, een klagende
+T324	WW(od,nom,met-e,mv-n)	NOU-C(number=pl,infl=n)	 de wachtenden
+T326	WW(od,vrij,zonder)	VRB(finiteness=prespart,infl=0)	 liep lachend weg, al doende leert men
+T401	TW(hoofd,prenom,stan)	NUM(type=card,position=prenom,case=nom|dat|acc|voc,infl=0)	 vier cijfers
+T402	TW(hoofd,prenom,bijz)	NUM(type=card,position=prenom,case=gen|dat,infl=s|n)	 eens geestes zijn, ten enen male
+T403	TW(hoofd,nom,zonder-n,basis)	NUM(type=card,position=free,infl=0)	 er is er een ontsnapt
+T404	TW(hoofd,nom,mv-n,basis)	NUM(type=card,position=free,infl=n)	 met z’n vieren
+T405	TW(hoofd,nom,zonder-n,dim)	NUM(type=card,position=free,infl=0)	 er is er eentje ontsnapt
+T406	TW(hoofd,nom,mv-n,dim)	NUM(type=card,position=free,infl=s)	 met z’n tweetjes
+T407	TW(hoofd,vrij)	NUM(type=card,position=free|prenom|postnom)	 veertig worden, zoveel sneller, zes juli
+T408	TW(rang,prenom,stan)	NUM(type=ord,position=prenom,case=nom|acc|voc,infl=0)	 de vierde man
+T409	TW(rang,prenom,bijz)	NUM(type=ord,position=prenom,case=gen|dat,infl=r|re)	 te elfder ure
+T410	TW(rang,nom,zonder-n)	NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)	 vierde zijn
+T411	TW(rang,nom,mv-n)	NOU-C(number=pl,infl=n)	 de eersten
+T501a	VNW(pers,pron,nomin,vol,1,ev)	PD(type=pers,case=nom|voc,person=1,number=sg,position=free)	 ik
+T501b	VNW(pers,pron,nomin,nadr,1,ev)	PD(type=pers,case=nom|voc,person=1,number=sg,position=free)	 ikzelf, ikke
+T501c	VNW(pers,pron,nomin,red,1,ev)	PD(type=pers,case=nom|voc,person=1,number=sg,wf=abbr,position=free)	 ’k
+T501d	VNW(pers,pron,nomin,vol,1,mv)	PD(type=pers,case=nom|voc,person=1,number=pl,position=free)	 wij
+T501e	VNW(pers,pron,nomin,nadr,1,mv)	PD(type=pers,case=nom|voc,person=1,number=pl,position=free)	 wijzelf
+T501f	VNW(pers,pron,nomin,red,1,mv)	PD(type=pers,case=nom|voc,person=1,number=pl,position=free)	 we
+T501g	VNW(pers,pron,nomin,vol,2v,ev)	PD(type=pers,case=nom|voc,person=2,number=sg,position=free)	 jij
+T501h	VNW(pers,pron,nomin,nadr,2v,ev)	PD(type=pers,case=nom|voc,person=2,number=sg,position=free)	 jijzelf
+T501i	VNW(pers,pron,nomin,red,2v,ev)	PD(type=pers,case=nom|voc,person=2,number=sg,position=free)	 je
+U501j	VNW(pers,pron,nomin,vol,2b,getal)	PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)	 u
+U501k	VNW(pers,pron,nomin,nadr,2b,getal)	PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)	 uzelf
+U501l	VNW(pers,pron,nomin,vol,2,getal)	PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)	 gij
+U501m	VNW(pers,pron,nomin,nadr,2,getal)	PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)	 gijzelf
+U501n	VNW(pers,pron,nomin,red,2,getal)	PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)	 ge
+U501o	VNW(pers,pron,nomin,vol,3,ev,masc)	PD(type=pers,case=nom|voc,person=3,gender=m|f,number=sg,gender=m,position=free)	 hij
+T501p	VNW(pers,pron,nomin,nadr,3m,ev,masc)	PD(type=pers,case=nom|voc,person=3,gender=m,number=sg,gender=m,position=free)	 hijzelf
+U501q	VNW(pers,pron,nomin,red,3,ev,masc)	PD(type=pers,case=nom|voc,person=3,gender=m|f,number=sg,gender=m,position=free)	 ie
+U501r	VNW(pers,pron,nomin,red,3p,ev,masc)	PD(type=pers,case=nom|voc,person=3,gender=m|f,number=sg,gender=m,position=free)	 men
+T501s	VNW(pers,pron,nomin,vol,3v,ev,fem)	PD(type=pers,case=nom|voc,person=3,gender=f,number=sg,gender=f,position=free)	 zij
+T501t	VNW(pers,pron,nomin,nadr,3v,ev,fem)	PD(type=pers,case=nom|voc,person=3,gender=f,number=sg,gender=f,position=free)	 zijzelf
+U501u	VNW(pers,pron,nomin,vol,3p,mv)	PD(type=pers,case=nom|voc,person=3,gender=m|f,number=pl,position=free)	 zij
+U501v	VNW(pers,pron,nomin,nadr,3p,mv)	PD(type=pers,case=nom|voc,person=3,gender=m|f,number=pl,position=free)	 zijzelf
+T502a	VNW(pers,pron,obl,vol,2v,ev)	PD(type=pers,case=dat|acc,person=2,number=sg,position=free)	 jou
+U502b	VNW(pers,pron,obl,vol,3,ev,masc)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,position=free)	 hem
+T502c	VNW(pers,pron,obl,nadr,3m,ev,masc)	PD(type=pers,case=dat|acc,person=3,gender=m,number=sg,gender=m,position=free)	 hemzelf
+U502d	VNW(pers,pron,obl,red,3,ev,masc)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,wf=abbr,position=free)	 ’m
+U502e	VNW(pers,pron,obl,vol,3,getal,fem)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=unclear,gender=f,position=free)	 haar
+U502f	VNW(pers,pron,obl,nadr,3v,getal,fem)	PD(type=pers,case=dat|acc,person=3,gender=f,number=unclear,gender=f,position=free)	 haarzelf
+U502g	VNW(pers,pron,obl,red,3v,getal,fem)	PD(type=pers,case=dat|acc,person=3,gender=f,number=unclear,gender=f,wf=abbr,position=free)	 ’r, d’r
+U502h	VNW(pers,pron,obl,vol,3p,mv)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=pl,position=free)	 hen, hun
+U502i	VNW(pers,pron,obl,nadr,3p,mv)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=pl,position=free)	 henzelf, hunzelf
+U503a	VNW(pers,pron,stan,nadr,2v,mv)	PD(type=pers,case=dat|acc,person=2,number=pl,position=free)	 jullie
+U503b	VNW(pers,pron,stan,red,3,ev,onz)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=n,wf=abbr,position=free)	 het, ’t
+U503c	VNW(pers,pron,stan,red,3,ev,fem)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=f,position=free)	 ze
+U503d	VNW(pers,pron,stan,red,3,mv)	PD(type=pers,case=dat|acc,person=3,gender=m|f,number=pl,position=free)	 ze
+T504a	VNW(pers,pron,gen,vol,1,ev)	PD(type=pers,case=gen,person=1,number=sg,position=free)	 mijns gelijke, gedenk mijner
+T504b	VNW(pers,pron,gen,vol,1,mv)	PD(type=pers,case=gen,person=1,number=pl,position=free)	 ons gelijke, velen onzer
+U504c	VNW(pers,pron,gen,vol,2,getal)	PD(type=pers,case=gen,person=2,number=sg|pl,position=free)	 uws gelijke, wie uwer
+T504d	VNW(pers,pron,gen,vol,3m,ev)	PD(type=pers,case=gen,person=3,gender=m,number=sg,position=free)	 zijns gelijke, zijner
+U504e	VNW(pers,pron,gen,vol,3v,getal)	PD(type=pers,case=gen,person=3,gender=f,number=unclear,position=free)	 haars gelijke, harer
+U504f	VNW(pers,pron,gen,vol,3p,mv)	PD(type=pers,case=gen,person=3,gender=m|f,number=pl,position=free)	 huns gelijke, een hunner
+U505a	VNW(pr,pron,obl,vol,1,ev)	PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)	 mij
+U505b	VNW(pr,pron,obl,nadr,1,ev)	PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)	 mezelf, mijzelf
+U505c	VNW(pr,pron,obl,red,1,ev)	PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)	 me
+U505d	VNW(pr,pron,obl,vol,1,mv)	PD(type=pers|refl,case=dat|acc,person=1,number=pl,position=free)	 ons
+U505e	VNW(pr,pron,obl,nadr,1,mv)	PD(type=refl,case=dat|acc,person=1,number=pl,position=free)	 onszelf
+U505f	VNW(pr,pron,obl,red,2v,getal)	PD(type=pers|refl,case=dat|acc,person=2,number=unclear,position=free)	 je
+U505g	VNW(pr,pron,obl,nadr,2v,getal)	PD(type=refl,case=dat|acc,person=2,number=unclear,position=free)	 jezelf
+U505h	VNW(pr,pron,obl,vol,2,getal)	PD(type=pers|refl,case=dat|acc,person=2,number=unclear,position=free)	 u
+U505i	VNW(pr,pron,obl,nadr,2,getal)	PD(type=pers|refl,case=dat|acc,person=2,number=unclear,position=free)	 uzelf
+U506a	VNW(refl,pron,obl,red,3,getal)	PD(type=refl,case=dat|acc,person=3,gender=m|f,number=unclear,position=free)	 zich
+U506b	VNW(refl,pron,obl,nadr,3,getal)	PD(type=refl,case=dat|acc,person=3,gender=m|f,number=unclear,position=free)	 zichzelf
+U507a	VNW(recip,pron,obl,vol,persoon,mv)	PD(type=recip,case=dat|acc,person=unclear,number=pl,position=free)	 elkaar, mekaar, elkander
+U508a	VNW(recip,pron,gen,vol,persoon,mv)	PD(type=recip,case=gen,person=unclear,number=pl,position=free,infl=s)	 elkaars, mekaars, elkanders
+U509a	VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=unclear,NA=unclear,infl=0)	
+U509b	VNW(bez,det,stan,vol,1,ev,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=unclear,NA=unclear,infl=e)	 mijne heren
+U509c	VNW(bez,det,stan,red,1,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,wf=abbr)	
+U509d	VNW(bez,det,stan,vol,1,mv,prenom,zonder,evon)	PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=0,number=sg,GA=n,NA=unclear)	 ons paard
+U509e	VNW(bez,det,stan,vol,1,mv,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=e,GA=unclear,NA=unclear)	 onze paarden
+U509f	VNW(bez,det,stan,vol,2,getal,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=2,number=unclear,position=prenom,infl=0,GA=unclear,NA=unclear)	
+U509g	VNW(bez,det,stan,vol,2,getal,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=2,number=unclear,position=prenom,infl=e,GA=unclear,NA=unclear)	 uwe heiligheid
+U509h	VNW(bez,det,stan,vol,2v,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=2,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear)	
+U509i	VNW(bez,det,stan,red,2v,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=2,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear)	
+U509j	VNW(bez,det,stan,nadr,2v,mv,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=2,number=pl,position=prenom,infl=0,GA=unclear,NA=unclear)	
+U509k	VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear)	, haar kind
+U509l	VNW(bez,det,stan,vol,3m,ev,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m,number=sg,position=prenom,infl=e,GA=unclear,NA=unclear,gender=m)	 zijne excellentie
+U509m	VNW(bez,det,stan,vol,3v,ev,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=f,number=sg,position=prenom,infl=e,GA=unclear,NA=unclear,gender=f)	 hare majesteit
+U509n	VNW(bez,det,stan,red,3,ev,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,wf=abbr,gender=unclear)	 z’n paard
+U509o	VNW(bez,det,stan,vol,3,mv,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear)	 hun paarden
+U509p	VNW(bez,det,stan,vol,3p,mv,prenom,met-e,rest)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=e,GA=unclear,NA=unclear,gender=unclear)	 hunne
+U509q	VNW(bez,det,stan,red,3,getal,prenom,zonder,agr)	PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=unclear,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear,wf=abbr)	 ’r paard, d’r paard
+T510a	VNW(bez,det,gen,vol,1,ev,prenom,zonder,evmo)	PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=0,number=sg,GA=m|n,NA=sg)	 mijns inziens
+U510b	VNW(bez,det,gen,vol,1,ev,prenom,met-e,rest3)	PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)	 een mijner vrienden
+T510c	VNW(bez,det,gen,vol,1,mv,prenom,met-e,evmo)	PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)	 onzes inziens
+U510d	VNW(bez,det,gen,vol,1,mv,prenom,met-e,rest3)	PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=r|re,GA=unclear,NA=unclear)	 een onzer vrienden
+U510e	VNW(bez,det,gen,vol,2,getal,prenom,zonder,evmo)	PD(type=poss,case=gen,person=2,number=unclear,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)	 uws
+U510f	VNW(bez,det,gen,vol,2,getal,prenom,met-e,rest3)	PD(type=poss,case=gen,person=2,number=unclear,position=prenom,infl=r|re,GA=unclear,NA=unclear)	 een uwer vrienden
+U510g	VNW(bez,det,gen,vol,2v,ev,prenom,met-e,rest3)	PD(type=poss,case=gen,person=2,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)	 een jouwer vrienden
+U510h	VNW(bez,det,gen,vol,3,ev,prenom,zonder,evmo)	PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=s|th,number=sg,NA=sg,GA=m|n)	 zijns inziens
+U510i	VNW(bez,det,gen,vol,3,ev,prenom,met-e,rest3)	PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear,gender=unclear)	 een zijner vrienden
+T510j	VNW(bez,det,gen,vol,3v,ev,prenom,zonder,evmo)	PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)	 haars inziens
+U510k	VNW(bez,det,gen,vol,3v,ev,prenom,met-e,rest3)	PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)	 een harer vrienden
+U510l	VNW(bez,det,gen,vol,3p,mv,prenom,zonder,evmo)	PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s|th,number=pl,NA=sg,GA=m|n)	 huns inziens
+U510m	VNW(bez,det,gen,vol,3p,mv,prenom,met-e,rest3)	PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r|re,gender=unclear,GA=unclear,NA=unclear)	 een hunner vrienden
+T511a	VNW(bez,det,dat,vol,1,ev,prenom,met-e,evmo)	PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=n,GA=m|n,NA=sg)	 te mijnen huize
+T511b	VNW(bez,det,dat,vol,1,ev,prenom,met-e,evf)	PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r|re,GA=f,NA=sg)	 te mijner ere
+T511c	VNW(bez,det,dat,vol,1,mv,prenom,met-e,evmo)	PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)	 te onzen behoeve
+T511d	VNW(bez,det,dat,vol,1,mv,prenom,met-e,evf)	PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)	 te onzer ere
+U511e	VNW(bez,det,dat,vol,2,getal,prenom,met-e,evmo)	PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=n,NA=sg,GA=m|n)	 te uwen behoeve
+U511f	VNW(bez,det,dat,vol,2,getal,prenom,met-e,evf)	PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=r|re,NA=sg,GA=f)	 te uwer ere
+T511g	VNW(bez,det,dat,vol,2v,ev,prenom,met-e,evf)	PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)	 te jouwer nagedachtenis
+U511h	VNW(bez,det,dat,vol,3,ev,prenom,met-e,evmo)	PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)	 zijnen
+U511i	VNW(bez,det,dat,vol,3,ev,prenom,met-e,evf)	PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)	 te zijner tijd
+T511j	VNW(bez,det,dat,vol,3v,ev,prenom,met-e,evmo)	PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)	 haren
+T511k	VNW(bez,det,dat,vol,3v,ev,prenom,met-e,evf)	PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)	 te harer ere
+U511l	VNW(bez,det,dat,vol,3p,mv,prenom,met-e,evmo)	PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)	 hunnen
+U511m	VNW(bez,det,dat,vol,3p,mv,prenom,met-e,evf)	PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)	 te hunner ere
+U512h	VNW(bez,det,stan,vol,1,ev,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 het mijne
+U512i	VNW(bez,det,stan,vol,1,mv,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 de onze
+U512j	VNW(bez,det,stan,vol,2,getal,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 het uwe
+U512k	VNW(bez,det,stan,vol,2v,ev,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 de jouwe
+U512l	VNW(bez,det,stan,vol,3m,ev,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 het zijne
+U512m	VNW(bez,det,stan,vol,3v,ev,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 de hare
+U512n	VNW(bez,det,stan,vol,3p,mv,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 het hunne
+U512o	VNW(bez,det,stan,vol,1,ev,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de mijnen
+U512p	VNW(bez,det,stan,vol,1,mv,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de onzen
+U512q	VNW(bez,det,stan,vol,2,getal,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de uwen
+U512r	VNW(bez,det,stan,vol,2v,ev,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de jouwen
+U512s	VNW(bez,det,stan,vol,3m,ev,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de zijnen
+U512t	VNW(bez,det,stan,vol,3v,ev,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de haren
+U512u	VNW(bez,det,stan,vol,3p,mv,nom,met-e,mv-n)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de hunnen
+T513a	VNW(bez,det,dat,vol,1,ev,nom,met-e,zonder-n)	NOU-C(case=dat,number=sg,infl=t,gender=unclear)	 te mijnent
+T513b	VNW(bez,det,dat,vol,1,mv,nom,met-e,zonder-n)	NOU-C(case=dat,number=pl,infl=t,gender=unclear)	 ten onzent
+U513c	VNW(bez,det,dat,vol,2,getal,nom,met-e,zonder-n)	NOU-C(case=dat,number=unclear,infl=t,gender=unclear)	 ten uwent
+T513d	VNW(bez,det,dat,vol,3m,ev,nom,met-e,zonder-n)	NOU-C(case=dat,number=sg,infl=t,gender=unclear)	 te zijnent
+T513e	VNW(bez,det,dat,vol,3v,ev,nom,met-e,zonder-n)	NOU-C(case=dat,number=sg,infl=t,gender=unclear)	 ten harent
+U513f	VNW(bez,det,dat,vol,3p,mv,nom,met-e,zonder-n)	NOU-C(case=dat,number=pl,infl=t,gender=unclear)	 ten hunnent
+U514a	VNW(vrag,pron,stan,nadr,3o,ev)	INT()	 watte
+U515a	VNW(betr,pron,stan,vol,persoon,getal)	PD(type=rel,case=nom|dat|acc|voc,number=unclear,gender=unclear,position=free,infl=e)	 de man die daar staat
+U515b	VNW(betr,pron,stan,vol,3,ev)	PD(type=rel,case=nom|dat|acc|voc,person=3,gender=n,number=sg,position=free,infl=0)	 het kind dat je daar ziet
+U515c	VNW(betr,det,stan,nom,zonder,zonder-n)	PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=0)	 hetgeen je ziet, tijdens hetwelk
+U515d	VNW(betr,det,stan,nom,met-e,zonder-n)	PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=e)	 op hetgene de gemeente doet
+T516a	VNW(betr,pron,gen,vol,3o,ev)	PD(type=rel,case=gen,gender=n,number=sg,position=free,infl=s)	 het warenhuis welks directeur
+U516b	VNW(betr,pron,gen,vol,3o,getal)	PD(type=rel,case=gen,gender=unclear,number=unclear,position=free,infl=r)	 de kathedraal welker gewelven
+U517a	VNW(vb,pron,stan,vol,3p,getal)	PD(type=rel|inter,case=nom|dat|acc|voc,gender=m|f,number=unclear,position=free,infl=e)	 wie gaat er mee
+U517b	VNW(vb,pron,stan,vol,3o,ev)	PD(type=rel|inter,case=nom|dat|acc|voc,number=sg,position=free,infl=0)	 wat ik niet begrijp is
+U518a	VNW(vb,pron,gen,vol,3m,ev)	PD(type=rel|inter,case=gen,gender=m,number=sg,position=free,infl=s)	 wiens hoed is dit
+U518b	VNW(vb,pron,gen,vol,3v,ev)	PD(type=rel|inter,case=gen,gender=f,number=sg,position=free,infl=r)	 de vrouw wier hoed daar hangt
+U518c	VNW(vb,pron,gen,vol,3p,mv)	PD(type=rel|inter,case=gen,gender=m|f,number=pl,position=free,infl=r)	 de studenten tegen wier houding …
+U519a	VNW(vb,adv-pron,obl,vol,3o,getal)	ADV(type=pron,subtype=rel|inter)	 waar ga je naartoe, de trein waarop
+U521a	VNW(vb,det,stan,prenom,zonder,evon)	PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)	 welk kind
+U521b	VNW(vb,det,stan,prenom,met-e,rest)	PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=e,GA=unclear,NA=unclear)	 welke kinderen
+U522a	VNW(vb,det,stan,nom,met-e,zonder-n)	PD(type=rel|inter,case=nom|dat|acc|voc,position=free,infl=e,gender=unclear,number=unclear)	 welke vind jij de mooiste
+U520a	VNW(excl,pron,stan,vol,3,getal)	PD(type=excl,number=unclear,case=nom|dat|acc|voc,position=free,infl=0)	 wat een dwaasheid, wat kan jij liegen
+U523a	VNW(excl,det,stan,vrij,zonder)	PD(type=excl,number=unclear,case=nom|dat|acc|voc,position=free,infl=0)	 welk een dwaasheid
+U524a	VNW(aanw,pron,stan,vol,3o,ev)	PD(type=dem,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=unclear)	 dat, dit, zulks
+U524b	VNW(aanw,pron,stan,nadr,3o,ev)	PD(type=dem,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=unclear)	 datte, ditte
+U524c	VNW(aanw,pron,stan,vol,3,getal)	PD(type=dem,case=nom|dat|acc|voc,gender=unclear,number=unclear,position=free,infl=e)	 die
+T525a	VNW(aanw,pron,gen,vol,3m,ev)	PD(type=dem,case=gen,gender=m,number=sg,position=free,infl=s)	 diens voorkeur
+T525b	VNW(aanw,pron,gen,vol,3o,ev)	PD(type=dem,case=gen,gender=n,number=sg,position=free,infl=s)	 en dies meer
+U526a	VNW(aanw,adv-pron,obl,vol,3o,getal)	ADV(type=unclear)	 hier, daar
+U527a	VNW(aanw,adv-pron,stan,red,3,getal)	ADV(type=unclear,wf=abbr)	 d’r, het niet-kwantitatieve ‘er’
+U528a	VNW(aanw,det,stan,prenom,zonder,evon)	PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)	 dat boek, dit dier, zulk hout
+U528b	VNW(aanw,det,stan,prenom,zonder,rest)	PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)	
+U528c	VNW(aanw,det,stan,prenom,zonder,agr)	PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)	
+U528d	VNW(aanw,det,stan,prenom,met-e,rest)	PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 deze man, zulke balken
+U529a	VNW(aanw,det,gen,prenom,met-e,rest3)	PD(type=dem,case=gen,position=prenom,infl=r,NA=unclear,GA=unclear)	 een dezer dagen
+T530a	VNW(aanw,det,dat,prenom,met-e,evmo)	PD(type=dem,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)	 te dien tijde
+T530b	VNW(aanw,det,dat,prenom,met-e,evf)	PD(type=dem,case=dat,position=prenom,infl=r|re,NA=sg,GA=f)	 in dier voege
+U531b	VNW(aanw,det,stan,nom,met-e,zonder-n)	PD(type=dem,case=nom|dat|acc|voc,position=free,infl=e,number=sg,gender=m|f)	 deze, gene, datgene, degene
+U531c	VNW(aanw,det,stan,nom,met-e,mv-n)	PD(type=dem,case=nom|dat|acc|voc,position=free,infl=n,number=pl,gender=unclear)	 dezen, genen, degenen, diegenen
+T532a	VNW(aanw,det,gen,nom,met-e,zonder-n)	PD(type=dem,case=gen,position=free,infl=r|re|s|th,number=unclear,gender=unclear)	 schrijver dezes, de eerste dezer
+T533a	VNW(aanw,det,dat,nom,met-e,zonder-n)	PD(type=dem,case=dat,position=free,infl=n,number=unclear,gender=unclear)	 dat is dan bij dezen beslist
+U534a	VNW(aanw,det,stan,vrij,zonder)	PD(type=dem,case=nom|dat|acc|voc,position=free,infl=0,gender=unclear,number=unclear)	 zulk een vreemde gedachte
+U535a	VNW(onbep,pron,stan,vol,3p,ev)	PD(type=indef,case=nom|dat|acc|voc,number=sg,position=free)	iemand, iedereen, elkeen
+U535b	VNW(onbep,pron,stan,vol,3o,ev)	PD(type=indef,case=nom|dat|acc|voc,number=sg,position=free)	iets, niks, wat, zoiets
+U536a	VNW(onbep,pron,gen,vol,3p,ev)	PD(type=indef,case=gen,number=sg,position=free)	ieders
+U537a	VNW(onbep,adv-pron,obl,vol,3o,getal)	ADV(type=reg,subtype=unclear)	ergens, overal
+U538a	VNW(onbep,adv-pron,gen,red,3,getal)	PD(type=pers,case=gen,infl=0,position=free,person=3,number=unclear,gender=unclear)	 het kwantitatieve ‘er’
+U539a	VNW(onbep,det,stan,prenom,zonder,evon)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)	 elk huis, ieder kind
+U539b	VNW(onbep,det,stan,prenom,zonder,agr)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)	, menig man
+U539c	VNW(onbep,det,stan,prenom,met-e,evz)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=sg,GA=m|f)	 elke hond, iedere keer, menige
+U539d	VNW(onbep,det,stan,prenom,met-e,mv)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=pl,GA=unclear)	 ettelijke
+U539e	VNW(onbep,det,stan,prenom,met-e,rest)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 sommige, enige, enkele
+U539f	VNW(onbep,det,stan,prenom,met-e,agr)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 alle mensen
+T540a	VNW(onbep,det,gen,prenom,met-e,mv)	PD(type=indef,case=gen,position=prenom,infl=r,NA=pl,GA=unclear)	 proletariërs aller landen
+T541a	VNW(onbep,det,dat,prenom,met-e,evmo)	PD(type=indef,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)	 te allen prijze
+T541b	VNW(onbep,det,dat,prenom,met-e,evf)	PD(type=indef,case=dat,position=prenom,infl=r|re,NA=sg,GA=f)	 te eniger tijd
+U542a	VNW(onbep,grad,stan,prenom,zonder,agr,basis)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)	 veel plezier, weinig geld
+U542b	VNW(onbep,grad,stan,prenom,met-e,agr,basis)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 het vele plezier
+U542c	VNW(onbep,grad,stan,prenom,met-e,mv,basis)	NUM(type=card,case=nom|dat|acc|voc,position=prenom,infl=0,NA=pl,GA=unclear)	 beide mannen
+U542d	VNW(onbep,grad,stan,prenom,zonder,agr,comp)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)	 meer tijd, minder werk
+U542e	VNW(onbep,grad,stan,prenom,met-e,agr,sup)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 de meeste mensen
+U542f	VNW(onbep,grad,stan,prenom,met-e,agr,comp)	PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)	 in mindere mate
+U543a	VNW(onbep,det,stan,nom,met-e,mv-n)	PD(type=indef,number=pl,case=nom|dat|acc|voc,position=free,infl=n)	 allen, sommigen, enkelen
+U543b	VNW(onbep,det,stan,nom,met-e,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=e,gender=unclear)	 het éne ... het andere
+U543c	VNW(onbep,det,stan,nom,zonder,zonder-n)	NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)	 het één en ander
+T544a	VNW(onbep,det,gen,nom,met-e,mv-n)	PD(type=indef,case=gen,position=free,number=pl,infl=r|re)	 met aller instemming
+U545a	VNW(onbep,grad,stan,nom,met-e,zonder-n,basis)	NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,infl=0)	 het weinige
+U545b	VNW(onbep,grad,stan,nom,met-e,mv-n,basis)	PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=n)	 velen, weinigen, beiden
+U545d	VNW(onbep,grad,stan,nom,met-e,zonder-n,sup)	NOU-C(case=nom|dat|acc|voc,number=unclear,infl=0)	 het minste, de meeste
+U545e	VNW(onbep,grad,stan,nom,met-e,mv-n,sup)	NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)	 de minsten, de meesten
+U545f	VNW(onbep,grad,stan,nom,zonder,mv-n,dim)	PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=s)	 met z’n beidjes
+T546a	VNW(onbep,grad,gen,nom,met-e,mv-n,basis)	PD(type=indef,case=gen,position=free,infl=r|re,number=pl)	 tot veler X, met beider X
+U547a	VNW(onbep,det,stan,vrij,zonder)	PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=unclear)	 ze kregen elk een bal, al die mensen
+U548a	VNW(onbep,grad,stan,vrij,zonder,basis)	PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=unclear)	 dat is te weinig, veel groter
+U548b	VNW(onbep,grad,stan,vrij,zonder,sup)	PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=unclear)	 de minst coole, de meest coole
+U548c	VNW(onbep,grad,stan,vrij,zonder,comp)	PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=unclear)	 minder werken, meer slapen
+T601	LID(bep,stan,evon)	PD(type=dem,subtype=art,case=nom|acc|voc,NA=sg,GA=n,wf=abbr,position=prenom)	 het kind, in ’t geniep
+T602	LID(bep,stan,rest)	PD(type=dem,subtype=art,case=nom|acc|voc,NA=unclear,GA=unclear,position=prenom)	, de kinderen
+T603	LID(bep,gen,evmo)	PD(type=dem,subtype=art,case=gen,NA=sg,GA=m|n,wf=abbr,position=prenom)	 des duivels, ’s avonds
+U604	LID(bep,gen,rest3)	PD(type=dem,subtype=art,case=gen,GA=unclear,NA=unclear,position=prenom)	 der Nederlandse taal, der Belgen
+T605	LID(bep,dat,evmo)	PD(type=dem,subtype=art,case=dat,NA=sg,GA=m|n,position=prenom)	 op den duur, om den brode
+T606	LID(bep,dat,evf)	PD(type=dem,subtype=art,case=dat,NA=sg,GA=f,position=prenom)	 in der minne
+T607	LID(bep,dat,mv)	PD(type=dem,subtype=art,case=dat,NA=pl,GA=unclear,position=prenom)	 die in den hemelen zijt
+U608	LID(onbep,stan,agr)	PD(type=indef,subtype=art,case=nom|acc|voc,NA=unclear,GA=unclear,position=prenom)	 een kind, een mensen dat er waren
+T609	LID(onbep,gen,evf)	PD(type=indef,subtype=art,case=gen,NA=sg,GA=f,position=prenom)	 de kracht ener vrouw
+T701	VZ(init)	ADP(type=pre)	 met een lepeltje, met zo te roepen
+T702	VZ(fin)	ADP(type=post)	 liep de trap af, bij de beesten af, speelt het bandje af
+T703	VZ(versm)	ADP(type=pre)+PD(type=dem|indef,subtype=art,case=gen|dat,number=sg)	 ten strijde, ten hoogste, ter plaatse
+T801	VG(neven)	CONJ(type=coor)	 Jan en Peter; en toen gebeurde het
+T802	VG(onder)	CONJ(type=sub)	 omdat ze zich niet goed voelt
+T901	BW()	ADV(type=reg)	 gisteren, nu, niet, nog, al, hoe
+T001	TSW()	INT()	 oei, amai, uh, hoera
+T002	SPEC(afgebr)	RES(type=unclear,wf=trunc)	 uitge*a, binnen-
+T003	SPEC(onverst)	RES(type=unclear)	 ggg, xxx, Xxx
+T004	SPEC(vreemd)	RES(type=foreign)	 whatever*v, ad, hoc, wishful
+T005	SPEC(deeleigen)	NOU-P()	 Den, Haag, New, York
+T006	SPEC(meta)	RES(type=meta)	 homosexueel
+T007	LET()	PC()	 ., ..., ?
+T008	SPEC(achter)	RES(type=other)	 voor achtergrondgeluid
+T009	SPEC(comment)	RES(type=comment)	 voor commentaren
+T010	SPEC(afk)	RES(type=other,wf=abbr)	 d.w.z., dwz, enz., EHBO
+T011	SPEC(symb)	RES(type=symb)	 @, %, NaCl

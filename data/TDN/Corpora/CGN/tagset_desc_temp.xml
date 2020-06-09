@@ -45,7 +45,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>NUM</pos>
                         <pos>PD</pos>
@@ -70,7 +70,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -106,9 +106,9 @@
                     <value>gen|dat</value>
                     <posForValue>
                         <pos>AA</pos>
-                        <pos>ADP</pos>
                         <pos>NOU-C</pos>
                         <pos>NUM</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="nom|acc|dat|voc" desc="nom|acc|dat|voc">
@@ -116,6 +116,7 @@
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="nom|acc|voc" desc="nom|acc|voc">
@@ -141,7 +142,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
@@ -174,7 +175,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
@@ -209,7 +210,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -254,7 +255,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
@@ -287,14 +288,8 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="en" desc="en">
-                    <value>en</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="e|en" desc="e|en">
-                    <value>e|en</value>
+                <featureValue displayName="e|n" desc="e|n">
+                    <value>e|n</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                     </posForValue>
@@ -307,42 +302,37 @@
                         <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n|r|re" desc="n|r|re">
-                    <value>n|r|re</value>
+                <featureValue displayName="n|r/re" desc="n|r/re">
+                    <value>n|r/re</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n|s" desc="n|s">
-                    <value>n|s</value>
+                <featureValue displayName="n|s/th" desc="n|s/th">
+                    <value>n|s/th</value>
                     <posForValue>
                         <pos>NOU-P</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="r" desc="r">
-                    <value>r</value>
-                    <posForValue>
-                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="-r/-re" desc="Inflection -r or -re">
-                    <value>r|re</value>
+                    <value>r/re</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="r|re|s|th" desc="r|re|s|th">
-                    <value>r|re|s|th</value>
+                <featureValue displayName="r/re|s/th" desc="r/re|s/th">
+                    <value>r/re|s/th</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="s" desc="s">
-                    <value>s</value>
+                <featureValue displayName="-s/-th" desc="Inflection -s or -th">
+                    <value>s/th</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
@@ -350,17 +340,10 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="s|n" desc="s|n">
-                    <value>s|n</value>
+                <featureValue displayName="s/th|n" desc="s/th|n">
+                    <value>s/th|n</value>
                     <posForValue>
                         <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="-s/-th" desc="Inflection -s or -th">
-                    <value>s|th</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="-t" desc="Inflection -t">
@@ -371,7 +354,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
@@ -404,7 +387,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -426,7 +409,6 @@
                 <featureValue displayName="Singular" desc="Singular">
                     <value>sg</value>
                     <posForValue>
-                        <pos>ADP</pos>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
                         <pos>PD</pos>
@@ -440,7 +422,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
@@ -472,7 +454,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>PD</pos>
                         <pos>VRB</pos>
@@ -589,7 +571,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Other" desc="Other">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NUM</pos>
@@ -603,7 +585,6 @@
                 <featureValue displayName="Article" desc="Article">
                     <value>art</value>
                     <posForValue>
-                        <pos>ADP</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -614,7 +595,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -637,7 +618,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -653,12 +634,6 @@
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="comment" desc="comment">
-                    <value>comment</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Coordinating" desc="Coordinating conjunction">
                     <value>coor</value>
                     <posForValue>
@@ -671,6 +646,12 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="dem|indef" desc="dem|indef">
+                    <value>dem|indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Exclamative" desc="Explicative">
                     <value>excl</value>
                     <posForValue>
@@ -678,7 +659,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Foreign" desc="Foreign word">
-                    <value>foreign</value>
+                    <value>for</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
@@ -743,12 +724,6 @@
                         <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="pre)+PD(type" desc="pre)+PD(type">
-                    <value>pre)+PD(type</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Pronominal" desc="Pronominal (adverb)">
                     <value>pron</value>
                     <posForValue>
@@ -791,14 +766,14 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="symb" desc="symb">
+                <featureValue displayName="Symbol" desc="Symbol">
                     <value>symb</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
-                    <value>unclear</value>
+                    <value>uncl</value>
                     <posForValue>
                         <pos>ADV</pos>
                         <pos>RES</pos>
@@ -840,10 +815,7 @@
         <constraint>
             <pos>ADP</pos>
             <features>
-                <feature>case</feature>
-                <feature>number</feature>
                 <feature>pos</feature>
-                <feature>subtype</feature>
                 <feature>type</feature>
             </features>
         </constraint>
@@ -952,6 +924,8 @@
         <declaration corpus="None">pos=CONJ =&gt; type || type=unclear</declaration>
         <declaration corpus="None">pos=NOU-C =&gt; number || number=unclear</declaration>
         <declaration corpus="Some(Set(ONW, CGN))">pos=NOU-C, number=sg =&gt; gender,case || gender=unclear,case=unclear</declaration>
+        <declaration corpus="None">pos=NOU-P =&gt; number || number=unclear</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=NOU-P, number=sg =&gt; gender,case || gender=unclear,case=unclear</declaration>
         <declaration corpus="None">pos=NUM =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=NUM =&gt; type,position</declaration>
         <declaration corpus="Some(Set(CGN))">pos=NUM, position=prenom =&gt; case</declaration>
@@ -978,236 +952,236 @@
         <tag>AA(degree=pos,position=postnom,infl=0,case=nom|acc|dat|voc)</tag>
         <tag>AA(degree=pos,position=prenom,infl=0,case=nom|acc|dat|voc)</tag>
         <tag>AA(degree=pos,position=prenom,infl=e,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=pos,position=prenom,infl=n|r|re,case=gen|dat)</tag>
+        <tag>AA(degree=pos,position=prenom,infl=n|r/re,case=gen|dat)</tag>
         <tag>AA(degree=sup,position=free,infl=0,case=nom|acc|dat|voc)</tag>
         <tag>AA(degree=sup,position=prenom,infl=0,case=nom|acc|dat|voc)</tag>
         <tag>AA(degree=sup,position=prenom,infl=e,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=sup,position=prenom,infl=r|re,case=gen|dat)</tag>
-        <tag>AA(degree=unclear,position=unclear,case=unclear,infl=unclear)</tag>
+        <tag>AA(degree=sup,position=prenom,infl=r/re,case=gen|dat)</tag>
+        <tag>AA(degree=uncl,position=uncl,case=uncl,infl=uncl)</tag>
         <tag>ADP(type=post)</tag>
         <tag>ADP(type=pre)</tag>
-        <tag>ADP(type=pre)+PD(type,subtype=art,case=gen|dat,number=sg)</tag>
-        <tag>ADV()</tag>
         <tag>ADV(type=pron,subtype=rel|inter)</tag>
-        <tag>ADV(type=reg,subtype=unclear)</tag>
-        <tag>ADV(type=unclear,subtype=unclear)</tag>
-        <tag>ADV(wf=abbr)</tag>
+        <tag>ADV(type=reg)</tag>
+        <tag>ADV(type=reg,subtype=uncl)</tag>
+        <tag>ADV(type=uncl)</tag>
+        <tag>ADV(type=uncl,subtype=uncl)</tag>
+        <tag>ADV(type=uncl,wf=abbr)</tag>
         <tag>CONJ(type=coor)</tag>
         <tag>CONJ(type=sub)</tag>
         <tag>INT()</tag>
-        <tag>NOU-C(case=dat,number=pl,infl=t,gender=unclear)</tag>
-        <tag>NOU-C(case=dat,number=sg,infl=t,gender=unclear)</tag>
-        <tag>NOU-C(case=dat,number=unclear,infl=t,gender=unclear)</tag>
+        <tag>NOU-C(case=dat,number=pl,infl=t,gender=uncl)</tag>
+        <tag>NOU-C(case=dat,number=sg,infl=t,gender=uncl)</tag>
+        <tag>NOU-C(case=dat,number=uncl,infl=t,gender=uncl)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,infl=0)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=unclear)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=e,gender=unclear)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=unclear,infl=0)</tag>
-        <tag>NOU-C(gender=unclear,number=unclear,case=unclear,infl=unclear)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=uncl)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=e,gender=uncl)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=uncl,infl=0)</tag>
+        <tag>NOU-C(gender=uncl,number=uncl,case=uncl,infl=uncl)</tag>
         <tag>NOU-C(number=pl,infl=n)</tag>
-        <tag>NOU-C(number=pl,infl=s)</tag>
-        <tag>NOU-C(number=pl,infl=unclear)</tag>
-        <tag>NOU-C(number=sg,case=dat,infl=e,gender=unclear)</tag>
-        <tag>NOU-C(number=sg,case=gen,infl=s,gender=m|n)</tag>
-        <tag>NOU-C(number=sg,case=gen,infl=s,gender=n)</tag>
+        <tag>NOU-C(number=pl,infl=s/th)</tag>
+        <tag>NOU-C(number=pl,infl=uncl)</tag>
+        <tag>NOU-C(number=sg,case=dat,infl=e,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,case=gen,infl=s/th,gender=m|n)</tag>
+        <tag>NOU-C(number=sg,case=gen,infl=s/th,gender=n)</tag>
         <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=m|f,infl=0)</tag>
         <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=n,infl=0)</tag>
-        <tag>NOU-C(number=sg,gender=unclear,case=nom|dat|acc|voc,infl=0)</tag>
+        <tag>NOU-C(number=sg,gender=uncl,case=nom|dat|acc|voc,infl=0)</tag>
         <tag>NOU-C(number=sg,infl=0,gender=n,case=nom|acc|dat|voc)</tag>
-        <tag>NOU-C(number=sg,infl=0,gender=unclear,case=nom|acc|dat|voc)</tag>
+        <tag>NOU-C(number=sg,infl=0,gender=uncl,case=nom|acc|dat|voc)</tag>
         <tag>NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=n)</tag>
-        <tag>NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=unclear)</tag>
-        <tag>NOU-C(number=sg,infl=e|en,case=gen|dat,gender=unclear)</tag>
-        <tag>NOU-C(number=sg,infl=n,case=gen|dat,gender=unclear)</tag>
-        <tag>NOU-C(number=sg,infl=s|th,gender=n,case=gen)</tag>
-        <tag>NOU-C(number=sg,infl=unclear,case=gen|dat,gender=unclear)</tag>
-        <tag>NOU-P()</tag>
-        <tag>NOU-P(gender=unclear,number=unclear,case=unclear,infl=unclear)</tag>
+        <tag>NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,infl=e|n,case=gen|dat,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,infl=n,case=gen|dat,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,infl=s/th,gender=n,case=gen)</tag>
+        <tag>NOU-C(number=sg,infl=uncl,case=gen|dat,gender=uncl)</tag>
+        <tag>NOU-P(gender=uncl,number=uncl,case=uncl,infl=uncl)</tag>
         <tag>NOU-P(number=pl,infl=n)</tag>
-        <tag>NOU-P(number=pl,infl=s)</tag>
-        <tag>NOU-P(number=sg,case=dat,infl=e)</tag>
-        <tag>NOU-P(number=sg,case=gen,infl=n|s)</tag>
-        <tag>NOU-P(number=sg,case=gen,infl=s)</tag>
+        <tag>NOU-P(number=pl,infl=s/th)</tag>
+        <tag>NOU-P(number=sg,case=dat,gender=uncl,infl=e)</tag>
+        <tag>NOU-P(number=sg,case=gen,gender=uncl,infl=n|s/th)</tag>
+        <tag>NOU-P(number=sg,case=gen,gender=uncl,infl=s/th)</tag>
         <tag>NOU-P(number=sg,gender=m|f,case=nom|dat|acc|voc,infl=0)</tag>
         <tag>NOU-P(number=sg,gender=n,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NOU-P(number=sg,gender=unclear,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NUM(type=card,case=nom|dat|acc|voc,position=prenom,infl=0,NA=pl,GA=unclear)</tag>
+        <tag>NOU-P(number=sg,gender=uncl,case=nom|dat|acc|voc,infl=0)</tag>
+        <tag>NOU-P(number=uncl)</tag>
+        <tag>NUM(type=card,case=nom|dat|acc|voc,position=prenom,infl=0,NA=pl,GA=uncl)</tag>
         <tag>NUM(type=card,position=free,infl=0)</tag>
         <tag>NUM(type=card,position=free,infl=n)</tag>
-        <tag>NUM(type=card,position=free,infl=s)</tag>
+        <tag>NUM(type=card,position=free,infl=s/th)</tag>
         <tag>NUM(type=card,position=free|prenom|postnom)</tag>
-        <tag>NUM(type=card,position=prenom,case=gen|dat,infl=s|n)</tag>
+        <tag>NUM(type=card,position=prenom,case=gen|dat,infl=s/th|n)</tag>
         <tag>NUM(type=card,position=prenom,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NUM(type=card,position=unclear,case=unclear)</tag>
-        <tag>NUM(type=ord,position=prenom,case=gen|dat,infl=r|re)</tag>
+        <tag>NUM(type=card,position=uncl,case=uncl)</tag>
+        <tag>NUM(type=ord,position=prenom,case=gen|dat,infl=r/re)</tag>
         <tag>NUM(type=ord,position=prenom,case=nom|acc|voc,infl=0)</tag>
-        <tag>NUM(type=ord,position=unclear,case=unclear)</tag>
+        <tag>NUM(type=ord,position=uncl,case=uncl)</tag>
         <tag>PC()</tag>
-        <tag>PD(type=dem,case=dat,position=free,infl=n,number=unclear,gender=unclear)</tag>
+        <tag>PD(type=dem,case=dat,position=free,infl=n,number=uncl,gender=uncl)</tag>
         <tag>PD(type=dem,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=dem,case=dat,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
-        <tag>PD(type=dem,case=gen,gender=m,number=sg,position=free,infl=s)</tag>
-        <tag>PD(type=dem,case=gen,gender=n,number=sg,position=free,infl=s)</tag>
-        <tag>PD(type=dem,case=gen,position=free,infl=r|re|s|th,number=unclear,gender=unclear)</tag>
-        <tag>PD(type=dem,case=gen,position=prenom,infl=r,NA=unclear,GA=unclear)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=unclear)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=unclear,number=unclear,position=free,infl=e)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=0,gender=unclear,number=unclear)</tag>
+        <tag>PD(type=dem,case=dat,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
+        <tag>PD(type=dem,case=gen,gender=m,number=sg,position=free,infl=s/th)</tag>
+        <tag>PD(type=dem,case=gen,gender=n,number=sg,position=free,infl=s/th)</tag>
+        <tag>PD(type=dem,case=gen,position=free,infl=r/re|s/th,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=gen,position=prenom,infl=r/re,NA=uncl,GA=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=uncl,number=uncl,position=free,infl=e)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=0,gender=uncl,number=uncl)</tag>
         <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=e,number=sg,gender=m|f)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=n,number=pl,gender=unclear)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=n,number=pl,gender=uncl)</tag>
         <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)</tag>
-        <tag>PD(type=dem,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)</tag>
-        <tag>PD(type=dem,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)</tag>
-        <tag>PD(type=dem,subtype=art,case=dat,NA=pl,GA=unclear,position=prenom)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=uncl,GA=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=e,NA=uncl,GA=uncl)</tag>
+        <tag>PD(type=dem,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
+        <tag>PD(type=dem,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
+        <tag>PD(type=dem,subtype=art,case=dat,NA=pl,GA=uncl,position=prenom)</tag>
         <tag>PD(type=dem,subtype=art,case=dat,NA=sg,GA=f,position=prenom)</tag>
         <tag>PD(type=dem,subtype=art,case=dat,NA=sg,GA=m|n,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=gen,GA=unclear,NA=unclear,position=prenom)</tag>
+        <tag>PD(type=dem,subtype=art,case=gen,GA=uncl,NA=uncl,position=prenom)</tag>
         <tag>PD(type=dem,subtype=art,case=gen,NA=sg,GA=m|n,wf=abbr,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=nom|acc|voc,NA=sg,GA=n,wf=abbr,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=nom|acc|voc,NA=unclear,GA=unclear,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=unclear,GA=unclear,NA=unclear,position=prenom)</tag>
-        <tag>PD(type=excl,number=unclear,case=nom|dat|acc|voc,position=free,infl=0)</tag>
+        <tag>PD(type=dem,subtype=art,case=nom|acc|dat|voc,NA=sg,GA=n,wf=abbr,position=prenom)</tag>
+        <tag>PD(type=dem,subtype=art,case=nom|acc|dat|voc,NA=uncl,GA=uncl,position=prenom)</tag>
+        <tag>PD(type=dem,subtype=art,case=uncl,GA=uncl,NA=uncl,position=prenom)</tag>
+        <tag>PD(type=dem|indef,subtype=art,case=gen|dat,position=prenom,GA=uncl,NA=sg)</tag>
+        <tag>PD(type=excl,number=uncl,case=nom|dat|acc|voc,position=free,infl=0)</tag>
         <tag>PD(type=indef,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=indef,case=dat,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=indef,case=dat,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
         <tag>PD(type=indef,case=gen,number=sg,position=free)</tag>
-        <tag>PD(type=indef,case=gen,position=free,infl=r|re,number=pl)</tag>
-        <tag>PD(type=indef,case=gen,position=free,number=pl,infl=r|re)</tag>
-        <tag>PD(type=indef,case=gen,position=prenom,infl=r,NA=pl,GA=unclear)</tag>
+        <tag>PD(type=indef,case=gen,position=free,infl=r/re,number=pl)</tag>
+        <tag>PD(type=indef,case=gen,position=free,number=pl,infl=r/re)</tag>
+        <tag>PD(type=indef,case=gen,position=prenom,infl=r/re,NA=pl,GA=uncl)</tag>
         <tag>PD(type=indef,case=nom|dat|acc|voc,number=sg,position=free)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=unclear)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=uncl)</tag>
         <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=n)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=s)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=s/th)</tag>
         <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=unclear,GA=unclear)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=pl,GA=unclear)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=uncl,GA=uncl)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=pl,GA=uncl)</tag>
         <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=sg,GA=m|f)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=unclear,GA=unclear)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=uncl,GA=uncl)</tag>
         <tag>PD(type=indef,number=pl,case=nom|dat|acc|voc,position=free,infl=n)</tag>
-        <tag>PD(type=indef,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)</tag>
-        <tag>PD(type=indef,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)</tag>
-        <tag>PD(type=indef,subtype=art,GA=unclear,NA=unclear,position=prenom,case=unclear)</tag>
+        <tag>PD(type=indef,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
+        <tag>PD(type=indef,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
+        <tag>PD(type=indef,subtype=art,GA=uncl,NA=uncl,position=prenom,case=uncl)</tag>
         <tag>PD(type=indef,subtype=art,case=gen,NA=sg,GA=f,position=prenom)</tag>
-        <tag>PD(type=indef,subtype=art,case=nom|acc|voc,NA=unclear,GA=unclear,position=prenom)</tag>
-        <tag>PD(type=inter,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)</tag>
-        <tag>PD(type=inter,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)</tag>
+        <tag>PD(type=indef,subtype=art,case=nom|acc|voc,NA=uncl,GA=uncl,position=prenom)</tag>
+        <tag>PD(type=inter,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
+        <tag>PD(type=inter,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
         <tag>PD(type=pers,case=dat|acc,person=2,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=2,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=unclear,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=unclear,gender=f,wf=abbr,position=free)</tag>
+        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=uncl,gender=f,position=free)</tag>
+        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=uncl,gender=f,wf=abbr,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m,number=sg,gender=m,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=f,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,wf=abbr,position=free)</tag>
         <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=n,wf=abbr,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=unclear,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=gen,infl=0,position=free,person=3,number=unclear,gender=unclear)</tag>
+        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=uncl,gender=f,position=free)</tag>
+        <tag>PD(type=pers,case=gen,infl=0,position=free,person=3,number=uncl,gender=uncl)</tag>
         <tag>PD(type=pers,case=gen,person=1,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=gen,person=1,number=sg,position=free)</tag>
         <tag>PD(type=pers,case=gen,person=2,number=sg|pl,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=3,gender=f,number=unclear,position=free)</tag>
+        <tag>PD(type=pers,case=gen,person=3,gender=f,number=uncl,position=free)</tag>
         <tag>PD(type=pers,case=gen,person=3,gender=m,number=sg,position=free)</tag>
         <tag>PD(type=pers,case=gen,person=3,gender=m|f,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=1,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=1,number=sg,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=1,number=sg,wf=abbr,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=2,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=2,number=unclear,position=free)</tag>
+        <tag>PD(type=pers,case=nom|voc,person=2,number=uncl,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=3,gender=f,number=sg,gender=f,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=3,gender=m,number=sg,gender=m,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=3,gender=m|f,number=pl,position=free)</tag>
         <tag>PD(type=pers,case=nom|voc,person=3,gender=m|f,number=sg,gender=m,position=free)</tag>
-        <tag>PD(type=pers,position=free,case=unclear,gender=unclear,number=unclear,person=unclear,infl=unclear)</tag>
+        <tag>PD(type=pers,position=free,case=uncl,gender=uncl,number=uncl,person=uncl,infl=uncl)</tag>
         <tag>PD(type=pers|refl,case=dat|acc,person=1,number=pl,position=free)</tag>
         <tag>PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)</tag>
-        <tag>PD(type=pers|refl,case=dat|acc,person=2,number=unclear,position=free)</tag>
+        <tag>PD(type=pers|refl,case=dat|acc,person=2,number=uncl,position=free)</tag>
         <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
         <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=n,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r|re,GA=f,NA=sg)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=unclear,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r/re,GA=f,NA=sg)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=uncl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=2,number=uncl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
         <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=pl,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=pl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
+        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
         <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=0,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=unclear,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=unclear,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=s|th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r|re,gender=unclear,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s|th,number=pl,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=r|re,GA=unclear,NA=unclear,gender=unclear)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=unclear,number=sg,position=prenom,infl=s|th,number=sg,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=0,number=sg,GA=n,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=e,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=unclear,NA=unclear,infl=0)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=unclear,NA=unclear,infl=e)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,wf=abbr)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=pl,position=prenom,infl=0,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=unclear,position=prenom,infl=0,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=unclear,position=prenom,infl=e,GA=unclear,NA=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=f,number=sg,position=prenom,infl=e,GA=unclear,NA=unclear,gender=f)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m,number=sg,position=prenom,infl=e,GA=unclear,NA=unclear,gender=m)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=e,GA=unclear,NA=unclear,gender=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=unclear,NA=unclear,wf=abbr,gender=unclear)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=unclear,position=prenom,infl=0,GA=unclear,NA=unclear,gender=unclear,wf=abbr)</tag>
-        <tag>PD(type=poss,position=prenom,case=unclear,gender=unclear,number=unclear,GA=unclear,NA=unclear,infl=unclear)</tag>
-        <tag>PD(type=recip,case=dat|acc,person=unclear,number=pl,position=free)</tag>
-        <tag>PD(type=recip,case=gen,person=unclear,number=pl,position=free,infl=s)</tag>
-        <tag>PD(type=recip,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)</tag>
+        <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=2,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=2,number=uncl,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=2,number=uncl,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r/re,gender=uncl,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s/th,number=pl,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=uncl,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl,gender=uncl)</tag>
+        <tag>PD(type=poss,case=gen,person=3,gender=uncl,number=sg,position=prenom,infl=s/th,number=sg,NA=sg,GA=m|n)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=0,number=sg,GA=n,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=uncl,NA=uncl,infl=0)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=uncl,NA=uncl,infl=e)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,wf=abbr)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=pl,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=uncl,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=uncl,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=f,number=sg,position=prenom,infl=e,GA=uncl,NA=uncl,gender=f)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m,number=sg,position=prenom,infl=e,GA=uncl,NA=uncl,gender=m)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=e,GA=uncl,NA=uncl,gender=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,wf=abbr,gender=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=uncl,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl,wf=abbr)</tag>
+        <tag>PD(type=poss,position=prenom,case=uncl,gender=uncl,number=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
+        <tag>PD(type=recip,case=dat|acc,person=uncl,number=pl,position=free)</tag>
+        <tag>PD(type=recip,case=gen,person=uncl,number=pl,position=free,infl=s/th)</tag>
+        <tag>PD(type=recip,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
         <tag>PD(type=refl,case=dat|acc,person=1,number=pl,position=free)</tag>
-        <tag>PD(type=refl,case=dat|acc,person=2,number=unclear,position=free)</tag>
-        <tag>PD(type=refl,case=dat|acc,person=3,gender=m|f,number=unclear,position=free)</tag>
-        <tag>PD(type=refl,position=free,case=unclear,gender=unclear,number=unclear,person=unclear,infl=unclear)</tag>
-        <tag>PD(type=rel,case=gen,gender=n,number=sg,position=free,infl=s)</tag>
-        <tag>PD(type=rel,case=gen,gender=unclear,number=unclear,position=free,infl=r)</tag>
+        <tag>PD(type=refl,case=dat|acc,person=2,number=uncl,position=free)</tag>
+        <tag>PD(type=refl,case=dat|acc,person=3,gender=m|f,number=uncl,position=free)</tag>
+        <tag>PD(type=refl,position=free,case=uncl,gender=uncl,number=uncl,person=uncl,infl=uncl)</tag>
+        <tag>PD(type=rel,case=gen,gender=n,number=sg,position=free,infl=s/th)</tag>
+        <tag>PD(type=rel,case=gen,gender=uncl,number=uncl,position=free,infl=r/re)</tag>
         <tag>PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=0)</tag>
         <tag>PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=e)</tag>
-        <tag>PD(type=rel,case=nom|dat|acc|voc,number=unclear,gender=unclear,position=free,infl=e)</tag>
+        <tag>PD(type=rel,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,infl=e)</tag>
         <tag>PD(type=rel,case=nom|dat|acc|voc,person=3,gender=n,number=sg,position=free,infl=0)</tag>
-        <tag>PD(type=rel,position=free,case=unclear,gender=unclear,number=unclear,infl=unclear)</tag>
-        <tag>PD(type=rel,position=prenom,case=unclear,GA=unclear,NA=unclear,infl=unclear)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=f,number=sg,position=free,infl=r)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=m,number=sg,position=free,infl=s)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=m|f,number=pl,position=free,infl=r)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,gender=m|f,number=unclear,position=free,infl=e)</tag>
+        <tag>PD(type=rel,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
+        <tag>PD(type=rel,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
+        <tag>PD(type=rel|inter,case=gen,gender=f,number=sg,position=free,infl=r/re)</tag>
+        <tag>PD(type=rel|inter,case=gen,gender=m,number=sg,position=free,infl=s/th)</tag>
+        <tag>PD(type=rel|inter,case=gen,gender=m|f,number=pl,position=free,infl=r/re)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,gender=m|f,number=uncl,position=free,infl=e)</tag>
         <tag>PD(type=rel|inter,case=nom|dat|acc|voc,number=sg,position=free,infl=0)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=free,infl=e,gender=unclear,number=unclear)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=free,infl=e,gender=uncl,number=uncl)</tag>
         <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=e,GA=unclear,NA=unclear)</tag>
-        <tag>RES(type=comment)</tag>
-        <tag>RES(type=foreign)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
+        <tag>RES(type=for)</tag>
         <tag>RES(type=meta)</tag>
         <tag>RES(type=other)</tag>
         <tag>RES(type=other,wf=abbr)</tag>
         <tag>RES(type=symb)</tag>
-        <tag>RES(type=unclear)</tag>
-        <tag>RES(type=unclear,wf=trunc)</tag>
-        <tag>VRB(finiteness=fin,mood=conj,tense=pres,number=sg,infl=e)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,infl=en)</tag>
+        <tag>RES(type=uncl)</tag>
+        <tag>RES(type=uncl,wf=trunc)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,infl=e)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,infl=n)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=t)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=unclear)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,infl=en)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=uncl)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,infl=n)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=0)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=t)</tag>
         <tag>VRB(finiteness=inf,infl=0)</tag>
         <tag>VRB(finiteness=inf,infl=e)</tag>
         <tag>VRB(finiteness=pastpart,infl=0)</tag>
         <tag>VRB(finiteness=prespart,infl=0)</tag>
-        <tag>VRB(finiteness=unclear,tense=unclear,mood=unclear,person=unclear,number=unclear,infl=unclear)</tag>
+        <tag>VRB(finiteness=uncl,tense=uncl,mood=uncl,person=uncl,number=uncl,infl=uncl)</tag>
     </tags>
 </tagset>
