@@ -1,18 +1,18 @@
 <?xml version="1.0"?>
 <tagset>
   <prefix>tdn</prefix>
+  <corpus>max</corpus>
   <mainPoS>
     <pos displayName="Adjective/adverb" desc="Adjective/adverb">AA</pos>
-    <pos displayName="Adjective" desc="Adjective">ADJ</pos>
+    <pos_bab displayName="Adjective" desc="Adjective">ADJ</pos_bab>
     <pos displayName="Adposition" desc="Adposition">ADP</pos>
     <pos displayName="Adverb" desc="Adverb">ADV</pos>
     <pos displayName="Affix" desc="Affix">AFF</pos>
-    <pos displayName="Polylexical" desc="Polylexical">COLL</pos>
+    <pos_molex displayName="Polylexical" desc="Polylexical">COLL</pos_molex>
     <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
     <pos displayName="Interjection" desc="Interjection">INT</pos>
     <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
     <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
-    <pos displayName="Other noun" desc="Moet die nog??? Other noun (proper or common is unclear)">NOU-U</pos>
     <pos displayName="Numeral" desc="Numeral">NUM</pos>
     <pos displayName="Pronoun" desc="Pronoun/determiner">PD</pos>
     <pos displayName="Residual" desc="Residual">RES</pos>
@@ -356,9 +356,9 @@
         </featureValue>
         <featureValue displayName="Non-genitive" desc="Non-genitive (modern adjectives only)">
           <value>norm</value>
-          <posForValue>
-            <pos>AA</pos>
-          </posForValue>
+          <posForValue_molex>
+            <pos_molex>AA</pos_molex>
+          </posForValue_molex>
         </featureValue>
         <featureValue displayName="Vocative" desc="Vocative (Old Dutch only)">
           <value>voc</value>
@@ -525,7 +525,6 @@
             <pos>ADV</pos>
             <pos>CONJ</pos>
             <pos>INT</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -540,7 +539,6 @@
             <pos>AA</pos>
             <pos>ADP</pos>
             <pos>CONJ</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>PD</pos>
@@ -555,7 +553,6 @@
             <pos>ADV</pos>
             <pos>CONJ</pos>
             <pos>INT</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -572,7 +569,6 @@
             <pos>ADV</pos>
             <pos>CONJ</pos>
             <pos>INT</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -584,7 +580,7 @@
         <featureValue displayName="Uninflected adjective" desc="Uninflected form (adjectives in molex, not in corpus tagset)">
           <value>norm</value>
           <posForValue>
-            <pos>AA</pos>
+            <pos_molex>AA</pos_molex>
           </posForValue>
         </featureValue>
         <featureValue displayName="Other" desc="Other values">
@@ -595,7 +591,6 @@
             <pos>ADV</pos>
             <pos>CONJ</pos>
             <pos>INT</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -612,7 +607,6 @@
             <pos>ADV</pos>
             <pos>CONJ</pos>
             <pos>INT</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -628,7 +622,6 @@
             <pos>ADP</pos>
             <pos>ADV</pos>
             <pos>CONJ</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -643,7 +636,6 @@
             <pos>ADP</pos>
             <pos>ADV</pos>
             <pos>CONJ</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -659,7 +651,6 @@
             <pos>ADP</pos>
             <pos>ADV</pos>
             <pos>CONJ</pos>
-            <pos>NOU-U</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>NUM</pos>
@@ -805,12 +796,6 @@
           <value>INT</value>
           <posForValue>
             <pos>INT</pos>
-          </posForValue>
-        </featureValue>
-        <featureValue displayName="" desc="">
-          <value>NOU-U</value>
-          <posForValue>
-            <pos>NOU-U</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="" desc="">
@@ -980,7 +965,6 @@
           <value>indef</value>
           <posForValue>
             <pos>ADV</pos>
-            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="interrogative" desc="interrogative pronominal adverb">
@@ -1436,16 +1420,13 @@
         <feature>case</feature>
         <feature>degree</feature>
         <feature>infl</feature>
-        <feature>pos</feature>
         <feature>position</feature>
-        <feature>type</feature>
         <feature>wf</feature>
       </features>
     </constraint>
     <constraint>
       <pos>ADP</pos>
       <features>
-        <feature>pos</feature>
         <feature>type</feature>
         <feature>wf</feature>
       </features>
@@ -1453,15 +1434,15 @@
     <constraint>
       <pos>ADV</pos>
       <features>
-        <feature>pos</feature>
         <feature>type</feature>
+	<feature>subtype</feature>
         <feature>wf</feature>
+	<feature>infl</feature>
       </features>
     </constraint>
     <constraint>
       <pos>COLL</pos>
       <features>
-        <feature>pos</feature>
         <feature>type</feature>
         <feature>wf</feature>
       </features>
@@ -1470,35 +1451,24 @@
       <pos>CONJ</pos>
       <features>
         <feature>infl</feature>
-        <feature>pos</feature>
-        <feature>subtype</feature>
         <feature>type</feature>
+	<feature>wf</feature>
       </features>
     </constraint>
     <constraint>
       <pos>INT</pos>
       <features>
-        <feature>pos</feature>
-        <feature>wf</feature>
-      </features>
-    </constraint>
-    <constraint>
-      <pos>NOU-U</pos>
-      <features>
-        <feature>art</feature>
-        <feature>gender</feature>
-        <feature>number</feature>
-        <feature>pos</feature>
         <feature>wf</feature>
       </features>
     </constraint>
     <constraint>
       <pos>NOU-C</pos>
       <features>
-        <feature>art</feature>
-        <feature>gender</feature>
+        <feature_molex>art</feature_molex>
+	<feature>gender</feature>
+	<feature>case</feature>
         <feature>number</feature>
-        <feature>pos</feature>
+	<feature>infl</feature>
         <feature>wf</feature>
       </features>
     </constraint>
@@ -1529,8 +1499,11 @@
         <feature>case</feature>
         <feature>number</feature>
         <feature>person</feature>
+	<feature>gender</feature>
+	<feature>GA</feature>
+	<feature>NA</feature>
         <feature>pos</feature>
-        <feature>subtype_art</feature>
+        <feature>subtype</feature>
         <feature>type</feature>
         <feature>wf</feature>
       </features>
@@ -1550,12 +1523,11 @@
         <feature>PA</feature>
         <feature>finiteness</feature>
         <feature>mood</feature>
-        <feature>pos</feature>
         <feature>position</feature>
         <feature>sep</feature>
         <feature>tense</feature>
         <feature>type</feature>
-        <feature>usage</feature>
+        <feature_molex>usage</feature_molex>
       </features>
     </constraint>
   </constraints>
@@ -1573,7 +1545,7 @@
           <declaration corpus="max">pos=PD,position=free => number</declaration>
           <declaration corpus="max">pos=PD,type=pers|refl => person</declaration>
           <declaration corpus="max">pos=PD,type=poss => person</declaration>
-          <declaration corpus="max">pos=PD,person=3 => gender</declaration>
+          <declaration corpus="max">pos=PD,person=3,number=sg => gender</declaration>
 
           <declaration corpus="max">pos=CONJ => type,infl,wf</declaration>
           <declaration corpus="max">pos=ADP => type,infl,wf</declaration>

@@ -11,7 +11,8 @@ object DataSettings {
 }
 
 object TagsetDiachroonNederlands {
-  lazy val TDNTagset = TagSet.fromXML("data/TDN/TDN_tagset.xml")
+  val TDN_xml = "data/TDN/TDN_tagset.xml"
+  lazy val TDNTagset = TagSet.fromXML(TDN_xml)
   val stylesheet = "/home/jesse/workspace/xml2rdf/src/main/scala/posmapping/tagset-documentation.xsl"
 
   def integratedTag(tag: String) = CHNStyleTag(tag, TDNTagset)
@@ -55,6 +56,7 @@ object TagsetDiachroonNederlands {
     if (z.exists) {
       val x = new utils.XSLT(stylesheet)
       x.transform(s"$outputBase.xml", s"$outputBase.html")
+      x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll("xml", "html"))
     }
     //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
   }
