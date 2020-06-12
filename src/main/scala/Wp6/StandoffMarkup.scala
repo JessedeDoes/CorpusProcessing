@@ -39,14 +39,17 @@ case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeW
 object TEI2NAF {
 
   def toNaf(n: NodeWithOffsets): Node = {
+    val nodeType = n.node.getClass.getName.replaceAll(".*\\.","")
     if (n.node.isInstanceOf[Text])
       <text offset={n.start.toString} length={n.length.toString}/>
-    else {
+    else  if (n.node.isInstanceOf[Elem]) {
       val down = n.children.map(toNaf)
       val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
       <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>
         {attributes}{down}
       </element>
+    } else {
+        <node class={nodeType} offset={n.start.toString} length={n.length.toString}/>
     }
   }
 
@@ -60,7 +63,7 @@ object TEI2NAF {
        lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
        val descendants = n1.descendant
         <NAF><raw>{cdata}</raw>
-        <tei>{toNaf(n1)}</tei></NAF>
+        <textStructure>{toNaf(n1)}</textStructure></NAF>
      })
    }
 
@@ -70,10 +73,14 @@ object TEI2NAF {
   val mini = <TEI><text><w>Hallo</w> <w>meneer</w></text></TEI>
 
   def main(args: Array[String]): Unit = {
+
+
     val exampleTEI = if (args.size > 0) XML.loadFile(args(0)) else exampleTEI0
     val w_tei = (exampleTEI \\ "w").map(_.text)
     val nafje0 = tei2naf(exampleTEI).get
+
     XML.save("/tmp/nafje.xml", nafje0, "UTF-8")
+
     val nafje = XML.loadFile("/tmp/nafje.xml")
 
     val naf_txt: String = (nafje \\ "raw").text
