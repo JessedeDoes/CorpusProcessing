@@ -20,7 +20,7 @@
   </mainPoS>
   <partitions>
     <feature displayName="Verb class" desc="Verb class">
-      <name>class</name>
+      <name>verbclass</name>
       <values>
         <featureValue displayName="1" desc="1">
           <value>1</value>
@@ -515,7 +515,7 @@
       </values>
     </feature>
     <feature displayName="Inflection" desc="Inflection">
-      <name>infl</name>
+      <name>inflection</name>
       <values>
         <featureValue displayName="No inflection" desc="No inflection">
           <value>0</value>
@@ -1006,7 +1006,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Resumptive" desc="Resumptive">
+        <featureValue displayName="Resumptive" desc="Resumptive (mainly 'zo')">
           <value>resump</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1023,7 +1023,7 @@
     <feature displayName="Tense" desc="Verb tense">
       <name>tense</name>
       <values>
-        <featureValue displayName="past" desc="past tense; also (mis)used to characterize perfect participle">
+        <featureValue displayName="past" desc="past tense">
           <value>past</value>
           <posForValue>
             <pos>VRB</pos>
@@ -1101,7 +1101,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="D-pronoun" desc="Demonstrative/article/relative of the 'd'-series">
+        <featureValue displayName="D-pronoun" desc="Demonstrative/article/relative pronoun of the 'd'-series">
           <value>d-p</value>
           <posForValue>
             <pos>PD</pos>
@@ -1143,7 +1143,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Ordinal" desc="Ordinal">
+        <featureValue displayName="Ordinal" desc="Ordinal numeral">
           <value>ord</value>
           <posForValue>
             <pos>NUM</pos>
@@ -1348,7 +1348,7 @@
       </values>
     </feature>
     <feature displayName="Written" desc="Written form">
-      <name>wf</name>
+      <name>WF</name>
       <values>
         <featureValue displayName="Abbreviated" desc="Abbreviated">
           <value>abbr</value>
@@ -1415,20 +1415,22 @@
     <constraint>
       <pos>AA</pos>
       <features>
-        <feature>GA</feature>
-        <feature>NA</feature>
-        <feature>case</feature>
         <feature>degree</feature>
-        <feature>infl</feature>
         <feature>position</feature>
-        <feature>wf</feature>
+	<feature>case</feature>
+        <feature>NA</feature>
+        <feature>GA</feature>
+        <feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>ADP</pos>
       <features>
         <feature>type</feature>
-        <feature>wf</feature>
+	<feature>government</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
@@ -1436,150 +1438,173 @@
       <features>
         <feature>type</feature>
 	<feature>subtype</feature>
-        <feature>wf</feature>
-	<feature>infl</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>COLL</pos>
       <features>
         <feature>type</feature>
-        <feature>wf</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>CONJ</pos>
       <features>
-        <feature>infl</feature>
         <feature>type</feature>
-	<feature>wf</feature>
+        <feature>inflection</feature>
+	<feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>INT</pos>
       <features>
-        <feature>wf</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>NOU-C</pos>
       <features>
         <feature_molex>art</feature_molex>
-	<feature>gender</feature>
-	<feature>case</feature>
         <feature>number</feature>
-	<feature>infl</feature>
-        <feature>wf</feature>
+	<feature>case</feature>
+	<feature>gender</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>NOU-P</pos>
       <features>
-        <feature>art</feature>
-        <feature>gender</feature>
+        <feature_molex>art</feature_molex>
         <feature>number</feature>
-        <feature>pos</feature>
-        <feature>wf</feature>
+	<feature>case</feature>
+        <feature>gender</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>NUM</pos>
       <features>
-        <feature>GA</feature>
-        <feature>NA</feature>
-        <feature>infl</feature>
-        <feature>pos</feature>
-        <feature>subtype</feature>
         <feature>type</feature>
+	<feature>position</feature>
+	<feature>representation</feature>
+        <feature_molex>subtype</feature_molex>
+	<feature>case</feature>
+        <feature>NA</feature>
+        <feature>GA</feature>
+        <feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>PD</pos>
       <features>
+        <feature>type</feature>
+        <feature>subtype</feature>
+        <feature>position</feature>
         <feature>case</feature>
         <feature>number</feature>
         <feature>person</feature>
 	<feature>gender</feature>
-	<feature>GA</feature>
 	<feature>NA</feature>
-        <feature>pos</feature>
-        <feature>subtype</feature>
-        <feature>type</feature>
-        <feature>wf</feature>
+	<feature>GA</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>RES</pos>
       <features>
-        <feature>pos</feature>
         <feature>type</feature>
-        <feature>wf</feature>
+	<feature>inflection</feature>
+        <feature>WF</feature>
       </features>
     </constraint>
     <constraint>
       <pos>VRB</pos>
       <features>
+	<feature>type</feature>
+        <feature>finiteness</feature>
+        <feature>tense</feature>
+        <feature>mood</feature>
         <feature>NA</feature>
         <feature>PA</feature>
-        <feature>finiteness</feature>
-        <feature>mood</feature>
-        <feature>position</feature>
-        <feature>sep</feature>
-        <feature>tense</feature>
-        <feature>type</feature>
+        <feature_molex>position</feature_molex>
+        <feature_molex>sep</feature_molex>
+	<feature>valency</feature>
+	<feature>conjugation</feature>
+	<feature>verbclass</feature>
+	<feature>inflection</feature>
+	<feature>WF</feature>
         <feature_molex>usage</feature_molex>
       </features>
     </constraint>
   </constraints>
   <implications>
 
-	  <declaration corpus="max">pos=AA => degree,position,case,NA,GA,infl,wf</declaration>
-	  <declaration corpus="max">pos=NOU-C => case,number,gender,infl,wf</declaration>
-	  <declaration corpus="max">pos=NOU-P => case,number,gender,infl,wf</declaration>
-	  <declaration corpus="max">pos=VRB => finiteness,infl,wf</declaration>
-          <declaration corpus="max">pos=VRB,finiteness=fin => mood,tense,number</declaration>
-	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=ind => person</declaration>
-	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=conj => person</declaration>
-          <declaration corpus="max">pos=PD => type,case,position,infl,wf</declaration>
+	  <!-- the hypothetical maximally tagged corpus -->
+
+	  <declaration corpus="max">pos=AA => degree,position,case,NA,GA,inflection,WF</declaration>
+	  <declaration corpus="max">pos=NOU-C => case,number,gender,inflection,WF</declaration>
+	  <declaration corpus="max">pos=NOU-P => case,number,gender,inflection,WF</declaration>
+
+	  <declaration corpus="max">pos=VRB => finiteness,inflection,WF</declaration>
+          <declaration corpus="max">pos=VRB,finiteness=fin => mood,tense,NA</declaration>
+	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=ind => PA</declaration>
+	  <declaration corpus="max">pos=VRB,finiteness=fin,mood=conj => PA</declaration>
+
+          <declaration corpus="max">pos=PD => type,case,position,inflection,WF</declaration>
           <declaration corpus="max">pos=PD,position=prenom|postnom => NA,GA</declaration>
           <declaration corpus="max">pos=PD,position=free => number</declaration>
           <declaration corpus="max">pos=PD,type=pers|refl => person</declaration>
           <declaration corpus="max">pos=PD,type=poss => person,number</declaration>
           <declaration corpus="max">pos=PD,person=3,number=sg => gender</declaration>
 
-          <declaration corpus="max">pos=CONJ => type,infl,wf</declaration>
-          <declaration corpus="max">pos=ADP => type,infl,wf</declaration>
-	  <declaration corpus="max">pos=ADV => type,subtype,infl,wf</declaration>
-	  <declaration corpus="max">pos=NUM => type,position,case,NA,GA,infl,wf</declaration>
-          <declaration corpus="max">pos=INT => infl,wf</declaration>
-	  <declaration corpus="max">pos=RES => type,infl,wf</declaration>
+          <declaration corpus="max">pos=CONJ => type,inflection,WF</declaration>
+          <declaration corpus="max">pos=ADP => type,inflection,WF</declaration>
+	  <declaration corpus="max">pos=ADV => type,subtype,inflection,WF</declaration>
+	  <declaration corpus="max">pos=NUM => type,position,case,NA,GA,inflection,WF</declaration>
+          <declaration corpus="max">pos=INT => inflection,WF</declaration>
+	  <declaration corpus="max">pos=RES => type,inflection,WF</declaration>
 
+
+          <!-- corpus of Old Dutch -->
 
           <declaration corpus="ONW">pos=AA => degree,position,case,NA,GA</declaration>
           <declaration corpus="ONW">pos=NOU-C => case,number,gender</declaration>
           <declaration corpus="ONW">pos=NOU-P => case,number,gender</declaration>
 
-	  <declaration corpus="ONW">pos=VRB => finiteness,conjugation</declaration>
-          <declaration corpus="ONW">pos=VRB,finiteness=fin => mood,tense,number</declaration>
-          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=ind  => person</declaration>
-          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=conj => person</declaration>
+	  <declaration corpus="ONW">pos=VRB => type,finiteness,conjugation,class</declaration>
+          <declaration corpus="ONW">pos=VRB,finiteness=fin => mood,tense,NA</declaration>
+          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=ind  => PA</declaration>
+          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=conj => PA</declaration>
 
           <declaration corpus="ONW">pos=PD => type,case,position</declaration>
           <declaration corpus="ONW">pos=PD,position=prenom|postnom => NA,GA</declaration>
           <declaration corpus="ONW">pos=PD,position=free => number</declaration>
           <declaration corpus="ONW">pos=PD,type=pers|refl => person</declaration>
-          <declaration corpus="ONW">pos=PD,person=3,number=sg => gender</declaration>
+          <declaration corpus="ONW">pos=PD, person=3, number=sg => gender</declaration>
 
           <declaration corpus="ONW">pos=CONJ => type</declaration>
-          <declaration corpus="ONW">pos=ADP => type</declaration>
-          <declaration corpus="ONW">pos=ADV => type,subtype</declaration>
+          <declaration corpus="ONW">pos=ADP => type, government</declaration>
+          <declaration corpus="ONW">pos=ADV => type, subtype</declaration>
+
           <declaration corpus="ONW">pos=NUM => type,position,case,NA,GA</declaration>
+	  <declaration corpus="ONW">pos=NUM => representation || representation=dig|let|rom|mix-dig|mix-rom</declaration>
+
 	  <declaration corpus="ONW">pos=RES => type</declaration>
 
+          <!-- CGN -->
 
+	  <!-- Corpus Gysseling -->
 
+	  <!-- Core feature set (kernset) -->
 
-	  <declaration corpus='all'>pos=AA => degree,infl || degree=unclear, infl=unclear</declaration>
+	  <declaration corpus='all'>pos=AA => degree,inflection || degree=unclear, inflection=unclear</declaration>
 	  <declaration corpus="CGN">pos=AA =>case, position</declaration>
 	  <declaration corpus="CGN,Gysseling">pos=AA => position || position=unclear</declaration>
 	  
@@ -1607,13 +1632,13 @@
 	  <declaration corpus="CGN">pos=PD,person=3 => gender</declaration>
 	  <declaration corpus='all'>pos=PD,type=refl => person,number || person=unclear, number=unclear</declaration>
 
-	  <declaration corpus="ONW">pos=PD,type=poss => GA || GA=unclear</declaration>
-          <declaration corpus="ONW,CGN">pos=PD,type=poss,person=3 => gender || gender=unclear</declaration>
+	  <declaration corpus="x">pos=PD,type=poss => GA || GA=unclear</declaration>
+          <declaration corpus="CGN">pos=PD,type=poss,person=3 => gender || gender=unclear</declaration>
 
 	  <declaration corpus='all'>pos=RES => type || type=other</declaration>
 
 	  <declaration corpus='all'>pos=VRB => finiteness || finiteness=unclear</declaration>
 	  <declaration corpus='all'>pos=VRB,finiteness=fin,mood=imp => tense,mood || tense=pres</declaration>
-	  <declaration corpus='all'>pos=VRB,finiteness=fin => tense,mood,infl || tense=unclear, mood=unclear, infl=unclear</declaration>
+	  <declaration corpus='all'>pos=VRB,finiteness=fin => tense,mood,inflection || tense=unclear, mood=unclear, inflection=unclear</declaration>
   </implications>
 </tagset>

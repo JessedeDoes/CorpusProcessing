@@ -5,6 +5,12 @@
         multipleValues: true
      
 
+      - name: verbclass
+        displayName: verbclass
+        uiType: select
+        multipleValues: true
+     
+
       - name: case
         displayName: case
         uiType: select
@@ -35,12 +41,6 @@
         multipleValues: true
      
 
-      - name: gov
-        displayName: gov
-        uiType: select
-        multipleValues: true
-     
-
       - name: subtype
         displayName: subtype
         uiType: select
@@ -55,6 +55,12 @@
 
       - name: degree
         displayName: degree
+        uiType: select
+        multipleValues: true
+     
+
+      - name: government
+        displayName: government
         uiType: select
         multipleValues: true
      
@@ -89,12 +95,6 @@
         multipleValues: true
      
 
-      - name: class
-        displayName: class
-        uiType: select
-        multipleValues: true
-     
-
       - name: conjugation
         displayName: conjugation
         uiType: select
@@ -107,14 +107,8 @@
         multipleValues: true
      
 
-      - name: declination
-        displayName: declination
-        uiType: select
-        multipleValues: true
-     
-
-      - name: val
-        displayName: val
+      - name: valency
+        displayName: valency
         uiType: select
         multipleValues: true
      

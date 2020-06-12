@@ -24,6 +24,30 @@ object TagsetDiachroonNederlands {
     pw.close()
   }
 
+  /*
+   lazy val features_sorted = if (tagset == null) features else {
+    val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
+    val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+    val additions = features.filter(f => !lijstje.contains(f.name)).zipWithIndex.map({case (x,i) => (x.name,lijstje.size + i)}).toMap
+    def combi = lijstje ++ additions
+    println(combi)
+    features.sortBy(x => combi(x.name))
+  }
+
+   */
+
+  def sortFeatures(t: TagSet, tRef: TagSet): TagSet = {
+    def sortPartition(pos: String, features: List[String]) = {
+      val lijstje: Map[String, Int] = tRef.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+      val additions = features.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
+      val combi = lijstje ++ additions
+      (pos, features.sortBy(x => combi(x)))
+    }
+
+    t.copy(pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}))
+  }
+
+
   def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
                              corpusName: String): TagSet = {
 
@@ -31,18 +55,19 @@ object TagsetDiachroonNederlands {
 
 
 
-    val corpusBasedWithDesc = corpusBased.copy(
+    val corpusBasedWithDesc0 = corpusBased.copy(
       descriptions = TDNTagset.descriptions,
       displayNames = TagSet.mergeDescriptions(TDNTagset.displayNames,
         TDNTagset.descriptions),
       implications = TDNTagset.implications.filter(x =>
         x.corpus.isEmpty || x.corpus.get.contains(corpusName)))
 
+    val corpusBasedWithDesc = sortFeatures(corpusBasedWithDesc0, TDNTagset)
+
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
     val outputBase = prefix + outputName
-    pretty(corpusBasedWithDesc, corpusName,
-      new PrintWriter(s"$outputBase.xml"))
+    pretty(corpusBasedWithDesc, corpusName, new PrintWriter(s"$outputBase.xml"))
 
     val jsonWriter = new PrintWriter(s"$outputBase.json")
     jsonWriter.println(corpusBasedWithDesc.asJSON)
@@ -115,13 +140,25 @@ object TagsetDiachroonNederlands {
 
     val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
 
-    val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
-    tagMapping.toList.sortBy(_._1).foreach({case (tOrg, t) => {
+    val tmPlus = tagMapping.mapValues(t => {
       val t1 = new CHNStyleTag(t, tagsetPlus)
-      val t1Fixed = tagsetPlus.fixTag(t1)
-      currentMapping.println(s"$tOrg\t$t\t$t1Fixed")
+      val t1Fixed = tagsetPlus.fixTag(t1).toString
+      (t,t1Fixed)
+    })
+
+    val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
+
+    tmPlus.toList.sortBy(_._2._2).foreach({case (tOrg, (t,t1)) => {
+
+      currentMapping.println(s"$tOrg\t$t\t$t1")
     }})
     currentMapping.close()
+
+    val currentMappingHTML =  <html> <table>{tmPlus.toList.sortBy(_._2._2).map({case (tOrg, (t,t1))  => {
+      <tr><td>{tOrg}</td><td>{t1}</td></tr>
+    }})}</table></html>
+
+    XML.save(prefix + "tagset.mapped.html", currentMappingHTML, "UTF-8")
   }
 
   def doONW = {

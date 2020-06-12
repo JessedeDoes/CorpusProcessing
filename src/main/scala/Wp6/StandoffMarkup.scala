@@ -32,30 +32,50 @@ case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeW
     } else children.filter(_.node.label == s)
   def \\(s: String): Seq[NodeWithOffsets] = \(s) ++ children.flatMap(x => x.\\(s))
   lazy val text = node.text
-  lazy val id = node.attributes.find(_.key == "n").map(_.value.text).getOrElse("id_unknown")
+  lazy val id = node.attributes.find(_.key == "id").map(_.value.text).getOrElse("id_unknown")
   lazy val descendant : Seq[NodeWithOffsets] = children.flatMap(c => Seq(c) ++ c.descendant)
 }
 
 object TEI2NAF {
+
+  def toNaf(n: NodeWithOffsets): Node = {
+    if (n.node.isInstanceOf[Text])
+      <text offset={n.start.toString} length={n.length.toString}/>
+    else {
+      val down = n.children.map(toNaf)
+      val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
+      <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>
+        {attributes}{down}
+      </element>
+    }
+  }
+
    def tei2naf(d: Elem) = {
      val textNode = (d \\ "text").headOption
      textNode.map(n => {
        val n1 = StandoffMarkup.createStandoffMarkup(n,0)
        val txt = n1.text
        // "<![CDATA["
-       val cdata = scala.xml.Unparsed("" + txt+ "]]>")
+       lazy val pcdata = txt // scala.xml.Unparsed("" + txt) //  "]]>")
+       lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
        val descendants = n1.descendant
         <NAF><raw>{cdata}</raw>
-        <tei>{descendants.map(d => <element id={d.id} offset={d.start.toString} length={d.length.toString} name={d.label}></element>)}</tei></NAF>
+        <tei>{toNaf(n1)}</tei></NAF>
      })
    }
 
-   lazy val exampleTEI = XML.loadFile("data/CRM/Metadata/0001.tei.xml")
+  val exampleFile = "data/CRM/Metadata/0001.tei.xml"
+  lazy val exampleTEI0 = XML.loadFile(exampleFile)
 
   val mini = <TEI><text><w>Hallo</w> <w>meneer</w></text></TEI>
+
   def main(args: Array[String]): Unit = {
+    val exampleTEI = if (args.size > 0) XML.loadFile(args(0)) else exampleTEI0
     val w_tei = (exampleTEI \\ "w").map(_.text)
-    val nafje = tei2naf(exampleTEI).get
+    val nafje0 = tei2naf(exampleTEI).get
+    XML.save("/tmp/nafje.xml", nafje0, "UTF-8")
+    val nafje = XML.loadFile("/tmp/nafje.xml")
+
     val naf_txt: String = (nafje \\ "raw").text
 
     val pw = new PrintWriter("/tmp/txt.txt")
@@ -70,7 +90,7 @@ object TEI2NAF {
     //w1.foreach(println)
 
     w_naf.take(50).zip(w_tei.take(50)).foreach(println)
-    XML.save("/tmp/nafje.xml", nafje, "UTF-8")
+
     //println(nafje)
   }
 }

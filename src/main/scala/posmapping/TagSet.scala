@@ -195,7 +195,7 @@ case class TagSet(prefix: String,
                   descriptions: TagDescription = TagDescription(),
                   displayNames: TagDescription = TagDescription(),
                   listOfTags: Set[Tag] = Set.empty,
-                  implications: Seq[Implication] = Seq.empty)
+                  implications: Seq[Implication] = Seq.empty, featureOrder: Option[Seq[String]] = None)
 {
 
   def toXML(server: String="http://svotmc10.ivdnt.loc/", corpus: String="gysseling_nt") =
