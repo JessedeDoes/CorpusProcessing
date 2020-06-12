@@ -45,9 +45,7 @@ object TEI2NAF {
     else  if (n.node.isInstanceOf[Elem]) {
       val down = n.children.map(toNaf)
       val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
-      <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>
-        {attributes}{down}
-      </element>
+      <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>{attributes}{down}</element>
     } else {
         <node class={nodeType} offset={n.start.toString} length={n.length.toString}/>
     }
