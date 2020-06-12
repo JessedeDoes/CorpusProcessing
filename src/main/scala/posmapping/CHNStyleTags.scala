@@ -41,7 +41,16 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     }
   }
 
-  override def toString: String = s"$pos(${features.filter(_.name != "pos").map(f => s"${f.name}=${f.value}").mkString(",")})"
+  lazy val features_sorted = if (tagset == null) features else {
+    val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
+    val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+    val additions = features.filter(f => !lijstje.contains(f.name)).zipWithIndex.map({case (x,i) => (x.name,lijstje.size + i)}).toMap
+    def combi = lijstje ++ additions
+    //println(combi)
+    features.sortBy(x => combi(x.name))
+  }
+
+  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${f.value}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 

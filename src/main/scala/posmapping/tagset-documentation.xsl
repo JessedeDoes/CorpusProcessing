@@ -12,7 +12,7 @@
 
   
 <xsl:param name="server">svotmc10.ivdnt.loc</xsl:param>
-  
+<xsl:variable name="corpus"><xsl-value-of select="//corpus"/></xsl:variable> 
   
 <xsl:template match="/">
 	<html>
@@ -36,7 +36,7 @@
         <xsl:variable name="feature"><xsl:value-of select="./text()"/></xsl:variable>
         <h2><xsl:value-of select="$feature"/></h2>
         <div style="font-style: italic"><xsl:value-of select="//partitions/feature[./name=$feature]/@desc"/></div>
-        <ul style="column-count: 5"><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[.//pos=$pos]">
+	<ul style="column-count: 1"><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[.//pos=$pos and not(contains(./value/text(),'|'))]">
           <li>
             <xsl:variable name="value"><xsl:value-of select="encode-for-uri(replace(./value, '\|', '\\|'))"/></xsl:variable>
             <xsl:variable name="displayName"><xsl:choose>
@@ -52,6 +52,9 @@
       </xsl:for-each>
     </xsl:for-each>
   </xsl:for-each>
+  <xsl:if test="//declaration">
+	  <xsl:apply-templates select="//declaration[@corpus=//corpus/text()]"/>
+  </xsl:if>
   <xsl:if test=".//tags">
   <h1>Occurring tags</h1>
   <div style="column-count: 3">
@@ -67,7 +70,11 @@
   </body>
   </html>
 </xsl:template>
- 
+
+<xsl:template match="declaration">
+	<div><xsl:value-of select="."/></div>
+</xsl:template>
+
 <xsl:template match="name">
   <tr><td><xsl:value-of select="./text()"/></td><td><xsl:value-of select="./@desc"/></td></tr>
 </xsl:template>

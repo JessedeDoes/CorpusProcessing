@@ -1,5 +1,7 @@
 package Wp6
 
+import java.io.PrintWriter
+
 import scala.xml._
 import scala.util.matching.Regex._
 import StandoffTokenizing._
@@ -22,6 +24,7 @@ case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeW
   val name = "label"
   lazy val label = node.label
   lazy val value = label
+  lazy val length = end - start
   def \(s: String): Seq[NodeWithOffsets] =
     if (s.startsWith("@")) {
       val a = node \ s
@@ -29,9 +32,73 @@ case class NodeWithOffsets(node: Node, start: Int, end: Int, children: Seq[NodeW
     } else children.filter(_.node.label == s)
   def \\(s: String): Seq[NodeWithOffsets] = \(s) ++ children.flatMap(x => x.\\(s))
   lazy val text = node.text
+  lazy val id = node.attributes.find(_.key == "id").map(_.value.text).getOrElse("id_unknown")
   lazy val descendant : Seq[NodeWithOffsets] = children.flatMap(c => Seq(c) ++ c.descendant)
 }
 
+object TEI2NAF {
+
+  def toNaf(n: NodeWithOffsets): Node = {
+    val nodeType = n.node.getClass.getName.replaceAll(".*\\.","")
+    if (n.node.isInstanceOf[Text])
+      <text offset={n.start.toString} length={n.length.toString}/>
+    else  if (n.node.isInstanceOf[Elem]) {
+      val down = n.children.map(toNaf)
+      val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
+      <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>{attributes}{down}</element>
+    } else {
+        <node class={nodeType} offset={n.start.toString} length={n.length.toString}/>
+    }
+  }
+
+   def tei2naf(d: Elem) = {
+     val textNode = (d \\ "text").headOption
+     textNode.map(n => {
+       val n1 = StandoffMarkup.createStandoffMarkup(n,0)
+       val txt = n1.text
+       // "<![CDATA["
+       lazy val pcdata = txt // scala.xml.Unparsed("" + txt) //  "]]>")
+       lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
+       val descendants = n1.descendant
+        <NAF><raw>{cdata}</raw>
+        <textStructure>{toNaf(n1)}</textStructure></NAF>
+     })
+   }
+
+  val exampleFile = "data/CRM/Metadata/0001.tei.xml"
+  lazy val exampleTEI0 = XML.loadFile(exampleFile)
+
+  val mini = <TEI><text><w>Hallo</w> <w>meneer</w></text></TEI>
+
+  def main(args: Array[String]): Unit = {
+
+
+    val exampleTEI = if (args.size > 0) XML.loadFile(args(0)) else exampleTEI0
+    val w_tei = (exampleTEI \\ "w").map(_.text)
+    val nafje0 = tei2naf(exampleTEI).get
+
+    XML.save("/tmp/nafje.xml", nafje0, "UTF-8")
+
+    val nafje = XML.loadFile("/tmp/nafje.xml")
+
+    val naf_txt: String = (nafje \\ "raw").text
+
+    val pw = new PrintWriter("/tmp/txt.txt")
+    pw.print(naf_txt)
+    pw.close()
+    val w_naf = (nafje \\ "element").filter(e => (e \ "@name").text == "w").map(w => {
+      val offset = (w \ "@offset").text.toInt
+      val length = (w \ "@length").text.toInt
+      val id = (w \ "@id").text
+      s"$id($offset,$length)=" + naf_txt.substring(offset, offset + length).trim
+    })
+    //w1.foreach(println)
+
+    w_naf.take(50).zip(w_tei.take(50)).foreach(println)
+
+    //println(nafje)
+  }
+}
 
 object StandoffMarkup {
 

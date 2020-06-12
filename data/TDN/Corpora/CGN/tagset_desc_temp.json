@@ -8,7 +8,7 @@
     "ADP":{
       "value":"ADP",
       "displayName":"Adposition",
-      "subAnnotationIds":["pos_number","pos_subtype","pos_case","pos_type"]
+      "subAnnotationIds":["pos_type"]
     },
     "ADV":{
       "value":"ADV",
@@ -79,11 +79,11 @@
       },{
         "value":"gen|dat",
         "displayName":"gen|dat",
-        "pos":["NOU-C","AA","NUM","ADP"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"nom|acc|dat|voc",
         "displayName":"nom|acc|dat|voc",
-        "pos":["NOU-C","AA"]
+        "pos":["PD","NOU-C","AA"]
       },{
         "value":"nom|acc|voc",
         "displayName":"nom|acc|voc",
@@ -97,7 +97,7 @@
         "displayName":"nom|voc",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       }]
@@ -113,7 +113,7 @@
         "displayName":"present",
         "pos":["VRB"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
       }]
@@ -137,7 +137,7 @@
         "displayName":"Neuter",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","NUM"]
       }]
@@ -153,7 +153,7 @@
         "displayName":"Singular",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD"]
       }]
@@ -177,7 +177,7 @@
         "displayName":"Prenominal",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Other",
         "pos":["AA","NUM"]
       }]
@@ -199,13 +199,13 @@
       "values":[{
         "value":"art",
         "displayName":"Article",
-        "pos":["PD","ADP"]
+        "pos":["PD"]
       },{
         "value":"rel|inter",
         "displayName":"rel|inter",
         "pos":["ADV"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["ADV"]
       }]
@@ -217,10 +217,6 @@
         "displayName":"Cardinal",
         "pos":["NUM"]
       },{
-        "value":"comment",
-        "displayName":"comment",
-        "pos":["RES"]
-      },{
         "value":"coor",
         "displayName":"Coordinating",
         "pos":["CONJ"]
@@ -229,11 +225,15 @@
         "displayName":"Demonstrative",
         "pos":["PD"]
       },{
+        "value":"dem|indef",
+        "displayName":"dem|indef",
+        "pos":["PD"]
+      },{
         "value":"excl",
         "displayName":"Exclamative",
         "pos":["PD"]
       },{
-        "value":"foreign",
+        "value":"for",
         "displayName":"Foreign",
         "pos":["RES"]
       },{
@@ -277,10 +277,6 @@
         "displayName":"Preposition",
         "pos":["ADP"]
       },{
-        "value":"pre)+PD(type",
-        "displayName":"pre)+PD(type",
-        "pos":["ADP"]
-      },{
         "value":"pron",
         "displayName":"Pronominal",
         "pos":["ADV"]
@@ -310,10 +306,10 @@
         "pos":["CONJ"]
       },{
         "value":"symb",
-        "displayName":"symb",
+        "displayName":"Symbol",
         "pos":["RES"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["RES","ADV"]
       }]
@@ -333,7 +329,7 @@
         "displayName":"ind|imp",
         "pos":["VRB"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
       }]
@@ -353,7 +349,7 @@
         "displayName":"Superlative",
         "pos":["AA"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["AA"]
       }]
@@ -367,13 +363,13 @@
       },{
         "value":"sg",
         "displayName":"Singular",
-        "pos":["PD","VRB","NOU-C","NOU-P","ADP"]
+        "pos":["PD","VRB","NOU-C","NOU-P"]
       },{
         "value":"sg|pl",
         "displayName":"sg|pl",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","VRB","NOU-C","NOU-P"]
       }]
@@ -389,55 +385,43 @@
         "displayName":"-e",
         "pos":["PD","VRB","NOU-C","AA","NOU-P"]
       },{
-        "value":"en",
-        "displayName":"en",
-        "pos":["VRB"]
-      },{
-        "value":"e|en",
-        "displayName":"e|en",
+        "value":"e|n",
+        "displayName":"e|n",
         "pos":["NOU-C"]
       },{
         "value":"n",
         "displayName":"-n",
-        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
       },{
-        "value":"n|r|re",
-        "displayName":"n|r|re",
+        "value":"n|r/re",
+        "displayName":"n|r/re",
         "pos":["AA"]
       },{
-        "value":"n|s",
-        "displayName":"n|s",
+        "value":"n|s/th",
+        "displayName":"n|s/th",
         "pos":["NOU-P"]
       },{
-        "value":"r",
-        "displayName":"r",
-        "pos":["PD"]
-      },{
-        "value":"r|re",
+        "value":"r/re",
         "displayName":"-r/-re",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"r|re|s|th",
-        "displayName":"r|re|s|th",
+        "value":"r/re|s/th",
+        "displayName":"r/re|s/th",
         "pos":["PD"]
       },{
-        "value":"s",
-        "displayName":"s",
+        "value":"s/th",
+        "displayName":"-s/-th",
         "pos":["PD","NOU-C","NOU-P","NUM"]
       },{
-        "value":"s|n",
-        "displayName":"s|n",
+        "value":"s/th|n",
+        "displayName":"s/th|n",
         "pos":["NUM"]
-      },{
-        "value":"s|th",
-        "displayName":"-s/-th",
-        "pos":["PD","NOU-C"]
       },{
         "value":"t",
         "displayName":"-t",
         "pos":["VRB","NOU-C"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","VRB","NOU-C","AA","NOU-P"]
       }]
@@ -465,7 +449,7 @@
         "displayName":"Neuter",
         "pos":["PD","NOU-C","NOU-P"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","NOU-C","NOU-P"]
       }]
@@ -489,7 +473,7 @@
         "displayName":"Present participle",
         "pos":["VRB"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
       }]
@@ -509,7 +493,7 @@
         "displayName":"3",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","VRB"]
       }]
