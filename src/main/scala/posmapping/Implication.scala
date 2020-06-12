@@ -3,7 +3,7 @@ import scala.xml._
 import scala.util.{Try, Success, Failure}
 
 case class Implication(antecedent: Tag => Boolean, consequent: Tag => Boolean, description: String, isDeclaration: Boolean=true,
-                       fix: Option[Tag => Tag]  = None) {
+                       fix: Option[Tag => Tag]  = None, corpus: Option[Set[String]] = None) {
   def apply(t: Tag) = !antecedent(t) || consequent(t)
 
   override def toString: String = description
@@ -59,11 +59,11 @@ object Implication {
 
   def implicationFromText(s: String) = {
     Try ( { val x = s.trim.split("\\s*=>\\s*"); parseFeatures(x(0)) -> parseFeatures(x(1)) }) match {
-      case Success(f) => Implication(f._1, f._2, s"$f", false)
+      case Success(f) => Implication(f._1, f._2, s, false)
     }
   }
 
-  def declarationFromText(s: String) = {
+  def declarationFromText(s: String, corpus: Option[Set[String]] = None) = {
     Try ( {
       val x = s.trim.split("\\s*(=>|\\|\\|)\\s*");
       val antecedent = parseFeatures(x(0))
@@ -73,17 +73,19 @@ object Implication {
         Some(t => addFeatures(t,addition))
       }
       val z = (antecedent, consequent, fix)
-      // Console.err.println(z)
-      // System.exit(1)
       z
-
     }) match {
-      case Success(f) => Implication(f._1, f._2, s"$f", fix=f._3)
+      case Success(f) => Implication(f._1, f._2, s, fix=f._3, corpus=corpus)
     }
   }
 
   def fromXML(z: Elem) = {
-    (z \\ "implication").map(x => implicationFromText(x.text)) ++ (z \\ "declaration").map(x => declarationFromText(x.text))
+    (z \\ "implication").map(x => implicationFromText(x.text)) ++
+      (z \\ "declaration").map(x => {
+        val corpus = (x \ "@corpus").text.trim
+
+        val c = if (corpus.isEmpty) None else Some(corpus.split("\\s*,\\s*").toSet)
+        declarationFromText(x.text,c) } )
   }
 
   def main(args: Array[String]): Unit = {

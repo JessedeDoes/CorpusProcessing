@@ -2,7 +2,7 @@ package folia
 import java.io.FileInputStream
 import java.util.zip.GZIPInputStream
 
-import folia.FoliaToRudimentaryTEI.nonModernized
+import folia.NederlabToCobalt.nonModernized
 
 import scala.xml._
 
