@@ -58,7 +58,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Number" desc="Number subject agreement (Verbs, adjectives, pronouns, numerals)">
+        <feature displayName="Number" desc="Number agreement (Verbs, adjectives, pronouns, numerals)">
             <name>NA</name>
             <values>
                 <featureValue displayName="Plural" desc="Plural">
@@ -79,7 +79,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -89,7 +89,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Person" desc="Person subject agreement (Verbs)">
+        <feature displayName="Person" desc="Person (subject) agreement (Verbs)">
             <name>PA</name>
             <values>
                 <featureValue displayName="First" desc="First person">
@@ -565,7 +565,7 @@
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
+                <featureValue displayName="unclear" desc="unclear">
                     <value>unclear</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -804,12 +804,6 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Foreign" desc="Foreign word">
-                    <value>foreign</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Indefinite" desc="Indefinite">
                     <value>indef</value>
                     <posForValue>
@@ -1015,7 +1009,6 @@
                 <feature>case</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
-                <feature>type</feature>
             </features>
         </constraint>
         <constraint>
@@ -1037,6 +1030,27 @@
             </features>
         </constraint>
     </constraints>
+    <implications>
+        <declaration corpus="Some(Set(ONW))">pos=AA =&gt; degree,position,case,NA,GA</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=NOU-C =&gt; case,number,gender</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=NOU-P =&gt; case,number,gender</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB =&gt; finiteness,conjugation</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin =&gt; mood,tense,number</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin,mood=ind =&gt; person</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin,mood=conj =&gt; person</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD =&gt; type,case,position</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD,position=prenom|postnom =&gt; NA,GA</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD,position=free =&gt; number</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD,type=pers|refl =&gt; person</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD,person=3,number=sg =&gt; gender</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=CONJ =&gt; type</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=ADP =&gt; type</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=ADV =&gt; type,subtype</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=NUM =&gt; type,position,case,NA,GA</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=RES =&gt; type</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=PD,type=poss =&gt; GA || GA=unclear</declaration>
+        <declaration corpus="Some(Set(ONW, CGN))">pos=PD,type=poss,person=3 =&gt; gender || gender=unclear</declaration>
+    </implications>
     <tags>
         <tag>AA(GA=f,NA=pl,case=acc,degree=pos)</tag>
         <tag>AA(GA=f,NA=sg,case=acc,declination=weak,degree=pos)</tag>
@@ -1339,6 +1353,7 @@
         <tag>NUM(case=gen,position=free,type=card)</tag>
         <tag>NUM(case=nom,type=card)</tag>
         <tag>NUM(type=card)</tag>
+        <tag>NUM(type=ord)</tag>
         <tag>PD()</tag>
         <tag>PD(GA=f,NA=pl,case=acc,subtype=art,type=dem)</tag>
         <tag>PD(GA=f,NA=pl,case=acc,type=dem)</tag>
@@ -1646,7 +1661,6 @@
         <tag>PD(type=rel)</tag>
         <tag>RES()</tag>
         <tag>RES(case=gen,number=sg)</tag>
-        <tag>RES(type=foreign)</tag>
         <tag>VRB()</tag>
         <tag>VRB(NA=pl,PA=1,class=1a,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
         <tag>VRB(NA=pl,PA=1,class=2b,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
@@ -2135,6 +2149,7 @@
         <tag>VRB(NA=sg,conjugation=weak,mood=imp,val=intr)</tag>
         <tag>VRB(NA=sg,conjugation=weak,mood=imp,val=trans)</tag>
         <tag>VRB(NA=sg,mood=imp)</tag>
+        <tag>VRB(NA=sg,mood=imp,val=trans)</tag>
         <tag>VRB(NA=unclear,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
         <tag>VRB(case=dat,conjugation=irreg|weak,finiteness=ger,val=trans)</tag>
         <tag>VRB(case=dat,conjugation=strong,finiteness=ger,val=intr)</tag>

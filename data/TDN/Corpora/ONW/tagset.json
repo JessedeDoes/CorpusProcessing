@@ -48,7 +48,7 @@
     "RES":{
       "value":"RES",
       "displayName":"RES",
-      "subAnnotationIds":["pos_number","pos_case","pos_type"]
+      "subAnnotationIds":["pos_number","pos_case"]
     },
     "VRB":{
       "value":"VRB",
@@ -291,10 +291,6 @@
         "value":"dem",
         "displayName":"dem",
         "pos":["PD"]
-      },{
-        "value":"foreign",
-        "displayName":"foreign",
-        "pos":["RES"]
       },{
         "value":"indef",
         "displayName":"indef",

@@ -25,7 +25,7 @@ object TagsetDiachroonNederlands {
   }
 
   def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
-                             corpusName: String): Unit = {
+                             corpusName: String): TagSet = {
 
     // val corpusBased = TagSet.fromXML(prefix + fileName) // nee, niet goed
 
@@ -59,6 +59,7 @@ object TagsetDiachroonNederlands {
       x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll("xml", "html"))
     }
     //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
+    corpusBasedWithDesc
   }
 
   def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String,
@@ -87,7 +88,12 @@ object TagsetDiachroonNederlands {
     tagsetFromSetOfTags(prefix, corpus, allDistinctTags)
   }
 
-  private def tagsetFromSetOfTags(prefix: String, corpus: String, allDistinctTags: Set[String]) = {
+  implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
+
+  private def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping: Map[String, String]) = {
+
+    val allDistinctTags = tagMapping.values.toSet
+
     val listWriter = new PrintWriter(prefix + "tagList.txt")
     allDistinctTags.toList.sorted.foreach(t => listWriter.println(t))
     listWriter.close()
@@ -95,8 +101,10 @@ object TagsetDiachroonNederlands {
     val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags.flatMap(t => t.split("\\s*\\+\\s*").toSet))
 
     val xmlWriter = new PrintWriter(prefix + "tagset.xml")
+
     pretty(tagset, corpus, xmlWriter)
     xmlWriter.close()
+
     val jsonWriter = new PrintWriter(prefix + "tagset.json")
     jsonWriter.println(tagset.asJSON)
     jsonWriter.close()
@@ -105,11 +113,23 @@ object TagsetDiachroonNederlands {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-    addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
+    val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
+
+    val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
+    tagMapping.toList.sortBy(_._1).foreach({case (tOrg, t) => {
+      val t1 = new CHNStyleTag(t, tagsetPlus)
+      val t1Fixed = tagsetPlus.fixTag(t1)
+      currentMapping.println(s"$tOrg\t$t\t$t1Fixed")
+    }})
+    currentMapping.close()
   }
 
   def doONW = {
-      tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
+      // tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
+      val conversionTable = "/tmp/allTags.onwmap.txt"
+
+    val mapping = io.Source.fromFile(conversionTable).getLines().map(_.split("\\t")).map(r => s"${r(0)};${r(1)}" -> r(2)).toMap
+    tagsetFromSetOfTags("data/TDN/Corpora/ONW/", "ONW", mapping)
    }
 
   def doGysseling = {
@@ -123,8 +143,8 @@ object TagsetDiachroonNederlands {
   }
 
    def main(args: Array[String]): Unit = {
-     doCGN
-      //doONW
+     //doCGN
+      doONW
       //doGysseling
    }
 }

@@ -58,17 +58,20 @@ object Implication {
   }
 
   def implicationFromText(s: String) = {
-    Try ( { val x = s.trim.split("\\s*=>\\s*"); parseFeatures(x(0)) -> parseFeatures(x(1)) }) match {
+    Try ( { val x = s.replaceAll("\\s+", " ").trim.split("\\s*=>\\s*"); parseFeatures(x(0)) -> parseFeatures(x(1)) }) match {
       case Success(f) => Implication(f._1, f._2, s, false)
     }
   }
 
   def declarationFromText(s: String, corpus: Option[Set[String]] = None) = {
     Try ( {
-      val x = s.trim.split("\\s*(=>|\\|\\|)\\s*");
+      val x = s.replaceAll("\\s+", " ").trim.split("\\s*(=>|\\|\\|)\\s*");
       val antecedent = parseFeatures(x(0))
-      val consequent  = x(1).split("\\s*,\\s*").toSet
-      val fix: Option[Tag => Tag] = if (x.size <= 2) None else {
+      val consequent: Set[String] = x(1).split("\\s*,\\s*").toSet
+      val fix: Option[Tag => Tag] = if (x.size <= 2) {
+        val addition = consequent.map(_ -> "uncl").toMap
+        Some(t => addFeatures(t,addition))
+      } else {
         val addition = parseFeatures(x(2))
         Some(t => addFeatures(t,addition))
       }

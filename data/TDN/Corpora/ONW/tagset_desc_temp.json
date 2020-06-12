@@ -48,7 +48,7 @@
     "RES":{
       "value":"RES",
       "displayName":"Residual",
-      "subAnnotationIds":["pos_number","pos_case","pos_type"]
+      "subAnnotationIds":["pos_number","pos_case"]
     },
     "VRB":{
       "value":"VRB",
@@ -213,7 +213,7 @@
         "pos":["PD","VRB","AA","NUM"]
       },{
         "value":"unclear",
-        "displayName":"Unclear",
+        "displayName":"unclear",
         "pos":["PD","VRB","AA"]
       }]
     },
@@ -291,10 +291,6 @@
         "value":"dem",
         "displayName":"Demonstrative",
         "pos":["PD"]
-      },{
-        "value":"foreign",
-        "displayName":"Foreign",
-        "pos":["RES"]
       },{
         "value":"indef",
         "displayName":"Indefinite",
@@ -429,7 +425,7 @@
         "pos":["PD","NOU-C","NOU-P","RES"]
       },{
         "value":"unclear",
-        "displayName":"Unclear",
+        "displayName":"unclear",
         "pos":["NOU-C"]
       }]
     },

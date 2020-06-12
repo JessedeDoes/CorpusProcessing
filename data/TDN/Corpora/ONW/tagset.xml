@@ -804,12 +804,6 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="foreign" desc="foreign">
-                    <value>foreign</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="indef" desc="indef">
                     <value>indef</value>
                     <posForValue>
@@ -1015,7 +1009,6 @@
                 <feature>case</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
-                <feature>type</feature>
             </features>
         </constraint>
         <constraint>
@@ -1037,6 +1030,7 @@
             </features>
         </constraint>
     </constraints>
+    <implications> </implications>
     <tags>
         <tag>AA(GA=f,NA=pl,case=acc,degree=pos)</tag>
         <tag>AA(GA=f,NA=sg,case=acc,declination=weak,degree=pos)</tag>
@@ -1339,6 +1333,7 @@
         <tag>NUM(case=gen,position=free,type=card)</tag>
         <tag>NUM(case=nom,type=card)</tag>
         <tag>NUM(type=card)</tag>
+        <tag>NUM(type=ord)</tag>
         <tag>PD()</tag>
         <tag>PD(GA=f,NA=pl,case=acc,subtype=art,type=dem)</tag>
         <tag>PD(GA=f,NA=pl,case=acc,type=dem)</tag>
@@ -1646,7 +1641,6 @@
         <tag>PD(type=rel)</tag>
         <tag>RES()</tag>
         <tag>RES(case=gen,number=sg)</tag>
-        <tag>RES(type=foreign)</tag>
         <tag>VRB()</tag>
         <tag>VRB(NA=pl,PA=1,class=1a,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
         <tag>VRB(NA=pl,PA=1,class=2b,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
@@ -2135,6 +2129,7 @@
         <tag>VRB(NA=sg,conjugation=weak,mood=imp,val=intr)</tag>
         <tag>VRB(NA=sg,conjugation=weak,mood=imp,val=trans)</tag>
         <tag>VRB(NA=sg,mood=imp)</tag>
+        <tag>VRB(NA=sg,mood=imp,val=trans)</tag>
         <tag>VRB(NA=unclear,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
         <tag>VRB(case=dat,conjugation=irreg|weak,finiteness=ger,val=trans)</tag>
         <tag>VRB(case=dat,conjugation=strong,finiteness=ger,val=intr)</tag>
