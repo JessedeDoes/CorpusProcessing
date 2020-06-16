@@ -70,7 +70,7 @@ object TagSet
 
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
 
-    val partitions: Map[String, Set[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
+    val partitions: Map[String, List[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toList ).toMap
 
     val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
 
@@ -124,8 +124,8 @@ object TagSet
 
   def tagsetFromSetOfTags(prefix: String, tags: Set[Tag]) = {
     val posTags = tags.map(_.pos).toList
-    val partitions:Map[String,Set[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value))
-    val pos2partitions:Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
+    val partitions: Map[String,List[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value).toList)
+    val pos2partitions: Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
     val valueRestrictions:List[ValueRestriction] =
       tags.groupBy(_.pos).flatMap(
         { case (p,thisPos) => {
@@ -187,7 +187,7 @@ case class ValueRestriction(pos: String, featureName: String, values: List[Strin
 
 case class TagSet(prefix: String,
                   val posTags: List[String] = List.empty,
-                  partitions:Map[String,Set[String]] = Map.empty,
+                  partitions:Map[String,List[String]] = Map.empty,
                   pos2partitions: Map[String,List[String]] = Map.empty,
                   parser: TagParser=defaultTagParser,
                   partitionConditions: List[PartitionCondition] = List.empty,
@@ -207,12 +207,12 @@ case class TagSet(prefix: String,
         {posTags.sorted.map(p => <pos displayName={displayNames.posDescription(p)} desc={descriptions.posDescription(p)}>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.map(v =>
         <featureValue displayName={val v1 = if (f != "pos") Some(Text(displayNames.valueDescription(f,v))) else None; v1}
                       desc={val v1 = if (f != "pos") Some(Text(descriptions.valueDescription(f,v))) else None; v1}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
-        {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
+        {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
       <implications>
         {this.implications.map{i => <declaration corpus={i.corpus.toString}>{i.description}</declaration>}}

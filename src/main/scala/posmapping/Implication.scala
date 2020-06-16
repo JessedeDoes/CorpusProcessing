@@ -14,7 +14,7 @@ object Implication {
 
   implicit def valueFilter(m: Map[String, String]): Tag => Boolean = {
     t => {
-      m.forall({case (n,v) =>  t.features.exists(f => f.name == n && f.value == v)})
+      m.forall({case (n,v) =>  t.features.exists(f => f.name == n && (f.value == v || f.value.split("\\|").contains(v)))})
     }
   }
 
@@ -79,6 +79,10 @@ object Implication {
       z
     }) match {
       case Success(f) => Implication(f._1, f._2, s, fix=f._3, corpus=corpus)
+      case _ =>
+        Console.err.println(s"Error $s")
+        System.exit(1)
+        Implication(Map(),Map(),"boem")
     }
   }
 

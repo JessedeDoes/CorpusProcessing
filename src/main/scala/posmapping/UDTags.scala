@@ -11,11 +11,11 @@ object UDTags {
 
    val pos = io.Source.fromFile(udPoS).getLines.toList
 
-   val partitions:Map[String,Set[String]] =
+   val partitions:Map[String,List[String]] =
    {
      val a:Seq[(String,String)] = io.Source.fromFile(udFeats).getLines.toSeq.map(l => l.split("="))
        .map(l => l(0) -> l(1))
-     a.groupBy(_._1).mapValues(l => l.map(_._2)).mapValues(_.toSet)
+     a.groupBy(_._1).mapValues(l => l.map(_._2)).mapValues(_.toSet).mapValues(_.toSet.toList)
    }
 
   val pos2partitions:Map[String, List[String]]  = List( // this is language dependent

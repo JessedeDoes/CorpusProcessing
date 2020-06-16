@@ -41,6 +41,22 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     }
   }
 
+  def normalizeFeatureValue(n: String, v: String): String= {
+    if (tagset == null) v else {
+      val p = tagset.partitions.getOrElse(n,List())
+      val values = v.split("\\|")
+      val lijstje = p.zipWithIndex.toMap
+      val additions = values.filter(f => !lijstje.contains(v)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+
+      def combi = lijstje ++ additions
+      //println(n + " " + combi)
+      Try {values.sortBy(x => combi(x)).mkString("|") } match {
+        case Success(z) => z
+        case _ => v
+      }
+    }
+  }
+
   lazy val features_sorted = if (tagset == null) features else {
     val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
     val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
@@ -50,7 +66,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     features.sortBy(x => combi(x.name))
   }
 
-  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${f.value}").mkString(",")})"
+  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
@@ -89,7 +105,7 @@ object distinctTagsFromGysseling
 }
 
 object distinctTagsFromCRM {
-  val dir = CRM.Settings.dir + "PostProcessedMetadata"
+  val dir = corpusprocessing.CRM.Settings.dir + "PostProcessedMetadata"
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos", "[+]")

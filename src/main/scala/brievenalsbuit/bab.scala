@@ -3,7 +3,7 @@ import scala.xml._
 import utils.PostProcessXML._
 import java.io.File
 
-import eindhoven.createWordids
+import corpusprocessing.eindhoven.createWordids
 import posmapping.CHNStyleTags
 import utils.ProcessFolder
 import utils.Tokenizer

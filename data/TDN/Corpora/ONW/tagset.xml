@@ -16,104 +16,30 @@
         <pos displayName="VRB" desc="VRB">VRB</pos>
     </mainPoS>
     <partitions>
-        <feature displayName="GA" desc="GA">
-            <name>GA</name>
+        <feature displayName="LG" desc="LG">
+            <name>LG</name>
             <values>
                 <featureValue displayName="f" desc="f">
                     <value>f</value>
                     <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="f|m" desc="f|m">
-                    <value>f|m</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="m" desc="m">
-                    <value>m</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="m|n" desc="m|n">
-                    <value>m|n</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="n" desc="n">
-                    <value>n</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="NA" desc="NA">
-            <name>NA</name>
+        <feature displayName="LN" desc="LN">
+            <name>LN</name>
             <values>
-                <featureValue displayName="pl" desc="pl">
-                    <value>pl</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
                         <pos>PD</pos>
-                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
+                <featureValue displayName="pl" desc="pl">
+                    <value>pl</value>
                     <posForValue>
-                        <pos>AA</pos>
                         <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-            </values>
-        </feature>
-        <feature displayName="PA" desc="PA">
-            <name>PA</name>
-            <values>
-                <featureValue displayName="1" desc="1">
-                    <value>1</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="1|3" desc="1|3">
-                    <value>1|3</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="2" desc="2">
-                    <value>2</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="3" desc="3">
-                    <value>3</value>
-                    <posForValue>
-                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -121,16 +47,6 @@
         <feature displayName="case" desc="case">
             <name>case</name>
             <values>
-                <featureValue displayName="acc" desc="acc">
-                    <value>acc</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NOU-C</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="acc|dat" desc="acc|dat">
                     <value>acc|dat</value>
                     <posForValue>
@@ -138,16 +54,9 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="acc|gen" desc="acc|gen">
-                    <value>acc|gen</value>
+                <featureValue displayName="dat|gen" desc="dat|gen">
+                    <value>dat|gen</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="acc|nom" desc="acc|nom">
-                    <value>acc|nom</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -162,37 +71,24 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="dat|gen" desc="dat|gen">
-                    <value>dat|gen</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="gen" desc="gen">
-                    <value>gen</value>
+                <featureValue displayName="nom" desc="nom">
+                    <value>nom</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
-                        <pos>RES</pos>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="gen|nom" desc="gen|nom">
-                    <value>gen|nom</value>
+                <featureValue displayName="acc|gen" desc="acc|gen">
+                    <value>acc|gen</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="gen|voc" desc="gen|voc">
-                    <value>gen|voc</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="nom" desc="nom">
-                    <value>nom</value>
+                <featureValue displayName="acc" desc="acc">
+                    <value>acc</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
@@ -209,19 +105,37 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="gen|nom" desc="gen|nom">
+                    <value>gen|nom</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="acc|nom" desc="acc|nom">
+                    <value>acc|nom</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="gen" desc="gen">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="conjugation" desc="conjugation">
             <name>conjugation</name>
             <values>
-                <featureValue displayName="irreg" desc="irreg">
-                    <value>irreg</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="irreg|pretpres" desc="irreg|pretpres">
-                    <value>irreg|pretpres</value>
+                <featureValue displayName="weak" desc="weak">
+                    <value>weak</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -238,8 +152,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="irreg|weak" desc="irreg|weak">
-                    <value>irreg|weak</value>
+                <featureValue displayName="strong" desc="strong">
+                    <value>strong</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="irreg|pretpres" desc="irreg|pretpres">
+                    <value>irreg|pretpres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -256,14 +176,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="strong" desc="strong">
-                    <value>strong</value>
+                <featureValue displayName="irreg|weak" desc="irreg|weak">
+                    <value>irreg|weak</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="weak" desc="weak">
-                    <value>weak</value>
+                <featureValue displayName="irreg" desc="irreg">
+                    <value>irreg</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -296,26 +216,26 @@
         <feature displayName="finiteness" desc="finiteness">
             <name>finiteness</name>
             <values>
-                <featureValue displayName="fin" desc="fin">
-                    <value>fin</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="ger" desc="ger">
                     <value>ger</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="ger|inf" desc="ger|inf">
-                    <value>ger|inf</value>
+                <featureValue displayName="prespart" desc="prespart">
+                    <value>prespart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="ger|prespart" desc="ger|prespart">
-                    <value>ger|prespart</value>
+                <featureValue displayName="fin" desc="fin">
+                    <value>fin</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="ger|inf" desc="ger|inf">
+                    <value>ger|inf</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -332,8 +252,8 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="prespart" desc="prespart">
-                    <value>prespart</value>
+                <featureValue displayName="ger|prespart" desc="ger|prespart">
+                    <value>ger|prespart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -343,17 +263,20 @@
         <feature displayName="gender" desc="gender">
             <name>gender</name>
             <values>
-                <featureValue displayName="f" desc="f">
-                    <value>f</value>
+                <featureValue displayName="f|m" desc="f|m">
+                    <value>f|m</value>
                     <posForValue>
                         <pos>NOU-C</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="f|m" desc="f|m">
-                    <value>f|m</value>
+                <featureValue displayName="n" desc="n">
+                    <value>n</value>
                     <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="f|n" desc="f|n">
@@ -362,23 +285,31 @@
                         <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="m" desc="m">
-                    <value>m</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="m|n" desc="m|n">
                     <value>m|n</value>
                     <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n" desc="n">
-                    <value>n</value>
+                <featureValue displayName="f" desc="f">
+                    <value>f</value>
                     <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="m" desc="m">
+                    <value>m</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -386,12 +317,6 @@
         <feature displayName="government" desc="government">
             <name>government</name>
             <values>
-                <featureValue displayName="acc" desc="acc">
-                    <value>acc</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="acc|dat" desc="acc|dat">
                     <value>acc|dat</value>
                     <posForValue>
@@ -400,6 +325,12 @@
                 </featureValue>
                 <featureValue displayName="dat" desc="dat">
                     <value>dat</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="acc" desc="acc">
+                    <value>acc</value>
                     <posForValue>
                         <pos>ADP</pos>
                     </posForValue>
@@ -436,7 +367,6 @@
                 <featureValue displayName="ind" desc="ind">
                     <value>ind</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
@@ -445,26 +375,35 @@
         <feature displayName="number" desc="number">
             <name>number</name>
             <values>
-                <featureValue displayName="pl" desc="pl">
-                    <value>pl</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
+                        <pos>NUM</pos>
                         <pos>PD</pos>
                         <pos>RES</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>
                     <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pl" desc="pl">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -476,19 +415,27 @@
                     <value>1</value>
                     <posForValue>
                         <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="1|3" desc="1|3">
+                    <value>1|3</value>
+                    <posForValue>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="2" desc="2">
                     <value>2</value>
                     <posForValue>
                         <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="3" desc="3">
                     <value>3</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
                         <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -497,21 +444,9 @@
             <name>pos</name>
             <values>
                 <featureValue>
-                    <value>AA</value>
+                    <value>PD</value>
                     <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
-                    <value>ADP</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
-                    <value>ADV</value>
-                    <posForValue>
-                        <pos>ADV</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
@@ -521,15 +456,21 @@
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>INT</value>
+                    <value>VRB</value>
                     <posForValue>
-                        <pos>INT</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
                     <value>NOU-C</value>
                     <posForValue>
                         <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>AA</value>
+                    <posForValue>
+                        <pos>AA</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
@@ -545,21 +486,27 @@
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>PD</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
                     <value>RES</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>VRB</value>
+                    <value>ADP</value>
                     <posForValue>
-                        <pos>VRB</pos>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>INT</value>
+                    <posForValue>
+                        <pos>INT</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>ADV</value>
+                    <posForValue>
+                        <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -567,14 +514,6 @@
         <feature displayName="position" desc="position">
             <name>position</name>
             <values>
-                <featureValue displayName="free" desc="free">
-                    <value>free</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="postnom" desc="postnom">
                     <value>postnom</value>
                     <posForValue>
@@ -595,6 +534,14 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="free" desc="free">
+                    <value>free</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="subtype" desc="subtype">
@@ -604,12 +551,6 @@
                     <value>art</value>
                     <posForValue>
                         <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="dem" desc="dem">
-                    <value>dem</value>
-                    <posForValue>
-                        <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="indef|inter" desc="indef|inter">
@@ -624,8 +565,8 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="neg" desc="neg">
-                    <value>neg</value>
+                <featureValue displayName="dem" desc="dem">
+                    <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -636,13 +577,19 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="neg" desc="neg">
+                    <value>neg</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="tense" desc="tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="past" desc="past">
-                    <value>past</value>
+                <featureValue displayName="pres" desc="pres">
+                    <value>pres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -653,8 +600,8 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="pres" desc="pres">
-                    <value>pres</value>
+                <featureValue displayName="past" desc="past">
+                    <value>past</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -664,74 +611,14 @@
         <feature displayName="type" desc="type">
             <name>type</name>
             <values>
-                <featureValue displayName="aux" desc="aux">
-                    <value>aux</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="card" desc="card">
-                    <value>card</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="comp" desc="comp">
-                    <value>comp</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="coor" desc="coor">
                     <value>coor</value>
                     <posForValue>
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="cop" desc="cop">
-                    <value>cop</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="dem" desc="dem">
-                    <value>dem</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="indef" desc="indef">
-                    <value>indef</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="inter" desc="inter">
-                    <value>inter</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="ord" desc="ord">
-                    <value>ord</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="pers" desc="pers">
-                    <value>pers</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="poss" desc="poss">
-                    <value>poss</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="pron" desc="pron">
-                    <value>pron</value>
+                <featureValue displayName="reg" desc="reg">
+                    <value>reg</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -748,10 +635,22 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="reg" desc="reg">
-                    <value>reg</value>
+                <featureValue displayName="comp" desc="comp">
+                    <value>comp</value>
                     <posForValue>
-                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="inter" desc="inter">
+                    <value>inter</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="dem" desc="dem">
+                    <value>dem</value>
+                    <posForValue>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="rel" desc="rel">
@@ -760,10 +659,64 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="aux" desc="aux">
+                    <value>aux</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="indef" desc="indef">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="cop" desc="cop">
+                    <value>cop</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="sub" desc="sub">
                     <value>sub</value>
                     <posForValue>
                         <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="poss" desc="poss">
+                    <value>poss</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pers" desc="pers">
+                    <value>pers</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="card" desc="card">
+                    <value>card</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pron" desc="pron">
+                    <value>pron</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="ord" desc="ord">
+                    <value>ord</value>
+                    <posForValue>
+                        <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -771,20 +724,8 @@
         <feature displayName="valency" desc="valency">
             <name>valency</name>
             <values>
-                <featureValue displayName="impers" desc="impers">
-                    <value>impers</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="intr" desc="intr">
-                    <value>intr</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="intr|trans" desc="intr|trans">
-                    <value>intr|trans</value>
+                <featureValue displayName="trans" desc="trans">
+                    <value>trans</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -801,8 +742,20 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="trans" desc="trans">
-                    <value>trans</value>
+                <featureValue displayName="impers" desc="impers">
+                    <value>impers</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="intr|trans" desc="intr|trans">
+                    <value>intr|trans</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="intr" desc="intr">
+                    <value>intr</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -812,56 +765,8 @@
         <feature displayName="verbclass" desc="verbclass">
             <name>verbclass</name>
             <values>
-                <featureValue displayName="1" desc="1">
-                    <value>1</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="1a" desc="1a">
-                    <value>1a</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="1b" desc="1b">
-                    <value>1b</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="2a" desc="2a">
-                    <value>2a</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="2b" desc="2b">
-                    <value>2b</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="3a" desc="3a">
-                    <value>3a</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="3b" desc="3b">
-                    <value>3b</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="4" desc="4">
                     <value>4</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="5" desc="5">
-                    <value>5</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -872,20 +777,68 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="6" desc="6">
-                    <value>6</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="6b" desc="6b">
                     <value>6b</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="5" desc="5">
+                    <value>5</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="1a" desc="1a">
+                    <value>1a</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="2b" desc="2b">
+                    <value>2b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="6" desc="6">
+                    <value>6</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="1" desc="1">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="2a" desc="2a">
+                    <value>2a</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="3b" desc="3b">
+                    <value>3b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="1b" desc="1b">
+                    <value>1b</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="7" desc="7">
                     <value>7</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="3a" desc="3a">
+                    <value>3a</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -897,26 +850,27 @@
         <constraint>
             <pos>AA</pos>
             <features>
-                <feature>GA</feature>
-                <feature>NA</feature>
-                <feature>case</feature>
+                <feature>number</feature>
                 <feature>degree</feature>
                 <feature>pos</feature>
                 <feature>position</feature>
+                <feature>case</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>ADP</pos>
             <features>
-                <feature>government</feature>
                 <feature>pos</feature>
+                <feature>government</feature>
+                <feature>type</feature>
             </features>
         </constraint>
         <constraint>
             <pos>ADV</pos>
             <features>
-                <feature>pos</feature>
                 <feature>subtype</feature>
+                <feature>pos</feature>
                 <feature>type</feature>
             </features>
         </constraint>
@@ -936,158 +890,156 @@
         <constraint>
             <pos>NOU-C</pos>
             <features>
+                <feature>number</feature>
+                <feature>pos</feature>
                 <feature>case</feature>
                 <feature>gender</feature>
-                <feature>mood</feature>
-                <feature>number</feature>
-                <feature>person</feature>
-                <feature>pos</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NOU-P</pos>
             <features>
-                <feature>case</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
+                <feature>case</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NUM</pos>
             <features>
-                <feature>GA</feature>
-                <feature>NA</feature>
-                <feature>case</feature>
+                <feature>number</feature>
                 <feature>pos</feature>
                 <feature>position</feature>
+                <feature>case</feature>
                 <feature>type</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>PD</pos>
             <features>
-                <feature>GA</feature>
-                <feature>NA</feature>
-                <feature>case</feature>
-                <feature>gender</feature>
+                <feature>LG</feature>
                 <feature>number</feature>
-                <feature>person</feature>
-                <feature>pos</feature>
-                <feature>position</feature>
+                <feature>LN</feature>
                 <feature>subtype</feature>
+                <feature>pos</feature>
+                <feature>person</feature>
+                <feature>position</feature>
+                <feature>case</feature>
                 <feature>type</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>RES</pos>
             <features>
-                <feature>case</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
+                <feature>case</feature>
             </features>
         </constraint>
         <constraint>
             <pos>VRB</pos>
             <features>
-                <feature>NA</feature>
-                <feature>PA</feature>
-                <feature>case</feature>
-                <feature>conjugation</feature>
-                <feature>finiteness</feature>
-                <feature>gender</feature>
+                <feature>number</feature>
                 <feature>mood</feature>
-                <feature>pos</feature>
-                <feature>position</feature>
-                <feature>tense</feature>
-                <feature>type</feature>
-                <feature>valency</feature>
                 <feature>verbclass</feature>
+                <feature>pos</feature>
+                <feature>conjugation</feature>
+                <feature>valency</feature>
+                <feature>person</feature>
+                <feature>position</feature>
+                <feature>finiteness</feature>
+                <feature>case</feature>
+                <feature>type</feature>
+                <feature>tense</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
     </constraints>
     <implications> </implications>
     <tags>
-        <tag>AA(GA=f,NA=pl,case=acc,degree=pos)</tag>
-        <tag>AA(GA=f,NA=sg,case=acc,degree=comp)</tag>
-        <tag>AA(GA=f,NA=sg,case=acc,degree=pos)</tag>
-        <tag>AA(GA=f,NA=sg,case=acc,degree=pos,position=pred)</tag>
-        <tag>AA(GA=f,NA=sg,case=acc,degree=sup)</tag>
-        <tag>AA(GA=f,NA=sg,case=dat,degree=comp)</tag>
-        <tag>AA(GA=f,NA=sg,case=dat,degree=comp,position=postnom)</tag>
-        <tag>AA(GA=f,NA=sg,case=dat,degree=pos)</tag>
-        <tag>AA(GA=f,NA=sg,case=dat,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=f,NA=sg,case=dat,degree=sup)</tag>
-        <tag>AA(GA=f,NA=sg,case=gen,degree=pos)</tag>
-        <tag>AA(GA=f,NA=sg,case=nom,degree=comp,position=pred)</tag>
-        <tag>AA(GA=f,NA=sg,case=nom,degree=pos)</tag>
-        <tag>AA(GA=f,NA=sg,case=nom,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=f,NA=sg,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(GA=f,NA=sg,case=voc,degree=sup)</tag>
-        <tag>AA(GA=m,NA=pl,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(GA=m,NA=sg,case=acc,degree=pos)</tag>
-        <tag>AA(GA=m,NA=sg,case=acc,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=m,NA=sg,case=acc,degree=pos,position=pred)</tag>
-        <tag>AA(GA=m,NA=sg,case=dat,degree=pos)</tag>
-        <tag>AA(GA=m,NA=sg,case=dat,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=m,NA=sg,case=dat,degree=sup)</tag>
-        <tag>AA(GA=m,NA=sg,case=gen,degree=pos)</tag>
-        <tag>AA(GA=m,NA=sg,case=gen,degree=pos,position=pred)</tag>
-        <tag>AA(GA=m,NA=sg,case=nom,degree=comp,position=pred)</tag>
-        <tag>AA(GA=m,NA=sg,case=nom,degree=pos)</tag>
-        <tag>AA(GA=m,NA=sg,case=nom,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=m,NA=sg,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(GA=m,NA=sg,case=nom,degree=sup)</tag>
-        <tag>AA(GA=m|n,NA=sg,case=nom,degree=pos)</tag>
-        <tag>AA(GA=n,NA=pl,case=acc,degree=pos)</tag>
-        <tag>AA(GA=n,NA=pl,case=dat,degree=pos)</tag>
-        <tag>AA(GA=n,NA=pl,case=nom,degree=pos)</tag>
-        <tag>AA(GA=n,NA=sg,case=acc,degree=pos)</tag>
-        <tag>AA(GA=n,NA=sg,case=acc,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=n,NA=sg,case=acc,degree=pos,position=pred)</tag>
-        <tag>AA(GA=n,NA=sg,case=acc,degree=sup)</tag>
-        <tag>AA(GA=n,NA=sg,case=dat,degree=pos)</tag>
-        <tag>AA(GA=n,NA=sg,case=gen,degree=pos)</tag>
-        <tag>AA(GA=n,NA=sg,case=gen,degree=pos,position=pred)</tag>
-        <tag>AA(GA=n,NA=sg,case=nom,degree=pos)</tag>
-        <tag>AA(GA=n,NA=sg,case=nom,degree=pos,position=postnom)</tag>
-        <tag>AA(GA=n,NA=sg,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(GA=n,NA=sg,case=nom,degree=sup,position=pred)</tag>
-        <tag>AA(NA=pl,case=acc,degree=pos)</tag>
-        <tag>AA(NA=pl,case=acc,degree=pos,position=postnom)</tag>
-        <tag>AA(NA=pl,case=acc,degree=pos,position=pred)</tag>
-        <tag>AA(NA=pl,case=dat,degree=pos)</tag>
-        <tag>AA(NA=pl,case=dat,degree=pos,position=postnom)</tag>
-        <tag>AA(NA=pl,case=dat,degree=sup)</tag>
-        <tag>AA(NA=pl,case=gen,degree=pos)</tag>
-        <tag>AA(NA=pl,case=nom,degree=comp,position=pred)</tag>
-        <tag>AA(NA=pl,case=nom,degree=pos)</tag>
-        <tag>AA(NA=pl,case=nom,degree=pos,position=postnom)</tag>
-        <tag>AA(NA=pl,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(NA=pl,case=nom,degree=sup)</tag>
-        <tag>AA(NA=pl,case=voc,degree=pos)</tag>
-        <tag>AA(NA=pl,case=voc,degree=pos,position=pred)</tag>
-        <tag>AA(NA=sg,case=acc,degree=pos)</tag>
-        <tag>AA(NA=sg,case=acc,degree=pos,position=postnom)</tag>
-        <tag>AA(NA=sg,case=acc,degree=pos,position=pred)</tag>
-        <tag>AA(NA=sg,case=dat,degree=pos)</tag>
-        <tag>AA(NA=sg,case=dat,degree=pos,position=pred)</tag>
-        <tag>AA(NA=sg,case=gen,degree=pos)</tag>
-        <tag>AA(NA=sg,case=nom,degree=comp,position=pred)</tag>
-        <tag>AA(NA=sg,case=nom,degree=pos)</tag>
-        <tag>AA(NA=sg,case=nom,degree=pos,position=pred)</tag>
-        <tag>AA(NA=sg,case=voc,degree=pos)</tag>
-        <tag>AA(NA=uncl,case=nom,degree=pos)</tag>
+        <tag>AA(case=acc,degree=comp,gender=f,number=sg)</tag>
+        <tag>AA(case=acc,degree=pos,gender=f,number=pl)</tag>
+        <tag>AA(case=acc,degree=pos,gender=f,number=sg)</tag>
+        <tag>AA(case=acc,degree=pos,gender=f,number=sg,position=pred)</tag>
+        <tag>AA(case=acc,degree=pos,gender=m,number=sg)</tag>
+        <tag>AA(case=acc,degree=pos,gender=m,number=sg,position=postnom)</tag>
+        <tag>AA(case=acc,degree=pos,gender=m,number=sg,position=pred)</tag>
+        <tag>AA(case=acc,degree=pos,gender=n,number=pl)</tag>
+        <tag>AA(case=acc,degree=pos,gender=n,number=sg)</tag>
+        <tag>AA(case=acc,degree=pos,gender=n,number=sg,position=postnom)</tag>
+        <tag>AA(case=acc,degree=pos,gender=n,number=sg,position=pred)</tag>
+        <tag>AA(case=acc,degree=pos,number=pl)</tag>
+        <tag>AA(case=acc,degree=pos,number=pl,position=postnom)</tag>
+        <tag>AA(case=acc,degree=pos,number=pl,position=pred)</tag>
+        <tag>AA(case=acc,degree=pos,number=sg)</tag>
+        <tag>AA(case=acc,degree=pos,number=sg,position=postnom)</tag>
+        <tag>AA(case=acc,degree=pos,number=sg,position=pred)</tag>
+        <tag>AA(case=acc,degree=sup,gender=f,number=sg)</tag>
+        <tag>AA(case=acc,degree=sup,gender=n,number=sg)</tag>
+        <tag>AA(case=dat,degree=comp,gender=f,number=sg)</tag>
+        <tag>AA(case=dat,degree=comp,gender=f,number=sg,position=postnom)</tag>
+        <tag>AA(case=dat,degree=pos,gender=f,number=sg)</tag>
+        <tag>AA(case=dat,degree=pos,gender=f,number=sg,position=postnom)</tag>
+        <tag>AA(case=dat,degree=pos,gender=m,number=sg)</tag>
+        <tag>AA(case=dat,degree=pos,gender=m,number=sg,position=postnom)</tag>
+        <tag>AA(case=dat,degree=pos,gender=n,number=pl)</tag>
+        <tag>AA(case=dat,degree=pos,gender=n,number=sg)</tag>
+        <tag>AA(case=dat,degree=pos,number=pl)</tag>
+        <tag>AA(case=dat,degree=pos,number=pl,position=postnom)</tag>
+        <tag>AA(case=dat,degree=pos,number=sg)</tag>
+        <tag>AA(case=dat,degree=pos,number=sg,position=pred)</tag>
+        <tag>AA(case=dat,degree=sup,gender=f,number=sg)</tag>
+        <tag>AA(case=dat,degree=sup,gender=m,number=sg)</tag>
+        <tag>AA(case=dat,degree=sup,number=pl)</tag>
+        <tag>AA(case=gen,degree=pos,gender=f,number=sg)</tag>
+        <tag>AA(case=gen,degree=pos,gender=m,number=sg)</tag>
+        <tag>AA(case=gen,degree=pos,gender=m,number=sg,position=pred)</tag>
+        <tag>AA(case=gen,degree=pos,gender=n,number=sg)</tag>
+        <tag>AA(case=gen,degree=pos,gender=n,number=sg,position=pred)</tag>
+        <tag>AA(case=gen,degree=pos,number=pl)</tag>
+        <tag>AA(case=gen,degree=pos,number=sg)</tag>
+        <tag>AA(case=nom,degree=comp,gender=f,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=comp,gender=m,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=comp,number=pl,position=pred)</tag>
+        <tag>AA(case=nom,degree=comp,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,gender=f,number=sg)</tag>
+        <tag>AA(case=nom,degree=pos,gender=f,number=sg,position=postnom)</tag>
+        <tag>AA(case=nom,degree=pos,gender=f,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,gender=m,number=pl,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,gender=m,number=sg)</tag>
+        <tag>AA(case=nom,degree=pos,gender=m,number=sg,position=postnom)</tag>
+        <tag>AA(case=nom,degree=pos,gender=m,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,gender=m|n,number=sg)</tag>
+        <tag>AA(case=nom,degree=pos,gender=n,number=pl)</tag>
+        <tag>AA(case=nom,degree=pos,gender=n,number=sg)</tag>
+        <tag>AA(case=nom,degree=pos,gender=n,number=sg,position=postnom)</tag>
+        <tag>AA(case=nom,degree=pos,gender=n,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,number=pl)</tag>
+        <tag>AA(case=nom,degree=pos,number=pl,position=postnom)</tag>
+        <tag>AA(case=nom,degree=pos,number=pl,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,number=sg)</tag>
+        <tag>AA(case=nom,degree=pos,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=pos,number=uncl)</tag>
+        <tag>AA(case=nom,degree=sup,gender=m,number=sg)</tag>
+        <tag>AA(case=nom,degree=sup,gender=n,number=sg,position=pred)</tag>
+        <tag>AA(case=nom,degree=sup,number=pl)</tag>
+        <tag>AA(case=voc,degree=pos,number=pl)</tag>
+        <tag>AA(case=voc,degree=pos,number=pl,position=pred)</tag>
+        <tag>AA(case=voc,degree=pos,number=sg)</tag>
+        <tag>AA(case=voc,degree=sup,gender=f,number=sg)</tag>
         <tag>AA(degree=comp)</tag>
         <tag>AA(degree=comp,position=pred)</tag>
         <tag>AA(degree=pos)</tag>
         <tag>AA(degree=pos,position=postnom)</tag>
         <tag>AA(degree=pos,position=pred)</tag>
         <tag>AA(degree=sup)</tag>
-        <tag>ADP()</tag>
-        <tag>ADP(government=acc)</tag>
-        <tag>ADP(government=acc|dat)</tag>
-        <tag>ADP(government=dat)</tag>
-        <tag>ADP(government=gen)</tag>
+        <tag>ADP(government=acc,type=uncl)</tag>
+        <tag>ADP(government=acc|dat,type=uncl)</tag>
+        <tag>ADP(government=dat,type=uncl)</tag>
+        <tag>ADP(government=gen,type=uncl)</tag>
+        <tag>ADP(type=uncl)</tag>
         <tag>ADV()</tag>
         <tag>ADV(subtype=dem,type=pron)</tag>
         <tag>ADV(subtype=dem,type=reg)</tag>
@@ -1157,7 +1109,6 @@
         <tag>NOU-C(case=gen,number=pl)</tag>
         <tag>NOU-C(case=gen,number=sg)</tag>
         <tag>NOU-C(case=gen|nom,gender=m,number=pl)</tag>
-        <tag>NOU-C(case=gen|voc,gender=f,number=sg)</tag>
         <tag>NOU-C(case=nom,gender=f,number=pl)</tag>
         <tag>NOU-C(case=nom,gender=f,number=sg)</tag>
         <tag>NOU-C(case=nom,gender=f|m,number=pl)</tag>
@@ -1179,7 +1130,7 @@
         <tag>NOU-C(case=voc,gender=n,number=sg)</tag>
         <tag>NOU-C(case=voc,number=pl)</tag>
         <tag>NOU-C(gender=f)</tag>
-        <tag>NOU-C(gender=f,mood=ind,number=sg,person=3)</tag>
+        <tag>NOU-C(gender=f,number=sg)</tag>
         <tag>NOU-C(gender=f|n)</tag>
         <tag>NOU-C(gender=m)</tag>
         <tag>NOU-C(gender=m|n)</tag>
@@ -1189,326 +1140,326 @@
         <tag>NOU-P(case=acc|dat,number=sg)</tag>
         <tag>NOU-P(case=dat)</tag>
         <tag>NUM()</tag>
-        <tag>NUM(GA=f,NA=pl,case=acc,type=card)</tag>
-        <tag>NUM(GA=f,NA=pl,case=nom,type=card)</tag>
-        <tag>NUM(GA=f,NA=sg,case=acc)</tag>
-        <tag>NUM(GA=f,NA=sg,case=nom,type=card)</tag>
-        <tag>NUM(GA=m,NA=pl,case=acc,type=card)</tag>
-        <tag>NUM(GA=m,NA=pl,case=nom,type=card)</tag>
-        <tag>NUM(GA=m,NA=sg,case=acc)</tag>
-        <tag>NUM(GA=m,NA=sg,case=acc,type=ord)</tag>
-        <tag>NUM(GA=m,NA=sg,case=dat)</tag>
-        <tag>NUM(GA=m,NA=sg,case=dat,type=card)</tag>
-        <tag>NUM(GA=m,NA=sg,case=dat,type=ord)</tag>
-        <tag>NUM(GA=m,NA=sg,case=gen,type=card)</tag>
-        <tag>NUM(GA=m,NA=sg,case=nom,position=free)</tag>
-        <tag>NUM(GA=m,NA=sg,case=nom,type=card)</tag>
-        <tag>NUM(GA=m,NA=sg,case=nom,type=ord)</tag>
-        <tag>NUM(GA=n,NA=pl,case=acc,type=card)</tag>
-        <tag>NUM(GA=n,NA=pl,case=nom,type=card)</tag>
-        <tag>NUM(GA=n,NA=sg,case=acc,type=card)</tag>
-        <tag>NUM(GA=n,NA=sg,case=dat,type=card)</tag>
-        <tag>NUM(GA=n,NA=sg,case=dat,type=ord)</tag>
-        <tag>NUM(GA=n,NA=sg,case=nom)</tag>
-        <tag>NUM(GA=n,NA=sg,case=nom,type=card)</tag>
-        <tag>NUM(GA=n,NA=sg,case=nom,type=ord)</tag>
-        <tag>NUM(NA=pl,case=acc,type=card)</tag>
-        <tag>NUM(NA=pl,case=dat,type=card)</tag>
-        <tag>NUM(NA=pl,case=gen,type=card)</tag>
-        <tag>NUM(NA=pl,case=nom)</tag>
-        <tag>NUM(NA=pl,case=nom,type=card)</tag>
-        <tag>NUM(NA=sg,case=acc,type=card)</tag>
-        <tag>NUM(NA=sg,case=dat,type=card)</tag>
-        <tag>NUM(NA=sg,case=gen,type=card)</tag>
-        <tag>NUM(NA=sg,case=nom,type=card)</tag>
+        <tag>NUM(case=acc,gender=f,number=pl,type=card)</tag>
+        <tag>NUM(case=acc,gender=f,number=sg)</tag>
+        <tag>NUM(case=acc,gender=m,number=pl,type=card)</tag>
+        <tag>NUM(case=acc,gender=m,number=sg)</tag>
+        <tag>NUM(case=acc,gender=m,number=sg,type=ord)</tag>
+        <tag>NUM(case=acc,gender=n,number=pl,type=card)</tag>
+        <tag>NUM(case=acc,gender=n,number=sg,type=card)</tag>
+        <tag>NUM(case=acc,number=pl,type=card)</tag>
+        <tag>NUM(case=acc,number=sg,type=card)</tag>
+        <tag>NUM(case=dat,gender=m,number=sg)</tag>
+        <tag>NUM(case=dat,gender=m,number=sg,type=card)</tag>
+        <tag>NUM(case=dat,gender=m,number=sg,type=ord)</tag>
+        <tag>NUM(case=dat,gender=n,number=sg,type=card)</tag>
+        <tag>NUM(case=dat,gender=n,number=sg,type=ord)</tag>
+        <tag>NUM(case=dat,number=pl,type=card)</tag>
+        <tag>NUM(case=dat,number=sg,type=card)</tag>
         <tag>NUM(case=dat,type=card)</tag>
+        <tag>NUM(case=gen,gender=m,number=sg,type=card)</tag>
+        <tag>NUM(case=gen,number=pl,type=card)</tag>
+        <tag>NUM(case=gen,number=sg,type=card)</tag>
         <tag>NUM(case=gen,position=free,type=card)</tag>
+        <tag>NUM(case=nom,gender=f,number=pl,type=card)</tag>
+        <tag>NUM(case=nom,gender=f,number=sg,type=card)</tag>
+        <tag>NUM(case=nom,gender=m,number=pl,type=card)</tag>
+        <tag>NUM(case=nom,gender=m,number=sg,position=free)</tag>
+        <tag>NUM(case=nom,gender=m,number=sg,type=card)</tag>
+        <tag>NUM(case=nom,gender=m,number=sg,type=ord)</tag>
+        <tag>NUM(case=nom,gender=n,number=pl,type=card)</tag>
+        <tag>NUM(case=nom,gender=n,number=sg)</tag>
+        <tag>NUM(case=nom,gender=n,number=sg,type=card)</tag>
+        <tag>NUM(case=nom,gender=n,number=sg,type=ord)</tag>
+        <tag>NUM(case=nom,number=pl)</tag>
+        <tag>NUM(case=nom,number=pl,type=card)</tag>
+        <tag>NUM(case=nom,number=sg,type=card)</tag>
         <tag>NUM(case=nom,type=card)</tag>
         <tag>NUM(type=card)</tag>
         <tag>NUM(type=ord)</tag>
         <tag>PD()</tag>
-        <tag>PD(GA=f,NA=pl,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=pl,case=acc,type=dem)</tag>
-        <tag>PD(GA=f,NA=pl,case=acc,type=poss)</tag>
-        <tag>PD(GA=f,NA=pl,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(GA=f,NA=pl,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=pl,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=pl,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=pl,case=nom,type=indef)</tag>
-        <tag>PD(GA=f,NA=pl,case=nom,type=rel)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,subtype=art,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=acc,type=rel)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,position=postnom,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,subtype=art,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,type=inter)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat,type=rel)</tag>
-        <tag>PD(GA=f,NA=sg,case=dat|gen,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=gen,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=gen,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=gen,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=gen,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=gen,type=rel)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,position=postnom,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,position=pred,type=inter)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,subtype=art,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,type=dem)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=nom,type=rel)</tag>
-        <tag>PD(GA=f,NA=sg,case=voc,position=postnom,type=poss)</tag>
-        <tag>PD(GA=f,NA=sg,case=voc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=voc,type=indef)</tag>
-        <tag>PD(GA=f,NA=sg,case=voc,type=poss)</tag>
-        <tag>PD(GA=f,NA=uncl,case=acc,type=indef)</tag>
-        <tag>PD(GA=f|m,NA=sg,case=dat,type=dem)</tag>
-        <tag>PD(GA=f|m,NA=sg,case=nom,type=rel)</tag>
-        <tag>PD(GA=m,NA=pl,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=m,NA=pl,case=acc,type=poss)</tag>
-        <tag>PD(GA=m,NA=pl,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=pl,case=gen,type=dem)</tag>
-        <tag>PD(GA=m,NA=pl,case=gen,type=poss)</tag>
-        <tag>PD(GA=m,NA=pl,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=pl,case=nom,type=poss)</tag>
-        <tag>PD(GA=m,NA=pl,case=nom,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,position=postnom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,subtype=art,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=acc,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,position=postnom,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,position=postnom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,position=pred,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,subtype=art,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,type=inter)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=dat,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=gen,position=postnom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=gen,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=gen,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=gen,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=gen,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,position=postnom,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,position=pred,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,position=pred,type=inter)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,subtype=art,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,type=dem)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,type=indef)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=nom,type=rel)</tag>
-        <tag>PD(GA=m,NA=sg,case=voc,position=postnom,type=poss)</tag>
-        <tag>PD(GA=m,NA=sg,case=voc,type=poss)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=acc,subtype=art,type=indef)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=acc,type=indef)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=dat,subtype=art,type=indef)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=dat,type=poss)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(GA=m|n,NA=sg,case=nom,type=poss)</tag>
-        <tag>PD(GA=n,NA=pl,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=pl,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=pl,case=acc,type=poss)</tag>
-        <tag>PD(GA=n,NA=pl,case=acc,type=rel)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,type=dem)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,type=indef)</tag>
-        <tag>PD(GA=n,NA=pl,case=nom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,position=postnom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,subtype=art,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,type=inter)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc,type=rel)</tag>
-        <tag>PD(GA=n,NA=sg,case=acc|nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,position=postnom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,position=postnom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,subtype=art,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=dat,type=rel)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,position=postnom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,subtype=art,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,type=inter)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=gen,type=rel)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,subtype=art,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,type=dem)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,type=indef)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,type=inter)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,type=poss)</tag>
-        <tag>PD(GA=n,NA=sg,case=nom,type=rel)</tag>
-        <tag>PD(NA=pl,case=acc,position=free,type=dem)</tag>
-        <tag>PD(NA=pl,case=acc,position=free,type=indef)</tag>
-        <tag>PD(NA=pl,case=acc,position=postnom,type=dem)</tag>
-        <tag>PD(NA=pl,case=acc,position=postnom,type=poss)</tag>
-        <tag>PD(NA=pl,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(NA=pl,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(NA=pl,case=acc,type=dem)</tag>
-        <tag>PD(NA=pl,case=acc,type=indef)</tag>
-        <tag>PD(NA=pl,case=acc,type=inter)</tag>
-        <tag>PD(NA=pl,case=acc,type=poss)</tag>
-        <tag>PD(NA=pl,case=acc,type=recip)</tag>
-        <tag>PD(NA=pl,case=acc,type=rel)</tag>
-        <tag>PD(NA=pl,case=acc|nom,position=postnom,type=poss)</tag>
-        <tag>PD(NA=pl,case=dat)</tag>
-        <tag>PD(NA=pl,case=dat,position=free,type=indef)</tag>
-        <tag>PD(NA=pl,case=dat,position=postnom,type=dem)</tag>
-        <tag>PD(NA=pl,case=dat,position=postnom,type=indef)</tag>
-        <tag>PD(NA=pl,case=dat,position=postnom,type=poss)</tag>
-        <tag>PD(NA=pl,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(NA=pl,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(NA=pl,case=dat,type=dem)</tag>
-        <tag>PD(NA=pl,case=dat,type=indef)</tag>
-        <tag>PD(NA=pl,case=dat,type=poss)</tag>
-        <tag>PD(NA=pl,case=dat,type=rel)</tag>
-        <tag>PD(NA=pl,case=gen,position=postnom,type=poss)</tag>
-        <tag>PD(NA=pl,case=gen,position=prenom,type=indef)</tag>
-        <tag>PD(NA=pl,case=gen,subtype=art,type=dem)</tag>
-        <tag>PD(NA=pl,case=gen,type=dem)</tag>
-        <tag>PD(NA=pl,case=gen,type=indef)</tag>
-        <tag>PD(NA=pl,case=gen,type=poss)</tag>
-        <tag>PD(NA=pl,case=gen,type=rel)</tag>
-        <tag>PD(NA=pl,case=nom)</tag>
-        <tag>PD(NA=pl,case=nom,position=free,type=indef)</tag>
-        <tag>PD(NA=pl,case=nom,position=postnom,type=dem)</tag>
-        <tag>PD(NA=pl,case=nom,position=postnom,type=indef)</tag>
-        <tag>PD(NA=pl,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(NA=pl,case=nom,position=pred,type=indef)</tag>
-        <tag>PD(NA=pl,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(NA=pl,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(NA=pl,case=nom,type=dem)</tag>
-        <tag>PD(NA=pl,case=nom,type=indef)</tag>
-        <tag>PD(NA=pl,case=nom,type=poss)</tag>
-        <tag>PD(NA=pl,case=nom,type=rel)</tag>
-        <tag>PD(NA=pl,case=voc,position=prenom,type=indef)</tag>
-        <tag>PD(NA=pl,case=voc,type=poss)</tag>
-        <tag>PD(NA=sg,case=acc,position=postnom,type=dem)</tag>
-        <tag>PD(NA=sg,case=acc,position=postnom,type=poss)</tag>
-        <tag>PD(NA=sg,case=acc,position=prenom,type=indef)</tag>
-        <tag>PD(NA=sg,case=acc,subtype=art,type=dem)</tag>
-        <tag>PD(NA=sg,case=acc,type=dem)</tag>
-        <tag>PD(NA=sg,case=acc,type=indef)</tag>
-        <tag>PD(NA=sg,case=acc,type=inter)</tag>
-        <tag>PD(NA=sg,case=acc,type=poss)</tag>
-        <tag>PD(NA=sg,case=dat)</tag>
-        <tag>PD(NA=sg,case=dat,position=postnom,type=dem)</tag>
-        <tag>PD(NA=sg,case=dat,position=postnom,type=poss)</tag>
-        <tag>PD(NA=sg,case=dat,position=prenom,type=indef)</tag>
-        <tag>PD(NA=sg,case=dat,type=dem)</tag>
-        <tag>PD(NA=sg,case=dat,type=indef)</tag>
-        <tag>PD(NA=sg,case=dat,type=poss)</tag>
-        <tag>PD(NA=sg,case=gen,position=postnom,type=dem)</tag>
-        <tag>PD(NA=sg,case=gen,subtype=art,type=dem)</tag>
-        <tag>PD(NA=sg,case=gen,type=dem)</tag>
-        <tag>PD(NA=sg,case=gen,type=indef)</tag>
-        <tag>PD(NA=sg,case=gen,type=poss)</tag>
-        <tag>PD(NA=sg,case=nom)</tag>
-        <tag>PD(NA=sg,case=nom,position=postnom,type=dem)</tag>
-        <tag>PD(NA=sg,case=nom,position=postnom,type=poss)</tag>
-        <tag>PD(NA=sg,case=nom,position=prenom,type=indef)</tag>
-        <tag>PD(NA=sg,case=nom,subtype=art,type=dem)</tag>
-        <tag>PD(NA=sg,case=nom,subtype=art,type=indef)</tag>
-        <tag>PD(NA=sg,case=nom,type=dem)</tag>
-        <tag>PD(NA=sg,case=nom,type=indef)</tag>
-        <tag>PD(NA=sg,case=nom,type=inter)</tag>
-        <tag>PD(NA=sg,case=nom,type=poss)</tag>
-        <tag>PD(NA=sg,case=nom,type=rel)</tag>
-        <tag>PD(NA=sg,case=voc,position=postnom,type=poss)</tag>
-        <tag>PD(NA=sg,case=voc,type=poss)</tag>
-        <tag>PD(NA=uncl,case=acc,type=poss)</tag>
-        <tag>PD(NA=uncl,case=dat,subtype=art,type=dem)</tag>
-        <tag>PD(NA=uncl,case=gen,type=dem)</tag>
-        <tag>PD(case=acc,gender=f,number=sg,person=3,type=pers)</tag>
-        <tag>PD(case=acc,number=pl,person=1,type=pers)</tag>
-        <tag>PD(case=acc,number=pl,person=2,type=pers)</tag>
-        <tag>PD(case=acc,number=pl,person=3,type=pers)</tag>
-        <tag>PD(case=acc,number=pl,type=refl)</tag>
-        <tag>PD(case=acc,number=sg,person=1,type=pers)</tag>
-        <tag>PD(case=acc,number=sg,person=1,type=refl)</tag>
-        <tag>PD(case=acc,number=sg,person=2,type=pers)</tag>
-        <tag>PD(case=acc,number=sg,person=2,type=refl)</tag>
-        <tag>PD(case=acc,number=sg,person=3,type=pers)</tag>
-        <tag>PD(case=acc,number=sg,person=3,type=refl)</tag>
-        <tag>PD(case=acc,number=sg,type=refl)</tag>
+        <tag>PD(LG=f,LN=sg,case=acc,person=3,type=pers)</tag>
+        <tag>PD(LN=pl,case=acc,person=1,type=pers)</tag>
+        <tag>PD(LN=pl,case=acc,person=2,type=pers)</tag>
+        <tag>PD(LN=pl,case=acc,person=3,type=pers)</tag>
+        <tag>PD(LN=pl,case=acc,type=refl)</tag>
+        <tag>PD(LN=pl,case=acc|dat,person=1,type=pers)</tag>
+        <tag>PD(LN=pl,case=dat,person=1,type=pers)</tag>
+        <tag>PD(LN=pl,case=dat,person=2,type=pers)</tag>
+        <tag>PD(LN=pl,case=dat,person=3,type=pers)</tag>
+        <tag>PD(LN=pl,case=dat,person=3,type=refl)</tag>
+        <tag>PD(LN=pl,case=dat,type=refl)</tag>
+        <tag>PD(LN=pl,case=gen,person=1,type=pers)</tag>
+        <tag>PD(LN=pl,case=gen,person=2,type=pers)</tag>
+        <tag>PD(LN=pl,case=gen,person=3,type=pers)</tag>
+        <tag>PD(LN=pl,case=nom,person=1,type=pers)</tag>
+        <tag>PD(LN=pl,case=nom,person=2,type=pers)</tag>
+        <tag>PD(LN=pl,case=nom,person=3,type=pers)</tag>
+        <tag>PD(LN=pl,case=voc,person=2,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc,person=1,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc,person=1,type=refl)</tag>
+        <tag>PD(LN=sg,case=acc,person=2,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc,person=2,type=refl)</tag>
+        <tag>PD(LN=sg,case=acc,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc,person=3,type=refl)</tag>
+        <tag>PD(LN=sg,case=acc,type=refl)</tag>
+        <tag>PD(LN=sg,case=acc|dat,person=1,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc|dat,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,case=acc|nom,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,case=dat,person=1,type=pers)</tag>
+        <tag>PD(LN=sg,case=dat,person=2,type=pers)</tag>
+        <tag>PD(LN=sg,case=dat,person=2,type=refl)</tag>
+        <tag>PD(LN=sg,case=dat,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,case=dat,person=3,type=refl)</tag>
+        <tag>PD(LN=sg,case=dat,type=refl)</tag>
+        <tag>PD(LN=sg,case=gen,person=1,type=pers)</tag>
+        <tag>PD(LN=sg,case=gen,person=2,type=pers)</tag>
+        <tag>PD(LN=sg,case=gen,person=2,type=refl)</tag>
+        <tag>PD(LN=sg,case=gen,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,case=nom,person=1,type=pers)</tag>
+        <tag>PD(LN=sg,case=nom,person=2,type=pers)</tag>
+        <tag>PD(LN=sg,case=nom,person=3,type=pers)</tag>
+        <tag>PD(LN=sg,person=2,type=refl)</tag>
+        <tag>PD(case=acc,gender=f,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,gender=f,number=pl,type=dem)</tag>
+        <tag>PD(case=acc,gender=f,number=pl,type=poss)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,type=dem)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,type=indef)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,type=poss)</tag>
+        <tag>PD(case=acc,gender=f,number=sg,type=rel)</tag>
+        <tag>PD(case=acc,gender=f,number=uncl,type=indef)</tag>
+        <tag>PD(case=acc,gender=m,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,gender=m,number=pl,type=poss)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,type=dem)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,type=indef)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,type=poss)</tag>
+        <tag>PD(case=acc,gender=m,number=sg,type=rel)</tag>
+        <tag>PD(case=acc,gender=m|n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=acc,gender=m|n,number=sg,type=indef)</tag>
+        <tag>PD(case=acc,gender=n,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,gender=n,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,gender=n,number=pl,type=poss)</tag>
+        <tag>PD(case=acc,gender=n,number=pl,type=rel)</tag>
+        <tag>PD(case=acc,gender=n,number=sg)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,type=dem)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,type=indef)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,type=inter)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,type=poss)</tag>
+        <tag>PD(case=acc,gender=n,number=sg,type=rel)</tag>
+        <tag>PD(case=acc,number=pl,position=free,type=dem)</tag>
+        <tag>PD(case=acc,number=pl,position=free,type=indef)</tag>
+        <tag>PD(case=acc,number=pl,position=postnom,type=dem)</tag>
+        <tag>PD(case=acc,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=acc,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,number=pl,type=dem)</tag>
+        <tag>PD(case=acc,number=pl,type=indef)</tag>
+        <tag>PD(case=acc,number=pl,type=inter)</tag>
+        <tag>PD(case=acc,number=pl,type=poss)</tag>
+        <tag>PD(case=acc,number=pl,type=recip)</tag>
+        <tag>PD(case=acc,number=pl,type=rel)</tag>
+        <tag>PD(case=acc,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=acc,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=acc,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=acc,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc,number=sg,type=dem)</tag>
+        <tag>PD(case=acc,number=sg,type=indef)</tag>
+        <tag>PD(case=acc,number=sg,type=inter)</tag>
+        <tag>PD(case=acc,number=sg,type=poss)</tag>
+        <tag>PD(case=acc,number=uncl,type=poss)</tag>
         <tag>PD(case=acc,position=prenom,type=indef)</tag>
         <tag>PD(case=acc,type=recip)</tag>
         <tag>PD(case=acc,type=refl)</tag>
-        <tag>PD(case=acc|dat,number=pl,person=1,type=pers)</tag>
-        <tag>PD(case=acc|dat,number=sg,person=1,type=pers)</tag>
-        <tag>PD(case=acc|dat,number=sg,person=3,type=pers)</tag>
-        <tag>PD(case=acc|nom,number=sg,person=3,type=pers)</tag>
-        <tag>PD(case=dat,number=pl,person=1,type=pers)</tag>
-        <tag>PD(case=dat,number=pl,person=2,type=pers)</tag>
-        <tag>PD(case=dat,number=pl,person=3,type=pers)</tag>
-        <tag>PD(case=dat,number=pl,person=3,type=refl)</tag>
-        <tag>PD(case=dat,number=pl,type=refl)</tag>
-        <tag>PD(case=dat,number=sg,person=1,type=pers)</tag>
-        <tag>PD(case=dat,number=sg,person=2,type=pers)</tag>
-        <tag>PD(case=dat,number=sg,person=2,type=refl)</tag>
-        <tag>PD(case=dat,number=sg,person=3,type=pers)</tag>
-        <tag>PD(case=dat,number=sg,person=3,type=refl)</tag>
-        <tag>PD(case=dat,number=sg,type=refl)</tag>
+        <tag>PD(case=acc|nom,gender=n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=acc|nom,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,gender=f,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,gender=f,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,type=dem)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,type=indef)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,type=inter)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,type=poss)</tag>
+        <tag>PD(case=dat,gender=f,number=sg,type=rel)</tag>
+        <tag>PD(case=dat,gender=f|m,number=sg,type=dem)</tag>
+        <tag>PD(case=dat,gender=m,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,position=pred,type=rel)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,type=dem)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,type=indef)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,type=inter)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,type=poss)</tag>
+        <tag>PD(case=dat,gender=m,number=sg,type=rel)</tag>
+        <tag>PD(case=dat,gender=m|n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=m|n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=dat,gender=m|n,number=sg,type=poss)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,position=postnom,type=indef)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,type=dem)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,type=indef)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,type=poss)</tag>
+        <tag>PD(case=dat,gender=n,number=sg,type=rel)</tag>
+        <tag>PD(case=dat,number=pl)</tag>
+        <tag>PD(case=dat,number=pl,position=free,type=indef)</tag>
+        <tag>PD(case=dat,number=pl,position=postnom,type=dem)</tag>
+        <tag>PD(case=dat,number=pl,position=postnom,type=indef)</tag>
+        <tag>PD(case=dat,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=dat,number=pl,type=dem)</tag>
+        <tag>PD(case=dat,number=pl,type=indef)</tag>
+        <tag>PD(case=dat,number=pl,type=poss)</tag>
+        <tag>PD(case=dat,number=pl,type=rel)</tag>
+        <tag>PD(case=dat,number=sg)</tag>
+        <tag>PD(case=dat,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=dat,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=dat,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=dat,number=sg,type=dem)</tag>
+        <tag>PD(case=dat,number=sg,type=indef)</tag>
+        <tag>PD(case=dat,number=sg,type=poss)</tag>
+        <tag>PD(case=dat,number=uncl,subtype=art,type=dem)</tag>
         <tag>PD(case=dat,position=prenom,type=indef)</tag>
         <tag>PD(case=dat,type=pers)</tag>
         <tag>PD(case=dat,type=refl)</tag>
-        <tag>PD(case=gen,number=pl,person=1,type=pers)</tag>
-        <tag>PD(case=gen,number=pl,person=2,type=pers)</tag>
-        <tag>PD(case=gen,number=pl,person=3,type=pers)</tag>
-        <tag>PD(case=gen,number=sg,person=1,type=pers)</tag>
-        <tag>PD(case=gen,number=sg,person=2,type=pers)</tag>
-        <tag>PD(case=gen,number=sg,person=2,type=refl)</tag>
-        <tag>PD(case=gen,number=sg,person=3,type=pers)</tag>
+        <tag>PD(case=dat|gen,gender=f,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,gender=f,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=gen,gender=f,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,gender=f,number=sg,type=dem)</tag>
+        <tag>PD(case=gen,gender=f,number=sg,type=poss)</tag>
+        <tag>PD(case=gen,gender=f,number=sg,type=rel)</tag>
+        <tag>PD(case=gen,gender=m,number=pl,type=dem)</tag>
+        <tag>PD(case=gen,gender=m,number=pl,type=poss)</tag>
+        <tag>PD(case=gen,gender=m,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=gen,gender=m,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,gender=m,number=sg,type=dem)</tag>
+        <tag>PD(case=gen,gender=m,number=sg,type=poss)</tag>
+        <tag>PD(case=gen,gender=m,number=sg,type=rel)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,type=dem)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,type=indef)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,type=inter)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,type=poss)</tag>
+        <tag>PD(case=gen,gender=n,number=sg,type=rel)</tag>
+        <tag>PD(case=gen,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=gen,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=gen,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,number=pl,type=dem)</tag>
+        <tag>PD(case=gen,number=pl,type=indef)</tag>
+        <tag>PD(case=gen,number=pl,type=poss)</tag>
+        <tag>PD(case=gen,number=pl,type=rel)</tag>
+        <tag>PD(case=gen,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=gen,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=gen,number=sg,type=dem)</tag>
+        <tag>PD(case=gen,number=sg,type=indef)</tag>
+        <tag>PD(case=gen,number=sg,type=poss)</tag>
+        <tag>PD(case=gen,number=uncl,type=dem)</tag>
         <tag>PD(case=gen,type=poss)</tag>
-        <tag>PD(case=nom,number=pl,person=1,type=pers)</tag>
-        <tag>PD(case=nom,number=pl,person=2,type=pers)</tag>
-        <tag>PD(case=nom,number=pl,person=3,type=pers)</tag>
-        <tag>PD(case=nom,number=sg,person=1,type=pers)</tag>
-        <tag>PD(case=nom,number=sg,person=2,type=pers)</tag>
-        <tag>PD(case=nom,number=sg,person=3,type=pers)</tag>
+        <tag>PD(case=nom,gender=f,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,gender=f,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=f,number=pl,type=indef)</tag>
+        <tag>PD(case=nom,gender=f,number=pl,type=rel)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,position=pred,type=inter)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,type=dem)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,type=indef)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,type=poss)</tag>
+        <tag>PD(case=nom,gender=f,number=sg,type=rel)</tag>
+        <tag>PD(case=nom,gender=f|m,number=sg,type=rel)</tag>
+        <tag>PD(case=nom,gender=m,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=m,number=pl,type=poss)</tag>
+        <tag>PD(case=nom,gender=m,number=pl,type=rel)</tag>
+        <tag>PD(case=nom,gender=m,number=sg)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,position=pred,type=dem)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,position=pred,type=inter)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,type=dem)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,type=indef)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,type=poss)</tag>
+        <tag>PD(case=nom,gender=m,number=sg,type=rel)</tag>
+        <tag>PD(case=nom,gender=m|n,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,gender=m|n,number=sg,type=poss)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,type=dem)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,type=indef)</tag>
+        <tag>PD(case=nom,gender=n,number=pl,type=poss)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,type=dem)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,type=indef)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,type=inter)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,type=poss)</tag>
+        <tag>PD(case=nom,gender=n,number=sg,type=rel)</tag>
+        <tag>PD(case=nom,number=pl)</tag>
+        <tag>PD(case=nom,number=pl,position=free,type=indef)</tag>
+        <tag>PD(case=nom,number=pl,position=postnom,type=dem)</tag>
+        <tag>PD(case=nom,number=pl,position=postnom,type=indef)</tag>
+        <tag>PD(case=nom,number=pl,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,number=pl,position=pred,type=indef)</tag>
+        <tag>PD(case=nom,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,number=pl,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,number=pl,type=dem)</tag>
+        <tag>PD(case=nom,number=pl,type=indef)</tag>
+        <tag>PD(case=nom,number=pl,type=poss)</tag>
+        <tag>PD(case=nom,number=pl,type=rel)</tag>
+        <tag>PD(case=nom,number=sg)</tag>
+        <tag>PD(case=nom,number=sg,position=postnom,type=dem)</tag>
+        <tag>PD(case=nom,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=nom,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=nom,number=sg,subtype=art,type=dem)</tag>
+        <tag>PD(case=nom,number=sg,subtype=art,type=indef)</tag>
+        <tag>PD(case=nom,number=sg,type=dem)</tag>
+        <tag>PD(case=nom,number=sg,type=indef)</tag>
+        <tag>PD(case=nom,number=sg,type=inter)</tag>
+        <tag>PD(case=nom,number=sg,type=poss)</tag>
+        <tag>PD(case=nom,number=sg,type=rel)</tag>
         <tag>PD(case=nom,type=refl)</tag>
-        <tag>PD(case=voc,number=pl,person=2,type=pers)</tag>
-        <tag>PD(number=sg,person=2,type=refl)</tag>
+        <tag>PD(case=voc,gender=f,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=voc,gender=f,number=sg,position=prenom,type=indef)</tag>
+        <tag>PD(case=voc,gender=f,number=sg,type=indef)</tag>
+        <tag>PD(case=voc,gender=f,number=sg,type=poss)</tag>
+        <tag>PD(case=voc,gender=m,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=voc,gender=m,number=sg,type=poss)</tag>
+        <tag>PD(case=voc,number=pl,position=prenom,type=indef)</tag>
+        <tag>PD(case=voc,number=pl,type=poss)</tag>
+        <tag>PD(case=voc,number=sg,position=postnom,type=poss)</tag>
+        <tag>PD(case=voc,number=sg,type=poss)</tag>
         <tag>PD(position=postnom,type=indef)</tag>
         <tag>PD(position=pred,type=dem)</tag>
         <tag>PD(position=prenom,type=indef)</tag>
@@ -1523,503 +1474,69 @@
         <tag>RES()</tag>
         <tag>RES(case=gen,number=sg)</tag>
         <tag>VRB()</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=conj,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=cop,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=1a)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=conj|ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=1,finiteness=fin,mood=conj,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=1,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=1|3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg|weak,finiteness=fin,mood=imp,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=conj|ind,tense=pres,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=imp,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=2,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=2,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|pretpres,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=past,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=pretpres,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,type=aux,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,type=cop,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=1a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=4)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=2a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=conj|ind,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=aux,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=cop,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=2a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=1a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=4)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=6b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=1a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=2b)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=3a)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=4)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=5)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=7)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=conj|ind)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=refl|trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=pl,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=pl,PA=3,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=pl,case=nom,conjugation=strong,finiteness=prespart,gender=m)</tag>
-        <tag>VRB(NA=pl,case=nom,conjugation=weak,finiteness=pastpart,gender=m,valency=intr)</tag>
-        <tag>VRB(NA=pl,case=nom,conjugation=weak,finiteness=pastpart,valency=trans)</tag>
-        <tag>VRB(NA=pl,case=nom,conjugation=weak,finiteness=prespart,valency=trans)</tag>
-        <tag>VRB(NA=pl,conjugation=irreg,mood=imp)</tag>
-        <tag>VRB(NA=pl,conjugation=irreg|pretpres|strong,mood=imp)</tag>
-        <tag>VRB(NA=pl,conjugation=irreg|strong,mood=imp)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,finiteness=inf,mood=ind,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,type=aux)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,valency=intr)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,valency=trans)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=pl,conjugation=strong,mood=imp,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=pl,conjugation=weak,mood=imp)</tag>
-        <tag>VRB(NA=pl,conjugation=weak,mood=imp,valency=intr)</tag>
-        <tag>VRB(NA=pl,conjugation=weak,mood=imp,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|pretpres,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|strong,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=pretpres,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=pretpres,finiteness=fin,mood=conj|ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=pretpres,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=conj|ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=1,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=conj,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=conj,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=conj,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=1,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=conj,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|pretpres,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|pretpres|strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|weak,finiteness=fin,mood=imp,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=2b)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=refl,verbclass=3b)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=1a)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=imp,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=2,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=2,finiteness=fin,mood=conj,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=2,finiteness=fin,mood=conj,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=2,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=2,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=conj,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|pretpres,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=irreg|weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=pretpres,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=pretpres,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=pretpres|strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,type=aux,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,type=cop,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=1a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=2b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=3b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=6b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=past,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,verbclass=1a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,verbclass=3b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj,tense=pres,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=conj|ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=aux,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,type=cop,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=intr,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=2b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=1a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=1b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=2b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=3b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=6b)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=past,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=impers)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr,verbclass=1)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=3a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=1a)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=4)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=5)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=6)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=strong,finiteness=fin,mood=ind,tense=pres,verbclass=7)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=conj,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=impers)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=past|pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=impers)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=intr)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=refl)</tag>
-        <tag>VRB(NA=sg,PA=3,conjugation=weak,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=conj,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=conj,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=conj,tense=past,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=conj,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=conj,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=past)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=past,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=past,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=pres,type=aux)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=pres,type=cop)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=pres,valency=impers)</tag>
-        <tag>VRB(NA=sg,PA=3,finiteness=fin,mood=ind,tense=pres,valency=trans)</tag>
-        <tag>VRB(NA=sg,case=acc)</tag>
-        <tag>VRB(NA=sg,case=dat,conjugation=strong,finiteness=ger,verbclass=5)</tag>
-        <tag>VRB(NA=sg,case=dat,conjugation=weak,finiteness=ger)</tag>
-        <tag>VRB(NA=sg,case=dat,conjugation=weak,finiteness=ger,valency=trans)</tag>
-        <tag>VRB(NA=sg,case=gen,conjugation=strong,finiteness=ger)</tag>
-        <tag>VRB(NA=sg,conjugation=irreg,mood=imp)</tag>
-        <tag>VRB(NA=sg,conjugation=irreg,mood=imp,type=aux)</tag>
-        <tag>VRB(NA=sg,conjugation=irreg|strong,mood=imp)</tag>
-        <tag>VRB(NA=sg,conjugation=irreg|weak,mood=imp)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,type=cop)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=intr)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=intr,verbclass=6)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=refl)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=trans)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=trans,verbclass=4)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=trans,verbclass=5b)</tag>
-        <tag>VRB(NA=sg,conjugation=strong,mood=imp,valency=trans,verbclass=7)</tag>
-        <tag>VRB(NA=sg,conjugation=weak,mood=imp)</tag>
-        <tag>VRB(NA=sg,conjugation=weak,mood=imp,valency=intr)</tag>
-        <tag>VRB(NA=sg,conjugation=weak,mood=imp,valency=trans)</tag>
-        <tag>VRB(NA=sg,mood=imp)</tag>
-        <tag>VRB(NA=sg,mood=imp,valency=trans)</tag>
-        <tag>VRB(NA=uncl,PA=3,conjugation=pretpres,finiteness=fin,mood=conj,tense=pres)</tag>
+        <tag>VRB(case=acc,number=sg)</tag>
         <tag>VRB(case=dat,conjugation=irreg|weak,finiteness=ger,valency=trans)</tag>
+        <tag>VRB(case=dat,conjugation=strong,finiteness=ger,number=sg,verbclass=5)</tag>
         <tag>VRB(case=dat,conjugation=strong,finiteness=ger,valency=intr)</tag>
         <tag>VRB(case=dat,conjugation=strong,finiteness=ger,valency=trans)</tag>
+        <tag>VRB(case=dat,conjugation=weak,finiteness=ger,number=sg)</tag>
+        <tag>VRB(case=dat,conjugation=weak,finiteness=ger,number=sg,valency=trans)</tag>
         <tag>VRB(case=dat,conjugation=weak,finiteness=ger,valency=intr)</tag>
         <tag>VRB(case=dat,conjugation=weak,finiteness=ger,valency=trans)</tag>
         <tag>VRB(case=dat,conjugation=weak,finiteness=ger|inf,valency=trans)</tag>
         <tag>VRB(case=dat,conjugation=weak,finiteness=ger|prespart,valency=trans)</tag>
+        <tag>VRB(case=gen,conjugation=strong,finiteness=ger,number=sg)</tag>
+        <tag>VRB(case=nom,conjugation=strong,finiteness=prespart,gender=m,number=pl)</tag>
+        <tag>VRB(case=nom,conjugation=weak,finiteness=pastpart,gender=m,number=pl,valency=intr)</tag>
+        <tag>VRB(case=nom,conjugation=weak,finiteness=pastpart,number=pl,valency=trans)</tag>
+        <tag>VRB(case=nom,conjugation=weak,finiteness=prespart,number=pl,valency=trans)</tag>
         <tag>VRB(conjugation=irreg)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=pl,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=2,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=2,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=1|3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=1,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=2,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=intr)</tag>
         <tag>VRB(conjugation=irreg,finiteness=inf)</tag>
         <tag>VRB(conjugation=irreg,finiteness=inf,type=aux)</tag>
         <tag>VRB(conjugation=irreg,finiteness=inf,type=cop)</tag>
@@ -2030,22 +1547,331 @@
         <tag>VRB(conjugation=irreg,finiteness=prespart)</tag>
         <tag>VRB(conjugation=irreg,finiteness=prespart,type=aux)</tag>
         <tag>VRB(conjugation=irreg,finiteness=prespart,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg,mood=imp,number=pl)</tag>
+        <tag>VRB(conjugation=irreg,mood=imp,number=sg)</tag>
+        <tag>VRB(conjugation=irreg,mood=imp,number=sg,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|pretpres,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|pretpres,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|pretpres,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|pretpres,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=conj,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans)</tag>
         <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=inf)</tag>
         <tag>VRB(conjugation=irreg|pretpres|strong,finiteness=inf,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|pretpres|strong,mood=imp,number=pl)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=conj,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
         <tag>VRB(conjugation=irreg|strong,finiteness=inf)</tag>
         <tag>VRB(conjugation=irreg|strong,finiteness=inf,valency=intr)</tag>
+        <tag>VRB(conjugation=irreg|strong,mood=imp,number=pl)</tag>
+        <tag>VRB(conjugation=irreg|strong,mood=imp,number=sg)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=pl,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=conj,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=imp,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=imp,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=irreg|weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans)</tag>
         <tag>VRB(conjugation=irreg|weak,finiteness=ger,valency=trans)</tag>
         <tag>VRB(conjugation=irreg|weak,finiteness=inf)</tag>
         <tag>VRB(conjugation=irreg|weak,finiteness=inf,valency=trans)</tag>
         <tag>VRB(conjugation=irreg|weak,finiteness=pastpart)</tag>
         <tag>VRB(conjugation=irreg|weak,finiteness=pastpart,valency=trans)</tag>
+        <tag>VRB(conjugation=irreg|weak,mood=imp,number=sg)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj,number=uncl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=conj|ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=pretpres,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=pretpres|strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=1)</tag>
         <tag>VRB(conjugation=strong)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=1,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=1,tense=pres,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,type=aux,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,type=cop,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=past,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=trans,verbclass=2a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=past,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=2,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=2,tense=past,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=2,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,type=aux,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,type=cop,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=3b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=6b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=past,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,verbclass=3b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj|ind,number=pl,person=2,tense=pres,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj|ind,number=pl,person=3,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=conj|ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=imp,number=pl,person=2,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=past,type=cop,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,valency=trans,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=2,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=aux,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=cop,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=2a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=3b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=6b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=past,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,type=cop)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=refl)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=past,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=refl)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=past,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=refl,verbclass=3b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=aux,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=cop,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=1b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=2b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=3b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=6b)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=past,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=impers)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=intr,verbclass=1)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=3a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,verbclass=1a)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,verbclass=7)</tag>
         <tag>VRB(conjugation=strong,finiteness=ger)</tag>
         <tag>VRB(conjugation=strong,finiteness=ger,valency=intr)</tag>
         <tag>VRB(conjugation=strong,finiteness=ger,valency=trans)</tag>
         <tag>VRB(conjugation=strong,finiteness=ger,valency=trans,verbclass=4)</tag>
         <tag>VRB(conjugation=strong,finiteness=ger,valency=trans,verbclass=5)</tag>
         <tag>VRB(conjugation=strong,finiteness=inf)</tag>
+        <tag>VRB(conjugation=strong,finiteness=inf,mood=ind,number=pl,valency=intr,verbclass=6)</tag>
         <tag>VRB(conjugation=strong,finiteness=inf,position=free)</tag>
         <tag>VRB(conjugation=strong,finiteness=inf,type=aux)</tag>
         <tag>VRB(conjugation=strong,finiteness=inf,type=aux,verbclass=5)</tag>
@@ -2102,8 +1928,92 @@
         <tag>VRB(conjugation=strong,finiteness=prespart,valency=intr)</tag>
         <tag>VRB(conjugation=strong,finiteness=prespart,valency=trans)</tag>
         <tag>VRB(conjugation=strong,finiteness=prespart,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,type=aux)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,valency=trans,verbclass=5)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=pl,valency=trans,verbclass=7)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,type=cop)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=intr)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=intr,verbclass=6)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=refl)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=trans)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=trans,verbclass=4)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=trans,verbclass=5b)</tag>
+        <tag>VRB(conjugation=strong,mood=imp,number=sg,valency=trans,verbclass=7)</tag>
         <tag>VRB(conjugation=strong,valency=trans)</tag>
         <tag>VRB(conjugation=weak)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=pl,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj,number=sg,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj|ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj|ind,number=pl,person=3)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=conj|ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=imp,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=2,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=refl|trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=pl,person=3,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=1,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=2,tense=pres,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=impers)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=past|pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=impers)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=refl)</tag>
+        <tag>VRB(conjugation=weak,finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans)</tag>
         <tag>VRB(conjugation=weak,finiteness=ger)</tag>
         <tag>VRB(conjugation=weak,finiteness=ger,valency=intr)</tag>
         <tag>VRB(conjugation=weak,finiteness=ger,valency=trans)</tag>
@@ -2121,11 +2031,52 @@
         <tag>VRB(conjugation=weak,finiteness=prespart)</tag>
         <tag>VRB(conjugation=weak,finiteness=prespart,valency=intr)</tag>
         <tag>VRB(conjugation=weak,finiteness=prespart,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=pl)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=pl,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=pl,valency=trans)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=sg)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=sg,valency=intr)</tag>
+        <tag>VRB(conjugation=weak,mood=imp,number=sg,valency=trans)</tag>
         <tag>VRB(conjugation=weak,valency=intr)</tag>
         <tag>VRB(conjugation=weak,valency=trans)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=pl,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=1,tense=past,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=1,tense=pres)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=2,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=conj,number=sg,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=2,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=past)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=pres)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=pl,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=1,tense=past,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=1,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=2,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=2,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=past)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=past,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=aux)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=pres,type=cop)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=impers)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,number=sg,person=3,tense=pres,valency=trans)</tag>
         <tag>VRB(finiteness=inf)</tag>
         <tag>VRB(finiteness=inf,type=aux)</tag>
         <tag>VRB(finiteness=inf,type=cop)</tag>
         <tag>VRB(finiteness=inf,valency=impers)</tag>
+        <tag>VRB(mood=imp,number=sg)</tag>
+        <tag>VRB(mood=imp,number=sg,valency=trans)</tag>
     </tags>
 </tagset>

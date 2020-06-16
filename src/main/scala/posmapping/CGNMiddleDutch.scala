@@ -77,7 +77,7 @@ object CGNMiddleDutch
 
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst"),
     "variatie" -> Set("dial") // officiele naam??
-  )
+  ).mapValues(_.toList)
 
 
   def additions2partitions = Map(

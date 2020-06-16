@@ -2,7 +2,7 @@ package posmapping
 
 import java.io.{File, PrintWriter}
 
-import gysseling.HistoricalTagsetPatching
+import corpusprocessing.gysseling.HistoricalTagsetPatching
 
 import scala.xml.XML
 object DataSettings {
@@ -44,7 +44,16 @@ object TagsetDiachroonNederlands {
       (pos, features.sortBy(x => combi(x)))
     }
 
-    t.copy(pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}))
+    def sortFeatures(n: String, v: List[String]) =
+    {
+      val lijstje: Map[String, Int] = tRef.partitions.getOrElse(n, List()).zipWithIndex.toMap
+      val addition  = v.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
+      val combi = lijstje ++ addition
+      v.sortBy(x => combi(x))
+    }
+
+    t.copy(partitions = t.partitions.map({case (n,v)=>
+      (n,sortFeatures(n,v))}), pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}))
   }
 
 

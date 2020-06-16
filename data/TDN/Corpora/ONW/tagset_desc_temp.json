@@ -3,12 +3,12 @@
     "AA":{
       "value":"AA",
       "displayName":"Adjective/adverb",
-      "subAnnotationIds":["pos_degree","pos_position","pos_case","pos_NA","pos_GA"]
+      "subAnnotationIds":["pos_degree","pos_position","pos_case","pos_number","pos_gender"]
     },
     "ADP":{
       "value":"ADP",
       "displayName":"Adposition",
-      "subAnnotationIds":["pos_government"]
+      "subAnnotationIds":["pos_type","pos_government"]
     },
     "ADV":{
       "value":"ADV",
@@ -28,7 +28,7 @@
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"Common noun",
-      "subAnnotationIds":["pos_number","pos_case","pos_gender","pos_mood","pos_person"]
+      "subAnnotationIds":["pos_number","pos_case","pos_gender"]
     },
     "NOU-P":{
       "value":"NOU-P",
@@ -38,12 +38,12 @@
     "NUM":{
       "value":"NUM",
       "displayName":"Numeral",
-      "subAnnotationIds":["pos_type","pos_position","pos_case","pos_NA","pos_GA"]
+      "subAnnotationIds":["pos_type","pos_position","pos_case","pos_number","pos_gender"]
     },
     "PD":{
       "value":"PD",
       "displayName":"Pronoun",
-      "subAnnotationIds":["pos_type","pos_subtype","pos_position","pos_case","pos_number","pos_person","pos_gender","pos_NA","pos_GA"]
+      "subAnnotationIds":["pos_type","pos_subtype","pos_position","pos_case","pos_LN","pos_person","pos_LG","pos_number","pos_gender"]
     },
     "RES":{
       "value":"RES",
@@ -53,15 +53,27 @@
     "VRB":{
       "value":"VRB",
       "displayName":"Verb",
-      "subAnnotationIds":["pos_type","pos_finiteness","pos_tense","pos_mood","pos_NA","pos_PA","pos_valency","pos_conjugation","pos_verbclass","pos_position","pos_case","pos_gender"]
+      "subAnnotationIds":["pos_type","pos_finiteness","pos_tense","pos_mood","pos_number","pos_person","pos_valency","pos_conjugation","pos_verbclass","pos_position","pos_case","pos_gender"]
     }
   },
   "subAnnotations":{
+    "pos_LN":{
+      "id":"pos_LN",
+      "values":[{
+        "value":"pl",
+        "displayName":"Plural",
+        "pos":["PD"]
+      },{
+        "value":"sg",
+        "displayName":"Singular",
+        "pos":["PD"]
+      }]
+    },
     "pos_case":{
       "id":"pos_case",
       "values":[{
         "value":"acc",
-        "displayName":"acc",
+        "displayName":"Accusative",
         "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
         "value":"acc|dat",
@@ -90,10 +102,6 @@
       },{
         "value":"gen|nom",
         "displayName":"gen|nom",
-        "pos":["NOU-C"]
-      },{
-        "value":"gen|voc",
-        "displayName":"gen|voc",
         "pos":["NOU-C"]
       },{
         "value":"nom",
@@ -175,46 +183,6 @@
         "value":"pres",
         "displayName":"present",
         "pos":["VRB"]
-      }]
-    },
-    "pos_GA":{
-      "id":"pos_GA",
-      "values":[{
-        "value":"f",
-        "displayName":"Feminine",
-        "pos":["PD","AA","NUM"]
-      },{
-        "value":"f|m",
-        "displayName":"f|m",
-        "pos":["PD"]
-      },{
-        "value":"m",
-        "displayName":"Masculine",
-        "pos":["PD","AA","NUM"]
-      },{
-        "value":"m|n",
-        "displayName":"Masculine/Neuter",
-        "pos":["PD","AA"]
-      },{
-        "value":"n",
-        "displayName":"Neuter",
-        "pos":["PD","AA","NUM"]
-      }]
-    },
-    "pos_NA":{
-      "id":"pos_NA",
-      "values":[{
-        "value":"pl",
-        "displayName":"Plural",
-        "pos":["PD","VRB","AA","NUM"]
-      },{
-        "value":"sg",
-        "displayName":"Singular",
-        "pos":["PD","VRB","AA","NUM"]
-      },{
-        "value":"uncl",
-        "displayName":"Unclear",
-        "pos":["PD","VRB","AA"]
       }]
     },
     "pos_valency":{
@@ -363,6 +331,10 @@
         "value":"sub",
         "displayName":"Subordinating",
         "pos":["CONJ"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
+        "pos":["ADP"]
       }]
     },
     "pos_mood":{
@@ -382,7 +354,7 @@
       },{
         "value":"ind",
         "displayName":"Indicative",
-        "pos":["VRB","NOU-C"]
+        "pos":["VRB"]
       }]
     },
     "pos_degree":{
@@ -446,15 +418,15 @@
       "values":[{
         "value":"pl",
         "displayName":"Plural",
-        "pos":["PD","NOU-C"]
+        "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
         "value":"sg",
         "displayName":"Singular",
-        "pos":["PD","NOU-C","NOU-P","RES"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM","RES"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["NOU-C"]
+        "pos":["PD","VRB","NOU-C","AA"]
       }]
     },
     "pos_gender":{
@@ -462,47 +434,27 @@
       "values":[{
         "value":"f",
         "displayName":"Feminine",
-        "pos":["PD","NOU-C"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"f|m",
         "displayName":"f|m",
-        "pos":["NOU-C"]
+        "pos":["PD","NOU-C"]
       },{
         "value":"f|n",
-        "displayName":"f|n",
+        "displayName":"Feminine/Neuter",
         "pos":["NOU-C"]
       },{
         "value":"m",
         "displayName":"Masculine",
-        "pos":["VRB","NOU-C"]
+        "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
         "value":"m|n",
-        "displayName":"m|n",
-        "pos":["NOU-C"]
+        "displayName":"Masculine/Neuter",
+        "pos":["PD","NOU-C","AA"]
       },{
         "value":"n",
         "displayName":"Neuter",
-        "pos":["NOU-C"]
-      }]
-    },
-    "pos_PA":{
-      "id":"pos_PA",
-      "values":[{
-        "value":"1",
-        "displayName":"First",
-        "pos":["VRB"]
-      },{
-        "value":"1|3",
-        "displayName":"1|3",
-        "pos":["VRB"]
-      },{
-        "value":"2",
-        "displayName":"Second",
-        "pos":["VRB"]
-      },{
-        "value":"3",
-        "displayName":"Third",
-        "pos":["VRB"]
+        "pos":["PD","NOU-C","AA","NUM"]
       }]
     },
     "pos_finiteness":{
@@ -541,7 +493,7 @@
       "id":"pos_government",
       "values":[{
         "value":"acc",
-        "displayName":"acc",
+        "displayName":"Accusative",
         "pos":["ADP"]
       },{
         "value":"acc|dat",
@@ -549,12 +501,20 @@
         "pos":["ADP"]
       },{
         "value":"dat",
-        "displayName":"dat",
+        "displayName":"Dative",
         "pos":["ADP"]
       },{
         "value":"gen",
-        "displayName":"gen",
+        "displayName":"Genitive",
         "pos":["ADP"]
+      }]
+    },
+    "pos_LG":{
+      "id":"pos_LG",
+      "values":[{
+        "value":"f",
+        "displayName":"Feminine",
+        "pos":["PD"]
       }]
     },
     "pos_person":{
@@ -562,15 +522,19 @@
       "values":[{
         "value":"1",
         "displayName":"1",
-        "pos":["PD"]
+        "pos":["PD","VRB"]
+      },{
+        "value":"1|3",
+        "displayName":"1|3",
+        "pos":["VRB"]
       },{
         "value":"2",
         "displayName":"2",
-        "pos":["PD"]
+        "pos":["PD","VRB"]
       },{
         "value":"3",
         "displayName":"3",
-        "pos":["PD","NOU-C"]
+        "pos":["PD","VRB"]
       }]
     }
   }

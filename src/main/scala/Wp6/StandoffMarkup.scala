@@ -41,13 +41,13 @@ object TEI2NAF {
   def toNaf(n: NodeWithOffsets): Node = {
     val nodeType = n.node.getClass.getName.replaceAll(".*\\.","")
     if (n.node.isInstanceOf[Text])
-      <text offset={n.start.toString} length={n.length.toString}/>
+      <textnode offset={n.start.toString} length={n.length.toString}/>
     else  if (n.node.isInstanceOf[Elem]) {
       val down = n.children.map(toNaf)
       val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
       <element id={n.id} offset={n.start.toString} length={n.length.toString} name={n.label}>{attributes}{down}</element>
     } else {
-        <node class={nodeType} offset={n.start.toString} length={n.length.toString}/>
+        <node type={nodeType} offset={n.start.toString} length={n.length.toString}/>
     }
   }
 
@@ -61,7 +61,7 @@ object TEI2NAF {
        lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
        val descendants = n1.descendant
         <NAF><raw>{cdata}</raw>
-        <textStructure>{toNaf(n1)}</textStructure></NAF>
+        <textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toNaf(n1)}</textStructure></NAF>
      })
    }
 

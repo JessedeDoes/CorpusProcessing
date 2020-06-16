@@ -1,6 +1,6 @@
 package posmapping
 
-import readMTASMappingForCRM._
+import corpusprocessing.CRM.readMTASMappingForCRM._
 
 
 import scala.xml._
