@@ -5,6 +5,12 @@
         multipleValues: true
      
 
+      - name: representation
+        displayName: representation
+        uiType: select
+        multipleValues: true
+     
+
       - name: verbclass
         displayName: verbclass
         uiType: select
@@ -31,6 +37,12 @@
 
       - name: gender
         displayName: gender
+        uiType: select
+        multipleValues: true
+     
+
+      - name: LP
+        displayName: LP
         uiType: select
         multipleValues: true
      

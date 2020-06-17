@@ -124,7 +124,7 @@ object TagsetDiachroonNederlands {
 
   implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
 
-  private def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping: Map[String, String]) = {
+  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping: Map[String, String]) = {
 
     val allDistinctTags = tagMapping.values.toSet
 
@@ -158,7 +158,6 @@ object TagsetDiachroonNederlands {
     val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
 
     tmPlus.toList.sortBy(_._2._2).foreach({case (tOrg, (t,t1)) => {
-
       currentMapping.println(s"$tOrg\t$t\t$t1")
     }})
     currentMapping.close()
@@ -168,6 +167,24 @@ object TagsetDiachroonNederlands {
     }})}</table></html>
 
     XML.save(prefix + "tagset.mapped.html", currentMappingHTML, "UTF-8")
+
+    val r = tagMapping.mapValues(s => {
+      val t0 = new CHNStyleTag(s, tagsetPlus)
+      val t1 = tagsetPlus.fixTag(t0)
+      t1.asInstanceOf[CHNStyleTag]}
+    )
+    r.foreach({case (x, t) =>
+        val (ok, infringed) = t.tagset.tagSatisfiesImplications(t)
+        val redundancies = if (ok) t.hasUnforcedFeatures() else List[(String,Tag)]();
+        if (!ok)
+        {
+          Console.err.println(s"$x $t implications: $ok Infringed: ($infringed)")
+        } else if (redundancies.nonEmpty)
+        {
+          Console.err.println(s"$x $t  Redundant: ${redundancies.map(_._1)}")
+        }
+    })
+    r.mapValues(_.removeUnforcedFeatures())
   }
 
   def doONW = {

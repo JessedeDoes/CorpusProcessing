@@ -693,8 +693,37 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Person (inherent)" desc="Inherent person (pronouns)">
+    <feature displayName="Person" desc="Person agreement">
       <name>person</name>
+      <values>
+        <featureValue displayName="1" desc="First person">
+          <value>1</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="2" desc="Second person">
+          <value>2</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="3" desc="Third person">
+          <value>3</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Unclear" desc="Unclear">
+          <value>uncl</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+      </values>
+    </feature>
+      <feature displayName="Lemma Person (inherent)" desc="Inherent person (pronouns)">
+      <name>LP</name>
       <values>
         <featureValue displayName="1" desc="First person">
           <value>1</value>
@@ -896,6 +925,12 @@
       <values>
         <featureValue displayName="Article" desc="Article">
           <value>art</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+	 <featureValue displayName="Non-article" desc="Non-article">
+          <value>other</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
@@ -1477,7 +1512,7 @@
         <feature>position</feature>
         <feature>case</feature>
         <feature>LN</feature>
-        <feature>person</feature>
+        <feature>LP</feature>
 	<feature>LG</feature>
 	<feature>number</feature>
 	<feature>gender</feature>
@@ -1545,59 +1580,49 @@
           <!-- corpus of Old Dutch -->
 
           <declaration corpus="ONW">pos=AA => degree,position,case,number,gender</declaration>
-          <declaration corpus="ONW">pos=NOU-C => case,LN,LG</declaration>
-          <declaration corpus="ONW">pos=NOU-P => case,LN,LG</declaration>
-
-	  <declaration corpus="ONW">pos=VRB => type,finiteness,conjugation</declaration>
+          <declaration corpus="ONW">pos=NOU-C => case,number,gender</declaration>
+          <declaration corpus="ONW">pos=NOU-P => case,number,gender</declaration>
+	  
+	  <declaration corpus="ONW">pos=VRB,mood=imp => finiteness || finiteness=fin</declaration>
+	  <declaration corpus="ONW">pos=VRB,mood=imp => tense || tense=pres</declaration>
+         
+	  <declaration corpus="ONW">pos=VRB => type,finiteness,valency,conjugation</declaration>
 	  <declaration corpus="ONW">pos=VRB,conjugation=strong => verbclass</declaration>
 	  <declaration corpus="ONW">pos=VRB,conjugation=uncl => verbclass</declaration>
 
-          <declaration corpus="ONW">pos=VRB,finiteness=fin => mood,tense,LN</declaration>
-          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=ind  => person</declaration>
+	  
+          <declaration corpus="ONW">pos=VRB,finiteness=fin => mood,tense,number</declaration>
+	  <declaration corpus="ONW">pos=VRB,finiteness=uncl => mood,tense,number</declaration>
+
+          <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=ind => person</declaration>
           <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=conj => person</declaration>
 
+	  <declaration corpus="ONW">pos=PD,subtype=art => position || position=prenom</declaration>
           <declaration corpus="ONW">pos=PD => type,case,position</declaration>
 
 
-	  <!--
-d-p
-excl
-indef
-pers
-poss
-recip
-refl
-w-p
+	  <declaration corpus="ONW">pos=PD,type=uncl => number,gender</declaration>
+	  <declaration corpus="ONW">pos=PD,type=dem  => number,gender</declaration>
 
-
-dem
-excl
-indef
-inter
-pers
-poss
-recip
-refl
-rel
--->
-       
-	  <declaration corpus="ONW">pos=PD,type=dem=> number,gender</declaration>
-	  <!--
-	  <declaration corpus="ONW">pos=PD,type=excl=> </declaration>
-          -->
+	  <!-- <declaration corpus="ONW">pos=PD,type=excl=> </declaration> --> 
 
 	  <declaration corpus="ONW">pos=PD,type=inter=> number,gender</declaration>
 	  <declaration corpus="ONW">pos=PD,type=rel=> number,gender</declaration>
 	  <declaration corpus="ONW">pos=PD,type=indef=> number,gender</declaration>
-	  <declaration corpus="ONW">pos=PD,type=recip=> number,gender> </declaration>
+	  <declaration corpus="ONW">pos=PD,type=recip=> LN,LG</declaration>
 
-          <declaration corpus="ONW">pos=PD,type=pers => person,LN</declaration>
-          <declaration corpus="ONW">pos=PD,type=refl => person,LN</declaration>
-	  <declaration corpus="ONW">pos=PD,type=poss => person, LN, number, gender</declaration>
-          <declaration corpus="ONW">pos=PD, person=3, LN=sg => LG</declaration>
+          <declaration corpus="ONW">pos=PD,type=pers => LP,LN</declaration>
+          <declaration corpus="ONW">pos=PD,type=refl => LP,LN</declaration>
+	  <declaration corpus="ONW">pos=PD,type=poss => LP, number, gender</declaration>
 
-	  <declaration corpus="ONW">pos=PD, person=uncl, LN=uncl => LG</declaration>
-	  <declaration corpus="ONW">pos=PD, person=uncl, LN=sg => LG</declaration>
+	  <declaration corpus="ONW">pos=PD, type=dem => subtype || subtype=other</declaration>
+	  <declaration corpus="ONW">pos=PD, type=indef => subtype || subtype=other</declaration>
+
+          <declaration corpus="ONW">pos=PD, type=pers, LP=3, LN=sg => LG</declaration>
+	  <declaration corpus="ONW">pos=PD, type=refl, LP=3, LN=sg => LG</declaration>
+
+	  <declaration corpus="ONW">pos=PD, LP=uncl, LN=uncl => LG</declaration>
+	  <declaration corpus="ONW">pos=PD, LP=uncl, LN=sg => LG</declaration>
 
           <declaration corpus="ONW">pos=CONJ => type</declaration>
           <declaration corpus="ONW">pos=ADP => type, government</declaration>

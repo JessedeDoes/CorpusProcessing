@@ -41,6 +41,21 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     }
   }
 
+  def hasUnforcedFeatures() = {
+    val alternatives = features.filter(_.name != "pos").map(f => {
+      val f0 = features.filter(_ != f)
+      val t0 = this.copy(tag = this.toString(f0))
+      f.name -> t0
+    }).filter(t => tagset.tagSatisfiesImplications(t._2)._1)
+    alternatives
+  }
+
+  def removeUnforcedFeatures(): CHNStyleTag = {
+    val fS = hasUnforcedFeatures().map(_._1)
+    val newFeatures = features.filter(f => !fS.contains(f.name))
+    this.copy(tag =  this.toString(newFeatures))
+  }
+
   def normalizeFeatureValue(n: String, v: String): String= {
     if (tagset == null) v else {
       val p = tagset.partitions.getOrElse(n,List())
@@ -67,6 +82,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
   }
 
   override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
+  def toString(f: List[Feature]): String = s"$pos(${f.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 

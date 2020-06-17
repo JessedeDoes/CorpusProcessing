@@ -160,7 +160,7 @@ object TagSet
       val infringed = t2.implications.filter(i => !i(t))
       if (infringed.nonEmpty) {
           val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
-          Console.err.println(s"$t does not satisfy $infringed")
+          // Console.err.println(s"$t does not satisfy $infringed")
         }
     })
   }
@@ -344,10 +344,16 @@ case class TagSet(prefix: String,
     val infringed = implications.filter(i => !i(t))
     if (infringed.nonEmpty) {
       val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
-      Console.err.println(s"$t does not satisfy $infringed")
+      // Console.err.println(s"$t does not satisfy $infringed")
       fixed
     } else t
   }
+
+  def tagSatisfiesImplications(t: Tag): (Boolean, Seq[Implication]) = {
+    val infringed = implications.filter(i => !i(t))
+    (infringed.isEmpty, infringed)
+  }
+
 
   def isValid(t: Tag)  = {
     this.posTags.contains(t.pos) && t.features.forall(f => {

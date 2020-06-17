@@ -33,27 +33,27 @@
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"NOU-P",
-      "subAnnotationIds":["pos_number","pos_case"]
+      "subAnnotationIds":["pos_number","pos_case","pos_gender"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"NUM",
-      "subAnnotationIds":["pos_number","pos_position","pos_case","pos_type","pos_gender"]
+      "subAnnotationIds":["pos_number","pos_position","pos_case","pos_type","pos_representation","pos_gender"]
     },
     "PD":{
       "value":"PD",
       "displayName":"PD",
-      "subAnnotationIds":["pos_LG","pos_number","pos_LN","pos_subtype","pos_person","pos_position","pos_case","pos_type","pos_gender"]
+      "subAnnotationIds":["pos_LG","pos_number","pos_LN","pos_subtype","pos_position","pos_case","pos_type","pos_LP","pos_gender"]
     },
     "RES":{
       "value":"RES",
       "displayName":"RES",
-      "subAnnotationIds":["pos_number","pos_case"]
+      "subAnnotationIds":["pos_type"]
     },
     "VRB":{
       "value":"VRB",
       "displayName":"VRB",
-      "subAnnotationIds":["pos_number","pos_mood","pos_verbclass","pos_conjugation","pos_valency","pos_person","pos_position","pos_finiteness","pos_case","pos_type","pos_tense","pos_gender"]
+      "subAnnotationIds":["pos_number","pos_mood","pos_verbclass","pos_conjugation","pos_valency","pos_person","pos_finiteness","pos_case","pos_type","pos_tense"]
     }
   },
   "subAnnotations":{
@@ -67,6 +67,10 @@
         "value":"sg",
         "displayName":"sg",
         "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD"]
       }]
     },
     "pos_case":{
@@ -74,39 +78,43 @@
       "values":[{
         "value":"acc",
         "displayName":"acc",
-        "pos":["PD","VRB","NOU-C","AA","NUM"]
-      },{
-        "value":"acc|dat",
-        "displayName":"acc|dat",
-        "pos":["PD","NOU-P"]
-      },{
-        "value":"acc|gen",
-        "displayName":"acc|gen",
-        "pos":["NOU-C"]
-      },{
-        "value":"acc|nom",
-        "displayName":"acc|nom",
-        "pos":["PD","NOU-C"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"dat",
         "displayName":"dat",
-        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       },{
-        "value":"dat|gen",
-        "displayName":"dat|gen",
-        "pos":["PD"]
+        "value":"dat|acc",
+        "displayName":"dat|acc",
+        "pos":["PD","NOU-P"]
       },{
         "value":"gen",
         "displayName":"gen",
-        "pos":["PD","VRB","NOU-C","AA","NUM","RES"]
+        "pos":["PD","VRB","NOU-C","AA","NUM"]
       },{
-        "value":"gen|nom",
-        "displayName":"gen|nom",
+        "value":"gen|acc",
+        "displayName":"gen|acc",
         "pos":["NOU-C"]
+      },{
+        "value":"gen|dat",
+        "displayName":"gen|dat",
+        "pos":["PD"]
       },{
         "value":"nom",
         "displayName":"nom",
-        "pos":["PD","VRB","NOU-C","AA","NUM"]
+        "pos":["PD","NOU-C","AA","NUM"]
+      },{
+        "value":"nom|acc",
+        "displayName":"nom|acc",
+        "pos":["PD","NOU-C"]
+      },{
+        "value":"nom|gen",
+        "displayName":"nom|gen",
+        "pos":["NOU-C"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       },{
         "value":"voc",
         "displayName":"voc",
@@ -167,6 +175,10 @@
         "value":"7",
         "displayName":"7",
         "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["VRB"]
       }]
     },
     "pos_tense":{
@@ -183,6 +195,10 @@
         "value":"pres",
         "displayName":"pres",
         "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["VRB"]
       }]
     },
     "pos_valency":{
@@ -196,21 +212,33 @@
         "displayName":"intr",
         "pos":["VRB"]
       },{
-        "value":"intr|trans",
-        "displayName":"intr|trans",
-        "pos":["VRB"]
-      },{
         "value":"refl",
         "displayName":"refl",
-        "pos":["VRB"]
-      },{
-        "value":"refl|trans",
-        "displayName":"refl|trans",
         "pos":["VRB"]
       },{
         "value":"trans",
         "displayName":"trans",
         "pos":["VRB"]
+      },{
+        "value":"trans|intr",
+        "displayName":"trans|intr",
+        "pos":["VRB"]
+      },{
+        "value":"trans|refl",
+        "displayName":"trans|refl",
+        "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["VRB"]
+      }]
+    },
+    "pos_representation":{
+      "id":"pos_representation",
+      "values":[{
+        "value":"dig|let|rom|mix-dig|mix-rom",
+        "displayName":"dig|let|rom|mix-dig|mix-rom",
+        "pos":["NUM"]
       }]
     },
     "pos_position":{
@@ -218,7 +246,7 @@
       "values":[{
         "value":"free",
         "displayName":"free",
-        "pos":["PD","VRB","NUM"]
+        "pos":["PD","NUM"]
       },{
         "value":"postnom",
         "displayName":"postnom",
@@ -231,6 +259,10 @@
         "value":"prenom",
         "displayName":"prenom",
         "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD","AA","NUM"]
       }]
     },
     "pos_subtype":{
@@ -256,8 +288,16 @@
         "displayName":"neg",
         "pos":["ADV"]
       },{
+        "value":"other",
+        "displayName":"other",
+        "pos":["PD"]
+      },{
         "value":"rel",
         "displayName":"rel",
+        "pos":["ADV"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["ADV"]
       }]
     },
@@ -300,6 +340,10 @@
         "displayName":"ord",
         "pos":["NUM"]
       },{
+        "value":"other",
+        "displayName":"other",
+        "pos":["RES"]
+      },{
         "value":"pers",
         "displayName":"pers",
         "pos":["PD"]
@@ -334,7 +378,7 @@
       },{
         "value":"uncl",
         "displayName":"uncl",
-        "pos":["ADP"]
+        "pos":["CONJ","VRB","NUM","RES","ADP","ADV"]
       }]
     },
     "pos_mood":{
@@ -384,32 +428,36 @@
         "displayName":"irreg|pretpres",
         "pos":["VRB"]
       },{
-        "value":"irreg|pretpres|strong",
-        "displayName":"irreg|pretpres|strong",
-        "pos":["VRB"]
-      },{
-        "value":"irreg|strong",
-        "displayName":"irreg|strong",
-        "pos":["VRB"]
-      },{
-        "value":"irreg|weak",
-        "displayName":"irreg|weak",
-        "pos":["VRB"]
-      },{
         "value":"pretpres",
         "displayName":"pretpres",
-        "pos":["VRB"]
-      },{
-        "value":"pretpres|strong",
-        "displayName":"pretpres|strong",
         "pos":["VRB"]
       },{
         "value":"strong",
         "displayName":"strong",
         "pos":["VRB"]
       },{
+        "value":"strong|irreg",
+        "displayName":"strong|irreg",
+        "pos":["VRB"]
+      },{
+        "value":"strong|irreg|pretpres",
+        "displayName":"strong|irreg|pretpres",
+        "pos":["VRB"]
+      },{
+        "value":"strong|pretpres",
+        "displayName":"strong|pretpres",
+        "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["VRB"]
+      },{
         "value":"weak",
         "displayName":"weak",
+        "pos":["VRB"]
+      },{
+        "value":"weak|irreg",
+        "displayName":"weak|irreg",
         "pos":["VRB"]
       }]
     },
@@ -422,11 +470,11 @@
       },{
         "value":"sg",
         "displayName":"sg",
-        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM","RES"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
       },{
         "value":"uncl",
         "displayName":"uncl",
-        "pos":["PD","VRB","NOU-C","AA"]
+        "pos":["PD","VRB","NOU-C","AA","NOU-P","NUM"]
       }]
     },
     "pos_gender":{
@@ -446,7 +494,7 @@
       },{
         "value":"m",
         "displayName":"m",
-        "pos":["PD","VRB","NOU-C","AA","NUM"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"m|n",
         "displayName":"m|n",
@@ -455,6 +503,10 @@
         "value":"n",
         "displayName":"n",
         "pos":["PD","NOU-C","AA","NUM"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       }]
     },
     "pos_finiteness":{
@@ -462,18 +514,6 @@
       "values":[{
         "value":"fin",
         "displayName":"fin",
-        "pos":["VRB"]
-      },{
-        "value":"ger",
-        "displayName":"ger",
-        "pos":["VRB"]
-      },{
-        "value":"ger|inf",
-        "displayName":"ger|inf",
-        "pos":["VRB"]
-      },{
-        "value":"ger|prespart",
-        "displayName":"ger|prespart",
         "pos":["VRB"]
       },{
         "value":"inf",
@@ -486,6 +526,10 @@
       },{
         "value":"prespart",
         "displayName":"prespart",
+        "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["VRB"]
       }]
     },
@@ -507,6 +551,10 @@
         "value":"gen",
         "displayName":"gen",
         "pos":["ADP"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["ADP"]
       }]
     },
     "pos_LG":{
@@ -515,6 +563,30 @@
         "value":"f",
         "displayName":"f",
         "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD"]
+      }]
+    },
+    "pos_LP":{
+      "id":"pos_LP",
+      "values":[{
+        "value":"1",
+        "displayName":"1",
+        "pos":["PD"]
+      },{
+        "value":"2",
+        "displayName":"2",
+        "pos":["PD"]
+      },{
+        "value":"3",
+        "displayName":"3",
+        "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD"]
       }]
     },
     "pos_person":{
@@ -522,7 +594,7 @@
       "values":[{
         "value":"1",
         "displayName":"1",
-        "pos":["PD","VRB"]
+        "pos":["VRB"]
       },{
         "value":"1|3",
         "displayName":"1|3",
@@ -530,11 +602,11 @@
       },{
         "value":"2",
         "displayName":"2",
-        "pos":["PD","VRB"]
+        "pos":["VRB"]
       },{
         "value":"3",
         "displayName":"3",
-        "pos":["PD","VRB"]
+        "pos":["VRB"]
       }]
     }
   }

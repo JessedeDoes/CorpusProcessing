@@ -1,6 +1,6 @@
 package corpusprocessing.onw
 
-import corpusprocessing.onw.tagset.{Tag}
+import corpusprocessing.onw.tagset.{ONWCorpusTag}
 
 object tagConversionRules {
 
@@ -26,14 +26,14 @@ object tagConversionRules {
       add.toList.foldLeft(base)(addVal)
     }
 
-    def apply(t: Tag):Tag =
+    def apply(t: ONWCorpusTag):ONWCorpusTag =
     {
       if (isFlexie)
       {
         if (t.flexie.matches(".*" + pattern + ".*") && (extraCondition.isEmpty || t.pos.matches(".*" + extraCondition.get + ".*")))
         {
           log()
-          Tag(t.pos, t.flexie.replaceAll(pattern, ""), mergeMaps(t.features,features), t.pos_org, t.flexie_org)
+          ONWCorpusTag(t.pos, t.flexie.replaceAll(pattern, ""), mergeMaps(t.features,features), t.pos_org, t.flexie_org)
         } else
           t
       } else
@@ -41,7 +41,7 @@ object tagConversionRules {
         if (t.pos.matches(".*" + pattern + ".*") && (extraCondition.isEmpty || t.flexie.matches(".*" + extraCondition.get + ".*")))
         {
           log()
-          Tag(t.pos.replaceAll(pattern, ""), t.flexie, mergeMaps(t.features,features), t.pos_org, t.flexie_org)
+          ONWCorpusTag(t.pos.replaceAll(pattern, ""), t.flexie, mergeMaps(t.features,features), t.pos_org, t.flexie_org)
         } else t
       }
     }
@@ -49,7 +49,7 @@ object tagConversionRules {
 
   val rules = List(
     // !! instr.datief
-
+    Rule("waternaam", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "xtype" -> "location"), false),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), true),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), false),
     Rule("part.perf", Map("pos" -> "ADJ", "adjtype" -> "vd") ->
@@ -153,9 +153,11 @@ object tagConversionRules {
     Rule("inf\\.", Map("wvorm" ->  "inf") -> Map("finiteness" ->  "inf"), false),
     Rule("gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "ger"), false),
 
-    Rule("inf./gerund\\.?", Map("wvorm" ->  "inf|gerund") -> Map("finiteness" ->  "inf|ger"), true),
+    Rule("inf./gerund\\.?", Map("wvorm" ->  "inf|gerund") -> Map("finiteness" ->  "inf"), true),
     Rule("inf\\.", Map("wvorm" ->  "inf") -> Map("finiteness" ->  "inf"), true),
-    Rule("gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "ger"), true),
+
+    Rule("te_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
+    Rule("inf_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
 
     Rule("onbep\\.lidw\\.", Map("pos" -> "LID", "lwtype" -> "onbep") ->
       Map("pos" -> "PD", "type" -> "indef", "subtype" -> "art"), false),
@@ -173,6 +175,7 @@ object tagConversionRules {
     Rule("znw\\.", Map("pos" -> "N", "ntype" -> "soort") -> Map("pos" -> "NOU-C"), false),
 
     Rule("persoonsnaam", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "xtype" -> "person"), false),
+
     Rule("toponiem", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "xtype" -> "location"), false),
 
     Rule("bw.rel.partikel", Map("pos" -> "BW", "bwtype" -> "relatiefpartikel") -> Map("pos" -> "ADV",

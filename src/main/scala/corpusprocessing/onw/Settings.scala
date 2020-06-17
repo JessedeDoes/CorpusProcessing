@@ -1,6 +1,7 @@
 package corpusprocessing.onw
 
 import corpusprocessing.addProcessedMetadataValuesONW
+import posmapping.TagsetDiachroonNederlands
 
 import scala.xml._
 
@@ -59,5 +60,6 @@ object Settings {
     onwCorpus.main(Array())
     splitONWTagsInFeatures.main(Array())
     addProcessedMetadataValuesONW.main(Array())
+    TagsetDiachroonNederlands.doONW
   }
 }

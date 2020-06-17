@@ -1,7 +1,7 @@
 package corpusprocessing.onw
 import java.io.PrintWriter
 
-
+import posmapping.CHNStyleTag
 
 import scala.xml._
 import utils.PostProcessXML._
@@ -12,10 +12,10 @@ object tagset {
 
 
   import tagConversionRules.Rule
+  import posmapping.Tag
 
-  case class Tag(pos: String, flexie: String, features: Map[String,String], pos_org:String="", flexie_org:String="")
+  case class ONWCorpusTag(pos: String, flexie: String, features: Map[String,String], pos_org:String="", flexie_org:String="", tdnTag: Option[Tag] = None)
   {
-
     def getPoS = features.getOrElse("pos", "RES")
 
     def replaceFeatureName(pos: String, name: String, newName: String) = this.copy(features = this.features.map{
@@ -28,10 +28,10 @@ object tagset {
           case (n, v) => (n, v)
         }) else this
 
-    def removeFeature(pos: String, name: String) : Tag = this.copy(features = this.features.filter{
+    def removeFeature(pos: String, name: String) : ONWCorpusTag = this.copy(features = this.features.filter{
       case (n,v) if (this.getPoS == pos && n == name) => false ; case (n,v) => true })
 
-    def removeFeature(name: String) : Tag = this.copy(features = this.features.filter{
+    def removeFeature(name: String) : ONWCorpusTag = this.copy(features = this.features.filter{
       case (n,v) if (n == name) => false ; case (n,v) => true })
 
     def replaceFeatureValue(name: String, value: String, newValue: String) = this.copy(features = this.features.map{case (n,v) if (n,v) == (name, value) => (n,newValue) ; case (n,v) => (n,v) })
@@ -47,21 +47,21 @@ object tagset {
       t0.replaceFeatureValue("pos", value, newValue)
     }
 
-    def addFiniteness: Tag = {
+    def addFiniteness: ONWCorpusTag = {
       if (this.getPoS== "VRB" && (features.contains("tense") || features.contains("person")) && !(features.contains("finiteness")))
         this.copy(features = this.features ++ Map("finiteness" -> "fin")) else this
     }
 
-    def addDegree: Tag = {
+    def addDegree: ONWCorpusTag = {
       if (this.getPoS == "AA" && !this.features.contains("degree"))
         this.copy(features = this.features ++ Map("degree" -> "pos")) else this
     }
 
     val old = false;
-    def ifOld(f: Tag => Tag): Tag => Tag = t => if (old) f(t) else t
+    def ifOld(f: ONWCorpusTag => ONWCorpusTag): ONWCorpusTag => ONWCorpusTag = t => if (old) f(t) else t
 
-    def someTagPostProcessing(): Tag = {
-      List[Tag => Tag](
+    def someTagPostProcessing(): ONWCorpusTag = {
+      List[ONWCorpusTag => ONWCorpusTag](
         t => t.addFiniteness,
         // transcat
 
@@ -69,7 +69,7 @@ object tagset {
 
         t => t.replaceFeatureValue("degree","sup", "pos", "ADV", "AA"),
         t => t.replaceFeatureValue("degree","comp", "pos", "ADV", "AA"),
-
+        t => t.replaceFeatureValue("finiteness","ger", "pos", "VRB", "NOU-C"),
         t => t.replacePoS("ADJ", "AA"),
         t => t.addDegree,
 
@@ -106,12 +106,14 @@ object tagset {
 
         t => t.replaceFeatureName("PD", "type", "pers", "number", "LN"),
         t => t.replaceFeatureName("PD", "type", "refl", "number", "LN"),
-
+        t => t.replaceFeatureName("PD", "type", "recip", "number", "LN"),
         t => t.replaceFeatureName("PD", "type", "pers", "gender", "LG"),
         t => t.replaceFeatureName("PD", "type", "refl", "gender", "LG"),
 
-        t => t.replaceFeatureName("PD", "type", "pers", "PA", "person"),
-        t => t.replaceFeatureName("PD", "type", "refl", "PA", "person"),
+        t => t.replaceFeatureName("PD","PA", "LP"),
+
+        t => t.replaceFeatureName("PD","person", "LP"),
+
 
         t => t.replaceFeatureName("VRB", "declination", "conjugation"),
         t => t.removeFeature(pos="NOU-C", "position"),
@@ -132,9 +134,10 @@ object tagset {
       features.getOrElse("pos", "RES") + "(" + features.toList.sortBy(_._1).filter(_._1 != "pos").map({case (n,v) => n + "=" + v}).mkString(",") + ")" +
       "\t" + pos_org + "\t" + flexie_org
 
-    override def toString:String = features.getOrElse("pos", "RES") + "(" + features.toList.sortBy(_._1).filter(_._1 != "pos")
-      .map({case (n,v) => n + "=" + v}).mkString(",") + ")"
-
+    override def toString:String = {
+      if (tdnTag.isDefined) tdnTag.get.toString else
+      features.getOrElse("pos", "RES") + "(" + features.toList.sortBy(_._1).filter(_._1 != "pos")
+      .map({case (n,v) => n + "=" + v}).mkString(",") + ")" }
 
     def toStringWithOrigin() = this.toString + " <- " + this.pos_org + " "  + this.flexie_org
 
@@ -144,21 +147,21 @@ object tagset {
     // bij N positie weg, maar wel even checken hoe hij in het corpus komt
     // ntype=pron bekijken. Moeten dit geen VNW worden??
 
-    val cleanWvorm: Tag => Tag = t => if (!t.features.contains("wvorm")) t else t.features.get("pos") match
+    val cleanWvorm: ONWCorpusTag => ONWCorpusTag = t => if (!t.features.contains("wvorm")) t else t.features.get("pos") match
       {
         case Some("N") => t.copy(features = t.features - "wvorm")
         case Some("ADJ") => t.copy(features = (t.features - "wvorm") + ("adjtype" -> t.features("wvorm")))
         case _ => t
       }
 
-    def cleanPositie: Tag => Tag =   t => t.features.get("pos") match {
+    def cleanPositie: ONWCorpusTag => ONWCorpusTag = t => t.features.get("pos") match {
       case Some("N") => t.copy(features = t.features - "positie")
       case _ => t
     }
 
     val NotInAdj = Set("finiteness", "tense", "inflection")
 
-    val cleanNominalizedVerbForms: Tag => Tag = t =>  {
+    val cleanNominalizedVerbForms: ONWCorpusTag => ONWCorpusTag = t =>  {
       val p  =  t.features.get("pos")
       if (p == Some("ADJ") || p == Some("NOU-C")) {
         t.copy(features = t.features.filter({ case (k,v) => !NotInAdj.contains(k)}))
@@ -169,7 +172,7 @@ object tagset {
       features = this.features.filterKeys(_ != "pos") ++ Map("pos" -> p)
     )
 
-    val cleanGerunds: Tag => Tag = t => {
+    val cleanGerunds: ONWCorpusTag => ONWCorpusTag = t => {
       val p  =  t.features.get("pos")
 
       if (p == Some("VRB") && t.features.get("finiteness").map(_ == "gerund")==Some(true) )
@@ -180,7 +183,7 @@ object tagset {
         } else t
     }
 
-    val addPV: Tag => Tag = t => t.features.get("pos") match {
+    val addPV: ONWCorpusTag => ONWCorpusTag = t => t.features.get("pos") match {
       case Some("WW") => {
         if (!t.features.contains("wvorm") && Set("tijd", "modus", "persoon").exists(t.features.contains(_)))
         t.copy(features = t.features + ("wvorm" -> "pv"))
@@ -196,7 +199,7 @@ object tagset {
         }
       }
 
-    def renameExtraFeatures: Tag => Tag = t =>
+    def renameExtraFeatures: ONWCorpusTag => ONWCorpusTag = t =>
       {
          val transformations = Set("flexietype", "flexieklasse", "transitiviteit", "metnaamval").map(s =>
            {
@@ -234,7 +237,7 @@ object tagset {
 
   lazy val rules = tagConversionRules.rules ++ flexieKlasseRegels
 
-  def applyRules(t: Tag) = rules.foldLeft(t)((t,r) => r.apply(t))
+  def applyRules(t: ONWCorpusTag) = rules.foldLeft(t)((t, r) => r.apply(t))
 
   val d = Settings.inputDir
 
@@ -246,14 +249,14 @@ object tagset {
     (doc \\ "w").toStream
   })
 
-  val allTags:List[(Tag,Int)] = allTokens.groupBy(
+  val allTags:List[(ONWCorpusTag,Int)] = allTokens.groupBy(
     w => {
       val pos = (w \ "@pos").text
 
       val flexief = (w \\ "f").filter(x => (x \ "@name").text == "flexie")
       // Console.err.println(flexief)
       val flexie = flexief.text
-      applyRules(Tag(pos, flexie, Map.empty, pos, flexie)).clean.someTagPostProcessing
+      applyRules(ONWCorpusTag(pos, flexie, Map.empty, pos, flexie)).clean.someTagPostProcessing
     }
   ).mapValues(l => l.size).toList.sortBy(_._1.toString)
 
@@ -262,38 +265,48 @@ object tagset {
     .foreach(t => tagDump.println(t))
   tagDump.close()
 
-  def orgjes(t: Tag):(String,String) = (t.pos_org, t.flexie_org)
+  def orgjes(t: ONWCorpusTag):(String,String) = (t.pos_org, t.flexie_org)
 
-  val tagMap:Map[(String,String), Tag] = allTags.map(_._1).toSet.groupBy(orgjes).mapValues(l => l.head)
-
-  val tagMapDump = new PrintWriter("/tmp/allTags.onwmap.txt")
-  tagMap.toList.sortBy(_._1.toString)
-    .foreach({case ((org,f), t)  => tagMapDump.println(s"$org\t$f\t$t")})
-  tagMapDump.close()
+  val tagMap:Map[(String,String), ONWCorpusTag] = allTags.map(_._1).toSet.groupBy(orgjes).mapValues(l => l.head)
 
   val distinctTags = tagMap.values.toSet
+
+  val danges = tagMap.map{case ((p,f),t) => s"$p;$f" -> t.toString} // nee ik moet naar een ONW stijl tag, bah.
+
+  lazy val tagMapTDN: Map[String, CHNStyleTag] = posmapping.TagsetDiachroonNederlands.tagsetFromSetOfTags("/tmp/", "ONW", danges)
+
+  lazy val tagMapEnhanced = tagMap.map({case ((p,f),t) =>
+    val tdnTag = tagMapTDN(s"$p;$f")
+    val features = tdnTag.features.map(f => f.name -> f.value).toMap
+    (p,f) -> t.copy(features = features, tdnTag = Some(tdnTag))})
+
+  val tagMapDump = new PrintWriter("/tmp/allTags.onwmap.txt")
+  tagMapEnhanced.toList.sortBy(_._1.toString)
+    .foreach({case ((org,f), t)  => tagMapDump.println(s"$org\t$f\t$t")})
+  tagMapDump.close()
 
   def mapTags(w: Elem):Elem =
   {
     val pos = (w \ "@pos").text
     val newChild = w.child.map(x =>
+
     if (x.label == "fs")
     {
       val flexie =  (w \\ "f").filter(x => (x \ "@name").text == "flexie").text
-      val t = tagMap(pos,flexie)
+      val t = tagMapEnhanced(pos,flexie)
       val extraFjes = t.features.map({case (k,v) => <f name={"pos." + k}>{v}</f>})
       x.asInstanceOf[Elem].copy(child = x.child ++ extraFjes)
     } else x)
 
     val msd = (w \ "fs").map(x => {
       val flexie =  (w \\ "f").filter(x => (x \ "@name").text == "flexie").text
-      val t = tagMap(pos,flexie)
+      val t = tagMapEnhanced(pos,flexie)
       t.toString
     }).mkString("+")
 
     def msd2fs(fs: Elem) = {
       val flexie =  (w \\ "f").filter(x => (x \ "@name").text == "flexie").text
-      val t = tagMap(pos,flexie)
+      val t = tagMapEnhanced(pos,flexie)
       val msd = t.toString
       fs.copy(child = ({fs.child} ++ Seq(<f name="msd">{msd}</f>)))
     }
