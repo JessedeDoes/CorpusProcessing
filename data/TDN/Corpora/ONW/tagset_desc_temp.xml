@@ -104,7 +104,6 @@
                         <pos>NOU-C</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
-                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Dative" desc="Dative">
@@ -281,6 +280,12 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="infinitive/gerund" desc="Infinitive or gerund (!NORMALIZE)">
+                    <value>inf|ger</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Present participle" desc="Present participle">
                     <value>prespart</value>
                     <posForValue>
@@ -299,6 +304,12 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="prespart|ger" desc="prespart|ger">
+                    <value>prespart|ger</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="Gender" desc="Gender agreement">
@@ -309,6 +320,7 @@
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
@@ -761,12 +773,6 @@
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Personal" desc="Personal">
                     <value>pers</value>
                     <posForValue>
@@ -1065,7 +1071,6 @@
                 <feature>conjugation</feature>
                 <feature>verbclass</feature>
                 <feature>pos</feature>
-                <feature>case</feature>
             </features>
         </constraint>
     </constraints>
@@ -1276,6 +1281,7 @@
         <tag>NOU-C(number=uncl,case=dat,gender=m)</tag>
         <tag>NOU-C(number=uncl,case=dat,gender=n)</tag>
         <tag>NOU-C(number=uncl,case=gen,gender=f)</tag>
+        <tag>NOU-C(number=uncl,case=gen,gender=n)</tag>
         <tag>NOU-C(number=uncl,case=nom,gender=m)</tag>
         <tag>NOU-C(number=uncl,case=uncl,gender=f)</tag>
         <tag>NOU-C(number=uncl,case=uncl,gender=f|n)</tag>
@@ -1285,6 +1291,7 @@
         <tag>NOU-C(number=uncl,case=uncl,gender=uncl)</tag>
         <tag>NOU-P(number=sg,case=dat|acc,gender=uncl)</tag>
         <tag>NOU-P(number=uncl,case=dat,gender=uncl)</tag>
+        <tag>NOU-P(number=uncl,case=uncl,gender=f)</tag>
         <tag>NOU-P(number=uncl,case=uncl,gender=uncl)</tag>
         <tag>NUM(type=card,position=free,case=gen,number=uncl,gender=uncl,representation=dig|let|rom|mix-dig|mix-rom)</tag>
         <tag>NUM(type=card,position=uncl,case=acc,number=pl,gender=f,representation=dig|let|rom|mix-dig|mix-rom)</tag>
@@ -1611,7 +1618,6 @@
         <tag>PD(type=rel,position=uncl,case=nom,number=sg,gender=n)</tag>
         <tag>PD(type=rel,position=uncl,case=nom,number=sg,gender=uncl)</tag>
         <tag>PD(type=rel,position=uncl,case=uncl,number=uncl,gender=uncl)</tag>
-        <tag>RES(type=other)</tag>
         <tag>RES(type=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
@@ -2142,6 +2148,7 @@
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=weak|irreg)</tag>
+        <tag>VRB(type=uncl,finiteness=inf|ger,valency=trans,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=pastpart,valency=intr,conjugation=strong,verbclass=1)</tag>
         <tag>VRB(type=uncl,finiteness=pastpart,valency=intr,conjugation=strong,verbclass=6)</tag>
         <tag>VRB(type=uncl,finiteness=pastpart,valency=intr,conjugation=strong,verbclass=uncl)</tag>
@@ -2182,7 +2189,7 @@
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,number=sg,valency=uncl,conjugation=strong,verbclass=uncl,case=gen)</tag>
+        <tag>VRB(type=uncl,finiteness=prespart|ger,valency=trans,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,valency=intr,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=weak)</tag>

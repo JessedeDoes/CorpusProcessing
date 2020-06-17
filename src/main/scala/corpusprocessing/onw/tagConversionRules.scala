@@ -49,7 +49,7 @@ object tagConversionRules {
 
   val rules = List(
     // !! instr.datief
-    Rule("waternaam", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "xtype" -> "location"), false),
+    Rule("znw.*waternaam", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "gender" -> "f", "xtype" -> "location"), false),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), true),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), false),
     Rule("part.perf", Map("pos" -> "ADJ", "adjtype" -> "vd") ->
@@ -148,16 +148,19 @@ object tagConversionRules {
 
 
     //inf./gerund. part.pres. / gerund.
+    Rule("te_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
+    Rule("inf_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
+
 
     Rule("inf./gerund\\.?", Map("wvorm" ->  "inf|gerund") -> Map("finiteness" ->  "inf|ger"), false),
     Rule("inf\\.", Map("wvorm" ->  "inf") -> Map("finiteness" ->  "inf"), false),
-    Rule("gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "ger"), false),
+    Rule("gerund.*gen.sg", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "ger", "case" -> "gen", "gender" -> "n"), true),
+    Rule("gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "ger", "gender" -> "n"), true),
 
     Rule("inf./gerund\\.?", Map("wvorm" ->  "inf|gerund") -> Map("finiteness" ->  "inf"), true),
     Rule("inf\\.", Map("wvorm" ->  "inf") -> Map("finiteness" ->  "inf"), true),
 
-    Rule("te_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
-    Rule("inf_gerund\\.?", Map("wvorm" ->  "gerund") -> Map("finiteness" ->  "inf"), true),
+
 
     Rule("onbep\\.lidw\\.", Map("pos" -> "LID", "lwtype" -> "onbep") ->
       Map("pos" -> "PD", "type" -> "indef", "subtype" -> "art"), false),

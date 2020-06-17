@@ -53,7 +53,7 @@
     "VRB":{
       "value":"VRB",
       "displayName":"VRB",
-      "subAnnotationIds":["pos_number","pos_mood","pos_verbclass","pos_conjugation","pos_valency","pos_person","pos_finiteness","pos_case","pos_type","pos_tense"]
+      "subAnnotationIds":["pos_number","pos_mood","pos_verbclass","pos_conjugation","pos_valency","pos_person","pos_finiteness","pos_type","pos_tense"]
     }
   },
   "subAnnotations":{
@@ -90,7 +90,7 @@
       },{
         "value":"gen",
         "displayName":"gen",
-        "pos":["PD","VRB","NOU-C","AA","NUM"]
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"gen|acc",
         "displayName":"gen|acc",
@@ -340,10 +340,6 @@
         "displayName":"ord",
         "pos":["NUM"]
       },{
-        "value":"other",
-        "displayName":"other",
-        "pos":["RES"]
-      },{
         "value":"pers",
         "displayName":"pers",
         "pos":["PD"]
@@ -482,7 +478,7 @@
       "values":[{
         "value":"f",
         "displayName":"f",
-        "pos":["PD","NOU-C","AA","NUM"]
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       },{
         "value":"f|m",
         "displayName":"f|m",
@@ -520,12 +516,20 @@
         "displayName":"inf",
         "pos":["VRB"]
       },{
+        "value":"inf|ger",
+        "displayName":"inf|ger",
+        "pos":["VRB"]
+      },{
         "value":"pastpart",
         "displayName":"pastpart",
         "pos":["VRB"]
       },{
         "value":"prespart",
         "displayName":"prespart",
+        "pos":["VRB"]
+      },{
+        "value":"prespart|ger",
+        "displayName":"prespart|ger",
         "pos":["VRB"]
       },{
         "value":"uncl",
