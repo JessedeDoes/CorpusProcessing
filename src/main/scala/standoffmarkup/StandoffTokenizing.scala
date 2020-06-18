@@ -1,4 +1,4 @@
-package Wp6
+package standoffmarkup
 
 import scala.util.matching.Regex.Match
 import scala.xml.{Elem, Node, Text}

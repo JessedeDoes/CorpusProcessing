@@ -1,7 +1,7 @@
 package corpusprocessing.CRM
 
 
-import brievenalsbuit.bab.{addFeature, idUnsafe, wwAnalyses}
+import corpusprocessing.brievenalsbuit.bab.{addFeature, idUnsafe, wwAnalyses}
 import org.incava.util.diff.Difference
 import utils.PostProcessXML.updateElement
 import utils.alignment.comp

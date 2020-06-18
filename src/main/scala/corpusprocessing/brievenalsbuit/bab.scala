@@ -1,4 +1,4 @@
-package brievenalsbuit
+package corpusprocessing.brievenalsbuit
 import scala.xml._
 import utils.PostProcessXML._
 import java.io.File

@@ -14,7 +14,12 @@ object Implication {
 
   implicit def valueFilter(m: Map[String, String]): Tag => Boolean = {
     t => {
-      m.forall({case (n,v) =>  t.features.exists(f => f.name == n && (f.value == v || f.value.split("\\|").contains(v)))})
+      m.forall({case (n,v) =>  t.features.exists(f => f.name == n &&
+        ({
+            val fsplit = f.value.split("\\|").toSet
+            val vsplit = v.split("\\|").toSet
+            fsplit == vsplit || fsplit.contains(v)}))}
+      )
     }
   }
 

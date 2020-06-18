@@ -2,6 +2,7 @@ package posmapping
 
 import java.io.{File, PrintWriter}
 
+import corpusprocessing.CGN.CGNToTEIWithTDNTags
 import corpusprocessing.gysseling.HistoricalTagsetPatching
 
 import scala.xml.XML
@@ -124,7 +125,14 @@ object TagsetDiachroonNederlands {
 
   implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
 
-  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping: Map[String, String]) = {
+  def ambiPatch(m: Map[String,String]) = {
+    val m1 = m.mapValues(t => t.split("\\)[|+]")).mapValues(r => r.zipWithIndex.map({case (t,i) => if (i == r.size-1) t else t + ")"}))
+    m1.flatMap({case (k,a) => a.zipWithIndex.map({case (v,i) => if (i==0) k->v else s"$k[$i]" -> v})})
+  }
+
+  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String]) = {
+
+    val tagMapping = ambiPatch(tagMapping_0)
 
     val allDistinctTags = tagMapping.values.toSet
 
@@ -173,7 +181,7 @@ object TagsetDiachroonNederlands {
       val t1 = tagsetPlus.fixTag(t0)
       t1.asInstanceOf[CHNStyleTag]}
     )
-    r.foreach({case (x, t) =>
+    r.toList.sortBy({case (x,t) => t.toString()}).foreach({case (x, t) =>
         val (ok, infringed) = t.tagset.tagSatisfiesImplications(t)
         val redundancies = if (ok) t.hasUnforcedFeatures() else List[(String,Tag)]();
         if (!ok)
@@ -201,13 +209,13 @@ object TagsetDiachroonNederlands {
 
   def doCGN = {
     //folia.TDNTest.main(Array())
-    tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", folia.TDNTest.mapping.values.toSet)
+    tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping)
     // tagsetFromCorpusFiles("/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/TEI", "pos", "data/TDN/Corpora/CGN/", "CGN")
   }
 
    def main(args: Array[String]): Unit = {
-     //doCGN
-      doONW
+     doCGN
+      //doONW
       //doGysseling
    }
 }

@@ -1,7 +1,7 @@
-package brievenalsbuit
+package corpusprocessing.brievenalsbuit
 
-import brievenalsbuit.Settings.multivalSepSplit
-import brievenalsbuit.TagStuff.tagMapCHNStyle
+import corpusprocessing.brievenalsbuit.Settings.multivalSepSplit
+import corpusprocessing.brievenalsbuit.TagStuff.tagMapCHNStyle
 import posmapping.CHNStyleTags
 
 import scala.xml.{Elem, NodeSeq, Null, UnprefixedAttribute}

@@ -1,6 +1,6 @@
-package posmapping
+package corpusprocessing
 
-import propositional.Proposition
+import posmapping._
 
 
 /*

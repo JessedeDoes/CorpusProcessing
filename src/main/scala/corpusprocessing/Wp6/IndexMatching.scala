@@ -1,4 +1,4 @@
-package Wp6
+package corpusprocessing.Wp6
 
 import java.io.File
 

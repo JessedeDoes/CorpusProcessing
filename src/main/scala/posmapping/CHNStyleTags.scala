@@ -139,7 +139,7 @@ object distinctTagsFromONW {
 
 object distinctTagsFromBaB
 {
-  val dir = brievenalsbuit.Settings.output.getCanonicalPath
+  val dir = corpusprocessing.brievenalsbuit.Settings.output.getCanonicalPath
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos")

@@ -3,8 +3,8 @@ package corpusprocessing.eindhoven
 import java.io.{File, FileWriter}
 import java.text.Normalizer
 
+import corpusprocessing.CGNMiddleDutch
 import corpusprocessing.eindhoven.Eindhoven.{geslachtenMap, replaceFeature, _}
-import posmapping.CGNMiddleDutch
 import utils.ProcessFolder
 
 import scala.util.matching.Regex

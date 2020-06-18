@@ -1,4 +1,4 @@
-package brievenalsbuit
+package corpusprocessing.brievenalsbuit
 
 import java.io.File
 

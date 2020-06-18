@@ -1,4 +1,4 @@
-package Wp6
+package corpusprocessing.Wp6
 import scala.xml._
 import utils.PostProcessXML._
 import java.io.{File, PrintWriter}

@@ -1,8 +1,8 @@
-package Wp6
+package corpusprocessing.Wp6
 
 import java.io.{File, PrintWriter}
 
-import Wp6.Settings.XMLDirectory
+import corpusprocessing.Wp6.Settings.XMLDirectory
 import utils.PostProcessXML.updateElement
 
 import scala.collection.immutable

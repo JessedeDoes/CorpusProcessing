@@ -1,14 +1,13 @@
-package folia
-import java.io.FileInputStream
-import java.util.zip.GZIPInputStream
+package corpusprocessing.CGN
 
-import folia.TestSimplify._
-import posmapping.{CGNTagset, Tag}
-import utils.{PostProcessXML, ProcessFolder}
-import scala.util.{Try,Success,Failure}
-import FoliaToCoNLL_U.cgnParse
 import java.io.File
+
+import folia.FoliaToCoNLL_U.cgnParse
+import folia.entityReplacement
+import utils.{PostProcessXML, ProcessFolder}
+
 import scala.xml._
+
 /*
                      <pos set="http://rdf.ivdnt.org/pos/cgn-eindhoven"
                           class="ADJ(vrij,basis,zonder)"

@@ -3,6 +3,7 @@ package corpusprocessing.gysseling
 import java.io.File
 
 import corpusprocessing.gysseling.VMNWdb.LemmaWoordvorm
+import corpusprocessing.wordSplitting
 import posmapping._
 import utils.PostProcessXML.updateElement4
 
