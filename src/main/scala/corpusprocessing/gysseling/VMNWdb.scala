@@ -55,7 +55,8 @@ object Hilex
 
 object VMNWdb {
 
-  object vmnwconfig extends Configuration("vmnw", "svowdb02", "VMNW", "impact", "impact", driver="mysql")
+  val mysqlServer = "svowdb20.ivdnt.loc" // "impactdb" // was svowdb02
+  object vmnwconfig extends Configuration("vmnw", mysqlServer, "VMNW", "impact", "impact", driver="mysql")
 
 
 

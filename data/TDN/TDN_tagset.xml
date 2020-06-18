@@ -546,6 +546,12 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+          <value>nt</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Uninflected adjective"
           desc="Uninflected form (adjectives in molex, not in corpus tagset)">
           <value>norm</value>
@@ -1401,7 +1407,7 @@
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
-      </values>  
+      </values>
     </feature>
     <feature displayName="Written form" desc="Written form">
       <name>WF</name>
@@ -1604,7 +1610,8 @@
 
     <!-- the hypothetical maximally tagged corpus (untested) -->
 
-    <declaration corpus="max">pos=AA =>degree,position,case,number,gender,inflection,WF</declaration>
+    <declaration corpus="max">pos=AA
+      =>degree,position,case,number,gender,inflection,WF</declaration>
     <declaration corpus="max">pos=NOU-C => case,number,gender,inflection,WF</declaration>
     <declaration corpus="max">pos=NOU-P => case,number,gender,inflection,WF</declaration>
     <declaration corpus="max">pos=VRB => finiteness,inflection,WF</declaration>
@@ -1680,65 +1687,66 @@
     <declaration corpus="ONW">pos=ADV => type, subtype</declaration>
 
     <declaration corpus="ONW">pos=NUM => type,position,case,number,gender</declaration>
-    <declaration corpus="ONW">pos=NUM => representation || representation=dig|let|rom|mix-dig|mix-rom</declaration>
+    <declaration corpus="ONW">pos=NUM => representation ||
+      representation=dig|let|rom|mix-dig|mix-rom</declaration>
 
     <declaration corpus="ONW">pos=RES => type</declaration>
- 
+
     <!-- Corpus Gysseling -->
-    
+
     <declaration corpus="Gysseling">pos=NOU-C => number, inflection</declaration>
     <declaration corpus="Gysseling">pos=NOU-P => inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=AA => degree, position, number, inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=VRB => type, finiteness, inflection</declaration>
     <declaration corpus="Gysseling">pos=VRB,finiteness=fin => tense,mood</declaration>
     <declaration corpus="Gysseling">pos=VRB,finiteness=uncl => tense,mood</declaration>
-    
+
     <declaration corpus="Gysseling">pos=NUM => type,position,representation,inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=PD => type,position,inflection</declaration>
     <declaration corpus="Gysseling">pos=PD, type=pers => LP, LN</declaration>
     <declaration corpus="Gysseling">pos=PD, type=refl|recip => LP, LN</declaration>
     <declaration corpus="Gysseling">pos=PD, type=dem => subtype || subtype=other</declaration>
     <declaration corpus="Gysseling">pos=PD, type=indef => subtype || subtype=other</declaration>
-    
+
     <declaration corpus="Gysseling">pos=ADV => type,subtype,inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=ADP => type,inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=CONJ => type,inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=INT => inflection</declaration>
-    
+
     <declaration corpus="Gysseling">pos=RES => type,inflection</declaration>
-    
+
     <!-- CGN -->
-    
+
     <!-- 
       Zelfstandige naamwoorden & Eigennamen
       Features: number, inflection
       Geslacht en naamval verplicht bij enkelvoud
     -->
-    
+
     <declaration corpus="CGN">pos=NOU-C => number, inflection</declaration>
     <declaration corpus="CGN">pos=NOU-C, number=sg => gender,case</declaration>
     <declaration corpus="CGN">pos=NOU-C, number=uncl => gender,case</declaration>
-    
+
     <declaration corpus="CGN">pos=NOU-P => number, inflection</declaration>
     <declaration corpus="CGN">pos=NOU-P, number=sg => gender,case</declaration>
     <declaration corpus="CGN">pos=NOU-P, number=uncl => gender,case</declaration>
-    
+
     <!-- 
         Bijvoeglijke naamwoorden-bijwoorden
         Features: degree, position, inflection, case.
         Case moet dus worden aangevuld, ook voor inflection=0
     -->
-    
-    
+
+
     <declaration corpus="CGN">pos=AA =>degree, position, case, inflection</declaration>
-    
-    
+
+
     <!--
       Werkwoorden
       Features: finiteness, inflection
@@ -1746,7 +1754,7 @@
       finiteness=fin => tense,mood,number
       infl zou moeten worden aangevuld met 0 waar nu niet ingevuld
     -->
-    
+
     <declaration corpus="CGN">pos=VRB => finiteness, inflection</declaration>
     <declaration corpus="CGN">pos=VRB,finiteness=fin => tense,mood,number</declaration>
     <declaration corpus="CGN">pos=VRB,finiteness=uncl => tense,mood,number</declaration>
@@ -1755,7 +1763,7 @@
       Features: type, position, representation, inflection
       Naamval bij prenominale positie
     -->
-    
+
     <declaration corpus="CGN">pos=NUM => type,position,representation,inflection</declaration>
     <declaration corpus="CGN">pos=NUM, position=prenom => case</declaration>
     <declaration corpus="CGN">pos=NUM, position=uncl => case</declaration>
@@ -1773,9 +1781,9 @@
       <VWTYPE = bezittelijk> ⇒ <STATUS, PERSOON, GETAL>
       <POS = lidwoord> ⇒ <LWTYPE, NAAMVAL, NPAGR>
    -->
-    
+
     <declaration corpus="CGN">pos=PD => type,position,case,inflection</declaration>
-    
+
     <!--
 
         Persoonlijke voornaamwoorden
@@ -1783,42 +1791,42 @@
         Features (extra): person,number
         Feature bij 3sg: gender    
     -->
-    
-    
+
+
     <declaration corpus="CGN">pos=PD, type=pers => LP, LN</declaration>
     <declaration corpus="CGN">pos=PD, type=pers, LP=3, LN=sg => LG</declaration>
     <declaration corpus="CGN">pos=PD, type=pers, LP=3, LN=uncl => LG</declaration>
     <declaration corpus="CGN">pos=PD, type=pers, LP=uncl, LN=uncl => LG</declaration>
-    
-    
+
+
     <!-- 
       Reflexiefpersoonlijke en reflexieve voornaamwoorden (pr & refl)
       Features: type,position,case,inflection
       Features (extra): person,number
       Feature bij 3sg: gender (toegevoegd t.o.v. CGN)
     -->
-    
-    
+
+
     <declaration corpus="CGN">pos=PD, type=pers|refl => LP, LN</declaration>
     <declaration corpus="CGN">pos=PD, type=pers|refl, LP=3, LN=sg => LG</declaration>
-    
+
     <declaration corpus="CGN">pos=PD, type=refl => LP, LN</declaration>
     <declaration corpus="CGN">pos=PD, type=refl, LP=3, LN=sg => LG</declaration>
- 
+
     <declaration corpus="CGN">pos=PD, type=refl => LP, LN</declaration>
     <declaration corpus="CGN">pos=PD, type=refl, LP=3, LN=uncl => LG</declaration>
     <declaration corpus="CGN">pos=PD, type=refl, LP=uncl, LN=uncl => LG</declaration>
-    
+
     <!--
       Reciproque voornaamwoorden
       Features: type,position,case,inflection
       Features (extra): number
     -->
-    
-    
+
+
     <declaration corpus="CGN">pos=PD, type=recip => LN, LP</declaration>
-    
-    
+
+
     <!-- 
       Bezittelijke voornaamwoorden
       Features: type,position,case,inflection
@@ -1827,11 +1835,11 @@
 
       N.B. een bezittelijk voornaamwoord in nominale positie in CGN transcategoriseert in TDN altijd naar NOU-C.
     -->
-    
+
     <declaration corpus="CGN">pos=PD, type=poss => LN, LP, number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=poss, LP=3, LN=sg => LG</declaration>
     <declaration corpus="CGN">pos=PD, type=poss, LP=uncl, LN=uncl => LG</declaration>
-    
+
     <!--
       Betrekkelijke voornaamwoorden
       Features: type,position,case,inflection
@@ -1839,10 +1847,10 @@
 
       N.B. Bij vrije positie, waarbij Van Eynde nominale positie heeft, is er wel een soort inherent getal (Van Eynde doet dat niet)
     -->
-    
+
     <declaration corpus="CGN">pos=PD, type=rel => number,gender</declaration>
-    
-    
+
+
     <!-- 
       Vragend-betrekkelijke en vragende (alleen DIAL) voornaamwoorden
       Features: type,position,case,inflection
@@ -1852,23 +1860,23 @@
       N.B. Bij vrije positie, waarbij Van Eynde nominale positie heeft, is er wel een soort inherent getal (Van Eynde doet dat niet)
       N.B.2 adv-pron transcategoriseert in TDN naar ADV
     -->
-    
+
     <declaration corpus="CGN">pos=PD, type=rel|inter, position=free => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=rel|inter, position=prenom => number,gender</declaration>
-    
+
     <declaration corpus="CGN">pos=PD, type=inter, position=free => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=inter, position=prenom => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=inter, position=uncl => number, gender</declaration>
-    
+
     <!-- 
       Uitroepende voornaamwoorden
       Features: type,position,case,inflection
 
       N.B. Positie CGN is altijd pron of det+vrij, dus bij ons position free.
     -->
-    
+
     <declaration corpus="CGN">pos=PD,type=excl=> number,gender</declaration>
-    
+
     <!-- 
       Aanwijzende Voornaamwoorden
       Features: type,position,case,inflection
@@ -1879,13 +1887,14 @@
       N.B.2 Bij vrije positie, waarbij Van Eynde nominale positie heeft, is er wel een soort inherent getal (Van Eynde doet dat niet)
       N.B.3 adv-pron transcategoriseert in TDN naar ADV
     -->
-    
+
     <declaration corpus="CGN">pos=PD, type=dem, position=free => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=dem, position=prenom => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=dem, position=uncl => number, gender</declaration>
-    
-    <declaration corpus="CGN">pos=PD, type=dem, position=prenom => subtype || subtype=other</declaration>
-    
+
+    <declaration corpus="CGN">pos=PD, type=dem, position=prenom => subtype ||
+      subtype=other</declaration>
+
     <!-- 
       Onbepaalde voornaamwoorden
       Features: type,position,case,inflection
@@ -1897,53 +1906,54 @@
       N.B.3 adv-pron transcategoriseert in TDN naar ADV
       N.B.4 de meeste voornaamwoorden in nominale posities, maar niet allemaal, transcategoriseren in TDN naar NOU-C
     -->
-    
+
     <declaration corpus="CGN">pos=PD, type=indef, position=free => number,gender</declaration>
     <declaration corpus="CGN">pos=PD, type=indef, position=prenom => number,gender</declaration>
     <declaration corpus="CGN">pos=PD, type=indef, position=uncl => number, gender</declaration>
-    
-    <declaration corpus="CGN">pos=PD, type=indef, position=prenom => subtype || subtype=other</declaration>
-    
+
+    <declaration corpus="CGN">pos=PD, type=indef, position=prenom => subtype ||
+      subtype=other</declaration>
+
     <!-- 
       Lidwoorden
       Features: type, subtype, position,case,number,gender,inflection
       Geen extra declaraties nodig
     -->
-    
-    
+
+
     <!-- Adposities -->
-    
+
     <declaration corpus="CGN">pos=ADP => type</declaration>
-    
-    
+
+
     <!-- Bijwoorden -->
-    
+
     <declaration corpus="CGN">pos=ADV => type</declaration>
-    
+
     <!-- Conjuncties -->
-    
+
     <declaration corpus="CGN">pos=CONJ => type</declaration>
-    
-    
-    
+
+
+
     <!-- Conjuncties -->
-    
+
     <declaration corpus="CGN">pos=RES => type</declaration>
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Core feature set (kernset) -->
-    
-    
+
+
     <!--
 
     <declaration corpus="all">pos=AA => degree,inflection || degree=unclear,  inflection=unclear</declaration>
