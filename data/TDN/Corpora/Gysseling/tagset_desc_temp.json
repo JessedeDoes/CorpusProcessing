@@ -3,60 +3,76 @@
     "AA":{
       "value":"AA",
       "displayName":"Adjective/adverb",
-      "subAnnotationIds":["pos_infl","pos_NA","pos_position"]
+      "subAnnotationIds":["pos_degree","pos_position","pos_number","pos_inflection"]
     },
     "ADP":{
       "value":"ADP",
       "displayName":"Adposition",
-      "subAnnotationIds":["pos_infl","pos_type"]
+      "subAnnotationIds":["pos_type","pos_inflection"]
     },
     "ADV":{
       "value":"ADV",
       "displayName":"Adverb",
-      "subAnnotationIds":["pos_infl","pos_subtype","pos_type"]
+      "subAnnotationIds":["pos_type","pos_subtype","pos_inflection"]
     },
     "CONJ":{
       "value":"CONJ",
       "displayName":"Conjunction",
-      "subAnnotationIds":["pos_infl","pos_type"]
+      "subAnnotationIds":["pos_type","pos_inflection"]
     },
     "INT":{
       "value":"INT",
       "displayName":"Interjection",
-      "subAnnotationIds":["pos_infl"]
+      "subAnnotationIds":["pos_inflection"]
     },
     "NOU-C":{
       "value":"NOU-C",
       "displayName":"Common noun",
-      "subAnnotationIds":["pos_infl","pos_number"]
+      "subAnnotationIds":["pos_number","pos_inflection"]
     },
     "NOU-P":{
       "value":"NOU-P",
       "displayName":"Proper noun",
-      "subAnnotationIds":["pos_infl"]
+      "subAnnotationIds":["pos_inflection"]
     },
     "NUM":{
       "value":"NUM",
       "displayName":"Numeral",
-      "subAnnotationIds":["pos_infl","pos_type"]
+      "subAnnotationIds":["pos_type","pos_position","pos_representation","pos_inflection"]
     },
     "PD":{
       "value":"PD",
       "displayName":"Pronoun",
-      "subAnnotationIds":["pos_infl","pos_number","pos_subtype","pos_person","pos_type"]
+      "subAnnotationIds":["pos_type","pos_subtype","pos_position","pos_LN","pos_LP","pos_inflection"]
     },
     "RES":{
       "value":"RES",
       "displayName":"Residual",
-      "subAnnotationIds":["pos_infl","pos_type"]
+      "subAnnotationIds":["pos_type","pos_inflection"]
     },
     "VRB":{
       "value":"VRB",
       "displayName":"Verb",
-      "subAnnotationIds":["pos_infl","pos_mood","pos_finiteness","pos_type","pos_tense"]
+      "subAnnotationIds":["pos_type","pos_finiteness","pos_tense","pos_mood","pos_inflection"]
     }
   },
   "subAnnotations":{
+    "pos_LN":{
+      "id":"pos_LN",
+      "values":[{
+        "value":"pl",
+        "displayName":"Plural",
+        "pos":["PD"]
+      },{
+        "value":"sg",
+        "displayName":"Singular",
+        "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
+        "pos":["PD"]
+      }]
+    },
     "pos_tense":{
       "id":"pos_tense",
       "values":[{
@@ -68,30 +84,70 @@
         "displayName":"present",
         "pos":["VRB"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
       }]
     },
-    "pos_NA":{
-      "id":"pos_NA",
+    "pos_inflection":{
+      "id":"pos_inflection",
       "values":[{
-        "value":"pl",
-        "displayName":"Plural",
-        "pos":["AA"]
+        "value":"0",
+        "displayName":"No inflection",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
-        "value":"sg",
-        "displayName":"Singular",
-        "pos":["AA"]
+        "value":"a",
+        "displayName":"-a",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","ADP"]
       },{
-        "value":"unclear",
+        "value":"e",
+        "displayName":"-e",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
+      },{
+        "value":"n",
+        "displayName":"-n",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
+      },{
+        "value":"nt",
+        "displayName":"nt",
+        "pos":["VRB"]
+      },{
+        "value":"other",
+        "displayName":"Other",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
+      },{
+        "value":"r/re",
+        "displayName":"-r/-re",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+      },{
+        "value":"s/th",
+        "displayName":"-s/-th",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","ADV"]
+      },{
+        "value":"t",
+        "displayName":"-t",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+      },{
+        "value":"uncl",
         "displayName":"Unclear",
-        "pos":["AA"]
+        "pos":["ADV"]
+      }]
+    },
+    "pos_representation":{
+      "id":"pos_representation",
+      "values":[{
+        "value":"dig|let|rom|mix-dig|mix-rom",
+        "displayName":"dig|let|rom|mix-dig|mix-rom",
+        "pos":["NUM"]
       }]
     },
     "pos_position":{
       "id":"pos_position",
       "values":[{
+        "value":"free|prenom|postnom",
+        "displayName":"free|prenom|postnom",
+        "pos":["PD","NUM"]
+      },{
         "value":"pred|prenom|postnom",
         "displayName":"Pre- or postnominal or predicative",
         "pos":["AA"]
@@ -124,6 +180,10 @@
         "displayName":"Negative",
         "pos":["ADV"]
       },{
+        "value":"other",
+        "displayName":"Other",
+        "pos":["ADV"]
+      },{
         "value":"rel",
         "displayName":"Relative",
         "pos":["ADV"]
@@ -132,7 +192,7 @@
         "displayName":"Resumptive",
         "pos":["ADV"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["ADV"]
       }]
@@ -190,7 +250,7 @@
       },{
         "value":"other",
         "displayName":"other",
-        "pos":["RES","ADP"]
+        "pos":["RES"]
       },{
         "value":"pers",
         "displayName":"Personal",
@@ -228,7 +288,7 @@
         "displayName":"Subordinating",
         "pos":["CONJ"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","CONJ","VRB","NUM","RES"]
       }]
@@ -245,60 +305,28 @@
         "pos":["VRB"]
       }]
     },
+    "pos_degree":{
+      "id":"pos_degree",
+      "values":[{
+        "value":"pos|comp|sup",
+        "displayName":"pos|comp|sup",
+        "pos":["AA"]
+      }]
+    },
     "pos_number":{
       "id":"pos_number",
       "values":[{
         "value":"pl",
         "displayName":"Plural",
-        "pos":["PD","NOU-C"]
+        "pos":["NOU-C","AA"]
       },{
         "value":"sg",
         "displayName":"Singular",
-        "pos":["PD","NOU-C"]
+        "pos":["NOU-C","AA"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
-        "pos":["PD","NOU-C"]
-      }]
-    },
-    "pos_infl":{
-      "id":"pos_infl",
-      "values":[{
-        "value":"0",
-        "displayName":"No inflection",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
-      },{
-        "value":"a",
-        "displayName":"-a",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","ADP"]
-      },{
-        "value":"e",
-        "displayName":"-e",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
-      },{
-        "value":"n",
-        "displayName":"-n",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
-      },{
-        "value":"other",
-        "displayName":"Other",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
-      },{
-        "value":"r|re",
-        "displayName":"-r/-re",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
-      },{
-        "value":"s|th",
-        "displayName":"-s/-th",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","ADV"]
-      },{
-        "value":"t",
-        "displayName":"-t",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
-      },{
-        "value":"unclear",
-        "displayName":"Unclear",
-        "pos":["ADV"]
+        "pos":["NOU-C","AA"]
       }]
     },
     "pos_finiteness":{
@@ -308,25 +336,21 @@
         "displayName":"Finite",
         "pos":["VRB"]
       },{
-        "value":"inf|ger",
-        "displayName":"infinitive/gerund",
+        "value":"inf",
+        "displayName":"Infinitive",
         "pos":["VRB"]
       },{
-        "value":"pastpart",
-        "displayName":"Past participle",
+        "value":"part",
+        "displayName":"Participle",
         "pos":["VRB"]
       },{
-        "value":"prespart",
-        "displayName":"Present participle",
-        "pos":["VRB"]
-      },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
       }]
     },
-    "pos_person":{
-      "id":"pos_person",
+    "pos_LP":{
+      "id":"pos_LP",
       "values":[{
         "value":"1",
         "displayName":"1",
@@ -340,7 +364,7 @@
         "displayName":"3",
         "pos":["PD"]
       },{
-        "value":"unclear",
+        "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD"]
       }]

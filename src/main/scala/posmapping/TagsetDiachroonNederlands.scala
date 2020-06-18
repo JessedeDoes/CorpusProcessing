@@ -197,14 +197,21 @@ object TagsetDiachroonNederlands {
 
   def doONW = {
       // tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
-      val conversionTable = "/tmp/allTags.onwmap.txt"
+
+    val conversionTable = "/tmp/allTags.onwmap.txt"
 
     val mapping = io.Source.fromFile(conversionTable).getLines().map(_.split("\\t")).map(r => s"${r(0)};${r(1)}" -> r(2)).toMap
     tagsetFromSetOfTags("data/TDN/Corpora/ONW/", "ONW", mapping)
    }
 
   def doGysseling = {
-     tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
+     // tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
+    val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/gysseling.tsv"
+    lazy val mapping = io.Source.fromFile(mappingFile).getLines.map(l => {
+      val x = l.split("\\t")
+      x(0) -> x(1)
+    }).toMap
+    tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping)
   }
 
   def doCGN = {
@@ -214,7 +221,8 @@ object TagsetDiachroonNederlands {
   }
 
    def main(args: Array[String]): Unit = {
-     doCGN
+     // doCGN
+     doGysseling
       //doONW
       //doGysseling
    }

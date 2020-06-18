@@ -7,6 +7,7 @@ import corpusprocessing.onw.splitONWTagsInFeatures.punctuationType
 import scala.xml._
 import utils.PostProcessXML._
 import utils.Tokenizer
+import utils.alignment.AlignmentGeneric
 
 import scala.util.matching.Regex
 
@@ -244,7 +245,7 @@ object onwCorpus {
          |$tokenSequence
        """.stripMargin)
 
-    val a = new utils.AlignmentGeneric(comp)
+    val a = new AlignmentGeneric(comp)
 
 
       // Console.err.println(s"$tokenSequence // $wordSequence")

@@ -69,14 +69,15 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
   //
+
   val mappingNS = "data/CG/gystags_newstyle.txt"
   val mappingGoogleDrive = "data/CG/gysseling_mapping_from_google_drive.txt"
-  val tagMappingNew = scala.io.Source.fromFile(mappingGoogleDrive).getLines().toStream
+  val tagMappingNew: Map[String, String] = scala.io.Source.fromFile(mappingGoogleDrive).getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
+  val tagMappingTDN = TagsetDiachroonNederlands.doGysseling.mapValues(_.toString)
 
-
-  val tagMapping = if (cgnMode) tagMappingOld else tagMappingNew
+  val tagMapping = if (cgnMode) tagMappingOld else tagMappingTDN
 
 
 

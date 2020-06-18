@@ -1,15 +1,13 @@
-package utils
+package utils.alignment
 
 import java.util.{ArrayList, Comparator}
 
-
 import org.incava.util.diff.{Diff, Difference}
 import utils.TokenizerWithOffsets._
+import utils.{PostProcessXML, SimOrDiff, Similarity}
 
 import scala.collection.JavaConversions._
 import scala.xml._
-
-import AlignmentGeneric.Similarity
 
 case class SimOrDiff[T](diff: Option[Difference], sim: Option[Similarity]) {
   lazy val leftStart: Int = if (diff.isEmpty) sim.get.s2 else diff.get.getDeletedStart

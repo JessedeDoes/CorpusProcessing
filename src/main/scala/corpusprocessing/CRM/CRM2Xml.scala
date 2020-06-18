@@ -4,8 +4,10 @@ package corpusprocessing.CRM
 import corpusprocessing.brievenalsbuit.bab.{addFeature, idUnsafe, wwAnalyses}
 import org.incava.util.diff.Difference
 import utils.PostProcessXML.updateElement
-import utils.alignment.comp
-import utils.{Alignment, SimOrDiff}
+//import utils.alignment.{SimOrDiff, comp}
+import utils.SimOrDiff
+import utils.test_alignment.comp
+import utils.Alignment
 
 import scala.collection.JavaConverters._
 import scala.xml.{XML, _}
