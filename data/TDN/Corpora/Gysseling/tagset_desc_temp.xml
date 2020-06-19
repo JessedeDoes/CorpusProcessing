@@ -94,14 +94,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Participle" desc="Participle">
-                    <value>part</value>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
-                    <value>uncl</value>
+                <featureValue displayName="prespart|pastpart" desc="prespart|pastpart">
+                    <value>prespart|pastpart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -171,8 +171,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+                    <value>nt</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Other" desc="Other values">
-                    <value>other</value>
+                    <value>oth</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>ADP</pos>
@@ -233,12 +239,6 @@
                         <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="nt" desc="nt">
-                    <value>nt</value>
-                    <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
@@ -427,7 +427,7 @@
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Other" desc="Other">
-                    <value>other</value>
+                    <value>oth</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -455,14 +455,14 @@
         <feature displayName="Tense" desc="Verb tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="past" desc="past tense">
-                    <value>past</value>
+                <featureValue displayName="present" desc="present tense">
+                    <value>pres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="present" desc="present tense">
-                    <value>pres</value>
+                <featureValue displayName="past" desc="past tense">
+                    <value>past</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -478,13 +478,19 @@
         <feature displayName="Type" desc="Type (Subcategorization)">
             <name>type</name>
             <values>
+                <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
+                    <value>mai</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
                     <value>aux|cop</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
+                <featureValue displayName="Auxiliary or copula or main" desc="Auxiliary or copula or main">
                     <value>aux|cop|mai</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -532,22 +538,10 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
-                    <value>mai</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Ordinal" desc="Ordinal numeral">
                     <value>ord</value>
                     <posForValue>
                         <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Personal" desc="Personal">
@@ -619,6 +613,12 @@
                     <value>pre|post|circ</value>
                     <posForValue>
                         <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="other" desc="other">
+                    <value>other</value>
+                    <posForValue>
+                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -732,11 +732,17 @@
         <declaration corpus="Some(Set(Gysseling))">pos=VRB,finiteness=fin =&gt; tense,mood</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=VRB,finiteness=uncl =&gt; tense,mood</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=NUM =&gt; type,position,representation,inflection</declaration>
-        <declaration corpus="Some(Set(Gysseling))">pos=PD =&gt; type,position,inflection</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD =&gt; type,position</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=pers =&gt; LP, LN</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=refl|recip =&gt; LP, LN</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=uncl =&gt; LP, LN, inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=dem =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=dem =&gt; inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=indef =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=indef =&gt; inflection</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=rel =&gt; inflection</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=inter =&gt; inflection</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=poss =&gt; inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=ADV =&gt; type,subtype,inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=ADP =&gt; type,inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=CONJ =&gt; type,inflection</declaration>
@@ -748,14 +754,14 @@
         <tag>AA(degree=pos|comp|sup,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=other,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=pos|comp|sup,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=other,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=pos|comp|sup,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
         <tag>AA(degree=pos|comp|sup,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
@@ -766,14 +772,14 @@
         <tag>ADP(type=pre|post|circ,inflection=a)</tag>
         <tag>ADP(type=pre|post|circ,inflection=e)</tag>
         <tag>ADP(type=pre|post|circ,inflection=n)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=other)</tag>
+        <tag>ADP(type=pre|post|circ,inflection=oth)</tag>
         <tag>ADP(type=pre|post|circ,inflection=r/re)</tag>
         <tag>ADP(type=pre|post|circ,inflection=s/th)</tag>
         <tag>ADP(type=pre|post|circ,inflection=t)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=n)</tag>
-        <tag>ADV(type=pron,subtype=dem,inflection=other)</tag>
+        <tag>ADV(type=pron,subtype=dem,inflection=oth)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=s/th)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=t)</tag>
@@ -785,14 +791,14 @@
         <tag>ADV(type=pron,subtype=rel,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=n)</tag>
-        <tag>ADV(type=pron,subtype=rel,inflection=other)</tag>
+        <tag>ADV(type=pron,subtype=rel,inflection=oth)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=s/th)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=t)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=n)</tag>
-        <tag>ADV(type=pron,subtype=resump,inflection=other)</tag>
+        <tag>ADV(type=pron,subtype=resump,inflection=oth)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=e)</tag>
@@ -804,46 +810,46 @@
         <tag>ADV(type=reg,subtype=dem,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=dem,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=dem,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=s/th)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=gen,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=gen,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=r/re)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=s/th)</tag>
         <tag>ADV(type=reg,subtype=gen,inflection=t)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=indef,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=indef,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=r/re)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=s/th)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=inter,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=inter,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=neg,inflection=other)</tag>
-        <tag>ADV(type=reg,subtype=other,inflection=0)</tag>
+        <tag>ADV(type=reg,subtype=neg,inflection=oth)</tag>
+        <tag>ADV(type=reg,subtype=oth,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=rel,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=rel,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=rel,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=rel,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=rel,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=resump,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=resump,inflection=e)</tag>
-        <tag>ADV(type=reg,subtype=resump,inflection=other)</tag>
+        <tag>ADV(type=reg,subtype=resump,inflection=oth)</tag>
         <tag>CONJ(type=comp,inflection=0)</tag>
         <tag>CONJ(type=comp,inflection=e)</tag>
         <tag>CONJ(type=comp,inflection=n)</tag>
-        <tag>CONJ(type=comp,inflection=other)</tag>
+        <tag>CONJ(type=comp,inflection=oth)</tag>
         <tag>CONJ(type=coor,inflection=0)</tag>
         <tag>CONJ(type=coor,inflection=a)</tag>
         <tag>CONJ(type=coor,inflection=e)</tag>
         <tag>CONJ(type=coor,inflection=n)</tag>
-        <tag>CONJ(type=coor,inflection=other)</tag>
+        <tag>CONJ(type=coor,inflection=oth)</tag>
         <tag>CONJ(type=coor,inflection=t)</tag>
         <tag>CONJ(type=expl,inflection=0)</tag>
         <tag>CONJ(type=expl,inflection=e)</tag>
@@ -853,27 +859,27 @@
         <tag>CONJ(type=neg,inflection=n)</tag>
         <tag>CONJ(type=qual,inflection=0)</tag>
         <tag>CONJ(type=qual,inflection=e)</tag>
-        <tag>CONJ(type=qual,inflection=other)</tag>
+        <tag>CONJ(type=qual,inflection=oth)</tag>
         <tag>CONJ(type=rel,inflection=0)</tag>
         <tag>CONJ(type=rel,inflection=e)</tag>
-        <tag>CONJ(type=rel,inflection=other)</tag>
+        <tag>CONJ(type=rel,inflection=oth)</tag>
         <tag>CONJ(type=sub,inflection=0)</tag>
         <tag>CONJ(type=sub,inflection=e)</tag>
         <tag>CONJ(type=sub,inflection=n)</tag>
-        <tag>CONJ(type=sub,inflection=other)</tag>
+        <tag>CONJ(type=sub,inflection=oth)</tag>
         <tag>CONJ(type=sub,inflection=s/th)</tag>
         <tag>CONJ(type=uncl,inflection=0)</tag>
         <tag>CONJ(type=uncl,inflection=e)</tag>
-        <tag>CONJ(type=uncl,inflection=other)</tag>
+        <tag>CONJ(type=uncl,inflection=oth)</tag>
         <tag>INT(inflection=0)</tag>
         <tag>INT(inflection=e)</tag>
         <tag>INT(inflection=n)</tag>
-        <tag>INT(inflection=other)</tag>
+        <tag>INT(inflection=oth)</tag>
         <tag>NOU-C(number=pl,inflection=0)</tag>
         <tag>NOU-C(number=pl,inflection=a)</tag>
         <tag>NOU-C(number=pl,inflection=e)</tag>
         <tag>NOU-C(number=pl,inflection=n)</tag>
-        <tag>NOU-C(number=pl,inflection=other)</tag>
+        <tag>NOU-C(number=pl,inflection=oth)</tag>
         <tag>NOU-C(number=pl,inflection=r/re)</tag>
         <tag>NOU-C(number=pl,inflection=s/th)</tag>
         <tag>NOU-C(number=pl,inflection=t)</tag>
@@ -881,50 +887,50 @@
         <tag>NOU-C(number=sg,inflection=a)</tag>
         <tag>NOU-C(number=sg,inflection=e)</tag>
         <tag>NOU-C(number=sg,inflection=n)</tag>
-        <tag>NOU-C(number=sg,inflection=other)</tag>
+        <tag>NOU-C(number=sg,inflection=oth)</tag>
         <tag>NOU-C(number=sg,inflection=r/re)</tag>
         <tag>NOU-C(number=sg,inflection=s/th)</tag>
         <tag>NOU-C(number=sg,inflection=t)</tag>
         <tag>NOU-C(number=uncl,inflection=0)</tag>
         <tag>NOU-C(number=uncl,inflection=e)</tag>
         <tag>NOU-C(number=uncl,inflection=n)</tag>
-        <tag>NOU-C(number=uncl,inflection=other)</tag>
+        <tag>NOU-C(number=uncl,inflection=oth)</tag>
         <tag>NOU-C(number=uncl,inflection=s/th)</tag>
         <tag>NOU-P(inflection=0)</tag>
         <tag>NOU-P(inflection=a)</tag>
         <tag>NOU-P(inflection=e)</tag>
         <tag>NOU-P(inflection=n)</tag>
-        <tag>NOU-P(inflection=other)</tag>
+        <tag>NOU-P(inflection=oth)</tag>
         <tag>NOU-P(inflection=r/re)</tag>
         <tag>NOU-P(inflection=s/th)</tag>
         <tag>NOU-P(inflection=t)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=0)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=e)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=n)</tag>
-        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=other)</tag>
+        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=oth)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=r/re)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=s/th)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=card,inflection=t)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=0)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=e)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=n)</tag>
-        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=other)</tag>
+        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=oth)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=r/re)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=ord,inflection=s/th)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=uncl,inflection=n)</tag>
-        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=uncl,inflection=other)</tag>
+        <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=uncl,inflection=oth)</tag>
         <tag>NUM(position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,type=uncl,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=0)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=dem,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=dem,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,inflection=t)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=0)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=dem,subtype=art,inflection=t)</tag>
@@ -932,21 +938,21 @@
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=a)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=indef,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=indef,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,inflection=t)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=0)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=indef,subtype=art,inflection=t)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=0)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=inter,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=inter,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=inter,inflection=t)</tag>
@@ -961,7 +967,7 @@
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=a)</tag>
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=poss,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=poss,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=poss,inflection=t)</tag>
@@ -975,26 +981,26 @@
         <tag>PD(position=free|prenom|postnom,type=rel,inflection=0)</tag>
         <tag>PD(position=free|prenom|postnom,type=rel,inflection=e)</tag>
         <tag>PD(position=free|prenom|postnom,type=rel,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=rel,inflection=other)</tag>
+        <tag>PD(position=free|prenom|postnom,type=rel,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=rel,inflection=r/re)</tag>
         <tag>PD(position=free|prenom|postnom,type=rel,inflection=s/th)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=0)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=e)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=n)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=other)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=s/th)</tag>
-        <tag>PD(position=free|prenom|postnom,type=uncl,inflection=t)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=0)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=e)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=n)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=oth)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=s/th)</tag>
+        <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=t)</tag>
         <tag>RES(type=other)</tag>
         <tag>RES(type=uncl,inflection=0)</tag>
         <tag>RES(type=uncl,inflection=e)</tag>
         <tag>RES(type=uncl,inflection=n)</tag>
-        <tag>RES(type=uncl,inflection=other)</tag>
+        <tag>RES(type=uncl,inflection=oth)</tag>
         <tag>RES(type=uncl,inflection=s/th)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=0)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=e)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=n)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=nt)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=other)</tag>
+        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=oth)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=r/re)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=s/th)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=t)</tag>
@@ -1002,32 +1008,32 @@
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=e)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=n)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=nt)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=other)</tag>
+        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=oth)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=r/re)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=s/th)</tag>
         <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=t)</tag>
         <tag>VRB(type=aux|cop,finiteness=inf,inflection=0)</tag>
         <tag>VRB(type=aux|cop,finiteness=inf,inflection=e)</tag>
         <tag>VRB(type=aux|cop,finiteness=inf,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=inf,inflection=other)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=0)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=e)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=other)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=r/re)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop,finiteness=part,inflection=t)</tag>
+        <tag>VRB(type=aux|cop,finiteness=inf,inflection=oth)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=0)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=e)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=n)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=oth)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=r/re)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=t)</tag>
         <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=0)</tag>
         <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=e)</tag>
         <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=n)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=other)</tag>
+        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=oth)</tag>
         <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=s/th)</tag>
         <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=t)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=0)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=a)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=e)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=other)</tag>
+        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=oth)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=r/re)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=s/th)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=t)</tag>
@@ -1035,7 +1041,7 @@
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=e)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=n)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=nt)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=other)</tag>
+        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=oth)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=r/re)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=s/th)</tag>
         <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=t)</tag>
@@ -1043,20 +1049,20 @@
         <tag>VRB(type=mai,finiteness=inf,inflection=a)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=e)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=inf,inflection=other)</tag>
+        <tag>VRB(type=mai,finiteness=inf,inflection=oth)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=t)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=0)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=a)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=e)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=nt)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=other)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=s/th)</tag>
-        <tag>VRB(type=mai,finiteness=part,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=0)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=a)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=nt)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=t)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=0)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=e)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=n)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=other)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=oth)</tag>
         <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=t)</tag>
     </tags>
 </tagset>

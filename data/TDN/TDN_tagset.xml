@@ -560,7 +560,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Other" desc="Other values">
-          <value>other</value>
+          <value>oth</value>
           <posForValue>
             <pos>AA</pos>
             <pos>ADP</pos>
@@ -943,7 +943,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Non-article" desc="Non-article">
-          <value>other</value>
+          <value>oth</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
@@ -999,7 +999,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="Other" desc="Other">
-          <value>other</value>
+          <value>oth</value>
           <posForValue>
             <pos>ADV</pos>
             <pos>CONJ</pos>
@@ -1042,14 +1042,14 @@
     <feature displayName="Tense" desc="Verb tense">
       <name>tense</name>
       <values>
-        <featureValue displayName="past" desc="past tense">
-          <value>past</value>
+        <featureValue displayName="present" desc="present tense">
+          <value>pres</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="present" desc="present tense">
-          <value>pres</value>
+        <featureValue displayName="past" desc="past tense">
+          <value>past</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -1072,53 +1072,67 @@
             <pos>COLL</pos>
           </posForValue>
         </featureValue>
+
+        <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
+          <value>mai</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+
+        <featureValue displayName="Copula" desc="Copula">
+          <value>cop</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Auxiliary" desc="Auxiliary">
           <value>aux</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
           <value>aux|cop</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
+
+        <featureValue displayName="Auxiliary or copula or main" desc="Auxiliary or copula or main">
           <value>aux|cop|mai</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Cardinal" desc="Cardinal">
           <value>card</value>
           <posForValue>
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Circumposition" desc="Circumposition">
           <value>circ</value>
           <posForValue>
             <pos>ADP</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Coordinating" desc="Coordinating conjunction">
           <value>coor</value>
           <posForValue>
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Comparing"
           desc="Comparing conjunction (als, dan, gelijk-dat, alsof, ...)">
           <value>comp</value>
           <posForValue>
             <pos>CONJ</pos>
-          </posForValue>
-        </featureValue>
-        <featureValue displayName="Copula" desc="Copula">
-          <value>cop</value>
-          <posForValue>
-            <pos>VRB</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="D-pronoun"
@@ -1152,12 +1166,7 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
-          <value>mai</value>
-          <posForValue>
-            <pos>VRB</pos>
-          </posForValue>
-        </featureValue>
+
         <featureValue displayName="Main or auxiliary" desc="Main or auxiliary verb">
           <value>mai/aux</value>
           <posForValue>
@@ -1171,7 +1180,7 @@
           </posForValue>
         </featureValue>
         <featureValue displayName="other" desc="other">
-          <value>other</value>
+          <value>oth</value>
           <posForValue>
             <pos>AA</pos>
             <pos>ADP</pos>
@@ -1322,8 +1331,8 @@
     <feature displayName="Valency" desc="Valency">
       <name>val</name>
       <values>
-        <featureValue displayName="Impersonal" desc="Impersonal">
-          <value>impers</value>
+        <featureValue displayName="Transitive" desc="Transitive">
+          <value>trans</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -1340,8 +1349,8 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Transitive" desc="Transitive">
-          <value>trans</value>
+        <featureValue displayName="Impersonal" desc="Impersonal">
+          <value>impers</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -1630,13 +1639,15 @@
     <declaration corpus="max">pos=CONJ => type,inflection,WF</declaration>
     <declaration corpus="max">pos=ADP => type,inflection,WF</declaration>
     <declaration corpus="max">pos=ADV => type,subtype,inflection,WF</declaration>
-    <declaration corpus="max">pos=NUM => type,position,case,number,gender,inflection,WF</declaration>
+    <declaration corpus="max">pos=NUM =>
+      type,position,case,number,gender,inflection,WF</declaration>
     <declaration corpus="max">pos=INT => inflection,WF</declaration>
     <declaration corpus="max">pos=RES => type,inflection,WF</declaration>
 
 
     <!-- corpus of Old Dutch -->
 
+    <declaration corpus="ONW">pos=AA => position || position=prenom|postnom|pred</declaration>
     <declaration corpus="ONW">pos=AA => degree,position,case,number,gender</declaration>
     <declaration corpus="ONW">pos=NOU-C => case,number,gender</declaration>
     <declaration corpus="ONW">pos=NOU-P => case,number,gender</declaration>
@@ -1705,12 +1716,22 @@
 
     <declaration corpus="Gysseling">pos=NUM => type,position,representation,inflection</declaration>
 
-    <declaration corpus="Gysseling">pos=PD => type,position,inflection</declaration>
+    <declaration corpus="Gysseling">pos=PD => type,position</declaration>
+ 
     <declaration corpus="Gysseling">pos=PD, type=pers => LP, LN</declaration>
     <declaration corpus="Gysseling">pos=PD, type=refl|recip => LP, LN</declaration>
+    <declaration corpus="Gysseling">pos=PD, type=uncl => LP, LN, inflection</declaration>
+    
     <declaration corpus="Gysseling">pos=PD, type=dem => subtype || subtype=other</declaration>
+    <declaration corpus="Gysseling">pos=PD, type=dem => inflection</declaration>
+ 
     <declaration corpus="Gysseling">pos=PD, type=indef => subtype || subtype=other</declaration>
-
+    <declaration corpus="Gysseling">pos=PD, type=indef => inflection</declaration>
+    
+    <declaration corpus="Gysseling">pos=PD, type=rel => inflection</declaration>
+    <declaration corpus="Gysseling">pos=PD, type=inter => inflection</declaration>
+    <declaration corpus="Gysseling">pos=PD, type=poss => inflection</declaration>
+    
     <declaration corpus="Gysseling">pos=ADV => type,subtype,inflection</declaration>
 
     <declaration corpus="Gysseling">pos=ADP => type,inflection</declaration>
@@ -1935,17 +1956,9 @@
     <declaration corpus="CGN">pos=CONJ => type</declaration>
 
 
-
     <!-- Conjuncties -->
 
-    <declaration corpus="CGN">pos=RES => type</declaration>
-
-
-
-
-
-
-
+    <declaration corpus="CGN">pos=RES => type, WF</declaration>
 
 
 

@@ -207,21 +207,64 @@ object TagsetDiachroonNederlands {
   def doGysseling = {
      // tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
     val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/gysseling.tsv"
+
     lazy val mapping = io.Source.fromFile(mappingFile).getLines.map(l => {
       val x = l.split("\\t")
       x(0) -> x(1)
     }).toMap
-    tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping)
+
+    lazy val descriptions = io.Source.fromFile(mappingFile).getLines.map(l => {
+      val x = l.split("\\t")
+      x(0) -> x(2)
+    }).toMap
+
+    val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping)
+
+    val mappingRows = m.toList.sortBy(_._1).map({case (c, t) => <tr><td>{c}</td><td>{t.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
+    val mappingHTML = <table>{mappingRows}</table>
+
+    XML.save("data/TDN/Corpora/Gysseling/current_mapping.html", mappingHTML, "UTF-8")
+    m
   }
+
+  val CGnMainMap = Map(
+    "N.*soort.*" -> "NOU-C",
+    "N.*eigen.*" -> "NOU-P",
+  )
 
   def doCGN = {
     //folia.TDNTest.main(Array())
-    tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping)
+
+    val mappingFile = CGNToTEIWithTDNTags.mappingFile
+
+    lazy val descriptions = io.Source.fromFile(mappingFile).getLines.map(l => {
+      val x = l.split("\\t")
+
+      val d = if (x.size >3) x(3) else ""
+      x(1) -> d
+    }).toMap
+
+
+
+    val m = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping)
+
+    val mappingRows = m.toList.sortBy(_._1).map({case (c, t) =>
+      val p1 = c.replaceAll("\\(.*", "")
+      val p = t.pos
+      val color = if (p == p1) "white" else "orange"
+      val style = s"background-color: $color"
+      <tr><td>{c}</td><td>{t.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
+
+    val mappingHTML = <table>{mappingRows}</table>
+
+    XML.save("data/TDN/Corpora/CGN/current_mapping.html", mappingHTML, "UTF-8")
+
+    m
     // tagsetFromCorpusFiles("/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/TEI", "pos", "data/TDN/Corpora/CGN/", "CGN")
   }
 
    def main(args: Array[String]): Unit = {
-     // doCGN
+     doCGN
      doGysseling
       //doONW
       //doGysseling

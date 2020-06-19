@@ -70,6 +70,7 @@ object tagset {
         t => t.replaceFeatureValue("degree","sup", "pos", "ADV", "AA"),
         t => t.replaceFeatureValue("degree","comp", "pos", "ADV", "AA"),
         t => t.replaceFeatureValue("finiteness","ger", "pos", "VRB", "NOU-C"),
+
         t => t.replacePoS("ADJ", "AA"),
         t => t.addDegree,
 
@@ -109,7 +110,7 @@ object tagset {
         t => t.replaceFeatureName("PD", "type", "recip", "number", "LN"),
         t => t.replaceFeatureName("PD", "type", "pers", "gender", "LG"),
         t => t.replaceFeatureName("PD", "type", "refl", "gender", "LG"),
-
+        t => t.replaceFeatureValue("pos","PD", "position", "pred", "free"),
         t => t.replaceFeatureName("PD","PA", "LP"),
 
         t => t.replaceFeatureName("PD","person", "LP"),

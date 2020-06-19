@@ -332,7 +332,6 @@
                 <featureValue displayName="t" desc="t">
                     <value>t</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
@@ -409,6 +408,12 @@
                     <value>n|s/th</value>
                     <posForValue>
                         <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="nt" desc="nt">
+                    <value>nt</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -791,12 +796,6 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="|uncl|oth" desc="|uncl|oth">
-                    <value>|uncl|oth</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="ord" desc="ord">
                     <value>ord</value>
                     <posForValue>
@@ -947,7 +946,7 @@
         <tag>CONJ(type=coor)</tag>
         <tag>CONJ(type=sub)</tag>
         <tag>INT()</tag>
-        <tag>NOU-C(case=dat,number=sg,inflection=t,gender=uncl)</tag>
+        <tag>NOU-C(case=dat,number=sg,inflection=nt,gender=uncl)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,inflection=0)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=0,gender=uncl)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=e,gender=uncl)</tag>
@@ -1133,12 +1132,12 @@
         <tag>RES(type=oth,WF=abbr)</tag>
         <tag>RES(type=symb)</tag>
         <tag>RES(type=uncl)</tag>
-        <tag>RES(type=|uncl|oth,WF=trunc)</tag>
+        <tag>RES(type=uncl,WF=trunc)</tag>
         <tag>RM()</tag>
         <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,inflection=e)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,inflection=n)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=0|e)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=t)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=uncl)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,inflection=n)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=0)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=t)</tag>

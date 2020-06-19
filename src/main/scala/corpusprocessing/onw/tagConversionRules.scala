@@ -49,6 +49,10 @@ object tagConversionRules {
 
   val rules = List(
     // !! instr.datief
+    // telw. (zelfst.);nom.sg.mann. (zwak)
+
+    Rule("telw.*zelfst", Map("pos" -> "TW", "numtype" -> "numtype") -> Map("pos" -> "NOU-C"), false),
+
     Rule("znw.*waternaam", Map("pos" -> "N", "ntype" -> "eigen") -> Map("pos" -> "NOU-P", "gender" -> "f", "xtype" -> "location"), false),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), true),
     Rule("met *vooropgeplaatste *gen", Map("pos" -> "NOU-C") -> Map("pos" -> "NOU-C"), false),
@@ -244,6 +248,9 @@ object tagConversionRules {
 
 
     Rule("vnw\\.", Map("pos" -> "VNW") -> Map("pos" -> "PD"), false),
+
+
+
 
     Rule("onbep.hoofdtelw\\.", Map("pos" -> "TW", "numtype" -> "onbep|hoofd")
       -> Map("pos" -> "PD", "type" -> "indef"), false), // ?

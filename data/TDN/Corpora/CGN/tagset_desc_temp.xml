@@ -326,6 +326,12 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+                    <value>nt</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
@@ -357,7 +363,6 @@
                 <featureValue displayName="-t" desc="Inflection -t">
                     <value>t</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
@@ -629,14 +634,14 @@
         <feature displayName="Tense" desc="Verb tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="past" desc="past tense">
-                    <value>past</value>
+                <featureValue displayName="present" desc="present tense">
+                    <value>pres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="present" desc="present tense">
-                    <value>pres</value>
+                <featureValue displayName="past" desc="past tense">
+                    <value>past</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -692,6 +697,12 @@
                     <value>ord</value>
                     <posForValue>
                         <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="other" desc="other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Personal" desc="Personal">
@@ -779,12 +790,6 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="oth" desc="oth">
-                    <value>oth</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="dem|indef" desc="dem|indef">
                     <value>dem|indef</value>
                     <posForValue>
@@ -795,12 +800,6 @@
                     <value>pers|refl</value>
                     <posForValue>
                         <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="|uncl|oth" desc="|uncl|oth">
-                    <value>|uncl|oth</value>
-                    <posForValue>
-                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -971,7 +970,7 @@
         <declaration corpus="Some(Set(CGN))">pos=ADP =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=ADV =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=CONJ =&gt; type</declaration>
-        <declaration corpus="Some(Set(CGN))">pos=RES =&gt; type</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=RES =&gt; type, WF</declaration>
     </implications>
     <tags>
         <tag>AA(degree=comp,position=free,inflection=0,case=nom|dat|acc|voc)</tag>
@@ -996,7 +995,7 @@
         <tag>CONJ(type=coor)</tag>
         <tag>CONJ(type=sub)</tag>
         <tag>INT()</tag>
-        <tag>NOU-C(case=dat,number=sg,inflection=t,gender=uncl)</tag>
+        <tag>NOU-C(case=dat,number=sg,inflection=nt,gender=uncl)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,inflection=0)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=0,gender=uncl)</tag>
         <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=e,gender=uncl)</tag>
@@ -1182,12 +1181,12 @@
         <tag>RES(type=oth,WF=abbr)</tag>
         <tag>RES(type=symb)</tag>
         <tag>RES(type=uncl)</tag>
-        <tag>RES(type=|uncl|oth,WF=trunc)</tag>
+        <tag>RES(type=uncl,WF=trunc)</tag>
         <tag>RM()</tag>
         <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,inflection=e)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,inflection=n)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=0|e)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=t)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=uncl)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,inflection=n)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=0)</tag>
         <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=t)</tag>

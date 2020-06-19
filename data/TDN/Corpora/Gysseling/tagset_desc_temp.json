@@ -109,10 +109,10 @@
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
         "value":"nt",
-        "displayName":"nt",
+        "displayName":"-nt",
         "pos":["VRB"]
       },{
-        "value":"other",
+        "value":"oth",
         "displayName":"Other",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
@@ -180,7 +180,7 @@
         "displayName":"Negative",
         "pos":["ADV"]
       },{
-        "value":"other",
+        "value":"oth",
         "displayName":"Other",
         "pos":["ADV"]
       },{
@@ -205,7 +205,7 @@
         "pos":["VRB"]
       },{
         "value":"aux|cop|mai",
-        "displayName":"Auxiliary or copula",
+        "displayName":"Auxiliary or copula or main",
         "pos":["VRB"]
       },{
         "value":"card",
@@ -340,8 +340,8 @@
         "displayName":"Infinitive",
         "pos":["VRB"]
       },{
-        "value":"part",
-        "displayName":"Participle",
+        "value":"prespart|pastpart",
+        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       },{
         "value":"uncl",

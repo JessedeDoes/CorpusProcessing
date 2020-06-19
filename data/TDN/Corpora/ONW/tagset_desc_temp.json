@@ -188,12 +188,12 @@
         "displayName":"past",
         "pos":["VRB"]
       },{
-        "value":"past|pres",
-        "displayName":"past|pres",
-        "pos":["VRB"]
-      },{
         "value":"pres",
         "displayName":"present",
+        "pos":["VRB"]
+      },{
+        "value":"pres|past",
+        "displayName":"pres|past",
         "pos":["VRB"]
       },{
         "value":"uncl",
@@ -254,15 +254,19 @@
       },{
         "value":"pred",
         "displayName":"Predicative",
-        "pos":["PD","AA"]
+        "pos":["AA"]
       },{
         "value":"prenom",
         "displayName":"Prenominal",
         "pos":["PD"]
       },{
+        "value":"prenom|postnom|pred",
+        "displayName":"prenom|postnom|pred",
+        "pos":["AA"]
+      },{
         "value":"uncl",
         "displayName":"Other",
-        "pos":["PD","AA","NUM"]
+        "pos":["PD","NUM"]
       }]
     },
     "pos_subtype":{
@@ -289,7 +293,7 @@
         "pos":["ADV"]
       },{
         "value":"other",
-        "displayName":"Other",
+        "displayName":"other",
         "pos":["PD"]
       },{
         "value":"rel",
@@ -374,7 +378,7 @@
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["CONJ","VRB","NUM","RES","ADP","ADV"]
+        "pos":["CONJ","VRB","RES","ADP","ADV"]
       }]
     },
     "pos_mood":{
@@ -516,20 +520,12 @@
         "displayName":"Infinitive",
         "pos":["VRB"]
       },{
-        "value":"inf|ger",
-        "displayName":"infinitive/gerund",
-        "pos":["VRB"]
-      },{
         "value":"pastpart",
         "displayName":"Past participle",
         "pos":["VRB"]
       },{
         "value":"prespart",
         "displayName":"Present participle",
-        "pos":["VRB"]
-      },{
-        "value":"prespart|ger",
-        "displayName":"prespart|ger",
         "pos":["VRB"]
       },{
         "value":"uncl",
