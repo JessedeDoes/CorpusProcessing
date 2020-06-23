@@ -236,9 +236,29 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
+        "value":"dig",
+        "displayName":"dig",
+        "pos":[]
+      },{
         "value":"dig|let|rom|mix-dig|mix-rom",
         "displayName":"dig|let|rom|mix-dig|mix-rom",
         "pos":["NUM"]
+      },{
+        "value":"let",
+        "displayName":"let",
+        "pos":[]
+      },{
+        "value":"mix-dig",
+        "displayName":"mix-dig",
+        "pos":[]
+      },{
+        "value":"mix-rom",
+        "displayName":"mix-rom",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"rom",
+        "pos":[]
       }]
     },
     "pos_position":{
@@ -279,6 +299,10 @@
         "value":"dem",
         "displayName":"dem",
         "pos":["ADV"]
+      },{
+        "value":"indef",
+        "displayName":"indef",
+        "pos":[]
       },{
         "value":"indef|inter",
         "displayName":"indef|inter",

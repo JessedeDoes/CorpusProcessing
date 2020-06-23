@@ -51,7 +51,7 @@ object TagsetDiachroonNederlands {
       val lijstje: Map[String, Int] = tRef.partitions.getOrElse(n, List()).zipWithIndex.toMap
       val addition  = v.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
       val combi = lijstje ++ addition
-      v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n,_)) // ok, dit was wat we in eerste instantie misten ... later nog de sortering voor JSON
+      v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n,_))
     }
 
     t.copy(partitions = t.partitions.map({case (n,v)=>

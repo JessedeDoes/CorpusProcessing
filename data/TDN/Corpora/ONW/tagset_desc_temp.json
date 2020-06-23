@@ -236,9 +236,29 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
+        "value":"dig",
+        "displayName":"Digit",
+        "pos":[]
+      },{
         "value":"dig|let|rom|mix-dig|mix-rom",
         "displayName":"dig|let|rom|mix-dig|mix-rom",
         "pos":["NUM"]
+      },{
+        "value":"let",
+        "displayName":"Alphabetic",
+        "pos":[]
+      },{
+        "value":"mix-dig",
+        "displayName":"Digit/Alphabetic",
+        "pos":[]
+      },{
+        "value":"mix-rom",
+        "displayName":"Roman/Alphabetic",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"Roman",
+        "pos":[]
       }]
     },
     "pos_position":{
@@ -256,13 +276,13 @@
         "displayName":"Predicative",
         "pos":["AA"]
       },{
+        "value":"pred|prenom|postnom",
+        "displayName":"Pre- or postnominal or predicative",
+        "pos":[]
+      },{
         "value":"prenom",
         "displayName":"Prenominal",
         "pos":["PD"]
-      },{
-        "value":"prenom|postnom|pred",
-        "displayName":"prenom|postnom|pred",
-        "pos":["AA"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -279,6 +299,10 @@
         "value":"dem",
         "displayName":"Demonstrative",
         "pos":["ADV"]
+      },{
+        "value":"indef",
+        "displayName":"Indefinite",
+        "pos":[]
       },{
         "value":"indef|inter",
         "displayName":"indef|inter",

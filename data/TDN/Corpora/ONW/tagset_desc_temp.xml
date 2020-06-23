@@ -601,17 +601,35 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="prenom|postnom|pred" desc="prenom|postnom|pred">
-                    <value>prenom|postnom|pred</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
+                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
+                    <value>pred|prenom|postnom</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
         <feature displayName="Representation" desc="Number representation">
             <name>representation</name>
             <values>
+                <featureValue displayName="Digit" desc="Digit">
+                    <value>dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Alphabetic" desc="Alphabetic">
+                    <value>let</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Roman" desc="Roman">
+                    <value>rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Digit/Alphabetic" desc="Digit/Alphabetic">
+                    <value>mix-dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Roman/Alphabetic" desc="Roman/Alphabetic">
+                    <value>mix-rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
                 <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
                     <value>dig|let|rom|mix-dig|mix-rom</value>
                     <posForValue>
@@ -634,6 +652,10 @@
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="Indefinite" desc="indefinite pronominal adverb">
+                    <value>indef</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="Interrogative" desc="interrogative adverb">
                     <value>inter</value>

@@ -86,6 +86,10 @@
     "pos_case":{
       "id":"pos_case",
       "values":[{
+        "value":"acc",
+        "displayName":"Accusative",
+        "pos":[]
+      },{
         "value":"dat",
         "displayName":"Dative",
         "pos":["PD","NOU-C","NOU-P"]
@@ -102,6 +106,10 @@
         "displayName":"gen|dat",
         "pos":["PD","NOU-C","AA","NUM"]
       },{
+        "value":"nom",
+        "displayName":"Nominative",
+        "pos":[]
+      },{
         "value":"nom|dat|acc|voc",
         "displayName":"nom|dat|acc|voc",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
@@ -113,6 +121,10 @@
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+      },{
+        "value":"voc",
+        "displayName":"Vocative",
+        "pos":[]
       }]
     },
     "pos_tense":{
@@ -166,6 +178,10 @@
         "displayName":"n|s/th",
         "pos":["NOU-P"]
       },{
+        "value":"n|s/th",
+        "displayName":"n|s/th",
+        "pos":["NOU-P"]
+      },{
         "value":"r/re",
         "displayName":"-r/-re",
         "pos":["PD","AA","NUM"]
@@ -177,10 +193,6 @@
         "value":"s/th",
         "displayName":"-s/-th",
         "pos":["PD","NOU-C","NOU-P","NUM"]
-      },{
-        "value":"s/th|n",
-        "displayName":"s/th|n",
-        "pos":["NUM"]
       },{
         "value":"t",
         "displayName":"-t",
@@ -194,9 +206,29 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
+        "value":"dig",
+        "displayName":"Digit",
+        "pos":[]
+      },{
         "value":"dig|let|rom|mix-dig|mix-rom",
         "displayName":"dig|let|rom|mix-dig|mix-rom",
         "pos":["NUM"]
+      },{
+        "value":"let",
+        "displayName":"Alphabetic",
+        "pos":[]
+      },{
+        "value":"mix-dig",
+        "displayName":"Digit/Alphabetic",
+        "pos":[]
+      },{
+        "value":"mix-rom",
+        "displayName":"Roman/Alphabetic",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"Roman",
+        "pos":[]
       }]
     },
     "pos_position":{
@@ -206,10 +238,6 @@
         "displayName":"Free",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"free|prenom|postnom",
-        "displayName":"free|prenom|postnom",
-        "pos":["NUM"]
-      },{
         "value":"postnom",
         "displayName":"Postnominal",
         "pos":["AA"]
@@ -217,6 +245,10 @@
         "value":"prenom",
         "displayName":"Prenominal",
         "pos":["PD","AA","NUM"]
+      },{
+        "value":"prenom|postnom|free",
+        "displayName":"prenom|postnom|free",
+        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -266,6 +298,10 @@
         "displayName":"Interrogative",
         "pos":["PD"]
       },{
+        "value":"inter|rel",
+        "displayName":"inter|rel",
+        "pos":[]
+      },{
         "value":"meta",
         "displayName":"Meta",
         "pos":["RES"]
@@ -314,10 +350,6 @@
         "displayName":"Relative",
         "pos":["PD"]
       },{
-        "value":"rel|inter",
-        "displayName":"rel|inter",
-        "pos":["PD"]
-      },{
         "value":"sub",
         "displayName":"Subordinating",
         "pos":["CONJ"]
@@ -337,6 +369,10 @@
         "value":"conj",
         "displayName":"Conjunctive",
         "pos":["VRB"]
+      },{
+        "value":"imp",
+        "displayName":"Imperative",
+        "pos":[]
       },{
         "value":"ind",
         "displayName":"Indicative",

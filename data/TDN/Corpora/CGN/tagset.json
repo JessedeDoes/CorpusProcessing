@@ -86,6 +86,10 @@
     "pos_case":{
       "id":"pos_case",
       "values":[{
+        "value":"acc",
+        "displayName":"acc",
+        "pos":[]
+      },{
         "value":"dat",
         "displayName":"dat",
         "pos":["PD","NOU-C","NOU-P"]
@@ -102,6 +106,10 @@
         "displayName":"gen|dat",
         "pos":["PD","NOU-C","AA","NUM"]
       },{
+        "value":"nom",
+        "displayName":"nom",
+        "pos":[]
+      },{
         "value":"nom|dat|acc|voc",
         "displayName":"nom|dat|acc|voc",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
@@ -113,6 +121,10 @@
         "value":"uncl",
         "displayName":"uncl",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+      },{
+        "value":"voc",
+        "displayName":"voc",
+        "pos":[]
       }]
     },
     "pos_tense":{
@@ -194,9 +206,29 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
+        "value":"dig",
+        "displayName":"dig",
+        "pos":[]
+      },{
         "value":"dig|let|rom|mix-dig|mix-rom",
         "displayName":"dig|let|rom|mix-dig|mix-rom",
         "pos":["NUM"]
+      },{
+        "value":"let",
+        "displayName":"let",
+        "pos":[]
+      },{
+        "value":"mix-dig",
+        "displayName":"mix-dig",
+        "pos":[]
+      },{
+        "value":"mix-rom",
+        "displayName":"mix-rom",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"rom",
+        "pos":[]
       }]
     },
     "pos_position":{
@@ -337,6 +369,10 @@
         "value":"conj",
         "displayName":"conj",
         "pos":["VRB"]
+      },{
+        "value":"imp",
+        "displayName":"imp",
+        "pos":[]
       },{
         "value":"ind",
         "displayName":"ind",

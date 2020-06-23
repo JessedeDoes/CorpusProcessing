@@ -612,11 +612,31 @@
         <feature displayName="representation" desc="representation">
             <name>representation</name>
             <values>
+                <featureValue displayName="rom" desc="rom">
+                    <value>rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-rom" desc="mix-rom">
+                    <value>mix-rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-dig" desc="mix-dig">
+                    <value>mix-dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
                 <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
                     <value>dig|let|rom|mix-dig|mix-rom</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="dig" desc="dig">
+                    <value>dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="let" desc="let">
+                    <value>let</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
@@ -664,6 +684,10 @@
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="indef" desc="indef">
+                    <value>indef</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>

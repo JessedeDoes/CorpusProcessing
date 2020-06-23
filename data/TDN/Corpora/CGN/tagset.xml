@@ -133,6 +133,10 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="nom" desc="nom">
+                    <value>nom</value>
+                    <posForValue></posForValue>
+                </featureValue>
                 <featureValue displayName="gen|dat" desc="gen|dat">
                     <value>gen|dat</value>
                     <posForValue>
@@ -157,6 +161,14 @@
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="acc" desc="acc">
+                    <value>acc</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="voc" desc="voc">
+                    <value>voc</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="gen" desc="gen">
                     <value>gen</value>
@@ -426,6 +438,10 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="imp" desc="imp">
+                    <value>imp</value>
+                    <posForValue></posForValue>
+                </featureValue>
                 <featureValue displayName="ind" desc="ind">
                     <value>ind</value>
                     <posForValue>
@@ -593,11 +609,31 @@
         <feature displayName="representation" desc="representation">
             <name>representation</name>
             <values>
+                <featureValue displayName="rom" desc="rom">
+                    <value>rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-rom" desc="mix-rom">
+                    <value>mix-rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-dig" desc="mix-dig">
+                    <value>mix-dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
                 <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
                     <value>dig|let|rom|mix-dig|mix-rom</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="dig" desc="dig">
+                    <value>dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="let" desc="let">
+                    <value>let</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>

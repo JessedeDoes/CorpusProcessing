@@ -42,7 +42,6 @@ object  defaultTagParser extends TagParser
   override def parseTag(ts: TagSet, t: String): Tag = new CGNStyleTag(t, ts)
 }
 
-
 object MolexTagSet extends TagSet("molex")
 {
   override def fromProposition(p:Proposition, posIsSpecial: Boolean = false):Tag = UDTagSet.fromProposition(p)
@@ -123,9 +122,13 @@ object TagSet
     println(pretty.format(xml))
   }
 
-  def tagsetFromSetOfTags(prefix: String, tags: Set[Tag]) = {
+  def tagsetFromSetOfTags(prefix: String, tags: Set[Tag], addParts: Boolean=true) = {
     val posTags = tags.map(_.pos).toList
     val partitions: Map[String,List[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value).toList)
+
+    val partitions_enhanced = if (addParts) partitions.mapValues(l => l.toSet ++ l.flatMap(_.split("\\|")).toSet) // voor values van de vorma|b|c enz, add a b c
+      .mapValues(_.toList) else partitions
+
     val pos2partitions: Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
     val valueRestrictions:List[ValueRestriction] =
       tags.groupBy(_.pos).flatMap(
@@ -135,7 +138,7 @@ object TagSet
         } }
       ).toList
 
-    TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions, listOfTags = tags)
+    TagSet(prefix, posTags, partitions_enhanced, pos2partitions, parser, List(), valueRestrictions, listOfTags = tags)
   }
 
   def compare(t1: TagSet, t2: TagSet): Unit =
@@ -369,18 +372,23 @@ case class TagSet(prefix: String,
 
   def normalizeFeatureValue(n: String, v: String): String = {
     val tagset = this
-    if (tagset == null) v else {
-      val p = tagset.partitions.getOrElse(n,List())
-      val values = v.split("\\|")
-      val lijstje = p.zipWithIndex.toMap
-      val additions = values.filter(f => !lijstje.contains(v)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
 
-      def combi = lijstje ++ additions
-      //println(n + " " + combi)
-      Try {values.sortBy(x => combi(x)).mkString("|") } match {
-        case Success(z) => z
-        case _ => v
-      }
+      val featureValues = tagset.partitions.getOrElse(n,List())
+
+      val valueParts = v.split("\\|")
+      val canonical = featureValues.find(_.split("\\|").toSet == valueParts.toSet)
+
+      canonical.getOrElse({
+        val lijstje = featureValues.zipWithIndex.toMap
+        val additions = valueParts.filter(f => !lijstje.exists(_._1 == f)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+        def combi = lijstje ++ additions
+        if (v.contains("inter")) println(n + ": " + lijstje + " --> " + additions)
+        Try {
+          valueParts.sortBy(x => combi(x)).mkString("|")
+        } match {
+          case Success(z) => z
+          case _ => v
+        }
+      })
     }
-  }
 }

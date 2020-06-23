@@ -136,21 +136,57 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
+        "value":"dig",
+        "displayName":"dig",
+        "pos":[]
+      },{
         "value":"dig|let|rom|mix-dig|mix-rom",
         "displayName":"dig|let|rom|mix-dig|mix-rom",
         "pos":["NUM"]
+      },{
+        "value":"let",
+        "displayName":"let",
+        "pos":[]
+      },{
+        "value":"mix-dig",
+        "displayName":"mix-dig",
+        "pos":[]
+      },{
+        "value":"mix-rom",
+        "displayName":"mix-rom",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"rom",
+        "pos":[]
       }]
     },
     "pos_position":{
       "id":"pos_position",
       "values":[{
-        "value":"free|prenom|postnom",
-        "displayName":"free|prenom|postnom",
-        "pos":["PD","NUM"]
+        "value":"free",
+        "displayName":"free",
+        "pos":["PD"]
+      },{
+        "value":"postnom",
+        "displayName":"postnom",
+        "pos":[]
+      },{
+        "value":"pred",
+        "displayName":"pred",
+        "pos":[]
       },{
         "value":"pred|prenom|postnom",
         "displayName":"pred|prenom|postnom",
         "pos":["AA"]
+      },{
+        "value":"prenom",
+        "displayName":"prenom",
+        "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["PD","NUM"]
       }]
     },
     "pos_subtype":{
@@ -200,6 +236,10 @@
     "pos_type":{
       "id":"pos_type",
       "values":[{
+        "value":"aux",
+        "displayName":"aux",
+        "pos":[]
+      },{
         "value":"aux|cop",
         "displayName":"aux|cop",
         "pos":["VRB"]
@@ -219,6 +259,10 @@
         "value":"coor",
         "displayName":"coor",
         "pos":["CONJ"]
+      },{
+        "value":"cop",
+        "displayName":"cop",
+        "pos":[]
       },{
         "value":"dem",
         "displayName":"dem",
@@ -268,6 +312,14 @@
         "displayName":"qual",
         "pos":["CONJ"]
       },{
+        "value":"recip",
+        "displayName":"recip",
+        "pos":[]
+      },{
+        "value":"refl",
+        "displayName":"refl",
+        "pos":[]
+      },{
         "value":"refl|recip",
         "displayName":"refl|recip",
         "pos":["PD"]
@@ -292,9 +344,17 @@
     "pos_mood":{
       "id":"pos_mood",
       "values":[{
+        "value":"conj",
+        "displayName":"conj",
+        "pos":[]
+      },{
         "value":"imp",
         "displayName":"imp",
         "pos":["VRB"]
+      },{
+        "value":"ind",
+        "displayName":"ind",
+        "pos":[]
       },{
         "value":"ind|conj",
         "displayName":"ind|conj",
@@ -335,6 +395,14 @@
         "value":"inf",
         "displayName":"inf",
         "pos":["VRB"]
+      },{
+        "value":"pastpart",
+        "displayName":"pastpart",
+        "pos":[]
+      },{
+        "value":"prespart",
+        "displayName":"prespart",
+        "pos":[]
       },{
         "value":"prespart|pastpart",
         "displayName":"prespart|pastpart",
