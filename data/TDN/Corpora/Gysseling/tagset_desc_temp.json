@@ -60,12 +60,12 @@
     "pos_LN":{
       "id":"pos_LN",
       "values":[{
-        "value":"pl",
-        "displayName":"Plural",
-        "pos":["PD"]
-      },{
         "value":"sg",
         "displayName":"Singular",
+        "pos":["PD"]
+      },{
+        "value":"pl",
+        "displayName":"Plural",
         "pos":["PD"]
       },{
         "value":"uncl",
@@ -76,12 +76,12 @@
     "pos_tense":{
       "id":"pos_tense",
       "values":[{
-        "value":"past",
-        "displayName":"past",
-        "pos":["VRB"]
-      },{
         "value":"pres",
         "displayName":"present",
+        "pos":["VRB"]
+      },{
+        "value":"past",
+        "displayName":"past",
         "pos":["VRB"]
       },{
         "value":"uncl",
@@ -112,10 +112,6 @@
         "displayName":"-nt",
         "pos":["VRB"]
       },{
-        "value":"oth",
-        "displayName":"Other",
-        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
-      },{
         "value":"r/re",
         "displayName":"-r/-re",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
@@ -127,6 +123,10 @@
         "value":"t",
         "displayName":"-t",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+      },{
+        "value":"oth",
+        "displayName":"Other",
+        "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -140,12 +140,12 @@
         "displayName":"Digit",
         "pos":[]
       },{
-        "value":"dig|let|rom|mix-dig|mix-rom",
-        "displayName":"dig|let|rom|mix-dig|mix-rom",
-        "pos":["NUM"]
-      },{
         "value":"let",
         "displayName":"Alphabetic",
+        "pos":[]
+      },{
+        "value":"rom",
+        "displayName":"Roman",
         "pos":[]
       },{
         "value":"mix-dig",
@@ -156,37 +156,37 @@
         "displayName":"Roman/Alphabetic",
         "pos":[]
       },{
-        "value":"rom",
-        "displayName":"Roman",
-        "pos":[]
+        "value":"dig|let|rom|mix-dig|mix-rom",
+        "displayName":"dig|let|rom|mix-dig|mix-rom",
+        "pos":["NUM"]
       }]
     },
     "pos_position":{
       "id":"pos_position",
       "values":[{
-        "value":"free",
-        "displayName":"Free",
+        "value":"prenom",
+        "displayName":"Prenominal",
         "pos":["PD"]
       },{
         "value":"postnom",
         "displayName":"Postnominal",
         "pos":[]
       },{
+        "value":"free",
+        "displayName":"Free",
+        "pos":["PD"]
+      },{
         "value":"pred",
         "displayName":"Predicative",
         "pos":[]
       },{
-        "value":"pred|prenom|postnom",
-        "displayName":"Pre- or postnominal or predicative",
-        "pos":["AA"]
-      },{
-        "value":"prenom",
-        "displayName":"Prenominal",
-        "pos":["PD"]
-      },{
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","NUM"]
+      },{
+        "value":"prenom|postnom|pred",
+        "displayName":"Pre- or postnominal or predicative",
+        "pos":[]
       }]
     },
     "pos_subtype":{
@@ -216,16 +216,16 @@
         "displayName":"Negative adverb",
         "pos":["ADV"]
       },{
-        "value":"oth",
-        "displayName":"Other",
-        "pos":["ADV"]
-      },{
         "value":"rel",
         "displayName":"Relative",
         "pos":["ADV"]
       },{
         "value":"resump",
         "displayName":"Resumptive",
+        "pos":["ADV"]
+      },{
+        "value":"oth",
+        "displayName":"Other",
         "pos":["ADV"]
       },{
         "value":"uncl",
@@ -236,41 +236,37 @@
     "pos_type":{
       "id":"pos_type",
       "values":[{
-        "value":"aux",
-        "displayName":"Auxiliary",
-        "pos":[]
-      },{
-        "value":"aux|cop",
-        "displayName":"Auxiliary or copula",
+        "value":"mai",
+        "displayName":"Main",
         "pos":["VRB"]
-      },{
-        "value":"aux|cop|mai",
-        "displayName":"Auxiliary or copula or main",
-        "pos":["VRB"]
-      },{
-        "value":"card",
-        "displayName":"Cardinal",
-        "pos":["NUM"]
-      },{
-        "value":"comp",
-        "displayName":"Comparing",
-        "pos":["CONJ"]
-      },{
-        "value":"coor",
-        "displayName":"Coordinating",
-        "pos":["CONJ"]
       },{
         "value":"cop",
         "displayName":"Copula",
         "pos":[]
       },{
+        "value":"aux",
+        "displayName":"Auxiliary",
+        "pos":[]
+      },{
+        "value":"card",
+        "displayName":"Cardinal",
+        "pos":["NUM"]
+      },{
+        "value":"coor",
+        "displayName":"Coordinating",
+        "pos":["CONJ"]
+      },{
+        "value":"comp",
+        "displayName":"Comparing",
+        "pos":["CONJ"]
+      },{
         "value":"dem",
         "displayName":"Demonstrative",
         "pos":["PD"]
       },{
-        "value":"expl",
-        "displayName":"Explicative",
-        "pos":["CONJ"]
+        "value":"reg",
+        "displayName":"Regular",
+        "pos":["ADV"]
       },{
         "value":"indef",
         "displayName":"Indefinite",
@@ -280,21 +276,9 @@
         "displayName":"Interrogative",
         "pos":["PD"]
       },{
-        "value":"mai",
-        "displayName":"Main",
-        "pos":["VRB"]
-      },{
-        "value":"neg",
-        "displayName":"Negative",
-        "pos":["CONJ"]
-      },{
         "value":"ord",
         "displayName":"Ordinal",
         "pos":["NUM"]
-      },{
-        "value":"oth",
-        "displayName":"other",
-        "pos":["RES"]
       },{
         "value":"pers",
         "displayName":"Personal",
@@ -312,6 +296,14 @@
         "displayName":"Qualitative",
         "pos":["CONJ"]
       },{
+        "value":"expl",
+        "displayName":"Explicative",
+        "pos":["CONJ"]
+      },{
+        "value":"neg",
+        "displayName":"Negative",
+        "pos":["CONJ"]
+      },{
         "value":"recip",
         "displayName":"Reciprocal",
         "pos":[]
@@ -319,14 +311,6 @@
         "value":"refl",
         "displayName":"Reflexive",
         "pos":[]
-      },{
-        "value":"refl|recip",
-        "displayName":"Reflexive or reciprocal",
-        "pos":["PD"]
-      },{
-        "value":"reg",
-        "displayName":"Regular",
-        "pos":["ADV"]
       },{
         "value":"rel",
         "displayName":"Relative",
@@ -336,14 +320,34 @@
         "displayName":"Subordinating",
         "pos":["CONJ"]
       },{
+        "value":"oth",
+        "displayName":"other",
+        "pos":["RES"]
+      },{
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","CONJ","VRB","NUM","RES","ADP"]
+      },{
+        "value":"recip|refl",
+        "displayName":"Reciprocal or reflexive",
+        "pos":[]
+      },{
+        "value":"mai|cop|aux",
+        "displayName":"Main or copula or auxiliary",
+        "pos":[]
+      },{
+        "value":"cop|aux",
+        "displayName":"Copula or auxiliary",
+        "pos":[]
       }]
     },
     "pos_mood":{
       "id":"pos_mood",
       "values":[{
+        "value":"ind",
+        "displayName":"Indicative",
+        "pos":[]
+      },{
         "value":"conj",
         "displayName":"Conjunctive",
         "pos":[]
@@ -351,10 +355,6 @@
         "value":"imp",
         "displayName":"Imperative",
         "pos":["VRB"]
-      },{
-        "value":"ind",
-        "displayName":"Indicative",
-        "pos":[]
       },{
         "value":"ind|conj",
         "displayName":"Indicative|Conjunctive",
@@ -372,12 +372,12 @@
     "pos_number":{
       "id":"pos_number",
       "values":[{
-        "value":"pl",
-        "displayName":"Plural",
-        "pos":["NOU-C","AA"]
-      },{
         "value":"sg",
         "displayName":"Singular",
+        "pos":["NOU-C","AA"]
+      },{
+        "value":"pl",
+        "displayName":"Plural",
         "pos":["NOU-C","AA"]
       },{
         "value":"uncl",
@@ -396,20 +396,20 @@
         "displayName":"Infinitive",
         "pos":["VRB"]
       },{
-        "value":"pastpart",
-        "displayName":"Past participle",
-        "pos":[]
-      },{
         "value":"prespart",
         "displayName":"Present participle",
         "pos":[]
       },{
-        "value":"prespart|pastpart",
-        "displayName":"prespart|pastpart",
-        "pos":["VRB"]
+        "value":"pastpart",
+        "displayName":"Past participle",
+        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",
+        "pos":["VRB"]
+      },{
+        "value":"prespart|pastpart",
+        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       }]
     },

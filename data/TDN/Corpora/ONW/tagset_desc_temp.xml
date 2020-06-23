@@ -594,16 +594,18 @@
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
+                    <value>prenom|postnom|pred</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
-                </featureValue>
-                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
-                    <value>pred|prenom|postnom</value>
-                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>

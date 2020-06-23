@@ -397,18 +397,16 @@
                     <value>pred</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
-                    <value>pred|prenom|postnom</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
+                    <value>prenom|postnom|pred</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
@@ -548,18 +546,6 @@
                     <value>aux</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
-                    <value>aux|cop</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Auxiliary or copula or main" desc="Auxiliary or copula or main">
-                    <value>aux|cop|mai</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Cardinal" desc="Cardinal">
                     <value>card</value>
                     <posForValue>
@@ -652,12 +638,6 @@
                     <value>refl</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Reflexive or reciprocal" desc="Reflexive or reciprocal">
-                    <value>refl|recip</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Relative" desc="Relative">
                     <value>rel</value>
                     <posForValue>
@@ -687,6 +667,18 @@
                         <pos>RES</pos>
                         <pos>VRB</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="Reciprocal or reflexive" desc="Reciprocal or reflexive. Category in corpus gysseling, where e.g. 'zich' can be used in the reciprocal sense.">
+                    <value>recip|refl</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Main or copula or auxiliary" desc="Auxiliary or copula or main">
+                    <value>mai|cop|aux</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="Copula or auxiliary" desc="Auxiliary or copula">
+                    <value>cop|aux</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>

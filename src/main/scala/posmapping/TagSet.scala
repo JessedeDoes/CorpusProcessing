@@ -261,7 +261,7 @@ case class TagSet(prefix: String,
     pretty(render(json))
 
     val subannotations = partitions.filter(_._1 != "pos").map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
-      "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> getDisplayName(f,v), "pos" -> this.posForFeature(f,v)))).toMap
+      "values" -> vals.map(v => Map("value" -> v, "displayName" -> getDisplayName(f,v), "pos" -> this.posForFeature(f,v)))).toMap
     })
 
     val JSON =
@@ -382,12 +382,12 @@ case class TagSet(prefix: String,
         val lijstje = featureValues.zipWithIndex.toMap
         val additions = valueParts.filter(f => !lijstje.exists(_._1 == f)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
         def combi = lijstje ++ additions
-        if (v.contains("inter")) println(n + ": " + lijstje + " --> " + additions)
+        // if (additions.nonEmpty) Console.err.println(n + ": " + lijstje + " --> " + additions)
         Try {
           valueParts.sortBy(x => combi(x)).mkString("|")
         } match {
           case Success(z) => z
-          case _ => v
+          case _ => Console.err.println(s"Failure sorting $valueParts"); v
         }
       })
     }

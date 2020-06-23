@@ -404,7 +404,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue_gysseling displayName="infinitive/gerund" desc="Infinitive or gerund (!NORMALIZE)">
+        <featureValue_gysseling displayName="infinitive/gerund" desc="Infinitive or gerund">
           <value>inf|ger</value>
           <posForValue>
             <pos>VRB</pos>
@@ -900,7 +900,7 @@
         </featureValue>
         <featureValue displayName="Pre- or postnominal or predicative"
           desc="Prenominal or postnominal or predicative">
-          <value>pred|prenom|postnom</value>
+          <value>prenom|postnom|pred</value>
           <posForValue>
             <pos>AA</pos>
             <pos>NUM</pos>
@@ -1093,15 +1093,15 @@
           </posForValue>
         </featureValue>
 
-        <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
-          <value>aux|cop</value>
+        <featureValue displayName="Copula or auxiliary" desc="Auxiliary or copula">
+          <value>cop|aux</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
 
-        <featureValue displayName="Auxiliary or copula or main" desc="Auxiliary or copula or main">
-          <value>aux|cop|mai</value>
+        <featureValue displayName="Main or copula or auxiliary" desc="Auxiliary or copula or main">
+          <value>mai|cop|aux</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -1252,8 +1252,8 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Reflexive or reciprocal" desc="Reflexive or reciprocal">
-          <value>refl|recip</value>
+        <featureValue displayName="Reciprocal or reflexive" desc="Reciprocal or reflexive. Category in corpus gysseling, where e.g. 'zich' can be used in the reciprocal sense.">
+          <value>recip|refl</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
