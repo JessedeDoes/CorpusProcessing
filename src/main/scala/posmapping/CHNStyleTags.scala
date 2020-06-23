@@ -15,7 +15,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
   val patchedTag = if (!tag.endsWith(")")) s"$tag()" else tag
 
 
-  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=other)" else patchedTag.replaceAll(",other", ",type=other")
+  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=oth)" else patchedTag.replaceAll(",oth", ",type=oth")
 
   if (Tag.findFirstIn(tagToParse).isEmpty)
   {

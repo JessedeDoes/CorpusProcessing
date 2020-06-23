@@ -1,5 +1,7 @@
 package corpusprocessing.gysseling
 
+import java.io.File
+
 import scala.xml.{Elem, Node, XML}
 
 object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
@@ -48,5 +50,16 @@ object mapMiddelnederlandseTagsGys extends mapMiddelnederlandseTagsClass(true)
     val m = Map("authenticityLevel1" -> authenticity, "signatureLevel1" -> verblijfplaats)
 
     updateElement(addMeta(d, m), _.label=="teiHeader", x => x.copy(child = x.child ++ Seq(brontxt)))
+  }
+
+  /*
+     SOURCEDIR=/home/jesse/workspace/data-historische-corpora/gysseling/nederlab-tei
+     TARGETDIR=/home/jesse/workspace/data-historische-corpora/gysseling/nederlab-enhanced-tei
+
+   */
+
+  override def main(args: Array[String]) = {
+    val argz = if (args.size > 0) args else Array(GysselingSettings.SOURCEDIR, GysselingSettings.TARGETDIR)
+    utils.ProcessFolder.processFolder(new File(argz(0)), new File(argz(1)), fixFile)
   }
 }

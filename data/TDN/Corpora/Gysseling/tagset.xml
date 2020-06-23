@@ -71,8 +71,8 @@
         <feature displayName="degree" desc="degree">
             <name>degree</name>
             <values>
-                <featureValue displayName="pos|comp|sup" desc="pos|comp|sup">
-                    <value>pos|comp|sup</value>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
@@ -496,12 +496,6 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="pre|post|circ" desc="pre|post|circ">
-                    <value>pre|post|circ</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="comp" desc="comp">
                     <value>comp</value>
                     <posForValue>
@@ -524,6 +518,12 @@
                     <value>dem</value>
                     <posForValue>
                         <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="oth" desc="oth">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="rel" desc="rel">
@@ -560,6 +560,7 @@
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>
                     <posForValue>
+                        <pos>ADP</pos>
                         <pos>CONJ</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
@@ -601,12 +602,6 @@
                     <value>pron</value>
                     <posForValue>
                         <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="ord" desc="ord">
@@ -726,32 +721,32 @@
     </constraints>
     <implications> </implications>
     <tags>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=0)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=a)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=e)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=n)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=oth)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=r/re)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=s/th)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=t)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>ADP(type=uncl,inflection=0)</tag>
+        <tag>ADP(type=uncl,inflection=a)</tag>
+        <tag>ADP(type=uncl,inflection=e)</tag>
+        <tag>ADP(type=uncl,inflection=n)</tag>
+        <tag>ADP(type=uncl,inflection=oth)</tag>
+        <tag>ADP(type=uncl,inflection=r/re)</tag>
+        <tag>ADP(type=uncl,inflection=s/th)</tag>
+        <tag>ADP(type=uncl,inflection=t)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=n)</tag>
@@ -966,7 +961,7 @@
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=t)</tag>
-        <tag>RES(type=other)</tag>
+        <tag>RES(type=oth)</tag>
         <tag>RES(type=uncl,inflection=0)</tag>
         <tag>RES(type=uncl,inflection=e)</tag>
         <tag>RES(type=uncl,inflection=n)</tag>

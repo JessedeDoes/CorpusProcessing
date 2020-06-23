@@ -72,6 +72,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   val mappingNS = "data/CG/gystags_newstyle.txt"
   val mappingGoogleDrive = "data/CG/gysseling_mapping_from_google_drive.txt"
+
   val tagMappingNew: Map[String, String] = scala.io.Source.fromFile(mappingGoogleDrive).getLines().toStream
     .map(s => s.split("\\t")).map(x => x(0) -> x(1)).toMap
 
@@ -79,7 +80,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
 
   val tagMapping = if (cgnMode) tagMappingOld else tagMappingTDN
 
-
+  // println(tagMapping)
 
 
   val morfcodeAttribuut = "@type"
@@ -138,7 +139,7 @@ class mapMiddelnederlandseTagsClass(gysMode: Boolean) {
     })
 
     val newId = new PrefixedAttribute("xml", "id", "w." + n, Null)
-    val noVMNW = false
+    val noVMNW = !GysselingSettings.doVMNWLinking
 
     val (dictionaryLinks:Seq[Node], lemmaPatches: Set[LemmaWoordvorm]) =
       if (gysMode && !noVMNW) VMNWdb.linkXML(newId.value.text) else (Seq[Node](),Set[LemmaWoordvorm]())

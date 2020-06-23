@@ -19,14 +19,14 @@
         <feature displayName="Number (inherent)" desc="Number ('inherent' Lemma number)">
             <name>LN</name>
             <values>
-                <featureValue displayName="Plural" desc="Plural">
-                    <value>pl</value>
+                <featureValue displayName="Singular" desc="Singular">
+                    <value>sg</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Singular" desc="Singular">
-                    <value>sg</value>
+                <featureValue displayName="Plural" desc="Plural">
+                    <value>pl</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -71,8 +71,8 @@
         <feature displayName="Degree" desc="Degree of comparison">
             <name>degree</name>
             <values>
-                <featureValue displayName="pos|comp|sup" desc="pos|comp|sup">
-                    <value>pos|comp|sup</value>
+                <featureValue displayName="Unclear" desc="unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
@@ -177,28 +177,6 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Other" desc="Other values">
-                    <value>oth</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>ADP</pos>
-                        <pos>ADV</pos>
-                        <pos>CONJ</pos>
-                        <pos>INT</pos>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                        <pos>RES</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="-r/-re" desc="Inflection -r or -re">
                     <value>r/re</value>
                     <posForValue>
@@ -242,19 +220,41 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Other" desc="Other values">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>ADP</pos>
+                        <pos>ADV</pos>
+                        <pos>CONJ</pos>
+                        <pos>INT</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                        <pos>RES</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="Mood" desc="Mood (subjunctives and imperatives are not in the molex database)">
             <name>mood</name>
             <values>
-                <featureValue displayName="Indicative|Conjunctive" desc="Indicative or conjunctive">
-                    <value>ind|conj</value>
+                <featureValue displayName="Imperative" desc="Imperative">
+                    <value>imp</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Imperative" desc="Imperative">
-                    <value>imp</value>
+                <featureValue displayName="Indicative|Conjunctive" desc="Indicative or conjunctive">
+                    <value>ind|conj</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -361,11 +361,9 @@
         <feature displayName="Position" desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
             <name>position</name>
             <values>
-                <featureValue displayName="Pre- or postnominal or predicative" desc="Prenominal or postnominal or predicative">
-                    <value>pred|prenom|postnom</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
+                <featureValue displayName="prenom|postnom|pred" desc="prenom|postnom|pred">
+                    <value>prenom|postnom|pred</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="free|prenom|postnom" desc="free|prenom|postnom">
                     <value>free|prenom|postnom</value>
@@ -408,31 +406,25 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="indefinite" desc="indefinite pronominal adverb">
+                <featureValue displayName="Indefinite" desc="indefinite pronominal adverb">
                     <value>indef</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="interrogative" desc="interrogative pronominal adverb">
+                <featureValue displayName="Interrogative" desc="interrogative adverb">
                     <value>inter</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Negative" desc="Negative">
+                <featureValue displayName="Negative adverb" desc="Negative">
                     <value>neg</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Other" desc="Other">
-                    <value>oth</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Relative" desc="relative pronominal adverb or conjunction">
+                <featureValue displayName="Relative" desc="relative pronominal adverb">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -440,6 +432,12 @@
                 </featureValue>
                 <featureValue displayName="Resumptive" desc="Resumptive (mainly 'zo')">
                     <value>resump</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Other" desc="Other">
+                    <value>oth</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -484,17 +482,13 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Auxiliary or copula" desc="Auxiliary or copula">
-                    <value>aux|cop</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
+                <featureValue displayName="cop|aux" desc="cop|aux">
+                    <value>cop|aux</value>
+                    <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Auxiliary or copula or main" desc="Auxiliary or copula or main">
-                    <value>aux|cop|mai</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
+                <featureValue displayName="mai|cop|aux" desc="mai|cop|aux">
+                    <value>mai|cop|aux</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="Cardinal" desc="Cardinal">
                     <value>card</value>
@@ -580,11 +574,9 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Reflexive or reciprocal" desc="Reflexive or reciprocal">
-                    <value>refl|recip</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
+                <featureValue displayName="recip|refl" desc="recip|refl">
+                    <value>recip|refl</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="Relative" desc="Relative">
                     <value>rel</value>
@@ -599,26 +591,21 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="other" desc="other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
+                        <pos>ADP</pos>
                         <pos>CONJ</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                         <pos>RES</pos>
                         <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="pre|post|circ" desc="pre|post|circ">
-                    <value>pre|post|circ</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -736,9 +723,9 @@
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=pers =&gt; LP, LN</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=refl|recip =&gt; LP, LN</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=uncl =&gt; LP, LN, inflection</declaration>
-        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=dem =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=dem =&gt; subtype || subtype=oth</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=dem =&gt; inflection</declaration>
-        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=indef =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(Gysseling))">pos=PD, type=indef =&gt; subtype || subtype=oth</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=indef =&gt; inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=rel =&gt; inflection</declaration>
         <declaration corpus="Some(Set(Gysseling))">pos=PD, type=inter =&gt; inflection</declaration>
@@ -750,32 +737,32 @@
         <declaration corpus="Some(Set(Gysseling))">pos=RES =&gt; type,inflection</declaration>
     </implications>
     <tags>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=pos|comp|sup,number=uncl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=0)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=a)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=e)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=n)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=oth)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=r/re)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=s/th)</tag>
-        <tag>ADP(type=pre|post|circ,inflection=t)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=0,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=e,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,number=uncl,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>ADP(type=uncl,inflection=0)</tag>
+        <tag>ADP(type=uncl,inflection=a)</tag>
+        <tag>ADP(type=uncl,inflection=e)</tag>
+        <tag>ADP(type=uncl,inflection=n)</tag>
+        <tag>ADP(type=uncl,inflection=oth)</tag>
+        <tag>ADP(type=uncl,inflection=r/re)</tag>
+        <tag>ADP(type=uncl,inflection=s/th)</tag>
+        <tag>ADP(type=uncl,inflection=t)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=dem,inflection=n)</tag>
@@ -990,7 +977,7 @@
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=oth)</tag>
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=s/th)</tag>
         <tag>PD(position=free|prenom|postnom,type=uncl,LN=uncl,LP=uncl,inflection=t)</tag>
-        <tag>RES(type=other)</tag>
+        <tag>RES(type=oth)</tag>
         <tag>RES(type=uncl,inflection=0)</tag>
         <tag>RES(type=uncl,inflection=e)</tag>
         <tag>RES(type=uncl,inflection=n)</tag>

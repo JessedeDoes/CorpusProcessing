@@ -19,7 +19,7 @@ object TagsetDiachroonNederlands {
   def integratedTag(tag: String) = CHNStyleTag(tag, TDNTagset)
   //case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
 
-  def pretty(tagset: TagSet, corpusName: String, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
+  def printTagsetXML(tagset: TagSet, corpusName: String, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
     //val xmlWriter = new PrintWriter(System.out)
     pw.println(TagSet.pretty.format(tagset.toXML(corpus=corpusName)))
     pw.close()
@@ -38,6 +38,7 @@ object TagsetDiachroonNederlands {
    */
 
   def sortFeatures(t: TagSet, tRef: TagSet): TagSet = {
+
     def sortPartition(pos: String, features: List[String]) = {
       val lijstje: Map[String, Int] = tRef.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
       val additions = features.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
@@ -50,7 +51,7 @@ object TagsetDiachroonNederlands {
       val lijstje: Map[String, Int] = tRef.partitions.getOrElse(n, List()).zipWithIndex.toMap
       val addition  = v.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
       val combi = lijstje ++ addition
-      v.sortBy(x => combi(x))
+      v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n,_)) // ok, dit was wat we in eerste instantie misten ... later nog de sortering voor JSON
     }
 
     t.copy(partitions = t.partitions.map({case (n,v)=>
@@ -77,7 +78,7 @@ object TagsetDiachroonNederlands {
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
     val outputBase = prefix + outputName
-    pretty(corpusBasedWithDesc, corpusName, new PrintWriter(s"$outputBase.xml"))
+    printTagsetXML(corpusBasedWithDesc, corpusName, new PrintWriter(s"$outputBase.xml"))
 
     val jsonWriter = new PrintWriter(s"$outputBase.json")
     jsonWriter.println(corpusBasedWithDesc.asJSON)
@@ -144,7 +145,7 @@ object TagsetDiachroonNederlands {
 
     val xmlWriter = new PrintWriter(prefix + "tagset.xml")
 
-    pretty(tagset, corpus, xmlWriter)
+    printTagsetXML(tagset, corpus, xmlWriter)
     xmlWriter.close()
 
     val jsonWriter = new PrintWriter(prefix + "tagset.json")
@@ -248,7 +249,7 @@ object TagsetDiachroonNederlands {
 
     val m = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping)
 
-    val mappingRows = m.toList.sortBy(_._1).map({case (c, t) =>
+    val mappingRows = m.toList.sortBy(_._2.toString).map({case (c, t) =>
       val p1 = c.replaceAll("\\(.*", "")
       val p = t.pos
       val color = if (p == p1) "white" else "orange"
@@ -266,8 +267,7 @@ object TagsetDiachroonNederlands {
    def main(args: Array[String]): Unit = {
      doCGN
      doGysseling
-      //doONW
-      //doGysseling
+     doONW
    }
 }
 

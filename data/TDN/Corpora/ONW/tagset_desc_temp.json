@@ -177,7 +177,7 @@
         "pos":["VRB"]
       },{
         "value":"uncl",
-        "displayName":"uncl",
+        "displayName":"Unclear",
         "pos":["VRB"]
       }]
     },
@@ -205,19 +205,19 @@
       "id":"pos_valency",
       "values":[{
         "value":"impers",
-        "displayName":"impers",
+        "displayName":"Impersonal",
         "pos":["VRB"]
       },{
         "value":"intr",
-        "displayName":"intr",
+        "displayName":"Intransitive",
         "pos":["VRB"]
       },{
         "value":"refl",
-        "displayName":"refl",
+        "displayName":"Reflexive",
         "pos":["VRB"]
       },{
         "value":"trans",
-        "displayName":"trans",
+        "displayName":"Transitive",
         "pos":["VRB"]
       },{
         "value":"trans|intr",
@@ -229,7 +229,7 @@
         "pos":["VRB"]
       },{
         "value":"uncl",
-        "displayName":"uncl",
+        "displayName":"Unclear",
         "pos":["VRB"]
       }]
     },
@@ -265,7 +265,7 @@
         "pos":["AA"]
       },{
         "value":"uncl",
-        "displayName":"Other",
+        "displayName":"Unclear",
         "pos":["PD","NUM"]
       }]
     },
@@ -285,15 +285,15 @@
         "pos":["ADV"]
       },{
         "value":"inter",
-        "displayName":"interrogative",
+        "displayName":"Interrogative",
         "pos":["ADV"]
       },{
         "value":"neg",
-        "displayName":"Negative",
+        "displayName":"Negative adverb",
         "pos":["ADV"]
       },{
-        "value":"other",
-        "displayName":"other",
+        "value":"oth",
+        "displayName":"Other",
         "pos":["PD"]
       },{
         "value":"rel",
@@ -388,16 +388,16 @@
         "displayName":"Conjunctive",
         "pos":["VRB"]
       },{
-        "value":"conj|ind",
-        "displayName":"conj|ind",
-        "pos":["VRB"]
-      },{
         "value":"imp",
         "displayName":"Imperative",
         "pos":["VRB"]
       },{
         "value":"ind",
         "displayName":"Indicative",
+        "pos":["VRB"]
+      },{
+        "value":"ind|conj",
+        "displayName":"Indicative|Conjunctive",
         "pos":["VRB"]
       }]
     },
@@ -449,7 +449,7 @@
         "pos":["VRB"]
       },{
         "value":"uncl",
-        "displayName":"uncl",
+        "displayName":"Unclear",
         "pos":["VRB"]
       },{
         "value":"weak",
@@ -484,10 +484,6 @@
         "displayName":"Feminine",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       },{
-        "value":"f|m",
-        "displayName":"f|m",
-        "pos":["PD","NOU-C"]
-      },{
         "value":"f|n",
         "displayName":"Feminine/Neuter",
         "pos":["NOU-C"]
@@ -495,6 +491,10 @@
         "value":"m",
         "displayName":"Masculine",
         "pos":["PD","NOU-C","AA","NUM"]
+      },{
+        "value":"m|f",
+        "displayName":"Masculine/Feminine",
+        "pos":["PD","NOU-C"]
       },{
         "value":"m|n",
         "displayName":"Masculine/Neuter",
@@ -540,12 +540,12 @@
         "displayName":"Accusative",
         "pos":["ADP"]
       },{
-        "value":"acc|dat",
-        "displayName":"acc|dat",
-        "pos":["ADP"]
-      },{
         "value":"dat",
         "displayName":"Dative",
+        "pos":["ADP"]
+      },{
+        "value":"dat|acc",
+        "displayName":"Dative/Accusative",
         "pos":["ADP"]
       },{
         "value":"gen",
@@ -553,7 +553,7 @@
         "pos":["ADP"]
       },{
         "value":"uncl",
-        "displayName":"uncl",
+        "displayName":"Unclear",
         "pos":["ADP"]
       }]
     },

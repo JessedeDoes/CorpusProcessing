@@ -36,49 +36,25 @@ object HistoricalTagsetPatching {
   def patchPoSMistakes(m: String, p:String, w: String, lemma: String): String =
   {
     // println(s"$m\t$p")
-    val infl = getFeature(p,"infl").getOrElse("other")
+    val infl = getFeature(p,"infl").getOrElse("oth")
 
-    val p1 = if (false && p.startsWith("NUM") && p.contains("indef")) {
-      p.replaceAll("NUM", "PD").replaceAll("indefinite", "indef")
-    }
-
-    else if (false && p.startsWith("ADP")) {
-      p.replaceAll("type=gen(,?)","")
-    }
-
-    else if (false && p.startsWith("ADJ")) {
-      val base =  if (bw2aa) p.replaceAll("ADJ","AA").replaceAll("\\)",",position=pred|prenom|postnom)") else p
-      base.replaceAll("number=","NA=") // Vervelend!!!
-    }
-
-
-    else if (p.startsWith("VRB") && p.contains("=part")) {
+    val p1 =  if (p.startsWith("VRB") && p.contains("=part")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
       p.replaceAll("finiteness=part","finiteness=" + tense + "part").replaceAll("number=","NA=")
     }
+
     // else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")
     else p
 
-    val p2 = p1.replaceAll("inflection=","infl=").replaceAll("=main","=mai")
-      .replaceAll("=finite","=fin")
-      .replaceAll("=-","=other")
-      .replaceAll("=(card|ord)inal","=$1")
-      .replaceAll("=present", "=pres")
-      .replaceAll("=imperative", "=imp")
-      .replaceAll("=adverbial", "=adv")
-      .replaceAll("=coord","=coor")
-      .replaceAll("type=interjection(,?)","")
-      .replaceAll("=general","=gen")
-      .replaceAll("recp","recip")
-      .replaceAll("=negative","=neg")
 
-    val integratedTag = Try(TagsetDiachroonNederlands.integratedTag(p2)) match {
+
+    val integratedTag = Try(TagsetDiachroonNederlands.integratedTag(p1)) match {
       case Success(t) =>
-      case Failure(exception) => Console.err.println(s"exception for $p2: $exception")
+      case Failure(exception) => Console.err.println(s"exception for $p1: $exception")
     }
 
     // println(s"$m\t$p\t$p2")
-    p2
+    p1
   }
 
   def getTaggingFromMorfcodes(tagMapping: Map[String,String], morfcodes: List[String], morfcodes_original: List[String],

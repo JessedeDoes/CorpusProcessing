@@ -21,14 +21,14 @@
         <feature displayName="Lemma Gender" desc="'Inherent' lemma gender">
             <name>LG</name>
             <values>
-                <featureValue displayName="Feminine" desc="Feminine">
-                    <value>f</value>
+                <featureValue displayName="Masculine" desc="Masculine">
+                    <value>m</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Masculine" desc="Masculine">
-                    <value>m</value>
+                <featureValue displayName="Feminine" desc="Feminine">
+                    <value>f</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -50,14 +50,14 @@
         <feature displayName="Number (inherent)" desc="Number ('inherent' Lemma number)">
             <name>LN</name>
             <values>
-                <featureValue displayName="Plural" desc="Plural">
-                    <value>pl</value>
+                <featureValue displayName="Singular" desc="Singular">
+                    <value>sg</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Singular" desc="Singular">
-                    <value>sg</value>
+                <featureValue displayName="Plural" desc="Plural">
+                    <value>pl</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -102,7 +102,7 @@
         <feature displayName="Written form" desc="Written form">
             <name>WF</name>
             <values>
-                <featureValue displayName="Abbreviated" desc="Abbreviated">
+                <featureValue displayName="Abbrebreviated" desc="Abbreviated">
                     <value>abbr</value>
                     <posForValue>
                         <pos>RES</pos>
@@ -245,15 +245,23 @@
         <feature displayName="Gender" desc="Gender agreement">
             <name>gender</name>
             <values>
+                <featureValue displayName="Masculine" desc="Masculine">
+                    <value>m</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Feminine" desc="Feminine">
                     <value>f</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Masculine" desc="Masculine">
-                    <value>m</value>
+                <featureValue displayName="Neuter" desc="Neuter">
+                    <value>n</value>
                     <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -269,14 +277,6 @@
                     <value>m|n</value>
                     <posForValue>
                         <pos>NOU-C</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Neuter" desc="Neuter">
-                    <value>n</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -332,17 +332,6 @@
                         <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="-r/-re" desc="Inflection -r or -re">
                     <value>r/re</value>
                     <posForValue>
@@ -366,11 +355,15 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="s" desc="s">
-                    <value>s</value>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
+                        <pos>AA</pos>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="0|e" desc="0|e">
@@ -382,12 +375,6 @@
                 </featureValue>
                 <featureValue displayName="0|e|n" desc="0|e|n">
                     <value>0|e|n</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="r/re|s" desc="r/re|s">
-                    <value>r/re|s</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -421,14 +408,14 @@
         <feature displayName="Mood" desc="Mood (subjunctives and imperatives are not in the molex database)">
             <name>mood</name>
             <values>
-                <featureValue displayName="Conjunctive" desc="Conjunctive">
-                    <value>conj</value>
+                <featureValue displayName="Indicative" desc="Indicative">
+                    <value>ind</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Indicative" desc="Indicative">
-                    <value>ind</value>
+                <featureValue displayName="Conjunctive" desc="Conjunctive">
+                    <value>conj</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -565,16 +552,8 @@
         <feature displayName="Position" desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
             <name>position</name>
             <values>
-                <featureValue displayName="Free" desc="Free (adverbial or predicative)">
-                    <value>free</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Other" desc="Other">
-                    <value>uncl</value>
+                <featureValue displayName="Prenominal" desc="Prenominal">
+                    <value>prenom</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NUM</pos>
@@ -587,8 +566,16 @@
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Prenominal" desc="Prenominal">
-                    <value>prenom</value>
+                <featureValue displayName="Free" desc="Free (adverbial or predicative)">
+                    <value>free</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NUM</pos>
@@ -608,12 +595,6 @@
             <values>
                 <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
                     <value>dig|let|rom|mix-dig|mix-rom</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="dig|let|rom|mix-dig|mix-romcase" desc="dig|let|rom|mix-dig|mix-romcase">
-                    <value>dig|let|rom|mix-dig|mix-romcase</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
@@ -675,6 +656,12 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Exclamative" desc="Explicative">
+                    <value>excl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Regular" desc="Regular">
                     <value>reg</value>
                     <posForValue>
@@ -699,12 +686,6 @@
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>oth</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Personal" desc="Personal">
                     <value>pers</value>
                     <posForValue>
@@ -717,22 +698,16 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Postposition" desc="Postposition">
-                    <value>post</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Preposition" desc="Preposition">
                     <value>pre</value>
                     <posForValue>
                         <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Exclamative" desc="Explicative">
-                    <value>excl</value>
+                <featureValue displayName="Postposition" desc="Postposition">
+                    <value>post</value>
                     <posForValue>
-                        <pos>PD</pos>
+                        <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Meta" desc="Meta, de SPEC(meta) van het CGN">
@@ -765,13 +740,6 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="Unclear">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="Foreign" desc="Foreign word">
                     <value>for</value>
                     <posForValue>
@@ -781,6 +749,19 @@
                 <featureValue displayName="Symbol" desc="Symbol">
                     <value>symb</value>
                     <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="other" desc="other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>ADV</pos>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
@@ -962,11 +943,11 @@
         <declaration corpus="Some(Set(CGN))">pos=PD, type=dem, position=free =&gt; number, gender</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD, type=dem, position=prenom =&gt; number, gender</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD, type=dem, position=uncl =&gt; number, gender</declaration>
-        <declaration corpus="Some(Set(CGN))">pos=PD, type=dem, position=prenom =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=PD, type=dem, position=prenom =&gt; subtype || subtype=oth</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD, type=indef, position=free =&gt; number,gender</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD, type=indef, position=prenom =&gt; number,gender</declaration>
         <declaration corpus="Some(Set(CGN))">pos=PD, type=indef, position=uncl =&gt; number, gender</declaration>
-        <declaration corpus="Some(Set(CGN))">pos=PD, type=indef, position=prenom =&gt; subtype || subtype=other</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=PD, type=indef, position=prenom =&gt; subtype || subtype=oth</declaration>
         <declaration corpus="Some(Set(CGN))">pos=ADP =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=ADV =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=CONJ =&gt; type</declaration>
@@ -1029,7 +1010,6 @@
         <tag>NOU-P(number=uncl,inflection=uncl)</tag>
         <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
         <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=n)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s)</tag>
         <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s/th)</tag>
         <tag>NUM(type=card,position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
         <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=s/th|n)</tag>
@@ -1038,7 +1018,7 @@
         <tag>NUM(type=ord,position=free,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=e)</tag>
         <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=r/re)</tag>
         <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
-        <tag>NUM(type=ord,position=uncl,representation=dig|let|rom|mix-dig|mix-romcase,inflection=uncl)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
         <tag>PC()</tag>
         <tag>PD(type=dem,case=dat,position=free,inflection=n,number=uncl,gender=uncl)</tag>
         <tag>PD(type=dem,case=dat,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
@@ -1061,7 +1041,7 @@
         <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=pl,gender=uncl,inflection=n)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=sg,gender=f,inflection=r/re)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=sg,gender=m|n,inflection=n)</tag>
-        <tag>PD(type=dem,subtype=art,position=prenom,case=gen,number=sg,gender=m|n,inflection=s)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=gen,number=sg,gender=m|n,inflection=s/th)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=gen,number=uncl,gender=uncl,inflection=r/re)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=nom|dat|acc|voc,number=sg,gender=n,inflection=0)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=nom|dat|acc|voc,number=uncl,gender=uncl,inflection=0)</tag>
@@ -1097,12 +1077,12 @@
         <tag>PD(type=pers,case=dat|acc,LP=3,LN=sg,LG=m,position=free,inflection=0)</tag>
         <tag>PD(type=pers,case=dat|acc,LP=3,LN=sg,LG=n,position=free,inflection=0)</tag>
         <tag>PD(type=pers,case=dat|acc,LP=3,LN=uncl,LG=f,position=free,inflection=0)</tag>
-        <tag>PD(type=pers,case=gen,LP=1,LN=pl,position=free,inflection=r/re|s)</tag>
-        <tag>PD(type=pers,case=gen,LP=1,LN=sg,position=free,inflection=r/re|s)</tag>
-        <tag>PD(type=pers,case=gen,LP=2,LN=uncl,position=free,inflection=r/re|s)</tag>
-        <tag>PD(type=pers,case=gen,LP=3,LN=pl,position=free,inflection=r/re|s)</tag>
-        <tag>PD(type=pers,case=gen,LP=3,LN=sg,position=free,inflection=r/re|s)</tag>
-        <tag>PD(type=pers,case=gen,LP=3,LN=uncl,position=free,inflection=r/re|s)</tag>
+        <tag>PD(type=pers,case=gen,LP=1,LN=pl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=1,LN=sg,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=2,LN=uncl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=pl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=sg,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=uncl,position=free,inflection=r/re|s/th)</tag>
         <tag>PD(type=pers,case=gen,inflection=0,position=free,LP=3,LN=uncl,LG=uncl)</tag>
         <tag>PD(type=pers,case=nom|voc,LP=1,LN=pl,position=free,inflection=0)</tag>
         <tag>PD(type=pers,case=nom|voc,LP=1,LN=sg,position=free,inflection=0)</tag>

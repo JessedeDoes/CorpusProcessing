@@ -248,8 +248,8 @@
         "displayName":"ord",
         "pos":["NUM"]
       },{
-        "value":"other",
-        "displayName":"other",
+        "value":"oth",
+        "displayName":"oth",
         "pos":["RES"]
       },{
         "value":"pers",
@@ -259,10 +259,6 @@
         "value":"poss",
         "displayName":"poss",
         "pos":["PD"]
-      },{
-        "value":"pre|post|circ",
-        "displayName":"pre|post|circ",
-        "pos":["ADP"]
       },{
         "value":"pron",
         "displayName":"pron",
@@ -290,7 +286,7 @@
       },{
         "value":"uncl",
         "displayName":"uncl",
-        "pos":["PD","CONJ","VRB","NUM","RES"]
+        "pos":["PD","CONJ","VRB","NUM","RES","ADP"]
       }]
     },
     "pos_mood":{
@@ -308,8 +304,8 @@
     "pos_degree":{
       "id":"pos_degree",
       "values":[{
-        "value":"pos|comp|sup",
-        "displayName":"pos|comp|sup",
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["AA"]
       }]
     },

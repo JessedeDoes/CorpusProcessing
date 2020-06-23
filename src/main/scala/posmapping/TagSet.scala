@@ -15,6 +15,7 @@ import posmapping.CHNStyleTags.parser
 import sparql2xquery.ValueRestrictionSet
 
 import scala.collection.immutable
+import scala.util.{Success, Try}
 //import scala.Predef.Map
 
 
@@ -362,5 +363,24 @@ case class TagSet(prefix: String,
         Console.err.println(s"$f not ok for ${t.pos}")
       b
     })
+  }
+
+
+
+  def normalizeFeatureValue(n: String, v: String): String = {
+    val tagset = this
+    if (tagset == null) v else {
+      val p = tagset.partitions.getOrElse(n,List())
+      val values = v.split("\\|")
+      val lijstje = p.zipWithIndex.toMap
+      val additions = values.filter(f => !lijstje.contains(v)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+
+      def combi = lijstje ++ additions
+      //println(n + " " + combi)
+      Try {values.sortBy(x => combi(x)).mkString("|") } match {
+        case Success(z) => z
+        case _ => v
+      }
+    }
   }
 }

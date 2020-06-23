@@ -148,9 +148,9 @@
         "displayName":"free|prenom|postnom",
         "pos":["PD","NUM"]
       },{
-        "value":"pred|prenom|postnom",
-        "displayName":"Pre- or postnominal or predicative",
-        "pos":["AA"]
+        "value":"prenom|postnom|pred",
+        "displayName":"prenom|postnom|pred",
+        "pos":[]
       }]
     },
     "pos_subtype":{
@@ -169,15 +169,15 @@
         "pos":["ADV"]
       },{
         "value":"indef",
-        "displayName":"indefinite",
+        "displayName":"Indefinite",
         "pos":["ADV"]
       },{
         "value":"inter",
-        "displayName":"interrogative",
+        "displayName":"Interrogative",
         "pos":["ADV"]
       },{
         "value":"neg",
-        "displayName":"Negative",
+        "displayName":"Negative adverb",
         "pos":["ADV"]
       },{
         "value":"oth",
@@ -200,14 +200,6 @@
     "pos_type":{
       "id":"pos_type",
       "values":[{
-        "value":"aux|cop",
-        "displayName":"Auxiliary or copula",
-        "pos":["VRB"]
-      },{
-        "value":"aux|cop|mai",
-        "displayName":"Auxiliary or copula or main",
-        "pos":["VRB"]
-      },{
         "value":"card",
         "displayName":"Cardinal",
         "pos":["NUM"]
@@ -219,6 +211,10 @@
         "value":"coor",
         "displayName":"Coordinating",
         "pos":["CONJ"]
+      },{
+        "value":"cop|aux",
+        "displayName":"cop|aux",
+        "pos":[]
       },{
         "value":"dem",
         "displayName":"Demonstrative",
@@ -240,6 +236,10 @@
         "displayName":"Main",
         "pos":["VRB"]
       },{
+        "value":"mai|cop|aux",
+        "displayName":"mai|cop|aux",
+        "pos":[]
+      },{
         "value":"neg",
         "displayName":"Negative",
         "pos":["CONJ"]
@@ -248,7 +248,7 @@
         "displayName":"Ordinal",
         "pos":["NUM"]
       },{
-        "value":"other",
+        "value":"oth",
         "displayName":"other",
         "pos":["RES"]
       },{
@@ -260,10 +260,6 @@
         "displayName":"Possessive",
         "pos":["PD"]
       },{
-        "value":"pre|post|circ",
-        "displayName":"pre|post|circ",
-        "pos":["ADP"]
-      },{
         "value":"pron",
         "displayName":"Pronominal",
         "pos":["ADV"]
@@ -272,9 +268,9 @@
         "displayName":"Qualitative",
         "pos":["CONJ"]
       },{
-        "value":"refl|recip",
-        "displayName":"Reflexive or reciprocal",
-        "pos":["PD"]
+        "value":"recip|refl",
+        "displayName":"recip|refl",
+        "pos":[]
       },{
         "value":"reg",
         "displayName":"Regular",
@@ -290,7 +286,7 @@
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["PD","CONJ","VRB","NUM","RES"]
+        "pos":["PD","CONJ","VRB","NUM","RES","ADP"]
       }]
     },
     "pos_mood":{
@@ -308,8 +304,8 @@
     "pos_degree":{
       "id":"pos_degree",
       "values":[{
-        "value":"pos|comp|sup",
-        "displayName":"pos|comp|sup",
+        "value":"uncl",
+        "displayName":"Unclear",
         "pos":["AA"]
       }]
     },

@@ -292,8 +292,8 @@
         "displayName":"neg",
         "pos":["ADV"]
       },{
-        "value":"other",
-        "displayName":"other",
+        "value":"oth",
+        "displayName":"oth",
         "pos":["PD"]
       },{
         "value":"rel",
@@ -388,16 +388,16 @@
         "displayName":"conj",
         "pos":["VRB"]
       },{
-        "value":"conj|ind",
-        "displayName":"conj|ind",
-        "pos":["VRB"]
-      },{
         "value":"imp",
         "displayName":"imp",
         "pos":["VRB"]
       },{
         "value":"ind",
         "displayName":"ind",
+        "pos":["VRB"]
+      },{
+        "value":"ind|conj",
+        "displayName":"ind|conj",
         "pos":["VRB"]
       }]
     },
@@ -484,10 +484,6 @@
         "displayName":"f",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       },{
-        "value":"f|m",
-        "displayName":"f|m",
-        "pos":["PD","NOU-C"]
-      },{
         "value":"f|n",
         "displayName":"f|n",
         "pos":["NOU-C"]
@@ -495,6 +491,10 @@
         "value":"m",
         "displayName":"m",
         "pos":["PD","NOU-C","AA","NUM"]
+      },{
+        "value":"m|f",
+        "displayName":"m|f",
+        "pos":["PD","NOU-C"]
       },{
         "value":"m|n",
         "displayName":"m|n",
@@ -540,12 +540,12 @@
         "displayName":"acc",
         "pos":["ADP"]
       },{
-        "value":"acc|dat",
-        "displayName":"acc|dat",
-        "pos":["ADP"]
-      },{
         "value":"dat",
         "displayName":"dat",
+        "pos":["ADP"]
+      },{
+        "value":"dat|acc",
+        "displayName":"dat|acc",
         "pos":["ADP"]
       },{
         "value":"gen",
