@@ -5,6 +5,12 @@
         multipleValues: true
      
 
+      - name: representation
+        displayName: representation
+        uiType: select
+        multipleValues: true
+     
+
       - name: verbclass
         displayName: verbclass
         uiType: select
@@ -35,8 +41,8 @@
         multipleValues: true
      
 
-      - name: PA
-        displayName: PA
+      - name: LP
+        displayName: LP
         uiType: select
         multipleValues: true
      
@@ -65,20 +71,14 @@
         multipleValues: true
      
 
-      - name: GA
-        displayName: GA
+      - name: LN
+        displayName: LN
         uiType: select
         multipleValues: true
      
 
       - name: finiteness
         displayName: finiteness
-        uiType: select
-        multipleValues: true
-     
-
-      - name: NA
-        displayName: NA
         uiType: select
         multipleValues: true
      
@@ -91,6 +91,12 @@
 
       - name: person
         displayName: person
+        uiType: select
+        multipleValues: true
+     
+
+      - name: LG
+        displayName: LG
         uiType: select
         multipleValues: true
      

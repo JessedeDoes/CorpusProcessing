@@ -14,32 +14,27 @@
         <pos displayName="PC" desc="PC">PC</pos>
         <pos displayName="PD" desc="PD">PD</pos>
         <pos displayName="RES" desc="RES">RES</pos>
+        <pos displayName="RM" desc="RM">RM</pos>
         <pos displayName="VRB" desc="VRB">VRB</pos>
     </mainPoS>
     <partitions>
-        <feature displayName="GA" desc="GA">
-            <name>GA</name>
+        <feature displayName="LG" desc="LG">
+            <name>LG</name>
             <values>
+                <featureValue displayName="n" desc="n">
+                    <value>n</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="f" desc="f">
                     <value>f</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="m|f" desc="m|f">
-                    <value>m|f</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="m|n" desc="m|n">
-                    <value>m|n</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="n" desc="n">
-                    <value>n</value>
+                <featureValue displayName="m" desc="m">
+                    <value>m</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -47,22 +42,14 @@
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>
                     <posForValue>
-                        <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="NA" desc="NA">
-            <name>NA</name>
+        <feature displayName="LN" desc="LN">
+            <name>LN</name>
             <values>
-                <featureValue displayName="pl" desc="pl">
-                    <value>pl</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
@@ -75,11 +62,69 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="pl" desc="pl">
+                    <value>pl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="LP" desc="LP">
+            <name>LP</name>
+            <values>
+                <featureValue displayName="1" desc="1">
+                    <value>1</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="2" desc="2">
+                    <value>2</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="3" desc="3">
+                    <value>3</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="WF" desc="WF">
+            <name>WF</name>
+            <values>
+                <featureValue displayName="abbr" desc="abbr">
+                    <value>abbr</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="trunc" desc="trunc">
+                    <value>trunc</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="case" desc="case">
             <name>case</name>
             <values>
+                <featureValue displayName="nom|voc" desc="nom|voc">
+                    <value>nom|voc</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="dat" desc="dat">
                     <value>dat</value>
                     <posForValue>
@@ -88,19 +133,9 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="dat|acc" desc="dat|acc">
-                    <value>dat|acc</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="gen" desc="gen">
-                    <value>gen</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
-                        <pos>PD</pos>
-                    </posForValue>
+                <featureValue displayName="nom" desc="nom">
+                    <value>nom</value>
+                    <posForValue></posForValue>
                 </featureValue>
                 <featureValue displayName="gen|dat" desc="gen|dat">
                     <value>gen|dat</value>
@@ -111,38 +146,40 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="nom|acc|dat|voc" desc="nom|acc|dat|voc">
-                    <value>nom|acc|dat|voc</value>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
-                        <pos>NOU-C</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="nom|acc|voc" desc="nom|acc|voc">
-                    <value>nom|acc|voc</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="nom|dat|acc|voc" desc="nom|dat|acc|voc">
-                    <value>nom|dat|acc|voc</value>
-                    <posForValue>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
                         <pos>NUM</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="nom|voc" desc="nom|voc">
-                    <value>nom|voc</value>
+                <featureValue displayName="dat|acc" desc="dat|acc">
+                    <value>dat|acc</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
+                <featureValue displayName="acc" desc="acc">
+                    <value>acc</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="voc" desc="voc">
+                    <value>voc</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="gen" desc="gen">
+                    <value>gen</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="nom|dat|acc|voc" desc="nom|dat|acc|voc">
+                    <value>nom|dat|acc|voc</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
@@ -168,14 +205,14 @@
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="sup" desc="sup">
-                    <value>sup</value>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
+                <featureValue displayName="sup" desc="sup">
+                    <value>sup</value>
                     <posForValue>
                         <pos>AA</pos>
                     </posForValue>
@@ -185,6 +222,12 @@
         <feature displayName="finiteness" desc="finiteness">
             <name>finiteness</name>
             <values>
+                <featureValue displayName="prespart" desc="prespart">
+                    <value>prespart</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="fin" desc="fin">
                     <value>fin</value>
                     <posForValue>
@@ -197,20 +240,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="pastpart" desc="pastpart">
-                    <value>pastpart</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="prespart" desc="prespart">
-                    <value>prespart</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pastpart" desc="pastpart">
+                    <value>pastpart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -220,15 +257,11 @@
         <feature displayName="gender" desc="gender">
             <name>gender</name>
             <values>
-                <featureValue displayName="f" desc="f">
-                    <value>f</value>
+                <featureValue displayName="n" desc="n">
+                    <value>n</value>
                     <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="m" desc="m">
-                    <value>m</value>
-                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -244,13 +277,18 @@
                     <value>m|n</value>
                     <posForValue>
                         <pos>NOU-C</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n" desc="n">
-                    <value>n</value>
+                <featureValue displayName="f" desc="f">
+                    <value>f</value>
                     <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="m" desc="m">
+                    <value>m</value>
+                    <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -264,11 +302,11 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="infl" desc="infl">
-            <name>infl</name>
+        <feature displayName="inflection" desc="inflection">
+            <name>inflection</name>
             <values>
-                <featureValue displayName="0" desc="0">
-                    <value>0</value>
+                <featureValue displayName="e" desc="e">
+                    <value>e</value>
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
@@ -278,20 +316,11 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="e" desc="e">
-                    <value>e</value>
+                <featureValue displayName="0|e" desc="0|e">
+                    <value>0|e</value>
                     <posForValue>
-                        <pos>AA</pos>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
                         <pos>PD</pos>
                         <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="e|n" desc="e|n">
-                    <value>e|n</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="n" desc="n">
@@ -305,28 +334,14 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n|r/re" desc="n|r/re">
-                    <value>n|r/re</value>
+                <featureValue displayName="t" desc="t">
+                    <value>t</value>
                     <posForValue>
-                        <pos>AA</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="n|s/th" desc="n|s/th">
-                    <value>n|s/th</value>
-                    <posForValue>
-                        <pos>NOU-P</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="r/re" desc="r/re">
-                    <value>r/re</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="r/re|s/th" desc="r/re|s/th">
-                    <value>r/re|s/th</value>
+                <featureValue displayName="0|e|n" desc="0|e|n">
+                    <value>0|e|n</value>
                     <posForValue>
                         <pos>PD</pos>
                     </posForValue>
@@ -340,16 +355,32 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="r/re|s/th" desc="r/re|s/th">
+                    <value>r/re|s/th</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="s/th|n" desc="s/th|n">
                     <value>s/th|n</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="t" desc="t">
-                    <value>t</value>
+                <featureValue displayName="n|r/re" desc="n|r/re">
+                    <value>n|r/re</value>
                     <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="0" desc="0">
+                    <value>0</value>
+                    <posForValue>
+                        <pos>AA</pos>
                         <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
@@ -359,8 +390,29 @@
                         <pos>AA</pos>
                         <pos>NOU-C</pos>
                         <pos>NOU-P</pos>
+                        <pos>NUM</pos>
                         <pos>PD</pos>
                         <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="r/re" desc="r/re">
+                    <value>r/re</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="n|s/th" desc="n|s/th">
+                    <value>n|s/th</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="nt" desc="nt">
+                    <value>nt</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -370,12 +422,6 @@
             <values>
                 <featureValue displayName="conj" desc="conj">
                     <value>conj</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="ind" desc="ind">
-                    <value>ind</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -392,20 +438,21 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="imp" desc="imp">
+                    <value>imp</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="ind" desc="ind">
+                    <value>ind</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="number" desc="number">
             <name>number</name>
             <values>
-                <featureValue displayName="pl" desc="pl">
-                    <value>pl</value>
-                    <posForValue>
-                        <pos>NOU-C</pos>
-                        <pos>NOU-P</pos>
-                        <pos>PD</pos>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="sg" desc="sg">
                     <value>sg</value>
                     <posForValue>
@@ -415,12 +462,6 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="sg|pl" desc="sg|pl">
-                    <value>sg|pl</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="uncl" desc="uncl">
                     <value>uncl</value>
                     <posForValue>
@@ -430,32 +471,11 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-            </values>
-        </feature>
-        <feature displayName="person" desc="person">
-            <name>person</name>
-            <values>
-                <featureValue displayName="1" desc="1">
-                    <value>1</value>
+                <featureValue displayName="pl" desc="pl">
+                    <value>pl</value>
                     <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="2" desc="2">
-                    <value>2</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="3" desc="3">
-                    <value>3</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
-                    <posForValue>
+                        <pos>NOU-C</pos>
+                        <pos>NOU-P</pos>
                         <pos>PD</pos>
                         <pos>VRB</pos>
                     </posForValue>
@@ -466,21 +486,9 @@
             <name>pos</name>
             <values>
                 <featureValue>
-                    <value>AA</value>
+                    <value>PD</value>
                     <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
-                    <value>ADP</value>
-                    <posForValue>
-                        <pos>ADP</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
-                    <value>ADV</value>
-                    <posForValue>
-                        <pos>ADV</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
@@ -490,15 +498,27 @@
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>INT</value>
+                    <value>VRB</value>
                     <posForValue>
-                        <pos>INT</pos>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>PC</value>
+                    <posForValue>
+                        <pos>PC</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
                     <value>NOU-C</value>
                     <posForValue>
                         <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>AA</value>
+                    <posForValue>
+                        <pos>AA</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
@@ -514,27 +534,33 @@
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>PC</value>
-                    <posForValue>
-                        <pos>PC</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
-                    <value>PD</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue>
                     <value>RES</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue>
-                    <value>VRB</value>
+                    <value>ADP</value>
                     <posForValue>
-                        <pos>VRB</pos>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>INT</value>
+                    <posForValue>
+                        <pos>INT</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>ADV</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>RM</value>
+                    <posForValue>
+                        <pos>RM</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -542,20 +568,6 @@
         <feature displayName="position" desc="position">
             <name>position</name>
             <values>
-                <featureValue displayName="free" desc="free">
-                    <value>free</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                        <pos>NUM</pos>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="free|prenom|postnom" desc="free|prenom|postnom">
-                    <value>free|prenom|postnom</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="postnom" desc="postnom">
                     <value>postnom</value>
                     <posForValue>
@@ -575,7 +587,53 @@
                     <posForValue>
                         <pos>AA</pos>
                         <pos>NUM</pos>
+                        <pos>PD</pos>
                     </posForValue>
+                </featureValue>
+                <featureValue displayName="free" desc="free">
+                    <value>free</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                        <pos>NUM</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="free|prenom|postnom" desc="free|prenom|postnom">
+                    <value>free|prenom|postnom</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="representation" desc="representation">
+            <name>representation</name>
+            <values>
+                <featureValue displayName="rom" desc="rom">
+                    <value>rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-rom" desc="mix-rom">
+                    <value>mix-rom</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="mix-dig" desc="mix-dig">
+                    <value>mix-dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
+                    <value>dig|let|rom|mix-dig|mix-rom</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="dig" desc="dig">
+                    <value>dig</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="let" desc="let">
+                    <value>let</value>
+                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
@@ -588,29 +646,11 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="rel|inter" desc="rel|inter">
-                    <value>rel|inter</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
             </values>
         </feature>
         <feature displayName="tense" desc="tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="past" desc="past">
-                    <value>past</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="pres" desc="pres">
                     <value>pres</value>
                     <posForValue>
@@ -623,99 +663,21 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="past" desc="past">
+                    <value>past</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="type" desc="type">
             <name>type</name>
             <values>
-                <featureValue displayName="card" desc="card">
-                    <value>card</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="coor" desc="coor">
                     <value>coor</value>
                     <posForValue>
                         <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="dem" desc="dem">
-                    <value>dem</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="dem|indef" desc="dem|indef">
-                    <value>dem|indef</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="excl" desc="excl">
-                    <value>excl</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="for" desc="for">
-                    <value>for</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="indef" desc="indef">
-                    <value>indef</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="inter" desc="inter">
-                    <value>inter</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="meta" desc="meta">
-                    <value>meta</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="ord" desc="ord">
-                    <value>ord</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="other" desc="other">
-                    <value>other</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="pers" desc="pers">
-                    <value>pers</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="pers|refl" desc="pers|refl">
-                    <value>pers|refl</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="poss" desc="poss">
-                    <value>poss</value>
-                    <posForValue>
-                        <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="post" desc="post">
-                    <value>post</value>
-                    <posForValue>
-                        <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="pre" desc="pre">
@@ -724,8 +686,20 @@
                         <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="pron" desc="pron">
-                    <value>pron</value>
+                <featureValue displayName="for" desc="for">
+                    <value>for</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="post" desc="post">
+                    <value>post</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="reg" desc="reg">
+                    <value>reg</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
@@ -742,10 +716,28 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="reg" desc="reg">
-                    <value>reg</value>
+                <featureValue displayName="rel|inter" desc="rel|inter">
+                    <value>rel|inter</value>
                     <posForValue>
-                        <pos>ADV</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="inter" desc="inter">
+                    <value>inter</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="dem" desc="dem">
+                    <value>dem</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="oth" desc="oth">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="rel" desc="rel">
@@ -754,22 +746,34 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="rel|inter" desc="rel|inter">
-                    <value>rel|inter</value>
+                <featureValue displayName="dem|indef" desc="dem|indef">
+                    <value>dem|indef</value>
                     <posForValue>
                         <pos>PD</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="sub" desc="sub">
-                    <value>sub</value>
-                    <posForValue>
-                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="symb" desc="symb">
                     <value>symb</value>
                     <posForValue>
                         <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="meta" desc="meta">
+                    <value>meta</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="indef" desc="indef">
+                    <value>indef</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pers|refl" desc="pers|refl">
+                    <value>pers|refl</value>
+                    <posForValue>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="uncl" desc="uncl">
@@ -779,23 +783,40 @@
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-            </values>
-        </feature>
-        <feature displayName="wf" desc="wf">
-            <name>wf</name>
-            <values>
-                <featureValue displayName="abbr" desc="abbr">
-                    <value>abbr</value>
+                <featureValue displayName="sub" desc="sub">
+                    <value>sub</value>
                     <posForValue>
-                        <pos>ADV</pos>
-                        <pos>PD</pos>
-                        <pos>RES</pos>
+                        <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="trunc" desc="trunc">
-                    <value>trunc</value>
+                <featureValue displayName="poss" desc="poss">
+                    <value>poss</value>
                     <posForValue>
-                        <pos>RES</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="pers" desc="pers">
+                    <value>pers</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="card" desc="card">
+                    <value>card</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="excl" desc="excl">
+                    <value>excl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="ord" desc="ord">
+                    <value>ord</value>
+                    <posForValue>
+                        <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -805,11 +826,11 @@
         <constraint>
             <pos>AA</pos>
             <features>
-                <feature>case</feature>
                 <feature>degree</feature>
-                <feature>infl</feature>
                 <feature>pos</feature>
+                <feature>inflection</feature>
                 <feature>position</feature>
+                <feature>case</feature>
             </features>
         </constraint>
         <constraint>
@@ -823,9 +844,7 @@
             <pos>ADV</pos>
             <features>
                 <feature>pos</feature>
-                <feature>subtype</feature>
                 <feature>type</feature>
-                <feature>wf</feature>
             </features>
         </constraint>
         <constraint>
@@ -844,33 +863,32 @@
         <constraint>
             <pos>NOU-C</pos>
             <features>
-                <feature>case</feature>
-                <feature>gender</feature>
-                <feature>infl</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
+                <feature>inflection</feature>
+                <feature>case</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NOU-P</pos>
             <features>
-                <feature>case</feature>
-                <feature>gender</feature>
-                <feature>infl</feature>
                 <feature>number</feature>
                 <feature>pos</feature>
+                <feature>inflection</feature>
+                <feature>case</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>NUM</pos>
             <features>
-                <feature>GA</feature>
-                <feature>NA</feature>
-                <feature>case</feature>
-                <feature>infl</feature>
                 <feature>pos</feature>
+                <feature>inflection</feature>
                 <feature>position</feature>
+                <feature>case</feature>
                 <feature>type</feature>
+                <feature>representation</feature>
             </features>
         </constraint>
         <constraint>
@@ -882,282 +900,267 @@
         <constraint>
             <pos>PD</pos>
             <features>
-                <feature>GA</feature>
-                <feature>NA</feature>
-                <feature>case</feature>
-                <feature>gender</feature>
-                <feature>infl</feature>
+                <feature>LG</feature>
                 <feature>number</feature>
-                <feature>person</feature>
-                <feature>pos</feature>
-                <feature>position</feature>
+                <feature>LN</feature>
                 <feature>subtype</feature>
+                <feature>pos</feature>
+                <feature>inflection</feature>
+                <feature>position</feature>
+                <feature>case</feature>
                 <feature>type</feature>
-                <feature>wf</feature>
+                <feature>LP</feature>
+                <feature>gender</feature>
             </features>
         </constraint>
         <constraint>
             <pos>RES</pos>
             <features>
+                <feature>WF</feature>
                 <feature>pos</feature>
                 <feature>type</feature>
-                <feature>wf</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>RM</pos>
+            <features>
+                <feature>pos</feature>
             </features>
         </constraint>
         <constraint>
             <pos>VRB</pos>
             <features>
-                <feature>finiteness</feature>
-                <feature>infl</feature>
-                <feature>mood</feature>
                 <feature>number</feature>
-                <feature>person</feature>
+                <feature>mood</feature>
                 <feature>pos</feature>
+                <feature>inflection</feature>
+                <feature>finiteness</feature>
                 <feature>tense</feature>
             </features>
         </constraint>
     </constraints>
     <implications> </implications>
     <tags>
-        <tag>AA(degree=comp,position=free,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=comp,position=postnom,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=comp,position=prenom,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=comp,position=prenom,infl=e,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=comp,position=prenom,infl=n,case=gen|dat)</tag>
-        <tag>AA(degree=pos,position=free,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=pos,position=postnom,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=pos,position=prenom,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=pos,position=prenom,infl=e,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=pos,position=prenom,infl=n|r/re,case=gen|dat)</tag>
-        <tag>AA(degree=sup,position=free,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=sup,position=prenom,infl=0,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=sup,position=prenom,infl=e,case=nom|acc|dat|voc)</tag>
-        <tag>AA(degree=sup,position=prenom,infl=r/re,case=gen|dat)</tag>
-        <tag>AA(degree=uncl,position=uncl,case=uncl,infl=uncl)</tag>
+        <tag>AA(degree=comp,position=free,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=comp,position=postnom,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=comp,position=prenom,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=comp,position=prenom,inflection=e,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=comp,position=prenom,inflection=n,case=gen|dat)</tag>
+        <tag>AA(degree=pos,position=free,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=pos,position=postnom,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=pos,position=prenom,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=pos,position=prenom,inflection=e,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=pos,position=prenom,inflection=n|r/re,case=gen|dat)</tag>
+        <tag>AA(degree=sup,position=free,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=sup,position=prenom,inflection=0,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=sup,position=prenom,inflection=e,case=nom|dat|acc|voc)</tag>
+        <tag>AA(degree=sup,position=prenom,inflection=r/re,case=gen|dat)</tag>
+        <tag>AA(degree=uncl,position=uncl,case=uncl,inflection=uncl)</tag>
         <tag>ADP(type=post)</tag>
         <tag>ADP(type=pre)</tag>
-        <tag>ADV(type=pron,subtype=rel|inter)</tag>
         <tag>ADV(type=reg)</tag>
-        <tag>ADV(type=reg,subtype=uncl)</tag>
         <tag>ADV(type=uncl)</tag>
-        <tag>ADV(type=uncl,subtype=uncl)</tag>
-        <tag>ADV(type=uncl,wf=abbr)</tag>
         <tag>CONJ(type=coor)</tag>
         <tag>CONJ(type=sub)</tag>
         <tag>INT()</tag>
-        <tag>NOU-C(case=dat,number=pl,infl=t,gender=uncl)</tag>
-        <tag>NOU-C(case=dat,number=sg,infl=t,gender=uncl)</tag>
-        <tag>NOU-C(case=dat,number=uncl,infl=t,gender=uncl)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=pl,infl=n)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,infl=0)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=0,gender=uncl)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,infl=e,gender=uncl)</tag>
-        <tag>NOU-C(case=nom|dat|acc|voc,number=uncl,infl=0)</tag>
-        <tag>NOU-C(gender=uncl,number=uncl,case=uncl,infl=uncl)</tag>
-        <tag>NOU-C(number=pl,infl=n)</tag>
-        <tag>NOU-C(number=pl,infl=s/th)</tag>
-        <tag>NOU-C(number=pl,infl=uncl)</tag>
-        <tag>NOU-C(number=sg,case=dat,infl=e,gender=uncl)</tag>
-        <tag>NOU-C(number=sg,case=gen,infl=s/th,gender=m|n)</tag>
-        <tag>NOU-C(number=sg,case=gen,infl=s/th,gender=n)</tag>
-        <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=m|f,infl=0)</tag>
-        <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=n,infl=0)</tag>
-        <tag>NOU-C(number=sg,gender=uncl,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NOU-C(number=sg,infl=0,gender=n,case=nom|acc|dat|voc)</tag>
-        <tag>NOU-C(number=sg,infl=0,gender=uncl,case=nom|acc|dat|voc)</tag>
-        <tag>NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=n)</tag>
-        <tag>NOU-C(number=sg,infl=e,case=nom|acc|dat|voc,gender=uncl)</tag>
-        <tag>NOU-C(number=sg,infl=e|n,case=gen|dat,gender=uncl)</tag>
-        <tag>NOU-C(number=sg,infl=n,case=gen|dat,gender=uncl)</tag>
-        <tag>NOU-C(number=sg,infl=s/th,gender=n,case=gen)</tag>
-        <tag>NOU-C(number=sg,infl=uncl,case=gen|dat,gender=uncl)</tag>
-        <tag>NOU-P(gender=uncl,number=uncl,case=uncl,infl=uncl)</tag>
-        <tag>NOU-P(number=pl,infl=n)</tag>
-        <tag>NOU-P(number=pl,infl=s/th)</tag>
-        <tag>NOU-P(number=sg,case=dat,gender=uncl,infl=e)</tag>
-        <tag>NOU-P(number=sg,case=gen,gender=uncl,infl=n|s/th)</tag>
-        <tag>NOU-P(number=sg,case=gen,gender=uncl,infl=s/th)</tag>
-        <tag>NOU-P(number=sg,gender=m|f,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NOU-P(number=sg,gender=n,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NOU-P(number=sg,gender=uncl,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NOU-P(number=uncl)</tag>
-        <tag>NUM(type=card,case=nom|dat|acc|voc,position=prenom,infl=0,NA=pl,GA=uncl)</tag>
-        <tag>NUM(type=card,position=free,infl=0)</tag>
-        <tag>NUM(type=card,position=free,infl=n)</tag>
-        <tag>NUM(type=card,position=free,infl=s/th)</tag>
-        <tag>NUM(type=card,position=free|prenom|postnom)</tag>
-        <tag>NUM(type=card,position=prenom,case=gen|dat,infl=s/th|n)</tag>
-        <tag>NUM(type=card,position=prenom,case=nom|dat|acc|voc,infl=0)</tag>
-        <tag>NUM(type=card,position=uncl,case=uncl)</tag>
-        <tag>NUM(type=ord,position=prenom,case=gen|dat,infl=r/re)</tag>
-        <tag>NUM(type=ord,position=prenom,case=nom|acc|voc,infl=0)</tag>
-        <tag>NUM(type=ord,position=uncl,case=uncl)</tag>
+        <tag>NOU-C(case=dat,number=sg,inflection=nt,gender=uncl)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,gender=n,inflection=0)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=0,gender=uncl)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=sg,inflection=e,gender=uncl)</tag>
+        <tag>NOU-C(case=nom|dat|acc|voc,number=uncl,gender=uncl,inflection=0)</tag>
+        <tag>NOU-C(number=pl,inflection=n)</tag>
+        <tag>NOU-C(number=pl,inflection=s/th)</tag>
+        <tag>NOU-C(number=pl,inflection=uncl)</tag>
+        <tag>NOU-C(number=sg,case=dat,inflection=e,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,case=gen,inflection=s/th,gender=m|n)</tag>
+        <tag>NOU-C(number=sg,case=gen,inflection=s/th,gender=n)</tag>
+        <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=m|f,inflection=0)</tag>
+        <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=n,inflection=0)</tag>
+        <tag>NOU-C(number=sg,case=nom|dat|acc|voc,gender=uncl,inflection=0)</tag>
+        <tag>NOU-C(number=sg,inflection=0,gender=n,case=nom|dat|acc|voc)</tag>
+        <tag>NOU-C(number=sg,inflection=0,gender=uncl,case=nom|dat|acc|voc)</tag>
+        <tag>NOU-C(number=sg,inflection=e,case=nom|dat|acc|voc,gender=n)</tag>
+        <tag>NOU-C(number=sg,inflection=e,case=nom|dat|acc|voc,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,inflection=n,case=gen|dat,gender=uncl)</tag>
+        <tag>NOU-C(number=sg,inflection=s/th,gender=n,case=gen)</tag>
+        <tag>NOU-C(number=sg,inflection=uncl,case=gen|dat,gender=uncl)</tag>
+        <tag>NOU-C(number=uncl,case=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>NOU-P(number=pl,inflection=n)</tag>
+        <tag>NOU-P(number=pl,inflection=s/th)</tag>
+        <tag>NOU-P(number=sg,case=dat,gender=uncl,inflection=e)</tag>
+        <tag>NOU-P(number=sg,case=gen,gender=uncl,inflection=n|s/th)</tag>
+        <tag>NOU-P(number=sg,case=gen,gender=uncl,inflection=s/th)</tag>
+        <tag>NOU-P(number=sg,case=nom|dat|acc|voc,gender=m|f,inflection=0)</tag>
+        <tag>NOU-P(number=sg,case=nom|dat|acc|voc,gender=n,inflection=0)</tag>
+        <tag>NOU-P(number=sg,case=nom|dat|acc|voc,gender=uncl,inflection=0)</tag>
+        <tag>NOU-P(number=uncl,case=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>NOU-P(number=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
+        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=n)</tag>
+        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s/th)</tag>
+        <tag>NUM(type=card,position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
+        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=s/th|n)</tag>
+        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=card,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=ord,position=free,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=e)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=r/re)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
         <tag>PC()</tag>
-        <tag>PD(type=dem,case=dat,position=free,infl=n,number=uncl,gender=uncl)</tag>
-        <tag>PD(type=dem,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=dem,case=dat,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=dem,case=gen,gender=m,number=sg,position=free,infl=s/th)</tag>
-        <tag>PD(type=dem,case=gen,gender=n,number=sg,position=free,infl=s/th)</tag>
-        <tag>PD(type=dem,case=gen,position=free,infl=r/re|s/th,number=uncl,gender=uncl)</tag>
-        <tag>PD(type=dem,case=gen,position=prenom,infl=r/re,NA=uncl,GA=uncl)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=uncl)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,gender=uncl,number=uncl,position=free,infl=e)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=0,gender=uncl,number=uncl)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=e,number=sg,gender=m|f)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,infl=n,number=pl,gender=uncl)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=0,NA=uncl,GA=uncl)</tag>
-        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,infl=e,NA=uncl,GA=uncl)</tag>
-        <tag>PD(type=dem,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
-        <tag>PD(type=dem,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
-        <tag>PD(type=dem,subtype=art,case=dat,NA=pl,GA=uncl,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=dat,NA=sg,GA=f,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=dat,NA=sg,GA=m|n,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=gen,GA=uncl,NA=uncl,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=gen,NA=sg,GA=m|n,wf=abbr,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=nom|acc|dat|voc,NA=sg,GA=n,wf=abbr,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=nom|acc|dat|voc,NA=uncl,GA=uncl,position=prenom)</tag>
-        <tag>PD(type=dem,subtype=art,case=uncl,GA=uncl,NA=uncl,position=prenom)</tag>
-        <tag>PD(type=dem|indef,subtype=art,case=gen|dat,position=prenom,GA=uncl,NA=sg)</tag>
-        <tag>PD(type=excl,number=uncl,case=nom|dat|acc|voc,position=free,infl=0)</tag>
-        <tag>PD(type=indef,case=dat,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=indef,case=dat,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=indef,case=gen,number=sg,position=free)</tag>
-        <tag>PD(type=indef,case=gen,position=free,infl=r/re,number=pl)</tag>
-        <tag>PD(type=indef,case=gen,position=free,number=pl,infl=r/re)</tag>
-        <tag>PD(type=indef,case=gen,position=prenom,infl=r/re,NA=pl,GA=uncl)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,number=sg,position=free)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,infl=0,number=uncl)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=n)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,infl=s/th)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=0,NA=uncl,GA=uncl)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=pl,GA=uncl)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=sg,GA=m|f)</tag>
-        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,infl=e,NA=uncl,GA=uncl)</tag>
-        <tag>PD(type=indef,number=pl,case=nom|dat|acc|voc,position=free,infl=n)</tag>
-        <tag>PD(type=indef,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
-        <tag>PD(type=indef,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
-        <tag>PD(type=indef,subtype=art,GA=uncl,NA=uncl,position=prenom,case=uncl)</tag>
-        <tag>PD(type=indef,subtype=art,case=gen,NA=sg,GA=f,position=prenom)</tag>
-        <tag>PD(type=indef,subtype=art,case=nom|acc|voc,NA=uncl,GA=uncl,position=prenom)</tag>
-        <tag>PD(type=inter,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
-        <tag>PD(type=inter,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=2,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=2,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=uncl,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=f,number=uncl,gender=f,wf=abbr,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m,number=sg,gender=m,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=m,wf=abbr,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=sg,gender=n,wf=abbr,position=free)</tag>
-        <tag>PD(type=pers,case=dat|acc,person=3,gender=m|f,number=uncl,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=gen,infl=0,position=free,person=3,number=uncl,gender=uncl)</tag>
-        <tag>PD(type=pers,case=gen,person=1,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=1,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=2,number=sg|pl,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=3,gender=f,number=uncl,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=3,gender=m,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=gen,person=3,gender=m|f,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=1,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=1,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=1,number=sg,wf=abbr,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=2,number=sg,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=2,number=uncl,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=3,gender=f,number=sg,gender=f,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=3,gender=m,number=sg,gender=m,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=3,gender=m|f,number=pl,position=free)</tag>
-        <tag>PD(type=pers,case=nom|voc,person=3,gender=m|f,number=sg,gender=m,position=free)</tag>
-        <tag>PD(type=pers,position=free,case=uncl,gender=uncl,number=uncl,person=uncl,infl=uncl)</tag>
-        <tag>PD(type=pers|refl,case=dat|acc,person=1,number=pl,position=free)</tag>
-        <tag>PD(type=pers|refl,case=dat|acc,person=1,number=sg,position=free)</tag>
-        <tag>PD(type=pers|refl,case=dat|acc,person=2,number=uncl,position=free)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=pl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=n,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=dat,person=1,number=sg,position=prenom,infl=r/re,GA=f,NA=sg)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=uncl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=2,number=uncl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=f,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=pl,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=pl,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=sg,position=prenom,infl=n,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=dat,person=3,gender=uncl,number=sg,position=prenom,infl=r/re,NA=sg,GA=f)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=pl,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=0,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=1,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=uncl,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=2,number=uncl,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=f,number=sg,position=prenom,infl=s/th,number=sg,GA=m|n,NA=sg)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=r/re,gender=uncl,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=m|f,number=pl,position=prenom,infl=s/th,number=pl,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=uncl,number=sg,position=prenom,infl=r/re,GA=uncl,NA=uncl,gender=uncl)</tag>
-        <tag>PD(type=poss,case=gen,person=3,gender=uncl,number=sg,position=prenom,infl=s/th,number=sg,NA=sg,GA=m|n)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=0,number=sg,GA=n,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=pl,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=uncl,NA=uncl,infl=0)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,GA=uncl,NA=uncl,infl=e)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=1,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,wf=abbr)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=pl,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=uncl,position=prenom,infl=0,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=2,number=uncl,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=f,number=sg,position=prenom,infl=e,GA=uncl,NA=uncl,gender=f)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m,number=sg,position=prenom,infl=e,GA=uncl,NA=uncl,gender=m)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=pl,position=prenom,infl=e,GA=uncl,NA=uncl,gender=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=sg,position=prenom,infl=0,GA=uncl,NA=uncl,wf=abbr,gender=uncl)</tag>
-        <tag>PD(type=poss,case=nom|dat|acc|voc,person=3,gender=m|f,number=uncl,position=prenom,infl=0,GA=uncl,NA=uncl,gender=uncl,wf=abbr)</tag>
-        <tag>PD(type=poss,position=prenom,case=uncl,gender=uncl,number=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
-        <tag>PD(type=recip,case=dat|acc,person=uncl,number=pl,position=free)</tag>
-        <tag>PD(type=recip,case=gen,person=uncl,number=pl,position=free,infl=s/th)</tag>
-        <tag>PD(type=recip,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
-        <tag>PD(type=refl,case=dat|acc,person=1,number=pl,position=free)</tag>
-        <tag>PD(type=refl,case=dat|acc,person=2,number=uncl,position=free)</tag>
-        <tag>PD(type=refl,case=dat|acc,person=3,gender=m|f,number=uncl,position=free)</tag>
-        <tag>PD(type=refl,position=free,case=uncl,gender=uncl,number=uncl,person=uncl,infl=uncl)</tag>
-        <tag>PD(type=rel,case=gen,gender=n,number=sg,position=free,infl=s/th)</tag>
-        <tag>PD(type=rel,case=gen,gender=uncl,number=uncl,position=free,infl=r/re)</tag>
-        <tag>PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=0)</tag>
-        <tag>PD(type=rel,case=nom|dat|acc|voc,gender=n,number=sg,position=free,infl=e)</tag>
-        <tag>PD(type=rel,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,infl=e)</tag>
-        <tag>PD(type=rel,case=nom|dat|acc|voc,person=3,gender=n,number=sg,position=free,infl=0)</tag>
-        <tag>PD(type=rel,position=free,case=uncl,gender=uncl,number=uncl,infl=uncl)</tag>
-        <tag>PD(type=rel,position=prenom,case=uncl,GA=uncl,NA=uncl,infl=uncl)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=f,number=sg,position=free,infl=r/re)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=m,number=sg,position=free,infl=s/th)</tag>
-        <tag>PD(type=rel|inter,case=gen,gender=m|f,number=pl,position=free,infl=r/re)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,gender=m|f,number=uncl,position=free,infl=e)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,number=sg,position=free,infl=0)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=free,infl=e,gender=uncl,number=uncl)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=0,NA=sg,GA=n)</tag>
-        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,infl=e,GA=uncl,NA=uncl)</tag>
+        <tag>PD(type=dem,case=dat,position=free,inflection=n,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=dat,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=dem,case=dat,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=dem,case=gen,number=sg,gender=m,position=free,inflection=s/th)</tag>
+        <tag>PD(type=dem,case=gen,number=sg,gender=uncl,position=free,inflection=s/th)</tag>
+        <tag>PD(type=dem,case=gen,position=free,inflection=r/re|s/th,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=gen,position=prenom,inflection=r/re,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,number=sg,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,number=sg,gender=uncl,position=free,inflection=e)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,inflection=0,number=sg,gender=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,inflection=0,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=free,inflection=n,number=pl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,inflection=0,number=sg,gender=n)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,inflection=0,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,case=nom|dat|acc|voc,position=prenom,inflection=0|e|n,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,position=free,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=dem,position=uncl,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=pl,gender=uncl,inflection=n)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=sg,gender=f,inflection=r/re)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=dat,number=sg,gender=m|n,inflection=n)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=gen,number=sg,gender=m|n,inflection=s/th)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=gen,number=uncl,gender=uncl,inflection=r/re)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=nom|dat|acc|voc,number=sg,gender=n,inflection=0)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=nom|dat|acc|voc,number=uncl,gender=uncl,inflection=0)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,case=uncl,gender=uncl,number=uncl,inflection=uncl)</tag>
+        <tag>PD(type=dem|indef,subtype=art,case=gen|dat,position=prenom,number=sg,gender=uncl)</tag>
+        <tag>PD(type=excl,case=nom|dat|acc|voc,position=free,number=uncl,gender=uncl,inflection=0)</tag>
+        <tag>PD(type=indef,case=dat,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=indef,case=dat,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=indef,case=gen,number=sg,gender=uncl,position=free,inflection=s/th)</tag>
+        <tag>PD(type=indef,case=gen,position=free,inflection=r/re,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,case=gen,position=free,number=pl,gender=uncl,inflection=r/re)</tag>
+        <tag>PD(type=indef,case=gen,position=prenom,inflection=r/re,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,number=sg,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,inflection=0,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=free,number=pl,gender=uncl,inflection=n)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,inflection=0,number=sg,gender=n)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,inflection=0,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,inflection=e,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,inflection=e,number=sg,gender=m|f)</tag>
+        <tag>PD(type=indef,case=nom|dat|acc|voc,position=prenom,inflection=e,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=indef,number=pl,gender=uncl,case=nom|dat|acc|voc,position=free,inflection=n)</tag>
+        <tag>PD(type=indef,position=free,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=indef,position=uncl,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,case=gen,number=sg,gender=f,inflection=r/re)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,case=nom|dat|acc|voc,number=uncl,gender=uncl,inflection=0)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,case=uncl,gender=uncl,number=uncl,inflection=uncl)</tag>
+        <tag>PD(type=inter,position=free,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=inter,position=uncl,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=2,LN=pl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=2,LN=sg,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=3,LN=pl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=3,LN=sg,LG=f,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=3,LN=sg,LG=m,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=3,LN=sg,LG=n,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=dat|acc,LP=3,LN=uncl,LG=f,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=gen,LP=1,LN=pl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=1,LN=sg,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=2,LN=uncl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=pl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=sg,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,LP=3,LN=uncl,position=free,inflection=r/re|s/th)</tag>
+        <tag>PD(type=pers,case=gen,inflection=0,position=free,LP=3,LN=uncl,LG=uncl)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=1,LN=pl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=1,LN=sg,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=1,LN=sg,position=free,inflection=0|e)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=2,LN=sg,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=2,LN=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=3,LN=pl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=3,LN=sg,LG=f,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,case=nom|voc,LP=3,LN=sg,LG=m,position=free,inflection=0)</tag>
+        <tag>PD(type=pers,position=free,case=uncl,LP=uncl,LN=uncl,LG=uncl,inflection=uncl)</tag>
+        <tag>PD(type=pers|refl,case=dat|acc,LP=1,LN=pl,position=free,inflection=0)</tag>
+        <tag>PD(type=pers|refl,case=dat|acc,LP=1,LN=sg,position=free,inflection=0)</tag>
+        <tag>PD(type=pers|refl,case=dat|acc,LP=2,LN=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=poss,case=dat,LP=1,LN=pl,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=dat,LP=1,LN=pl,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,LP=1,LN=sg,position=prenom,inflection=n,gender=m|n,number=sg)</tag>
+        <tag>PD(type=poss,case=dat,LP=1,LN=sg,position=prenom,inflection=r/re,gender=f,number=sg)</tag>
+        <tag>PD(type=poss,case=dat,LP=2,LN=sg,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,LP=2,LN=uncl,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=dat,LP=2,LN=uncl,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LG=f,LN=sg,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LG=f,LN=sg,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LG=uncl,LN=sg,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LG=uncl,LN=sg,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LN=pl,position=prenom,inflection=n,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=dat,LP=3,LN=pl,position=prenom,inflection=r/re,number=sg,gender=f)</tag>
+        <tag>PD(type=poss,case=gen,LP=1,LN=pl,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=1,LN=pl,position=prenom,inflection=s/th,gender=m|n,number=sg)</tag>
+        <tag>PD(type=poss,case=gen,LP=1,LN=sg,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=1,LN=sg,position=prenom,inflection=s/th,gender=m|n,number=sg)</tag>
+        <tag>PD(type=poss,case=gen,LP=2,LN=sg,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=2,LN=uncl,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=2,LN=uncl,position=prenom,inflection=s/th,gender=m|n,number=sg)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LG=f,LN=sg,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LG=f,LN=sg,position=prenom,inflection=s/th,gender=m|n,number=sg)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LG=uncl,LN=sg,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LG=uncl,LN=sg,position=prenom,inflection=s/th,number=sg,gender=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LN=pl,position=prenom,inflection=r/re,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=gen,LP=3,LN=pl,position=prenom,inflection=s/th,number=sg,gender=m|n)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=1,LN=pl,position=prenom,inflection=0,gender=n,number=sg)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=1,LN=pl,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=1,LN=sg,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=1,LN=sg,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=2,LN=pl,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=2,LN=sg,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=2,LN=uncl,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=2,LN=uncl,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LG=f,LN=sg,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LG=m,LN=sg,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LG=uncl,LN=sg,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LN=pl,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LN=pl,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,case=nom|dat|acc|voc,LP=3,LN=uncl,position=prenom,inflection=0,gender=uncl,number=uncl)</tag>
+        <tag>PD(type=poss,position=prenom,case=uncl,LP=uncl,LN=uncl,LG=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=recip,case=dat|acc,LN=pl,LP=3,position=free,inflection=0)</tag>
+        <tag>PD(type=recip,case=gen,LN=pl,LP=3,position=free,inflection=s/th)</tag>
+        <tag>PD(type=recip,position=free,case=uncl,LP=uncl,LN=pl,inflection=uncl)</tag>
+        <tag>PD(type=refl,case=dat|acc,LP=3,LN=uncl,LG=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=refl,position=free,case=uncl,LP=uncl,LN=uncl,LG=uncl,inflection=uncl)</tag>
+        <tag>PD(type=rel,case=gen,number=sg,gender=uncl,position=free,inflection=s/th)</tag>
+        <tag>PD(type=rel,case=gen,number=uncl,gender=uncl,position=free,inflection=r/re)</tag>
+        <tag>PD(type=rel,case=nom|dat|acc|voc,number=sg,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=rel,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=rel,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,inflection=e)</tag>
+        <tag>PD(type=rel,position=free,case=uncl,number=uncl,gender=uncl,inflection=uncl)</tag>
+        <tag>PD(type=rel|inter,case=gen,number=pl,gender=uncl,position=free,inflection=r/re)</tag>
+        <tag>PD(type=rel|inter,case=gen,number=sg,gender=f,position=free,inflection=r/re)</tag>
+        <tag>PD(type=rel|inter,case=gen,number=sg,gender=m,position=free,inflection=s/th)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,number=sg,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,number=uncl,gender=uncl,position=free,inflection=0)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=free,inflection=e,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,inflection=0,number=sg,gender=n)</tag>
+        <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
         <tag>RES(type=for)</tag>
         <tag>RES(type=meta)</tag>
-        <tag>RES(type=other)</tag>
-        <tag>RES(type=other,wf=abbr)</tag>
+        <tag>RES(type=oth,WF=abbr)</tag>
         <tag>RES(type=symb)</tag>
         <tag>RES(type=uncl)</tag>
-        <tag>RES(type=uncl,wf=trunc)</tag>
-        <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,infl=e)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,infl=n)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=t)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,infl=uncl)</tag>
-        <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,infl=n)</tag>
-        <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=0)</tag>
-        <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,infl=t)</tag>
-        <tag>VRB(finiteness=inf,infl=0)</tag>
-        <tag>VRB(finiteness=inf,infl=e)</tag>
-        <tag>VRB(finiteness=pastpart,infl=0)</tag>
-        <tag>VRB(finiteness=prespart,infl=0)</tag>
-        <tag>VRB(finiteness=uncl,tense=uncl,mood=uncl,person=uncl,number=uncl,infl=uncl)</tag>
+        <tag>RES(type=uncl,WF=trunc)</tag>
+        <tag>RM()</tag>
+        <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,inflection=e)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,inflection=n)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=0|e)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=past,number=sg,inflection=t)</tag>
+        <tag>VRB(finiteness=fin,mood=ind,tense=pres,number=pl,inflection=n)</tag>
+        <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=0)</tag>
+        <tag>VRB(finiteness=fin,mood=ind|imp,tense=pres,number=sg,inflection=t)</tag>
+        <tag>VRB(finiteness=inf,inflection=0)</tag>
+        <tag>VRB(finiteness=inf,inflection=e)</tag>
+        <tag>VRB(finiteness=pastpart,inflection=0)</tag>
+        <tag>VRB(finiteness=prespart,inflection=0|e)</tag>
+        <tag>VRB(finiteness=uncl,tense=uncl,mood=uncl,number=uncl,inflection=uncl)</tag>
     </tags>
 </tagset>

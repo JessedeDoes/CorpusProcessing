@@ -15,7 +15,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
   val patchedTag = if (!tag.endsWith(")")) s"$tag()" else tag
 
 
-  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=other)" else patchedTag.replaceAll(",other", ",type=other")
+  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=oth)" else patchedTag.replaceAll(",oth", ",type=oth")
 
   if (Tag.findFirstIn(tagToParse).isEmpty)
   {
@@ -41,6 +41,25 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     }
   }
 
+  def hasUnforcedFeatures() = {
+    val alternatives = features.filter(_.name != "pos").map(f => {
+      val f0 = features.filter(_ != f)
+      val t0 = this.copy(tag = this.toString(f0))
+      f.name -> t0
+    }).filter(t => tagset.tagSatisfiesImplications(t._2)._1)
+    alternatives
+  }
+
+  def removeUnforcedFeatures(): CHNStyleTag = {
+    val fS = hasUnforcedFeatures().map(_._1)
+    val newFeatures = features.filter(f => !fS.contains(f.name))
+    this.copy(tag =  this.toString(newFeatures))
+  }
+
+  def normalizeFeatureValue(n: String, v: String): String= {
+    if (tagset == null) v else tagset.normalizeFeatureValue(n,v)
+  }
+
   lazy val features_sorted = if (tagset == null) features else {
     val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
     val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
@@ -50,7 +69,8 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     features.sortBy(x => combi(x.name))
   }
 
-  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${f.value}").mkString(",")})"
+  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
+  def toString(f: List[Feature]): String = s"$pos(${f.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
@@ -89,7 +109,7 @@ object distinctTagsFromGysseling
 }
 
 object distinctTagsFromCRM {
-  val dir = CRM.Settings.dir + "PostProcessedMetadata"
+  val dir = corpusprocessing.CRM.Settings.dir + "PostProcessedMetadata"
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos", "[+]")
@@ -107,7 +127,7 @@ object distinctTagsFromONW {
 
 object distinctTagsFromBaB
 {
-  val dir = brievenalsbuit.Settings.output.getCanonicalPath
+  val dir = corpusprocessing.brievenalsbuit.Settings.output.getCanonicalPath
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos")

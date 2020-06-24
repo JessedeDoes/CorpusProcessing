@@ -15,6 +15,7 @@ import posmapping.CHNStyleTags.parser
 import sparql2xquery.ValueRestrictionSet
 
 import scala.collection.immutable
+import scala.util.{Success, Try}
 //import scala.Predef.Map
 
 
@@ -40,7 +41,6 @@ object  defaultTagParser extends TagParser
 {
   override def parseTag(ts: TagSet, t: String): Tag = new CGNStyleTag(t, ts)
 }
-
 
 object MolexTagSet extends TagSet("molex")
 {
@@ -70,7 +70,7 @@ object TagSet
 
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
 
-    val partitions: Map[String, Set[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toSet ).toMap
+    val partitions: Map[String, List[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toList ).toMap
 
     val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
 
@@ -122,19 +122,24 @@ object TagSet
     println(pretty.format(xml))
   }
 
-  def tagsetFromSetOfTags(prefix: String, tags: Set[Tag]) = {
+  def tagsetFromSetOfTags(prefix: String, tags: Set[Tag], addParts: Boolean=true) = {
     val posTags = tags.map(_.pos).toList
-    val partitions:Map[String,Set[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value))
-    val pos2partitions:Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
+    val partitions: Map[String,List[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value).toList)
+
+    val partitions_enhanced = if (addParts) partitions.mapValues(l => l.toSet ++ l.flatMap(_.split("\\|")).toSet) // voor values van de vorma|b|c enz, add a b c
+      .mapValues(_.toList) else partitions
+
+    val pos2partitions: Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
+
     val valueRestrictions:List[ValueRestriction] =
       tags.groupBy(_.pos).flatMap(
-        { case (p,thisPos) => {
-          val features = thisPos.flatMap(_.features.toSet.toList)
+        { case (p,tags_with_pos) => {
+          val features = tags_with_pos.flatMap(_.features.toSet.toList)
           features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
         } }
       ).toList
 
-    TagSet(prefix, posTags, partitions, pos2partitions, parser, List(), valueRestrictions, listOfTags = tags)
+    TagSet(prefix, posTags, partitions_enhanced, pos2partitions, parser, List(), valueRestrictions, listOfTags = tags)
   }
 
   def compare(t1: TagSet, t2: TagSet): Unit =
@@ -160,7 +165,7 @@ object TagSet
       val infringed = t2.implications.filter(i => !i(t))
       if (infringed.nonEmpty) {
           val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
-          Console.err.println(s"$t does not satisfy $infringed")
+          // Console.err.println(s"$t does not satisfy $infringed")
         }
     })
   }
@@ -187,7 +192,7 @@ case class ValueRestriction(pos: String, featureName: String, values: List[Strin
 
 case class TagSet(prefix: String,
                   val posTags: List[String] = List.empty,
-                  partitions:Map[String,Set[String]] = Map.empty,
+                  partitions:Map[String,List[String]] = Map.empty,
                   pos2partitions: Map[String,List[String]] = Map.empty,
                   parser: TagParser=defaultTagParser,
                   partitionConditions: List[PartitionCondition] = List.empty,
@@ -207,12 +212,12 @@ case class TagSet(prefix: String,
         {posTags.sorted.map(p => <pos displayName={displayNames.posDescription(p)} desc={descriptions.posDescription(p)}>{p}</pos>)}
       </mainPoS>
       <partitions>
-        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.toList.sorted.map(v =>
+        {partitions.toList.sortBy(_._1).map( { case (f, vs) => <feature displayName={displayNames.featureDescription(f)} desc={descriptions.featureDescription(f)}><name>{f}</name><values>{vs.map(v =>
         <featureValue displayName={val v1 = if (f != "pos") Some(Text(displayNames.valueDescription(f,v))) else None; v1}
                       desc={val v1 = if (f != "pos") Some(Text(descriptions.valueDescription(f,v))) else None; v1}><value>{v}</value><posForValue>{this.posForFeature(f,v).sorted.map(p => <pos>{p}</pos>)}</posForValue></featureValue>)}</values></feature>} )}
       </partitions>
       <constraints>
-        {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.sorted.map(f => <feature>{f}</feature>)}</features></constraint>} )}
+        {pos2partitions.toList.sortBy(_._1).map( { case (p, fs) => <constraint><pos>{p}</pos><features>{fs.map(f => <feature>{f}</feature>)}</features></constraint>} )}
       </constraints>
       <implications>
         {this.implications.map{i => <declaration corpus={i.corpus.toString}>{i.description}</declaration>}}
@@ -257,7 +262,7 @@ case class TagSet(prefix: String,
     pretty(render(json))
 
     val subannotations = partitions.filter(_._1 != "pos").map({case (f, vals) => s"${prefix}_$f" -> Map("id" -> s"${prefix}_$f",
-      "values" -> vals.toList.sorted.map(v => Map("value" -> v, "displayName" -> getDisplayName(f,v), "pos" -> this.posForFeature(f,v)))).toMap
+      "values" -> vals.map(v => Map("value" -> v, "displayName" -> getDisplayName(f,v), "pos" -> this.posForFeature(f,v)))).toMap
     })
 
     val JSON =
@@ -344,10 +349,16 @@ case class TagSet(prefix: String,
     val infringed = implications.filter(i => !i(t))
     if (infringed.nonEmpty) {
       val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
-      Console.err.println(s"$t does not satisfy $infringed")
+      // Console.err.println(s"$t does not satisfy $infringed")
       fixed
     } else t
   }
+
+  def tagSatisfiesImplications(t: Tag): (Boolean, Seq[Implication]) = {
+    val infringed = implications.filter(i => !i(t))
+    (infringed.isEmpty, infringed)
+  }
+
 
   def isValid(t: Tag)  = {
     this.posTags.contains(t.pos) && t.features.forall(f => {
@@ -357,4 +368,40 @@ case class TagSet(prefix: String,
       b
     })
   }
+
+  def fixAllTags() = {
+    val fixedTags = this.listOfTags.map(fixTag)
+    val newValueRestrictions : List[ValueRestriction] =
+      fixedTags.groupBy(_.pos).flatMap(
+        { case (p,tags_with_pos) => {
+          val features = tags_with_pos.flatMap(_.features.toSet.toList)
+          features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
+        } }
+      ).toList
+    val fs = fixedTags.toSet
+    this.copy(valueRestrictions=newValueRestrictions, listOfTags=fs)
+  }
+
+
+  def normalizeFeatureValue(n: String, v: String): String = {
+    val tagset = this
+
+      val featureValues = tagset.partitions.getOrElse(n,List())
+
+      val valueParts = v.split("\\|")
+      val canonical = featureValues.find(_.split("\\|").toSet == valueParts.toSet)
+
+      canonical.getOrElse({
+        val lijstje = featureValues.zipWithIndex.toMap
+        val additions = valueParts.filter(f => !lijstje.exists(_._1 == f)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+        def combi = lijstje ++ additions
+        // if (additions.nonEmpty) Console.err.println(n + ": " + lijstje + " --> " + additions)
+        Try {
+          valueParts.sortBy(x => combi(x)).mkString("|")
+        } match {
+          case Success(z) => z
+          case _ => Console.err.println(s"Failure sorting $valueParts"); v
+        }
+      })
+    }
 }
