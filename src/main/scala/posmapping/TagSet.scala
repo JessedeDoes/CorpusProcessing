@@ -130,10 +130,11 @@ object TagSet
       .mapValues(_.toList) else partitions
 
     val pos2partitions: Map[String, List[String]] = tags.groupBy(_.pos).mapValues(l => l.flatMap(p => p.features.map(f => f.name))).mapValues(s => s.toList)
+
     val valueRestrictions:List[ValueRestriction] =
       tags.groupBy(_.pos).flatMap(
-        { case (p,thisPos) => {
-          val features = thisPos.flatMap(_.features.toSet.toList)
+        { case (p,tags_with_pos) => {
+          val features = tags_with_pos.flatMap(_.features.toSet.toList)
           features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
         } }
       ).toList
@@ -368,6 +369,18 @@ case class TagSet(prefix: String,
     })
   }
 
+  def fixAllTags() = {
+    val fixedTags = this.listOfTags.map(fixTag)
+    val newValueRestrictions : List[ValueRestriction] =
+      fixedTags.groupBy(_.pos).flatMap(
+        { case (p,tags_with_pos) => {
+          val features = tags_with_pos.flatMap(_.features.toSet.toList)
+          features.groupBy(_.name).mapValues(f => f.map(_.value)).map({case (fn,l) => ValueRestriction(p, fn, l.toList)})
+        } }
+      ).toList
+    val fs = fixedTags.toSet
+    this.copy(valueRestrictions=newValueRestrictions, listOfTags=fs)
+  }
 
 
   def normalizeFeatureValue(n: String, v: String): String = {

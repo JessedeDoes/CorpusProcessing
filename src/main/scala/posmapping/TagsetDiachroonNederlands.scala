@@ -3,6 +3,7 @@ package posmapping
 import java.io.{File, PrintWriter}
 
 import corpusprocessing.CGN.CGNToTEIWithTDNTags
+import corpusprocessing.CGNMiddleDutch
 import corpusprocessing.gysseling.HistoricalTagsetPatching
 
 import scala.xml.XML
@@ -41,8 +42,13 @@ object TagsetDiachroonNederlands {
 
     def sortPartition(pos: String, features: List[String]) = {
       val lijstje: Map[String, Int] = tRef.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+
+      // dit sorteert gecombineerde waarden nog niet goed.....
+
       val additions = features.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
+
       val combi = lijstje ++ additions
+
       (pos, features.sortBy(x => combi(x)))
     }
 
@@ -54,16 +60,18 @@ object TagsetDiachroonNederlands {
       v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n,_))
     }
 
-    t.copy(partitions = t.partitions.map({case (n,v)=>
-      (n,sortFeatures(n,v))}), pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}))
+    def sortValueRestriction(vr: ValueRestriction) = vr.copy(values = vr.values.map(tRef.normalizeFeatureValue(vr.featureName,_)))
+    t.copy(
+      partitions = t.partitions.map({case (n,v)=> (n,sortFeatures(n,v))}),
+      pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}),
+      valueRestrictions = t.valueRestrictions.map(sortValueRestriction))
   }
 
 
   def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
-                             corpusName: String): TagSet = {
+                             corpusName: String, corpusNameInXML: Option[String] = None): TagSet = {
 
     // val corpusBased = TagSet.fromXML(prefix + fileName) // nee, niet goed
-
 
 
     val corpusBasedWithDesc0 = corpusBased.copy(
@@ -73,12 +81,15 @@ object TagsetDiachroonNederlands {
       implications = TDNTagset.implications.filter(x =>
         x.corpus.isEmpty || x.corpus.get.contains(corpusName)))
 
-    val corpusBasedWithDesc = sortFeatures(corpusBasedWithDesc0, TDNTagset)
+    // wat hier nog misgaat is dat door implicatie toegevoegde features niet doorkomen......
+    // je moet eigenlijk eerst fixTags doen, en DAN weer opnieuw de hele zaak draaien......
+
+    val corpusBasedWithDesc = sortFeatures(corpusBasedWithDesc0, TDNTagset).fixAllTags()
 
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
     val outputBase = prefix + outputName
-    printTagsetXML(corpusBasedWithDesc, corpusName, new PrintWriter(s"$outputBase.xml"))
+    printTagsetXML(corpusBasedWithDesc, corpusNameInXML.getOrElse(corpusName), new PrintWriter(s"$outputBase.xml"))
 
     val jsonWriter = new PrintWriter(s"$outputBase.json")
     jsonWriter.println(corpusBasedWithDesc.asJSON)
@@ -131,7 +142,7 @@ object TagsetDiachroonNederlands {
     m1.flatMap({case (k,a) => a.zipWithIndex.map({case (v,i) => if (i==0) k->v else s"$k[$i]" -> v})})
   }
 
-  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String]) = {
+  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String], corpusNameInXML: Option[String] = None) = {
 
     val tagMapping = ambiPatch(tagMapping_0)
 
@@ -156,7 +167,7 @@ object TagsetDiachroonNederlands {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-    val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus)
+    val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus, corpusNameInXML)
 
     val tmPlus = tagMapping.mapValues(t => {
       val t1 = new CHNStyleTag(t, tagsetPlus)
@@ -219,7 +230,7 @@ object TagsetDiachroonNederlands {
       x(0) -> x(2)
     }).toMap
 
-    val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping)
+    val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
 
     val mappingRows = m.toList.sortBy(_._1).map({case (c, t) => <tr><td>{c}</td><td>{t.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
     val mappingHTML = <table>{mappingRows}</table>
@@ -247,7 +258,7 @@ object TagsetDiachroonNederlands {
 
 
 
-    val m = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping)
+    val m = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping, Some("CGN_TDN"))
 
     val mappingRows = m.toList.sortBy(_._2.toString).map({case (c, t) =>
       val p1 = c.replaceAll("\\(.*", "")

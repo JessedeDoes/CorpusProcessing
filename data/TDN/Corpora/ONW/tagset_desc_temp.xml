@@ -1510,7 +1510,7 @@
         <tag>PD(type=pers,position=uncl,case=dat,LN=sg,LP=1)</tag>
         <tag>PD(type=pers,position=uncl,case=dat,LN=sg,LP=2)</tag>
         <tag>PD(type=pers,position=uncl,case=dat,LN=sg,LP=3,LG=uncl)</tag>
-        <tag>PD(type=pers,position=uncl,case=dat,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=pers,position=uncl,case=dat,LN=uncl,LP=uncl,LG=uncl)</tag>
         <tag>PD(type=pers,position=uncl,case=dat|acc,LN=pl,LP=1)</tag>
         <tag>PD(type=pers,position=uncl,case=dat|acc,LN=sg,LP=1)</tag>
         <tag>PD(type=pers,position=uncl,case=dat|acc,LN=sg,LP=3,LG=uncl)</tag>
@@ -1594,18 +1594,18 @@
         <tag>PD(type=refl,position=uncl,case=acc,LN=sg,LP=1)</tag>
         <tag>PD(type=refl,position=uncl,case=acc,LN=sg,LP=2)</tag>
         <tag>PD(type=refl,position=uncl,case=acc,LN=sg,LP=3,LG=uncl)</tag>
-        <tag>PD(type=refl,position=uncl,case=acc,LN=sg,LP=uncl)</tag>
-        <tag>PD(type=refl,position=uncl,case=acc,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=acc,LN=sg,LP=uncl,LG=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=acc,LN=uncl,LP=uncl,LG=uncl)</tag>
         <tag>PD(type=refl,position=uncl,case=dat,LN=pl,LP=3)</tag>
         <tag>PD(type=refl,position=uncl,case=dat,LN=pl,LP=uncl)</tag>
         <tag>PD(type=refl,position=uncl,case=dat,LN=sg,LP=2)</tag>
         <tag>PD(type=refl,position=uncl,case=dat,LN=sg,LP=3,LG=uncl)</tag>
-        <tag>PD(type=refl,position=uncl,case=dat,LN=sg,LP=uncl)</tag>
-        <tag>PD(type=refl,position=uncl,case=dat,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=dat,LN=sg,LP=uncl,LG=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=dat,LN=uncl,LP=uncl,LG=uncl)</tag>
         <tag>PD(type=refl,position=uncl,case=gen,LN=sg,LP=2)</tag>
-        <tag>PD(type=refl,position=uncl,case=nom,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=nom,LN=uncl,LP=uncl,LG=uncl)</tag>
         <tag>PD(type=refl,position=uncl,case=uncl,LN=sg,LP=2)</tag>
-        <tag>PD(type=refl,position=uncl,case=uncl,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=refl,position=uncl,case=uncl,LN=uncl,LP=uncl,LG=uncl)</tag>
         <tag>PD(type=rel,position=free,case=dat,number=sg,gender=m)</tag>
         <tag>PD(type=rel,position=uncl,case=acc,number=pl,gender=n)</tag>
         <tag>PD(type=rel,position=uncl,case=acc,number=pl,gender=uncl)</tag>
@@ -1632,89 +1632,89 @@
         <tag>RES(type=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=2,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=pl,person=1,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=imp,number=pl,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=uncl,conjugation=weak|irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=2,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=2,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=aux,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=aux,finiteness=inf,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=aux,finiteness=inf,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=aux,finiteness=inf,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=aux,finiteness=inf,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=aux,finiteness=inf,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=aux,finiteness=prespart,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=1,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=5)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=pl,person=1,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=pl,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=2,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=inf,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=inf,valency=uncl,conjugation=strong,verbclass=5)</tag>
-        <tag>VRB(type=cop,finiteness=inf,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=cop,finiteness=inf,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=cop,finiteness=pastpart,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=cop,finiteness=pastpart,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=pl,person=3,valency=trans,conjugation=strong,verbclass=4)</tag>
@@ -1768,7 +1768,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=6b)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=7)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=conj,number=sg,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=1,valency=intr,conjugation=strong,verbclass=uncl)</tag>
@@ -1811,7 +1811,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong|irreg,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong|irreg|pretpres,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=1,valency=intr,conjugation=strong,verbclass=1)</tag>
@@ -1884,7 +1884,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=7)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=strong|irreg,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=past,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=pl,person=1,valency=trans,conjugation=strong,verbclass=7)</tag>
@@ -1921,7 +1921,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=pretpres)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=1,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=intr,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=conj,number=sg,person=2,valency=trans,conjugation=strong,verbclass=7)</tag>
@@ -1972,12 +1972,12 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=strong,verbclass=5b)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=strong,verbclass=7)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=trans,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=strong|irreg,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=imp,number=sg,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=1,valency=intr,conjugation=strong,verbclass=uncl)</tag>
@@ -2034,7 +2034,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong|irreg,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=strong|irreg|pretpres,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=pl,person=3,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=1,valency=intr,conjugation=irreg|pretpres)</tag>
@@ -2078,7 +2078,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=2,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=impers,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=impers,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=impers,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=impers,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=intr,conjugation=irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=intr,conjugation=strong,verbclass=1)</tag>
@@ -2094,7 +2094,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=strong|irreg|pretpres,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=strong|pretpres,verbclass=1)</tag>
-        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=trans,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=pres,mood=ind,number=sg,person=3,valency=uncl,conjugation=irreg)</tag>
@@ -2117,7 +2117,7 @@
         <tag>VRB(type=uncl,finiteness=fin,tense=pres|past,mood=ind,number=sg,person=3,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=uncl,mood=ind|conj,number=pl,person=3,valency=intr,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=fin,tense=uncl,mood=ind|conj,number=pl,person=3,valency=uncl,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=inf,valency=impers,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=inf,valency=impers,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=impers,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=intr,conjugation=strong,verbclass=1)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=intr,conjugation=strong,verbclass=3b)</tag>
@@ -2156,7 +2156,7 @@
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=strong|irreg,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=strong|irreg|pretpres,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=weak)</tag>
         <tag>VRB(type=uncl,finiteness=inf,valency=uncl,conjugation=weak|irreg)</tag>
         <tag>VRB(type=uncl,finiteness=pastpart,valency=intr,conjugation=strong,verbclass=1)</tag>
@@ -2199,12 +2199,12 @@
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=intr,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=irreg)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=weak)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=intr,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=strong,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=irreg,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=strong,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=uncl,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
     </tags>
 </tagset>
