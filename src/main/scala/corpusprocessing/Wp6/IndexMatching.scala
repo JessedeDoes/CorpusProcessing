@@ -245,13 +245,14 @@ object IndexMatching {
 
             // println(WordUtils.wrap(matchedPage.mkString(" "), 60))
 
-            <page n={p.toString}>
+            val ee:Elem = <page n={p.toString}>
               <matchTerms>
                 {termsOnPageXML}
               </matchTerms> <content>
               {mp2}
             </content>
             </page>
+            ee
         } else <page n={p.toString}/>
       case _ => <noPage/>
     }
