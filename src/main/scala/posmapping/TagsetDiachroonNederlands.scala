@@ -180,9 +180,9 @@ object TagsetDiachroonNederlands {
   }
 
    def main(args: Array[String]): Unit = {
-     //doCGN
+      doCGN
       doONW
-      //doGysseling
+      doGysseling
    }
 }
 
