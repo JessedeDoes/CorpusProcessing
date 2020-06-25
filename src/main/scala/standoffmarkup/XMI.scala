@@ -4,17 +4,21 @@ package standoffmarkup
 
 import scala.xml._
 
-case class Annotation(xmi: Elem)
+case class Annotation(xmi: Elem, text: String)
 {
   val begin = (xmi \ "@begin").text.toInt
   val end = (xmi \ "@end").text.toInt
-  val id = (xmi \ "@begin").text
+  val id = (xmi \ "@id").text
   val typ = xmi.label
-
+  val content = text.substring(begin,end)
   override def toString: String = s"$typ $begin:$end $id"
 }
 
 object XMI {
+
+  def getId(n: Node):String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
+    a.key.equals("id")).map(a => a.value.toString).headOption.getOrElse("no_id_found")
+
   val TEIFolder = "/data/CLARIAH/WP6/generalemissiven/6"
   val xmiFolder = "/data/CLARIAH/WP6/generalemissiven/missives-xmi-ids-20200416/6"
   val txtFolder = "/data/CLARIAH/WP6/generalemissiven/split_notes/6"
@@ -24,7 +28,10 @@ object XMI {
   val theIds = new java.io.File(TEIFolder).listFiles().map(f => f.getName.replaceAll(".xml",""))
 
 
-
+ def getParagraphText(p: Elem) = {
+   val p1 = utils.PostProcessXML.updateElement(p, x => x.label=="fw" || x.label == "note", x => <fw/>)
+   p1.text
+ }
   def testje(theId: String) = {
     val TEIFile = s"$TEIFolder/$theId.xml"
     val xmiFile = s"$xmiFolder/$theId.xmi"
@@ -40,7 +47,7 @@ object XMI {
     val xmiObjects = xmi.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem])
       .filter(x => (x \ "@begin").text.nonEmpty)
 
-    val annotations = xmiObjects.map(Annotation)
+    val annotations = xmiObjects.map(Annotation(_,txt))
 
     val so = standoffmarkup.StandoffMarkup.createStandoffMarkup(TEI)
     val textNode = (TEI \\ "text").head
@@ -52,10 +59,31 @@ object XMI {
 
     val test = textFromTEI.replaceAll("\\s+","") == txt.replaceAll("\\s+","")
 
-    println(textFromTEI.trim.substring(0,100))
+    // println(textFromTEI.trim.substring(0,100))
 
     println(s"TEST $theId: $test")
 
+    val paragraphsXMI = annotations.filter(_.typ.contains("aragra")).map(a => a.id -> a).toMap
+
+    val paragraphsTEI = textNode.descendant.filter(x => x.label == "p" || x.label == "head").map(p =>
+    getId(p) -> p).toMap
+
+    paragraphsTEI.foreach({case (id,p) =>
+        val x = paragraphsXMI.get(id)
+        if (x.isDefined) {
+          val teiTxt = getParagraphText(p.asInstanceOf[Elem])
+          val xmiTxt = x.get.content
+          val teiNowhite = teiTxt.replaceAll("\\s+", "")
+          val xmiNowhite = xmiTxt.replaceAll("\\s+", "")
+          val check = teiNowhite == xmiNowhite
+          if (!check)
+            {
+              println(s"\n#### Mismatch for $id!!! ${teiTxt.length} ${xmiTxt.length}\n$teiTxt\n$xmiTxt\n####")
+            }
+        } else {
+          Console.err.println(s"$id is missing in XMI!!!")
+        }
+    } )
 
     if (false) annotations.filter(_.typ.contains("oken")).foreach(a => {
       val token = txt.substring(a.begin, a.end)
