@@ -361,12 +361,6 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="s/th|n" desc="s/th|n">
-                    <value>s/th|n</value>
-                    <posForValue>
-                        <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="n|r/re" desc="n|r/re">
                     <value>n|r/re</value>
                     <posForValue>
@@ -407,6 +401,7 @@
                     <value>n|s/th</value>
                     <posForValue>
                         <pos>NOU-P</pos>
+                        <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="nt" desc="nt">
@@ -999,7 +994,7 @@
         <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=n)</tag>
         <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s/th)</tag>
         <tag>NUM(type=card,position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
-        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=s/th|n)</tag>
+        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=n|s/th)</tag>
         <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
         <tag>NUM(type=card,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
         <tag>NUM(type=ord,position=free,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=e)</tag>

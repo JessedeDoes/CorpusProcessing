@@ -111,6 +111,14 @@ object TagsetDiachroonNederlands {
 
   implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
 
+  def parseTags(s: String) = {
+    import scala.util.matching.Regex._
+    val s1 = s.replaceAll("\\)([|+])",")<$1>")
+    val parts = s1.split("<.>").toList
+    val operators = "<.>".r.findAllMatchIn(s1).map(m => m.toString()).toList.map(_.replaceAll("[<>]",""))
+    (parts, List("") ++ operators)
+  }
+
   def ambiPatch(m: Map[String,String]) = {
     val m1 = m.mapValues(t => t.split("\\)[|+]")).mapValues(r => r.zipWithIndex.map({case (t,i) => if (i == r.size-1) t else t + ")"}))
     m1.flatMap({case (k,a) => a.zipWithIndex.map({case (v,i) => if (i==0) k->v else s"$k[$i]" -> v})})
@@ -121,6 +129,8 @@ object TagsetDiachroonNederlands {
     val tagMapping = ambiPatch(tagMapping_0)
 
     val allDistinctTags = tagMapping.values.toSet
+
+
 
     val listWriter = new PrintWriter(prefix + "tagList.txt")
     allDistinctTags.toList.sorted.foreach(t => listWriter.println(t))
@@ -257,7 +267,7 @@ object TagsetDiachroonNederlands {
    def main(args: Array[String]): Unit = {
       doCGN
       doONW
-      doGysselingFromCorpus
+      //doGysselingFromCorpus
    }
 }
 

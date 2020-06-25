@@ -84,7 +84,9 @@
             <values>
                 <featureValue displayName="prespart" desc="prespart">
                     <value>prespart</value>
-                    <posForValue></posForValue>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
                 </featureValue>
                 <featureValue displayName="fin" desc="fin">
                     <value>fin</value>
@@ -106,10 +108,6 @@
                 </featureValue>
                 <featureValue displayName="pastpart" desc="pastpart">
                     <value>pastpart</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="prespart|pastpart" desc="prespart|pastpart">
-                    <value>prespart|pastpart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -1040,13 +1038,14 @@
         <tag>VRB(type=cop|aux,finiteness=inf,inflection=e)</tag>
         <tag>VRB(type=cop|aux,finiteness=inf,inflection=n)</tag>
         <tag>VRB(type=cop|aux,finiteness=inf,inflection=oth)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=0)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=e)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=n)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=oth)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=r/re)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=s/th)</tag>
-        <tag>VRB(type=cop|aux,finiteness=prespart|pastpart,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=0)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=e)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=n)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=oth)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=r/re)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=prespart,inflection=e)</tag>
         <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=0)</tag>
         <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=a)</tag>
         <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=e)</tag>
@@ -1068,13 +1067,17 @@
         <tag>VRB(type=mai,finiteness=inf,inflection=n)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=oth)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=t)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=0)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=a)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=e)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=oth)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=s/th)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=0)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=a)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=t)</tag>
         <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=0)</tag>
         <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=e)</tag>
         <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=n)</tag>

@@ -40,7 +40,7 @@ object HistoricalTagsetPatching {
 
     val p1 =  if (p.startsWith("VRB") && p.contains("prespart") && p.contains("pastpart")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
-      p.replaceAll("finiteness=part","finiteness=" + tense + "part").replaceAll("number=","NA=")
+      p.replaceAll("finiteness=.*part","finiteness=" + tense + "part")
     } else p
 
     // else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")
