@@ -38,34 +38,7 @@ object TagsetDiachroonNederlands {
 
    */
 
-  def sortFeatures(t: TagSet, tRef: TagSet): TagSet = {
 
-    def sortPartition(pos: String, features: List[String]) = {
-      val lijstje: Map[String, Int] = tRef.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
-
-      // dit sorteert gecombineerde waarden nog niet goed.....
-
-      val additions = features.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
-
-      val combi = lijstje ++ additions
-
-      (pos, features.sortBy(x => combi(x)))
-    }
-
-    def sortFeatures(n: String, v: List[String]) =
-    {
-      val lijstje: Map[String, Int] = tRef.partitions.getOrElse(n, List()).zipWithIndex.toMap
-      val addition  = v.filter(f => !lijstje.contains(f)).zipWithIndex.map({case (x,i) => (x,lijstje.size + i)}).toMap
-      val combi = lijstje ++ addition
-      v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n,_))
-    }
-
-    def sortValueRestriction(vr: ValueRestriction) = vr.copy(values = vr.values.map(tRef.normalizeFeatureValue(vr.featureName,_)))
-    t.copy(
-      partitions = t.partitions.map({case (n,v)=> (n,sortFeatures(n,v))}),
-      pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}),
-      valueRestrictions = t.valueRestrictions.map(sortValueRestriction))
-  }
 
 
   def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
@@ -81,10 +54,11 @@ object TagsetDiachroonNederlands {
       implications = TDNTagset.implications.filter(x =>
         x.corpus.isEmpty || x.corpus.get.contains(corpusName)))
 
+    // println(corpusBasedWithDesc0.valueRestrictions)
     // wat hier nog misgaat is dat door implicatie toegevoegde features niet doorkomen......
     // je moet eigenlijk eerst fixTags doen, en DAN weer opnieuw de hele zaak draaien......
 
-    val corpusBasedWithDesc = sortFeatures(corpusBasedWithDesc0, TDNTagset).fixAllTags()
+    val corpusBasedWithDesc = TagSet.sortFeatures(TagSet.sortFeatures(corpusBasedWithDesc0, TDNTagset).fixAllTags(), TDNTagset)
 
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
@@ -109,7 +83,7 @@ object TagsetDiachroonNederlands {
     corpusBasedWithDesc
   }
 
-  def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String,
+  def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String, corpusXML: Option[String] = None,
                             separator: String = "[+]") = { // let op BaB heeft | tussen tags, dat kan misgaan
     val dir = new File(dirName)
 
@@ -132,7 +106,7 @@ object TagsetDiachroonNederlands {
       }
     )
 
-    tagsetFromSetOfTags(prefix, corpus, allDistinctTags)
+    tagsetFromSetOfTags(prefix, corpus, allDistinctTags, corpusXML)
   }
 
   implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
@@ -216,6 +190,11 @@ object TagsetDiachroonNederlands {
     tagsetFromSetOfTags("data/TDN/Corpora/ONW/", "ONW", mapping)
    }
 
+  def doGysselingFromCorpus = {
+    val m = tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "Gysseling", Some("gysseling_nt") )
+    //val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
+    m
+  }
   def doGysseling = {
      // tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
     val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/gysseling.tsv"
@@ -278,7 +257,7 @@ object TagsetDiachroonNederlands {
    def main(args: Array[String]): Unit = {
       doCGN
       doONW
-      doGysseling
+      doGysselingFromCorpus
    }
 }
 

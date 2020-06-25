@@ -38,15 +38,12 @@ object HistoricalTagsetPatching {
     // println(s"$m\t$p")
     val infl = getFeature(p,"infl").getOrElse("oth")
 
-    val p1 =  if (p.startsWith("VRB") && p.contains("=part")) {
+    val p1 =  if (p.startsWith("VRB") && p.contains("prespart") && p.contains("pastpart")) {
       val tense = if (w.toLowerCase().endsWith("nde")) "pres" else "past"
       p.replaceAll("finiteness=part","finiteness=" + tense + "part").replaceAll("number=","NA=")
-    }
+    } else p
 
     // else if (m.startsWith("25") && p.contains("=finite")) p.replaceAll("=finite", "=inf")
-    else p
-
-
 
     val integratedTag = Try(TagsetDiachroonNederlands.integratedTag(p1)) match {
       case Success(t) =>

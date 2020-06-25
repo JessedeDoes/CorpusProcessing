@@ -80,37 +80,17 @@
         "displayName":"Nominative",
         "pos":["PD","NOU-C","AA","NUM"]
       },{
-        "value":"gen",
-        "displayName":"Genitive",
-        "pos":["PD","NOU-C","AA","NUM"]
-      },{
-        "value":"dat",
-        "displayName":"Dative",
-        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
-      },{
-        "value":"acc",
-        "displayName":"Accusative",
-        "pos":["PD","NOU-C","AA","NUM"]
-      },{
-        "value":"dat|acc",
-        "displayName":"Dative/Accusative",
-        "pos":["PD","NOU-P"]
-      },{
-        "value":"voc",
-        "displayName":"Vocative",
-        "pos":["PD","NOU-C","AA"]
-      },{
-        "value":"uncl",
-        "displayName":"Unclear",
-        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+        "value":"nom|gen",
+        "displayName":"nom|gen",
+        "pos":["NOU-C"]
       },{
         "value":"nom|acc",
         "displayName":"nom|acc",
         "pos":["PD","NOU-C"]
       },{
-        "value":"nom|gen",
-        "displayName":"nom|gen",
-        "pos":["NOU-C"]
+        "value":"gen",
+        "displayName":"Genitive",
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"gen|dat",
         "displayName":"gen|dat",
@@ -119,6 +99,26 @@
         "value":"gen|acc",
         "displayName":"gen|acc",
         "pos":["NOU-C"]
+      },{
+        "value":"dat",
+        "displayName":"Dative",
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+      },{
+        "value":"dat|acc",
+        "displayName":"Dative/Accusative",
+        "pos":["PD","NOU-P"]
+      },{
+        "value":"acc",
+        "displayName":"Accusative",
+        "pos":["PD","NOU-C","AA","NUM"]
+      },{
+        "value":"voc",
+        "displayName":"Vocative",
+        "pos":["PD","NOU-C","AA"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
       }]
     },
     "pos_verbclass":{
@@ -188,16 +188,16 @@
         "displayName":"present",
         "pos":["VRB"]
       },{
+        "value":"pres|past",
+        "displayName":"pres|past",
+        "pos":["VRB"]
+      },{
         "value":"past",
         "displayName":"past",
         "pos":["VRB"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["VRB"]
-      },{
-        "value":"pres|past",
-        "displayName":"pres|past",
         "pos":["VRB"]
       }]
     },
@@ -206,6 +206,14 @@
       "values":[{
         "value":"trans",
         "displayName":"Transitive",
+        "pos":["VRB"]
+      },{
+        "value":"trans|intr",
+        "displayName":"trans|intr",
+        "pos":["VRB"]
+      },{
+        "value":"trans|refl",
+        "displayName":"trans|refl",
         "pos":["VRB"]
       },{
         "value":"intr",
@@ -223,14 +231,6 @@
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["VRB"]
-      },{
-        "value":"trans|refl",
-        "displayName":"trans|refl",
-        "pos":["VRB"]
-      },{
-        "value":"trans|intr",
-        "displayName":"trans|intr",
-        "pos":["VRB"]
       }]
     },
     "pos_representation":{
@@ -239,6 +239,10 @@
         "value":"dig",
         "displayName":"Digit",
         "pos":[]
+      },{
+        "value":"dig|let|rom|mix-dig|mix-rom",
+        "displayName":"dig|let|rom|mix-dig|mix-rom",
+        "pos":["NUM"]
       },{
         "value":"let",
         "displayName":"Alphabetic",
@@ -255,10 +259,6 @@
         "value":"mix-rom",
         "displayName":"Roman/Alphabetic",
         "pos":[]
-      },{
-        "value":"dig|let|rom|mix-dig|mix-rom",
-        "displayName":"dig|let|rom|mix-dig|mix-rom",
-        "pos":["NUM"]
       }]
     },
     "pos_position":{
@@ -267,6 +267,10 @@
         "value":"prenom",
         "displayName":"Prenominal",
         "pos":["PD"]
+      },{
+        "value":"prenom|postnom|pred",
+        "displayName":"Pre- or postnominal or predicative",
+        "pos":["AA"]
       },{
         "value":"postnom",
         "displayName":"Postnominal",
@@ -278,10 +282,6 @@
       },{
         "value":"pred",
         "displayName":"Predicative",
-        "pos":["AA"]
-      },{
-        "value":"prenom|postnom|pred",
-        "displayName":"Pre- or postnominal or predicative",
         "pos":["AA"]
       },{
         "value":"uncl",
@@ -304,6 +304,10 @@
         "displayName":"Indefinite",
         "pos":[]
       },{
+        "value":"indef|inter",
+        "displayName":"indef|inter",
+        "pos":["ADV"]
+      },{
         "value":"inter",
         "displayName":"Interrogative",
         "pos":["ADV"]
@@ -319,10 +323,6 @@
         "value":"oth",
         "displayName":"Other",
         "pos":["PD"]
-      },{
-        "value":"indef|inter",
-        "displayName":"indef|inter",
-        "pos":["ADV"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -412,16 +412,16 @@
         "displayName":"Indicative",
         "pos":["VRB"]
       },{
+        "value":"ind|conj",
+        "displayName":"Indicative|Conjunctive",
+        "pos":["VRB"]
+      },{
         "value":"conj",
         "displayName":"Conjunctive",
         "pos":["VRB"]
       },{
         "value":"imp",
         "displayName":"Imperative",
-        "pos":["VRB"]
-      },{
-        "value":"ind|conj",
-        "displayName":"Indicative|Conjunctive",
         "pos":["VRB"]
       }]
     },
@@ -448,12 +448,32 @@
         "displayName":"Strong",
         "pos":["VRB"]
       },{
+        "value":"strong|irreg",
+        "displayName":"strong|irreg",
+        "pos":["VRB"]
+      },{
+        "value":"strong|irreg|pretpres",
+        "displayName":"strong|irreg|pretpres",
+        "pos":["VRB"]
+      },{
+        "value":"strong|pretpres",
+        "displayName":"strong|pretpres",
+        "pos":["VRB"]
+      },{
         "value":"weak",
         "displayName":"Weak",
         "pos":["VRB"]
       },{
+        "value":"weak|irreg",
+        "displayName":"weak|irreg",
+        "pos":["VRB"]
+      },{
         "value":"irreg",
         "displayName":"Irregular",
+        "pos":["VRB"]
+      },{
+        "value":"irreg|pretpres",
+        "displayName":"irreg|pretpres",
         "pos":["VRB"]
       },{
         "value":"pretpres",
@@ -462,26 +482,6 @@
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["VRB"]
-      },{
-        "value":"irreg|pretpres",
-        "displayName":"irreg|pretpres",
-        "pos":["VRB"]
-      },{
-        "value":"strong|irreg|pretpres",
-        "displayName":"strong|irreg|pretpres",
-        "pos":["VRB"]
-      },{
-        "value":"weak|irreg",
-        "displayName":"weak|irreg",
-        "pos":["VRB"]
-      },{
-        "value":"strong|pretpres",
-        "displayName":"strong|pretpres",
-        "pos":["VRB"]
-      },{
-        "value":"strong|irreg",
-        "displayName":"strong|irreg",
         "pos":["VRB"]
       }]
     },
@@ -508,18 +508,6 @@
         "displayName":"Masculine",
         "pos":["PD","NOU-C","AA","NUM"]
       },{
-        "value":"f",
-        "displayName":"Feminine",
-        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
-      },{
-        "value":"n",
-        "displayName":"Neuter",
-        "pos":["PD","NOU-C","AA","NUM"]
-      },{
-        "value":"f|n",
-        "displayName":"Feminine/Neuter",
-        "pos":["NOU-C"]
-      },{
         "value":"m|f",
         "displayName":"Masculine/Feminine",
         "pos":["PD","NOU-C"]
@@ -527,6 +515,18 @@
         "value":"m|n",
         "displayName":"Masculine/Neuter",
         "pos":["PD","NOU-C","AA"]
+      },{
+        "value":"f",
+        "displayName":"Feminine",
+        "pos":["PD","NOU-C","AA","NOU-P","NUM"]
+      },{
+        "value":"f|n",
+        "displayName":"Feminine/Neuter",
+        "pos":["NOU-C"]
+      },{
+        "value":"n",
+        "displayName":"Neuter",
+        "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -568,12 +568,12 @@
         "displayName":"Dative",
         "pos":["ADP"]
       },{
-        "value":"acc",
-        "displayName":"Accusative",
-        "pos":["ADP"]
-      },{
         "value":"dat|acc",
         "displayName":"Dative/Accusative",
+        "pos":["ADP"]
+      },{
+        "value":"acc",
+        "displayName":"Accusative",
         "pos":["ADP"]
       },{
         "value":"uncl",
@@ -620,16 +620,16 @@
         "displayName":"1",
         "pos":["VRB"]
       },{
+        "value":"1|3",
+        "displayName":"1|3",
+        "pos":["VRB"]
+      },{
         "value":"2",
         "displayName":"2",
         "pos":["VRB"]
       },{
         "value":"3",
         "displayName":"3",
-        "pos":["VRB"]
-      },{
-        "value":"1|3",
-        "displayName":"1|3",
         "pos":["VRB"]
       }]
     }

@@ -124,6 +124,7 @@ object TagSet
 
   def tagsetFromSetOfTags(prefix: String, tags: Set[Tag], addParts: Boolean=true) = {
     val posTags = tags.map(_.pos).toList
+
     val partitions: Map[String,List[String]] = tags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value).toList)
 
     val partitions_enhanced = if (addParts) partitions.mapValues(l => l.toSet ++ l.flatMap(_.split("\\|")).toSet) // voor values van de vorma|b|c enz, add a b c
@@ -179,6 +180,77 @@ object TagSet
     TagDescription(simplifyMap(b.posDescriptions ++ a.posDescriptions),
       simplifyMap(b.featureDescriptions ++ a.featureDescriptions),
       simplifyMap2(b.valueDescriptions ++ a.valueDescriptions))
+  }
+
+  def sortFeatures(t: TagSet, tRef: TagSet): TagSet = {
+
+    def sortPartition(pos: String, features: List[String]) = {
+      val lijstje: Map[String, Int] = tRef.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+
+      // dit sorteert gecombineerde waarden nog niet goed.....
+
+      val additions = features.filter(f => !lijstje.contains(f)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+
+      val combi = lijstje ++ additions
+
+      (pos, features.sortBy(x => combi(x)))
+    }
+
+    /*
+       Doe het zo dat
+       - we eerst de simpele waarden sorteren
+       - dan alles lexicografisch sorteren
+    */
+
+
+    def sortFeatureValuesBase(n: String, v: List[String]) = {
+      val lijstje: Map[String, Int] = tRef.partitions.getOrElse(n, List()).zipWithIndex.toMap
+
+      val addition = v.filter(f => !lijstje.contains(f)).zipWithIndex.map({ case (x, i) => (x, lijstje.size + i) }).toMap
+
+      val combi = lijstje ++ addition
+
+      v.sortBy(x => combi(x)).map(tRef.normalizeFeatureValue(n, _))
+    }
+
+
+    def zcompare(a: List[Int], b: List[Int]): Int = {
+      if (a.isEmpty && b.isEmpty) 0
+      else if (a.isEmpty) -1
+      else if (b.isEmpty) 1 else if (a(0) == b(0)) zcompare(a.tail, b.tail) else if (a(0) > b(0)) 1 else -1
+    }
+
+
+    def sortFeatureValues(n: String, v0: List[String]): List[String] =
+    {
+      val v = v0.map(v =>  tRef.normalizeFeatureValue(n,v))
+      val base = sortFeatureValuesBase(n, v.flatMap(_.split("\\|"))).zipWithIndex.toMap
+
+      def orderList(v: String)  = v.split("\\|").toList.map(base)
+
+      val z = v.sortWith((a,b) => {
+        val l1 = orderList(a)
+        val l2 = orderList(b)
+        zcompare(l1,l2) < 0
+      })
+      //println(z)
+      z
+    }
+
+    def sortValueRestriction(vr: ValueRestriction) = {
+      val z = vr.copy(values = vr.values.map(tRef.normalizeFeatureValue(vr.featureName,_)))
+      //println(s"With sorted features: $z")
+      z
+    }
+
+    val sortedVR = t.valueRestrictions.map(sortValueRestriction)
+    //println("--> " + sortedVR.filter(_.pos=="AA"))
+    val z = t.copy(
+      partitions = t.partitions.map({case (n,v) => (n,sortFeatureValues(n,v))}),
+      pos2partitions = t.pos2partitions.map({case (p,f)=> sortPartition(p,f)}),
+      valueRestrictions = sortedVR)
+   // println("--> " + z.valueRestrictions.filter(_.pos=="AA"))
+    z
   }
 
   def main(args: Array[String]): Unit = {
@@ -371,7 +443,7 @@ case class TagSet(prefix: String,
 
   def fixAllTags() = {
     val fixedTags = this.listOfTags.map(fixTag)
-    val newValueRestrictions : List[ValueRestriction] =
+    val newValueRestrictions : List[ValueRestriction] = // aha die moet je dan weer sorteren
       fixedTags.groupBy(_.pos).flatMap(
         { case (p,tags_with_pos) => {
           val features = tags_with_pos.flatMap(_.features.toSet.toList)
