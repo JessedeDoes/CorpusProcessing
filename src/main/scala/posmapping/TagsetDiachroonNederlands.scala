@@ -115,7 +115,12 @@ object TagsetDiachroonNederlands {
     import scala.util.matching.Regex._
     val s1 = s.replaceAll("\\)([|+])",")<$1>")
     val parts = s1.split("<.>").toList
+
+
+
     val operators = "<.>".r.findAllMatchIn(s1).map(m => m.toString()).toList.map(_.replaceAll("[<>]",""))
+    if (parts.size > 1)
+      Console.err.println(s"$operators --> $parts")
     (parts, List("") ++ operators)
   }
 
@@ -127,6 +132,10 @@ object TagsetDiachroonNederlands {
   def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String], corpusNameInXML: Option[String] = None) = {
 
     val tagMapping = ambiPatch(tagMapping_0)
+
+    val wadde: Map[String, (List[String], List[String])] = tagMapping_0.mapValues(parseTags)
+
+    //wadde.foreach(println)
 
     val allDistinctTags = tagMapping.values.toSet
 
@@ -159,18 +168,6 @@ object TagsetDiachroonNederlands {
       (t,t1Fixed)
     })
 
-    val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
-
-    tmPlus.toList.sortBy(_._2._2).foreach({case (tOrg, (t,t1)) => {
-      currentMapping.println(s"$tOrg\t$t\t$t1")
-    }})
-    currentMapping.close()
-
-    val currentMappingHTML =  <html> <table>{tmPlus.toList.sortBy(_._2._2).map({case (tOrg, (t,t1))  => {
-      <tr><td>{tOrg}</td><td>{t1}</td></tr>
-    }})}</table></html>
-
-    XML.save(prefix + "tagset.mapped.html", currentMappingHTML, "UTF-8")
 
     val r = tagMapping.mapValues(s => {
       val t0 = new CHNStyleTag(s, tagsetPlus)
@@ -188,7 +185,33 @@ object TagsetDiachroonNederlands {
           Console.err.println(s"$x $t  Redundant: ${redundancies.map(_._1)}")
         }
     })
-    r.mapValues(_.removeUnforcedFeatures())
+
+    val eindelijk = r.mapValues(_.removeUnforcedFeatures())
+
+    val inElkaarGesleuteld = wadde.map({
+      case (key, (tagz, operators)) =>
+        val tags = Seq(r(key)) ++ (1 until tagz.size).map(i => {
+          val t = r(s"$key[$i]")
+          s"${operators(i)}$t"
+        })
+        //if (tags.size > 1) Console.err.println(tags)
+        (key, tagMapping_0(key) -> tags.mkString(""))
+      }
+    )
+
+    val currentMapping = new PrintWriter(prefix + "tagset.mapped.txt")
+
+    inElkaarGesleuteld.toList.sortBy(_._2._2).foreach({case (tOrg, (t,t1)) => {
+      currentMapping.println(s"$tOrg\t$t\t$t1")
+    }})
+    currentMapping.close()
+
+    val currentMappingHTML =  <html> <table>{inElkaarGesleuteld.toList.sortBy(_._2._2).map({case (tOrg, (t,t1))  => {
+      <tr><td>{tOrg}</td><td>{t1}</td></tr>
+    }})}</table></html>
+
+    XML.save(prefix + "tagset.mapped.html", currentMappingHTML, "UTF-8")
+    (eindelijk, inElkaarGesleuteld)
   }
 
   def doONW = {
@@ -205,6 +228,7 @@ object TagsetDiachroonNederlands {
     //val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
     m
   }
+
   def doGysseling = {
      // tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "gysseling_nt")
     val mappingFile = "/mnt/Projecten/CLARIAH/CLARIAH-PLUS/Wp3/HistoricalDutch/Literature/Drive/gysseling.tsv"
@@ -219,9 +243,9 @@ object TagsetDiachroonNederlands {
       x(0) -> x(2)
     }).toMap
 
-    val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
+    val (m,gesleuteld) = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
 
-    val mappingRows = m.toList.sortBy(_._1).map({case (c, t) => <tr><td>{c}</td><td>{t.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
+    val mappingRows = gesleuteld.toList.sortBy(_._1).map({case (c, t) => <tr><td>{c}</td><td>{t._2.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
     val mappingHTML = <table>{mappingRows}</table>
 
     XML.save("data/TDN/Corpora/Gysseling/current_mapping.html", mappingHTML, "UTF-8")
@@ -247,14 +271,12 @@ object TagsetDiachroonNederlands {
 
 
 
-    val m = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping, Some("CGN_TDN"))
+    val (m,gesleuteld) = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping, Some("CGN_TDN"))
 
-    val mappingRows = m.toList.sortBy(_._2.toString).map({case (c, t) =>
+    val mappingRows = gesleuteld.toList.sortBy(_._2.toString).map({case (c, t) =>
       val p1 = c.replaceAll("\\(.*", "")
-      val p = t.pos
-      val color = if (p == p1) "white" else "orange"
-      val style = s"background-color: $color"
-      <tr><td>{c}</td><td>{t.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
+
+      <tr><td>{c}</td><td>{t._2.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
 
     val mappingHTML = <table>{mappingRows}</table>
 
@@ -267,7 +289,7 @@ object TagsetDiachroonNederlands {
    def main(args: Array[String]): Unit = {
       doCGN
       doONW
-      //doGysselingFromCorpus
+      doGysseling//FromCorpus
    }
 }
 

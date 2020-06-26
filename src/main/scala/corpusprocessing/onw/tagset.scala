@@ -220,7 +220,10 @@ object tagset {
   }
 
   def flexieKlasse(t: String)  = Rule("\\(" + t + "\\)", Map("flexieklasse" -> t)
-    -> Map("class" -> t) ,false)
+    -> Map("class" -> {
+    if (t.startsWith("3")) t else
+    t.replaceAll("[ab]","")
+  }) ,false)
 
   val flexieKlasseRegels =
     List("1", "1a", "1b", "1c", "2", "2a", "2b", "3", "3a", "3b", "4", "5", "5b", "6", "6b", "7").map(flexieKlasse)
@@ -274,7 +277,7 @@ object tagset {
 
   val danges = tagMap.map{case ((p,f),t) => s"$p;$f" -> t.toString} // nee ik moet naar een ONW stijl tag, bah.
 
-  lazy val tagMapTDN: Map[String, CHNStyleTag] = posmapping.TagsetDiachroonNederlands.tagsetFromSetOfTags("/tmp/", "ONW", danges)
+  lazy val tagMapTDN: Map[String, CHNStyleTag] = posmapping.TagsetDiachroonNederlands.tagsetFromSetOfTags("/tmp/", "ONW", danges)._1
 
   lazy val tagMapEnhanced = tagMap.map({case ((p,f),t) =>
     val tdnTag = tagMapTDN(s"$p;$f")

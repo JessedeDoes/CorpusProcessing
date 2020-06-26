@@ -1703,6 +1703,7 @@
     <declaration corpus="Gysseling">pos=PD, type=uncl => LP, LN, inflection</declaration>
     
     <declaration corpus="Gysseling">pos=PD, type=dem => subtype || subtype=oth</declaration>
+    <declaration corpus="Gysseling">pos=PD, type=uncl => subtype || subtype=uncl</declaration>
     <declaration corpus="Gysseling">pos=PD, type=dem => inflection</declaration>
  
     <declaration corpus="Gysseling">pos=PD, type=indef => subtype || subtype=oth</declaration>

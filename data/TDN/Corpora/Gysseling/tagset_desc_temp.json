@@ -108,6 +108,10 @@
         "displayName":"-n",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
+        "value":"nt",
+        "displayName":"-nt",
+        "pos":["VRB"]
+      },{
         "value":"r/re",
         "displayName":"-r/-re",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
@@ -126,7 +130,7 @@
       },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["ADV"]
+        "pos":["RES","ADV"]
       }]
     },
     "pos_representation":{
@@ -220,13 +224,9 @@
         "displayName":"Resumptive",
         "pos":["ADV"]
       },{
-        "value":"oth",
-        "displayName":"Other",
-        "pos":["PD","ADV"]
-      },{
         "value":"uncl",
         "displayName":"Unclear",
-        "pos":["ADV"]
+        "pos":["PD","ADV"]
       }]
     },
     "pos_type":{
@@ -328,6 +328,10 @@
         "displayName":"Subordinating",
         "pos":["CONJ"]
       },{
+        "value":"oth",
+        "displayName":"other",
+        "pos":["RES"]
+      },{
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","CONJ","VRB","NUM","RES","ADP"]
@@ -350,10 +354,6 @@
       },{
         "value":"imp",
         "displayName":"Imperative",
-        "pos":["VRB"]
-      },{
-        "value":"uncl",
-        "displayName":"Unclear",
         "pos":["VRB"]
       }]
     },
@@ -394,11 +394,15 @@
       },{
         "value":"prespart",
         "displayName":"Present participle",
+        "pos":[]
+      },{
+        "value":"prespart|pastpart",
+        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       },{
         "value":"pastpart",
         "displayName":"Past participle",
-        "pos":["VRB"]
+        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",
