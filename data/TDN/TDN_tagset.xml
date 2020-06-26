@@ -1894,8 +1894,8 @@
     <declaration corpus="CGN">pos=PD, type=dem, position=prenom => number, gender</declaration>
     <declaration corpus="CGN">pos=PD, type=dem, position=uncl => number, gender</declaration>
 
-    <declaration corpus="CGN">pos=PD, type=dem, position=prenom => subtype ||
-      subtype=oth</declaration>
+    <declaration corpus="CGN">pos=PD, type=dem, position=prenom => subtype || subtype=oth</declaration>
+    <declaration corpus="CGN">pos=PD, type=dem, position=uncl => subtype || subtype=uncl</declaration>
 
     <!-- 
       Onbepaalde voornaamwoorden
@@ -1913,8 +1913,8 @@
     <declaration corpus="CGN">pos=PD, type=indef, position=prenom => number,gender</declaration>
     <declaration corpus="CGN">pos=PD, type=indef, position=uncl => number, gender</declaration>
 
-    <declaration corpus="CGN">pos=PD, type=indef, position=prenom => subtype ||
-      subtype=oth</declaration>
+    <declaration corpus="CGN">pos=PD, type=indef, position=prenom => subtype || subtype=oth</declaration>
+     <declaration corpus="CGN">pos=PD, type=indef, position=uncl => subtype || subtype=uncl</declaration>
 
     <!-- 
       Lidwoorden
