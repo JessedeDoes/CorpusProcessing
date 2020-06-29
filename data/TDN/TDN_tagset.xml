@@ -28,6 +28,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+	<!--
         <featureValue displayName="1a" desc="1a">
           <value>1a</value>
           <posForValue>
@@ -46,12 +47,14 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        -->
         <featureValue displayName="2" desc="2">
           <value>2</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+	<!--
         <featureValue displayName="2a" desc="2a">
           <value>2a</value>
           <posForValue>
@@ -64,6 +67,8 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        -->
+
         <featureValue displayName="3" desc="3">
           <value>3</value>
           <posForValue>
@@ -94,24 +99,29 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+	<!--
         <featureValue displayName="5b" desc="5b">
           <value>5b</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        -->
         <featureValue displayName="6" desc="6">
           <value>6</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+	<!--
         <featureValue displayName="6b" desc="6b">
           <value>6b</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        -->
+
         <featureValue displayName="7" desc="7">
           <value>7</value>
           <posForValue>
@@ -178,7 +188,7 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Gender" desc="Gender agreement">
+    <feature displayName="Gender" desc="Gender">
       <name>gender</name>
       <values>
         <featureValue displayName="Masculine" desc="Masculine">
@@ -186,13 +196,17 @@
           <posForValue>
             <pos>AA</pos>
             <pos>PD</pos>
+	    <pos>NOU-C</pos>
+	    <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Feminine" desc="Feminine">
           <value>f</value>
           <posForValue>
             <pos>AA</pos>
-            <pos>PD</pos>
+	    <pos>PD</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Neuter" desc="Neuter">
@@ -200,6 +214,8 @@
           <posForValue>
             <pos>AA</pos>
             <pos>PD</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Feminine/Neuter" desc="Feminine or neuter">
@@ -236,7 +252,7 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Number" desc="Number agreement (Verbs, adjectives, pronouns, numerals)">
+    <feature displayName="Number" desc="Number">
       <name>number</name>
       <values>
         <featureValue displayName="Singular" desc="Singular">
@@ -245,7 +261,9 @@
             <pos>AA</pos>
             <pos>NUM</pos>
             <pos>PD</pos>
-            <pos>VRB</pos>
+	    <pos>VRB</pos>
+	    <pos>NOU-C</pos>
+	    <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Plural" desc="Plural">
@@ -255,12 +273,19 @@
             <pos>NUM</pos>
             <pos>PD</pos>
             <pos>VRB</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
+            <pos>NUM</pos>
+            <pos>PD</pos>
+            <pos>VRB</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -279,6 +304,7 @@
           <value>het</value>
           <posForValue>
             <pos>NOU-C</pos>
+	    <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -293,7 +319,7 @@
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>PD</pos>
-            <pos>VRB</pos>
+	    <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Genitive" desc="Genitive">
@@ -303,7 +329,7 @@
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>PD</pos>
-            <pos>VRB</pos>
+            <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Dative" desc="Dative">
@@ -313,7 +339,7 @@
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>PD</pos>
-            <pos>VRB</pos>
+            <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Accusative" desc="Accusative">
@@ -323,7 +349,7 @@
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
             <pos>PD</pos>
-            <pos>VRB</pos>
+            <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Dative/Accusative" desc="Dative or accusative">
@@ -356,6 +382,7 @@
             <pos>PD</pos>
             <pos>NOU-C</pos>
             <pos>NOU-P</pos>
+	    <pos>NUM</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -1436,6 +1463,12 @@
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
+       <featureValue displayName="Unclear" desc="Unclear">
+         <value>uncl</value>
+          <posForValue>
+            <pos>NUM</pos>
+          </posForValue>
+        </featureValue>
       </values>
     </feature>
     <feature displayName="Written form" desc="Written form">
@@ -1647,8 +1680,12 @@
     <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=conj => person</declaration>
 
     <declaration corpus="ONW">pos=PD,subtype=art => position || position=prenom</declaration>
-    <declaration corpus="ONW">pos=PD => type,case,position</declaration>
+    <declaration corpus="ONW">pos=PD,type=pers => position || position=free</declaration>
+    <declaration corpus="ONW">pos=PD,type=refl => position || position=free</declaration>
+    <declaration corpus="ONW">pos=PD,type=recip => position || position=free</declaration>
+    <declaration corpus="ONW">pos=PD,type=rel => position || position=free</declaration>
 
+    <declaration corpus="ONW">pos=PD => type,case,position</declaration>
 
     <declaration corpus="ONW">pos=PD,type=uncl => number,gender</declaration>
     <declaration corpus="ONW">pos=PD,type=dem => number,gender</declaration>
@@ -1664,8 +1701,12 @@
     <declaration corpus="ONW">pos=PD,type=refl => LP,LN</declaration>
     <declaration corpus="ONW">pos=PD,type=poss => LP, number, gender</declaration>
 
-    <declaration corpus="ONW">pos=PD, type=dem => subtype || subtype=oth</declaration>
-    <declaration corpus="ONW">pos=PD, type=indef => subtype || subtype=oth</declaration>
+    <declaration corpus="ONW">pos=PD, type=dem,position=uncl => subtype || subtype=oth</declaration>
+    <declaration corpus="ONW">pos=PD, type=indef,position=uncl => subtype || subtype=oth</declaration>
+    <declaration corpus="ONW">pos=PD, type=dem,position=prenom => subtype || subtype=oth</declaration>
+    <declaration corpus="ONW">pos=PD, type=indef,position=prenom => subtype || subtype=oth</declaration>
+    <declaration corpus="ONW">pos=PD, type=uncl,position=prenom => subtype || subtype=uncl</declaration>
+    <declaration corpus="ONW">pos=PD, type=uncl,position=uncl => subtype || subtype=uncl</declaration>
 
     <declaration corpus="ONW">pos=PD, type=pers, LP=3, LN=sg => LG</declaration>
     <declaration corpus="ONW">pos=PD, type=refl, LP=3, LN=sg => LG</declaration>
@@ -1678,8 +1719,7 @@
     <declaration corpus="ONW">pos=ADV => type, subtype</declaration>
 
     <declaration corpus="ONW">pos=NUM => type,position,case,number,gender</declaration>
-    <declaration corpus="ONW">pos=NUM => representation ||
-      representation=dig|let|rom|mix-dig|mix-rom</declaration>
+    <declaration corpus="ONW">pos=NUM => representation || representation=uncl</declaration>
 
     <declaration corpus="ONW">pos=RES => type</declaration>
 

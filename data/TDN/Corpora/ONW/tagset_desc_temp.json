@@ -216,29 +216,9 @@
     "pos_representation":{
       "id":"pos_representation",
       "values":[{
-        "value":"dig",
-        "displayName":"Digit",
-        "pos":[]
-      },{
-        "value":"dig|let|rom|mix-dig|mix-rom",
-        "displayName":"dig|let|rom|mix-dig|mix-rom",
+        "value":"uncl",
+        "displayName":"Unclear",
         "pos":["NUM"]
-      },{
-        "value":"let",
-        "displayName":"Alphabetic",
-        "pos":[]
-      },{
-        "value":"rom",
-        "displayName":"Roman",
-        "pos":[]
-      },{
-        "value":"mix-dig",
-        "displayName":"Digit/Alphabetic",
-        "pos":[]
-      },{
-        "value":"mix-rom",
-        "displayName":"Roman/Alphabetic",
-        "pos":[]
       }]
     },
     "pos_position":{

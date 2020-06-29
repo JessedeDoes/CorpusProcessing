@@ -604,31 +604,11 @@
         <feature displayName="representation" desc="representation">
             <name>representation</name>
             <values>
-                <featureValue displayName="rom" desc="rom">
-                    <value>rom</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="mix-rom" desc="mix-rom">
-                    <value>mix-rom</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="mix-dig" desc="mix-dig">
-                    <value>mix-dig</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
-                    <value>dig|let|rom|mix-dig|mix-rom</value>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
-                </featureValue>
-                <featureValue displayName="dig" desc="dig">
-                    <value>dig</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="let" desc="let">
-                    <value>let</value>
-                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
@@ -990,17 +970,17 @@
         <tag>NOU-P(number=sg,case=nom|dat|acc|voc,gender=uncl,inflection=0)</tag>
         <tag>NOU-P(number=uncl,case=uncl,gender=uncl,inflection=uncl)</tag>
         <tag>NOU-P(number=uncl,inflection=uncl)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=n)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s/th)</tag>
-        <tag>NUM(type=card,position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
-        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=n|s/th)</tag>
-        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
-        <tag>NUM(type=card,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
-        <tag>NUM(type=ord,position=free,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=e)</tag>
-        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=r/re)</tag>
-        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
-        <tag>NUM(type=ord,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=0)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=n)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=s/th)</tag>
+        <tag>NUM(type=card,position=free|prenom|postnom,representation=uncl,inflection=0)</tag>
+        <tag>NUM(type=card,position=prenom,representation=uncl,case=gen|dat,inflection=n|s/th)</tag>
+        <tag>NUM(type=card,position=prenom,representation=uncl,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,case=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=ord,position=free,representation=uncl,case=nom|dat|acc|voc,inflection=e)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=uncl,case=gen|dat,inflection=r/re)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=uncl,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,case=uncl,inflection=uncl)</tag>
         <tag>PC()</tag>
         <tag>PD(type=dem,case=dat,position=free,inflection=n,number=uncl,gender=uncl)</tag>
         <tag>PD(type=dem,case=dat,position=prenom,inflection=n,number=sg,gender=m|n)</tag>

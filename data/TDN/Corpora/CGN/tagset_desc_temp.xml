@@ -254,7 +254,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Gender" desc="Gender agreement">
+        <feature displayName="Gender" desc="Gender">
             <name>gender</name>
             <values>
                 <featureValue displayName="Masculine" desc="Masculine">
@@ -445,7 +445,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Number" desc="Number agreement (Verbs, adjectives, pronouns, numerals)">
+        <feature displayName="Number" desc="Number">
             <name>number</name>
             <values>
                 <featureValue displayName="Singular" desc="Singular">
@@ -604,31 +604,11 @@
         <feature displayName="Representation" desc="Number representation">
             <name>representation</name>
             <values>
-                <featureValue displayName="Digit" desc="Digit">
-                    <value>dig</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="dig|let|rom|mix-dig|mix-rom" desc="dig|let|rom|mix-dig|mix-rom">
-                    <value>dig|let|rom|mix-dig|mix-rom</value>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>NUM</pos>
                     </posForValue>
-                </featureValue>
-                <featureValue displayName="Alphabetic" desc="Alphabetic">
-                    <value>let</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="Roman" desc="Roman">
-                    <value>rom</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="Digit/Alphabetic" desc="Digit/Alphabetic">
-                    <value>mix-dig</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="Roman/Alphabetic" desc="Roman/Alphabetic">
-                    <value>mix-rom</value>
-                    <posForValue></posForValue>
                 </featureValue>
             </values>
         </feature>
@@ -1041,17 +1021,17 @@
         <tag>NOU-P(number=sg,case=nom|dat|acc|voc,gender=uncl,inflection=0)</tag>
         <tag>NOU-P(number=uncl,case=uncl,gender=uncl,inflection=uncl)</tag>
         <tag>NOU-P(number=uncl,inflection=uncl,gender=uncl,case=uncl)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=0)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=n)</tag>
-        <tag>NUM(type=card,position=free,representation=dig|let|rom|mix-dig|mix-rom,inflection=s/th)</tag>
-        <tag>NUM(type=card,position=free|prenom|postnom,representation=dig|let|rom|mix-dig|mix-rom,inflection=0,case=uncl)</tag>
-        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=n|s/th)</tag>
-        <tag>NUM(type=card,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
-        <tag>NUM(type=card,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
-        <tag>NUM(type=ord,position=free,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=e)</tag>
-        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=gen|dat,inflection=r/re)</tag>
-        <tag>NUM(type=ord,position=prenom,representation=dig|let|rom|mix-dig|mix-rom,case=nom|dat|acc|voc,inflection=0)</tag>
-        <tag>NUM(type=ord,position=uncl,representation=dig|let|rom|mix-dig|mix-rom,case=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=0)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=n)</tag>
+        <tag>NUM(type=card,position=free,representation=uncl,inflection=s/th)</tag>
+        <tag>NUM(type=card,position=free|prenom|postnom,representation=uncl,inflection=0,case=uncl)</tag>
+        <tag>NUM(type=card,position=prenom,representation=uncl,case=gen|dat,inflection=n|s/th)</tag>
+        <tag>NUM(type=card,position=prenom,representation=uncl,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,case=uncl,inflection=uncl)</tag>
+        <tag>NUM(type=ord,position=free,representation=uncl,case=nom|dat|acc|voc,inflection=e)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=uncl,case=gen|dat,inflection=r/re)</tag>
+        <tag>NUM(type=ord,position=prenom,representation=uncl,case=nom|dat|acc|voc,inflection=0)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,case=uncl,inflection=uncl)</tag>
         <tag>PC()</tag>
         <tag>PD(type=dem,case=dat,position=free,inflection=n,number=uncl,gender=uncl)</tag>
         <tag>PD(type=dem,case=dat,position=prenom,inflection=n,number=sg,gender=m|n,subtype=oth)</tag>
