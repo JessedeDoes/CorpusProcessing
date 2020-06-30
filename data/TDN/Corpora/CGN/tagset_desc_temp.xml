@@ -102,7 +102,7 @@
         <feature displayName="Written form" desc="Written form">
             <name>WF</name>
             <values>
-                <featureValue displayName="Abbrebreviated" desc="Abbreviated">
+                <featureValue displayName="Abbreviated" desc="Abbreviated">
                     <value>abbr</value>
                     <posForValue>
                         <pos>RES</pos>
@@ -110,6 +110,12 @@
                 </featureValue>
                 <featureValue displayName="Truncated" desc="Truncated">
                     <value>trunc</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
@@ -174,7 +180,7 @@
                     <value>acc</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Vocative" desc="Vocative (Old Dutch only)">
+                <featureValue displayName="Vocative" desc="Vocative">
                     <value>voc</value>
                     <posForValue></posForValue>
                 </featureValue>
@@ -364,7 +370,7 @@
                         <pos>NUM</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+                <featureValue displayName="-nt" desc="Inflection -nt">
                     <value>nt</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -560,7 +566,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Position" desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
+        <feature displayName="Position" desc="Syntactic position of adjective, numeral or pronoun/determiner">
             <name>position</name>
             <values>
                 <featureValue displayName="Prenominal" desc="Prenominal">
@@ -621,6 +627,18 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Other" desc="Other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="Tense" desc="Verb tense">
@@ -673,7 +691,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Exclamative" desc="Explicative">
+                <featureValue displayName="Exclamative" desc="Exclamative">
                     <value>excl</value>
                     <posForValue>
                         <pos>PD</pos>

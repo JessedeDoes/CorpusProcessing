@@ -7,7 +7,7 @@
     <pos_bab displayName="Adjective" desc="Adjective">ADJ</pos_bab>
     <pos displayName="Adposition" desc="Adposition">ADP</pos>
     <pos displayName="Adverb" desc="Adverb">ADV</pos>
-    <pos displayName="Affix" desc="Affix">AFF</pos>
+    <pos_molex displayName="Affix" desc="Affix">AFF</pos_molex>
     <pos_molex displayName="Polylexical" desc="Polylexical">COLL</pos_molex>
     <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
     <pos displayName="Interjection" desc="Interjection">INT</pos>
@@ -22,7 +22,7 @@
     <feature displayName="Verb class" desc="Verb class">
       <name>verbclass</name>
       <values>
-        <featureValue displayName="1" desc="1">
+        <featureValue displayName="1" desc="1 (blijven,stijgen, ...)">
           <value>1</value>
           <posForValue>
             <pos>VRB</pos>
@@ -48,7 +48,7 @@
           </posForValue>
         </featureValue>
         -->
-        <featureValue displayName="2" desc="2">
+        <featureValue displayName="2" desc="2 (vliegen, liegen, bieden, bedriegen)">
           <value>2</value>
           <posForValue>
             <pos>VRB</pos>
@@ -69,31 +69,31 @@
         </featureValue>
         -->
 
-        <featureValue displayName="3" desc="3">
+        <featureValue displayName="3" desc="3 (vinden, winnen, worden, erven)">
           <value>3</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="3a" desc="3a">
+        <featureValue displayName="3a" desc="3a (vinden, winnen)">
           <value>3a</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="3b" desc="3b">
+        <featureValue displayName="3b" desc="3b (worden, erven) ">
           <value>3b</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="4" desc="4">
+        <featureValue displayName="4" desc="4 (spreken, komen)">
           <value>4</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="5" desc="5">
+        <featureValue displayName="5" desc="5 (wezen, bidden, geven, genezen)">
           <value>5</value>
           <posForValue>
             <pos>VRB</pos>
@@ -107,7 +107,7 @@
           </posForValue>
         </featureValue>
         -->
-        <featureValue displayName="6" desc="6">
+        <featureValue displayName="6" desc="6 (varen, dragen, slaan)">
           <value>6</value>
           <posForValue>
             <pos>VRB</pos>
@@ -122,7 +122,7 @@
         </featureValue>
         -->
 
-        <featureValue displayName="7" desc="7">
+        <featureValue displayName="7" desc="7 (vangen, hangen)">
           <value>7</value>
           <posForValue>
             <pos>VRB</pos>
@@ -193,30 +193,15 @@
       <values>
         <featureValue displayName="Masculine" desc="Masculine">
           <value>m</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>PD</pos>
-	    <pos>NOU-C</pos>
-	    <pos>NOU-P</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="Feminine" desc="Feminine">
           <value>f</value>
-          <posForValue>
-            <pos>AA</pos>
-	    <pos>PD</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="Neuter" desc="Neuter">
           <value>n</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>PD</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="Feminine/Neuter" desc="Feminine or neuter">
           <value>f|n</value>
@@ -245,10 +230,7 @@
         </featureValue>
         <featureValue displayName="Unclear" desc="unclear">
           <value>uncl</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>PD</pos>
-          </posForValue>
+          
         </featureValue>
       </values>
     </feature>
@@ -367,7 +349,7 @@
             <pos_molex>AA</pos_molex>
           </posForValue_molex>
         </featureValue_molex>
-        <featureValue displayName="Vocative" desc="Vocative (Old Dutch only)">
+        <featureValue displayName="Vocative" desc="Vocative">
           <value>voc</value>
           <posForValue>
             <pos>AA</pos>
@@ -469,55 +451,51 @@
         <featureValue displayName="Masculine" desc="Masculine">
           <value>m</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Feminine" desc="Feminine">
           <value>f</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Neuter" desc="Neuter">
           <value>n</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
+        <!--
         <featureValue displayName="Feminine/Neuter" desc="Feminine or neuter">
           <value>f/n</value>
           <posForValue>
-            <pos>NOU-C</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Masculine/Feminine" desc="Masculine or feminine">
           <value>m/f</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Masculine/Feminine/Neuter" desc="Masculine or feminine or neuter">
           <value>m/f/n</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Masculine/Neuter" desc="Masculine or neuter">
           <value>m/n</value>
           <posForValue>
-            <pos>NOU-C</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
+        -->
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
+            <pos>PD</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -527,112 +505,33 @@
       <values>
         <featureValue displayName="No inflection" desc="No inflection">
           <value>0</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>INT</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
         </featureValue>
         <featureValue displayName="-a" desc="Inflection -a">
           <value>a</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>CONJ</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>PD</pos>
-            <pos>VRB</pos>
-          </posForValue>
         </featureValue>
         <featureValue displayName="-e" desc="Inflection -e">
           <value>e</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>INT</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="-n" desc="Inflection -n">
           <value>n</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>INT</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
-        <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+        <featureValue displayName="-nt" desc="Inflection -nt">
           <value>nt</value>
-          <posForValue>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="-r/-re" desc="Inflection -r or -re">
           <value>r/re</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="-s/-th" desc="Inflection -s or -th">
           <value>s/th</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="-t" desc="Inflection -t">
           <value>t</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue_molex displayName="Uninflected adjective"
           desc="Uninflected form (adjectives in molex, not in corpus tagset)">
@@ -643,35 +542,10 @@
         </featureValue_molex>
         <featureValue displayName="Other" desc="Other values">
           <value>oth</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>INT</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
+          
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
-          <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>INT</pos>
-            <pos>NOU-C</pos>
-            <pos>NOU-P</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
-            <pos>RES</pos>
-            <pos>VRB</pos>
-          </posForValue>
         </featureValue>
       </values>
     </feature>
@@ -742,31 +616,31 @@
         </featureValue>
       </values>
     </feature>
-    <feature displayName="Person" desc="Person agreement">
+    <feature displayName="Person" desc="Person (verb)">
       <name>person</name>
       <values>
         <featureValue displayName="1" desc="First person">
           <value>1</value>
           <posForValue>
-            <pos>PD</pos>
+            <pos>VRB</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="2" desc="Second person">
           <value>2</value>
           <posForValue>
-            <pos>PD</pos>
+            <pos>VRB</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="3" desc="Third person">
           <value>3</value>
           <posForValue>
-            <pos>PD</pos>
+            <pos>VRB</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
-            <pos>PD</pos>
+            <pos>VRB</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -884,7 +758,7 @@
       </values>
     </feature>
     <feature displayName="Position"
-      desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
+      desc="Syntactic position of adjective, numeral or pronoun/determiner">
       <name>position</name>
       <values>
         <featureValue displayName="Prenominal" desc="Prenominal">
@@ -908,21 +782,19 @@
           <posForValue>
             <pos>AA</pos>
             <pos>PD</pos>
+            <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Predicative" desc="Predicative">
           <value>pred</value>
           <posForValue>
             <pos>AA</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Adverbial" desc="Adverbial">
           <value>adv</value>
           <posForValue>
             <pos>AA</pos>
-            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Pre- or postnominal or predicative"
@@ -930,8 +802,6 @@
           <value>prenom|postnom|pred</value>
           <posForValue>
             <pos>AA</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
           </posForValue>
         </featureValue>
         <featureValue_molex displayName="After subject"
@@ -983,14 +853,9 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Non-article" desc="Non-article">
-          <value>oth</value>
-          <posForValue>
-            <pos>PD</pos>
-          </posForValue>
-        </featureValue>
         
-        <featureValue displayName="Demonstrative" desc="demonstrative pronominal adverb">
+        
+        <featureValue displayName="Demonstrative" desc="Demonstrative pronominal adverb">
           <value>dem</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1003,19 +868,19 @@
             <pos>NUM</pos>
           </posForValue>
         </featureValue_molex>
-        <featureValue displayName="General" desc="General (adverb)">
+        <featureValue displayName="General" desc="General adverb">
           <value>gen</value>
           <posForValue>
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Indefinite" desc="indefinite pronominal adverb">
+        <featureValue displayName="Indefinite" desc="Indefinite pronominal adverb">
           <value>indef</value>
           <posForValue>
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Interrogative" desc="interrogative adverb">
+        <featureValue displayName="Interrogative" desc="Interrogative adverb">
           <value>inter</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1028,7 +893,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Personal" desc="personal pronominal adverb (er)">
+        <featureValue displayName="Personal" desc="Personal pronominal adverb (er)">
           <value>pers</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1040,13 +905,13 @@
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Relative" desc="relative pronominal adverb">
+        <featureValue displayName="Relative" desc="Relative pronominal adverb">
           <value>rel</value>
           <posForValue>
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Resumptive" desc="Resumptive (mainly 'zo')">
+        <featureValue displayName="Resumptive" desc="Resumptive adverb (mainly 'zo')">
           <value>resump</value>
           <posForValue>
             <pos>ADV</pos>
@@ -1055,7 +920,6 @@
         <featureValue displayName="Other" desc="Other">
           <value>oth</value>
           <posForValue>
-            <pos>ADV</pos>
             <pos>PD</pos>
           </posForValue>
         </featureValue>
@@ -1091,6 +955,8 @@
         </featureValue>
       </values>
     </feature>
+    
+    <!-- aff, for, form, meta, symb, uncl, oth -->
     <feature displayName="Type" desc="Type (Subcategorization)">
       <name>type</name>
       <values>
@@ -1102,6 +968,27 @@
           </posForValue>
         </featureValue_molex>
 
+        <featureValue displayName="Affix" desc="Affix">
+          <value>aff</value>
+          <posForValue>
+            <pos>RES</pos>
+          </posForValue>
+        </featureValue>
+   
+        <featureValue displayName="Foreign" desc="Foreign word">
+          <value>for</value>
+          <posForValue>
+            <pos>RES</pos>
+          </posForValue>
+        </featureValue>
+        
+        <featureValue displayName="Formula" desc="Formula">
+          <value>form</value>
+          <posForValue>
+            <pos>RES</pos>
+          </posForValue>
+        </featureValue>
+        
         <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
           <value>mai</value>
           <posForValue>
@@ -1171,7 +1058,7 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Exclamative" desc="Explicative">
+        <featureValue displayName="Exclamative" desc="Exclamative">
           <value>excl</value>
           <posForValue>
             <pos>PD</pos>
@@ -1196,12 +1083,14 @@
           </posForValue>
         </featureValue>
 
+<!--
         <featureValue displayName="Main or auxiliary" desc="Main or auxiliary verb">
           <value>mai/aux</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+     -->   
         <featureValue displayName="Ordinal" desc="Ordinal numeral">
           <value>ord</value>
           <posForValue>
@@ -1257,7 +1146,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Meta" desc="Meta, de SPEC(meta) van het CGN">
+        <featureValue displayName="Meta" desc="Meta">
           <value>meta</value>
           <posForValue>
             <pos>RES</pos>
@@ -1269,7 +1158,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Reciprocal" desc="Reciprocal (elkaar)">
+        <featureValue displayName="Reciprocal" desc="Reciprocal">
           <value>recip</value>
           <posForValue>
             <pos>PD</pos>
@@ -1313,12 +1202,7 @@
             <pos>AA</pos>
           </posForValue>
         </featureValue_molex>
-        <featureValue displayName="Foreign" desc="Foreign word">
-          <value>for</value>
-          <posForValue>
-            <pos>RES</pos>
-          </posForValue>
-        </featureValue>
+
         <featureValue displayName="Symbol" desc="Symbol">
           <value>symb</value>
           <posForValue>
@@ -1328,21 +1212,13 @@
         <featureValue displayName="other" desc="other">
           <value>oth</value>
           <posForValue>
-            <pos>AA</pos>
-            <pos>ADP</pos>
-            <pos>ADV</pos>
-            <pos>CONJ</pos>
-            <pos>NUM</pos>
-            <pos>PD</pos>
+
             <pos>RES</pos>
-            <pos>VRB</pos>
+
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
-          <posForValue>
-            <pos>AA</pos>
-          </posForValue>
         </featureValue>
       </values>
     </feature>
@@ -1474,23 +1350,14 @@
     <feature displayName="Written form" desc="Written form">
       <name>WF</name>
       <values>
-        <featureValue displayName="Abbrebreviated" desc="Abbreviated">
+        <featureValue displayName="Abbreviated" desc="Abbreviated">
           <value>abbr</value>
-          <posForValue>
-            <pos>RES</pos>
-          </posForValue>
         </featureValue>
         <featureValue displayName="Misspelled" desc="Misspelled">
           <value>mis</value>
-          <posForValue>
-            <pos>RES</pos>
-          </posForValue>
         </featureValue>
         <featureValue displayName="Truncated" desc="Truncated">
           <value>trunc</value>
-          <posForValue>
-            <pos>RES</pos>
-          </posForValue>
         </featureValue>
       </values>
     </feature>

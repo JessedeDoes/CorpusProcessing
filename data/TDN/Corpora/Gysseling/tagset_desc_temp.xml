@@ -179,7 +179,7 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="-nt" desc="Inflection -nt (CRM only)">
+                <featureValue displayName="-nt" desc="Inflection -nt">
                     <value>nt</value>
                     <posForValue>
                         <pos>VRB</pos>
@@ -272,6 +272,12 @@
                 </featureValue>
                 <featureValue displayName="Imperative" desc="Imperative">
                     <value>imp</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -375,7 +381,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Position" desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
+        <feature displayName="Position" desc="Syntactic position of adjective, numeral or pronoun/determiner">
             <name>position</name>
             <values>
                 <featureValue displayName="Prenominal" desc="Prenominal">
@@ -433,25 +439,25 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Demonstrative" desc="demonstrative pronominal adverb">
+                <featureValue displayName="Demonstrative" desc="Demonstrative pronominal adverb">
                     <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="General" desc="General (adverb)">
+                <featureValue displayName="General" desc="General adverb">
                     <value>gen</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Indefinite" desc="indefinite pronominal adverb">
+                <featureValue displayName="Indefinite" desc="Indefinite pronominal adverb">
                     <value>indef</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Interrogative" desc="interrogative adverb">
+                <featureValue displayName="Interrogative" desc="Interrogative adverb">
                     <value>inter</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -463,16 +469,22 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Relative" desc="relative pronominal adverb">
+                <featureValue displayName="Relative" desc="Relative pronominal adverb">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Resumptive" desc="Resumptive (mainly 'zo')">
+                <featureValue displayName="Resumptive" desc="Resumptive adverb (mainly 'zo')">
                     <value>resump</value>
                     <posForValue>
                         <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Other" desc="Other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Unclear" desc="Unclear">

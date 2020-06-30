@@ -237,6 +237,14 @@
         "value":"art",
         "displayName":"Article",
         "pos":["PD"]
+      },{
+        "value":"oth",
+        "displayName":"Other",
+        "pos":["PD"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
+        "pos":["PD"]
       }]
     },
     "pos_type":{
@@ -455,11 +463,15 @@
       "id":"pos_WF",
       "values":[{
         "value":"abbr",
-        "displayName":"Abbrebreviated",
+        "displayName":"Abbreviated",
         "pos":["RES"]
       },{
         "value":"trunc",
         "displayName":"Truncated",
+        "pos":["RES"]
+      },{
+        "value":"uncl",
+        "displayName":"uncl",
         "pos":["RES"]
       }]
     },

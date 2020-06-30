@@ -157,7 +157,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Vocative" desc="Vocative (Old Dutch only)">
+                <featureValue displayName="Vocative" desc="Vocative">
                     <value>voc</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -426,6 +426,12 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
             </values>
         </feature>
         <feature displayName="Number" desc="Number">
@@ -565,7 +571,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Position" desc="Position (for Dutch verbs in the second person singular present, inflection depends on position before or after subject)">
+        <feature displayName="Position" desc="Syntactic position of adjective, numeral or pronoun/determiner">
             <name>position</name>
             <values>
                 <featureValue displayName="Prenominal" desc="Prenominal">
@@ -629,13 +635,13 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Demonstrative" desc="demonstrative pronominal adverb">
+                <featureValue displayName="Demonstrative" desc="Demonstrative pronominal adverb">
                     <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Indefinite" desc="indefinite pronominal adverb">
+                <featureValue displayName="Indefinite" desc="Indefinite pronominal adverb">
                     <value>indef</value>
                     <posForValue></posForValue>
                 </featureValue>
@@ -645,7 +651,7 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Interrogative" desc="interrogative adverb">
+                <featureValue displayName="Interrogative" desc="Interrogative adverb">
                     <value>inter</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -657,7 +663,7 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Relative" desc="relative pronominal adverb">
+                <featureValue displayName="Relative" desc="Relative pronominal adverb">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -873,49 +879,49 @@
         <feature displayName="Verb class" desc="Verb class">
             <name>verbclass</name>
             <values>
-                <featureValue displayName="1" desc="1">
+                <featureValue displayName="1" desc="1 (blijven,stijgen, ...)">
                     <value>1</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="2" desc="2">
+                <featureValue displayName="2" desc="2 (vliegen, liegen, bieden, bedriegen)">
                     <value>2</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="3a" desc="3a">
+                <featureValue displayName="3a" desc="3a (vinden, winnen)">
                     <value>3a</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="3b" desc="3b">
+                <featureValue displayName="3b" desc="3b (worden, erven) ">
                     <value>3b</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="4" desc="4">
+                <featureValue displayName="4" desc="4 (spreken, komen)">
                     <value>4</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="5" desc="5">
+                <featureValue displayName="5" desc="5 (wezen, bidden, geven, genezen)">
                     <value>5</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="6" desc="6">
+                <featureValue displayName="6" desc="6 (varen, dragen, slaan)">
                     <value>6</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="7" desc="7">
+                <featureValue displayName="7" desc="7 (vangen, hangen)">
                     <value>7</value>
                     <posForValue>
                         <pos>VRB</pos>

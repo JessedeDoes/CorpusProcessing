@@ -441,7 +441,7 @@ case class TagSet(prefix: String,
     })
   }
 
-  def fixAllTags() = {
+  def fixAllTags(addParts: Boolean = true) = {
     val fixedTags = this.listOfTags.map(fixTag)
     val newValueRestrictions : List[ValueRestriction] = // aha die moet je dan weer sorteren
       fixedTags.groupBy(_.pos).flatMap(
@@ -451,7 +451,16 @@ case class TagSet(prefix: String,
         } }
       ).toList
     val fs = fixedTags.toSet
-    this.copy(valueRestrictions=newValueRestrictions, listOfTags=fs)
+
+    //probleem: featureValues moeten ook worden toegevoegd zo nodig....
+    val newPartitions: Map[String,List[String]] = fixedTags.flatMap(_.features).groupBy(_.name).mapValues(x => x.map(f => f.value).toList)
+
+    val partitions_enhanced = if (addParts) newPartitions.mapValues(l => l.toSet ++ l.flatMap(_.split("\\|")).toSet) // voor values van de vorma|b|c enz, add a b c
+      .mapValues(_.toList) else newPartitions
+    //val newPartitions = this.partitions.map({case (n,v) => })
+    //println(newValueRestrictions)
+
+    this.copy(valueRestrictions=newValueRestrictions, partitions = partitions_enhanced, listOfTags=fs)
   }
 
 

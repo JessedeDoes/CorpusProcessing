@@ -62,6 +62,8 @@ object TagsetDiachroonNederlands {
 
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
+    println(corpusName + " " + corpusBasedWithDesc.valueRestrictions.filter(_.featureName == "subtype"))
+
     val outputBase = prefix + outputName
     printTagsetXML(corpusBasedWithDesc, corpusNameInXML.getOrElse(corpusName), new PrintWriter(s"$outputBase.xml"))
 
