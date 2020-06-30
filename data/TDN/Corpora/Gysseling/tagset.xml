@@ -84,7 +84,9 @@
             <values>
                 <featureValue displayName="prespart" desc="prespart">
                     <value>prespart</value>
-                    <posForValue></posForValue>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
                 </featureValue>
                 <featureValue displayName="fin" desc="fin">
                     <value>fin</value>
@@ -106,10 +108,6 @@
                 </featureValue>
                 <featureValue displayName="pastpart" desc="pastpart">
                     <value>pastpart</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="prespart|pastpart" desc="prespart|pastpart">
-                    <value>prespart|pastpart</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -224,12 +222,6 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>ADV</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="r/re" desc="r/re">
                     <value>r/re</value>
                     <posForValue>
@@ -244,17 +236,21 @@
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="nt" desc="nt">
-                    <value>nt</value>
-                    <posForValue>
-                        <pos>VRB</pos>
-                    </posForValue>
-                </featureValue>
             </values>
         </feature>
         <feature displayName="mood" desc="mood">
             <name>mood</name>
             <values>
+                <featureValue displayName="conj" desc="conj">
+                    <value>conj</value>
+                    <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="uncl" desc="uncl">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="ind|conj" desc="ind|conj">
                     <value>ind|conj</value>
                     <posForValue>
@@ -269,10 +265,6 @@
                 </featureValue>
                 <featureValue displayName="ind" desc="ind">
                     <value>ind</value>
-                    <posForValue></posForValue>
-                </featureValue>
-                <featureValue displayName="conj" desc="conj">
-                    <value>conj</value>
                     <posForValue></posForValue>
                 </featureValue>
             </values>
@@ -381,15 +373,15 @@
                     <value>postnom</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="pred|prenom|postnom" desc="pred|prenom|postnom">
-                    <value>pred|prenom|postnom</value>
-                    <posForValue>
-                        <pos>AA</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="pred" desc="pred">
                     <value>pred</value>
                     <posForValue></posForValue>
+                </featureValue>
+                <featureValue displayName="prenom|postnom|pred" desc="prenom|postnom|pred">
+                    <value>prenom|postnom|pred</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
                 </featureValue>
                 <featureValue displayName="prenom" desc="prenom">
                     <value>prenom</value>
@@ -450,6 +442,12 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
+                <featureValue displayName="oth" desc="oth">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="rel" desc="rel">
                     <value>rel</value>
                     <posForValue>
@@ -472,6 +470,7 @@
                     <value>uncl</value>
                     <posForValue>
                         <pos>ADV</pos>
+                        <pos>PD</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="gen" desc="gen">
@@ -540,10 +539,10 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="refl|recip" desc="refl|recip">
-                    <value>refl|recip</value>
+                <featureValue displayName="mai|cop|aux" desc="mai|cop|aux">
+                    <value>mai|cop|aux</value>
                     <posForValue>
-                        <pos>PD</pos>
+                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="inter" desc="inter">
@@ -558,16 +557,16 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="oth" desc="oth">
-                    <value>oth</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
                 <featureValue displayName="rel" desc="rel">
                     <value>rel</value>
                     <posForValue>
                         <pos>CONJ</pos>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="recip|refl" desc="recip|refl">
+                    <value>recip|refl</value>
+                    <posForValue>
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
@@ -583,8 +582,8 @@
                         <pos>CONJ</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="aux|cop|mai" desc="aux|cop|mai">
-                    <value>aux|cop|mai</value>
+                <featureValue displayName="cop|aux" desc="cop|aux">
+                    <value>cop|aux</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -654,12 +653,6 @@
                     <value>ord</value>
                     <posForValue>
                         <pos>NUM</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="aux|cop" desc="aux|cop">
-                    <value>aux|cop</value>
-                    <posForValue>
-                        <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
             </values>
@@ -767,24 +760,24 @@
     </constraints>
     <implications> </implications>
     <tags>
-        <tag>AA(degree=uncl,number=pl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=pl,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=a,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=n,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=oth,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=r/re,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=s/th,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=sg,inflection=t,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=uncl,inflection=0,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=uncl,inflection=e,position=pred|prenom|postnom)</tag>
-        <tag>AA(degree=uncl,number=uncl,inflection=n,position=pred|prenom|postnom)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=0)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=a)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=e)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=n)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=oth)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=r/re)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=pl,inflection=s/th)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=0)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=a)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=e)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=n)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=oth)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=r/re)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=s/th)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=sg,inflection=t)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=uncl,inflection=0)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=uncl,inflection=e)</tag>
+        <tag>AA(degree=uncl,position=prenom|postnom|pred,number=uncl,inflection=n)</tag>
         <tag>ADP(type=uncl,inflection=0)</tag>
         <tag>ADP(type=uncl,inflection=a)</tag>
         <tag>ADP(type=uncl,inflection=e)</tag>
@@ -809,21 +802,18 @@
         <tag>ADV(type=pron,subtype=rel,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=n)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=oth)</tag>
-        <tag>ADV(type=pron,subtype=rel,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=s/th)</tag>
         <tag>ADV(type=pron,subtype=rel,inflection=t)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=resump,inflection=n)</tag>
-        <tag>ADV(type=pron,subtype=resump,inflection=oth)</tag>
-        <tag>ADV(type=pron,subtype=resump,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=0)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=e)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=n)</tag>
+        <tag>ADV(type=pron,subtype=uncl,inflection=oth)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=r/re)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=s/th)</tag>
         <tag>ADV(type=pron,subtype=uncl,inflection=t)</tag>
-        <tag>ADV(type=pron,subtype=uncl,inflection=uncl)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=dem,inflection=n)</tag>
@@ -840,12 +830,10 @@
         <tag>ADV(type=reg,subtype=indef,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=n)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=oth)</tag>
-        <tag>ADV(type=reg,subtype=indef,inflection=r/re)</tag>
         <tag>ADV(type=reg,subtype=indef,inflection=s/th)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=inter,inflection=n)</tag>
-        <tag>ADV(type=reg,subtype=inter,inflection=oth)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=0)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=e)</tag>
         <tag>ADV(type=reg,subtype=neg,inflection=n)</tag>
@@ -873,10 +861,8 @@
         <tag>CONJ(type=expl,inflection=r/re)</tag>
         <tag>CONJ(type=neg,inflection=0)</tag>
         <tag>CONJ(type=neg,inflection=e)</tag>
-        <tag>CONJ(type=neg,inflection=n)</tag>
         <tag>CONJ(type=qual,inflection=0)</tag>
         <tag>CONJ(type=qual,inflection=e)</tag>
-        <tag>CONJ(type=qual,inflection=oth)</tag>
         <tag>CONJ(type=rel,inflection=0)</tag>
         <tag>CONJ(type=rel,inflection=e)</tag>
         <tag>CONJ(type=rel,inflection=oth)</tag>
@@ -921,165 +907,161 @@
         <tag>NOU-P(inflection=r/re)</tag>
         <tag>NOU-P(inflection=s/th)</tag>
         <tag>NOU-P(inflection=t)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=0)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=e)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=n)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=oth)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=r/re)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=s/th)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=card,inflection=t)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=0)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=e)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=n)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=oth)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=r/re)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=ord,inflection=s/th)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=uncl,inflection=n)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=uncl,inflection=oth)</tag>
-        <tag>NUM(position=uncl,representation=uncl,type=uncl,inflection=r/re)</tag>
-        <tag>PD(position=free,type=pers,LP=1,LN=pl)</tag>
-        <tag>PD(position=free,type=pers,LP=1,LN=sg)</tag>
-        <tag>PD(position=free,type=pers,LP=2,LN=pl)</tag>
-        <tag>PD(position=free,type=pers,LP=2,LN=sg)</tag>
-        <tag>PD(position=free,type=pers,LP=3,LN=pl)</tag>
-        <tag>PD(position=free,type=pers,LP=3,LN=sg)</tag>
-        <tag>PD(position=free,type=pers,LP=uncl,LN=uncl)</tag>
-        <tag>PD(position=free,type=refl|recip,LP=1,LN=pl)</tag>
-        <tag>PD(position=free,type=refl|recip,LP=1,LN=sg)</tag>
-        <tag>PD(position=free,type=refl|recip,LP=2,LN=pl)</tag>
-        <tag>PD(position=free,type=refl|recip,LP=2,LN=sg)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=0)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=e)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=n)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=oth)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=r/re)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=s/th)</tag>
-        <tag>PD(position=prenom,type=dem,subtype=art,inflection=t)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=0)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=e)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=n)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=oth)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=r/re)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=s/th)</tag>
-        <tag>PD(position=prenom,type=indef,subtype=art,inflection=t)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=0)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=e)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=n)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=r/re)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=dem,inflection=t)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=0)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=a)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=e)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=n)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=r/re)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=indef,inflection=t)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=0)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=e)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=n)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=r/re)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=inter,inflection=t)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=0)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=a)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=e)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=n)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=r/re)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=poss,inflection=t)</tag>
-        <tag>PD(position=uncl,type=refl|recip,LP=3,LN=pl)</tag>
-        <tag>PD(position=uncl,type=refl|recip,LP=3,LN=sg)</tag>
-        <tag>PD(position=uncl,type=refl|recip,LP=uncl,LN=uncl)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=0)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=e)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=n)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=r/re)</tag>
-        <tag>PD(position=uncl,type=rel,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=0)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=e)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=n)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=oth)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=s/th)</tag>
-        <tag>PD(position=uncl,type=uncl,LN=uncl,LP=uncl,inflection=t)</tag>
-        <tag>RES(type=oth)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=0)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=e)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=n)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=oth)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=r/re)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=s/th)</tag>
+        <tag>NUM(type=card,position=uncl,representation=uncl,inflection=t)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=0)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=e)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=n)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=oth)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=r/re)</tag>
+        <tag>NUM(type=ord,position=uncl,representation=uncl,inflection=s/th)</tag>
+        <tag>NUM(type=uncl,position=uncl,representation=uncl,inflection=n)</tag>
+        <tag>NUM(type=uncl,position=uncl,representation=uncl,inflection=oth)</tag>
+        <tag>NUM(type=uncl,position=uncl,representation=uncl,inflection=r/re)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=0)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=e)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=n)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=oth)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=r/re)</tag>
+        <tag>PD(type=dem,subtype=art,position=prenom,inflection=s/th)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=0)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=e)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=oth)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=r/re)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=s/th)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,inflection=t)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=0)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=e)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=n)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=oth)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=r/re)</tag>
+        <tag>PD(type=indef,subtype=art,position=prenom,inflection=s/th)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=0)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=a)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=e)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=oth)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=r/re)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=s/th)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,inflection=t)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=0)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=e)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=n)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=r/re)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=s/th)</tag>
+        <tag>PD(type=inter,position=uncl,inflection=t)</tag>
+        <tag>PD(type=pers,position=free,LN=pl,LP=1)</tag>
+        <tag>PD(type=pers,position=free,LN=pl,LP=2)</tag>
+        <tag>PD(type=pers,position=free,LN=pl,LP=3)</tag>
+        <tag>PD(type=pers,position=free,LN=sg,LP=1)</tag>
+        <tag>PD(type=pers,position=free,LN=sg,LP=2)</tag>
+        <tag>PD(type=pers,position=free,LN=sg,LP=3)</tag>
+        <tag>PD(type=pers,position=free,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=0)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=a)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=e)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=n)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=oth)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=r/re)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=s/th)</tag>
+        <tag>PD(type=poss,position=uncl,inflection=t)</tag>
+        <tag>PD(type=recip|refl,position=free,LN=pl,LP=1)</tag>
+        <tag>PD(type=recip|refl,position=free,LN=pl,LP=2)</tag>
+        <tag>PD(type=recip|refl,position=free,LN=sg,LP=1)</tag>
+        <tag>PD(type=recip|refl,position=free,LN=sg,LP=2)</tag>
+        <tag>PD(type=recip|refl,position=uncl,LN=pl,LP=3)</tag>
+        <tag>PD(type=recip|refl,position=uncl,LN=sg,LP=3)</tag>
+        <tag>PD(type=recip|refl,position=uncl,LN=uncl,LP=uncl)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=0)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=e)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=n)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=oth)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=r/re)</tag>
+        <tag>PD(type=rel,position=uncl,inflection=s/th)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=0)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=e)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=n)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=oth)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=s/th)</tag>
+        <tag>PD(type=uncl,subtype=uncl,position=uncl,LN=uncl,LP=uncl,inflection=t)</tag>
         <tag>RES(type=uncl,inflection=0)</tag>
         <tag>RES(type=uncl,inflection=e)</tag>
         <tag>RES(type=uncl,inflection=n)</tag>
         <tag>RES(type=uncl,inflection=oth)</tag>
         <tag>RES(type=uncl,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=0)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=e)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=nt)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=oth)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=r/re)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=past,inflection=t)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=0)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=e)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=nt)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=oth)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=r/re)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop,finiteness=fin,mood=ind|conj,tense=pres,inflection=t)</tag>
-        <tag>VRB(type=aux|cop,finiteness=inf,inflection=0)</tag>
-        <tag>VRB(type=aux|cop,finiteness=inf,inflection=e)</tag>
-        <tag>VRB(type=aux|cop,finiteness=inf,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=inf,inflection=oth)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=0)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=e)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=n)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=oth)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=r/re)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop,finiteness=prespart|pastpart,inflection=t)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=0)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=e)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=n)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=oth)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=s/th)</tag>
-        <tag>VRB(type=aux|cop|mai,finiteness=fin,mood=imp,tense=pres,inflection=t)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=0)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=a)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=e)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=oth)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=r/re)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=s/th)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=past,inflection=t)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=0)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=e)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=nt)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=oth)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=r/re)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=s/th)</tag>
-        <tag>VRB(type=mai,finiteness=fin,mood=ind|conj,tense=pres,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=0)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=e)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=n)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=oth)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=r/re)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=s/th)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=past,mood=ind|conj,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=0)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=e)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=n)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=oth)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=s/th)</tag>
+        <tag>VRB(type=cop|aux,finiteness=fin,tense=pres,mood=ind|conj,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=inf,inflection=0)</tag>
+        <tag>VRB(type=cop|aux,finiteness=inf,inflection=e)</tag>
+        <tag>VRB(type=cop|aux,finiteness=inf,inflection=n)</tag>
+        <tag>VRB(type=cop|aux,finiteness=inf,inflection=oth)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=0)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=e)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=n)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=oth)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=r/re)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=cop|aux,finiteness=pastpart,inflection=t)</tag>
+        <tag>VRB(type=cop|aux,finiteness=prespart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=0)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=a)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=r/re)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=s/th)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=past,mood=ind|conj,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=0)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=r/re)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=s/th)</tag>
+        <tag>VRB(type=mai,finiteness=fin,tense=pres,mood=ind|conj,inflection=t)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=0)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=a)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=e)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=n)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=oth)</tag>
         <tag>VRB(type=mai,finiteness=inf,inflection=t)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=0)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=a)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=e)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=n)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=nt)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=oth)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=s/th)</tag>
-        <tag>VRB(type=mai,finiteness=prespart|pastpart,inflection=t)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=0)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=e)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=n)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=oth)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=0)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=a)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=s/th)</tag>
+        <tag>VRB(type=mai,finiteness=pastpart,inflection=t)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=e)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=n)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=oth)</tag>
+        <tag>VRB(type=mai,finiteness=prespart,inflection=t)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=0)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=e)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=n)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=oth)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=s/th)</tag>
+        <tag>VRB(type=mai|cop|aux,finiteness=fin,tense=pres,mood=imp,inflection=t)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,inflection=0)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,inflection=e)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,inflection=n)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,inflection=oth)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,inflection=t)</tag>
     </tags>
 </tagset>

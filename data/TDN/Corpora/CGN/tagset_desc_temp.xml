@@ -12,7 +12,7 @@
         <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
         <pos displayName="Numeral" desc="Numeral">NUM</pos>
         <pos displayName="PC" desc="PC">PC</pos>
-        <pos displayName="Pronoun" desc="Pronoun/determiner">PD</pos>
+        <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
         <pos displayName="Residual" desc="Residual">RES</pos>
         <pos displayName="RM" desc="RM">RM</pos>
         <pos displayName="Verb" desc="Verb">VRB</pos>
@@ -114,12 +114,6 @@
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="uncl" desc="uncl">
-                    <value>uncl</value>
-                    <posForValue>
-                        <pos>RES</pos>
-                    </posForValue>
-                </featureValue>
             </values>
         </feature>
         <feature displayName="Case" desc="Case">
@@ -184,7 +178,7 @@
                     <value>voc</value>
                     <posForValue></posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="unclear">
+                <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -217,7 +211,7 @@
                         <pos>AA</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="unclear">
+                <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -298,7 +292,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="unclear">
+                <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -667,6 +661,12 @@
         <feature displayName="Type" desc="Type (Subcategorization)">
             <name>type</name>
             <values>
+                <featureValue displayName="Foreign" desc="Foreign word">
+                    <value>for</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
                 <featureValue displayName="Cardinal" desc="Cardinal">
                     <value>card</value>
                     <posForValue>
@@ -757,13 +757,13 @@
                         <pos>ADP</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Meta" desc="Meta, de SPEC(meta) van het CGN">
+                <featureValue displayName="Meta" desc="Meta">
                     <value>meta</value>
                     <posForValue>
                         <pos>RES</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Reciprocal" desc="Reciprocal (elkaar)">
+                <featureValue displayName="Reciprocal" desc="Reciprocal">
                     <value>recip</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -785,12 +785,6 @@
                     <value>sub</value>
                     <posForValue>
                         <pos>CONJ</pos>
-                    </posForValue>
-                </featureValue>
-                <featureValue displayName="Foreign" desc="Foreign word">
-                    <value>for</value>
-                    <posForValue>
-                        <pos>RES</pos>
                     </posForValue>
                 </featureValue>
                 <featureValue displayName="Symbol" desc="Symbol">
@@ -982,7 +976,7 @@
         <declaration corpus="Some(Set(CGN))">pos=ADP =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=ADV =&gt; type</declaration>
         <declaration corpus="Some(Set(CGN))">pos=CONJ =&gt; type</declaration>
-        <declaration corpus="Some(Set(CGN))">pos=RES =&gt; type, WF</declaration>
+        <declaration corpus="Some(Set(CGN))">pos=RES =&gt; type</declaration>
     </implications>
     <tags>
         <tag>AA(degree=comp,position=free,inflection=0,case=nom|dat|acc|voc)</tag>
@@ -1187,12 +1181,12 @@
         <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=free,inflection=e,number=uncl,gender=uncl)</tag>
         <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,inflection=0,number=sg,gender=n)</tag>
         <tag>PD(type=rel|inter,case=nom|dat|acc|voc,position=prenom,inflection=e,gender=uncl,number=uncl)</tag>
-        <tag>RES(type=for,WF=uncl)</tag>
-        <tag>RES(type=meta,WF=uncl)</tag>
+        <tag>RES(type=for)</tag>
+        <tag>RES(type=meta)</tag>
         <tag>RES(type=oth,WF=abbr)</tag>
-        <tag>RES(type=symb,WF=uncl)</tag>
+        <tag>RES(type=symb)</tag>
+        <tag>RES(type=uncl)</tag>
         <tag>RES(type=uncl,WF=trunc)</tag>
-        <tag>RES(type=uncl,WF=uncl)</tag>
         <tag>RM()</tag>
         <tag>VRB(finiteness=fin,mood=conj,tense=uncl,number=sg,inflection=e)</tag>
         <tag>VRB(finiteness=fin,mood=ind,tense=past,number=pl,inflection=n)</tag>

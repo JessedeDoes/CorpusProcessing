@@ -11,7 +11,7 @@
         <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
         <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
         <pos displayName="Numeral" desc="Numeral">NUM</pos>
-        <pos displayName="Pronoun" desc="Pronoun/determiner">PD</pos>
+        <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
         <pos displayName="Residual" desc="Residual">RES</pos>
         <pos displayName="Verb" desc="Verb">VRB</pos>
     </mainPoS>
@@ -165,7 +165,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="unclear">
+                <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -352,7 +352,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Unclear" desc="unclear">
+                <featureValue displayName="Unclear" desc="Unclear">
                     <value>uncl</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -471,7 +471,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Person" desc="Person agreement">
+        <feature displayName="Person" desc="Person (verb)">
             <name>person</name>
             <values>
                 <featureValue displayName="1" desc="First person">
@@ -494,6 +494,12 @@
                 </featureValue>
                 <featureValue displayName="3" desc="Third person">
                     <value>3</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
@@ -635,13 +641,13 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Demonstrative" desc="Demonstrative pronominal adverb">
+                <featureValue displayName="Demonstrative" desc="Demonstrative adverb">
                     <value>dem</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Indefinite" desc="Indefinite pronominal adverb">
+                <featureValue displayName="Indefinite" desc="Indefinite adverb">
                     <value>indef</value>
                     <posForValue></posForValue>
                 </featureValue>
@@ -657,13 +663,13 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Negative adverb" desc="Negative">
+                <featureValue displayName="Negative" desc="Negative adverb">
                     <value>neg</value>
                     <posForValue>
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Relative" desc="Relative pronominal adverb">
+                <featureValue displayName="Relative" desc="Relative adverb">
                     <value>rel</value>
                     <posForValue>
                         <pos>ADV</pos>
@@ -793,7 +799,7 @@
                         <pos>ADV</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Reciprocal" desc="Reciprocal (elkaar)">
+                <featureValue displayName="Reciprocal" desc="Reciprocal">
                     <value>recip</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -1059,6 +1065,8 @@
         <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=uncl =&gt; mood,tense,number</declaration>
         <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin,mood=ind =&gt; person</declaration>
         <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin,mood=conj =&gt; person</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=fin,mood=uncl =&gt; person</declaration>
+        <declaration corpus="Some(Set(ONW))">pos=VRB,finiteness=uncl,mood=uncl =&gt; person</declaration>
         <declaration corpus="Some(Set(ONW))">pos=PD,subtype=art =&gt; position || position=prenom</declaration>
         <declaration corpus="Some(Set(ONW))">pos=PD,type=pers =&gt; position || position=free</declaration>
         <declaration corpus="Some(Set(ONW))">pos=PD,type=refl =&gt; position || position=free</declaration>
@@ -1320,32 +1328,6 @@
         <tag>PD(type=dem,position=postnom,case=nom,number=sg,gender=f)</tag>
         <tag>PD(type=dem,position=postnom,case=nom,number=sg,gender=m)</tag>
         <tag>PD(type=dem,position=postnom,case=nom,number=sg,gender=uncl)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=pl,gender=f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=acc,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=sg,gender=m|f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=dat,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=pl,gender=m,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=gen,number=uncl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=pl,gender=n,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=nom,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=dem,position=uncl,case=uncl,number=uncl,gender=uncl,subtype=oth)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=acc,number=pl,gender=f)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=acc,number=pl,gender=n)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=acc,number=pl,gender=uncl)</tag>
@@ -1377,6 +1359,32 @@
         <tag>PD(type=dem,subtype=art,position=prenom,case=nom,number=sg,gender=uncl)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=nom|acc,number=sg,gender=n)</tag>
         <tag>PD(type=dem,subtype=art,position=prenom,case=uncl,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=pl,gender=f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=pl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=sg,gender=f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=sg,gender=m)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=sg,gender=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=acc,number=sg,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=pl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=sg,gender=f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=sg,gender=m)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=sg,gender=m|f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=sg,gender=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=dat,number=sg,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=pl,gender=m)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=pl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=sg,gender=f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=sg,gender=m)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=sg,gender=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=sg,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=gen,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=pl,gender=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=pl,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=sg,gender=f)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=sg,gender=m)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=sg,gender=n)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=nom,number=sg,gender=uncl)</tag>
+        <tag>PD(type=dem,subtype=oth,position=uncl,case=uncl,number=uncl,gender=uncl)</tag>
         <tag>PD(type=indef,position=free,case=acc,number=pl,gender=uncl)</tag>
         <tag>PD(type=indef,position=free,case=dat,number=pl,gender=uncl)</tag>
         <tag>PD(type=indef,position=free,case=dat,number=sg,gender=m)</tag>
@@ -1385,30 +1393,6 @@
         <tag>PD(type=indef,position=postnom,case=dat,number=sg,gender=n)</tag>
         <tag>PD(type=indef,position=postnom,case=nom,number=pl,gender=uncl)</tag>
         <tag>PD(type=indef,position=postnom,case=uncl,number=uncl,gender=uncl)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=sg,gender=m|n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=acc,number=uncl,gender=f,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=dat,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=dat,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=dat,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=dat,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=dat,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=gen,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=gen,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=gen,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=pl,gender=f,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=pl,gender=n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=pl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=sg,gender=f,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=sg,gender=m,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=sg,gender=n,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=nom,number=sg,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=uncl,number=uncl,gender=uncl,subtype=oth)</tag>
-        <tag>PD(type=indef,position=uncl,case=voc,number=sg,gender=f,subtype=oth)</tag>
         <tag>PD(type=indef,subtype=art,position=prenom,case=acc,number=sg,gender=f)</tag>
         <tag>PD(type=indef,subtype=art,position=prenom,case=acc,number=sg,gender=m)</tag>
         <tag>PD(type=indef,subtype=art,position=prenom,case=acc,number=sg,gender=m|n)</tag>
@@ -1450,6 +1434,30 @@
         <tag>PD(type=indef,subtype=oth,position=prenom,case=uncl,number=uncl,gender=uncl)</tag>
         <tag>PD(type=indef,subtype=oth,position=prenom,case=voc,number=pl,gender=uncl)</tag>
         <tag>PD(type=indef,subtype=oth,position=prenom,case=voc,number=sg,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=sg,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=sg,gender=m)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=sg,gender=m|n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=sg,gender=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=sg,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=acc,number=uncl,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=dat,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=dat,number=sg,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=dat,number=sg,gender=m)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=dat,number=sg,gender=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=dat,number=sg,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=gen,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=gen,number=sg,gender=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=gen,number=sg,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=pl,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=pl,gender=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=pl,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=sg,gender=f)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=sg,gender=m)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=sg,gender=n)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=nom,number=sg,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=uncl,number=uncl,gender=uncl)</tag>
+        <tag>PD(type=indef,subtype=oth,position=uncl,case=voc,number=sg,gender=f)</tag>
         <tag>PD(type=inter,position=free,case=nom,number=sg,gender=f)</tag>
         <tag>PD(type=inter,position=free,case=nom,number=sg,gender=m)</tag>
         <tag>PD(type=inter,position=uncl,case=acc,number=pl,gender=uncl)</tag>
@@ -2147,12 +2155,12 @@
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=5)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
         <tag>VRB(type=uncl,finiteness=prespart,valency=uncl,conjugation=weak)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=intr,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=strong,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=trans,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=irreg,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=strong,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=uncl,verbclass=uncl,mood=uncl,tense=uncl,number=uncl)</tag>
-        <tag>VRB(type=uncl,finiteness=uncl,valency=uncl,conjugation=weak,mood=uncl,tense=uncl,number=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=intr,conjugation=weak)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=trans,conjugation=strong,verbclass=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=trans,conjugation=weak)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=uncl,conjugation=irreg)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=uncl,conjugation=strong,verbclass=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=uncl,conjugation=uncl,verbclass=uncl)</tag>
+        <tag>VRB(type=uncl,finiteness=uncl,tense=uncl,mood=uncl,number=uncl,person=uncl,valency=uncl,conjugation=weak)</tag>
     </tags>
 </tagset>

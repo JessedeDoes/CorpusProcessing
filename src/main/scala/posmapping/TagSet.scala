@@ -418,10 +418,11 @@ case class TagSet(prefix: String,
     }
 
   def fixTag(t: Tag) = {
-    val infringed = implications.filter(i => !i(t))
+    val infringed = implications.filter(i => !i(t)) // aha ik zie de fout al, je moet over ALLE implicaties loopen....
     if (infringed.nonEmpty) {
-      val fixed = infringed.foldLeft(t)({case (t2,r) => if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
+      val fixed = implications.foldLeft(t)({case (t2,r) => if (r(t2)) t2 else if (r.fix.isEmpty) t2 else (r.fix.get(t2))})
       // Console.err.println(s"$t does not satisfy $infringed")
+
       fixed
     } else t
   }

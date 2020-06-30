@@ -41,9 +41,9 @@
     <xsl:for-each select="//constraint[./pos=$pos]">
       <xsl:for-each select=".//feature[./text() != 'pos']">
         <xsl:variable name="feature"><xsl:value-of select="./text()"/></xsl:variable>
-        <h2><xsl:value-of select="$feature"/></h2>
-        <div style="font-style: italic"><xsl:value-of select="//partitions/feature[./name=$feature]/@desc"/></div>
-	<ul style="column-count: 1"><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[(.//pos=$pos or not (.//pos)) and not(contains(./value/text(),'|'))]">
+        <h2 style="margin-bottom:0.2em; font-size:11pt"><xsl:value-of select="$feature"/><xsl:text> </xsl:text><span style="font-weight:normal; font-style:italic">(<xsl:value-of select="//partitions/feature[./name=$feature]/@desc"/>)</span></h2>
+        <div style="font-style: italic"></div>
+	<ul style="column-count: 2;  font-size: 9pt"><xsl:for-each select="//partitions/feature[./name=$feature]//featureValue[(.//pos=$pos or not (.//pos)) and not(contains(./value/text(),'|'))]">
           <li>
             <xsl:variable name="value"><xsl:value-of select="encode-for-uri(replace(./value, '\|', '\\|'))"/></xsl:variable>
             <xsl:variable name="value_unencoded"><xsl:value-of select="./value"></xsl:value-of></xsl:variable>
@@ -72,7 +72,8 @@
     </xsl:for-each>
   </xsl:for-each>
   <xsl:if test="//declaration">
-    <h2>Declarations</h2>
+    <h1>Declarations</h1>
+    <div style="column-count: 2">
     <xsl:variable name="root"><xsl:sequence select="/"></xsl:sequence></xsl:variable>
     <xsl:message><xsl:value-of select="$corpora//*/name()"/></xsl:message>
     <xsl:for-each select="$corpora/*/*">
@@ -80,12 +81,15 @@
       <xsl:variable name="curcorp"><xsl:value-of select="./@name"/></xsl:variable>
       
       <h3><xsl:value-of select="$curcorp"/></h3>
+      <div style="font-size:9pt">
 	  <xsl:apply-templates select="$root//declaration[@corpus=$curcorp]"/>
+      </div>
     </xsl:for-each>
+    </div>
   </xsl:if>
   <xsl:if test=".//tags">
   <h1>Occurring tags</h1>
-  <div style="column-count: 3">
+  <div style="column-count: 3; font-size: 9pt">
 	  <xsl:for-each select=".//tag">
 		  <div class='tag'>
 		  <xsl:variable name="tag"><xsl:value-of select="encode-for-uri(replace(replace(replace(./text(), '\|', '\\|'),'\)','\\)'),'\(','\\('))"/></xsl:variable>
@@ -100,7 +104,7 @@
 </xsl:template>
 
 <xsl:template match="declaration">
-	<div><xsl:value-of select="."/></div>
+	<div><xsl:value-of select="replace(.,'\|\|.*','')"/></div>
 </xsl:template>
 
 <xsl:template match="name">

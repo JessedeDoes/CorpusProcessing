@@ -273,7 +273,7 @@
         "pos":["ADV"]
       },{
         "value":"neg",
-        "displayName":"Negative adverb",
+        "displayName":"Negative",
         "pos":["ADV"]
       },{
         "value":"rel",
@@ -594,6 +594,10 @@
       },{
         "value":"3",
         "displayName":"3",
+        "pos":["VRB"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
         "pos":["VRB"]
       }]
     }

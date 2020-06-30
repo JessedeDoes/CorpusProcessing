@@ -3,7 +3,7 @@
   <prefix>tdn</prefix>
   <corpus>max</corpus>
   <mainPoS>
-    <pos displayName="Adjective/adverb" desc="Adjective/adverb">AA</pos>
+    <pos displayName="Adjective-Adverb" desc="Adjective-Adverb">AA</pos>
     <pos_bab displayName="Adjective" desc="Adjective">ADJ</pos_bab>
     <pos displayName="Adposition" desc="Adposition">ADP</pos>
     <pos displayName="Adverb" desc="Adverb">ADV</pos>
@@ -14,7 +14,7 @@
     <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
     <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
     <pos displayName="Numeral" desc="Numeral">NUM</pos>
-    <pos displayName="Pronoun" desc="Pronoun/determiner">PD</pos>
+    <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
     <pos displayName="Residual" desc="Residual">RES</pos>
     <pos displayName="Verb" desc="Verb">VRB</pos>
   </mainPoS>
@@ -69,12 +69,6 @@
         </featureValue>
         -->
 
-        <featureValue displayName="3" desc="3 (vinden, winnen, worden, erven)">
-          <value>3</value>
-          <posForValue>
-            <pos>VRB</pos>
-          </posForValue>
-        </featureValue>
         <featureValue displayName="3a" desc="3a (vinden, winnen)">
           <value>3a</value>
           <posForValue>
@@ -228,7 +222,7 @@
             <pos>AA</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Unclear" desc="unclear">
+        <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           
         </featureValue>
@@ -357,7 +351,7 @@
             <pos>NOU-P</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Unclear" desc="unclear">
+        <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
@@ -390,7 +384,7 @@
             <pos>AA</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Unclear" desc="unclear">
+        <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
             <pos>AA</pos>
@@ -419,12 +413,14 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue_gysseling>
+        <!--
         <featureValue displayName="Participle" desc="Participle">
           <value>part</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        -->
         <featureValue displayName="Present participle" desc="Present participle">
           <value>prespart</value>
           <posForValue>
@@ -820,9 +816,6 @@
         </featureValue_molex>
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
-          <posForValue>
-            <pos>NUM</pos>
-          </posForValue>
         </featureValue>
       </values>
     </feature>
@@ -844,7 +837,7 @@
       </values>
     </feature_molex>
     <feature displayName="Subtype"
-      desc="Subtype (only for numerals in Molex, now also for PD, ADV and CONJ)">
+      desc="Subtype">
       <name>subtype</name>
       <values>
         <featureValue displayName="Article" desc="Article">
@@ -855,7 +848,7 @@
         </featureValue>
         
         
-        <featureValue displayName="Demonstrative" desc="Demonstrative pronominal adverb">
+        <featureValue displayName="Demonstrative" desc="Demonstrative adverb">
           <value>dem</value>
           <posForValue>
             <pos>ADV</pos>
@@ -874,7 +867,7 @@
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Indefinite" desc="Indefinite pronominal adverb">
+        <featureValue displayName="Indefinite" desc="Indefinite adverb">
           <value>indef</value>
           <posForValue>
             <pos>ADV</pos>
@@ -886,7 +879,7 @@
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Negative adverb" desc="Negative">
+        <featureValue displayName="Negative" desc="Negative adverb">
           <value>neg</value>
           <posForValue>
             <pos>ADV</pos>
@@ -905,7 +898,7 @@
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Relative" desc="Relative pronominal adverb">
+        <featureValue displayName="Relative" desc="Relative adverb">
           <value>rel</value>
           <posForValue>
             <pos>ADV</pos>
@@ -989,7 +982,7 @@
           </posForValue>
         </featureValue>
         
-        <featureValue displayName="Main" desc="Main verb (not auxiliary or copula)">
+        <featureValue displayName="Main" desc="Main">
           <value>mai</value>
           <posForValue>
             <pos>VRB</pos>
@@ -1030,7 +1023,6 @@
           </posForValue>
         </featureValue>
 
-
         <featureValue displayName="Coordinating" desc="Coordinating conjunction">
           <value>coor</value>
           <posForValue>
@@ -1052,6 +1044,7 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
+
         <featureValue displayName="Demonstrative" desc="Demonstrative">
           <value>dem</value>
           <posForValue>
@@ -1091,7 +1084,7 @@
           </posForValue>
         </featureValue>
      -->   
-        <featureValue displayName="Ordinal" desc="Ordinal numeral">
+        <featureValue displayName="Ordinal" desc="Ordinal">
           <value>ord</value>
           <posForValue>
             <pos>NUM</pos>
@@ -1140,7 +1133,7 @@
             <pos>CONJ</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Explicative" desc="Explicative">
+        <featureValue displayName="Explicative" desc="Explicative conjunction">
           <value>expl</value>
           <posForValue>
             <pos>CONJ</pos>
@@ -1152,7 +1145,7 @@
             <pos>RES</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Negative" desc="Negative">
+        <featureValue displayName="Negative" desc="Negative conjunction">
           <value>neg</value>
           <posForValue>
             <pos>CONJ</pos>
@@ -1178,6 +1171,14 @@
         </featureValue>
         <featureValue displayName="Relative" desc="Relative">
           <value>rel</value>
+          <posForValue>
+            <pos>PD</pos>
+            <pos>CONJ</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="W-pronoun"
+          desc="Interrogative/relative pronoun of the 'w'-series">
+          <value>w-p</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
@@ -1209,12 +1210,10 @@
             <pos>RES</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="other" desc="other">
+        <featureValue displayName="Other" desc="Other">
           <value>oth</value>
           <posForValue>
-
             <pos>RES</pos>
-
           </posForValue>
         </featureValue>
         <featureValue displayName="Unclear" desc="Unclear">
@@ -1327,13 +1326,13 @@
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Digit/Alphabetic" desc="Digit/Alphabetic">
+        <featureValue displayName="Mix-digit" desc="Combination of digits and letters">
           <value>mix-dig</value>
           <posForValue>
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Roman/Alphabetic" desc="Roman/Alphabetic">
+        <featureValue displayName="Mix-roman" desc="Combination of roman numeral with letters">
           <value>mix-rom</value>
           <posForValue>
             <pos>NUM</pos>
@@ -1545,7 +1544,9 @@
 
     <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=ind => person</declaration>
     <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=conj => person</declaration>
-
+    <declaration corpus="ONW">pos=VRB,finiteness=fin,mood=uncl => person</declaration>
+    <declaration corpus="ONW">pos=VRB,finiteness=uncl,mood=uncl => person</declaration>
+    
     <declaration corpus="ONW">pos=PD,subtype=art => position || position=prenom</declaration>
     <declaration corpus="ONW">pos=PD,type=pers => position || position=free</declaration>
     <declaration corpus="ONW">pos=PD,type=refl => position || position=free</declaration>
@@ -1821,7 +1822,7 @@
     <declaration corpus="CGN">pos=PD, type=indef, position=uncl => number, gender</declaration>
 
     <declaration corpus="CGN">pos=PD, type=indef, position=prenom => subtype || subtype=oth</declaration>
-     <declaration corpus="CGN">pos=PD, type=indef, position=uncl => subtype || subtype=uncl</declaration>
+    <declaration corpus="CGN">pos=PD, type=indef, position=uncl => subtype || subtype=uncl</declaration>
 
     <!-- 
       Lidwoorden
@@ -1844,9 +1845,9 @@
     <declaration corpus="CGN">pos=CONJ => type</declaration>
 
 
-    <!-- Conjuncties -->
+    <!-- Residuals; WF niet langer verplicht! -->
 
-    <declaration corpus="CGN">pos=RES => type, WF</declaration>
+    <declaration corpus="CGN">pos=RES => type</declaration>
 
 
 

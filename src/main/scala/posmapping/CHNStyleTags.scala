@@ -42,7 +42,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
   }
 
   def hasUnforcedFeatures() = {
-    val alternatives = features.filter(_.name != "pos").map(f => {
+    val alternatives = features.filter(x => x.name != "pos" && x.name != "WF").map(f => {
       val f0 = features.filter(_ != f)
       val t0 = this.copy(tag = this.toString(f0))
       f.name -> t0
