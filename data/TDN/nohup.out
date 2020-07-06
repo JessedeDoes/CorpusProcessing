@@ -1,0 +1,162 @@
+OpenJDK 64-Bit Server VM warning: Option UseConcMarkSweepGC was deprecated in version 9.0 and will likely be removed in a future release.
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.intellij.ide.ClassUtilCore to field sun.net.www.protocol.jar.JarFileFactory.fileCache
+WARNING: Please consider reporting this to the maintainers of com.intellij.ide.ClassUtilCore
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+Gtk-Message: 16:25:11.569: Failed to load module "canberra-gtk-module"
+Gtk-Message: 16:25:11.653: Failed to load module "canberra-gtk-module"
+2020-07-06 16:25:15,358 [   5007]   WARN - llij.ide.plugins.PluginManager - Markdown support not loaded: until build 182.SNAPSHOT < IU-192.7142.36 
+2020-07-06 16:25:16,084 [   5733]   WARN - llij.ide.plugins.PluginManager - Markdown support not loaded: until build 182.SNAPSHOT < IU-192.7142.36 
+2020-07-06 16:25:16,217 [   5866]   WARN - llij.ide.plugins.PluginManager - Python Community Edition not loaded: until build 182.SNAPSHOT < IU-192.7142.36 
+2020-07-06 16:25:19,789 [   9438]   WARN - com.intellij.util.xmlb.Binding - no accessors for class com.dci.intellij.dbn.debugger.common.settings.DBProgramDebuggerState 
+2020-07-06 16:25:19,943 [   9592]   WARN - com.intellij.util.xmlb.Binding - no accessors for class com.aliyun.odps.studio.option.CompilerSettings$MajorVersion 
+java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:252)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:292)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:351)
+	at java.base/sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:746)
+	at java.base/sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:689)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1610)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1515)
+	at com.aliyun.odps.studio.ide.MyHttpClient.doGetString(MyHttpClient.java:54)
+	at com.aliyun.odps.studio.option.ManageSettings.isEnableDebugger(ManageSettings.java:36)
+	at com.aliyun.odps.studio.intellij.StudioMain.lambda$initComponent$0(StudioMain.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+2020-07-06 16:25:20,590 [  10239]   WARN - s.studio.option.ManageSettings - [MaxCompute STUDIO]fail to query manage settings from server 
+java.net.SocketTimeoutException: Read timed out
+	at java.base/java.net.SocketInputStream.socketRead0(Native Method)
+	at java.base/java.net.SocketInputStream.socketRead(SocketInputStream.java:115)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:168)
+	at java.base/java.net.SocketInputStream.read(SocketInputStream.java:140)
+	at java.base/java.io.BufferedInputStream.fill(BufferedInputStream.java:252)
+	at java.base/java.io.BufferedInputStream.read1(BufferedInputStream.java:292)
+	at java.base/java.io.BufferedInputStream.read(BufferedInputStream.java:351)
+	at java.base/sun.net.www.http.HttpClient.parseHTTPHeader(HttpClient.java:746)
+	at java.base/sun.net.www.http.HttpClient.parseHTTP(HttpClient.java:689)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream0(HttpURLConnection.java:1610)
+	at java.base/sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1515)
+	at com.aliyun.odps.studio.ide.MyHttpClient.doGetString(MyHttpClient.java:54)
+	at com.aliyun.odps.studio.option.ManageSettings.isEnableDebugger(ManageSettings.java:36)
+	at com.aliyun.odps.studio.intellij.StudioMain.lambda$initComponent$0(StudioMain.java:98)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+(java:18353): GLib-GIO-CRITICAL **: 16:25:21.863: g_dbus_proxy_new: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+
+(java:18353): GLib-GIO-CRITICAL **: 16:25:21.863: g_dbus_proxy_new: assertion 'G_IS_DBUS_CONNECTION (connection)' failed
+ERROR - [UNKNOWN] undefined object type: MINING MODEL
+DEBUG - [ORACLE-SQL] undefined element type: xml_type_column_properties
+DEBUG - [ORACLE-SQL] undefined element type: alter_external_table_clauses
+DEBUG - [ORACLE-SQL] undefined element type: records_per_block_clause
+DEBUG - [ORACLE-SQL] undefined element type: ref_attribute
+DEBUG - [ORACLE-SQL] undefined element type: physical_properties
+DEBUG - [ORACLE-SQL] undefined element type: redo_logfile_spec
+DEBUG - [ORACLE-SQL] undefined element type: row_movement_clause
+DEBUG - [ORACLE-SQL] undefined element type: hash_subpartition_quantity
+DEBUG - [ORACLE-SQL] undefined element type: primary_operator
+DEBUG - [ORACLE-SQL] undefined element type: parameter_types
+DEBUG - [ORACLE-SQL] undefined element type: partition_value
+DEBUG - [ORACLE-SQL] undefined element type: lob_partition_storage
+DEBUG - [ORACLE-SQL] undefined element type: create_cluster
+DEBUG - [ORACLE-SQL] undefined element type: index_attributes
+DEBUG - [ORACLE-SQL] undefined element type: parameter_type
+DEBUG - [ORACLE-SQL] undefined element type: return_type
+DEBUG - [ORACLE-SQL] undefined element type: scn_value
+DEBUG - [ORACLE-SQL] undefined element type: move_table_clause
+DEBUG - [ORACLE-SQL] undefined element type: data_item
+DEBUG - [ORACLE-SQL] undefined element type: create_index_statement
+2020-07-06 16:25:24,465 [  14114]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: AllHallowsEve from plugin: DBN 
+2020-07-06 16:25:24,465 [  14114]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: Blackboard from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: Cobalt from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: Monokai from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: Railscasts from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: Twilight from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: VibrantInk from plugin: DBN 
+2020-07-06 16:25:24,466 [  14115]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: WarmNeon from plugin: DBN 
+2020-07-06 16:25:24,467 [  14116]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: VibrantInk from plugin: com.intellij.database 
+2020-07-06 16:25:24,468 [  14117]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: WarmNeon from plugin: com.intellij.database 
+2020-07-06 16:25:24,468 [  14117]   WARN - s.impl.EditorColorsManagerImpl - Cannot find scheme: High сontrast from plugin: com.intellij.database 
+2020-07-06 16:25:37,033 [  26682]  ERROR - serialization.ObjectSerializer - Cannot deserialize field value (field=data, binding=com.intellij.serialization.PolymorphicBinding@7c64968b, valueType=STRUCT, beanClass=com.intellij.openapi.externalSystem.model.DataNode) 
+com.intellij.serialization.SerializationException: Cannot deserialize field value (field=data, binding=com.intellij.serialization.PolymorphicBinding@7c64968b, valueType=STRUCT, beanClass=com.intellij.openapi.externalSystem.model.DataNode)
+	at com.intellij.serialization.BeanBinding.readIntoObject(BeanBinding.kt:256)
+	at com.intellij.serialization.BeanBinding.readIntoObject$default(BeanBinding.kt:222)
+	at com.intellij.serialization.BeanBinding.deserialize(BeanBinding.kt:217)
+	at com.intellij.serialization.Binding$DefaultImpls.deserialize(Binding.kt:16)
+	at com.intellij.serialization.BeanBinding.deserialize(BeanBinding.kt:19)
+	at com.intellij.serialization.BeanBinding.readIntoObject(BeanBinding.kt:250)
+	at com.intellij.serialization.BeanBinding.readIntoObject$default(BeanBinding.kt:222)
+	at com.intellij.serialization.BeanBinding.deserialize(BeanBinding.kt:217)
+	at com.intellij.serialization.BaseCollectionBinding.readInto(CollectionBinding.kt:36)
+	at com.intellij.serialization.CollectionBinding.deserialize(CollectionBinding.kt:54)
+	at com.intellij.serialization.CollectionBinding.deserialize(CollectionBinding.kt:44)
+	at com.intellij.serialization.IonObjectSerializer.doRead(IonObjectSerializer.kt:143)
+	at com.intellij.serialization.IonObjectSerializer.readVersioned(IonObjectSerializer.kt:95)
+	at com.intellij.serialization.VersionedFile.readAndHandleErrors(VersionedFile.kt:58)
+	at com.intellij.serialization.VersionedFile.readList(VersionedFile.kt:46)
+	at com.intellij.serialization.VersionedFile.readList$default(VersionedFile.kt:44)
+	at com.intellij.serialization.VersionedFile.readList(VersionedFile.kt)
+	at com.intellij.openapi.externalSystem.service.project.manage.ExternalProjectsDataStorage.load(ExternalProjectsDataStorage.java:382)
+	at com.intellij.openapi.externalSystem.service.project.manage.ExternalProjectsDataStorage.load(ExternalProjectsDataStorage.java:84)
+	at com.intellij.openapi.externalSystem.service.project.manage.ExternalProjectsManagerImpl.init(ExternalProjectsManagerImpl.java:154)
+	at com.intellij.openapi.externalSystem.service.ExternalSystemStartupActivity.runActivity(ExternalSystemStartupActivity.java:21)
+	at com.intellij.ide.startup.impl.StartupManagerImpl.runActivity(StartupManagerImpl.java:205)
+	at com.intellij.ide.startup.impl.StartupManagerImpl.lambda$runPostStartupActivitiesFromExtensions$2(StartupManagerImpl.java:172)
+	at com.intellij.openapi.extensions.impl.ExtensionPointImpl.processWithPluginDescriptor(ExtensionPointImpl.java:321)
+	at com.intellij.openapi.extensions.ExtensionPointName.processWithPluginDescriptor(ExtensionPointName.java:140)
+	at com.intellij.ide.startup.impl.StartupManagerImpl.runPostStartupActivitiesFromExtensions(StartupManagerImpl.java:170)
+	at com.intellij.openapi.project.impl.ProjectManagerImpl.lambda$null$8(ProjectManagerImpl.java:407)
+	at com.intellij.openapi.project.impl.ProjectManagerImpl.loadProjectUnderProgress(ProjectManagerImpl.java:471)
+	at com.intellij.openapi.project.impl.ProjectManagerImpl.lambda$openProject$9(ProjectManagerImpl.java:394)
+	at com.intellij.openapi.project.impl.ProjectManagerImpl.openProject(ProjectManagerImpl.java:439)
+	at com.intellij.platform.PlatformProjectOpenProcessor.prepareAndOpenProject(PlatformProjectOpenProcessor.java:272)
+	at com.intellij.platform.PlatformProjectOpenProcessor.lambda$doOpenProject$0(PlatformProjectOpenProcessor.java:198)
+	at com.intellij.openapi.progress.impl.CoreProgressManager$2.run(CoreProgressManager.java:253)
+	at com.intellij.openapi.progress.impl.CoreProgressManager$TaskRunnable.run(CoreProgressManager.java:894)
+	at com.intellij.openapi.progress.impl.CoreProgressManager$5.run(CoreProgressManager.java:447)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.lambda$runProcess$2(CoreProgressManager.java:169)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.registerIndicatorAndRun(CoreProgressManager.java:591)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.executeProcessUnderProgress(CoreProgressManager.java:537)
+	at com.intellij.openapi.progress.impl.ProgressManagerImpl.executeProcessUnderProgress(ProgressManagerImpl.java:59)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.runProcess(CoreProgressManager.java:156)
+	at com.intellij.openapi.application.impl.ApplicationImpl.lambda$null$9(ApplicationImpl.java:552)
+	at com.intellij.openapi.application.impl.ApplicationImpl$1.run(ApplicationImpl.java:294)
+	at java.base/java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:515)
+	at java.base/java.util.concurrent.FutureTask.run(FutureTask.java:264)
+	at java.base/java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1128)
+	at java.base/java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:628)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+Caused by: com.intellij.openapi.progress.ProcessCanceledException
+	at com.intellij.openapi.progress.util.AbstractProgressIndicatorBase.throwIfCanceled(AbstractProgressIndicatorBase.java:135)
+	at com.intellij.openapi.progress.util.AbstractProgressIndicatorBase.checkCanceled(AbstractProgressIndicatorBase.java:126)
+	at com.intellij.openapi.progress.util.AbstractProgressIndicatorExBase.checkCanceled(AbstractProgressIndicatorExBase.java:100)
+	at com.intellij.openapi.progress.impl.CoreProgressManager.doCheckCanceled(CoreProgressManager.java:130)
+	at com.intellij.openapi.progress.ProgressManager.checkCanceled(ProgressManager.java:214)
+	at com.intellij.openapi.extensions.impl.ExtensionPointImpl.lambda$setCheckCanceledAction$4(ExtensionPointImpl.java:936)
+	at com.intellij.openapi.extensions.impl.ExtensionComponentAdapter.createInstance(ExtensionComponentAdapter.java:40)
+	at com.intellij.openapi.extensions.impl.XmlExtensionAdapter.createInstance(XmlExtensionAdapter.java:54)
+	at com.intellij.openapi.extensions.impl.ExtensionPointImpl.processAdapter(ExtensionPointImpl.java:439)
+	at com.intellij.openapi.extensions.impl.ExtensionPointImpl.processAdapters(ExtensionPointImpl.java:410)
+	at com.intellij.openapi.extensions.impl.ExtensionPointImpl.getExtensions(ExtensionPointImpl.java:244)
+	at com.intellij.openapi.extensions.ExtensionPointName.getExtensions(ExtensionPointName.java:34)
+	at com.intellij.openapi.externalSystem.service.project.manage.ProjectDataManagerImpl.lambda$new$0(ProjectDataManagerImpl.java:50)
+	at com.intellij.openapi.externalSystem.service.project.manage.ProjectDataManagerImpl$1.compute(ProjectDataManagerImpl.java:70)
+	at com.intellij.openapi.externalSystem.service.project.manage.ProjectDataManagerImpl$1.compute(ProjectDataManagerImpl.java:65)
+	at com.intellij.openapi.util.NotNullLazyValue.getValue(NotNullLazyValue.java:38)
+	at com.intellij.openapi.externalSystem.service.project.manage.ProjectDataManagerImpl.findService(ProjectDataManagerImpl.java:56)
+	at com.intellij.openapi.externalSystem.model.SerializationKt$createDataClassResolver$1.invoke(serialization.kt:21)
+	at com.intellij.openapi.externalSystem.model.SerializationKt$createDataClassResolver$1.invoke(serialization.kt)
+	at com.intellij.openapi.externalSystem.model.SerializationKt$createCacheReadConfiguration$1.invoke(serialization.kt:59)
+	at com.intellij.openapi.externalSystem.model.SerializationKt$createCacheReadConfiguration$1.invoke(serialization.kt)
+	at com.intellij.serialization.PolymorphicBinding.doDeserialize(PolymorphicBinding.kt:43)
+	at com.intellij.serialization.PolymorphicBinding.deserialize(PolymorphicBinding.kt:19)
+	at com.intellij.serialization.BeanBinding.readIntoObject(BeanBinding.kt:250)
+	... 46 more
+2020-07-06 16:25:37,037 [  26686]  ERROR - serialization.ObjectSerializer - IntelliJ IDEA 2019.2.4  Build #IU-192.7142.36 
+2020-07-06 16:25:37,037 [  26686]  ERROR - serialization.ObjectSerializer - JDK: 11.0.4; VM: OpenJDK 64-Bit Server VM; Vendor: JetBrains s.r.o 
+2020-07-06 16:25:37,037 [  26686]  ERROR - serialization.ObjectSerializer - OS: Linux 
+2020-07-06 16:25:37,045 [  26694]   WARN - com.intellij.util.xmlb.Binding - no accessors for class org.jetbrains.kotlin.idea.highlighter.KotlinDefaultHighlightingSettingsProvider 
+2020-07-06 16:25:37,054 [  26703]  ERROR - serialization.ObjectSerializer - Last Action:  
