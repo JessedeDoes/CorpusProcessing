@@ -28,15 +28,17 @@ object StandoffTokenizing {
         if (words.isEmpty)
           (tokens, t.nonEmpty)
         else
-          words.foldLeft(tokens -> lastTokenClosed){case ((t1, b),m) => extendWithMatch(t1,b,m, n.start, t.length)}
+          words.foldLeft(tokens -> lastTokenClosed){case ((t1, b),m) =>
+            extendWithMatch(t1,b,m, n.start, t.length)}
       case e: Elem =>
         val b0 = lastTokenClosed || isTokenBoundary(e)
-        val (foldedToks, closed) =  n.children.foldLeft(tokens -> b0){case ((t, b), n1) => extendWithNode(t,b,n1,isTokenBoundary)}
+        val (foldedToks, closed) =  n.children.foldLeft(tokens -> b0){case ((t, b), n1) =>
+          extendWithNode(t,b,n1,isTokenBoundary)}
         foldedToks -> (closed || isTokenBoundary(e))
     }
   }
 
-  def tokenize(n: NodeWithOffsets, isTokenBoundary: Node => Boolean = z => true) = {
+  def tokenize(n: NodeWithOffsets, isTokenBoundary: Node => Boolean = z => true): (Seq[Token], Boolean) = {
     extendWithNode(Seq(), true, n, isTokenBoundary)
   }
 }

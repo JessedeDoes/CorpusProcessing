@@ -19,6 +19,19 @@ object TEI2NAF {
     }
   }
 
+  def toTextUnits(n: NodeWithOffsets): scala.xml.NodeSeq = {
+    val nodeType = n.node.getClass.getName.replaceAll(".*\\.","")
+    if (n.node.isInstanceOf[Text])
+        Seq() // <textnode offset={n.start.toString} length={n.length.toString}/>
+    else  if (n.node.isInstanceOf[Elem]) {
+      val down = n.children.flatMap(toTextUnits)
+      val attributes = n.node.attributes.map(a => <attribute name={a.prefixedKey} value={a.value.text}/>)
+      <tunit id={n.id} offset={n.start.toString} length={n.length.toString} class={n.label}/> ++ down
+    } else {
+       Seq() // <node type={nodeType} offset={n.start.toString} length={n.length.toString}/>
+    }
+  }
+
   def tei2naf(d: Elem) = {
     val textNode = (d \\ "text").headOption
     textNode.map(n => {
@@ -29,11 +42,12 @@ object TEI2NAF {
       lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
       val descendants = n1.descendant
       <NAF><raw>{cdata}</raw>
-        <textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toNaf(n1)}</textStructure></NAF>
+        <textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toTextUnits(n1)}</textStructure></NAF>
     })
   }
 
-  val exampleFile = "data/CRM/Metadata/0001.tei.xml"
+  val missivenTEIDir = "/data/CLARIAH/WP6/generalemissiven/6/"
+  val exampleFile = missivenTEIDir + "INT_fa840fc6-9b64-3966-b53d-8a4c79bbec9b.xml"// "data/CRM/Metadata/0001.tei.xml"
   lazy val exampleTEI0 = XML.loadFile(exampleFile)
 
   val mini = <TEI><text><w>Hallo</w> <w>meneer</w></text></TEI>

@@ -4,8 +4,17 @@ package standoffmarkup
 
 import scala.xml._
 
-case class Annotation(xmi: Elem, text: String)
+case class TextUnit(xmi: Node, text: String)
 {
+  val begin = (xmi \ "@offset").text.toInt
+  val end = (xmi \ "@length").text.toInt + begin
+  val id = (xmi \ "@id").text
+  val typ = xmi.label
+  val content = text.substring(begin,end)
+  override def toString: String = s"$typ $begin:$end $id"
+}
+
+case class Annotation(xmi: Node, text: String) {
   val begin = (xmi \ "@begin").text.toInt
   val end = (xmi \ "@end").text.toInt
   val id = (xmi \ "@id").text
@@ -22,79 +31,95 @@ object XMI {
   val TEIFolder = "/data/CLARIAH/WP6/generalemissiven/6"
   val xmiFolder = "/data/CLARIAH/WP6/generalemissiven/missives-xmi-ids-20200416/6"
   val txtFolder = "/data/CLARIAH/WP6/generalemissiven/split_notes/6"
-
+  val nafFolder = "/home/jesse/workspace/NAF/naf_1.1/6"
   val theIdx = "INT_32cf9a42-176e-33f2-84ba-3abd266079d7"
 
   val theIds = new java.io.File(TEIFolder).listFiles().map(f => f.getName.replaceAll(".xml",""))
 
 
  def getParagraphText(p: Elem) = {
-   val p1 = utils.PostProcessXML.updateElement(p, x => x.label=="fw" || x.label == "note", x => <fw/>)
+   val p1 = utils.PostProcessXML.updateElement(p, x => x.label=="xfw" || x.label == "xnote", x => <fw/>)
    p1.text
  }
+
   def testje(theId: String) = {
     val TEIFile = s"$TEIFolder/$theId.xml"
     val xmiFile = s"$xmiFolder/$theId.xmi"
     val txtFile = s"$txtFolder/$theId.txt"
+    val nafFile = s"$nafFolder/$theId.naf"
 
-    val TEI = XML.loadFile(TEIFile)
-    val xmi = XML.loadFile(xmiFile)
-    //val txtOld = scala.io.Source.fromFile(txtFile).getLines().map(_.replaceAll(",(\\S)",", $1")).map(_.trim).filter(_.nonEmpty).mkString("\n").trim
+    try {
+      val TEI = XML.loadFile(TEIFile)
+      val xmi = XML.loadFile(xmiFile)
+      val naf = XML.loadFile(nafFile)
+      // val txtOld = scala.io.Source.fromFile(txtFile).getLines().map(_.replaceAll(",(\\S)",", $1")).map(_.trim).filter(_.nonEmpty).mkString("\n").trim
 
 
-    val txt = ((xmi \\ "Sofa") \ "@sofaString").text
+      val txt = ((xmi \\ "Sofa") \ "@sofaString").text
+      val nafTxt = (naf \\ "raw").text
 
-    val xmiObjects = xmi.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem])
-      .filter(x => (x \ "@begin").text.nonEmpty)
+      val xmiObjects = xmi.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem])
+        .filter(x => (x \ "@begin").text.nonEmpty)
 
-    val annotations = xmiObjects.map(Annotation(_,txt))
+      val annotations = xmiObjects.map(Annotation(_, txt))
 
-    val so = standoffmarkup.StandoffMarkup.createStandoffMarkup(TEI)
-    val textNode = (TEI \\ "text").head
+      val so = standoffmarkup.StandoffMarkup.createStandoffMarkup(TEI)
+      val textNode = (TEI \\ "text").head
 
-    val okNodes = Set("p", "head")
+      val okNodes = Set("p", "head")
 
-    val textFromTEI = (textNode.descendant.filter(x => okNodes.contains(x.label)))
-      .map(_.text.replaceAll("\\s+", " " )).mkString(" ")
+      val textFromTEI = (textNode.descendant.filter(x => okNodes.contains(x.label)))
+        .map(_.text.replaceAll("\\s+", " ")).mkString(" ")
 
-    val test = textFromTEI.replaceAll("\\s+","") == txt.replaceAll("\\s+","")
+      val test = textFromTEI.replaceAll("\\s+", "") == txt.replaceAll("\\s+", "")
 
-    // println(textFromTEI.trim.substring(0,100))
+      // println(textFromTEI.trim.substring(0,100))
 
-    println(s"TEST $theId: $test")
+      println(s"TEST $theId: $test")
 
-    val paragraphsXMI = annotations.filter(_.typ.contains("aragra")).map(a => a.id -> a).toMap
+      val paragraphsXMI = annotations.filter(_.typ.contains("aragra")).map(a => a.id -> a).toMap
+      val paragraphsNAF = (naf \\ "tunit").map(n => TextUnit(n, nafTxt)).map(a => a.id -> a).toMap
+      val paragraphsTEI = textNode.descendant.filter(x => x.label == "p" || x.label == "head").map(p =>
+        getId(p) -> p).toMap
 
-    val paragraphsTEI = textNode.descendant.filter(x => x.label == "p" || x.label == "head").map(p =>
-    getId(p) -> p).toMap
-
-    paragraphsTEI.foreach({case (id,p) =>
-        val x = paragraphsXMI.get(id)
+      paragraphsTEI.foreach({ case (id, p) =>
+        val x = paragraphsNAF.get(id)
         if (x.isDefined) {
           val teiTxt = getParagraphText(p.asInstanceOf[Elem])
           val xmiTxt = x.get.content
           val teiNowhite = teiTxt.replaceAll("\\s+", "")
           val xmiNowhite = xmiTxt.replaceAll("\\s+", "")
-          val check = teiNowhite == xmiNowhite
-          if (!check)
-            {
-              println(s"\n#### Mismatch for $id!!! ${teiTxt.length} ${xmiTxt.length}\n$teiTxt\n$xmiTxt\n####")
-            }
+          val teiTokens = teiTxt.trim.split("\\s+").toList
+          val p1 = StandoffMarkup.createStandoffMarkup(p)
+
+          val teiTokenized =
+            StandoffTokenizing.tokenize(p1, _.label == "lb")._1.map(_.word)
+
+          //println(teiTokenized)
+          val xmiTokens = xmiTxt.trim.split("\\s+").toList
+
+          val check = (teiNowhite == xmiNowhite) && (teiTokenized == xmiTokens)
+          if (!check) {
+            println(s"\n#### Mismatch for $id!!! ${teiTxt.length} ${xmiTxt.length}\n$teiTxt\n$xmiTxt\n####")
+          }
         } else {
           Console.err.println(s"$id is missing in XMI!!!")
         }
-    } )
+      })
 
-    if (false) annotations.filter(_.typ.contains("oken")).foreach(a => {
-      val token = txt.substring(a.begin, a.end)
-      val token1 = textFromTEI.substring(a.begin, a.end)
-      println(s"|$token/$token1| AT $a")
-    })
+      if (false) annotations.filter(_.typ.contains("oken")).foreach(a => {
+        val token = txt.substring(a.begin, a.end)
+        val token1 = textFromTEI.substring(a.begin, a.end)
+        println(s"|$token/$token1| AT $a")
+      })
+    } catch {
+      case e:Exception => Console.err.println(s"No luck for $theId")
+    }
   }
 
   def main(args: Array[String]): Unit = {
     //println(txtFile)
-    theIds.foreach(testje)
+    theIds.sorted.foreach(testje)
   }
 }
 
