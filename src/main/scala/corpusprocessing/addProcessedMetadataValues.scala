@@ -43,6 +43,11 @@ case class addProcessedMetadataValues() {
     (b \ "interpGrp").filter(g => (g \ "@type").text == n).flatMap(g => (g \ "interp").map(_.text))
   }
 
+  def getFields(b: Elem, n: String => Boolean = x => true): immutable.Seq[(String,String)] = {
+    (b \ "interpGrp").filter(g => n((g \ "@type").text)).flatMap(g => (g \ "interp").map(
+      x => (g \ "@type").text -> x.text)).filter(_._2.nonEmpty)
+  }
+
   def addProcessedValue(b: Elem, n: String, f: Seq[String]): Elem = {
      addField(b, n, f)
   }
@@ -121,9 +126,15 @@ case class addProcessedMetadataValues() {
     bNew
   }
 
+  def findListBibl(d: Elem) = (d \\ "listBibl").filter(l => (getId(l).map(x => x.toLowerCase.contains("inlmetadata")
+    && !x.contains("Level0_citaat-id")) == Some(true)))
+
+
   def addProcessedMetadataValues(d: Elem) = {
     PostProcessXML.updateElement(d,
-      l => l.label == "listBibl" && (getId(l).map(x => x.toLowerCase.contains("inlmetadata") && !x.contains("Level0_citaat-id")) == Some(true)),
+      l => l.label == "listBibl" &&
+        (getId(l).map(x => x.toLowerCase.contains("inlmetadata")
+          && !x.contains("Level0_citaat-id")) == Some(true)),
       l => updateElement(l, _.label == "bibl", enrichBibl)
     )
   }
