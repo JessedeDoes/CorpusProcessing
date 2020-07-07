@@ -1,15 +1,15 @@
-package corpusprocessing.gysseling
-import corpusprocessing.gysseling.ListOfDocuments.dir
+package corpusprocessing.MNL
 
 import scala.xml._
 
-object ListOfDocuments {
-  val dir = corpusprocessing.onw.Settings.gysselingProcessedMetadataDir
+object ListOfMNWDocuments {
 
-  def listFilesInDir(dir: String) = {
+  val dir = "/mnt/Projecten/Corpora/Historische_Corpora/MNL-TEI/Nederlabversie/PostProcessedMetadata/"
+
+  def listFilesInDir(dir: String): Unit = {
     val d = new java.io.File(dir)
     val apm = corpusprocessing.addProcessedMetadataValues()
-    d.listFiles().filter(x => !x.getName.startsWith("0") && !x.getName.startsWith("1")).foreach(f
+    d.listFiles().filter(_.isFile).foreach(f
     => {
       //sprintln(f.getName)
 
@@ -19,14 +19,14 @@ object ListOfDocuments {
       val ti = (d \\ "title").text
       val id = apm.getField(bibl, "pid").head
       val fieldsForDir = apm.getFields(bibl,  n => Set("genre", "fict")
-        .exists( x => n.toLowerCase.contains(x)))
+        .exists( x => n.toLowerCase.contains(x))).map({case (n,v) => s"$n: $v"}).mkString("; ")
       println(s"$id\t${f.getName}\t$ti\t$fieldsForDir")
     })
+
+    d.listFiles.filter(_.isDirectory).foreach(f => listFilesInDir(f.getCanonicalPath) )
   }
 
   def main(args: Array[String]): Unit = {
     listFilesInDir(dir)
   }
 }
-
-
