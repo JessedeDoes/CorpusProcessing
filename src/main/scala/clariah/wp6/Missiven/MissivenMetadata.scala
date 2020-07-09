@@ -37,7 +37,6 @@ object MissivenMetadata {
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
   }
 
-
   val pretty = new scala.xml.PrettyPrinter(300, 4)
 
   val maanden: List[(String, Int)] = List("jan", "feb", "maart", "apr", "mei", "jun", "jul", "aug", "sep", "o[kc]t", "nov", "dec").zipWithIndex

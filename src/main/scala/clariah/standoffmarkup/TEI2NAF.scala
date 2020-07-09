@@ -50,15 +50,17 @@ object TEI2NAF {
       lazy val cdata =  scala.xml.Unparsed("<![CDATA[" + txt   + "]]>")
       val allTokens = StandoffTokenizing.tokenize(n1, x => splittingTags.contains(x.label))
         ._1.zipWithIndex.map({case (t,i) =>
-          val id = s"w.$i"
+          val id = s"wf.$i"
           <wf id={id} offset={t.start.toString} length={(t.end-t.start).toString}>{t.word}</wf>
       })
+
       val timestamp = LocalDateTime.now.format(DateTimeFormatter.ofPattern("YYYYMMdd_HHmmss"))
-      <NAF version="v3.1" xml:lang="nl">
+      val pid = (d \\ "idno").filter(x => (x \ "@type").text == "pid").headOption.map(_.text).getOrElse("__")
+      val naf = <NAF version="v3.1" xml:lang="nl">
       <nafHeader>
         <fileDesc
           title={(d \\ "title").text}
-          filename={(d \\ "idno").filter(x => (x \ "@type").text == "pid").headOption.map(_.text).getOrElse("__")}/>
+          filename={pid}/>
         <linguisticProcessors layer="raw">
           <lp name="tei2nafsimple" version="0.0" timestamp={timestamp}/>
         </linguisticProcessors>
@@ -70,9 +72,15 @@ object TEI2NAF {
         </linguisticProcessors>
       </nafHeader>
         <raw>{cdata}</raw>
-        <text>{allTokens}</text>
+        <text id="basicTokenLayer">{allTokens}</text>
         <tunits>{toTextUnits(n1)}</tunits>
       </NAF>
+      val tmpFile = s"/tmp/$pid.naf.tmp"
+      XML.save(tmpFile, naf, "UTF-8")
+      val naf1 = XML.load(tmpFile)
+      new File(tmpFile).delete()
+      naf1
+      // nee dit gaat niet goed als je hem niet eerst opslaat....
       //<textStructure type="TEI" namespace="http://www.tei-c.org/ns/1.0">{toTextStructure(n1)}</textStructure></NAF>
     })
   }
@@ -88,7 +96,27 @@ object TEI2NAF {
 }
 
 object MissivenToNAF {
+
+  def getId(e: Node) = e.attributes.filter(_.key == "id").value.text
+
+  def getTermsFromTEI(d: Elem): List[Term] = d.descendant.filter(x => x.label=="w" || x.label=="pc").map(
+    { case e:Elem if e.label == "w" => Term(getId(e), e.text, (e \ "@lemma").text, (e \ "@type").text)
+     case e:Elem if e.label == "pc" => Term(getId(e), e.text, "_", "PC")
+    })
+
+  def getTermsFromTEIFile(f: String): List[Term] =  getTermsFromTEI(XML.load(f))
+
   def main(args: Array[String]): Unit = {
-    TEI2NAF.main(Array(DataLocations.TEIFolder, DataLocations.tei2nafFolder))
+    //TEI2NAF.main(Array(DataLocations.TEIFolder, DataLocations.tei2nafFolder))
+    utils.ProcessFolder.processFolder(new File(DataLocations.TEIFolder), new File(DataLocations.tei2nafFolder), (in,out) => {
+      val inDoc = XML.loadFile(in)
+      val naf0 = tei2naf(inDoc)
+      naf0.foreach(n => {
+        val taggedFile = DataLocations.taggedTEIFolder + "/" + new File(in).getName
+        val terms = getTermsFromTEIFile(taggedFile)
+        val n1 = NAF(n).integrateTermLayer(terms.iterator, "termsFromTaggedTEI")
+        XML.save(out, n1.document, "UTF-8") } // hierbij gaat de cdata verloren - repareer dat!
+      )
+    })
   }
 }
