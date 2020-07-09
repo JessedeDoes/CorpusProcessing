@@ -1,4 +1,4 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
 
 import java.io.File
 
@@ -17,8 +17,6 @@ object IndexMatching {
   lazy val personIndex = Settings.part6PersonIndexDocument
   lazy val shipIndex = Settings.part6ShipIndexDocument
 
-  lazy val part6Files = new File(Settings.outputDirectory + "split/6/").listFiles()
-  lazy val part6Documents = part6Files.toStream.map(XML.loadFile)
 
   def extractPages(d: Elem) = {
     val leafSpul = d.descendant.filter(_.child.isEmpty)
@@ -98,7 +96,7 @@ object IndexMatching {
   lazy val indices = List(index, pIndex, sIndex)
 
   def main(args: Array[String]): Unit = {
-    part6Files.foreach(f => {
+    Settings.part6Files.foreach(f => {
       Console.err.println(f.getCanonicalPath)
       val d = XML.loadFile(f)
       val fOut = "/tmp/match." + f.getName

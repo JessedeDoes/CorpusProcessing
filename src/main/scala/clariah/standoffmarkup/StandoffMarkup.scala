@@ -1,9 +1,9 @@
-package standoffmarkup
+package clariah.standoffmarkup
 
 import java.io.PrintWriter
 
-import corpusprocessing.Wp6.IndexMatching.part6Files
 import StandoffTokenizing.tokenize
+import clariah.standoffmarkup.StandoffMarkup.{createStandoffMarkup, extractPages}
 
 import scala.xml._
 
@@ -14,7 +14,7 @@ trait Markup {
   def value: Any
 }
 
-case class StandoffMarkup(start: Int, end: Int, name: String, value: Any) {
+case class StandoffMarkup(start: Int, end: Int, name: String, value: Any) extends Markup {
 
 }
 
@@ -83,9 +83,11 @@ object StandoffMarkup {
 
     NodeWithOffsets(e, startPosition, last, children)
   }
+}
 
+object StandoffTestje {
   def pageTest = {
-    part6Files.foreach(f => {
+    clariah.wp6.Missiven.Settings.part6Files.foreach(f => {
       Console.err.println(f.getCanonicalPath)
       val d = XML.loadFile(f)
       println(extractPages(createStandoffMarkup(d)))

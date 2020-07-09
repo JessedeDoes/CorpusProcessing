@@ -1,8 +1,12 @@
-package standoffmarkup
+package clariah.standoffmarkup
 
 import scala.util.matching.Regex.Match
 import scala.xml.{Elem, Node, Text}
 
+/**
+  * Dit tokenizeert niet echt, maar splitst alleen op whitespace en op tags waarop woorden
+  * altijd gesplitst moeten worden
+  */
 object StandoffTokenizing {
 
   case class Token(word: String, start:Int, end: Int)  {}

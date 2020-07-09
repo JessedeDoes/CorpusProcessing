@@ -1,4 +1,5 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
+
 import utils.PostProcessXML
 import utils.PostProcessXML.{updateElement, updateElement2}
 
