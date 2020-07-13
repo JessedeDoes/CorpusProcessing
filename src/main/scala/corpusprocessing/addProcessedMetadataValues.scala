@@ -11,6 +11,7 @@ case class addProcessedMetadataValues() {
   def getId(n: Node):Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") || a.key=="id").map(_.value.toString).headOption
 
   val nice = false
+
   def addField(b: Elem, n: String, v: Seq[String]): Elem = {
     Console.err.println(s"##### $n -> $v")
     if (v.isEmpty) b else {
@@ -60,6 +61,7 @@ case class addProcessedMetadataValues() {
     val s1 = s.replaceAll("witnessLoc","loc")
     List(s + "Level0", s + "Level1", s + "Level2", s1 + "Level0", s1 + "Level1", s1 + "Level2")
   }
+
   def enrichBibl(b: Elem): Elem = {
     val map: String => Seq[String] = getFieldFunction(b)
 
@@ -94,7 +96,7 @@ case class addProcessedMetadataValues() {
     val average = Math.floor((witness_year_from.headOption.map(_.toDouble).getOrElse(Double.NaN) + witness_year_to.headOption.map(_.toDouble).getOrElse(Double.NaN)) / 2).toInt
 
     val decade: Seq[String] = Seq((average - (average % 10)).toString)
-    val datering: Seq[String] = Seq(witness_year_from.head  + "-"  + witness_year_to.head)
+    val datering: Seq[String] = Seq(witness_year_from.headOption.getOrElse("?")  + "-"  + witness_year_to.headOption.getOrElse("?"))
 
     val toAdd: Seq[(String, Seq[String])] =
       List("witness_year_from" -> witness_year_from,
@@ -152,6 +154,7 @@ case class addProcessedMetadataValues() {
     } else XML.save(out, d,  enc="UTF-8")
   }
 }
+
 
 object addProcessedMetadataValuesONW extends addProcessedMetadataValues()
 {
@@ -238,14 +241,17 @@ object enDanMNL extends addProcessedMetadataValues() {
   }
 
   def noInterp(w: Elem) =  {
+
     val w1 = w.copy(
       child = w.child.filter(c => c.label != "interpGrp" && (!c.isInstanceOf[Text] || w.label != "w")),
       attributes=w.attributes.filter(a => a.key != "lemma" && a.key != "type"))
+
     val w2 = PostProcessXML.updateElement(w1, _.label=="seg", cleanSeg)
     val w3 = w2.copy(child = w2.child.map(c => c match {
       case t: Text => Text(t.text.trim.replaceAll("\\s+", " "))
       case _ => c
     }))
+
     w3
   }
 

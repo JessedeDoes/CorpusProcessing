@@ -25,6 +25,8 @@ object Settings {
   val clvnPostProcessed= "/mnt/Projecten/Corpora/Historische_Corpora/CLVN/PostProcessedMetadata/"
   val mnlDir = "/mnt/Projecten/corpora/Historische_Corpora/MNL-TEI/Nederlabversie/"
 
+  val mnlTEI = "/mnt/Projecten/corpora/Historische_Corpora/MNL-TEI/Nederlabversie/CorpusMiddelnederlands/"
+  val mnlDirkified = "/mnt/Projecten/corpora/Historische_Corpora/MNL-TEI/Nederlabversie/Metaculous/"
   val mnlTokenizedTEI = mnlDir + "Tokenized"
   val mnlProcessedMetadataDir = mnlDir + "PostProcessedMetadata"
 

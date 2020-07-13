@@ -115,28 +115,38 @@ object onwCorpus {
 
   def wrapContentInSeg(w: Elem): Elem =
   {
-    val children = w.child.zipWithIndex
+    if ((w \ "seg").nonEmpty) w else {
 
-    val groupedChildren = makeGroup[(Node,Int)](children, {case (c,i) => !(c.isInstanceOf[Text] || c.label == "hi")})
 
-    val newChildren = groupedChildren.flatMap(
-      g => {
-        if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall( {case (c,i) => c.isInstanceOf[Text] || c.label == "hi"})) {
-          val contents: Seq[Node] = removeUselessWhite(g).map(_._1)
-          val ctext:String = contents.text.trim.replaceAll("\\s+", " ")
-          val ok = !ctext.contains(" ") || ctext.matches("^\\p{L}+\\s*\\p{L}+$")
-          val optwarning = if (ok) None else Some(Text("fishy"))
-          if (g.forall( {case (c,i) => c.isInstanceOf[Text]}) && ctext.matches(noteRegex)) {
+      val children = w.child.zipWithIndex
+
+      val groupedChildren = makeGroup[(Node, Int)](children, { case (c, i) => !(c.isInstanceOf[Text] || c.label == "hi") })
+
+      val newChildren = groupedChildren.flatMap(
+        g => {
+          if (g.map(_._1.text).mkString.trim.nonEmpty && g.forall({ case (c, i) => c.isInstanceOf[Text] || c.label == "hi" })) {
+            val contents: Seq[Node] = removeUselessWhite(g).map(_._1)
+            val ctext: String = contents.text.trim.replaceAll("\\s+", " ")
+            val ok = !ctext.contains(" ") || ctext.matches("^\\p{L}+\\s*\\p{L}+$")
+            val optwarning = if (ok) None else Some(Text("fishy"))
+            if (g.forall({ case (c, i) => c.isInstanceOf[Text] }) && ctext.matches(noteRegex)) {
               val matx: Regex.Match = nr.findFirstMatchIn(ctext).get
-              val (wtext,ntext) = (matx.group(1), matx.group(2))
-              Seq(<seg type={optwarning}>{wtext.trim}</seg>, <note type="bijgelapt">{ntext}</note>)
+              val (wtext, ntext) = (matx.group(1), matx.group(2))
+              Seq(<seg type={optwarning}>
+                {wtext.trim}
+              </seg>, <note type="bijgelapt">
+                {ntext}
+              </note>)
             } else
-          Seq(<seg type={optwarning}>{contents}</seg>)
+              Seq(<seg type={optwarning}>
+                {contents}
+              </seg>)
+          }
+          else g.map(_._1)
         }
-        else g.map(_._1)
-      }
-    )
-    w.copy(child = newChildren)
+      )
+      w.copy(child = newChildren)
+    }
   }
 
   def removeSomeRedundancy(paragraph: Elem): Elem = {
