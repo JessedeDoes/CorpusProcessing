@@ -1,4 +1,5 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
+
 import scala.xml._
 import utils.PostProcessXML._
 import java.io.{File, PrintWriter}
@@ -9,7 +10,12 @@ import scala.collection.immutable
 import scala.util.matching.Regex._
 
 
-object SimplifyAndConcatenateTEI {
+/**
+  * Converteert de "pretei" (TEI vertaling van finereader XML met alle coordinaten erin enzo)
+  * naar een simpeler vorm
+  */
+
+object PreTEI2TEI {
 
   // file:///home/jesse/workspace/xml2rdf/data/Missiven/7/toc.xml
 

@@ -1,4 +1,4 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
 
 import java.io.File
 import scala.xml._
@@ -40,4 +40,6 @@ object Settings {
 
   lazy val part6ShipIndexDocument = XML.loadFile(outputDirectory + "split/6/" + part6ShipIndex)
 
+  lazy val part6Files = new File(Settings.outputDirectory + "split/6/").listFiles()
+  lazy val part6Documents = part6Files.toStream.map(XML.loadFile)
 }

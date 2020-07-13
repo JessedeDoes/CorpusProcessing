@@ -1,4 +1,4 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
 
 import PageStructure._
 

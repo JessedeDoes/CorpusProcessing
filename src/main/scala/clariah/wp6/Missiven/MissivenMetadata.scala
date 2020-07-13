@@ -1,8 +1,8 @@
-package corpusprocessing.Wp6
+package clariah.wp6.Missiven
 
 import java.io.{File, PrintWriter}
 
-import corpusprocessing.Wp6.Settings.XMLDirectory
+import Settings.XMLDirectory
 import utils.PostProcessXML.updateElement
 
 import scala.collection.immutable
@@ -36,7 +36,6 @@ object MissivenMetadata {
     val grouped = numberedChild.groupBy({case (n,i) => lastBefore(i)})
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
   }
-
 
   val pretty = new scala.xml.PrettyPrinter(300, 4)
 
