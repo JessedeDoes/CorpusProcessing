@@ -4,7 +4,7 @@ import corpusprocessing.gysseling.ListOfDocuments.dir
 import scala.xml._
 
 object ListOfDocuments {
-  val dir = corpusprocessing.onw.Settings.gysselingProcessedMetadataDir
+  val dir = DirksMetaculosityCG.outDir // corpusprocessing.onw.Settings.gysselingProcessedMetadataDir
 
   def listFilesInDir(dir: String) = {
     val d = new java.io.File(dir)
@@ -18,8 +18,8 @@ object ListOfDocuments {
       val bibl = (listBibl \\ "bibl").head.asInstanceOf[Elem]
       val ti = (d \\ "title").text
       val id = apm.getField(bibl, "pid").head
-      val fieldsForDir = apm.getFields(bibl,  n => Set("genre", "fict")
-        .exists( x => n.toLowerCase.contains(x)))
+      val fieldsForDir = apm.getFields(bibl,  n => Set("genre", "fict", "auth")
+        .exists( x => n.toLowerCase.contains(x))).groupBy(_._1).mapValues(s => s.map(_._2).mkString("|"))
       println(s"$id\t${f.getName}\t$ti\t$fieldsForDir")
     })
   }
