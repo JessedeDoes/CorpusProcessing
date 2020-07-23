@@ -5,7 +5,7 @@ TARGETDIR=/home/jesse/workspace/data-historische-corpora/gysseling/nederlab-enha
 
 SOURCEDIR=/mnt/Projecten/corpora/Historische_Corpora/CorpusGysseling//Nederlabversie/
 TEMPDIR=/home/jesse/workspace/data-historische-corpora/gysseling/nederlab-enhanced-tei
-TARGETDIR=/mnt/Projecten/corpora/Historische_Corpora/CorpusGysseling//TeIndexeren/
+TARGETDIR=/mnt/Projecten/corpora/Historische_Corpora/CorpusGysseling//TeIndexeren/2020_07_22
 #MAPPED=/tmp/Translated/
 #WITHPARTS=/tmp/WithPart
 #mkdir $RENAMED

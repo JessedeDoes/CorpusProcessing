@@ -2,8 +2,11 @@ package corpusprocessing.MNL
 
 import java.io.PrintWriter
 
-import scala.xml.Elem
+import corpusprocessing.gysseling.DirksMetaculosityCG.{dirkMap, getField}
+import utils.PostProcessXML
 
+import scala.xml.{Elem, Text, XML}
+import scala.util.{Failure, Success, Try}
 object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
 
   val dataDir = "data/MNL/Metadata/"
@@ -51,16 +54,57 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
 
   override def enrichBibl(b: Elem)  = {
 
+    // println(b)
+
+    val iffy = Set("genre", "subgenre", "author", "fictionality", "xxtitle")
+    val fields = (b \ "interpGrp")
+
+    val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.contains(_)))
+
+    val iffiez = fields.filter(f  => iffy.exists((f \ "@type").text.toLowerCase.contains(_))).toSeq
+
+
+    val pid = getField(b,"pid").head
+
+    println(s"Zoek naar pid=$pid")
+
+    val oldVals = iffiez.map(i => (i \ "@type").text -> (i \ "interp").map(_.text.trim.replaceAll("\\s+", " ")).filter(_.nonEmpty)).filter(_._2.nonEmpty)
+
+    if (dirkMap.contains(pid)) {
+      val dm = dirkMap(pid).toMap
+      val level = "1" // dm("level")
+      val dirkies = dirkMap(pid)
+        .filter({case (n,v) => v.replaceAll("[^A-Za-z0-9]", "").nonEmpty})
+        .map{case (n,v) => (s"${n}Level$level", v)}
+        .filter({case (n,v) => iffy.exists(z => n.contains(z))})
+        .groupBy(_._1)
+        .mapValues(_.map(_._2))
+
+      val dirkiesXML = dirkies.flatMap({ case (n, v) => <interpGrp type={n}>{v.map(vl => <interp>{vl}</interp>)}</interpGrp> ++ Seq(Text("\n"))})
+      val report =
+        s"""
+           |####$pid
+           |  $oldVals
+           |  $dirkies
+           |""".stripMargin
+      println(report)
+      b.copy(child = keepFields ++ dirkiesXML)
+    } else  {
+      Console.err.println(s"Hallo: niets gevonden voor $pid")
+      //System.exit(1)
+      b
+    }
+  }
+
+  def enrichBiblOld(b: Elem)  = {
+
 
     val iffy = Set("genre", "subgenre", "author")
     val fields = (b \ "interpGrp")
     val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.contains(_)))
     val iffiez = fields.filter(f  => iffy.exists((f \ "@type").text.toLowerCase.contains(_))).toSeq
 
-
-
     val pid = getField(b,"pid").head
-
 
     val oldVals = iffiez.map(i => (i \ "@type").text -> (i \ "interp").map(_.text.trim.replaceAll("\\s+", " ")).filter(_.nonEmpty)).filter(_._2.nonEmpty)
 
@@ -74,15 +118,58 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
            |  $oldVals
            |  $dirkies
            |""".stripMargin
-      println(report)
+      //println(report)
       b.copy(child = keepFields ++ dirkies)
     } else b
   }
 
-    def main(args: Array[String]): Unit = {
-      import utils.ProcessFolder
-      ProcessFolder.processFolder(new java.io.File(corpusprocessing.onw.Settings.mnlTEI), new java.io.File(corpusprocessing.onw.Settings.mnlDirkified), fixFile)
+
+  val fakeLT= "‹"
+  val fakeGT = "›"
+
+  import scala.util.matching.Regex._
+  val fakeTag = "‹.*?›".r
+  def fixOneFake(z: String) = {
+
+    val t = z.replaceAll(fakeLT,"<").replaceAll(fakeGT, ">").replaceAll("'","").replaceAll("&quot;","").replaceAll("([^\\s<>]+)=([^\\s<>]+)", "$1=\"$2\"")
+    Console.err.println(s"$z --> $t")
+    t
+  }
+
+  def fixFake(s: String) = fakeTag.replaceAllIn(s, z => fixOneFake(z.toString()) )
+
+  def fixFakeTags(interp: Elem): Elem = {
+    val txt = <hoera>{interp.child}</hoera>.toString()
+    val relevant = txt.contains(fakeLT)
+    val t = fixFake(txt)
+
+    val z = if (!relevant) interp else Try{interp.copy(child = XML.loadString(t).child)} match {
+      case Success(x) => x
+      case Failure(x) =>
+        Console.err.println(x)
+        interp
     }
+    //if (relevant)
+      //Console.err.println("‹› in" +  z)
+    z
+  }
+
+  override def fixFile(in: String, out: String) = {
+    val d = addProcessedMetadataValues(XML.load(in))
+    val d1 = PostProcessXML.updateElement(d, x => Set("interp","note").contains(x.label), fixFakeTags)
+    if (this.nice) {
+      val p = new scala.xml.PrettyPrinter(300, 4)
+      val t = p.format(d1)
+      val w = new java.io.PrintWriter(out)
+      w.write(t)
+      w.close()
+    } else XML.save(out, d1, enc = "UTF-8")
+  }
+
+  def main(args: Array[String]): Unit = {
+    import utils.ProcessFolder
+    ProcessFolder.processFolder(new java.io.File(corpusprocessing.onw.Settings.mnlTEI), new java.io.File(corpusprocessing.onw.Settings.mnlDirkified), fixFile)
+  }
 }
 
 

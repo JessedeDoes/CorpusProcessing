@@ -123,6 +123,10 @@
         "value":"r/re",
         "displayName":"r/re",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
+      },{
+        "value":"nt",
+        "displayName":"nt",
+        "pos":["VRB"]
       }]
     },
     "pos_representation":{
@@ -140,13 +144,13 @@
         "displayName":"postnom",
         "pos":[]
       },{
+        "value":"pred|prenom|postnom",
+        "displayName":"pred|prenom|postnom",
+        "pos":["AA"]
+      },{
         "value":"pred",
         "displayName":"pred",
         "pos":[]
-      },{
-        "value":"prenom|postnom|pred",
-        "displayName":"prenom|postnom|pred",
-        "pos":["AA"]
       },{
         "value":"prenom",
         "displayName":"prenom",
@@ -180,10 +184,6 @@
         "displayName":"dem",
         "pos":["ADV"]
       },{
-        "value":"oth",
-        "displayName":"oth",
-        "pos":["PD"]
-      },{
         "value":"rel",
         "displayName":"rel",
         "pos":["ADV"]
@@ -198,7 +198,7 @@
       },{
         "value":"uncl",
         "displayName":"uncl",
-        "pos":["PD","ADV"]
+        "pos":["ADV"]
       },{
         "value":"gen",
         "displayName":"gen",
@@ -232,9 +232,9 @@
         "displayName":"comp",
         "pos":["CONJ"]
       },{
-        "value":"mai|cop|aux",
-        "displayName":"mai|cop|aux",
-        "pos":["VRB"]
+        "value":"refl|recip",
+        "displayName":"refl|recip",
+        "pos":["PD"]
       },{
         "value":"inter",
         "displayName":"inter",
@@ -244,13 +244,13 @@
         "displayName":"dem",
         "pos":["PD"]
       },{
+        "value":"oth",
+        "displayName":"oth",
+        "pos":["RES"]
+      },{
         "value":"rel",
         "displayName":"rel",
         "pos":["PD","CONJ"]
-      },{
-        "value":"recip|refl",
-        "displayName":"recip|refl",
-        "pos":["PD"]
       },{
         "value":"expl",
         "displayName":"expl",
@@ -260,8 +260,8 @@
         "displayName":"neg",
         "pos":["CONJ"]
       },{
-        "value":"cop|aux",
-        "displayName":"cop|aux",
+        "value":"aux|cop|mai",
+        "displayName":"aux|cop|mai",
         "pos":["VRB"]
       },{
         "value":"aux",
@@ -307,19 +307,15 @@
         "value":"ord",
         "displayName":"ord",
         "pos":["NUM"]
+      },{
+        "value":"aux|cop",
+        "displayName":"aux|cop",
+        "pos":["VRB"]
       }]
     },
     "pos_mood":{
       "id":"pos_mood",
       "values":[{
-        "value":"conj",
-        "displayName":"conj",
-        "pos":[]
-      },{
-        "value":"uncl",
-        "displayName":"uncl",
-        "pos":["VRB"]
-      },{
         "value":"ind|conj",
         "displayName":"ind|conj",
         "pos":["VRB"]
@@ -330,6 +326,10 @@
       },{
         "value":"ind",
         "displayName":"ind",
+        "pos":[]
+      },{
+        "value":"conj",
+        "displayName":"conj",
         "pos":[]
       }]
     },
@@ -362,7 +362,7 @@
       "values":[{
         "value":"prespart",
         "displayName":"prespart",
-        "pos":["VRB"]
+        "pos":[]
       },{
         "value":"fin",
         "displayName":"fin",
@@ -378,6 +378,10 @@
       },{
         "value":"pastpart",
         "displayName":"pastpart",
+        "pos":[]
+      },{
+        "value":"prespart|pastpart",
+        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       }]
     },

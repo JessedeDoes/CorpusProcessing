@@ -2,7 +2,7 @@
   "values":{
     "AA":{
       "value":"AA",
-      "displayName":"Adjective/adverb",
+      "displayName":"Adjective-Adverb",
       "subAnnotationIds":["pos_degree","pos_position","pos_number","pos_inflection"]
     },
     "ADP":{
@@ -108,6 +108,10 @@
         "displayName":"-n",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
       },{
+        "value":"nt",
+        "displayName":"-nt",
+        "pos":["VRB"]
+      },{
         "value":"r/re",
         "displayName":"-r/-re",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
@@ -123,6 +127,10 @@
         "value":"oth",
         "displayName":"Other",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","RES","ADP","INT","ADV"]
+      },{
+        "value":"uncl",
+        "displayName":"Unclear",
+        "pos":["RES"]
       }]
     },
     "pos_representation":{
@@ -304,6 +312,10 @@
         "displayName":"Subordinating",
         "pos":["CONJ"]
       },{
+        "value":"oth",
+        "displayName":"Other",
+        "pos":["RES"]
+      },{
         "value":"uncl",
         "displayName":"Unclear",
         "pos":["PD","CONJ","VRB","NUM","RES","ADP"]
@@ -370,11 +382,15 @@
       },{
         "value":"prespart",
         "displayName":"Present participle",
+        "pos":[]
+      },{
+        "value":"prespart|pastpart",
+        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       },{
         "value":"pastpart",
         "displayName":"Past participle",
-        "pos":["VRB"]
+        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",
