@@ -464,6 +464,21 @@ case class TagSet(prefix: String,
     this.copy(valueRestrictions=newValueRestrictions, partitions = partitions_enhanced, listOfTags=fs)
   }
 
+  def featureOccurs(n: String, v: String): Boolean = {
+    this.listOfTags.isEmpty || this.listOfTags.exists(t => {
+      val z = t.features.exists(x => x.name == n && x.value == v)
+      if (z) {
+        Console.err.println(s"Yep: $n $v $t")
+      }
+      z })
+  }
+
+  def removeNonExistentValues()  = {
+    if (this.listOfTags.isEmpty) this else {
+      val newPartitions = this.partitions.map({case (n,l) => (n,l.filter(featureOccurs(n,_)))})
+      this.copy(partitions = newPartitions)
+    }
+  }
 
   def normalizeFeatureValue(n: String, v: String): String = {
     val tagset = this

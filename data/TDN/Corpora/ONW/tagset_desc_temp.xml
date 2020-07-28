@@ -3,7 +3,7 @@
     <corpus>ONW</corpus>
     <server>http://svotmc10.ivdnt.loc/</server>
     <mainPoS>
-        <pos displayName="Adjective/adverb" desc="Adjective/adverb">AA</pos>
+        <pos displayName="Adjective-Adverb" desc="Adjective-Adverb">AA</pos>
         <pos displayName="Adposition" desc="Adposition">ADP</pos>
         <pos displayName="Adverb" desc="Adverb">ADV</pos>
         <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
@@ -632,7 +632,7 @@
                 </featureValue>
             </values>
         </feature>
-        <feature displayName="Subtype" desc="Subtype (only for numerals in Molex, now also for PD, ADV and CONJ)">
+        <feature displayName="Subtype" desc="Subtype">
             <name>subtype</name>
             <values>
                 <featureValue displayName="Article" desc="Article">
@@ -775,7 +775,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Ordinal" desc="Ordinal numeral">
+                <featureValue displayName="Ordinal" desc="Ordinal">
                     <value>ord</value>
                     <posForValue>
                         <pos>NUM</pos>

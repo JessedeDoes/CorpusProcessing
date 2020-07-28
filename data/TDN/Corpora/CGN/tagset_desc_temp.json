@@ -2,7 +2,7 @@
   "values":{
     "AA":{
       "value":"AA",
-      "displayName":"Adjective/adverb",
+      "displayName":"Adjective-Adverb",
       "subAnnotationIds":["pos_degree","pos_position","pos_case","pos_inflection"]
     },
     "ADP":{
@@ -86,10 +86,6 @@
     "pos_case":{
       "id":"pos_case",
       "values":[{
-        "value":"nom",
-        "displayName":"Nominative",
-        "pos":[]
-      },{
         "value":"nom|dat|acc|voc",
         "displayName":"nom|dat|acc|voc",
         "pos":["PD","NOU-C","AA","NOU-P","NUM"]
@@ -113,14 +109,6 @@
         "value":"dat|acc",
         "displayName":"Dative/Accusative",
         "pos":["PD"]
-      },{
-        "value":"acc",
-        "displayName":"Accusative",
-        "pos":[]
-      },{
-        "value":"voc",
-        "displayName":"Vocative",
-        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",
@@ -214,10 +202,6 @@
         "displayName":"Prenominal",
         "pos":["PD","AA","NUM"]
       },{
-        "value":"prenom|postnom|free",
-        "displayName":"prenom|postnom|free",
-        "pos":["NUM"]
-      },{
         "value":"postnom",
         "displayName":"Postnominal",
         "pos":["AA"]
@@ -286,10 +270,6 @@
         "displayName":"Interrogative",
         "pos":["PD"]
       },{
-        "value":"inter|rel",
-        "displayName":"inter|rel",
-        "pos":["PD"]
-      },{
         "value":"ord",
         "displayName":"Ordinal",
         "pos":["NUM"]
@@ -339,7 +319,7 @@
         "pos":["RES"]
       },{
         "value":"oth",
-        "displayName":"other",
+        "displayName":"Other",
         "pos":["RES"]
       },{
         "value":"uncl",
@@ -361,10 +341,6 @@
         "value":"conj",
         "displayName":"Conjunctive",
         "pos":["VRB"]
-      },{
-        "value":"imp",
-        "displayName":"Imperative",
-        "pos":[]
       },{
         "value":"uncl",
         "displayName":"Unclear",

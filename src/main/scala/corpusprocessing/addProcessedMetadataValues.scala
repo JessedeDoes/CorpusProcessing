@@ -241,9 +241,9 @@ object enDanMNL extends addProcessedMetadataValues() {
   }
 
   def noInterp(w: Elem) =  {
-
+    val newChild = w.child.filter(c => c.label != "interpGrp")
     val w1 = w.copy(
-      child = w.child.filter(c => c.label != "interpGrp" && (!c.isInstanceOf[Text] || w.label != "w")),
+      child = <seg>{newChild}</seg>,
       attributes=w.attributes.filter(a => a.key != "lemma" && a.key != "type"))
 
     val w2 = PostProcessXML.updateElement(w1, _.label=="seg", cleanSeg)
@@ -251,7 +251,7 @@ object enDanMNL extends addProcessedMetadataValues() {
       case t: Text => Text(t.text.trim.replaceAll("\\s+", " "))
       case _ => c
     }))
-
+    // println(w3)
     w3
   }
 

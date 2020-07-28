@@ -56,6 +56,8 @@ object Settings {
     val n1 = n.replaceAll("[^0-9]","").toInt
     val fol = if (n.contains("b")) s"${n1-9}r" else s"${n1 - 9-1}v"
     <pb unit="fol" nOrg={n} n={fol} ed={lwOnline} edRef={n1.toString}/>
+
+
   }
 
   def main(args: Array[String]): Unit = {

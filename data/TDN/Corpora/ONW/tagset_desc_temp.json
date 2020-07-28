@@ -2,7 +2,7 @@
   "values":{
     "AA":{
       "value":"AA",
-      "displayName":"Adjective/adverb",
+      "displayName":"Adjective-Adverb",
       "subAnnotationIds":["pos_degree","pos_position","pos_case","pos_number","pos_gender"]
     },
     "ADP":{
@@ -259,10 +259,6 @@
         "value":"dem",
         "displayName":"Demonstrative",
         "pos":["ADV"]
-      },{
-        "value":"indef",
-        "displayName":"Indefinite",
-        "pos":[]
       },{
         "value":"indef|inter",
         "displayName":"indef|inter",

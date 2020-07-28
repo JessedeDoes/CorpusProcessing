@@ -56,7 +56,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
 
     // println(b)
 
-    val iffy = Set("genre", "subgenre", "author", "fictionality", "xxtitle")
+    val iffy = Set("genre", "subgenre", "author", "fictionality", "title")
     val fields = (b \ "interpGrp")
 
     val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.contains(_)))
@@ -96,32 +96,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
     }
   }
 
-  def enrichBiblOld(b: Elem)  = {
 
-
-    val iffy = Set("genre", "subgenre", "author")
-    val fields = (b \ "interpGrp")
-    val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.contains(_)))
-    val iffiez = fields.filter(f  => iffy.exists((f \ "@type").text.toLowerCase.contains(_))).toSeq
-
-    val pid = getField(b,"pid").head
-
-    val oldVals = iffiez.map(i => (i \ "@type").text -> (i \ "interp").map(_.text.trim.replaceAll("\\s+", " ")).filter(_.nonEmpty)).filter(_._2.nonEmpty)
-
-    if (dirkMap.contains(pid)) {
-      val dirkies = dirkMap(pid).filter(_._2.nonEmpty).groupBy(_._1).mapValues(_.map(_._2))
-        .map({ case (n, v) => <interpGrp type={"dirk:" + n}>{v.map(vl => <interp>{vl}</interp>)}</interpGrp>
-        })
-      val report =
-        s"""
-           |####$pid
-           |  $oldVals
-           |  $dirkies
-           |""".stripMargin
-      //println(report)
-      b.copy(child = keepFields ++ dirkies)
-    } else b
-  }
 
 
   val fakeLT= "‹"

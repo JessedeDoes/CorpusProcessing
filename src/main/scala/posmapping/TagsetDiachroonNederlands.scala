@@ -67,8 +67,10 @@ object TagsetDiachroonNederlands {
     val outputBase = prefix + outputName
     printTagsetXML(corpusBasedWithDesc, corpusNameInXML.getOrElse(corpusName), new PrintWriter(s"$outputBase.xml"))
 
+    // Haal in de json versie de niet-bestaande values weg.
+    val tagset_existing_values = corpusBasedWithDesc.removeNonExistentValues()
     val jsonWriter = new PrintWriter(s"$outputBase.json")
-    jsonWriter.println(corpusBasedWithDesc.asJSON)
+    jsonWriter.println(tagset_existing_values.asJSON)
     jsonWriter.close()
 
     val blfWriter = new PrintWriter(s"$outputBase.blf.yaml")
@@ -154,8 +156,11 @@ object TagsetDiachroonNederlands {
     printTagsetXML(tagset, corpus, xmlWriter)
     xmlWriter.close()
 
+
+    // Haal in de json versie de niet-bestaande values weg.
+    val tagset_existing_values = tagset.removeNonExistentValues()
     val jsonWriter = new PrintWriter(prefix + "tagset.json")
-    jsonWriter.println(tagset.asJSON)
+    jsonWriter.println(tagset_existing_values.asJSON)
     jsonWriter.close()
 
     val blfWriter = new PrintWriter(prefix + "tagset.blf.yaml")

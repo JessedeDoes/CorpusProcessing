@@ -4,7 +4,8 @@ import scala.xml._
 
 object ListOfMNWDocuments {
 
-  val dir = "/mnt/Projecten/Corpora/Historische_Corpora/MNL-TEI/Nederlabversie/CorpusMiddelnederlands/"
+  val dir = "/mnt/Projecten/Corpora/Historische_Corpora/MNL-TEI/Nederlabversie/Metaculous/"
+
   val titles = new java.io.PrintWriter("/tmp/titles.txt")
 
   def listFilesInDir(dir: String): Unit = {
@@ -21,8 +22,9 @@ object ListOfMNWDocuments {
       val bibl = (listBibl \\ "bibl").head.asInstanceOf[Elem]
       val ti = (d \\ "title").head.text.trim.replaceAll("\\s+", " ")
       val id = apm.getField(bibl, "pid").head
-      val fieldsForDir = apm.getFields(bibl,  n => Set("genre", "fict")
-        .exists( x => n.toLowerCase.contains(x))).map({case (n,v) => s"$n: $v"}).mkString("; ")
+      val fieldsForDir = apm.getFields(bibl,
+        n => Set("genre", "fict", "title", "author").exists( x => n.toLowerCase.contains(x)))
+        .map({case (n,v) => s"$n: $v"}).mkString("; ")
       titles.println(s"$id\t${f.getName}\t$ti\t$fieldsForDir")
     })
 

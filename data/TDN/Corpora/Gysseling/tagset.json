@@ -123,10 +123,6 @@
         "value":"r/re",
         "displayName":"r/re",
         "pos":["PD","CONJ","VRB","NOU-C","AA","NOU-P","NUM","ADP","ADV"]
-      },{
-        "value":"nt",
-        "displayName":"nt",
-        "pos":["VRB"]
       }]
     },
     "pos_representation":{
@@ -140,17 +136,9 @@
     "pos_position":{
       "id":"pos_position",
       "values":[{
-        "value":"postnom",
-        "displayName":"postnom",
-        "pos":[]
-      },{
-        "value":"pred|prenom|postnom",
-        "displayName":"pred|prenom|postnom",
+        "value":"prenom|postnom|pred",
+        "displayName":"prenom|postnom|pred",
         "pos":["AA"]
-      },{
-        "value":"pred",
-        "displayName":"pred",
-        "pos":[]
       },{
         "value":"prenom",
         "displayName":"prenom",
@@ -184,6 +172,10 @@
         "displayName":"dem",
         "pos":["ADV"]
       },{
+        "value":"oth",
+        "displayName":"oth",
+        "pos":["PD"]
+      },{
         "value":"rel",
         "displayName":"rel",
         "pos":["ADV"]
@@ -198,7 +190,7 @@
       },{
         "value":"uncl",
         "displayName":"uncl",
-        "pos":["ADV"]
+        "pos":["PD","ADV"]
       },{
         "value":"gen",
         "displayName":"gen",
@@ -216,14 +208,6 @@
         "displayName":"reg",
         "pos":["ADV"]
       },{
-        "value":"recip",
-        "displayName":"recip",
-        "pos":[]
-      },{
-        "value":"refl",
-        "displayName":"refl",
-        "pos":[]
-      },{
         "value":"qual",
         "displayName":"qual",
         "pos":["CONJ"]
@@ -232,9 +216,9 @@
         "displayName":"comp",
         "pos":["CONJ"]
       },{
-        "value":"refl|recip",
-        "displayName":"refl|recip",
-        "pos":["PD"]
+        "value":"mai|cop|aux",
+        "displayName":"mai|cop|aux",
+        "pos":["VRB"]
       },{
         "value":"inter",
         "displayName":"inter",
@@ -244,13 +228,13 @@
         "displayName":"dem",
         "pos":["PD"]
       },{
-        "value":"oth",
-        "displayName":"oth",
-        "pos":["RES"]
-      },{
         "value":"rel",
         "displayName":"rel",
         "pos":["PD","CONJ"]
+      },{
+        "value":"recip|refl",
+        "displayName":"recip|refl",
+        "pos":["PD"]
       },{
         "value":"expl",
         "displayName":"expl",
@@ -260,21 +244,13 @@
         "displayName":"neg",
         "pos":["CONJ"]
       },{
-        "value":"aux|cop|mai",
-        "displayName":"aux|cop|mai",
+        "value":"cop|aux",
+        "displayName":"cop|aux",
         "pos":["VRB"]
-      },{
-        "value":"aux",
-        "displayName":"aux",
-        "pos":[]
       },{
         "value":"indef",
         "displayName":"indef",
         "pos":["PD"]
-      },{
-        "value":"cop",
-        "displayName":"cop",
-        "pos":[]
       },{
         "value":"uncl",
         "displayName":"uncl",
@@ -307,15 +283,15 @@
         "value":"ord",
         "displayName":"ord",
         "pos":["NUM"]
-      },{
-        "value":"aux|cop",
-        "displayName":"aux|cop",
-        "pos":["VRB"]
       }]
     },
     "pos_mood":{
       "id":"pos_mood",
       "values":[{
+        "value":"uncl",
+        "displayName":"uncl",
+        "pos":["VRB"]
+      },{
         "value":"ind|conj",
         "displayName":"ind|conj",
         "pos":["VRB"]
@@ -323,14 +299,6 @@
         "value":"imp",
         "displayName":"imp",
         "pos":["VRB"]
-      },{
-        "value":"ind",
-        "displayName":"ind",
-        "pos":[]
-      },{
-        "value":"conj",
-        "displayName":"conj",
-        "pos":[]
       }]
     },
     "pos_degree":{
@@ -362,7 +330,7 @@
       "values":[{
         "value":"prespart",
         "displayName":"prespart",
-        "pos":[]
+        "pos":["VRB"]
       },{
         "value":"fin",
         "displayName":"fin",
@@ -378,10 +346,6 @@
       },{
         "value":"pastpart",
         "displayName":"pastpart",
-        "pos":[]
-      },{
-        "value":"prespart|pastpart",
-        "displayName":"prespart|pastpart",
         "pos":["VRB"]
       }]
     },
