@@ -12,8 +12,9 @@ case class addProcessedMetadataValues() {
 
   val nice = false
 
-  def addField(b: Elem, n: String, v: Seq[String]): Elem = {
-    Console.err.println(s"##### $n -> $v")
+  def addField(b: Elem, n: String, v0: Seq[String]): Elem = {
+    Console.err.println(s"##### $n -> $v0")
+    val v = if (n.matches(".*(genre|fict).*")) v0.map(_.toLowerCase) else v0
     if (v.isEmpty) b else {
       val b1 = b.copy(child = b.child ++ Seq(
         <interpGrp type={n}>
@@ -62,7 +63,73 @@ case class addProcessedMetadataValues() {
     List(s + "Level0", s + "Level1", s + "Level2", s1 + "Level0", s1 + "Level1", s1 + "Level2")
   }
 
-  def enrichBibl(b: Elem): Elem = {
+  def moveHistory(b: Elem) = {
+
+    val history = ((b \ "interpGrp").filter(g => (g \ "@type").text.startsWith("genre"))).map(
+      g => (g \ "@type").text -> g.text.toLowerCase.contains("geschiedenis")).filter(_._2).map(_._1).map(_.replaceAll("genre","subgenre"))
+
+    val addProse = if (history.nonEmpty) Seq(<interp>prose</interp>) else Seq()
+    Console.err.println("history fields: " + history)
+
+    val cleanedChildren = b.child.map(g => {
+      if (g.label != "interpGrp" || !(g \ "@type").text.startsWith("genre")) g else {
+        val terpjes = g.child.filter(_.text != "geschiedenis")
+        g.asInstanceOf[Elem].copy(child = terpjes ++ addProse)
+      }
+    })
+
+    val patchHistory = history.filter(h => (b \ "interpGrp").filter(g => (g \ "@type").text == h).nonEmpty)
+    val addHistory = history diff patchHistory
+
+    val hist = <interp>history</interp>
+
+    val enhancedChildren = cleanedChildren.map(
+      x =>  {
+        val t = (x \ "@type").text
+        if (history.contains(t)) x.asInstanceOf[Elem].copy(child = x.child ++ Seq(hist)) else x
+      }
+    ) ++ addHistory.map(x => <interpGrp type={x}>{hist}</interpGrp>)
+    Console.err.println((enhancedChildren \\ "interpGrp").filter(z => z.text.contains("history") || z.text.contains("geschiedenis")))
+    b.copy(child = enhancedChildren)
+  }
+
+  def renameFactuality(b: Elem) = {
+
+    val sourceID = getField(b,"sourceID").head
+
+    def rename(ig: Elem) = {
+      val t = (ig \ "@type").text.replaceAll("factuality","fictionality")
+      val value = ig.text.replaceAll("ctie", "ction").toLowerCase.trim
+      val z = <interpGrp type={t}><interp>{value}</interp></interpGrp>
+      Console.err.println(s"FACT OR FICTION! $sourceID --> $z")
+      z
+    }
+
+    if (sourceID.matches("corpusgysseling.[01].*")) PostProcessXML.updateElement(b, e => (e \ "@type").text.contains("fact"), rename) else b
+  }
+
+  lazy val addedFieldNames = List("witness_year_from",
+    "witness_year_to",
+    "text_year_from" ,
+    "text_year_to" ,
+    "datering" ,
+    "decade" ,
+    "country" ,
+    "region" ,
+    "province" ,
+    "place" ,
+    "kloeke" ,
+    "genre" ,
+    "subgenre" ,
+    "title" ,
+    "subtitle" ,
+    "author",
+    "Subcorpus")
+
+  def enrichBibl(b0: Elem): Elem = {
+
+    val b = renameFactuality(moveHistory(b0))
+
     val map: String => Seq[String] = getFieldFunction(b)
 
     val titleLevel2 = map("titleLevel2")
@@ -75,7 +142,7 @@ case class addProcessedMetadataValues() {
       Seq()
 
 
-    val genre = coalesce(map, eentwee("genre")).map(_.toLowerCase)
+    val genre: Seq[String] = coalesce(map, eentwee("genre")).map(_.toLowerCase)
     val subgenre = coalesce(map, eentwee("subgenre"))
     val title = coalesce(map, eentwee("title"))
     val subtitle = coalesce(map, eentwee("subtitle"))
@@ -109,7 +176,7 @@ case class addProcessedMetadataValues() {
            "region" -> region,
            "province" -> province,
            "place" -> place,
-            "kloeke" -> kloeke,
+           "kloeke" -> kloeke,
            "genre" -> genre,
            "subgenre" -> subgenre,
            "title" -> title,

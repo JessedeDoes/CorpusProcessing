@@ -11,12 +11,12 @@
 </xsl:function>
 
   
-<xsl:param name="server">svotmc10.ivdnt.loc</xsl:param>
+<xsl:param name="server">corpusgysseling.ivdnt.org</xsl:param>
 <xsl:variable name="corpus"><xsl-value-of select="//corpus"/></xsl:variable> 
 <xsl:param name="corpora">
   <xsl:sequence><corpora>
     <corpus id="ONW" name="ONW"><xsl:sequence select="document('Corpora/ONW/tagset_desc_temp.xml')"></xsl:sequence></corpus>
-    <corpus id="gysseling_nt" name="Gysseling">Gysseling<xsl:sequence select="document('Corpora/Gysseling/tagset_desc_temp.xml')"></xsl:sequence></corpus>
+    <corpus id="Gysseling" name="Gysseling">Gysseling<xsl:sequence select="document('Corpora/Gysseling/tagset_desc_temp.xml')"></xsl:sequence></corpus>
     <corpus id="CGN_TDN" name="CGN">CGN<xsl:sequence select="document('Corpora/CGN/tagset_desc_temp.xml')"></xsl:sequence></corpus>
   </corpora></xsl:sequence>
 </xsl:param>
@@ -35,6 +35,7 @@
   </style>
   </head>
   <body>
+    <h1>Appendix: formele beschrijving van de tagset</h1>
   <xsl:for-each select=".//mainPoS/pos">
     <xsl:variable name="pos"><xsl:value-of select="./text()"/></xsl:variable>
     <h1><xsl:value-of select="./@desc"/> (<xsl:value-of select="./text()"/>)</h1>
@@ -62,7 +63,7 @@
               <xsl:variable name="curcorp_name"><xsl:value-of select="./@name"/></xsl:variable>
               <xsl:text> </xsl:text>
               <a target="_blank" style="text-decoration: none; color: black; border-style:outset">
-                <xsl:attribute name="href">http://<xsl:value-of select="$server"/>/corpus-frontend/<xsl:value-of select="$curcorp_id"/>/search/hits?first=0&amp;number=20&amp;patt=%5Bpos%3D%22<xsl:value-of select="$pos"/>%22%26pos_<xsl:value-of select="$feature"/>%3D%22<xsl:value-of select="$value"/>%22%5D&amp;interface=%7B"form"%3A"search"%2C"patternMode"%3A"advanced"%7D</xsl:attribute>
+                <xsl:if test="contains($curcorp_name,'ysse')"><xsl:attribute name="href">http://<xsl:value-of select="$server"/>/corpus-frontend/<xsl:value-of select="$curcorp_id"/>/search/hits?first=0&amp;number=20&amp;patt=%5Bpos%3D%22<xsl:value-of select="$pos"/>%22%26pos_<xsl:value-of select="$feature"/>%3D%22<xsl:value-of select="$value"/>%22%5D&amp;interface=%7B"form"%3A"search"%2C"patternMode"%3A"advanced"%7D</xsl:attribute></xsl:if>
                 <span class="featureValue"><xsl:value-of select="$curcorp_name"/></span><xsl:text> </xsl:text> <span style="font-style: italic"><xsl:value-of select="./@desc"/></span> 
               </a>
               </xsl:if>

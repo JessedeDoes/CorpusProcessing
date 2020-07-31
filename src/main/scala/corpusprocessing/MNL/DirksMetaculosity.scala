@@ -5,9 +5,19 @@ import java.io.PrintWriter
 import corpusprocessing.gysseling.DirksMetaculosityCG.{dirkMap, getField}
 import utils.PostProcessXML
 
-import scala.xml.{Elem, Text, XML}
+import scala.xml.{Elem, Text, XML, Node}
 import scala.util.{Failure, Success, Try}
 object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
+
+  lazy val mnw_bronnen = (XML.load("/mnt/Projecten/Taalbank/Woordenboeken/MNW/Bouwstoffen/Converted/bouwstoffen_2015.xml") \\ "document").map(MNWBron)
+
+  case class MNWBron(d: Node) {
+    lazy val id = (d \ "@src").text
+    lazy val title = ((d \ "titel") \ "hoofd").text
+    lazy val loc =  (d \ "lokalisering")
+  }
+
+  lazy val bronMap = mnw_bronnen.map(b => b.id -> b).toMap
 
   val dataDir = "data/MNL/Metadata/"
 
@@ -49,6 +59,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
   val matchedDirkjes: Stream[(String, List[String])] = dirkMatched.tail.map(m => m(0) -> m)
 
   val dirkMap: Map[String, List[(String, String)]] = matchedDirkjes.map({case (id,l) => id -> dirkMatchedFieldnames.zip(l)}).toMap
+    .mapValues(_.map({case (n,v) => if (n.contains("enre") || n.contains("ict")) (n, v.toLowerCase) else (n,v) }))
 
   println(dirkMap("INT_1fd90949-ddb5-44e5-99e2-059018fc06ea"))
 
@@ -59,7 +70,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
     val iffy = Set("genre", "subgenre", "author", "fictionality", "title")
     val fields = (b \ "interpGrp")
 
-    val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.contains(_)))
+    val keepFields = fields.filter(f  => !iffy.exists((f \ "@type").text.toLowerCase.startsWith(_)))
 
     val iffiez = fields.filter(f  => iffy.exists((f \ "@type").text.toLowerCase.contains(_))).toSeq
 
@@ -107,7 +118,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
   def fixOneFake(z: String) = {
 
     val t = z.replaceAll(fakeLT,"<").replaceAll(fakeGT, ">").replaceAll("'","").replaceAll("&quot;","").replaceAll("([^\\s<>]+)=([^\\s<>]+)", "$1=\"$2\"")
-    Console.err.println(s"$z --> $t")
+    //Console.err.println(s"$z --> $t")
     t
   }
 
@@ -121,7 +132,7 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
     val z = if (!relevant) interp else Try{interp.copy(child = XML.loadString(t).child)} match {
       case Success(x) => x
       case Failure(x) =>
-        Console.err.println(x)
+        //Console.err.println(x)
         interp
     }
     //if (relevant)
@@ -129,16 +140,35 @@ object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
     z
   }
 
+  def linkBron(d: Elem) = {
+    val mnwBron = (d \\ "interpGrp").filter(i => (i \ "@type").text == "BRONMNW").headOption.map(_.text.trim).filter(_.matches("[0-9]+"))
+    val title = (d \\ "title").headOption.map(_.text).getOrElse("No title")
+    val fixed = mnwBron.map(
+      b => {
+
+        val src = String.format("s%04d", b.replaceAll("[^0-9].*","").toInt.asInstanceOf[Object])
+        //Console.err.println(s"$b -> $src")
+        val bron = bronMap.get(src)
+        bron.map(br => println(s"$title   ====> ($b) ->  $br"))
+      }
+    ).getOrElse(d)
+  }
+
   override def fixFile(in: String, out: String) = {
     val d = addProcessedMetadataValues(XML.load(in))
+
     val d1 = PostProcessXML.updateElement(d, x => Set("interp","note").contains(x.label), fixFakeTags)
+
+    linkBron(d)
+
+    val d2 = d1 // SquareBracketThing.processDocument(d1)
     if (this.nice) {
       val p = new scala.xml.PrettyPrinter(300, 4)
-      val t = p.format(d1)
+      val t = p.format(d2)
       val w = new java.io.PrintWriter(out)
       w.write(t)
       w.close()
-    } else XML.save(out, d1, enc = "UTF-8")
+    } else XML.save(out, d2, enc = "UTF-8")
   }
 
   def main(args: Array[String]): Unit = {

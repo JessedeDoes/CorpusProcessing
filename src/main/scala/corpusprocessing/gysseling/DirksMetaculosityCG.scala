@@ -19,6 +19,7 @@ object DirksMetaculosityCG extends corpusprocessing.addProcessedMetadataValues {
   val matchedDirkjes: Stream[(String, List[String])] = dirkMatched.tail.map(m => m(1) -> m)
 
   val dirkMap: Map[String, List[(String, String)]] = matchedDirkjes.map({case (id,l) => id -> dirkMatchedFieldnames.zip(l)}).toMap
+    .mapValues(_.map({case (n,v) => if (n.contains("enre") || n.contains("ict")) (n, v.toLowerCase) else (n,v) }))
 
   println(dirkMap("INT_a76426ad-2f61-4f51-9eec-a27fa4f65d5e"))
 

@@ -39,11 +39,9 @@ object Settings {
 
   val outputDir = if (atHome) "/data/ONW/postprocessed" else "/home/jesse/workspace/data-historische-corpora/ONW/TEI-postprocessed-v2"
 
-
   val extra = "/home/jesse/workspace/Hilex/" + "data/ONW/extraInfo.txt"
 
   val lwOnline = "https://digitalcollections.universiteitleiden.nl/view/item/881139/pages%3C#page/__/mode/1up"
-
 
   val crmDir:String =
     "/mnt/Projecten/corpora/Historische_Corpora/CRM/" // /mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM/mnt/Projecten/Taalbank/CL-SE-data/Corpora/CRM"
