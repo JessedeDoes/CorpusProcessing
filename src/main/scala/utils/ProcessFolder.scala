@@ -13,6 +13,8 @@ object ProcessFolder {
     else input.listFiles.toList.flatMap(x => processFolder(x,action) )
   }
 
+  def filesIn(input: File) = processFolder[File](input, identity[File])
+
   def processFolder(input: File, outputFolder: File, base: (String,String) => Unit, parallel: Boolean = true): Unit =
   {
     if (!outputFolder.exists())
