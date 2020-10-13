@@ -12,7 +12,7 @@ object Settings {
   val babDirOpCorpora = "/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuit/"
 
   val input = new File(babDirOpCorpora + "XML")
-  val output = new File(babDirOpCorpora + (if (useCGNStyle) "2.5CGN/" else "2.6CHN/"))
+  val output = new File(babDirOpCorpora + (if (useCGNStyle) "2.5CGN/" else "2.7CHN/"))
   val discardSubElemsOfWord = false
   val multivalSepSplit = "[_+]"
   val multivalSepPrint = "+"

@@ -8,7 +8,7 @@ import scala.xml._
 import utils.PostProcessXML._
 import utils.Tokenizer
 import utils.alignment.AlignmentGeneric
-
+import corpusprocessing.eindhoven.Eindhoven.replaceAttribute
 import scala.util.matching.Regex
 
 object onwCorpus {
@@ -132,15 +132,11 @@ object onwCorpus {
             if (g.forall({ case (c, i) => c.isInstanceOf[Text] }) && ctext.matches(noteRegex)) {
               val matx: Regex.Match = nr.findFirstMatchIn(ctext).get
               val (wtext, ntext) = (matx.group(1), matx.group(2))
-              Seq(<seg type={optwarning}>
-                {wtext.trim}
-              </seg>, <note type="bijgelapt">
+              Seq(<seg type={optwarning}>{wtext.trim}</seg>, <note type="bijgelapt">
                 {ntext}
               </note>)
             } else
-              Seq(<seg type={optwarning}>
-                {contents}
-              </seg>)
+              Seq(<seg type={optwarning}>{contents}</seg>)
           }
           else g.map(_._1)
         }
@@ -565,6 +561,8 @@ object onwCorpus {
   def sortDivjes(b: Boolean)(d: Elem):Elem = {
     updateElement(d, _.label=="body", sortDivjesByBron)
   }
+
+
 
   def fixFile(in: String, out:String): Unit =
     {

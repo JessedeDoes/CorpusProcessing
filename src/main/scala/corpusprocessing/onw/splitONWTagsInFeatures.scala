@@ -2,10 +2,47 @@ package corpusprocessing.onw
 import scala.xml._
 import java.io.File
 
+
 import utils.PostProcessXML._
 
 import scala.util.matching.Regex
 import scala.util.{Failure, Success, Try}
+
+object standardizeLinguisticAnnotation {
+  def replaceAttributeName(e: Elem, name: String, t: String):Elem = {
+    val base = e.attributes.filter(_.key != name)
+    if (e.attributes.exists(m => m.key == name)) {
+      val a0 = e.attributes.filter(_.key == name).head
+      e.copy(attributes = base.append(new UnprefixedAttribute(t, a0.value.text, Null))) }
+    else e
+  }
+
+  def replaceAttributeValue(e: Elem, test: MetaData => Boolean, t: String):Elem = {
+    val base = e.attributes.filter(x => !test(x))
+    if (e.attributes.exists(m => test(m))) {
+      val a0 = e.attributes.filter(test).head
+      val a1 = new UnprefixedAttribute(a0.key, t, Null)
+      e.copy(attributes = base.append(a1))
+    } else e
+  }
+
+  def replaceFeatureName(e: Elem, frm: String, to: String) = {
+    updateElement(e, _.label == "f", f =>
+      replaceAttributeValue(f, a => a.key=="name" && a.value.text == frm, to))
+  }
+
+  def replaceMSDByPos(d: Elem) = {
+    val d1 = updateElement(d, _.label == "w", w => {
+      val w1 = replaceAttributeName(replaceAttributeName(w,"pos", "original_pos"), "msd", "pos")
+      val w2 = replaceFeatureName(replaceFeatureName(w1,"pos", "main_pos"), "msd", "pos")
+      val w3 = updateElement(w2, _.label == "fs", fs => fs.copy(child = fs.child.filter(x => !(x \ "@name").text.startsWith("pos."))))
+      w3
+    })
+    d1
+  }
+}
+
+import standardizeLinguisticAnnotation.replaceMSDByPos
 
 object splitONWTagsInFeatures {
   //val tagset = CHNStyleTags
@@ -98,15 +135,19 @@ object splitONWTagsInFeatures {
   def splitFS(fs: Elem, lemma: String): Seq[Elem] =
   {
     val fs1 = fs.copy(
-      attributes = replaceAtt(fs.attributes, "type", "chnpos"),
+      attributes = replaceAtt(fs.attributes, "type", "TDN"),
       child = fs.child.flatMap({
-        case e: Elem if e.label == "f" && (e \ "@name").text.startsWith("pos.")  => {
+        case e: Elem if e.label == "f" && ((e \ "@name").text == "msd" || (e \ "@name").text.startsWith("pos."))  => {
           val newName = (e \ "@name").text.replaceAll("^pos.","")
           e.copy(attributes = replaceAtt(e.attributes, "name", newName)) }
         case _ => Seq()
       }) ++ Seq(<f name="lemma">{lemma}</f>)
     )
-    Seq(fs,fs1)
+
+    val fs0 = fs.copy(
+      attributes = fs.attributes.append(new UnprefixedAttribute("type", "other", Null)),
+      child = fs.child.filter(x => !(x \ "@name").text.startsWith("msd")))
+    Seq(fs1,fs0)
   }
 
   /*
@@ -147,6 +188,7 @@ object splitONWTagsInFeatures {
     val multimainpos = msd.replaceAll("\\(.*?\\)", "")
     val multimainattribute = new UnprefixedAttribute("groupingMainPos", multimainpos, Null)
     val newChild = w.child.filter(_.label != "fs") ++ fsjes
+
     // Console.err.println(newChild)
 
     if (word.contains("##"))
@@ -191,7 +233,8 @@ object splitONWTagsInFeatures {
     val d1 = updateTags(d)
     val d2 = updateElement(d1.asInstanceOf[Elem], x => x.label=="interpGrp" && (x \ "@type").text.toLowerCase.contains("year"), padYears )
     val d3 = patchArticleLinks(d2)
-    XML.save(f2,cleanText(s => s.replaceAll(noNo, " ").replaceAll("p?##[0-9a-z]+",""))(d3.asInstanceOf[Elem]),"UTF-8")
+    val d4 = replaceMSDByPos(d3)
+    XML.save(f2,cleanText(s => s.replaceAll(noNo, " ").replaceAll("p?##[0-9a-z]+",""))(d4.asInstanceOf[Elem]),"UTF-8")
   }
 
   def main(args: Array[String]): Unit = {

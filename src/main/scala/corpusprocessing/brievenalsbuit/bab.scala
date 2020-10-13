@@ -156,7 +156,7 @@ object bab {
         val setje = sterMatMap(cor).toSet.diff(Set(id))
         val newCor = setje.map(x => s"#$x").mkString(" ")
         val (part, partNumber, partAnalysis) = partAssignments(w)
-
+        val join = if (cor.nonEmpty) <join n={cor}/> else Seq() // tamelijk naar....
         val word = w.text
 
         val partAttribute = new UnprefixedAttribute("part", part, Null)
@@ -187,7 +187,7 @@ object bab {
 
         val fs = annotation.featureStructure()
         w.copy(
-          child  = w.child.filter(_.label != "fs") ++ fs,
+          child  = w.child.filter(_.label != "fs") ++ fs ++ join,
           attributes =  newAtts.filter(a => a.key != "n" && a.key != "msd" && a.key != "pos").append(newCHPosAttribute).append(nAttribute))
       } else w
     }

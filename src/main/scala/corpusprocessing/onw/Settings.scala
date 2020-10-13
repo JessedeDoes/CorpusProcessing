@@ -62,6 +62,6 @@ object Settings {
     onwCorpus.main(Array())
     splitONWTagsInFeatures.main(Array())
     addProcessedMetadataValuesONW.main(Array())
-    TagsetDiachroonNederlands.doONW
+    // TagsetDiachroonNederlands.doONW
   }
 }
