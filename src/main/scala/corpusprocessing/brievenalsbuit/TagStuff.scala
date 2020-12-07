@@ -2,6 +2,7 @@ package corpusprocessing.brievenalsbuit
 
 import corpusprocessing.brievenalsbuit.Settings.multivalSepSplit
 import corpusprocessing.brievenalsbuit.TagStuff.tagMapCHNStyle
+import corpusprocessing.brievenalsbuit.TagStuff.tagMapTDNStyle
 import posmapping.CHNStyleTags
 
 import scala.xml.{Elem, NodeSeq, Null, UnprefixedAttribute}
@@ -17,7 +18,7 @@ trait Annotation {
 
   def mapTag(f: String => String): Annotation = map({case LemPos(l,t) => LemPos(l, f(t))})
 
-  def toCHN: Annotation = better().mapTag(p => tagMapCHNStyle.getOrElse(p, s"POS_UNDEF:$p"))
+  def toCHN: Annotation = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
 
   def better(): Annotation = this.map(_.betterAnnotation())
 
@@ -121,6 +122,29 @@ object TagStuff {
     "RES" -> "RES",
     "FOREIGN" -> "RES(type=foreign)",
     "UNRESOLVED" -> "RES(type=unknown)"
+  )
+
+  val tagMapTDNStyle = Map(
+    "NOU-C" -> "NOU-C",
+    "NOU" -> "NOU-C",  "NOUEN" -> "NOU-C",
+    "NEPER" -> "NOU-P(type=per)", "GEB.WENDEL" -> "NOU-P(type=per)",
+    "PER" -> "NOU-P(type=per)",
+    "NELOC" -> "NOU-P(type=loc)",
+    "NEOTHER" -> "NOU-P(type=other)",
+    "NEORG" -> "NOU-P(type=org)",
+    "CON" -> "CONJ",
+    "VRB" -> "VRB", "VRN" -> "VRB",
+    "ADP" -> "ADP",
+    "ADJ" -> "AA", // Hier wel AA dus
+    "ADV" -> "ADV",
+    "PRN" -> "PD",
+    "PR" -> "PD(subtype=oth)",
+    "ART" -> "PD(subtype=art)", "RT" -> "PD(subtype=art)",
+    "NUM" -> "NUM",
+    "INT" -> "INT",
+    "RES" -> "RES(type=oth)",
+    "FOREIGN" -> "RES(type=for)",
+    "UNRESOLVED" -> "RES(type=uncl)"
   )
 
 

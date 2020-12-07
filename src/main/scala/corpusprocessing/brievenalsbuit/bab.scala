@@ -32,7 +32,7 @@ object bab {
     a.key.equals("id")).map(a => a.value.toString).headOption
 
 
-  val tagMap = if (Settings.useCGNStyle) tagMapCGNStyle  else tagMapCHNStyle
+  val tagMap = if (Settings.useCGNStyle) tagMapCGNStyle  else tagMapTDNStyle
   val overbodigeAttributen = Set("xtype", "time", "resp",  "subtype", "original", "type", "mform", "nform", "lemma") // misAlignent, changed
 
 

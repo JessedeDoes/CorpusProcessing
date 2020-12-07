@@ -10,6 +10,7 @@ import scala.xml.XML
 object DataSettings {
    val onwDir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
    val gysDir = "../data-historische-corpora/gysseling/gysseling-processed-metadata/"
+   val babDir="/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN"
 }
 
 object TagsetDiachroonNederlands {
@@ -221,6 +222,13 @@ object TagsetDiachroonNederlands {
     (eindelijk, inElkaarGesleuteld)
   }
 
+  def doBaB= {
+    val m = tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/BaB/",
+      "BrievenAlsBuit", Some("zeebrieven") )
+    //val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
+    m
+  }
+
   def doONW = {
       // tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
 
@@ -294,9 +302,10 @@ object TagsetDiachroonNederlands {
   }
 
    def main(args: Array[String]): Unit = {
-      doCGN
-      doONW
-      doGysselingFromCorpus
+      //doCGN
+      //doONW
+      //doGysselingFromCorpus
+     doBaB
    }
 }
 
