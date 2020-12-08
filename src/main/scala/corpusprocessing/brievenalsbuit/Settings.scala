@@ -18,4 +18,5 @@ object Settings {
   val multivalSepPrint = "+"
   val alternativeSep = "[|]"
   val alternativePrint = "|"
+  val addPartInfoInTag = false
 }

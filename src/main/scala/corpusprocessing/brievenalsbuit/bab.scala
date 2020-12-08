@@ -40,7 +40,7 @@ object bab {
   {
     val annotation = TagStuff.parseLemPos((w \ "@lemma").text, (w \ "@type").text).toCHN.map(x => x match
       {
-        case LemPos(l,t) if  ((w \ "@n").nonEmpty && t.contains("NOU-P")) => LemPos(l, t.replaceAll("\\)", ",wordpart=proper)"))
+        case LemPos(l,t) if  ((w \ "@n").nonEmpty && t.contains("NOU-P") && Settings.addPartInfoInTag) => LemPos(l, t.replaceAll("\\)", ",wordpart=proper)"))
         case _ => x
       }
     )
@@ -149,8 +149,7 @@ object bab {
     val sterMatMap = stermatten.mapValues(l => l.map(idUnsafe))
 
     def newCorresp(w: Elem): Elem = {
-      if ((w \ "@n").nonEmpty)
-      {
+      if ((w \ "@n").nonEmpty) {
         val cor = (w \ "@n").text
         val id = idUnsafe(w)
         val setje = sterMatMap(cor).toSet.diff(Set(id))
@@ -164,18 +163,23 @@ object bab {
 
         val oldCGNPoS = (w \ "@msd").text
 
-        val newCGNPoS = if (partAnalysis.isEmpty || !oldCGNPoS.contains("WW")) if (oldCGNPoS.contains("deeleigen")) oldCGNPoS else addFeature(oldCGNPoS,"deel") else {
-          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "hoofddeel-ww" else "anderdeel-ww"
+        val newCGNPoS = if (partAnalysis.isEmpty || !oldCGNPoS.contains("WW")) if (oldCGNPoS.contains("deeleigen")) oldCGNPoS else addFeature(oldCGNPoS, "deel") else {
+          val partDesc = if (word == partAnalysis.get.verbalWordPart) "hoofddeel-ww" else "anderdeel-ww"
           addFeature(oldCGNPoS, partDesc)
         }
 
         val oldCHNPoS = (w \ "@pos").text
 
-        val newCHNPoS = if (partAnalysis.isEmpty || !oldCHNPoS.contains("VRB")) if (oldCHNPoS.contains("wordpart")) oldCHNPoS
-                else addFeature(oldCHNPoS,"wordpart=part") else {
-          val partDesc = if (word  == partAnalysis.get.verbalWordPart) "wordpart=vrb" else "wordpart=adv"
-          addFeature(oldCHNPoS, partDesc)
+        val newCHNPoS = if (!Settings.addPartInfoInTag) oldCHNPoS else {
+          if (partAnalysis.isEmpty || !oldCHNPoS.contains("VRB")) {
+            if (oldCHNPoS.contains("wordpart")) oldCHNPoS
+            else addFeature(oldCHNPoS, "wordpart=part")
+          } else {
+            val partDesc = if (word == partAnalysis.get.verbalWordPart) "wordpart=vrb" else "wordpart=adv"
+            addFeature(oldCHNPoS, partDesc)
+          }
         }
+
 
         val newCGNPosAttribute = new UnprefixedAttribute("msd", newCGNPoS, Null)
 

@@ -43,7 +43,7 @@ object TagsetDiachroonNederlands {
 
 
   def addDescriptionsFromTDN(prefix: String, corpusBased: TagSet, outputName: String = "tagset_desc",
-                             corpusName: String, corpusNameInXML: Option[String] = None): TagSet = {
+                             corpusName: String, corpusNameInXML: Option[String] = None, fixtags: Boolean = true): TagSet = {
 
     // val corpusBased = TagSet.fromXML(prefix + fileName) // nee, niet goed
 
@@ -59,7 +59,10 @@ object TagsetDiachroonNederlands {
     // wat hier nog misgaat is dat door implicatie toegevoegde features niet doorkomen......
     // je moet eigenlijk eerst fixTags doen, en DAN weer opnieuw de hele zaak draaien......
 
-    val corpusBasedWithDesc = TagSet.sortFeatures(TagSet.sortFeatures(corpusBasedWithDesc0, TDNTagset).fixAllTags(), TDNTagset)
+    val zz: TagSet = TagSet.sortFeatures(corpusBasedWithDesc0, TDNTagset)
+
+    val zzz = if (fixtags) zz.fixAllTags() else zz
+    val corpusBasedWithDesc = TagSet.sortFeatures(zzz, TDNTagset)
 
     TagSet.compare(TDNTagset, corpusBasedWithDesc)
 
@@ -89,7 +92,7 @@ object TagsetDiachroonNederlands {
   }
 
   def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String, corpusXML: Option[String] = None,
-                            separator: String = "[+]") = { // let op BaB heeft | tussen tags, dat kan misgaan
+                            separator: String = "[+]", fixtags: Boolean = true) = { // let op BaB heeft | tussen tags, dat kan misgaan
     val dir = new File(dirName)
 
      val files: Set[File] = if (dir.isDirectory) dir.listFiles().toSet else Set(dir)
@@ -111,7 +114,7 @@ object TagsetDiachroonNederlands {
       }
     )
 
-    tagsetFromSetOfTags(prefix, corpus, allDistinctTags, corpusXML)
+    tagsetFromSetOfTags(prefix, corpus, allDistinctTags, corpusXML, fixtags)
   }
 
   implicit def setToMap(s: Set[String]): Map[String, String] = s.toIndexedSeq.zipWithIndex.map({case (x,i) => i.toString -> x}).toMap
@@ -134,7 +137,7 @@ object TagsetDiachroonNederlands {
     m1.flatMap({case (k,a) => a.zipWithIndex.map({case (v,i) => if (i==0) k->v else s"$k[$i]" -> v})})
   }
 
-  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String], corpusNameInXML: Option[String] = None) = {
+  def tagsetFromSetOfTags(prefix: String, corpus: String, tagMapping_0: Map[String, String], corpusNameInXML: Option[String] = None, fixtags: Boolean = true) = {
 
     val tagMapping = ambiPatch(tagMapping_0)
 
@@ -168,7 +171,7 @@ object TagsetDiachroonNederlands {
     blfWriter.println(tagset.forBlacklab)
     blfWriter.close()
 
-    val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus, corpusNameInXML)
+    val tagsetPlus = addDescriptionsFromTDN(prefix, tagset, "tagset_desc_temp", corpus, corpusNameInXML, fixtags)
 
     val tmPlus = tagMapping.mapValues(t => {
       val t1 = new CHNStyleTag(t, tagsetPlus)
@@ -179,7 +182,7 @@ object TagsetDiachroonNederlands {
 
     val r = tagMapping.mapValues(s => {
       val t0 = new CHNStyleTag(s, tagsetPlus)
-      val t1 = tagsetPlus.fixTag(t0)
+      val t1 = if (fixtags) tagsetPlus.fixTag(t0) else t0
       t1.asInstanceOf[CHNStyleTag]}
     )
     r.toList.sortBy({case (x,t) => t.toString()}).foreach({case (x, t) =>
@@ -223,8 +226,8 @@ object TagsetDiachroonNederlands {
   }
 
   def doBaB= {
-    val m = tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/BaB/",
-      "BrievenAlsBuit", Some("zeebrieven") )
+    val m = tagsetFromCorpusFiles(DataSettings.babDir, "pos", "data/TDN/Corpora/BaB/",
+      "BrievenAlsBuit", Some("zeebrieven"), fixtags=false )
     //val m = tagsetFromSetOfTags("data/TDN/Corpora/Gysseling/", "Gysseling", mapping, Some("gysseling_nt"))
     m
   }
