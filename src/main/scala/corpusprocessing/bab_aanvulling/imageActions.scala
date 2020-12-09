@@ -1,5 +1,5 @@
-package bab_aanvulling
-import bab_aanvulling.imageCorrections.{∀, _}
+package corpusprocessing.bab_aanvulling
+import corpusprocessing.bab_aanvulling.imageCorrections.{∀, _}
 
 object imageActions {
  val left = 270
@@ -242,13 +242,13 @@ object imageActions {
   // 1582	foto's 1,3 en 4 links roteren
   "bab1582" -> List(∀(s => Seq(0,2,3), i => rotate(i,i,left,true))),
   // 426	3e foto rechts roteren
-  // "bab426" -> List(rotate(2,2,right,true)), // ### waarom? Hij staat zo op z'n kant
+  "bab426" -> List(), // List(rotate(2,2,right,true)), // ### waarom? Hij staat zo op z'n kant
   // 1612	alle foto's links roteren
   "bab1612" -> List(∀(s => s.indices, i => rotate(i,i,left,true))),
   // 1550	alle foto's links roteren behalve foto 1
   "bab1550" -> List(∀(s => s.indices.drop(1), i => rotate(i,i,left,true))),
   // 278	2e foto rechts roteren
-  // "bab278" -> List(rotate(1,1,right,true)), // ### waarom? licht dan verkeerd
+  "bab278" -> List(), // List(rotate(1,1,right,true)), // ### aangepast waarom? ligt dan verkeerd
 
   // 2023	1e foto 180 roteren (adres), huidige 1e foto wordt foto 3
   "bab2023" -> List(patch(0,2), rotate(0,0,180,true)),
@@ -332,6 +332,7 @@ object imageActions {
   "bab2143" -> List(rotate(0,0,180,true), rotate(1,1,left,true)),
   // 2144	1e foto 180 roteren
   "bab2144" -> List(rotate(0,0,180,true)),
+
   // 2448	alle foto's links roteren
   "bab2448" -> List(∀(_.indices, i => rotate(i,i,left,true))),
   // 279	1e foto rechts roteren // waarom? Komt zo verkeerd te staan
@@ -449,7 +450,7 @@ object imageActions {
   // 1601	2e foto links roteren en invoegen als 3e foto
   "bab1601" -> List(rotate(1,2,left)),
   // 1587	alle foto's links roteren
-  "bab1587" -> List(rotate(1,2,left)),
+  "bab1587" -> List(∀(_.indices, i => rotate(i,i,left,true))), // ### aangepast
   // 1475	foto's ontbreken: het zijn 05-01-2010 426a en 05-01-2010 427 hierbij geleverd
   "bab1475" -> List(),
   // 2488	2e en 3e foto rechts roteren
@@ -472,8 +473,8 @@ object imageActions {
   "bab1682" -> List(rotate(1,2,left)),
   // 749	2e foto links roteren en invoegen als 3e foto
   "bab749" -> List(rotate(1,2,left)),
-  // 1064	3e foto links roteren (tekst in marge)en toevoegen als 4e foto; laatste foto deleren
-  "bab1064" -> List(remove(last), rotate(2,3,left)),
+  // 1064	3e foto links roteren (tekst in marge)en toevoegen als 4e foto; laatste foto deleren // dit gaat niet goed....
+  "bab1064" -> List(remove(last), remove(last), remove(last), rotate(2,3,left)), /// ### aangepast ! deze nog controleren
   // 1771	2e foto links roteren en invoegen als 3e foto
   "bab1771" -> List(rotate(1,2,left)),
   // 2348	1e foto 180 roteren, huidige 1e foto wordt 2e foto

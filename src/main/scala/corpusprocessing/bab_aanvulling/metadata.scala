@@ -1,4 +1,4 @@
-package bab_aanvulling
+package corpusprocessing.bab_aanvulling
 import java.util
 
 import database.DatabaseUtilities.AlmostQuery

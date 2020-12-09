@@ -1,4 +1,4 @@
-package bab_aanvulling
+package corpusprocessing.bab_aanvulling
 import scala.xml._
 import Settings._
 import utils.PostProcessXML

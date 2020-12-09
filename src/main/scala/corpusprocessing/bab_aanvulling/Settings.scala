@@ -1,4 +1,4 @@
-package bab_aanvulling
+package corpusprocessing.bab_aanvulling
 import java.io.File
 
 import bab_conversie._
@@ -55,7 +55,7 @@ object Settings {
 
   val correctedImageDirectory = "/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuitAanvulling/correctedImages/"
 
-  val metaDB = new Database(Configuration("gdb", "svowdb02", "brieven_als_buit_aanvulling_v2", "impact", "impact",  "mysql"))
+  val metaDB = new Database(Configuration("gdb", "svowdb20.ivdnt.loc", "brieven_als_buit_aanvulling_v2", "impact", "impact",  "mysql"))
 
   def outputPath(f: File) = {
     f.getCanonicalPath.replaceAll("/XML/", "/Processed/")
@@ -65,6 +65,8 @@ object Settings {
     bab_conversie.MainClass.main(Array(txt_aanpassing, xml_aanpassing))
     bab_conversie.MainClass.main(Array(txt_17, xml_17))
     bab_conversie.MainClass.main(Array(txt_18, xml_18))
+    metadata.main(Array())
+    imageCorrections.main(Array())
   }
 
   def main(args: Array[String]): Unit = {

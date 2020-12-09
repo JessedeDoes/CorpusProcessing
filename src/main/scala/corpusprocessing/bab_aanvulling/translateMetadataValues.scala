@@ -1,4 +1,4 @@
-package bab_aanvulling
+package corpusprocessing.bab_aanvulling
 
 object translateMetadataValues {
 
