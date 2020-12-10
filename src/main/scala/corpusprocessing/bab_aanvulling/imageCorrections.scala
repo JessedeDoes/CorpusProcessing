@@ -184,14 +184,16 @@ object imageCorrections {
   val showAll = true
   def main(args: Array[String]): Unit = {
     val list = new PrintWriter(correctedImageDirectory + "list.html")
-
+    val info = new PrintWriter(correctedImageDirectory + "info.txt")
     imageActions.actions.foreach({case (id, l) =>
       val xml = Settings.processedFileMap.get(id)
       if (xml.nonEmpty) xml.foreach(x => if (l.nonEmpty || showAll) {
-        val d = babDocumentPatch(x, l)
+        val d = babDocumentPatch(x._1, l)
         val patchedDoc = d.patchedDocument
         new File(Settings.correctedImageDirectory + id).mkdir()
+
         XML.save(Settings.correctedImageDirectory + id + "/" + id + ".xml", patchedDoc, "utf-8")
+        info.println(s"$id\t${x._2}\t${d.patchedImageList.mkString("\t")}")
         val view = new PrintWriter(Settings.correctedImageDirectory + id + "/view_images.html" )
         view.println(d.htmlSnippet)
         val snip = (<div><a href={id + "/view_images.html"}>{s"$id: ${d.textFileName}"}</a><br/></div>).toString
@@ -204,5 +206,6 @@ object imageCorrections {
     })
 
     list.close()
+    info.close()
   }
 }

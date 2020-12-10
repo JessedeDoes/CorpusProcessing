@@ -39,11 +39,11 @@ object Settings {
 
   def getPid(xml: Elem) = ((xml \\ "interpGrp").filter(att("type", "pid")) \ "interp" \ "@value").text
 
-  lazy val processedFileMap: Map[String, Elem] = allProcessedFiles.filter(_.getName.endsWith("xml")).map(x => {
+  lazy val processedFileMap: Map[String, (Elem,String)] = allProcessedFiles.filter(_.getName.endsWith("xml")).map(x => {
     val xml = XML.loadFile(x)
     val pid = getPid(xml)
     //println(pid)
-    pid -> xml
+    pid -> (xml, x.getCanonicalPath)
   }).toMap
 
   lazy val allXMLFiles: List[File] = ((new File(xml_aanpassing).listFiles()) ++
@@ -54,6 +54,10 @@ object Settings {
   val imageMap = allImageFiles.map(f => f.getParentFile.getName.replaceAll(".*(17|18).*","$1") + "/" + f.getName -> f).toMap
 
   val correctedImageDirectory = "/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuitAanvulling/correctedImages/"
+
+  val xmlAfterImageCorrections = correctedImageDirectory + "XML"
+
+  val abbrCorrectDir = correctedImageDirectory + "XML_abbrfix/"
 
   val metaDB = new Database(Configuration("gdb", "svowdb20.ivdnt.loc", "brieven_als_buit_aanvulling_v2", "impact", "impact",  "mysql"))
 
@@ -67,8 +71,21 @@ object Settings {
     bab_conversie.MainClass.main(Array(txt_18, xml_18))
     metadata.main(Array())
     imageCorrections.main(Array())
+    // nu eerst process.sh draaien voor de xml bestandjes....
+    //fixAbbr.fixAllDocs
   }
 
+  /*
+     Om het daarna af te maken:
+     - Ga naar /mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuitAanvulling/correctedImages
+     - Draai "process.sh" (dat zorgt voor de XML)
+     - Draai scala checkImages.scala (kopieert gedraaide plaatjes terug naar de image directory)
+     - Ga naar de image directory (/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuitAanvulling/!!!2017_21 nov_DANS uploaden) en rsync naar de ato (of ooit een keer productie)
+         * rsync -r 17/ root@corpora.ato.ivdnt.org:/vol1/source-images/zeebrieven/Aanvulling/17
+         * rsync -r 18/ root@corpora.ato.ivdnt.org:/vol1/source-images/zeebrieven/Aanvulling/18
+     - indexeer de XML in /mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuitAanvulling/correctedImages/XML
+     - kopieer naar corpora.ato en/of svotmc10
+   */
   def main(args: Array[String]): Unit = {
    toXML
   }
