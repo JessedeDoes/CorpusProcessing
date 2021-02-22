@@ -4,9 +4,12 @@ import scala.xml._
 import java.io._
 import java.util.zip._
 
-import posmapping.CGNPoSTagging
+import corpusprocessing.CGN.CGNToTEIWithTDNTags
+import corpusprocessing.CGN.CGNToTEIWithTDNTags.CGNForTDNTest.convert
+import posmapping.TagsetDiachroonNederlands.tagsetFromSetOfTags
+import posmapping.{CGNPoSTagging, CHNStyleTags}
 
-object FoliaToRudimentaryTEI
+case class FoliaToRudimentaryTEI(posMapping: String => String)
 {
   val xml = "@{http://www.w3.org/XML/1998/namespace}"
 
@@ -29,9 +32,9 @@ object FoliaToRudimentaryTEI
        </body>
     </text>
     </TEI.2>
-  } 
+  }
 
-  def convertSentence(s: Node) = 
+  def convertSentence(s: Node) =
   {
     val id = s \ s"${xml}id"
     <s xml:id={id}>
@@ -75,12 +78,12 @@ object FoliaToRudimentaryTEI
     val cls = (w \ "@class").toString
 
     val teiw = if (cls !="PUNCTUATION")
-          <w xml:id={id} type={CGNPoSTagging.simplePoS(pos)} lemma={lemma}>{content}</w>
+          <w xml:id={id} type={posMapping(pos)} lemma={lemma}>{content}</w>
        else
-          <pc xml:id={id} type={CGNPoSTagging.simplePoS(pos)}>{content}</pc>
-    
+          <pc xml:id={id} type={posMapping(pos)}>{content}</pc>
+
     val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
- 
+
     Seq(teiw) ++ space
   }
 
@@ -90,3 +93,31 @@ object FoliaToRudimentaryTEI
      println(convert(folia))
   }
 }
+
+object NederlabToCobalt extends FoliaToRudimentaryTEI(p => CGNPoSTagging.simplePoS(p))
+
+object BlacklabMeta {
+  val metaFiles = new File(CGNToTEIWithTDNTags.folia).listFiles.filter(_.getName.contains("meta")).iterator
+  val docjes = metaFiles.flatMap(m  => {
+    (XML.loadFile(m) \\ "doc").iterator
+  })
+
+  val docMeta = docjes.map(d => {
+    val pid = (d \\ "docPid").text
+    val fields = (d \ "docInfo").head.child.map(c => {
+      c match {
+        case e: Elem =>
+          val name = e.label
+          val values = (e \ "value").filter(v => !v.text.contains("Unspec")).map(_.text.trim)
+          if (values.nonEmpty)
+            <interpGrp type={name}>{values.map(v => <interp>{v}</interp> )}</interpGrp>
+          else Seq()
+        case _ =>  Seq()
+      }
+
+    })
+    val bibl = <listBibl><bibl>{fields}</bibl></listBibl>
+    pid -> bibl
+  }).toMap
+}
+

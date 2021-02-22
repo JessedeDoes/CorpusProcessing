@@ -1,0 +1,257 @@
+<tagset>
+    <prefix>pos</prefix>
+    <corpus>zeebrieven</corpus>
+    <server>http://svotmc10.ivdnt.loc/</server>
+    <mainPoS>
+        <pos displayName="Adjective-Adverb" desc="Adjective-Adverb">AA</pos>
+        <pos displayName="Adposition" desc="Adposition">ADP</pos>
+        <pos displayName="Adverb" desc="Adverb">ADV</pos>
+        <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
+        <pos displayName="Interjection" desc="Interjection">INT</pos>
+        <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
+        <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
+        <pos displayName="Numeral" desc="Numeral">NUM</pos>
+        <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
+        <pos displayName="Residual" desc="Residual">RES</pos>
+        <pos displayName="Verb" desc="Verb">VRB</pos>
+    </mainPoS>
+    <partitions>
+        <feature displayName="Part of speech" desc="Part of speech">
+            <name>pos</name>
+            <values>
+                <featureValue>
+                    <value>AA</value>
+                    <posForValue>
+                        <pos>AA</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>ADP</value>
+                    <posForValue>
+                        <pos>ADP</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>ADV</value>
+                    <posForValue>
+                        <pos>ADV</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>CONJ</value>
+                    <posForValue>
+                        <pos>CONJ</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>INT</value>
+                    <posForValue>
+                        <pos>INT</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>NOU-C</value>
+                    <posForValue>
+                        <pos>NOU-C</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>NOU-P</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>NUM</value>
+                    <posForValue>
+                        <pos>NUM</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>PD</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>RES</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue>
+                    <value>VRB</value>
+                    <posForValue>
+                        <pos>VRB</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="Subtype" desc="Subtype">
+            <name>subtype</name>
+            <values>
+                <featureValue displayName="Article" desc="Article">
+                    <value>art</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Other" desc="Other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>PD</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+        <feature displayName="Type" desc="Type (Subcategorization)">
+            <name>type</name>
+            <values>
+                <featureValue displayName="Foreign" desc="Foreign word">
+                    <value>for</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Other" desc="Other">
+                    <value>oth</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="Unclear" desc="Unclear">
+                    <value>uncl</value>
+                    <posForValue>
+                        <pos>RES</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="per" desc="per">
+                    <value>per</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="loc" desc="loc">
+                    <value>loc</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+                <featureValue displayName="org" desc="org">
+                    <value>org</value>
+                    <posForValue>
+                        <pos>NOU-P</pos>
+                    </posForValue>
+                </featureValue>
+            </values>
+        </feature>
+    </partitions>
+    <constraints>
+        <constraint>
+            <pos>AA</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADP</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>ADV</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>CONJ</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>INT</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-C</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NOU-P</pos>
+            <features>
+                <feature>pos</feature>
+                <feature>type</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>NUM</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>PD</pos>
+            <features>
+                <feature>subtype</feature>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>RES</pos>
+            <features>
+                <feature>type</feature>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+        <constraint>
+            <pos>VRB</pos>
+            <features>
+                <feature>pos</feature>
+            </features>
+        </constraint>
+    </constraints>
+    <implications> </implications>
+    <tags>
+        <tag>AA()</tag>
+        <tag>ADP()</tag>
+        <tag>ADV()</tag>
+        <tag>CONJ()</tag>
+        <tag>INT()</tag>
+        <tag>NOU-C()</tag>
+        <tag>NOU-P(type=loc)</tag>
+        <tag>NOU-P(type=org)</tag>
+        <tag>NOU-P(type=oth)</tag>
+        <tag>NOU-P(type=per)</tag>
+        <tag>NUM()</tag>
+        <tag>PD(subtype=art)</tag>
+        <tag>PD(subtype=oth)</tag>
+        <tag>RES(type=for)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=oth)</tag>
+        <tag>RES(type=uncl)</tag>
+        <tag>VRB()</tag>
+    </tags>
+</tagset>

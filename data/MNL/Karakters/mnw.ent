@@ -1,0 +1,303 @@
+<!--
+
+	mnw.ent
+	MNW entities file (c) INL. v2.0, 13 juni 2007
+	
+	Deze file is een samenvoeging van de volgende AND entity files. 
+	
+	aml_added_latin_1
+	aml_added_latin_2
+	aml_greek_letters
+	aml_publishing
+	aml_numeric_and_special graphic
+	and_old_dutch
+	and_extended_greek_1
+	and_offset_characters
+	mnw_specific_entities
+
+	Entiteiten die niet in het MNW voorkwamen zijn verwijderd.
+
+” 	Double curved quote, right 	RIGHT DOUBLE QUOTATION MARK 	201D (8221) 	&rdquo;
+„ 	Low double curved quote, left 	DOUBLE LOW-9 QUOTATION MARK 	201E (8222) 	&bdquo;
+
+Nog onbekend voor de bouwstoffen:
+-->
+
+<!ENTITY  amp "&amp;">
+<!ENTITY  Ast "<b>&#x002A;</b>">
+<!ENTITY  etilde  "&#x1EBD;">
+<!ENTITY  langle "&#x251B;">
+<!ENTITY  malt  "&#x2720;">
+<!ENTITY  ndash "&#x2013;">
+<!ENTITY  Ouml  "&#x00D6;">
+<!ENTITY  para "&#x00B6;">
+<!ENTITY  Para  "<b>&#x00B6;</b>">
+<!ENTITY  pmacr "&#xE12F;">
+<!ENTITY  rhand "&#x261B;">
+<!--  rstrok -->
+<!ENTITY  supb  "<sup>b</sup>">
+<!ENTITY  supJ "<sup>J</sup>">
+<!ENTITY  supL "<sup>L</sup>">
+<!ENTITY  supto "<sup>-</sup>">
+<!ENTITY  supv "<sup>v</sup>">
+<!ENTITY  szlig  "&#x00DF;">
+<!-- udot  -->
+<!ENTITY  utilde "&#x0169;">
+<!-- vmacr  -->
+<!ENTITY  zetmk1 "<sup>.</sup>:<sup>.</sup>">
+<!ENTITY  zetmk2 ".<sup>.</sup>.">
+<!ENTITY  zetmk3  ".:.">
+<!ENTITY  zetmk4 "<sup>*</sup>*<sup>*</sup>">
+
+
+	<!--	uit: aml_added_latin_1  -->
+
+     <!ENTITY aacute "&#x00E1;"> <!-- small a, acute accent-->
+     <!ENTITY acirc "&#x00E2;">  <!-- small a, circumflex accent-->
+     <!ENTITY Acirc "&#x00C2;">  <!-- capital A, circumflex accent-->
+     <!ENTITY agrave "&#x00E0;"> <!-- small a, grave accent-->
+     <!ENTITY aring "&#x00E5;">  <!-- small a, ring-->
+     <!ENTITY auml "&#x00E4;">   <!-- small a, dieresis or umlaut mark-->
+     <!ENTITY aelig "&#x00E6;">  <!-- small ae diphthong (ligature)-->
+     <!ENTITY ccedil "&#x00E7;"> <!-- small c, cedilla-->
+     <!ENTITY eacute "&#x00E9;"> <!-- small e, acute accent-->
+     <!ENTITY Eacute "&#x00C9;"> <!-- capital E, acute accent-->
+     <!ENTITY ecirc "&#x00EA;">  <!-- small e, circumflex accent-->
+     <!ENTITY egrave "&#x00E8;"> <!-- small e, grave accent-->
+     <!ENTITY euml "&#x00EB;">   <!-- small e, dieresis or umlaut mark-->
+     <!ENTITY Euml "&#x00CB;">   <!-- capital E, dieresis or umlaut mark-->
+     <!ENTITY iacute "&#x00ED;"> <!-- small i, acute accent-->
+     <!ENTITY Iacute "&#x00CD;"> <!-- capital I, acute accent-->
+     <!ENTITY icirc "&#x00EE;">  <!-- small i, circumflex accent-->
+     <!ENTITY igrave "&#x00EC;"> <!-- small i, grave accent-->
+     <!ENTITY iuml "&#x00EF;">   <!-- small i, dieresis or umlaut mark-->
+     <!ENTITY Iuml "&#x00CF;">   <!-- capital I, dieresis or umlaut mark-->
+     <!ENTITY ntilde "&#x00F1;"> <!-- small n, tilde-->
+     <!ENTITY oacute "&#x00F3;"> <!-- small o, acute accent-->
+     <!ENTITY ocirc "&#x00F4;">  <!-- small o, circumflex accent-->
+     <!ENTITY ograve "&#x00F2;"> <!-- small o, grave accent-->
+     <!ENTITY Ograve "&#x00D2;"> <!-- capital O, grave accent-->
+     <!ENTITY otilde "&#x00F5;"> <!-- small o, tilde-->
+     <!ENTITY ouml "&#x00F6;">   <!-- small o, dieresis or umlaut mark-->
+     <!ENTITY thorn "&#x00FE;">  <!-- small thorn, Icelandic-->
+     <!ENTITY uacute "&#x00FA;"> <!-- small u, acute accent-->
+     <!ENTITY ucirc "&#x00FB;">  <!-- small u, circumflex accent-->
+     <!ENTITY ugrave "&#x00F9;"> <!-- small u, grave accent-->
+     <!ENTITY uuml "&#x00FC;">   <!-- small u, dieresis or umlaut mark-->
+     <!ENTITY Uuml "&#x00DC;">   <!-- capital U, dieresis or umlaut mark-->
+     <!ENTITY yacute "&#x00FD;"> <!-- small y, acute accent-->
+     <!ENTITY yuml "&#x00FF;">   <!-- small y, dieresis or umlaut mark-->
+
+
+	<!--	uit: aml_added_latin_2  -->
+
+	<!ENTITY amacr "&#x0101;">  <!-- small a, macron -->
+	<!ENTITY ccaron "&#x010D;"> <!-- small c, caron -->
+	<!ENTITY ecaron "&#x011B;"> <!-- small e, caron -->
+	<!ENTITY emacr "&#x0113;">  <!-- small e, macron -->
+	<!ENTITY Emacr "&#x0112;">  <!-- capital E, macron -->
+	<!ENTITY imacr "&#x012B;">  <!-- small i, macron -->
+	<!ENTITY omacr "&#x014D;">  <!-- small o, macron -->
+	<!ENTITY oelig "&#x0153;">  <!-- small oe ligature -->
+	<!ENTITY ubreve "&#x016D;"> <!-- small u, breve -->
+	<!ENTITY umacr "&#x016B;">  <!-- small u, macron -->
+	<!ENTITY uring "&#x016F;">  <!-- small u, ring -->
+	<!ENTITY ycirc "&#x0177;">  <!-- small y, circumflex accent -->
+
+
+
+	<!--	uit: aml_greek_letters  -->
+
+     <!ENTITY agr "&#x003B1;">  <!-- small alpha, Greek-->
+     <!ENTITY bgr "&#x003B2;">  <!-- small beta, Greek-->
+     <!ENTITY ggr "&#x003B3;">  <!-- small gamma, Greek-->
+     <!ENTITY dgr "&#x003B4;">  <!-- small delta, Greek-->
+     <!ENTITY egr "&#x003B5;">  <!-- small epsilon, Greek-->
+     <!ENTITY zgr "&#x003B6;">  <!-- small zeta, Greek-->
+     <!ENTITY eegr "&#x003B7;"> <!-- small eta, Greek-->
+     <!ENTITY thgr "&#x003B8;"> <!-- small theta, Greek-->
+     <!ENTITY THgr "&#x00398;"> <!-- capital Theta, Greek-->
+     <!ENTITY igr "&#x003B9;">  <!-- small iota, Greek-->
+     <!ENTITY kgr "&#x003BA;">  <!-- small kappa, Greek-->
+     <!ENTITY Kgr "&#x0039A;">  <!-- capital Kappa, Greek-->
+     <!ENTITY lgr "&#x003BB;">  <!-- small lambda, Greek-->
+     <!ENTITY mgr "&#x003BC;">  <!-- small mu, Greek-->
+     <!ENTITY ngr "&#x003BD;">  <!-- small nu, Greek-->
+     <!ENTITY xgr "&#x003BE;">  <!-- small xi, Greek-->
+     <!ENTITY ogr "&#x003BF;">  <!-- small omicron, Greek-->
+     <!ENTITY pgr "&#x003C0;">  <!-- small pi, Greek-->
+     <!ENTITY rgr "&#x003C1;">  <!-- small rho, Greek-->
+     <!ENTITY sgr "&#x003C3;">  <!-- small sigma, Greek-->
+     <!ENTITY sfgr "&#x003C2;"> <!-- final small sigma, Greek-->
+     <!ENTITY tgr "&#x003C4;">  <!-- small tau, Greek-->
+     <!ENTITY ugr "&#x003C5;">  <!-- small upsilon, Greek-->
+     <!ENTITY Ugr "&#x003A5;">  <!-- capital Upsilon, Greek-->
+     <!ENTITY phgr "&#x003D5;"> <!-- small phi, Greek-->
+     <!ENTITY khgr "&#x003BE;"> <!-- small chi, Greek-->
+     <!ENTITY KHgr "&#x003A7;"> <!-- capital Chi, Greek-->
+     <!ENTITY psgr "&#x003C8;"> <!-- small psi, Greek-->
+     <!ENTITY ohgr "&#x003C9;"> <!-- small omega, Greek-->
+
+
+	<!--	uit: aml_publishing  -->
+
+	<!ENTITY thinsp "&#x02009;">         <!-- thin space (1/6-em) -->
+	<!ENTITY mdash "&#x2014;">  <!-- em dash -->
+	<!ENTITY squ "&#x025A1;">    <!-- square, open -->
+	<!ENTITY utri "&#x025B5;">   <!-- triangle =up triangle, open -->
+	<!ENTITY dagger "&#x2020;"> <!-- dagger B: =dagger -->
+
+
+	<!--	uit: aml_numeric_and_special graphic  -->
+
+     <!ENTITY sup1 "&#x00B9;">   <!-- superscript one-->
+     <!ENTITY sup2 "&#x00B2;">   <!-- superscript two-->
+     <!ENTITY sup3 "&#x00B3;">   <!-- superscript three-->
+     <!ENTITY plus "&#x002B;">   <!-- plus sign -->
+     <!ENTITY plusmn "&#x00B1;"> <!-- plus or minus sign-->
+     <!ENTITY equals "&#x0003D;"> <!-- equals sign -->
+     <!ENTITY times "&#x00d7;">  <!-- multiply sign-->
+     <!ENTITY pound "&#x00A3;">  <!-- pound sign-->
+     <!ENTITY percnt "&#x0025;"> <!-- percent sign-->
+     <!ENTITY sect "&#x00A7;">   <!-- section sign-->
+     <!ENTITY iexcl "&#x000A1;">  <!-- inverted exclamation mark-->
+     <!ENTITY sol "&#x0002F;">    <!-- solidus-->
+
+
+	<!--	uit: and_old_dutch  -->
+
+	<!ENTITY con "&#x00CB;">    <!-- syllable con (inverted c) -->
+	<!ENTITY dqo "&#x201E;">     <!-- Dutch low double open quote -->
+	<!ENTITY dqc "&#x201D;">     <!-- Dutch high double close quote -->
+	<!ENTITY hek "&#x001C1;">        <!-- two vertical bars (citation) -->
+	<!ENTITY libra "&#xE066;">   <!-- libra (pond) sign (stylised l) -->
+	<!ENTITY longs "&#x017F;">   <!-- long s (integral sign) -->
+	<!ENTITY oudpond "&#xE066;"> <!-- oud hollands pond sign (lb) -->
+	<!ENTITY Oudpond "&#xE066;"> <!-- alternative hollandse pond sign -->
+	<!ENTITY rschrif "&#x00CB;"> <!-- alternative r (written) -->
+	<!ENTITY veol "&#x007C;">    <!-- vertical end of line (pipe) -->
+	
+	<!ENTITY dots2 "..">        <!-- 2 dot ellipsis (2 baseline dots) -->
+	<!ENTITY dots3 "...">       <!-- 3 dot ellipsis (3 baseline dots) -->
+	<!ENTITY dots4 "....">      <!-- 4 dot ellipsis (4 baseline dots) -->
+	<!ENTITY dots5 ".....">     <!-- 5 dot ellipsis (5 baseline dots) -->
+	<!ENTITY dots6 "......">    <!-- 6 dot ellipsis (6 baseline dots) -->
+	<!ENTITY dots7 ".......">   <!-- 7 dot ellipsis (7 baseline dots) -->
+
+	<!--	uit: and_extended_greek_1  -->
+
+	<!ENTITY aacugr "&#x1F71;">     <!-- small alpha, acute accent -->
+	<!ENTITY eacugr "&#xE100;">     <!-- small epsilon, acute accent -->
+	<!ENTITY eeacugr "&#x1F75;">    <!-- small eta, acute accent -->
+	<!ENTITY iacugr "&#x1F77;">     <!-- small iota, acute accent -->
+	<!ENTITY oacugr "&#x1F79;">     <!-- small omicron, acute accent -->
+	<!ENTITY uacugr "&#x1F7B;">     <!-- small upsilon, acute accent -->
+	<!ENTITY ohacugr "&#x1F7D;">    <!-- small omega, acute accent -->
+	<!ENTITY agragr "&#x1F70;">     <!-- small alpha, grave accent -->
+	<!ENTITY eegragr "&#x1F74;">    <!-- small eta, grave accent -->
+	<!ENTITY igragr "&#x1F76;">     <!-- small iota, grave accent -->
+	<!ENTITY ogragr "&#x1F78;">     <!-- small omicron, grave accent -->
+	<!ENTITY ecirgr "&#x03AD;">     <!-- small epsilon, circumflex  (is eigenlijk een acuut?) -->
+	<!ENTITY eecirgr "&#x1FC6;">    <!-- small eta, circumflex -->
+	<!ENTITY alengr "&#x1F00;">     <!-- small alpha, lenis accent -->
+	<!ENTITY elengr "&#x1F10;">     <!-- small epsilon, lenis accent -->
+	<!ENTITY ilengr "&#x1F30;">     <!-- small iota, lenis accent -->
+	<!ENTITY olengr "&#x1F40;">     <!-- small omicron, lenis accent -->
+	<!ENTITY rlengr "&#x1FE4;">     <!-- small rho, lenis accent -->
+	<!ENTITY ulengr "&#x1F50;">     <!-- small upsilon, lenis accent -->
+	<!ENTITY ohlengr "&#x1F60;">    <!-- small omega, lenis accent -->
+	<!ENTITY eeaspgr "&#x1F21;">    <!-- small eta, asper accent -->
+	<!ENTITY iaspgr "&#x1F31;">     <!-- small iota, asper accent -->
+	<!ENTITY oaspgr "&#x1F41;">     <!-- small omicron, asper accent -->
+	<!ENTITY raspgr "&#x1FE5;">     <!-- small rho, asper accent -->
+	<!ENTITY uaspgr "&#x1F50;">     <!-- small upsilon, asper accent -->
+	<!ENTITY ohaspgr "&#x1F61;">    <!-- small omega, asper accent -->
+	<!ENTITY atilgr "&#x1FB6;">     <!-- small alpha, tilde  -->
+	<!ENTITY eetilgr "&#x1FC6;">    <!-- small eta, tilde  -->
+	<!ENTITY itilgr "&#x1FD6;">     <!-- small iota, tilde  -->
+	<!ENTITY utilgr "&#x1FE6;">     <!-- small upsilon, tilde  -->
+	<!ENTITY ohtilgr "&#x1FF6;">    <!-- small omega, tilde  -->
+	<!ENTITY aaspacugr "&#x1F05;">  <!-- small alpha, asper & acute -->
+	<!ENTITY eeaspacugr "&#x1F25;"> <!-- small eta, asper & acute -->
+	<!ENTITY oaspacugr "&#x1F45;">  <!-- small omicron, asper & acute -->
+	<!ENTITY ohaspacugr "&#x1F65;"> <!-- small omega, asper & acute -->
+	<!ENTITY alenacugr "&#x1F04;">  <!-- small alpha, lenis & acute -->
+	<!ENTITY elenacugr "&#x1F14;">  <!-- small epsilon, lenis & acute -->
+	<!ENTITY eelenacugr "&#x1F24;"> <!-- small eta, lenis & acute -->
+	<!ENTITY ilenacugr "&#x1F34;">  <!-- small iota, lenis & acute -->
+	<!ENTITY olenacugr "&#x1F44;">  <!-- small omicron, lenis & acute -->
+	<!ENTITY ohlenacugr "&#x1F54;"> <!-- small omega, lenis & acute -->
+	<!ENTITY alengragr "&#x1F02;">  <!-- small alpha, lenis & grave -->
+
+
+	<!--	uit: and_offset_characters  -->
+
+	<!ENTITY sup1 "&#x00B9;"> <!-- superscript 1 -->
+	<!ENTITY sup2 "&#x00B2;"> <!-- superscript 2 -->
+	<!ENTITY sup3 "&#x00B3;"> <!-- superscript 3 -->
+	<!ENTITY sup4 "&#x2074;"> <!-- superscript 4 -->
+	<!ENTITY sup5 "&#x2075;"> <!-- superscript 5 -->
+	<!ENTITY sup6 "&#x2076;"> <!-- superscript 6 -->
+	<!ENTITY sup7 "&#x2077;"> <!-- superscript 7 -->
+	<!ENTITY sup8 "&#x2078;"> <!-- superscript 8 -->
+	<!ENTITY sup9 "&#x2079;"> <!-- superscript 9 -->
+	<!ENTITY supC "<sup>C</sup>"> <!-- superscript C -->
+	<!ENTITY supI "<sup>I</sup>"> <!-- superscript I -->
+	<!ENTITY supM "<sup>M</sup>"> <!-- superscript M -->
+	<!ENTITY supT "<sup>T</sup>"> <!-- superscript T -->
+	<!ENTITY supX "<sup>X</sup>"> <!-- superscript X -->
+	<!ENTITY supa "&#x00AA;"> <!-- superscript a -->
+	<!ENTITY supc "<sup>c</sup>"> <!-- superscript c -->
+	<!ENTITY supd "<sup>d</sup>"> <!-- superscript d -->
+	<!ENTITY supe "<sup>e</sup>"> <!-- superscript e -->
+	<!ENTITY supi "<sup>i</sup>"> <!-- superscript i -->
+	<!ENTITY supj "<sup>j</sup>"> <!-- superscript j -->
+	<!ENTITY supl "<sup>l</sup>"> <!-- superscript l -->
+	<!ENTITY supm "<sup>m</sup>"> <!-- superscript m -->
+	<!ENTITY supn "<sup>n</sup>"> <!-- superscript n -->
+	<!ENTITY supo "&#x00BA;"> <!-- superscript o -->
+	<!ENTITY supr "<sup>r</sup>"> <!-- superscript r -->
+	<!ENTITY sups "<sup>s</sup>"> <!-- superscript s -->
+	<!ENTITY supt "<sup>t</sup>"> <!-- superscript t -->
+	<!ENTITY supx "<sup>x</sup>"> <!-- superscript x -->
+	<!ENTITY sub2 "&#x2082;"> <!-- subscript 2   -->
+	<!ENTITY sub9 "&#x2089;"> <!-- subscript 9   -->
+	<!ENTITY subM "<sub>M</sub>"> <!-- subscript M   -->
+	<!ENTITY subc "<sub>c</sub>"> <!-- subscript c   -->
+	<!ENTITY subn "<sub>n</sub>"> <!-- subscript n   -->
+
+
+	<!--	uit: mnw_specific_entities  -->
+
+	<!ENTITY acaron "&#x01CE;">     <!-- small a with caron -->
+	<!ENTITY ocaron "&#x01D2;">     <!-- small o with caron -->
+	<!ENTITY capd "&#x00CB;">       <!-- small capital D in normal text (komt niet meer voor) -->
+	<!ENTITY capi "&#x00CB;">       <!-- small capital I in normal text (niet meer) -->
+	<!ENTITY capl "&#x00CB;">       <!-- small capital L in normal text (niet meer) -->
+	<!ENTITY capx "&#x00CB;">       <!-- small capital X in normal text (niet meer) -->
+	<!ENTITY ebreve "&#x0115;">     <!-- small e with breve -->
+	<!ENTITY icaron "&#x01D0;">     <!-- small i with caron -->
+	<!ENTITY nmacr "&#xE11D;">      <!-- small n with macron -->
+	<!ENTITY nring "&#x00CB;">      <!-- small n with ring (niet meer) -->
+	<!ENTITY obreve "&#x014F;">     <!-- small e with breve -->
+	<!ENTITY ymacr "&#x0233;">      <!-- small y with macron -->
+	<!ENTITY aecirc "&#xE006;">     <!-- ae ligature with circumflex -->
+	<!ENTITY aeacute "&#x01FD;">    <!-- ae ligature with acute -->
+	<!ENTITY aemacr "&#x0101;&#x0113;">     <!-- ae ligature with macron (simulatie: moet beter)-->
+	<!ENTITY euemph "&#x00CB;">           <!-- eu emphised with a curve -->
+	<!ENTITY oecirc "&#xE126;">     <!-- oe ligature with circumflex -->
+	<!ENTITY ilentil "&#x00CB;">  <!-- small iota lenis with tilde -->
+	<!ENTITY dh "">             <!-- dubious hyphen -->
+	<!ENTITY to "&#x002D;">         <!-- liggend streepje  -->
+	<!ENTITY ord "&#176;">        <!-- fraction sign  (Huh?) -->
+
+	<!ENTITY over "&#x002F;">       <!-- solidus in fractions  (verdwijnt) -->
+	<!ENTITY bigsp "   ">      <!-- large space (missing word?) -->
+
+	
+       <!ENTITY hellip "&#8230;">
+       <!ENTITY ldquo  "&#x201C;">
+       <!ENTITY rdquo  "&#x201D;">
+
+       <!ENTITY ndash "&#8211;">
+

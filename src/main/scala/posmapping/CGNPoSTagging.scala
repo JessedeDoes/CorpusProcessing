@@ -35,7 +35,7 @@ object CGNPoSTagging
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "pr", "recip", "vb", "vrag"),
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta", "onverst", "comment", "achter"), // achter slaat nergens op!
     "dial" -> Set("dial") // officiele naam??
-  )
+  ).mapValues(_.toList)
 
   def pos2partitions = List( // fix volgorde....
     "N"    -> List("ntype", "getal", "graad", "genus", "naamval"),
@@ -207,7 +207,7 @@ object CGNLite
     "vwtype"   -> Set("refl", "aanw", "betr", "bez", "excl", "onbep", "pers", "recip", "vb"),
     "spectype" -> Set("deeleigen", "vreemd", "afk", "afgebr", "symb", "meta"),
     "variatie" -> Set("dial") // officiele naam??
-  )
+  ).mapValues(_.toList)
 
   def pos2partitions = List( // fix volgorde....
     "N"    -> List("ntype"),
@@ -283,7 +283,7 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     val V: List[String] = this.tagset.inSubsets(f)
 
     val fn = if (V.isEmpty) {
-      Console.err.println(s"Should be fatal error but we will let you off the hook for now: tag cannot be parsed from tagset: $tag")
+      // Console.err.println(s"Should be fatal error but we will let you off the hook for now: tag cannot be parsed from tagset: $tag")
       //System.exit(1)
       "UNK"
     }

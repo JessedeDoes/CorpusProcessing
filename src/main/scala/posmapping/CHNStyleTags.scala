@@ -7,7 +7,7 @@ import propositional.{And, Literal, Proposition}
 import scala.util.matching.Regex
 import scala.xml._
 
-class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
+case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
 {
   val Tag = new Regex("^([A-Z]+-?[A-Z]*)\\((.*?)\\)")
 
@@ -15,7 +15,7 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
   val patchedTag = if (!tag.endsWith(")")) s"$tag()" else tag
 
 
-  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=other)" else patchedTag.replaceAll(",other", ",type=other")
+  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=oth)" else patchedTag.replaceAll(",oth", ",type=oth")
 
   if (Tag.findFirstIn(tagToParse).isEmpty)
   {
@@ -40,6 +40,37 @@ class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
       case _ => Feature("kwip", f)
     }
   }
+
+  def hasUnforcedFeatures() = {
+    val alternatives = features.filter(x => x.name != "pos" && x.name != "WF").map(f => {
+      val f0 = features.filter(_ != f)
+      val t0 = this.copy(tag = this.toString(f0))
+      f.name -> t0
+    }).filter(t => tagset.tagSatisfiesImplications(t._2)._1)
+    alternatives
+  }
+
+  def removeUnforcedFeatures(): CHNStyleTag = {
+    val fS = hasUnforcedFeatures().map(_._1)
+    val newFeatures = features.filter(f => !fS.contains(f.name))
+    this.copy(tag =  this.toString(newFeatures))
+  }
+
+  def normalizeFeatureValue(n: String, v: String): String= {
+    if (tagset == null) v else tagset.normalizeFeatureValue(n,v)
+  }
+
+  lazy val features_sorted = if (tagset == null) features else {
+    val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
+    val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
+    val additions = features.filter(f => !lijstje.contains(f.name)).zipWithIndex.map({case (x,i) => (x.name,lijstje.size + i)}).toMap
+    def combi = lijstje ++ additions
+    //println(combi)
+    features.sortBy(x => combi(x.name))
+  }
+
+  override def toString: String = s"$pos(${features_sorted.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
+  def toString(f: List[Feature]): String = s"$pos(${f.filter(_.name != "pos").map(f => s"${f.name}=${normalizeFeatureValue(f.name,f.value)}").mkString(",")})"
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:${if (n != "pos") "feat." else ""}$n=$v") } ) :_*)
 }
 
@@ -72,36 +103,16 @@ object distinctTagsFromGysseling
   }
 
 
-  def tagsetFromCorpusFiles(dirName: String, attribute: String, separator: String = "[+|]") = {
-    val dir = new File(dirName)
-    val files: Set[File] = if (dir.isDirectory) dir.listFiles().toSet else Set(dir)
-    val allDistinctTags: Set[String] = files.flatMap(
-      f => {
-        scala.util.Try(
-          {
-            val doc = XML.loadFile(f)
+  def tagsetFromCorpusFiles(dirName: String, attribute: String,
+                            separator: String = "[+|]", prefix: String = "/tmp/") =
+    TagsetDiachroonNederlands.tagsetFromCorpusFiles(dirName, attribute,separator, prefix)
+}
 
-            val combiposjes = (doc \\ "w").map(x => (x \ s"@$attribute").text).toSet
-            val posjes = combiposjes.flatMap(p => p.split(separator).toSet)
-            //println(posjes)
-            posjes
-          }) match {
-          case scala.util.Success(x) => x
-          case _ => Set[String]()
-        }
-      }
-    )
-    val tagset = CHNStyleTags.tagsetFromSetOfStrings("pos", allDistinctTags)
-    val xmlWriter = new PrintWriter("/tmp/tagset.xml")
-    xmlWriter.println(TagSet.pretty.format(tagset.toXML))
-    xmlWriter.close()
-    val jsonWriter = new PrintWriter("/tmp/tagset.json")
-    jsonWriter.println(tagset.asJSON)
-    jsonWriter.close()
+object distinctTagsFromCRM {
+  val dir = corpusprocessing.CRM.Settings.dir + "PostProcessedMetadata"
 
-    val blfWriter = new PrintWriter("/tmp/tagset.blf.yaml")
-    blfWriter.println(tagset.forBlacklab)
-    blfWriter.close()
+  def main(args: Array[String]): Unit = {
+    distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos", "[+]")
   }
 }
 
@@ -116,7 +127,7 @@ object distinctTagsFromONW {
 
 object distinctTagsFromBaB
 {
-  val dir = brievenalsbuit.Settings.output.getCanonicalPath
+  val dir = corpusprocessing.brievenalsbuit.Settings.output.getCanonicalPath
 
   def main(args: Array[String]): Unit = {
     distinctTagsFromGysseling.tagsetFromCorpusFiles(dir, "pos")
@@ -138,7 +149,7 @@ object compareGysselingToMolex
 
   def pretty(tagset: TagSet, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
     //val xmlWriter = new PrintWriter(System.out)
-    pw.println(TagSet.pretty.format(tagset.toXML))
+    pw.println(TagSet.pretty.format(tagset.toXML()))
     pw.close()
   }
 

@@ -13,25 +13,32 @@ object ProcessFolder {
     else input.listFiles.toList.flatMap(x => processFolder(x,action) )
   }
 
-  def processFolder(input: File, outputFolder: File, base: (String,String) => Unit): Unit =
+  def filesIn(input: File) = processFolder[File](input, identity[File])
+
+  def processFolder(input: File, outputFolder: File, base: (String,String) => Unit, parallel: Boolean = true, xmlOnly: Boolean = true): Unit =
   {
     if (!outputFolder.exists())
       outputFolder.mkdir()
 
     if (input.isDirectory)
     {
-      input.listFiles().toList.par.foreach(f =>
+      val z = if (parallel) input.listFiles().toList.par else input.listFiles().toList
+      z.foreach(f =>
       {
-        if (f.isFile && (f.getName.endsWith(".xml") || f.getName.endsWith(".xml.gz")))
+        if (f.isFile && (true || !xmlOnly || f.getName.endsWith(".xml") || f.getName.endsWith(".xml.gz")))
           processFolder(f, outputFolder, base)
         else if (f.isDirectory)
           processFolder(f, new File(outputFolder + "/" + f.getName), base)
       })
     } else if (input.isFile)
     {
-      //Console.err.println(input.getName)
+      Console.err.println(input.getName)
       val outFile = outputFolder + "/" + input.getName()
-      base(input.getCanonicalPath, outFile)
+      try {
+        base(input.getCanonicalPath, outFile)
+      } catch {
+        case e: Exception => Console.err.println(e)
+      }
     }
   }
 }

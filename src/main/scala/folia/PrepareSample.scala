@@ -17,7 +17,7 @@ object PrepareSample {
 
   def sample(n:Node):Option[Node] = FoliaSampler(n,5000).sample()
   def simplify(n:Node):Option[Node] = Some(FoliaMapPosTags(CGNTagset.fromString, CGNPoSTagging.toLite).updatePoS(n.asInstanceOf[Elem]))
-  def toTEI(n:Node):Option[Node] = Some(FoliaToRudimentaryTEI.convert(n))
+  def toTEI(n:Node):Option[Node] = Some(NederlabToCobalt.convert(n))
 
   def sampleFromExample(n: Node, f: String):Option[Node] =
   {
