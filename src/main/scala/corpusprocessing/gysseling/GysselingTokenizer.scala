@@ -27,11 +27,8 @@ object GysselingTokenizer {
         case (x,i) => (x,i)}
     )
 
-
-
   def tokenizeOne(w: Elem): NodeSeq = {
     val seg = (w \ "seg")
-
     if (seg.isEmpty ||
       seg.text.contains("[") ||
       seg.text.contains("]") ||
@@ -39,7 +36,6 @@ object GysselingTokenizer {
       (w \ "@pos").text.matches(".*PD.*") && w.text.trim.toLowerCase.matches("^([.]?)[ij]([.]?)"))
       Seq(w)
     else {
-
       val theseg = (w \\ "seg").head.asInstanceOf[Elem]
       val brun = theseg.text.contains("brun")
       if (theseg.child.exists(_.isInstanceOf[Elem])) {

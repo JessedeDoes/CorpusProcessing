@@ -34,7 +34,7 @@ object Settings {
 
   val imagePatchDir = "/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuitAanvulling/imagePatch/"
 
-  lazy val allProcessedFiles = new File(processed_17).listFiles ++ new File(processed_18).listFiles ++ new File(processed_aanpassing).listFiles
+  lazy val allProcessedFiles: Array[File] = new File(processed_17).listFiles ++ new File(processed_18).listFiles ++ new File(processed_aanpassing).listFiles
   def att(n: String, v: String): NodeSeq => Boolean = x => { val a = "@" + n; (x \ a).text == v }
 
   def getPid(xml: Elem) = ((xml \\ "interpGrp").filter(att("type", "pid")) \ "interp" \ "@value").text
@@ -42,7 +42,7 @@ object Settings {
   lazy val processedFileMap: Map[String, (Elem,String)] = allProcessedFiles.filter(_.getName.endsWith("xml")).map(x => {
     val xml = XML.loadFile(x)
     val pid = getPid(xml)
-    //println(pid)
+    // println(pid)
     pid -> (xml, x.getCanonicalPath)
   }).toMap
 
@@ -61,14 +61,14 @@ object Settings {
 
   val metaDB = new Database(Configuration("gdb", "svowdb20.ivdnt.loc", "brieven_als_buit_aanvulling_v2", "impact", "impact",  "mysql"))
 
-  def outputPath(f: File) = {
+  def outputPathAfterMetadataProcessing(f: File) = {
     f.getCanonicalPath.replaceAll("/XML/", "/Processed/")
   }
 
   def toXML = {
-    bab_conversie.MainClass.main(Array(txt_aanpassing, xml_aanpassing))
-    bab_conversie.MainClass.main(Array(txt_17, xml_17))
-    bab_conversie.MainClass.main(Array(txt_18, xml_18))
+    //bab_conversie.MainClass.main(Array(txt_aanpassing, xml_aanpassing))
+    //bab_conversie.MainClass.main(Array(txt_17, xml_17))
+    //bab_conversie.MainClass.main(Array(txt_18, xml_18))
     metadata.main(Array())
     imageCorrections.main(Array())
     // nu eerst process.sh draaien voor de xml bestandjes....

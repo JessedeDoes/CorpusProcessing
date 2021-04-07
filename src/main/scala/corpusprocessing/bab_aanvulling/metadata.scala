@@ -73,7 +73,7 @@ object metadata {
         h.filter({case (k,v) => relevantFields.contains(k)}).map( { case (k,v) => { // Console.err.println(s"$k -> $v");
           val v1 = if (v == null) "unknown" else v
           val v2 = translateMetadataValues.replaceValue(k, v1.toString)
-          <interpGrp type={k}><interp value={v2}/></interpGrp>}} ) } }
+          <interpGrp type={k}><interp value={v2.trim}/></interpGrp>}} ) } }
       <interpGrp type="images">{images.map(i =>
           {
                val i1 = i.replaceAll(".*uploaden.","")
@@ -145,7 +145,7 @@ object metadata {
       })
 
       val d1 = addMetadata(d, possibleMeta, imageList)
-      XML.save(Settings.outputPath(file), d1, "UTF8")
+      XML.save(Settings.outputPathAfterMetadataProcessing(file), d1, "UTF8")
       //println(images)
     }
 

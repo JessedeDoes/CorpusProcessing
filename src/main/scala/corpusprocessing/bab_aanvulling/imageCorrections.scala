@@ -11,6 +11,8 @@ import scala.collection.immutable
 
 object imageCorrections {
 
+  val somethingHappened = false
+
   implicit def lift(k: Int): Seq[String] => Int = s => k
 
   type ifun = Seq[String] => Int
@@ -52,7 +54,7 @@ object imageCorrections {
   def doRotate(inFile: String, outFile: String, angle: Int): Unit =
   {
     val a = if (angle < 0) 360 - angle else angle
-    if (!(new java.io.File(correctedImageDirectory + outFile).exists())) {
+    if (somethingHappened && !(new java.io.File(correctedImageDirectory + outFile).exists())) {
       val cmd = Seq("convert", "-rotate", a.toString, inFile, correctedImageDirectory + outFile)
       val res = cmd.lineStream
     }
@@ -182,11 +184,30 @@ object imageCorrections {
   val actions = imageActions.actions
 
   val showAll = true
+  val ronde2 = Set("bab5",
+    "bab73",
+    "bab75",
+    "bab79",
+    "bab276",
+    "bab1265",
+    "bab1476",
+    "bab1477",
+    "bab1478",
+    "bab1889",
+    "bab2085",
+    "bab2100",
+    "bab2330",
+    "bab2366",
+   "bab1265")
+
+
   def main(args: Array[String]): Unit = {
     val list = new PrintWriter(correctedImageDirectory + "list.html")
     val info = new PrintWriter(correctedImageDirectory + "info.txt")
-    imageActions.actions.foreach({case (id, l) =>
+    imageActions.actions.filter({case (id,l) => true || ronde2.contains(id)}).foreach({case (id, l) =>
+
       val xml = Settings.processedFileMap.get(id)
+
       if (xml.nonEmpty) xml.foreach(x => if (l.nonEmpty || showAll) {
         val d = babDocumentPatch(x._1, l)
         val patchedDoc = d.patchedDocument

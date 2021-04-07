@@ -34,7 +34,7 @@ object imageActions {
   // 1182	1e foto links roteren (adres); huidige 1e foto toevoegen als 3e foto
   "bab1182" -> List(patch(0, 2, false), rotate(0, 0, left, true)),
   // 2100	1e foto rechts roteren (adres)
-  "bab2100" -> List(rotate(0, 0, left, true)),
+  "bab2100" -> List(rotate(0, 0, right, true)), // RONDE2
   // 1506	1e foto rechts roteren (adres); huidige 1e foto toevoegen als 3e foto
   "bab1506" -> List(patch(0, 2, false), rotate(0, 0, right, true)),
   // 1804	1e foto rechts roteren (adres); huidige 1e foto toevoegen als 3e foto
@@ -52,7 +52,9 @@ object imageActions {
   // 1920	2e foto rechts roteren (brief)
   "bab1920" -> List(rotate(1, 1, right, true)),
   // 1477	2e foto rechts roteren (brief); huidige 2e foto handhaven als 3e foto
-  "bab1477" -> List(patch(1, 2, false), rotate(1, 1, right, true)),
+  "bab1477" -> List(), // List(patch(1, 2, false), rotate(1, 1, right, true)), RONDE2
+  // 1478 2e foto rechts 90 roteren en vervolgens huidige 2e foto handhaven als 3e foto
+  "bab1478" -> List(patch(1, 2, false), rotate(1, 1, right, true)), // RONDE2
   // 104	2e foto rechts roteren (brief); huidige 2e foto handhaven als 3e foto
   "bab104" -> List(patch(1, 2, false), rotate(1, 1, right, true)),
   // 1769	2e foto rechts roteren (brief); huidige 2e foto handhaven als 3e foto (tekst in marge)
@@ -61,7 +63,7 @@ object imageActions {
   "bab1820" -> List(rotate(2, 2, right, true)),
   // 1476	2e foto is onzichtbaar. Dat moet de niet geleverde 06-01-2010 522 zijn (gaat hierbij); die 2e foto moet ook nog rechts geroteerd worden (tekst in marge) 3e foto (gaat hierbij)
   // 	N.B.  De geleverde 06-01-2010 520 (en 06-01-2010 521) zijn niet correcte foto's van dezelfde brief
-  "bab1476" -> List(rotate(1,2,right)),
+  "bab1476" -> List(rotate(1,2, left)), // , rotate(2,3,right)), // RONDE2
   // 2029	foto 3 moet foto 2 worden (en de oorsp foto 2 dan J); na  brief  moet foto 3 links geroteerd foto 4 worden ????
   "bab2029" -> List(swap(1,2), rotate(1, length, left, false)),
   // 759	2e foto herhalen links geroteerd (vanwege tekst marge) als foto 3
@@ -109,13 +111,13 @@ object imageActions {
   // 2365	2e foto rechts roteren en invoegen als nieuwe foto 2; huidige foto2 wordt foto3
   "bab2365" -> List(rotate(1,1,right)),
   // 2366	laatste foto links roteren en invoegen als nieuwe laatste foto
-  "bab2366" -> List(rotate(last,length,left)),
+  "bab2366" -> List(rotate(last,length,left), rotate(1,length,left), remove(1)), // RONDE2
   // 2364	1e foto rechts roteren (adres)
   "bab2364" -> List(rotate(0,0,right, true)),
   // 2367	laatste foto links roteren (vanwege tekst marge) en invoegen als nieuwe laatste foto
   "bab2367" -> List(rotate(last,length,left)),
   // 5	1e foto links roteren, 2e foto rechts roteren
-  "bab5" -> List(rotate(0,0,left,true), rotate(1,1,right,true)), // !! tweede image niet roteren?
+  "bab5" -> List(rotate(0,0,left,true)),// rotate(1,1,right,true)), // !! tweede image niet roteren? RONDE2!
   // 1578	3e foto links roteren
   "bab1578" -> List(rotate(2,2,left,true)),
   // 1626	1e en 2e foto links roteren
@@ -129,7 +131,8 @@ object imageActions {
   // 2361	foto 2, 3 en 4 rechts roteren
   "bab2361" -> List(rotate(1,1,right,true), rotate(2,2,right,true), rotate(3,3,right,true)),
   // 1265	foto 2 moet laatste foto worden en daarna nog een keer 180 geroteerd toevoegen
-  "bab1265" -> List(swap(1,last), remove(1), rotate(last,length,180)), // remove toegevoegd
+  // 5e foto ontbreekt (tekst en Voorregte de Christene). Die foto 05-01-2010 168 moet ingevoegd worden voor de huidige 5e en 6e foto; voor de zekerheid lever ik hem nog een keer
+  "bab1265" -> List(patch(1,length), remove(1), rotate(last,length,180)), // remove toegevoegd // RONDE2
   // 1512	foto 2 (met hand) verwijderen
   "bab1512" -> List(remove(1)),
   // 1502	alle foto's ontbreken, moeten de volgende zijn: 06-01-2010 541, 06-01-2010 543, 06-01-2010 544, 06-01-2010 545, 06-01-2010 545A. Hierbij aangeleverd, met de betreffende textfile
@@ -143,7 +146,7 @@ object imageActions {
   // 1617	2e en 3e foto links roteren; 4e foto ontbreekt, is de al eerder aangeleverde foto 07-01-2010 172 die ook links geroteerd moet worden
   "bab1617" -> List(∀(_.indices.drop(1), i => rotate(i,i,left,true))),
   // 79	alle foto's rechts roteren
-  "bab79" -> List(rotAll(right)),
+  "bab79" -> List(), // List(rotAll(right)), // NEE, NIET RONDE2
   // 1622	2e foto links roteren (vanwege tekst marge) en als 3e foto invoegen; 1e foto herhalen als 4e foto
   "bab1622" -> List(rotate(1,2,left), patch(0,3)),
   // 1623	1e en 2e foto links roteren
@@ -157,7 +160,7 @@ object imageActions {
   // 2427	2e foto links roteren (tekst in marge) en als 3e foto invoegen
   "bab2427" -> List(rotate(1,2,left)),
   // 73	1e foto 180 roteren (adres) en als 2e foto invoegen; alle volgende foto's rechts roteren
-  "bab73" -> List(rotate(0,1,180),rotate(2,2,right,true),rotate(3,3,right,true),rotate(4,4,right,true)),
+  "bab73" -> List(rotate(0,1,180)), // ,rotate(2,2,right,true),rotate(3,3,right,true),rotate(4,4,right,true)), // RONDE2 geen rechterrotatie
   // 877	foto's zijn in verkeerde onduidelijke volgorde gefotografeerd; daarom nieuwe textfile KB 336-166-1-6.txt en nieuwe foto's aangeleverd in plaats van KB 336-166-171 en de daarmee corresponderende foto's
   "bab877" -> List(),
   // 1747	foto 3 links roteren en huidige foto 3 wordt foto 4
@@ -175,7 +178,7 @@ object imageActions {
    rotate(3,3,left,true), rotate(4,4,left,true), rotate(5,5,left,true), rotate(6,6,left,true),
    rotate(7,7,left,true), rotate(8,8,left,true)),
   // 276	1e en 2e foto allebei links roteren
-  "bab276" -> List(rotate(0,0,left,true), rotate(1,1,left,true)),
+  "bab276" -> List(), // List(rotate(0,0,left,true), rotate(1,1,left,true)), //  NEE NIET RONDE2
   // 2501	1e foto verwijderen (foutief; 2013_aug-0884.jpg) en textfile 2013_aug-0884-0888.txt vervangen door nieuwe 2013_aug-0885-0888.txt (hierbij aangeleverd)
   "bab2501" -> List(),
   // 875	2e foto ontbreekt. Dat is de eerder geleverde KB 336-162. Fout komt omdat in de textfile die foto niet is opgenomen. Daarom lever ik nieuwe textfile KB 336-161-163 aan zodat die de juiste foto's koppelt.
@@ -192,7 +195,7 @@ object imageActions {
   // 1383	1e foto links roteren en als 2e foto invoegen; laatste foto ook links roteren en als allerlaatste invoegen;
   "bab1383" -> List(rotate(0,1,left), rotate(last,length,left)),
   // 2330	1e foto 180 roteren (adres), 2e foto links roteren (tekst marge) en invoegen als 3e foto, laatste foto rechts roteren en invoegen als voorlaatste
-  "bab2330" -> List(rotate(0,0,180,true), rotate(1,2,left,false), rotate(last,penultimate,right)),
+  "bab2330" -> List(rotate(0,0,180,true), rotate(1,2,left,false), rotate(last, penultimate,right), swap(3,4)), // RONDE 2 swap toegevoegd
   // 2093	alle foto's links roteren, huidige 1e foto 180 roteren (tekst marge) en invoegen als 2e foto
   "bab2093" -> List(rotate(0,1,180),rotate(0,0,left,true), ∀(s => (2 until s.size), i => rotate(i,i,left,true))),
   // 2508	alle foto's links roteren behalve de 1e foto
@@ -204,7 +207,7 @@ object imageActions {
   // 2522	alle foto's rechts roteren behalve 1e foto en foto 17
   "bab2522" -> List(∀(s => (1 until 16) ++ (17 until s.size), i => rotate(i,i,right,true))),
   // 75	alle foto's rechts roteren
-  "bab75" -> List(∀(s => s.indices, i => rotate(i,i,right,true))),
+  "bab75" -> List(), //  List(∀(s => s.indices, i => rotate(i,i,right,true))), // NEE, niet RONDE2
   // 1552	alle foto's rechts roteren
   "bab1552" -> List(∀(s => s.indices, i => rotate(i,i,left,true))), // moet links zijn?
   // 1633	alle foto's links roteren
@@ -321,7 +324,7 @@ object imageActions {
   // 1959	2e foto links roteren en invoegen als 3e foto
   "bab1959" -> List(rotate(1,2,left)),
   // 2085	1e foto 180 roteren, 2e foto rechts roteren, huidige 2e foto wordt 3e foto
-  "bab2085" -> List(rotate(0,0,180,true),rotate(1,1,right)),
+  "bab2085" -> List(rotate(1,1,right)), // RONDE2, rotatie 0 vervalt
   // 2083	1e foto 180 roteren (adres), 2e en 3e foto links roteren /// #waarom???? Dit klopt toch niet?
   "bab2083" -> List(), // List(rotate(0,0,180,true), rotate(1,1,left,true), rotate(2,2,left,true)), // ### aangepast
   // 2450	alle foto's behalve 1e foto links roteren
@@ -484,6 +487,8 @@ object imageActions {
   // 759	2e foto links roteren en invoegen als 3e foto
   "bab759" -> List(rotate(1,2,left)),
   // 2559	2e foto recht roteren (tekst in marge) en invoegen als foto 3
-  "bab2559" -> List(rotate(1,2,right))
+  "bab2559" -> List(rotate(1,2,right)),
+   // bab1889 alle foto's behalve de 1e, 90 links roteren
+   "bab1889" -> List(∀(s => (1 until s.size), i => rotate(i,i,left,true))),  // RONDE2
  )
 }
