@@ -18,6 +18,19 @@ object TagsetDiachroonNederlands {
   lazy val TDNTagset = TagSet.fromXML(TDN_xml)
   val stylesheet = "/home/jesse/workspace/xml2rdf/src/main/scala/posmapping/tagset-documentation.xsl"
 
+  val coreFeatures = Map(
+    "NOU-C" -> List("number", "WF"),
+    "AA" -> List("degree", "position", "WF"),
+    "ADV" -> List("type", "WF"),
+    "VRB" -> List("finiteness", "tense", "WF"),
+    "NUM" -> List("type", "position", "representation", "WF"),
+    "PD" -> List("type", "subtype", "position", "WF"),
+    "ADP" -> List("type", "WF"),
+    "CONJ" -> List("type", "WF"),
+    "INT" -> List("WF"),
+    "RES" -> List("type", "WF")
+  )
+
   def integratedTag(tag: String) = CHNStyleTag(tag, TDNTagset)
   //case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
 
@@ -26,6 +39,9 @@ object TagsetDiachroonNederlands {
     pw.println(TagSet.pretty.format(tagset.toXML(corpus=corpusName)))
     pw.close()
   }
+
+
+
 
   /*
    lazy val features_sorted = if (tagset == null) features else {
@@ -80,6 +96,10 @@ object TagsetDiachroonNederlands {
     val blfWriter = new PrintWriter(s"$outputBase.blf.yaml")
     blfWriter.println(corpusBasedWithDesc.forBlacklab)
     blfWriter.close()
+
+    val blfWriterCHN = new PrintWriter(s"$outputBase.blf.chnStyle.yaml")
+    blfWriterCHN.println(corpusBasedWithDesc.forBlacklabCHNStyle)
+    blfWriterCHN.close()
 
     val z = new File(stylesheet)
     if (z.exists) {
@@ -232,6 +252,11 @@ object TagsetDiachroonNederlands {
     m
   }
 
+  def doCore = {
+    val mapping = io.Source.fromFile("data/TDN/tagjes_kern.txt").getLines.map(l => l -> l).toMap
+    val m = tagsetFromSetOfTags("data/TDN/Corpora/Core/", corpus="core", mapping)
+  }
+
   def doONW = {
       // tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
 
@@ -308,7 +333,9 @@ object TagsetDiachroonNederlands {
       //doCGN
       //doONW
       //doGysselingFromCorpus
-     doBaB
+     // doBaB
+     TDNTagset.copy(pos2partitions = coreFeatures).generateTags("core")
+     doCore
    }
 }
 

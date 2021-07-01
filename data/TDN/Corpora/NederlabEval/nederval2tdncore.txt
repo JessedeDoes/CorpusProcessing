@@ -1,0 +1,101 @@
+tag_from	tag_to	example
+ADJ_NOM	NOU-C(number=uncl)	in het groot, de timiden, het leukste, de rijken
+ADJ_POSTNOM	AA(degree=uncl;position=postnom)|NOU-C(number=sg)	rivieren bevaarbaar in de winter, iets moois
+ADJ_PRENOM	AA(degree=uncl;position=prenom)	een mooi huis, een ijzeren ketel, de mooiste keuken
+AA_PRENOM	AA(degree=uncl;position=prenom)	een mooi huis, een ijzeren ketel, de mooiste keuken
+ADJ_BW	AA(degree=uncl;position=free)	lang slapen, langer slapen, het langst slapen
+ADJ_BW_DIM	AA(degree=uncl;position=free)	stilletjes weggaan
+ADJ_PRED	AA(degree=uncl;position=free)	de stok is lang, die stok is langer, die stok is het langst
+ADJ_PRED_DIM	AA(degree=uncl;position=free)	het is hier stilletjes
+ADJ	AA(degree=uncl;position=uncl)
+BW	ADV(type=uncl)	er, hier, eraan, daaronder, gisteren, nu, niet, nog, al
+BW_	ADV(type=uncl)	er, hier, eraan, daaronder, gisteren, nu, niet, nog, al
+FOUT	RES(type=uncl;wf=mis)	Bij scanfouten e.d.
+LET	RM	., .., ?
+LID	PD(type=article;subtype=art;position=prenom)	het kind, in â€˜t geniep, in der minne, des duivels
+LIDW	PD(type=article;subtype=art;position=prenom)	het kind, in â€˜t geniep, in der minne, des duivels
+N	NOU-C(number=uncl)	die stoel, deze muziek, stoelen, hersenen
+N_DIM	NOU-C(number=uncl)	dit stoeltje, op het nippertje, stoeltjes, hersentjes
+NP	NOU-P()	Den Haag, Chr. de Wit, Lutjebroek, Jezus
+SPEC	RES(type=meta)	ggg, xxx, (het woord) homosexueel
+SPEC_AFGEBR	RES(type=oth;wf=trunc)	uitge*a
+SPEC_AFK	RES(type=oth;wf=abbr)	fec., febr., bijv.
+SPEC_EDIT	RM	voor modern editeurscommentaar en nummering
+SPEC_SYMB	RES(type=symb)	@, %, NaCl, =, emoticons
+SPEC_VREEMD	RES(type=for)	ad, hoc, wishful
+TSW	INT()	oei, amai, uh, hoera
+TW_HOOFD_NOM	NUM(type=card;position=free;representation=uncl)	er is er Ã©Ã©n ontsnapt, met zâ€™n vieren
+TW_HOOFD_NOM_DIM	NUM(type=card;position=free;representation=uncl)	er is er Ã©Ã©ntje ontsnapt, met zâ€™n viertjes
+TW_HOOFD_PRENOM	NUM(type=card;position=prenom;representation=uncl)	vier cijfers, eens geestes zijn, ten enen male, 14 juli
+TW_HOOFD_VRIJ	NUM(type=card;position=uncl;representation=uncl)	veertig worden, hoeveel sneller, het jaar 1300
+TW_RANG	NUM(type=ord;position=uncl;representation=uncl)	den*d elfste*d (alleen dialectale vormen)
+TW_RANG_NOM	NUM(type=ord;position=free;representation=uncl)|NOU-C(number=uncl)	het eerste, (de) vierde eindigen, Karel de Vijfde, de eersten, iets aan derden verkopen
+TW_RANG_PRENOM	NUM(type=ord;position=prenom;representation=uncl)	de vierde man, ter elfder ure
+VG_NEVEN	CONJ(type=coor)	Jan en Peter, en toen gebeurde het
+VG_ONDER	CON(type=sub)	omdat ze zich niet goed voelt
+VW_ONDER	CON(type=sub)
+VNW_AANW	PD(type=d-p;position=uncl)
+VNW_AANW_NOM	PD(type=d-p;position=free)	dat, dit, zulks, deze, gene, datgene, bij dezen
+VNW_AANW_PRENOM	PD(type=d-p;subtype=oth;position=prenom)	dat boek, ginds bos, zulk hout, een dezer dagen
+VNW_AANW_PREN	PD(type=d-p;subtype=oth;position=prenom)	dat boek, ginds bos, zulk hout, een dezer dagen
+VNW_AANW_POSTNOM	PD(type=d-p;position=postnom)	het huis zelf staat leeg, de koning zelf deed de deur open
+VNW_AANW_PRED	PD(type=d-p;position=free)	zij schreef zelf het boek, zelf spreek ik geen Engels
+VNW_AANW_VRIJ	PD(type=d-p;position=free)	zulk een vreemde gedachte
+VNW_BETR	PD(type=rel;position=free)	de man die daar staat, het kind dat je daar ziet
+VNW_BEZ_NOM	NOU-C(number=uncl)	de mijne, de mijnen, te mijnent, ten onzent
+VNW_BEZ_PRENOM	PD(type=poss;position=prenom)	mijn paard(en), onzes inziens, te zijner tijd
+VNW_BEZ	PD(type=poss;position=uncl)
+VNW_EXCL	PD(type=exl;position=free)	wat een dwaasheid, welk een dwaasheid
+VNW_ONBEP_ADV	PD(type=pers;position=free)|ADV(type=reg)	(n)ergens, overal, het kwantitatieve â€˜erâ€™
+VNW_ONBEP_NOM	PD(type=indef;position=free)|NOU-C(number=uncl)	(n)iemand, menigeen, alles, het weinige, de minsten
+ONBEP_NOM	PD(type=indef;position=free)
+VNW_ONBEP_NOM_DIM	NUM(type=card;position=free;representation=let)	met zâ€™n beidjes
+VMNW_ONBEP_NOM	PD(type=indef;position=free)|NOU-C(number=uncl)	(n)iemand, menigeen, alles, het weinige, de minsten
+VNW_ONBEP_POSTNOM	PD(type=indef;position=postnom)	melk genoeg, mensen zat
+VNW_ONBEP_PRENOM	PD(type=indef;position=prenom)|NUM(type=card;position=prenom;representation=let)	elk huis, een enkel woord, veel plezier, het vele plezier, te eniger tijd, beide mannen
+VNW_ONBEP_VRIJ	PD(type=indef;position=free)	ze kregen elk/ieder/allebei een bal, al die mensen, dat is te weinig
+VNW_PERS	PD(type=pers;position=free)	ik, ikzelf, ikke, wijzelf, haars gelijke, harer, een hunner, â€˜r, â€˜dr
+VNW_RECIP	PD(type=recip;position=free)	elkaar, mekaar, mekander, elkaars
+VNW_REFL	PD(type=refl;position=free)	mij, mezelf, mijzelf, me, zich, zichzelf
+VNW_VB_NOM	PD(type=w-p;position=free)	wie gaat er mee, wiens hoed is dit
+VNW_VB_PRENOM	PD(type=w-p;position=prenom)	welk kind, welke kinderen
+VNW_VB_ADV	ADV(type=uncl)
+VNW_VB_VRIJ	INT()	watte
+VNW_PRENOM	PD(type=uncl,subtype=uncl,position=prenom)
+VNW_NOM	PD(type=uncl,position=free)
+VZ	ADP(type=uncl)
+VZ_FIN	ADP(type=post)	liep de trap af, bij de beesten af
+VZ_INIT	ADP(type=pre)	met een lepeltje, met zo te roepen
+V_INIT	ADP(type=pre)	met een lepeltje, met zo te roepen
+VZ_ONDER	ADP(TYPE=uncl)
+ADP_PRENOM	ADP(type=pre)
+VZ_VERSM	ADP(type=pre)+PD(type=d-p;subtype=art;position=prenom)	ten strijde, ten hoogste, ter plaatse
+WW	VRB(finiteness=uncl;tense=uncl)	â€˜k zen*d nie*d thuis (alleen dialectaal)
+WW_INF	VRB(finiteness=inf)
+WW_INF_NOM	NOU-C(number=sg)	(het) spelen, (het) schaatsen
+WW_INF_VRIJ	VRB(finiteness=inf)	de nog te lezen post, een niet te weerstane verleiding, zal komen
+WW_OD_NOM	NOU-C(number=uncl)	het resterende, een klagende, de wachtenden
+WW_OD_POSTNOM	AA(degree=pos;position=postnom)	alle burgers residerend in Brussel
+WW_OD_POST	AA(degree=pos;position=postnom)	alle burgers residerend in Brussel
+WW_OD_PRENOM	AA(degree=pos;position=prenom)	een slapend kind, een piano spelende aap, slapende kinderen
+WW_OD_VRIJ	VRB(finiteness=prespart)	liep lachend weg, al doende leert men
+WW_OV_VRIJ	VRB(finiteness=prespart)	liep lachend weg, al doende leert men
+VD_OD_VRIJ	VRB(finiteness=prespart)	liep lachend weg, al doende leert men
+WW_PV	VRB(finiteness=fin;tense=uncl)	ik kom, speel je, hij is, speelt, leve de koning, speelden, kwaamt, gingt, hou op, gaat u zitten
+W_PV	VRB(finiteness=fin;tense=uncl)	ik kom, speel je, hij is, speelt, leve de koning, speelden, kwaamt, gingt, hou op, gaat u zitten
+PV	VRB(finiteness=fin;tense=uncl)	ik kom, speel je, hij is, speelt, leve de koning, speelden, kwaamt, gingt, hou op, gaat u zitten
+WW_VD_NOM	NOU-C(number=uncl)	het geschrevene, een gekwetste, gedupeerden
+WW_VD_POSTNOM	AA(degree=pos;position=postnom)	een boom versierd met slingers
+WW_VD_PRENOM	AA(degree=pos;position=prenom)	een verwittigd man, een gekregen paard
+WW_VD_VRIJ	VRB(finiteness=pastpart)	is gekomen
+WW_VD_PV	AA(degree=pos;position=prenom)
+WW_VD	VRB(finiteness=pastpart)
+VD_VRIJ	VRB(finiteness=pastpart)
+WW_VD_PRED	AA(degree=pos;position=free)
+ADJ_VRIJ	AA(degree=uncl;position=free)	lang slapen, langer slapen, de stok is lang
+ADJ_VRIJ_DIM	AA(degree=uncl;position=free)	stilletjes weggaan, het is hier stilletjes
+SPEC_AFGEK	RES(type=oth;wf=abbr)	fec., febr., bijv.
+SPEC_AFGEB	RES(type=oth;wf=abbr)	fec., febr., bijv.
+SPEC_META	RES(type=meta)	ggg, xxx, (het woord) homosexueel
+VNW_AANW_ADV	ADV(type=reg)	hier, daar, dâ€™r, er
+SPEC_DEELEIGEN	NOU-P()	Jan Janssen

@@ -35,7 +35,9 @@
   </style>
   </head>
   <body>
-    <h1>Appendix: formele beschrijving van de tagset</h1>
+    <h1>Bijlage 3: formele beschrijving tagset</h1>
+    <p>In deze bijlage geven we een compact overzicht van de kenmerken van de tagset, waarbij we de corpora waarin kenmerken voorkomen achter het kenmerk zetten.</p>
+    <p>Het onderdeel 'declarations' geeft per corpus aan welke kenmerken, afhankelijk van de woordsoort of de waarden van andere kenmerken, verplicht zijn.</p>
   <xsl:for-each select=".//mainPoS/pos">
     <xsl:variable name="pos"><xsl:value-of select="./text()"/></xsl:variable>
     <h1><xsl:value-of select="./@desc"/> (<xsl:value-of select="./text()"/>)</h1>

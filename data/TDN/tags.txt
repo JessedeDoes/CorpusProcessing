@@ -1,0 +1,88 @@
+    <pos displayName="Adjective-Adverb" desc="Adjective-Adverb">AA</pos>
+    <pos_bab displayName="Adjective" desc="Adjective">ADJ</pos_bab>
+    <pos displayName="Adposition" desc="Adposition">ADP</pos>
+    <pos displayName="Adverb" desc="Adverb">ADV</pos>
+    <pos_molex displayName="Affix" desc="Affix">AFF</pos_molex>
+    <pos_molex displayName="Polylexical" desc="Polylexical">COLL</pos_molex>
+    <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
+    <pos displayName="Interjection" desc="Interjection">INT</pos>
+    <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
+    <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
+    <pos displayName="Numeral" desc="Numeral">NUM</pos>
+    <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
+    <pos displayName="Residual" desc="Residual">RES</pos>
+    <pos displayName="Verb" desc="Verb">VRB</pos>
+
+
+
+    <feature displayName="Verb class" desc="Verb class">
+      <name>verbclass</name>
+--
+    <feature displayName="Conjugation" desc="Conjugation class">
+      <name>conjugation</name>
+--
+    <feature displayName="Declination" desc="Declination class">
+      <name>declination</name>
+--
+    <feature displayName="Gender" desc="Gender">
+      <name>gender</name>
+--
+    <feature displayName="Number" desc="Number">
+      <name>number</name>
+--
+    <feature displayName="Case" desc="Case">
+      <name>case</name>
+--
+    <feature displayName="Degree" desc="Degree of comparison">
+      <name>degree</name>
+--
+    <feature displayName="Finiteness" desc="Verb finiteness">
+      <name>finiteness</name>
+--
+    <feature displayName="Lemma Gender" desc="'Inherent' lemma gender">
+      <name>LG</name>
+--
+    <feature displayName="Inflection" desc="Inflection">
+      <name>inflection</name>
+--
+    <feature displayName="Mood"
+      desc="Mood (subjunctives and imperatives are not in the molex database)">
+--
+    <feature displayName="Number (inherent)" desc="Number ('inherent' Lemma number)">
+      <name>LN</name>
+--
+    <feature displayName="Person" desc="Person (verb)">
+      <name>person</name>
+--
+    <feature displayName="Lemma Person (inherent)" desc="Inherent person (pronouns)">
+      <name>LP</name>
+--
+    <feature displayName="Part of speech" desc="Part of speech">
+      <name>pos</name>
+--
+    <feature displayName="Position"
+      desc="Syntactic position of adjective, numeral or pronoun/determiner">
+--
+    <feature displayName="Subtype"
+      desc="Subtype">
+--
+    <feature displayName="Tense" desc="Verb tense">
+      <name>tense</name>
+--
+    <feature displayName="Type" desc="Type (Subcategorization)">
+      <name>type</name>
+--
+    <feature displayName="Politeness" desc="Politeness indicator">
+      <name>usage</name>
+--
+    <feature displayName="Valency" desc="Valency">
+      <name>valency</name>
+--
+    <feature displayName="Government" desc="Government">
+      <name>government</name>
+--
+    <feature displayName="Representation" desc="Number representation">
+      <name>representation</name>
+--
+    <feature displayName="Written form" desc="Written form">
+      <name>WF</name>

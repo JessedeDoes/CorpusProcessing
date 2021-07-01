@@ -1,0 +1,140 @@
+
+      - name: pos_type
+        displayName: type
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: type
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_finiteness
+        displayName: finiteness
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: finiteness
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_number
+        displayName: number
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: number
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_representation
+        displayName: representation
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: representation
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_WF
+        displayName: WF
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: WF
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_degree
+        displayName: degree
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: degree
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_position
+        displayName: position
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: position
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_pos
+        displayName: pos
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: pos
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_subtype
+        displayName: subtype
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: subtype
+        - action: split
+          separator: "\\|"
+          keep: both
+
+
+      - name: pos_tense
+        displayName: tense
+        valuePath: "@pos"
+        uiType: select
+        multipleValues: true
+        allowDuplicateValues : false
+        process:
+        - action: parsePos
+          field: tense
+        - action: split
+          separator: "\\|"
+          keep: both
+

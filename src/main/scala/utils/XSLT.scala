@@ -42,7 +42,7 @@ object XSLT
     val xsl = XSLT(args(0))
     val rename: String => String = if (args.size > 4) x => { val y = x.replaceAll(args(3), args(4));  y } else identity[String]
 
-    //ProcessFolder.processFolder(new File(args(1)), new File(args(2)), (f1,f2) => xsl.transform(f1,f2), rename)
+    ProcessFolder.processFolder(new File(args(1)), new File(args(2)), (f1,f2) => xsl.transform(f1,f2), parallel = false)
   }
 }
 

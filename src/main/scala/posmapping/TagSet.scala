@@ -70,7 +70,7 @@ object TagSet
 
     val posTags = (d \\ "pos").map(_.text.trim).toSet.toList
 
-    val partitions: Map[String, List[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "value").map(_.text).toList ).toMap
+    val partitions: Map[String, List[String]] = (d \\ "partitions" \ "feature").map(f => (f \ "name").text -> (f \\ "featureValue" \\ "value").map(_.text).toList ).toMap
 
     val pos2partitions: Map[String, List[String]] = (d \\ "constraints" \ "constraint").map(f => (f \ "pos").text -> (f \\ "feature").map(_.text).toList ).toMap
 
@@ -274,7 +274,6 @@ case class TagSet(prefix: String,
                   listOfTags: Set[Tag] = Set.empty,
                   implications: Seq[Implication] = Seq.empty, featureOrder: Option[Seq[String]] = None)
 {
-
   def toXML(server: String="http://svotmc10.ivdnt.loc/", corpus: String="gysseling_nt") =
     <tagset>
       <prefix>{prefix}</prefix>
@@ -366,6 +365,22 @@ case class TagSet(prefix: String,
        |        multipleValues: true
      """.stripMargin).mkString("\n")
 
+  def forBlacklabCHNStyle = partitions.keySet.map( p =>
+    s"""
+       |      - name: pos_$p
+       |        displayName: $p
+       |        valuePath: "@pos"
+       |        uiType: select
+       |        multipleValues: true
+       |        allowDuplicateValues : false
+       |        process:
+       |        - action: parsePos
+       |          field: $p
+       |        - action: split
+       |          separator: "\\\\|"
+       |          keep: both
+       |""".stripMargin).mkString("\n")
+
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
 
   def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =
@@ -427,8 +442,11 @@ case class TagSet(prefix: String,
     } else t
   }
 
-  def tagSatisfiesImplications(t: Tag): (Boolean, Seq[Implication]) = {
-    val infringed = implications.filter(i => !i(t))
+  def tagSatisfiesImplications(t: Tag, corpus_name: Option[String] = None): (Boolean, Seq[Implication]) = {
+    val relevant = implications.filter(i => corpus_name.isEmpty || i.corpus.nonEmpty && i.corpus.get.contains(corpus_name.get))
+    //println(relevant)
+    val infringed = relevant.filter(i => !i(t))
+    //println(s"$t $infringed")
     (infringed.isEmpty, infringed)
   }
 
@@ -501,4 +519,47 @@ case class TagSet(prefix: String,
         }
       })
     }
+
+  def adHocje(t: CHNStyleTag) = {
+
+    val c0 = if (Set("art", "oth").contains(t.featureValue("subtype"))) Set("indef", "d-p", "dem").contains(t.featureValue("type")) else true
+    val c1 = Set("prenom", "postnom", "free","").contains(t.featureValue("position"))
+    val c2  = Set("","uncl").contains(t.featureValue("tense")) || t.featureValue("finiteness") == "fin"
+
+    val c3 = if (t.pos != "PD") true else {
+      val position = t.featureValue("position")
+
+      if (t.featureValue("subtype") == "art") position == "prenom" else {
+        if (Set("pers", "refl", "recip", "recip|refl", "rel").contains(t.featureValue("type"))) position=="free"
+        else true
+      }
+    }
+    c0 && c1 && c2 && c3
+  }
+
+  def generateTags(corpusName: String) = {
+    val taglist = this.posTags.sorted.flatMap(p => {
+      val features = pos2partitions.getOrElse(p, List()).filter(_ != "WFje")
+      if (features.isEmpty)
+        List(p) else {
+        //println(features)
+        val dimensions: Seq[List[String]] = features.map((fn: String) => {
+          val values = this.partitions(fn)
+
+          //println(s"$fn: $values")
+          values.filter(v => this.posForFeature(fn, v).contains(p) || this.posForFeature(fn, v).isEmpty).map(v => s"$fn=$v")
+        })
+        //println(s"D: $dimensions")
+        val initial: Seq[String] = dimensions(0)
+        val d = dimensions.drop(1).take(5).filter(_.nonEmpty).foldLeft(initial)({ case (b, l) => b.flatMap(x => l.map(y => s"$x,$y")) })
+        d.map(x => s"$p($x)")
+      }
+    })
+
+    taglist.sorted
+      .map(x => CHNStyleTag(x,this))
+      .filter(x => x.pos != "ADJ" && x.pos != "COLL")
+      .filter(x => this.tagSatisfiesImplications(x, Some("core"))._1)
+      .map(t => t.removeUnforcedFeatures(Some("core"))).flatMap(t => List(t, t.removeFeature("WF"))).map(_.toString).toSet.toList.sorted.foreach(println)
+  }
 }

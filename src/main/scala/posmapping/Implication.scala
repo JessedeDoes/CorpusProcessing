@@ -25,7 +25,16 @@ object Implication {
 
   implicit def nameFilter(m: Set[String]): Tag => Boolean = {
     t => {
-      m.forall({case n =>  t.features.exists(f => f.name == n)})
+      m.forall({case n =>
+        {
+          if (n.contains("=")) {
+            val x = n.split("\\s*=\\s*")
+            val n0  = x(0)
+            val vals = x(1).split("\\s*;\\s*")
+            //Console.err.println("")
+            vals.exists(v =>  t.features.exists(f => f.name == n0 && f.value == v))
+          } else
+          t.features.exists(f => f.name == n)}})
     }
   }
 
@@ -73,10 +82,12 @@ object Implication {
       val x = s.replaceAll("\\s+", " ").trim.split("\\s*(=>|\\|\\|)\\s*");
       val antecedent = parseFeatures(x(0))
       val consequent: Set[String] = x(1).split("\\s*,\\s*").toSet
+
       val fix: Option[Tag => Tag] = if (x.size <= 2) {
         val addition = consequent.map(_ -> "uncl").toMap
         Some(t => addFeatures(t,addition))
-      } else {
+      } else { // type => y=z
+        val options = x(2).split("|")
         val addition = parseFeatures(x(2))
         Some(t => addFeatures(t,addition))
       }
@@ -95,7 +106,6 @@ object Implication {
     (z \\ "implication").map(x => implicationFromText(x.text)) ++
       (z \\ "declaration").map(x => {
         val corpus = (x \ "@corpus").text.trim
-
         val c = if (corpus.isEmpty) None else Some(corpus.split("\\s*,\\s*").toSet)
         declarationFromText(x.text,c) } )
   }

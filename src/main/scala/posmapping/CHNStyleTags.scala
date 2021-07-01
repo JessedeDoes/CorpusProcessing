@@ -41,24 +41,32 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     }
   }
 
-  def hasUnforcedFeatures() = {
+  def hasUnforcedFeatures(corpus_name: Option[String] = None) = {
     val alternatives = features.filter(x => x.name != "pos" && x.name != "WF").map(f => {
       val f0 = features.filter(_ != f)
       val t0 = this.copy(tag = this.toString(f0))
       f.name -> t0
-    }).filter(t => tagset.tagSatisfiesImplications(t._2)._1)
+    }).filter(t => tagset.tagSatisfiesImplications(t._2, corpus_name)._1)
     alternatives
   }
 
-  def removeUnforcedFeatures(): CHNStyleTag = {
-    val fS = hasUnforcedFeatures().map(_._1)
+  def removeUnforcedFeatures(corpus_name: Option[String] = None): CHNStyleTag = {
+    val fS = hasUnforcedFeatures(corpus_name).map(_._1)
+    // if (fS.nonEmpty) println(s"Unforced in $this: $fS")
     val newFeatures = features.filter(f => !fS.contains(f.name))
+    this.copy(tag =  this.toString(newFeatures))
+  }
+
+  def removeFeature(fName: String): CHNStyleTag = {
+    val newFeatures = features.filter(f => !(f.name == fName))
     this.copy(tag =  this.toString(newFeatures))
   }
 
   def normalizeFeatureValue(n: String, v: String): String= {
     if (tagset == null) v else tagset.normalizeFeatureValue(n,v)
   }
+
+  def featureValue(fn: String) = this.features.filter(_.name == fn).map(_.value).mkString("|")
 
   lazy val features_sorted = if (tagset == null) features else {
     val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")

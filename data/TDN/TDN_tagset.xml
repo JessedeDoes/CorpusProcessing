@@ -436,7 +436,7 @@
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
-            <pos>AA</pos>
+            <pos>VRB</pos>
           </posForValue>
         </featureValue>
       </values>
@@ -1496,12 +1496,48 @@
   </constraints>
   <implications>
 
+    <!-- core tagset -->
+
+    <declaration corpus="core">pos=AA => degree, position=free;prenom;postnom;uncl</declaration>
+
+    <declaration corpus="core">pos=NOU-C => number</declaration>
+
+    <declaration corpus="core">pos=ADV => type</declaration>
+
+    <declaration corpus="core">pos=VRB => finiteness</declaration>
+    <declaration corpus="core">pos=VRB, finiteness=fin => tense</declaration>
+    <declaration corpus="core">pos=VRB, finiteness=uncl => tense=uncl</declaration>
+
+    <declaration corpus="core">pos=NUM => type,position=free;prenom;postnom;uncl,representation</declaration>
+
+    <declaration corpus="core">pos=PD => type=d-p;excl;indef;pers;poss;recip;refl;w-p;uncl, position=free;prenom;postnom;uncl</declaration>
+    <declaration corpus="core">pos=PD,subtype=art => position=prenom</declaration>
+    <declaration corpus="core">pos=PD,type=pers => position=free</declaration>
+    <declaration corpus="core">pos=PD,type=refl =>  position=free</declaration>
+    <declaration corpus="core">pos=PD,type=recip =>  position=free</declaration>
+    <declaration corpus="core">pos=PD,type=rel => position=free</declaration>
+    <declaration corpus="core">pos=PD,type=dem => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=prenom,type=indef => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=prenom,type=uncl => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=prenom,type=d-p => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=uncl,type=indef => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=uncl,type=uncl => subtype</declaration>
+    <declaration corpus="core">pos=PD,position=uncl,type=d-p => subtype</declaration>
+    
+    <declaration corpus="core">pos=ADP => type</declaration>
+
+    <declaration corpus="core">pos=CONJ => type=coor;sub;uncl</declaration>
+
+    <declaration corpus="core">pos=RES => type</declaration>
+
     <!-- the hypothetical maximally tagged corpus (untested) -->
 
-    <declaration corpus="max">pos=AA
-      =>degree,position,case,number,gender,inflection,WF</declaration>
+    <declaration corpus="max">pos=AA =>degree,position,case,number,gender,inflection,WF</declaration>
+
     <declaration corpus="max">pos=NOU-C => case,number,gender,inflection,WF</declaration>
+
     <declaration corpus="max">pos=NOU-P => case,number,gender,inflection,WF</declaration>
+
     <declaration corpus="max">pos=VRB => finiteness,inflection,WF</declaration>
     <declaration corpus="max">pos=VRB,finiteness=fin => mood,tense,number</declaration>
     <declaration corpus="max">pos=VRB,finiteness=fin,mood=ind => person</declaration>
