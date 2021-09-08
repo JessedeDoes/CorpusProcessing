@@ -7,7 +7,7 @@ object ProcessFolder {
   def processFolder[T](input: File, action: File => T):Seq[T] =
   {
 
-    if (input.isDirectory) Console.err.println(input.listFiles().toList)
+    //if (input.isDirectory) Console.err.println(input.listFiles().toList)
     if (input.isFile)
       Stream(action(input))
     else input.listFiles.toList.flatMap(x => processFolder(x,action) )
@@ -32,7 +32,7 @@ object ProcessFolder {
       })
     } else if (input.isFile)
     {
-      Console.err.println(input.getName)
+      // Console.err.println(input.getName)
       val outFile = outputFolder + "/" + input.getName()
       try {
         base(input.getCanonicalPath, outFile)
