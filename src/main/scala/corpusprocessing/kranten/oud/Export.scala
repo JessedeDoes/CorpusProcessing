@@ -3,16 +3,10 @@ import database.DatabaseUtilities._
 
 import java.io.PrintWriter
 import scala.xml._
+import Settings._
 
 object Export {
-  val krantenconfig = new database.Configuration(
-    name = "krantjes",
-    server = "svowdb20.ivdnt.loc",
-    database = "kranten_metadatabewerking_2021",
-    user = "postgres",
-    password = "inl")
 
-  val krantendb = new database.Database(krantenconfig)
 
   /*
       Column     | Type | Collation | Nullable | Default

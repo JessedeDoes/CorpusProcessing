@@ -6,7 +6,9 @@ import scala.collection.mutable.ArrayBuffer
 
 trait Tokenizer
 {
-  case class Token(leading:String, token:String, trailing:String)
+  case class Token(leading:String, token:String, trailing:String) {
+    override def toString: String = leading + token + trailing
+  }
 
   def tokenize(s:String): Array[Token]
 }
