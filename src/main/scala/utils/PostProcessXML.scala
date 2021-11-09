@@ -5,6 +5,7 @@ import java.util.zip.GZIPInputStream
 
 import scala.xml
 import scala.xml._
+import scala.util.{Try,Success,Failure}
 
 
 /*
@@ -17,15 +18,22 @@ object PostProcessXML {
 
   def updateElement(e: Elem, condition: Elem=>Boolean, f: Elem => Elem):Elem =
   {
-    if (condition(e))
-      f(e)
-    else
-      e.copy(child = e.child.map({
-        {
-          case e1: Elem => updateElement(e1,condition,f)
-          case n:Node => n
-        }
-      }))
+    Try {
+      if (condition(e))
+        f(e)
+      else {
+        val e1 = e.copy(child = e.child.map({
+          {
+            case e1: Elem => updateElement(e1, condition, f)
+            case n: Node => n
+          }
+        }))
+        e1
+      }
+    } match {
+      case Success(e) => e
+      case Failure(ex) => Console.err.println(e + " --> " + ex); <bummer/>
+    }
   }
 
   def updateElement2(e: Elem, condition: Elem=>Boolean, f: Elem => NodeSeq):NodeSeq =

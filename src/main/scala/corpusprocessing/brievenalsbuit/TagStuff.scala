@@ -3,13 +3,19 @@ package corpusprocessing.brievenalsbuit
 import corpusprocessing.brievenalsbuit.Settings.multivalSepSplit
 import corpusprocessing.brievenalsbuit.TagStuff.tagMapCHNStyle
 import corpusprocessing.brievenalsbuit.TagStuff.tagMapTDNStyle
+import corpusprocessing.brievenalsbuit.TagStuff.tagMapUDStyle
 import posmapping.CHNStyleTags
 
 import scala.xml.{Elem, NodeSeq, Null, UnprefixedAttribute}
+import scala.util.{Try,Success,Failure}
 
+/**
+  * Beetje ingewikkelde poging om met annotaties om te gaan
+  */
 trait Annotation {
   def featureStructure() : NodeSeq
   def valid(): Boolean = true
+
   def map(f: LemPos => LemPos): Annotation = this match {
     case x: LemPos => f(x)
     case Alt(s) => Alt(s.map(x => x.map(f)))
@@ -19,7 +25,7 @@ trait Annotation {
   def mapTag(f: String => String): Annotation = map({case LemPos(l,t) => LemPos(l, f(t))})
 
   def toCHN: Annotation = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
-
+  def toUD: Annotation = better().mapTag(p => tagMapUDStyle.getOrElse(p, s"RES(type=uncl)"))
   def better(): Annotation = this.map(_.betterAnnotation())
 
   def toStrings: LemPos
@@ -55,7 +61,11 @@ case class Alt(x: Seq[Annotation]) extends Annotation
 
   def toStrings() = {
     val z = x.map(_.toStrings)
-    z.reduce((l1,l2) => LemPos(l1.lemma + Settings.alternativePrint + l2.lemma, l1.pos +  Settings.alternativePrint + l2.pos))
+    Try(z.reduce((l1,l2) => LemPos(l1.lemma + Settings.alternativePrint + l2.lemma, l1.pos +  Settings.alternativePrint + l2.pos)))
+    match {
+      case Success(x) => x
+      case Failure(z) => LemPos("x", "y")
+    }
   }
 }
 
@@ -73,7 +83,11 @@ case class Clitic(x: Seq[Annotation]) extends Annotation
 
   def toStrings() = {
     val z = x.map(_.toStrings)
-    z.reduce((l1,l2) => LemPos(l1.lemma + Settings.multivalSepPrint + l2.lemma, l1.pos +  Settings.multivalSepPrint + l2.pos))
+    Try (z.reduce((l1,l2) => LemPos(l1.lemma + Settings.multivalSepPrint + l2.lemma, l1.pos +  Settings.multivalSepPrint + l2.pos)))
+    match {
+      case Success(x) => x
+      case Failure(z) => LemPos("x", "y")
+    }
   }
 }
 
@@ -147,6 +161,31 @@ object TagStuff {
     "UNRESOLVED" -> "RES(type=uncl)"
   )
 
+  val tagMapUDStyle = Map(
+    "NOU-C" -> "NOUN",
+    "NOU" -> "NOUN",
+    "NOUEN" -> "NOUN",
+    "NEPER" -> "PROPN",
+    "GEB.WENDEL" -> "PROPN",
+    "PER" -> "PROPN",
+    "NELOC" -> "PROPN",
+    "NEOTHER" -> "PROPN",
+    "NEORG" -> "PROPN",
+    "CON" -> "SCONJ|CCONJ",
+    "VRB" -> "VERB|AUX", "VRN" -> "VERB",
+    "ADP" -> "ADP",
+    "ADJ" -> "ADJ", // Hier wel AA dus
+    "ADV" -> "ADV",
+    "PRN" -> "PRON",
+    "PR" -> "PRON|DET",
+    "ART" -> "DET", "RT" -> "DET",
+    "NUM" -> "NUM",
+    "INT" -> "INTJ",
+    "RES" -> "X",
+    "FOREIGN" -> "X",
+    "UNRESOLVED" -> "X"
+  )
+
 
   def parseLemPos(l: String, t: String): Annotation = {
     if (t.contains(Settings.alternativePrint)) {
@@ -171,7 +210,6 @@ object TagStuff {
     else
     if (w.matches("[0-9]+")) // klopt niet!
     {
-
       val lNew = lemmata.zipWithIndex.map(
         { case (l, i)
         => if (possen(i).contains("TW") && !l.matches(".*(de|ste)$")) w else l }
@@ -184,11 +222,11 @@ object TagStuff {
   }
 
   def main(args: Array[String]): Unit = {
-    val tags = List("NOU-C+NOU-P", "NOU-C|NOU-P")
+    val tags = List("NOU+PRN", "NOU|CONJ")
     val lemmata =  List("aap+noot", "aap|noot")
     lemmata.zip(tags).foreach( {case (l,t) =>
       val a = parseLemPos(l,t)
-        println(s"[$l,$t] => $a")
+        println(s"[$l,$t] => $a ${a.toUD.toStrings}")
     })
   }
 }
