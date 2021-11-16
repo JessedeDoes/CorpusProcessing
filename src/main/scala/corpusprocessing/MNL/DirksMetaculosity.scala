@@ -1,13 +1,13 @@
 package corpusprocessing.MNL
 
 import java.io.PrintWriter
-
 import corpusprocessing.gysseling.DirksMetaculosityCG.{dirkMap, getField}
+import corpusprocessing.metadata.addProcessedMetadataValues
 import utils.PostProcessXML
 
-import scala.xml.{Elem, Text, XML, Node}
+import scala.xml.{Elem, Node, Text, XML}
 import scala.util.{Failure, Success, Try}
-object DirksMetaculosity extends corpusprocessing.addProcessedMetadataValues {
+object DirksMetaculosity extends addProcessedMetadataValues {
 
   lazy val mnw_bronnen = (XML.load("/mnt/Projecten/Taalbank/Woordenboeken/MNW/Bouwstoffen/Converted/bouwstoffen_2015.xml") \\ "document").map(MNWBron)
 

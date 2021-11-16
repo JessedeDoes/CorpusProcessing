@@ -1,5 +1,7 @@
 package corpusprocessing.MNL
 
+import corpusprocessing.metadata.addProcessedMetadataValues
+
 import scala.xml._
 
 object ListOfMNWDocuments {
@@ -10,7 +12,7 @@ object ListOfMNWDocuments {
 
   def listFilesInDir(dir: String): Unit = {
     val d = new java.io.File(dir)
-    val apm = corpusprocessing.addProcessedMetadataValues()
+    val apm = addProcessedMetadataValues()
 
 
     d.listFiles().filter(_.isFile).foreach(f

@@ -37,12 +37,12 @@ object readRDF {
 
   //val rdfParser: RDFParser = Rio.createParser(RDFFormat.TURTLE)
 
-  def parseToGraph(f: java.io.File): Graph = parseToGraph(() => {
+  def parseToGraphF(f: java.io.File,  handler: Option[Statement => Unit] = None): Graph = parseToGraphI(() => {
     val i = new FileInputStream(f)
     if (f.getName.endsWith(".gz")) new GZIPInputStream(i) else i
-  })
+  }, handler)
 
-  def parseToGraph(fileName: String): Graph = parseToGraph(new java.io.File(fileName))
+  def parseToGraph(fileName: String,  handler: Option[Statement => Unit] = None): Graph = parseToGraphF(new java.io.File(fileName), handler)
 
   def parseStringToGraph(s: String): Graph = {
     def inputStream(): java.io.InputStream = {
@@ -52,18 +52,24 @@ object readRDF {
       x
     }
 
-    parseToGraph(() => inputStream)
+    parseToGraphI(() => inputStream)
   }
 
-  def parseToGraph(inputStream: () => java.io.InputStream): org.openrdf.model.Graph = {
+  def parseToGraphI(inputStream: () => java.io.InputStream, handler: Option[Statement => Unit] = None): org.openrdf.model.Graph = {
     import org.openrdf.rio.helpers.StatementCollector
 
     val attempts = rdfParsers.map(
       rdfParser => {
         Try({
           val myGraph = new org.openrdf.model.impl.GraphImpl
-
-          val collector = new StatementCollector(myGraph)
+          // http://archive.rdf4j.org/javadoc/sesame-4.1.1/org/openrdf/rio/helpers/StatementCollector.html
+          val collector = new StatementCollector(myGraph) {
+            override def handleStatement(st: Statement): Unit =  {
+              if (handler != None) {
+                handler.get.apply(st)
+              } else super.handleStatement(st)
+            }
+          }
 
           rdfParser.setRDFHandler(collector)
           rdfParser.parse(inputStream(), "http://")
@@ -75,6 +81,7 @@ object readRDF {
     attempts.find(_.isSuccess).map(_.asInstanceOf[scala.util.Success[Graph]].value).get
   }
 
+  def parseWithHandler(url: String, handler: Statement => Unit) : Unit = parseToGraph(url, Some(handler))
 
   def parseToStatements(url: String): Stream[Statement] = parseToGraph(url).iterator().asScala.toStream
 

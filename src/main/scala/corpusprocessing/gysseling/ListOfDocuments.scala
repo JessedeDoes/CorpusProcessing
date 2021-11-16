@@ -1,5 +1,6 @@
 package corpusprocessing.gysseling
 import corpusprocessing.gysseling.ListOfDocuments.dir
+import corpusprocessing.metadata.addProcessedMetadataValues
 
 import scala.xml._
 
@@ -8,7 +9,7 @@ object ListOfDocuments {
 
   def listFilesInDir(dir: String) = {
     val d = new java.io.File(dir)
-    val apm = corpusprocessing.addProcessedMetadataValues()
+    val apm = addProcessedMetadataValues()
     d.listFiles().filter(x => !x.getName.startsWith("0") && !x.getName.startsWith("1")).foreach(f
     => {
       //sprintln(f.getName)

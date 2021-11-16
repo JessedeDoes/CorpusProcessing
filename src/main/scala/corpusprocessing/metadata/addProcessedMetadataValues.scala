@@ -1,4 +1,4 @@
-package corpusprocessing
+package corpusprocessing.metadata
 
 import corpusprocessing.onw.{Settings, onwCorpus}
 import utils.PostProcessXML

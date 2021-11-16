@@ -1,6 +1,6 @@
 package corpusprocessing.onw
 
-import corpusprocessing.addProcessedMetadataValuesONW
+import corpusprocessing.metadata.addProcessedMetadataValuesONW
 import posmapping.TagsetDiachroonNederlands
 
 import scala.xml._

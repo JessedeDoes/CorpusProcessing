@@ -1,10 +1,11 @@
 package corpusprocessing.gysseling
 
-import java.io.PrintWriter
+import corpusprocessing.metadata.addProcessedMetadataValues
 
+import java.io.PrintWriter
 import scala.xml.{Elem, Text}
 
-object DirksMetaculosityCG extends corpusprocessing.addProcessedMetadataValues {
+object DirksMetaculosityCG extends addProcessedMetadataValues {
 
   val dataDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/Metadata/"
 

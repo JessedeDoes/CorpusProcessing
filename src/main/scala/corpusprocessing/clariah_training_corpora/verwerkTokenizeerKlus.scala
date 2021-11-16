@@ -18,7 +18,7 @@ object verwerkTokenizeerKlus {
 
   lazy val tokens = io.Source.fromFile(bestandje)
     .getLines().toSeq
-    .map(l => l.split("\\t"))
+    .map(l => l.split("\\t",-1))
     .map(a => Token(a(0).toInt, a(1), a(2), a(3), a(4), a(5), a(6), a(7).toInt, a(8)))
 
   lazy val tokensGrouped = groupTokens(tokens)
