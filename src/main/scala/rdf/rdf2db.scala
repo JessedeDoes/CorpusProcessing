@@ -5,22 +5,24 @@ import database.{Configuration, Database}
 import org.openrdf.model.Statement
 
 object rdf2db {
-  def insertToTable(d: Database, tableNamex: String, statements: Stream[Statement]) = {
+
+  def insertToTable(d: Database, tableNamex: String, statements: Stream[Statement], scratch: Boolean = true) = {
 
     val (schema, tableName) = if (tableNamex.contains("."))
       (tableNamex.replaceAll("[.].*", ""),tableNamex.replaceAll(".*[.]", ""))
     else ("public",tableNamex)
 
 
-    if (schema != "public") {
+    if (scratch && schema != "public") {
       d.runStatement(s"drop schema if exists $schema cascade")
       d.runStatement(s"create schema $schema")
       d.runStatement(s"set schema '$schema'")
     }
 
 
-    d.runStatement(s"drop table if exists $tableName")
-    d.runStatement(s"create table $tableName (subject text, predicate text, object text)")
+    if (scratch) d.runStatement(s"drop table if exists $tableName")
+
+    d.runStatement(s"create table if not exists $tableName (subject text, predicate text, object text)")
 
     def createBindings(s: Statement) =
       Seq(d.Binding("subject", s.getSubject.stringValue()),
@@ -31,7 +33,7 @@ object rdf2db {
     val z : Statement => Seq[d.Binding]  = s => createBindings(s)
     val qb = d.QueryBatch(s"insert into $tableName (subject,predicate,object) values (:subject, :predicate, :object)", z )
     qb.insert(statements)
-    createSchema(d, s"$schema.$tableName")
+    if (scratch) createSchema(d, s"$schema.$tableName")
   }
 
 

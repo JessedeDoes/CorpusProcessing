@@ -26,10 +26,10 @@ object HistoricalMetadatabase {
         .replaceAll("'", "\\\\'").replaceAll("\"", escapedDquote)).mkString(",")
   }$dquote}"
 
-  case class Metadata(pid: String, data: Map[String, Seq[String]]) {
+  case class Metadata(pid: String, data: Map[String, String]) {
     def asLine = pid + "\t" + allFields.map(f => {
-      val v = this.data.getOrElse(f, Seq())
-      toArray(v)
+      val v = this.data.getOrElse(f, "")
+      v
     }).mkString("\t")
   }
 
@@ -43,41 +43,44 @@ object HistoricalMetadatabase {
         val v = (ig \ "interp").map(_.text.trim.replaceAll("\\s+", " ")).filter(_.trim.nonEmpty)
         n -> v
       }).toMap
-        .map({case (k,v) if (k.contains("factu")) => k -> List("non-fiction"); case (k,v) => (k,v)})
+        .map({case (k,v) if (k.contains("factu")) => normalizeFieldName(k) -> List("non-fiction"); case (k,v) => (normalizeFieldName(k),v)})
         .filter(_._2.exists(_.nonEmpty))
+        .mapValues(_.mkString("‖"))
 
       // Some(data.filter(_._1.contains("oca"))).filter(_.nonEmpty).foreach(x => Console.err.println(x))
-      val pid = data("pid").head
+      val pid = data(normalizeFieldName("pid"))
       Metadata(pid, data.filter(_._2.nonEmpty))
     })
     data
   }
 
-  lazy val allMetadata = metadataDirs.flatMap(getAllMetaFromDir)
-  lazy val allFields = allMetadata.flatMap(_.data.keySet).toSet.toList.sorted
-  lazy val addedFields = (addProcessedMetadataValues()).addedFieldNames.filter(allFields.contains(_)).map(_.toLowerCase) diff Seq("title")
-  lazy val level1Fields = allFields.filter(_.contains("Level1")).map(_.toLowerCase)
-  lazy val level2Fields = allFields.filter(_.contains("Level2")).map(_.toLowerCase)
-  lazy val multiValuedFields = allMetadata.flatMap(m => m.data.filter(_._2.size > 1).map(_._1)).toSet
-  lazy val singleValuedFields = (allFields.toSet diff multiValuedFields).map(_.toLowerCase)
+  def normalizeFieldName(f: String) = if (f.contains("\"")) f else "\"" + f + "\""
 
-  lazy val textsoortFields = allFields.filter(_.toLowerCase.matches(".*(fict|fact|genre|authen).*")).map(_.toLowerCase) diff addedFields
-  lazy val dateFields = allFields.filter(_.toLowerCase.matches(".*(day|month|year).*")).map(_.toLowerCase) diff addedFields
-  lazy val locationFields = allFields.filter(_.toLowerCase.matches(".*(country|place|region|kloeke).*")).map(_.toLowerCase) diff addedFields
-  lazy val basicFields = allFields.filter(_.toLowerCase.matches(".*(author|title).*")).map(_.toLowerCase) diff addedFields
+  lazy val allMetadata = metadataDirs.flatMap(getAllMetaFromDir)
+  lazy val allFields = allMetadata.flatMap(_.data.keySet).toSet.toList.sorted.map(normalizeFieldName)
+  lazy val addedFields = (addProcessedMetadataValues()).addedFieldNames.filter(allFields.contains(_)).map(normalizeFieldName) diff Seq("title")
+  lazy val level1Fields = allFields.filter(_.contains("Level1")).map(normalizeFieldName)
+  lazy val level2Fields = allFields.filter(_.contains("Level2")).map(normalizeFieldName)
+  lazy val multiValuedFields = allMetadata.flatMap(m => m.data.filter(_._2.size > 1).map(_._1)).toSet
+  lazy val singleValuedFields = (allFields.toSet diff multiValuedFields).map(normalizeFieldName)
+
+  lazy val textsoortFields = allFields.filter(_.toLowerCase.matches(".*(fict|fact|genre|authen).*")).map(normalizeFieldName) diff addedFields
+  lazy val dateFields = allFields.filter(_.toLowerCase.matches(".*(day|month|year).*")).map(normalizeFieldName) diff addedFields
+  lazy val locationFields = allFields.filter(_.toLowerCase.matches(".*(country|place|region|kloeke).*")).map(normalizeFieldName) diff addedFields
+  lazy val basicFields = allFields.filter(_.toLowerCase.matches(".*(author|title).*")).map(normalizeFieldName) diff addedFields
 
   lazy val tsD = s"drop table if exists tekstsoort"
-  lazy val tsQ = s"create table tekstsoort as select persistentid, title, ${textsoortFields.mkString(",")}  from metadata"
-  lazy val tsKey = "alter table tekstsoort add primary key (persistentid)"
-  lazy val datesQ = s"create view dates as select persistentid, title, ${dateFields.mkString(",")}  from metadata"
-  lazy val locationsQ = s"create view locations as select persistentid, title, ${locationFields.mkString(",")}  from metadata"
-  lazy val basicQ = s"create view basic as select persistentid, ${basicFields.mkString(",")}  from metadata"
+  lazy val tsQ = s"""create table tekstsoort as select "persistentId", title, ${textsoortFields.mkString(",")}  from metadata"""
+  lazy val tsKey = """alter table tekstsoort add primary key ("persistentId")"""
+  lazy val datesQ = s"""create view dates as select "persistentId", title, ${dateFields.mkString(",")}  from metadata"""
+  lazy val locationsQ = s"""create view locations as select "persistentId", title, ${locationFields.mkString(",")}  from metadata"""
+  lazy val basicQ = s"""create view basic as select "persistentId", ${basicFields.mkString(",")}  from metadata"""
 
 
   def makeCreate(name: String, fields: List[String]) =
     s"""
        |create table $name (
-       |persistentId text primary key,
+       |"persistentId" text primary key,
        |${fields.map(f => s"$f text").mkString(", ")}
        |)
        |""".stripMargin
@@ -85,7 +88,7 @@ object HistoricalMetadatabase {
   def makeSelect(name: String, fields: List[String]) =
     s"""
        |create view $name
-       |as select persistentId, title,
+       |as select "persistentId", title,
        |${fields.map(f => s"$f").mkString(", ")}
        | from metadata
        |""".stripMargin
@@ -93,8 +96,8 @@ object HistoricalMetadatabase {
   lazy val createStatement =
     s"""
        |create table metadata (
-       |persistentId text primary key,
-       |${allFields.map(f => s"$f text[]").mkString(", ")}
+       |"persistentId" text primary key,
+       |${allFields.map(f => s"$f text").mkString(", ")}
        |)
        |""".stripMargin
 
