@@ -11,11 +11,11 @@ object postProcessBaBTagging {
   val inDir = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   val outDir = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/PostProcessed/"
 
-  def fixW(e: Elem) = {
+  def fixW(e: Elem, ud: Boolean = true) = {
     val pos = (e \ "@type").text
     val lem = (e \ "@lemma").text
     val word = e.text.trim
-    val lp: LemPos = TagStuff.parseLemPos(lem, pos).toUD.toStrings
+    val lp: LemPos = if (ud) TagStuff.parseLemPos(lem, pos).toUD.toStrings else TagStuff.parseLemPos(lem, pos).toTDN.toStrings
 
     val lemma: String = if (lp.lemma.nonEmpty) lp.lemma else word
     val newAtts =
@@ -26,8 +26,8 @@ object postProcessBaBTagging {
     e.copy(attributes = newAtts)
   }
 
-  def fixDocje(d: Elem) = {
-    val d1 = PostProcessXML.updateElement(d, _.label == "w", fixW)
+  def fixDocje(d: Elem, ud: Boolean = true) = {
+    val d1 = PostProcessXML.updateElement(d, _.label == "w", x => fixW(x,ud))
     d1
   }
 

@@ -1,6 +1,7 @@
 package corpusprocessing.metadata
 
 import corpusprocessing.onw.{Settings, onwCorpus}
+import database.DatabaseUtilities.AlmostQuery
 import utils.PostProcessXML
 import utils.PostProcessXML._
 
@@ -25,6 +26,13 @@ case class addProcessedMetadataValues() {
       Console.err.println(s"##### CHECK $n -> $check")
       b1
     }
+  }
+
+  def removeField(b: Elem, n: String) =
+    PostProcessXML.updateElement5(b, e => e.label=="interpGrp" && (e \ "@type").text== n, x => Seq()).asInstanceOf[Elem]
+
+  def updateField(b: Elem, n: String, v0: Seq[String])  = {
+    addField(removeField(b,n), n, v0)
   }
 
   def getFieldMap(b: Elem): Map[String, immutable.Seq[String]] = {
@@ -222,6 +230,45 @@ case class addProcessedMetadataValues() {
   }
 }
 
+
+object addRolandsCorrectionsONW extends addProcessedMetadataValues() {
+  lazy val db = HistoricalMetadatabase.db
+  val onwDir = HistoricalMetadatabase.ONWMetaDir
+  lazy val getTekstsoort: Map[String, Map[String, String]] = db.slurp(db.allRecords("tekstsoort")).groupBy(m => m("persistentId")).mapValues(_.head)
+  lazy val getAllMeta:  Map[String, Map[String, String]] = db.slurp(db.allRecords("metadata")).groupBy(m => m("persistentId")).mapValues(_.head)
+  override def fixFile(in: String, out: String) =
+  {
+    val d0 = XML.load(in)
+    val bibl = (d0 \\ "bibl").head.asInstanceOf[Elem]
+    //println(bibl)
+    val metaOrg = getFieldMap(bibl)
+    //println(metaOrg)
+    val pid = metaOrg("pid").head
+
+    val tekstsoort: Map[String, String] = getTekstsoort(pid)
+    val allMeta = getAllMeta(pid)
+    val bNew = tekstsoort.foldLeft(bibl){case (b, (k,v)) => updateField(b, k, Seq(v))}
+    val d1 = PostProcessXML.updateElement(d0, _ == bibl, x => bNew)
+    XML.save(out, d1,  enc="UTF-8")
+    /*
+    if (this.nice) {
+      val p = new scala.xml.PrettyPrinter(300, 4)
+      val t = p.format(d)
+      val w = new java.io.PrintWriter(out)
+      w.write(t)
+      w.close()
+    } else XML.save(out, d,  enc="UTF-8")
+    */
+
+  }
+
+  def main(args: Array[String]): Unit = {
+     utils.ProcessFolder.processFolder(new java.io.File("/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-tagsplit"),
+       new java.io.File("/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-correcties-metadata-roland"), fixFile)
+     utils.ProcessFolder.processFolder(new java.io.File("/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-correcties-metadata-roland"),
+      new java.io.File("/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-processed-metadata-v3"), addProcessedMetadataValuesONW.fixFile )
+  }
+}
 
 object addProcessedMetadataValuesONW extends addProcessedMetadataValues()
 {

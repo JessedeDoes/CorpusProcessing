@@ -36,10 +36,6 @@ object rdf2db {
     if (scratch) createSchema(d, s"$schema.$tableName")
   }
 
-
-
-
-
   def createSchema(d: Database, tableName: String): Unit =
   {
     d.runStatement("drop schema if exists schema cascade")

@@ -24,7 +24,7 @@ trait Annotation {
 
   def mapTag(f: String => String): Annotation = map({case LemPos(l,t) => LemPos(l, f(t))})
 
-  def toCHN: Annotation = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
+  def toTDN: Annotation = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
   def toUD: Annotation = better().mapTag(p => tagMapUDStyle.getOrElse(p, s"X"))
   def better(): Annotation = this.map(_.betterAnnotation())
 

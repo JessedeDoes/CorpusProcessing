@@ -38,7 +38,7 @@ object bab {
 
   def doW(w: Elem) =
   {
-    val annotation = TagStuff.parseLemPos((w \ "@lemma").text, (w \ "@type").text).toCHN.map(x => x match
+    val annotation = TagStuff.parseLemPos((w \ "@lemma").text, (w \ "@type").text).toTDN.map(x => x match
       {
         case LemPos(l,t) if  ((w \ "@n").nonEmpty && t.contains("NOU-P") && Settings.addPartInfoInTag) => LemPos(l, t.replaceAll("\\)", ",wordpart=proper)"))
         case _ => x

@@ -12,8 +12,8 @@ import scala.xml._
 
 case class Quotation(cit: Node, s: Sense, partition: String = "train") {
 
-  lazy val df = ((cit \\ "date") \ "@atLeast").map(_.text).headOption.getOrElse("UNK")
-  lazy val dt = ((cit \\ "date") \ "@atMost").map(_.text).headOption.getOrElse("UNK")
+  lazy val df: String = ((cit \\ "date") \ "@atLeast").map(_.text).headOption.getOrElse("UNK")
+  lazy val dt: String = ((cit \\ "date") \ "@atMost").map(_.text).headOption.getOrElse("UNK")
 
   implicit def t2o[T](x: Try[T]): Option[T] = x match  { case Success(z) => Some(z) ;  case _ => None }
 
@@ -23,12 +23,15 @@ case class Quotation(cit: Node, s: Sense, partition: String = "train") {
     .map(x => 50 * (x / 50))
     .map(x => Text(s"$x-${x+50}"))
 
-  lazy val id = getId(cit)
+  lazy val id: String = getId(cit)
 
-  def hasOreg = (cit \\ "oRef").nonEmpty
-  def hasItAll = hasOreg && df != "UNK" && dt != "UNK" && (words.length >= 10) && Try(dt.toInt - df.toInt).map(_ <= 50).getOrElse(false)
+  def hasOref: Boolean = (cit \\ "oRef").nonEmpty
 
-  def addJoin(w: Elem) = {
+  def hasItAll: Boolean = if (quotationCorpus.forElexis) s.id != "UNK" && hasOref && df != "UNK" && dt != "UNK" && (words.length >= 10) && Try(dt.toInt - df.toInt).map(_ <= 50).getOrElse(false) &&
+    quotationCorpus.selectedTimeSpansforElexis.contains(timeSpan.get.text) else s.id != "UNK" && hasOref && df != "UNK" && dt != "UNK" && (words.length >= 10) && Try(dt.toInt - df.toInt).map(_ <= 50).getOrElse(false)
+
+
+  def addJoin(w: Elem): Elem = {
     val id = getId(w)
     def filterAttribute(a: MetaData) = if (w.label  == "w") true else !Set("type", "lemma").contains(a.key)
     val w0 = w.copy(attributes = w.attributes.filter(filterAttribute))
@@ -52,16 +55,16 @@ case class Quotation(cit: Node, s: Sense, partition: String = "train") {
     q =>
       updateElement5(
         {
-          val q1 = postProcessBaBTagging.fixDocje(q.asInstanceOf[Elem])
+          val q1 = postProcessBaBTagging.fixDocje(q.asInstanceOf[Elem], ud=quotationCorpus.forElexis)
           val q2 = addSenseRef(q1, senseId, false)
           q2.asInstanceOf[Elem]
         },
         _.label=="interpGrp",
         x => Seq()))
 
-  lazy val words = q.flatMap(_.descendant.filter(x => x.label=="w" || x.label == "pc"))
-  lazy val qtext = q.text.replaceAll("\\s+", " ").trim
-  lazy val senseId = s.id
+  lazy val words: NodeSeq = q.flatMap(_.descendant.filter(x => x.label=="w" || x.label == "pc"))
+  lazy val qtext: String = q.text.replaceAll("\\s+", " ").trim
+  lazy val senseId: String = s.id
 
   lazy val xml = PostProcessXML.updateElement(<cit xml:id={id} sense-id={senseId} entry-id={s.e.id} lemma={s.e.lemma} partition={partition}>
     <date atLeast={df} atMost={dt} timeSpan={timeSpan}/>
@@ -86,7 +89,7 @@ case class Entry(e0: Node) {
   lazy val quotations: immutable.Seq[Quotation] = senses.flatMap(_.quotations)
   lazy val usableQuotations: immutable.Seq[Quotation] = quotations.filter(_.hasItAll)
 
-  def partition(l: Seq[Quotation], pTest: Double, pDev: Double) = {
+  def partition(l: Seq[Quotation], pTest: Double, pDev: Double): Seq[Quotation] = {
     val l1 = scala.util.Random.shuffle(l)
     val tSize = (l.size * pTest).toInt
     val dSize = (l.size * pDev).toInt
@@ -102,38 +105,47 @@ case class Entry(e0: Node) {
 
 object quotationCorpus {
 
-  def getId(e: Node) = e.attributes.filter(_.key == "id").headOption.map(_.value.text).getOrElse("UNK")
+  val forElexis = false
+  val selectedTimeSpansforElexis = Set("1500-1550", "1600-1650", "1700-1750", "1800-1850", "1900-1950")
+  val minimumQuotationsPerLemmaForElexis = 15
+
+  def getId(e: Node): String = e.attributes.filter(_.key == "id").headOption.map(_.value.text).getOrElse("UNK")
+
   val oneFile = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/Tagged/wnt10.xml"
 
-  def doFile(f: String) = {
+  def interestingEntry(e: Entry): Boolean = if (forElexis) e.usableQuotations.size >= minimumQuotationsPerLemmaForElexis && (e.e \ "sense").size > 1 else true
+
+  def extractQuotations(f: String): Elem = {
     val d = XML.load(f)
-    val entries = (d \\ "entry").toStream.map(Entry).filter(x => x.usableQuotations.size >= 10 && (x.e \ "sense").size > 1)
+    val entries = (d \\ "entry").toStream.map(Entry).filter(interestingEntry)
+
     <TEI><text><body>{entries.map(_.xml)}</body></text></TEI>
   }
 
   import java.io.{File, PrintWriter}
 
-  def clearScope(x: Node):Node = x match {
-    case e:Elem => e.copy(scope=TopScope, child = e.child.map(clearScope))
+  def removeNamespace(x: Node):Node = x match {
+    case e:Elem => e.copy(scope=TopScope, child = e.child.map(removeNamespace))
     case o => o
   }
 
-  def pretty(pw: PrintWriter, e: Elem)  = {
+  def prettyPrint(pw: PrintWriter, e: Elem): Unit = {
     val pretty = new scala.xml.PrettyPrinter(Integer.MAX_VALUE, 4)
-    pw.write(pretty.format(clearScope(e)))
+    pw.write(pretty.format(removeNamespace(e)))
     pw.close()
   }
 
-
   def f(x: String) = new File(x)
   val outDir = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenCorpus"
+
   def main(args: Array[String]): Unit = {
     utils.ProcessFolder.processFolder(
       f("/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/Tagged"),
-      f("/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenCorpus"),
+      f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN"}"),
       {
-        case (i,o) => val x = doFile(i)
-          pretty(new PrintWriter(o), x)
+        case (inputTEI,outputQuotations) =>
+          val x = extractQuotations(inputTEI)
+          prettyPrint(new PrintWriter(outputQuotations), x)
       })
   }
 }
