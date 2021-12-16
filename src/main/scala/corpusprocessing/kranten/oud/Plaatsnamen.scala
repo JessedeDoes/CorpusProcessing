@@ -53,8 +53,6 @@ object Plaatsnamen {
   lazy val cityMap = cityTree
   lazy val nodeZero = Node("0", cityTree)
 
-
-
   def findCity(a : Article)  = {
     val tokens = Tokenizer.tokenize(a.subheader)
 
@@ -145,3 +143,28 @@ object Plaatsnamen {
     findCities()
   }
 }
+
+
+/*
+Plaatsnamen
+
+Dag Jesse,
+
+De plaatsnamenklus is in een nieuw stadium aanbeland. Alle automatisch toegekende plaatsnamen zijn handmatig gecontroleerd en waar nodig verbeterd.
+
+Wat moet je weten bij de verdere behandeling?
+
+•	Als de kolom fishy is aangevinkt kan dat twee dingen betekenen:
+
+o	er zijn geen attestaties gekoppeld aan dit id en deze regels kunnen daarom weggegooid worden (tenzij ze een andere functie vervullen).
+Let op: aan deze regels is verder geen aandacht geschonken (aan de relatie tussen land en plaats moet dan ook geen aandacht worden geschonken; die kan namelijk onjuist zijn).
+
+o	er was verschil in spelling tussen plaats en spelling, omdat er sprake was van een drukfout, een transcriptiefout of een onjuiste automatische toekenning van plaats.
+Bij elk van deze gevallen is aangegeven of het gaat om een drukfout of een transcriptiefout.
+Een enkele maal is niet zeker welke plaatsnaam bedoeld is. Dan is daar een opmerking bij gemaakt.
+
+•	Lang niet alle attestaties van een bepaalde spelling hebben een header.
+•	Sommige attestaties hebben een verkeerde header omdat ze als nagekomen bericht zijn opgenomen. In de kranten zelf is dat eenvoudig te zien door een streep, maar deze berichten zijn nu opgenomen onder de laatstgenoemde header.
+•	Sommige id’s zijn identiek. Dit levert dubbele attestaties op. Deze zouden het best verwijderd kunnen worden.
+
+ */

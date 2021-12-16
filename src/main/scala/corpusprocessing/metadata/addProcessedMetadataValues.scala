@@ -14,7 +14,7 @@ case class addProcessedMetadataValues() {
   val nice = false
 
   def addField(b: Elem, n: String, v0: Seq[String]): Elem = {
-    Console.err.println(s"##### $n -> $v0")
+    //Console.err.println(s"##### $n -> $v0")
     val v = if (n.matches(".*(genre|fict).*")) v0.map(_.toLowerCase) else v0
     if (v.isEmpty) b else {
       val b1 = b.copy(child = b.child ++ Seq(
@@ -22,9 +22,12 @@ case class addProcessedMetadataValues() {
           {v.map(x => <interp>{x}</interp>)}
         </interpGrp>
       ))
-      val check = getField(b1, n)
-      Console.err.println(s"##### CHECK $n -> $check")
-      b1
+      val newValue = getField(b1, n)
+      val oldValue = getField(b,n)
+      if (oldValue.nonEmpty) {
+        Console.err.println(s"!!!! Combinatieveld was er al CHECK $n -> $newValue; was: $oldValue")
+        b
+      } else b1
     }
   }
 
@@ -77,7 +80,7 @@ case class addProcessedMetadataValues() {
       g => (g \ "@type").text -> g.text.toLowerCase.contains("geschiedenis")).filter(_._2).map(_._1).map(_.replaceAll("genre","subgenre"))
 
     val addProse = if (history.nonEmpty) Seq(<interp>prose</interp>) else Seq()
-    Console.err.println("history fields: " + history)
+    // Console.err.println("history fields: " + history)
 
     val cleanedChildren = b.child.map(g => {
       if (g.label != "interpGrp" || !(g \ "@type").text.startsWith("genre")) g else {
@@ -97,7 +100,7 @@ case class addProcessedMetadataValues() {
         if (history.contains(t)) x.asInstanceOf[Elem].copy(child = x.child ++ Seq(hist)) else x
       }
     ) ++ addHistory.map(x => <interpGrp type={x}>{hist}</interpGrp>)
-    Console.err.println((enhancedChildren \\ "interpGrp").filter(z => z.text.contains("history") || z.text.contains("geschiedenis")))
+    // Console.err.println((enhancedChildren \\ "interpGrp").filter(z => z.text.contains("history") || z.text.contains("geschiedenis")))
     b.copy(child = enhancedChildren)
   }
 
@@ -109,7 +112,7 @@ case class addProcessedMetadataValues() {
       val t = (ig \ "@type").text.replaceAll("factuality","fictionality")
       val value = ig.text.replaceAll("ctie", "ction").toLowerCase.trim
       val z = <interpGrp type={t}><interp>{value}</interp></interpGrp>
-      Console.err.println(s"FACT OR FICTION! $sourceID --> $z")
+      // Console.err.println(s"FACT OR FICTION! $sourceID --> $z")
       z
     }
 
@@ -194,13 +197,16 @@ case class addProcessedMetadataValues() {
 
     val bNew = toAdd.foldLeft(b)( {case (b1,(n,v:Seq[String])) =>
       {
-        Console.err.println(s"$n=$v")
+        // Console.err.println(s"$n=$v")
         addProcessedValue(b1,n,v)
       } }
     )
     //val check = getFieldMap(bNew)
     //Console.err.println(check)
-    bNew
+    // remove newlines etc (better for display in application)
+    PostProcessXML.updateElement(bNew, _.label=="interp", i =>
+      if (i.child.size == 1) i.copy(child = Text(i.text.replaceAll("\\s+", " ").trim)) else i)
+    // bNew
   }
 
   def findListBibl(d: Elem) = (d \\ "listBibl").filter(l => (getId(l).map(x => x.toLowerCase.contains("inlmetadata")
@@ -232,10 +238,13 @@ case class addProcessedMetadataValues() {
 
 
 object addRolandsCorrectionsONW extends addProcessedMetadataValues() {
+
   lazy val db = HistoricalMetadatabase.db
   val onwDir = HistoricalMetadatabase.ONWMetaDir
+
   lazy val getTekstsoort: Map[String, Map[String, String]] = db.slurp(db.allRecords("tekstsoort")).groupBy(m => m("persistentId")).mapValues(_.head)
   lazy val getAllMeta:  Map[String, Map[String, String]] = db.slurp(db.allRecords("metadata")).groupBy(m => m("persistentId")).mapValues(_.head)
+
   override def fixFile(in: String, out: String) =
   {
     val d0 = XML.load(in)
@@ -245,7 +254,7 @@ object addRolandsCorrectionsONW extends addProcessedMetadataValues() {
     //println(metaOrg)
     val pid = metaOrg("pid").head
 
-    val tekstsoort: Map[String, String] = getTekstsoort(pid)
+    val tekstsoort: Map[String, String] = getTekstsoort(pid).filterKeys(k => !addedFieldNames.contains(k) || k.contains("genre"))
     val allMeta = getAllMeta(pid)
     val bNew = tekstsoort.foldLeft(bibl){case (b, (k,v)) => updateField(b, k, Seq(v))}
     val d1 = PostProcessXML.updateElement(d0, _ == bibl, x => bNew)
@@ -259,7 +268,6 @@ object addRolandsCorrectionsONW extends addProcessedMetadataValues() {
       w.close()
     } else XML.save(out, d,  enc="UTF-8")
     */
-
   }
 
   def main(args: Array[String]): Unit = {

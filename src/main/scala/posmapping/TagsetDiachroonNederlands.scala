@@ -8,7 +8,7 @@ import corpusprocessing.gysseling.HistoricalTagsetPatching
 
 import scala.xml.XML
 object DataSettings {
-   val onwDir = "/home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
+   val onwDir = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-processed-metadata-v3" // /home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
    val gysDir = "../data-historische-corpora/gysseling/gysseling-processed-metadata/"
    val babDir="/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN"
 }
@@ -258,13 +258,23 @@ object TagsetDiachroonNederlands {
   }
 
   def doONW = {
-      // tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
-
+    //tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
+    // tagsetFromCorpusFiles(DataSettings.onwDir, "pos", "/tmp/ONWTags", "ONW")
     val conversionTable = "/tmp/allTags.onwmap.txt"
 
     val mapping = io.Source.fromFile(conversionTable).getLines().map(_.split("\\t")).map(r => s"${r(0)};${r(1)}" -> r(2)).toMap
     tagsetFromSetOfTags("data/TDN/Corpora/ONW/", "ONW", mapping)
    }
+
+  def doONWFromCorpus = {
+    //tagsetFromCorpusFiles(DataSettings.onwDir, "msd", "data/TDN/Corpora/ONW/", "ONW")
+    val t = tagsetFromCorpusFiles(DataSettings.onwDir, "pos", "/tmp/ONWTags/", "ONW")
+    //addDescriptionsFromTDN("/tmp/ONWTags",t,"ONW", Some("ONW"))
+    //val conversionTable = "/tmp/allTags.onwmap.txt"
+
+    //val mapping = io.Source.fromFile(conversionTable).getLines().map(_.split("\\t")).map(r => s"${r(0)};${r(1)}" -> r(2)).toMap
+    //tagsetFromSetOfTags("data/TDN/Corpora/ONW/", "ONW", t)
+  }
 
   def doGysselingFromCorpus = {
     val m = tagsetFromCorpusFiles(DataSettings.gysDir, "pos", "data/TDN/Corpora/Gysseling/", "Gysseling", Some("gysseling_nt") )
@@ -334,8 +344,12 @@ object TagsetDiachroonNederlands {
       //doONW
       //doGysselingFromCorpus
      // doBaB
-     TDNTagset.copy(pos2partitions = coreFeatures).generateTags("core")
-     doCore
+     doONWFromCorpus
+     val core = false
+     if (core) {
+       TDNTagset.copy(pos2partitions = coreFeatures).generateTags("core")
+       doCore
+     }
    }
 }
 
