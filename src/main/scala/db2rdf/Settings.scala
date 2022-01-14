@@ -3,7 +3,8 @@ package db2rdf
 import database.Configuration
 
 object Settings {
-  val gigantHilexDB = new database.Database(Configuration("x", "svowdb06","gigant_hilex_candidate", "fannee", "Cric0topus"))
+  val gigantHilexDBOld = new database.Database(Configuration("x", "svowdb06","gigant_hilex_candidate", "fannee", "Cric0topus"))
+  val gigantHilexDB = new database.Database(Configuration("x", "svowdb16.ivdnt.loc","gigant_hilex_candidate", "dba", "vercingetorix"))
   val doLexCit = false
   val useLangStrings = false
   val outputDefinitionsAndQuotations = true
