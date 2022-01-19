@@ -24,7 +24,6 @@ object fixTokenization {
      s.copy(child=groupedChild)
    }
 
-
   /*
               <w pos="NOU-C(number=uncl)+VRB(finiteness=fin,tense=uncl)" ctag="N+WW_PV"
               lemma="vuur+beschutten" gloss="+" time="2018-04-10T16:33:12" resp="tom" mform="+" type="N" xml:id="cast005cons01_01.TEI.2.text.body.div.p.13479.s.1.w.9">vierBeschudt</w>

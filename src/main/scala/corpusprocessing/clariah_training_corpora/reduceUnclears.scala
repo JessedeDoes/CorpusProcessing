@@ -14,8 +14,15 @@ object reduceUnclears {
     val mainPos = pos.replaceAll("\\(.*", "")
     val newPos = (mainPos match {
       case "NOU-C" => pos.replaceAll("number=uncl", "number=sg")
-      case "ADV" => pos.replaceAll("type=uncl", "type=reg")
-      case "VRB" => pos.replaceAll("tense=uncl", "tense=pres")
+      case "ADV" => pos.replaceAll("type=uncl",
+        if (Set("er","daar").contains(lemma)) "type=pron" else "type=reg"
+      )
+      case "VRB" =>  {
+        if (w.endsWith("de")) {
+          // Console.err.println(s"$w $pos")
+        }
+        pos.replaceAll("tense=uncl", "tense=pres")
+      }
       case "NUM" if w.matches("[0-9]+")  => pos.replaceAll("representation=uncl", "representation=dig")
       case "NUM" if w.matches("[A-Za-z]+") => pos.replaceAll("representation=uncl", "representation=let")
       case _ => pos
@@ -36,19 +43,24 @@ object reduceUnclears {
 
     val lSplit = splitX(lemma, "[|+]")
     val pSplit = splitX(pos, "[|+]")
+
     if (lSplit.map(_._2) != pSplit.map(_._2)) {
-      Console.err.println(s"!!!Inconsistentie: $lemma || $pos")
+      // Console.err.println(s"!!!Inconsistentie: $lemma || $pos")
     }
-    val lp0 = lSplit.zip(pos.split("[|+]"))
-    val lp : Seq[(String, String)] = lp0.map{ case ((l,s),p) => { fixAnnot(word, l, p); (l,p)} -> s}.map{ case ((l,p), s) => (l +s.getOrElse(""), p + s.getOrElse(""))}
+
+    val lp0 = pSplit.zip(lemma.split("[|+]"))
+    //val lp : Seq[(String, String)] = lp0.map{ case ((p,s),l) => { fixAnnot(word, l, p); (l,p)} -> s}.map{ case ((l,p), s) => (l +s.getOrElse(""), p + s.getOrElse(""))}
+    val lp = pSplit.map{case (p,s) => fixAnnot(word, lemma, p) -> s}.map{ case ((l,p), s) => (l +s.getOrElse(""), p + s.getOrElse(""))}
     val l1 = lp.map(_._1).mkString("")
     val p1 = lp.map(_._2).mkString("")
     if (lp.length > 1) {
-      Console.err.println(s"\nPAS OP $lp0 ===> $lp")
-      if (p1 != pos) Console.err.println(s"$word, $lemma, $pos => ($l1, $p1)")
+      // Console.err.println(s"\nPAS OP $lp0 ===> $lp")
     }
+
+    // if (p1 != pos) Console.err.println(s"#${lp.size} $word, $lemma, $pos => ($l1, $p1) ///// $lp")
+
     w.copy(attributes = w.attributes.filter(a => !Set("lemma","pos").contains(a.key))
-      .append(new UnprefixedAttribute("lemma", l1, Null)).append(new UnprefixedAttribute("pos", p1, Null)))
+      .append(new UnprefixedAttribute("lemma", lemma, Null)).append(new UnprefixedAttribute("pos", p1, Null)))
   }
 
   def fixDocje(d: Elem) : Elem = {

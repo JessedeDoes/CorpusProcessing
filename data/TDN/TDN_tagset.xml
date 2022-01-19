@@ -139,8 +139,32 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Strong or irregular" desc="Strong or irregular">
+          <value>strong|irreg</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Strong or irregular or preterite present" desc="Strong or irregular or preterite present">
+          <value>strong|irreg|pretpres</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Strong or preterite present" desc="Strong or preterite present">
+          <value>strong|pretpres</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Weak" desc="Weak">
           <value>weak</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Weak or irregular" desc="Weak or irregular">
+          <value>weak|irreg</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -197,26 +221,26 @@
           <value>n</value>
           
         </featureValue>
-        <featureValue displayName="Feminine/Neuter" desc="Feminine or neuter">
+        <featureValue displayName="Feminine or neuter" desc="Feminine or neuter">
           <value>f|n</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Masculine/Feminine" desc="Masculine or feminine">
+        <featureValue displayName="Masculine or feminine" desc="Masculine or feminine">
           <value>m|f</value>
           <posForValue>
             <pos>AA</pos>
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Masculine/Feminine/Neuter" desc="Masculine or feminine or neuter">
+        <featureValue displayName="Masculine or feminine or feuter" desc="Masculine or feminine or neuter">
           <value>m|f|n</value>
           <posForValue>
             <pos>AA</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Masculine/Neuter" desc="Masculine or neuter">
+        <featureValue displayName="Masculine or neuter" desc="Masculine or neuter">
           <value>m|n</value>
           <posForValue>
             <pos>AA</pos>
@@ -298,6 +322,26 @@
 	    <pos>NUM</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Nominative or genitive" desc="Nominative or genitive">
+          <value>nom|gen</value>
+          <posForValue>
+            <pos>AA</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
+            <pos>PD</pos>
+	    <pos>NUM</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Nominative or accusative" desc="Nominative or accusative">
+          <value>nom|acc</value>
+          <posForValue>
+            <pos>AA</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
+            <pos>PD</pos>
+	    <pos>NUM</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Genitive" desc="Genitive">
           <value>gen</value>
           <posForValue>
@@ -306,6 +350,26 @@
             <pos>NOU-P</pos>
             <pos>PD</pos>
             <pos>NUM</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Genitive or dative" desc="Genitive or dative">
+          <value>gen|dat</value>
+          <posForValue>
+            <pos>AA</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
+            <pos>PD</pos>
+            <pos>NUM</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Genitive or accusative" desc="Genitive or accusative">
+          <value>gen|acc</value>
+          <posForValue>
+            <pos>AA</pos>
+            <pos>NOU-C</pos>
+            <pos>NOU-P</pos>
+            <pos>PD</pos>
+	    <pos>NUM</pos>
           </posForValue>
         </featureValue>
         <featureValue displayName="Dative" desc="Dative">
@@ -328,7 +392,7 @@
             <pos>NUM</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Dative/Accusative" desc="Dative or accusative">
+        <featureValue displayName="Dative or accusative" desc="Dative or accusative">
           <value>dat|acc</value>
           <posForValue>
             <pos>AA</pos>
@@ -450,8 +514,20 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Masculine or feminine" desc="Masculine or feminine">
+          <value>m/f</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Feminine" desc="Feminine">
           <value>f</value>
+          <posForValue>
+            <pos>PD</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Feminine or neuter" desc="Feminine or neuter">
+          <value>f/n</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
@@ -462,32 +538,22 @@
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <!--
-        <featureValue displayName="Feminine/Neuter" desc="Feminine or neuter">
-          <value>f/n</value>
-          <posForValue>
-            <pos>PD</pos>
-          </posForValue>
-        </featureValue>
-        <featureValue displayName="Masculine/Feminine" desc="Masculine or feminine">
-          <value>m/f</value>
-          <posForValue>
-            <pos>PD</pos>
-          </posForValue>
-        </featureValue>
+<!--
+Dit is unclear en mag dus niet
         <featureValue displayName="Masculine/Feminine/Neuter" desc="Masculine or feminine or neuter">
           <value>m/f/n</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Masculine/Neuter" desc="Masculine or neuter">
+-->
+        <featureValue displayName="Masculine or neuter" desc="Masculine or neuter">
           <value>m/n</value>
           <posForValue>
             <pos>PD</pos>
           </posForValue>
         </featureValue>
-        -->
+        
         <featureValue displayName="Unclear" desc="Unclear">
           <value>uncl</value>
           <posForValue>
@@ -567,7 +633,7 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Indicative|Conjunctive" desc="Indicative or conjunctive">
+        <featureValue displayName="Indicative or conjunctive" desc="Indicative or conjunctive">
           <value>ind|conj</value>
           <posForValue>
             <pos>VRB</pos>
@@ -617,6 +683,12 @@
       <values>
         <featureValue displayName="1" desc="First person">
           <value>1</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="1 or 3" desc="First or third person">
+          <value>1|3</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -873,6 +945,13 @@
             <pos>ADV</pos>
           </posForValue>
         </featureValue>
+       <featureValue displayName="Indefinite or interrogative" desc="Indefinite or interrogative">
+          <value>indef|inter</value>
+          <posForValue>
+            <pos>ADV</pos>
+          </posForValue>
+        </featureValue>
+
         <featureValue displayName="Interrogative" desc="Interrogative adverb">
           <value>inter</value>
           <posForValue>
@@ -1241,6 +1320,18 @@
             <pos>VRB</pos>
           </posForValue>
         </featureValue>
+        <featureValue displayName="Transitive or intransitive" desc="Transitive or intransitive">
+          <value>trans|intr</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Transitive or reflexive" desc="Transitive or reflexive">
+          <value>trans|refl</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
         <featureValue displayName="Intransitive" desc="Intransitive">
           <value>intr</value>
           <posForValue>
@@ -1288,7 +1379,7 @@
             <pos>ADP</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Dative/Accusative" desc="Dative/Accusative">
+        <featureValue displayName="Dative or accusative" desc="Dative or accusative">
           <value>dat|acc</value>
           <posForValue>
             <pos>ADP</pos>

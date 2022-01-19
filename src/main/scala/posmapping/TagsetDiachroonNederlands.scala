@@ -8,7 +8,8 @@ import corpusprocessing.gysseling.HistoricalTagsetPatching
 
 import scala.xml.XML
 object DataSettings {
-   val onwDir = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-processed-metadata-v3" // /home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
+   val onwDirOld = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-processed-metadata-v3" // /home/jesse/workspace/data-historische-corpora/ONW/ONW-processed-metadata/"
+   val onwDir = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022"
    val gysDir = "../data-historische-corpora/gysseling/gysseling-processed-metadata/"
    val babDir="/mnt/Projecten/corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN"
 }
