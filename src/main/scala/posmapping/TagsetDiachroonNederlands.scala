@@ -206,6 +206,7 @@ object TagsetDiachroonNederlands {
       val t1 = if (fixtags) tagsetPlus.fixTag(t0) else t0
       t1.asInstanceOf[CHNStyleTag]}
     )
+
     r.toList.sortBy({case (x,t) => t.toString()}).foreach({case (x, t) =>
         val (ok, infringed) = t.tagset.tagSatisfiesImplications(t)
         val redundancies = if (ok) t.hasUnforcedFeatures() else List[(String,Tag)]();

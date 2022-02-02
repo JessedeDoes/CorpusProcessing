@@ -60,6 +60,8 @@ libraryDependencies += "org.ow2.sat4j" % "org.ow2.sat4j.core" % "2.3.5"
 libraryDependencies += "guru.nidi" % "graphviz-java" % "0.5.2"
 
 
+libraryDependencies += "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
+
 // https://commons.apache.org/proper/commons-text/javadocs/api-release/org/apache/commons/text/WordUtils.html
 
 

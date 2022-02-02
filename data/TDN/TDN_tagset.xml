@@ -11,10 +11,10 @@
     <pos_molex displayName="Polylexical" desc="Polylexical">COLL</pos_molex>
     <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
     <pos displayName="Interjection" desc="Interjection">INT</pos>
-    <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
-    <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
+    <pos displayName="Noun Common" desc="Noun Common">NOU-C</pos>
+    <pos displayName="Noun Proper" desc="Noun Proper">NOU-P</pos>
     <pos displayName="Numeral" desc="Numeral">NUM</pos>
-    <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
+    <pos displayName="Pronoun-Determiner" desc="Pronoun-Determiner">PD</pos>
     <pos displayName="Residual" desc="Residual">RES</pos>
     <pos displayName="Verb" desc="Verb">VRB</pos>
   </mainPoS>
@@ -171,6 +171,12 @@
         </featureValue>
         <featureValue displayName="Irregular" desc="Irregular">
           <value>irreg</value>
+          <posForValue>
+            <pos>VRB</pos>
+          </posForValue>
+        </featureValue>
+        <featureValue displayName="Irregular or preterite present" desc="Irregular or preterite present">
+          <value>irreg|pretpres</value>
           <posForValue>
             <pos>VRB</pos>
           </posForValue>
@@ -865,7 +871,7 @@ Dit is unclear en mag dus niet
             <pos>AA</pos>
           </posForValue>
         </featureValue>
-        <featureValue displayName="Pre- or postnominal or predicative"
+        <featureValue displayName="Prenominal or postnominal or predicative"
           desc="Prenominal or postnominal or predicative">
           <value>prenom|postnom|pred</value>
           <posForValue>

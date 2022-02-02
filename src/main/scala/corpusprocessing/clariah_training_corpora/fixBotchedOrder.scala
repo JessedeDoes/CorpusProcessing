@@ -6,8 +6,8 @@ import java.io.File
 import utils.{PostProcessXML, ProcessFolder}
 object fixBotchedOrder {
   val correctOrderDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/Mapped2TDN/"
-  val exportDir = "/home/jesse/Downloads/CobaltServeExportFixed"
-  val orderFixedDir = "/home/jesse/Downloads/CobaltServeExportOrderCorrected"
+  val inputDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/PostProcessed/"
+  val orderFixedDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/PostProcessed_Orderfixed/"
 
   lazy val reference: Map[String, File] = allFilesin(new File(correctOrderDir)).filter(_.getName.endsWith(".xml")).map(x => getId(XML.loadFile(x)) -> x).toMap
 
@@ -21,6 +21,7 @@ object fixBotchedOrder {
   def tokensIn(s: Node)  = s.child.filter(x => x.label == "w" || x.label == "pc")
 
   val logPermutations = false
+
   def fixOrder(sCorrect: Elem, sBotched: Elem)  = {
      val correctOrder = tokensIn(sCorrect).filter(!_.text.contains("..")).map(getId).zipWithIndex.toMap
      val botchedOrder = tokensIn(sBotched).map(getId).zipWithIndex.toMap
@@ -50,7 +51,7 @@ object fixBotchedOrder {
   }
 
   def main(args: Array[String]): Unit = {
-    ProcessFolder.processFolder(new File(exportDir), new File(orderFixedDir), {case (i,o) =>
+    ProcessFolder.processFolder(new File(inputDir), new File(orderFixedDir), {case (i,o) =>
       if (i.endsWith(".xml")) {
         val inDoc = XML.load(i)
         val outDoc = fixDocje(inDoc,i)
@@ -58,5 +59,6 @@ object fixBotchedOrder {
         XML.save(o, outDoc, "UTF-8")
       }
     })
+    reduceUnclears.main(args.filter(_ => 0==1))
   }
 }

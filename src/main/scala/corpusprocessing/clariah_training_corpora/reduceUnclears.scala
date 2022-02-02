@@ -7,8 +7,8 @@ import scala.xml._
 
 object reduceUnclears {
 
-  val inDir = "/home/jesse/Downloads/CobaltServeExport"
-  val fixedDir = "/home/jesse/Downloads/CobaltServeExportFixed"
+  val inDir = fixBotchedOrder.orderFixedDir
+  val fixedDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/PostProcessed_LessUnclear"
 
   def fixAnnot(w:  String, lemma: String, pos: String): (String, String) = {
     val mainPos = pos.replaceAll("\\(.*", "")
