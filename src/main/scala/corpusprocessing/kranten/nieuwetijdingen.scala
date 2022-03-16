@@ -1,32 +1,79 @@
 package corpusprocessing.kranten
+import database.DatabaseUtilities.Select
+
 import scala.xml._
 import utils.PostProcessXML._
 import utils.ProcessFolder
-import java.io.File
+
+import java.io.{File, FileWriter}
 import scala.util.matching.Regex._
 
 object nieuwetijdingen {
   val input = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Teksten/AllesWelgevormd/"
   val output = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Teksten/OpWegNaarTEI/"
+  lazy val outList = new FileWriter("/tmp/tijdingen.tsv")
+  val scanDir = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Scans/PDF/"
+  val krantenconfig = new database.Configuration(
+    name = "krantjes",
+    server = "svowdb20.ivdnt.loc",
+    database = "nieuwe_tijdingen",
+    user = "postgres",
+    password = "inl")
+
+  val db = new database.Database(krantenconfig)
+
+
+  val fields = "titleFromFilename,titleFromDoc,datumFromDoc,jaar,maand,dag,filePath,scan,distance".split(",")
+  outList.write(fields.mkString("\t") + "\n")
 
   val maandMapping = "jan|feb|mar|apr|mei|jun|jul|aug|sep|okt|nov|dec".split("\\|").zipWithIndex.map{case (m,i) => m -> (i+1)}.toMap
 
   val mdPattern = "([0-9]{1,2}[_ ])?+(jan|feb|mar|apr|mei|jun|jul|aug|sep|okt|nov|dec)".r
 
-  def metadataFromFilename(f0: String): (Elem, String) = {
-    val f = f0.replaceAll(".xml", "").replaceAll(".*/", "").replaceAll(", ontkleurd", "")
-    val year = f.replaceAll("_.*", "")
-    val zonderJaar = f.replaceAll("^[0-9]{4}_", "")
+
+  lazy val allScans = new File(scanDir).listFiles.map(_.getName)
+
+  def loadInDB() = {
+    db.runStatement("drop table if exists plaatsmatch_upload_new")
+    db.runStatement(
+      s"""create table plaatsmatch_upload_new (
+            ${fields.map(f => f.toLowerCase + " text").mkString(", ")}
+         )
+        """)
+    db.loadFile("plaatsmatch_upload_new", new java.io.File("/tmp/tijdingen.tsv"))
+  }
+
+  def metadataFromFilename(filePath: String, doc: Elem): (Elem, String) = {
+
+    val baseFileName = filePath.replaceAll(".xml", "").replaceAll(".*/", "").replaceAll(", ontkleurd", "")
+    val year = baseFileName.replaceAll("_.*", "")
+    val zonderJaar = baseFileName.replaceAll("^[0-9]{4}_", "")
     val md = mdPattern.findFirstIn(zonderJaar)
     val (m,d) = md.map(s => {
       val m = s.replaceAll("[^a-z]", "")
       val d = s.replaceAll("[^0-9]", "")
       (maandMapping.get(m), if (d.nonEmpty) Some(d.toInt) else None)
     }).getOrElse((None,None))
-    val title = mdPattern.replaceAllIn(zonderJaar, "").replaceAll("^[0-9]+_", "")
+
+    val maybeScan = new File(scanDir +  baseFileName + ".pdf")
+
+    val (scan,confidence) = if (maybeScan.exists()) (maybeScan.getCanonicalPath, 0) else {
+      val gok = allScans.minBy(f => utils.EditDistance.ciDistance(f.replaceAll(".pdf", ""),baseFileName))
+      val dist = utils.EditDistance.ciDistance(gok.replaceAll(".pdf", ""),baseFileName)
+      gok -> dist
+    }
+    val titleFromFilename = mdPattern.replaceAllIn(zonderJaar, "").replaceAll("^[0-9]+_", "").replaceAll("^_", "")
+    val titleFromDoc = (doc \\ "titel").text.replaceAll("\\s+", " ").trim
+    val datumFromDoc= (doc \\ "datum").text.replaceAll("\\s+", " ").trim
+
+
+    val metaList = List(titleFromFilename,titleFromDoc,datumFromDoc,year,m.getOrElse(""),d.getOrElse(""), filePath, scan, confidence)
+
+    outList.write(metaList.mkString("\t") + "\n")
+
     val meta =  <listBibl type="inlMetadata" xml:id="inlMetadata">
       <bibl>
-        <interpGrp type="titleLevel1"><interp>ZN kranten 17: {title}</interp></interpGrp>
+        <interpGrp type="titleLevel1"><interp>ZN kranten 17: {titleFromFilename}</interp></interpGrp>
         <interpGrp type="titleLevel2"><interp>Nieuwe tijdingen</interp></interpGrp>
         <interpGrp type="corpusProvenance"><interp>Corpus Zuid-Nederlandse Historische Kranten</interp></interpGrp>
         <interpGrp type="witnessYearLevel1_from"><interp>{year}</interp></interpGrp>
@@ -38,7 +85,7 @@ object nieuwetijdingen {
         {d.map(x => <interpGrp type="witnessDayLevel1_to"><interp>{x}</interp></interpGrp>).getOrElse(Seq())}
       </bibl>
       </listBibl>
-    (meta, title)
+    (meta, titleFromFilename)
      // println(s"$year // $md1 // $title")
   }
 
@@ -64,20 +111,41 @@ object nieuwetijdingen {
     )
   }
 
+
   def main(args: Array[String]): Unit = {
+
     ProcessFolder.processFolder(new File(input), new File(output), {case (i,o) =>
       if (i.endsWith(".xml")) {
         val g = new File(i)
         val inDoc = XML.loadFile(g)
-        val (meta, title) = metadataFromFilename(i)
+        val (meta, title) = metadataFromFilename(i, inDoc)
         val outDoc = fixDocje(inDoc, meta, title)
         val outTSV = o.replaceAll(".xml$", ".tsv")
         XML.save(o, outDoc, "UTF-8")
       }
     })
+
+    outList.close()
+    loadInDB()
   }
 }
 
+
+object loadTextIntoDB
+{
+  import nieuwetijdingen.db
+
+  lazy val bestanden = db.slurp(Select(r => r.getString("filepath"), "bestanden"))
+
+  def main(args: Array[String]): Unit = {
+    bestanden.foreach(b => {
+      val content = io.Source.fromFile(b).getLines().mkString("\n").replaceAll("'", "''") // .replaceAll("\\s+", " ")
+      val b1 = b.replaceAll("'", "''")
+      val q = s"update content set content='$content' where filepath='${b1}'"
+      db.runStatement(q)
+    })
+  }
+}
 /*
 1621_84_Puncten ende articulen wat die van de stadt Ellenboghen, ontkleurd.xml
 1621_85_Verhael van de victorie die den grave van Bucquoy vercreghen heeft, ontkleurd.xml

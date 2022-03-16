@@ -10,7 +10,7 @@ import java.io.PrintWriter
 //  Ceurvorst van Saxen
 // Marckgraef van Bareith
 case class City(land: String, plaats: String, spelling: String, id:Int) {
-  override def toString: String = s"{$plaats/$land}"
+  override def toString: String = s"$plaats/$land".replaceAll("\\s+", " ")
 }
 
 case class Node(spelling: String, next: Map[String,Node] = Map.empty, cities: Set[City] = Set.empty) {
@@ -28,7 +28,7 @@ object Plaatsnamen {
 
   val cities = krantendb.slurp(
     Select(
-       r => City(r.getString("land"), r.getString("plaats"), r.getString("spelling"), r.getInt("id")), "cities_rob where (not fishy) or changed"))
+       r => City(r.getString("land"), r.getString("plaats"), r.getString("spelling"), r.getInt("id")), "cities_rob where ok")) //  where (not fishy) or changed"))
 
   def oneToNode(c: City) : Node = {
     val tokens = Tokenizer.tokenize(c.spelling).reverse
@@ -70,13 +70,9 @@ object Plaatsnamen {
 
     val hits: Seq[Seq[(Int,Node)]] = tokens.indices.flatMap(i => extend(Seq(i -> nodeZero), i)).filter(l => l.nonEmpty && l.tail.nonEmpty && l.last._2.cities.nonEmpty)
     val matches = hits.map(Match(a, _, tokens))
-
     val maximal_matches = matches.filter(m => !matches.exists(m1 => m.properSubmatchOf(m1)))
-    
     val cities = hits.flatMap(_.last._2.unique_cities).toSet
-
     val unique_cities = cities.groupBy(x => (x.land, x.plaats)).values.map(_.head).toSet
-
     unique_cities
     maximal_matches
   }
@@ -93,12 +89,41 @@ object Plaatsnamen {
     }
 
     matches.foreach{case (a,ms) =>
-      val c = ms.flatMap(_.cities).toSet
-      val asFound: Set[String] = (ms.map(_.matched_form).toSet)//.map(s => s"<$s>")// .mkString("; ")
-      val asFoundP = asFound.map(s => s"<$s>").mkString("; ")
-      all.println(s"${c.exists(_.plaats==a.city)}\t${a.tekstsoort}\t${a.record_id}\t${a.header}\t${a.subheader}\t${a.city}\t${c.mkString(";")}\t$asFoundP")
+      val citiesMatched: Set[City] = ms.flatMap(_.cities).toSet
+      val historicalNames: Set[String] = (ms.map(_.matched_form).toSet)//.map(s => s"<$s>")// .mkString("; ")
+      val historicalNamesForPrinting = historicalNames.map(s => s"$s").mkString(";")
+
+
+      val fields = List(a.record_id,
+        a.tekstsoort,
+        a.header,
+        a.subheader,
+        a.city,
+        citiesMatched.mkString(";"),
+        historicalNamesForPrinting,
+        citiesMatched.size,
+        !citiesMatched.exists(_.plaats==a.city))
+
+
+      all.println(fields.mkString("\t"))
     }
     all.close()
+    Settings.krantendb.runStatement("drop table if exists plaatsmatch_upload_new")
+    Settings.krantendb.runStatement(
+      """create table plaatsmatch_upload_new (
+         record_id integer,
+         tekstsoort text,
+         header text,
+         subheader text,
+         plaats_prev text,
+         plaats_gevonden text,
+         plaats_match text,
+         n_matches integer,
+         changed boolean
+         )
+        """)
+
+    Settings.krantendb.loadFile("plaatsmatch_upload_new", new java.io.File("/tmp/all.txt"))
 
     val N = citiesFound.size
     val nonEmpty = citiesFound.count(_._2.nonEmpty)

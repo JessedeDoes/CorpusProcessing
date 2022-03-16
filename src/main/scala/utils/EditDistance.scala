@@ -16,6 +16,7 @@ object EditDistance {
 
       dist(s2.length)(s1.length)
     }
+
     def ciDistance(s1:String, s2:String)= distance(s1.toLowerCase, s2.toLowerCase)
 
     def lengthWeightedDistance(s1:String, s2:String):Double =

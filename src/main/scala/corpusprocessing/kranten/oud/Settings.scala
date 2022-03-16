@@ -11,12 +11,12 @@ object Settings {
     password = "inl")
 
   val krantendb = new database.Database(krantenconfig)
-
-  val sillyQuery = """
+  val article_table = "articles_int"
+  val sillyQuery = s"""
                     create temporary table normalized_subheaders as select record_id, string_agg(word, ' ' order by tellertje)
     as normalized_subheader from subheader_words group by record_id;
     create temporary view with_normalized_subheader as
-      select articles_int.*, normalized_subheaders.normalized_subheader from
+      select $article_table.*, normalized_subheaders.normalized_subheader from
       articles_int left join normalized_subheaders on articles_int.record_id = normalized_subheaders.record_id;
     """
 
@@ -32,7 +32,7 @@ object Settings {
       r.getString("issue_date"),
       r.getString("paper_title"),
       r.getString("land"),
-      r.getString("plaats"),
+      r.getString("plaats").replaceAll("\\s+", " ").trim,
       r.getString("tekstsoort"),
       r.getStringNonNull("header").replaceAll("\\s+", " "),
       r.getStringNonNull("subheader").replaceAll("\\s+", " ").replaceAll("\u00a0"," "),

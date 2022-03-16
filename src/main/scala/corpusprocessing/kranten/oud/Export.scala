@@ -30,13 +30,13 @@ Indexes:
    */
   val nameMap = Map(
     "issue_date" -> "witnessDate_from",
-    "tekstsoort" -> "articleClass",
+    "tekstsoort_int" -> "articleClass",
     "paper_title" -> "titleLevel2", // of moet dat 3 wezen??
     "subheader" -> "titleLevel1",
     "header" -> "newspaperSection",
     "record_id" -> "sourceID",
-    "plaats" -> "settingLocation_place",
-    "land" -> "settingLocation_country",
+    "plaats_int" -> "settingLocation_place",
+    "land_int" -> "settingLocation_country",
     "colophon" -> "colophon",
     //"weekday" -> "witnessDoWLevel1_from"
   )
@@ -70,6 +70,7 @@ Indexes:
     def x(s: String) = r.getStringNonNull(s).trim;
     val date = x("issue_date")
     val year = date.replaceAll("-.*", "")
+    val decade = if (year.matches("[0-9]{4}")) year.replaceAll(".$", "0") else "undefined"
     val month = date.replaceAll("^.*?-","").replaceAll("-.*","")
     val day =  date.replaceAll(".*-","")
     val delpher_link = s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${x("kb_article_id")}"
@@ -97,7 +98,9 @@ Indexes:
           <bibl>
             {ig("pid",pid)}
             {i("record_id")}
+
             {ig("witnessYearLevel1_from", year)}
+            {ig("decade", decade)}
             {ig("witnessMonthLevel1_from", month)}
             {ig("witnessDayLevel1_from", day)}
             {ig("witnessYearLevel1_to", year)}
@@ -113,15 +116,15 @@ Indexes:
 
 
             {ig("sourceUrl", delpher_link)}
-            {ig("corpusProvenance", "The van der Sijs newspaper Corpus")}
+            {ig("corpusProvenance", "Courantencorpus")}
             {ig("editorLevel3", "Nicoline van der Sijs")}
 
-            {i("tekstsoort")}
+            {i("tekstsoort_int")}
             {i("paper_title")}
             {i("header")}
             {i("subheader")}
-            {i("land")}
-            {i("plaats")}
+            {i("land_int")}
+            {i("plaats_int")}
             {i("colophon")}
           </bibl>
         </listBibl>
