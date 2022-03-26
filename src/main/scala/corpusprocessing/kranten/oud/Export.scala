@@ -5,7 +5,7 @@ import java.io.PrintWriter
 import scala.xml._
 import Settings._
 
-object Export {
+case class ExportTo(exportDir: String) {
 
 
   /*
@@ -41,15 +41,13 @@ Indexes:
     //"weekday" -> "witnessDoWLevel1_from"
   )
 
-  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export/"
-
-  val exportQuery =   """\"Krantenmetadata17eeeuwdefintieveversie1-22021nw\" a,
+  val exportQuery_old =   """\"Krantenmetadata17eeeuwdefintieveversie1-22021nw\" a,
                         | (select kb_page, kb_issue, subissue from pages_kb) p,
                         | (select kb_issue, subissue, datum_issue, colophon_int,  to_char(datum_issue, 'Day') as weekday from issues_kb ) i
                         | where
                         |   a.kb_page=p.kb_page and p.kb_issue=i.kb_issue and p.subissue=i.subissue"""
 
-  val exportQuery1 = "articles_int"
+  val exportQuery = "articles_int"
 
   case class SillyThing(fileName: String) {
     var empty = true;
@@ -146,16 +144,15 @@ Indexes:
     </TEI>
     (year,tei)
   },
-  exportQuery1.stripMargin)
+  exportQuery.stripMargin)
 
   def export(): Unit = {
    // year_map.values.foreach(x => x.println("<teiCorpus>"))
-
+    krantendb.runStatement("update articles_int set land_roland=distinct_headers.land from distinct_headers where articles_int.header=distinct_headers.header;")
     krantendb.iterator(q).foreach(
       { case (y, n) =>
         if (year_map.contains(y)) {
           year_map(y).println(n.toString())
-
         }
       })
 
@@ -166,66 +163,12 @@ Indexes:
       }
     })
   }
+}
 
+object Export {
+  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export/"
   def main(args: Array[String]): Unit = {
-    export()
+    new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }
 }
 
-/*
-
-https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=ddd:010411983:mpeg21:p001
-                  Table "public.Krantenmetadata17eeeuwdefintieveversie1-22021nw"
-                        Column                         |  Type   | Collation | Nullable | Default
--------------------------------------------------------+---------+-----------+----------+----------
- record_id                                             | text    |           | not null |
- article_text_gesplitst                                | text    |           |          |
- alert_land_nw_niet_gelijk_aan_land_nw_ACHTERHAALD     | text    |           |          |
- alert_plaats_nw_niet_gelijk_aan_plaats_nw_ACHTERHAALD | text    |           |          |
- article_id                                            | text    |           |          |
- article_scannr_KB                                     | text    |           |          |
- article_scannr_KB_pluspagina                          | text    |           |          |
- article_text_CS                                       | text    |           |          |
- article_title_KB                                      | text    |           |          |
- article_title_nw                                      | text    |           |          |
- colophon                                              | text    |           |          |
- colophon_text_CS                                      | text    |           |          |
- colophon_text_nw                                      | text    |           |          |
- commentaar_bewerker                                   | text    |           |          |
- comments_corrector                                    | text    |           |          |
- date_KB                                               | text    |           |          |
- err_text_type                                         | text    |           |          |
- header_autom                                          | text    |           |          |
- header_nw                                             | text    |           |          |
- id                                                    | text    |           |          |
- id_uniek                                              | text    |           |          |
- land_nw                                               | text    |           |          |
- land_nw_ACHTERHAALD                                   | text    |           |          |
- paper_id                                              | text    |           |          |
- paper_title_KB                                        | text    |           |          |
- paper_title_nw                                        | text    |           |          |
- plaats_nw                                             | text    |           |          |
- plaats_nw_ACHTERHAALD                                 | text    |           |          |
- subheader_autom                                       | text    |           |          |
- subheader_nw                                          | text    |           |          |
- tekstsoort_nw                                         | text    |           |          |
- kan_weg                                               | boolean |           |          | false
- opmerking                                             | text    |           |          | ''::text
- has_comment                                           | boolean |           |          | false
- commentaar_kopie                                      | text    |           |          | ''::text
- commentaar_legen                                      | text    |           |          | ''::text
- paper_title_int                                       | text    |           |          |
- article_text_int                                      | text    |           |          |
- article_title_int                                     | text    |           |          |
- header_int                                            | text    |           |          |
- subheader_int                                         | text    |           |          |
- datum_int                                             | date    |           |          |
- tekstsoort_int                                        | text    |           |          |
- kb_page                                               | text    |           |          |
- subissue                                              | text    |           |          |
- kb_issue                                              | text    |           |          |
- no_issue_issues                                       | boolean |           |          | false
-Indexes:
-    "export_pkey" PRIMARY KEY, btree (record_id)
-
- */

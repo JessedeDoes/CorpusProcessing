@@ -95,7 +95,12 @@ object zeeuws {
     println(s"!  ${misbaksels.size} Failures  !")
     misbaksels.take(3).foreach(z => println("\n" + z.article_xml  + "\n" + z.senses_marked))
     //XML.save("/tmp/wzd.xml", xml)
-    new java.io.PrintWriter("/tmp/wzd.xml").println(pretty.format(xml))
-    new java.io.PrintWriter("/tmp/wzd_html.xml").println(pretty.format(html))
+    val p1 = new java.io.PrintWriter("/tmp/wzd.xml")
+    val p2 = new java.io.PrintWriter("/tmp/wzd_html.pretty.xml")
+    val p3 = new java.io.PrintWriter("/tmp/wzd_html.xml")
+    p1.println(pretty.format(xml))
+    p2.println(pretty.format(html))
+    p3.println(html)
+    List(p1,p2,p3).foreach(_.close())
   }
 }

@@ -5,5 +5,5 @@ git add Queries
 git add scripts
 git add lexit
 git commit -am "."
-git push bitbucket master
+git push github master
 
