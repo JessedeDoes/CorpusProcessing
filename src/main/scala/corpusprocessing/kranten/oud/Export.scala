@@ -63,6 +63,7 @@ Indexes:
 
   val restje = "export_"
 
+  def cleanAmp(s:String) = s.replaceAll("&amp([^;])","&$1").replaceAll("&amp;", "&")
   val q = Select(r =>  {
 
     def x(s: String) = r.getStringNonNull(s).trim;
@@ -73,8 +74,9 @@ Indexes:
     val day =  date.replaceAll(".*-","")
     val delpher_link = s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${x("kb_article_id")}"
     val pid = s"kranten_17_${x("record_id")}"
-    def ig(n: String, v: String) = <interpGrp type={n}><interp>{v}</interp></interpGrp>
-    def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{x(n)}</interp></interpGrp>
+    val tekststoort = x("tekstsoort_int").replaceAll("colo.*n|mededeling.advertentie|--", "")
+    def ig(n: String, v: String) = <interpGrp type={n}><interp>{cleanAmp(v)}</interp></interpGrp>
+    def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{cleanAmp(x(n))}</interp></interpGrp>
     val now = java.time.LocalDate.now
 
     val tei  = <TEI>
@@ -99,6 +101,9 @@ Indexes:
 
             {ig("witnessYearLevel1_from", year)}
             {ig("decade", decade)}
+
+            {ig("witnessDateLevel1_from", date)}
+            {ig("witnessDateLevel2_from", date)}
             {ig("witnessMonthLevel1_from", month)}
             {ig("witnessDayLevel1_from", day)}
             {ig("witnessYearLevel1_to", year)}
@@ -117,7 +122,7 @@ Indexes:
             {ig("corpusProvenance", "Courantencorpus")}
             {ig("editorLevel3", "Nicoline van der Sijs")}
 
-            {i("tekstsoort_int")}
+            {ig("articleClass", tekststoort)}
             {i("paper_title")}
             {i("header")}
             {i("subheader")}
@@ -134,12 +139,14 @@ Indexes:
         </revisionDesc>
       </teiHeader>
      <text>
+       <body>
        <div>
          <head>{x("subheader")}</head>
          <p>
            {x("article_text")}
          </p>
        </div>
+       </body>
      </text>
     </TEI>
     (year,tei)

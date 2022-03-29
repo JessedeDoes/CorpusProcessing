@@ -12,9 +12,18 @@ object postProcessBaBTagging {
   val outDir = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/PostProcessed/"
 
   def fixW(e: Elem, ud: Boolean = true) = {
-    val pos = (e \ "@type").text
-    val lem = (e \ "@lemma").text
+    val pos0 = if ((e \ "@pos").nonEmpty) (e \ "@pos").text else (e \ "@type").text
+
+    val lem0 = (e \ "@lemma").text
     val word = e.text.trim
+    //Console.err.println((pos0,lem0))
+    val (pos, lem) = if (pos0.toLowerCase.trim.equals("y") && lem0.toLowerCase.trim.equals("x"))
+      {
+        Console.err.println(s"Bad $e")
+        ("RES(type=uncl)", word)
+      }
+    else (pos0,lem0)
+
     val lp: LemPos = if (ud) TagStuff.parseLemPos(lem, pos).toUD.toStrings else TagStuff.parseLemPos(lem, pos).toTDN.toStrings
 
     val lemma: String = if (lp.lemma.nonEmpty) lp.lemma else word

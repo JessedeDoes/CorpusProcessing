@@ -158,7 +158,8 @@ object TagStuff {
     "INT" -> "INT",
     "RES" -> "RES(type=oth)",
     "FOREIGN" -> "RES(type=for)",
-    "UNRESOLVED" -> "RES(type=uncl)"
+    "UNRESOLVED" -> "RES(type=uncl)",
+    "Y"  -> "RES(type=uncl)"
   )
 
   val tagMapUDStyle = Map(

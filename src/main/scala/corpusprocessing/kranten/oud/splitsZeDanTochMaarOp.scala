@@ -1,6 +1,9 @@
 package corpusprocessing.kranten.oud
+import corpusprocessing.wolkencorpus.postProcessBaBTagging
+
 import scala.xml._
 import utils.zipUtils
+
 import java.io.File
 
 /*
@@ -11,15 +14,10 @@ newNs: scala.xml.NamespaceBinding =  xmlns:image="http://www.google.com/schemas/
  */
 
 object splitsZeDanTochMaarOp {
-  val inDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/TaggedTestVersion5/"
-  val outDir = "/tmp/Gesplitst/"
-  val outZip = "/tmp/Gesplitst.zip"
 
-  val stuffs: Iterator[(File, Iterator[(xml.Node, Int)])] =
-    new java.io.File(inDir)
-      .listFiles.iterator.map(x => x -> (XML.loadFile(x) \\ "TEI").iterator.zipWithIndex)
+  //val outZip = "/tmp/Gesplitst.zip"
 
-  def writeFiles(f: File, stuff: Iterator[(xml.Node, Int)]): Unit = {
+  def writeFiles(f: File, stuff: Iterator[(xml.Node, Int)], inDir: String, outDir: String): Unit = {
     val root = zipUtils.getRootPath(outDir + f.getName.replaceAll(".xml", ".zip"))
 
     stuff.foreach{case (n,i) =>
@@ -28,8 +26,9 @@ object splitsZeDanTochMaarOp {
       val e1 = <TEI xmlns="http://www.tei-c.org/ns/1.0"/>
       val e2 = e1.copy(scope = newNS)
       val e3 = e2.copy(child=e.child)
+      val e4 = postProcessBaBTagging.fixDocje(e3,false)
       val zipEntry = zipUtils.getWriter(root, s"${f.getName.replaceAll(".xml","")}_$i.xml")
-      zipEntry.write(e3.toString().replaceAll("<TEI", "<TEI xmlns=\"http://www.tei-c.org/ns/1.0\" "))
+      zipEntry.write(e4.toString().replaceAll("<TEI", "<TEI xmlns=\"http://www.tei-c.org/ns/1.0\" "))
       zipEntry.close()
     }
     root.getFileSystem.close()
@@ -37,6 +36,13 @@ object splitsZeDanTochMaarOp {
   }
 
   def main(args: Array[String]): Unit = {
-    stuffs.foreach{case (f, it) => writeFiles(f,it)}
+    val inDir = args.headOption.getOrElse("/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/TaggedTestVersion5/")
+    val outDir = if (args.size > 1) args(1) else "/tmp/Gesplitst/"
+
+    val stuffs: Iterator[(File, Iterator[(xml.Node, Int)])] =
+      new java.io.File(inDir)
+        .listFiles.iterator.map(x => x -> (XML.loadFile(x) \\ "TEI").iterator.zipWithIndex)
+
+    stuffs.foreach{case (f, it) => writeFiles(f,it,inDir,outDir)}
   }
 }
