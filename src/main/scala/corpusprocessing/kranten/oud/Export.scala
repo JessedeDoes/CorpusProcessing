@@ -5,6 +5,8 @@ import java.io.PrintWriter
 import scala.xml._
 import Settings._
 
+import scala.util.{Success, Try}
+
 case class ExportTo(exportDir: String) {
 
 
@@ -32,8 +34,8 @@ Indexes:
     "issue_date" -> "witnessDate_from",
     "tekstsoort_int" -> "articleClass",
     "paper_title" -> "titleLevel2", // of moet dat 3 wezen??
-    "subheader" -> "titleLevel1",
-    "header" -> "newspaperSection",
+    "subheader_int" -> "titleLevel1",
+    "header_int" -> "newspaperSection",
     "record_id" -> "sourceID",
     "plaats_int" -> "settingLocation_place",
     "land_int" -> "settingLocation_country",
@@ -64,6 +66,7 @@ Indexes:
   val restje = "export_"
 
   def cleanAmp(s:String) = s.replaceAll("&amp([^;])","&$1").replaceAll("&amp;", "&")
+
   val q = Select(r =>  {
 
     def x(s: String) = r.getStringNonNull(s).trim;
@@ -77,6 +80,28 @@ Indexes:
     val tekststoort = x("tekstsoort_int").replaceAll("colo.*n|mededeling.advertentie|--", "")
     def ig(n: String, v: String) = <interpGrp type={n}><interp>{cleanAmp(v)}</interp></interpGrp>
     def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{cleanAmp(x(n))}</interp></interpGrp>
+
+    val article = {
+      val a = x("article_text")
+      val parsed = Try(XML.loadString("<art>" +
+        a.replaceAll("&c", "&amp;c")
+          .replaceAll("&amp;","&")
+          .replaceAll("&","&amp;")
+          .replaceAll("<br>", "<lb/>") +
+        "</art>").child) match {
+        case Success(value) =>  {
+          Console.err.println("Yes: " + value)
+          value }
+        case _ => {
+          Console.err.println(s"\nKan niet parsen: $a")
+          a.replaceAll("<i>|</i>|<b>|</b>","")
+        }
+      }
+      parsed
+    }
+
+    Console.err.println("ARTICLE: " + article)
+
     val now = java.time.LocalDate.now
 
     val tei  = <TEI>
@@ -124,8 +149,8 @@ Indexes:
 
             {ig("articleClass", tekststoort)}
             {i("paper_title")}
-            {i("header")}
-            {i("subheader")}
+            {i("header_int")}
+            {i("subheader_int")}
             {i("land_int")}
             {i("plaats_int")}
             {i("colophon")}
@@ -143,7 +168,7 @@ Indexes:
        <div>
          <head>{x("subheader")}</head>
          <p>
-           {x("article_text")}
+           {article}
          </p>
        </div>
        </body>
@@ -155,7 +180,7 @@ Indexes:
 
   def export(): Unit = {
    // year_map.values.foreach(x => x.println("<teiCorpus>"))
-    krantendb.runStatement("update articles_int set land_roland=distinct_headers.land from distinct_headers where articles_int.header=distinct_headers.header;")
+    // krantendb.runStatement("update articles_int set land_roland=distinct_headers.land from distinct_headers where articles_int.header=distinct_headers.header;")
     krantendb.iterator(q).foreach(
       { case (y, n) =>
         if (year_map.contains(y)) {
@@ -173,9 +198,22 @@ Indexes:
 }
 
 object Export {
-  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export/"
+  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTest/"
   def main(args: Array[String]): Unit = {
     new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }
 }
 
+
+/*
+create table landcheck as SELECT articles_int.land_header,
+    articles_int.plaats_int AS plaats,
+    articles_int.land_int,
+    (array_agg(DISTINCT articles_int.header_int))[0:5] AS some_headers,
+    sum(1) AS aantal
+   FROM articles_int
+  WHERE articles_int.land_int <> articles_int.land_header
+  GROUP BY articles_int.land_int, articles_int.plaats_int, articles_int.land_header
+  ORDER BY articles_int.land_header, articles_int.land_int, articles_int.plaats_int;
+
+ */

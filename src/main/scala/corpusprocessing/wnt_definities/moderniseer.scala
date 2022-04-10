@@ -7,7 +7,7 @@ object moderniseer {
   val definitie_db = new database.Database(Configuration("y", "svowdb16.ivdnt.loc","gigant_hilex_candidate", "dba", "vercingetorix"))
   lazy val molex_wordforms = molex.slurp(Select(r => r.getString("wordform"), "data.lemmata_en_paradigma_view where lem_keurmerk and wf_keurmerk")).toSet
   lazy val definities = definitie_db.slurp(Select(r =>  (r.getString("id"), r.getString("persistent_id"), r.getString("definitie")), //  r.getBoolean("af") +  ": " + r.getString("portie") + "/" +
-    "definities.sample_worktable where type='Origineel'  order by portie, af desc"))
+    "definities.sample_worktable where type='Modern'  order by portie, af desc"))
 
   val replacements = List(
     "(e(e)|a(a)|e(e)|o(o)|u(u))([bcdfghjklmnpqrstvwxz][aeiou])" -> "$2$3$4$5$6$7",
@@ -46,9 +46,11 @@ object moderniseer {
     val s= definities.map{case (i,s,d) => (i, s, spelZinOm(d))}
     //s.filter(true || _._2.contains("->")).foreach(println)
     definitie_db.runStatement("drop table definities.auto")
-    definitie_db.runStatement("create table definities.auto (id integer, persistent_id text, definitie text)")
+    definitie_db.runStatement("create table definities.auto (id integer, persistent_id text, definitie text, er_is_iets boolean default false)")
     val b = definitie_db.QueryBatch[(String,String, String)]("insert into definities.auto (id, persistent_id, definitie) VALUES(cast(:id as integer), :persistent_id, :definitie)",
       l => Seq(definitie_db.Binding("id", l._1), definitie_db.Binding("persistent_id", l._2), definitie_db.Binding("definitie", l._3)))
+
     b.insert(s)
+    definitie_db.runStatement("update definities.auto set er_is_iets=true where definitie ~* '<b'")
   }
 }
