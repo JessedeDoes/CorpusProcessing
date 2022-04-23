@@ -3,21 +3,46 @@ package zeeuws
 import java.net.{URI, URL}
 import scala.xml._
 
+import java.nio.charset.CodingErrorAction
+import scala.io.Codec
+
+
 case class Competition(n: Node) {
 
 }
 
-case class Skater(n: Node) {
+case class Skater(n: Node, name: String, club: String) {
+  //println("######")
+  //println((n \\ "td").map(_.text.trim).filter(_.nonEmpty).mkString("\n"))
+
   def pr(m: Int) = {
-    val prrow = n.descendant.filter(x => (x \ "td").exists(td => td.text == s"$m meter"))
+    val prrow = n.descendant.filter(x => (x \ "td").exists(td => td.text.trim == s"$m meter"))
     if (prrow.nonEmpty) {
+      // println(prrow)
       val cells = (prrow \ "td").toList
-      val i = cells.indices.find(i => cells(i).text == s"$m meter").get
-      Some(cells(i + 1).text + cells(i + 2).text)
+
+      val i = cells.indices.find(i => cells(i).text.trim == s"$m meter").get
+      // println(cells(i))
+      if (cells.size > i+2)
+          Some(cells(i + 1).text + cells(i + 2).text)
+      else None
     } else None
   }
 
   def PRs = shortrackonline.distances.map(pr)
+
+  lazy val PR500: String =  { val z  = PRs(3).getOrElse("9:").replaceAll("^([0-9]{2})[.:]","0:$1."); println(z); z }
+
+  //println(PR500)
+
+
+  def htmlRow =           <tr>
+    <td>
+      {name}
+    </td> <td>
+      {if (club.trim().replaceAll("[^A-Za-z]", "").equals("IHCL")) <b>{club}</b> else club}
+    </td>{prCells}
+  </tr>
 
   def prCells = PRs.map(x => <td>
     {x.getOrElse("-")}
@@ -25,20 +50,32 @@ case class Skater(n: Node) {
 }
 
 object shortrackonline {
-  def getSkater(url: String) = {
-    val content = io.Source.fromURL(new URL(url)).getLines().mkString("\n")
+  implicit val codec = Codec("UTF-8")
+  codec.onMalformedInput(CodingErrorAction.REPLACE)
+  codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
+
+  def dinges(): Unit = {
+
+
+    val src = Source.fromFile("aapje")
+  }
+  def getSkater(url: String, name: String, club: String) = {
+    //Console.err.println("Try skater: " + url)
+    val lines  = io.Source.fromURL(new URL(url)).getLines()
+    //Console.err.println(lines.toList)
+    val content = lines.mkString("\n")
     val contentX = HTML.parse(content)
-    Skater(contentX)
+    Skater(contentX, name, club)
   }
 
   val lewis = "http://www.shorttrackonline.info/skaterbio.php?id=STNED12802201301"
   val regiof = "data/regiofinale.html"
-
+  val gent = "data/gent_deelnemers.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(regiof).getLines().mkString("\n"))
+    val regio = HTML.parse(io.Source.fromFile(gent).getLines().mkString("\n"))
     // println(pretty.format(regio))
     val sections = (regio \\ "h3").map(_.text)
     //println(sections)
@@ -47,25 +84,17 @@ object shortrackonline {
       val childElems = parent.child.filter(_.isInstanceOf[Elem])
       val i = childElems.indices.find(i => childElems(i).text == s).get
       val next = childElems(i + 1)
-      println(s)
+      //println(s)
 
-      val infos = (next \\ "tr").map(tr => {
+      val skaters = (next \\ "tr").flatMap(tr => {
         val name = (tr \ "td") (3).text
         val club = (tr \ "td") (4).text.trim
-        (tr.descendant.filter(x => (x \ "@href").nonEmpty).map(x => {
-          val skater = getSkater((x \ "@href").text)
-          //println(s"$name/$club  -->  ${skater.PRs}")
-          <tr>
-            <td>
-              {name}
-            </td> <td>
-            {club}
-          </td>{skater.prCells}
-          </tr>
-        }
-        ))
-      }
-      )
+        (tr.descendant.filter(x => (x \ "@href").nonEmpty)
+          .map(x => getSkater((x \ "@href").text, name, club))
+        )
+      }).sortBy(s => s.PR500)
+      val infos = skaters.map(skater => {skater.htmlRow})
+      println(s + ": " + infos.size)
       <div>
         <h3>
           {s}
