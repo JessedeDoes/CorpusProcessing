@@ -27,19 +27,26 @@ object to_huggingface {
     Sentence("",tokens,tags)
   }
 
-  def toJSON(d: Elem, fout: String): Unit = {
+  def Nodes2JSON(d: Seq[Elem], fout: String): Unit = {
+    val pw = new PrintWriter(fout)
+
     val s0 = (d \\ "s").toList.map(sentence)
     val s1 = s0.zipWithIndex.map({case (s,i) => s.copy(id=i.toString)})
     val jsons = s1.map(s => write(s))
-    val pw = new PrintWriter(fout)
+
     jsons.foreach(pw.println)
     pw.close()
   }
 
-  def toJSON(f: String, fout: String): Unit = toJSON(XML.load(f), fout)
+  def toJSON(f: Seq[String], fout: String): Unit = Nodes2JSON(f.map(x => XML.load(x)), fout)
 
+  val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
+  lazy val ideeen = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
   val example = "data/20220421_cobalt/CobaltServeExport/docpid_1.xml"
+
   def main(args: Array[String]): Unit = {
-    toJSON(example, "/tmp/out.json")
+    val bestandje = if (args.isEmpty) ideeen else args.toSeq
+    print(bestandje)
+    toJSON(bestandje, "/tmp/out.json")
   }
 }
