@@ -7,7 +7,7 @@ object vreselijkeTabjes {
        .replaceAll("&","&amp;")
        .replaceAll("<br>", "<lb/>")
      val a2 = a1.split("\n").map(l => if (l.contains("{tab}")) {
-       l.replaceAll("\{tab\}", "&")
+       l.replaceAll("\\{tab\\}", "&")
      } else {
 
      })
