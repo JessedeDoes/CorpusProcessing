@@ -5,6 +5,7 @@ import java.util.zip.GZIPInputStream
 import scala.collection.mutable
 
 object bigrams {
+  val trigramFrequency = new mutable.HashMap[String,Int]()
   val bigramFrequency = new mutable.HashMap[String,Int]()
   val unigramFrequency = new mutable.HashMap[String,Int]()
   var nChars:Long = 0
@@ -20,6 +21,10 @@ object bigrams {
       if (x > 0) {
         val bi = w.substring(x - 1, x + 1)
         bigramFrequency(bi) = 1 + bigramFrequency.getOrElse(bi, 0)
+      }
+      if (x > 1) {
+        val tri = w.substring(x - 2, x + 1)
+        trigramFrequency(tri) = 1 + trigramFrequency.getOrElse(tri, 0)
       }
     })}
 
@@ -37,12 +42,20 @@ object bigrams {
     })
 
     println(s"chars: $nChars words: $nWords" )
-    List(unigramFrequency,bigramFrequency).foreach(x =>
+
+    List(unigramFrequency,bigramFrequency,trigramFrequency).foreach(x => { 
+      val n = x.keySet.head.length
+      val p = new java.io.PrintWriter(s"/tmp/grams_$n.tsv")
       x.toList.sortBy(-1 * _._2).foreach({
         case (bi,f) =>
           val percentage = 100.0 * f / nChars
-          println(s"$bi\t$f\t$percentage")
+          p.println(s"$bi\t$f\t$percentage")
         case x => println(s"What the heck $x")
-      }))
+      })
+     p.close();
+    }
+   )
   }
 }
+
+//bigrams.main(Array())

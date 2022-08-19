@@ -49,6 +49,7 @@ Indexes:
                         | where
                         |   a.kb_page=p.kb_page and p.kb_issue=i.kb_issue and p.subissue=i.subissue"""
 
+  val exportQuery1664 = "articles_int where cast(issue_date as text) ~ '1664'"
   val exportQuery = "articles_int"
 
   case class SillyThing(fileName: String) {
@@ -83,24 +84,19 @@ Indexes:
 
     val article = {
       val a = x("article_text")
-      val parsed = Try(XML.loadString("<art>" +
-        a.replaceAll("&c", "&amp;c")
-          .replaceAll("&amp;","&")
-          .replaceAll("&","&amp;")
-          .replaceAll("<br>", "<lb/>") +
-        "</art>").child) match {
+      val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
         case Success(value) =>  {
-          Console.err.println("Yes: " + value)
+          // Console.err.println("Yes, parsed! ")
           value }
         case _ => {
-          Console.err.println(s"\nKan niet parsen: $a")
-          a.replaceAll("<i>|</i>|<b>|</b>","")
+          Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
+            a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
         }
       }
       parsed
     }
 
-    Console.err.println("ARTICLE: " + article)
+
 
     val now = java.time.LocalDate.now
 
@@ -155,7 +151,7 @@ Indexes:
             {i("plaats_int")}
             {i("colophon")}
           </bibl>
-        </listBibl>
+        </listBibl>export_1664.xml
         </sourceDesc>
         <revisionDesc>
           <list>
