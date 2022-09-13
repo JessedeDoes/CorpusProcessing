@@ -27,8 +27,8 @@ object Settings {
 
   val mnlTEI = "/mnt/Projecten/corpora/Historische_Corpora/MNL-TEI/Nederlabversie/CorpusMiddelnederlands/"
   val mnlDirkified = "/mnt/Projecten/corpora/Historische_Corpora/MNL-TEI/Nederlabversie/Metaculous/"
-  val mnlTokenizedTEI = mnlDir + "TaggedV2"
-  val mnlProcessedMetadataDir = mnlDir + "PostProcessedMetadata"
+  val mnlTokenizedTEI = mnlDir + "TaggedV3"
+  val mnlProcessedMetadataDir = mnlDir + "PostProcessedMetadataV2"
 
   val useCHNStyle = true
 
