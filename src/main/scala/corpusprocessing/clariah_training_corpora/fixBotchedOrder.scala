@@ -47,7 +47,7 @@ object fixBotchedOrder {
   def fixDocje(d: Elem, i: String) : Elem = {
     val refDoc = XML.loadFile(reference(getId(d)))
     val refSentences = (refDoc \\ "s").map(s => getId(s) -> s.asInstanceOf[Elem]).toMap
-    PostProcessXML.updateElement(d, _.label == "s", s => fixOrder(refSentences(getId(s)), s))
+    PostProcessXML.updateElement(d, _.label == "s",  s => fixOrder(refSentences(getId(s)), s))
   }
 
   def main(args: Array[String]): Unit = {

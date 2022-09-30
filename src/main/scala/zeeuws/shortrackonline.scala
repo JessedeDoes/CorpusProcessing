@@ -55,10 +55,9 @@ object shortrackonline {
   codec.onUnmappableCharacter(CodingErrorAction.REPLACE)
 
   def dinges(): Unit = {
-
-
     val src = Source.fromFile("aapje")
   }
+
   def getSkater(url: String, name: String, club: String) = {
     //Console.err.println("Try skater: " + url)
     val lines  = io.Source.fromURL(new URL(url)).getLines()
@@ -71,11 +70,12 @@ object shortrackonline {
   val lewis = "http://www.shorttrackonline.info/skaterbio.php?id=STNED12802201301"
   val regiof = "data/regiofinale.html"
   val gent = "data/gent_deelnemers.html"
+  val hutspot = "data/hutspot.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(gent).getLines().mkString("\n"))
+    val regio = HTML.parse(io.Source.fromFile(hutspot).getLines().mkString("\n"))
     // println(pretty.format(regio))
     val sections = (regio \\ "h3").map(_.text)
     //println(sections)

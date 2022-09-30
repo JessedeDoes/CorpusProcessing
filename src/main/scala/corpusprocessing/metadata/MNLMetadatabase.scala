@@ -83,7 +83,7 @@ object MNLMetadatabase {
   lazy val dateFields = allFields.filter(_.toLowerCase.matches(".*(day|month|year).*")).map(normalizeFieldName) diff addedFields
   lazy val locationFields = allFields.filter(_.toLowerCase.matches(".*(country|place|region|kloeke).*")).map(normalizeFieldName) diff addedFields
   lazy val basicFields = allFields.filter(_.toLowerCase.matches(".*(author|title).*")).map(normalizeFieldName) diff addedFields
-  lazy val edition_type_fields = basicFields ++ List("bron", "bron_opm")
+  lazy val edition_type_fields = basicFields.filter(f => !f.contains("evel")) ++ List("bron", "bron_opm")
 
   lazy val tsD = s"drop table if exists tekstsoort"
   lazy val tsQ = s"""create table tekstsoort as select "persistentId", title, ${textsoortFields.mkString(",")}  from metadata"""
@@ -92,7 +92,8 @@ object MNLMetadatabase {
   lazy val locationsQ = s"""create view locations as select "persistentId", title, ${locationFields.mkString(",")}  from metadata"""
   lazy val basicQ = s"""create view basic as select "persistentId", ${basicFields.mkString(",")}  from metadata"""
   lazy val edition_typeQ = s"""create table edition_type as select "persistentId", ${edition_type_fields.mkString(",")}  from metadata"""
-  lazy val extraatjes = List("is_critical" -> "boolean", "comment" -> "text").map(f => s"alter table edition_type add column ${f._1} ${f._2}") ++ List("update edition_type set is_critical=true")
+  lazy val extraatjes = List("critical" -> "boolean", "diplomatic" -> "boolean", "unspecified" -> "boolean", "comment" -> "text").map(f => s"alter table edition_type add column ${f._1} ${f._2}") ++ List("update edition_type set unspecified=true, critical=false, diplomatic=false")
+  lazy val idje = "alter table edition_type add column tellertje serial primary key"
 
   def makeCreate(name: String, fields: List[String]) =
     s"""
@@ -123,6 +124,8 @@ object MNLMetadatabase {
     //allMetadata.foreach(println)
 
     db.runStatement("drop table if exists metadata cascade")
+    db.runStatement("drop table if exists edition_type")
+
     println(createStatement)
     db.runStatement(createStatement)
 
@@ -142,6 +145,6 @@ object MNLMetadatabase {
     db.runStatement(makeSelect("level1", level1Fields))
     db.runStatement(makeSelect("level2", level2Fields))
 
-    (List(tsD, tsQ, tsKey, basicQ, locationsQ, datesQ, edition_typeQ) ++ extraatjes).foreach(db.runStatement(_))
+    (List(tsD, tsQ, tsKey, basicQ, locationsQ, datesQ, edition_typeQ) ++ extraatjes :+ idje).foreach(db.runStatement(_))
   }
 }
