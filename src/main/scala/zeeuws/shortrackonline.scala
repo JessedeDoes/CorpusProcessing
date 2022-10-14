@@ -71,11 +71,12 @@ object shortrackonline {
   val regiof = "data/regiofinale.html"
   val gent = "data/gent_deelnemers.html"
   val hutspot = "data/hutspot.html"
+  val zoetermeer = "data/zoetermeer.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(hutspot).getLines().mkString("\n"))
+    val regio = HTML.parse(io.Source.fromFile(zoetermeer).getLines().mkString("\n"))
     // println(pretty.format(regio))
     val sections = (regio \\ "h3").map(_.text)
     //println(sections)
