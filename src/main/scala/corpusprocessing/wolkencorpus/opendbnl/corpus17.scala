@@ -3,12 +3,13 @@ package corpusprocessing.wolkencorpus.opendbnl
 import utils.PostProcessXML
 
 import scala.xml._
-import java.io.File
+import java.io.{File, PrintWriter}
+import scala.util.Random
 
 object corpus17 {
   val opendbnl = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/PostProcessed"
 
-  val allFiles = new File(opendbnl).listFiles.iterator
+  val allFiles = Random.shuffle(new File(opendbnl).listFiles.toList).iterator
 
   def getId(e: Node): String = e.attributes.filter(_.key == "id").headOption.map(_.value.text).getOrElse("UNK")
 
@@ -23,7 +24,7 @@ object corpus17 {
     meta
   }
 
-  def select(f: File) = {
+  def select(c: String)(f: File) = {
     val x = XML.loadFile(f)
 
     val meta = getMetadata(x)
@@ -33,14 +34,17 @@ object corpus17 {
 
     Console.err.println(s"${f.getName} $yf-$yt")
 
-    if (yf.startsWith("16") && yt.startsWith("16")) {
+    if (yf.startsWith(c) && yt.startsWith(c)) {
       Console.err.println(s"Yep, selected ${f.getName} $yf-$yt ${meta("titleLevel2")}")
       true
     } else false
   }
 
   def main(args: Array[String]): Unit = {
-     allFiles.filter(select).foreach(f => println(f.getName))
+     // allFiles.filter(select("16")).foreach(f => println(f.getName))
+    val dumpie = new PrintWriter("/tmp/19.txt")
+    allFiles.filter(select("18")).take(50).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
+    dumpie.close()
   }
 }
 
