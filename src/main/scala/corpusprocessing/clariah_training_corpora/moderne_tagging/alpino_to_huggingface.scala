@@ -25,7 +25,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   })
   lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
 
-  lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(_.XPOS).toList)
+  lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(_.XPOS).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
 }
 
 object grouping {

@@ -42,8 +42,8 @@ object corpus17 {
 
   def main(args: Array[String]): Unit = {
      // allFiles.filter(select("16")).foreach(f => println(f.getName))
-    val dumpie = new PrintWriter("/tmp/19.txt")
-    allFiles.filter(select("18")).take(50).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
+    val dumpie = new PrintWriter("/tmp/18.txt")
+    allFiles.filter(select("17")).take(50).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
     dumpie.close()
   }
 }

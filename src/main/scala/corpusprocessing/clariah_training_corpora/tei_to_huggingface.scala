@@ -14,7 +14,9 @@ import org.json4s.jackson.Serialization.write
 case class Sentence(
                    id: String,
                    tokens: List[String],
-                   tags: List[String]
+                   tags: List[String],
+                   lemmata: List[String],
+                   xml_ids: List[String]  = List()
                    )
 
 object to_huggingface {
@@ -25,7 +27,9 @@ object to_huggingface {
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
     val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
-    Sentence("",tokens,tags)
+    val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
+    val xml_ids =  tokenElements.map(x => getId(x))
+    Sentence("",tokens,tags, lemmata, xml_ids)
   }
 
   def Nodes2JSON(d: Iterator[Elem], fout: String): Unit = {
@@ -64,6 +68,7 @@ object to_huggingface {
 
   val BaB = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.7CHN/" // ai heeft geen zinnen..... Willekeurig aanmaken?
   val dbnl19 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie19"
+  val dbnl18 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie18"
 
   def main(args: Array[String]): Unit = {
     val filesToProcess = if (args.isEmpty) ideeen else args.toSeq.flatMap(x => {
