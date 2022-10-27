@@ -1,11 +1,13 @@
 package posmapping
 import java.io.{File, PrintWriter}
-
 import posmapping.distinctTagsFromONW.dir
 import propositional.{And, Literal, Proposition}
 
+import scala.collection.immutable.Map
 import scala.util.matching.Regex
 import scala.xml._
+
+
 
 case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagset)
 {
@@ -28,6 +30,10 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
 
   val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
 
+  def reduceToCore(coreFeatures : Map[String, List[String]]): CHNStyleTag = {
+    val f1 = features.filter(f => f.name == "pos" || coreFeatures(pos).contains(f.name))
+    this.copy(tag =  this.toString(f1))
+  }
   import scala.util.{Try, Success, Failure}
 
   def parseFeature(f: String) = {

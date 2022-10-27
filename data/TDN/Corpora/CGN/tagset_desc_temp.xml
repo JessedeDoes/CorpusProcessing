@@ -8,11 +8,11 @@
         <pos displayName="Adverb" desc="Adverb">ADV</pos>
         <pos displayName="Conjunction" desc="Conjunction">CONJ</pos>
         <pos displayName="Interjection" desc="Interjection">INT</pos>
-        <pos displayName="Common noun" desc="Common noun">NOU-C</pos>
-        <pos displayName="Proper noun" desc="Proper noun">NOU-P</pos>
+        <pos displayName="Noun Common" desc="Noun Common">NOU-C</pos>
+        <pos displayName="Noun Proper" desc="Noun Proper">NOU-P</pos>
         <pos displayName="Numeral" desc="Numeral">NUM</pos>
         <pos displayName="PC" desc="PC">PC</pos>
-        <pos displayName="Pronoun" desc="Pronoun-Determiner">PD</pos>
+        <pos displayName="Pronoun-Determiner" desc="Pronoun-Determiner">PD</pos>
         <pos displayName="Residual" desc="Residual">RES</pos>
         <pos displayName="RM" desc="RM">RM</pos>
         <pos displayName="Verb" desc="Verb">VRB</pos>
@@ -147,7 +147,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="gen|dat" desc="gen|dat">
+                <featureValue displayName="Genitive or dative" desc="Genitive or dative">
                     <value>gen|dat</value>
                     <posForValue>
                         <pos>AA</pos>
@@ -164,7 +164,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Dative/Accusative" desc="Dative or accusative">
+                <featureValue displayName="Dative or accusative" desc="Dative or accusative">
                     <value>dat|acc</value>
                     <posForValue>
                         <pos>PD</pos>
@@ -263,7 +263,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Masculine/Feminine" desc="Masculine or feminine">
+                <featureValue displayName="Masculine or feminine" desc="Masculine or feminine">
                     <value>m|f</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -271,7 +271,7 @@
                         <pos>PD</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="Masculine/Neuter" desc="Masculine or neuter">
+                <featureValue displayName="Masculine or neuter" desc="Masculine or neuter">
                     <value>m|n</value>
                     <posForValue>
                         <pos>NOU-C</pos>
@@ -638,13 +638,13 @@
         <feature displayName="Tense" desc="Verb tense">
             <name>tense</name>
             <values>
-                <featureValue displayName="present" desc="present tense">
+                <featureValue displayName="Present" desc="present tense">
                     <value>pres</value>
                     <posForValue>
                         <pos>VRB</pos>
                     </posForValue>
                 </featureValue>
-                <featureValue displayName="past" desc="past tense">
+                <featureValue displayName="Past" desc="past tense">
                     <value>past</value>
                     <posForValue>
                         <pos>VRB</pos>

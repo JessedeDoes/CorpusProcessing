@@ -21,6 +21,7 @@ object TagsetDiachroonNederlands {
 
   val coreFeatures = Map(
     "NOU-C" -> List("number", "WF"),
+    "NOU-P" -> List("WF"),
     "AA" -> List("degree", "position", "WF"),
     "ADV" -> List("type", "WF"),
     "VRB" -> List("finiteness", "tense", "WF"),
@@ -327,11 +328,16 @@ object TagsetDiachroonNederlands {
 
 
     val (m,gesleuteld) = tagsetFromSetOfTags("data/TDN/Corpora/CGN/", "CGN", CGNToTEIWithTDNTags.mapping, Some("CGN_TDN"))
+    val m1 = m.mapValues(tag => tag.reduceToCore(coreFeatures))
+
+    val pCore = new PrintWriter("data/TDN/Corpora/CGN/cgn_core.txt")
+    m1.toList.sortBy(_._1).foreach({case (cgn,tdn) => pCore.println(s"$cgn\t$tdn")})
+    pCore.close()
 
     val mappingRows = gesleuteld.toList.sortBy(_._2.toString).map({case (c, t) =>
       val p1 = c.replaceAll("\\(.*", "")
 
-      <tr><td>{c}</td><td>{t._2.toString}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
+      <tr><td>{c}</td><td>{t._2.toString}</td><td>{m1(c)}</td><td>{descriptions.getOrElse(c, "")}</td></tr>})
 
     val mappingHTML = <table>{mappingRows}</table>
 
@@ -342,7 +348,8 @@ object TagsetDiachroonNederlands {
   }
 
    def main(args: Array[String]): Unit = {
-      //doCGN
+      doCGN
+     return
       //doONW
       //doGysselingFromCorpus
      // doBaB

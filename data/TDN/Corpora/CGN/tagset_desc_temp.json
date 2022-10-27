@@ -27,12 +27,12 @@
     },
     "NOU-C":{
       "value":"NOU-C",
-      "displayName":"Common noun",
+      "displayName":"Noun Common",
       "subAnnotationIds":["pos_number","pos_case","pos_gender","pos_inflection"]
     },
     "NOU-P":{
       "value":"NOU-P",
-      "displayName":"Proper noun",
+      "displayName":"Noun Proper",
       "subAnnotationIds":["pos_number","pos_case","pos_gender","pos_inflection"]
     },
     "NUM":{
@@ -47,7 +47,7 @@
     },
     "PD":{
       "value":"PD",
-      "displayName":"Pronoun",
+      "displayName":"Pronoun-Determiner",
       "subAnnotationIds":["pos_type","pos_subtype","pos_position","pos_case","pos_LN","pos_LP","pos_LG","pos_number","pos_gender","pos_inflection"]
     },
     "RES":{
@@ -99,7 +99,7 @@
         "pos":["PD","NOU-C","NOU-P"]
       },{
         "value":"gen|dat",
-        "displayName":"gen|dat",
+        "displayName":"Genitive or dative",
         "pos":["PD","NOU-C","AA","NUM"]
       },{
         "value":"dat",
@@ -107,7 +107,7 @@
         "pos":["PD","NOU-C","NOU-P"]
       },{
         "value":"dat|acc",
-        "displayName":"Dative/Accusative",
+        "displayName":"Dative or accusative",
         "pos":["PD"]
       },{
         "value":"uncl",
@@ -119,11 +119,11 @@
       "id":"pos_tense",
       "values":[{
         "value":"pres",
-        "displayName":"present",
+        "displayName":"Present",
         "pos":["VRB"]
       },{
         "value":"past",
-        "displayName":"past",
+        "displayName":"Past",
         "pos":["VRB"]
       },{
         "value":"uncl",
@@ -391,11 +391,11 @@
         "pos":["PD"]
       },{
         "value":"m|f",
-        "displayName":"Masculine/Feminine",
+        "displayName":"Masculine or feminine",
         "pos":["PD","NOU-C","NOU-P"]
       },{
         "value":"m|n",
-        "displayName":"Masculine/Neuter",
+        "displayName":"Masculine or neuter",
         "pos":["PD","NOU-C"]
       },{
         "value":"f",
