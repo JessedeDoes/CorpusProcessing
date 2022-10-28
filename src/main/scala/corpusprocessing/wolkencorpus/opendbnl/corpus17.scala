@@ -5,7 +5,7 @@ import utils.PostProcessXML
 import scala.xml._
 import java.io.{File, PrintWriter}
 import scala.util.Random
-
+import scala.util.{Try,Success,Failure}
 object corpus17 {
   val opendbnl = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/PostProcessed"
 
@@ -24,26 +24,29 @@ object corpus17 {
     meta
   }
 
-  def select(c: String)(f: File) = {
-    val x = XML.loadFile(f)
-
-    val meta = getMetadata(x)
-
-    val yf = meta("witnessYearLevel2_from")
-    val yt = meta("witnessYearLevel2_to")
-
-    Console.err.println(s"${f.getName} $yf-$yt")
-
-    if (yf.startsWith(c) && yt.startsWith(c)) {
-      Console.err.println(s"Yep, selected ${f.getName} $yf-$yt ${meta("titleLevel2")}")
-      true
-    } else false
-  }
+  def select(c: String)(f: File): Boolean = {
+    val x = Try(
+      {
+        val x = XML.loadFile((f))
+        val meta = getMetadata(x)
+        val yf = meta("witnessYearLevel2_from")
+        val yt = meta("witnessYearLevel2_to")
+        Console.err.println(s"${f.getName} $yf-$yt")
+        if (yf.startsWith(c) && yt.startsWith(c)) {
+          Console.err.println(s"Yep, selected ${f.getName} $yf-$yt ${meta("titleLevel2")}")
+          true
+        }  else false
+      }
+    )
+    x match {
+      case Success(b) => b
+      case _ => false
+    }}
 
   def main(args: Array[String]): Unit = {
      // allFiles.filter(select("16")).foreach(f => println(f.getName))
-    val dumpie = new PrintWriter("/tmp/18.txt")
-    allFiles.filter(select("17")).take(50).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
+    val dumpie = new PrintWriter("/tmp/17.txt")
+    allFiles.filter(select("16")).take(300).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
     dumpie.close()
   }
 }

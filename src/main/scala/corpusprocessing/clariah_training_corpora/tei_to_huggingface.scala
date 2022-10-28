@@ -16,40 +16,42 @@ case class Sentence(
                    tokens: List[String],
                    tags: List[String],
                    lemmata: List[String],
-                   xml_ids: List[String]  = List()
+                   xml_ids: List[String]  = List(),
+                   file: String = "unknown" // pas op andere dingen hebben dit niet
                    )
 
 object to_huggingface {
   val chunkSize=300
   implicit val formats = DefaultFormats
 
-  def sentence(s: Node) = {
+  def sentence(s: Node, f: String) = {
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
     val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val xml_ids =  tokenElements.map(x => getId(x))
-    Sentence("",tokens,tags, lemmata, xml_ids)
+    Sentence("",tokens,tags, lemmata, xml_ids, f)
   }
 
-  def Nodes2JSON(d: Iterator[Elem], fout: String): Unit = {
+  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String): Unit = {
     val pw = new PrintWriter(fout)
 
-    val esjes: Iterator[Node] = d.flatMap(
-
-      x => {
+    val esjes: Iterator[(String, Node)] = d.flatMap({
+      case (f: String, x: Node) => {
         if ((x \\ "s").nonEmpty)
-        (x \\ "s").iterator
-        else
-          {
-            val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
-              <s>{chunk}</s>
-            })
-            chunks.iterator
-          }
+          (x \\ "s").iterator.map(s => f -> s)
+        else {
+          val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
+            <s>
+              {chunk}
+            </s>
+          })
+          chunks.iterator.map(c => f -> c)
+        }
       }
-    )
-    val sentences: Iterator[Sentence] = esjes.map(sentence)
+    })
+
+    val sentences: Iterator[Sentence] = esjes.map({case (f,s) => sentence(s,f)})
 
     //val words = (d \\ "w").size
     //println("Sentences:" + s0.size  + " Words: " + words)
@@ -60,7 +62,7 @@ object to_huggingface {
     pw.close()
   }
 
-  def toJSON(f: Seq[String], fout: String): Unit = Nodes2JSON(f.iterator.map(x => XML.load(x)), fout)
+  def toJSON(f: Seq[String], fout: String): Unit = Nodes2JSON(f.iterator.map(x => x -> XML.load(x)), fout)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
