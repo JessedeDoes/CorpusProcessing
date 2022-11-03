@@ -25,12 +25,39 @@ object to_huggingface {
   implicit val formats = DefaultFormats
 
   def sentence(s: Node, f: String) = {
+
+    def getN(n: Node) =  (n \ "@n").text
+
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
+    val indexedTokenElements = tokenElements.zipWithIndex
     val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
     val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val xml_ids =  tokenElements.map(x => getId(x))
-    Sentence("",tokens,tags, lemmata, xml_ids, f)
+
+    def enhancePos(w: Node, i: Int) = {
+      val p =  (w \ "@pos").headOption.getOrElse(w \ "@type").text.trim
+      if ((w \ "@type").text=="multiw") {
+        println(w)
+        val n = getN(w)
+        val hasPrev = indexedTokenElements.exists({case (w,i1) => getN(w) == n && i1 < i })
+        val hasNext = indexedTokenElements.exists({case (w,i1) => getN(w) == n && i1 > i })
+
+        val bio =
+          (hasPrev,hasNext) match {
+            case (true,true) => "i"
+            case (true,false) => "f"
+            case (false,true) => "b"
+            case _ => "o"
+          }
+        val t = p + "_" + bio
+        println(t)
+        t
+      } else p
+    }
+    val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
+
+    Sentence("",tokens, enhancedTags, lemmata, xml_ids, f)
   }
 
   def Nodes2JSON(d: Iterator[(String, Elem)], fout: String): Unit = {
@@ -58,7 +85,7 @@ object to_huggingface {
     val s1 = sentences.zipWithIndex.map({case (s,i) => s.copy(id=i.toString)})
     val jsons = s1.map(s => write(s))
 
-    jsons.foreach(x => {Console.err.println(x); pw.println(x)})
+    jsons.foreach(x => { pw.println(x)})
     pw.close()
   }
 

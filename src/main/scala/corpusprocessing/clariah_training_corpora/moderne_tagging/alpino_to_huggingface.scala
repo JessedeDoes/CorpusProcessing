@@ -19,10 +19,13 @@ case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: 
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>{tokens.map(_.toXML(sent_id, language))}{linkGrp}</s>
   lazy val n2id = tokens.map(t => t.ID -> t.tokenId).toMap
-  lazy val links = tokens.map(t => {
+
+  lazy val links: Seq[(String, String, String)] = tokens.map(t => {
     val id = n2id(t.ID)
     (t.DEPREL, id,  n2id.getOrElse(t.HEAD, id))
   })
+
+
   lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
 
   lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(_.XPOS).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
