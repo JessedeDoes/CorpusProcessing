@@ -89,6 +89,8 @@ case class Entry(e0: Node) {
   lazy val quotations: immutable.Seq[Quotation] = senses.flatMap(_.quotations)
   lazy val usableQuotations: immutable.Seq[Quotation] = quotations.filter(_.hasItAll)
 
+  lazy val pos = ((e \ "grampGrp") ++ (e \ "dictScrap" \ "gramGrp")).flatMap(x => (x \ "pos").map(_.text)).mkString(" ")
+
   def partition(l: Seq[Quotation], pTest: Double, pDev: Double): Seq[Quotation] = {
     val l1 = scala.util.Random.shuffle(l)
     val tSize = (l.size * pTest).toInt
@@ -98,7 +100,7 @@ case class Entry(e0: Node) {
     val lTrain = l1.drop(tSize + dSize)
     lTest.map(_.copy(partition="test")) ++ lDev.map(_.copy(partition="dev")) ++ lTrain.map(_.copy(partition="train"))
   }
-  def xml = <div entry-id={id} lemma={lemma}>
+  def xml = <div entry-id={id} lemma={lemma} pos={pos}>
     {partition(usableQuotations, 0.1, 0.1).map(_.xml)}
   </div>
 }
@@ -141,7 +143,7 @@ object quotationCorpus {
   def main(args: Array[String]): Unit = {
     utils.ProcessFolder.processFolder(
       f("/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/Tagged"),
-      f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN"}"),
+      f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN2"}"),
       {
         case (inputTEI,outputQuotations) =>
           val x = extractQuotations(inputTEI)
@@ -149,3 +151,4 @@ object quotationCorpus {
       })
   }
 }
+
