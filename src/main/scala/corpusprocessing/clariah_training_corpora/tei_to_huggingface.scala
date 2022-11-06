@@ -5,6 +5,8 @@ import fixTokenization.getId
 import java.io.{File, PrintWriter}
 import utils.{PostProcessXML, ProcessFolder}
 
+import java.util.zip.GZIPOutputStream
+
 // {"id":"0","tokens":["@paulwalk","It","'s","the","view","from","where","I","'m","living","for","two","weeks",".","Empire","State","Building","=","ESB",".","Pretty","bad","storm","here","last","evening","."],"ner_tags":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,0,7,0,0,0,0,0,0,0,0]}
 import org.json4s._
 import org.json4s.jackson.Serialization
@@ -17,10 +19,12 @@ case class Sentence(
                    tags: List[String],
                    lemmata: List[String],
                    xml_ids: List[String]  = List(),
+                   relevances: List[String]  = List(),
                    file: String = "unknown" // pas op andere dingen hebben dit niet
                    )
 
 object to_huggingface {
+  val sentence_element="q"
   val chunkSize=300
   implicit val formats = DefaultFormats
 
@@ -33,6 +37,8 @@ object to_huggingface {
     val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
     val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
+    val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
+    //System.err.println(relevances)
     val xml_ids =  tokenElements.map(x => getId(x))
 
     def enhancePos(w: Node, i: Int) = {
@@ -57,16 +63,16 @@ object to_huggingface {
     }
     val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
 
-    Sentence("",tokens, enhancedTags, lemmata, xml_ids, f)
+    Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances)
   }
 
-  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String): Unit = {
-    val pw = new PrintWriter(fout)
+  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit = {
+    val pw = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout)))
 
     val esjes: Iterator[(String, Node)] = d.flatMap({
       case (f: String, x: Node) => {
-        if ((x \\ "s").nonEmpty)
-          (x \\ "s").iterator.map(s => f -> s)
+        if ((x \\ sentence_element).nonEmpty)
+          (x \\ sentence_element).iterator.map(s => f -> s)
         else {
           val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
             <s>
@@ -98,14 +104,15 @@ object to_huggingface {
   val BaB = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.7CHN/" // ai heeft geen zinnen..... Willekeurig aanmaken?
   val dbnl19 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie19"
   val dbnl18 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie18"
+  val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
   def main(args: Array[String]): Unit = {
-    val filesToProcess = if (args.isEmpty) ideeen else args.toSeq.flatMap(x => {
+    val filesToProcess: Seq[String] = if (args.isEmpty) ideeen else args.toSeq.flatMap(x => {
       val f = new java.io.File(x)
       if (f.isFile) Seq(f.getCanonicalPath) else f.listFiles.toSeq.map(_.getCanonicalPath)
-    }
-    )
+     })
+
     println(filesToProcess)
-    toJSON(filesToProcess, "/tmp/out.json")
+    toJSON(filesToProcess, "/tmp/out.json.gz")
   }
 }

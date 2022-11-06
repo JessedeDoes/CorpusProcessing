@@ -197,10 +197,10 @@ object addHilexPos {
     val lemmaId = id.replaceAll("\\.eg.*","")
     val hilexPos = alleHilexPos.getOrElse(lemmaId,"unk")
     val omspelling = alleOmspellingen.getOrElse(lemmaId,"unk")
-    System.err.println(s"$lemmaId $omspelling $hilexPos")
+    // System.err.println(s"$lemmaId $omspelling $hilexPos")
     val atts = cit.attributes.append(new UnprefixedAttribute("pos",hilexPos,Null)).append(new UnprefixedAttribute("modern-lemma",omspelling,Null))
     val c = cit.copy(attributes = atts)
-    System.err.println(c.copy(child=Seq()))
+    //System.err.println(c.copy(child=Seq()))
     c
   }
 
@@ -217,7 +217,7 @@ object addHilexPos {
        val d = XML.load(i)
        val d1 = fixDoc(d)
        XML.save(o,d1,"UTF-8")
-    })
+    }, parallel = false)
   }
 }
 
