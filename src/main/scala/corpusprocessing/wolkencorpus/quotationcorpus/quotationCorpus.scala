@@ -2,11 +2,13 @@ package corpusprocessing.wolkencorpus.quotationcorpus
 
 import corpusprocessing.wolkencorpus.postProcessBaBTagging
 import corpusprocessing.wolkencorpus.quotationcorpus.quotationCorpus._
-import utils.PostProcessXML
+import database.DatabaseUtilities.{AlmostQuery, ResultMapping, Select}
+import database.{Configuration, Database}
+import utils.{PostProcessXML, ProcessFolder}
 import utils.PostProcessXML._
 
 import scala.collection.immutable
-import scala.util.{Try, Success}
+import scala.util.{Success, Try}
 import scala.xml._
 
 
@@ -151,4 +153,89 @@ object quotationCorpus {
       })
   }
 }
+case class Omspelling(id: Int, modern_lemma: String, historical_lemma: String, spelling_id: String) {
+  val dictionary = spelling_id.replaceAll("^(MNW|WNT|VMNW|ONW).*","$1")
+  val persistent_id = spelling_id.replaceAll("^(MNW|WNT|VMNW|ONW)","")
+  def hoofdLemma = dictionary == "MNW"  || persistent_id.matches("[A-Z][0-9]+")
+  def lemma_id = spelling_id.replaceAll(dictionary,"")
+}
+
+object HilexInfo
+{
+  val hilexCandidate = Configuration(
+    name = "gigant_hilex_candidate",
+    server = "svowdb16.ivdnt.loc",
+    database = "gigant_hilex_candidate",
+    user = "dba",
+    password = "vercingetorix")
+  val getOmspelling = ResultMapping[Omspelling](r => Omspelling(r.getInt("id"), r.getString("modern_lemma"), r.getString("hist_lemma"), r.getString("hist_lemma_id")))
+  val getPosQuery = Select(r => r.getString("persistent_id") -> r.getString("lemma_part_of_speech"), "data.lemmata")
+  lazy val hilex: Database = new database.Database(hilexCandidate)
+
+  def alleOmspellingen: AlmostQuery[Omspelling] = {
+    db =>
+      db.createQuery(
+        s"""
+      select * from
+           marijke_spelling.spelling
+          """).map(getOmspelling)
+  }
+
+  def main(Args: Array[String]) = {
+    hilex.slurp(getPosQuery).foreach(println)
+  }
+}
+
+// Hilex PoS toevoegen waar mogelijk
+object addHilexPos {
+  lazy val hilex: Database = new database.Database(HilexInfo.hilexCandidate)
+  lazy val alleOmspellingen: Map[String, String] = hilex.slurp(HilexInfo.alleOmspellingen).map(o => o.lemma_id -> o.modern_lemma).toMap
+  lazy val alleHilexPos: Map[String, String] = hilex.slurp(HilexInfo.getPosQuery).toMap
+
+  def addHilexInfo(cit: Elem)  = {
+    val id: String = getId(cit)
+    val lemmaId = id.replaceAll("\\.eg.*","")
+    val hilexPos = alleHilexPos.getOrElse(lemmaId,"unk")
+    val omspelling = alleOmspellingen.getOrElse(lemmaId,"unk")
+    System.err.println(s"$lemmaId $omspelling $hilexPos")
+    val atts = cit.attributes.append(new UnprefixedAttribute("pos",hilexPos,Null)).append(new UnprefixedAttribute("modern-lemma",omspelling,Null))
+    val c = cit.copy(attributes = atts)
+    System.err.println(c.copy(child=Seq()))
+    c
+  }
+
+  def fixDoc(d: Elem)  = PostProcessXML.updateElement(d, _.label=="cit", addHilexInfo)
+
+  implicit def f(s: String) : java.io.File = new java.io.File(s)
+
+  val base = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/"
+  val lemmatized = base + "Lemmatized/"
+  val enriched = base + "Refurbished/"
+  def main(args: Array[String]) = {
+    ProcessFolder.processFolder(lemmatized, enriched, {case (i,o) =>
+       System.err.println("File:"  + i)
+       val d = XML.load(i)
+       val d1 = fixDoc(d)
+       XML.save(o,d1,"UTF-8")
+    })
+  }
+}
+
+/*
+<TEI>
+    <text>
+        <body>
+            <div entry-id="M064643" lemma="SNAKKER"> </div>
+            <div entry-id="M064644" lemma="SNAP">
+                <cit xml:id="M064644.eg.37073" sense-id="M064644.sense.7" entry-id="M064644" lemma="SNAP" partition="test">
+                    <date atLeast="1657" atMost="1657" timeSpan="1650-1700"/>
+                    <q xml:id="no_doc_id.s.0">
+                        <w lemma="wie" pos="PD(type=w-p,position=free)" xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.w.399" lexicon="molex">Wiens</w>
+                        <pc xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.pc.floating.00000139" pos="AA(degree=pos,position=prenom)" lemma="de⊕een" lexicon="byt5">…</pc>
+                        <w lemma="vrouw" pos="NOU-C(number=pl)" xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.w.401" lexicon="molex">vrouwen</w>
+                        <w lemma="en" pos="CONJ(type=coor)" xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.w.402" lexicon="hilex">ende</w>
+                        <w lemma="kind" pos="NOU-C(number=pl)" xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.w.403" lexicon="molex">kinderen</w>
+                        <w lemma="met" pos="ADP(type=pre)" xml:id="a7ddb939-9191-4609-92c8-e19c2341dbf7.w.404" lexicon="molex">met</w>
+
+ */
 
