@@ -4,9 +4,20 @@ import grouping._
 import org.json4s._
 import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
-import corpusprocessing.clariah_training_corpora.Sentence
+
 
 import java.io.PrintWriter
+
+case class Sentence(
+                     id: String,
+                     tokens: List[String],
+                     tags: List[String],
+                     lemmata: List[String],
+                     xml_ids: List[String]  = List(),
+                     relevances: List[String]  = List(),
+                     hilex_pos : List[String]  = List(),
+                     file: String = "unknown" // pas op andere dingen hebben dit niet
+                   )
 
 case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: String, FEATS: String, HEAD: String, DEPREL: String, DEPS: String, MISC: String, sent_id: String, language: String) {
   lazy val tokenId = s"$sent_id.$ID.$language"

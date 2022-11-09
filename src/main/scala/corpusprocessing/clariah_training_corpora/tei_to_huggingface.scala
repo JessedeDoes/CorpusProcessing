@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora
 import scala.xml._
-import fixTokenization.getId
+import fixTokenization.{bartje, getId}
 
 import java.io.{File, PrintWriter}
 import utils.{PostProcessXML, ProcessFolder}
@@ -13,17 +13,20 @@ import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
 
 
-case class Sentence(
-                   id: String,
-                   tokens: List[String],
-                   tags: List[String],
-                   lemmata: List[String],
-                   xml_ids: List[String]  = List(),
-                   relevances: List[String]  = List(),
-                   file: String = "unknown" // pas op andere dingen hebben dit niet
-                   )
 
-object to_huggingface {
+trait tei_to_huggingface_class {
+
+  case class Sentence(
+                       id: String,
+                       tokens: List[String],
+                       tags: List[String],
+                       lemmata: List[String],
+                       xml_ids: List[String]  = List(),
+                       relevances: List[String]  = List(),
+                       hilex_pos : List[String]  = List(),
+                       file: String = "unknown" // pas op andere dingen hebben dit niet
+                     )
+
   val sentence_element="q"
   val chunkSize=300
   implicit val formats = DefaultFormats
@@ -38,6 +41,7 @@ object to_huggingface {
     val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
+    val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
     //System.err.println(relevances)
     val xml_ids =  tokenElements.map(x => getId(x))
 
@@ -63,9 +67,10 @@ object to_huggingface {
     }
     val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
 
-    Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances)
+    Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances,hilex_pos=hilex_pos)
   }
 
+  def decentSentence(s: Sentence)  = true
   def Nodes2JSON(d: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit = {
     val pw = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout)))
 
@@ -84,7 +89,7 @@ object to_huggingface {
       }
     })
 
-    val sentences: Iterator[Sentence] = esjes.map({case (f,s) => sentence(s,f)})
+    val sentences: Iterator[Sentence] = esjes.map({case (f,s) => sentence(s,f)}).filter(decentSentence)
 
     //val words = (d \\ "w").size
     //println("Sentences:" + s0.size  + " Words: " + words)
@@ -95,24 +100,52 @@ object to_huggingface {
     pw.close()
   }
 
-  def toJSON(f: Seq[String], fout: String): Unit = Nodes2JSON(f.iterator.map(x => x -> XML.load(x)), fout)
+  def toJSON(f: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(f.iterator.map(x => x -> preprocess(XML.load(x))), fout)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
+
   val example = "data/20220421_cobalt/CobaltServeExport/docpid_1.xml"
 
   val BaB = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.7CHN/" // ai heeft geen zinnen..... Willekeurig aanmaken?
   val dbnl19 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie19"
   val dbnl18 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie18"
-  val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
+
+  val default_dataset = ideeen
+  def default_process(e: Elem)  = e
   def main(args: Array[String]): Unit = {
-    val filesToProcess: Seq[String] = if (args.isEmpty) ideeen else args.toSeq.flatMap(x => {
+
+    val filesToProcess: Seq[String] = args.toSeq.flatMap(x => {
       val f = new java.io.File(x)
       if (f.isFile) Seq(f.getCanonicalPath) else f.listFiles.toSeq.map(_.getCanonicalPath)
      })
 
     println(filesToProcess)
-    toJSON(filesToProcess, "/tmp/out.json.gz")
+    toJSON(filesToProcess, "/tmp/out.json.gz", preprocess = default_process)
   }
+}
+
+object tei_to_huggingface extends tei_to_huggingface_class {
+}
+
+object gtbcit_to_huggingface extends tei_to_huggingface_class {
+  val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
+
+
+
+  def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
+
+  override def decentSentence(s: Sentence)  = s.hilex_pos.exists(x => x != "unk")
+
+  def propagateHilexPos(d: Elem): Elem = {
+    PostProcessXML.updateElement(d,_.label=="cit", cit =>  {
+      val pos = (cit \ "@pos").text
+      // System.err.println(pos)
+      PostProcessXML.updateElement(cit,_.label=="w", w => setPos(w,pos))
+    })
+  }
+
+  override def default_process(e: Elem): Elem = propagateHilexPos(e)
+
 }
