@@ -71,8 +71,12 @@ trait tei_to_huggingface_class {
   }
 
   def decentSentence(s: Sentence)  = true
-  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit = {
-    val pw = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout)))
+
+
+  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit =
+  {
+    val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout + ".train.json.gz")))
+    val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout  + ".test.json.gz")))
 
     val esjes: Iterator[(String, Node)] = d.flatMap({
       case (f: String, x: Node) => {
@@ -91,13 +95,29 @@ trait tei_to_huggingface_class {
 
     val sentences: Iterator[Sentence] = esjes.map({case (f,s) => sentence(s,f)}).filter(decentSentence)
 
+    val sampled = sample(sentences)
+
     //val words = (d \\ "w").size
     //println("Sentences:" + s0.size  + " Words: " + words)
-    val s1 = sentences.zipWithIndex.map({case (s,i) => s.copy(id=i.toString)})
-    val jsons = s1.map(s => write(s))
 
-    jsons.foreach(x => { pw.println(x)})
-    pw.close()
+    val s1: Iterator[(Sentence, Boolean)] = sampled.zipWithIndex.map({case ((s,b),i) => s.copy(id=i.toString) -> b})
+    val jsons: Iterator[(String, Boolean)] = s1.map({case (s,b) => write(s) -> b})
+
+    jsons.foreach({case (json,b) => if (b) pwTest.println(json) else pwTrain.println(json)})
+    pwTest.close()
+    pwTrain.close()
+  }
+
+
+  def always_sampled(s: Sentence) = true
+
+  def sample(sentences: Iterator[Sentence], sample_rate: Double = 0.05, rate_test_train: Double = 0.2)  = {
+
+    def  selected(s: Sentence) = Math.random() < sample_rate || always_sampled(s)
+
+    sentences.filter(selected).map(s => {
+      if (Math.random() < rate_test_train) (s, true) else (s,false)
+    })
   }
 
   def toJSON(f: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(f.iterator.map(x => x -> preprocess(XML.load(x))), fout)
@@ -114,6 +134,7 @@ trait tei_to_huggingface_class {
 
   val default_dataset = ideeen
   def default_process(e: Elem)  = e
+
   def main(args: Array[String]): Unit = {
 
     val filesToProcess: Seq[String] = args.toSeq.flatMap(x => {
@@ -122,7 +143,7 @@ trait tei_to_huggingface_class {
      })
 
     println(filesToProcess)
-    toJSON(filesToProcess, "/tmp/out.json.gz", preprocess = default_process)
+    toJSON(filesToProcess, "/tmp/tei_to_huggingface", preprocess = default_process)
   }
 }
 
@@ -132,7 +153,7 @@ object tei_to_huggingface extends tei_to_huggingface_class {
 object gtbcit_to_huggingface extends tei_to_huggingface_class {
   val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
-
+  override  def always_sampled(s: Sentence) = s.hilex_pos.indices.exists(i => s.relevances(i)   == "yes" && s.hilex_pos(i).matches(".*(PD|CON|ADP|NUM|INT)"))
 
   def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
 
