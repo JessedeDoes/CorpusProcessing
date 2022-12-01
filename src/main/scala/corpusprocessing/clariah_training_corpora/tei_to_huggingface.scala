@@ -28,7 +28,8 @@ trait tei_to_huggingface_class {
                      )
 
   val sentence_element="q"
-  val chunkSize=300
+  val pos_attribute = "@pos"
+  val chunkSize= 50
   implicit val formats = DefaultFormats
 
   def sentence(s: Node, f: String) = {
@@ -38,7 +39,7 @@ trait tei_to_huggingface_class {
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val indexedTokenElements = tokenElements.zipWithIndex
     val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
-    val tags = tokenElements.map(x => (x \ "@pos").headOption.getOrElse(x \ "@type").text.trim)
+    val tags = tokenElements.map(x => (x \ pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
     val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
@@ -168,5 +169,11 @@ object gtbcit_to_huggingface extends tei_to_huggingface_class {
   }
 
   override def default_process(e: Elem): Elem = propagateHilexPos(e)
+
+}
+
+object ofr_to_huggingface extends tei_to_huggingface_class {
+  override val pos_attribute = "@type"
+
 
 }

@@ -7,8 +7,9 @@ import database.{Configuration, Database}
 import utils.{PostProcessXML, ProcessFolder}
 import utils.PostProcessXML._
 
+import java.io.File
 import scala.collection.immutable
-import scala.util.{Success, Try}
+import scala.util.{Random, Success, Try}
 import scala.xml._
 
 
@@ -220,6 +221,98 @@ object addHilexPos {
     }, parallel = false)
   }
 }
+
+
+object sampleQuotationsPerCentury {
+
+  val fromDir  = addHilexPos.enriched
+  val toDir = fromDir.replaceAll("/[^/]*/?$", "/CenturySelections")
+  new File(toDir).mkdir()
+
+  def allQuotations() = new File(fromDir).listFiles.iterator.take(60).flatMap(x => XML.loadFile(x) \\ "cit")
+
+  lazy val quotationDates: Map[String, (Double, Int)] = allQuotations().map(q => {
+    val id: String = getId(q)
+    val (f,t) = (q \ "date").map(d => (d \ "@atLeast").text -> (d \ "@atMost").text).map({case (f,t) => (f.toInt, t.toInt)}).head
+    val average = (f + t) / 2.0
+    val nWords = (q \\ "w").size
+    id -> (average,nWords)
+  }).toMap
+
+  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000)
+  val wordsPerDecennium = wordsPerCentury.mapValues( _ / 10)
+
+  lazy val perDecennium: Map[Double, List[(String, (Double, Int))]] = quotationDates.groupBy({case (id,(d,n)) => 10 * Math.floor(d/10)}).mapValues(l => Random.shuffle(l).toList)
+
+  def takeNWords(s : Seq[(String, (Double, Int))], n: Int) = {
+
+    def add(total: Int, opgebouwd: Seq[(String, (Double, Int))], item: (String, (Double, Int))): (Int, Seq[(String, (Double, Int))]) = {
+      if (total >= n) total -> opgebouwd else  total + item._2._2 -> (opgebouwd :+ item)
+    }
+
+    val enhanced: (Int, Seq[(String, (Double, Int))]) = s.foldLeft(0 -> Seq[(String, (Double, Int))]())({case ((t,l), item) => add(t,l,item)})
+    enhanced
+  }
+
+  def selectIdsForCentury(c: Int) = {
+     val plukjes: Seq[(Double, Set[String])] = perDecennium.filter{ case (d, l) => d >= 100*(c-1) && d < 100* (c)}.toList.sortBy({case (d,l) => d}).map({ case (d, l) =>
+
+        val (wc, l1) = takeNWords(l, wordsPerDecennium(c))
+        println(s"$d ($wc)  -->  selecteer ${l1.size} van de  ${l.size} citaten")
+        d -> l1.map(_._1).toSet
+    })
+    plukjes.map(_._2).flatten.toSet
+  }
+
+  def selectCentury(c: Int)  = {
+    val quotation_ids = selectIdsForCentury(c)
+    val selectedQuotations = allQuotations().filter(q => quotation_ids.contains(getId(q)))
+    <TEI>
+      <text>
+        <body>
+            <div>
+              {selectedQuotations}
+            </div>
+          </body>
+        </text>
+    </TEI>
+   }
+
+  def main(args: Array[String])  = {
+    // perDecennium.foreach({case (d,l) => println(d -> l.take(5))})
+     List(17,18,19).foreach(c => {
+       val corpusje = selectCentury(c)
+        XML.save(toDir + "/"  + s"quotations_$c.xml", corpusje, enc="UTF-8")
+     })
+  }
+}
+
+/*
+            <div lemma="AANZWOEGEN" entry-id="M001105">
+                <cit modern-lemma="aanzwoegen" pos="VRB" partition="train" lemma="AANZWOEGEN" entry-id="M001105" sense-id="M001105.bet.1" xml:id="M001105.eg.5510">
+                    <date timeSpan="1850-1900" atMost="1866" atLeast="1866"/>
+                    <q xml:id="no_doc_id.s.0">
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.63" pos="ADV(type=reg)" lemma="daar">Daar</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.64" pos="VRB(finiteness=fin,tense=pres)" lemma="komen">komt</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.65" pos="PD(type=d-p,subtype=art,position=prenom)" lemma="de">de</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.66" pos="NOU-C(number=sg)" lemma="kruier">kruier</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.67" pos="ADV(type=reg)" lemma="al">al</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.68" pos="ADP(type=pre)" lemma="met">met</w>
+                        <w lexicon="hilex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.69" pos="PD(type=poss,position=prenom)" lemma="u">uw</w>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.70" pos="NOU-C(number=pl)" lemma="koffer">koffers</w>
+                        <w lexicon="hilex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.71" pos="VRB(finiteness=inf)" lemma="aanzwoegen" sense-id="M001105.bet.1">aanzwoegen</
+w>
+                        <pc pos="LET" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.pc.pre.0000020" join="right">(</pc>
+                        <w lexicon="molex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.72" pos="CONJ(type=coor)" lemma="of">of</w>
+                        <pc pos="LET" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.pc.floating.0000021">—</pc>
+                        <w lexicon="hilex" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.w.74" pos="VRB(finiteness=pastpart)" lemma="aanzwoegen" sense-id="M001105.bet.1">aangezw
+oegd</w>
+                        <pc pos="LET" xml:id="e2202b70-1c8b-44b0-9272-53fb847ea519.pc.post.0000022">).</pc>
+                    </q>
+                </cit>
+            </div>
+
+ */
 
 /*
 <TEI>
