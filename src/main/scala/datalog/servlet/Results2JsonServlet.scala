@@ -1,4 +1,4 @@
-package servlet
+package datalog.servlet
 
 import database.{Configuration, Database, Results2Json}
 import javax.servlet.http.HttpServlet
