@@ -2,11 +2,11 @@
 
   <servlet>
     <servlet-name>sparql2xquery</servlet-name>
-    <servlet-class>datalog.servlet.BogusEndpoint</servlet-class>
+    <servlet-class>servlet.BogusEndpoint</servlet-class>
   </servlet>
   <servlet>
     <servlet-name>DSDD</servlet-name>
-    <servlet-class>datalog.servlet.DSDDProxy</servlet-class>
+    <servlet-class>servlet.DSDDProxy</servlet-class>
   </servlet>
 
 
