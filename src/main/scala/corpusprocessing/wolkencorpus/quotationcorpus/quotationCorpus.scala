@@ -264,9 +264,21 @@ object sampleQuotationsPerCentury {
     plukjes.map(_._2).flatten.toSet
   }
 
+  def fixQID(n: Node)  = {
+    val e = n.asInstanceOf[Elem]
+    PostProcessXML.updateElement(e, _.label=="q", q => {
+      val cid = getId(e)
+      q.copy(attributes = q.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", "q_" + cid, Null)))
+    })
+  }
+
+  /*
+     Selecteer eerst een set citaatIds (selectIdsForCentury)
+     Haal daarna de geselecteerde citaten eruit
+   */
   def selectCentury(c: Int)  = {
     val quotation_ids = selectIdsForCentury(c)
-    val selectedQuotations = allQuotations().filter(q => quotation_ids.contains(getId(q)))
+    val selectedQuotations: Iterator[Node] = allQuotations().filter(q => quotation_ids.contains(getId(q))).map(fixQID)
     <TEI>
       <text>
         <body>

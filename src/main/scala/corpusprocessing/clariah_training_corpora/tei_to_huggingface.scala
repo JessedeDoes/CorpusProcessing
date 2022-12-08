@@ -162,6 +162,13 @@ trait tei_to_huggingface_trait {
 object tei_to_huggingface extends tei_to_huggingface_trait {
 }
 
+object clariah_19 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/19_thomas/"
+  override val  output_folder = "/tmp/"
+  override val output_prefix = "nederval_19"
+
+}
+
 object gtbcit_to_huggingface extends tei_to_huggingface_trait {
   val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
