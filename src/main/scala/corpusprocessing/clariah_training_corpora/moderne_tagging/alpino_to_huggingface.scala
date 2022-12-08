@@ -50,6 +50,10 @@ case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: 
     val feats = if (FEATS != "_") "|" + FEATS else ""
     <w xml:id={tokenId} pos={UPOS} msd={s"UPosTag=$UPOS$feats"} lemma={LEMMA} ana={s"xpos=$XPOS|misc=$MISC"}>{FORM}</w>
   }
+
+  lazy val position = ID.toInt
+
+  def precedes(t: UdToken) = this.position < t.position
 }
 
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
@@ -63,19 +67,21 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
 
   def head(t: UdToken) = tokens.find(_.ID == t.HEAD)
 
+
+
   def xpos_enhanced(t: UdToken) = (t.UPOS, t.DEPREL, head(t)) match {
 
     // scheidbare adverbia en werkwoorden
 
-    case ("ADP", "compound:prt", h) => h.map(_.XPOS + "_deel_sep_ww").getOrElse(t.XPOS) // enzovoorts ...
+    case ("ADP", "compound:prt", h) => h.map(h => h.XPOS + "_deel_sep_ww" + (if (t.precedes(h)) "_b" else "_f")).getOrElse(t.XPOS) // enzovoorts ...
 
-    case (_, "case", h) if h.exists(t => t.LEMMA.toLowerCase=="er" ) =>  h.map(_.XPOS + "_deel_sep_adv").getOrElse(t.XPOS)
+    case (_, "case", h) if h.exists(t => t.LEMMA.toLowerCase=="er" ) =>  h.map(h0 => h0.XPOS + "_deel_sep_adv" + ( if (t.precedes(h0)) "_b" else "_f")).getOrElse(t.XPOS)
 
     case ("VERB",_,_)  => {
       val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "compound:prt")
 
       if (particle.nonEmpty)
-        t.XPOS + "_head_sep_vrb"
+        t.XPOS + "_head_sep_vrb" + (if (t.precedes(particle.get)) "_b" else "_f")
       else t.XPOS
     }
 
@@ -83,7 +89,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
       val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "case")
       if (particle.nonEmpty) println(particle -> t)
       if (particle.nonEmpty)
-        t.XPOS + "_head_sep_adv"
+        t.XPOS + "_head_sep_adv" + (if (t.precedes(particle.get)) "_b" else "_f")
       else t.XPOS
     }
 
@@ -101,7 +107,8 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   def xpos_converted(t: UdToken): String = {
      val parts: Array[String] = xpos_enhanced(t).split("_")
      val p0: String = cgn_tdn.xpos2tdncore(parts(0))
-     if (parts.size > 1) p0 + "_" + parts.drop(1).mkString("_") else p0
+    (if (parts.size > 1) p0 + "_" + parts.drop(1).mkString("_") else p0)
+      .replaceAll("_.*_","_") // keep only b,f fttb
   }
 
   lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
@@ -162,7 +169,7 @@ object alpino_to_huggingface {
     val s1 = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
     val jsons = s1.map(s => write(s))
     val pw = new PrintWriter("/tmp/huggie.json")
-    jsons.take(1000).foreach(pw.println)
+    jsons.take(Integer.MAX_VALUE).foreach(pw.println)
     pw.close()
   }
 }
