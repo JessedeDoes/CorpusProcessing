@@ -43,6 +43,7 @@ case class Sentence(
                    )
 
 case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: String, FEATS: String, HEAD: String, DEPREL: String, DEPS: String, MISC: String, sent_id: String, language: String) {
+
   lazy val tokenId = s"$sent_id.$ID.$language"
 
 
@@ -127,6 +128,8 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
 
   lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(xpos_converted(_)).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
+
+  lazy val TEI = <s xml:id={sent_id}>{tokens.map(t => <w pos={xpos_converted(t)} lemma={t.LEMMA}>{t.FORM}</w>)}</s>
 }
 
 
@@ -156,7 +159,7 @@ object alpino_to_huggingface {
   }
 
   def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) =
-    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}><text><body><div><ab>{sentences.map(_.toXML())}</ab></div></body></text></TEI>
+    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}><text><body><div><ab>{sentences.map(_.TEI)}</ab></div></body></text></TEI>
 
 
   def doit(allFiles: Seq[java.io.File]): Unit = {
@@ -178,12 +181,19 @@ object alpino_to_huggingface {
   def main(args: Array[String]): Unit = {
 
     val f = new java.io.File(if (args.size > 0) args(0) else lassy_training_file)
-    val sents: Seq[Sentence] = parseFile(f).map(_.sent)
+    val udsents :  Seq[UdSentence] = parseFile(f)
+    val sents: Seq[Sentence] = udsents.map(_.sent)
     val s1 = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
     val jsons = s1.map(s => write(s))
     val pw = new PrintWriter("/tmp/huggie.json")
     jsons.take(Integer.MAX_VALUE).foreach(pw.println)
     pw.close()
+    val p = new PrettyPrinter(80,2)
+    val xml = p.format(makeTEI(f,udsents))
+
+    val pw1 = new PrintWriter("/tmp/lassy.xml")
+    pw1.print(xml)
+    pw1.close()
   }
 }
 
