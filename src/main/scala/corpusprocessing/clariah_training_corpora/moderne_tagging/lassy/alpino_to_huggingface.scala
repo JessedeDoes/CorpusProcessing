@@ -1,143 +1,18 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging
-import scala.xml._
-import grouping._
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
+
+import grouping.groupWithFirst
 import org.json4s._
-import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
 
-
 import java.io.PrintWriter
+import scala.xml._
 
-
-object cgn_tdn {
-  lazy val cgn_tdn_mapping = io.Source.fromFile("data/TDN/Corpora/CGN/tag_mapping_cgn_with_core.txt").getLines().map(l => l.split("\\t").toList).map(l => {
-    val cgn = l(1)
-    val tdn = l(2)
-    val tdn_core = l(3)
-    cgn -> (tdn,tdn_core)
-  }).toMap
-
-  def xpos2cgn(t: String)  = {
-    val t0 = t.replaceAll("\\|", ",").replaceAll("^([A-Z]+),(.*)","$1($2)")
-    val t1 = if (t0.endsWith(")")) t0 else s"$t0()"
-    //System.err.println(s"$t -> $t1")
-    t1
-  }
-
-  def cgn2tdncore(t: String)  = cgn_tdn_mapping.get(t).map(_._2).getOrElse("UNK_" + t)
-  def xpos2tdncore(t: String) = cgn_tdn_mapping.get(xpos2cgn(t)).map(_._2).getOrElse("UNK_" + t)
-
-}
-
-import cgn_tdn._
-
-case class Sentence(
-                     id: String,
-                     tokens: List[String],
-                     tags: List[String],
-                     lemmata: List[String],
-                     xml_ids: List[String]  = List(),
-                     relevances: List[String]  = List(),
-                     hilex_pos : List[String]  = List(),
-                     file: String = "unknown" // pas op andere dingen hebben dit niet
-                   )
-
-case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: String, FEATS: String, HEAD: String, DEPREL: String, DEPS: String, MISC: String, sent_id: String, language: String) {
-
-  lazy val tokenId = s"$sent_id.$ID.$language"
-
-
-  def toXML(sent_id: String, language: String) = {
-    val feats = if (FEATS != "_") "|" + FEATS else ""
-    <w xml:id={tokenId} pos={UPOS} msd={s"UPosTag=$UPOS$feats"} lemma={LEMMA} ana={s"xpos=$XPOS|misc=$MISC"}>{FORM}</w>
-  }
-
-  lazy val position = ID.toInt
-
-  def precedes(t: UdToken) = this.position < t.position
-}
-
-case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
-  def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>{tokens.map(_.toXML(sent_id, language))}{linkGrp}</s>
-  lazy val n2id = tokens.map(t => t.ID -> t.tokenId).toMap
-
-  lazy val links: Seq[(String, String, String)] = tokens.map(t => {
-    val id = n2id(t.ID)
-    (t.DEPREL, id,  n2id.getOrElse(t.HEAD, id))
-  })
-
-  def head(t: UdToken) = tokens.find(_.ID == t.HEAD)
-
-
-
-  def xpos_enhanced(t: UdToken) = (t.UPOS, t.DEPREL, head(t)) match {
-
-    // scheidbare adverbia en werkwoorden
-
-    case ("ADP", "compound:prt", h) => h.map(h => h.XPOS + "_deel_sep_ww" + (if (t.precedes(h)) "_b" else "_f")).getOrElse(t.XPOS) // enzovoorts ...
-
-    case (_, "case", h) if h.exists(t => t.LEMMA.toLowerCase=="er" ) =>  h.map(h0 => h0.XPOS + "_deel_sep_adv" + ( if (t.precedes(h0)) "_b" else "_f")).getOrElse(t.XPOS)
-
-
-    case ("VERB",_,_)  => {
-      val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "compound:prt")
-
-      if (particle.nonEmpty) {
-        t.XPOS + "_head_sep_vrb" + (if (t.precedes(particle.get)) "_b" else "_f")
-
-
-      } else  {
-        val copula = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "cop")
-        if (copula.nonEmpty && t.XPOS.matches(".*(vd|od).*")) {
-           println(copula.get.FORM -> t.FORM)
-          "ADJ|vrij|basis|zonder"
-        } else t.XPOS
-      }
-    }
-
-    case (_, _,_) if (t.LEMMA=="er") => {
-      val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "case")
-      //if (particle.nonEmpty) println(particle -> t)
-      if (particle.nonEmpty)
-        t.XPOS + "_head_sep_adv" + (if (t.precedes(particle.get)) "_b" else "_f")
-      else t.XPOS
-    }
-
-    // transcategorisaties (ook al uit position te halen)
-
-    /*
-    case ("ADJ", "obj", h) => t.XPOS + "_transcat_to_n_obj"
-    case ("ADJ", "nsubj", h) => t.XPOS + "_transcat_to_n_nsubj"
-    case ("ADJ", "iobj", h) => t.XPOS + "_transcat_to_n_iobj"
-    */
-
-    case _ => t.XPOS
-  }
-
-  def xpos_converted(t: UdToken): String = {
-    val parts: Array[String] = xpos_enhanced(t).split("_")
-
-    val p0: String = cgn_tdn.xpos2tdncore(parts(0))
-
-    val p1 =  if (p0.matches(".*d-p.*w-p.*") && t.LEMMA.toLowerCase.matches("d.*|hetgeen")) p0.replaceAll("d-p.*w-p", "d-p") else p0
-    val p2 = if (p0.contains("PC")) "LET" else p1
-     (if (parts.size > 1) p2 + "_" + parts.drop(1).mkString("_") else p2)
-      .replaceAll("_.*_","_") // keep only b,f fttb
-  }
-
-  lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
-
-  lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(xpos_converted(_)).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
-
-  lazy val TEI = <s xml:id={sent_id}>{tokens.map(t => <w pos={xpos_converted(t)} lemma={t.LEMMA}>{t.FORM}</w>)}</s>
-}
 
 
 
 
 
 object alpino_to_huggingface {
-
 
   implicit val formats = DefaultFormats
 

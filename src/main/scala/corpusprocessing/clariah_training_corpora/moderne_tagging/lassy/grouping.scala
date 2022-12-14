@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
 
 object grouping {
   def pushOptionInside[T](o: Option[(T, Int)]): (Option[T], Int) =
