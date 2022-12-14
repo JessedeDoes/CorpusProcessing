@@ -33,23 +33,34 @@ object alpino_to_huggingface {
     sentences
   }
 
-  def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) =
-    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}><text><body><div><ab>{sentences.map(_.TEI)}</ab></div></body></text></TEI>
-
-
-  def doit(allFiles: Seq[java.io.File]): Unit = {
-
-    val corpus = <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">{allFiles.map(parseFile)}</teiCorpus>
-    import java.io.PrintWriter
-    def prettyScala(pw: PrintWriter, e: Elem): Unit = {
-      val pretty = new scala.xml.PrettyPrinter(Integer.MAX_VALUE, 4)
-      pw.write(pretty.format(e))
-      pw.close()
-    }
-    prettyScala(new PrintWriter("corpus.xml"), corpus)
+  def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) = {
+    val documents: Seq[(String, Array[(UdSentence, Int)])] = grouping.groupBy[UdSentence,String](sentences, x => x.filename)
+    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}>
+      <text>
+        <body>
+          <div>
+            <ab>
+              {documents.map{case (did, sents) => {
+                val sentsindoc = sents.map(_._1)
+                val paragraphs: Seq[(String, Array[(UdSentence, Int)])] = grouping.groupBy[UdSentence,String](sentsindoc, x => x.paragraph)
+                <docje xml:id ={did}>
+                  {paragraphs.map{case (pid, sents) =>
+                     val sentsinpar: Array[UdSentence] =  sents.map(_._1)
+                     <p xml:id ={pid}>
+                     {sentsinpar.map(_.TEI).toSeq}
+                     </p>
+                 }}
+                </docje>
+            }}}
+            </ab>
+          </div>
+        </body>
+      </text>
+    </TEI>
   }
 
-  lazy val allFiles: Seq[java.io.File] = new java.io.File(".").listFiles.filter(_.isDirectory()).toList.flatMap(_.listFiles.toList).filter(_.getName.matches("[a-z][a-z]_pud-ud-test.conllu"))
+
+  //lazy val allFiles: Seq[java.io.File] = new java.io.File(".").listFiles.filter(_.isDirectory()).toList.flatMap(_.listFiles.toList).filter(_.getName.matches("[a-z][a-z]_pud-ud-test.conllu"))
 
   val lassy_training_file = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/TrainTest/treebank.train_dev.conll"
 
@@ -57,12 +68,19 @@ object alpino_to_huggingface {
 
     val f = new java.io.File(if (args.size > 0) args(0) else lassy_training_file)
     val udsents :  Seq[UdSentence] = parseFile(f)
+
     val sents: Seq[Sentence] = udsents.map(_.sent)
-    val s1 = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
+    val s1: Seq[Sentence] = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
+
+    // write json
     val jsons = s1.map(s => write(s))
     val pw = new PrintWriter("/tmp/huggie.json")
     jsons.take(Integer.MAX_VALUE).foreach(pw.println)
     pw.close()
+
+
+    // write XML
+
     val p = new PrettyPrinter(80,2)
     val xml = p.format(makeTEI(f,udsents))
 

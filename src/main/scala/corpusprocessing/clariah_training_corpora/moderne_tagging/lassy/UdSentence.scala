@@ -1,6 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
 
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
+
   def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>
     {tokens.map(_.toXML(sent_id, language))}{linkGrp}
   </s>
@@ -77,8 +78,10 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(xpos_converted(_)).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
 
   lazy val TEI = <s xml:id={sent_id}>
-    {tokens.map(t => <w pos={xpos_converted(t)} lemma={t.LEMMA}>
-      {t.FORM}
-    </w>)}
+    {tokens.map(t => <w pos={xpos_converted(t)} lemma={t.LEMMA}>{t.FORM}</w>)}
   </s>
+
+  // /mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/dpc-bal-001236-nl-sen/dpc-bal-001236-nl-sen.p.10.s.3
+  lazy val filename = sent_id.replaceAll(".*/","").replaceAll("\\.p\\..*","")
+  lazy val paragraph  = sent_id.replaceAll(".*/","").replaceAll("\\.s\\..*","")
 }

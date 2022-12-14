@@ -23,4 +23,10 @@ object grouping {
     val grouped = numberedChild.groupBy({ case (n, i) => lastBefore(i) })
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1).toList) // ahem, unorded...
   }
+
+  def groupBy[T,S](l: Seq[T], f: T=>S) = {
+    val numberedChild: Array[(T, Int)] = l.zipWithIndex.toArray
+    val grouped = numberedChild.groupBy({ case (n, i) => f(n) }).toList.sortBy(_._2(0)._2).map({case (s,l) => (s,l.sortBy(_._2))})
+    grouped
+  }
 }
