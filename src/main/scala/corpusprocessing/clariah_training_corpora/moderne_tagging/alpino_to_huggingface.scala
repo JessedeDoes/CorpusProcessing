@@ -77,17 +77,26 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
 
     case (_, "case", h) if h.exists(t => t.LEMMA.toLowerCase=="er" ) =>  h.map(h0 => h0.XPOS + "_deel_sep_adv" + ( if (t.precedes(h0)) "_b" else "_f")).getOrElse(t.XPOS)
 
+
     case ("VERB",_,_)  => {
       val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "compound:prt")
 
-      if (particle.nonEmpty)
+      if (particle.nonEmpty) {
         t.XPOS + "_head_sep_vrb" + (if (t.precedes(particle.get)) "_b" else "_f")
-      else t.XPOS
+
+
+      } else  {
+        val copula = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "cop")
+        if (copula.nonEmpty && t.XPOS.matches(".*(vd|od).*")) {
+           println(copula.get.FORM -> t.FORM)
+          "ADJ|vrij|basis|zonder"
+        } else t.XPOS
+      }
     }
 
     case (_, _,_) if (t.LEMMA=="er") => {
       val particle = tokens.find(t1 => t1.HEAD == t.ID && t1.DEPREL == "case")
-      if (particle.nonEmpty) println(particle -> t)
+      //if (particle.nonEmpty) println(particle -> t)
       if (particle.nonEmpty)
         t.XPOS + "_head_sep_adv" + (if (t.precedes(particle.get)) "_b" else "_f")
       else t.XPOS
@@ -105,9 +114,13 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   }
 
   def xpos_converted(t: UdToken): String = {
-     val parts: Array[String] = xpos_enhanced(t).split("_")
-     val p0: String = cgn_tdn.xpos2tdncore(parts(0))
-    (if (parts.size > 1) p0 + "_" + parts.drop(1).mkString("_") else p0)
+    val parts: Array[String] = xpos_enhanced(t).split("_")
+
+    val p0: String = cgn_tdn.xpos2tdncore(parts(0))
+
+    val p1 =  if (p0.matches(".*d-p.*w-p.*") && t.LEMMA.toLowerCase.matches("d.*|hetgeen")) p0.replaceAll("d-p.*w-p", "d-p") else p0
+    val p2 = if (p0.contains("PC")) "LET" else p1
+     (if (parts.size > 1) p2 + "_" + parts.drop(1).mkString("_") else p2)
       .replaceAll("_.*_","_") // keep only b,f fttb
   }
 
