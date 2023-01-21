@@ -67,7 +67,10 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
 
     val p1 = if (p0.matches(".*d-p.*w-p.*") && t.LEMMA.toLowerCase.matches("d.*|hetgeen")) p0.replaceAll("d-p.*w-p", "d-p") else p0
     val p2 = if (p0.contains("PC")) "LET" else p1
-    (if (parts.size > 1) p2 + "_" + parts.drop(1).mkString("_") else p2)
+    val p3 = if (p0.matches("ADV.*uncl.*"))  {
+      p2.replaceAll("uncl","reg") // add check for pronominal adverbs? or do that in the dependency check?
+    } else p2
+    (if (parts.size > 1) p3 + "_" + parts.drop(1).mkString("_") else p3)
       .replaceAll("_.*_", "_") // keep only b,f fttb
   }
 
