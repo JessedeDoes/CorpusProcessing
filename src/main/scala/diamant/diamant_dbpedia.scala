@@ -81,6 +81,17 @@ object diamant_dbpedia {
        |       } } """.stripMargin
   }
 
+  def searchJustbyLemma(v: String, resource: String)  = {
+    s"""$prefixes
+       | construct {${constr(resource)}} where { graph ?g {
+       |          ?e ontolex:canonicalForm ?form . ?form ontolex:writtenRep  ${v.replaceAll("@nl$","")} .
+       |          ?e ontolex:sense ?sense .
+       |          ?sense lemon:definition ?def . ?def a diamant:SynonymDefinition . ?def diamant:definitionText ?term .
+       |          ?def a ?defType .
+       |          bind('syn_from_lemma' as ?match)
+       |       } } """.stripMargin
+  }
+
   def searchbySyn(v: String, resource: String)  = {
     s"""$prefixes
        | construct {${constr(resource)}} where { graph ?g {
