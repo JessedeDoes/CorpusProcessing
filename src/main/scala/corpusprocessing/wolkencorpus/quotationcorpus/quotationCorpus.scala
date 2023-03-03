@@ -141,7 +141,7 @@ object quotationCorpus {
   def main(args: Array[String]): Unit = {
     utils.ProcessFolder.processFolder(
       f("/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/Tagged"),
-      f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN"}"),
+      f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN2"}"),
       {
         case (inputTEI,outputQuotations) =>
           val x = extractQuotations(inputTEI)
