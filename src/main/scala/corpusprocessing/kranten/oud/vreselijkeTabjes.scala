@@ -1,5 +1,5 @@
 package corpusprocessing.kranten.oud
-import corpusprocessing.clariah_training_corpora.moderne_tagging.grouping.groupWithFirst
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
 
 import scala.xml._
 object vreselijkeTabjes {

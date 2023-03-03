@@ -1,4 +1,5 @@
-package tdn_evaluation_sets
+package corpusprocessing.tdn_evaluation_sets
+
 import scala.xml._
 import java.io.File
 import scala.util.{Try,Success,Failure}

@@ -1,60 +1,14 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging
-import scala.xml._
-import grouping._
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
+
+import grouping.groupWithFirst
 import org.json4s._
-import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
-import corpusprocessing.clariah_training_corpora.Sentence
 
 import java.io.PrintWriter
-
-case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: String, FEATS: String, HEAD: String, DEPREL: String, DEPS: String, MISC: String, sent_id: String, language: String) {
-  lazy val tokenId = s"$sent_id.$ID.$language"
-  def toXML(sent_id: String, language: String) = {
-    val feats = if (FEATS != "_") "|" + FEATS else ""
-    <w xml:id={tokenId} pos={UPOS} msd={s"UPosTag=$UPOS$feats"} lemma={LEMMA} ana={s"xpos=$XPOS|misc=$MISC"}>{FORM}</w>
-  }
-}
-
-case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
-  def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>{tokens.map(_.toXML(sent_id, language))}{linkGrp}</s>
-  lazy val n2id = tokens.map(t => t.ID -> t.tokenId).toMap
-
-  lazy val links: Seq[(String, String, String)] = tokens.map(t => {
-    val id = n2id(t.ID)
-    (t.DEPREL, id,  n2id.getOrElse(t.HEAD, id))
-  })
+import scala.xml._
 
 
-  lazy val linkGrp = <linkGrp>{links.map(t => <link ana={"ud-syn:" + t._1} target={s"#${t._3} #${t._2}"}/>)}</linkGrp>
 
-  lazy val sent: Sentence = Sentence("", tokens.map(_.FORM).toList, tokens.map(_.XPOS).toList, tokens.map(_.LEMMA).toList) // todo add lemmata
-}
-
-object grouping {
-  def pushOptionInside[T](o: Option[(T, Int)]): (Option[T], Int) =
-    o.map(x => (Some(x._1).asInstanceOf[Option[T]], x._2)).getOrElse((None, 0))
-
-  def groupWithFirst[T](l: Seq[T], f: T => Boolean): Seq[Seq[T]] = {
-
-    val numberedChild: Array[(T, Int)] = l.zipWithIndex.toArray
-
-
-    def lastBefore(i: Int): (Option[T], Int) = {
-      val countDown = (i to 0 by -1)
-      val hitIndex = countDown.find(j => {
-        val n = numberedChild(j)._1
-        f(n)
-      }).map(k => (numberedChild(k)._1, k))
-
-      //pushOptionInside(numberedChild.filter({ case (n, j) => j <= i && f(n) }).lastOption)
-      pushOptionInside(hitIndex)
-    }
-
-    val grouped = numberedChild.groupBy({ case (n, i) => lastBefore(i) })
-    grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1).toList) // ahem, unorded...
-  }
-}
 
 
 
@@ -79,32 +33,60 @@ object alpino_to_huggingface {
     sentences
   }
 
-  def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) =
-    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}><text><body><div><ab>{sentences.map(_.toXML())}</ab></div></body></text></TEI>
-
-
-  def doit(allFiles: Seq[java.io.File]): Unit = {
-
-    val corpus = <teiCorpus xmlns="http://www.tei-c.org/ns/1.0">{allFiles.map(parseFile)}</teiCorpus>
-    import java.io.PrintWriter
-    def prettyScala(pw: PrintWriter, e: Elem): Unit = {
-      val pretty = new scala.xml.PrettyPrinter(Integer.MAX_VALUE, 4)
-      pw.write(pretty.format(e))
-      pw.close()
-    }
-    prettyScala(new PrintWriter("corpus.xml"), corpus)
+  def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) = {
+    val documents: Seq[(String, Array[(UdSentence, Int)])] = grouping.groupBy[UdSentence,String](sentences, x => x.filename)
+    <TEI xmlns="http://www.tei-c.org/ns/1.0" xml:id={f.getName}>
+      <text>
+        <body>
+          <div>
+            <ab>
+              {documents.map{case (did, sents) => {
+                val sentsindoc = sents.map(_._1)
+                val paragraphs: Seq[(String, Array[(UdSentence, Int)])] = grouping.groupBy[UdSentence,String](sentsindoc, x => x.paragraph)
+                <docje xml:id ={did}>
+                  {paragraphs.map{case (pid, sents) =>
+                     val sentsinpar: Array[UdSentence] =  sents.map(_._1)
+                     <p xml:id ={pid}>
+                     {sentsinpar.map(_.TEI).toSeq}
+                     </p>
+                 }}
+                </docje>
+            }}}
+            </ab>
+          </div>
+        </body>
+      </text>
+    </TEI>
   }
 
-  lazy val allFiles: Seq[java.io.File] = new java.io.File(".").listFiles.filter(_.isDirectory()).toList.flatMap(_.listFiles.toList).filter(_.getName.matches("[a-z][a-z]_pud-ud-test.conllu"))
+
+  //lazy val allFiles: Seq[java.io.File] = new java.io.File(".").listFiles.filter(_.isDirectory()).toList.flatMap(_.listFiles.toList).filter(_.getName.matches("[a-z][a-z]_pud-ud-test.conllu"))
+
+  val lassy_training_file = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/TrainTest/treebank.train_dev.conll"
 
   def main(args: Array[String]): Unit = {
-    val f = new java.io.File(args(0))
-    val sents: Seq[Sentence] = parseFile(f).map(_.sent)
-    val s1 = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
+
+    val f = new java.io.File(if (args.size > 0) args(0) else lassy_training_file)
+    val udsents :  Seq[UdSentence] = parseFile(f)
+
+    val sents: Seq[Sentence] = udsents.map(_.sent)
+    val s1: Seq[Sentence] = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })
+
+    // write json
     val jsons = s1.map(s => write(s))
     val pw = new PrintWriter("/tmp/huggie.json")
-    jsons.foreach(pw.println)
+    jsons.take(Integer.MAX_VALUE).foreach(pw.println)
     pw.close()
+
+
+    // write XML
+
+    val p = new PrettyPrinter(80,2)
+    val xml = p.format(makeTEI(f,udsents))
+
+    val pw1 = new PrintWriter("/tmp/lassy.xml")
+    pw1.print(xml)
+    pw1.close()
   }
 }
 
@@ -131,4 +113,24 @@ object alpino_to_huggingface {
      DEPREL: Universal dependency relation to the HEAD (root iff HEAD = 0) or a defined language-specific subtype of one.
      DEPS: Enhanced dependency graph in the form of a list of head-deprel pairs.
      MISC: Any other annotation.
+ */
+
+
+/*
+                                Table "public.tag_mapping_cgn"
+    Column    |  Type   | Collation | Nullable |                    Default
+--------------+---------+-----------+----------+-----------------------------------------------
+ id           | text    |           |          |
+ cgn          | text    |           |          |
+ tdn          | text    |           |          |
+ tdn_core     | text    |           |          |
+ example      | text    |           |          |
+ verdacht     | boolean |           |          | false
+ pkid         | integer |           | not null | nextval('tag_mapping_cgn_pkid_seq'::regclass)
+ tdn_core_org | text    |           |          |
+ comment      | text    |           |          |
+Indexes:
+    "tag_mapping_cgn_pkey" PRIMARY KEY, btree (pkid)
+
+
  */

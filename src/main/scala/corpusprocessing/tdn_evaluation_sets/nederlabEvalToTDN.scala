@@ -1,4 +1,5 @@
-package tdn_evaluation_sets
+package corpusprocessing.tdn_evaluation_sets
+
 import scala.xml._
 import utils.PostProcessXML
 object nederlabEvalToTDN {
