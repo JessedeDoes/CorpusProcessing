@@ -2,7 +2,7 @@ package corpusprocessing.clariah_training_corpora
 import utils.PostProcessXML
 
 import scala.xml._
-import java.io.File
+import java.io.{File, PrintWriter}
 
 package object floep
 {
@@ -58,6 +58,21 @@ import readOldPartitions._
 object tei_2_json extends tei_to_huggingface_trait {
   override def sample(sentences: Iterator[(tei_2_json.Sentence, Boolean)], sample_rate: Double, rate_test_train: Double): Iterator[(tei_2_json.Sentence, Boolean)] = sentences.map({case (s,b) => (s, s.partition.contains("test"))})
 
+}
+
+object toTSV {
+  def toTSV(file: String, out: String)  = {
+    val d = XML.load(file)
+    val pw = new PrintWriter(out)
+    (d \\ "s").foreach(s => {
+
+      val wpc = (s.descendant.filter(x => Set("pc","w").contains(x.label)))
+      val sent = wpc.map(_.text.trim).mkString(" ")
+      pw.println(s"\n#${getId(s)}\n#$sent")
+      wpc.foreach(n => pw.println(s"${n.text.trim}\t${n \ "@lemma"}\t${n \ "@pos"}\t${n \ "@n"}"))
+    })
+    pw.close()
+  }
 }
 
 object makeHeader {
@@ -133,7 +148,9 @@ object makeHeader {
     val train = PostProcessXML.updateElement5(noTwo, _.label=="s", s => {
       if ((s \ "@ana").map(_.text).mkString.contains("train")) Seq(s) else Seq()
     }).asInstanceOf[Elem]
+
      val locationTest = s"$location/test/"
+
      val locationTrain = s"$location/train/"
      List(locationTest, locationTrain).foreach(new File(_).mkdir())
 
@@ -144,7 +161,9 @@ object makeHeader {
 
      val iter: Iterator[(String, Elem)] = List(id -> noTwo).iterator
 
-     tei_2_json.Nodes2JSON(iter, s"/tmp/aapje_$id")
+     tei_2_json.Nodes2JSON(iter, s"$locationTrain/$id",s"$locationTest/$id", sentence_element = "s")
+     toTSV.toTSV(s"$locationTrain/$id.train.xml", s"$locationTrain/$id.train.tsv")
+     toTSV.toTSV(s"$locationTest/$id.test.xml", s"$locationTest/$id.test.tsv")
   }
 
   def main(args: Array[String])  = {

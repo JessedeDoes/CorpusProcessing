@@ -76,7 +76,7 @@ trait tei_to_huggingface_trait {
     val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
     val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#","")).getOrElse("unknown")
 
-    // println(s)
+    // println(s.asInstanceOf[Elem].copy(child=Seq()))
     // println(s.attributes.toString + "->" + partition)
     val r = Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances,hilex_pos=hilex_pos,partition = partition)
 
@@ -86,10 +86,10 @@ trait tei_to_huggingface_trait {
   def decentSentence(s: Sentence, b: Boolean)  = true
 
 
-  def Nodes2JSON(documents: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit =
+  def Nodes2JSON(documents: Iterator[(String, Elem)], fout_train: String, fout_test: String="", sentence_element:String=sentence_element): Unit =
   {
-    val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout + ".train.json.gz")))
-    val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout  + ".test.json.gz")))
+    val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout_train + ".train.json.gz")))
+    val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream((if (fout_test.nonEmpty) fout_test else fout_train)  + ".test.json.gz")))
 
     val esjes: Iterator[(String, Node, Boolean)] = documents.flatMap({
 
@@ -99,7 +99,7 @@ trait tei_to_huggingface_trait {
           (x \\ sentence_element).iterator.map(s => (f,s,doc_in_test))
         else {
           val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
-            <s>
+            <s ana="#chunk">
               {chunk}
             </s>
           })
