@@ -24,20 +24,21 @@ trait tei_to_huggingface_trait {
                        xml_ids: List[String]  = List(),
                        relevances: List[String]  = List(),
                        hilex_pos : List[String]  = List(),
-                       file: String = "unknown" // pas op andere dingen hebben dit niet
+                       file: String = "unknown",
+                       partition: String = "unknown"// pas op andere dingen hebben dit niet
                      )
 
   val sentence_element="q"
   val pos_attribute = "@pos"
   val chunkSize= 50
-  val test_sample_rate = 0.2
+  val default_test_train_rate = 0.2
   val split_test_train_on_document_level = false
   val output_folder= "/tmp"
   val output_prefix = "tei_to_huggingface"
 
   implicit val formats = DefaultFormats
 
-  def sentence(s: Node, f: String) = {
+  def sentence(s: Node, f: String): Sentence = {
 
     def getN(n: Node) =  (n \ "@n").text
 
@@ -71,23 +72,29 @@ trait tei_to_huggingface_trait {
         t
       } else p
     }
-    val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
 
-    Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances,hilex_pos=hilex_pos)
+    val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
+    val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#","")).getOrElse("unknown")
+
+    // println(s)
+    // println(s.attributes.toString + "->" + partition)
+    val r = Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances,hilex_pos=hilex_pos,partition = partition)
+
+    r
   }
 
   def decentSentence(s: Sentence, b: Boolean)  = true
 
 
-  def Nodes2JSON(d: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit =
+  def Nodes2JSON(documents: Iterator[(String, Elem)], fout: String, sentence_element:String=sentence_element): Unit =
   {
     val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout + ".train.json.gz")))
     val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout  + ".test.json.gz")))
 
-    val esjes: Iterator[(String, Node, Boolean)] = d.flatMap({
+    val esjes: Iterator[(String, Node, Boolean)] = documents.flatMap({
 
       case (f: String, x: Node) => {
-        val doc_in_test = Math.random() < test_sample_rate
+        val doc_in_test = Math.random() < default_test_train_rate
         if ((x \\ sentence_element).nonEmpty)
           (x \\ sentence_element).iterator.map(s => (f,s,doc_in_test))
         else {
@@ -112,6 +119,7 @@ trait tei_to_huggingface_trait {
     val jsons: Iterator[(String, Boolean)] = s1.map({case (s,b) => write(s) -> b})
 
     jsons.foreach({case (json,b) => if (b) pwTest.println(json) else pwTrain.println(json)})
+
     pwTest.close()
     pwTrain.close()
   }
@@ -119,7 +127,7 @@ trait tei_to_huggingface_trait {
 
   def always_sampled(s: Sentence) = true
 
-  def sample(sentences: Iterator[(Sentence,Boolean)], sample_rate: Double = 0.05, rate_test_train: Double = test_sample_rate): Iterator[(Sentence, Boolean)] = {
+  def sample(sentences: Iterator[(Sentence,Boolean)], sample_rate: Double = 0.05, rate_test_train: Double = default_test_train_rate): Iterator[(Sentence, Boolean)] = {
 
     def  selected(s: Sentence) = (Math.random() < sample_rate) || always_sampled(s)
 
@@ -127,7 +135,6 @@ trait tei_to_huggingface_trait {
       if (split_test_train_on_document_level && b || (!split_test_train_on_document_level && Math.random() < rate_test_train)) (s, true) else (s,false)
     }})
   }
-
 
   def toJSON(f: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(f.iterator.map(x => x -> preprocess(XML.load(x))), fout)
 
@@ -166,7 +173,6 @@ object clariah_19 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/19_thomas/"
   override val  output_folder = "/tmp/"
   override val output_prefix = "nederval_19"
-
 }
 
 object gtbcit_to_huggingface extends tei_to_huggingface_trait {

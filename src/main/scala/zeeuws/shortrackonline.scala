@@ -2,8 +2,8 @@ package zeeuws
 
 import java.net.{URI, URL}
 import scala.xml._
-
 import java.nio.charset.CodingErrorAction
+import scala.collection.immutable
 import scala.io.Codec
 
 
@@ -77,11 +77,12 @@ object shortrackonline {
   val denhaag = "data/regio_denhaag.html"
   val hasselt = "data/hasselt.html"
   val regio_utrecht = "data/regio_utrecht.html"
+  val regio_dordrecht = "data/regiodordrecht.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(regio_utrecht).getLines().mkString("\n"))
+    val regio = HTML.parse(io.Source.fromFile(regio_dordrecht).getLines().mkString("\n"))
     // println(pretty.format(regio))
     val sections = (regio \\ "h3").map(_.text)
     //println(sections)
@@ -92,14 +93,14 @@ object shortrackonline {
       val next = childElems(i + 1)
       //println(s)
 
-      val skaters = (next \\ "tr").flatMap(tr => {
+      val skaters: immutable.Seq[Skater] = (next \\ "tr").flatMap(tr => {
         val name = (tr \ "td") (3).text
         val club = (tr \ "td") (4).text.trim
         (tr.descendant.filter(x => (x \ "@href").nonEmpty)
           .map(x => getSkater((x \ "@href").text, name, club))
         )
       }).sortBy(s => s.PR500)
-      val infos = skaters.map(skater => {skater.htmlRow})
+      val infos = skaters.filter(x => x.club.toLowerCase().contains("ihcl")).map(skater => {skater.htmlRow})
       println(s + ": " + infos.size)
       <div>
         <h3>
