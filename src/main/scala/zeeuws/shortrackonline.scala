@@ -74,6 +74,7 @@ object shortrackonline {
   val zoetermeer = "data/zoetermeer.html"
   val groningen = "data/groningen.html"
   val alkmaar = "data/alkmaar.html"
+  val finaleAlkmaar = "data/regioFinaleAlkmaar.html"
   val denhaag = "data/regio_denhaag.html"
   val hasselt = "data/hasselt.html"
   val regio_utrecht = "data/regio_utrecht.html"
@@ -82,7 +83,7 @@ object shortrackonline {
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(regio_dordrecht).getLines().mkString("\n"))
+    val regio = HTML.parse(io.Source.fromFile(finaleAlkmaar).getLines().mkString("\n"))
     // println(pretty.format(regio))
     val sections = (regio \\ "h3").map(_.text)
     //println(sections)
@@ -100,7 +101,10 @@ object shortrackonline {
           .map(x => getSkater((x \ "@href").text, name, club))
         )
       }).sortBy(s => s.PR500)
-      val infos = skaters.filter(x => x.club.toLowerCase().contains("ihcl")).map(skater => {skater.htmlRow})
+
+      val ihclSkaters = skaters.filter(x => x.club.toLowerCase().contains("ihcl"))
+
+      val infos = skaters.map(skater => {skater.htmlRow})
       println(s + ": " + infos.size)
       <div>
         <h3>
@@ -128,7 +132,7 @@ object shortrackonline {
         {tablez}
       </body>
     </html>
-    XML.save("/tmp/out.html", xml)
+    XML.save("/tmp/allSkaters.html", xml)
     // val z = getSkater(lewis)
     // println(z.PRs)
   }
