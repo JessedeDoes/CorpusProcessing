@@ -88,7 +88,7 @@ object shortrackonline {
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
 
-    val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOny.html" -> fIHCL)
+    val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOnly.html" -> fIHCL)
 
     tasks.foreach({ case (fileName, filter) =>
       val regio = HTML.parse(io.Source.fromFile(ar2023).getLines().mkString("\n"))
