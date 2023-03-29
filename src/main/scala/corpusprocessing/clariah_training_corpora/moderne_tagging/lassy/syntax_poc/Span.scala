@@ -36,11 +36,13 @@ trait ISpan {
 trait IHeadedSpan extends ISpan {
   def head: Int
   val headToken: Option[UdToken] = sentence.tokens.find(_.ID == head.toString)
+  override def toString = s"$start--$end: [$content] , head=${token(head-1).ID}:${token(head-1).FORM} {$showCaptures}"
   // override def content = sentence.tokens.drop(start).take(end-start).map(t => if (t.ID == head.toString) s"<${t.FORM}:${t.DEPREL}>" else s"${t.FORM}:${t.DEPREL}").mkString(" ")
 }
 
 trait IHeadDepSpan extends IHeadedSpan {
   def dep: Int
+  // override def toString = s"$start--$end: [$content] , head=${token(head-1).ID}:${token(head-1).FORM} {$showCaptures}"
 }
 
 case class TokenSpan(override val sentence: UdSentence, override val start: Int) extends ISpan {
@@ -60,6 +62,6 @@ case class HeadDepSpan(override val sentence: UdSentence, override val start: In
   val depToken: UdToken = sentence.tokens.filter(_.ID == dep.toString).head
   val rel: String = depToken.DEPREL
 
-  override def toString = s"[${headToken.map(_.FORM).getOrElse("ROOT")} -> ${depToken.FORM}]; {$showCaptures}"
+  // override def toString = s"[${headToken.map(_.FORM).getOrElse("ROOT")} -> ${depToken.FORM}]; {$showCaptures}"
 }
 

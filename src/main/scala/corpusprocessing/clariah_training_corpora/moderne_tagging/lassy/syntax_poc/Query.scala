@@ -27,7 +27,11 @@ object Queries {
   }
 
   def headExtend(q: Query, relType: Option[String]  = None) = {
-    HeadDepIntersection(q, RelQuery(relType.getOrElse("*")))
+    val rq = RelQuery (relType.getOrElse ("*") )
+    q match {
+      case tq: TokenQuery => DepRestrict(rq, tq)
+      case _ => HeadDepIntersection (q,  rq)
+    }
   }
 
   // de head van q2 moet onder q1 hangen
@@ -73,19 +77,34 @@ case class BasicFilterQuery(filter: ISpan => Boolean) extends Query {
   })
 }
 
-trait TokenQuery extends Query
+trait TokenQuery extends Query {
+  def &(q1: TokenQuery) = TokenAndQuery(this,q1)
+}
 
 case class LemmaQuery(lemma: String) extends TokenQuery {
   def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.LEMMA == lemma).findMatches(s)
+}
+
+case class PoSQuery(lemma: String) extends TokenQuery {
+  def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.UPOS == lemma).findMatches(s)
+}
+
+case class TokenRelQuery(rel: String) extends TokenQuery {
+  def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.DEPREL == rel).findMatches(s)
+}
+
+case class EmptyTokenQuery() extends TokenQuery {
+  def findMatches(s: Set[ISpan]): Set[ISpan] = s
+}
+case class TokenAndQuery(q1: TokenQuery, q2: TokenQuery)  extends TokenQuery  {
+  def findMatches(s: Set[ISpan]): Set[ISpan] = q1.findMatches(s).intersect(q2.findMatches(s))
 }
 
 case class RelQuery(relName: String) extends Query {
   override def findMatches(s: Set[ISpan]): Set[ISpan] = rel(relName).findMatches(s)
 }
 
-case class PoSQuery(lemma: String) extends TokenQuery {
-  def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.UPOS == lemma).findMatches(s)
-}
+
 
 case class HeadIntersection(q1: Query, q2: Query) extends  Query {
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
@@ -102,7 +121,7 @@ case class HeadIntersection(q1: Query, q2: Query) extends  Query {
 }
 
 case class HeadDepIntersection(q1: Query, q2: Query) extends  Query {
-  println(s"!!Head dep join of $q1 and $q2")
+  // println(s"!!Head dep join of $q1 and $q2")
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
     val B = q2.findMatches(s).filter(_.isInstanceOf[IHeadDepSpan]).map(_.asInstanceOf[IHeadDepSpan])
@@ -111,7 +130,7 @@ case class HeadDepIntersection(q1: Query, q2: Query) extends  Query {
       // println(s"Join: $a with $b")
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
-      syntax_poc.HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
+      syntax_poc.HeadedSpan(a.sentence, start, end, b.head, captures = a.captures ++ b.captures)
     })
   }
 }
@@ -124,7 +143,7 @@ case class HeadRestrict(q1: Query, q2: TokenQuery) extends  Query {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
     val B = q2.findMatches(s).filter(_.isInstanceOf[TokenSpan]).map(_.asInstanceOf[TokenSpan])
 
-    cross[IHeadedSpan,TokenSpan](A,B).filter({case (a,b) => a.head == b.start}).map({case (a,b) =>
+    val x: Set[ISpan] = cross[IHeadedSpan,TokenSpan](A,B).filter({case (a,b) => a.head == b.start}).map({case (a,b) =>
       // println(s"Join: $a with $b")
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
@@ -132,6 +151,13 @@ case class HeadRestrict(q1: Query, q2: TokenQuery) extends  Query {
         case hd: HeadDepSpan => syntax_poc.HeadDepSpan(a.sentence, start, end, a.head, hd.dep, captures = a.captures ++ b.captures)
         case _ => syntax_poc.HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
       }})
+
+    if (false && A.size * B.size > 0) {
+      println(s"###\n$q1")
+      println(s"$q2")
+      println(s"A:${A.size} B:${B.size} A=$A B=$B JOIN=$x")
+    }
+    x
   }
 }
 

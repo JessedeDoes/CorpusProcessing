@@ -9,6 +9,8 @@ import scala.util.{Success, Try}
 import Queries._
 import Spans._
 
+import sext._
+
 object luchtfietsen {
 
   implicit def relQuery(s: String)  = RelQuery(s)
@@ -35,11 +37,15 @@ object luchtfietsen {
   lazy val verb_adv = PoSQuery("VERB") → PoSQuery("ADV")
   lazy val wat_voor_mensen = PoSQuery("VERB") → (LemmaQuery("mens") → PoSQuery("ADJ"))
 
+  lazy val wat_voor_mensen_deel = HeadRestrict(
+    headExtend(PoSQuery("NOUN") → PoSQuery("ADJ")),
+    PoSQuery("VERB"))
 
-  val testQueries: Seq[Query] = Stream(wat_voor_mensen, minister_besluit_2, regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
+
+  val testQueries: Seq[Query] = Stream(wat_voor_mensen_deel) // , minister_besluit_2, regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
 
   def runQuery(q: Query,  max: Int=Integer.MAX_VALUE): Unit = {
-    println("\n\nQuery:" + q)
+    println("\n\nQuery:\n" + q.treeString.replaceAll("\\|", "\t"))
     find(q, alpino).take(max).foreach(s => {
       val sent = s.head.sentence.tokens.map(_.FORM).mkString(" ")
       println(s"\n###### $sent")

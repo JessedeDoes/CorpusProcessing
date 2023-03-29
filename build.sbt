@@ -68,6 +68,7 @@ libraryDependencies += "org.ccil.cowan.tagsoup" % "tagsoup" % "1.2.1"
 // https://mvnrepository.com/artifact/org.apache.commons/commons-text
 libraryDependencies += "org.apache.commons" % "commons-text" % "1.8"
 
+libraryDependencies += "com.github.nikita-volkov" % "sext" % "0.2.4"
 
 /*
 https://github.com/iovka/shex-java
