@@ -16,7 +16,6 @@ object luchtfietsen {
   implicit def relQuery(s: String)  = RelQuery(s)
 
 
-
   lazy val alpino: Seq[Set[ISpan]] = alpino_to_huggingface.parseFile(new File("/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu")).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
 
   lazy val regering_subject: DepRestrict = DepRestrict("nsubj", LemmaQuery("regering"))
