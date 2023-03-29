@@ -16,7 +16,7 @@ object alpino_to_huggingface {
 
   implicit val formats = DefaultFormats
 
-  def parseFile(f: java.io.File) = {
+  def parseFile(f: java.io.File): Seq[UdSentence] = {
     val lines = io.Source.fromFile(f).getLines.toStream
     val language = f.getName.replaceAll("_.*","")
     val grouped = groupWithFirst[String](lines, x=> x.startsWith("# sent_id ="))
