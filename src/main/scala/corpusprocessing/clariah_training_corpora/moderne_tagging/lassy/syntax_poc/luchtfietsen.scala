@@ -6,42 +6,16 @@ import java.io.File
 import scala.util.{Success, Try}
 
 
+import Queries._
+import Spans._
+
 object luchtfietsen {
 
   implicit def relQuery(s: String)  = RelQuery(s)
 
-  def createSpansForSentence(s: UdSentence): Option[Set[ISpan]] = {
-    Try({
-      s.tokens.map(t => {
-        val pos = t.ID.toInt
-        val headpos = t.HEAD.toInt
-        val start = Math.min(pos, headpos)
-        val end = Math.max(pos, headpos)
-        HeadDepSpan(s, start, end, headpos, pos).asInstanceOf[ISpan]
-      }).toSet ++ s.tokens.map(t => TokenSpan(s, t.ID.toInt))
-    }) match {
-      case Success(x) => Some(x)
-      case _ => None
-    }
-  }
+
 
   lazy val alpino: Seq[Set[ISpan]] = alpino_to_huggingface.parseFile(new File("/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu")).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
-
-  def find(q: Query) = alpino.map(s => {
-    val matches = q.findMatches(s.map(_.asInstanceOf[ISpan]))
-    matches
-  }).filter(_.nonEmpty)
-
-  def rel(relName: String) =  syntax_poc.BasicFilterQuery(s => {
-    s match {
-      case x: HeadDepSpan => x.rel == relName
-      case _ => false
-    }
-  })
-
-  def headIntersect(s: Seq[Query]): Query =  {
-    if (s.size == 1) s.head else HeadIntersection(s.head, headIntersect(s.tail))
-  }
 
   val regering_subject: DepRestrict = DepRestrict("nsubj", LemmaQuery("regering"))
 
@@ -55,11 +29,17 @@ object luchtfietsen {
 
   val subj_amod: HeadDepIntersection = HeadDepIntersection("amod", "nsubj")
 
-  val testQueries: Seq[Query] = List(regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
+  val minister_besluit_2 = LemmaQuery("besluiten") → LemmaQuery("minister")
+
+  val noun_adj = PoSQuery("NOUN") → PoSQuery("ADJ")
+  val verb_adv = PoSQuery("VERB") → PoSQuery("ADV")
+  val wat_voor_mensen = LemmaQuery("mens") → PoSQuery("ADJ")
+
+  val testQueries: Seq[Query] = List(wat_voor_mensen, minister_besluit_2, regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
 
   def runQuery(q: Query,  max: Int=Integer.MAX_VALUE): Unit = {
     println("\n\nQuery:" + q)
-    find(q).take(max).foreach(s => {
+    find(q, alpino).take(max).foreach(s => {
       val sent = s.head.sentence.tokens.map(_.FORM).mkString(" ")
       println(s"\n###### $sent")
       s.foreach(x => println("\t" + x))
@@ -67,6 +47,6 @@ object luchtfietsen {
   }
 
   def main(args: Array[String]) = {
-    testQueries.foreach(q => runQuery(q,5))
+    testQueries.foreach(q => runQuery(q,20))
   }
 }

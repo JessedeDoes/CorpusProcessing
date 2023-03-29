@@ -2,6 +2,24 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{UdSentence, UdToken}
 
+import scala.util.{Success, Try}
+
+object Spans {
+  def createSpansForSentence(s: UdSentence): Option[Set[ISpan]] = {
+    Try({
+      s.tokens.map(t => {
+        val pos = t.ID.toInt
+        val headpos = t.HEAD.toInt
+        val start = Math.min(pos, headpos)
+        val end = Math.max(pos, headpos)
+        HeadDepSpan(s, start, end, headpos, pos).asInstanceOf[ISpan]
+      }).toSet ++ s.tokens.map(t => TokenSpan(s, t.ID.toInt))
+    }) match {
+      case Success(x) => Some(x)
+      case _ => None
+    }
+  }
+}
 ////
 trait ISpan {
   def sentence: UdSentence
