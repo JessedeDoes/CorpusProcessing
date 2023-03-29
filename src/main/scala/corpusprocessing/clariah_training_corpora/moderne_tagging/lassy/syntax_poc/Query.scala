@@ -25,6 +25,21 @@ object Queries {
   def headIntersect(s: Seq[Query]): Query =  {
     if (s.size == 1) s.head else HeadIntersection(s.head, headIntersect(s.tail))
   }
+
+  def headExtend(q: Query, relType: Option[String]  = None) = {
+    HeadDepIntersection(q, RelQuery(relType.getOrElse("*")))
+  }
+
+  // de head van q2 moet onder q1 hangen
+  def headJoin(q1: Query, q2: Query, relType: Option[String]  = None) = {
+    HeadIntersection(q1, headExtend(q2, relType))
+  }
+  /*
+  head_extend(a: HeadedSpans, reltype: option[string]) -> HeadedSpans
+Equivalent aan head_dep_intersect(a, <#reltype>)
+Handig als opstapje voor de volgende
+
+   */
 }
 
 import Queries._
@@ -38,8 +53,9 @@ trait Query {
 
   def →(other: Query)  = {
     (this, other) match {
-      case (t1: TokenQuery, t2: TokenQuery) => DepRestrict(HeadRestrict(RelQuery("*"), t1),t2)
-      case (t1: Query, t2: Query) => t1
+      case (t1: TokenQuery, t2: TokenQuery) => DepRestrict(HeadRestrict(RelQuery("*"), t1),t2).asInstanceOf[Query]
+      case (t1: TokenQuery, t2: Query) => HeadRestrict(headExtend(t2), t1).asInstanceOf[Query]
+      case (t1: Query, t2: Query) => headJoin(t1,t2).asInstanceOf[Query] // Hmm??????
     }
   }
 }
@@ -86,6 +102,7 @@ case class HeadIntersection(q1: Query, q2: Query) extends  Query {
 }
 
 case class HeadDepIntersection(q1: Query, q2: Query) extends  Query {
+  println(s"!!Head dep join of $q1 and $q2")
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
     val B = q2.findMatches(s).filter(_.isInstanceOf[IHeadDepSpan]).map(_.asInstanceOf[IHeadDepSpan])
