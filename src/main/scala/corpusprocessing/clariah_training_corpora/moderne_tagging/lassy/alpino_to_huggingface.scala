@@ -19,10 +19,10 @@ object alpino_to_huggingface {
   def parseFile(f: java.io.File): Seq[UdSentence] = {
     val lines = io.Source.fromFile(f).getLines.toStream
     val language = f.getName.replaceAll("_.*","")
-    val grouped = groupWithFirst[String](lines, x=> x.startsWith("# sent_id ="))
+    val grouped = groupWithFirst[String](lines, x=> x.startsWith("# sent_id =") || x.startsWith("# S-ID")) // S-ID in Japanese KTC
 
     val sentences = grouped.flatMap(g => {
-      val sent_id = g.find(_.startsWith("# sent_id")).map(_.replaceAll(".*=","").replaceAll("\\s+",""))
+      val sent_id = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]","").replaceAll("\\s+",""))
 
       sent_id.map(x => {
         val text =  g.find(_.startsWith("# text")).map(_.replaceAll(".*=","").trim)

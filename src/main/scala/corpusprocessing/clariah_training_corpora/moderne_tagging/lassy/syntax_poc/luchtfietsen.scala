@@ -17,12 +17,32 @@ object luchtfietsen {
 
 
   val alpino_file = "/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu"
-  val japanese_gsd_file  = "/home/jesse/workspace/UD_Japanese-GSD/ja_gsd-ud-train.conllu"
 
-  def connl2spans(f: String)  = alpino_to_huggingface.parseFile(new File(f)).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
+  val japanese_gsd_file  = "/home/jesse/workspace/UD_Japanese-GSD/ja_gsd-ud-train.conllu"
+  val japanese_modern_file = "/home/jesse/workspace/UD_Japanese-Modern/ja_modern-ud-test.conllu"
+  val japanese_ktc_file = "/home/jesse/workspace/UD_Japanese-KTC/ja_ktc-ud-train.conllu"
+
+  val japanese_bccwj_file = "/home/jesse/workspace/UD_Japanese-BCCWJ/ja_bccwj-ud-train.conllu" // useless! words are missing
+
+  def connl2spans(f: String): Seq[Set[ISpan]] = alpino_to_huggingface.parseFile(new File(f)).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
+  def connl2spans(filenames: Seq[String]): Seq[Set[ISpan]] = {
+    println(s"Start loading from $filenames")
+    val r = filenames.flatMap(f =>  {
+      Console.err.println(s"Start loading $f")
+      val rr = connl2spans(f)
+      Console.err.println(s"Finished loading $f")
+      rr
+    })
+    Console.err.println(s"Finished loading $filenames")
+    r
+  }
+
 
   lazy val alpino: Seq[Set[ISpan]] = connl2spans(alpino_file)
   lazy val japanese_gsd =  connl2spans(japanese_gsd_file)
+  lazy val japanese_bccwj =  connl2spans(japanese_bccwj_file)
+  lazy val japanese_combi =  connl2spans(Seq(japanese_gsd_file, japanese_modern_file, japanese_ktc_file))
+
 
   lazy val regering_subject: DepRestrict = DepRestrict("nsubj", LemmaQuery("regering"))
 
