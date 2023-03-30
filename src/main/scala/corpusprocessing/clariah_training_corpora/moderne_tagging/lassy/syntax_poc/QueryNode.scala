@@ -1,7 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
 
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, japanese_bccwj, japanese_combi, japanese_gsd}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Set()) {
 
@@ -82,7 +82,7 @@ object QueryNode {
       ),
       q(
         PoSQuery("NOUN") & TokenRelQuery("obj"),
-         // q(PoSQuery("ADJ"))
+        q(PoSQuery("ADJ"))
       )
     )
 
@@ -93,6 +93,6 @@ object QueryNode {
    }
 
    def main(args: Array[String])  = {
-     testQuery(test2, treebank=japanese_combi)
+     testQuery(test2, treebank=french_gsd)
    }
 }

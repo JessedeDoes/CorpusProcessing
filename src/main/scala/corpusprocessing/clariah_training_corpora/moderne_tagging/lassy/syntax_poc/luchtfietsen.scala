@@ -18,10 +18,11 @@ object luchtfietsen {
 
   val alpino_file = "/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu"
 
+  val french_gsd_file = "/home/jesse/workspace/UD_French-GSD/fr_gsd-ud-train.conllu"
+
   val japanese_gsd_file  = "/home/jesse/workspace/UD_Japanese-GSD/ja_gsd-ud-train.conllu"
   val japanese_modern_file = "/home/jesse/workspace/UD_Japanese-Modern/ja_modern-ud-test.conllu"
-  val japanese_ktc_file = "/home/jesse/workspace/UD_Japanese-KTC/ja_ktc-ud-train.conllu"
-
+  val japanese_ktc_file = "/home/jesse/workspace/UD_Japanese-KTC/ja_ktc-ud-train.conllu" // useless
   val japanese_bccwj_file = "/home/jesse/workspace/UD_Japanese-BCCWJ/ja_bccwj-ud-train.conllu" // useless! words are missing
 
   def connl2spans(f: String): Seq[Set[ISpan]] = alpino_to_huggingface.parseFile(new File(f)).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
@@ -39,6 +40,8 @@ object luchtfietsen {
 
 
   lazy val alpino: Seq[Set[ISpan]] = connl2spans(alpino_file)
+
+  lazy val french_gsd = connl2spans(french_gsd_file)
   lazy val japanese_gsd =  connl2spans(japanese_gsd_file)
   lazy val japanese_bccwj =  connl2spans(japanese_bccwj_file)
   lazy val japanese_combi =  connl2spans(Seq(japanese_gsd_file, japanese_modern_file))
