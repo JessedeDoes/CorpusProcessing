@@ -2,8 +2,8 @@ package zeeuws
 
 import java.net.{URI, URL}
 import scala.xml._
-
 import java.nio.charset.CodingErrorAction
+import scala.collection.immutable
 import scala.io.Codec
 
 
@@ -74,60 +74,75 @@ object shortrackonline {
   val zoetermeer = "data/zoetermeer.html"
   val groningen = "data/groningen.html"
   val alkmaar = "data/alkmaar.html"
+  val finaleAlkmaar = "data/regioFinaleAlkmaar.html"
   val denhaag = "data/regio_denhaag.html"
   val hasselt = "data/hasselt.html"
   val regio_utrecht = "data/regio_utrecht.html"
+  val regio_dordrecht = "data/regiodordrecht.html"
+  val ar2023 = "data/ar2023.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val regio = HTML.parse(io.Source.fromFile(regio_utrecht).getLines().mkString("\n"))
-    // println(pretty.format(regio))
-    val sections = (regio \\ "h3").map(_.text)
-    //println(sections)
-    val tablez = sections.map(s => {
-      val parent = regio.descendant.filter(x => ((x \ "h3").exists(_.text == s))).head
-      val childElems = parent.child.filter(_.isInstanceOf[Elem])
-      val i = childElems.indices.find(i => childElems(i).text == s).get
-      val next = childElems(i + 1)
-      //println(s)
 
-      val skaters = (next \\ "tr").flatMap(tr => {
-        val name = (tr \ "td") (3).text
-        val club = (tr \ "td") (4).text.trim
-        (tr.descendant.filter(x => (x \ "@href").nonEmpty)
-          .map(x => getSkater((x \ "@href").text, name, club))
-        )
-      }).sortBy(s => s.PR500)
-      val infos = skaters.map(skater => {skater.htmlRow})
-      println(s + ": " + infos.size)
-      <div>
-        <h3>
-          {s}
-        </h3>
-        <table>
-          <tr>
-            {(List("naam", "club") ++ distances).map(x => <th>
-            {x}
-          </th>)}
-          </tr>{infos}
-        </table>
-      </div>
+    val fAll: Skater => Boolean = x => true;
+    val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
+
+    val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOnly.html" -> fIHCL)
+
+    tasks.foreach({ case (fileName, filter) =>
+      val regio = HTML.parse(io.Source.fromFile(ar2023).getLines().mkString("\n"))
+      // println(pretty.format(regio))
+      val sections = (regio \\ "h3").map(_.text)
+      //println(sections)
+      val tablez = sections.map(s => {
+        val parent = regio.descendant.filter(x => ((x \ "h3").exists(_.text == s))).head
+        val childElems = parent.child.filter(_.isInstanceOf[Elem])
+        val i = childElems.indices.find(i => childElems(i).text == s).get
+        val next = childElems(i + 1)
+        //println(s)
+
+        val skaters: immutable.Seq[Skater] = (next \\ "tr").flatMap(tr => {
+          val name = (tr \ "td") (3).text
+          val club = (tr \ "td") (4).text.trim
+          (tr.descendant.filter(x => (x \ "@href").nonEmpty)
+            .map(x => getSkater((x \ "@href").text, name, club))
+            )
+        }).sortBy(s => s.PR500)
+
+        //val ihclSkaters = skaters.filter(x => x.club.toLowerCase().contains("ihcl"))
+        val infos = skaters.filter(filter).map(skater => {
+          skater.htmlRow
+        })
+        println(s + ": " + infos.size)
+        <div>
+          <h3>
+            {s}
+          </h3>
+          <table>
+            <tr>
+              {(List("naam", "club") ++ distances).map(x => <th>
+              {x}
+            </th>)}
+            </tr>{infos}
+          </table>
+        </div>
+      })
+      val xml = <html>
+        <head>
+          <style type="text/css">
+            tr {{ height: 13pt }}
+            table, tr, td, th {{ border: 1px solid black;
+            padding: 3px;
+            border-collapse: collapse; }}
+            body {{ font-family : calibri; font-size: 11px }}
+          </style>
+        </head> <body>
+          {tablez}
+        </body>
+      </html>
+      XML.save(fileName, xml)
     })
-    val xml = <html>
-      <head>
-        <style type="text/css">
-          tr {{ height: 13pt }}
-          table, tr, td, th {{ border: 1px solid black;
-          padding: 3px;
-          border-collapse: collapse; }}
-          body {{ font-family : calibri; font-size: 11px }}
-        </style>
-      </head> <body>
-        {tablez}
-      </body>
-    </html>
-    XML.save("/tmp/out.html", xml)
     // val z = getSkater(lewis)
     // println(z.PRs)
   }
