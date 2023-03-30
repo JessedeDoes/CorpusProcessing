@@ -26,7 +26,13 @@ object QueryNode {
    def q(a: TokenQuery,b: QueryNode, c: QueryNode) = QueryNode(a,Set(b,c))
    def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode) = QueryNode(a,Set(b,c,d))
 
-  // [rel="root" [pos="NOUN" & rel="nsubj" [pos="ADJ" & lemma="Amerikaans"]] [pos="ADV"] ]
+  // [rel='root'
+  //    [pos='NOUN' & rel='nsubj'
+  //      [pos='ADJ' & lemma='Amerikaans']
+  //    ]
+  //    [pos='ADV']
+  // ]
+
   val test: QueryNode =
     q(
       TokenRelQuery("root"),
@@ -37,12 +43,31 @@ object QueryNode {
       q(PoSQuery("ADV"))
     )
 
-  val test1: QueryNode = // [rel="root" [lemma="komen"] [rel="nsubj"] [lemma="uit" & rel="compound:prt"] [lemma="er"] ]
+  // [rel='root' & lemma='komen'
+  //      [rel='nsubj' & pos='NOUN' [pos='DET']]
+  //      [lemma='uit' & rel='compound:prt']
+  //      [lemma='er']]
+
+  val test1: QueryNode =
     q(
       TokenRelQuery("root") & LemmaQuery("komen"),
       q(TokenRelQuery("nsubj")),
       q(LemmaQuery("uit") & TokenRelQuery("compound:prt")),
       q(LemmaQuery("er"))
+    )
+
+     // [rel='root' [pos='NOUN' & rel='nsubj' [pos='ADJ']] [pos='NOUN' & rel='obj' [pos='ADJ']]]
+  val test2: QueryNode =
+    q(
+      TokenRelQuery("root"),
+      q(
+        PoSQuery("NOUN") & TokenRelQuery("nsubj"),
+        q(PoSQuery("ADJ"))
+      ),
+      q(
+        PoSQuery("NOUN") & TokenRelQuery("obj"),
+        q(PoSQuery("ADJ"))
+      )
     )
 
    def testQuery(q: QueryNode) = {
@@ -52,6 +77,6 @@ object QueryNode {
    }
 
    def main(args: Array[String])  = {
-     testQuery(test1)
+     testQuery(test2)
    }
 }
