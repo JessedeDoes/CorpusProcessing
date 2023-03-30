@@ -50,6 +50,7 @@ object QueryNode {
      println(q.toCQL())
      luchtfietsen.runQuery(q.nodeQuery())
    }
+
    def main(args: Array[String])  = {
      testQuery(test1)
    }
