@@ -1,6 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, japanese_gsd}
 import sext._
 case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Set()) {
 
@@ -20,7 +21,10 @@ case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Se
 // vergelijk https://ufal.mff.cuni.cz/pmltqdoc/doc/pmltq_tutorial_web_client.html
 
 /*
-Problemen:
+Problemen:17      de      de      DET     LID|bep|stan|rest       Definite=Def    18      det     18:det  _
+18      Nederlandse     Nederlands      ADJ     ADJ|prenom|basis|met-e|stan     Degree=Pos      15      nmod    15:nmod:van     _
+19      Bank    bank    NOUN    N|soort|ev|basis|zijd|stan      Gender=Com|Number=Sing  18      fixed   18:fixed        _
+
 - Volgorde van dependents, ten opzichte van elkaar en ten opzichte van de head
 - Meerdere dependents met zelfde rol (bijvoorbeeld drie ADJ bij een znw)
 - 'Diepere' relaties (bijvoorbeeld  a ->* b voor b hangt willekeurig diep onder a, kan je constituenten mee maken)
@@ -78,17 +82,17 @@ object QueryNode {
       ),
       q(
         PoSQuery("NOUN") & TokenRelQuery("obj"),
-        q(PoSQuery("ADJ"))
+         // q(PoSQuery("ADJ"))
       )
     )
 
-   def testQuery(q: QueryNode) = {
+   def testQuery(q: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
      println(q.treeString.replaceAll("\\|", "\t"))
      println("Possible CQL+ serialization: " + q.toCQL())
-     luchtfietsen.runQuery(q.nodeQuery())
+     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank)
    }
 
    def main(args: Array[String])  = {
-     testQuery(test2)
+     testQuery(test2, treebank=japanese_gsd)
    }
 }

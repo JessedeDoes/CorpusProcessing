@@ -16,7 +16,13 @@ object luchtfietsen {
   implicit def relQuery(s: String)  = RelQuery(s)
 
 
-  lazy val alpino: Seq[Set[ISpan]] = alpino_to_huggingface.parseFile(new File("/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu")).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
+  val alpino_file = "/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu"
+  val japanese_gsd_file  = "/home/jesse/workspace/UD_Japanese-GSD/ja_gsd-ud-train.conllu"
+
+  def connl2spans(f: String)  = alpino_to_huggingface.parseFile(new File(f)).map(createSpansForSentence).filter(_.nonEmpty).map(_.get)
+
+  lazy val alpino: Seq[Set[ISpan]] = connl2spans(alpino_file)
+  lazy val japanese_gsd =  connl2spans(japanese_gsd_file)
 
   lazy val regering_subject: DepRestrict = DepRestrict("nsubj", LemmaQuery("regering"))
 
@@ -43,9 +49,9 @@ object luchtfietsen {
 
   val testQueries: Seq[Query] = Stream(wat_voor_mensen_deel) // , minister_besluit_2, regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
 
-  def runQuery(q: Query,  max: Int=Integer.MAX_VALUE): Unit = {
+  def runQuery(q: Query,  max: Int=Integer.MAX_VALUE, treebank: Seq[Set[ISpan]] = alpino ): Unit = {
     println("\n\nQuery:\n" + q.treeString.replaceAll("\\|", "\t"))
-    find(q, alpino).take(max).foreach(s => {
+    find(q, treebank).take(max).foreach(s => {
       val sent = s.head.sentence.tokens.map(_.FORM).mkString(" ")
       println(s"\n###### $sent")
       s.foreach(x => println("\t" + x))
