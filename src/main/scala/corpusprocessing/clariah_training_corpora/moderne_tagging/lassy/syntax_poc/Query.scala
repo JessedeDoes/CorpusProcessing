@@ -79,6 +79,17 @@ case class BasicFilterQuery(filter: ISpan => Boolean) extends Query {
 
 trait TokenQuery extends Query {
   def &(q1: TokenQuery) = TokenAndQuery(this,q1)
+
+
+  def toCQL(): String =  {
+    this match {
+      case LemmaQuery(l) => s"lemma='$l'"
+      case PoSQuery(p) => s"pos='$p'"
+      case TokenRelQuery(r) => s"rel='$r'"
+      case TokenAndQuery(q1, q2) => s"${q1.toCQL()} & ${q2.toCQL()}"
+      case EmptyTokenQuery() => ""
+    }
+  }
 }
 
 case class LemmaQuery(lemma: String) extends TokenQuery {
