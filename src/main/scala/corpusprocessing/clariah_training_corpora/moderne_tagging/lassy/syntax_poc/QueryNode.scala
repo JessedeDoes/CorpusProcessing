@@ -12,7 +12,7 @@ case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Se
   def toCQL() : String = {
     val stukjes = children.map(x => x.toCQL()).mkString(" ")
     val tp = tokenProperties.toCQL()
-    s"[$tp $stukjes]"
+    if (stukjes.isEmpty) s"[$tp]" else s"[$tp $stukjes]"
   }
 }
 
@@ -46,8 +46,8 @@ object QueryNode {
     )
 
    def testQuery(q: QueryNode) = {
-     println(q.treeString)
-     println(q.toCQL())
+     println(q.treeString.replaceAll("\\|", "\t"))
+     println("Possible CQL+ serialization: " + q.toCQL())
      luchtfietsen.runQuery(q.nodeQuery())
    }
 
