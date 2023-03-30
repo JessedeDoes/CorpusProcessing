@@ -82,7 +82,7 @@ object QueryNode {
       ),
       q(
         PoSQuery("NOUN") & TokenRelQuery("obj"),
-         q(PoSQuery("ADJ"))
+         // q(PoSQuery("ADJ"))
       )
     )
 

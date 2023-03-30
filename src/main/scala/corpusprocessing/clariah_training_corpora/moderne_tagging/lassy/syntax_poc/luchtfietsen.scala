@@ -41,7 +41,7 @@ object luchtfietsen {
   lazy val alpino: Seq[Set[ISpan]] = connl2spans(alpino_file)
   lazy val japanese_gsd =  connl2spans(japanese_gsd_file)
   lazy val japanese_bccwj =  connl2spans(japanese_bccwj_file)
-  lazy val japanese_combi =  connl2spans(Seq(japanese_gsd_file, japanese_modern_file, japanese_ktc_file))
+  lazy val japanese_combi =  connl2spans(Seq(japanese_gsd_file, japanese_modern_file))
 
 
   lazy val regering_subject: DepRestrict = DepRestrict("nsubj", LemmaQuery("regering"))
