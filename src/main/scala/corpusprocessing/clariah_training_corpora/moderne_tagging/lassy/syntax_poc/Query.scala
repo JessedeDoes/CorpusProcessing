@@ -3,6 +3,8 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.alpino
 
+import java.util
+
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 object Cartesian {
@@ -17,7 +19,7 @@ object Queries {
     matches
   }).filter(_.nonEmpty)
 
-  def rel(relName: String) =  syntax_poc.BasicFilterQuery {
+  def rel(relName: String) =  BasicFilterQuery {
     case x: HeadDepSpan => x.rel == relName || relName == "*"
     case _ => false
   }
@@ -44,6 +46,7 @@ Equivalent aan head_dep_intersect(a, <#reltype>)
 Handig als opstapje voor de volgende
 
    */
+
 }
 
 import Queries._
@@ -62,6 +65,7 @@ trait Query {
       case (t1: Query, t2: Query) => headJoin(t1,t2).asInstanceOf[Query] // Hmm??????
     }
   }
+
 }
 
 case class BasicFilterQuery(filter: ISpan => Boolean) extends Query {
@@ -116,7 +120,6 @@ case class RelQuery(relName: String) extends Query {
 }
 
 
-
 case class HeadIntersection(q1: Query, q2: Query) extends  Query {
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
@@ -126,7 +129,7 @@ case class HeadIntersection(q1: Query, q2: Query) extends  Query {
       // println(s"Join: $a with $b")
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
-      syntax_poc.HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
+      HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
     })
   }
 }
@@ -141,7 +144,7 @@ case class HeadDepIntersection(q1: Query, q2: Query) extends  Query {
       // println(s"Join: $a with $b")
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
-      syntax_poc.HeadedSpan(a.sentence, start, end, b.head, captures = a.captures ++ b.captures)
+      HeadedSpan(a.sentence, start, end, b.head, captures = a.captures ++ b.captures)
     })
   }
 }
@@ -159,8 +162,8 @@ case class HeadRestrict(q1: Query, q2: TokenQuery) extends  Query {
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
       a match {
-        case hd: HeadDepSpan => syntax_poc.HeadDepSpan(a.sentence, start, end, a.head, hd.dep, captures = a.captures ++ b.captures)
-        case _ => syntax_poc.HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
+        case hd: HeadDepSpan => HeadDepSpan(a.sentence, start, end, a.head, hd.dep, captures = a.captures ++ b.captures)
+        case _ => HeadedSpan(a.sentence, start, end, a.head, captures = a.captures ++ b.captures)
       }})
 
     if (false && A.size * B.size > 0) {
@@ -186,7 +189,7 @@ case class DepRestrict(q1: Query, q2: TokenQuery) extends  Query {
       // println(s"Join: $a with $b")
       val start = Math.min(a.start, b.start)
       val end = Math.max(a.end, b.end)
-      syntax_poc.HeadDepSpan(a.sentence, start, end, a.head, a.dep, captures = a.captures ++ b.captures)
+      HeadDepSpan(a.sentence, start, end, a.head, a.dep, captures = a.captures ++ b.captures)
     })
   }
 }

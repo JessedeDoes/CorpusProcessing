@@ -3,6 +3,7 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
+
 case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Set()) {
 
   def nodeQuery(): Query = if (children.isEmpty) tokenProperties else {
@@ -32,11 +33,26 @@ Problemen:17      de      de      DET     LID|bep|stan|rest       Definite=Def  
  */
 
 object QueryNode {
-  // Ja dit kan ook compacter met @* enzo....
-   def q(a: TokenQuery) = QueryNode(a)
+  // Ja dit kan ook compacter met varargs @* enzo maar ik schijn dat niet uit het hoofd te kunnen
+
+  implicit def q(a: TokenQuery) = QueryNode(a)
+
+  implicit def parseTokenQuery(s: String): TokenQuery = {
+    val a = s.split("\\s*=\\s*")
+    a(0) match {
+      case "pos" => PoSQuery(a(1))
+      case "rel" => TokenRelQuery(a(1))
+      case "lemma" => LemmaQuery(a(1))
+      case _ => TokenRelQuery(a(0))
+    }
+  }
+
+  implicit def s2q(s: String) = QueryNode(parseTokenQuery(s))
+
    def q(a: TokenQuery,b: QueryNode) = QueryNode(a,Set(b))
-   def q(a: TokenQuery,b: QueryNode, c: QueryNode) = QueryNode(a,Set(b,c))
-   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode) = QueryNode(a,Set(b,c,d))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode) = QueryNode(a, Set(b,c))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode) = QueryNode(a, Set(b,c,d))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode, e: QueryNode) = QueryNode(a, Set(b,c,d,e))
 
   // [rel='root'
   //    [pos='NOUN' & rel='nsubj'
@@ -47,12 +63,12 @@ object QueryNode {
 
   val test: QueryNode =
     q(
-      TokenRelQuery("root"),
+      "rel=root",
       q(
-        PoSQuery("NOUN") & TokenRelQuery("nsubj"),
-        q(PoSQuery("ADJ") & LemmaQuery("Amerikaans"))
+        "pos=NOUN" & "nsubj",
+        q("pos=ADJ" & "lemma=Amerikaans")
       ),
-      q(PoSQuery("ADV"))
+      "pos=ADV"
     )
 
   // [rel='root' & lemma='komen'
@@ -71,7 +87,8 @@ object QueryNode {
      // Subject en object hebben allebei een adjectief erbij:
      // [rel='root'
      //   [pos='NOUN' & rel='nsubj' [pos='ADJ']]
-     //   [pos='NOUN' & rel='obj' [pos='ADJ']]]
+     //   [pos='NOUN' & rel='obj' [pos='ADJ']]
+     //   ]
 
   val test2: QueryNode =
     q(
