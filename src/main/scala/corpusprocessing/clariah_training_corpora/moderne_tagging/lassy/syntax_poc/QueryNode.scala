@@ -1,6 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.Queries.defaultCondition
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 
@@ -19,8 +20,14 @@ case class QueryNode(tokenProperties : TokenQuery, children: Seq[QueryNode] = Se
 
   def toCQL() : String = {
     val stukjes = children.map(x => x.toCQL()).mkString(" ")
+    val stukjes_niet = {
+      val p = and_not.map(x => x.toCQL()).mkString(" ")
+      if (p.isEmpty) "" else s"!($p)"
+    }
     val tp = tokenProperties.toCQL()
-    if (stukjes.isEmpty) s"[$tp]" else s"[$tp $stukjes]"
+
+    val parts = List(tp,stukjes,stukjes_niet).filter(_.nonEmpty).mkString(" ")
+    s"[${parts}]"
   }
 }
 
@@ -125,7 +132,7 @@ object QueryNode {
         PoSQuery("NOUN") & TokenRelQuery("obj")
       ),
       and_not=Seq("lemma=?"), // we willen even geen vragen
-      condition = Queries.defaultAndersom
+      condition = ConditionAnd(defaultCondition, OrderCondition("0>1")) // zo kunnen we nog niets met de volgorde tov van de parent. Toch iets capture-achtigs doen??
     )
 
    def testQuery(q: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {

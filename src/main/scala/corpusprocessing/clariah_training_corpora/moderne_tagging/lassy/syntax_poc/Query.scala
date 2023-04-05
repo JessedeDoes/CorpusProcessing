@@ -36,6 +36,24 @@ trait ICondition {
 }
 
 case class BasicCondition(name: String, filter: Seq[IHeadedSpan] => Boolean) extends ICondition
+case class OrderCondition(name: String) extends ICondition {
+
+  val clauses: Seq[Seq[IHeadedSpan] => Boolean] = name.trim.split("\\s*&\\s*").map(c => {
+    val name = c
+    val operator = c.replaceAll("[^<>]","")
+    val leftright = c.split("\\s*[<>]\\s*")
+    val left = leftright(0).toInt
+    val right = leftright(1).toInt
+
+    val filter : Seq[IHeadedSpan] => Boolean = operator match {
+      case ">" =>  s => s.size > left && s.size > right && s(left).start > s(right).start
+      case "<" =>  s => s.size > left && s.size > right && s(left).start > s(right).start
+    }
+    filter
+  })
+
+  val filter = s => clauses.forall(_(s))
+}
 
 case class ConditionAnd(c1: ICondition, c2:ICondition) extends ICondition {
   val filter: Seq[IHeadedSpan] => Boolean = s => c1.filter(s) && c2.filter(s)
@@ -81,7 +99,7 @@ object Queries {
   )
 
   val defaultCondition =  ConditionAnd(Queries.unique, Queries.sameHead)
-  val defaultAndersom = ConditionAnd(defaultCondition, twee_voor_een)
+  val defaultAndersom = ConditionAnd(defaultCondition, OrderCondition("0>1"))
 
   /*
   head_extend(a: HeadedSpans, reltype: option[string]) -> HeadedSpans
