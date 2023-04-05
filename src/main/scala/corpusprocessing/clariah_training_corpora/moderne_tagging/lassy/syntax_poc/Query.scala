@@ -9,9 +9,38 @@ import java.util
 
 object Cartesian {
   def cross[S,T](X: Set[S], Y:Set[T]): Set[(S, T)] = X.flatMap(x => Y.map(y => x -> y))
+
+  def crossList[S](x: Seq[Set[S]]):Set[Seq[S]] = {
+    if (x.length == 1) {
+      x.head.map(Seq(_))
+    } else {
+      val h = x.head
+      val tailz = crossList(x.tail)
+      h.flatMap(x => {
+        tailz.map(t => x +: t)
+      })
+    }
+  }
+
+  def main(args: Array[String]) = {
+    val example = Seq(Set(1,2), Set(2,3), Set(4,5))
+    println(crossList[Int](example).toList.sortBy(_.toString()))
+  }
 }
 
 import Cartesian._
+
+trait ICondition {
+  def name: String
+  def filter: Seq[IHeadedSpan] => Boolean
+}
+
+case class BasicCondition(name: String, filter: Seq[IHeadedSpan] => Boolean) extends ICondition
+
+case class ConditionAnd(c1: ICondition, c2:ICondition) extends ICondition {
+  val filter: Seq[IHeadedSpan] => Boolean = s => c1.filter(s) && c2.filter(s)
+  def name: String  = s"{${c1.name}} & {${c2.name}} "
+}
 
 object Queries {
   def find(q: Query, corpus: Seq[Set[ISpan]]) = corpus.map(s => {
@@ -24,27 +53,40 @@ object Queries {
     case _ => false
   }
 
-  def headIntersect(s: Seq[Query]): Query =  {
-    if (s.size == 1) s.head else HeadIntersection(s.head, headIntersect(s.tail))
+  def headIntersect(s: Seq[Query], condition:ICondition = defaultCondition): Query =  {
+    SpanJoin(s,condition=condition)
+    // if (s.size == 1) s.head else HeadJoin(s.head, headIntersect(s.tail))
   }
 
   def headExtend(q: Query, relType: Option[String]  = None) = {
     val rq = RelQuery (relType.getOrElse ("*") )
     q match {
       case tq: TokenQuery => DepRestrict(rq, tq)
-      case _ => HeadDepIntersection (q,  rq)
+      case _ => HeadDepJoin (q,  rq)
     }
   }
 
   // de head van q2 moet onder q1 hangen
   def headJoin(q1: Query, q2: Query, relType: Option[String]  = None) = {
-    HeadIntersection(q1, headExtend(q2, relType))
+    HeadJoin(q1, headExtend(q2, relType))
   }
+
+  def isUnique(spans: Seq[IHeadedSpan]): Boolean = spans.toSet.size == spans.size
+
+  val unique = BasicCondition("unique", isUnique)
+  val sameHead = BasicCondition("sameHead", s => s.map(_.head).toSet.size == 1)
+  val twee_voor_een = BasicCondition("twee_voor_een", s=> {
+    // println(s.map(_.toString))
+    s.size >= 2 && s(1).start < s(0).start}
+  )
+
+  val defaultCondition =  ConditionAnd(Queries.unique, Queries.sameHead)
+  val defaultAndersom = ConditionAnd(defaultCondition, twee_voor_een)
+
   /*
   head_extend(a: HeadedSpans, reltype: option[string]) -> HeadedSpans
 Equivalent aan head_dep_intersect(a, <#reltype>)
 Handig als opstapje voor de volgende
-
    */
 
 }
@@ -65,7 +107,6 @@ trait Query {
       case (t1: Query, t2: Query) => headJoin(t1,t2).asInstanceOf[Query] // Hmm??????
     }
   }
-
 }
 
 case class BasicFilterQuery(filter: ISpan => Boolean) extends Query {
@@ -120,8 +161,40 @@ case class RelQuery(relName: String) extends Query {
 }
 
 
-case class HeadIntersection(q1: Query, q2: Query) extends  Query {
+case class SpanJoin(q: Seq[Query], condition : ICondition = defaultCondition) extends Query {
+
+  def findMatches(s: Set[ISpan]): Set[ISpan] =  {
+    val A = q.map(_.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan]))
+    val sequences: Set[Seq[IHeadedSpan]] = crossList[IHeadedSpan](A)
+
+    sequences.filter(condition.filter).map(a => {
+      val start = a.map(_.start).min
+      val end =  a.map(_.end).max
+      HeadedSpan(a.head.sentence, start, end, a.head.head, captures = a.flatMap(x => x.captures).toSet)
+     })
+    }
+}
+
+/*
+Dit is niet helemaal wat je wil....
+Nodig: diff op headniveau???
+ */
+
+case class AndNot[T1 <: IHeadedSpan, T2 <: IHeadedSpan](q1: Query, q2: Query, projection: ISpan => Any = x => x.asInstanceOf[IHeadedSpan].head) extends Query {
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
+    val A = q1.findMatches(s)
+    val B = q2.findMatches(s).map(_.asInstanceOf[IHeadedSpan]).map(projection)
+    A.filter(x => !B.contains(projection(x)))
+  }
+}
+
+case class HeadJoin(q1: Query, q2: Query) extends  Query {
+
+  def findMatches(s: Set[ISpan]): Set[ISpan] = {
+    SpanJoin(Seq(q1,q2)).findMatches(s)
+  }
+
+  def findMatches1(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
     val B = q2.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])
 
@@ -134,7 +207,7 @@ case class HeadIntersection(q1: Query, q2: Query) extends  Query {
   }
 }
 
-case class HeadDepIntersection(q1: Query, q2: Query) extends  Query {
+case class HeadDepJoin(q1: Query, q2: Query) extends  Query {
   // println(s"!!Head dep join of $q1 and $q2")
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan])

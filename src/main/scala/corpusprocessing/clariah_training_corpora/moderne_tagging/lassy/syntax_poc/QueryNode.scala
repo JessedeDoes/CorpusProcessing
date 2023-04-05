@@ -4,11 +4,17 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 
-case class QueryNode(tokenProperties : TokenQuery, children: Set[QueryNode] = Set()) {
+case class QueryNode(tokenProperties : TokenQuery, children: Seq[QueryNode] = Seq(), and_not: Seq[QueryNode] = Seq(), condition: ICondition = Queries.defaultCondition) {
 
   def nodeQuery(): Query = if (children.isEmpty) tokenProperties else {
     val clauses = children.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
-    HeadRestrict(Queries.headIntersect(clauses.toSeq), tokenProperties)
+    val negative_clauses = and_not.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
+    val positive = HeadRestrict(Queries.headIntersect(clauses.toSeq,condition=condition), tokenProperties)
+    if (negative_clauses.nonEmpty) {
+      val negative =  HeadRestrict(Queries.headIntersect(negative_clauses.toSeq), tokenProperties)
+      AndNot(positive,negative)
+    } else
+      positive
   }
 
   def toCQL() : String = {
@@ -30,6 +36,7 @@ Problemen:17      de      de      DET     LID|bep|stan|rest       Definite=Def  
 - Meerdere dependents met zelfde rol (bijvoorbeeld drie ADJ bij een znw)
 - 'Diepere' relaties (bijvoorbeeld  a ->* b voor b hangt willekeurig diep onder a, kan je constituenten mee maken)
 - In plaats van alleen maar captures iets boom-achtigs in het resultaat meegeven?
+
  */
 
 object QueryNode {
@@ -49,10 +56,10 @@ object QueryNode {
 
   implicit def s2q(s: String) = QueryNode(parseTokenQuery(s))
 
-   def q(a: TokenQuery,b: QueryNode) = QueryNode(a,Set(b))
-   def q(a: TokenQuery,b: QueryNode, c: QueryNode) = QueryNode(a, Set(b,c))
-   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode) = QueryNode(a, Set(b,c,d))
-   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode, e: QueryNode) = QueryNode(a, Set(b,c,d,e))
+   def q(a: TokenQuery,b: QueryNode) = QueryNode(a,Seq(b))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode) = QueryNode(a, Seq(b,c))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode) = QueryNode(a, Seq(b,c,d))
+   def q(a: TokenQuery,b: QueryNode, c: QueryNode, d: QueryNode, e: QueryNode) = QueryNode(a, Seq(b,c,d,e))
 
   // [rel='root'
   //    [pos='NOUN' & rel='nsubj'
@@ -61,15 +68,15 @@ object QueryNode {
   //    [pos='ADV']
   // ]
 
-  val test: QueryNode =
-    q(
-      "rel=root",
+  val test_meerdere_adjectieven: QueryNode =
+
       q(
         "pos=NOUN" & "nsubj",
-        q("pos=ADJ" & "lemma=Amerikaans")
-      ),
-      "pos=ADV"
-    )
+        q("pos=ADJ"),
+        q("pos=ADJ"),
+        q("pos=ADJ")
+      )
+
 
   // [rel='root' & lemma='komen'
   //      x:[rel='nsubj' & pos='NOUN' [pos='DET']]
@@ -103,6 +110,21 @@ object QueryNode {
       )
     )
 
+  val test_neg: QueryNode =
+    QueryNode(
+      tokenProperties = "rel=root",
+      children = Seq("rel=obj"),
+      and_not = Seq("rel=nsubj")
+    )
+
+  val test_order: QueryNode =
+    QueryNode(
+      tokenProperties = "rel=root",
+      children = Seq("rel=nsubj", "rel=obj"),
+      and_not=Seq("lemma=?"),
+      condition = Queries.defaultAndersom
+    )
+
    def testQuery(q: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
      println(q.treeString.replaceAll("\\|", "\t"))
      println("Possible CQL+ serialization: " + q.toCQL())
@@ -110,6 +132,6 @@ object QueryNode {
    }
 
    def main(args: Array[String])  = {
-     testQuery(test2, treebank=french_gsd)
+     testQuery(test_order, treebank=alpino)
    }
 }

@@ -57,7 +57,7 @@ object luchtfietsen {
 
   lazy val subj_obj_iobj: Query = headIntersect(Seq("nsubj", "obj", "iobj", "compound:prt"))
 
-  lazy val subj_amod: HeadDepIntersection = HeadDepIntersection("amod", "nsubj")
+  lazy val subj_amod: HeadDepJoin = HeadDepJoin("amod", "nsubj")
 
   lazy val minister_besluit_2 = LemmaQuery("besluiten") → LemmaQuery("minister")
 
