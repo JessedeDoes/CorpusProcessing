@@ -5,15 +5,21 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_po
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 
-case class QueryNode(tokenProperties : TokenQuery, children: Seq[QueryNode] = Seq(), and_not: Seq[QueryNode] = Seq(), condition: ICondition = Queries.defaultCondition) {
+case class QueryNode(tokenProperties : TokenQuery,
+                     children: Seq[QueryNode] = Seq(),
+                     and_not: Seq[QueryNode] = Seq(),
+                     condition: ICondition = Queries.defaultCondition,
+                     optional: Boolean = false)
+{
 
   def nodeQuery(): Query = if (children.isEmpty) tokenProperties else {
     val clauses = children.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
     val negative_clauses = and_not.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
-    val positive = HeadRestrict(Queries.headIntersect(clauses.toSeq,condition=condition), tokenProperties)
+    val positive: HeadRestrict = HeadRestrict(Queries.headIntersect(clauses.toSeq,condition=condition), tokenProperties)
+
     if (negative_clauses.nonEmpty) {
       val negative =  HeadRestrict(Queries.headIntersect(negative_clauses.toSeq), tokenProperties)
-      AndNot(positive,negative)
+      QueryAndNot(positive, negative)
     } else
       positive
   }
@@ -48,6 +54,7 @@ Problemen:17      de      de      DET     LID|bep|stan|rest       Definite=Def  
 - 'Diepere' relaties (bijvoorbeeld  a ->* b voor b hangt willekeurig diep onder a, kan je constituenten mee maken)
 - In plaats van alleen maar captures iets boom-achtigs in het resultaat meegeven?
 
+Vergelijk cypher, https://neo4j.com/developer/cypher/querying/
  */
 
 object QueryNode {

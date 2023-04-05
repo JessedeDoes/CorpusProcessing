@@ -200,7 +200,7 @@ Dit is niet helemaal wat je wil....
 Nodig: diff op headniveau???
  */
 
-case class AndNot[T1 <: IHeadedSpan, T2 <: IHeadedSpan](q1: Query, q2: Query, projection: ISpan => Any = x => x.asInstanceOf[IHeadedSpan].head) extends Query {
+case class QueryAndNot[T1 <: IHeadedSpan, T2 <: IHeadedSpan](q1: Query, q2: Query, projection: ISpan => Any = x => x.asInstanceOf[IHeadedSpan].head) extends Query {
   def findMatches(s: Set[ISpan]): Set[ISpan] = {
     val A = q1.findMatches(s)
     val B = q2.findMatches(s).map(_.asInstanceOf[IHeadedSpan]).map(projection)
