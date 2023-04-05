@@ -18,16 +18,20 @@ case class QueryNode(tokenProperties : TokenQuery, children: Seq[QueryNode] = Se
       positive
   }
 
-  def toCQL() : String = {
-    val stukjes = children.map(x => x.toCQL()).mkString(" ")
+  def toCQL(depth:Int=0) : String = {
+    val indent = ("\t" * depth)
+    val stukjes = children.map(x => x.toCQL(depth+1)).map(x =>  x).mkString("")
+
     val stukjes_niet = {
-      val p = and_not.map(x => x.toCQL()).mkString(" ")
-      if (p.isEmpty) "" else s"!($p)"
+      val p = and_not.map(x => x.toCQL(depth+2)).map(x =>   x)mkString(" ")
+      if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
     }
-    val tp = tokenProperties.toCQL()
+
+    val tp = "(" + tokenProperties.toCQL(depth+1) + ")"
 
     val parts = List(tp,stukjes,stukjes_niet).filter(_.nonEmpty).mkString(" ")
-    s"[${parts}]"
+
+    "\n" + (indent) + s"[${parts}]"
   }
 }
 
@@ -111,6 +115,7 @@ object QueryNode {
       ),
       q(
         PoSQuery("NOUN") & TokenRelQuery("obj"),
+        q(PoSQuery("ADJ")),
         q(PoSQuery("ADJ"))
       )
     )
@@ -134,12 +139,12 @@ object QueryNode {
     )
 
    def testQuery(q: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
-     println(q.treeString.replaceAll("\\|", "\t"))
-     println("Possible CQL+ serialization: " + q.toCQL())
+     // println(q.treeString.replaceAll("\\|", "\t"))
+     println("Possible CQL+ serialization:\n" + q.toCQL())
      luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank)
    }
 
    def main(args: Array[String])  = {
-     testQuery(subject_object_inversie, treebank=alpino)
+     testQuery(test2, treebank=alpino)
    }
 }

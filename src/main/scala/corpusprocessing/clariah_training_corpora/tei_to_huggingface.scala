@@ -49,7 +49,9 @@ trait tei_to_huggingface_trait {
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
     val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
+
     //System.err.println(relevances)
+
     val xml_ids =  tokenElements.map(x => getId(x))
 
     def enhancePos(w: Node, i: Int) = {

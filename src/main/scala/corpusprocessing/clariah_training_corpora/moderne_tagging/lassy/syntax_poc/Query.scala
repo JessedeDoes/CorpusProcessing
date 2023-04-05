@@ -91,15 +91,15 @@ object Queries {
 
   def isUnique(spans: Seq[IHeadedSpan]): Boolean = spans.toSet.size == spans.size
 
-  val unique = BasicCondition("unique", isUnique)
-  val sameHead = BasicCondition("sameHead", s => s.map(_.head).toSet.size == 1)
-  val twee_voor_een = BasicCondition("twee_voor_een", s=> {
+  val unique: BasicCondition = BasicCondition("unique", isUnique)
+  val sameHead: BasicCondition = BasicCondition("sameHead", s => s.map(_.head).toSet.size == 1)
+  val twee_voor_een: BasicCondition = BasicCondition("twee_voor_een", s=> {
     // println(s.map(_.toString))
     s.size >= 2 && s(1).start < s(0).start}
   )
 
-  val defaultCondition =  ConditionAnd(Queries.unique, Queries.sameHead)
-  val defaultAndersom = ConditionAnd(defaultCondition, OrderCondition("0>1"))
+  val defaultCondition: ConditionAnd =  ConditionAnd(Queries.unique, Queries.sameHead)
+  val defaultAndersom: ConditionAnd = ConditionAnd(defaultCondition, OrderCondition("0>1"))
 
   /*
   head_extend(a: HeadedSpans, reltype: option[string]) -> HeadedSpans
@@ -144,7 +144,7 @@ trait TokenQuery extends Query {
   def &(q1: TokenQuery) = TokenAndQuery(this,q1)
 
 
-  def toCQL(): String =  {
+  def toCQL(depth:Int = 0): String =  {
     this match {
       case LemmaQuery(l) => s"lemma='$l'"
       case PoSQuery(p) => s"pos='$p'"
@@ -178,6 +178,8 @@ case class RelQuery(relName: String) extends Query {
   override def findMatches(s: Set[ISpan]): Set[ISpan] = rel(relName).findMatches(s)
 }
 
+
+// incorporate Optional parts....
 
 case class SpanJoin(q: Seq[Query], condition : ICondition = defaultCondition) extends Query {
 
