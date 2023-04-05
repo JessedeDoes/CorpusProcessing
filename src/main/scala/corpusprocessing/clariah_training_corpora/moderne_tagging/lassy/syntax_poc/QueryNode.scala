@@ -76,7 +76,6 @@ object QueryNode {
   // ]
 
   val test_meerdere_adjectieven: QueryNode =
-
       q(
         "pos=NOUN" & "nsubj",
         q("pos=ADJ"),
@@ -84,13 +83,12 @@ object QueryNode {
         q("pos=ADJ")
       )
 
-
   // [rel='root' & lemma='komen'
   //      x:[rel='nsubj' & pos='NOUN' [pos='DET']]
   //      [lemma='uit' & rel='compound:prt']
   //      [lemma='er']]
 
-  val test1: QueryNode =
+  val test_scheidbaar_werkwoord: QueryNode =
     q(
       TokenRelQuery("root") & LemmaQuery("komen"),
       q(TokenRelQuery("nsubj")),
@@ -117,7 +115,7 @@ object QueryNode {
       )
     )
 
-  val test_neg: QueryNode =
+  val test_and_not: QueryNode =
     QueryNode(
       tokenProperties = "rel=root",
       children = Seq("rel=obj"),
