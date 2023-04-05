@@ -117,11 +117,14 @@ object QueryNode {
       and_not = Seq("rel=nsubj")
     )
 
-  val test_order: QueryNode =
+  val subject_object_inversie: QueryNode =
     QueryNode(
       tokenProperties = "rel=root",
-      children = Seq("rel=nsubj", "rel=obj"),
-      and_not=Seq("lemma=?"),
+      children = Seq(
+        "rel=nsubj",
+        PoSQuery("NOUN") & TokenRelQuery("obj")
+      ),
+      and_not=Seq("lemma=?"), // we willen even geen vragen
       condition = Queries.defaultAndersom
     )
 
@@ -132,6 +135,6 @@ object QueryNode {
    }
 
    def main(args: Array[String])  = {
-     testQuery(test_order, treebank=alpino)
+     testQuery(subject_object_inversie, treebank=alpino)
    }
 }
