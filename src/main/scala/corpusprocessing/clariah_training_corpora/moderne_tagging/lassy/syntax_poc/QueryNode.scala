@@ -34,8 +34,8 @@ case class QueryNode(tokenProperties : TokenQuery,
     }
 
     val tp = "(" + tokenProperties.toCQL(depth+1) + ")"
-
-    val parts = List(tp,stukjes,stukjes_niet).filter(_.nonEmpty).mkString(" ")
+    val conditionPart = if (condition == defaultCondition) "" else "\n" + indent + "::" + condition.toString
+    val parts = List(tp,stukjes,stukjes_niet,conditionPart).filter(_.nonEmpty).mkString(" ")
 
     "\n" + (indent) + s"[${parts}]"
   }
@@ -152,6 +152,6 @@ object QueryNode {
    }
 
    def main(args: Array[String])  = {
-     testQuery(test2, treebank=alpino)
+     testQuery(subject_object_inversie, treebank=alpino)
    }
 }

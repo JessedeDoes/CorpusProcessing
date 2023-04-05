@@ -33,6 +33,7 @@ import Cartesian._
 trait ICondition {
   def name: String
   def filter: Seq[IHeadedSpan] => Boolean
+  override def toString() = name
 }
 
 case class BasicCondition(name: String, filter: Seq[IHeadedSpan] => Boolean) extends ICondition
