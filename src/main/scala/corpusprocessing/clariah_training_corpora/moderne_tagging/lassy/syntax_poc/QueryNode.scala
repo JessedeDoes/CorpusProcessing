@@ -1,21 +1,23 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
 
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.Queries.defaultCondition
+
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 
 case class QueryNode(tokenProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
                      and_not: Seq[QueryNode] = Seq(),
-                     condition: ICondition = Queries.defaultCondition,
-                     optional: Boolean = false)
+                     condition: ICondition = Condition.defaultCondition,
+                     postCondition: ICondition = Condition.trivial,
+                     optional: Boolean = false,
+                     label:String="unlabeled")
 {
 
   def nodeQuery(): Query = if (children.isEmpty) tokenProperties else {
     val clauses = children.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
     val negative_clauses = and_not.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
-    val positive: HeadRestrict = HeadRestrict(Queries.headIntersect(clauses.toSeq,condition=condition), tokenProperties)
+    val positive: HeadRestrict = HeadRestrict(Queries.headIntersect(clauses.toSeq, condition=condition, postCondition=postCondition, label=label), tokenProperties)
 
     if (negative_clauses.nonEmpty) {
       val negative =  HeadRestrict(Queries.headIntersect(negative_clauses.toSeq), tokenProperties)
@@ -34,10 +36,11 @@ case class QueryNode(tokenProperties : TokenQuery,
     }
 
     val tp = "(" + tokenProperties.toCQL(depth+1) + ")"
-    val conditionPart = if (condition == defaultCondition) "" else "\n" + indent + "::" + condition.toString
-    val parts = List(tp,stukjes,stukjes_niet,conditionPart).filter(_.nonEmpty).mkString(" ")
+    val conditionPart = if (condition == Condition.defaultCondition) "" else "\n" + indent + "::" + condition.toString
+    val postConditionPart = if (postCondition == Condition.trivial) "" else "\n" + indent + "::" + postCondition.toString
+    val parts = List(tp,stukjes,stukjes_niet,conditionPart,postConditionPart).filter(_.nonEmpty).mkString(" ")
 
-    "\n" + (indent) + s"[${parts}]"
+    "\n" + (indent) + s"$label:[${parts}]"
   }
 }
 
@@ -59,6 +62,11 @@ Vergelijk cypher, https://neo4j.com/developer/cypher/querying/
 
 object QueryNode {
   // Ja dit kan ook compacter met varargs @* enzo maar ik schijn dat niet uit het hoofd te kunnen
+
+  def labelNode(q: QueryNode, label:String):QueryNode = {
+     val children = q.children.zipWithIndex.map({case (n,i) => labelNode(n, s"${i+1}")})
+     q.copy(children=children, label=label)
+  }
 
   implicit def q(a: TokenQuery) = QueryNode(a)
 
@@ -142,11 +150,13 @@ object QueryNode {
         PoSQuery("NOUN") & TokenRelQuery("obj")
       ),
       and_not=Seq("lemma=?"), // we willen even geen vragen
-      condition = ConditionAnd(defaultCondition, OrderCondition("0>1")) // zo kunnen we nog niets met de volgorde tov van de parent. Toch iets capture-achtigs doen??
+      //condition = ConditionAnd(Condition.defaultCondition, ChildOrderCondition("0>1")),
+      postCondition = CaptureOrderCondition("obj<nsubj") // zo kunnen we nog niets met de volgorde tov van de parent. Toch iets capture-achtigs doen??
     )
 
-   def testQuery(q: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
+   def testQuery(q0: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
      // println(q.treeString.replaceAll("\\|", "\t"))
+     val q = labelNode(q0,"0")
      println("Possible CQL+ serialization:\n" + q.toCQL())
      luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank)
    }

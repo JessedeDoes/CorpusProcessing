@@ -30,36 +30,7 @@ object Cartesian {
 
 import Cartesian._
 
-trait ICondition {
-  def name: String
-  def filter: Seq[IHeadedSpan] => Boolean
-  override def toString() = name
-}
-
-case class BasicCondition(name: String, filter: Seq[IHeadedSpan] => Boolean) extends ICondition
-case class OrderCondition(name: String) extends ICondition {
-
-  val clauses: Seq[Seq[IHeadedSpan] => Boolean] = name.trim.split("\\s*&\\s*").map(c => {
-    val name = c
-    val operator = c.replaceAll("[^<>]","")
-    val leftright = c.split("\\s*[<>]\\s*")
-    val left = leftright(0).toInt
-    val right = leftright(1).toInt
-
-    val filter : Seq[IHeadedSpan] => Boolean = operator match {
-      case ">" =>  s => s.size > left && s.size > right && s(left).start > s(right).start
-      case "<" =>  s => s.size > left && s.size > right && s(left).start > s(right).start
-    }
-    filter
-  })
-
-  val filter = s => clauses.forall(_(s))
-}
-
-case class ConditionAnd(c1: ICondition, c2:ICondition) extends ICondition {
-  val filter: Seq[IHeadedSpan] => Boolean = s => c1.filter(s) && c2.filter(s)
-  def name: String  = s"{${c1.name}} & {${c2.name}} "
-}
+import Condition._
 
 object Queries {
   def find(q: Query, corpus: Seq[Set[ISpan]]) = corpus.map(s => {
@@ -72,8 +43,8 @@ object Queries {
     case _ => false
   }
 
-  def headIntersect(s: Seq[Query], condition:ICondition = defaultCondition): Query =  {
-    SpanJoin(s,condition=condition)
+  def headIntersect(s: Seq[Query], condition:ICondition = defaultCondition, postCondition:ICondition = trivial, label:String="unlabeled"): Query =  {
+    SpanJoin(s,joinCondition=condition,postCondition = postCondition,label=label)
     // if (s.size == 1) s.head else HeadJoin(s.head, headIntersect(s.tail))
   }
 
@@ -90,17 +61,7 @@ object Queries {
     HeadJoin(q1, headExtend(q2, relType))
   }
 
-  def isUnique(spans: Seq[IHeadedSpan]): Boolean = spans.toSet.size == spans.size
 
-  val unique: BasicCondition = BasicCondition("unique", isUnique)
-  val sameHead: BasicCondition = BasicCondition("sameHead", s => s.map(_.head).toSet.size == 1)
-  val twee_voor_een: BasicCondition = BasicCondition("twee_voor_een", s=> {
-    // println(s.map(_.toString))
-    s.size >= 2 && s(1).start < s(0).start}
-  )
-
-  val defaultCondition: ConditionAnd =  ConditionAnd(Queries.unique, Queries.sameHead)
-  val defaultAndersom: ConditionAnd = ConditionAnd(defaultCondition, OrderCondition("0>1"))
 
   /*
   head_extend(a: HeadedSpans, reltype: option[string]) -> HeadedSpans
@@ -131,10 +92,10 @@ trait Query {
 case class BasicFilterQuery(filter: ISpan => Boolean) extends Query {
   def findMatches(s: Set[ISpan]): Set[ISpan] = s.filter(filter).map({
     case hs: HeadedSpan => hs.copy(captures = Set(
-      hs.headToken.map(x => ("headRel" + x.DEPREL, x.ID.toInt, x.ID.toInt))
+      hs.headToken.map(x => (x.DEPREL, x.ID.toInt, x.ID.toInt))
     ).filter(_.nonEmpty).map(_.get))
     case ds: HeadDepSpan => ds.copy(captures = Set(
-      ds.headToken.map(x => ("headRel:" + x.DEPREL, x.ID.toInt, x.ID.toInt)),
+      ds.headToken.map(x => (x.DEPREL, x.ID.toInt, x.ID.toInt)),
       Some(ds.depToken).map(x => (x.DEPREL, x.ID.toInt, x.ID.toInt))
     ).filter(_.nonEmpty).map(_.get))
     case ts: TokenSpan => ts
@@ -182,16 +143,21 @@ case class RelQuery(relName: String) extends Query {
 
 // incorporate Optional parts....
 
-case class SpanJoin(q: Seq[Query], condition : ICondition = defaultCondition) extends Query {
+case class SpanJoin(q: Seq[Query], joinCondition : ICondition = defaultCondition, postCondition: ICondition=Condition.trivial, label:String="unlabeled") extends Query {
 
   def findMatches(s: Set[ISpan]): Set[ISpan] =  {
     val A = q.map(_.findMatches(s).filter(_.isInstanceOf[IHeadedSpan]).map(_.asInstanceOf[IHeadedSpan]))
     val sequences: Set[Seq[IHeadedSpan]] = crossList[IHeadedSpan](A)
 
-    sequences.filter(condition.filter).map(a => {
+    sequences.filter(joinCondition.filter).flatMap(a => {
       val start = a.map(_.start).min
       val end =  a.map(_.end).max
-      HeadedSpan(a.head.sentence, start, end, a.head.head, captures = a.flatMap(x => x.captures).toSet)
+      val captures = a.flatMap(x => x.captures).toSet
+      val capturesx = a.zipWithIndex.flatMap({case (x,i) => x.captures.map({case (n,s,e) => (s"$label.$n",s,e)})}).toSet
+      val unorderedResult = HeadedSpan(a.head.sentence, start, end, a.head.head, captures = captures)
+
+      if (postCondition.filter(Seq(unorderedResult))) Set[HeadedSpan](unorderedResult) else Set[HeadedSpan]()
+
      })
     }
 }
