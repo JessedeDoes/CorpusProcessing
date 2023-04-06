@@ -160,7 +160,7 @@ object QueryNode {
      // println(q.treeString.replaceAll("\\|", "\t"))
      val q = labelNode(q0,"0")
      println(s"\n\nQuery $name\n" + q.toCQL())
-     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3)
+     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = true)
    }
 
    def main(args: Array[String])  = {
