@@ -2,10 +2,11 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 
 
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.QueryNode.q
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 
-case class QueryNode(tokenProperties : TokenQuery,
+case class QueryNode(headProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
                      and_not: Seq[QueryNode] = Seq(),
                      condition: ICondition = Condition.defaultCondition,
@@ -14,13 +15,13 @@ case class QueryNode(tokenProperties : TokenQuery,
                      label:String="unlabeled")
 {
 
-  def nodeQuery(): Query = if (children.isEmpty) tokenProperties else {
+  def nodeQuery(): Query = if (children.isEmpty) headProperties else {
     val clauses = children.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
     val negative_clauses = and_not.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
-    val positive: HeadRestrict = HeadRestrict(Queries.headIntersect(clauses.toSeq, condition=condition, postCondition=postCondition, label=label), tokenProperties)
+    val positive: HeadRestrict = HeadRestrict(Queries.headIntersect(clauses.toSeq, condition=condition, postCondition=postCondition, label=label), headProperties)
 
     if (negative_clauses.nonEmpty) {
-      val negative =  HeadRestrict(Queries.headIntersect(negative_clauses.toSeq), tokenProperties)
+      val negative =  HeadRestrict(Queries.headIntersect(negative_clauses.toSeq), headProperties)
       QueryAndNot(positive, negative)
     } else
       positive
@@ -35,7 +36,7 @@ case class QueryNode(tokenProperties : TokenQuery,
       if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
     }
 
-    val tp = "(" + tokenProperties.toCQL(depth+1) + ")"
+    val tp = "(" + headProperties.toCQL(depth+1) + ")"
     val conditionPart = if (condition == Condition.defaultCondition) "" else "\n" + indent + "::" + condition.toString
     val postConditionPart = if (postCondition == Condition.trivial) "" else "\n" + indent + "::" + postCondition.toString
     val parts = List(tp,stukjes,stukjes_niet,conditionPart,postConditionPart).filter(_.nonEmpty).mkString(" ")
@@ -94,57 +95,58 @@ object QueryNode {
   //    [pos='ADV']
   // ]
 
-  val test_meerdere_adjectieven: QueryNode =
+  val testQueries = List(
+  "verySimple" -> QueryNode(headProperties = "rel=root",
+    children = Seq(
+      QueryNode(headProperties = "rel=nsubj"),
+      QueryNode(headProperties = "rel=obj"),
+    )
+  ),
+
+    "moreComplexNesting" ->
+      q(
+        TokenRelQuery("root"),
+        q(
+          PoSQuery("NOUN") & TokenRelQuery("nsubj"),
+          q(PoSQuery("ADJ"))
+        ),
+        q(
+          PoSQuery("NOUN") & TokenRelQuery("obj"),
+          q(PoSQuery("ADJ"),
+            PoSQuery("ADV")
+          )
+        )
+      ),
+
+  "threeAdjectives" ->
       q(
         "pos=NOUN" & "nsubj",
         q("pos=ADJ"),
         q("pos=ADJ"),
         q("pos=ADJ")
-      )
+      ),
 
-  // [rel='root' & lemma='komen'
-  //      x:[rel='nsubj' & pos='NOUN' [pos='DET']]
-  //      [lemma='uit' & rel='compound:prt']
-  //      [lemma='er']]
-
-  val test_scheidbaar_werkwoord: QueryNode =
+  "separableVerb"  ->
     q(
       TokenRelQuery("root") & LemmaQuery("komen"),
       q(TokenRelQuery("nsubj")),
       q(LemmaQuery("uit") & TokenRelQuery("compound:prt")),
       q(LemmaQuery("er"))
-    )
+    ),
 
-     // Subject en object hebben allebei een adjectief erbij:
-     // [rel='root'
-     //   [pos='NOUN' & rel='nsubj' [pos='ADJ']]
-     //   [pos='NOUN' & rel='obj' [pos='ADJ']]
-     //   ]
 
-  val test2: QueryNode =
-    q(
-      TokenRelQuery("root"),
-      q(
-        PoSQuery("NOUN") & TokenRelQuery("nsubj"),
-        q(PoSQuery("ADJ"))
-      ),
-      q(
-        PoSQuery("NOUN") & TokenRelQuery("obj"),
-        q(PoSQuery("ADJ")),
-        q(PoSQuery("ADJ"))
-      )
-    )
 
-  val test_and_not: QueryNode =
+
+    "testNot" ->
     QueryNode(
-      tokenProperties = "rel=root",
+      headProperties = "rel=root",
       children = Seq("rel=obj"),
       and_not = Seq("rel=nsubj")
-    )
+    ),
 
-  val subject_object_inversie: QueryNode =
+   "objectBeforeSubject" ->
     QueryNode(
-      tokenProperties = "rel=root",
+      headProperties = "rel=root",
       children = Seq(
         "rel=nsubj",
         PoSQuery("NOUN") & TokenRelQuery("obj")
@@ -152,16 +154,16 @@ object QueryNode {
       and_not=Seq("lemma=?"), // we willen even geen vragen
       //condition = ConditionAnd(Condition.defaultCondition, ChildOrderCondition("0>1")),
       postCondition = CaptureOrderCondition("obj<nsubj") // zo kunnen we nog niets met de volgorde tov van de parent. Toch iets capture-achtigs doen??
-    )
+    ))
 
-   def testQuery(q0: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
+   def testQuery(name: String, q0: QueryNode, treebank: Seq[Set[ISpan]] = alpino) = {
      // println(q.treeString.replaceAll("\\|", "\t"))
      val q = labelNode(q0,"0")
-     println("Possible CQL+ serialization:\n" + q.toCQL())
-     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank)
+     println(s"\n\nQuery $name\n" + q.toCQL())
+     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3)
    }
 
    def main(args: Array[String])  = {
-     testQuery(subject_object_inversie, treebank=alpino)
+     testQueries.foreach({case (n, q) => testQuery(n,q, treebank=alpino) })
    }
 }

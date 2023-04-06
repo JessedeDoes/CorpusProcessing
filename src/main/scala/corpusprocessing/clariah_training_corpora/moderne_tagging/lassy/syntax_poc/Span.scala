@@ -36,7 +36,7 @@ trait ISpan {
 trait IHeadedSpan extends ISpan {
   def head: Int
   val headToken: Option[UdToken] = sentence.tokens.find(_.ID == head.toString)
-  override def toString = s"$start--$end: [$content] , head=${token(head-1).ID}:${token(head-1).FORM} {$showCaptures}"
+  override def toString = s"span=($start-$end): [$content],\thead=${token(head-1).ID}:${token(head-1).FORM},\tcaptures={$showCaptures}"
   // override def content = sentence.tokens.drop(start).take(end-start).map(t => if (t.ID == head.toString) s"<${t.FORM}:${t.DEPREL}>" else s"${t.FORM}:${t.DEPREL}").mkString(" ")
 }
 

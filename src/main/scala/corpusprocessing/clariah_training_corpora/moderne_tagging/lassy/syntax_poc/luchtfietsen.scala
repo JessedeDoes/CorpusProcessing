@@ -72,12 +72,13 @@ object luchtfietsen {
 
   val testQueries: Seq[Query] = Stream(wat_voor_mensen_deel) // , minister_besluit_2, regering_subject, besluiten_met_subject, minister_besluit, basic,subj_obj_iobj, subj_amod)
 
-  def runQuery(q: Query,  max: Int=Integer.MAX_VALUE, treebank: Seq[Set[ISpan]] = alpino ): Unit = {
-    println("\n\nQuery:\n" + q.treeString.replaceAll("\\|", "\t"))
+  def runQuery(q: Query,  max: Int=Integer.MAX_VALUE, treebank: Seq[Set[ISpan]] = alpino, printQuery: Boolean=false ): Unit = {
+    if (printQuery) println("\n\nQuery:\n" + q.treeString.replaceAll("\\|", "\t"))
+
     find(q, treebank).take(max).foreach(s => {
       val sent = s.head.sentence.tokens.map(_.FORM).mkString(" ")
-      println(s"\n###### $sent")
-      s.foreach(x => println("\t" + x))
+      println(s"\n$sent")
+      s.foreach(x => println("\t" + x.toString.replaceAll("\\t", "\n\t")))
     })
   }
 
