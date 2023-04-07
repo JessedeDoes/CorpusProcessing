@@ -79,6 +79,7 @@ object shortrackonline {
   val hasselt = "data/hasselt.html"
   val regio_utrecht = "data/regio_utrecht.html"
   val regio_dordrecht = "data/regiodordrecht.html"
+  val gent2023 = "data/gent.html"
   val ar2023 = "data/ar2023.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
@@ -91,7 +92,7 @@ object shortrackonline {
     val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOnly.html" -> fIHCL)
 
     tasks.foreach({ case (fileName, filter) =>
-      val regio = HTML.parse(io.Source.fromFile(ar2023).getLines().mkString("\n"))
+      val regio = HTML.parse(io.Source.fromFile(gent2023).getLines().mkString("\n"))
       // println(pretty.format(regio))
       val sections = (regio \\ "h3").map(_.text)
       //println(sections)
