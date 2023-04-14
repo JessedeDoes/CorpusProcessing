@@ -239,7 +239,7 @@ object sampleQuotationsPerCentury {
     id -> (average,nWords)
   }).toMap
 
-  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000)
+  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000, 16 -> 40000, 15 -> 40000)
   val wordsPerDecennium = wordsPerCentury.mapValues( _ / 10)
 
   lazy val perDecennium: Map[Double, List[(String, (Double, Int))]] = quotationDates.groupBy({case (id,(d,n)) => 10 * Math.floor(d/10)}).mapValues(l => Random.shuffle(l).toList)
@@ -292,8 +292,8 @@ object sampleQuotationsPerCentury {
 
   def main(args: Array[String])  = {
     // perDecennium.foreach({case (d,l) => println(d -> l.take(5))})
-     List(17,18,19).foreach(c => {
-       val corpusje = selectCentury(c)
+     List(15,16).foreach(c => {
+        val corpusje = selectCentury(c)
         XML.save(toDir + "/"  + s"quotations_$c.xml", corpusje, enc="UTF-8")
      })
   }
