@@ -41,3 +41,17 @@ object Settings {
     ), "with_normalized_subheader")
   )
 }
+
+/*
+Ontdubbeling: update issues_kb_fixed set dubbel_mag_weg=true from issues_kb_fixed i
+where i.double_group_id= issues_kb_fixed.double_group_id and (i.text_length > issues_kb_fixed.text_length or (i.text_length = issues_kb_fixed.text_length and i.tellertje > issues_kb_fixed.tellertje));
+
+
+Hoi Jesse en Katrien,
+
+Tijdens een van m'n zoekacties in het Couranten Corpus viel mij op dat ik helemaal geen resultaten vond voor 1626, 1627, 1638 en 1680. Ik zie in het tabblad 'Expert' dat het niet aan mijn zoekactie lag: voor deze jaartallen staan er geen kranten in het corpus. Voor 1638 ontbreken inderdaad ook kranten in Delpher, maar voor de andere drie jaargangen bevat Delpher wel kranten: 39 uit 1626, 52 uit 1627 en 44 uit 1680. Kan het zijn dat er een vinkje uitstaat, waardoor deze jaargangen, net als 1618, niet in het corpus terecht zijn gekomen?
+
+Hartelijke groeten,
+Machteld
+
+ */

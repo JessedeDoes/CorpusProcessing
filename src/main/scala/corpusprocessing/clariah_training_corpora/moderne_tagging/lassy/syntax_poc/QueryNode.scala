@@ -30,18 +30,18 @@ case class QueryNode(headProperties : TokenQuery,
   def toCQL(depth:Int=0) : String = {
     val indent = ("\t" * depth)
     val stukjes = children.map(x => x.toCQL(depth+1)).map(x =>  x).mkString("")
-
+    val relPart = headProperties.relPart.map(_.rel).mkString
     val stukjes_niet = {
       val p = and_not.map(x => x.toCQL(depth+2)).map(x =>   x)mkString(" ")
       if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
     }
-
-    val tp = "(" + headProperties.toCQL(depth+1) + ")"
+    val tpp = headProperties.withoutRelPart
+    val tp = tpp.toCQL(depth+1)
     val conditionPart = if (condition == Condition.defaultCondition) "" else "\n" + indent + "::" + condition.toString
     val postConditionPart = if (postCondition == Condition.trivial) "" else "\n" + indent + "::" + postCondition.toString
     val parts = List(tp,stukjes,stukjes_niet,conditionPart,postConditionPart).filter(_.nonEmpty).mkString(" ")
-
-    "\n" + (indent) + s"$label:[${parts}]"
+    val below = if (parts.nonEmpty) s"[${parts}]" else ""
+    "\n" + (indent) + s"↦$relPart$below"
   }
 }
 

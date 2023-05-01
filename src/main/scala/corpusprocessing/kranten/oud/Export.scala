@@ -51,7 +51,7 @@ Indexes:
 
   val exportQuery1664 = "articles_int where cast(issue_date as text) ~ '1664'"
   val exportQuery = "articles_int"
-
+  val exportQuery_geenDubbel = " (select articles_int.* from articles_int, issues_kb_fixed where articles_int.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x"
   case class SillyThing(fileName: String) {
     var empty = true;
     lazy val pw: PrintWriter = {
@@ -172,7 +172,7 @@ Indexes:
     </TEI>
     (year,tei)
   },
-  exportQuery.stripMargin)
+  exportQuery_geenDubbel.stripMargin)
 
   def export(): Unit = {
    // year_map.values.foreach(x => x.println("<teiCorpus>"))
@@ -194,7 +194,7 @@ Indexes:
 }
 
 object Export {
-  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTest/"
+  val exportDir = "/tmp/Krantjes/" // "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTestGeenDubbel/"
   def main(args: Array[String]): Unit = {
     new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }

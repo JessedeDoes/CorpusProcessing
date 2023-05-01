@@ -115,6 +115,31 @@ trait TokenQuery extends Query {
       case EmptyTokenQuery() => ""
     }
   }
+
+  def relPart: Option[TokenRelQuery] = {
+    this match {
+      case LemmaQuery(l) => None
+      case PoSQuery(p) => None
+      case TokenRelQuery(r) => Some(this.asInstanceOf[TokenRelQuery])
+      case TokenAndQuery(q1, q2) => q1.relPart.toList.union(q2.relPart.toList).headOption
+      case EmptyTokenQuery() => None
+    }
+  }
+
+  def withoutRelPart : TokenQuery = {
+    this match {
+      case LemmaQuery(l) => this
+      case PoSQuery(p) => this
+      case TokenRelQuery(r) => EmptyTokenQuery()
+      case TokenAndQuery(q1, q2) => (q1.withoutRelPart, q2.withoutRelPart) match {
+        case (EmptyTokenQuery(), EmptyTokenQuery()) => EmptyTokenQuery()
+        case (EmptyTokenQuery(), x) => x
+        case (x, EmptyTokenQuery()) => x
+        case (x,y) => TokenAndQuery(x,y)
+      }
+      case EmptyTokenQuery() => this
+    }
+  }
 }
 
 case class LemmaQuery(lemma: String) extends TokenQuery {

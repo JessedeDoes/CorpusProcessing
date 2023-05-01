@@ -30,7 +30,7 @@ case class ChildOrderCondition(name: String) extends ICondition {
 
 case class CaptureOrderCondition(condition: String) extends ICondition {
 
-  val name = s"Ordering($condition)"
+  val name = s"$condition"
   val clauses: Seq[Seq[IHeadedSpan] => Boolean] = condition.trim.split("\\s*&\\s*").map(c => {
     val name = c
     val operator = c.replaceAll("[^<>]","")
