@@ -298,7 +298,7 @@ case class TagSet(prefix: String,
       </tags>
     </tagset>
 
-  def elem(label: String, child: Seq[Node]) = Elem(null, label, Null, scala.xml.TopScope, child: _*)
+  def elem(label: String, child: Seq[Node]) = Elem(null, label, Null, scala.xml.TopScope, false, child: _*)
 
   def blacklabName(n: String) = n.replaceAll("[-.]", "_")
 

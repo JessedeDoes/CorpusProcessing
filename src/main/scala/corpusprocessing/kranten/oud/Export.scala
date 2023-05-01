@@ -52,6 +52,7 @@ Indexes:
   val exportQuery1664 = "articles_int where cast(issue_date as text) ~ '1664'"
   val exportQuery = "articles_int"
   val exportQuery_geenDubbel = " (select articles_int.* from articles_int, issues_kb_fixed where articles_int.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x"
+
   case class SillyThing(fileName: String) {
     var empty = true;
     lazy val pw: PrintWriter = {
@@ -71,6 +72,21 @@ Indexes:
   val q = Select(r =>  {
 
     def x(s: String) = r.getStringNonNull(s).trim;
+
+    def getCleanedText(s: String) = {
+      val a = cleanAmp(r.getStringNonNull(s).trim);
+      val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
+        case Success(value) =>  {
+          // Console.err.println("Yes, parsed! ")
+          value }
+        case _ => {
+          Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
+          a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
+        }
+      }
+      parsed
+    }
+
     val date = x("issue_date")
     val year = date.replaceAll("-.*", "")
     val decade = if (year.matches("[0-9]{4}")) year.replaceAll(".$", "0") else "undefined"
@@ -80,7 +96,7 @@ Indexes:
     val pid = s"kranten_17_${x("record_id")}"
     val tekststoort = x("tekstsoort_int").replaceAll("colo.*n|mededeling.advertentie|--", "")
     def ig(n: String, v: String) = <interpGrp type={n}><interp>{cleanAmp(v)}</interp></interpGrp>
-    def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{cleanAmp(x(n))}</interp></interpGrp>
+    def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{getCleanedText(n)}</interp></interpGrp>
 
     val article = {
       val a = x("article_text")
@@ -104,7 +120,7 @@ Indexes:
       <teiHeader>
         <fileDesc>
           <titleStmt>
-            <title>{x("paper_title")}, {x("issue_date")}; {x("header")}, {x("subheader")}</title>
+            <title>{getCleanedText("paper_title")}, {x("issue_date")}; {getCleanedText("header")}, {getCleanedText("subheader")}</title>
             <respStmt>
               <resp>compiled by</resp>
               <name>Nicoline van der Sijs and volunteers</name>
@@ -151,7 +167,7 @@ Indexes:
             {i("plaats_int")}
             {i("colophon")}
           </bibl>
-        </listBibl>export_1664.xml
+        </listBibl>
         </sourceDesc>
         <revisionDesc>
           <list>
@@ -162,7 +178,7 @@ Indexes:
      <text>
        <body>
        <div>
-         <head>{x("subheader")}</head>
+         <head>{getCleanedText("subheader_int")}</head>
          <p>
            {article}
          </p>

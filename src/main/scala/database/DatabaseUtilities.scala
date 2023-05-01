@@ -60,7 +60,7 @@ object DatabaseUtilities
   class Mocky2 extends Diamond
   {
     val fieldNames: scala.collection.mutable.ListBuffer[String] = new scala.collection.mutable.ListBuffer[String]()
-    def getString(s:String, s1: Option[String] = None):String = { fieldNames.append(s1.getOrElse(s)); "wereldvrede"}
+    def getString(s:String, s1: Option[String] = None):String = { fieldNames.append(s1.getOrElse("\"" + s + "\"")); "wereldvrede"}
     def getStringNonNull(s:String):String = getString(s)
     def getInt(s:String):Int = {fieldNames.append(s); 42}
     def getBoolean(s:String):Boolean = {fieldNames.append(s); true}

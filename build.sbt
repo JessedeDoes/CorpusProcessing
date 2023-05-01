@@ -6,7 +6,8 @@ scalaVersion := "2.12.3"
 
 // https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml_2.12
 
-libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.12" % "1.0.6"
+//libraryDependencies += "org.scala-lang.modules" % "scala-xml_2.12" % "1.0.6"
+libraryDependencies += "org.scala-lang.modules" %% "scala-xml" % "2.1.0"
 
 // https://mvnrepository.com/artifact/org.scala-lang.modules/scala-parser-combinators_2.12
 libraryDependencies += "org.scala-lang.modules" % "scala-parser-combinators_2.12" % "1.0.6"
