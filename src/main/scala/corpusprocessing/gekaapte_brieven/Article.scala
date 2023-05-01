@@ -3,15 +3,21 @@ import java.time.LocalDateTime.now
 import scala.xml._
 import java.io.File
 object Article {
+
   val nederlabConversie = "/mnt/Projecten/Corpora/Historische_Corpora/Nederlab/gekaaptebrieven/"
    lazy val nederBrieven = new File(nederlabConversie).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(XML.loadFile)
-   lazy val nederDivs = nederBrieven.flatMap(x => x \\ "div1").map(d => {
+
+
+  lazy val nederDivs = nederBrieven.flatMap(x => x \\ "div1").map(d => {
      val comments = d.descendant.filter(_.isInstanceOf[Comment])
-     val strippedComments = comments.map(x => x.toString.trim).map(_.replaceAll("<!--","").replaceAll("-->","").replaceAll(",.*","").trim) //  Brief id: 1409, Sourcetabel: table-1409.xml
-     Console.err.println(strippedComments)
+     val strippedComments = comments.map(x => x.toString.trim.replaceAll("<!--","").replaceAll("-->","").replaceAll(",.*$","").trim) //  Brief id: 1409, Sourcetabel: table-1409.xml
+     // Console.err.println(strippedComments)
      val possibleId = strippedComments.filter(x => x.matches("Brief id:\\s*[0-9]+")).map(x => x.replaceAll("Brief id:\\s*" , "")).headOption
-     (possibleId,"")
-   })
+    if (possibleId.isEmpty || !possibleId.map(_.matches("[0-9]+")).get) {
+      Console.err.println("Id not found:" + (possibleId,d.toString()))
+    }
+    (possibleId,d.toString())
+  }).filter(_._1.nonEmpty).map({case (id,div) => (id.get.toInt, div)}) // .take(100)
 
   /*
   <!--Brief id: 23-->
@@ -56,7 +62,7 @@ case class Article(m: Map[String,String]) {
     </teiHeader>
     <text>
        <body><div>
-         {m{"transcriptie"}}
+         {XML.loadString(m("xml"))}
        </div></body>
     </text>
   </TEI>
