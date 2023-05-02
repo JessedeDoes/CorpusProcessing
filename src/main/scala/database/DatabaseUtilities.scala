@@ -38,12 +38,19 @@ object DatabaseUtilities
 
   case class Voedsel(beest:String, voedsel:Int)
 
+  def toArray(a: java.sql.Array): Array[String]  =  {
+    val a0= a.getArray().asInstanceOf[Array[String]]
+    // println(a0.getClass.getName)
+    return a0
+  }
+
   trait Diamond
   {
     def getString(s:String, s1: Option[String] = None):String
     def getStringNonNull(s:String):String
     def getInt(s:String):Int
     def getBoolean(s:String):Boolean
+    def getStringArray(s: String):Array[String]
   }
 
   case class Mocky1(resultSet:ResultSet) extends Diamond
@@ -55,6 +62,7 @@ object DatabaseUtilities
     }
     def getInt(s:String):Int = resultSet.getInt(s)
     def getBoolean(s:String):Boolean = resultSet.getBoolean(s)
+    def getStringArray(s: String):Array[String] =toArray(resultSet.getArray(s))
   }
 
   class Mocky2 extends Diamond
@@ -64,6 +72,7 @@ object DatabaseUtilities
     def getStringNonNull(s:String):String = getString(s)
     def getInt(s:String):Int = {fieldNames.append(s); 42}
     def getBoolean(s:String):Boolean = {fieldNames.append(s); true}
+    override def getStringArray(s: String): Array[String] = {fieldNames.append(s); Array("piep")}
   }
 
   def slurp[A](db: Handle, a: AlmostQuery[A]):List[A] =

@@ -188,6 +188,7 @@ Indexes:
     </TEI>
     (year,tei)
   },
+
   exportQuery_geenDubbel.stripMargin)
 
   def export(): Unit = {
@@ -218,6 +219,13 @@ object Export {
 
 
 /*
+
+ update issues_kb_fixed set dubbel_mag_weg=true from issues_kb_fixed i
+ where issues_kb_fixed.issue_handled and i.issue_handled
+ and i.datum_issue=issues_kb_fixed.datum_issue and i.paper_title_int = issues_kb_fixed.paper_title_int
+ and (i.text_length > issues_kb_fixed.text_length or (i.text_length > issues_kb_fixed.text_length and i.tellertje > issues_kb_fixed.tellertje))
+
+
 create table landcheck as SELECT articles_int.land_header,
     articles_int.plaats_int AS plaats,
     articles_int.land_int,

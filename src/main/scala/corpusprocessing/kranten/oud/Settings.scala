@@ -1,6 +1,7 @@
 package corpusprocessing.kranten.oud
 
 import database.DatabaseUtilities.Select
+import scala.collection.JavaConverters._
 
 object Settings {
   val krantenconfig = new database.Configuration(
@@ -22,6 +23,9 @@ object Settings {
 
   krantendb.runStatement(sillyQuery)
 
+
+
+
   lazy val articles = krantendb.iterator(
     Select(r => Article(r.getString("record_id"),
       r.getString("kb_article_id"),
@@ -40,6 +44,8 @@ object Settings {
       r.getStringNonNull("normalized_subheader")
     ), "with_normalized_subheader")
   )
+
+
 }
 
 /*
