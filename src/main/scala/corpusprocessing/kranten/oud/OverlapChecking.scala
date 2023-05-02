@@ -46,14 +46,14 @@ object OverlapChecking {
     val log = new PrintWriter("/tmp/couranten_overlaps.txt")
     overlap_check.foreach(g => {
 
-      val o = g.overlaps(5)
+      val o = g.overlaps(8)
       if (o.nonEmpty) {
         println(s"Ouch ${o.head.kb_article_id}!")
         log.println(s"\n#####  ${o.head.kb_article_id} #####")
         o.foreach(x => log.println("\t" + x))
       }
     })
-    
+
     log.close()
   }
 }
