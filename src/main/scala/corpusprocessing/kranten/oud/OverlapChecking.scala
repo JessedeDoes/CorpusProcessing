@@ -27,7 +27,7 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
   lazy val art1 = g.artMap(id1)
   lazy val art2 = g.artMap(id2)
   lazy val subheader1 = g.subheaders(id1)
-  lazy val subheader2 = g.subheaders(id1)
+  lazy val subheader2 = g.subheaders(id2)
   def align() = {
     def z(x: List[String]) = x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({case (y,i) => (i.toString,y)})
     val a = new AlignmentGeneric(comp) // dit werkt niet...
@@ -64,13 +64,13 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
   // hier nog een difje aan toevoegen .......
 }
 
-case class Groepje(kb_article_id: String, articles: List[String], record_ids: List[String]) {
+case class Groepje(kb_article_id: String, articles: List[String], record_ids: List[String], subheaderz: List[String]) {
 
   def n_grams(s: String, n: Int): Set[List[String]] = s.split("\\s+").toList.sliding(n).toSet
 
   val arts: Seq[(String, String)] = record_ids.zip(articles)
   val artMap = arts.toMap
-  val subheaders = record_ids.zip(subheaders).toMap
+  val subheaders = record_ids.zip(subheaderz).toMap
 
   def overlaps_0(n: Int): Seq[(String, Seq[(String, Set[List[String]])])] = {
     arts.map(a => {
@@ -101,7 +101,7 @@ object OverlapChecking {
   val create_overlap_table = "create table overlappings (kb_article_id text, id1 text, id2 text, n text, example text, text1 text, text2 text)"
   val addtext1 = "update overlappings set text1 = articles_int.article_text from articles_int where cast(record_id as text) = id1"
   val addtext2 = "update overlappings set text2 = articles_int.article_text from articles_int where cast(record_id as text) = id2"
-  lazy val qo = Select(r => Groepje(r.getString("kb_article_id"), r.getStringArray("articles").toList, r.getStringArray("record_ids").toList), "groupie" )
+  lazy val qo = Select(r => Groepje(r.getString("kb_article_id"), r.getStringArray("articles").toList, r.getStringArray("record_ids").toList, r.getStringArray("subheaders").toList), "groupie" )
 
   lazy val overlap_check = krantendb.iterator(qo)
 
