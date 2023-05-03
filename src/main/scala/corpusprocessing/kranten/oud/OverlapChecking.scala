@@ -54,12 +54,12 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
       if (c._1) "<b>" + l + "</b>" else l
     })
 
-    (rtext, rtext)
+    (ltext, rtext)
   }
 
   lazy val alignment = align()
   lazy val art1_aligned = alignment._1.mkString(" ")
-  lazy val art2_aligned = alignment._1.mkString(" ")
+  lazy val art2_aligned = alignment._2.mkString(" ")
   // hier nog een difje aan toevoegen .......
 }
 
