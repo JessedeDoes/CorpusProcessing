@@ -112,7 +112,7 @@ object OverlapChecking {
     )
   )
 
-  val N = 8
+  val N = 12
   def main(args: Array[String]) = {
 
     krantendb.runStatement(drop_overlap_table)
