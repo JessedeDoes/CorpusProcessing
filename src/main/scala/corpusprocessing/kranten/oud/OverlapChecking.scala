@@ -26,7 +26,8 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
   override def toString() = s"$kb_article_id:($id1 $id2) [${evidence.size}] ${evidence.toList.sortBy(x => x.toString).head.mkString(" ")}"
   lazy val art1 = g.artMap(id1)
   lazy val art2 = g.artMap(id2)
-
+  lazy val subheader1 = g.subheaders(id1)
+  lazy val subheader2 = g.subheaders(id1)
   def align() = {
     def z(x: List[String]) = x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({case (y,i) => (i.toString,y)})
     val a = new AlignmentGeneric(comp) // dit werkt niet...
@@ -58,8 +59,8 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
   }
 
   lazy val alignment = align()
-  lazy val art1_aligned = alignment._1.mkString(" ")
-  lazy val art2_aligned = alignment._2.mkString(" ")
+  lazy val art1_aligned = s"<h2>$subheader1</h2>" + alignment._1.mkString(" ")
+  lazy val art2_aligned = s"<h2>$subheader2</h2>" + alignment._2.mkString(" ")
   // hier nog een difje aan toevoegen .......
 }
 
@@ -69,6 +70,7 @@ case class Groepje(kb_article_id: String, articles: List[String], record_ids: Li
 
   val arts: Seq[(String, String)] = record_ids.zip(articles)
   val artMap = arts.toMap
+  val subheaders = record_ids.zip(subheaders).toMap
 
   def overlaps_0(n: Int): Seq[(String, Seq[(String, Set[List[String]])])] = {
     arts.map(a => {
@@ -87,8 +89,13 @@ case class Groepje(kb_article_id: String, articles: List[String], record_ids: Li
 
 object OverlapChecking {
 
-  val check_article_overlap_query = "create temporary view groupie as select kb_article_id, array_agg(article_text order by record_id) as articles, array_agg(record_id order by record_id) as " +
-    "record_ids from articles_int group by kb_article_id;"
+  val check_article_overlap_query =
+  """create temporary view groupie as
+     select kb_article_id,
+     array_agg(article_text order by record_id) as articles,
+     array_agg(record_id order by record_id) as record_ids,
+     array_agg(subheader_int order by record_id) as subheaders
+     from articles_int group by kb_article_id;"""
 
   val drop_overlap_table = "drop table overlappings"
   val create_overlap_table = "create table overlappings (kb_article_id text, id1 text, id2 text, n text, example text, text1 text, text2 text)"
