@@ -1,9 +1,10 @@
 package corpusprocessing.kranten.oud
 
+import corpusprocessing.kranten.oud.OverlapChecking.N
 import corpusprocessing.kranten.oud.Settings.krantendb
 import database.DatabaseUtilities.Select
-import java.io.PrintWriter
 
+import java.io.PrintWriter
 import scala.collection.JavaConverters._
 import utils.alignment.{AlignmentGeneric, SimOrDiff}
 
@@ -26,8 +27,10 @@ case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, 
   override def toString() = s"$kb_article_id:($id1 $id2) [${evidence.size}] ${evidence.toList.sortBy(x => x.toString).head.mkString(" ")}"
   lazy val art1 = g.artMap(id1)
   lazy val art2 = g.artMap(id2)
+
   lazy val subheader1 = g.subheaders(id1)
   lazy val subheader2 = g.subheaders(id2)
+
   def align() = {
     def z(x: List[String]) = x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({case (y,i) => (i.toString,y)})
     val a = new AlignmentGeneric(comp) // dit werkt niet...
@@ -87,27 +90,37 @@ case class Groepje(kb_article_id: String, articles: List[String], record_ids: Li
 }
 
 
-object OverlapChecking {
-
+object eenPaarQueries  {
   val check_article_overlap_query =
-  """create temporary view groupie as
+    """create temporary view groupie as
      select kb_article_id,
      array_agg(article_text order by record_id) as articles,
      array_agg(record_id order by record_id) as record_ids,
      array_agg(subheader_int order by record_id) as subheaders
-     from articles_int group by kb_article_id;"""
+     from articles_int
+     where kb_issue in (select kb_issue from issues_kb_fixed where not dubbel_mag_weg)
+     group by kb_article_id;"""
 
-  val drop_overlap_table = "drop table overlappings"
-  val create_overlap_table = "create table overlappings (kb_article_id text, id1 text, id2 text, n text, example text, text1 text, text2 text)"
-  val addtext1 = "update overlappings set text1 = articles_int.article_text from articles_int where cast(record_id as text) = id1"
-  val addtext2 = "update overlappings set text2 = articles_int.article_text from articles_int where cast(record_id as text) = id2"
+  val drop_overlap_table = s"drop table overlappings_$N"
+  val create_overlap_table = s"create table overlappings_$N (kb_article_id text, id1 text, id2 text, n text, example text, text1 text, text2 text)"
+  val addtext1 = s"update overlappings_$N set text1 = articles_int.article_text from articles_int where cast(record_id as text) = id1"
+  val addtext2 = s"update overlappings_$N set text2 = articles_int.article_text from articles_int where cast(record_id as text) = id2"
+}
+
+import eenPaarQueries._
+
+object OverlapChecking {
+
+  val N = 6
+
+
   lazy val qo = Select(r => Groepje(r.getString("kb_article_id"), r.getStringArray("articles").toList, r.getStringArray("record_ids").toList, r.getStringArray("subheaders").toList), "groupie" )
 
   lazy val overlap_check = krantendb.iterator(qo)
 
   implicit def xtb(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
 
-  val b = krantendb.QueryBatch[Overlap]("insert into overlappings (kb_article_id, id1, id2, n, example, text1, text2) values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2)",
+  val b = krantendb.QueryBatch[Overlap](s"insert into overlappings_$N (kb_article_id, id1, id2, n, example, text1, text2) values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2)",
     o => Seq(
       "kb_article_id" -> o.kb_article_id,
       "id1" -> o.id1,
@@ -119,30 +132,48 @@ object OverlapChecking {
     )
   )
 
-  val N = 12
+  val log_overlaps = false
+
+  def logOverlaps(all_overlaps: Stream[Set[Overlap]]) = {
+    val log = new PrintWriter("/tmp/couranten_overlaps.txt")
+    all_overlaps.foreach(o => {
+      println(s"Ouch ${o.head.kb_article_id}!")
+      log.println(s"\n#####  ${o.head.kb_article_id} #####")
+      o.foreach(x => log.println("\t" + x))
+      o.foreach(_.align())
+    })
+    log.close()
+  }
+
   def main(args: Array[String]) = {
 
     krantendb.runStatement(drop_overlap_table)
     krantendb.runStatement(check_article_overlap_query)
     krantendb.runStatement(create_overlap_table)
-    val log = new PrintWriter("/tmp/couranten_overlaps.txt")
+
 
     val all_overlaps: Stream[Set[Overlap]] = overlap_check.map(g => g.overlaps(N)).filter(_.nonEmpty).toStream
+
     b.insert(all_overlaps.flatMap(identity))
 
-    if (false) all_overlaps.foreach(o => {
-        println(s"Ouch ${o.head.kb_article_id}!")
-        log.println(s"\n#####  ${o.head.kb_article_id} #####")
-        o.foreach(x => log.println("\t" + x))
-        o.foreach(_.align())
-    })
+
+    if (log_overlaps)
+      logOverlaps(all_overlaps)
 
     //krantendb.runStatement(addtext1)
     //krantendb.runStatement(addtext2)
-    log.close()
+
   }
 }
 
 /*
 create materialized view length_comparison as select "article_scannr_KB", max(length("article_text_CS")) as length_kb, sum(length(article_text_int)) as length_sum, sum(1) as n_articles from "Krantenmetadata17eeeuwdefintieveversie1-22021nw" group by "article_scannr_KB";
+
+
+create view grouping_by_article_id_plus_pagina as select "article_scannr_KB", "article_scannr_KB_pluspagina", max("article_text_CS") as txt from "Krantenmetadata17eeeuwdefintieveversie1-22021nw" group by "article_scannr_KB", "article_scannr_KB_pluspagina";
+
+create materialized view kb_article_fulltext as select
+ "article_scannr_KB", string_agg(txt, '<hr>' order by  "article_scannr_KB_pluspagina") as text  from grouping_by_article_id_plus_pagina group by "article_scannr_KB"
+ ;
+
  */
