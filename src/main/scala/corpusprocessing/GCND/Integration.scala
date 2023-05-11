@@ -25,7 +25,7 @@ case class AlpinoSentence(alpino: Elem)  {
   lazy val input_transcript = (alpino \\ "comment").text.replaceAll("^.*?\\|", "")
   lazy val id = ((alpino \\ "sentence").head \ "@sentid").text
   lazy val alpinoTokens = (alpino \\ "node").filter(x => (x \ "@word").nonEmpty).map(AlpinoToken).sortBy(_.begin)
-  lazy val xml = <s xml:id={id}>{alpinoTokens.sortBy(_.begin).map(t => <w pos={t.postag} lemma={t.lemma}>{t.word}</w>)}</s>
+  lazy val xml = <s xml:id={id}>{"\n"}{alpinoTokens.sortBy(_.begin).flatMap(t => Text("\t") :+ <w pos={t.postag} lemma={t.lemma}>{t.word}</w> +: Text("\n"))}</s>
 }
 
 
@@ -55,6 +55,7 @@ case class SentenceInfo(
                                 start_time: String,
                                 tier_id: String
                        ) {
+
 }
 
 /*
@@ -133,6 +134,14 @@ case class Annotation(a: Node, typ: String, p: Package) {
   val jsons = p.jsonInfos.filter(_.annotation_id == this.id)
   val alpinos = jsons.flatMap(j => p.alpinoMap.get(j.line_id).map(_.xml))
 
+  lazy val xml = <annotation type={typ} xml:id={id}>
+    <licht id={refId}>{referredValue}</licht>
+    <zwaar>{value}</zwaar>
+    <alpino_tokens>{"\n"}{alpinos}
+    </alpino_tokens>
+    <json_alpino>{jsons.map(j => j.line_alpino)}</json_alpino>
+    <json>{jsons}</json>
+  </annotation>
   // op deze manier vind je zinnetjes met ids als H036p_1--H036p_1_1--0013a niet
   // en wat is er met H036p_1--H036p_1_2--0412? Zit in H036p_1--H036p_1_2--0410--0412.xml
 }
@@ -153,12 +162,15 @@ case class Package(elan: String, transcription: String, alpino_dir: String, json
   def print() = {
     //jsonInfos.foreach(println)
     // println(alpinoMap.keySet)
-    elanAnnotations.foreach(x => if (x.jsons.nonEmpty) {
-      println("\nid=" + x.id + " type=" + x.typ)
-      println("value=" + x.value)
-      println("refers to=" + x.referredValue)
-      println(x.jsons)
-      println(x.alpinos)
+    elanAnnotations.foreach(x => if (x.jsons.nonEmpty && x.typ == "vernederlandsing") {
+      if (false) {
+        println("\nid=" + x.id + " type=" + x.typ)
+        println("value=" + x.value)
+        println("refers to=" + x.referredValue)
+        println(x.jsons)
+        println(x.alpinos)
+      }
+      println(x.xml)
     })
     if (false)
     transcriptSentences.foreach(s => {
