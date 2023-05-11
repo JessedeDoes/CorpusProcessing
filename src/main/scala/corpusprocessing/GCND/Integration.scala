@@ -6,10 +6,18 @@ import utils.alignment.{AlignmentGeneric, SimOrDiff}
 import scala.xml._
 import java.io.File
 import java.util.Comparator
+import org.json4s.DefaultFormats
+import org.json4s._
+import org.json4s.jackson.JsonMethods._
+import org.json4s.native.JsonMethods.parse
+import org.json4s.native.Serialization.write
 
 
 case class AlpinoToken(n: Node)  {
   val atts = n.attributes.map(n => n.key -> n.value.text).toMap
+  lazy val lemma = atts.getOrElse("lemma","_")
+  lazy val word = atts.getOrElse("word","_")
+  lazy val postag = atts.getOrElse("postag","_")
   val begin = atts("begin").toInt
 }
 
@@ -17,6 +25,36 @@ case class AlpinoSentence(alpino: Elem)  {
   lazy val input_transcript = (alpino \\ "comment").text.replaceAll("^.*?\\|", "")
   lazy val id = ((alpino \\ "sentence").head \ "@sentid").text
   lazy val alpinoTokens = (alpino \\ "node").filter(x => (x \ "@word").nonEmpty).map(AlpinoToken).sortBy(_.begin)
+  lazy val xml = <s xml:id={id}>{alpinoTokens.sortBy(_.begin).map(t => <w pos={t.postag} lemma={t.lemma}>{t.word}</w>)}</s>
+}
+
+
+/*
+    {
+        "annotation_id": "a7",
+        "end_time": 8930,
+        "line": "ewel Telesphore dat is nu [ @skip ... ] binnen [ @skip ... ] de tiende van januari [ @skip ... ] dertig jaar zeker ?",
+        "line_alpino": "H036p_1--H036p_1_1--0003|ewel Telesphore dat is nu [ @skip ... ] binnen [ @skip ... ] de tiende van januari [ @skip ... ] dertig jaar zeker ?",
+        "line_id": "H036p_1--H036p_1_1--0003",
+        "line_number": "0003",
+        "participant_id": "H036p_1_1",
+        "recording_id": "H036p_1",
+        "start_time": 2760,
+        "tier_id": "H036p_1_1_ndl"
+    },
+ */
+case class SentenceInfo(
+                                annotation_id: String,
+                                end_time: String,
+                                line: String,
+                                line_alpino: String,
+                                line_id: String,
+                                line_number: String,
+                                participant_id: String,
+                                recording_id: String,
+                                start_time: String,
+                                tier_id: String
+                       ) {
 }
 
 /*
@@ -86,22 +124,43 @@ TIER LINGUISTIC_TYPE_REF="vernederlandsing" PARENT_REF="H036p_1_1" TIER_ID="H036
             </REF_ANNOTATION>
         </ANNOTATION>
  */
-case class Annotation(a: Node, typ: String) {
+case class Annotation(a: Node, typ: String, p: Package) {
   val value = (a \\ "ANNOTATION_VALUE").text
-  val id = ((a  \ "REF_ANNOTATION") \ "@ANNOTATION_ID").text
+  val id = if (a.label == "ALIGNABLE_ANNOTATION") (a  \ "@ANNOTATION_ID").text else ((a  \ "REF_ANNOTATION") \ "@ANNOTATION_ID").text
   val refId = ((a  \ "REF_ANNOTATION") \ "@ANNOTATION_REF").text
+  lazy val refersTo = p.annotationMap.get(this.refId)
+  lazy val referredValue = refersTo.map(_.value).getOrElse("_")
+  val jsons = p.jsonInfos.filter(_.annotation_id == this.id)
+  val alpinos = jsons.flatMap(j => p.alpinoMap.get(j.line_id).map(_.xml))
+
+  // op deze manier vind je zinnetjes met ids als H036p_1--H036p_1_1--0013a niet
+  // en wat is er met H036p_1--H036p_1_2--0412? Zit in H036p_1--H036p_1_2--0410--0412.xml
 }
 
-case class Package(elan: String, transcription: String, alpino_dir: String) {
+case class Package(elan: String, transcription: String, alpino_dir: String, json: String) {
   lazy val alpinoDocs = new File(alpino_dir).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(XML.loadFile)
   lazy val alpinoSentences = alpinoDocs.map(AlpinoSentence)
+  lazy val alpinoMap = alpinoSentences.toList.map(s => s.id -> s).toMap
   lazy val elanDoc = XML.load(elan)
 
-  lazy val elanAnnotations = (elanDoc \\ "TIER").flatMap(t => (t \\ "ANNOTATION").map(a => Annotation(a, (t \ "@LINGUISTIC_TYPE_REF").text)))
+  lazy val someAnnotations = (elanDoc \\ "TIER").flatMap(t => (t \\ "ANNOTATION").map(a => Annotation(a, (t \ "@LINGUISTIC_TYPE_REF").text, this)))
+  lazy val alignableAnnotations = (elanDoc \\ "TIER").flatMap(t => (t \\ "ALIGNABLE_ANNOTATION").map(a => Annotation(a, "alignable", this)))
+  lazy val elanAnnotations= someAnnotations ++ alignableAnnotations
+  lazy val annotationMap = elanAnnotations.map(a => a.id -> a).toMap
 
   // lazy val elanSentences = (elanDoc \\ "TIER").filter(x => (x \ "@TIER LINGUISTIC_TYPE_REF").text == "vernederlandsing") // <TIER LINGUISTIC_TYPE_REF="vernederlandsing"
 
   def print() = {
+    //jsonInfos.foreach(println)
+    // println(alpinoMap.keySet)
+    elanAnnotations.foreach(x => if (x.jsons.nonEmpty) {
+      println("\nid=" + x.id + " type=" + x.typ)
+      println("value=" + x.value)
+      println("refers to=" + x.referredValue)
+      println(x.jsons)
+      println(x.alpinos)
+    })
+    if (false)
     transcriptSentences.foreach(s => {
       println(s)
       if (!s.canAlign) s.align()
@@ -118,20 +177,30 @@ case class Package(elan: String, transcription: String, alpino_dir: String) {
 
     sentences
   }
+  implicit val formats = DefaultFormats
 
+  def parseJsonInfo(f: String) = {
+    val content = io.Source.fromFile(f).getLines().mkString("\n")
+    val parsed = parse(content)
+    val infoz = parsed.extract[List[SentenceInfo]]
+    infoz
+  }
+
+  lazy val jsonInfos = parseJsonInfo(json)
   lazy val transcriptSentences = parseFile(new File(transcription))
 }
 // Q#H036p_1--H036p_1_2--0398
 object Integration {
    val baseDir = "/mnt/Projecten/Hercules/Corpus-ZNL-Dialecten/Datasamples/Datasamples-completeworkflow/wetransfer_h036p_1-mp3_2023-03-31_1002/"
    val elan = baseDir + "H036p_1_AF.eaf"
-   val transcription = baseDir +  "H036p_1_AF.txt"
-   val alpino_dir = baseDir + "H036p_1--alpino/H036p_1--alpino/"
+   val json  = baseDir + "H036p_1--alpino.json"
 
-   lazy val test = Package(elan, transcription, alpino_dir)
+   val transcription = baseDir +  "H036p_1_AF.txt"
+   val alpino_dir = "/home/jesse/Downloads/H036p_1--alpino/H036p_1--alpino/" // baseDir + "H036p_1--alpino/H036p_1--alpino/"
+
+   lazy val test = Package(elan, transcription, alpino_dir, json)
 
    def main(args: Array[String]) = {
      test.print()
    }
-
 }
