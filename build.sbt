@@ -31,13 +31,10 @@ resolvers +=  "Basex Repository" at "http://files.basex.org/maven"
 
 libraryDependencies += "org.basex" % "basex" % "8.6.7"
 
-resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
-
-libraryDependencies += "net.xqj" % "basex-xqj" % "1.4.0"
-
-libraryDependencies += "com.xqj2" % "xqj2" % "0.2.0"
-
-libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
+// resolvers += "XQL Maven Repo" at "http://xqj.net/maven"
+// libraryDependencies += "net.xqj" % "basex-xqj" % "1.4.0"
+// libraryDependencies += "com.xqj2" % "xqj2" % "0.2.0"
+// libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
 
 // https://mvnrepository.com/artifact/org.json4s/json4s-native_2.12
 libraryDependencies += "org.json4s" % "json4s-native_2.12" % "3.6.6"
