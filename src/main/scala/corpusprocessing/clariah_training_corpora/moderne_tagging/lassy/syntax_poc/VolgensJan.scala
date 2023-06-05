@@ -16,3 +16,15 @@ case class rspan(rel: RelationOrToken, spanMode: String) extends RelationOrToken
 case class intersect(rels: Seq[RelationOrToken]) extends RelationOrToken {
   override def toString(): String = rels.map(_.toString).mkString(" & ")
 }
+
+object volgensJan {
+  def setspan(r: RelationOrToken, spanMode: String): RelationOrToken = {
+      r match {
+        case sp: rspan if sp.spanMode == spanMode => sp
+        case r: rel if r.spanMode == spanMode => r
+        case _ => rspan(r, spanMode)
+      }
+  }
+
+  def intersectIt(rels: Seq[RelationOrToken]): RelationOrToken = if (rels.size == 1) rels.head else intersect(rels)
+}

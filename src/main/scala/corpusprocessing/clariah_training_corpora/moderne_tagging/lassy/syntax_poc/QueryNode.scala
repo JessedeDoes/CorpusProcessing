@@ -6,6 +6,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_po
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
 import sext._
 import scala.xml._
+import volgensJan._
 
 case class QueryNode(headProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
@@ -53,10 +54,10 @@ case class QueryNode(headProperties : TokenQuery,
      if (children.isEmpty) {
        val reltje: String = headProperties.relPart.map(_.rel).headOption.getOrElse("_")
        val relName = if (reltje.isEmpty || reltje == "_") "_" else  s"'dep::$reltje'"
-       intersect(cqlPart ++   Seq(rel(relName, "'target'").asInstanceOf[RelationOrToken]))
+       intersectIt(cqlPart ++   Seq(rel(relName, "'target'").asInstanceOf[RelationOrToken]))
      } else {
-       val hieronder_source: Seq[RelationOrToken] = hieronder.map(x => rspan(x, "'source'").asInstanceOf[RelationOrToken])
-       intersect(cqlPart ++ hieronder_source)
+       val hieronder_source: Seq[RelationOrToken] = hieronder.map(x => setspan(x, "'source'").asInstanceOf[RelationOrToken])
+       intersectIt(cqlPart ++ hieronder_source)
      }
   }
 }
@@ -119,6 +120,11 @@ object QueryNode {
     )
   ),
 
+    "twolevel" -> QueryNode(headProperties = "rel=root",
+      children = Seq(
+        q("rel=nsubj", q(PoSQuery("ADJ"))
+      )
+    )),
     "moreComplexNesting" ->
       q(
         TokenRelQuery("root"),
@@ -178,7 +184,7 @@ object QueryNode {
      //println(q.treeString.replaceAll("\\|", "\t"))
      println(s"\n\nQuery $name\n" + q.toCQL())
      val volgensJan = q.volgensJan()
-     println("Volgens jan: "  + volgensJan)
+     println("Volgens jan:\n"  + volgensJan.treeString)
      val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
      val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&patt=$encoded"
      val searchResult = XML.load(searchURL)
