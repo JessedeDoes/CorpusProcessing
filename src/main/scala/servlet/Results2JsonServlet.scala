@@ -4,7 +4,6 @@ import database.{Configuration, Database, Results2Json}
 import javax.servlet.http.HttpServlet
 import javax.servlet.http.HttpServletRequest
 import javax.servlet.http.HttpServletResponse
-import sparql2xquery._
 
 import scala.collection.JavaConversions._
 

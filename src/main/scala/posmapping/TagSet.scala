@@ -12,12 +12,38 @@ import org.json4s._
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization.writePretty
 import posmapping.CHNStyleTags.parser
-import sparql2xquery.ValueRestrictionSet
+//import sparql2xquery.ValueRestrictionSet
 
 import scala.collection.immutable
 import scala.util.{Success, Try}
 //import scala.Predef.Map
 
+import ValueRestrictionSet._
+case class ValueRestrictionSet(m: Map[Variable,List[String]]) // extends XQueryNode
+{
+  val dollar = "$"
+  def toQuery():String =
+  {
+     val conditions = m.keySet.map(
+       v => {
+         val cond = s"(${m(v).mkString(",")}) = $dollar${v}"
+         cond
+       }
+     )
+    s"where ${conditions.mkString(" and ")}"
+  }
+
+  def isEmpty():Boolean = m.isEmpty
+
+  def ++(b: ValueRestrictionSet) =
+    ValueRestrictionSet(this.m ++ b.m)
+}
+
+object ValueRestrictionSet
+{
+  type Variable = String
+  val empty = ValueRestrictionSet(Map.empty)
+}
 
 case class Feature(name: String, value: String)
 {

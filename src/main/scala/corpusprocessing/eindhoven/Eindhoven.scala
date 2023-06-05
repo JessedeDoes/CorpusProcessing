@@ -11,6 +11,27 @@ import scala.util.matching.Regex
 import scala.util.{Failure, Success, Try}
 import scala.xml._
 
+object TopologicalSort {
+  def tsort[A](edges: Traversable[(A, A)]): Iterable[A] = {
+    //@tailrec
+    def tsort(toPreds: Map[A, Set[A]], done: Iterable[A]): Iterable[A] = {
+      val (noPreds, hasPreds) = toPreds.partition { _._2.isEmpty }
+      if (noPreds.isEmpty) {
+        if (hasPreds.isEmpty) done else sys.error(hasPreds.toString)
+      } else {
+        val found = noPreds.map { _._1 }
+        tsort(hasPreds.mapValues { _ -- found }, done ++ found)
+      }
+    }
+
+    val toPred = edges.foldLeft(Map[A, Set[A]]()) { (acc, e) =>
+      acc + (e._1 -> acc.getOrElse(e._1, Set())) + (e._2 -> (acc.getOrElse(e._2, Set()) + e._1))
+    }
+    tsort(toPred, Seq())
+  }
+}
+
+
 case class Word(word: String, lemma: String, pos: String) {
 
   def matches(mp: Int, sp: Int, ssp: Int): Boolean = {
@@ -104,7 +125,7 @@ object Eindhoven {
   }
 
 
-  import sparql2xquery.TopologicalSort._
+  import TopologicalSort._
 
   def featureOrder(pos: Tag => Boolean):Option[Map[String,Int]] =
   {

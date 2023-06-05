@@ -15,7 +15,6 @@ import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization.writePretty
 import posmapping.CHNStyleTags.parser
 import posmapping.TagSet.pretty
-import sparql2xquery.ValueRestrictionSet
 
 import scala.collection.immutable
 //import scala.Predef.Map
