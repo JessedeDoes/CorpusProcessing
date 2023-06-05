@@ -43,6 +43,20 @@ case class QueryNode(headProperties : TokenQuery,
     val below = if (parts.nonEmpty) s"[${parts}]" else ""
     "\n" + (indent) + s"↦$relPart$below"
   }
+
+  def volgensJan(): RelationOrToken = {
+     val tokenPart = headProperties.toCQL()
+     val hieronder = children.map(_.volgensJan())
+     val otherTokenStuff = token(s"[${headProperties.withoutRelPart.toCQL()}]")
+     val cqlPart = if (otherTokenStuff.cql.isEmpty || otherTokenStuff.cql == "[]") Seq() else Seq(otherTokenStuff)
+     if (children.isEmpty) {
+       val reltje = headProperties.relPart.map(_.rel).headOption.getOrElse("_")
+       intersect(cqlPart ++   Seq(rel(s"dep::$reltje", "'target'")))
+     } else {
+       val hieronder_source = hieronder.map(x => rspan(x, "'source'"))
+       intersect(cqlPart ++ hieronder_source)
+     }
+  }
 }
 
 // [geneste haakjes? [pos="VERB" & lemma="fietsen" [rel="obj"] [rel="nsubj"]]
@@ -160,7 +174,8 @@ object QueryNode {
      // println(q.treeString.replaceAll("\\|", "\t"))
      val q = labelNode(q0,"0")
      println(s"\n\nQuery $name\n" + q.toCQL())
-     luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = false)
+     println("Volgens jan: "  + q.volgensJan())
+     // luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = false)
    }
 
    def main(args: Array[String])  = {
