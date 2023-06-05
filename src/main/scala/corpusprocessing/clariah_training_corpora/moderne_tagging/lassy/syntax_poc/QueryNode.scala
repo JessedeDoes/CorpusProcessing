@@ -1,10 +1,19 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
+/*
+Problemen: [lemma='er' & deprel='advmod'] & rel()
+17 hits, zouden er meer moeten zijn
 
+http://svotmc10.ivdnt.loc:8080/corpus-frontend/lassy-small/search/hits?first=0&number=20&patt=%5Blemma%3D%27er%27+%26+deprel%3D%27advmod%27%5D+%26+rel%28%29&interface=%7B%22form%22%3A%22search%22%2C%22patternMode%22%3A%22expert%22%7D
+
+
+ Zie: https://github.com/INL/BlackLab/blob/feature/relations/doc/technical/design/plan-relations.md
+ */
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.QueryNode.q
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, french_gsd, japanese_bccwj, japanese_combi, japanese_gsd, lassy_small}
 import sext._
+
 import scala.xml._
 import volgensJan._
 
@@ -16,6 +25,9 @@ case class QueryNode(headProperties : TokenQuery,
                      optional: Boolean = false,
                      label:String="unlabeled")
 {
+
+  lazy val depRel = headProperties.relPart.map(_.rel).map(x => s"'${x}'").getOrElse("_")
+  lazy val depRelAsTokenProperty = headProperties.relPart.map(_.rel).map(x => s"[deprel='$x']").getOrElse("[]")
 
   def nodeQuery(): Query = if (children.isEmpty) headProperties else {
     val clauses = children.map(x => x.nodeQuery()).map(x => Queries.headExtend(x))
@@ -46,18 +58,27 @@ case class QueryNode(headProperties : TokenQuery,
     "\n" + (indent) + s"↦$relPart$below"
   }
 
-  def volgensJan(): RelationOrToken = {
+  def volgensJan(isRoot: Boolean = true): RelationOrToken = {
      val tokenPart = headProperties.toCQL()
-     val hieronder = children.map(_.volgensJan())
+     val hieronder: Seq[RelationOrToken] = children.map(_.volgensJan(false)) // dit is nog niet goed
+
      val otherTokenStuff = token(s"[${headProperties.withoutRelPart.toCQL()}]")
+
      val cqlPart: Seq[RelationOrToken] = if (otherTokenStuff.cql.isEmpty || otherTokenStuff.cql == "[]") Seq() else Seq(otherTokenStuff)
+
      if (children.isEmpty) {
        val reltje: String = headProperties.relPart.map(_.rel).headOption.getOrElse("_")
        val relName = if (reltje.isEmpty || reltje == "_") "_" else  s"'dep::$reltje'"
        intersectIt(cqlPart ++   Seq(rel(relName, "'target'").asInstanceOf[RelationOrToken]))
      } else {
-       val hieronder_source: Seq[RelationOrToken] = hieronder.map(x => setspan(x, "'source'").asInstanceOf[RelationOrToken])
-       intersectIt(cqlPart ++ hieronder_source)
+       val hieronder_source: Seq[RelationOrToken] = hieronder.map(x => {
+          val y = rel("_")
+          val z = setspan(y, "'target'")
+          val z1 = token(depRelAsTokenProperty)
+         (if (isRoot) z1 else z).∩(setspan(x, "'source'"))
+        }
+       )
+       intersectIt(cqlPart ++ hieronder_source) // er gebeurt niets met relpart...
      }
   }
 }
@@ -122,7 +143,8 @@ object QueryNode {
 
     "twolevel" -> QueryNode(headProperties = "rel=root",
       children = Seq(
-        q("rel=nsubj", q(PoSQuery("ADJ"))
+        q("rel=nsubj",
+          q(PoSQuery("ADJ"))
       )
     )),
     "moreComplexNesting" ->
@@ -184,21 +206,54 @@ object QueryNode {
      //println(q.treeString.replaceAll("\\|", "\t"))
      println(s"\n\nQuery $name\n" + q.toCQL())
      val volgensJan = q.volgensJan()
-     println("Volgens jan:\n"  + volgensJan.treeString)
+     println(s"Volgens jan: $volgensJan\n"  + volgensJan.treeString.replaceAll("\\|", " "))
      val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
-     val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&patt=$encoded"
+     val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
      val searchResult = XML.load(searchURL)
      // println(searchResult)
      val hits = (searchResult \\ "hit").map(RelHit(_))
      hits.take(3).foreach(h => {
-       println("########")
+       println("######## "  + searchURL)
        println(h.words.mkString(" "))
        h.relations.foreach(println)
      })
      // luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = false)
    }
 
+  def testRelQuery(name: String, q0: RelationOrToken, treebank: Seq[Set[ISpan]] = alpino) = {
+
+
+    val volgensJan = q0
+    println(s"Volgens jan: $volgensJan\n" + volgensJan.treeString.replaceAll("\\|", " "))
+    val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
+    val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
+    val searchResult = XML.load(searchURL)
+    // println(searchResult)
+    val hits = (searchResult \\ "hit").map(RelHit(_))
+    hits.take(3).foreach(h => {
+      println("######## " + name + " #### " + searchURL)
+      println(h.words.mkString(" "))
+      h.relations.foreach(println)
+    })
+    // luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = false)
+  }
+  val q0 =
+    rel("'dep::nsubj'") ∩
+    rspan(rel("'dep::amod'"), "'source'")
+  val anySource = rel(spanMode = "'source'")
+  val er = rel()   ∩ token("[lemma='er']")
+  val relQueries: Map[String, RelationOrToken] = Map(
+    "q0" -> q0,
+    "q1" -> token("[pos='VERB']") ∩ q0,
+    "q2" -> rspan(rel("'dep::nobj'"),"'source'") ∩ q0,
+    "er" -> er,
+    "qsep" -> // token("[lemma='komen']")
+      // ∩
+      rspan(rel("'dep::compound:prt'"),"'source'")
+      ∩  rspan(er, "'source'")
+  )
    def main(args: Array[String])  = {
-     testQueries.foreach({case (n, q) => testQuery(n,q, treebank=alpino) })
+     // testQueries.foreach({case (n, q) => testQuery(n,q, treebank=lassy_small) })
+     relQueries.foreach({case (n, q) => testRelQuery(n,q, treebank=lassy_small) })
    }
 }

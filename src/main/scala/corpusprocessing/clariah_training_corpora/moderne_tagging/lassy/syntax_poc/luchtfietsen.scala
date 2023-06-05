@@ -17,7 +17,7 @@ object luchtfietsen {
 
 
   val alpino_file = "/home/jesse/workspace/UD_Dutch-Alpino/nl_alpino-ud-train.conllu"
-
+  val lassy_small_file = "/home/jesse/workspace/UD_Dutch-LassySmall/nl_lassysmall-ud-train.conllu"
   val french_gsd_file = "/home/jesse/workspace/UD_French-GSD/fr_gsd-ud-train.conllu"
 
   val japanese_gsd_file  = "/home/jesse/workspace/UD_Japanese-GSD/ja_gsd-ud-train.conllu"
@@ -40,6 +40,7 @@ object luchtfietsen {
 
 
   lazy val alpino: Seq[Set[ISpan]] = connl2spans(alpino_file)
+  lazy val lassy_small : Seq[Set[ISpan]] = connl2spans(lassy_small_file)
 
   lazy val french_gsd = connl2spans(french_gsd_file)
   lazy val japanese_gsd =  connl2spans(japanese_gsd_file)
