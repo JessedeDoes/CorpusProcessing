@@ -38,7 +38,7 @@ object Queries {
     matches
   }).filter(_.nonEmpty)
 
-  def rel(relName: String) =  BasicFilterQuery {
+  def makeRel(relName: String) =  BasicFilterQuery {
     case x: HeadDepSpan => x.rel == relName || relName == "*"
     case _ => false
   }
@@ -162,7 +162,7 @@ case class TokenAndQuery(q1: TokenQuery, q2: TokenQuery)  extends TokenQuery  {
 }
 
 case class RelQuery(relName: String) extends Query {
-  override def findMatches(s: Set[ISpan]): Set[ISpan] = rel(relName).findMatches(s)
+  override def findMatches(s: Set[ISpan]): Set[ISpan] = makeRel(relName).findMatches(s)
 }
 
 

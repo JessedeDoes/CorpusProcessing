@@ -1,6 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 trait RelationOrToken {
   def ∩(x: RelationOrToken): RelationOrToken = volgensJan.intersectIt(Seq(this, x))
+  def ∩(x: Seq[RelationOrToken]): RelationOrToken = volgensJan.intersectIt(this +: x)
   def &(x: RelationOrToken): RelationOrToken = volgensJan.intersectIt(Seq(this, x))
 
   def AND(x: RelationOrToken): RelationOrToken = volgensJan.intersectIt(Seq(this, x))
