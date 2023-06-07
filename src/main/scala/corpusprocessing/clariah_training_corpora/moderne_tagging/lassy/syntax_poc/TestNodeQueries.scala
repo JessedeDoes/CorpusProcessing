@@ -3,6 +3,7 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.lassy_small
 import sext.SextAnyTreeString
 
+import java.io.PrintWriter
 import scala.xml._
 object TestNodeQueries {
   def labelNode(q: QueryNode, label: String): QueryNode = {
@@ -71,13 +72,19 @@ object TestNodeQueries {
 
     "separableVerb" ->
       q(
-        TokenRelQuery("root") & LemmaQuery("komen"),
+        TokenRelQuery("root") & LemmaQuery("uit_komen"),
         q(TokenRelQuery("nsubj")),
         q(LemmaQuery("uit") & TokenRelQuery("compound:prt")),
         q(LemmaQuery("er"))
       ),
-
     /*
+    "cleft" ->
+      QueryNode(headProperties=TokenRelQuery("root"),
+         children=Seq(q(TokenRelQuery("ccomp"),
+           q(TokenRelQuery("obj"))// & LemmaQuery("wat"))
+         )),
+       postCondition=CaptureOrderCondition("obj<root")),
+
     "testNot" ->
       QueryNode(
         headProperties = "rel=root",
@@ -108,31 +115,50 @@ object TestNodeQueries {
       )
 
 
-  def testQuery(name: String, q0: QueryNode, treebank: Seq[Set[ISpan]] = luchtfietsen.alpino) = {
+  def testQuery(name: String, q0: QueryNode, treebank: Seq[Set[ISpan]] = luchtfietsen.alpino, evaluate: Boolean = false, html:Boolean = true, log:Option[PrintWriter] = None) = {
 
     val q = labelNode(q0, "0")
-    //println(q.treeString.replaceAll("\\|", "\t"))
-    println(s"\n\n\n####################################### Query $name #########################################\n" + q.toPseudoCQL())
     val volgensJan = q.toRelQuery()
-    println(s"Volgens jan: $volgensJan\n" + volgensJan.treeString.replaceAll("\\|", " "))
-    val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
+    //println(q.treeString.replaceAll("\\|", "\t"))
+    if (html && log.nonEmpty) {
+      val x = XML.loadString("<pre>" + q.toPseudoCQL(0, true).replaceAll("--([:*a-z]+)-->", "<ruby><font size='2'>⟶</font><rt><i>$1</i></rt></ruby>") + "</pre>")
+      log.head.println(<div>
+        <head>Query {name}, pseudoCQL</head>
+        <div>
+        {x}
+        </div>
+        <div>
+          <head>Relation query</head>
+          <pre>{volgensJan}</pre>
+        </div>
+      </div>)
+    } else {
+      println(s"\n\n\n####################################### Query $name #########################################\n" + q.toPseudoCQL(0, html = html))
+      println(s"Volgens jan: $volgensJan");
+    }
+    if (evaluate) {
+      println("\n" + volgensJan.treeString.replaceAll("\\|", " "))
+      val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
 
-    val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
-    val searchResult = XML.load(searchURL)
-    println(s"////// $searchURL //////////////////////////////")
-    println("////// results: " + QueryTests.getNResults(searchResult)  + "/////////////////")
-    // println(searchResult)
-    val hits = (searchResult \\ "hit").map(RelHit(_))
-    hits.take(3).foreach(h => {
-      println("----------------------------")
-      println(h.words.mkString(" "))
-      h.relations.foreach(println)
-    })
-    println("///// compare to naive evaluation ///////")
-    luchtfietsen.runQuery(q.nodeQuery(), treebank=treebank, max=3,printQuery = false)
+      val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
+      val searchResult = XML.load(searchURL)
+      println(s"////// $searchURL //////////////////////////////")
+      println("////// results: " + QueryTests.getNResults(searchResult) + "/////////////////")
+      // println(searchResult)
+      val hits = (searchResult \\ "hit").map(RelHit(_))
+      hits.take(3).foreach(h => {
+        println("----------------------------")
+        println(h.words.mkString(" "))
+        h.relations.foreach(println)
+      })
+      println("///// compare to naive evaluation ///////")
+      luchtfietsen.runQuery(q.nodeQuery(), treebank = treebank, max = 3, printQuery = false)
+    }
   }
 
   def main(args: Array[String]) = {
-    testQueries.foreach({case (n, q) => testQuery(n,q, treebank=lassy_small) })
+    val log = new PrintWriter("/tmp/log.html")
+    testQueries.foreach({case (n, q) => testQuery(n,q, treebank=lassy_small, log=Some(log)) })
+    log.close()
   }
 }

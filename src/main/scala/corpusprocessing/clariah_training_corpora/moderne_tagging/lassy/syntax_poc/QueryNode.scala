@@ -42,7 +42,7 @@ case class QueryNode(headProperties : TokenQuery,
       positive
   }
 
-  def toPseudoCQL(depth:Int=0) : String = {
+  def toPseudoCQLV1(depth:Int=0) : String = {
     val indent = ("\t" * depth)
     val stukjes = children.map(x => x.toPseudoCQL(depth+1)).map(x =>  x).mkString("")
     val relPart = headProperties.relPart.map(_.rel).mkString
@@ -59,15 +59,41 @@ case class QueryNode(headProperties : TokenQuery,
     "\n" + (indent) + s"↦$relPart$below"
   }
 
+  def toPseudoCQL(depth: Int = 0, html:Boolean = false): String = {
+    val indent = (if (html) " " else "\t") * depth
+    val childrenToCQL = children.map(x => x.toPseudoCQL(depth + 1)).map(x => x).mkString("")
+    val relPart = headProperties.relPart.map(_.rel).mkString
+    val stukjes_niet = {
+      val p = and_not.map(x => x.toPseudoCQL(depth + 2)).map(x => x) mkString (" ")
+      if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
+    }
+    val tokenProperties: TokenQuery = headProperties.withoutRelPart
+    val tokenPropertiesCQL: String = "[" + tokenProperties.toCQL(depth + 1) + "]"
+    val conditionPart = if (condition == Condition.defaultCondition) "" else "\n" + indent + "::" + condition.toString
+    val postConditionPart = if (postCondition == Condition.trivial) "" else "\n" + indent + "::" + postCondition.toString
+    val parts = List(tokenPropertiesCQL, childrenToCQL, stukjes_niet, conditionPart, postConditionPart).filter(_.nonEmpty).mkString(" ")
+    val below = if (parts.nonEmpty) s"${parts}" else ""
+
+    val rp = if (relPart.isEmpty) "*" else relPart
+    val arrow =
+      // if (html) <ruby>⟶<rt>{rp}</rt></ruby> else
+        s"--$rp-->"
+
+    val txt = if (depth > 0 && parts.nonEmpty && !(parts ==tokenPropertiesCQL))
+      "\n" + (indent) + s"$arrow($below)"
+    else
+      "\n" + (indent) + s"$arrow$below"
+    txt
+  }
+
   def toRelQuery(isRoot: Boolean = true): RelationOrToken = {
      val tokenPart = headProperties.toCQL()
-     val hieronder: Seq[RelationOrToken] = children.map(_.toRelQuery(false)) // dit is nog niet goed
+     val hieronder: Seq[RelationOrToken] = children.map(_.toRelQuery(false))
      if (children.isEmpty) {
        rel(depRel) ∩ tokenPartCQL
-       // intersectIt(tokenPartCQL ++   Seq(rel(depRel, spanMode="'target'").asInstanceOf[RelationOrToken]))
      } else {
        val hieronder_sourced: Seq[RelationOrToken] = hieronder.map(x =>  (setspan(x, "'source'")))
-       rel(depRel)  ∩  (tokenPartCQL ++ hieronder_sourced) // er gebeurt niets met relpart...
+       rel(depRel)  ∩  (tokenPartCQL ++ hieronder_sourced)
      }
   }
 }
