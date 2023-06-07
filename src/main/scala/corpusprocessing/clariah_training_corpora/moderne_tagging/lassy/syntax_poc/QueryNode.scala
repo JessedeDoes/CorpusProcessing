@@ -15,7 +15,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_po
 import sext._
 
 import scala.xml._
-import volgensJan._
+import RelationalQuery._
 
 case class QueryNode(headProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
@@ -42,12 +42,12 @@ case class QueryNode(headProperties : TokenQuery,
       positive
   }
 
-  def toCQL(depth:Int=0) : String = {
+  def toPseudoCQL(depth:Int=0) : String = {
     val indent = ("\t" * depth)
-    val stukjes = children.map(x => x.toCQL(depth+1)).map(x =>  x).mkString("")
+    val stukjes = children.map(x => x.toPseudoCQL(depth+1)).map(x =>  x).mkString("")
     val relPart = headProperties.relPart.map(_.rel).mkString
     val stukjes_niet = {
-      val p = and_not.map(x => x.toCQL(depth+2)).map(x =>   x)mkString(" ")
+      val p = and_not.map(x => x.toPseudoCQL(depth+2)).map(x =>   x)mkString(" ")
       if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
     }
     val tpp = headProperties.withoutRelPart
@@ -59,9 +59,9 @@ case class QueryNode(headProperties : TokenQuery,
     "\n" + (indent) + s"↦$relPart$below"
   }
 
-  def volgensJan(isRoot: Boolean = true): RelationOrToken = {
+  def toRelQuery(isRoot: Boolean = true): RelationOrToken = {
      val tokenPart = headProperties.toCQL()
-     val hieronder: Seq[RelationOrToken] = children.map(_.volgensJan(false)) // dit is nog niet goed
+     val hieronder: Seq[RelationOrToken] = children.map(_.toRelQuery(false)) // dit is nog niet goed
      if (children.isEmpty) {
        rel(depRel) ∩ tokenPartCQL
        // intersectIt(tokenPartCQL ++   Seq(rel(depRel, spanMode="'target'").asInstanceOf[RelationOrToken]))

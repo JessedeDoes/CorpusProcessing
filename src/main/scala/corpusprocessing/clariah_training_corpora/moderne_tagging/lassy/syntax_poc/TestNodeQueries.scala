@@ -112,8 +112,8 @@ object TestNodeQueries {
 
     val q = labelNode(q0, "0")
     //println(q.treeString.replaceAll("\\|", "\t"))
-    println(s"\n\n\n####################################### Query $name #########################################\n" + q.toCQL())
-    val volgensJan = q.volgensJan()
+    println(s"\n\n\n####################################### Query $name #########################################\n" + q.toPseudoCQL())
+    val volgensJan = q.toRelQuery()
     println(s"Volgens jan: $volgensJan\n" + volgensJan.treeString.replaceAll("\\|", " "))
     val encoded = java.net.URLEncoder.encode(volgensJan.toString, "UTF-8")
 
