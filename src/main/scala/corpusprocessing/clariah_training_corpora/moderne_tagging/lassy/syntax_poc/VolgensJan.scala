@@ -18,7 +18,7 @@ case class token(cql: String) extends Token {
 case class rel(reltype: String = "_", spanMode: String="'target'", direction:String="'both'") extends RelationOrToken
 case class rspan(rel: RelationOrToken, spanMode: String) extends RelationOrToken
 case class intersect(rels: Seq[RelationOrToken]) extends RelationOrToken {
-  override def toString(): String = rels.map(_.toString).mkString(" & ")
+  override def toString(): String = rels.map(_.toString).mkString(" & ") 
 }
 
 object volgensJan {
