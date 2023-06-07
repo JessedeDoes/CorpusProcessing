@@ -76,7 +76,11 @@ object luchtfietsen {
   def runQuery(q: Query,  max: Int=Integer.MAX_VALUE, treebank: Seq[Set[ISpan]] = alpino, printQuery: Boolean=false ): Unit = {
     if (printQuery) println("\n\nQuery:\n" + q.treeString.replaceAll("\\|", "\t"))
 
-    find(q, treebank).take(max).foreach(s => {
+    val results: Seq[Set[ISpan]] = find(q, treebank)
+
+    println(s"//// Results with naive evaluation: ${results.size} //////")
+
+    results.take(max).foreach(s => {
       val sent = s.head.sentence.tokens.map(_.FORM).mkString(" ")
       println(s"\n$sent")
       s.foreach(x => println("\t" + x.toString.replaceAll("\\t", "\n\t")))
