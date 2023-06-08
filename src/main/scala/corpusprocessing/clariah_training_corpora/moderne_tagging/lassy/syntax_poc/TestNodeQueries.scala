@@ -77,7 +77,7 @@ object TestNodeQueries {
         q(LemmaQuery("uit") & TokenRelQuery("compound:prt")),
         q(LemmaQuery("er"))
       ),
-    /*
+
     "cleft" ->
       QueryNode(headProperties=TokenRelQuery("root"),
          children=Seq(q(TokenRelQuery("ccomp"),
@@ -111,19 +111,19 @@ object TestNodeQueries {
         //condition = ConditionAnd(Condition.defaultCondition, ChildOrderCondition("0>1")),
         postCondition = CaptureOrderCondition("obj<nsubj") // zo kunnen we nog niets met de volgorde tov van de parent. Toch iets capture-achtigs doen??
       )
-      */
+
       )
 
 
-  def testQuery(name: String, q0: QueryNode, treebank: Seq[Set[ISpan]] = luchtfietsen.alpino, evaluate: Boolean = false, html:Boolean = true, log:Option[PrintWriter] = None) = {
+  def testQuery(name: String, q0: QueryNode, treebank: Seq[Set[ISpan]] = luchtfietsen.alpino, evaluate: Boolean = true, html:Boolean = false, log:Option[PrintWriter] = None) = {
 
     val q = labelNode(q0, "0")
     val volgensJan = q.toRelQuery()
     //println(q.treeString.replaceAll("\\|", "\t"))
     if (html && log.nonEmpty) {
-      val x = XML.loadString("<pre>" + q.toPseudoCQL(0, true).replaceAll("--([:*a-z]+)-->", "<ruby><font size='2'>⟶</font><rt><i>$1</i></rt></ruby>") + "</pre>")
+      val x = XML.loadString("<pre>" + q.toPseudoCQL(0, true).replaceAll("--([:*a-z]+)-->", "<ruby><font size='5'>⟶</font><rt><i>$1</i></rt></ruby>") + "</pre>")
       log.head.println(<div>
-        <head>Query {name}, pseudoCQL</head>
+        <h3>Query {name}, pseudoCQL</h3>
         <div>
         {x}
         </div>
@@ -142,9 +142,11 @@ object TestNodeQueries {
 
       val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
       val searchResult = XML.load(searchURL)
+
       println(s"////// $searchURL //////////////////////////////")
       println("////// results: " + QueryTests.getNResults(searchResult) + "/////////////////")
-      // println(searchResult)
+
+      // println(searchResult)childrenToCQL, stukjes_niet
       val hits = (searchResult \\ "hit").map(RelHit(_))
       hits.take(3).foreach(h => {
         println("----------------------------")
