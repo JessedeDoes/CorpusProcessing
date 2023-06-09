@@ -37,19 +37,20 @@ object QueryTests {
     val numberOfHitsRetrieved  = (n \\ "numberOfHitsRetrieved").text
     numberOfHits -> numberOfHitsRetrieved
   }
+  import scala.util.Random
   def testRelQueryDirect(name: String, q: String) = {
 
-    println(s"\n##### : $name=$q\n")
+    println(s"\n\n############ Query $name=$q ####################")
     val encoded = java.net.URLEncoder.encode(q, "UTF-8")
     val searchURL = s"http://svotmc10.ivdnt.loc:8080/blacklab-server/lassy-small/hits?outputformat=xml&wordsaroundhit=20&patt=$encoded"
     val searchResult = XML.load(searchURL)
     // println(searchResult)
     val hits = (searchResult \\ "hit").map(RelHit(_))
     println("### results: " + getNResults(searchResult))
-    hits.take(3).foreach(h => {
-      println("------------------")
-      println(h.words.mkString(" "))
-      h.relations.foreach(println)
+    Random.shuffle(hits).take(50).foreach(h => {
+      // println("------------------")
+      println("-" + h.words.mkString(" "))
+      h.relations.foreach(r => println("\t"  + r))
     })
   }
 
