@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta name="generator" content=
+"HTML Tidy for HTML5 for Linux version 5.2.0" />
+<title>PaQu -- Syntactic profiler of Dutch</title>
+<meta charset="utf-8" />
+<meta name="viewport" content=
+"width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="paqu.css" />
+<!--[if gte IE 10]> -->
+
+<style type="text/css">
+/*<![CDATA[*/
+span.ie { display:none; }
+/*]]>*/
+</style>
+<!-- <![endif]-->
+</head>
+<body>
+<div id="login">
+<form action="https://www.let.rug.nl/~kleiweg/paqulogin/">
+<input type="submit" value="Log in" /></form>
+</div>
+<div id="topmenu"><a href=".">Zoeken</a> <a href="xpath">XPath</a>
+<a href="metadata">Metadata</a> <a href="spod" class=
+"selected">SPOD</a> <a href="info.html">Info</a></div>
+Syntactic profiler of Dutch
+<p>Corpora met meer dan 2 000 000 zinnen zijn niet beschikbaar voor
+dit onderdeel</p>
+<p>
+<script type="text/javascript" src="jquery.js">
+</script> 
+<script type="text/javascript">
+//<![CDATA[
+<!--
+  var xpaths = [
+['%2F%2Fnode+%5B%40pos%3D%22verb%22%5D', 'std', 'has_pos_verb'],
+['%2F%2Fparser+%5B%40cats+and+%40skips%5D', 'std', 'has_parser'],
+['%2F%2Fnode+%5B%40his%5D', 'std', 'has_his'],
+['%2F%2Fnode+%5B%40word%3D%22%3F%22%5D', 'std', 'has_qm'],
+['%2F%2Fnode+%5B%40stype%3D%22ynquestion%22%5D', 'std', 'has_yn'],
+['%2F%2Fnode+%5B%40sc%5D', 'std', 'has_sc'],
+['%2F%2Fnode+%5B%40pos%5D', 'std', 'pos'],
+['%2F%2Fnode+%5B%40postag%5D', 'std', 'postag'],
+['%2F%2Fnode+%5B%40pt%5D', 'std', 'pt'],
+['%2F%2Fnode%5B%40cat%3D%22smain%22%5D', 'std', 'smain'],
+['%2F%2Fnode%5B%40cat%3D%22whq%22%5D', 'std', 'whq'],
+['%25PQ_janee_vragen%25', 'std', 'janee'],
+['%2F%2Fnode%5B%25PQ_imperatieven%25%5D', 'std', 'imp'],
+['%25PQ_ingebedde_vraagzinnen%25', 'std', 'whsub'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssub'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27+and+%40lemma%3D%27dat%27%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubdat'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27+and+%40lemma%3D%27of%27%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubof'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27%0A++++++++++++and%0A++++++++++++not%28%40lemma%3D%28%27of%27%2C%27dat%27%29%29%0A+++++++%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubcmp'],
+['%2F%2Fnode%5B%40cat%3D%27oti%27%5D', 'std', 'oti'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22vc%22%5D', 'std', 'otivc'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22mod%22%5D', 'std', 'otimod'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22hd%22+and+%40pt%3D%22ww%22%5D%0A%5D', 'std', 'otiww'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22hd%22%0A+++++++++++++++and%0A+++++++++++++++%40pt%3D%28%22n%22%2C%22vnw%22%29%0A+++++++%5D%0A%5D', 'std', 'otin'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22su%22%5D', 'std', 'otisu'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22predc%22%5D', 'std', 'otipred'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22obcomp%22%5D', 'std', 'otiobc'],
+['%2F%2Fnode%5B%40cat%3D%27ti%27%0A+++++++and%0A+++++++not%28..%2F%40cat%3D%28%27oti%27%2C%27cp%27%29%29%0A%5D', 'std', 'tite'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ti%27%5D%0A%5D', 'std', 'ti'],
+['%25PQ_relatieve_bijzinnen%25', 'std', 'relssub'],
+['%25PQ_free_relatives%25', 'std', 'whrel'],
+['%25PQ_minimal_corr_comp%25', 'std', 'corc'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D%5D', 'std', 'cc'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%22zo%22%5D', 'std', 'cczo'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%22even%22%5D', 'std', 'cceven'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40pt%3D%22adj%22+and+%40graad%3D%22comp%22%5D', 'std', 'ccca'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdannp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanav'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%5D', 'std', 'ccmm'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdnp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdav'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccnn'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndnp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndav'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%5D', 'std', 'conj'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22crd%22%5D%29%0A%5D', 'std', 'crd0'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A%5D', 'std', 'crd1'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22en%22%5D%0A%5D', 'std', 'crd1en'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22of%22%5D%0A%5D', 'std', 'crd1of'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22maar%22%5D%0A%5D', 'std', 'crd1maa'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22%5D%2F%25PQ_e%25+%3D+%25PQ_e%25%0A%5D', 'std', 'crd1enz'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D2%0A%5D', 'std', 'crd2'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3E1%0A+++++++and%0A+++++++node%5B1%5D%5B%40rel%3D%22crd%22%5D%0A+++++++and%0A+++++++node%5B3%5D%5B%40rel%3D%22crd%22%5D%0A%5D', 'std', 'crd22'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3E2%0A%5D', 'std', 'crd2p'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D1%0A%5D', 'std', 'cnj1'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D2%0A%5D', 'std', 'cnj2'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D3%0A%5D', 'std', 'cnj3'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D4%0A%5D', 'std', 'cnj4'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D5%0A%5D', 'std', 'cnj5'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D6%0A%5D', 'std', 'cnj6'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3E6%0A%5D', 'std', 'cnj6p'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%25PQ_np%25%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%25PQ_np%25%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjnp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22pp%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22pp%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjpp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22smain%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22smain%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjmain'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22%0A++++++++++++and%0A++++++++++++%28%40cat%3D%28%22ssub%22%2C%22ti%22%2C%22ppart%22%2C%22inf%22%29+or+%40pt%3D%22ww%22%29%0A+++++++%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%28%22ssub%22%2C%22ti%22%2C%22ppart%22%2C%22inf%22%29+or+%40pt%3D%22ww%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjvp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22cp%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22cp%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjcp'],
+['%2F%2Fnode%5B%25PQ_np%25%5D', 'std', 'np'],
+['%2F%2Fnode%5B%40cat%3D%27pp%27%5D', 'std', 'pp'],
+['%2F%2Fnode%5B%40cat%3D%27ap%27%0A+++++++or%0A+++++++%40pt%3D%27adj%27%0A+++++++and%0A+++++++not%28%40rel%3D%27hd%27%29%0A%5D', 'std', 'ap'],
+['%2F%2Fnode%5B%40cat%3D%27advp%27%0A+++++++or%0A+++++++%40pt%3D%27bw%27%0A+++++++and%0A+++++++not%28%40rel%3D%27hd%27%29%0A%5D', 'std', 'advp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22mod%22+and+..%2F%40cat%3D%22np%22%5D', 'std', 'ppnp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++%40rel%3D%22mod%22+and%0A+++++++%28..%2F%40cat%3D%22ap%22+or%0A++++++++%28%28..%2F%40cat%3D%22ppart%22+or+..%2F%40cat%3D%22ppres%22%29+and%0A+++++++++not%28..%2F%40rel%3D%22vc%22%29+and%0A+++++++++not%28..%2F%40rel%3D%22cnj%22+and+..%2F..%2F%40rel%3D%22vc%22%29%29%29%5D', 'std', 'ppap'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22pc%22%5D', 'std', 'pppc'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22ld%22%5D', 'std', 'ppld'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22predc%22%5D', 'std', 'pppredc'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++%40rel%3D%22mod%22+and%0A+++++++%28..%2F%40cat%3D%28%22smain%22%2C%22sv1%22%2C%22whq%22%2C%22ssub%22%2C%22inf%22%29+or%0A++++++++%28..%2F%40cat%3D%22ppart%22+and%0A+++++++++%28..%2F%40rel%3D%22vc%22+or%0A++++++++++%28..%2F%40rel%3D%22cnj%22+and%0A+++++++++++..%2F..%2F%40rel%3D%22vc%22%29%29%29%29%5D', 'std', 'ppbep'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++node%5B%40rel%3D%22hd%22%5D%2F%25PQ_b%25%3D%25PQ_b%25+and%0A+++++++node%5B%40rel%3D%22obj1%22%5D%2F%25PQ_e%25%3D%25PQ_e%25%5D', 'std', 'ppinp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++node%5B%40rel%3D%22hd%22%5D%2F%25PQ_e%25%3D%25PQ_e%25+and%0A+++++++node%5B%40rel%3D%22obj1%22+and+%40pt%3D%22vnw%22%5D%2F%25PQ_b%25%3D%25PQ_b%25%5D', 'std', 'ppirp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+node%5B%40rel%3D%22hd%22+and+%40cat%3D%22mwu%22%5D%5D', 'std', 'ppimwu'],
+['%2F%2Fnode%5B%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29+and+%28%28%40rel%3D%22mod%22+and+..%2F%40cat%3D%22np%22%29+or+%28%40rel%3D%22cnj%22+and+..%2F%40rel%3D%22mod%22+and+..%2F..%2F%40cat%3D%22np%22%29%29%5D', 'std', 'ajbepn'],
+['%2F%2Fnode%5B%0A++++++++++%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29%0A++++++++++and+%28%0A++++++++++++++++++%28%40rel%3D%22mod%22+and+not%28..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++or%0A++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22mod%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22mod%22%5D%2F%40index%29+and+not%28..%2F..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++or%0A++++++++++++++++++%2F%2Fnode%5B%0A++++++++++++++++++++++++++++%28%40rel%3D%22mod%22+and+not%28..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++++++++++++or%0A++++++++++++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22mod%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22mod%22%5D%2F%40index%29+and+not%28..%2F..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++%5D%2F%40index%3D%40index%0A++++++++++%29%0A%5D', 'std', 'ajbepva'],
+['%2F%2Fnode%5B%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29+and+%28%28%40rel%3D%22predm%22%29+or+%28%40rel%3D%22cnj%22+and+..%2F%40rel%3D%22predm%22%29%29%5D', 'std', 'ajpredm'],
+['%2F%2Fnode%5B%0A++++++++++%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29%0A++++++++++and%0A++++++++++%28%0A++++++++++++++%40rel%3D%22predc%22%0A++++++++++++++or%0A++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22predc%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22predc%22%5D%2F%40index%29%29%0A++++++++++++++or%0A++++++++++++++%2F%2Fnode%5B%0A++++++++++++++++++++++++%40rel%3D%22predc%22%0A++++++++++++++++++++++++or%0A++++++++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22predc%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22predc%22%5D%2F%40index%29%29%0A++++++++++++++%5D%2F%40index%3D%40index%0A++++++++++%29%0A%5D', 'std', 'ajpredc'],
+['%2F%2Fnode%5B%40pt%3D%22adj%22+and+not%28%40rel%3D%22hd%22%29%5D', 'std', 'ajaj'],
+['%2F%2Fnode%5B%40cat%3D%22ap%22+and+node%5B%40rel%3D%22mod%22%5D%2Fnumber%28%40begin%29+%3C+node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%5D', 'std', 'ajmodaj'],
+['%2F%2Fnode%5B%0A++++++++++%40cat%3D%22ap%22%0A++++++++++and%0A++++++++++node%5B%0A++++++++++++++++++%28%0A++++++++++++++++++++++%40rel%3D%22predc%22+or+%40rel%3D%22obj1%22+or+%40rel%3D%22obj2%22+or+%40rel%3D%22pc%22+or+%40rel%3D%22me%22+or+%40rel%3D%22vc%22%0A++++++++++++++++++%29%0A++++++++++++++++++and%0A++++++++++++++++++not%28%25PQ_vorfeld%25%29%0A++++++++++%5D%2Fnumber%28%40begin%29%0A++++++++++%3C%0A++++++++++node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%0A%5D', 'std', 'ajcaj'],
+['%2F%2Fnode%5B%40cat%3D%22ap%22+and+node%5B%40rel%3D%22mod%22%5D%2Fnumber%28%40begin%29+%3E+node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%5D', 'std', 'ajajmod'],
+['%2F%2Fnode%5B%0A++++++++++%40cat%3D%22ap%22%0A++++++++++and%0A++++++++++node%5B%0A++++++++++++++++++%28%0A++++++++++++++++++++++%40rel%3D%22predc%22+or+%40rel%3D%22obj1%22+or+%40rel%3D%22obj2%22+or+%40rel%3D%22pc%22+or+%40rel%3D%22me%22+or+%40rel%3D%22vc%22%0A++++++++++++++++++%29%0A++++++++++++++++++and%0A++++++++++++++++++not%28%25PQ_nachfeld%25%29%0A++++++++++%5D%2Fnumber%28%40begin%29%0A++++++++++%3E%0A++++++++++node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%0A%5D', 'std', 'ajajc'],
+['%2F%2Fnode%5B%40rel%3D%22svp%22+and+%40cat%5D', 'std', 'vwuit'],
+['%25PQ_groen%25', 'std', 'groen'],
+['%25PQ_rood%25', 'std', 'rood'],
+['%2F%2Fnode%5B%25PQ_dep_node_in_verbcluster%25%5D', 'std', 'wwclus'],
+['%25PQ_cross_serial_verbcluster%25', 'std', 'accinf'],
+['%2F%2Fnode%5B%25PQ_passive%25%5D', 'std', 'passive'],
+['%2F%2Fnode%5B%25PQ_impersonal_passive%25%5D', 'std', 'nppas'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29%5D', 'std', 'vpart'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++%40rel%3D%22hd%22+and%0A+++++++..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%5D', 'std', 'vpartex'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++%28+++not%28%40rel%3D%22hd%22%29+or%0A+++++++++++%40rel%3D%22hd%22+and+not%28..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%29%0A+++++++%29%5D', 'std', 'vpartin'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29%5D', 'std', 'vprtn'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29+and%0A+++++++%40rel%3D%22hd%22+and%0A+++++++..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%5D', 'std', 'vprtnex'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29+and%0A+++++++%28+++not%28%40rel%3D%22hd%22%29+or%0A+++++++++++%40rel%3D%22hd%22+and+not%28..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%29%0A+++++++%29%5D', 'std', 'vprtnin'],
+['%2F%2Fnode%5B%25PQ_ott%25%5D', 'std', 'ott'],
+['%2F%2Fnode%5B%25PQ_ovt%25%5D', 'std', 'ovt'],
+['%2F%2Fnode%5B%25PQ_vtt%25%5D', 'std', 'vtt'],
+['%2F%2Fnode%5B%25PQ_vvt%25%5D', 'std', 'vvt'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25%5D%5D', 'std', 'ottott'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25%5D%5D', 'std', 'ottovt'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25%5D%5D', 'std', 'ovtott'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25%5D%5D', 'std', 'ovtovt'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding0%25%5D', 'std', 'inb0'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding1%25%5D', 'std', 'inb1'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding2%25%5D', 'std', 'inb2'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding3%25%5D', 'std', 'inb3'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding4%25%5D', 'std', 'inb4'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding5%25%5D', 'std', 'inb5'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding6%25%5D', 'std', 'inb6'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding7%25%5D', 'std', 'inb7'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding8%25%5D', 'std', 'inb8'],
+['%25PQ_vorfeld_np_subject%25', 'std', 'nptsub'],
+['%25PQ_vorfeld_np_no_subject%25', 'std', 'nptnsub'],
+['%25PQ_vorfeld_non_local%25', 'std', 'tnonloc'],
+['%25PQ_local_extraction%25', 'std', 'locext'],
+['%25PQ_non_local_extraction%25', 'std', 'nlocext'],
+['%2F%2Fparser%5B%40cats%3D%221%22+and+%40skips%3D%220%22%5D', 'std', 'ok'],
+['%2F%2Fparser%5B%40cats%3D%220%22%5D', 'std', 'cats0'],
+['%2F%2Fparser%5B%40cats%3D%221%22%5D', 'std', 'cats1'],
+['%2F%2Fparser%5B%40cats%3D%222%22%5D', 'std', 'cats2'],
+['%2F%2Fparser%5B%40cats%3D%223%22%5D', 'std', 'cats3'],
+['%2F%2Fparser%5Bnumber%28%40cats%29+%3E+3%5D', 'std', 'cats4'],
+['%2F%2Fparser%5B%40skips%3D%220%22%5D', 'std', 'skips0'],
+['%2F%2Fparser%5B%40skips%3D%221%22%5D', 'std', 'skips1'],
+['%2F%2Fparser%5B%40skips%3D%222%22%5D', 'std', 'skips2'],
+['%2F%2Fparser%5B%40skips%3D%223%22%5D', 'std', 'skips3'],
+['%2F%2Fparser%5Bnumber%28%40skips%29+%3E+3%5D', 'std', 'skips4'],
+['%2F%2Fnode%5B%40his+and+not%28node%5B%40his%5D%29%5D', 'std', 'his'],
+['%2F%2Fnode%5B%40his%3D%22normal%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'normal'],
+['%2F%2Fnode%5B%40his%0A+++++++and%0A+++++++not%28%40his%3D%28%22normal%22%2C%22robust_skip%22%2C%22skip%22%29%29%0A+++++++and%0A+++++++not%28node%5B%40his%5D%29%0A%5D', 'std', 'onbeken'],
+['%2F%2Fnode%5B%40his%3D%22compound%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'compoun'],
+['%2F%2Fnode%5B%40his%3D%22name%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'name'],
+['%2F%2Fnode%5B%40his%0A+++++++and%0A+++++++not%28%40his%3D%28%22normal%22%2C%22compound%22%2C%22name%22%2C%22robust_skip%22%2C%22skip%22%29%29%0A+++++++and%0A+++++++not%28node%5B%40his%5D%29%0A%5D', 'std', 'noun']
+];
+  var indexen = {
+'has_pos_verb': 0,
+'has_parser': 1,
+'has_his': 2,
+'has_qm': 3,
+'has_yn': 4,
+'has_sc': 5,
+'pos': 6,
+'postag': 7,
+'pt': 8,
+'smain': 9,
+'whq': 10,
+'janee': 11,
+'imp': 12,
+'whsub': 13,
+'ssub': 14,
+'ssubdat': 15,
+'ssubof': 16,
+'ssubcmp': 17,
+'oti': 18,
+'otivc': 19,
+'otimod': 20,
+'otiww': 21,
+'otin': 22,
+'otisu': 23,
+'otipred': 24,
+'otiobc': 25,
+'tite': 26,
+'ti': 27,
+'relssub': 28,
+'whrel': 29,
+'corc': 30,
+'cc': 31,
+'cczo': 32,
+'cceven': 33,
+'ccca': 34,
+'ccdannp': 35,
+'ccdanvs': 36,
+'ccdanpp': 37,
+'ccdanav': 38,
+'ccmm': 39,
+'ccmdnp': 40,
+'ccmdvs': 41,
+'ccmdpp': 42,
+'ccmdav': 43,
+'ccnn': 44,
+'ccndnp': 45,
+'ccndvs': 46,
+'ccndpp': 47,
+'ccndav': 48,
+'conj': 49,
+'crd0': 50,
+'crd1': 51,
+'crd1en': 52,
+'crd1of': 53,
+'crd1maa': 54,
+'crd1enz': 55,
+'crd2': 56,
+'crd22': 57,
+'crd2p': 58,
+'cnj1': 59,
+'cnj2': 60,
+'cnj3': 61,
+'cnj4': 62,
+'cnj5': 63,
+'cnj6': 64,
+'cnj6p': 65,
+'cnjnp': 66,
+'cnjpp': 67,
+'cnjmain': 68,
+'cnjvp': 69,
+'cnjcp': 70,
+'np': 71,
+'pp': 72,
+'ap': 73,
+'advp': 74,
+'ppnp': 75,
+'ppap': 76,
+'pppc': 77,
+'ppld': 78,
+'pppredc': 79,
+'ppbep': 80,
+'ppinp': 81,
+'ppirp': 82,
+'ppimwu': 83,
+'ajbepn': 84,
+'ajbepva': 85,
+'ajpredm': 86,
+'ajpredc': 87,
+'ajaj': 88,
+'ajmodaj': 89,
+'ajcaj': 90,
+'ajajmod': 91,
+'ajajc': 92,
+'vwuit': 93,
+'groen': 94,
+'rood': 95,
+'wwclus': 96,
+'accinf': 97,
+'passive': 98,
+'nppas': 99,
+'vpart': 100,
+'vpartex': 101,
+'vpartin': 102,
+'vprtn': 103,
+'vprtnex': 104,
+'vprtnin': 105,
+'ott': 106,
+'ovt': 107,
+'vtt': 108,
+'vvt': 109,
+'ottott': 110,
+'ottovt': 111,
+'ovtott': 112,
+'ovtovt': 113,
+'inb0': 114,
+'inb1': 115,
+'inb2': 116,
+'inb3': 117,
+'inb4': 118,
+'inb5': 119,
+'inb6': 120,
+'inb7': 121,
+'inb8': 122,
+'nptsub': 123,
+'nptnsub': 124,
+'tnonloc': 125,
+'locext': 126,
+'nlocext': 127,
+'ok': 128,
+'cats0': 129,
+'cats1': 130,
+'cats2': 131,
+'cats3': 132,
+'cats4': 133,
+'skips0': 134,
+'skips1': 135,
+'skips2': 136,
+'skips3': 137,
+'skips4': 138,
+'his': 139,
+'normal': 140,
+'onbeken': 141,
+'compoun': 142,
+'name': 143,
+'noun': 144
+};
+function vb(i) {
+    var e = document.getElementById("spodform").elements
+    window.open("xpath?db=" + e[0].value + "&xpath=" + xpaths[i][0] + "&mt=" + xpaths[i][1]);
+}
+function alles(n, m, o) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = true;
+    }
+    if (o) {
+        var ee = document.getElementsByClassName("spodblockinner");
+        for (var i = 0; i < ee.length; i++) {
+            if (ee[i].classList.contains('hide')) {
+                ee[i].classList.remove('hide');
+            }
+        }
+    }
+}
+function niets(n, m, o) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = false;
+    }
+    if (o) {
+        var ee = document.getElementsByClassName("spodblockinner");
+        for (var i = 0; i < ee.length; i++) {
+            if (! ee[i].classList.contains('hide')) {
+                ee[i].classList.add('hide');
+            }
+        }
+    }
+}
+function omkeren(n, m) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = !e[i+1].checked;
+    }
+}
+function hider(id) {
+    var e = document.getElementById(id);
+    e.classList.toggle("hide");
+}
+var queryvisible = false;
+var queryid;
+function info(id) {
+    uninfo();
+    var e = $(id);
+    e.show();
+    e.css("zIndex", 9999);
+    queryvisible = true;
+    queryid = id;
+}
+function uninfo() {
+    if (queryvisible) {
+        var e = $(queryid);
+        e.hide();
+        e.css("zIndex", 1);
+        queryvisible = false;
+    }
+}
+$(document).mouseup(
+  function(e) {
+    uninfo();
+  });
+function getChoices() {
+  var res = [];
+  for (var i = 6; i < 145; i++) {
+    var e = document.getElementById('i' + i);
+    if (e.checked) {
+      res.push(xpaths[i][2]);
+    }
+  }
+  return res;
+}
+function setChoices(c) {
+  var ee = document.getElementsByClassName("spodblockinner");
+  for (var i = 0; i < ee.length; i++) {
+    if (! ee[i].classList.contains('hide')) {
+      ee[i].classList.add('hide');
+    }
+  }
+  var e = document.getElementById("spodform").elements;
+  for (var i = 6; i < 145; i++) {
+    e[i+1].checked = false;
+  }
+  for (var i = 0; i < c.length; i++) {
+    var idx = indexen[c[i]];
+    if (idx) {
+      var el = e[idx + 1];
+      el.checked = true;
+      while (! el.classList.contains('spodblockinner')) {
+        el = el.parentNode;
+      }
+      if (el.classList.contains('hide')) {
+        el.classList.remove('hide');
+      }
+    }
+  }
+}
+function optsave(n) {
+  var c = getChoices();
+  localStorage.setItem(
+      "paqu-spod-"+n,
+      JSON.stringify(c)
+  );
+  document.getElementById('op'+n).disabled = (c.length == 0);
+}
+function optload(n) {
+  var storageContent = localStorage.getItem("paqu-spod-" + n);
+  if (storageContent !== undefined) {
+    setChoices(JSON.parse(storageContent) || []);
+  }
+}
+//-->
+//]]>
+</script></p>
+<form id="spodform" action="spodform" method="get" accept-charset=
+"utf-8" target="_blank" name="spodform"><a href=
+"corpusinfo">[?]</a> corpus: <select name="db">
+<optgroup label="— algemene corpora — handmatig geannoteerd —">
+<option value="alpinotreebank">Alpino Treebank</option>
+<option value="cgn">Corpus Gesproken Nederlands</option>
+<option value="lassysmall" selected="selected">Lassy Klein</option>
+<optgroup label="— algemene corpora — automatisch geannoteerd —">
+<option value="basilex">BasiLex 1.0</option>
+<option value="basiscript">BasiScript 1.0: Opstellen</option>
+<option value="childesdutch">Childes Dutch</option>
+<option value="clef" disabled="disabled">CLEF</option>
+<option value="dwcorpus">Dutch Web Corpus</option>
+<option value="eindhoven">Eindhoven</option>
+<option value="lassynewspapers" disabled="disabled">Lassy Groot:
+Kranten</option>
+<option value="wikixvii" disabled="disabled">NL-wiki 2017</option>
+<option value="wablieft">Wablieft</option>
+<option value="html">HTML</option>
+<option value="text">Teksttabel</option>
+<option value="tbl">Gedetailleerde tabel</option>
+<option value="tbllen">Gedetailleerde tabel, inclusief
+lengtes</option>
+<option value="tbls">Gedetailleerde tabel, inclusief
+zinnen</option>
+<option value="tbllens">Gedetailleerde tabel, inclusief lengtes en
+zinnen</option>
+<!--
+for (var n = 1; n < 7; n++) {
+  var storageContent = localStorage.getItem("paqu-spod-" + n);
+  if (storageContent !== undefined) {
+    var d = JSON.parse(storageContent);
+    if (d && d.length > 0) {
+      document.getElementById('op'+n).disabled = false;
+    }
+  }
+}
+//--></optgroup>
+</optgroup>
+</select></form>
+</body>
+</html>
