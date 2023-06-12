@@ -5,7 +5,7 @@ import sext.SextAnyTreeString
 
 import scala.xml.{Node, XML}
 
-object QueryTests {
+object RelQueryTests {
   // Ja dit kan ook compacter met varargs @* enzo maar ik schijn dat niet uit het hoofd te kunnen
 
 
@@ -69,6 +69,7 @@ object QueryTests {
       // ∩
       rspan(rel("'dep::compound:prt'"), "'source'")
         ∩ rspan(er, "'source'")
+
   )
 
   val relQueriesDirect = List(

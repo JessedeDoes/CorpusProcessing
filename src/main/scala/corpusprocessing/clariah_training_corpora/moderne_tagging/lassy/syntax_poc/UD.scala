@@ -1,4 +1,4 @@
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.QueryTests
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.RelQueryTests
 
 import scala.collection.immutable
 
@@ -76,7 +76,7 @@ object UD
       val z = rel
       val q = s"rel('dep::$rel')"
       val n = s"$rel ($gloss)"
-      QueryTests.testRelQueryDirect(n,q)
+      RelQueryTests.testRelQueryDirect(n,q)
     }})
   }
 }

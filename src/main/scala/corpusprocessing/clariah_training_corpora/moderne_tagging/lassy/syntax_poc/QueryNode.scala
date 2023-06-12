@@ -16,7 +16,37 @@ import sext._
 
 import scala.xml._
 import RelationalQuery._
+case class Lijstjen(x: Seq[QueryNode])  {
+  def __(other: QueryNode)  = this.x :+ other
+  def __(other : Seq[QueryNode])  = this.x ++ other
+}
 
+object QueryNode {
+  def ROOT = QueryNode(headProperties = TokenRelQuery("root"))
+
+  def parseTokenQuery(s: String): TokenQuery = {
+    val a = s.split("\\s*=\\s*")
+    a(0) match {
+      case "pos" => PoSQuery(a(1))
+      case "rel" => TokenRelQuery(a(1))
+      case "lemma" => LemmaQuery(a(1))
+      case _ => TokenRelQuery(a(0))
+    }
+  }
+  implicit def x(r: String): QueryNode = {
+    QueryNode(headProperties = parseTokenQuery(r))
+  }
+
+  val testje =
+    ROOT __
+      "nsubj" __
+      "obj"
+
+  val vraagzin =
+    ROOT __ "lemma=?"
+
+  val geen_vraagzin = ROOT ! Seq("lemma=?")
+}
 case class QueryNode(headProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
                      and_not: Seq[QueryNode] = Seq(),
@@ -110,7 +140,18 @@ case class QueryNode(headProperties : TokenQuery,
        rel(depRel)  ∩  (tokenPartCQL ++ hieronder_sourced)
      }
   }
+
+  def __(other: QueryNode): QueryNode  = this.copy(children = this.children :+ other)
+  def __(other: Seq[QueryNode]): QueryNode   =this.copy(children = this.children ++ other)
+
+
+  implicit def zz(x: Seq[QueryNode]) = Lijstjen(x)
+
+
+
+  def !(r: Seq[QueryNode])  = this.copy(and_not = r)
 }
+
 
 // [geneste haakjes? [pos="VERB" & lemma="fietsen" [rel="obj"] [rel="nsubj"]]
 // vergelijk https://ufal.mff.cuni.cz/pmltqdoc/doc/pmltq_tutorial_web_client.html

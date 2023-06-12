@@ -50,11 +50,19 @@ object spod {
       id -> (label, rubriek, description,xpath)
    })
 
-  val asHTML = <table>{checkboxes.map({case (id, (label, rubriek, description,xpath)) =>
-    val xpe = URLEncoder.encode(xpath, "utf-8")
+  val asHTML = <html>
+    <head> <meta http-equiv="content-type" content="text/html;charset=utf-8"></meta></head>
+    <table>{checkboxes.map({case (id, (label, rubriek, description,xpath)) =>
+    val xpe = URLEncoder.encode(xpath.replaceAll("\\s+", " "), "utf-8")
     val link = s"https://paqu.let.rug.nl:8068/xpath?db=lassysmall&xpath=$xpe&mt=std"
-   <tr><td>{id}</td><td>{label}</td><td>{rubriek}</td><td>{description}</td><td><pre>{xpath}</pre></td><td><a href={link}>PaQu</a></td></tr>
-  })}</table>
+   <tr>
+     <td>{id}</td>
+     <td>{label}</td>
+     <td>{rubriek}</td>
+     <td>{description}</td>
+     <td>{xpath}</td>
+     <td><a href={link}>PaQu</a></td></tr>
+  })}</table> </html>
 
   def main(args: Array[String])  = {
     checkboxes.foreach(println)
