@@ -46,6 +46,11 @@ object QueryNode {
     ROOT __ "lemma=?"
 
   val geen_vraagzin = ROOT ! Seq("lemma=?")
+
+
+  val ingebedde_vraagzin = "csubj"  // nee niet doen nu, kost te veel tijd
+
+  implicit def zz(x: Seq[QueryNode]) = Lijstjen(x)
 }
 case class QueryNode(headProperties : TokenQuery,
                      children: Seq[QueryNode] = Seq(),
@@ -145,9 +150,7 @@ case class QueryNode(headProperties : TokenQuery,
   def __(other: Seq[QueryNode]): QueryNode   =this.copy(children = this.children ++ other)
 
 
-  implicit def zz(x: Seq[QueryNode]) = Lijstjen(x)
-
-
+  def &&(other: QueryNode): QueryNode = this.copy(headProperties = TokenAndQuery(this.headProperties, other.headProperties))
 
   def !(r: Seq[QueryNode])  = this.copy(and_not = r)
 }

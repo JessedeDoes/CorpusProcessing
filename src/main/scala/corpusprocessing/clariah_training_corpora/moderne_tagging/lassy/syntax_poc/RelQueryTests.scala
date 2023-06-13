@@ -72,6 +72,7 @@ object RelQueryTests {
 
   )
 
+  val vraagwoorden = List("hoe", "waarom", "wat", "wie").take(1).map(w => s"[lemma='$w']").mkString(" | ")
   val relQueriesDirect = List(
     "q0" -> "rel('dep::obj','target') & [pos='NOUN']",
     "q1" -> "[pos='NOUN'] & rel('dep::obj','target')",
@@ -80,10 +81,12 @@ object RelQueryTests {
     "q3b" -> "[lemma='er' & deprel='advmod'] & rel('.*')",
     "q5" -> "[pos='NOUN' & deprel='nsubj'] & rel()",
     "q6" -> "[pos='NOUN' & deprel='nsubj'] & rel('dep::nsubj','target')",
+    "q7" -> s"(rel('dep::csubj') | rel('dep::ccomp')) & rspan((rel('_') & $vraagwoorden), 'source')",
+    "q8" -> s"rel('dep::ccomp') & ($vraagwoorden)"
   )
   def main(args: Array[String])  = {
 
-    relQueries.foreach({case (n, q) => testRelQuery(n,q) })
+    // relQueries.foreach({case (n, q) => testRelQuery(n,q) })
     relQueriesDirect.foreach({case (n, q) => testRelQueryDirect(n,q) })
   }
 }

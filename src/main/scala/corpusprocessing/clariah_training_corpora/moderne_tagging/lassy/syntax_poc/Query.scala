@@ -150,9 +150,14 @@ case class PoSQuery(lemma: String) extends TokenQuery {
   def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.UPOS == lemma).findMatches(s)
 }
 
+case class XPosQuery(xpos: String) extends TokenQuery {
+  def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.XPOS.matches(xpos)).findMatches(s)
+}
+
 case class TokenRelQuery(rel: String) extends TokenQuery {
   def findMatches(s: Set[ISpan]): Set[ISpan] = BasicFilterQuery(s => s.isInstanceOf[TokenSpan] && s.firstToken.DEPREL == rel).findMatches(s)
 }
+
 
 case class EmptyTokenQuery() extends TokenQuery {
   def findMatches(s: Set[ISpan]): Set[ISpan] = s
