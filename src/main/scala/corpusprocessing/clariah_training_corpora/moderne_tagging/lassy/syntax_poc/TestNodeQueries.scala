@@ -40,6 +40,8 @@ object TestNodeQueries {
   // ]
 
   val testQueries = List(
+    "test0" -> QueryNode.geen_vraagzin,
+
     "verySimple" -> QueryNode(headProperties = "rel=root",
       children = Seq(
         QueryNode(headProperties = "rel=nsubj"),
@@ -144,7 +146,7 @@ object TestNodeQueries {
       val searchResult = XML.load(searchURL)
 
       println(s"////// $searchURL //////////////////////////////")
-      println("////// results: " + QueryTests.getNResults(searchResult) + "/////////////////")
+      println("////// results: " + RelQueryTests.getNResults(searchResult) + "/////////////////")
 
       // println(searchResult)childrenToCQL, stukjes_niet
       val hits = (searchResult \\ "hit").map(RelHit(_))

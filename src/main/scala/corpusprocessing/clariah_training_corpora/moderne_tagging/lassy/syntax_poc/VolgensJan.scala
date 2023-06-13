@@ -5,6 +5,10 @@ trait RelationOrToken {
   def &(x: RelationOrToken): RelationOrToken = RelationalQuery.intersectIt(Seq(this, x))
 
   def AND(x: RelationOrToken): RelationOrToken = RelationalQuery.intersectIt(Seq(this, x))
+
+  def --(rel: String, r:RelationOrToken) = RelationalQuery.setspan(this,"'target'") & RelationalQuery.setspan(r,"'target'")
+
+
 }
 
 trait Token extends RelationOrToken {}
@@ -31,4 +35,8 @@ object RelationalQuery {
   }
 
   def intersectIt(rels: Seq[RelationOrToken]): RelationOrToken = if (rels.size == 1) rels.head else intersect(rels.toSet.toSeq)
+
+  def ->(x: RelationOrToken)  = x
+
+  def ROOT = rel("'dep::root'","'target'","'both'")
 }

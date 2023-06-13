@@ -1,0 +1,1810 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>PaQu -- Syntactic profiler of Dutch</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<link rel="icon" href="favicon.ico" type="image/x-icon">
+<link rel="stylesheet" type="text/css" href="paqu.css">
+<!--[if gte IE 10]> -->
+<style type="text/css">span.ie { display:none; }</style>
+<!-- <![endif]-->
+</head>
+<body>
+<div id="login">
+<form action="https://www.let.rug.nl/~kleiweg/paqulogin/"><input type="submit" value="Log in"></form>
+</div>
+<div id="topmenu">
+<a href=".">Zoeken</a>
+<a href="xpath">XPath</a>
+<a href="metadata">Metadata</a>
+<a href="spod" class="selected">SPOD</a>
+<a href="info.html">Info</a>
+</div>
+
+Syntactic profiler of Dutch<p>
+Corpora met meer dan 2 000 000 zinnen zijn niet beschikbaar voor dit onderdeel<p>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript"><!--
+  var xpaths = [
+['%2F%2Fnode+%5B%40pos%3D%22verb%22%5D', 'std', 'has_pos_verb'],
+['%2F%2Fparser+%5B%40cats+and+%40skips%5D', 'std', 'has_parser'],
+['%2F%2Fnode+%5B%40his%5D', 'std', 'has_his'],
+['%2F%2Fnode+%5B%40word%3D%22%3F%22%5D', 'std', 'has_qm'],
+['%2F%2Fnode+%5B%40stype%3D%22ynquestion%22%5D', 'std', 'has_yn'],
+['%2F%2Fnode+%5B%40sc%5D', 'std', 'has_sc'],
+['%2F%2Fnode+%5B%40pos%5D', 'std', 'pos'],
+['%2F%2Fnode+%5B%40postag%5D', 'std', 'postag'],
+['%2F%2Fnode+%5B%40pt%5D', 'std', 'pt'],
+['%2F%2Fnode%5B%40cat%3D%22smain%22%5D', 'std', 'smain'],
+['%2F%2Fnode%5B%40cat%3D%22whq%22%5D', 'std', 'whq'],
+['%25PQ_janee_vragen%25', 'std', 'janee'],
+['%2F%2Fnode%5B%25PQ_imperatieven%25%5D', 'std', 'imp'],
+['%25PQ_ingebedde_vraagzinnen%25', 'std', 'whsub'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssub'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27+and+%40lemma%3D%27dat%27%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubdat'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27+and+%40lemma%3D%27of%27%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubof'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27cmp%27%0A++++++++++++and%0A++++++++++++not%28%40lemma%3D%28%27of%27%2C%27dat%27%29%29%0A+++++++%5D%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ssub%27%5D%0A%5D', 'std', 'ssubcmp'],
+['%2F%2Fnode%5B%40cat%3D%27oti%27%5D', 'std', 'oti'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22vc%22%5D', 'std', 'otivc'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22mod%22%5D', 'std', 'otimod'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22hd%22+and+%40pt%3D%22ww%22%5D%0A%5D', 'std', 'otiww'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22hd%22%0A+++++++++++++++and%0A+++++++++++++++%40pt%3D%28%22n%22%2C%22vnw%22%29%0A+++++++%5D%0A%5D', 'std', 'otin'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22su%22%5D', 'std', 'otisu'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22predc%22%5D', 'std', 'otipred'],
+['%2F%2Fnode%5B%40cat%3D%22oti%22+and+%40rel%3D%22obcomp%22%5D', 'std', 'otiobc'],
+['%2F%2Fnode%5B%40cat%3D%27ti%27%0A+++++++and%0A+++++++not%28..%2F%40cat%3D%28%27oti%27%2C%27cp%27%29%29%0A%5D', 'std', 'tite'],
+['%2F%2Fnode%5B%40cat%3D%27cp%27%0A+++++++and%0A+++++++node%5B%40rel%3D%27body%27+and+%40cat%3D%27ti%27%5D%0A%5D', 'std', 'ti'],
+['%25PQ_relatieve_bijzinnen%25', 'std', 'relssub'],
+['%25PQ_free_relatives%25', 'std', 'whrel'],
+['%25PQ_minimal_corr_comp%25', 'std', 'corc'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D%5D', 'std', 'cc'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%22zo%22%5D', 'std', 'cczo'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%22even%22%5D', 'std', 'cceven'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40pt%3D%22adj%22+and+%40graad%3D%22comp%22%5D', 'std', 'ccca'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdannp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40pt%3D%22adj%22%0A+++++++and%0A+++++++%40graad%3D%22comp%22%0A%5D', 'std', 'ccdanav'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+..%2Fnode%5B%40rel%3D%22obcomp%22%5D+and+%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%5D', 'std', 'ccmm'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdnp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22veel%22%2C%22minder%22%2C%22weinig%22%29%0A%5D', 'std', 'ccmdav'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccnn'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%25PQ_np%25%5D%0A+++++++%5D%0A+++++++and%0A+++++++%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndnp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%25PQ_s%25+or+%40cat%3D%28%22cp%22%2C%22ssub%22%29+or+%40pt%3D%22ww%22%29%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndvs'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%40cat%3D%22pp%22%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndpp'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22%0A+++++++and%0A+++++++..%2Fnode%5B%40rel%3D%22obcomp%22%0A+++++++++++++++and%0A+++++++++++++++node%5B%40rel%3D%22body%22+and+%28%40cat%3D%28%22advp%22%2C%22ap%22%29+or+%40pt%3D%28%22adj%22%2C%22bw%22%29%29%5D%0A+++++++%5D%0A+++++++and+%40lemma%3D%28%22niet%22%2C%22niets%22%2C%22ander%22%2C%22anders%22%29%0A%5D', 'std', 'ccndav'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%5D', 'std', 'conj'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22crd%22%5D%29%0A%5D', 'std', 'crd0'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A%5D', 'std', 'crd1'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22en%22%5D%0A%5D', 'std', 'crd1en'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22of%22%5D%0A%5D', 'std', 'crd1of'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22+and+%40lemma%3D%22maar%22%5D%0A%5D', 'std', 'crd1maa'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D1%0A+++++++and%0A+++++++node%5B%40rel%3D%22crd%22%5D%2F%25PQ_e%25+%3D+%25PQ_e%25%0A%5D', 'std', 'crd1enz'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3D2%0A%5D', 'std', 'crd2'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3E1%0A+++++++and%0A+++++++node%5B1%5D%5B%40rel%3D%22crd%22%5D%0A+++++++and%0A+++++++node%5B3%5D%5B%40rel%3D%22crd%22%5D%0A%5D', 'std', 'crd22'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22crd%22%5D%29%3E2%0A%5D', 'std', 'crd2p'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D1%0A%5D', 'std', 'cnj1'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D2%0A%5D', 'std', 'cnj2'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D3%0A%5D', 'std', 'cnj3'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D4%0A%5D', 'std', 'cnj4'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D5%0A%5D', 'std', 'cnj5'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3D6%0A%5D', 'std', 'cnj6'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++count%28node%5B%40rel%3D%22cnj%22%5D%29%3E6%0A%5D', 'std', 'cnj6p'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%25PQ_np%25%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%25PQ_np%25%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjnp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22pp%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22pp%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjpp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22smain%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22smain%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjmain'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22%0A++++++++++++and%0A++++++++++++%28%40cat%3D%28%22ssub%22%2C%22ti%22%2C%22ppart%22%2C%22inf%22%29+or+%40pt%3D%22ww%22%29%0A+++++++%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%28%22ssub%22%2C%22ti%22%2C%22ppart%22%2C%22inf%22%29+or+%40pt%3D%22ww%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjvp'],
+['%2F%2Fnode%5B%40cat%3D%22conj%22%0A+++++++and%0A+++++++node%5B%40rel%3D%22cnj%22+and+%40cat%3D%22cp%22%5D%0A+++++++and%0A+++++++not%28node%5B%40rel%3D%22cnj%22%0A++++++++++++++++and%0A++++++++++++++++not%28%40cat%3D%22cp%22%29%0A+++++++++++%5D%0A+++++++%29%0A%5D', 'std', 'cnjcp'],
+['%2F%2Fnode%5B%25PQ_np%25%5D', 'std', 'np'],
+['%2F%2Fnode%5B%40cat%3D%27pp%27%5D', 'std', 'pp'],
+['%2F%2Fnode%5B%40cat%3D%27ap%27%0A+++++++or%0A+++++++%40pt%3D%27adj%27%0A+++++++and%0A+++++++not%28%40rel%3D%27hd%27%29%0A%5D', 'std', 'ap'],
+['%2F%2Fnode%5B%40cat%3D%27advp%27%0A+++++++or%0A+++++++%40pt%3D%27bw%27%0A+++++++and%0A+++++++not%28%40rel%3D%27hd%27%29%0A%5D', 'std', 'advp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22mod%22+and+..%2F%40cat%3D%22np%22%5D', 'std', 'ppnp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++%40rel%3D%22mod%22+and%0A+++++++%28..%2F%40cat%3D%22ap%22+or%0A++++++++%28%28..%2F%40cat%3D%22ppart%22+or+..%2F%40cat%3D%22ppres%22%29+and%0A+++++++++not%28..%2F%40rel%3D%22vc%22%29+and%0A+++++++++not%28..%2F%40rel%3D%22cnj%22+and+..%2F..%2F%40rel%3D%22vc%22%29%29%29%5D', 'std', 'ppap'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22pc%22%5D', 'std', 'pppc'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22ld%22%5D', 'std', 'ppld'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+%40rel%3D%22predc%22%5D', 'std', 'pppredc'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++%40rel%3D%22mod%22+and%0A+++++++%28..%2F%40cat%3D%28%22smain%22%2C%22sv1%22%2C%22whq%22%2C%22ssub%22%2C%22inf%22%29+or%0A++++++++%28..%2F%40cat%3D%22ppart%22+and%0A+++++++++%28..%2F%40rel%3D%22vc%22+or%0A++++++++++%28..%2F%40rel%3D%22cnj%22+and%0A+++++++++++..%2F..%2F%40rel%3D%22vc%22%29%29%29%29%5D', 'std', 'ppbep'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++node%5B%40rel%3D%22hd%22%5D%2F%25PQ_b%25%3D%25PQ_b%25+and%0A+++++++node%5B%40rel%3D%22obj1%22%5D%2F%25PQ_e%25%3D%25PQ_e%25%5D', 'std', 'ppinp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and%0A+++++++node%5B%40rel%3D%22hd%22%5D%2F%25PQ_e%25%3D%25PQ_e%25+and%0A+++++++node%5B%40rel%3D%22obj1%22+and+%40pt%3D%22vnw%22%5D%2F%25PQ_b%25%3D%25PQ_b%25%5D', 'std', 'ppirp'],
+['%2F%2Fnode%5B%40cat%3D%22pp%22+and+node%5B%40rel%3D%22hd%22+and+%40cat%3D%22mwu%22%5D%5D', 'std', 'ppimwu'],
+['%2F%2Fnode%5B%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29+and+%28%28%40rel%3D%22mod%22+and+..%2F%40cat%3D%22np%22%29+or+%28%40rel%3D%22cnj%22+and+..%2F%40rel%3D%22mod%22+and+..%2F..%2F%40cat%3D%22np%22%29%29%5D', 'std', 'ajbepn'],
+['%2F%2Fnode%5B%0A++++++++++%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29%0A++++++++++and+%28%0A++++++++++++++++++%28%40rel%3D%22mod%22+and+not%28..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++or%0A++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22mod%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22mod%22%5D%2F%40index%29+and+not%28..%2F..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++or%0A++++++++++++++++++%2F%2Fnode%5B%0A++++++++++++++++++++++++++++%28%40rel%3D%22mod%22+and+not%28..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++++++++++++or%0A++++++++++++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22mod%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22mod%22%5D%2F%40index%29+and+not%28..%2F..%2F%40cat%3D%22np%22%29%29%0A++++++++++++++++++%5D%2F%40index%3D%40index%0A++++++++++%29%0A%5D', 'std', 'ajbepva'],
+['%2F%2Fnode%5B%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29+and+%28%28%40rel%3D%22predm%22%29+or+%28%40rel%3D%22cnj%22+and+..%2F%40rel%3D%22predm%22%29%29%5D', 'std', 'ajpredm'],
+['%2F%2Fnode%5B%0A++++++++++%28%40cat%3D%22ap%22+or+%40pt%3D%22adj%22%29%0A++++++++++and%0A++++++++++%28%0A++++++++++++++%40rel%3D%22predc%22%0A++++++++++++++or%0A++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22predc%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22predc%22%5D%2F%40index%29%29%0A++++++++++++++or%0A++++++++++++++%2F%2Fnode%5B%0A++++++++++++++++++++++++%40rel%3D%22predc%22%0A++++++++++++++++++++++++or%0A++++++++++++++++++++++++%28%40rel%3D%22cnj%22+and+%28..%2F%40rel%3D%22predc%22+or+..%2F%40index%3D%2F%2Fnode%5B%40rel%3D%22predc%22%5D%2F%40index%29%29%0A++++++++++++++%5D%2F%40index%3D%40index%0A++++++++++%29%0A%5D', 'std', 'ajpredc'],
+['%2F%2Fnode%5B%40pt%3D%22adj%22+and+not%28%40rel%3D%22hd%22%29%5D', 'std', 'ajaj'],
+['%2F%2Fnode%5B%40cat%3D%22ap%22+and+node%5B%40rel%3D%22mod%22%5D%2Fnumber%28%40begin%29+%3C+node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%5D', 'std', 'ajmodaj'],
+['%2F%2Fnode%5B%0A++++++++++%40cat%3D%22ap%22%0A++++++++++and%0A++++++++++node%5B%0A++++++++++++++++++%28%0A++++++++++++++++++++++%40rel%3D%22predc%22+or+%40rel%3D%22obj1%22+or+%40rel%3D%22obj2%22+or+%40rel%3D%22pc%22+or+%40rel%3D%22me%22+or+%40rel%3D%22vc%22%0A++++++++++++++++++%29%0A++++++++++++++++++and%0A++++++++++++++++++not%28%25PQ_vorfeld%25%29%0A++++++++++%5D%2Fnumber%28%40begin%29%0A++++++++++%3C%0A++++++++++node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%0A%5D', 'std', 'ajcaj'],
+['%2F%2Fnode%5B%40cat%3D%22ap%22+and+node%5B%40rel%3D%22mod%22%5D%2Fnumber%28%40begin%29+%3E+node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%5D', 'std', 'ajajmod'],
+['%2F%2Fnode%5B%0A++++++++++%40cat%3D%22ap%22%0A++++++++++and%0A++++++++++node%5B%0A++++++++++++++++++%28%0A++++++++++++++++++++++%40rel%3D%22predc%22+or+%40rel%3D%22obj1%22+or+%40rel%3D%22obj2%22+or+%40rel%3D%22pc%22+or+%40rel%3D%22me%22+or+%40rel%3D%22vc%22%0A++++++++++++++++++%29%0A++++++++++++++++++and%0A++++++++++++++++++not%28%25PQ_nachfeld%25%29%0A++++++++++%5D%2Fnumber%28%40begin%29%0A++++++++++%3E%0A++++++++++node%5B%40rel%3D%22hd%22%5D%2Fnumber%28%40begin%29%0A%5D', 'std', 'ajajc'],
+['%2F%2Fnode%5B%40rel%3D%22svp%22+and+%40cat%5D', 'std', 'vwuit'],
+['%25PQ_groen%25', 'std', 'groen'],
+['%25PQ_rood%25', 'std', 'rood'],
+['%2F%2Fnode%5B%25PQ_dep_node_in_verbcluster%25%5D', 'std', 'wwclus'],
+['%25PQ_cross_serial_verbcluster%25', 'std', 'accinf'],
+['%2F%2Fnode%5B%25PQ_passive%25%5D', 'std', 'passive'],
+['%2F%2Fnode%5B%25PQ_impersonal_passive%25%5D', 'std', 'nppas'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29%5D', 'std', 'vpart'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++%40rel%3D%22hd%22+and%0A+++++++..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%5D', 'std', 'vpartex'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++%28+++not%28%40rel%3D%22hd%22%29+or%0A+++++++++++%40rel%3D%22hd%22+and+not%28..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%29%0A+++++++%29%5D', 'std', 'vpartin'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29%5D', 'std', 'vprtn'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29+and%0A+++++++%40rel%3D%22hd%22+and%0A+++++++..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%5D', 'std', 'vprtnex'],
+['%2F%2Fnode%5Bstarts-with%28%40sc%2C%22part_%22%29+and%0A+++++++not%28%40wvorm%3D%22pv%22%29+and%0A+++++++%28+++not%28%40rel%3D%22hd%22%29+or%0A+++++++++++%40rel%3D%22hd%22+and+not%28..%2Fnode%5B%40rel%3D%22svp%22+and+starts-with%28%40frame%2C%22particle%22%29%5D%29%0A+++++++%29%5D', 'std', 'vprtnin'],
+['%2F%2Fnode%5B%25PQ_ott%25%5D', 'std', 'ott'],
+['%2F%2Fnode%5B%25PQ_ovt%25%5D', 'std', 'ovt'],
+['%2F%2Fnode%5B%25PQ_vtt%25%5D', 'std', 'vtt'],
+['%2F%2Fnode%5B%25PQ_vvt%25%5D', 'std', 'vvt'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25%5D%5D', 'std', 'ottott'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25%5D%5D', 'std', 'ottovt'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ott%25%5D%5D', 'std', 'ovtott'],
+['%2F%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25+and+..%2Fnode%5B%40rel%3D%22vc%22%5D%2Fnode%5B%40rel%3D%22body%22%5D%2Fnode%5B%40rel%3D%22hd%22+and+%25PQ_ovt%25%5D%5D', 'std', 'ovtovt'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding0%25%5D', 'std', 'inb0'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding1%25%5D', 'std', 'inb1'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding2%25%5D', 'std', 'inb2'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding3%25%5D', 'std', 'inb3'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding4%25%5D', 'std', 'inb4'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding5%25%5D', 'std', 'inb5'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding6%25%5D', 'std', 'inb6'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding7%25%5D', 'std', 'inb7'],
+['%2F%2Fnode%5B%25PQ_finiete_inbedding8%25%5D', 'std', 'inb8'],
+['%25PQ_vorfeld_np_subject%25', 'std', 'nptsub'],
+['%25PQ_vorfeld_np_no_subject%25', 'std', 'nptnsub'],
+['%25PQ_vorfeld_non_local%25', 'std', 'tnonloc'],
+['%25PQ_local_extraction%25', 'std', 'locext'],
+['%25PQ_non_local_extraction%25', 'std', 'nlocext'],
+['%2F%2Fparser%5B%40cats%3D%221%22+and+%40skips%3D%220%22%5D', 'std', 'ok'],
+['%2F%2Fparser%5B%40cats%3D%220%22%5D', 'std', 'cats0'],
+['%2F%2Fparser%5B%40cats%3D%221%22%5D', 'std', 'cats1'],
+['%2F%2Fparser%5B%40cats%3D%222%22%5D', 'std', 'cats2'],
+['%2F%2Fparser%5B%40cats%3D%223%22%5D', 'std', 'cats3'],
+['%2F%2Fparser%5Bnumber%28%40cats%29+%3E+3%5D', 'std', 'cats4'],
+['%2F%2Fparser%5B%40skips%3D%220%22%5D', 'std', 'skips0'],
+['%2F%2Fparser%5B%40skips%3D%221%22%5D', 'std', 'skips1'],
+['%2F%2Fparser%5B%40skips%3D%222%22%5D', 'std', 'skips2'],
+['%2F%2Fparser%5B%40skips%3D%223%22%5D', 'std', 'skips3'],
+['%2F%2Fparser%5Bnumber%28%40skips%29+%3E+3%5D', 'std', 'skips4'],
+['%2F%2Fnode%5B%40his+and+not%28node%5B%40his%5D%29%5D', 'std', 'his'],
+['%2F%2Fnode%5B%40his%3D%22normal%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'normal'],
+['%2F%2Fnode%5B%40his%0A+++++++and%0A+++++++not%28%40his%3D%28%22normal%22%2C%22robust_skip%22%2C%22skip%22%29%29%0A+++++++and%0A+++++++not%28node%5B%40his%5D%29%0A%5D', 'std', 'onbeken'],
+['%2F%2Fnode%5B%40his%3D%22compound%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'compoun'],
+['%2F%2Fnode%5B%40his%3D%22name%22+and+not%28node%5B%40his%5D%29%5D', 'std', 'name'],
+['%2F%2Fnode%5B%40his%0A+++++++and%0A+++++++not%28%40his%3D%28%22normal%22%2C%22compound%22%2C%22name%22%2C%22robust_skip%22%2C%22skip%22%29%29%0A+++++++and%0A+++++++not%28node%5B%40his%5D%29%0A%5D', 'std', 'noun']
+];
+  var indexen = {
+'has_pos_verb': 0,
+'has_parser': 1,
+'has_his': 2,
+'has_qm': 3,
+'has_yn': 4,
+'has_sc': 5,
+'pos': 6,
+'postag': 7,
+'pt': 8,
+'smain': 9,
+'whq': 10,
+'janee': 11,
+'imp': 12,
+'whsub': 13,
+'ssub': 14,
+'ssubdat': 15,
+'ssubof': 16,
+'ssubcmp': 17,
+'oti': 18,
+'otivc': 19,
+'otimod': 20,
+'otiww': 21,
+'otin': 22,
+'otisu': 23,
+'otipred': 24,
+'otiobc': 25,
+'tite': 26,
+'ti': 27,
+'relssub': 28,
+'whrel': 29,
+'corc': 30,
+'cc': 31,
+'cczo': 32,
+'cceven': 33,
+'ccca': 34,
+'ccdannp': 35,
+'ccdanvs': 36,
+'ccdanpp': 37,
+'ccdanav': 38,
+'ccmm': 39,
+'ccmdnp': 40,
+'ccmdvs': 41,
+'ccmdpp': 42,
+'ccmdav': 43,
+'ccnn': 44,
+'ccndnp': 45,
+'ccndvs': 46,
+'ccndpp': 47,
+'ccndav': 48,
+'conj': 49,
+'crd0': 50,
+'crd1': 51,
+'crd1en': 52,
+'crd1of': 53,
+'crd1maa': 54,
+'crd1enz': 55,
+'crd2': 56,
+'crd22': 57,
+'crd2p': 58,
+'cnj1': 59,
+'cnj2': 60,
+'cnj3': 61,
+'cnj4': 62,
+'cnj5': 63,
+'cnj6': 64,
+'cnj6p': 65,
+'cnjnp': 66,
+'cnjpp': 67,
+'cnjmain': 68,
+'cnjvp': 69,
+'cnjcp': 70,
+'np': 71,
+'pp': 72,
+'ap': 73,
+'advp': 74,
+'ppnp': 75,
+'ppap': 76,
+'pppc': 77,
+'ppld': 78,
+'pppredc': 79,
+'ppbep': 80,
+'ppinp': 81,
+'ppirp': 82,
+'ppimwu': 83,
+'ajbepn': 84,
+'ajbepva': 85,
+'ajpredm': 86,
+'ajpredc': 87,
+'ajaj': 88,
+'ajmodaj': 89,
+'ajcaj': 90,
+'ajajmod': 91,
+'ajajc': 92,
+'vwuit': 93,
+'groen': 94,
+'rood': 95,
+'wwclus': 96,
+'accinf': 97,
+'passive': 98,
+'nppas': 99,
+'vpart': 100,
+'vpartex': 101,
+'vpartin': 102,
+'vprtn': 103,
+'vprtnex': 104,
+'vprtnin': 105,
+'ott': 106,
+'ovt': 107,
+'vtt': 108,
+'vvt': 109,
+'ottott': 110,
+'ottovt': 111,
+'ovtott': 112,
+'ovtovt': 113,
+'inb0': 114,
+'inb1': 115,
+'inb2': 116,
+'inb3': 117,
+'inb4': 118,
+'inb5': 119,
+'inb6': 120,
+'inb7': 121,
+'inb8': 122,
+'nptsub': 123,
+'nptnsub': 124,
+'tnonloc': 125,
+'locext': 126,
+'nlocext': 127,
+'ok': 128,
+'cats0': 129,
+'cats1': 130,
+'cats2': 131,
+'cats3': 132,
+'cats4': 133,
+'skips0': 134,
+'skips1': 135,
+'skips2': 136,
+'skips3': 137,
+'skips4': 138,
+'his': 139,
+'normal': 140,
+'onbeken': 141,
+'compoun': 142,
+'name': 143,
+'noun': 144
+};
+function vb(i) {
+    var e = document.getElementById("spodform").elements
+    window.open("xpath?db=" + e[0].value + "&xpath=" + xpaths[i][0] + "&mt=" + xpaths[i][1]);
+}
+function alles(n, m, o) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = true;
+    }
+    if (o) {
+        var ee = document.getElementsByClassName("spodblockinner");
+        for (var i = 0; i < ee.length; i++) {
+            if (ee[i].classList.contains('hide')) {
+                ee[i].classList.remove('hide');
+            }
+        }
+    }
+}
+function niets(n, m, o) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = false;
+    }
+    if (o) {
+        var ee = document.getElementsByClassName("spodblockinner");
+        for (var i = 0; i < ee.length; i++) {
+            if (! ee[i].classList.contains('hide')) {
+                ee[i].classList.add('hide');
+            }
+        }
+    }
+}
+function omkeren(n, m) {
+    var e = document.getElementById("spodform").elements
+    for (var i = n; i < m; i++) {
+        e[i+1].checked = !e[i+1].checked;
+    }
+}
+function hider(id) {
+    var e = document.getElementById(id);
+    e.classList.toggle("hide");
+}
+var queryvisible = false;
+var queryid;
+function info(id) {
+    uninfo();
+    var e = $(id);
+    e.show();
+    e.css("zIndex", 9999);
+    queryvisible = true;
+    queryid = id;
+}
+function uninfo() {
+    if (queryvisible) {
+        var e = $(queryid);
+        e.hide();
+        e.css("zIndex", 1);
+        queryvisible = false;
+    }
+}
+$(document).mouseup(
+  function(e) {
+    uninfo();
+  });
+function getChoices() {
+  var res = [];
+  for (var i = 6; i < 145; i++) {
+    var e = document.getElementById('i' + i);
+    if (e.checked) {
+      res.push(xpaths[i][2]);
+    }
+  }
+  return res;
+}
+function setChoices(c) {
+  var ee = document.getElementsByClassName("spodblockinner");
+  for (var i = 0; i < ee.length; i++) {
+    if (! ee[i].classList.contains('hide')) {
+      ee[i].classList.add('hide');
+    }
+  }
+  var e = document.getElementById("spodform").elements;
+  for (var i = 6; i < 145; i++) {
+    e[i+1].checked = false;
+  }
+  for (var i = 0; i < c.length; i++) {
+    var idx = indexen[c[i]];
+    if (idx) {
+      var el = e[idx + 1];
+      el.checked = true;
+      while (! el.classList.contains('spodblockinner')) {
+        el = el.parentNode;
+      }
+      if (el.classList.contains('hide')) {
+        el.classList.remove('hide');
+      }
+    }
+  }
+}
+function optsave(n) {
+  var c = getChoices();
+  localStorage.setItem(
+      "paqu-spod-"+n,
+      JSON.stringify(c)
+  );
+  document.getElementById('op'+n).disabled = (c.length == 0);
+}
+function optload(n) {
+  var storageContent = localStorage.getItem("paqu-spod-" + n);
+  if (storageContent !== undefined) {
+    setChoices(JSON.parse(storageContent) || []);
+  }
+}
+//--></script>
+<form id="spodform" action="spodform" method="get" accept-charset="utf-8" target="_blank">
+<a href="corpusinfo">[?]</a> corpus: <select name="db">
+    <optgroup label="&mdash; algemene corpora &mdash; handmatig geannoteerd &mdash;">
+    <option value="alpinotreebank">Alpino Treebank</option>
+    <option value="cgn">Corpus Gesproken Nederlands</option>
+    <option value="lassysmall" selected="selected">Lassy Klein</option>
+    <optgroup label="&mdash; algemene corpora &mdash; automatisch geannoteerd &mdash;">
+    <option value="basilex">BasiLex 1.0</option>
+    <option value="basiscript">BasiScript 1.0: Opstellen</option>
+    <option value="childesdutch">Childes Dutch</option>
+    <option value="clef" disabled="disabled">CLEF</option>
+    <option value="dwcorpus">Dutch Web Corpus</option>
+    <option value="eindhoven">Eindhoven</option>
+    <option value="lassynewspapers" disabled="disabled">Lassy Groot: Kranten</option>
+    <option value="wikixvii" disabled="disabled">NL-wiki 2017</option>
+    <option value="wablieft">Wablieft</option>
+</select>
+
+<p>
+<a href="spodlist" target="_blank">lijst van queries</a>
+<p>
+<a href="javascript:alles(6, 145, true)">alles</a> &mdash;
+<a href="javascript:niets(6, 145, true)">niets</a> &mdash;
+<a href="javascript:omkeren(6, 145)">omkeren</a>
+
+<input type="hidden" name="i0" value="t">
+
+<input type="hidden" name="i1" value="t">
+
+<input type="hidden" name="i2" value="t">
+
+<input type="hidden" name="i3" value="t">
+
+<input type="hidden" name="i4" value="t">
+
+<input type="hidden" name="i5" value="t">
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock1')">Attributen</a>
+<a href="javascript:info('#h1')" class="spodi">?</a>
+<div id="h1" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Attributen</h4>
+Hier worden de woordsoorten geteld. De Lassy part-of-speech labels
+worden geteld via het attribuut <b>postag</b>. Er is daarnaast een
+attribuut <b>pt</b> dat de vereenvoudigde weergave geeft van
+dezelfde informatie: het deel van de postag tot aan het
+openingshaakje. De documentatie van postag is te vinden in: Frank van
+Eynde,
+<a href="http://www.let.rug.nl/vannoord/Lassy/POS_manual.pdf">Part of
+speech tagging en lemmatisering van het D-Coi corpus</a>, 2005.
+<p>
+Vanwege historische redenen wordt hier ook het attribuut <b>pos</b>
+opgenomen, maar dit attribuut wordt niet langer onderhouden, is ook
+niet gedocumenteerd en wordt ook niet gecorrigeerd in de handmatig
+geannoteerde corpora.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock1">
+
+<a href="javascript:alles(6, 9)">alles</a> &mdash;
+<a href="javascript:niets(6, 9)">niets</a> &mdash;
+<a href="javascript:omkeren(6, 9)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i6" id="i6" value="t">
+  <td><a href="javascript:vb(6)">vb</a>
+  <td><label for="i6">pos</label>
+<tr>
+  <td><input type="checkbox" name="i7" id="i7" value="t">
+  <td><a href="javascript:vb(7)">vb</a>
+  <td><label for="i7">postag</label>
+<tr>
+  <td><input type="checkbox" name="i8" id="i8" value="t">
+  <td><a href="javascript:vb(8)">vb</a>
+  <td><label for="i8">pt</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock2')">Hoofdzinnen</a>
+<a href="javascript:info('#h2')" class="spodi">?</a>
+<div id="h2" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Hoofdzinnen</h4>
+Bij deze queries vergelijken we de verschillende typen hoofdzinnen:
+mededelende hoofdzinnen (1), vraagzinnen die met een vraag-constituent
+beginnen (2), ja/nee vragen (3), en imperatieven (4).
+<p>
+<table>
+<tr><td>(1)<td> Pieter leest een boek.</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2)<td>Wie leest er een boek?</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3)<td>Lees jij een boek?</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4a)<td>Lees dat boek nou toch eens.</td>
+<tr><td>( b)<td> Lees jij dat boek nou toch eens.</tr>
+</table>
+<p>
+Het onderscheid tussen ja/nee vragen en imperatieven is in de
+treebanks niet altijd nauwkeurig te bepalen - met name voor
+de handmatig geannoteerde treebanks die iets minder informatie
+bevatten dan de automatisch geannoteerde treebanks. Bijvoorbeeld
+imperatieven die wel een onderwerp bevatten (4b) zullen door de
+bestaande queries niet worden gevonden als imperatief.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock2">
+
+<a href="javascript:alles(9, 13)">alles</a> &mdash;
+<a href="javascript:niets(9, 13)">niets</a> &mdash;
+<a href="javascript:omkeren(9, 13)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i9" id="i9" value="t">
+  <td><a href="javascript:vb(9)">vb</a>
+  <td><label for="i9">mededelende hoofdzinnen</label>
+<tr>
+  <td><input type="checkbox" name="i10" id="i10" value="t">
+  <td><a href="javascript:vb(10)">vb</a>
+  <td><label for="i10">vraagzinnen (wh)</label>
+<tr>
+  <td><input type="checkbox" name="i11" id="i11" value="t">
+  <td><a href="javascript:vb(11)">vb</a>
+  <td><label for="i11">ja/nee vragen</label>
+<tr>
+  <td><input type="checkbox" name="i12" id="i12" value="t">
+  <td><a href="javascript:vb(12)">vb</a>
+  <td><label for="i12">imperatieven</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock3')">Bijzinnen</a>
+<a href="javascript:info('#h3')" class="spodi">?</a>
+<div id="h3" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Bijzinnen</h4>
+Deze queries vergelijken de verschillende soorten bijzinnen.
+We onderscheiden de volgende bijzinnen: ingebedde vraagzinnen
+met een vraag-constituent (1), finiete bijzinnen (2), infiniete
+bijzinnen met "om te" (3) infiniete bijzinnen met alleen "te" (4),
+en infiniete bijzinnen met een ander voorzetsel (5). Daarnaast
+onderscheiden we relatieve bijzinnen (6) en free relatives (7).
+<p>
+<table>
+<tr><td>(1)<td>(ik vroeg) wie dat boek gelezen heeft</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2a)<td>(ik lees dat boek) omdat het door Elsschot geschreven is</tr>
+<tr><td>( b)<td>(ik denk) dat het boek door Elsschot is geschreven</tr>
+<tr><td>( c)<td>(ik vroeg) of het boek door Ellschot is geschreven</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3a)<td>(ik heb geprobeerd) om een boek te lezen</tr>
+<tr><td>( b)<td>(ik ga naar de bieb) om een boek te lezen</tr>
+<tr><td>( c)<td>(het was niet nodig) om het boek te lezen</tr>
+<tr><td>( d)<td>(slangen zijn) om van te gruwen</tr>
+<tr><td>( e)<td>(het kind is oud genoeg) om alleen naar school te gaan</tr>
+<tr><td>( f)<td>(het boek is te duur) om te kopen</tr>
+<tr><td>( g)<td>(hij heeft voldoende invloed) om het boek te verkopen</tr>
+<tr><td>( h)<td>(ze was zo genadig) om het boek voor te lezen</tr>
+<tr><td>( i)<td>(een boek) om nooit te vergeten</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4)<td>(ik heb geprobeerd) een boek te lezen</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(5)<td>(ik lees dat boek) zonder mijn oordeel uit te spreken</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(6)<td>(ik lees een boek) dat door Elsschot is geschreven</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(7)<td>wie dit leest (is gek)</tr>
+</table>
+<p>
+Binnen de finiete bijzinnen maken we onderscheid tussen bijzinnen die
+ingeleid worden met "dat" (2b), met "of" (2c) dan wel met een ander
+voegwoord (2a).
+<p>
+De infiniete bijzinnen met "om" worden verder onderverdeeld naar
+gelang de bijzin optreedt als complement (3a), of als bepaling (3b),
+als onderwerp (3c), als predicatief complement (3d), of als
+comperatief complement (3efgh). Infiniete bijzinnen die als
+bepaling optreden worden verder onderverdeeld, afhankelijk of
+de bepaling bij een werkwoord optreedt (3b) of bij een zelfstandig
+naamwoord (3i).
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock3">
+
+<a href="javascript:alles(13, 30)">alles</a> &mdash;
+<a href="javascript:niets(13, 30)">niets</a> &mdash;
+<a href="javascript:omkeren(13, 30)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i13" id="i13" value="t">
+  <td><a href="javascript:vb(13)">vb</a>
+  <td><label for="i13">ingebedde vraagzinnen</label>
+<tr>
+  <td><input type="checkbox" name="i14" id="i14" value="t">
+  <td><a href="javascript:vb(14)">vb</a>
+  <td><label for="i14">finiete bijzinnen</label>
+<tr>
+  <td><input type="checkbox" name="i15" id="i15" value="t">
+  <td><a href="javascript:vb(15)">vb</a>
+  <td><label for="i15">finiete bijzinnen met &#34;dat&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i16" id="i16" value="t">
+  <td><a href="javascript:vb(16)">vb</a>
+  <td><label for="i16">finiete bijzinnen met &#34;of&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i17" id="i17" value="t">
+  <td><a href="javascript:vb(17)">vb</a>
+  <td><label for="i17">finiete bijzinnen met andere voegwoorden</label>
+<tr>
+  <td><input type="checkbox" name="i18" id="i18" value="t">
+  <td><a href="javascript:vb(18)">vb</a>
+  <td><label for="i18">infiniete bijzinnen met &#34;om&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i19" id="i19" value="t">
+  <td><a href="javascript:vb(19)">vb</a>
+  <td><label for="i19">infiniete bijzinnen met &#34;om&#34; die als complement optreden</label>
+<tr>
+  <td><input type="checkbox" name="i20" id="i20" value="t">
+  <td><a href="javascript:vb(20)">vb</a>
+  <td><label for="i20">infiniete bijzinnen met &#34;om&#34; die als bepaling optreden</label>
+<tr>
+  <td><input type="checkbox" name="i21" id="i21" value="t">
+  <td><a href="javascript:vb(21)">vb</a>
+  <td><label for="i21">infiniete bijzinnen met &#34;om&#34; die als bepaling bij een werkwoord optreden</label>
+<tr>
+  <td><input type="checkbox" name="i22" id="i22" value="t">
+  <td><a href="javascript:vb(22)">vb</a>
+  <td><label for="i22">infiniete bijzinnen met &#34;om&#34; die als bepaling bij een zelfstandig naamwoord optreden</label>
+<tr>
+  <td><input type="checkbox" name="i23" id="i23" value="t">
+  <td><a href="javascript:vb(23)">vb</a>
+  <td><label for="i23">infiniete bijzinnen met &#34;om&#34; die als onderwerp fungeren</label>
+<tr>
+  <td><input type="checkbox" name="i24" id="i24" value="t">
+  <td><a href="javascript:vb(24)">vb</a>
+  <td><label for="i24">infiniete bijzinnen met &#34;om&#34; die als predicaat fungeren</label>
+<tr>
+  <td><input type="checkbox" name="i25" id="i25" value="t">
+  <td><a href="javascript:vb(25)">vb</a>
+  <td><label for="i25">infiniete bijzinnen met &#34;om&#34; die optreden met combinaties zoals &#34;te ADJ; zo ADJ; genoeg ADJ; voldoende N&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i26" id="i26" value="t">
+  <td><a href="javascript:vb(26)">vb</a>
+  <td><label for="i26">infiniete bijzinnen met alleen &#34;te&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i27" id="i27" value="t">
+  <td><a href="javascript:vb(27)">vb</a>
+  <td><label for="i27">infiniete bijzinnen met ander voorzetsel</label>
+<tr>
+  <td><input type="checkbox" name="i28" id="i28" value="t">
+  <td><a href="javascript:vb(28)">vb</a>
+  <td><label for="i28">relatieve bijzinnen</label>
+<tr>
+  <td><input type="checkbox" name="i29" id="i29" value="t">
+  <td><a href="javascript:vb(29)">vb</a>
+  <td><label for="i29">free relatives</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock4')">Correlatieve comparatieven</a>
+<a href="javascript:info('#h4')" class="spodi">?</a>
+<div id="h4" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Correlatieve comparatieven</h4>
+Correlatieve comparatieven zijn zinnen zoals:
+<p>
+<table>
+<tr><td>(1)<td>Hoe langer, hoe beter</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2)<td>Hoe langer hij wordt, des te meer hij last van zijn rug krijgt</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock4">
+
+<a href="javascript:alles(30, 31)">alles</a> &mdash;
+<a href="javascript:niets(30, 31)">niets</a> &mdash;
+<a href="javascript:omkeren(30, 31)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i30" id="i30" value="t">
+  <td><a href="javascript:vb(30)">vb</a>
+  <td><label for="i30">totaal</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock5')">Woorden met een comparatief complement</a>
+<a href="javascript:info('#h5')" class="spodi">?</a>
+<div id="h5" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Woorden met een comparatief complement</h4>
+Comparatieve adjectieven en woorden zo als "zo", "even", "meer", "minder",
+"niet", "niets", "ander", "anders" treden soms op met een complement
+dat vaak wordt ingeleid met het woord "dan" of "als". Naast het totale
+aantal voorkomens van de constructie kijken we naar het aantal voorbeelden
+waarbij "zo" (1) of "even" (2) of een comparatief adjective (3) of
+"meer" of "minder" (4) of "niet", "niets", "ander", "anders" (5) het hoofd is.
+<p>
+Bij comparatieve adjectieven make we ook nog een onderverdeling naar
+de aard van het complement. Een vergelijkbare onderverdeling
+wordt gemaakt voor de andere hoofden.
+<p>
+<table>
+<tr><td>(1)<td>zo groen als gras</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2)<td>even dik als jij</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3a)<td>beter dan jij</tr>
+<tr><td>( b)<td>beter dan ik dacht</tr>
+<tr><td>( c)<td>beter dan bij de buren</tr>
+<tr><td>( d)<td>beter dan gisteren</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4a)<td>meer geluk dan wijsheid</tr>
+<tr><td>( b)<td>meer geluk dan ik dacht</tr>
+<tr><td>( c)<td>meer geluk dan bij de buren</tr>
+<tr><td>( d)<td>meer geluk dan gisteren</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(5a)<td>niets anders dan ellende</tr>
+<tr><td>( b)<td>niets anders dan dat hij komt</tr>
+<tr><td>( c)<td>niets anders dan bij de buren</tr>
+<tr><td>( d)<td>niets anders dan gisteren</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock5">
+
+<a href="javascript:alles(31, 49)">alles</a> &mdash;
+<a href="javascript:niets(31, 49)">niets</a> &mdash;
+<a href="javascript:omkeren(31, 49)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i31" id="i31" value="t">
+  <td><a href="javascript:vb(31)">vb</a>
+  <td><label for="i31">totaal</label>
+<tr>
+  <td><input type="checkbox" name="i32" id="i32" value="t">
+  <td><a href="javascript:vb(32)">vb</a>
+  <td><label for="i32">met als hoofd &#34;zo&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i33" id="i33" value="t">
+  <td><a href="javascript:vb(33)">vb</a>
+  <td><label for="i33">met als hoofd &#34;even&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i34" id="i34" value="t">
+  <td><a href="javascript:vb(34)">vb</a>
+  <td><label for="i34">met als hoofd comparatief adjectief</label>
+<tr>
+  <td><input type="checkbox" name="i35" id="i35" value="t">
+  <td><a href="javascript:vb(35)">vb</a>
+  <td><label for="i35">met als hoofd comparatief adjectief, gevolgd door NP</label>
+<tr>
+  <td><input type="checkbox" name="i36" id="i36" value="t">
+  <td><a href="javascript:vb(36)">vb</a>
+  <td><label for="i36">met als hoofd comparatief adjectief, gevolgd door VP of S</label>
+<tr>
+  <td><input type="checkbox" name="i37" id="i37" value="t">
+  <td><a href="javascript:vb(37)">vb</a>
+  <td><label for="i37">met als hoofd comparatief adjectief, gevolgd door PP</label>
+<tr>
+  <td><input type="checkbox" name="i38" id="i38" value="t">
+  <td><a href="javascript:vb(38)">vb</a>
+  <td><label for="i38">met als hoofd comparatief adjectief, gevolgd door A of ADV</label>
+<tr>
+  <td><input type="checkbox" name="i39" id="i39" value="t">
+  <td><a href="javascript:vb(39)">vb</a>
+  <td><label for="i39">met als hoofd &#34;meer&#34;, &#34;minder&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i40" id="i40" value="t">
+  <td><a href="javascript:vb(40)">vb</a>
+  <td><label for="i40">met als hoofd &#34;meer&#34;, &#34;minder&#34;, gevolgd door NP</label>
+<tr>
+  <td><input type="checkbox" name="i41" id="i41" value="t">
+  <td><a href="javascript:vb(41)">vb</a>
+  <td><label for="i41">met als hoofd &#34;meer&#34;, &#34;minder&#34;, gevolgd door VP of S</label>
+<tr>
+  <td><input type="checkbox" name="i42" id="i42" value="t">
+  <td><a href="javascript:vb(42)">vb</a>
+  <td><label for="i42">met als hoofd &#34;meer&#34;, &#34;minder&#34;, gevolgd door PP</label>
+<tr>
+  <td><input type="checkbox" name="i43" id="i43" value="t">
+  <td><a href="javascript:vb(43)">vb</a>
+  <td><label for="i43">met als hoofd &#34;meer&#34;, &#34;minder&#34;, gevolgd door A of ADV</label>
+<tr>
+  <td><input type="checkbox" name="i44" id="i44" value="t">
+  <td><a href="javascript:vb(44)">vb</a>
+  <td><label for="i44">met als hoofd &#34;niet&#34;, &#34;niets&#34;, &#34;ander&#34;, &#34;anders&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i45" id="i45" value="t">
+  <td><a href="javascript:vb(45)">vb</a>
+  <td><label for="i45">met als hoofd &#34;niet&#34;, &#34;niets&#34;, &#34;ander&#34;, &#34;anders&#34;, gevolgd door NP</label>
+<tr>
+  <td><input type="checkbox" name="i46" id="i46" value="t">
+  <td><a href="javascript:vb(46)">vb</a>
+  <td><label for="i46">met als hoofd &#34;niet&#34;, &#34;niets&#34;, &#34;ander&#34;, &#34;anders&#34;, gevolgd door VP of S</label>
+<tr>
+  <td><input type="checkbox" name="i47" id="i47" value="t">
+  <td><a href="javascript:vb(47)">vb</a>
+  <td><label for="i47">met als hoofd &#34;niet&#34;, &#34;niets&#34;, &#34;ander&#34;, &#34;anders&#34;, gevolgd door PP</label>
+<tr>
+  <td><input type="checkbox" name="i48" id="i48" value="t">
+  <td><a href="javascript:vb(48)">vb</a>
+  <td><label for="i48">met als hoofd &#34;niet&#34;, &#34;niets&#34;, &#34;ander&#34;, &#34;anders&#34;, gevolgd door A of ADV</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock6')">Nevenschikkingen</a>
+<a href="javascript:info('#h6')" class="spodi">?</a>
+<div id="h6" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Nevenschikkingen</h4>
+Bij nevenschikkingen maken we onderscheid naar gelang het aantal
+coordinatoren. Geen (1), één (2), twee (3) of meer (4).
+<p>
+<table>
+<tr><td>(1)<td>Zij wilden inspraak , medezeggenschap , democratisering</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2a)<td>Appels en peren</tr>
+<tr><td>( b)<td>Appels of peren</tr>
+<tr><td>( c)<td>De afzijdige maar invloedrijke waarnemer</tr>
+<tr><td>( d)<td>Ze helpen eiwitten, vetten, etc. afbreken</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3)<td>Noch appels noch peren</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4)<td>U kunt gezond zijn, of ziek of arm of rijk</tr>
+</table>
+<p>
+Indien er precies één coordinator is, maken we onderscheid
+tussen "en" (2a), "of" (2b), "maar" (2c) en het speciale
+geval waar de conjunctie wordt afgesloten met een woord
+zoals "enzovoorts" dat in de annotatie ook als coordinator
+wordt weergegeven (2d).
+<p>
+We maken ook een onderverdeling naar gelang het aantal conjuncten
+dat in de coordinatie optreedt. Eén (5), twee (2), drie (6),
+vier, vijf, zes, of meer.
+<p>
+<table>
+<tr><td>(5)<td>de milieuverontreiniging, enzovoorts</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(6)<td>cacaoboter , cacaopoeder of palmolie</tr>
+</table>
+<p>
+Ten slotte wordt een onderscheid gemaakt naar de categorie
+van de conjuncten: NP (2), PP (7), hoofdzinnen (8),
+VP (9) en bijzinnen (10).
+<p>
+<table>
+<tr><td>(7)<td>in Arnhem en in België</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(8)<td>Drie keer hadden ze dat beloofd en drie keer was die
+     belofte weer ingetrokken</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(9)<td>.. die sinds 1981 in Duitsland woont en werkt</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(10)<td>(Hij zei) dat het er bij hoorde, en dat ik niet bang hoefde te zijn</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock6">
+
+<a href="javascript:alles(49, 71)">alles</a> &mdash;
+<a href="javascript:niets(49, 71)">niets</a> &mdash;
+<a href="javascript:omkeren(49, 71)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i49" id="i49" value="t">
+  <td><a href="javascript:vb(49)">vb</a>
+  <td><label for="i49">alle nevenschikkingen</label>
+<tr>
+  <td><input type="checkbox" name="i50" id="i50" value="t">
+  <td><a href="javascript:vb(50)">vb</a>
+  <td><label for="i50">nevenschikkingen zonder coördinator</label>
+<tr>
+  <td><input type="checkbox" name="i51" id="i51" value="t">
+  <td><a href="javascript:vb(51)">vb</a>
+  <td><label for="i51">nevenschikkingen met 1 coördinator</label>
+<tr>
+  <td><input type="checkbox" name="i52" id="i52" value="t">
+  <td><a href="javascript:vb(52)">vb</a>
+  <td><label for="i52">nevenschikkingen met 1 coördinator, en dat is &#34;en&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i53" id="i53" value="t">
+  <td><a href="javascript:vb(53)">vb</a>
+  <td><label for="i53">nevenschikkingen met 1 coördinator, en dat is &#34;of&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i54" id="i54" value="t">
+  <td><a href="javascript:vb(54)">vb</a>
+  <td><label for="i54">nevenschikkingen met 1 coördinator, en dat is &#34;maar&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i55" id="i55" value="t">
+  <td><a href="javascript:vb(55)">vb</a>
+  <td><label for="i55">nevenschikkingen met 1 coördinator, en de coordinator sluit de nevenschikking af (&#34;enzovoorts&#34;)</label>
+<tr>
+  <td><input type="checkbox" name="i56" id="i56" value="t">
+  <td><a href="javascript:vb(56)">vb</a>
+  <td><label for="i56">nevenschikkingen met 2 coördinatoren</label>
+<tr>
+  <td><input type="checkbox" name="i57" id="i57" value="t">
+  <td><a href="javascript:vb(57)">vb</a>
+  <td><label for="i57">reeksvormers (nevenschikkingen van de vorm crd,cnj,crd,cnj...)</label>
+<tr>
+  <td><input type="checkbox" name="i58" id="i58" value="t">
+  <td><a href="javascript:vb(58)">vb</a>
+  <td><label for="i58">nevenschikkingen met meer dan 2 coördinatoren</label>
+<tr>
+  <td><input type="checkbox" name="i59" id="i59" value="t">
+  <td><a href="javascript:vb(59)">vb</a>
+  <td><label for="i59">nevenschikkingen met slechts 1 conjunct</label>
+<tr>
+  <td><input type="checkbox" name="i60" id="i60" value="t">
+  <td><a href="javascript:vb(60)">vb</a>
+  <td><label for="i60">nevenschikkingen met 2 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i61" id="i61" value="t">
+  <td><a href="javascript:vb(61)">vb</a>
+  <td><label for="i61">nevenschikkingen met 3 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i62" id="i62" value="t">
+  <td><a href="javascript:vb(62)">vb</a>
+  <td><label for="i62">nevenschikkingen met 4 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i63" id="i63" value="t">
+  <td><a href="javascript:vb(63)">vb</a>
+  <td><label for="i63">nevenschikkingen met 5 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i64" id="i64" value="t">
+  <td><a href="javascript:vb(64)">vb</a>
+  <td><label for="i64">nevenschikkingen met 6 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i65" id="i65" value="t">
+  <td><a href="javascript:vb(65)">vb</a>
+  <td><label for="i65">nevenschikkingen met meer dan 6 conjuncten</label>
+<tr>
+  <td><input type="checkbox" name="i66" id="i66" value="t">
+  <td><a href="javascript:vb(66)">vb</a>
+  <td><label for="i66">nevenschikking van NP&#39;s</label>
+<tr>
+  <td><input type="checkbox" name="i67" id="i67" value="t">
+  <td><a href="javascript:vb(67)">vb</a>
+  <td><label for="i67">nevenschikking van PP&#39;s</label>
+<tr>
+  <td><input type="checkbox" name="i68" id="i68" value="t">
+  <td><a href="javascript:vb(68)">vb</a>
+  <td><label for="i68">nevenschikking van hoofdzinnen</label>
+<tr>
+  <td><input type="checkbox" name="i69" id="i69" value="t">
+  <td><a href="javascript:vb(69)">vb</a>
+  <td><label for="i69">nevenschikking van VP</label>
+<tr>
+  <td><input type="checkbox" name="i70" id="i70" value="t">
+  <td><a href="javascript:vb(70)">vb</a>
+  <td><label for="i70">nevenschikking van bijzinnen</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock7')">Woordgroepen</a>
+<a href="javascript:info('#h7')" class="spodi">?</a>
+<div id="h7" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Woordgroepen</h4>
+Voor woordgroepen onderscheiden we hier naamwoordgroepen (1), voorzetselgroepen
+(2),
+bijvoeglijk-naamwoordgroepen (3) en bijwoordgroepen (4).
+<p>
+<table>
+<tr><td>(1)<td>een grote boom</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2)<td>op een tak</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3)<td>heel erg geliefd</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4)<td>spelenderwijs</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock7">
+
+<a href="javascript:alles(71, 75)">alles</a> &mdash;
+<a href="javascript:niets(71, 75)">niets</a> &mdash;
+<a href="javascript:omkeren(71, 75)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i71" id="i71" value="t">
+  <td><a href="javascript:vb(71)">vb</a>
+  <td><label for="i71">np</label>
+<tr>
+  <td><input type="checkbox" name="i72" id="i72" value="t">
+  <td><a href="javascript:vb(72)">vb</a>
+  <td><label for="i72">pp</label>
+<tr>
+  <td><input type="checkbox" name="i73" id="i73" value="t">
+  <td><a href="javascript:vb(73)">vb</a>
+  <td><label for="i73">ap</label>
+<tr>
+  <td><input type="checkbox" name="i74" id="i74" value="t">
+  <td><a href="javascript:vb(74)">vb</a>
+  <td><label for="i74">advp</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock8')">Voorzetselgroepen</a>
+<a href="javascript:info('#h8')" class="spodi">?</a>
+<div id="h8" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Voorzetselgroepen</h4>
+Voorzetselgroepen worden onderscheiden naar grammaticale
+functie en naar interne structuur. Voorzetselgroepen
+kunnen optreden als bepaling bij nomina (1), adjectieven (2)
+of bij werkwoorden (6). Dit laatste geval wordt in de traditionele
+grammatica een bijwoordelijke bepaling genoemd.  Voorzetselgroepen
+kunnen ook als complement optreden. Hier onderscheiden we
+voorzetselvoorwerpen (3), locatief/directinele complementen (4) en
+predicatieve complementen (5).
+<p>
+<table>
+<tr><td>(1) <td>De vrouw van de buurman
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2a)<td>De door hem beschreven voorvallen
+<tr><td>( b)<td>De op zichzelf rationele beslissingen
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3) <td>We rekenen op zijn steun
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4a)<td>De ketchup vindt u bij de groenteafdeling
+<tr><td>( b)<td>We rijden wel even naar het station
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(5a)<td>Die aanpak is niet zonder risico
+<tr><td>( b)<td>Je moet in het bezit zijn van een visum
+<tr><td>( c)<td>De haven is van cruciale betekenis
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(6) <td>We gaan vissen bij de brug
+</table>
+<p>
+Voorzetselgroepen worden onderverdeeld aan de hand van hun
+interne structuur. We onderscheiden de meest gangbare structuur
+waarbij een voorzetsel direct gevolgd wordt door een NP (7)
+en de structuur waarbij een R-pronomen direct of indirect gevolgd
+wordt door het bijbehorende voorzetsel (8). Ten slotte volgt
+een aparte telling voor het aantal voorzetseluitdrukkingen.
+Dit zijn versteende combinaties zoals "ten tijde van", "door middel van",
+"naar aanleiding van" die zich als voorzetsel gedragen.
+<p>
+<table>
+<tr><td>(7)<td>in de kooi
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(8)<td>Hij houdt daar helemaal niet van
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock8">
+
+<a href="javascript:alles(75, 84)">alles</a> &mdash;
+<a href="javascript:niets(75, 84)">niets</a> &mdash;
+<a href="javascript:omkeren(75, 84)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i75" id="i75" value="t">
+  <td><a href="javascript:vb(75)">vb</a>
+  <td><label for="i75">grammaticale functie, bepalingen bij zelfstandige naamwoorden</label>
+<tr>
+  <td><input type="checkbox" name="i76" id="i76" value="t">
+  <td><a href="javascript:vb(76)">vb</a>
+  <td><label for="i76">grammaticale functie, bepalingen bij adjectieven (en als adjectief gebruikte deelwoorden)</label>
+<tr>
+  <td><input type="checkbox" name="i77" id="i77" value="t">
+  <td><a href="javascript:vb(77)">vb</a>
+  <td><label for="i77">grammaticale functie, voorzetselvoorwerp</label>
+<tr>
+  <td><input type="checkbox" name="i78" id="i78" value="t">
+  <td><a href="javascript:vb(78)">vb</a>
+  <td><label for="i78">grammaticale functie, locatief/directioneel complement</label>
+<tr>
+  <td><input type="checkbox" name="i79" id="i79" value="t">
+  <td><a href="javascript:vb(79)">vb</a>
+  <td><label for="i79">grammaticale functie, predicatief complement</label>
+<tr>
+  <td><input type="checkbox" name="i80" id="i80" value="t">
+  <td><a href="javascript:vb(80)">vb</a>
+  <td><label for="i80">grammaticale functie, bijwoordelijke bepaling</label>
+<tr>
+  <td><input type="checkbox" name="i81" id="i81" value="t">
+  <td><a href="javascript:vb(81)">vb</a>
+  <td><label for="i81">interne structuur, P + NP</label>
+<tr>
+  <td><input type="checkbox" name="i82" id="i82" value="t">
+  <td><a href="javascript:vb(82)">vb</a>
+  <td><label for="i82">interne structuur, +R-pronomen + P</label>
+<tr>
+  <td><input type="checkbox" name="i83" id="i83" value="t">
+  <td><a href="javascript:vb(83)">vb</a>
+  <td><label for="i83">interne structuur, complex voorzetsel</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock9')">Adjectiefgroepen</a>
+<a href="javascript:info('#h9')" class="spodi">?</a>
+<div id="h9" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Adjectiefgroepen</h4>
+Adjectiefgroepen worden onderscheiden naar grammaticale functie en naar
+interne structuur. Adjectiefgroepen kunnen optreden als bepaling bij nomina (1), (2),
+traditioneel &quot;bijvoegelijke bepaling&quot; genoemd, en bij werkwoorden of andere bijvoeglijke
+naamwoorden (3), (4), traditioneel bijwoordelijke bepaling genoemd. Adjectiefgroepen kunnen
+ook optreden met als relatie &quot;predm&quot;, en dat zijn gevallen die traditionaal bekend staan als
+bepaling van gesteldheid (5) (6). Ten slotte kan een adjectiefgroep optreden als predicatief
+complement (naamwoordelijk deel van het gezegde), zoals in (7), (8).
+<p>
+<table>
+<tr><td>(1)<td>De <em>aardige</em> buurman</tr>
+<tr><td>(2)<td>De <em>nogal vervelende</em> vergadering</tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3)<td>Hij trapte de bal <em>hard</em> over het doel</tr>
+<tr><td>(4)<td>De dienst is <em>volledig</em> kosteloos</tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(5)<td>Hij kwam <em>ziek</em> binnen</tr>
+<tr><td>(6)<td>Hij liet het knipsel <em>dol van trots</em> aan iedereen zien</tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(7)<td>Ik vind dat <em>idioot</em></tr>
+<tr><td>(8)<td>De dienst is <em>volledig kosteloos</em></tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(9)<td>Het boek is <em>beschikbaar via de uitgever</em></tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(10)<td>Het boek werd <em>tien jaar later</em> gepubliceerd</tr>
+<tr><td>(11)<td>De <em>mij onbekende</em> schrijver bleek een natuurtalent</tr>
+<tr><td><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(12)<td>De schat is <em>afkomstig uit Japan</em></tr>
+<tr><td>(13)<td>Ron is <em>bang dat dit iets te maken heeft met Sirius Zwarts</em></tr>
+</table>
+<p>
+Adjectiefgroepen kunnen ook onderverdeel worden aan de hand van hun interne structuur.
+We onderscheiden adjectieven die hun eentje optreden (1), (3), (4), (5), (7); adjectieven die voorkomen
+met een bepaling ter linkerzijde (2), (8); adjectieven die voorkomen met een bepaling rechts van
+het adjectief (9); adjectieven die voorkomen met een complement, links van het adjectief (10), (11) en
+ten slotte de gevallen waarbij het adjectief optreedt met een complement ter rechterzijde (12), (13).
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock9">
+
+<a href="javascript:alles(84, 93)">alles</a> &mdash;
+<a href="javascript:niets(84, 93)">niets</a> &mdash;
+<a href="javascript:omkeren(84, 93)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i84" id="i84" value="t">
+  <td><a href="javascript:vb(84)">vb</a>
+  <td><label for="i84">grammaticale functie, bijvoegelijke bepaling (bepaling bij zelfstandig naamwoord)</label>
+<tr>
+  <td><input type="checkbox" name="i85" id="i85" value="t">
+  <td><a href="javascript:vb(85)">vb</a>
+  <td><label for="i85">grammaticale functie, bijwoordelijke bepaling (bepaling bij werkwoord, adjectief, ...)</label>
+<tr>
+  <td><input type="checkbox" name="i86" id="i86" value="t">
+  <td><a href="javascript:vb(86)">vb</a>
+  <td><label for="i86">grammaticale functie, bepaling van gesteldheid etc.</label>
+<tr>
+  <td><input type="checkbox" name="i87" id="i87" value="t">
+  <td><a href="javascript:vb(87)">vb</a>
+  <td><label for="i87">grammaticale functie, predicatief complement</label>
+<tr>
+  <td><input type="checkbox" name="i88" id="i88" value="t">
+  <td><a href="javascript:vb(88)">vb</a>
+  <td><label for="i88">interne structuur, ADJ</label>
+<tr>
+  <td><input type="checkbox" name="i89" id="i89" value="t">
+  <td><a href="javascript:vb(89)">vb</a>
+  <td><label for="i89">interne structuur, MOD ADJ</label>
+<tr>
+  <td><input type="checkbox" name="i90" id="i90" value="t">
+  <td><a href="javascript:vb(90)">vb</a>
+  <td><label for="i90">interne structuur, COMPL ADJ</label>
+<tr>
+  <td><input type="checkbox" name="i91" id="i91" value="t">
+  <td><a href="javascript:vb(91)">vb</a>
+  <td><label for="i91">interne structuur, ADJ MOD</label>
+<tr>
+  <td><input type="checkbox" name="i92" id="i92" value="t">
+  <td><a href="javascript:vb(92)">vb</a>
+  <td><label for="i92">interne structuur, ADJ COMPL</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock10')">Werkwoorden</a>
+<a href="javascript:info('#h10')" class="spodi">?</a>
+<div id="h10" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Werkwoorden</h4>
+Onder het kopje werkwoorden worden de vaste werkwoordelijke
+uitdrukkingen geteld (1).
+<p>
+<table>
+<tr><td>(1a)<td>aan bod komen</tr>
+<tr><td>( b)<td>ter kennis geven</tr>
+<tr><td>( c)<td>op prijs stellen</tr>
+</table>
+<p>
+Daarnaast maken we een onderscheid bij werkwoordclusters
+tussen de zogenaamde rode en groene volgorde. Bij de
+groene werkwoordvolgorde gaat het voltooid deelwoord
+in de werkwoordcluster aan het hulpwerkwoord vooraf (2),
+en bij de rode volgorde volgt het voltooid deelwoord het
+hulpwerkwoord (3).
+<p>
+<table>
+<tr><td>(2a)<td>zijn boek zal morgen gepresenteerd worden</tr>
+<tr><td>( b)<td>ze zouden nooit een woord met elkaar gewisseld hebben</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3a)<td>zijn boek zal morgen worden gepresenteerd</tr>
+<tr><td>( b)<td>ze zouden nooit een woord met elkaar hebben gewisseld</tr>
+</table>
+<p>
+Voorbeelden van werkwoordclusters worden gegeven in (2), (3), en (4).
+<p>
+<table>
+<tr><td>(4a)<td>Moet op korte termijn worden opgetreden?</tr>
+<tr><td>( b)<td>De zaak moet aanhangig worden gemaakt</tr>
+<tr><td>( c)<td>Ze zeiden dat ik dat zou hebben moeten kunnen zien aankomen</tr>
+</table>
+<p>
+De "accusativus cum infinitivo" constructie vertoont de
+beroemde 'cross-serial' afhankelijkheden. Voorbeelden zijn (5).
+Deze query werkt niet voor het CGN corpus.
+<p>
+<table>
+<tr><td>(5a)<td>Ik heb hem het boek zien lezen</tr>
+<tr><td>( b)<td>Ik heb hem de olifanten helpen voeren</tr>
+<tr><td>( c)<td>Ik heb hem de oppasser de olifanten zien helpen voeren</tr>
+</table>
+<p>
+De passieve werkwoorden worden gebruikt in de lijdende vorm, als in
+(6). Het gaat hierbij om de gevallen waarbij een onderwerp aanwezig
+is. Deze query werkt niet voor het CGN corpus.
+<p>
+<table>
+<tr><td>(6a)<td>Hij wordt geslagen</tr>
+<tr><td>( b)<td>Het monument zal spoedig te zien zijn in het Amsterdamse Oosterpark .</tr>
+</table>
+<p>
+De niet-persoonlijke passieven identificeert de gevallen van de lijdende
+vorm waarbij geen echt onderwerp beschikbaar is. In die gevallen wordt
+vaak "er" als plaatsonderwerp gebruikt.
+<p>
+<table>
+<tr><td>(7a)<td>Er werd niet meer over gesproken</tr>
+<tr><td>( b)<td>In Amsterdam werd niet gedemonstreerd</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock10">
+
+<a href="javascript:alles(93, 100)">alles</a> &mdash;
+<a href="javascript:niets(93, 100)">niets</a> &mdash;
+<a href="javascript:omkeren(93, 100)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i93" id="i93" value="t">
+  <td><a href="javascript:vb(93)">vb</a>
+  <td><label for="i93">vaste werkwoordelijke uitdrukkingen</label>
+<tr>
+  <td><input type="checkbox" name="i94" id="i94" value="t">
+  <td><a href="javascript:vb(94)">vb</a>
+  <td><label for="i94">groene werkwoordsvolgorde</label>
+<tr>
+  <td><input type="checkbox" name="i95" id="i95" value="t">
+  <td><a href="javascript:vb(95)">vb</a>
+  <td><label for="i95">rode werkwoordsvolgorde</label>
+<tr>
+  <td><input type="checkbox" name="i96" id="i96" value="t">
+  <td><a href="javascript:vb(96)">vb</a>
+  <td><label for="i96">werkwoordsclusters</label>
+<tr>
+  <td><input type="checkbox" name="i97" id="i97" value="t">
+  <td><a href="javascript:vb(97)">vb</a>
+  <td><label for="i97">accusativus cum infinitivo</label>
+<tr>
+  <td><input type="checkbox" name="i98" id="i98" value="t">
+  <td><a href="javascript:vb(98)">vb</a>
+  <td><label for="i98">passief</label>
+<tr>
+  <td><input type="checkbox" name="i99" id="i99" value="t">
+  <td><a href="javascript:vb(99)">vb</a>
+  <td><label for="i99">niet-persoonlijke passief</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock11')">Scheidbare werkwoorden</a>
+<a href="javascript:info('#h11')" class="spodi">?</a>
+<div id="h11" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Scheidbare werkwoorden</h4>
+De queries voor scheidbare werkwoorden zijn niet beschikbaar voor de
+handmatig geannoteerde corpora.
+<p>
+Werkwoorden met een scheidbaar partikel worden gegeven in (1) en (2).
+<p>
+<table>
+<tr><td>(1a)<td>Ik heb hem opgebeld</tr>
+<tr><td>( b)<td>Ik bel hem op</tr>
+<tr><td>( c)<td>Ik heb hem op willen bellen</tr>
+</table>
+<p>
+We maken daarbij een onderscheid tussen gevallen waarbij het partikel
+gescheiden is van het werkwoord (1bc) en gevallen waarbij het partikel
+in het werkwoord geincorporeerd is (1a).
+<p>
+Daarnaast bekijken we de gevallen waarbij het werkwoord niet finiet is
+(1ac). En binnen die gevallen onderscheiden we opnieuw gevallen
+waarbij het partikel gescheiden is van het werkwoord (1c) en gevallen
+waarbij het partikel in het werkwoord geincorporeerd is (1a).
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock11">
+
+<a href="javascript:alles(100, 106)">alles</a> &mdash;
+<a href="javascript:niets(100, 106)">niets</a> &mdash;
+<a href="javascript:omkeren(100, 106)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i100" id="i100" value="t">
+  <td><a href="javascript:vb(100)">vb</a>
+  <td><label for="i100">Werkwoorden met een scheidbaar partikel</label>
+<tr>
+  <td><input type="checkbox" name="i101" id="i101" value="t">
+  <td><a href="javascript:vb(101)">vb</a>
+  <td><label for="i101">Werkwoorden met een scheidbaar partikel, partikel gescheiden van het werkwoord</label>
+<tr>
+  <td><input type="checkbox" name="i102" id="i102" value="t">
+  <td><a href="javascript:vb(102)">vb</a>
+  <td><label for="i102">Werkwoorden met een scheidbaar partikel, partikel geïncorporeerd in het werkwoord</label>
+<tr>
+  <td><input type="checkbox" name="i103" id="i103" value="t">
+  <td><a href="javascript:vb(103)">vb</a>
+  <td><label for="i103">Niet-finiete werkwoorden met een scheidbaar partikel</label>
+<tr>
+  <td><input type="checkbox" name="i104" id="i104" value="t">
+  <td><a href="javascript:vb(104)">vb</a>
+  <td><label for="i104">Niet-finiete werkwoorden met een scheidbaar partikel, partikel gescheiden van het werkwoord</label>
+<tr>
+  <td><input type="checkbox" name="i105" id="i105" value="t">
+  <td><a href="javascript:vb(105)">vb</a>
+  <td><label for="i105">Niet-finiete werkwoorden met een scheidbaar partikel, partikel geïncorporeerd in het werkwoord</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock12')">Werkwoordstijden</a>
+<a href="javascript:info('#h12')" class="spodi">?</a>
+<div id="h12" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Werkwoordstijden</h4>
+We onderscheiden de vier klassieke werkwoordstijden: onvoltooid
+tegenwoordige tijd (1), onvoltooid verleden tijd (2), voltooid
+tegenwoordige tijd (3) en voltooid verleden tijd (4).
+<p>
+<table>
+<tr><td>(1)<td>De bakker bakt het brood</tr>
+<tr><td>(2)<td>De bakker bakte het brood</tr>
+<tr><td>(3)<td>De bakker heeft het brood gebakken</td>
+<tr><td>(4)<td>De bakker had het brood gebakken</td>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock12">
+
+<a href="javascript:alles(106, 110)">alles</a> &mdash;
+<a href="javascript:niets(106, 110)">niets</a> &mdash;
+<a href="javascript:omkeren(106, 110)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i106" id="i106" value="t">
+  <td><a href="javascript:vb(106)">vb</a>
+  <td><label for="i106">Onvoltooid tegenwoordige tijd</label>
+<tr>
+  <td><input type="checkbox" name="i107" id="i107" value="t">
+  <td><a href="javascript:vb(107)">vb</a>
+  <td><label for="i107">Onvoltooid verleden tijd</label>
+<tr>
+  <td><input type="checkbox" name="i108" id="i108" value="t">
+  <td><a href="javascript:vb(108)">vb</a>
+  <td><label for="i108">Voltooid tegenwoordige tijd</label>
+<tr>
+  <td><input type="checkbox" name="i109" id="i109" value="t">
+  <td><a href="javascript:vb(109)">vb</a>
+  <td><label for="i109">Voltooid verleden tijd</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock13')">Volgorde van werkwoordstijden</a>
+<a href="javascript:info('#h13')" class="spodi">?</a>
+<div id="h13" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Volgorde van werkwoordstijden</h4>
+Deze queries onderscheiden finiete zinnen die zelf een finiet
+zinscomplement bevatten. Hierbij kijken we naar de combinaties van de
+(onvoltooide) werkwoordstijd van de persoonsvorm in de dominerende zin en
+de (onvoltooide) werkwoordstijd van de persoonsvorm in de zin die als
+complement optreedt.  De combinaties zijn dan tegenwoordige tijd met
+tegenwoordige tijd (1), tegenwoordige tijd met verleden tijd (2), verleden
+tijd met tegenwoordige tijd (3) en verleden tijd met verleden tijd (4).
+<p>
+<table>
+<tr><td>(1)<td>De minister verklaart dat de economie blijft groeien</tr>
+<tr><td>(2)<td>De minister verklaart dat hij het dossier in de trein liet liggen</tr>
+<tr><td>(3)<td>De minister verklaarde dat de economie blijft groeien</tr>
+<tr><td>(4)<td>De minister verklaarde dat hij het dossier in de trein liet liggen</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock13">
+
+<a href="javascript:alles(110, 114)">alles</a> &mdash;
+<a href="javascript:niets(110, 114)">niets</a> &mdash;
+<a href="javascript:omkeren(110, 114)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i110" id="i110" value="t">
+  <td><a href="javascript:vb(110)">vb</a>
+  <td><label for="i110">ott, ott:  &#34;hij zegt dat hij komt&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i111" id="i111" value="t">
+  <td><a href="javascript:vb(111)">vb</a>
+  <td><label for="i111">ott, ovt:  &#34;hij zegt dat hij kwam&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i112" id="i112" value="t">
+  <td><a href="javascript:vb(112)">vb</a>
+  <td><label for="i112">ovt, ott:  &#34;hij zei dat hij komt&#34;</label>
+<tr>
+  <td><input type="checkbox" name="i113" id="i113" value="t">
+  <td><a href="javascript:vb(113)">vb</a>
+  <td><label for="i113">ovt, ovt:  &#34;hij zei dat hij kwam&#34;</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock14')">Inbedding</a>
+<a href="javascript:info('#h14')" class="spodi">?</a>
+<div id="h14" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Inbedding</h4>
+Bij deze queries wordt gekeken naar de complexiteit van de zinnen in
+termen van de inbedding van finitie bijzinnen. Een hoofdzin zonder
+finiete bijzin geldt dan als "geen inbedding". Een hoofdzin met een
+finiete bijzin geldt als "minstens 1 finiete zinsinbedding. Indien de
+finiete bijzin zelf ook een finiete bijzin bevat is er sprake van minstens
+2 finiete zinsinbeddingen. En zo verder.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock14">
+
+<a href="javascript:alles(114, 123)">alles</a> &mdash;
+<a href="javascript:niets(114, 123)">niets</a> &mdash;
+<a href="javascript:omkeren(114, 123)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i114" id="i114" value="t">
+  <td><a href="javascript:vb(114)">vb</a>
+  <td><label for="i114">geen inbedding</label>
+<tr>
+  <td><input type="checkbox" name="i115" id="i115" value="t">
+  <td><a href="javascript:vb(115)">vb</a>
+  <td><label for="i115">minstens 1 finiete zinsinbedding</label>
+<tr>
+  <td><input type="checkbox" name="i116" id="i116" value="t">
+  <td><a href="javascript:vb(116)">vb</a>
+  <td><label for="i116">minstens 2 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i117" id="i117" value="t">
+  <td><a href="javascript:vb(117)">vb</a>
+  <td><label for="i117">minstens 3 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i118" id="i118" value="t">
+  <td><a href="javascript:vb(118)">vb</a>
+  <td><label for="i118">minstens 4 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i119" id="i119" value="t">
+  <td><a href="javascript:vb(119)">vb</a>
+  <td><label for="i119">minstens 5 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i120" id="i120" value="t">
+  <td><a href="javascript:vb(120)">vb</a>
+  <td><label for="i120">minstens 6 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i121" id="i121" value="t">
+  <td><a href="javascript:vb(121)">vb</a>
+  <td><label for="i121">minstens 7 finiete zinsinbeddingen</label>
+<tr>
+  <td><input type="checkbox" name="i122" id="i122" value="t">
+  <td><a href="javascript:vb(122)">vb</a>
+  <td><label for="i122">minstens 8 finiete zinsinbeddingen</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock15')">Topicalisatie en Extractie</a>
+<a href="javascript:info('#h15')" class="spodi">?</a>
+<div id="h15" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Topicalisatie en Extractie</h4>
+De eerste query, "np-topic is subject", bekijkt hoe vaak in een
+hoofdzin die met een NP begint, deze NP als subject van de
+persoonsvorm fungeert (1), terwijl de tweede query die gevallen telt
+waarbij zo'n NP een andere rol bekleedt (2). De derde query, "topic is
+niet lokaal", identificeert de gevallen waarbij de eerste constituent
+van de hoofdzin geen rol speelt in die hoofdzin, maar een rol speelt
+in een ingebedde constituent. Bij de vierde en vijfde query wordt
+onderzocht hoe vaak in een wh-vraag of relatieve bijzin het
+wh-element, dan wel de woordgroep die het relatieve voornaamwoord
+bevat een rol speelt in de hoofdzin (lokaal, 4) dan wel in een ingebedde
+bijzin (niet lokaal, 5).
+<p>
+<table>
+<tr><td>(1)<td>De kinderen geloven nog in Sinterklaas</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(2)<td>Sinterklaas keurden ze geen blik waardig</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(3)<td>Wie denk je dat ik tegenkwam?</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(4)<td>Welke procedure moet worden gevolgd?</tr>
+<tr><td>&nbsp;<td>&nbsp;</tr>
+<tr><td>(5)<td>Ze keek alleen naar wat ze dacht dat het Amerikaanse belang was</tr>
+</table>
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock15">
+
+<a href="javascript:alles(123, 128)">alles</a> &mdash;
+<a href="javascript:niets(123, 128)">niets</a> &mdash;
+<a href="javascript:omkeren(123, 128)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i123" id="i123" value="t">
+  <td><a href="javascript:vb(123)">vb</a>
+  <td><label for="i123">np-topic is subject</label>
+<tr>
+  <td><input type="checkbox" name="i124" id="i124" value="t">
+  <td><a href="javascript:vb(124)">vb</a>
+  <td><label for="i124">np-topic is geen subject</label>
+<tr>
+  <td><input type="checkbox" name="i125" id="i125" value="t">
+  <td><a href="javascript:vb(125)">vb</a>
+  <td><label for="i125">topic is niet lokaal</label>
+<tr>
+  <td><input type="checkbox" name="i126" id="i126" value="t">
+  <td><a href="javascript:vb(126)">vb</a>
+  <td><label for="i126">lokale extractie</label>
+<tr>
+  <td><input type="checkbox" name="i127" id="i127" value="t">
+  <td><a href="javascript:vb(127)">vb</a>
+  <td><label for="i127">niet-lokale extractie</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock16')">Parser succes</a>
+<a href="javascript:info('#h16')" class="spodi">?</a>
+<div id="h16" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Parser succes</h4>
+Dit deel werkt niet voor handmatig geannoteerde corpora.
+<p>
+De query telt hoevaak de parser een volledige analyse van de
+zin heeft kunnen uitvoeren (dus zonder woorden over te slaan of
+fragmenten te combineren).
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock16">
+
+<a href="javascript:alles(128, 129)">alles</a> &mdash;
+<a href="javascript:niets(128, 129)">niets</a> &mdash;
+<a href="javascript:omkeren(128, 129)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i128" id="i128" value="t">
+  <td><a href="javascript:vb(128)">vb</a>
+  <td><label for="i128">volledige parse</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock17')">Parser succes: geparste delen</a>
+<a href="javascript:info('#h17')" class="spodi">?</a>
+<div id="h17" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Parser succes: geparste delen</h4>
+Dit deel werkt niet voor handmatig geannoteerde corpora.
+<p>
+Deze afdeling onderzoekt hoe goed de parser in staat was om de
+zin te parsen. Indien de parser geen gehele parse kan maken dan
+worden de grootste fragmenten waarvoor wel een parse was gevonden
+gecombineerd. Ook kan de parser onder bepaalde voorwaarden
+woorden overslaan. De queries tellen hoe vaak geen enkel fragment
+werd gevonden, dan wel precies één fragment, twee fragmenten,
+drie fragmenten, of vier of meer fragmenten. Indien de parse
+uit precies één fragment bestaat kan het toch zijn dat er
+geen sprake is van een volledige parse indien bijvoorbeeld
+een woord in de zin werd overgeslagen om tot dat fragment te
+komen.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock17">
+
+<a href="javascript:alles(129, 134)">alles</a> &mdash;
+<a href="javascript:niets(129, 134)">niets</a> &mdash;
+<a href="javascript:omkeren(129, 134)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i129" id="i129" value="t">
+  <td><a href="javascript:vb(129)">vb</a>
+  <td><label for="i129">geen enkel deel is geparst</label>
+<tr>
+  <td><input type="checkbox" name="i130" id="i130" value="t">
+  <td><a href="javascript:vb(130)">vb</a>
+  <td><label for="i130">parse bestaat uit één deel</label>
+<tr>
+  <td><input type="checkbox" name="i131" id="i131" value="t">
+  <td><a href="javascript:vb(131)">vb</a>
+  <td><label for="i131">parse bestaat uit twee losse delen</label>
+<tr>
+  <td><input type="checkbox" name="i132" id="i132" value="t">
+  <td><a href="javascript:vb(132)">vb</a>
+  <td><label for="i132">parse bestaat uit drie losse delen</label>
+<tr>
+  <td><input type="checkbox" name="i133" id="i133" value="t">
+  <td><a href="javascript:vb(133)">vb</a>
+  <td><label for="i133">parse bestaat uit vier of meer losse delen</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock18')">Parser success: overgeslagen woorden</a>
+<a href="javascript:info('#h18')" class="spodi">?</a>
+<div id="h18" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Parser success: overgeslagen woorden</h4>
+Dit deel werkt niet voor handmatig geannoteerde corpora.
+<p>
+Deze afdeling onderzoekt hoe goed de parser in staat was om de
+zin te parsen. Indien de parser geen gehele parse kan maken dan
+worden de grootste fragmenten waarvoor wel een parse was gevonden
+gecombineerd. Ook kan de parser onder bepaalde voorwaarden
+woorden overslaan. Deze queries tellen hoeveel woorden door de
+parser werden overgeslagen voor het bereiken van de beste parse.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock18">
+
+<a href="javascript:alles(134, 139)">alles</a> &mdash;
+<a href="javascript:niets(134, 139)">niets</a> &mdash;
+<a href="javascript:omkeren(134, 139)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i134" id="i134" value="t">
+  <td><a href="javascript:vb(134)">vb</a>
+  <td><label for="i134">geen enkel woord is overgeslagen</label>
+<tr>
+  <td><input type="checkbox" name="i135" id="i135" value="t">
+  <td><a href="javascript:vb(135)">vb</a>
+  <td><label for="i135">een van de woorden is overgeslagen</label>
+<tr>
+  <td><input type="checkbox" name="i136" id="i136" value="t">
+  <td><a href="javascript:vb(136)">vb</a>
+  <td><label for="i136">twee van de woorden zijn overgeslagen</label>
+<tr>
+  <td><input type="checkbox" name="i137" id="i137" value="t">
+  <td><a href="javascript:vb(137)">vb</a>
+  <td><label for="i137">drie van de woorden zijn overgeslagen</label>
+<tr>
+  <td><input type="checkbox" name="i138" id="i138" value="t">
+  <td><a href="javascript:vb(138)">vb</a>
+  <td><label for="i138">vier of meer van de woorden zijn overgeslagen</label>
+</table></div></div>
+
+<div class="spodblock">
+<a href="javascript:hider('spodblock19')">Onbekende woorden</a>
+<a href="javascript:info('#h19')" class="spodi">?</a>
+<div id="h19" class="submenu a9999">
+  <div class="queryhelp">
+    <h4>Onbekende woorden</h4>
+Dit deel werkt niet voor handmatig geannoteerde corpora.
+<p>
+De parser kent een heel scale aan heuristieken om voor woorden die
+niet in het woordenboek staan toch een woordsoort toe te kennen.
+In deze afdeling wordt onderzocht hoe vaak zulke onbekende woorden
+voorkwamen, en op welke manier onbekende woorden alsnog werden
+behandeld. Eerst wordt het totaal aantal woorden gegeven,
+gevolgd door het aantal woorden dat in het woordenboek stond.
+De derde query geeft het aantal onbekende woorden terug.
+De drie volgende queries geven vervolgens aan hoevaak een onbekend
+woord als samenstelling werd gezien, of als naam (maar niet uit
+de namenlijst) of op een nog andere manier werden behandeld.
+  </div>
+</div>
+
+<div class="spodblockinner hide" id="spodblock19">
+
+<a href="javascript:alles(139, 145)">alles</a> &mdash;
+<a href="javascript:niets(139, 145)">niets</a> &mdash;
+<a href="javascript:omkeren(139, 145)">omkeren</a>
+<p>
+<table class="breed"><tr>
+  <td><input type="checkbox" name="i139" id="i139" value="t">
+  <td><a href="javascript:vb(139)">vb</a>
+  <td><label for="i139">&#34;alle&#34; woorden (nodes met attribuut @his)</label>
+<tr>
+  <td><input type="checkbox" name="i140" id="i140" value="t">
+  <td><a href="javascript:vb(140)">vb</a>
+  <td><label for="i140">woorden uit het woordenboek of de namenlijst</label>
+<tr>
+  <td><input type="checkbox" name="i141" id="i141" value="t">
+  <td><a href="javascript:vb(141)">vb</a>
+  <td><label for="i141">woorden niet direct uit het woordenboek</label>
+<tr>
+  <td><input type="checkbox" name="i142" id="i142" value="t">
+  <td><a href="javascript:vb(142)">vb</a>
+  <td><label for="i142">woorden herkend als samenstelling</label>
+<tr>
+  <td><input type="checkbox" name="i143" id="i143" value="t">
+  <td><a href="javascript:vb(143)">vb</a>
+  <td><label for="i143">woorden herkend als naam (maar niet uit namenlijst)</label>
+<tr>
+  <td><input type="checkbox" name="i144" id="i144" value="t">
+  <td><a href="javascript:vb(144)">vb</a>
+  <td><label for="i144">onbekende woorden die niet als samenstelling of naam werden herkend</label>
+</table></div></div>
+<div class="spod"></div>
+<div id="spodfoot"><div id="spodinfoot">
+<div>
+hergebruiken<br>
+<button type="button" disabled onclick="optload(1)" id="op1">1</button><button type="button" disabled onclick="optload(2)" id="op2">2</button><button type="button" disabled onclick="optload(3)" id="op3">3</button><br>
+<button type="button" disabled onclick="optload(4)" id="op4">4</button><button type="button" disabled onclick="optload(5)" id="op5">5</button><button type="button" disabled onclick="optload(6)" id="op6">6</button>
+</div>
+<div>
+bewaren<br>
+<button type="button" onclick="optsave(1)">1</button><button type="button" onclick="optsave(2)">2</button><button type="button" onclick="optsave(3)">3</button><br>
+<button type="button" onclick="optsave(4)">4</button><button type="button" onclick="optsave(5)">5</button><button type="button" onclick="optsave(6)">6</button>
+</div>
+uitvoer: <select name="out">
+<option value="html">HTML</option>
+<option value="text">Teksttabel</option>
+<option value="tbl">Gedetailleerde tabel</option>
+<option value="tbllen">Gedetailleerde tabel, inclusief lengtes</option>
+<option value="tbls">Gedetailleerde tabel, inclusief zinnen</option>
+<option value="tbllens">Gedetailleerde tabel, inclusief lengtes en zinnen</option>
+</select>
+<p>
+<input type="submit" value="verzenden">
+</div></div>
+</form>
+<script type="text/javascript"><!--
+for (var n = 1; n < 7; n++) {
+  var storageContent = localStorage.getItem("paqu-spod-" + n);
+  if (storageContent !== undefined) {
+    var d = JSON.parse(storageContent);
+    if (d && d.length > 0) {
+      document.getElementById('op'+n).disabled = false;
+    }
+  }
+}
+//--></script>
+</body></html>
+
