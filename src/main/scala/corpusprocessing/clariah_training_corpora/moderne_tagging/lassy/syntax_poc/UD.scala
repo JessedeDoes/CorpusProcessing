@@ -1,3 +1,5 @@
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
+
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.QueryTests
 
 import scala.collection.immutable
