@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, lassy_small}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.luchtfietsen.{alpino, basic, lassy_small}
 import sext.SextAnyTreeString
 
 import scala.xml.{Node, XML}
@@ -21,7 +21,7 @@ object RelQueryTests {
     println("### results: " + getNResults(searchResult))
     // println(searchResult)
     val hits = (searchResult \\ "hit").map(RelHit(_))
-    hits.take(3).foreach(h => {
+    hits.take(50).foreach(h => {
       println("----------------------------")
       println(h.words.mkString(" "))
       h.relations.foreach(println)
@@ -60,7 +60,11 @@ object RelQueryTests {
   val anySource = rel(spanMode = "'source'")
   val er = rel("'dep::advmod'")   ∩ token("[lemma='er']")
 
+  val z = rel("'dep::nsubj'") ∩ token("[lemma='wie|wat|waarom|hoe']")
+
   val relQueries: Map[String, RelationOrToken] = Map(
+    "z" -> z,
+    "dinges" -> rel().__ (rel("_").__(z)),
     "q0" -> q0,
     "q1" -> token("[pos='VERB']") ∩ q0,
     "q2" -> rspan(rel("'dep::nobj'"), "'source'") ∩ q0,
@@ -86,7 +90,7 @@ object RelQueryTests {
   )
   def main(args: Array[String])  = {
 
-    // relQueries.foreach({case (n, q) => testRelQuery(n,q) })
-    relQueriesDirect.foreach({case (n, q) => testRelQueryDirect(n,q) })
+     relQueries.foreach({case (n, q) => testRelQuery(n,q) })
+    //relQueriesDirect.foreach({case (n, q) => testRelQueryDirect(n,q) })
   }
 }
