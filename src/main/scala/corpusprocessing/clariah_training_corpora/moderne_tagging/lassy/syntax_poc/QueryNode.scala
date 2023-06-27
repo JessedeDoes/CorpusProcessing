@@ -101,9 +101,6 @@ case class QueryNode(headProperties : TokenQuery,
 
     val childrenToCQL = children.map(x => x.toPseudoCQL(depth + 1)).map(x => x).mkString(", ")
 
-
-
-
     val stukjes_niet: String = {
       val p = and_not.map(x => x.toPseudoCQL(depth + 2)).map(x => x).mkString (", ")
       if (p.isEmpty) "" else s"\n$indent\t!($p\n$indent\t)"
