@@ -2,7 +2,9 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_p
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.RelQueryTests
 
+import java.io.PrintWriter
 import scala.collection.immutable
+import scala.xml._
 
 object UD
 {
@@ -73,13 +75,31 @@ object UD
   "vocative" -> "vocative",
   "xcomp" -> "open clausal complement")
 
-  def main(args: Array[String])  = {
-    relations.foreach({case (rel, gloss)  => {
+  val dutchHTML = XML.load("doc/ud_rel.html")
+
+  val relsFromHTML = (dutchHTML \\ "li").flatMap(l => {
+    val txt = l.text
+    val rels = (l \ "strong").text.trim.split("\\s*,\\s*")
+    rels.map(r => <tr><td>[] --{r}--> []</td><td>{l.child}</td></tr>)
+   }
+  )
+
+  val p = new scala.xml.PrettyPrinter(80, 4)
+  val table = <table>{relsFromHTML}</table>
+
+  def tryAll() = {
+    relations.foreach({ case (rel, gloss) => {
       val z = rel
       val q = s"rel('dep::$rel')"
       val n = s"$rel ($gloss)"
-      RelQueryTests.testRelQueryDirect(n,q)
-    }})
+      RelQueryTests.testRelQueryDirect(n, q)
+    }
+    })
+  }
+  def main(args: Array[String])  = {
+    val pw = new PrintWriter("/tmp/table.html")
+    pw.println(p.format(table))
+    pw.close()
   }
 }
   
