@@ -54,7 +54,7 @@ case class Quotation(cit: Node, s: Sense, partition: String = "train") {
     } else x
   }
 
-  lazy val q = (cit \ "q").flatMap(
+  lazy val q = (cit \ "quote").flatMap(
     q =>
       updateElement5(
         {
@@ -80,7 +80,9 @@ case class Sense(s: Node, e: Entry) {
   if (id == "UNK") {
     // Console.err.println(s)
   }
-  def quotations = (s \ "cit").filter(x => (x \\ "q" \\ "w").nonEmpty).map(Quotation(_, this))
+  def quotations = (s \ "cit").filter(x => (x \\ "quote" \\ "w").nonEmpty).map(Quotation(_, this))
+  // println((s \\ "cit").headOption)
+  //println(quotations)
 }
 
 case class Entry(e0: Node) {
@@ -92,7 +94,7 @@ case class Entry(e0: Node) {
   lazy val quotations: immutable.Seq[Quotation] = senses.flatMap(_.quotations)
   lazy val usableQuotations: immutable.Seq[Quotation] = quotations.filter(_.hasItAll)
 
-  lazy val pos = ((e \ "grampGrp") ++ (e \ "dictScrap" \ "gramGrp")).flatMap(x => (x \ "pos").map(_.text)).mkString(" ")
+  lazy val pos = ((e \ "gramGrp") ++ (e \ "dictScrap" \ "gramGrp")).flatMap(x => (x \ "pos").map(_.text)).mkString(" ")
 
   def partition(l: Seq[Quotation], pTest: Double, pDev: Double): Seq[Quotation] = {
     val l1 = scala.util.Random.shuffle(l)
@@ -143,15 +145,31 @@ object quotationCorpus {
   def f(x: String) = new File(x)
   val outDir = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenCorpus"
 
-  def main(args: Array[String]): Unit = {
+  def doMNW(): Unit = {
+    val taggedMNW="/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/Tagged/"
+    val output = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/CitatenTDN/"
+    utils.ProcessFolder.processFolder(
+      f(taggedMNW),
+      f(output),
+      {
+        case (inputTEI, outputQuotations) =>
+          val x = extractQuotations(inputTEI)
+          prettyPrint(new PrintWriter(outputQuotations), x)
+      },parallel = false)
+  }
+
+  def doWNT() = {
     utils.ProcessFolder.processFolder(
       f("/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/Tagged"),
       f(s"/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/${if (forElexis) "CitatenCorpus" else "CitatenTDN2"}"),
       {
-        case (inputTEI,outputQuotations) =>
+        case (inputTEI, outputQuotations) =>
           val x = extractQuotations(inputTEI)
           prettyPrint(new PrintWriter(outputQuotations), x)
       })
+  }
+  def main(args: Array[String]): Unit = {
+    doMNW();
   }
 }
 case class Omspelling(id: Int, modern_lemma: String, historical_lemma: String, spelling_id: String) {
@@ -223,81 +241,7 @@ object addHilexPos {
 }
 
 
-object sampleQuotationsPerCentury {
 
-  val fromDir  = addHilexPos.enriched
-  val toDir = fromDir.replaceAll("/[^/]*/?$", "/CenturySelections")
-  new File(toDir).mkdir()
-
-  def allQuotations() = new File(fromDir).listFiles.iterator.take(60).flatMap(x => XML.loadFile(x) \\ "cit")
-
-  lazy val quotationDates: Map[String, (Double, Int)] = allQuotations().map(q => {
-    val id: String = getId(q)
-    val (f,t) = (q \ "date").map(d => (d \ "@atLeast").text -> (d \ "@atMost").text).map({case (f,t) => (f.toInt, t.toInt)}).head
-    val average = (f + t) / 2.0
-    val nWords = (q \\ "w").size
-    id -> (average,nWords)
-  }).toMap
-
-  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000, 16 -> 40000, 15 -> 40000)
-  val wordsPerDecennium = wordsPerCentury.mapValues( _ / 10)
-
-  lazy val perDecennium: Map[Double, List[(String, (Double, Int))]] = quotationDates.groupBy({case (id,(d,n)) => 10 * Math.floor(d/10)}).mapValues(l => Random.shuffle(l).toList)
-
-  def takeNWords(s : Seq[(String, (Double, Int))], n: Int) = {
-
-    def add(total: Int, opgebouwd: Seq[(String, (Double, Int))], item: (String, (Double, Int))): (Int, Seq[(String, (Double, Int))]) = {
-      if (total >= n) total -> opgebouwd else  total + item._2._2 -> (opgebouwd :+ item)
-    }
-
-    val enhanced: (Int, Seq[(String, (Double, Int))]) = s.foldLeft(0 -> Seq[(String, (Double, Int))]())({case ((t,l), item) => add(t,l,item)})
-    enhanced
-  }
-
-  def selectIdsForCentury(c: Int) = {
-     val plukjes: Seq[(Double, Set[String])] = perDecennium.filter{ case (d, l) => d >= 100*(c-1) && d < 100* (c)}.toList.sortBy({case (d,l) => d}).map({ case (d, l) =>
-
-        val (wc, l1) = takeNWords(l, wordsPerDecennium(c))
-        println(s"$d ($wc)  -->  selecteer ${l1.size} van de  ${l.size} citaten")
-        d -> l1.map(_._1).toSet
-    })
-    plukjes.map(_._2).flatten.toSet
-  }
-
-  def fixQID(n: Node)  = {
-    val e = n.asInstanceOf[Elem]
-    PostProcessXML.updateElement(e, _.label=="q", q => {
-      val cid = getId(e)
-      q.copy(attributes = q.attributes.filter(_.key != "id").append(new PrefixedAttribute("xml", "id", "q_" + cid, Null)))
-    })
-  }
-
-  /*
-     Selecteer eerst een set citaatIds (selectIdsForCentury)
-     Haal daarna de geselecteerde citaten eruit
-   */
-  def selectCentury(c: Int)  = {
-    val quotation_ids = selectIdsForCentury(c)
-    val selectedQuotations: Iterator[Node] = allQuotations().filter(q => quotation_ids.contains(getId(q))).map(fixQID)
-    <TEI>
-      <text>
-        <body>
-            <div>
-              {selectedQuotations}
-            </div>
-          </body>
-        </text>
-    </TEI>
-   }
-
-  def main(args: Array[String])  = {
-    // perDecennium.foreach({case (d,l) => println(d -> l.take(5))})
-     List(15,16).foreach(c => {
-        val corpusje = selectCentury(c)
-        XML.save(toDir + "/"  + s"quotations_$c.xml", corpusje, enc="UTF-8")
-     })
-  }
-}
 
 /*
             <div lemma="AANZWOEGEN" entry-id="M001105">

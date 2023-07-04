@@ -1,0 +1,38 @@
+(
+(^--> 2:[pos="VERB" & deprel="root"]
+    --nsubj--> 1:[];
+    --obj--> 3:[])
+|
+(
+^--> 1:[pos="VERB" & deprel="root"] 
+    --nsubj--> 2:[];
+    --obj--> 3:[]
+) 
+|
+(
+^--> 3:[pos="VERB" & deprel="root"]
+    --nsubj--> 1:[];
+    --obj--> 2:[];
+    !--aux--> []
+)
+|
+
+(^--> 2:[pos="VERB" & deprel="root"]
+    --nsubj--> 3:[];
+    --obj--> 1:[])
+|
+(
+^--> 1:[pos="VERB" & deprel="root"]
+    --nsubj--> 3:[];
+    --obj--> 2:[]
+) 
+|
+(
+^--> 3:[pos="VERB" & deprel="root"]
+    --nsubj--> 2:[];
+    --obj--> 1:[];
+    !--aux--> []
+)
+)
+:: start(1) < start(2) & start(2) < start(3)
+

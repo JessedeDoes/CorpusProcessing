@@ -15,8 +15,8 @@ import org.json4s.jackson.Serialization.write
 
 
 trait tei_to_huggingface_trait {
-
-  case class Sentence(
+  trait Sentence
+  case class PimpedSentence(
                        id: String,
                        tokens: List[String],
                        tags: List[String],
@@ -26,8 +26,15 @@ trait tei_to_huggingface_trait {
                        hilex_pos : List[String]  = List(),
                        file: String = "unknown",
                        partition: String = "unknown"// pas op andere dingen hebben dit niet
-                     )
+                     ) extends Sentence
 
+  case class BasicSentence(
+                             id: String,
+                             tokens: List[String],
+                             tags: List[String],
+                             lemmata: List[String],
+                             xml_ids: List[String] = List(),
+                           ) extends Sentence
   val sentence_element="q"
   val pos_attribute = "@pos"
   val chunkSize= 50
@@ -35,6 +42,8 @@ trait tei_to_huggingface_trait {
   val split_test_train_on_document_level = false
   val output_folder= "/tmp"
   val output_prefix = "tei_to_huggingface"
+  val enhance : Boolean = false
+  val addStuff: Boolean = false
 
   implicit val formats = DefaultFormats
 
@@ -80,8 +89,9 @@ trait tei_to_huggingface_trait {
 
     // println(s.asInstanceOf[Elem].copy(child=Seq()))
     // println(s.attributes.toString + "->" + partition)
-    val r = Sentence("",tokens, enhancedTags, lemmata, xml_ids, file=f,relevances=relevances,hilex_pos=hilex_pos,partition = partition)
-
+    val r = if (addStuff)
+      PimpedSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids, file=f, relevances=relevances,hilex_pos=hilex_pos,partition = partition)
+    else BasicSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids)
     r
   }
 
@@ -117,7 +127,10 @@ trait tei_to_huggingface_trait {
     //val words = (d \\ "w").size
     //println("Sentences:" + s0.size  + " Words: " + words)
 
-    val s1: Iterator[(Sentence, Boolean)] = sampled.zipWithIndex.map({case ((s,b),i) => s.copy(id=i.toString) -> b})
+    val s1: Iterator[(Sentence, Boolean)] = sampled.zipWithIndex.map({
+      case ((s:PimpedSentence,b),i) => s.copy(id=i.toString) -> b
+      case ((s:BasicSentence,b),i) => s.copy(id=i.toString) -> b
+    })
     val jsons: Iterator[(String, Boolean)] = s1.map({case (s,b) => write(s) -> b})
 
     jsons.foreach({case (json,b) => if (b) pwTest.println(json) else pwTrain.println(json)})
@@ -173,18 +186,33 @@ object tei_to_huggingface extends tei_to_huggingface_trait {
 
 object clariah_19 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/19_thomas/"
-  override val  output_folder = "/tmp/"
+  override val output_folder = "/tmp/"
   override val output_prefix = "nederval_19"
+}
+
+object clariah_16 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/16/CobaltServeExport/"
+  override val output_folder = "/tmp/"
+  override val output_prefix = "nederval_16"
+}
+
+object clariah_15 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
+  override val output_folder = "/tmp/"
+  override val output_prefix = "nederval_15"
 }
 
 object gtbcit_to_huggingface extends tei_to_huggingface_trait {
   val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
-  override  def always_sampled(s: Sentence) = s.hilex_pos.indices.exists(i => s.relevances(i)   == "yes" && s.hilex_pos(i).matches(".*(PD|CON|ADP|NUM|INT)"))
+  override  def always_sampled(s1: Sentence) = {
+    val s = s1.asInstanceOf[PimpedSentence]
+    s.hilex_pos.indices.exists(i => s.relevances(i) == "yes" && s.hilex_pos(i).matches(".*(PD|CON|ADP|NUM|INT)"))
+  }
 
   def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
 
-  override def decentSentence(s: Sentence, b: Boolean)  = s.hilex_pos.exists(x => x != "unk")
+  override def decentSentence(s: Sentence, b: Boolean)  = s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
 
   def propagateHilexPos(d: Elem): Elem = {
     PostProcessXML.updateElement(d,_.label=="cit", cit =>  {

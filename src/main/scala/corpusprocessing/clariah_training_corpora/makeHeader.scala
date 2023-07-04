@@ -56,7 +56,7 @@ object readOldPartitions {
 import readOldPartitions._
 
 object tei_2_json extends tei_to_huggingface_trait {
-  override def sample(sentences: Iterator[(tei_2_json.Sentence, Boolean)], sample_rate: Double, rate_test_train: Double): Iterator[(tei_2_json.Sentence, Boolean)] = sentences.map({case (s,b) => (s, s.partition.contains("test"))})
+   // override def sample(sentences: Iterator[(tei_2_json.Sentence, Boolean)], sample_rate: Double, rate_test_train: Double): Iterator[(tei_2_json.Sentence, Boolean)] = sentences.map({case (s,b) => (s, s.partition.contains("test"))})
 
 }
 
