@@ -2,7 +2,7 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{Sentence, cgn_tdn}
 
-case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
+case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq()) {
 
   lazy val sentencePlain = tokens.map(_.FORM).mkString(" ")
   def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>
@@ -94,4 +94,23 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken]) {
   // /mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/dpc-bal-001236-nl-sen/dpc-bal-001236-nl-sen.p.10.s.3
   lazy val filename = sent_id.replaceAll(".*/","").replaceAll("\\.p\\..*","")
   lazy val paragraph  = sent_id.replaceAll(".*/","").replaceAll("\\.s\\..*","")
+
+  val deprel_column = 7
+
+  def patchLines() = {
+    val newLines = lines.map(l => {
+      val fields = l.split("\t")
+      if (fields.size > deprel_column) {
+        val id = fields(0)
+        val oldRel = fields(deprel_column)
+        val newRel = tokens.find(t => t.ID == id).map(_.DEPREL).getOrElse("rel_not_found_for " + id + "<" + oldRel + ":" +  tokens.size)
+        val newRelHead = fields(deprel_column - 1) + ":" + newRel
+        val newFields = fields.patch(deprel_column, Seq(newRel, newRelHead), 2)
+        newFields.mkString("\t")
+      } else {
+        l
+      }
+    })
+    this.copy(lines = newLines)
+  }
 }
