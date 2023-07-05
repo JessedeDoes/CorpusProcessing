@@ -18,15 +18,16 @@ object CONLL {
   }
 
   def convertAndParseFiles(dir: String, language: String="Dutch")  = {
-    val lines: Stream[String] = Seq("find", dir, "-name", "*.xml") #| Seq("/home/jesse/go/bin/alud")  lineStream;
+    val lines: Stream[String] = Seq("find", dir, "-name", "*.xml") #| Seq("/home/jesse/go/bin/alud", "-e")  lineStream;
     parse(lines, language)
   }
 
   def convertAndParseFilesAndKeepAlpinoLink(dir: String, language: String = "Dutch", max: Int = 100) = {
 
-    val lines: Stream[String] = Seq("find", dir, "-name", "*.xml") #| Seq("head", s"-$max") #| Seq("/home/jesse/go/bin/alud") lineStream;
+    val lines: Stream[String] = Seq("find", dir, "-name", "*.xml") #| Seq("head", s"-$max") #| Seq("/home/jesse/go/bin/alud", "-e") lineStream;
     val fileNames = Seq("find", dir, "-name", "*.xml")  lineStream;
     val alpinos = fileNames.take(max).map(f => {
+      println(".")
       val id = new java.io.File(f).getName.replaceAll(".xml$","")
       id -> XML.load(f)
     }).toMap
@@ -59,7 +60,7 @@ object CONLL {
   val lassyAll = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall//Treebank/"
   def main(args: Array[String]): Unit  = {
     val pw = new PrintWriter("/tmp/patched.txt")
-    convertAndParseFilesAndKeepAlpinoLink(lassyAll,max = 3000).foreach(x => {
+    convertAndParseFilesAndKeepAlpinoLink(lassyAll,max = 100000).foreach(x => {
       val patched = x.enrichUD;
       if (patched.tokens.exists(t => Set("obl:me", "obl:arg").contains(t.DEPREL))) {
         println(patched.conll)
