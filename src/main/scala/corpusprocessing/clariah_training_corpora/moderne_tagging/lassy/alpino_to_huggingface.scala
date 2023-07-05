@@ -1,5 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{UdSentence, UdToken}
 import grouping.groupWithFirst
 import org.json4s._
 import org.json4s.jackson.Serialization.write
@@ -16,22 +17,7 @@ object alpino_to_huggingface {
 
   implicit val formats = DefaultFormats
 
-  def parseFile(f: java.io.File): Seq[UdSentence] = {
-    val lines = io.Source.fromFile(f).getLines.toStream
-    val language = f.getName.replaceAll("_.*","")
-    val grouped = groupWithFirst[String](lines, x=> x.startsWith("# sent_id =") || x.startsWith("# S-ID")) // S-ID in Japanese KTC
-
-    val sentences = grouped.flatMap(g => {
-      val sent_id = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]","").replaceAll("\\s+",""))
-
-      sent_id.map(x => {
-        val text =  g.find(_.startsWith("# text")).map(_.replaceAll(".*=","").trim)
-        val tokens = g.filter(_.matches("[0-9].*")).map(_.split("\\t").toList).map(l => UdToken(l(0),l(1),l(2),l(3),l(4),l(5),l(6),l(7),l(8),l(9), x, language))
-        val sentence = UdSentence(x, language, tokens)
-        sentence })
-    })
-    sentences
-  }
+  def parseFile(f: java.io.File)  = conll_u.CONLL.parseFile(f)
 
   def makeTEI(f: java.io.File, sentences: Seq[UdSentence]) = {
     val documents: Seq[(String, Array[(UdSentence, Int)])] = grouping.groupBy[UdSentence,String](sentences, x => x.filename)
@@ -67,7 +53,7 @@ object alpino_to_huggingface {
   def main(args: Array[String]): Unit = {
 
     val f = new java.io.File(if (args.size > 0) args(0) else lassy_training_file)
-    val udsents :  Seq[UdSentence] = parseFile(f)
+    val udsents :  Seq[UdSentence] = conll_u.CONLL.parseFile(f)
 
     val sents: Seq[Sentence] = udsents.map(_.sent)
     val s1: Seq[Sentence] = sents.zipWithIndex.map({ case (s, i) => s.copy(id = i.toString) })

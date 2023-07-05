@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
 case class UdToken(ID: String, FORM: String, LEMMA: String, UPOS: String, XPOS: String, FEATS: String, HEAD: String, DEPREL: String, DEPS: String, MISC: String, sent_id: String, language: String) {
 

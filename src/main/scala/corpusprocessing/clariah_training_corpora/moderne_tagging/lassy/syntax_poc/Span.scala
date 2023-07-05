@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{UdSentence, UdToken}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{UdSentence, UdToken}
 
 import scala.util.{Success, Try}
 

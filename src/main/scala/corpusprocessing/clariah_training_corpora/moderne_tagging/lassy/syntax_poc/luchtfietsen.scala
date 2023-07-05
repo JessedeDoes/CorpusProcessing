@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc
 
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{UdSentence, alpino_to_huggingface, syntax_poc}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{alpino_to_huggingface, syntax_poc}
 
 import java.io.File
 import scala.util.{Success, Try}
@@ -8,6 +8,7 @@ import scala.util.{Success, Try}
 
 import Queries._
 import Spans._
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.UdSentence
 
 import sext._
 
