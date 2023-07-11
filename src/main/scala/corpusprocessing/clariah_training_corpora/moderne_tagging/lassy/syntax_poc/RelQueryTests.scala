@@ -88,9 +88,9 @@ object RelQueryTests {
     "q7" -> s"(rel('dep::csubj') | rel('dep::ccomp')) & rspan((rel('_') & $vraagwoorden), 'source')",
     "q8" -> s"rel('dep::ccomp') & ($vraagwoorden)"
   )
-  def main(args: Array[String])  = {
+  def main(args: Array[String])  : Unit = {
 
-     relQueries.foreach({case (n, q) => testRelQuery(n,q) })
-    //relQueriesDirect.foreach({case (n, q) => testRelQueryDirect(n,q) })
+     //relQueries.foreach({case (n, q) => testRelQuery(n,q) })
+    relQueriesDirect.foreach({case (n, q) => testRelQueryDirect(n,q) })
   }
 }
