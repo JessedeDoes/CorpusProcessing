@@ -21,7 +21,8 @@ public final class QueryExample {
    */
 
   public static void main(final String... args) throws IOException {
-    String query = "for $n in //alpino_ds[.//node[@rel='pc']] return <hallo>{$n//sentence} <snippet>{$n//node[@rel='pc']//node[./@word]/ud}</snippet> <snappet>{for $w in $n//node[@rel='pc']//node[./@word] return <w>{$w/@word}</w>}</snappet></hallo>";
+    String query = "for $n in //alpino_ds[.//node[@rel='pc']] return " +
+            "<result>{$n//sentence} <snippet>{$n//node[@rel='pc']//node[./@word]/ud}</snippet> <snappet>{for $w in $n//node[@rel='pc']//node[./@word] return <w>{$w/@word}</w>}</snappet></result>";
     String database = "LassyEnhanced";
     runQuery(database, query, "/tmp/out.xml");
   }
@@ -35,7 +36,7 @@ public final class QueryExample {
       session.execute("open " + database);
 
       java.io.PrintWriter pw = new PrintWriter(toFile);
-
+      pw.println("<results>");
       try(Query query = session.query(input)) {
         // loop through all results
         while(query.more()) {
@@ -47,6 +48,7 @@ public final class QueryExample {
         // print query info
         System.err.println(query.info());
       }
+      pw.println("</results>");
       pw.close();
     }
   }
