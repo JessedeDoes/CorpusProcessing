@@ -21,7 +21,7 @@ public final class QueryExample {
    */
 
   public static void main(final String... args) throws IOException {
-    String query = "for $n in //alpino_ds[.//node[@rel='pc']] return <hallo>{$n//sentence} <snippet>{$n//node[@rel='pc']//node[./@word]}</snippet></hallo>";
+    String query = "for $n in //alpino_ds[.//node[@rel='pc']] return <hallo>{$n//sentence} <snippet>{$n//node[@rel='pc']//node[./@word]/ud}</snippet> <snappet>{for $w in $n//node[@rel='pc']//node[./@word] return <w>{$w/@word}</w>}</snappet></hallo>";
     String database = "LassyEnhanced";
     runQuery(database, query, "/tmp/out.xml");
   }
