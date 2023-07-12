@@ -1,0 +1,140 @@
+id	label	categorie	omschrijving	xpath	link_paqu	UD query	opmerking	Lassy UD
+i6	pos	Attributen	pos	//node [@pos]	PaQu			
+i7	postag	Attributen	postag	//node [@postag]	PaQu			
+i8	pt	Attributen	pt	//node [@pt]	PaQu			
+i9	smain	Hoofdzinnen	mededelende hoofdzinnen	//node[@cat="smain"]	PaQu	^--> [] --punct--> [word="?"]	In UD heb je dat niet direct. Toevoegen als subtype van root (root:interrogative, etc)?	lassy
+i10	whq	Hoofdzinnen	vraagzinnen (wh)	//node[@cat="whq"]	PaQu	[] --punct--> [word="?"]		
+i11	janee	Hoofdzinnen	ja/nee vragen	%PQ_janee_vragen%	PaQu	[] --punct--> [word="?"];     !---->[lemma="wat|waar|waarom|wie|wiens|wier|hoe|waaraan|waarachter|waarachteraan|waaraf|waarbeneden|waarbij|waarbinnen|waarboven|waarbovenop|waarbovenuit|waarbuiten|waardoor|waardoorheen|waarheen|waarin|waarlangs|waarlijk|waarmede|waarmee|waarna|waarnaar|waarnaartoe|waarnaast|waarnevens|waarom|waaromheen|waaromtrent|waaronder|waaronderdoor|waaronderuit|waarop|waarover|waaroverheen|waarrond|waartegen|waartoe|waartussen|waaruit|waarvan|waarvanaf|waarvandaan|waarvoor|wanneer|welk|welke"]	Dit lukt niet zo makkelijk! het vraagwoord is niet altijd directe dependent van de root. Lassy heeft expliciet @stype='ynquestion'  De macros staan in ./src/internal/file/data/macros.txt in de paqu repository, https://github.com/rug-compling/paqu	lassy
+i12	imp	Hoofdzinnen	imperatieven	//node[%PQ_imperatieven%]	PaQu	[deprel="root" & pos="VERB" & xpos=".*pv.*tgw.*ev.*" & xpos != ".*met-t.*"]     !--nsubj|csubj--> [];     !--punct-->[word="?"]	Geen imperatief in CGN tagset! Conjunctief overigens wel: [pos="VERB" &  xpos=".*conj.*"]	lassy
+i13	whsub	Bijzinnen	ingebedde vraagzinnen	%PQ_ingebedde_vraagzinnen%	PaQu	 [] --(ccomp|xcomp|csubj|acl|obj)--> [] --(advmod|nsubj|obj)--> [lemma="waarom|wat|waar|wie|hoe|waardoor|waarin|enzovoort_hier_zou_een_macro_handig_zijn"]   		lassy
+i14	ssub	Bijzinnen	finiete bijzinnen	//node[@cat='cp' and node[@rel='body' and @cat='ssub'] ]	PaQu	 [pos="VERB"] --obl--> [xpos =".*pv.*"] --> [pos="SCONJ" | lemma="wat|waar|wie|wiens|wier|hoe|waaraan|waarachter|waarachteraan|waaraf|waarbeneden|waarbij|waarbinnen|waarboven|waarbovenop|waarbovenuit|waarbuiten|waardoor|waardoorheen|waarheen|waarin|waarlangs|waarlijk|waarmede|waarmee|waarna|waarnaar|waarnaartoe|waarnaast|waarnevens|waarom|waaromheen|waaromtrent|waaronder|waaronderdoor|waaronderuit|waarop|waarover|waaroverheen|waarrond|waartegen|waartoe|waartussen|waaruit|waarvan|waarvanaf|waarvandaan|waarvoor|wanneer|welk|welke"] 		
+i15	ssubdat	Bijzinnen	finiete bijzinnen met "dat"	//node[@cat='cp' and node[@rel='cmp' and @lemma='dat'] and node[@rel='body' and @cat='ssub'] ]	PaQu	 [pos="VERB"] --obl|ccomp|csubj--> [xpos =".*pv.*"] --> [pos="SCONJ" & lemma="dat" ] 		lassy
+i16	ssubof	Bijzinnen	finiete bijzinnen met "of"	//node[@cat='cp' and node[@rel='cmp' and @lemma='of'] and node[@rel='body' and @cat='ssub'] ]	PaQu	 [pos="VERB"] --obl|ccomp|csubj--> [xpos =".*pv.*"] --> [pos="SCONJ" & lemma="of" ] 		lassy
+i17	ssubcmp	Bijzinnen	finiete bijzinnen met andere voegwoorden	//node[@cat='cp' and node[@rel='cmp' and not(@lemma=('of','dat')) ] and node[@rel='body' and @cat='ssub'] ]	PaQu	 [pos="VERB"] --obl|ccomp|csubj--> [xpos =".*pv.*"] --> [pos="SCONJ" & lemma!="^(of|dat)$" ] 		lassy
+i18	oti	Bijzinnen	infiniete bijzinnen met "om"	//node[@cat='oti']	PaQu	 []* --mark--> [lemma="om"]		lassy
+i19	otivc	Bijzinnen	infiniete bijzinnen met "om" die als complement optreden	//node[@cat="oti" and @rel="vc"]	PaQu	 []* --(xcomp|ccomp)--> []* --mark--> [lemma="om"]		lassy
+i20	otimod	Bijzinnen	infiniete bijzinnen met "om" die als bepaling optreden	//node[@cat="oti" and @rel="mod"]	PaQu	[]* --obl--> []* --mark--> [lemma="om"]		lassy
+i21	otiww	Bijzinnen	infiniete bijzinnen met "om" die als bepaling bij een werkwoord optreden	//node[@cat="oti" and ../node[@rel="hd" and @pt="ww"] ]	PaQu	 [pos="VERB"]* --obl--> []* --mark--> [lemma="om"]		lassy
+i22	otin	Bijzinnen	infiniete bijzinnen met "om" die als bepaling bij een zelfstandig naamwoord optreden	//node[@cat="oti" and ../node[@rel="hd" and @pt=("n","vnw") ] ]	PaQu	 [pos="NOUN"] --acl--> []* --mark--> [lemma="om"]		lassy
+i23	otisu	Bijzinnen	infiniete bijzinnen met "om" die als onderwerp fungeren	//node[@cat="oti" and @rel="su"]	PaQu	 [] --csubj--> []* --mark--> [lemma="om"] 		lassy
+i24	otipred	Bijzinnen	infiniete bijzinnen met "om" die als predicaat fungeren	//node[@cat="oti" and @rel="predc"]	PaQu	[pos="VERB"] --mark--> [lemma="om"];      --cop--> []		lassy
+i25	otiobc	Bijzinnen	infiniete bijzinnen met "om" die optreden met combinaties zoals "te ADJ; zo ADJ; genoeg ADJ; voldoende N"	//node[@cat="oti" and @rel="obcomp"]	PaQu	 [pos="PRON|ADJ|NOUN"]     --advcl--> ([]* --mark--> [lemma="om"]);    ----> [lemma="te|voldoende|onvoldoende|genoeg|zo"] 		lassy
+i26	tite	Bijzinnen	infiniete bijzinnen met alleen "te"	//node[@cat='ti' and not(../@cat=('oti','cp')) ]	PaQu	 [pos="VERB"]*        --obl|advcl--> []*           --mark--> [lemma="te"];          !--mark-->[lemma="om"]		lassy
+i27	ti	Bijzinnen	infiniete bijzinnen met ander voorzetsel	//node[@cat='cp' and node[@rel='body' and @cat='ti'] ]	PaQu	[pos="VERB"]*        --obl|advcl--> []*           --mark--> [lemma="te"];          --mark-->[lemma!="om|te" & pos="ADP"]		lassy
+i28	relssub	Bijzinnen	relatieve bijzinnen	%PQ_relatieve_bijzinnen%	PaQu	[] --acl:relcl--> []		lassy
+i29	whrel	Bijzinnen	free relatives	%PQ_free_relatives%	PaQu	[] --nsubj|obl|obj-->       [] --nsubj|obj|advmod|obl-->             [lemma="w.*" & xpos=".*vb.*"]		lassy
+i30	corc	Correlatieve comparatieven	totaal	%PQ_minimal_corr_comp%	PaQu	[]--parataxis-->[xpos=".*comp.*"]-->[word="hoe|deste|des"] | []--parataxis--> [pos="NOUN"] --> [xpos=".*comp.*"]-->[word="hoe|deste|des"]	Nog niet alles!	lassy
+i31	cc	Woorden met een comparatief complement	totaal	//node[@rel="hd" and ../node[@rel="obcomp"]]	PaQu	[] --advcl--> [] --mark--> [lemma="dan"]  | [lemma="zo"] --advcl--> [] --mark--> [lemma="dat|als"] 		lassy
+i32	cczo	Woorden met een comparatief complement	met als hoofd "zo"	//node[@rel="hd" and ../node[@rel="obcomp"] and @lemma="zo"]	PaQu			
+i33	cceven	Woorden met een comparatief complement	met als hoofd "even"	//node[@rel="hd" and ../node[@rel="obcomp"] and @lemma="even"]	PaQu	[lemma="even"] --advcl--> [] --mark--> [lemma="dat|als"]		lassy
+i34	ccca	Woorden met een comparatief complement	met als hoofd comparatief adjectief	//node[@rel="hd" and ../node[@rel="obcomp"] and @pt="adj" and @graad="comp"]	PaQu	[xpos=".*comp.*"] --advcl--> [] --mark--> [lemma="dan|als"]		lassy
+i35	ccdannp	Woorden met een comparatief complement	met als hoofd comparatief adjectief, gevolgd door NP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and %PQ_np%] ] and @pt="adj" and @graad="comp" ]	PaQu	[xpos=".*comp.*"] --advcl--> ([] --mark--> [lemma="dan|als"]); --nsubj-->[]		lassy
+i36	ccdanvs	Woorden met een comparatief complement	met als hoofd comparatief adjectief, gevolgd door VP of S	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (%PQ_s% or @cat=("cp","ssub") or @pt="ww")] ] and @pt="adj" and @graad="comp" ]	PaQu			
+i37	ccdanpp	Woorden met een comparatief complement	met als hoofd comparatief adjectief, gevolgd door PP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and @cat="pp"] ] and @pt="adj" and @graad="comp" ]	PaQu	[xpos=".*comp.*"] --advcl--> [pos="NOUN"]       --mark--> [lemma="dan|als"];      --case--> []		lassy
+i38	ccdanav	Woorden met een comparatief complement	met als hoofd comparatief adjectief, gevolgd door A of ADV	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (@cat=("advp","ap") or @pt=("adj","bw"))] ] and @pt="adj" and @graad="comp" ]	PaQu	[xpos=".*comp.*"] --advcl--> [pos="adj|adv"]       --mark--> [lemma="dan|als"] 		lassy
+i39	ccmm	Woorden met een comparatief complement	met als hoofd "meer", "minder"	//node[@rel="hd" and ../node[@rel="obcomp"] and @lemma=("veel","minder","weinig")]	PaQu	[lemma="veel|meer|minder|weinig"] --advcl--> []       --mark--> [lemma="dan|als"]		lassy
+i40	ccmdnp	Woorden met een comparatief complement	met als hoofd "meer", "minder", gevolgd door NP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and %PQ_np%] ] and @lemma=("veel","minder","weinig") ]	PaQu			
+i41	ccmdvs	Woorden met een comparatief complement	met als hoofd "meer", "minder", gevolgd door VP of S	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (%PQ_s% or @cat=("cp","ssub") or @pt="ww")] ] and @lemma=("veel","minder","weinig") ]	PaQu			
+i42	ccmdpp	Woorden met een comparatief complement	met als hoofd "meer", "minder", gevolgd door PP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and @cat="pp"] ] and @lemma=("veel","minder","weinig") ]	PaQu			
+i43	ccmdav	Woorden met een comparatief complement	met als hoofd "meer", "minder", gevolgd door A of ADV	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (@cat=("advp","ap") or @pt=("adj","bw"))] ] and @lemma=("veel","minder","weinig") ]	PaQu			
+i44	ccnn	Woorden met een comparatief complement	met als hoofd "niet", "niets", "ander", "anders"	//node[@rel="hd" and ../node[@rel="obcomp"] and @lemma=("niet","niets","ander","anders") ]	PaQu	[lemma="niet|niets|ander|anders"]     --advcl--> []       --mark--> [lemma="dan|als"]		lassy
+i45	ccndnp	Woorden met een comparatief complement	met als hoofd "niet", "niets", "ander", "anders", gevolgd door NP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and %PQ_np%] ] and @lemma=("niet","niets","ander","anders") ]	PaQu			
+i46	ccndvs	Woorden met een comparatief complement	met als hoofd "niet", "niets", "ander", "anders", gevolgd door VP of S	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (%PQ_s% or @cat=("cp","ssub") or @pt="ww")] ] and @lemma=("niet","niets","ander","anders") ]	PaQu			
+i47	ccndpp	Woorden met een comparatief complement	met als hoofd "niet", "niets", "ander", "anders", gevolgd door PP	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and @cat="pp"] ] and @lemma=("niet","niets","ander","anders") ]	PaQu			
+i48	ccndav	Woorden met een comparatief complement	met als hoofd "niet", "niets", "ander", "anders", gevolgd door A of ADV	//node[@rel="hd" and ../node[@rel="obcomp" and node[@rel="body" and (@cat=("advp","ap") or @pt=("adj","bw"))] ] and @lemma=("niet","niets","ander","anders") ]	PaQu			
+i49	conj	Nevenschikkingen	alle nevenschikkingen	//node[@cat="conj"]	PaQu	[] --conj--> []		lassy
+i50	crd0	Nevenschikkingen	nevenschikkingen zonder coördinator	//node[@cat="conj" and not(node[@rel="crd"]) ]	PaQu	[] --conj--> []; ! --cc--> []		lassy
+i51	crd1	Nevenschikkingen	nevenschikkingen met 1 coördinator	//node[@cat="conj" and count(node[@rel="crd"])=1 ]	PaQu			
+i52	crd1en	Nevenschikkingen	nevenschikkingen met 1 coördinator, en dat is "en"	//node[@cat="conj" and count(node[@rel="crd"])=1 and node[@rel="crd" and @lemma="en"] ]	PaQu			
+i53	crd1of	Nevenschikkingen	nevenschikkingen met 1 coördinator, en dat is "of"	//node[@cat="conj" and count(node[@rel="crd"])=1 and node[@rel="crd" and @lemma="of"] ]	PaQu			
+i54	crd1maa	Nevenschikkingen	nevenschikkingen met 1 coördinator, en dat is "maar"	//node[@cat="conj" and count(node[@rel="crd"])=1 and node[@rel="crd" and @lemma="maar"] ]	PaQu			
+i55	crd1enz	Nevenschikkingen	nevenschikkingen met 1 coördinator, en de coordinator sluit de nevenschikking af ("enzovoorts")	//node[@cat="conj" and count(node[@rel="crd"])=1 and node[@rel="crd"]/%PQ_e% = %PQ_e% ]	PaQu			
+i56	crd2	Nevenschikkingen	nevenschikkingen met 2 coördinatoren	//node[@cat="conj" and count(node[@rel="crd"])=2 ]	PaQu			
+i57	crd22	Nevenschikkingen	reeksvormers (nevenschikkingen van de vorm crd,cnj,crd,cnj...)	//node[@cat="conj" and count(node[@rel="cnj"])>1 and node[1][@rel="crd"] and node[3][@rel="crd"] ]	PaQu			
+i58	crd2p	Nevenschikkingen	nevenschikkingen met meer dan 2 coördinatoren	//node[@cat="conj" and count(node[@rel="crd"])>2 ]	PaQu			
+i59	cnj1	Nevenschikkingen	nevenschikkingen met slechts 1 conjunct	//node[@cat="conj" and count(node[@rel="cnj"])=1 ]	PaQu			
+i60	cnj2	Nevenschikkingen	nevenschikkingen met 2 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])=2 ]	PaQu			
+i61	cnj3	Nevenschikkingen	nevenschikkingen met 3 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])=3 ]	PaQu			
+i62	cnj4	Nevenschikkingen	nevenschikkingen met 4 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])=4 ]	PaQu			
+i63	cnj5	Nevenschikkingen	nevenschikkingen met 5 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])=5 ]	PaQu			
+i64	cnj6	Nevenschikkingen	nevenschikkingen met 6 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])=6 ]	PaQu			
+i65	cnj6p	Nevenschikkingen	nevenschikkingen met meer dan 6 conjuncten	//node[@cat="conj" and count(node[@rel="cnj"])>6 ]	PaQu			
+i66	cnjnp	Nevenschikkingen	nevenschikking van NP's	//node[@cat="conj" and node[@rel="cnj" and %PQ_np%] and not(node[@rel="cnj" and not(%PQ_np%) ] ) ]	PaQu	[pos="NOUN"]  --conj-->[pos="NOUN"] !--case--> []; !--case-->[]	Dit sluit PP's niet uit...	lassy
+i67	cnjpp	Nevenschikkingen	nevenschikking van PP's	//node[@cat="conj" and node[@rel="cnj" and @cat="pp"] and not(node[@rel="cnj" and not(@cat="pp") ] ) ]	PaQu	[pos="NOUN"]  --case-->[];  --conj--> [pos="NOUN"] --case--> []		lassy
+i68	cnjmain	Nevenschikkingen	nevenschikking van hoofdzinnen	//node[@cat="conj" and node[@rel="cnj" and @cat="smain"] and not(node[@rel="cnj" and not(@cat="smain") ] ) ]	PaQu	^-->[] --conj--> [pos="VERB"]	Mogen elliptische coordinaties ook? Heeft het zin die cat smain op de een of andere manier mee te nemen?	lassy
+i69	cnjvp	Nevenschikkingen	nevenschikking van VP	//node[@cat="conj" and node[@rel="cnj" and (@cat=("ssub","ti","ppart","inf") or @pt="ww") ] and not(node[@rel="cnj" and not(@cat=("ssub","ti","ppart","inf") or @pt="ww") ] ) ]	PaQu	[pos="VERB" & xpos=".*pv.*"] --conj-->[pos="VERB" & xpos=".*pv.*"]		lassy
+i70	cnjcp	Nevenschikkingen	nevenschikking van bijzinnen	//node[@cat="conj" and node[@rel="cnj" and @cat="cp"] and not(node[@rel="cnj" and not(@cat="cp") ] ) ]	PaQu	[] --(acl:rel|acl|ccomp)--> [] --conj--> []		lassy
+i71	np	Woordgroepen	np	//node[%PQ_np%]	PaQu	[pos="NOUN"] --(det|amod)--> []		lassy
+i72	pp	Woordgroepen	pp	//node[@cat='pp']	PaQu			
+i73	ap	Woordgroepen	ap	//node[@cat='ap' or @pt='adj' and not(@rel='hd') ]	PaQu			
+i74	advp	Woordgroepen	advp	//node[@cat='advp' or @pt='bw' and not(@rel='hd') ]	PaQu			
+i75	ppnp	Voorzetselgroepen	grammaticale functie, bepalingen bij zelfstandige naamwoorden	//node[@cat="pp" and @rel="mod" and ../@cat="np"]	PaQu	[pos="NOUN"] --nmod--> [pos="NOUN"] --case--> []		lassy
+i76	ppap	Voorzetselgroepen	grammaticale functie, bepalingen bij adjectieven (en als adjectief gebruikte deelwoorden)	//node[@cat="pp" and @rel="mod" and (../@cat="ap" or ((../@cat="ppart" or ../@cat="ppres") and not(../@rel="vc") and not(../@rel="cnj" and ../../@rel="vc")))]	PaQu	[pos="ADJ" | xpos = "ww.*(od|vd).*"] --nmod|obl--> [pos="NOUN"] --case--> []	deelwoorden mogen geen aux hebben	lassy
+i77	pppc	Voorzetselgroepen	grammaticale functie, voorzetselvoorwerp	//node[@cat="pp" and @rel="pc"]	PaQu	[pos="VERB"] --obl:arg--> [] --case--> []	Kan niet zonder de vertaling Lassy-UD aan te passen	lassy
+i78	ppld	Voorzetselgroepen	grammaticale functie, locatief/directioneel complement	//node[@cat="pp" and @rel="ld"]	PaQu		idem	
+i79	pppredc	Voorzetselgroepen	grammaticale functie, predicatief complement	//node[@cat="pp" and @rel="predc"]	PaQu	[pos="VERB"] --xcomp--> [pos="NOUN"] --case--> [] | [pos="NOUN"] --case-->[]; --cop-->[]		lassy
+i80	ppbep	Voorzetselgroepen	grammaticale functie, bijwoordelijke bepaling	//node[@cat="pp" and @rel="mod" and (../@cat=("smain","sv1","whq","ssub","inf") or (../@cat="ppart" and (../@rel="vc" or (../@rel="cnj" and ../../@rel="vc"))))]	PaQu			
+i81	ppinp	Voorzetselgroepen	interne structuur, P + NP	//node[@cat="pp" and node[@rel="hd"]/%PQ_b%=%PQ_b% and node[@rel="obj1"]/%PQ_e%=%PQ_e%]	PaQu			
+i82	ppirp	Voorzetselgroepen	interne structuur, +R-pronomen + P	//node[@cat="pp" and node[@rel="hd"]/%PQ_e%=%PQ_e% and node[@rel="obj1" and @pt="vnw"]/%PQ_b%=%PQ_b%]	PaQu			
+i83	ppimwu	Voorzetselgroepen	interne structuur, complex voorzetsel	//node[@cat="pp" and node[@rel="hd" and @cat="mwu"]]	PaQu			
+i84	ajbepn	Adjectiefgroepen	grammaticale functie, bijvoegelijke bepaling (bepaling bij zelfstandig naamwoord)	//node[(@cat="ap" or @pt="adj") and ((@rel="mod" and ../@cat="np") or (@rel="cnj" and ../@rel="mod" and ../../@cat="np"))]	PaQu			
+i85	ajbepva	Adjectiefgroepen	grammaticale functie, bijwoordelijke bepaling (bepaling bij werkwoord, adjectief, ...)	//node[ (@cat="ap" or @pt="adj") and ( (@rel="mod" and not(../@cat="np")) or (@rel="cnj" and (../@rel="mod" or ../@index=//node[@rel="mod"]/@index) and not(../../@cat="np")) or //node[ (@rel="mod" and not(../@cat="np")) or (@rel="cnj" and (../@rel="mod" or ../@index=//node[@rel="mod"]/@index) and not(../../@cat="np")) ]/@index=@index ) ]	PaQu			
+i86	ajpredm	Adjectiefgroepen	grammaticale functie, bepaling van gesteldheid etc.	//node[(@cat="ap" or @pt="adj") and ((@rel="predm") or (@rel="cnj" and ../@rel="predm"))]	PaQu			
+i87	ajpredc	Adjectiefgroepen	grammaticale functie, predicatief complement	//node[ (@cat="ap" or @pt="adj") and ( @rel="predc" or (@rel="cnj" and (../@rel="predc" or ../@index=//node[@rel="predc"]/@index)) or //node[ @rel="predc" or (@rel="cnj" and (../@rel="predc" or ../@index=//node[@rel="predc"]/@index)) ]/@index=@index ) ]	PaQu			
+i88	ajaj	Adjectiefgroepen	interne structuur, ADJ	//node[@pt="adj" and not(@rel="hd")]	PaQu			
+i89	ajmodaj	Adjectiefgroepen	interne structuur, MOD ADJ	//node[@cat="ap" and node[@rel="mod"]/number(@begin) < node[@rel="hd"]/number(@begin)]	PaQu			
+i90	ajcaj	Adjectiefgroepen	interne structuur, COMPL ADJ	//node[ @cat="ap" and node[ ( @rel="predc" or @rel="obj1" or @rel="obj2" or @rel="pc" or @rel="me" or @rel="vc" ) and not(%PQ_vorfeld%) ]/number(@begin) < node[@rel="hd"]/number(@begin) ]	PaQu			
+i91	ajajmod	Adjectiefgroepen	interne structuur, ADJ MOD	//node[@cat="ap" and node[@rel="mod"]/number(@begin) > node[@rel="hd"]/number(@begin)]	PaQu			
+i92	ajajc	Adjectiefgroepen	interne structuur, ADJ COMPL	//node[ @cat="ap" and node[ ( @rel="predc" or @rel="obj1" or @rel="obj2" or @rel="pc" or @rel="me" or @rel="vc" ) and not(%PQ_nachfeld%) ]/number(@begin) > node[@rel="hd"]/number(@begin) ]	PaQu			
+i93	vwuit	Werkwoorden	vaste werkwoordelijke uitdrukkingen	//node[@rel="svp" and @cat]	PaQu			
+i94	groen	Werkwoorden	groene werkwoordsvolgorde	%PQ_groen%	PaQu			
+i95	rood	Werkwoorden	rode werkwoordsvolgorde	%PQ_rood%	PaQu			
+i96	wwclus	Werkwoorden	werkwoordsclusters	//node[%PQ_dep_node_in_verbcluster%]	PaQu			
+i97	accinf	Werkwoorden	accusativus cum infinitivo	%PQ_cross_serial_verbcluster%	PaQu			
+i98	passive	Werkwoorden	passief	//node[%PQ_passive%]	PaQu			
+i99	nppas	Werkwoorden	niet-persoonlijke passief	//node[%PQ_impersonal_passive%]	PaQu			
+i100	vpart	Scheidbare werkwoorden	Werkwoorden met een scheidbaar partikel	//node[starts-with(@sc,"part_")]	PaQu			
+i101	vpartex	Scheidbare werkwoorden	Werkwoorden met een scheidbaar partikel, partikel gescheiden van het werkwoord	//node[starts-with(@sc,"part_") and @rel="hd" and ../node[@rel="svp" and starts-with(@frame,"particle")]]	PaQu			
+i102	vpartin	Scheidbare werkwoorden	Werkwoorden met een scheidbaar partikel, partikel geïncorporeerd in het werkwoord	//node[starts-with(@sc,"part_") and ( not(@rel="hd") or @rel="hd" and not(../node[@rel="svp" and starts-with(@frame,"particle")]) )]	PaQu			
+i103	vprtn	Scheidbare werkwoorden	Niet-finiete werkwoorden met een scheidbaar partikel	//node[starts-with(@sc,"part_") and not(@wvorm="pv")]	PaQu			
+i104	vprtnex	Scheidbare werkwoorden	Niet-finiete werkwoorden met een scheidbaar partikel, partikel gescheiden van het werkwoord	//node[starts-with(@sc,"part_") and not(@wvorm="pv") and @rel="hd" and ../node[@rel="svp" and starts-with(@frame,"particle")]]	PaQu			
+i105	vprtnin	Scheidbare werkwoorden	Niet-finiete werkwoorden met een scheidbaar partikel, partikel geïncorporeerd in het werkwoord	//node[starts-with(@sc,"part_") and not(@wvorm="pv") and ( not(@rel="hd") or @rel="hd" and not(../node[@rel="svp" and starts-with(@frame,"particle")]) )]	PaQu			
+i106	ott	Werkwoordstijden	Onvoltooid tegenwoordige tijd	//node[%PQ_ott%]	PaQu			
+i107	ovt	Werkwoordstijden	Onvoltooid verleden tijd	//node[%PQ_ovt%]	PaQu			
+i108	vtt	Werkwoordstijden	Voltooid tegenwoordige tijd	//node[%PQ_vtt%]	PaQu			
+i109	vvt	Werkwoordstijden	Voltooid verleden tijd	//node[%PQ_vvt%]	PaQu			
+i110	ottott	Volgorde van werkwoordstijden	ott, ott: "hij zegt dat hij komt"	//node[@rel="hd" and %PQ_ott% and ../node[@rel="vc"]/node[@rel="body"]/node[@rel="hd" and %PQ_ott%]]	PaQu			
+i111	ottovt	Volgorde van werkwoordstijden	ott, ovt: "hij zegt dat hij kwam"	//node[@rel="hd" and %PQ_ott% and ../node[@rel="vc"]/node[@rel="body"]/node[@rel="hd" and %PQ_ovt%]]	PaQu			
+i112	ovtott	Volgorde van werkwoordstijden	ovt, ott: "hij zei dat hij komt"	//node[@rel="hd" and %PQ_ovt% and ../node[@rel="vc"]/node[@rel="body"]/node[@rel="hd" and %PQ_ott%]]	PaQu			
+i113	ovtovt	Volgorde van werkwoordstijden	ovt, ovt: "hij zei dat hij kwam"	//node[@rel="hd" and %PQ_ovt% and ../node[@rel="vc"]/node[@rel="body"]/node[@rel="hd" and %PQ_ovt%]]	PaQu			
+i114	inb0	Inbedding	geen inbedding	//node[%PQ_finiete_inbedding0%]	PaQu			
+i115	inb1	Inbedding	minstens 1 finiete zinsinbedding	//node[%PQ_finiete_inbedding1%]	PaQu			
+i116	inb2	Inbedding	minstens 2 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding2%]	PaQu			
+i117	inb3	Inbedding	minstens 3 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding3%]	PaQu			
+i118	inb4	Inbedding	minstens 4 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding4%]	PaQu			
+i119	inb5	Inbedding	minstens 5 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding5%]	PaQu			
+i120	inb6	Inbedding	minstens 6 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding6%]	PaQu			
+i121	inb7	Inbedding	minstens 7 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding7%]	PaQu			
+i122	inb8	Inbedding	minstens 8 finiete zinsinbeddingen	//node[%PQ_finiete_inbedding8%]	PaQu			
+i123	nptsub	Topicalisatie en Extractie	np-topic is subject	%PQ_vorfeld_np_subject%	PaQu			
+i124	nptnsub	Topicalisatie en Extractie	np-topic is geen subject	%PQ_vorfeld_np_no_subject%	PaQu			
+i125	tnonloc	Topicalisatie en Extractie	topic is niet lokaal	%PQ_vorfeld_non_local%	PaQu			
+i126	locext	Topicalisatie en Extractie	lokale extractie	%PQ_local_extraction%	PaQu			
+i127	nlocext	Topicalisatie en Extractie	niet-lokale extractie	%PQ_non_local_extraction%	PaQu			
+i128	ok	Parser succes	volledige parse	//parser[@cats="1" and @skips="0"]	PaQu			
+i129	cats0	Parser succes: geparste delen	geen enkel deel is geparst	//parser[@cats="0"]	PaQu			
+i130	cats1	Parser succes: geparste delen	parse bestaat uit één deel	//parser[@cats="1"]	PaQu			
+i131	cats2	Parser succes: geparste delen	parse bestaat uit twee losse delen	//parser[@cats="2"]	PaQu			
+i132	cats3	Parser succes: geparste delen	parse bestaat uit drie losse delen	//parser[@cats="3"]	PaQu			
+i133	cats4	Parser succes: geparste delen	parse bestaat uit vier of meer losse delen	//parser[number(@cats) > 3]	PaQu			
+i134	skips0	Parser success: overgeslagen woorden	geen enkel woord is overgeslagen	//parser[@skips="0"]	PaQu			
+i135	skips1	Parser success: overgeslagen woorden	een van de woorden is overgeslagen	//parser[@skips="1"]	PaQu			
+i136	skips2	Parser success: overgeslagen woorden	twee van de woorden zijn overgeslagen	//parser[@skips="2"]	PaQu			
+i137	skips3	Parser success: overgeslagen woorden	drie van de woorden zijn overgeslagen	//parser[@skips="3"]	PaQu			
+i138	skips4	Parser success: overgeslagen woorden	vier of meer van de woorden zijn overgeslagen	//parser[number(@skips) > 3]	PaQu			
+i139	his	Onbekende woorden	"alle" woorden (nodes met attribuut @his)	//node[@his and not(node[@his])]	PaQu			
+i140	normal	Onbekende woorden	woorden uit het woordenboek of de namenlijst	//node[@his="normal" and not(node[@his])]	PaQu			
+i141	onbeken	Onbekende woorden	woorden niet direct uit het woordenboek	//node[@his and not(@his=("normal","robust_skip","skip")) and not(node[@his]) ]	PaQu			
+i142	compoun	Onbekende woorden	woorden herkend als samenstelling	//node[@his="compound" and not(node[@his])]	PaQu			
+i143	name	Onbekende woorden	woorden herkend als naam (maar niet uit namenlijst)	//node[@his="name" and not(node[@his])]	PaQu			
+i144	noun	Onbekende woorden	onbekende woorden die niet als samenstelling of naam werden herkend	//node[@his and not(@his=("normal","compound","name","robust_skip","skip")) and not(node[@his]) ]	PaQu			

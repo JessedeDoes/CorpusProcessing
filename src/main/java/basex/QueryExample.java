@@ -29,6 +29,7 @@ public final class QueryExample {
 
   public static void runQuery(String database, String input, String toFile) throws IOException {
     // create session
+
     try(BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
       // create query instance
 
@@ -36,9 +37,12 @@ public final class QueryExample {
       session.execute("open " + database);
 
       java.io.PrintWriter pw = new PrintWriter(toFile);
+
       pw.println("<results>");
+
       try(Query query = session.query(input)) {
         // loop through all results
+
         while(query.more()) {
           //val += query.next();
           String r = query.next();
