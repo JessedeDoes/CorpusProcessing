@@ -15,7 +15,20 @@ import org.json4s.jackson.Serialization.write
 
 
 trait tei_to_huggingface_trait {
-  trait Sentence
+  trait Sentence {
+    def toTSV() : String = {
+      this match {
+        case s:BasicSentence => {
+          s"#### ${s.file} ####\n" +
+          s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
+        }
+        case s:PimpedSentence => {
+          s"#### ${s.file} ####\n" +
+            s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
+        }
+      }
+    }
+  }
   case class PimpedSentence(
                        id: String,
                        tokens: List[String],
@@ -34,6 +47,7 @@ trait tei_to_huggingface_trait {
                              tags: List[String],
                              lemmata: List[String],
                              xml_ids: List[String] = List(),
+                             file: String = "unknown",
                            ) extends Sentence
   val sentence_element="q"
   val pos_attribute = "@pos"
@@ -91,7 +105,7 @@ trait tei_to_huggingface_trait {
     // println(s.attributes.toString + "->" + partition)
     val r = if (addStuff)
       PimpedSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids, file=f, relevances=relevances,hilex_pos=hilex_pos,partition = partition)
-    else BasicSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids)
+    else BasicSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids, file=f)
     r
   }
 
@@ -100,8 +114,13 @@ trait tei_to_huggingface_trait {
 
   def Nodes2JSON(documents: Iterator[(String, Elem)], fout_train: String, fout_test: String="", sentence_element:String=sentence_element): Unit =
   {
+
+    Console.err.println(s"Output to: $fout_test, $fout_train")
     val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout_train + ".train.json.gz")))
     val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream((if (fout_test.nonEmpty) fout_test else fout_train)  + ".test.json.gz")))
+
+    val pwTrainTSV = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout_train + ".train.tsv.gz")))
+    val pwTestTSV = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream((if (fout_test.nonEmpty) fout_test else fout_train) + ".test.tsv.gz")))
 
     val esjes: Iterator[(String, Node, Boolean)] = documents.flatMap({
 
@@ -131,12 +150,25 @@ trait tei_to_huggingface_trait {
       case ((s:PimpedSentence,b),i) => s.copy(id=i.toString) -> b
       case ((s:BasicSentence,b),i) => s.copy(id=i.toString) -> b
     })
-    val jsons: Iterator[(String, Boolean)] = s1.map({case (s,b) => write(s) -> b})
 
-    jsons.foreach({case (json,b) => if (b) pwTest.println(json) else pwTrain.println(json)})
+    val jsons: Iterator[(String, String, Boolean)] = s1.map({case (s,b) => (write(s), s.toTSV(), b)})
+
+    jsons.foreach({case (json,tsv, b) => if (b)
+    {
+      pwTestTSV.println("")
+      pwTestTSV.println(tsv)
+      pwTest.println(json)
+    }
+    else {
+      pwTrainTSV.println("")
+      pwTrainTSV.println(tsv)
+      pwTrain.println(json)}}
+    )
 
     pwTest.close()
     pwTrain.close()
+    pwTestTSV.close()
+    pwTrainTSV.close()
   }
 
 
@@ -228,6 +260,12 @@ object gtbcit_to_huggingface extends tei_to_huggingface_trait {
 
 object ofr_to_huggingface extends tei_to_huggingface_trait {
   override val pos_attribute = "@type"
+  override   val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
+  override val split_test_train_on_document_level = true
+  override def decentSentence(s: Sentence, b: Boolean)  =  {
+    val tags =  s.asInstanceOf[BasicSentence].tags
+    tags.count(_.nonEmpty) > 0.7 * tags.size
+  }
 }
 
 object bab_to_huggingface extends tei_to_huggingface_trait {
