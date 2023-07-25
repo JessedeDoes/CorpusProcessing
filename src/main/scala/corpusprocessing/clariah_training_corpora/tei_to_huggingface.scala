@@ -51,8 +51,20 @@ trait tei_to_huggingface_trait {
                            ) extends Sentence
   val sentence_element="q"
   val pos_attribute = "@pos"
+
+
   val chunkSize= 50
-  val default_test_train_rate = 0.2
+
+  type Partition = String
+  val TRAIN: Partition = "train"
+  val DEV: Partition = "dev"
+  val TEST: Partition = "test"
+
+  val partitions = List("train", "dev", "test")
+
+  val p_train = 0.75
+  val p_dev = 0.125
+
   val split_test_train_on_document_level = false
   val output_folder= "/tmp"
   val output_prefix = "tei_to_huggingface"
@@ -64,6 +76,8 @@ trait tei_to_huggingface_trait {
   def sentence(s: Node, f: String): Sentence = {
 
     def getN(n: Node) =  (n \ "@n").text
+
+
 
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val indexedTokenElements = tokenElements.zipWithIndex
@@ -109,77 +123,85 @@ trait tei_to_huggingface_trait {
     r
   }
 
-  def decentSentence(s: Sentence, b: Boolean)  = true
+  def decentSentence(s: Sentence, b: Partition)  = true
 
-
-  def Nodes2JSON(documents: Iterator[(String, Elem)], fout_train: String, fout_test: String="", sentence_element:String=sentence_element): Unit =
+  def pickPartition(): Partition = {
+    val r = Math.random()
+    val partition = if (r < p_train)
+      TRAIN
+    else if (r < p_train + p_dev)
+      DEV
+    else TEST
+    Console.err.println(s"$r -> $partition ($p_train, $p_dev)")
+    partition
+  }
+  def Nodes2JSON(documents: Iterator[(String, Elem)], outputPrefix: String,  sentence_element:String=sentence_element): Unit =
   {
 
-    Console.err.println(s"Output to: $fout_test, $fout_train")
-    val pwTrain = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout_train + ".train.json.gz")))
-    val pwTest = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream((if (fout_test.nonEmpty) fout_test else fout_train)  + ".test.json.gz")))
+    Console.err.println(s"Output to: $outputPrefix")
 
-    val pwTrainTSV = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(fout_train + ".train.tsv.gz")))
-    val pwTestTSV = new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream((if (fout_test.nonEmpty) fout_test else fout_train) + ".test.tsv.gz")))
+    val printWritersJSON: Map[Partition, PrintWriter] = partitions.map(p => p ->
+      new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.json.gz")))).toMap
+    val printWritersTSV: Map[Partition, PrintWriter] = partitions.map(p => p ->
+      new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.tsv.gz")))).toMap
 
-    val esjes: Iterator[(String, Node, Boolean)] = documents.flatMap({
+    val esjes: Iterator[(String, Node, Partition)] = documents.flatMap({
 
       case (f: String, x: Node) => {
-        val doc_in_test = Math.random() < default_test_train_rate
+        val documentPartition = pickPartition()
         if ((x \\ sentence_element).nonEmpty)
-          (x \\ sentence_element).iterator.map(s => (f,s,doc_in_test))
+          (x \\ sentence_element).iterator.map(s => (f,s,documentPartition))
         else {
           val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
             <s ana="#chunk">
               {chunk}
             </s>
           })
-          chunks.iterator.map(c =>  (f,c,doc_in_test))
+          chunks.iterator.map(c =>  (f, c, documentPartition))
         }
       }
     })
 
-    val sentences: Iterator[(Sentence,Boolean)] = esjes.map({case (f,s,is_test_doc) => sentence(s,f) -> is_test_doc}).filter({case (s,is_test_doc) => decentSentence(s,is_test_doc)})
+    val sentences: Iterator[(Sentence,Partition)] = esjes.map({case (f,s,documentPartition) => sentence(s,f) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
-    val sampled: Iterator[(Sentence, Boolean)] = sample(sentences)
+    val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
 
     //val words = (d \\ "w").size
     //println("Sentences:" + s0.size  + " Words: " + words)
 
-    val s1: Iterator[(Sentence, Boolean)] = sampled.zipWithIndex.map({
+    val s1: Iterator[(Sentence, Partition)] = sampled.zipWithIndex.map({
       case ((s:PimpedSentence,b),i) => s.copy(id=i.toString) -> b
       case ((s:BasicSentence,b),i) => s.copy(id=i.toString) -> b
     })
 
-    val jsons: Iterator[(String, String, Boolean)] = s1.map({case (s,b) => (write(s), s.toTSV(), b)})
+    val jsons: Iterator[(String, String, Partition)] = s1.map({case (s,b) => (write(s), s.toTSV(), b)})
 
-    jsons.foreach({case (json,tsv, b) => if (b)
-    {
-      pwTestTSV.println("")
-      pwTestTSV.println(tsv)
-      pwTest.println(json)
-    }
-    else {
-      pwTrainTSV.println("")
-      pwTrainTSV.println(tsv)
-      pwTrain.println(json)}}
-    )
+    jsons.foreach({ case (json, tsv, b) =>
+      val pwJSON = printWritersJSON(b)
+      val pwTSV = printWritersTSV(b)
 
-    pwTest.close()
-    pwTrain.close()
-    pwTestTSV.close()
-    pwTrainTSV.close()
+      pwTSV.println("")
+      pwTSV.println(tsv)
+      pwJSON.println(json)
+    })
+    printWritersJSON.values.foreach(_.close())
+    printWritersTSV.values.foreach(_.close())
   }
 
 
   def always_sampled(s: Sentence) = true
 
-  def sample(sentences: Iterator[(Sentence,Boolean)], sample_rate: Double = 0.05, rate_test_train: Double = default_test_train_rate): Iterator[(Sentence, Boolean)] = {
+  def sample(sentences: Iterator[(Sentence,Partition)], sample_rate: Double = 0.05, rate_test_train: Double = p_train): Iterator[(Sentence, Partition)] = {
 
     def  selected(s: Sentence) = (Math.random() < sample_rate) || always_sampled(s)
 
-    sentences.filter({ case (s,b) => selected(s)}).map({ case (s,b) => {
-      if (split_test_train_on_document_level && b || (!split_test_train_on_document_level && Math.random() < rate_test_train)) (s, true) else (s,false)
+    sentences.filter({ case (s,b) => selected(s)}).map({ case (s,p) => {
+      if (split_test_train_on_document_level) {
+        (s,p)
+      } else {
+        val p1 = pickPartition()
+        (s,p1)
+      }
     }})
   }
 
@@ -244,7 +266,7 @@ object gtbcit_to_huggingface extends tei_to_huggingface_trait {
 
   def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
 
-  override def decentSentence(s: Sentence, b: Boolean)  = s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
+  override def decentSentence(s: Sentence, b: Partition)  = s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
 
   def propagateHilexPos(d: Elem): Elem = {
     PostProcessXML.updateElement(d,_.label=="cit", cit =>  {
@@ -262,7 +284,8 @@ object ofr_to_huggingface extends tei_to_huggingface_trait {
   override val pos_attribute = "@type"
   override   val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
   override val split_test_train_on_document_level = true
-  override def decentSentence(s: Sentence, b: Boolean)  =  {
+  override val output_prefix = "ofr"
+  override def decentSentence(s: Sentence, b: Partition)  =  {
     val tags =  s.asInstanceOf[BasicSentence].tags
     tags.count(_.nonEmpty) > 0.7 * tags.size
   }

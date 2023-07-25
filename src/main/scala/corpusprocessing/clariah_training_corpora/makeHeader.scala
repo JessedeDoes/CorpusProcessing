@@ -161,7 +161,7 @@ object makeHeader {
 
      val iter: Iterator[(String, Elem)] = List(id -> noTwo).iterator
 
-     tei_2_json.Nodes2JSON(iter, s"$locationTrain/$id",s"$locationTest/$id", sentence_element = "s")
+     tei_2_json.Nodes2JSON(iter, s"$locationTrain/$id", sentence_element = "s")
      toTSV.toTSV(s"$locationTrain/$id.train.xml", s"$locationTrain/$id.train.tsv")
      toTSV.toTSV(s"$locationTest/$id.test.xml", s"$locationTest/$id.test.tsv")
   }
