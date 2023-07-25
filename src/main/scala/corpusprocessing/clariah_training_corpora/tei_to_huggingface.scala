@@ -145,7 +145,7 @@ trait tei_to_huggingface_trait {
     val printWritersTSV: Map[Partition, PrintWriter] = partitions.map(p => p ->
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.tsv.gz")))).toMap
 
-    val esjes: Iterator[(String, Node, Partition)] = documents.flatMap({
+    val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
 
       case (f: String, x: Node) => {
         val documentPartition = pickPartition()
@@ -162,7 +162,7 @@ trait tei_to_huggingface_trait {
       }
     })
 
-    val sentences: Iterator[(Sentence,Partition)] = esjes.map({case (f,s,documentPartition) => sentence(s,f) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
+    val sentences: Iterator[(Sentence,Partition)] = partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
     val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
 
