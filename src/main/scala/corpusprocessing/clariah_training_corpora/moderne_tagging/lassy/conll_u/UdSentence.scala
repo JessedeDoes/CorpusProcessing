@@ -113,4 +113,18 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
     })
     this.copy(lines = newLines)
   }
+
+  def rebaseIds() = {
+    if (this.tokens.isEmpty) this else {
+      val id0 = tokens.head.ID.replaceAll("-.*", "").toInt
+      this.copy(tokens = tokens.map(t => {
+        val newId = t.ID.split("-").map(x => x.toInt - id0 + 1).mkString("-")
+        t.copy(ID = newId, UPOS=TEI2CONLLU.getPos(t.XPOS), XPOS="_")
+      }))
+    }
+  }
+
+  def toCONLL() = {
+    (Seq(" ", s"# sent_id = ${this.sent_id}") ++ rebaseIds().tokens.map(_.toCONLL())) .mkString("\n")
+  }
 }

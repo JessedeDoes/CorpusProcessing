@@ -25,8 +25,6 @@ object tagList {
     }
   }
 
-
-
   case class Word(word: String, lemma: String, tag: String)
 
   def wordsInFile(f: File):Stream[Word] = (XML.loadFile(f) \\ "w").map(w => Word(w.text.trim, (w \ "@lemma").text, (w \ "@pos").text.trim )).toStream

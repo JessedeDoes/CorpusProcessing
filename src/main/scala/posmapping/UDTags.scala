@@ -18,7 +18,7 @@ object UDTags {
      a.groupBy(_._1).mapValues(l => l.map(_._2)).mapValues(_.toSet).mapValues(_.toSet.toList)
    }
 
-  val pos2partitions:Map[String, List[String]]  = List( // this is language dependent
+  val pos2partitions:Map[String, List[String]]  = List( // this is language dependent // huh? Propn?
     "NOUN"    -> List("Abbr", "Animacy", "Case", "Gender", "Number", "X-Inflection"),
     "ADJ"  -> List("Abbr", "Case", "Gender", "Number", "Degree", "X-Inflection"),
     "VERB"   -> List("Abbr", "Mood", "Tense", "Number", "Person", "Polite", "VerbForm", "Voice", "Reflex",  "X-Inflection"),

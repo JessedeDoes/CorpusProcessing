@@ -44,7 +44,7 @@ object CONLL {
   def startsLineSource(x: String)  = x.startsWith("# source =")
   def parse(lines: Stream[String], language:String="Dutch"): Seq[UdSentence] = {
 
-    val grouped: Seq[Seq[String]] = groupWithFirst[String](lines, x => startsLineSource(x)) // S-ID in Japanese KTC
+    val grouped: Seq[Seq[String]] = groupWithFirst[String](lines, x => startsLine(x)) // S-ID in Japanese KTC
 
     val sentences = grouped.flatMap(g => {
       val sent_id = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]", "").replaceAll("\\s+", ""))
