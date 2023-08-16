@@ -7,15 +7,22 @@ object TEI2CONLLU {
 
   val basicMapping = Map(
     "NOU-C" -> "NOUN",
+    "NOU" -> "NOUN",
     "VRB" -> "VERB",
     "CONJ" -> "SCONJ",
+    "CON" -> "SCONJ",
     "PD" -> "PRON",
+    "PRN" -> "PRON",
+    "ART" -> "DET",
     "ADV" -> "ADV",
     "ADJ" -> "ADJ",
     "ADP" -> "ADP",
     "NUM" -> "NUM",
     "INT" -> "INTJ",
     "NOU-P" -> "PROPN",
+    "NEPER" -> "PROPN",
+    "NELOC" -> "PROPN",
+    "NEORG" -> "PROPN",
     "AA" -> "ADJ",
     "RES" -> "X"
   )
@@ -28,8 +35,10 @@ object TEI2CONLLU {
   val separator = "\\+"
    def w2tok(w: Node): Seq[UdToken] =  {
      val lemmata = (w \ "@lemma").text.split(separator).toSeq
-     val pos = (w \ "@pos").text.split(separator).toSeq
-     val content = (w \ "seg").text
+     val posAtt = if ((w \ "@pos").nonEmpty) (w \ "@pos") else (w \ "@type")
+     val pos = posAtt.text.split(separator).toSeq
+     val content = if ((w \ "seg").nonEmpty) (w \ "seg").text else w.text.replaceAll("\\s+", " ").trim
+
      if (lemmata.size > 1 && lemmata.size == pos.size)
        {
           val subtokens: Seq[UdToken] = lemmata.zip(pos).map{case (l,p) =>  {
@@ -86,8 +95,11 @@ object TEI2CONLLU {
   def main(args: Array[String]): Unit = {
     val crmpje  =  "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/Meertens-CRM-1-1.fdc2030f-f46d-3fdf-bd1f-9a4822e29643.xml"
     val bloeme = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/3000.tei.xml"
-    val d = XML.load(bloeme)
-    val pw = new PrintWriter("/tmp/test.conll")
+    val reynaerde = "/mnt/Projecten/Corpora/Historische_Corpora/UD-MiddleDutch-Testjes/Data/van_den_vos_reynaerde.tagged.xml"
+    val f = reynaerde
+
+    val d = XML.load(f)
+    val pw = new PrintWriter(f.replaceAll(".xml", ".conllu"))
     processWithSentences(d).foreach(x => pw.println(x))
     pw.close()
   }
