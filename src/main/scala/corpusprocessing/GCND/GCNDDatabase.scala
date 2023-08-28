@@ -52,14 +52,12 @@ object GCNDDatabase {
     </text>
   </TEI>
 
-  lazy val pseudoFolia = <FoLiA>
+  lazy val pseudoFolia = <FoLiA xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
     <metadata src="fv701244.imdi" type="imdi" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
-        <phon-annotation set="cgn"/>
         <timesegment-annotation set="cgn"/>
-        <entity-annotation set="http://ilk.uvt.nl/folia/sets/frog-mwu-nl"/>
       </annotations>
     </metadata>{alpinos.map(_.pseudoFolia)}
   </FoLiA>

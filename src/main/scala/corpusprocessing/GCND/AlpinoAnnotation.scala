@@ -12,6 +12,8 @@ import scala.xml._
 import GCNDDatabase.{Token, elans}
 import posmapping.{CGNPoSTagging, CGNTagset}
 
+import scala.collection.immutable
+
 object Stuff {
   def formatTime (x: Int) = {
     val y = 60 * 60 * 1000
@@ -20,7 +22,11 @@ object Stuff {
     val s = (x - (h * y) - (m * (y / 60))) / 1000
     val mi = x - (h * y) - (m * (y / 60)) - (s * 1000)
     (h, m, s, mi)
-    s"$h:$m:$s:$mi"
+    val hs = String.format("%02d", h.asInstanceOf[Object])
+    val ms = String.format("%02d", m.asInstanceOf[Object])
+    val ss = String.format("%02d", s.asInstanceOf[Object])
+    val mis = String.format("%03d", mi.asInstanceOf[Object])
+    s"$hs:$ms:$ss.$mis"
   }
 }
 
@@ -41,17 +47,17 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n")
   lazy val parse: Elem = XML.loadString(x)
   lazy val sentence = AlpinoSentence(parse)
-  lazy val alpinoTokens = sentence.alpinoTokens
+  lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"$alpino_annotatie_id.w.$i"))})
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
-
+  lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val pseudoFolia = {
-    <speech>
-      <s>
+    <speech xml:id={s"speech.$alpino_annotatie_id"}>
+      <s xml:id={s"speech.$alpino_annotatie_id"}>
         {if (alignedTokens.size == alpinoTokens.size) {
-        val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+
         val danges = zipped.map({ case (t, a) =>
           val posTag = CGNTagset.fromString(a.postag)
-          <w>
+          <w xml:id={a.id.get}>
             <t class="heavyDutchification">{t.text_zv}</t>
             <t class="lightDutchification">{t.text_lv}</t>
             <lemma class={a.lemma}/>
@@ -60,7 +66,12 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         })
         danges
       } else Seq()}
-        <timing><timesegment begintime={formatTime(this.starttijd)} endtime={formatTime(this.eindtijd)}/></timing>
+        <timing>
+          <timesegment begintime={formatTime(this.starttijd)} endtime={formatTime(this.eindtijd)}>
+            {zipped.map({case (t,a) => <wref id={a.id.get} t={t.text_lv}/>})}
+          </timesegment>
+
+        </timing>
       </s>
     </speech>
   }
