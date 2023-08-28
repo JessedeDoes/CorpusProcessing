@@ -8,5 +8,11 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           tekst_zv: String,
                           starttijd: Int,
                           eindtijd: Int
-                         )
+                         ) {
+  lazy val overLappingElanAnnotations = GCNDDatabase.alpinos.filter(e =>
+    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
+  )
+
+  lazy val nAlpinos = overLappingElanAnnotations.size
+}
 

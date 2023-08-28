@@ -63,4 +63,6 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
   )
+
+  lazy val n_m = overLappingElanAnnotations.map(_.nAlpinos)
 }

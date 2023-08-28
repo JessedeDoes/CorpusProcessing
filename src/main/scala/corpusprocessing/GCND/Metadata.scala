@@ -53,7 +53,10 @@ object Metadata {
     Relation("gender", persoon, gender, "gender_id", "gender_id"),
     Relation("plaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
     Relation(name = "beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
-    Relation("plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id")
+    Relation("plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+
+    Relation("opname", transcriptie, opname, "opname_id", "opname_id"),
+    Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
   )
 
 
@@ -66,6 +69,7 @@ object Metadata {
    lazy val gender = zlurp("gender")
    lazy val land = zlurp("land")
    lazy val opname = zlurp("opname")
+
    lazy val persoon = zlurp("persoon")
    lazy val persoon__woonplaats = zlurp("persoon__woonplaats")
    lazy val persoon__beroepsplaats = zlurp("persoon__beroepplaats")
@@ -73,6 +77,7 @@ object Metadata {
    lazy val regio = zlurp("regio")
    lazy val relatie = zlurp("relatie")
    lazy val transcriptie = zlurp("transcriptie")
+   lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
    lazy val opname__persoon = zlurp("opname__persoon")
 
 
@@ -88,8 +93,8 @@ object Metadata {
    def getMetadata(a: AlpinoAnnotation) = {
      val opname_persoon_id = a.opname_persoon_id.toString;
      val t0 = opname__persoon.filter("opname__persoon_id", opname_persoon_id)
-
-     t0.makeXML()
+     val info = <alignment_info>{a.n_m}</alignment_info>
+     info +: t0.makeXML()
    }
 
   def main(args: Array[String]): Unit = {
@@ -98,6 +103,8 @@ object Metadata {
       val m = <meta>{getMetadata(a)}</meta>
       println(pretty.format(m))
     })
+    val transcriptieMeta = <meta>{transcriptie.makeXML()}</meta>;
+    println(pretty.format(transcriptieMeta))
   }
 }
 
