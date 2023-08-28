@@ -16,8 +16,7 @@ object Metadata {
 
   type record = Map[String, Any]
 
-  case class Table(data: List[record], name: String, id_field: String) {
-
+  case class Table(data: List[record], name: String, id_field: String, skip_fields: Set[String]  = Set()) {
 
     lazy val size = data.size
     def filter(field_name: String, value: Any): Table  = {
@@ -29,7 +28,7 @@ object Metadata {
     def makeXML(m: Map[String, Any]): Elem = {
       val e0: Elem = <elem xml:id={m(this.id_field).toString}/>.copy(label = this.name)
       val e1: Elem = <elem/>
-      val children = m.map({
+      val children = m.filter({case (k,v) => !skip_fields.contains(k)}).map({
         case (k, v: String) => e1.copy(label=k, child = Text("" + v))
         case (k, null) =>  e1.copy(label=k)
       }).toSeq
@@ -46,6 +45,7 @@ object Metadata {
   case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String)
 
   val relations = List[Relation](
+    Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
 
     Relation("persoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
     Relation(name = "woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
@@ -54,16 +54,17 @@ object Metadata {
     Relation("plaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
     Relation(name = "beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
     Relation("plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
-
     Relation("opname", transcriptie, opname, "opname_id", "opname_id"),
     Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
   )
 
 
-  lazy val pretty = new PrettyPrinter(100,4)
-   def zlurp(tableName: String, id_field_name: String): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name)
-   def zlurp(tableName: String): Table = zlurp(tableName, tableName + "_id")
+   lazy val pretty = new PrettyPrinter(100,4)
+   def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
+   def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
 
+   lazy val alpino_annotatie = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
+   lazy val elan_annotatie = zlurp("elan_annotatie")
    lazy val beroep = zlurp("beroep")
    lazy val bestand= zlurp(tableName = "bestand")
    lazy val gender = zlurp("gender")
@@ -80,15 +81,11 @@ object Metadata {
    lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
    lazy val opname__persoon = zlurp("opname__persoon")
 
-
-
-
    lazy val alle_gebruikte_personen = {
      val idz = alpinos.map(_.opname_persoon_id.toString).toSet
      val o_peetjes = opname__persoon.filter("opname__persoon_id", x => idz.contains(x))
      o_peetjes
    }
-
 
    def getMetadata(a: AlpinoAnnotation) = {
      val opname_persoon_id = a.opname_persoon_id.toString;

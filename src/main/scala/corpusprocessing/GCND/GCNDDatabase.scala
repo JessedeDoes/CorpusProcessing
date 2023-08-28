@@ -8,6 +8,7 @@ import scala.xml.PrettyPrinter
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoSentence, AlpinoToken}
 import java.io.PrintWriter
 
+
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
@@ -50,16 +51,33 @@ object GCNDDatabase {
     <body><div>{alpinos.map(_.pseudoTEI)}</div></body>
     </text>
   </TEI>
-  
+
+  lazy val pseudoFolia = <FoLiA>
+    <metadata src="fv701244.imdi" type="imdi" xmlns="http://ilk.uvt.nl/folia">
+      <annotations>
+        <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+        <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+        <phon-annotation set="cgn"/>
+        <timesegment-annotation set="cgn"/>
+        <entity-annotation set="http://ilk.uvt.nl/folia/sets/frog-mwu-nl"/>
+      </annotations>
+    </metadata>{alpinos.map(_.pseudoFolia)}
+  </FoLiA>
+
   def main(args: Array[String])  = {
 
-    val out = new PrintWriter("/tmp/gcnd.test.xml")
+    val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
     out.println(pretty.format(pseudoTEI))
     out.close()
+
+    val out1 = new PrintWriter("/tmp/gcnd.test.folia.xml")
+    out1.println(pretty.format(pseudoFolia))
+    out1.close()
+
     alpinos.foreach(x => {
       println(s"### ${x.starttijd} --- ${x.eindtijd} ###########")
 
-      println(pretty.format(x.pseudoTEI))
+      println(pretty.format(x.pseudoFolia))
     })
   }
 }

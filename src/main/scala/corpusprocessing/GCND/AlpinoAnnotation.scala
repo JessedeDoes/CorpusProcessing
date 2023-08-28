@@ -3,11 +3,28 @@ import database.DatabaseUtilities.Select
 import database._
 import org.json4s._
 import org.json4s.jackson.Serialization._
+
 import scala.xml.PrettyPrinter
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoSentence, AlpinoToken}
+
 import java.io.PrintWriter
 import scala.xml._
 import GCNDDatabase.{Token, elans}
+import posmapping.{CGNPoSTagging, CGNTagset}
+
+object Stuff {
+  def formatTime (x: Int) = {
+    val y = 60 * 60 * 1000
+    val h = x / y
+    val m = (x - (h * y)) / (y / 60)
+    val s = (x - (h * y) - (m * (y / 60))) / 1000
+    val mi = x - (h * y) - (m * (y / 60)) - (s * 1000)
+    (h, m, s, mi)
+    s"$h:$m:$s:$mi"
+  }
+}
+
+import Stuff._
 case class AlpinoAnnotation(alpino_annotatie_id: Int,
                             transcriptie_id: Int,
                             annotatie_code: String,
@@ -26,6 +43,27 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val sentence = AlpinoSentence(parse)
   lazy val alpinoTokens = sentence.alpinoTokens
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
+
+  lazy val pseudoFolia = {
+    <speech>
+      <s>
+        {if (alignedTokens.size == alpinoTokens.size) {
+        val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+        val danges = zipped.map({ case (t, a) =>
+          val posTag = CGNTagset.fromString(a.postag)
+          <w>
+            <t class="heavyDutchification">{t.text_zv}</t>
+            <t class="lightDutchification">{t.text_lv}</t>
+            <lemma class={a.lemma}/>
+            <pos class={a.postag} head={posTag.pos}>{posTag.features.map(f => {<feat class={f.value} subset={f.name}/>} )}</pos>
+          </w>
+        })
+        danges
+      } else Seq()}
+        <timing><timesegment begintime={formatTime(this.starttijd)} endtime={formatTime(this.eindtijd)}/></timing>
+      </s>
+    </speech>
+  }
 
   lazy val pseudoTEI = {
     <u start={this.starttijd.toString} end={this.eindtijd.toString} xml:id={alpino_annotatie_id.toString}>
