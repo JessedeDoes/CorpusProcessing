@@ -52,7 +52,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val pseudoFolia = {
     <speech xml:id={s"speech.$alpino_annotatie_id"}>
-      <s xml:id={s"speech.$alpino_annotatie_id"}>
+      <s xml:id={s"s.$alpino_annotatie_id"}>
         {if (alignedTokens.size == alpinoTokens.size) {
 
         val danges = zipped.map({ case (t, a) =>
