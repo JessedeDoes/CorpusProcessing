@@ -13,20 +13,8 @@ import org.json4s.native.JsonMethods.parse
 import org.json4s.native.Serialization.write
 
 
-case class AlpinoToken(n: Node)  {
-  val atts = n.attributes.map(n => n.key -> n.value.text).toMap
-  lazy val lemma = atts.getOrElse("lemma","_")
-  lazy val word = atts.getOrElse("word","_")
-  lazy val postag = atts.getOrElse("postag","_")
-  val begin = atts("begin").toInt
-}
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u._
 
-case class AlpinoSentence(alpino: Elem)  {
-  lazy val input_transcript = (alpino \\ "comment").text.replaceAll("^.*?\\|", "")
-  lazy val id = ((alpino \\ "sentence").head \ "@sentid").text
-  lazy val alpinoTokens = (alpino \\ "node").filter(x => (x \ "@word").nonEmpty).map(AlpinoToken).sortBy(_.begin)
-  lazy val xml = <s xml:id={id}>{"\n"}{alpinoTokens.sortBy(_.begin).flatMap(t => Text("\t") :+ <w pos={t.postag} lemma={t.lemma}>{t.word}</w> +: Text("\n"))}</s>
-}
 
 
 /*
