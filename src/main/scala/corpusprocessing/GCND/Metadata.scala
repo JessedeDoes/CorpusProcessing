@@ -51,16 +51,16 @@ object Metadata {
 
   val relations = List[Relation](
     Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
-
-    Relation("persoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
-    Relation("woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
-    Relation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
-    Relation("gender", persoon, gender, "gender_id", "gender_id"),
-    Relation("plaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
-    Relation("beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
-    Relation("plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
-    Relation("opname", transcriptie, opname, "opname_id", "opname_id"),
-    Relation("persoon", opname, opname__persoon, "opname_id", "opname_id"),
+    Relation("opname__persoon->persoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+    Relation("persoon->woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+    Relation("person->geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
+    Relation("persoon->gender", persoon, gender, "gender_id", "gender_id"),
+    Relation("woonplaats->plaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
+    Relation("persoon->beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
+    Relation("beroepsplaats->plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+    Relation("transcriptie->opname", transcriptie, opname, "opname_id", "opname_id"),
+    Relation("opname->opname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
+    Relation("opname__persoon->persoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
     Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
   )
 

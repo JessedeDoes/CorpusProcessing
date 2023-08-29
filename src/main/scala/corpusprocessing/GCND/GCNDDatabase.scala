@@ -80,11 +80,7 @@ object GCNDDatabase {
     out1.println(pretty.format(getPseudoFoLiA(1)))
     out1.close()
 
-    alpinos.foreach(x => {
-      println(s"### ${x.starttijd} --- ${x.eindtijd} ###########")
 
-      println(pretty.format(x.pseudoFolia))
-    })
   }
 }
 
