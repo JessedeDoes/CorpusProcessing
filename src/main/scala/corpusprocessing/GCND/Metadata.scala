@@ -29,7 +29,7 @@ object Metadata {
 
     def makeXML(m: Map[String, Any]): Elem = {
       Console.err.println(s"Making XML for table $this")
-      val e0: Elem = <elem xml:id={m(this.id_field).toString}/>.copy(label = this.name)
+      val e0: Elem = <elem xml:id={this.name + "." + m(this.id_field).toString}/>.copy(label = this.name)
       val e1: Elem = <elem/>
 
       val children = m.filter({case (k,v) => !skip_fields.contains(k)}).map({
@@ -46,7 +46,7 @@ object Metadata {
          } else  {
            Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
            Seq()
-        }})
+        }}).toSet.toSeq
       val newChildren = if (isCrossTable) foreignChildren else (children ++ foreignChildren)
       e0.copy(child = newChildren)
     }

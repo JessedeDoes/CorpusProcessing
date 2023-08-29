@@ -47,7 +47,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n")
   lazy val parse: Elem = XML.loadString(x)
   lazy val sentence = AlpinoSentence(parse)
-  lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"$alpino_annotatie_id.w.$i"))})
+  lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val pseudoFolia = {
