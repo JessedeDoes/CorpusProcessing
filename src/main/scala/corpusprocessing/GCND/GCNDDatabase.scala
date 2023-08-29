@@ -45,31 +45,39 @@ object GCNDDatabase {
   lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.starttijd + x.eindtijd)
   lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
 
-  lazy val pseudoTEI = <TEI>
+  def getAlpinoAnnotations(transcriptie_id: Int): Seq[AlpinoAnnotation] = {
+    val q = alpinoQ.copy(from= s"alpino_annotatie where transcriptie_id=$transcriptie_id")
+    db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
+  }
+
+  def getPseudoTEI(transcriptie_id: Int) = <TEI>
     <teiHeader/>
     <text>
-    <body><div>{alpinos.map(_.pseudoTEI)}</div></body>
+    <body><div>{getAlpinoAnnotations(transcriptie_id).map(_.pseudoTEI)}</div></body>
     </text>
   </TEI>
 
-  lazy val pseudoFolia = <FoLiA xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+  def getPseudoFoLiA(transcriptie_id: Int) = <FoLiA xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
     <metadata src="fv701244.imdi" type="imdi" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
         <timesegment-annotation set="cgn"/>
       </annotations>
-    </metadata>{alpinos.map(_.pseudoFolia)}
+      <foreign>
+        {Metadata.getMetadata(transcriptie_id)}
+      </foreign>
+    </metadata>{getAlpinoAnnotations(transcriptie_id).map(_.pseudoFolia)}
   </FoLiA>
 
   def main(args: Array[String])  = {
 
     val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
-    out.println(pretty.format(pseudoTEI))
+    out.println(pretty.format(getPseudoTEI(1)))
     out.close()
 
     val out1 = new PrintWriter("/tmp/gcnd.test.folia.xml")
-    out1.println(pretty.format(pseudoFolia))
+    out1.println(pretty.format(getPseudoFoLiA(1)))
     out1.close()
 
     alpinos.foreach(x => {

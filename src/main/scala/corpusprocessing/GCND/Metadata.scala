@@ -17,7 +17,7 @@ object Metadata {
   type record = Map[String, Any]
 
   case class Table(data: List[record], name: String, id_field: String, skip_fields: Set[String]  = Set()) {
-
+    override  def toString = s"Table($name,key=$id_field)"
     lazy val size = data.size
     def filter(field_name: String, value: Any): Table  = {
       this.copy(data = this.data.filter(x => x(field_name) == value))
@@ -33,8 +33,11 @@ object Metadata {
         case (k, null) =>  e1.copy(label=k)
       }).toSeq
       val foreignChildren: Seq[Node] = relations.filter(r => r.t1.name == this.name).flatMap(r => {
-          val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).copy(name=r.name).makeXML()
-          foreignRecords
+         if (m.contains(r.key_field)) {
+           Console.err.println(s"Join on $r with key= ${r.key_field}")
+           val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).copy(name = r.name).makeXML()
+           foreignRecords
+         } else Seq()
         })
       e0.copy(child = children ++ foreignChildren)
     }
@@ -42,19 +45,22 @@ object Metadata {
     def makeXML() : NodeSeq = data.map(makeXML)
   }
 
-  case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String)
+  case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String) {
+    override def toString = s"Relation(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
+  }
 
   val relations = List[Relation](
     Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
 
     Relation("persoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
-    Relation(name = "woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+    Relation("woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
     Relation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
     Relation("gender", persoon, gender, "gender_id", "gender_id"),
     Relation("plaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
-    Relation(name = "beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
+    Relation("beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
     Relation("plaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
     Relation("opname", transcriptie, opname, "opname_id", "opname_id"),
+    Relation("persoon", opname, opname__persoon, "opname_id", "opname_id"),
     Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
   )
 
@@ -92,6 +98,11 @@ object Metadata {
      val t0 = opname__persoon.filter("opname__persoon_id", opname_persoon_id)
      val info = <alignment_info>{a.n_m}</alignment_info>
      info +: t0.makeXML()
+   }
+
+   def getMetadata(transcriptie_id: Int)  = {
+     val t0 = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
+     t0.makeXML()
    }
 
   def main(args: Array[String]): Unit = {
