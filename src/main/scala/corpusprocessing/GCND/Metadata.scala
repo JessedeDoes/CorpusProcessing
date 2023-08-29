@@ -17,6 +17,8 @@ object Metadata {
   type record = Map[String, Any]
 
   case class Table(data: List[record], name: String, id_field: String, skip_fields: Set[String]  = Set()) {
+
+    def isCrossTable = name.contains("__")
     override  def toString = s"Table($name,key=$id_field)"
     lazy val size = data.size
     def filter(field_name: String, value: Any): Table  = {
@@ -26,71 +28,81 @@ object Metadata {
     def filter(field_name: String, f: Any => Boolean) = this.copy(data = this.data.filter(x => f(x(field_name))))
 
     def makeXML(m: Map[String, Any]): Elem = {
+      Console.err.println(s"Making XML for table $this")
       val e0: Elem = <elem xml:id={m(this.id_field).toString}/>.copy(label = this.name)
       val e1: Elem = <elem/>
+
       val children = m.filter({case (k,v) => !skip_fields.contains(k)}).map({
         case (k, v: String) => e1.copy(label=k, child = Text("" + v))
         case (k, null) =>  e1.copy(label=k)
       }).toSeq
 
-      val foreignChildren: Seq[Node] = relations.filter(r => r.t1.name == this.name).flatMap(r => {
+      val foreignChildren: Seq[Node] = Tables.relations.filter(r => r.t1.name == this.name).flatMap(r => {
          if (m.contains(r.key_field)) {
            Console.err.println(s"Join on $r with key= ${r.key_field}")
-           val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).copy(name = r.name).makeXML()
+           val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).makeXML()
            Console.err.println(s"Foreign record: ${foreignRecords.size}")
            foreignRecords
          } else  {
-
            Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
            Seq()
         }})
-      e0.copy(child = children ++ foreignChildren)
+      val newChildren = if (isCrossTable) foreignChildren else (children ++ foreignChildren)
+      e0.copy(child = newChildren)
     }
 
     def makeXML() : NodeSeq = data.map(makeXML)
   }
 
   case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String) {
-    override def toString = s"Relation(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
+    override def toString = s"Relation $name(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
   }
 
-  val relations = List[Relation](
-    Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
-    Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
-    Relation("persoonXwoonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
-    Relation("personXgeboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
-    Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
-    Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
-    Relation("persoonXberoepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
-    Relation("beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
-    Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
-    Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
-    Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
-    Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
-  )
+
 
 
    lazy val pretty = new PrettyPrinter(100,4)
    def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
    def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
 
-   lazy val alpino_annotatie = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
-   lazy val elan_annotatie = zlurp("elan_annotatie")
-   lazy val beroep = zlurp("beroep")
-   lazy val bestand= zlurp(tableName = "bestand")
-   lazy val gender = zlurp("gender")
-   lazy val land = zlurp("land")
-   lazy val opname = zlurp("opname")
+   object Tables {
+     lazy val alpino_annotatie = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
+     lazy val elan_annotatie = zlurp("elan_annotatie")
+     lazy val beroep = zlurp("beroep")
+     lazy val bestand = zlurp(tableName = "bestand")
+     lazy val gender = zlurp("gender")
+     lazy val land = zlurp("land")
+     lazy val opname = zlurp("opname")
 
-   lazy val persoon = zlurp("persoon")
-   lazy val persoon__woonplaats = zlurp("persoon__woonplaats")
-   lazy val persoon__beroepsplaats = zlurp("persoon__beroepplaats")
-   lazy val plaats = zlurp("plaats")
-   lazy val regio = zlurp("regio")
-   lazy val relatie = zlurp("relatie")
-   lazy val transcriptie = zlurp("transcriptie")
-   lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
-   lazy val opname__persoon = zlurp("opname__persoon")
+     lazy val persoon = zlurp("persoon")
+     lazy val persoon__woonplaats = zlurp("persoon__woonplaats")
+     lazy val persoon__beroepsplaats = zlurp("persoon__beroepplaats")
+     lazy val plaats = zlurp("plaats")
+     lazy val regio = zlurp("regio")
+     lazy val relatie = zlurp("relatie")
+     lazy val transcriptie = zlurp("transcriptie")
+     lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
+     lazy val opname__persoon = zlurp("opname__persoon")
+     lazy val opname_functie = zlurp("opname_functie")
+
+     lazy val relations = List[Relation](
+       Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
+       Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+       Relation("persoonXwoonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+       Relation("personXgeboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
+       Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
+       Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
+       Relation("persoonXberoepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
+       Relation("beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+       Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
+       Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
+       Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+       Relation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
+       Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
+     )
+   }
+
+   import Tables._
 
    lazy val alle_gebruikte_personen = {
      val idz = alpinos.map(_.opname_persoon_id.toString).toSet

@@ -64,9 +64,9 @@ object GCNDDatabase {
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
         <timesegment-annotation set="cgn"/>
       </annotations>
-      <foreign>
+      <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
-      </foreign>
+      </foreign-data>
     </metadata>{getAlpinoAnnotations(transcriptie_id).map(_.pseudoFolia)}
   </FoLiA>
 

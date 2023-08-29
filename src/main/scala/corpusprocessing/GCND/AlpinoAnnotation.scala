@@ -75,10 +75,10 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </s>
     </speech>
   }
-
+  //       {Metadata.getMetadata(this)}
   lazy val pseudoTEI = {
     <u start={this.starttijd.toString} end={this.eindtijd.toString} xml:id={alpino_annotatie_id.toString}>
-      {Metadata.getMetadata(this)}
+
       <seg type="alpinoInput">
         {sentence.input_transcript}
       </seg>{overLappingElanAnnotations.map(e =>
