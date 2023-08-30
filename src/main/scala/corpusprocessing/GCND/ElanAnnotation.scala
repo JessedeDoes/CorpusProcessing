@@ -11,13 +11,13 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                          )
 {
   lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = GCNDDatabase.alpinos.filter(e => // pas op ook op id filteren!
-    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
+    e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
   def pseudoFolia()  = {
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
-      <div class="alpinoAnnotation">
+      <div class="alpinoAnnotation" begintime={Stuff.formatTime(a.starttijd)} endtime={Stuff.formatTime(a.eindtijd)}>
       <t class="alpinoLightDutchification">
         {a.text_lv}
       </t>
@@ -27,7 +27,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       </div>
     })
 
-    <speech xml:id={speech_id}>
+    <speech xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
       <t class="elanLightDutchification">
         {tekst_lv}
       </t>
