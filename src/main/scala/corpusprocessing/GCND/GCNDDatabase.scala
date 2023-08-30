@@ -42,7 +42,7 @@ object GCNDDatabase {
       r.getInt("starttijd"),
       r.getInt("eindtijd")), "alpino_annotatie")
 
-  lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.starttijd + x.eindtijd)
+  lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
   lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
 
   def getAlpinoAnnotations(transcriptie_id: Int): Seq[AlpinoAnnotation] = {
@@ -58,7 +58,7 @@ object GCNDDatabase {
   </TEI>
 
   def getPseudoFoLiA(transcriptie_id: Int) =
-    <FoLiA xml:id={"gcnd.transcriptie" + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
     <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
@@ -69,7 +69,7 @@ object GCNDDatabase {
       <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
       </foreign-data>
-    </metadata>{getAlpinoAnnotations(transcriptie_id).map(x => x.pseudoFolia(true))}
+    </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.pseudoFolia(true))}
   </FoLiA>
 
   def main(args: Array[String])  = {

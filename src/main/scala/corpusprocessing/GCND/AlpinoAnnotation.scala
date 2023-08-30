@@ -52,7 +52,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
-  val speech_id = s"speech.$alpino_annotatie_id"
+  lazy val speech_id = s"speech.$alpino_annotatie_id"
 
   lazy val informativeT: Elem =  {  <info> <t class="alpinoInput">
         {sentence.input_transcript}
@@ -136,6 +136,10 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </seg>
     </u>
   }
+
+  lazy val sentenceId = (alpinoParseAsXML \\ "sentence" \ "@sentid").text
+
+  lazy val sortKey = Stuff.formatTime((starttijd + eindtijd) / 2) + "." + sentenceId
 
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
