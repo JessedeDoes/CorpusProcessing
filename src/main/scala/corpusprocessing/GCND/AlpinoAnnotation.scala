@@ -53,26 +53,26 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   val speech_id = s"speech.$alpino_annotatie_id"
+
   lazy val informativeT: Elem =  {  <info> <t class="alpinoInput">
         {sentence.input_transcript}
-      </t>  {
-      overLappingElanAnnotations.map(e =>
-        <div xml:id={speech_id +".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
-        <t class="elanLichteVernederlandsing">
-          {e.tekst_lv}
-        </t>
-          <t class="elanZwareVernederlandsing">
-            {e.tekst_zv}
-          </t>
-        </div>
-      )
-    }
-   <t class="alpinoLichteVernederlandsing">
+      </t>
+   <t class="alpinoLightDutchification">
     {alignedTokens.map(t => t.text_lv).mkString(" ")}
    </t>
-    <t class="alpinoZwareVernederlandsing">
+    <t class="alpinoHeavyDutchification">
       {alignedTokens.map(t => t.text_zv).mkString(" ")}
-    </t> </info> }
+    </t>{overLappingElanAnnotations.map(e =>
+      <div xml:id={speech_id + ".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
+        <t class="elanLightDutchification">
+          {e.tekst_lv}
+        </t>
+        <t class="elanHeavyDutchification">
+          {e.tekst_zv}
+        </t>
+      </div>
+    )}
+  </info> }
 
    def pseudoFolia(includeAlpinoParse: Boolean = false) = {
 
