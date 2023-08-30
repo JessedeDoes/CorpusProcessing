@@ -33,9 +33,12 @@ object Metadata {
       val e0: Elem = <elem/>.copy(label = this.name)
 
       val e1: Elem = <elem/>
-      val children = m.filter({case (k,v) => !skip_fields.contains(k)}).map({
+
+      val noEmpty = true
+      val children: Seq[Node] = m.filter({case (k,v) => !skip_fields.contains(k)}).flatMap({
         case (k, v: String) => e1.copy(label=k, child = Text("" + v))
-        case (k, null) =>  e1.copy(label=k)
+        case (k, null) if (!noEmpty) =>  e1.copy(label=k)
+        case _ => Seq()
       }).toSeq
 
       val foreignChildren: Seq[Node] = Tables.relations.filter(r => r.t1.name == this.name).flatMap(r => {
@@ -59,7 +62,7 @@ object Metadata {
   case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String) {
     override def toString = s"Relation $name(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
   }
-  
+
    lazy val pretty = new PrettyPrinter(100,4)
    def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
    def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
@@ -76,7 +79,8 @@ object Metadata {
      lazy val persoon: Table = zlurp("persoon")
      lazy val persoon__beroep: Table = zlurp("persoon__beroep")
      lazy val persoon__woonplaats: Table = zlurp("persoon__woonplaats")
-     lazy val persoon__beroepsplaats: Table = zlurp("persoon__beroepplaats")
+     lazy val persoon__beroepplaats: Table = zlurp("persoon__beroepplaats")
+     lazy val persoon__schoolplaats: Table = zlurp("persoon__schoolplaats")
      lazy val opname__persoon: Table = zlurp("opname__persoon")
      lazy val opname_functie: Table = zlurp("opname_functie")
 
@@ -100,17 +104,22 @@ object Metadata {
        Relation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
 
        // persoon
-       Relation("persoonXwoonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
 
-       Relation("personXgeboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
+       Relation("persoonXplaats (geboorteplaats)", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
 
+       Relation("persoonXpersoon__woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+       Relation("persoon__woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
 
-       Relation("persoonXpersoon__beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
-       Relation("persoon__beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+       Relation("persoonXpersoon__schoolplaats", persoon, persoon__schoolplaats, "persoon_id", "persoon_id"),
+       Relation("persoon__schoolplaatsXplaats", persoon__schoolplaats, plaats, "plaats_id", "plaats_id"),
+
+       Relation("persoonXpersoon__beroepplaats", persoon, persoon__beroepplaats, "persoon_id", "persoon_id"),
+       Relation("persoon__beroepsplaatXplaats", persoon__beroepplaats, plaats, "plaats_id", "plaats_id"),
 
        Relation("persoonXpersoon__beroep", persoon, persoon__beroep, "persoon_id", "persoon_id"),
        Relation("persoon__beroepXberoep", persoon__beroep, beroep, "beroep_id", "beroep_id"),
+
        // plaats
        Relation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
        Relation("plaatsXland", plaats, land, "land_id", "land_id"),
@@ -131,8 +140,6 @@ object Metadata {
 
        Relation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
        Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id"),
-
-       Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
      )
    }
 
