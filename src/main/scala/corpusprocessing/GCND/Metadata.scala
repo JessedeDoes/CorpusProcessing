@@ -68,41 +68,44 @@ object Metadata {
    def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
 
    object Tables {
-     lazy val alpino_annotatie = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
-     lazy val elan_annotatie = zlurp("elan_annotatie")
-     lazy val beroep = zlurp("beroep")
-     lazy val bestand = zlurp(tableName = "bestand")
-     lazy val gender = zlurp("gender")
-     lazy val land = zlurp("land")
-     lazy val opname = zlurp("opname")
-     lazy val opname__bestand = zlurp("opname__bestand")
-     lazy val persoon = zlurp("persoon")
-     lazy val persoon__woonplaats = zlurp("persoon__woonplaats")
-     lazy val persoon__beroepsplaats = zlurp("persoon__beroepplaats")
-     lazy val plaats = zlurp("plaats")
-     lazy val regio = zlurp("regio")
-     lazy val relatie = zlurp("relatie")
-     lazy val transcriptie = zlurp("transcriptie")
-     lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
-     lazy val transcriptie__persoon = zlurp("transcriptie__persoon")
-     lazy val opname__persoon = zlurp("opname__persoon")
-     lazy val opname_functie = zlurp("opname_functie")
+     lazy val alpino_annotatie: Table = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
+     lazy val elan_annotatie: Table = zlurp("elan_annotatie")
+     lazy val beroep: Table = zlurp("beroep")
+     lazy val bestand: Table = zlurp(tableName = "bestand")
+     lazy val gender: Table = zlurp("gender")
+     lazy val land: Table = zlurp("land")
+     lazy val opname: Table = zlurp("opname")
+     lazy val opname__bestand: Table = zlurp("opname__bestand")
+     lazy val persoon: Table = zlurp("persoon")
+     lazy val persoon__beroep: Table = zlurp("persoon__beroep")
+     lazy val persoon__woonplaats: Table = zlurp("persoon__woonplaats")
+     lazy val persoon__beroepsplaats: Table = zlurp("persoon__beroepplaats")
+     lazy val plaats: Table = zlurp("plaats")
+     lazy val regio: Table = zlurp("regio")
+     lazy val relatie: Table = zlurp("relatie")
+     lazy val transcriptie: Table = zlurp("transcriptie")
+     lazy val transcriptie__bestand: Table = zlurp("transcriptie__bestand")
+     lazy val transcriptie__persoon: Table = zlurp("transcriptie__persoon")
+     lazy val opname__persoon: Table = zlurp("opname__persoon")
+     lazy val opname_functie: Table = zlurp("opname_functie")
 
      lazy val relations = List[Relation](
-       Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
-       Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+       Relation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
+
+       // persoon
        Relation("persoonXwoonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
 
        Relation("personXgeboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
 
-       Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
 
        Relation("persoonXpersoon__beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
        Relation("persoon__beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
 
-       Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
+       Relation("persoonXpersoon__beroep", persoon, persoon__beroep, "persoon_id", "persoon_id"),
+       Relation("persoon__beroepXberoep", persoon__beroep, beroep, "beroep_id", "beroep_id"),
 
+       // opname
        Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
        Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
 
@@ -111,11 +114,17 @@ object Metadata {
 
        Relation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
        Relation("opnameXplaats", opname, plaats, "plaats_id", "plaats_id"),
+
+       // transcriptie
+       Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
        Relation("transcriptieXtranscriptie__bestand", transcriptie, transcriptie__bestand, "transcriptie_id", "transcriptie_id"),
        Relation("transcriptie__bestandXbestand", transcriptie__bestand, bestand, "bestand_id", "bestand_id"),
 
        Relation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
-       Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id")
+       Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id"),
+
+
+       Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
      )
    }
 
