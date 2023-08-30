@@ -59,10 +59,7 @@ object Metadata {
   case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String) {
     override def toString = s"Relation $name(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
   }
-
-
-
-
+  
    lazy val pretty = new PrettyPrinter(100,4)
    def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
    def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
@@ -70,24 +67,34 @@ object Metadata {
    object Tables {
      lazy val alpino_annotatie: Table = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
      lazy val elan_annotatie: Table = zlurp("elan_annotatie")
-     lazy val beroep: Table = zlurp("beroep")
-     lazy val bestand: Table = zlurp(tableName = "bestand")
-     lazy val gender: Table = zlurp("gender")
-     lazy val land: Table = zlurp("land")
+
+
+
      lazy val opname: Table = zlurp("opname")
      lazy val opname__bestand: Table = zlurp("opname__bestand")
+
      lazy val persoon: Table = zlurp("persoon")
      lazy val persoon__beroep: Table = zlurp("persoon__beroep")
      lazy val persoon__woonplaats: Table = zlurp("persoon__woonplaats")
      lazy val persoon__beroepsplaats: Table = zlurp("persoon__beroepplaats")
+     lazy val opname__persoon: Table = zlurp("opname__persoon")
+     lazy val opname_functie: Table = zlurp("opname_functie")
+
      lazy val plaats: Table = zlurp("plaats")
      lazy val regio: Table = zlurp("regio")
+     lazy val land: Table = zlurp("land")
+     lazy val beroep: Table = zlurp("beroep")
+     lazy val bestand: Table = zlurp(tableName = "bestand")
+     lazy val gender: Table = zlurp("gender")
+
+
      lazy val relatie: Table = zlurp("relatie")
+
      lazy val transcriptie: Table = zlurp("transcriptie")
      lazy val transcriptie__bestand: Table = zlurp("transcriptie__bestand")
      lazy val transcriptie__persoon: Table = zlurp("transcriptie__persoon")
-     lazy val opname__persoon: Table = zlurp("opname__persoon")
-     lazy val opname_functie: Table = zlurp("opname_functie")
+
+
 
      lazy val relations = List[Relation](
        Relation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
@@ -104,7 +111,9 @@ object Metadata {
 
        Relation("persoonXpersoon__beroep", persoon, persoon__beroep, "persoon_id", "persoon_id"),
        Relation("persoon__beroepXberoep", persoon__beroep, beroep, "beroep_id", "beroep_id"),
-
+       // plaats
+       Relation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
+       Relation("plaatsXland", plaats, land, "land_id", "land_id"),
        // opname
        Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
        Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
@@ -122,7 +131,6 @@ object Metadata {
 
        Relation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
        Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id"),
-
 
        Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
      )
