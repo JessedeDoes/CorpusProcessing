@@ -46,7 +46,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 {
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
-  lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n")
+  lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n").replaceAll("\\\\'", "'")
   lazy val alpinoParseAsXML: Elem = XML.loadString(x)
   lazy val sentence = AlpinoSentence(alpinoParseAsXML)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
