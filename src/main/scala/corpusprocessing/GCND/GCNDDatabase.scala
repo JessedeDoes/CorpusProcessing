@@ -63,7 +63,8 @@ object GCNDDatabase {
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
-        <division-annotation set="gcnd_divs"/>
+        <division-annotation set="gcnd_div_classes"/>
+        <speech-annotation set="gcnd_speech_classes"/>
         <timesegment-annotation set="cgn"/>
       </annotations>
       <foreign-data>
