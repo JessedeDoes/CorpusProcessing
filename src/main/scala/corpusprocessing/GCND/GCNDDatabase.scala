@@ -10,7 +10,7 @@ import java.io.PrintWriter
 
 
 object GCNDDatabase {
-  lazy val pretty = new PrettyPrinter(100,4)
+  lazy val pretty = new PrettyPrinter(1000,4)
   val config = new Configuration(name="gcnd", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val db = new Database(config)
 
@@ -57,17 +57,19 @@ object GCNDDatabase {
     </text>
   </TEI>
 
-  def getPseudoFoLiA(transcriptie_id: Int) = <FoLiA xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
-    <metadata src="fv701244.imdi" type="imdi" xmlns="http://ilk.uvt.nl/folia">
+  def getPseudoFoLiA(transcriptie_id: Int) =
+    <FoLiA xml:id={"gcnd.transcriptie" + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+    <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+        <division-annotation set="gcnd_divs"/>
         <timesegment-annotation set="cgn"/>
       </annotations>
       <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
       </foreign-data>
-    </metadata>{getAlpinoAnnotations(transcriptie_id).map(_.pseudoFolia)}
+    </metadata>{getAlpinoAnnotations(transcriptie_id).map(x => x.pseudoFolia(true))}
   </FoLiA>
 
   def main(args: Array[String])  = {
@@ -79,8 +81,6 @@ object GCNDDatabase {
     val out1 = new PrintWriter("/tmp/gcnd.test.folia.xml")
     out1.println(pretty.format(getPseudoFoLiA(1)))
     out1.close()
-
-
   }
 }
 

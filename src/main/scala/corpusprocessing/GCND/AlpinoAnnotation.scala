@@ -12,7 +12,7 @@ import scala.xml._
 import GCNDDatabase.{Token, elans}
 import posmapping.{CGNPoSTagging, CGNTagset}
 
-import scala.collection.immutable
+import scala.collection.{AbstractSeq, immutable}
 
 object Stuff {
   def formatTime (x: Int) = {
@@ -28,6 +28,8 @@ object Stuff {
     val mis = String.format("%03d", mi.asInstanceOf[Object])
     s"$hs:$ms:$ss.$mis"
   }
+
+  val alpinoScope = <alpino xmlns="http://alpino.fake.url"/>.scope
 }
 
 import Stuff._
@@ -45,13 +47,37 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
   lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n")
-  lazy val parse: Elem = XML.loadString(x)
-  lazy val sentence = AlpinoSentence(parse)
+  lazy val alpinoParseAsXML: Elem = XML.loadString(x)
+  lazy val sentence = AlpinoSentence(alpinoParseAsXML)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
-  lazy val pseudoFolia = {
-    <speech xml:id={s"speech.$alpino_annotatie_id"}>
+  val speech_id = s"speech.$alpino_annotatie_id"
+  lazy val informativeT: Elem =  {  <info> <t class="alpinoInput">
+        {sentence.input_transcript}
+      </t>  {
+      overLappingElanAnnotations.map(e =>
+        <div xml:id={speech_id +".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
+        <t class="elanLichteVernederlandsing">
+          {e.tekst_lv}
+        </t>
+          <t class="elanZwareVernederlandsing">
+            {e.tekst_zv}
+          </t>
+        </div>
+      )
+    }
+   <t class="alpinoLichteVernederlandsing">
+    {alignedTokens.map(t => t.text_lv).mkString(" ")}
+   </t>
+    <t class="alpinoZwareVernederlandsing">
+      {alignedTokens.map(t => t.text_zv).mkString(" ")}
+    </t> </info> }
+
+   def pseudoFolia(includeAlpinoParse: Boolean = false) = {
+
+    <speech xml:id={speech_id}>
+      {informativeT.child}
       <s xml:id={s"s.$alpino_annotatie_id"}>
         {if (alignedTokens.size == alpinoTokens.size) {
 
@@ -73,6 +99,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
         </timing>
       </s>
+      {if (includeAlpinoParse) <foreign-data>{alpinoParseAsXML.copy(scope = alpinoScope)}</foreign-data>}
     </speech>
   }
   //       {Metadata.getMetadata(this)}
@@ -88,7 +115,8 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         <seg type="elanZwareVernederlandsing" start={e.starttijd.toString} end={e.eindtijd.toString}>
           {e.tekst_zv}
         </seg>
-    )}<seg type="alpinoLichteVernederlandsing">
+    )}
+      <seg type="alpinoLichteVernederlandsing">
       {alignedTokens.map(t => t.text_lv).mkString(" ")}
     </seg>
       <seg type="alpinoZwareVernederlandsing">

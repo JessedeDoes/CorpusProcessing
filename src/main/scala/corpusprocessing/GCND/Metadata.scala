@@ -29,9 +29,10 @@ object Metadata {
 
     def makeXML(m: Map[String, Any]): Elem = {
       Console.err.println(s"Making XML for table $this")
-      val e0: Elem = <elem xml:id={this.name + "." + m(this.id_field).toString}/>.copy(label = this.name)
-      val e1: Elem = <elem/>
+      val element_id = this.name + "." + m(this.id_field).toString //  xml:id={element_id}
+      val e0: Elem = <elem/>.copy(label = this.name)
 
+      val e1: Elem = <elem/>
       val children = m.filter({case (k,v) => !skip_fields.contains(k)}).map({
         case (k, v: String) => e1.copy(label=k, child = Text("" + v))
         case (k, null) =>  e1.copy(label=k)
@@ -117,9 +118,11 @@ object Metadata {
      info +: t0.makeXML()
    }
 
+   val scope = <x xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata"></x>.scope
    def getMetadata(transcriptie_id: Int)  = {
      val t0 = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
-     t0.makeXML()
+     val z = <gcnd_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.makeXML()}</gcnd_metadata>.copy(scope=scope)
+     z
    }
 
   def main(args: Array[String]): Unit = {
