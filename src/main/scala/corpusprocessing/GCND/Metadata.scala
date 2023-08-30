@@ -43,7 +43,8 @@ object Metadata {
            Console.err.println(s"Join on $r with key= ${r.key_field}")
            val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).makeXML()
            Console.err.println(s"Foreign record: ${foreignRecords.size}")
-           foreignRecords
+           val bla = <e rel={r.name}/>
+           foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
          } else  {
            Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
            Seq()
@@ -74,7 +75,7 @@ object Metadata {
      lazy val gender = zlurp("gender")
      lazy val land = zlurp("land")
      lazy val opname = zlurp("opname")
-
+     lazy val opname__bestand = zlurp("opname__bestand")
      lazy val persoon = zlurp("persoon")
      lazy val persoon__woonplaats = zlurp("persoon__woonplaats")
      lazy val persoon__beroepsplaats = zlurp("persoon__beroepplaats")
@@ -83,6 +84,7 @@ object Metadata {
      lazy val relatie = zlurp("relatie")
      lazy val transcriptie = zlurp("transcriptie")
      lazy val transcriptie__bestand = zlurp("transcriptie__bestand")
+     lazy val transcriptie__persoon = zlurp("transcriptie__persoon")
      lazy val opname__persoon = zlurp("opname__persoon")
      lazy val opname_functie = zlurp("opname_functie")
 
@@ -90,16 +92,30 @@ object Metadata {
        Relation("opname_persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
        Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
        Relation("persoonXwoonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+
        Relation("personXgeboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
+
        Relation("woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
-       Relation("persoonXberoepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
-       Relation("beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+
+       Relation("persoonXpersoon__beroepsplaats", persoon, persoon__beroepsplaats, "persoon_id", "persoon_id"),
+       Relation("persoon__beroepsplaatsXplaats", persoon__beroepsplaats, plaats, "plaats_id", "plaats_id"),
+
        Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
+
        Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
        Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+
+       Relation("opnameXopname__bestand", opname, opname__bestand, "opname_id", "opname_id"),
+       Relation("opname__bestandXbestand", opname__bestand, bestand, "bestand_id", "bestand_id"),
+
        Relation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
-       Relation("plaats", opname, plaats, "plaats_id", "plaats_id")
+       Relation("opnameXplaats", opname, plaats, "plaats_id", "plaats_id"),
+       Relation("transcriptieXtranscriptie__bestand", transcriptie, transcriptie__bestand, "transcriptie_id", "transcriptie_id"),
+       Relation("transcriptie__bestandXbestand", transcriptie__bestand, bestand, "bestand_id", "bestand_id"),
+
+       Relation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
+       Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id")
      )
    }
 
