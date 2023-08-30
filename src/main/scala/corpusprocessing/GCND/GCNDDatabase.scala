@@ -47,6 +47,11 @@ object GCNDDatabase {
 
   def getAlpinoAnnotations(transcriptie_id: Int): Seq[AlpinoAnnotation] = {
     val q = alpinoQ.copy(from= s"alpino_annotatie where transcriptie_id=$transcriptie_id")
+    db.slurp(q).sortBy(x => x.sortKey)
+  }
+
+  def getElanAnnotations(transcriptie_id: Int): Seq[ElanAnnotation] = {
+    val q = elanQ.copy(from = s"elan_annotatie where transcriptie_id=$transcriptie_id")
     db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
   }
 
@@ -57,14 +62,13 @@ object GCNDDatabase {
     </text>
   </TEI>
 
-  def getPseudoFoLiA(transcriptie_id: Int) =
+  def getPseudoFoLiAForAlpinoAnnotations(transcriptie_id: Int) =
     <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
     <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
         <division-annotation set="gcnd_div_classes"/>
-        <speech-annotation set="gcnd_speech_classes"/>
         <timesegment-annotation set="cgn"/>
       </annotations>
       <foreign-data>
@@ -73,15 +77,35 @@ object GCNDDatabase {
     </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.pseudoFolia(true))}
   </FoLiA>
 
+  def getPseudoFoLiAForElanAnnotations(transcriptie_id: Int) =
+    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+      <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+          <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+          <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+          <division-annotation set="gcnd_div_classes"/>
+          <timesegment-annotation set="cgn"/>
+        </annotations>
+        <foreign-data>
+          {Metadata.getMetadata(transcriptie_id)}
+        </foreign-data>
+      </metadata>{getElanAnnotations(transcriptie_id).sortBy(_.starttijd).map(x => x.pseudoFolia())}
+    </FoLiA>
+
   def main(args: Array[String])  = {
+    if (false) {
+      val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
+      out.println(pretty.format(getPseudoTEI(1)))
+      out.close()
+    }
 
-    val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
-    out.println(pretty.format(getPseudoTEI(1)))
-    out.close()
-
-    val out1 = new PrintWriter("/tmp/gcnd.test.folia.xml")
-    out1.println(pretty.format(getPseudoFoLiA(1)))
+    val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
+    out1.println(pretty.format(getPseudoFoLiAForAlpinoAnnotations(1)))
     out1.close()
+
+    val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")
+    out2.println(pretty.format(getPseudoFoLiAForElanAnnotations(1)))
+    out2.close()
   }
 }
 

@@ -14,10 +14,10 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
   )
 
-  def toPseudoFolia()  = {
+  def pseudoFolia()  = {
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
-      <div class="elanAnnotation">
+      <div class="alpinoAnnotation">
       <t class="alpinoLightDutchification">
         {a.text_lv}
       </t>
@@ -27,7 +27,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       </div>
     })
 
-    <speech xml:id={speech_id} class="elanAnnotations">
+    <speech xml:id={speech_id}>
       <t class="elanLightDutchification">
         {tekst_lv}
       </t>

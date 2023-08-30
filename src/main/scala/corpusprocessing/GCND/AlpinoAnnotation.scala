@@ -77,7 +77,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
    def pseudoFolia(includeAlpinoParse: Boolean = false) = {
 
-    <speech xml:id={speech_id} class="alpinoAnnotation">
+    <speech xml:id={speech_id}>
       {informativeT.child}
       <s xml:id={s"s.$alpino_annotatie_id"}>
         {if (alignedTokens.size == alpinoTokens.size) {
