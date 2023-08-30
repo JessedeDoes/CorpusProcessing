@@ -8,7 +8,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           tekst_zv: String,
                           starttijd: Int,
                           eindtijd: Int
-                         ) {
+                         )
+{
   lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = GCNDDatabase.alpinos.filter(e => // pas op ook op id filteren!
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
   )
@@ -26,7 +27,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       </div>
     })
 
-    <speech xml:id={speech_id}>
+    <speech xml:id={speech_id} class="elanAnnotations">
       <t class="elanLightDutchification">
         {tekst_lv}
       </t>
