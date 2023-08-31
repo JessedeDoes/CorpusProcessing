@@ -63,13 +63,16 @@ object GCNDDatabase {
   </TEI>
 
   def getPseudoFoLiAForAlpinoAnnotations(transcriptie_id: Int) =
-    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
     <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
       <annotations>
         <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
         <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
         <division-annotation set="gcnd_div_classes"/>
         <timesegment-annotation set="cgn"/>
+        <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+        <token-annotation/>
+        <sentence-annotation/>
       </annotations>
       <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
@@ -78,13 +81,16 @@ object GCNDDatabase {
   </FoLiA>
 
   def getPseudoFoLiAForElanAnnotations(transcriptie_id: Int) =
-    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="1.5" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
       <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
         <annotations>
           <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
           <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
           <division-annotation set="gcnd_div_classes"/>
           <timesegment-annotation set="cgn"/>
+          <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+          <token-annotation/>
+          <sentence-annotation/>
         </annotations>
         <foreign-data>
           {Metadata.getMetadata(transcriptie_id)}

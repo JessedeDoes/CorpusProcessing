@@ -55,7 +55,9 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
-  lazy val informativeT: Elem =  {  <info> <t class="alpinoInput">
+  lazy val informativeT: Elem =  {  <info>
+    {Comment("n_elan_annotations: " +  overLappingElanAnnotations.size.toString)}
+    <t class="alpinoInput">
         {sentence.input_transcript}
       </t>
    <t class="alpinoLightDutchification">
