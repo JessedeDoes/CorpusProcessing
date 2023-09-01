@@ -23,6 +23,7 @@ case class Doc(n: Node) {
     XML.save(fName, getContent(), enc="UTF-8")
   }
 }
+
 object Selection {
    val docsURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN/docs/?number=3000"
    lazy val docs: Seq[Doc] = XML.load(docsURL).flatMap(x => x \\ "doc").map(Doc)
