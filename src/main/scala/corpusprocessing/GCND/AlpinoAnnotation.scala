@@ -55,6 +55,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
+
   lazy val informativeT: Elem =  {  <info>
     {Comment("n_elan_annotations: " +  overLappingElanAnnotations.size.toString)}
     <t class="alpinoInput">
@@ -105,7 +106,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       {if (includeAlpinoParse) <foreign-data>{alpinoParseAsXML.copy(scope = alpinoScope)}</foreign-data>}
     </speech>
   }
-  //       {Metadata.getMetadata(this)}
+  //  {Metadata.getMetadata(this)}
   lazy val pseudoTEI = {
     <u start={this.starttijd.toString} end={this.eindtijd.toString} xml:id={alpino_annotatie_id.toString}>
 
@@ -145,7 +146,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val sortKey = Stuff.formatTime((starttijd + eindtijd) / 2) + "." + sentenceId
 
   lazy val overLappingElanAnnotations = elans.filter(e =>
-    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd >= starttijd & e.eindtijd <= eindtijd
+    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
   lazy val n_m = overLappingElanAnnotations.map(_.nAlpinos)
