@@ -1,28 +1,28 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="12" id="0" rel="top">
     <node begin="0" cat="du" end="8" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="8" id="3" rel="nucl">
-        <node word="z" begin="1" end="2" getal="mv" id="4" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-        <node word="en" begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+        <node word_zv="ze" word="z" begin="1" end="2" getal="mv" id="4" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node word_zv="hebben" word="en" begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
         <node begin="1" cat="ppart" end="8" id="6" rel="vc">
           <node begin="1" end="2" id="7" index="1" rel="su"/>
           <node begin="4" cat="np" end="6" id="8" rel="obj1">
-            <node word="e" begin="4" end="5" id="9" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-            <node word="pier" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="10" lemma="pier" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="pier" sense="pier"/>
+            <node word_zv="een" word="e" begin="4" end="5" id="9" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+            <node word_zv="pier" word="pier" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="10" lemma="pier" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="pier" sense="pier"/>
           </node>
           <node begin="3" cat="pp" end="7" id="11" rel="ld">
-            <node word="der" begin="3" end="4" getal="getal" id="12" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="obj1" root="er" sense="er" status="red" vwtype="aanw"/>
-            <node word="rond" begin="6" end="7" id="13" lemma="rond" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="rond" sense="rond" vztype="fin"/>
+            <node word_zv="er" word="der" begin="3" end="4" getal="getal" id="12" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="obj1" root="er" sense="er" status="red" vwtype="aanw"/>
+            <node word_zv="rond" word="rond" begin="6" end="7" id="13" lemma="rond" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="rond" sense="rond" vztype="fin"/>
           </node>
-          <node word="gedaan" begin="7" buiging="zonder" end="8" id="14" lemma="doen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="doe" sense="doe" wvorm="vd"/>
+          <node word_zv="gedaan" word="gedaan" begin="7" buiging="zonder" end="8" id="14" lemma="doen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="doe" sense="doe" wvorm="vd"/>
         </node>
       </node>
     </node>
-    <node word="..." begin="8" end="9" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="pier" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="16" lemma="pier" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="pier" sense="pier"/>
-    <node word="hé" begin="10" end="11" id="17" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="11" end="12" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="..." word="..." begin="8" end="9" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="pier" word="pier" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="16" lemma="pier" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="pier" sense="pier"/>
+    <node word_zv="hé" word="hé" begin="10" end="11" id="17" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="11" end="12" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0365b">en ze hebben er een pier rond gedaan ... pier hé .</sentence>
   <comments>

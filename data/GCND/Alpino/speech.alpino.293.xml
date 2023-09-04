@@ -1,33 +1,33 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="15" id="0" rel="top">
-    <node word="awel" begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel"/>
+    <node word_zv="awel" word="awel" begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel"/>
     <node begin="1" cat="du" end="13" id="2" rel="--">
-      <node word="meneere" begin="1" end="2" genus="zijd" getal="ev" graad="basis" id="3" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer"/>
+      <node word_zv="meneer" word="meneere" begin="1" end="2" genus="zijd" getal="ev" graad="basis" id="3" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer"/>
       <node begin="2" cat="smain" end="13" id="4" rel="nucl">
-        <node word="moeste" begin="7" end="8" id="5" lemma="moeten" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="moet" sense="moet" wvorm="pv"/>
-        <node word="wijder" begin="8" end="9" getal="mv" id="6" index="1" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
+        <node word_zv="moesten" word="moeste" begin="7" end="8" id="5" lemma="moeten" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="moet" sense="moet" wvorm="pv"/>
+        <node word_zv="wij" word="wijder" begin="8" end="9" getal="mv" id="6" index="1" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
         <node begin="2" cat="inf" end="13" id="7" rel="vc">
           <node begin="2" cat="cp" end="7" id="8" rel="mod">
-            <node word="aze" begin="2" conjtype="onder" end="3" id="9" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+            <node word_zv="als" word="aze" begin="2" conjtype="onder" end="3" id="9" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
             <node begin="3" cat="ssub" end="7" id="10" rel="body">
-              <node word="k" begin="3" end="4" getal="ev" id="11" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-              <node word="ik" begin="4" end="5" getal="ev" id="12" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-              <node word="kleine" begin="5" buiging="zonder" end="6" graad="basis" id="13" lemma="klein" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="klein" sense="klein"/>
-              <node word="waren" begin="6" end="7" id="14" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+              <node word_zv="ik" word="k" begin="3" end="4" getal="ev" id="11" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+              <node word_zv="ik" word="ik" begin="4" end="5" getal="ev" id="12" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+              <node word_zv="klein" word="kleine" begin="5" buiging="zonder" end="6" graad="basis" id="13" lemma="klein" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="klein" sense="klein"/>
+              <node word_zv="was" word="waren" begin="6" end="7" id="14" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
             </node>
           </node>
           <node begin="8" end="9" id="15" index="1" rel="su"/>
-          <node word="vroeg" begin="9" buiging="zonder" end="10" graad="basis" id="16" lemma="vroeg" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="vroeg" sense="vroeg"/>
+          <node word_zv="vroeg" word="vroeg" begin="9" buiging="zonder" end="10" graad="basis" id="16" lemma="vroeg" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="vroeg" sense="vroeg"/>
           <node begin="10" cat="pp" end="12" id="17" rel="ld">
-            <node word="in" begin="10" end="11" id="18" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
-            <node word="zee" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="19" lemma="zee" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="zee" sense="zee"/>
+            <node word_zv="in" word="in" begin="10" end="11" id="18" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node word_zv="zee" word="zee" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="19" lemma="zee" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="zee" sense="zee"/>
           </node>
-          <node word="gaan" begin="12" buiging="zonder" end="13" id="20" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+          <node word_zv="gaan" word="gaan" begin="12" buiging="zonder" end="13" id="20" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
         </node>
       </node>
     </node>
-    <node word="hé" begin="13" end="14" id="21" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="14" end="15" id="22" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="hé" word="hé" begin="13" end="14" id="21" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="14" end="15" id="22" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0003">awel meneer als ik ik klein was moesten wij vroeg in zee gaan hé .</sentence>
   <comments>

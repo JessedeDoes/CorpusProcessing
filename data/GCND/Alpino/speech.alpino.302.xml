@@ -1,10 +1,10 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="3" id="0" rel="top">
     <node begin="0" cat="inf" end="2" id="1" rel="--">
-      <node word="leren" begin="0" buiging="zonder" end="1" id="2" lemma="leren" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="leer" sense="leer" wvorm="inf"/>
-      <node word="zeilen" begin="1" buiging="zonder" end="2" id="3" lemma="zeilen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="vc" root="zeil" sense="zeil" wvorm="inf"/>
+      <node word_zv="leren" word="leren" begin="0" buiging="zonder" end="1" id="2" lemma="leren" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="leer" sense="leer" wvorm="inf"/>
+      <node word_zv="zeilen" word="zeilen" begin="1" buiging="zonder" end="2" id="3" lemma="zeilen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="vc" root="zeil" sense="zeil" wvorm="inf"/>
     </node>
-    <node word="..." begin="2" end="3" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="2" end="3" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0214a">leren zeilen ...</sentence>
   <comments>

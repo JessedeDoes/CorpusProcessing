@@ -3,13 +3,13 @@
   <node begin="0" cat="top" end="5" id="0" rel="top">
     <node begin="0" cat="smain" end="5" id="1" rel="--">
       <node begin="0" cat="np" end="2" id="2" rel="su">
-        <node word="da" begin="0" buiging="zonder" end="1" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="3" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh"/>
-        <node word="net" begin="1" end="2" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="4" lcat="np" lemma="net" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="net" sense="net"/>
+        <node word_zv="dat" word="da" begin="0" buiging="zonder" end="1" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="3" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh"/>
+        <node word_zv="net" word="net" begin="1" end="2" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="4" lcat="np" lemma="net" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="net" sense="net"/>
       </node>
-      <node word="stoeg" begin="2" end="3" frame="verb(hebben,past(sg),ld_pp)" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sc="ld_pp" sense="sta" stype="declarative" tense="past" wvorm="pv"/>
+      <node word_zv="stond" word="stoeg" begin="2" end="3" frame="verb(hebben,past(sg),ld_pp)" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sc="ld_pp" sense="sta" stype="declarative" tense="past" wvorm="pv"/>
       <node begin="3" cat="pp" end="5" id="6" rel="ld">
-        <node word="achter" begin="3" end="4" frame="preposition(achter,[aan,door,langs,om,uit,vandaan])" his="normal" his_1="normal" id="7" lcat="pp" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init"/>
-        <node word="je" begin="4" case="both" def="def" end="5" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="getal" his="normal" his_1="normal" id="8" lcat="np" lemma="je" naamval="obl" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pr,pron,obl,red,2v,getal)" pt="vnw" rel="obj1" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pr" wh="nwh"/>
+        <node word_zv="achter" word="achter" begin="3" end="4" frame="preposition(achter,[aan,door,langs,om,uit,vandaan])" his="normal" his_1="normal" id="7" lcat="pp" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init"/>
+        <node word_zv="je" word="je" begin="4" case="both" def="def" end="5" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="getal" his="normal" his_1="normal" id="8" lcat="np" lemma="je" naamval="obl" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pr,pron,obl,red,2v,getal)" pt="vnw" rel="obj1" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pr" wh="nwh"/>
       </node>
     </node>
   </node>

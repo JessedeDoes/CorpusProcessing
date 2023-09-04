@@ -1,15 +1,15 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
     <node begin="0" cat="du" end="4" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="4" id="3" rel="nucl">
-        <node word="t" begin="1" end="2" genus="onz" getal="ev" id="4" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
-        <node word="was" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
-        <node word="seizoen" begin="3" end="4" genus="zijd" getal="ev" graad="basis" id="6" lemma="seizoen" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="predc" root="seizoen" sense="seizoen"/>
+        <node word_zv="het" word="t" begin="1" end="2" genus="onz" getal="ev" id="4" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
+        <node word_zv="was" word="was" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="seizoen" word="seizoen" begin="3" end="4" genus="zijd" getal="ev" graad="basis" id="6" lemma="seizoen" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="predc" root="seizoen" sense="seizoen"/>
       </node>
     </node>
-    <node word="hé" begin="4" end="5" id="7" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="5" end="6" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="hé" word="hé" begin="4" end="5" id="7" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="5" end="6" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0285">en het was seizoen hé .</sentence>
   <comments>

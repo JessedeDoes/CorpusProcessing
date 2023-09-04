@@ -2,24 +2,24 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:03" cats="1" skips="0"/>
   <node begin="0" cat="top" end="9" id="0" rel="top">
     <node begin="0" cat="du" end="8" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
       <node begin="1" cat="smain" end="8" id="3" rel="nucl">
-        <node word="da" begin="1" end="2" frame="cleft_het_noun" genus="onz" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" rnum="pl" root="dat" sense="dat" special="cleft_het" status="red" vwtype="pers"/>
-        <node word="waren" begin="2" end="3" frame="verb(unacc,past(pl),cleft)" his="normal" his_1="normal" id="5" infl="pl" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sc="cleft" sense="ben" stype="declarative" tense="past" wvorm="pv"/>
-        <node word="ook" begin="3" end="4" frame="sentence_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" special="sentence"/>
+        <node word_zv="dat" word="da" begin="1" end="2" frame="cleft_het_noun" genus="onz" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" rnum="pl" root="dat" sense="dat" special="cleft_het" status="red" vwtype="pers"/>
+        <node word_zv="waren" word="waren" begin="2" end="3" frame="verb(unacc,past(pl),cleft)" his="normal" his_1="normal" id="5" infl="pl" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sc="cleft" sense="ben" stype="declarative" tense="past" wvorm="pv"/>
+        <node word_zv="ook" word="ook" begin="3" end="4" frame="sentence_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" special="sentence"/>
         <node begin="4" cat="np" end="8" id="7" rel="predc">
-          <node word="schoenders" begin="4" end="5" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="8" lcat="np" lemma="schoeners" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="schoeners" sense="schoeners"/>
+          <node word_zv="schoeners" word="schoenders" begin="4" end="5" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="8" lcat="np" lemma="schoeners" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="schoeners" sense="schoeners"/>
           <node begin="5" cat="pp" end="8" id="9" rel="mod">
-            <node word="op" begin="5" end="6" frame="preposition(op,[af,na])" his="normal" his_1="normal" id="10" lcat="pp" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+            <node word_zv="op" word="op" begin="5" end="6" frame="preposition(op,[af,na])" his="normal" his_1="normal" id="10" lcat="pp" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
             <node begin="6" cat="np" end="8" id="11" rel="obj1">
-              <node word="de" begin="6" end="7" frame="determiner(de)" his="normal" his_1="normal" id="12" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-              <node word="zeilen" begin="7" end="8" frame="noun(het,count,pl)" gen="het" getal="mv" graad="basis" his="normal" his_1="normal" id="13" lcat="np" lemma="zeil" ntype="soort" num="pl" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" rnum="pl" root="zeil" sense="zeil"/>
+              <node word_zv="de" word="de" begin="6" end="7" frame="determiner(de)" his="normal" his_1="normal" id="12" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word_zv="zeilen" word="zeilen" begin="7" end="8" frame="noun(het,count,pl)" gen="het" getal="mv" graad="basis" his="normal" his_1="normal" id="13" lcat="np" lemma="zeil" ntype="soort" num="pl" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" rnum="pl" root="zeil" sense="zeil"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node word="." begin="8" end="9" frame="punct(punt)" his="normal" his_1="normal" id="14" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
+    <node word_zv="." word="." begin="8" end="9" frame="punct(punt)" his="normal" his_1="normal" id="14" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0047">en dat waren ook schoeners op de zeilen .</sentence>
   <comments>

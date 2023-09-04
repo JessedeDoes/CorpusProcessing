@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="6" id="3" rel="nucl">
-        <node word="je" begin="1" end="2" getal="ev" id="4" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
-        <node word="kreeg" begin="2" end="3" id="5" lemma="krijgen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="krijg" sense="krijg" wvorm="pv"/>
-        <node word="ze" begin="3" end="4" getal="mv" id="6" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node word_zv="je" word="je" begin="1" end="2" getal="ev" id="4" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+        <node word_zv="kreeg" word="kreeg" begin="2" end="3" id="5" lemma="krijgen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="krijg" sense="krijg" wvorm="pv"/>
+        <node word_zv="ze" word="ze" begin="3" end="4" getal="mv" id="6" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
         <node begin="4" cat="advp" end="6" id="7" rel="mod">
-          <node word="nie" begin="4" end="5" id="8" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="hd" root="niet" sense="niet"/>
-          <node word="meer" begin="5" buiging="zonder" end="6" graad="comp" id="9" lemma="veel" naamval="stan" pdtype="grad" pos="adv" positie="vrij" postag="VNW(onbep,grad,stan,vrij,zonder,comp)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep"/>
+          <node word_zv="niet" word="nie" begin="4" end="5" id="8" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="hd" root="niet" sense="niet"/>
+          <node word_zv="meer" word="meer" begin="5" buiging="zonder" end="6" graad="comp" id="9" lemma="veel" naamval="stan" pdtype="grad" pos="adv" positie="vrij" postag="VNW(onbep,grad,stan,vrij,zonder,comp)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep"/>
         </node>
       </node>
     </node>
-    <node word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0085c">en je kreeg ze niet meer .</sentence>
   <comments>

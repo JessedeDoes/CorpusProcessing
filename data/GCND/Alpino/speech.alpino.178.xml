@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="6" id="3" rel="nucl">
-        <node word="dat" begin="1" end="2" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
-        <node word="is" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="dat" word="dat" begin="1" end="2" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word_zv="is" word="is" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
         <node begin="3" cat="cp" end="6" id="6" rel="predc">
-          <node word="just" begin="3" buiging="zonder" end="4" graad="basis" id="7" lemma="juist" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="juist" sense="juist"/>
-          <node word="gelijk" begin="4" conjtype="onder" end="5" id="8" lemma="gelijk" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk"/>
-          <node word="zand" begin="5" end="6" genus="onz" getal="ev" graad="basis" id="9" lemma="zand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="body" root="zand" sense="zand"/>
+          <node word_zv="juist" word="just" begin="3" buiging="zonder" end="4" graad="basis" id="7" lemma="juist" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="juist" sense="juist"/>
+          <node word_zv="gelijk" word="gelijk" begin="4" conjtype="onder" end="5" id="8" lemma="gelijk" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk"/>
+          <node word_zv="zand" word="zand" begin="5" end="6" genus="onz" getal="ev" graad="basis" id="9" lemma="zand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="body" root="zand" sense="zand"/>
         </node>
       </node>
     </node>
-    <node word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0098">en dat is juist gelijk zand .</sentence>
   <comments>

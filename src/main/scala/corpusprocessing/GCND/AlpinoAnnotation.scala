@@ -60,9 +60,11 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML, x => x.label=="node" && (x \ "@word").nonEmpty, node => {
     val b = (node \ "@begin").text.toInt
     val lv = alignedTokens(b).text_lv
-    val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null))
+    val zv = (node \ "@word").text
+    val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null)).append(new UnprefixedAttribute("word_zv", zv, Null))
     node.copy(attributes=atts)
   })
+
   lazy val informativeT: Elem =  {  <info>
     {Comment("n_elan_annotations: " +  overLappingElanAnnotations.size.toString)}
     <t class="alpinoInput">

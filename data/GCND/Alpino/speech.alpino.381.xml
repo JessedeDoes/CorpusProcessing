@@ -2,18 +2,18 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:05" cats="1" skips="0"/>
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
       <node begin="1" cat="smain" end="6" id="3" rel="nucl">
-        <node word="je" begin="1" case="nom" def="def" end="2" frame="pronoun(nwh,thi,sg,de,nom,def)" gen="de" genus="masc" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="hij" naamval="nomin" num="sg" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" rnum="sg" root="hij" sense="hij" status="vol" vwtype="pers" wh="nwh"/>
-        <node word="zet" begin="2" end="3" frame="verb(hebben,sg,part_transitive(uit))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="uit_zetten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zet_uit" sc="part_transitive(uit)" sense="zet_uit" stype="declarative" tense="present" wvorm="pv"/>
+        <node word_zv="hij" word="je" begin="1" case="nom" def="def" end="2" frame="pronoun(nwh,thi,sg,de,nom,def)" gen="de" genus="masc" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="hij" naamval="nomin" num="sg" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" rnum="sg" root="hij" sense="hij" status="vol" vwtype="pers" wh="nwh"/>
+        <node word_zv="zet" word="zet" begin="2" end="3" frame="verb(hebben,sg,part_transitive(uit))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="uit_zetten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zet_uit" sc="part_transitive(uit)" sense="zet_uit" stype="declarative" tense="present" wvorm="pv"/>
         <node begin="3" cat="np" end="5" id="6" rel="obj1">
-          <node word="zijn" begin="3" buiging="zonder" end="4" frame="determiner(pron)" getal="ev" his="normal" his_1="normal" id="7" infl="pron" lcat="detp" lemma="zijn" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pron="true" pt="vnw" rel="det" root="zijn" sense="zijn" status="vol" vwtype="bez"/>
-          <node word="boot" begin="4" end="5" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="8" lcat="np" lemma="boot" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="boot" sense="boot"/>
+          <node word_zv="zijn" word="zijn" begin="3" buiging="zonder" end="4" frame="determiner(pron)" getal="ev" his="normal" his_1="normal" id="7" infl="pron" lcat="detp" lemma="zijn" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pron="true" pt="vnw" rel="det" root="zijn" sense="zijn" status="vol" vwtype="bez"/>
+          <node word_zv="boot" word="boot" begin="4" end="5" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="8" lcat="np" lemma="boot" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="boot" sense="boot"/>
         </node>
-        <node word="uit" begin="5" end="6" frame="particle(uit)" his="normal" his_1="normal" id="9" lcat="part" lemma="uit" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="uit" sense="uit" vztype="fin"/>
+        <node word_zv="uit" word="uit" begin="5" end="6" frame="particle(uit)" his="normal" his_1="normal" id="9" lcat="part" lemma="uit" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="uit" sense="uit" vztype="fin"/>
       </node>
     </node>
-    <node word="." begin="6" end="7" frame="punct(punt)" his="normal" his_1="normal" id="10" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
+    <node word_zv="." word="." begin="6" end="7" frame="punct(punt)" his="normal" his_1="normal" id="10" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0249a">en hij zet zijn boot uit .</sentence>
   <comments>

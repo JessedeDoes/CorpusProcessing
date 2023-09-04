@@ -1,23 +1,23 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="12" id="0" rel="top">
-    <node word="heel" begin="3" end="4" id="1" lemma="helemaal" pos="adv" postag="BW()" pt="bw" rel="--" root="helemaal" sense="helemaal"/>
-    <node word="kapot" begin="4" buiging="zonder" end="5" graad="basis" id="2" lemma="kapot" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="--" root="kapot" sense="kapot"/>
-    <node word="..." begin="5" end="6" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="helemaal" word="heel" begin="3" end="4" id="1" lemma="helemaal" pos="adv" postag="BW()" pt="bw" rel="--" root="helemaal" sense="helemaal"/>
+    <node word_zv="kapot" word="kapot" begin="4" buiging="zonder" end="5" graad="basis" id="2" lemma="kapot" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="--" root="kapot" sense="kapot"/>
+    <node word_zv="..." word="..." begin="5" end="6" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
     <node begin="0" cat="du" end="8" id="4" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="5" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="5" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="8" id="6" rel="nucl">
-        <node word="ze" begin="1" end="2" getal="mv" id="7" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-        <node word="slaan" begin="2" end="3" id="8" lemma="slaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="sla" sense="sla" wvorm="pv"/>
+        <node word_zv="ze" word="ze" begin="1" end="2" getal="mv" id="7" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node word_zv="slaan" word="slaan" begin="2" end="3" id="8" lemma="slaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="sla" sense="sla" wvorm="pv"/>
         <node begin="6" cat="ap" end="8" id="9" rel="predm">
-          <node word="heel" begin="6" end="7" id="10" lemma="helemaal" pos="adv" postag="BW()" pt="bw" rel="mod" root="helemaal" sense="helemaal"/>
-          <node word="kapot" begin="7" buiging="zonder" end="8" graad="basis" id="11" lemma="kapot" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="kapot" sense="kapot"/>
+          <node word_zv="helemaal" word="heel" begin="6" end="7" id="10" lemma="helemaal" pos="adv" postag="BW()" pt="bw" rel="mod" root="helemaal" sense="helemaal"/>
+          <node word_zv="kapot" word="kapot" begin="7" buiging="zonder" end="8" graad="basis" id="11" lemma="kapot" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="kapot" sense="kapot"/>
         </node>
       </node>
     </node>
-    <node word="hé" begin="8" end="9" id="12" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="..." begin="9" end="10" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="ja" begin="10" end="11" id="14" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
-    <node word="." begin="11" end="12" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="hé" word="hé" begin="8" end="9" id="12" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="..." word="..." begin="9" end="10" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="ja" word="ja" begin="10" end="11" id="14" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
+    <node word_zv="." word="." begin="11" end="12" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0227b">en ze slaan helemaal kapot ... helemaal kapot hé ... ja .</sentence>
   <comments>

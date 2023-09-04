@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="5" id="3" rel="nucl">
         <node begin="1" cat="np" end="3" id="4" rel="su">
-          <node word="die" begin="1" buiging="zonder" end="2" id="5" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-          <node word="vogels" begin="2" end="3" getal="mv" graad="basis" id="6" lemma="vogel" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="vogel" sense="vogel"/>
+          <node word_zv="die" word="die" begin="1" buiging="zonder" end="2" id="5" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+          <node word_zv="vogels" word="vogels" begin="2" end="3" getal="mv" graad="basis" id="6" lemma="vogel" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="vogel" sense="vogel"/>
         </node>
-        <node word="togen" begin="3" end="4" id="7" lemma="tonen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="toon" sense="toon" wvorm="pv"/>
-        <node word="dat" begin="4" end="5" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word_zv="tonen" word="togen" begin="3" end="4" id="7" lemma="tonen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="toon" sense="toon" wvorm="pv"/>
+        <node word_zv="dat" word="dat" begin="4" end="5" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw"/>
       </node>
     </node>
-    <node word="hé" begin="5" end="6" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="hé" word="hé" begin="5" end="6" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0112a">en die vogels tonen dat hé .</sentence>
   <comments>

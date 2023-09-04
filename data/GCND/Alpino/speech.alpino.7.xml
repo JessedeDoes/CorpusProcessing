@@ -1,46 +1,46 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="21" id="0" rel="top">
-    <node word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="..." begin="15" end="16" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="15" end="16" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
     <node begin="0" cat="smain" end="20" id="3" rel="--">
       <node begin="0" cat="cp" end="7" id="4" rel="mod">
-        <node word="als" begin="0" conjtype="onder" end="1" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node word_zv="als" word="als" begin="0" conjtype="onder" end="1" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
         <node begin="1" cat="ssub" end="7" id="6" rel="body">
           <node begin="1" cat="np" end="3" id="7" rel="su">
-            <node word="die" begin="1" buiging="zonder" end="2" id="8" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-            <node word="loodsboot" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="9" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
+            <node word_zv="die" word="die" begin="1" buiging="zonder" end="2" id="8" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+            <node word_zv="loodsboot" word="loodsboot" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="9" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
           </node>
-          <node word="binnenkwam" begin="3" end="4" id="10" lemma="binnen_komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom_binnen" sense="kom_binnen" wvorm="pv"/>
+          <node word_zv="binnenkwam" word="binnenkwam" begin="3" end="4" id="10" lemma="binnen_komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom_binnen" sense="kom_binnen" wvorm="pv"/>
           <node begin="4" cat="pp" end="7" id="11" rel="mod">
-            <node word="voor" begin="4" end="5" id="12" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
+            <node word_zv="voor" word="voor" begin="4" end="5" id="12" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
             <node begin="5" cat="np" end="7" id="13" rel="obj1">
-              <node word="acht" begin="5" end="6" id="14" lemma="acht" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="acht" sense="acht"/>
-              <node word="dagen" begin="6" end="7" getal="mv" graad="basis" id="15" lemma="dag" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="dag" sense="dag"/>
+              <node word_zv="acht" word="acht" begin="5" end="6" id="14" lemma="acht" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="acht" sense="acht"/>
+              <node word_zv="dagen" word="dagen" begin="6" end="7" getal="mv" graad="basis" id="15" lemma="dag" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="dag" sense="dag"/>
             </node>
           </node>
         </node>
       </node>
-      <node word="gingt" begin="8" end="9" id="16" lemma="gaan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ga" sense="ga" wvorm="pv"/>
+      <node word_zv="ging" word="gingt" begin="8" end="9" id="16" lemma="gaan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ga" sense="ga" wvorm="pv"/>
       <node begin="9" cat="np" end="12" id="17" rel="su">
-        <node word="den" begin="9" end="10" id="18" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-        <node word="andere" begin="10" buiging="met-e" end="11" graad="basis" id="19" lemma="ander" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="ander" sense="ander"/>
-        <node word="loodsboot" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="20" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
+        <node word_zv="de" word="den" begin="9" end="10" id="18" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+        <node word_zv="andere" word="andere" begin="10" buiging="met-e" end="11" graad="basis" id="19" lemma="ander" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="ander" sense="ander"/>
+        <node word_zv="loodsboot" word="loodsboot" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="20" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
       </node>
-      <node word="dan" begin="12" conjtype="onder" end="13" id="21" lemma="dan" pos="comparative" postag="VG(onder)" pt="vg" rel="cmp" root="dan" sense="dan"/>
+      <node word_zv="dan" word="dan" begin="12" conjtype="onder" end="13" id="21" lemma="dan" pos="comparative" postag="VG(onder)" pt="vg" rel="cmp" root="dan" sense="dan"/>
       <node begin="13" cat="pp" end="15" id="22" rel="ld">
-        <node word="in" begin="13" end="14" id="23" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
-        <node word="zee" begin="14" end="15" genus="zijd" getal="ev" graad="basis" id="24" lemma="zee" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="zee" sense="zee"/>
+        <node word_zv="in" word="in" begin="13" end="14" id="23" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node word_zv="zee" word="zee" begin="14" end="15" genus="zijd" getal="ev" graad="basis" id="24" lemma="zee" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="zee" sense="zee"/>
       </node>
       <node begin="16" cat="pp" end="20" id="25" rel="mod">
-        <node word="ook" begin="16" end="17" id="26" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
-        <node word="voor" begin="17" end="18" id="27" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
+        <node word_zv="ook" word="ook" begin="16" end="17" id="26" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
+        <node word_zv="voor" word="voor" begin="17" end="18" id="27" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
         <node begin="18" cat="np" end="20" id="28" rel="obj1">
-          <node word="acht" begin="18" end="19" id="29" lemma="acht" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="acht" sense="acht"/>
-          <node word="dagen" begin="19" end="20" getal="mv" graad="basis" id="30" lemma="dag" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="dag" sense="dag"/>
+          <node word_zv="acht" word="acht" begin="18" end="19" id="29" lemma="acht" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="acht" sense="acht"/>
+          <node word_zv="dagen" word="dagen" begin="19" end="20" getal="mv" graad="basis" id="30" lemma="dag" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="dag" sense="dag"/>
         </node>
       </node>
     </node>
-    <node word="." begin="20" end="21" id="31" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="20" end="21" id="31" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0414a">als die loodsboot binnenkwam voor acht dagen ... ging de andere loodsboot dan in zee ... ook voor acht dagen .</sentence>
   <comments>

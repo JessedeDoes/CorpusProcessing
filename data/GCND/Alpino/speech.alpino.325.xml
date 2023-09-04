@@ -1,17 +1,17 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node word="uh" begin="0" end="1" id="1" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh"/>
-    <node word="uh" begin="1" end="2" id="2" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh"/>
+    <node word_zv="uh" word="uh" begin="0" end="1" id="1" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh"/>
+    <node word_zv="uh" word="uh" begin="1" end="2" id="2" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh"/>
     <node begin="2" cat="smain" end="6" id="3" rel="--">
-      <node word="da" begin="2" end="3" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
-      <node word="et" begin="3" end="4" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+      <node word_zv="dat" word="da" begin="2" end="3" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+      <node word_zv="heeft" word="et" begin="3" end="4" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
       <node begin="4" cat="np" end="6" id="6" rel="obj1">
-        <node word="geen" begin="4" buiging="zonder" end="5" id="7" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep"/>
-        <node word="kiel" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="8" lemma="kiel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="kiel" sense="kiel"/>
+        <node word_zv="geen" word="geen" begin="4" buiging="zonder" end="5" id="7" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep"/>
+        <node word_zv="kiel" word="kiel" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="8" lemma="kiel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="kiel" sense="kiel"/>
       </node>
     </node>
-    <node word="hé" begin="6" end="7" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="7" end="8" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="hé" word="hé" begin="6" end="7" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="7" end="8" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0490">uh uh dat heeft geen kiel hé .</sentence>
   <comments>

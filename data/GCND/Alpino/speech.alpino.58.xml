@@ -1,24 +1,24 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:03" cats="1" skips="0"/>
   <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node word="nu" begin="1" end="2" frame="tmp_adverb" his="skip" id="1" lcat="--" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="--" root="nu" sense="nu" special="tmp"/>
-    <node word="..." begin="2" end="3" frame="punct(hellip)" his="skip" id="2" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node word_zv="nu" word="nu" begin="1" end="2" frame="tmp_adverb" his="skip" id="1" lcat="--" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="--" root="nu" sense="nu" special="tmp"/>
+    <node word_zv="..." word="..." begin="2" end="3" frame="punct(hellip)" his="skip" id="2" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
     <node begin="0" cat="du" end="8" id="3" rel="--">
-      <node word="maa" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="4" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar"/>
+      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="4" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar"/>
       <node begin="3" cat="np" end="8" id="5" rel="nucl">
-        <node word="die" begin="3" buiging="zonder" end="4" frame="determiner(de,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="6" infl="de" lcat="detp" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" wh="nwh"/>
-        <node word="schepen" begin="4" end="5" frame="noun(het,count,pl)" gen="het" getal="mv" graad="basis" his="normal" his_1="normal" id="7" lcat="np" lemma="schip" ntype="soort" num="pl" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" rnum="pl" root="schip" sense="schip"/>
+        <node word_zv="die" word="die" begin="3" buiging="zonder" end="4" frame="determiner(de,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="6" infl="de" lcat="detp" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" wh="nwh"/>
+        <node word_zv="schepen" word="schepen" begin="4" end="5" frame="noun(het,count,pl)" gen="het" getal="mv" graad="basis" his="normal" his_1="normal" id="7" lcat="np" lemma="schip" ntype="soort" num="pl" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" rnum="pl" root="schip" sense="schip"/>
         <node begin="5" cat="rel" end="8" id="8" rel="mod">
-          <node word="die" begin="5" case="no_obl" end="6" frame="rel_pronoun(de,no_obl)" gen="de" getal="getal" his="normal" his_1="normal" id="9" index="1" lcat="np" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" rnum="pl" root="die" sense="die" status="vol" vwtype="betr" wh="rel"/>
+          <node word_zv="die" word="die" begin="5" case="no_obl" end="6" frame="rel_pronoun(de,no_obl)" gen="de" getal="getal" his="normal" his_1="normal" id="9" index="1" lcat="np" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" rnum="pl" root="die" sense="die" status="vol" vwtype="betr" wh="rel"/>
           <node begin="5" cat="ssub" end="8" id="10" rel="body">
             <node begin="5" end="6" id="11" index="1" rel="su"/>
-            <node word="nu" begin="6" end="7" frame="tmp_adverb" his="normal" his_1="normal" id="12" lcat="advp" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu" special="tmp"/>
-            <node word="varen" begin="7" end="8" frame="verb('hebben/zijn',pl,intransitive)" his="normal" his_1="normal" id="13" infl="pl" lcat="ssub" lemma="varen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="vaar" sc="intransitive" sense="vaar" tense="present" wvorm="pv"/>
+            <node word_zv="nu" word="nu" begin="6" end="7" frame="tmp_adverb" his="normal" his_1="normal" id="12" lcat="advp" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu" special="tmp"/>
+            <node word_zv="varen" word="varen" begin="7" end="8" frame="verb('hebben/zijn',pl,intransitive)" his="normal" his_1="normal" id="13" infl="pl" lcat="ssub" lemma="varen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="vaar" sc="intransitive" sense="vaar" tense="present" wvorm="pv"/>
           </node>
         </node>
       </node>
     </node>
-    <node word="..." begin="8" end="9" frame="punct(hellip)" his="skip" id="14" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node word_zv="..." word="..." begin="8" end="9" frame="punct(hellip)" his="skip" id="14" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0090">maar nu ... die schepen die nu varen ...</sentence>
   <comments>

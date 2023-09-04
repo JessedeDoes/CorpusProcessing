@@ -1,60 +1,60 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="27" id="0" rel="top">
-    <node word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="..." begin="12" end="13" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="daar" begin="16" end="17" getal="getal" id="3" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="--" root="daar" sense="daar" status="vol" vwtype="aanw"/>
-    <node word="..." begin="17" end="18" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="12" end="13" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="daar" word="daar" begin="16" end="17" getal="getal" id="3" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="--" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+    <node word_zv="..." word="..." begin="17" end="18" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
     <node begin="0" cat="du" end="26" id="5" rel="--">
       <node begin="0" cat="du" end="16" id="6" rel="dp">
-        <node word="en" begin="0" conjtype="neven" end="1" id="7" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+        <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="7" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
         <node begin="1" cat="smain" end="16" id="8" rel="nucl">
-          <node word="k" begin="1" end="2" getal="ev" id="9" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-          <node word="en" begin="2" end="3" id="10" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+          <node word_zv="ik" word="k" begin="1" end="2" getal="ev" id="9" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word_zv="heb" word="en" begin="2" end="3" id="10" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
           <node begin="1" cat="ppart" end="16" id="11" rel="vc">
             <node begin="1" end="2" id="12" index="1" rel="su"/>
-            <node word="tan" begin="3" end="4" id="13" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
-            <node word="gedaan" begin="6" buiging="zonder" end="7" id="14" lemma="doen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="doe" sense="doe" wvorm="vd"/>
+            <node word_zv="dan" word="tan" begin="3" end="4" id="13" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
+            <node word_zv="gedaan" word="gedaan" begin="6" buiging="zonder" end="7" id="14" lemma="doen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="doe" sense="doe" wvorm="vd"/>
             <node begin="4" cat="np" end="12" id="15" rel="obj1">
-              <node word="die" begin="4" buiging="zonder" end="5" id="16" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-              <node word="sauvetage" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="17" lemma="sauvetage" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sauvetage" sense="sauvetage"/>
+              <node word_zv="die" word="die" begin="4" buiging="zonder" end="5" id="16" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+              <node word_zv="sauvetage" word="sauvetage" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="17" lemma="sauvetage" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sauvetage" sense="sauvetage"/>
               <node begin="8" cat="pp" end="12" id="18" rel="mod">
-                <node word="van" begin="8" end="9" id="19" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                <node word_zv="van" word="van" begin="8" end="9" id="19" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
                 <node begin="9" cat="np" end="12" id="20" rel="obj1">
-                  <node word="die" begin="9" buiging="zonder" end="10" id="21" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-                  <node word="boots" begin="10" end="11" getal="mv" graad="basis" id="22" lemma="boot" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="boot" sense="boot"/>
-                  <node word="daar" begin="11" end="12" getal="getal" id="23" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+                  <node word_zv="die" word="die" begin="9" buiging="zonder" end="10" id="21" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+                  <node word_zv="boten" word="boots" begin="10" end="11" getal="mv" graad="basis" id="22" lemma="boot" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="boot" sense="boot"/>
+                  <node word_zv="daar" word="daar" begin="11" end="12" getal="getal" id="23" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
                 </node>
               </node>
             </node>
             <node begin="13" cat="mwu" end="16" id="24" rel="mod">
-              <node word="en" begin="13" end="14" id="25" lemma="en" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="en" sense="en" spectype="deeleigen"/>
-              <node word="plein" begin="14" end="15" id="26" lemma="plein" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="plein" sense="plein" spectype="deeleigen"/>
-              <node word="mer" begin="15" end="16" id="27" lemma="mer" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="mer" sense="mer" spectype="deeleigen"/>
+              <node word_zv="en" word="en" begin="13" end="14" id="25" lemma="en" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="en" sense="en" spectype="deeleigen"/>
+              <node word_zv="plein" word="plein" begin="14" end="15" id="26" lemma="plein" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="plein" sense="plein" spectype="deeleigen"/>
+              <node word_zv="mer" word="mer" begin="15" end="16" id="27" lemma="mer" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="mer" sense="mer" spectype="deeleigen"/>
             </node>
           </node>
         </node>
       </node>
       <node begin="18" cat="cp" end="26" id="28" rel="dp">
-        <node word="da" begin="18" conjtype="onder" end="19" id="29" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat"/>
+        <node word_zv="dat" word="da" begin="18" conjtype="onder" end="19" id="29" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat"/>
         <node begin="19" cat="ssub" end="26" id="30" rel="body">
-          <node word="ze" begin="19" end="20" getal="mv" id="31" index="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+          <node word_zv="ze" word="ze" begin="19" end="20" getal="mv" id="31" index="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
           <node begin="19" cat="ppart" end="25" id="32" rel="vc">
             <node begin="19" end="20" id="33" index="2" rel="su"/>
-            <node word="mekaars" begin="20" end="21" getal="mv" id="34" lemma="mekaar" naamval="obl" pdtype="pron" persoon="3p" pos="pron" postag="VNW(pers,pron,obl,vol,3p,mv)" pt="vnw" rel="obj1" root="mekaar" sense="mekaar" status="vol" vwtype="pers"/>
+            <node word_zv="mekaar" word="mekaars" begin="20" end="21" getal="mv" id="34" lemma="mekaar" naamval="obl" pdtype="pron" persoon="3p" pos="pron" postag="VNW(pers,pron,obl,vol,3p,mv)" pt="vnw" rel="obj1" root="mekaar" sense="mekaar" status="vol" vwtype="pers"/>
             <node begin="21" cat="pp" end="24" id="35" rel="mod">
-              <node word="in" begin="21" end="22" id="36" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+              <node word_zv="in" word="in" begin="21" end="22" id="36" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
               <node begin="22" cat="np" end="24" id="37" rel="obj1">
-                <node word="de" begin="22" end="23" id="38" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-                <node word="grond" begin="23" end="24" genus="zijd" getal="ev" graad="basis" id="39" lemma="grond" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="grond" sense="grond"/>
+                <node word_zv="de" word="de" begin="22" end="23" id="38" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+                <node word_zv="grond" word="grond" begin="23" end="24" genus="zijd" getal="ev" graad="basis" id="39" lemma="grond" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="grond" sense="grond"/>
               </node>
             </node>
-            <node word="gelopen" begin="24" buiging="zonder" end="25" id="40" lemma="lopen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="loop" sense="loop" wvorm="vd"/>
+            <node word_zv="gelopen" word="gelopen" begin="24" buiging="zonder" end="25" id="40" lemma="lopen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="loop" sense="loop" wvorm="vd"/>
           </node>
-          <node word="hebben" begin="25" end="26" id="41" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+          <node word_zv="hebben" word="hebben" begin="25" end="26" id="41" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
         </node>
       </node>
     </node>
-    <node word="." begin="26" end="27" id="42" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="26" end="27" id="42" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0294">en ik heb dan die sauvetage gedaan ... van die boten daar ... en plein mer daar ... dat ze mekaar in de grond gelopen hebben .</sentence>
   <comments>

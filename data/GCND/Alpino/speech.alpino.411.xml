@@ -1,26 +1,26 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="11" id="0" rel="top">
-    <node word="sproeng" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="1" lemma="sprong" naamval="stan" ntype="soort" pos="verb" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="spring" sense="spring"/>
+    <node word_zv="sprong" word="sproeng" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="1" lemma="sprong" naamval="stan" ntype="soort" pos="verb" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="spring" sense="spring"/>
     <node begin="0" cat="du" end="10" id="2" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="10" id="4" rel="nucl">
-        <node word="je" begin="1" end="2" genus="masc" getal="ev" id="5" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
-        <node word="je" begin="3" end="4" genus="masc" getal="ev" id="6" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
-        <node word="sproengt" begin="4" end="5" id="7" lemma="springen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="spring" sense="spring" wvorm="pv"/>
+        <node word_zv="hij" word="je" begin="1" end="2" genus="masc" getal="ev" id="5" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
+        <node word_zv="hij" word="je" begin="3" end="4" genus="masc" getal="ev" id="6" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
+        <node word_zv="sprong" word="sproengt" begin="4" end="5" id="7" lemma="springen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="spring" sense="spring" wvorm="pv"/>
         <node begin="5" cat="ap" end="10" id="8" rel="ld">
-          <node word="zo" begin="5" end="6" id="9" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo"/>
-          <node word="verre" begin="6" buiging="zonder" end="7" graad="basis" id="10" lemma="ver" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="ver" sense="ver-van"/>
+          <node word_zv="zo" word="zo" begin="5" end="6" id="9" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo"/>
+          <node word_zv="ver" word="verre" begin="6" buiging="zonder" end="7" graad="basis" id="10" lemma="ver" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="ver" sense="ver-van"/>
           <node begin="7" cat="pp" end="10" id="11" rel="pc">
-            <node word="van" begin="7" end="8" id="12" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+            <node word_zv="van" word="van" begin="7" end="8" id="12" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
             <node begin="8" cat="np" end="10" id="13" rel="obj1">
-              <node word="de" begin="8" end="9" id="14" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-              <node word="jolle" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="15" lemma="jol" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="jol" sense="jol"/>
+              <node word_zv="de" word="de" begin="8" end="9" id="14" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word_zv="jol" word="jolle" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="15" lemma="jol" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="jol" sense="jol"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node word="." begin="10" end="11" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="10" end="11" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0277">en hij sprong hij sprong zo ver van de jol .</sentence>
   <comments>

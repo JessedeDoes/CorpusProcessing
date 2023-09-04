@@ -2,14 +2,14 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="1" skips="0"/>
   <node begin="0" cat="top" end="5" id="0" rel="top">
     <node begin="0" cat="smain" end="4" id="1" rel="--">
-      <node word="we" begin="0" case="nom" def="def" end="1" frame="pronoun(nwh,fir,pl,de,nom,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="we" naamval="nomin" num="pl" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" rnum="pl" root="we" sense="we" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
-      <node word="gaan" begin="1" end="2" frame="verb(zijn,pl,ld_pp)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ga" sc="ld_pp" sense="ga" stype="declarative" tense="present" wvorm="pv"/>
+      <node word_zv="we" word="we" begin="0" case="nom" def="def" end="1" frame="pronoun(nwh,fir,pl,de,nom,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="we" naamval="nomin" num="pl" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" rnum="pl" root="we" sense="we" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+      <node word_zv="gaan" word="gaan" begin="1" end="2" frame="verb(zijn,pl,ld_pp)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ga" sc="ld_pp" sense="ga" stype="declarative" tense="present" wvorm="pv"/>
       <node begin="2" cat="pp" end="4" id="4" rel="ld">
-        <node word="in" begin="2" end="3" frame="preposition(in,[])" his="normal" his_1="normal" id="5" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
-        <node word="zee" begin="3" end="4" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" rnum="sg" root="zee" sense="zee"/>
+        <node word_zv="in" word="in" begin="2" end="3" frame="preposition(in,[])" his="normal" his_1="normal" id="5" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node word_zv="zee" word="zee" begin="3" end="4" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" rnum="sg" root="zee" sense="zee"/>
       </node>
     </node>
-    <node word="..." begin="4" end="5" frame="punct(hellip)" his="skip" id="7" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node word_zv="..." word="..." begin="4" end="5" frame="punct(hellip)" his="skip" id="7" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0164">we gaan in zee ...</sentence>
   <comments>

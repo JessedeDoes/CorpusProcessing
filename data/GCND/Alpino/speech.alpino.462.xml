@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node word="natuurlijk" begin="0" end="1" id="1" lemma="natuurlijk" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="natuurlijk" sense="natuurlijk"/>
+    <node word_zv="natuurlijk" word="natuurlijk" begin="0" end="1" id="1" lemma="natuurlijk" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="natuurlijk" sense="natuurlijk"/>
     <node begin="1" cat="smain" end="8" id="2" rel="--">
-      <node word="t" begin="1" end="2" genus="onz" getal="ev" id="3" lemma="er" naamval="stan" pdtype="pron" persoon="3" pos="adv" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="pers"/>
-      <node word="waren" begin="2" end="3" id="4" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
-      <node word="daar" begin="3" end="4" getal="getal" id="5" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+      <node word_zv="het" word="t" begin="1" end="2" genus="onz" getal="ev" id="3" lemma="er" naamval="stan" pdtype="pron" persoon="3" pos="adv" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="pers"/>
+      <node word_zv="waren" word="waren" begin="2" end="3" id="4" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node word_zv="daar" word="daar" begin="3" end="4" getal="getal" id="5" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
       <node begin="4" cat="np" end="6" id="6" rel="su">
-        <node word="vele" begin="4" buiging="met-e" end="5" graad="basis" id="7" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,met-e,agr,basis)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep"/>
-        <node word="refugees" begin="5" end="6" getal="mv" graad="basis" id="8" lemma="refugees" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="refugees" sense="refugees"/>
+        <node word_zv="vele" word="vele" begin="4" buiging="met-e" end="5" graad="basis" id="7" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,met-e,agr,basis)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep"/>
+        <node word_zv="refugees" word="refugees" begin="5" end="6" getal="mv" graad="basis" id="8" lemma="refugees" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="refugees" sense="refugees"/>
       </node>
       <node begin="6" cat="pp" end="8" id="9" rel="ld">
-        <node word="aan" begin="6" end="7" id="10" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init"/>
-        <node word="boord" begin="7" end="8" genus="genus" getal="ev" graad="basis" id="11" lemma="boord" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="obj1" root="boord" sense="boord"/>
+        <node word_zv="aan" word="aan" begin="6" end="7" id="10" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init"/>
+        <node word_zv="boord" word="boord" begin="7" end="8" genus="genus" getal="ev" graad="basis" id="11" lemma="boord" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="obj1" root="boord" sense="boord"/>
       </node>
     </node>
-    <node word="." begin="8" end="9" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="8" end="9" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0543a">natuurlijk het waren daar vele refugees aan boord .</sentence>
   <comments>

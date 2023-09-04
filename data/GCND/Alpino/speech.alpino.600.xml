@@ -1,30 +1,30 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="13" id="0" rel="top">
-    <node word="..." begin="8" end="9" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." begin="8" end="9" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
     <node begin="0" cat="du" end="12" id="2" rel="--">
-      <node word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="12" id="4" rel="nucl">
-        <node word="der" begin="1" end="2" getal="getal" id="5" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="aanw"/>
-        <node word="zat" begin="2" end="3" id="6" lemma="zitten" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zit" sense="zit" wvorm="pv"/>
+        <node word_zv="er" word="der" begin="1" end="2" getal="getal" id="5" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="aanw"/>
+        <node word_zv="zat" word="zat" begin="2" end="3" id="6" lemma="zitten" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zit" sense="zit" wvorm="pv"/>
         <node begin="3" cat="pp" end="6" id="7" rel="mod">
-          <node word="daa" begin="3" end="4" getal="getal" id="8" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="daar" sense="daar" status="vol" vwtype="aanw"/>
-          <node word="onder" begin="5" end="6" id="9" lemma="onder" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="onder" sense="onder" vztype="fin"/>
+          <node word_zv="daar" word="daa" begin="3" end="4" getal="getal" id="8" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+          <node word_zv="onder" word="onder" begin="5" end="6" id="9" lemma="onder" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="onder" sense="onder" vztype="fin"/>
         </node>
         <node begin="4" cat="conj" end="8" id="10" rel="su">
-          <node word="wind" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="11" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="cnj" root="wind" sense="wind"/>
-          <node word="e" begin="6" conjtype="neven" end="7" id="12" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
-          <node word="lucht" begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="13" lemma="lucht" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="cnj" root="lucht" sense="lucht"/>
+          <node word_zv="wind" word="wind" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="11" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="cnj" root="wind" sense="wind"/>
+          <node word_zv="en" word="e" begin="6" conjtype="neven" end="7" id="12" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+          <node word_zv="lucht" word="lucht" begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="13" lemma="lucht" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="cnj" root="lucht" sense="lucht"/>
         </node>
         <node begin="9" cat="pp" end="12" id="14" rel="mod">
-          <node word="op" begin="9" end="10" id="15" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+          <node word_zv="op" word="op" begin="9" end="10" id="15" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
           <node begin="10" cat="np" end="12" id="16" rel="obj1">
-            <node word="zijn" begin="10" buiging="zonder" end="11" getal="ev" id="17" lemma="zijn" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="zijn" sense="zijn" status="vol" vwtype="bez"/>
-            <node word="rik" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="18" lemma="rug" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="rug" sense="rug"/>
+            <node word_zv="zijn" word="zijn" begin="10" buiging="zonder" end="11" getal="ev" id="17" lemma="zijn" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="zijn" sense="zijn" status="vol" vwtype="bez"/>
+            <node word_zv="rug" word="rik" begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="18" lemma="rug" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="rug" sense="rug"/>
           </node>
         </node>
       </node>
     </node>
-    <node word="." begin="12" end="13" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="." word="." begin="12" end="13" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0207a">en er zat daar wind onder en lucht ... op zijn rug .</sentence>
   <comments>

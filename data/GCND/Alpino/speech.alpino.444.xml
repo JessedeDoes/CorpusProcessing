@@ -1,25 +1,25 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="12" id="0" rel="top">
-    <node word="," begin="5" end="6" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word_zv="," word="," begin="5" end="6" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
     <node begin="0" cat="du" end="9" id="2" rel="--">
-      <node word="e" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node word_zv="en" word="e" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
       <node begin="1" cat="smain" end="9" id="4" rel="nucl">
-        <node word="da" begin="1" end="2" getal="ev" id="5" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
-        <node word="s" begin="2" end="3" id="6" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="dat" word="da" begin="1" end="2" getal="ev" id="5" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word_zv="is" word="s" begin="2" end="3" id="6" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
         <node begin="3" cat="np" end="9" id="7" rel="predc">
-          <node word="den" begin="3" end="4" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-          <node word="Hollander" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="9" lemma="Hollander" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="hd" root="Hollander" sense="Hollander"/>
+          <node word_zv="de" word="den" begin="3" end="4" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word_zv="Hollander" word="Hollander" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="9" lemma="Hollander" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="hd" root="Hollander" sense="Hollander"/>
           <node begin="6" cat="np" end="9" id="10" rel="app">
-            <node word="ook" begin="6" end="7" id="11" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
-            <node word="e" begin="7" end="8" id="12" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-            <node word="schoender" begin="8" end="9" genus="zijd" getal="ev" graad="basis" id="13" lemma="schoener" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="schoener" sense="schoener"/>
+            <node word_zv="ook" word="ook" begin="6" end="7" id="11" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
+            <node word_zv="een" word="e" begin="7" end="8" id="12" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+            <node word_zv="schoener" word="schoender" begin="8" end="9" genus="zijd" getal="ev" graad="basis" id="13" lemma="schoener" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="schoener" sense="schoener"/>
           </node>
         </node>
       </node>
     </node>
-    <node word="..." begin="9" end="10" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word="hé" begin="10" end="11" id="15" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word="." begin="11" end="12" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node word_zv="..." word="..." begin="9" end="10" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="hé" word="hé" begin="10" end="11" id="15" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." begin="11" end="12" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0135a">en dat is de Hollander , ook een schoener ... hé .</sentence>
   <comments>
