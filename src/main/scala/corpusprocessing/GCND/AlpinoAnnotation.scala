@@ -56,6 +56,12 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
+  lazy val sentenceId = (alpinoParseAsXML \\ "sentence" \ "@sentid").text
+
+  lazy val sortKey = Stuff.formatTime((starttijd + eindtijd) / 2) + "." + sentenceId
+
+  lazy val overLappingElanAnnotations = elans.filter(e =>
+    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd)
 
   lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML, x => x.label=="node" && (x \ "@word").nonEmpty, node => {
     val b = (node \ "@begin").text.toInt
@@ -64,99 +70,92 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null)).append(new UnprefixedAttribute("word_zv", zv, Null))
     node.copy(attributes=atts)
   })
-
-  lazy val informativeT: Elem =  {  <info>
-    {Comment("n_elan_annotations: " +  overLappingElanAnnotations.size.toString)}
-    <t class="alpinoInput">
+  object Folia {
+    lazy val informativeT: Elem = {
+      <info>
+        {Comment("n_elan_annotations: " + overLappingElanAnnotations.size.toString)}<t class="alpinoInput">
         {sentence.input_transcript}
       </t>
-   <t class="alpinoLightDutchification">
-    {text_lv}
-   </t>
-    <t class="alpinoHeavyDutchification">
-      {text_zv}
-    </t>{overLappingElanAnnotations.map(e =>
-      <div xml:id={speech_id + ".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
-        <t class="elanLightDutchification">
+        <t class="alpinoLightDutchification">
+          {text_lv}
+        </t>
+        <t class="alpinoHeavyDutchification">
+          {text_zv}
+        </t>{overLappingElanAnnotations.map(e =>
+        <div xml:id={speech_id + ".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
+          <t class="elanLightDutchification">
+            {e.tekst_lv}
+          </t>
+          <t class="elanHeavyDutchification">
+            {e.tekst_zv}
+          </t>
+        </div>
+      )}
+      </info>
+    }
+
+    def pseudoFolia(includeAlpinoParse: Boolean = false) = {
+
+      <speech xml:id={speech_id}>
+        {informativeT.child}
+        <s xml:id={s"s.$alpino_annotatie_id"}>
+          {
+          if (alignedTokens.size == alpinoTokens.size) {
+            val annotatedTokens = zipped.map({ case (t, a) =>
+              val posTag = CGNTagset.fromString(a.postag)
+              <w xml:id={a.id.get}>
+                <t class="heavyDutchification">{t.text_zv}</t>
+                <t class="lightDutchification">{t.text_lv}</t>
+                <lemma class={a.lemma}/>
+                <pos class={a.postag} head={posTag.pos}>
+                  {posTag.features.map(f => {
+                    <feat class={f.value} subset={f.name}/>
+                })}
+                </pos>
+              </w>
+            })
+            annotatedTokens
+          } else Seq()
+          }
+          <timing>
+            <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
+          </timing>
+        </s>{if (includeAlpinoParse) <foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data>}
+      </speech>
+    }
+  }
+
+  object TEI {
+    //  {Metadata.getMetadata(this)}
+    lazy val pseudoTEI = {
+      <u start={starttijd.toString} end={eindtijd.toString} xml:id={alpino_annotatie_id.toString}>
+        <seg type="alpinoInput">{sentence.input_transcript}</seg>
+        {overLappingElanAnnotations.map(e =>
+        <seg type="elanLichteVernederlandsing" start={e.starttijd.toString} end={e.eindtijd.toString}>
           {e.tekst_lv}
-        </t>
-        <t class="elanHeavyDutchification">
-          {e.tekst_zv}
-        </t>
-      </div>
-    )}
-  </info> }
-
-   def pseudoFolia(includeAlpinoParse: Boolean = false) = {
-
-    <speech xml:id={speech_id}>
-      {informativeT.child}
-      <s xml:id={s"s.$alpino_annotatie_id"}>
-        {if (alignedTokens.size == alpinoTokens.size) {
-
-        val danges = zipped.map({ case (t, a) =>
-          val posTag = CGNTagset.fromString(a.postag)
-          <w xml:id={a.id.get}>
-            <t class="heavyDutchification">{t.text_zv}</t>
-            <t class="lightDutchification">{t.text_lv}</t>
-            <lemma class={a.lemma}/>
-            <pos class={a.postag} head={posTag.pos}>{posTag.features.map(f => {<feat class={f.value} subset={f.name}/>} )}</pos>
-          </w>
-        })
-        danges
-      } else Seq()}
-        <timing>
-          <timesegment begintime={formatTime(this.starttijd)} endtime={formatTime(this.eindtijd)}>
-            {zipped.map({case (t,a) => <wref id={a.id.get} t={t.text_lv}/>})}
-          </timesegment>
-
-        </timing>
-      </s>
-      {if (includeAlpinoParse) <foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data>}
-    </speech>
-  }
-  //  {Metadata.getMetadata(this)}
-  lazy val pseudoTEI = {
-    <u start={this.starttijd.toString} end={this.eindtijd.toString} xml:id={alpino_annotatie_id.toString}>
-
-      <seg type="alpinoInput">
-        {sentence.input_transcript}
-      </seg>{overLappingElanAnnotations.map(e =>
-      <seg type="elanLichteVernederlandsing" start={e.starttijd.toString} end={e.eindtijd.toString}>
-        {e.tekst_lv}
-      </seg>
-        <seg type="elanZwareVernederlandsing" start={e.starttijd.toString} end={e.eindtijd.toString}>
-          {e.tekst_zv}
         </seg>
-    )}
-      <seg type="alpinoLichteVernederlandsing">
-      {alignedTokens.map(t => t.text_lv).mkString(" ")}
-    </seg>
-      <seg type="alpinoZwareVernederlandsing">
-        {alignedTokens.map(t => t.text_zv).mkString(" ")}
-      </seg>
-      <seg type="verrijkteZin">
-        <s>
-          {if (alignedTokens.size == alpinoTokens.size) {
-          val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
-          val danges = zipped.map({ case (t, a) => <w norm={t.text_zv} lemma={a.lemma} pos={a.postag}>
-            {t.text_lv}
-          </w>
-          })
-          danges
-        } else Seq()}
-        </s>
-      </seg>
-    </u>
+          <seg type="elanZwareVernederlandsing" start={e.starttijd.toString} end={e.eindtijd.toString}>
+            {e.tekst_zv}
+          </seg>
+      )}
+        <seg type="alpinoLichteVernederlandsing">{alignedTokens.map(t => t.text_lv).mkString(" ")}</seg>
+        <seg type="alpinoZwareVernederlandsing">{alignedTokens.map(t => t.text_zv).mkString(" ")}</seg>
+        <seg type="verrijkteZin">
+          <s>
+            {if (alignedTokens.size == alpinoTokens.size) {
+            val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+            val danges = zipped.map({ case (t, a) => <w norm={t.text_zv} lemma={a.lemma} pos={a.postag}>
+              {t.text_lv}
+            </w>
+            })
+            danges
+          } else Seq()}
+          </s>
+        </seg>
+      </u>
+    }
   }
 
-  lazy val sentenceId = (alpinoParseAsXML \\ "sentence" \ "@sentid").text
-
-  lazy val sortKey = Stuff.formatTime((starttijd + eindtijd) / 2) + "." + sentenceId
-
-  lazy val overLappingElanAnnotations = elans.filter(e =>
-    e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
-  )
 
   lazy val n_m = overLappingElanAnnotations.map(_.nAlpinos)
 }

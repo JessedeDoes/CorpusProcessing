@@ -58,7 +58,7 @@ object GCNDDatabase {
   def getPseudoTEI(transcriptie_id: Int) = <TEI>
     <teiHeader/>
     <text>
-    <body><div>{getAlpinoAnnotations(transcriptie_id).map(_.pseudoTEI)}</div></body>
+    <body><div>{getAlpinoAnnotations(transcriptie_id).map(_.TEI.pseudoTEI)}</div></body>
     </text>
   </TEI>
 
@@ -77,7 +77,7 @@ object GCNDDatabase {
       <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
       </foreign-data>
-    </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.pseudoFolia(true))}
+    </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.Folia.pseudoFolia(true))}
   </FoLiA>
 
   def getPseudoFoLiAForElanAnnotations(transcriptie_id: Int) =
