@@ -120,7 +120,8 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
           <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
           </timing>
-        </s>{if (includeAlpinoParse) <foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data>}
+        </s>
+        {if (includeAlpinoParse) <syntax class="lassy-dependency-annotation"><foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data></syntax>}
       </speech>
     }
   }
