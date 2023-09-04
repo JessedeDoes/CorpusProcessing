@@ -1,0 +1,33 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="12" id="0" rel="top">
+    <node begin="0" cat="smain" end="11" id="1" rel="--">
+      <node begin="0" cat="np" end="6" id="2" rel="su">
+        <node word="da" begin="0" buiging="zonder" end="1" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="3" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh"/>
+        <node word="vers" aform="base" begin="1" buiging="zonder" end="2" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="4" infl="no_e" lcat="ap" lemma="vers" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="vers" sense="vers" vform="adj"/>
+        <node word="water" begin="2" end="3" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="5" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water"/>
+        <node begin="3" cat="pp" end="6" id="6" rel="mod">
+          <node word="uit" begin="3" end="4" frame="preposition(uit,[vandaan])" his="normal" his_1="normal" id="7" lcat="pp" lemma="uit" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="uit" sense="uit" vztype="init"/>
+          <node begin="4" cat="np" end="6" id="8" rel="obj1">
+            <node word="d" begin="4" end="5" frame="determiner(de)" his="normal" his_1="normal" id="9" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+            <node word="havent" begin="5" end="6" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="haven" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="haven" sense="haven"/>
+          </node>
+        </node>
+      </node>
+      <node word="vecht" begin="6" end="7" frame="verb(hebben,sg,pc_pp(tegen))" his="normal" his_1="normal" id="11" infl="sg" lcat="smain" lemma="vechten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="vecht" sc="pc_pp(tegen)" sense="vecht-tegen" stype="declarative" tense="present" wvorm="pv"/>
+      <node begin="7" cat="pp" end="11" id="12" rel="pc">
+        <node word="tegen" begin="7" end="8" frame="preposition(tegen,[aan,in,op])" his="normal" his_1="normal" id="13" lcat="pp" lemma="tegen" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="tegen" sense="tegen" vztype="init"/>
+        <node begin="8" cat="np" end="11" id="14" rel="obj1">
+          <node word="t" begin="8" end="9" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="15" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh"/>
+          <node word="zout" aform="base" begin="9" buiging="zonder" end="10" frame="adjective(no_e(nonadv))" graad="basis" his="normal" his_1="normal" id="16" infl="no_e" lcat="ap" lemma="zout" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="zout" sense="zout" vform="adj"/>
+          <node word="water" begin="10" end="11" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="17" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water"/>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="11" end="12" frame="punct(hellip)" his="skip" id="18" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0334">dat vers water uit de haven vecht tegen het zout water ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0334|dat vers water uit de haven vecht tegen het zout water [ @skip ... ]|1|1|-6.564838935099999</comment>
+  </comments>
+</alpino_ds>

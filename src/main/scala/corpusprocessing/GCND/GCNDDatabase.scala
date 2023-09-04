@@ -98,6 +98,9 @@ object GCNDDatabase {
       </metadata>{getElanAnnotations(transcriptie_id).sortBy(_.starttijd).map(x => x.pseudoFolia())}
     </FoLiA>
 
+  def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
+    a.key.equals("id")).map(a => a.value.toString).head
+
   def main(args: Array[String])  = {
     if (false) {
       val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
@@ -105,8 +108,24 @@ object GCNDDatabase {
       out.close()
     }
 
+    val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
+
+    val alpinoDumpDir = new java.io.File("/home/jesse/workspace/XmlToRdf/data/GCND/Alpino/")
+    alpinoDumpDir.mkdir()
+
+
+    (foliaWithAlpino \\ "speech").foreach(a => {
+      val e = a.asInstanceOf[Elem]
+      val speech_id = getId(e)
+      val alpinos = (e \\ "alpino_ds");
+      val alpino = alpinos.head.asInstanceOf[Elem]
+      //.asInstanceOf[Elem]
+      println("Aantal alpinos: " + alpinos.size)
+      XML.save(alpinoDumpDir.getCanonicalPath + "/" + speech_id + ".xml", alpino)
+    })
+
     val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
-    out1.println(pretty.format(getPseudoFoLiAForAlpinoAnnotations(1)))
+    out1.println(pretty.format(foliaWithAlpino))
     out1.close()
 
     val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")

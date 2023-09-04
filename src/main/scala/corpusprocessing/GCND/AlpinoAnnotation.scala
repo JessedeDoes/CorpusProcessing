@@ -11,6 +11,7 @@ import java.io.PrintWriter
 import scala.xml._
 import GCNDDatabase.{Token, elans}
 import posmapping.{CGNPoSTagging, CGNTagset}
+import utils.PostProcessXML
 
 import scala.collection.{AbstractSeq, immutable}
 
@@ -56,6 +57,12 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
 
+  lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML, x => x.label=="node" && (x \ "@word").nonEmpty, node => {
+    val b = (node \ "@begin").text.toInt
+    val lv = alignedTokens(b).text_lv
+    val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null))
+    node.copy(attributes=atts)
+  })
   lazy val informativeT: Elem =  {  <info>
     {Comment("n_elan_annotations: " +  overLappingElanAnnotations.size.toString)}
     <t class="alpinoInput">
@@ -103,7 +110,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
         </timing>
       </s>
-      {if (includeAlpinoParse) <foreign-data>{alpinoParseAsXML.copy(scope = alpinoScope)}</foreign-data>}
+      {if (includeAlpinoParse) <foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data>}
     </speech>
   }
   //  {Metadata.getMetadata(this)}

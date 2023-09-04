@@ -1,0 +1,21 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="6" id="0" rel="top">
+    <node begin="0" cat="du" end="6" id="1" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="smain" end="6" id="3" rel="nucl">
+        <node word="k" begin="1" end="2" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word="zoun" begin="2" end="3" id="5" lemma="zullen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zal" sense="zal" wvorm="pv"/>
+        <node word="ik" begin="3" end="4" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node begin="1" cat="inf" end="6" id="7" rel="vc">
+          <node begin="1" end="2" id="8" index="1" rel="su"/>
+          <node word="ginder" begin="4" end="5" id="9" lemma="ginder" pos="adv" postag="BW()" pt="bw" rel="mod" root="ginder" sense="ginder"/>
+          <node word="doen" begin="5" buiging="zonder" end="6" id="10" lemma="doen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="doe" sense="doe" wvorm="inf"/>
+        </node>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0292b">en ik zou ik ginder doen</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0292b|en ik zou [ @skip ik ] ginder doen|1|1|-4.7811091459999995</comment>
+  </comments>
+</alpino_ds>

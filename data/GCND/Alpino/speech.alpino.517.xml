@@ -1,0 +1,36 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="13" id="0" rel="top">
+    <node word="," begin="3" end="4" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node begin="0" cat="du" end="12" id="2" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="du" end="12" id="4" rel="nucl">
+        <node begin="1" cat="smain" end="3" id="5" rel="tag">
+          <node word="k" begin="1" end="2" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="zeggen" begin="2" end="3" id="7" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
+        </node>
+        <node begin="4" cat="smain" end="12" id="8" rel="nucl">
+          <node word="k" begin="4" end="5" getal="ev" id="9" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="gaan" begin="5" end="6" id="10" lemma="gaan" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ga" sense="ga" wvorm="pv"/>
+          <node begin="4" cat="inf" end="12" id="11" rel="vc">
+            <node begin="4" end="5" id="12" index="1" rel="su"/>
+            <node word="algelijk" begin="6" buiging="zonder" end="7" graad="basis" id="13" lemma="algelijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="algelijk" sense="algelijk"/>
+            <node begin="7" cat="np" end="9" id="14" rel="mod">
+              <node word="e" begin="7" end="8" id="15" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word="keer" begin="8" end="9" genus="genus" getal="ev" graad="basis" id="16" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer"/>
+            </node>
+            <node begin="9" cat="pp" end="11" id="17" rel="ld">
+              <node word="a" begin="9" end="10" id="18" lemma="al" pos="prep" postag="VZ()" pt="vz" rel="hd" root="al" sense="al"/>
+              <node word="ginder" begin="10" end="11" id="19" lemma="ginder" pos="adv" postag="BW()" pt="bw" rel="obj1" root="ginder" sense="ginder"/>
+            </node>
+            <node word="roeien" begin="11" buiging="zonder" end="12" id="20" lemma="roeien" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="roei" sense="roei" wvorm="inf"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="12" end="13" id="21" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0473">en ik zeg , ik ga algelijk een keer al ginder roeien .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0473|en ik zeg , ik ga algelijk een keer al ginder roeien .|1|1|-5.774656590199998</comment>
+  </comments>
+</alpino_ds>

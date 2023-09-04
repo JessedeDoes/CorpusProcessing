@@ -1,0 +1,19 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="du" end="4" id="1" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="oti" end="4" id="3" rel="nucl">
+        <node word="voo" begin="1" end="2" id="4" lemma="voor" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="voor" sense="om" vztype="init"/>
+        <node begin="2" cat="ti" end="4" id="5" rel="body">
+          <node word="te" begin="2" end="3" id="6" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init"/>
+          <node word="draaien" begin="3" buiging="zonder" end="4" id="7" lemma="draaien" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="body" root="draai" sense="draai" wvorm="inf"/>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="4" end="5" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0499b">maar voor te draaien ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0499b|maar [ @alt om voor ] te draaien [ @skip ... ]|1|1|-0.15971050320000002</comment>
+  </comments>
+</alpino_ds>

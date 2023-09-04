@@ -1,0 +1,18 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="8" id="0" rel="top">
+    <node begin="0" cat="smain" end="4" id="1" rel="--">
+      <node word="ze" begin="0" end="1" getal="mv" id="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+      <node word="zeiden" begin="1" end="2" id="3" lemma="zeggen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
+      <node word="daartegen" begin="2" end="3" id="4" lemma="daartegen" pos="pp" postag="BW()" pt="bw" rel="mod" root="daartegen" sense="daartegen"/>
+      <node word="padden" begin="3" end="4" getal="mv" graad="basis" id="5" lemma="pad" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="obj1" root="pad" sense="pad"/>
+    </node>
+    <node word="..." begin="4" end="5" id="6" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="padden" begin="5" end="6" getal="mv" graad="basis" id="7" lemma="padden" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="--" root="pad" sense="pad"/>
+    <node word="hé" begin="6" end="7" id="8" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word="." begin="7" end="8" id="9" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0492">ze zeiden daartegen padden ... padden hé .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0492|ze zeiden daartegen padden [ @skip ... ] [ @skip padden ] [ @skip hé ] .|1|1|-2.3021331875</comment>
+  </comments>
+</alpino_ds>

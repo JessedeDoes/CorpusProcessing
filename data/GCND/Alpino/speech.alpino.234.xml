@@ -1,0 +1,14 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:02" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="3" id="0" rel="top">
+    <node begin="0" cat="np" end="2" id="1" rel="--">
+      <node word="die" begin="0" buiging="zonder" end="1" frame="determiner(de,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="2" infl="de" lcat="detp" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" wh="nwh"/>
+      <node word="kap" begin="1" end="2" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="3" lcat="np" lemma="kap" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="kap" sense="kap"/>
+    </node>
+    <node word="..." begin="2" end="3" frame="punct(hellip)" his="skip" id="4" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0014a">die kap ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0014a|die kap [ @skip ... ]|1|1|-0.17451098299999995</comment>
+  </comments>
+</alpino_ds>

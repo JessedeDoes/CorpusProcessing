@@ -1,0 +1,39 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="14" id="0" rel="top">
+    <node word="..." begin="8" end="9" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="13" id="2" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="cp" end="13" id="4" rel="nucl">
+        <node word="as" begin="1" conjtype="onder" end="2" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node begin="2" cat="ssub" end="13" id="6" rel="body">
+          <node word="me" begin="2" end="3" getal="mv" id="7" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+          <node word="azo" begin="3" end="4" id="8" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo"/>
+          <node word="komen" begin="7" end="8" id="9" lemma="komen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="kom" sense="kom" wvorm="pv"/>
+          <node begin="4" cat="pp" end="13" id="10" rel="ld">
+            <node word="van" begin="4" end="5" id="11" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+            <node begin="5" cat="np" end="13" id="12" rel="obj1">
+              <node word="de" begin="5" end="6" id="13" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word="frontières" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="14" lemma="frontières" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frontières" sense="frontières"/>
+              <node begin="9" cat="rel" end="13" id="15" rel="mod">
+                <node word="waar" begin="9" end="10" getal="getal" id="16" index="1" lemma="waar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(vb,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="rhd" root="waar" sense="waar" status="vol" vwtype="vb"/>
+                <node begin="9" cat="ssub" end="13" id="17" rel="body">
+                  <node begin="9" end="10" id="18" index="1" rel="ld"/>
+                  <node begin="10" cat="np" end="12" id="19" rel="su">
+                    <node word="de" begin="10" end="11" id="20" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+                    <node word="boeien" begin="11" end="12" getal="mv" graad="basis" id="21" lemma="boei" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="boei" sense="boei"/>
+                  </node>
+                  <node word="liggen" begin="12" end="13" id="22" lemma="liggen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="lig" sense="lig" wvorm="pv"/>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="13" end="14" id="23" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0526">en als we zo van de frontières komen ... waar de boeien liggen ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0526|en als we zo van de frontières komen [ @skip ... ] waar de boeien liggen [ @skip ... ]|1|1|0.9011630269000017</comment>
+  </comments>
+</alpino_ds>

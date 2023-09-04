@@ -1,0 +1,19 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="du" end="5" id="1" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="sv1" end="5" id="3" rel="nucl">
+        <node word="kijken" begin="1" end="2" id="4" lemma="kijken" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="kijk" sense="kijk" wvorm="pv"/>
+        <node word="ik" begin="2" end="3" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node begin="3" cat="pp" end="5" id="6" rel="ld">
+          <node word="naar" begin="3" end="4" id="7" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
+          <node word="achter" begin="4" end="5" id="8" lemma="achter" pos="adv" postag="VZ(fin)" pt="vz" rel="obj1" root="achter" sense="achter" vztype="fin"/>
+        </node>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0204a">maar kijk ik naar achter</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0204a|maar [ @phantom ik ] kijk [ @skip ik ] naar achter|1|1|-4.3065754004</comment>
+  </comments>
+</alpino_ds>

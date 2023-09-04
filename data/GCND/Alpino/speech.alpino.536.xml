@@ -1,0 +1,45 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="13" id="0" rel="top">
+    <node word="..." begin="6" end="7" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="12" id="2" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="du" end="12" id="4" rel="nucl">
+        <node begin="1" cat="whrel" end="6" id="5" rel="dp">
+          <node begin="1" cat="ap" end="3" id="6" index="1" rel="rhd">
+            <node word="hoe" begin="1" end="2" id="7" lemma="hoe" pos="adv" postag="BW()" pt="bw" rel="mod" root="hoe" sense="hoe"/>
+            <node word="zeerder" begin="2" buiging="zonder" end="3" graad="comp" id="8" lemma="zeer" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="hd" root="zeer" sense="zeer"/>
+          </node>
+          <node begin="1" cat="cp" end="6" id="9" rel="body">
+            <node word="da" begin="3" conjtype="onder" end="4" id="10" lemma="dat" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat"/>
+            <node begin="1" cat="ssub" end="6" id="11" rel="body">
+              <node begin="1" end="3" id="12" index="1" rel="mod"/>
+              <node word="ze" begin="4" end="5" getal="mv" id="13" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+              <node word="koelen" begin="5" buiging="zonder" end="6" getal-n="zonder-n" id="14" lemma="koelen" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="hd" root="koel" sense="koel" wvorm="inf"/>
+            </node>
+          </node>
+        </node>
+        <node begin="7" cat="whrel" end="12" id="15" rel="dp">
+          <node begin="7" cat="ap" end="9" id="16" index="2" rel="rhd">
+            <node word="hoe" begin="7" end="8" id="17" lemma="hoe" pos="adv" postag="BW()" pt="bw" rel="mod" root="hoe" sense="hoe"/>
+            <node word="beter" begin="8" buiging="zonder" end="9" graad="comp" id="18" lemma="goed" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="hd" root="goed" sense="goed"/>
+          </node>
+          <node begin="7" cat="ssub" end="12" id="19" rel="body">
+            <node begin="7" end="9" id="20" index="2" rel="mod"/>
+            <node begin="9" cat="pp" end="12" id="21" rel="mod">
+              <node word="voo" begin="9" end="10" id="22" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
+              <node begin="10" cat="np" end="12" id="23" rel="obj1">
+                <node word="t" begin="10" end="11" id="24" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+                <node word="eten" begin="11" end="12" genus="onz" getal="ev" graad="basis" id="25" lemma="eten" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="eten" sense="eten"/>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="12" end="13" id="26" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0387">maar hoe zeerder dat ze koelen ... hoe beter voor het eten .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0387|maar hoe zeerder dat ze koelen [ @skip ... ] hoe beter voor het eten .|1|1|2.231577228499998</comment>
+  </comments>
+</alpino_ds>

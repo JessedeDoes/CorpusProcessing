@@ -1,0 +1,27 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="9" id="0" rel="top">
+    <node begin="0" cat="du" end="8" id="1" rel="--">
+      <node begin="0" cat="cp" end="5" id="2" rel="tag">
+        <node word="a" begin="0" conjtype="onder" end="1" id="3" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node begin="1" cat="ssub" end="5" id="4" rel="body">
+          <node word="je" begin="1" end="2" getal="ev" id="5" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+          <node word="stopt" begin="2" end="3" id="6" lemma="stoppen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="stop" sense="stop-met" wvorm="pv"/>
+          <node begin="3" cat="pp" end="5" id="7" rel="pc">
+            <node word="van" begin="3" end="4" id="8" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="met" vztype="init"/>
+            <node word="roeien" begin="4" buiging="zonder" end="5" getal-n="zonder-n" id="9" lemma="roeien" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="obj1" root="roei" sense="roei" wvorm="inf"/>
+          </node>
+        </node>
+      </node>
+      <node begin="5" cat="smain" end="8" id="10" rel="nucl">
+        <node word="je" begin="5" end="6" getal="ev" id="11" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+        <node word="ligt" begin="6" end="7" id="12" lemma="stil_liggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="lig_stil" sense="lig_stil" wvorm="pv"/>
+        <node word="stille" begin="7" buiging="zonder" end="8" graad="basis" id="13" lemma="stil" pos="part" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="svp" root="stil" sense="stil"/>
+      </node>
+    </node>
+    <node word="..." begin="8" end="9" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0341b">als je stopt van roeien je ligt stil ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0341b|[ @x als je stopt [ @alt met van ] roeien ] [ @x je ligt stil [ @skip ... ] ]|1|2|-1.7037715937</comment>
+  </comments>
+</alpino_ds>

@@ -1,0 +1,23 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="8" id="0" rel="top">
+    <node begin="0" cat="du" end="7" id="1" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node begin="1" cat="smain" end="7" id="3" rel="nucl">
+        <node word="j" begin="1" case="both" def="def" end="2" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+        <node word="ed" begin="2" end="3" frame="verb(hebben,sg_hebt,transitive_ndev)" his="normal" his_1="normal" id="5" infl="sg_hebt" lcat="smain" lemma="hebben" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="heb" sc="transitive_ndev" sense="heb" stype="declarative" tense="present" wvorm="pv"/>
+        <node word="altijden" begin="3" end="4" frame="sentence_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="altijd" pos="adv" postag="BW()" pt="bw" rel="mod" root="altijd" sense="altijd" special="sentence"/>
+        <node begin="4" cat="np" end="7" id="7" rel="obj1">
+          <node word="de" begin="4" end="5" frame="determiner(de)" his="normal" his_1="normal" id="8" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word="meeste" aform="super" begin="5" buiging="met-e" end="6" frame="adjective(ste)" graad="sup" his="normal" his_1="normal" id="9" infl="e" lcat="ap" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,met-e,agr,sup)" pt="vnw" rel="mod" root="veel" sense="veel" vform="adj" vwtype="onbep"/>
+          <node word="zee" begin="6" end="7" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="zee" sense="zee"/>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="7" end="8" frame="punct(hellip)" his="skip" id="11" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0335">en je hebt altijd de meeste zee ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0335|en je hebt altijd de meeste zee [ @skip ... ]|1|1|-3.840723915799999</comment>
+  </comments>
+</alpino_ds>

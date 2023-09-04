@@ -1,0 +1,32 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="13" id="0" rel="top">
+    <node word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="np" end="12" id="2" rel="--">
+      <node word="veel" begin="0" buiging="zonder" end="1" graad="basis" id="3" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,zonder,agr,basis)" pt="vnw" rel="det" root="veel" sense="veel" vwtype="onbep"/>
+      <node word="heren" begin="1" end="2" getal="mv" graad="basis" id="4" lemma="heer" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="heer" sense="heer"/>
+      <node begin="2" cat="rel" end="7" id="5" rel="mod">
+        <node word="da" begin="2" end="3" getal="ev" id="6" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(betr,pron,stan,vol,3,ev)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr"/>
+        <node begin="2" cat="ssub" end="7" id="7" rel="body">
+          <node begin="2" end="3" id="8" index="1" rel="obj1"/>
+          <node word="k" begin="3" end="4" getal="ev" id="9" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="ik" begin="4" end="5" getal="ev" id="10" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="nie" begin="5" end="6" id="11" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet"/>
+          <node word="kosten" begin="6" end="7" id="12" lemma="kennen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ken" sense="ken" wvorm="pv"/>
+        </node>
+      </node>
+      <node begin="8" cat="pp" end="12" id="13" rel="mod">
+        <node word="met" begin="8" end="9" id="14" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+        <node begin="9" cat="pp" end="12" id="15" rel="obj1">
+          <node word="familie" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="16" lemma="familie" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="cnj" root="familie" sense="familie"/>
+          <node word="en" begin="10" conjtype="neven" end="11" id="17" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+          <node word="al" begin="11" end="12" id="18" lemma="al" pos="part" postag="VNW(onbep,pron,stan,col,3o,ev)" pt="vnw" rel="cnj" root="al" sense="al"/>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="12" end="13" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0544">veel heren dat ik ik niet kende ... met familie en al .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0544|veel heren [ @alt die dat ] ik [ @skip ik ] niet kende [ @skip ... ] met familie en al .|1|1|-2.432703784200002</comment>
+  </comments>
+</alpino_ds>

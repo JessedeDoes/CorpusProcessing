@@ -1,0 +1,35 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="17" id="0" rel="top">
+    <node word="me" begin="1" end="2" getal="mv" id="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="--" root="we" sense="we" status="red" vwtype="pers"/>
+    <node word="liepen" begin="2" end="3" id="2" lemma="liepen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="--" root="loop" sense="loop" wvorm="pv"/>
+    <node word="wijder" begin="3" end="4" getal="mv" id="3" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="--" root="wij" sense="wij" status="vol" vwtype="pers"/>
+    <node word="..." begin="8" end="9" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="16" id="5" rel="--">
+      <node word="e" begin="0" conjtype="neven" end="1" id="6" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="4" cat="smain" end="16" id="7" rel="nucl">
+        <node word="we" begin="4" end="5" getal="mv" id="8" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+        <node word="waren" begin="5" end="6" id="9" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word="wijder" begin="6" end="7" getal="mv" id="10" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
+        <node word="altn" begin="7" end="8" id="11" lemma="altijd" pos="adv" postag="BW()" pt="bw" rel="mod" root="altijd" sense="altijd"/>
+        <node begin="9" cat="np" end="15" id="12" rel="mod">
+          <node word="een" begin="9" end="10" id="13" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+          <node word="half" begin="10" buiging="zonder" end="11" graad="basis" id="14" lemma="half" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="half" sense="half"/>
+          <node word="uure" begin="11" end="12" genus="onz" getal="ev" graad="basis" id="15" lemma="uur" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="uur" sense="uur"/>
+          <node begin="12" cat="pp" end="15" id="16" rel="mod">
+            <node word="voo" begin="12" end="13" id="17" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
+            <node begin="13" cat="np" end="15" id="18" rel="obj1">
+              <node word="die" begin="13" buiging="zonder" end="14" id="19" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+              <node word="stoomboot" begin="14" end="15" genus="zijd" getal="ev" graad="basis" id="20" lemma="stoomboot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="stoomboot" sense="stoomboot"/>
+            </node>
+          </node>
+        </node>
+        <node word="binnen" begin="15" end="16" id="21" lemma="binnen" pos="adv" postag="VZ(fin)" pt="vz" rel="ld" root="binnen" sense="binnen" vztype="fin"/>
+      </node>
+    </node>
+    <node word="." begin="16" end="17" id="22" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0151a">en we liepen wij we waren wij altijd ... een half uur voor die stoomboot binnen .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0151a|en [ @skip we ] [ @skip liepen ] [ @skip wij ] we waren [ @skip wij ] altijd [ @skip ... ] een half uur voor die stoomboot binnen .|1|1|-6.2952676380999995</comment>
+  </comments>
+</alpino_ds>

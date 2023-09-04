@@ -1,0 +1,43 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="15" id="0" rel="top">
+    <node word="..." begin="5" end="6" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="8" end="9" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="14" id="3" rel="--">
+      <node begin="0" cat="inf" end="8" id="4" rel="dp">
+        <node word="gaan" begin="0" buiging="zonder" end="1" id="5" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+        <node begin="1" cat="inf" end="8" id="6" rel="vc">
+          <node word="gaan" begin="1" buiging="zonder" end="2" id="7" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+          <node begin="2" cat="inf" end="8" id="8" rel="vc">
+            <node word="vissen" begin="2" buiging="zonder" end="3" id="9" lemma="vissen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="vis" sense="vis" wvorm="inf"/>
+            <node begin="3" cat="conj" end="8" id="10" rel="pc">
+              <node begin="3" cat="pp" end="5" id="11" rel="cnj">
+                <node word="achter" begin="3" end="4" id="12" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init"/>
+                <node word="gernozen" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="13" lemma="gernozen" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="gernozen" sense="gernozen"/>
+              </node>
+              <node begin="6" cat="pp" end="8" id="14" rel="cnj">
+                <node word="achter" begin="6" end="7" id="15" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init"/>
+                <node word="sprot" begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="16" lemma="sprot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="sprot" sense="sprot"/>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node begin="9" cat="inf" end="14" id="17" rel="dp">
+        <node begin="9" cat="pp" end="11" id="18" rel="ld">
+          <node word="naa" begin="9" end="10" id="19" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
+          <node word="Calais" begin="10" end="11" genus="zijd" getal="ev" graad="basis" id="20" lemma="Calais" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="obj1" root="Calais" sense="Calais"/>
+        </node>
+        <node word="gaan" begin="11" buiging="zonder" end="12" id="21" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+        <node begin="12" cat="pp" end="14" id="22" rel="mod">
+          <node word="achter" begin="12" end="13" id="23" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init"/>
+          <node word="haring" begin="13" end="14" genus="zijd" getal="ev" graad="basis" id="24" lemma="haring" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="haring" sense="haring"/>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="14" end="15" id="25" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0063">gaan gaan vissen achter gernozen ... achter sprot ... naar Calais gaan achter haring .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0063|[ @skip gaan ] gaan vissen achter gernozen [ @skip ... ] [ @phantom , ] achter sprot [ @skip ... ] [ @phantom en ] naar Calais gaan achter haring .|1|1|-1.9439619734000013</comment>
+  </comments>
+</alpino_ds>

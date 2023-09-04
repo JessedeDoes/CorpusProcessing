@@ -1,0 +1,69 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="32" id="0" rel="top">
+    <node word="..." begin="3" end="4" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="7" end="8" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="14" end="15" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="25" end="26" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="conj" end="29" id="5" rel="--">
+      <node begin="0" cat="smain" end="14" id="6" rel="cnj">
+        <node word="k" begin="0" end="1" getal="ev" id="7" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word="en" begin="1" end="2" id="8" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+        <node begin="0" cat="ppart" end="14" id="9" rel="vc">
+          <node begin="0" end="1" id="10" index="1" rel="su"/>
+          <node word="daarvooren" begin="2" end="3" id="11" lemma="daarvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="daarvoor" sense="daarvoor"/>
+          <node word="get" begin="6" buiging="zonder" end="7" id="12" lemma="hebben" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="heb" sense="heb" wvorm="vd"/>
+          <node begin="4" cat="conj" end="14" id="13" rel="obj1">
+            <node begin="4" cat="np" end="6" id="14" rel="cnj">
+              <node word="een" begin="4" end="5" id="15" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word="medaille" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="16" lemma="medaille" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="medaille" sense="medaille"/>
+            </node>
+            <node word="en" begin="8" conjtype="neven" end="9" id="17" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+            <node begin="9" cat="np" end="14" id="18" rel="cnj">
+              <node word="e" begin="9" end="10" id="19" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word="spaarboeksje" begin="10" end="11" genus="onz" getal="ev" graad="basis" id="20" lemma="sparen_boek" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="spaar_boek_DIM" sense="spaar_boek_DIM"/>
+              <node begin="11" cat="pp" end="14" id="21" rel="mod">
+                <node word="van" begin="11" end="12" id="22" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                <node begin="12" cat="np" end="14" id="23" rel="obj1">
+                  <node word="driehonderd" begin="12" end="13" id="24" lemma="driehonderd" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="driehonderd" sense="driehonderd"/>
+                  <node word="frang" begin="13" end="14" genus="zijd" getal="ev" graad="basis" id="25" lemma="frank" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frank" sense="frank"/>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+      <node word="maa" begin="15" conjtype="neven" end="16" id="26" lemma="maar" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="maar" sense="maar"/>
+      <node begin="16" cat="smain" end="29" id="27" rel="cnj">
+        <node word="k" begin="16" end="17" getal="ev" id="28" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word="kost" begin="17" end="18" id="29" lemma="kunnen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kan" sense="kan" wvorm="pv"/>
+        <node begin="18" cat="np" end="29" id="30" rel="obj1">
+          <node word="et" begin="18" end="19" id="31" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+          <node word="maa" begin="19" end="20" id="32" lemma="maar" pos="adv" postag="BW()" pt="bw" rel="mod" root="maar" sense="maar"/>
+          <node word="krijgen" begin="20" buiging="zonder" end="21" getal-n="zonder-n" id="33" lemma="krijgen" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="hd" root="krijg" sense="krijg" wvorm="inf"/>
+          <node begin="21" cat="pp" end="25" id="34" rel="mod">
+            <node word="in" begin="21" end="22" id="35" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node begin="22" cat="np" end="25" id="36" rel="obj1">
+              <node word="drie" begin="22" end="23" id="37" lemma="drie" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="drie" sense="drie"/>
+              <node word="jaar" begin="23" end="24" genus="onz" getal="ev" graad="basis" id="38" lemma="jaar" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="jaar" sense="jaar"/>
+              <node word="tijd" begin="24" end="25" genus="zijd" getal="ev" graad="basis" id="39" lemma="tijd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mod" root="tijd" sense="tijd"/>
+            </node>
+          </node>
+          <node begin="26" cat="pp" end="29" id="40" rel="mod">
+            <node word="aan" begin="26" end="27" id="41" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init"/>
+            <node begin="27" cat="np" end="29" id="42" rel="obj1">
+              <node word="de" begin="27" end="28" id="43" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word="stad" begin="28" end="29" genus="zijd" getal="ev" graad="basis" id="44" lemma="stad" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="stad" sense="stad"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="29" end="30" id="45" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="ewaar" begin="30" end="31" id="46" lemma="ewaar" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ewaar" sense="ewaar"/>
+    <node word="." begin="31" end="32" id="47" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0293f">ik heb daarvoor ... een medaille gehad ... en een spaarboekje van driehonderd frank ... maar ik kon het maar krijgen in drie jaar tijd ... aan de stad ... ewaar .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0293f|ik heb daarvoor [ @skip ... ] een medaille gehad [ @skip ... ] en een spaarboekje van driehonderd frank [ @skip ... ] maar ik kon het maar krijgen in drie jaar tijd [ @skip ... ] aan de stad [ @skip ... ] [ @skip ewaar ] .|1|1|-10.302260643</comment>
+  </comments>
+</alpino_ds>

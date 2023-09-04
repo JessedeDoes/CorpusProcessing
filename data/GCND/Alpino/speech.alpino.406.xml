@@ -1,0 +1,35 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="14" id="0" rel="top">
+    <node word="..." begin="4" end="5" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="13" id="2" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="smain" end="13" id="4" rel="--">
+        <node word="moe" begin="5" end="6" id="5" lemma="moeten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="moet" sense="moet" wvorm="pv"/>
+        <node word="je" begin="6" end="7" getal="ev" id="6" index="1" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+        <node word="gij" begin="7" end="8" getal="ev" id="7" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="su" root="jij" sense="jij" status="vol" vwtype="pers"/>
+        <node begin="1" cat="inf" end="13" id="8" rel="vc">
+          <node begin="1" cat="pp" end="4" id="9" rel="mod">
+            <node word="gelijk" begin="1" buiging="zonder" end="2" graad="basis" id="10" lemma="gelijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="gelijk" sense="gelijk"/>
+            <node word="van" begin="2" end="3" id="11" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+            <node word="Oostende" begin="3" end="4" genus="onz" getal="ev" graad="basis" id="12" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Oostende" sense="Oostende"/>
+          </node>
+          <node begin="6" end="7" id="13" index="1" rel="su"/>
+          <node begin="8" cat="np" end="12" id="14" rel="obj1">
+            <node begin="8" cat="mwu" end="11" id="15" rel="det">
+              <node word="nie" begin="8" end="9" id="16" lemma="niet" pos="adv" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="niet" sense="niet" spectype="deeleigen"/>
+              <node word="vele" begin="9" end="10" id="17" lemma="veel" pos="adj" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="veel" sense="veel" spectype="deeleigen"/>
+              <node word="geen" begin="10" end="11" id="18" lemma="geen" pos="fixed" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="geen" sense="geen" spectype="deeleigen"/>
+            </node>
+            <node word="zout" begin="11" end="12" genus="onz" getal="ev" graad="basis" id="19" lemma="zout" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="zout" sense="zout"/>
+          </node>
+          <node word="hebben" begin="12" buiging="zonder" end="13" id="20" lemma="hebben" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="heb" sense="heb" wvorm="inf"/>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="13" end="14" id="21" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0396">maar gelijk van Oostende ... moet je jij niet veel geen zout hebben ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0396|maar gelijk van Oostende [ @skip ... ] moet je [ @skip jij ] niet veel [ @skip geen ] zout hebben [ @skip ... ]|1|1|-1.517857420600001</comment>
+  </comments>
+</alpino_ds>

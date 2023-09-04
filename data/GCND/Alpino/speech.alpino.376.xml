@@ -1,0 +1,31 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="15" id="0" rel="top">
+    <node word="..." begin="11" end="12" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="smain" end="14" id="2" rel="--">
+      <node word="k" begin="0" end="1" getal="ev" id="3" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+      <node word="roeien" begin="1" end="2" id="4" lemma="uit_roeien" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="roei_uit" sense="roei_uit" wvorm="pv"/>
+      <node word="ek" begin="2" end="3" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+      <node word="ik" begin="3" end="4" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+      <node word="altn" begin="4" end="5" id="7" lemma="altijd" pos="adv" postag="BW()" pt="bw" rel="mod" root="altijd" sense="altijd"/>
+      <node word="maar" begin="5" end="6" id="8" lemma="maar" pos="adv" postag="BW()" pt="bw" rel="mod" root="maar" sense="maar"/>
+      <node begin="6" cat="pp" end="9" id="9" rel="mod">
+        <node word="op" begin="6" end="7" id="10" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+        <node begin="7" cat="np" end="9" id="11" rel="obj1">
+          <node word="mijn" begin="7" buiging="zonder" end="8" getal="ev" id="12" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez"/>
+          <node word="gemak" begin="8" end="9" genus="onz" getal="ev" graad="basis" id="13" lemma="gemak" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="gemak" sense="gemak"/>
+        </node>
+      </node>
+      <node word="oost" begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="14" lemma="oost" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="ld" root="oost" sense="oost"/>
+      <node begin="10" cat="conj" end="14" id="15" rel="mod">
+        <node word="uit" begin="10" end="11" id="16" lemma="uit" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="uit" sense="uit" vztype="fin"/>
+        <node word="en" begin="12" conjtype="neven" end="13" id="17" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+        <node word="af" begin="13" end="14" id="18" lemma="af" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="af" sense="af" vztype="fin"/>
+      </node>
+    </node>
+    <node word="." begin="14" end="15" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0442">ik roei ik ik altijd maar op mijn gemak oost uit ... en af .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0442|ik roei [ @skip ik ] [ @skip ik ] altijd maar op mijn gemak oost uit [ @skip ... ] en af .|1|1|-3.4021750018</comment>
+  </comments>
+</alpino_ds>

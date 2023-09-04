@@ -1,0 +1,19 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:08" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="8" id="0" rel="top">
+    <node begin="0" cat="smain" end="4" id="1" rel="--">
+      <node word="ze" begin="0" case="both" def="def" end="1" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+      <node word="zijn" begin="1" end="2" frame="verb(unacc,pl,copula)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sc="copula" sense="ben" stype="declarative" tense="present" wvorm="pv"/>
+      <node word="nooit" begin="2" end="3" frame="tmp_adverb" his="normal" his_1="normal" id="4" lcat="advp" lemma="nooit" pos="adv" postag="BW()" pt="bw" rel="mod" root="nooit" sense="nooit" special="tmp"/>
+      <node word="gerust" aform="base" begin="3" buiging="zonder" end="4" frame="adjective(ge_no_e(adv))" his="normal" his_1="normal" id="5" infl="no_e" lcat="ppart" lemma="gerust" pos="adj" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="predc" root="gerust" sense="gerust" vform="psp" wvorm="vd"/>
+    </node>
+    <node word="..." begin="4" end="5" frame="punct(hellip)" his="skip" id="6" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node word="nooit" begin="5" end="6" frame="tmp_adverb" his="skip" id="7" lcat="--" lemma="nooit" pos="adv" postag="BW()" pt="bw" rel="--" root="nooit" sense="nooit" special="tmp"/>
+    <node word="gerust" aform="base" begin="6" buiging="zonder" end="7" frame="adjective(ge_no_e(adv))" his="skip" id="8" infl="no_e" lcat="--" lemma="gerust" pos="adj" positie="prenom" postag="WW(vd,prenom,zonder)" pt="ww" rel="--" root="gerust" sense="gerust" vform="psp" wvorm="vd"/>
+    <node word="..." begin="7" end="8" frame="punct(hellip)" his="skip" id="9" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0370">ze zijn nooit gerust ... nooit gerust ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0370|ze zijn nooit gerust [ @skip ... ] [ @skip nooit ] [ @skip gerust ] [ @skip ... ]|1|1|-5.5039059109999995</comment>
+  </comments>
+</alpino_ds>

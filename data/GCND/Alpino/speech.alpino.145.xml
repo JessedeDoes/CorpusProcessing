@@ -1,0 +1,41 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="16" id="0" rel="top">
+    <node word="gesluisd" begin="5" buiging="zonder" end="6" id="1" lemma="sluizen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="--" root="sluis" sense="sluis" wvorm="vd"/>
+    <node begin="0" cat="du" end="14" id="2" rel="--">
+      <node word="want" begin="0" conjtype="neven" end="1" id="3" lemma="want" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="want" sense="want"/>
+      <node begin="1" cat="du" end="14" id="4" rel="nucl">
+        <node word="da" begin="1" end="2" getal="ev" id="5" index="1" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word="zit" begin="2" end="3" id="6" lemma="zitten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zit" sense="zit" wvorm="pv"/>
+        <node begin="1" cat="ppart" end="14" id="7" rel="vc">
+          <node begin="1" end="2" id="8" index="1" rel="obj1"/>
+          <node word="gesluisd" begin="4" buiging="zonder" end="5" id="9" lemma="gesluisd" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="sluis" sense="sluis" wvorm="vd"/>
+          <node word="heel" begin="6" buiging="zonder" end="7" graad="basis" id="10" lemma="heel" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="heel" sense="heel"/>
+          <node begin="3" cat="advp" end="8" id="11" rel="mod">
+            <node word="heel" begin="3" buiging="zonder" end="4" graad="basis" id="12" lemma="heel" pos="adv" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="heel" sense="heel"/>
+            <node word="vanachter" begin="7" end="8" id="13" lemma="vanachter" pos="pp" postag="BW()" pt="bw" rel="hd" root="vanachter" sense="vanachter"/>
+          </node>
+          <node begin="8" cat="pp" end="14" id="14" rel="mod">
+            <node word="in" begin="8" end="9" id="15" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node begin="9" cat="np" end="14" id="16" rel="obj1">
+              <node word="t" begin="9" end="10" id="17" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+              <node word="nauwste" begin="10" buiging="met-e" end="11" getal-n="zonder-n" graad="sup" id="18" lemma="nauw" naamval="stan" pos="adj" positie="nom" postag="ADJ(nom,sup,met-e,zonder-n,stan)" pt="adj" rel="hd" root="nauw" sense="nauw"/>
+              <node begin="11" cat="pp" end="14" id="19" rel="mod">
+                <node word="van" begin="11" end="12" id="20" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                <node begin="12" cat="np" end="14" id="21" rel="obj1">
+                  <node word="t" begin="12" end="13" id="22" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+                  <node word="net" begin="13" end="14" genus="onz" getal="ev" graad="basis" id="23" lemma="net" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="net" sense="net"/>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="hé" begin="14" end="15" id="24" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word="." begin="15" end="16" id="25" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0097">want dat zit heel gesluisd gesluisd heel vanachter in het nauwste van het net hé .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0097|want dat zit heel [ @skip gesluisd ] gesluisd heel vanachter in het nauwste van het net [ @skip hé ] .|1|6|4.1201405953000005</comment>
+  </comments>
+</alpino_ds>

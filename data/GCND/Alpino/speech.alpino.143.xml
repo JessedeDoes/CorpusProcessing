@@ -1,0 +1,51 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="22" id="0" rel="top">
+    <node word="die" begin="1" end="2" getal="getal" id="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="--" root="die" sense="die" status="vol" vwtype="betr"/>
+    <node word="..." begin="2" end="3" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="5" end="6" id="3" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word="..." begin="6" end="7" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="-" begin="13" end="14" id="5" lemma="-" pos="punct" postag="LET()" pt="let" rel="--" root="-" sense="-"/>
+    <node word="-" begin="19" end="20" id="6" lemma="-" pos="punct" postag="LET()" pt="let" rel="--" root="-" sense="-"/>
+    <node begin="0" cat="du" end="21" id="7" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="8" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="3" cat="du" end="21" id="9" rel="nucl">
+        <node begin="14" cat="pp" end="19" id="10" rel="tag">
+          <node word="van" begin="14" end="15" id="11" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+          <node begin="15" cat="np" end="18" id="12" rel="obj1">
+            <node word="da" begin="15" buiging="zonder" end="16" id="13" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw"/>
+            <node word="slecht" begin="16" buiging="zonder" end="17" graad="basis" id="14" lemma="slecht" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="slecht" sense="slecht"/>
+            <node word="weer" begin="17" end="18" genus="onz" getal="ev" graad="basis" id="15" lemma="weer" naamval="stan" ntype="soort" pos="adv" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="weer" sense="weer"/>
+          </node>
+          <node word="ook" begin="18" end="19" id="16" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
+        </node>
+        <node begin="3" cat="du" end="21" id="17" rel="nucl">
+          <node begin="3" cat="np" end="5" id="18" rel="sat">
+            <node word="die" begin="3" buiging="zonder" end="4" id="19" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+            <node word="Heistenaars" begin="4" end="5" getal="mv" graad="basis" id="20" lemma="heistenaar" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="heistenaar" sense="heistenaar"/>
+          </node>
+          <node begin="7" cat="smain" end="21" id="21" rel="nucl">
+            <node word="die" begin="7" end="8" getal="getal" id="22" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw"/>
+            <node word="kwamen" begin="8" end="9" id="23" lemma="komen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="kom" sense="kom" wvorm="pv"/>
+            <node begin="7" cat="inf" end="21" id="24" rel="vc">
+              <node begin="7" end="8" id="25" index="1" rel="su"/>
+              <node word="tan" begin="9" end="10" id="26" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
+              <node begin="10" cat="pp" end="13" id="27" rel="ld">
+                <node word="naa" begin="10" end="11" id="28" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
+                <node begin="11" cat="np" end="13" id="29" rel="obj1">
+                  <node word="d" begin="11" end="12" id="30" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+                  <node word="havent" begin="12" end="13" genus="zijd" getal="ev" graad="basis" id="31" lemma="haven" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="haven" sense="haven"/>
+                </node>
+              </node>
+              <node word="lopen" begin="20" buiging="zonder" end="21" id="32" lemma="lopen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="loop" sense="loop" wvorm="inf"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="21" end="22" id="33" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0503">maar die ... die Heistenaars , ... die kwamen dan naar de haven - van dat slecht weer ook - lopen ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0503|maar [ @skip die ] [ @skip ... ] die Heistenaars , [ @skip ... ] die kwamen dan naar de haven - van dat slecht weer ook - lopen [ @skip ... ]|1|1|-0.32728834340000074</comment>
+  </comments>
+</alpino_ds>

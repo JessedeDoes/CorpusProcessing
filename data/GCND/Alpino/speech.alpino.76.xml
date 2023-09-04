@@ -1,0 +1,23 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="9" id="0" rel="top">
+    <node begin="0" cat="du" end="5" id="1" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="du" end="5" id="3" rel="nucl">
+        <node word="tan" begin="1" end="2" id="4" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="dp" root="dan" sense="dan"/>
+        <node begin="2" cat="np" end="5" id="5" rel="dp">
+          <node word="de" begin="2" end="3" id="6" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word="wind" begin="3" end="4" genus="zijd" getal="ev" graad="basis" id="7" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wind" sense="wind"/>
+          <node word="boven" begin="4" end="5" id="8" lemma="boven" pos="adv" postag="VZ(fin)" pt="vz" rel="mod" root="boven" sense="boven" vztype="fin"/>
+        </node>
+      </node>
+    </node>
+    <node word="hé" begin="5" end="6" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word="..." begin="6" end="7" id="10" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="ja" begin="7" end="8" id="11" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
+    <node word="." begin="8" end="9" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0390c">en dan de wind boven hé ... ja .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0390c|en dan de wind boven [ @skip hé ] [ @skip ... ] ja .|1|1|2.8054528903999993</comment>
+  </comments>
+</alpino_ds>

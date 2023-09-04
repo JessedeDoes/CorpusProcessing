@@ -1,0 +1,32 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="12" id="0" rel="top">
+    <node word="t" begin="3" end="4" id="1" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="noun" postag="LID(bep,stan,evon)" pt="lid" rel="--" root="het" sense="het"/>
+    <node word="wat" begin="4" end="5" getal="ev" id="2" lemma="wat" naamval="stan" pdtype="pron" persoon="3o" pos="pron" postag="VNW(vb,pron,stan,vol,3o,ev)" pt="vnw" rel="--" root="wat" sense="wat" status="vol" vwtype="vb"/>
+    <node word="..." begin="9" end="10" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="inf" end="11" id="4" rel="--">
+      <node word="maa" begin="0" end="1" id="5" lemma="maar" pos="comp" postag="VG()" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="inf" end="11" id="6" rel="nucl">
+        <node begin="1" cat="cp" end="9" id="7" rel="mod">
+          <node begin="1" cat="mwu" end="3" id="8" rel="cmp">
+            <node word="van" begin="1" conjtype="onder" end="2" id="9" lemma="van" pos="prep" postag="VG(onder)" pt="vg" rel="mwp" root="van" sense="van"/>
+            <node word="as" begin="2" conjtype="onder" end="3" id="10" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="mwp" root="als" sense="als"/>
+          </node>
+          <node begin="5" cat="ssub" end="9" id="11" rel="body">
+            <node begin="5" cat="np" end="7" id="12" rel="su">
+              <node word="t" begin="5" end="6" id="13" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+              <node word="schuim" begin="6" end="7" genus="onz" getal="ev" graad="basis" id="14" lemma="schuim" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="schuim" sense="schuim"/>
+            </node>
+            <node word="derover" begin="7" end="8" id="15" lemma="erover" pos="pp" postag="BW()" pt="bw" rel="ld" root="erover" sense="erover"/>
+            <node word="loopt" begin="8" end="9" id="16" lemma="lopen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="loop" sense="loop" wvorm="pv"/>
+          </node>
+        </node>
+        <node word="uitscheppen" begin="10" buiging="zonder" end="11" id="17" lemma="uit_scheppen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="schep_uit" sense="schep_uit" wvorm="inf"/>
+      </node>
+    </node>
+    <node word="." begin="11" end="12" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0398">maar van als het wat het schuim erover loopt ... uitscheppen .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0398|maar van als [ @skip het ] [ @skip wat ] het schuim erover loopt [ @skip ... ] uitscheppen .|1|1|4.993003387699999</comment>
+  </comments>
+</alpino_ds>

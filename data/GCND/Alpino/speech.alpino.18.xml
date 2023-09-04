@@ -1,0 +1,29 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="10" id="0" rel="top">
+    <node begin="0" cat="du" end="8" id="1" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="smain" end="8" id="3" rel="nucl">
+        <node word="we" begin="1" end="2" getal="mv" id="4" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+        <node word="zagen" begin="2" end="3" id="5" lemma="zien" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="zie" sense="zie" wvorm="pv"/>
+        <node word="z" begin="3" end="4" getal="mv" id="6" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node begin="3" cat="inf" end="8" id="7" rel="vc">
+          <node begin="3" end="4" id="8" index="1" rel="su"/>
+          <node begin="4" cat="pp" end="7" id="9" rel="ld">
+            <node word="in" begin="4" end="5" id="10" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node begin="5" cat="np" end="7" id="11" rel="obj1">
+              <node word="under" begin="5" buiging="zonder" end="6" getal="mv" id="12" lemma="hun" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,mv,prenom,zonder,agr)" pt="vnw" rel="det" root="hun" sense="hun" status="vol" vwtype="bez"/>
+              <node word="bek" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="13" lemma="bek" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="bek" sense="bek"/>
+            </node>
+          </node>
+          <node word="zitten" begin="7" buiging="zonder" end="8" id="14" lemma="zitten" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="zit" sense="zit" wvorm="inf"/>
+        </node>
+      </node>
+    </node>
+    <node word="hé" begin="8" end="9" id="15" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word="." begin="9" end="10" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0107">en we zagen ze in hun bek zitten hé .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0107|en we zagen ze in hun bek zitten [ @skip hé ] .|1|1|-6.8285216156</comment>
+  </comments>
+</alpino_ds>

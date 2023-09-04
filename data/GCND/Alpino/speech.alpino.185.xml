@@ -1,0 +1,29 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="11" id="0" rel="top">
+    <node word="..." begin="4" end="5" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="..." begin="7" end="8" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="du" end="10" id="3" rel="--">
+      <node begin="0" cat="cp" end="4" id="4" rel="tag">
+        <node word="als" begin="0" conjtype="onder" end="1" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node begin="1" cat="ssub" end="4" id="6" rel="body">
+          <node word="da" begin="1" end="2" getal="ev" id="7" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+          <node word="bidon" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="8" lemma="beton" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="predc" root="beton" sense="beton"/>
+          <node word="is" begin="3" end="4" id="9" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        </node>
+      </node>
+      <node begin="5" cat="smain" end="10" id="10" rel="nucl">
+        <node begin="5" cat="np" end="7" id="11" rel="su">
+          <node word="t" begin="5" end="6" id="12" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+          <node word="zand" begin="6" end="7" genus="onz" getal="ev" graad="basis" id="13" lemma="zand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="zand" sense="zand"/>
+        </node>
+        <node word="blijft" begin="8" end="9" id="14" lemma="blijven" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="blijf" sense="blijf" wvorm="pv"/>
+        <node word="ertegen" begin="9" end="10" id="15" lemma="ertegen" pos="pp" postag="BW()" pt="bw" rel="ld" root="ertegen" sense="ertegen"/>
+      </node>
+    </node>
+    <node word="." begin="10" end="11" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0364">als dat beton is ... het zand ... blijft ertegen .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0364|[ @x als dat beton is [ @skip ... ] ] [ @x het zand [ @skip ... ] blijft ertegen ] .|1|2|2.6849513714000017</comment>
+  </comments>
+</alpino_ds>

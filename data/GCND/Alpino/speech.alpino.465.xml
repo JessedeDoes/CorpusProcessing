@@ -1,0 +1,73 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="35" id="0" rel="top">
+    <node word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="-" begin="8" end="9" id="2" lemma="-" pos="punct" postag="LET()" pt="let" rel="--" root="-" sense="-"/>
+    <node word="wi" begin="14" end="15" id="3" lemma="wi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wi" sense="wi"/>
+    <node word="," begin="15" end="16" id="4" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word="..." begin="17" end="18" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="," begin="18" end="19" id="6" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word="..." begin="22" end="23" id="7" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="ja" begin="23" end="24" id="8" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
+    <node word="..." begin="29" end="30" id="9" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="-" begin="30" end="31" id="10" lemma="-" pos="punct" postag="LET()" pt="let" rel="--" root="-" sense="-"/>
+    <node begin="0" cat="du" end="34" id="11" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="12" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="du" end="34" id="13" rel="nucl">
+        <node begin="9" cat="du" end="29" id="14" rel="tag">
+          <node word="meneere" begin="16" end="17" genus="zijd" getal="ev" graad="basis" id="15" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer"/>
+          <node begin="9" cat="conj" end="29" id="16" rel="nucl">
+            <node begin="9" cat="smain" end="14" id="17" rel="cnj">
+              <node word="da" begin="9" end="10" getal="ev" id="18" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+              <node word="s" begin="10" end="11" id="19" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+              <node begin="11" cat="ap" end="14" id="20" rel="predc">
+                <node begin="11" cat="np" end="13" id="21" rel="me">
+                  <node word="e" begin="11" end="12" id="22" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+                  <node word="stuk" begin="12" end="13" genus="onz" getal="ev" graad="basis" id="23" lemma="stuk" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="stuk" sense="stuk"/>
+                </node>
+                <node word="weg" begin="13" buiging="zonder" end="14" graad="basis" id="24" lemma="weg" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="weg" sense="weg"/>
+              </node>
+            </node>
+            <node begin="19" cat="smain" end="29" id="25" rel="cnj">
+              <node word="da" begin="19" end="20" getal="ev" id="26" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+              <node word="s" begin="20" end="21" id="27" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+              <node begin="21" cat="np" end="29" id="28" rel="predc">
+                <node word="zeker" begin="21" buiging="zonder" end="22" graad="basis" id="29" lemma="zeker" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="zeker" sense="zeker"/>
+                <node word="dertien" begin="24" end="25" id="30" lemma="dertien" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="dertien" sense="dertien"/>
+                <node word="mijl" begin="25" end="26" genus="zijd" getal="ev" graad="basis" id="31" lemma="mijl" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="mijl" sense="mijl"/>
+                <node begin="26" cat="pp" end="29" id="32" rel="mod">
+                  <node word="van" begin="26" end="27" id="33" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                  <node begin="27" cat="np" end="29" id="34" rel="obj1">
+                    <node word="de" begin="27" end="28" id="35" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+                    <node word="wal" begin="28" end="29" genus="zijd" getal="ev" graad="basis" id="36" lemma="wal" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wal" sense="wal"/>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node begin="1" cat="smain" end="34" id="37" rel="nucl">
+          <node word="k" begin="1" end="2" getal="ev" id="38" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="zaten" begin="2" end="3" id="39" lemma="zitten" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zit" sense="zit" wvorm="pv"/>
+          <node word="ik" begin="3" end="4" getal="ev" id="40" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+          <node word="daar" begin="4" end="5" getal="getal" id="41" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+          <node begin="5" cat="pp" end="7" id="42" rel="ld">
+            <node word="op" begin="5" end="6" id="43" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+            <node word="Gotebank" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="44" lemma="Gotebank" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="obj1" root="Gotebank" sense="Gotebank"/>
+          </node>
+          <node begin="31" cat="pp" end="34" id="45" rel="mod">
+            <node word="met" begin="31" end="32" id="46" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+            <node begin="32" cat="np" end="34" id="47" rel="obj1">
+              <node word="e" begin="32" end="33" id="48" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word="roeibootje" begin="33" end="34" genus="onz" getal="ev" graad="basis" id="49" lemma="roeien_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="roei_boot_DIM" sense="roei_boot_DIM"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="34" end="35" id="50" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0445">en ik zat ik daar op Gotebank ... - dat is een stuk weg wi , meneer ... , dat is zeker ... ja dertien mijl van de wal ... - met een roeibootje ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0445|en ik zat [ @skip ik ] daar op Gotebank [ @skip ... ] - dat is een stuk weg [ @skip wi ] , meneer [ @skip ... ] , dat is zeker [ @skip ... ] ja dertien mijl van de wal [ @skip ... ] - met een roeibootje [ @skip ... ]|1|1|-1.8379154919000005</comment>
+  </comments>
+</alpino_ds>

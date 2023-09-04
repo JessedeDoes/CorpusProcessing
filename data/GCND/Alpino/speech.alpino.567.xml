@@ -1,0 +1,25 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="9" id="0" rel="top">
+    <node word="ier" begin="0" end="1" id="1" lemma="hier" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hier" sense="hier"/>
+    <node word="," begin="5" end="6" id="2" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node begin="1" cat="du" end="8" id="3" rel="--">
+      <node begin="1" cat="smain" end="5" id="4" rel="nucl">
+        <node word="da" begin="1" end="2" getal="ev" id="5" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word="s" begin="2" end="3" id="6" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node begin="3" cat="np" end="5" id="7" rel="predc">
+          <node word="de" begin="3" end="4" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word="kotter" begin="4" end="5" genus="zijd" getal="ev" graad="basis" id="9" lemma="kotter" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="kotter" sense="kotter"/>
+        </node>
+      </node>
+      <node begin="6" cat="np" end="8" id="10" rel="sat">
+        <node word="loodsboot" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="11" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
+        <node word="viere" begin="7" end="8" id="12" lemma="vier" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="app" root="vier" sense="vier"/>
+      </node>
+    </node>
+    <node word="." begin="8" end="9" id="13" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0131">hier dat is de kotter , loodsboot vier .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0131|hier dat is de kotter , loodsboot vier .|1|1|-1.1704683689000004</comment>
+  </comments>
+</alpino_ds>

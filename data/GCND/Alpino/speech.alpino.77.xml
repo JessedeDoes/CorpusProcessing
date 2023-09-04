@@ -1,0 +1,17 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="np" end="4" id="1" rel="--">
+      <node word="schoon" begin="0" buiging="zonder" end="1" graad="basis" id="2" lemma="schoon" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="schoon" sense="schoon"/>
+      <node word="weer" begin="1" end="2" genus="onz" getal="ev" graad="basis" id="3" lemma="weer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="weer" sense="weer"/>
+      <node begin="2" cat="cp" end="4" id="4" rel="mod">
+        <node word="gelijk" begin="2" conjtype="onder" end="3" id="5" lemma="gelijk" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk"/>
+        <node word="hier" begin="3" end="4" getal="getal" id="6" lemma="hier" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="body" root="hier" sense="hier" status="vol" vwtype="aanw"/>
+      </node>
+    </node>
+    <node word="." begin="4" end="5" id="7" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0431a">schoon weer gelijk hier .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0431a|schoon weer gelijk hier .|1|1|-2.5106547232000005</comment>
+  </comments>
+</alpino_ds>

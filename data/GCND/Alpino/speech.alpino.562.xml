@@ -1,0 +1,31 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="11" id="0" rel="top">
+    <node word="..." begin="7" end="8" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="smain" end="10" id="2" rel="--">
+      <node begin="0" cat="pp" end="3" id="3" rel="mod">
+        <node word="door" begin="0" end="1" id="4" lemma="door" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="door" sense="door" vztype="init"/>
+        <node begin="1" cat="np" end="3" id="5" rel="obj1">
+          <node word="de" begin="1" end="2" id="6" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word="wind" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="7" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wind" sense="wind"/>
+        </node>
+      </node>
+      <node word="was" begin="3" end="4" id="8" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node word="dat" begin="4" end="5" getal="ev" id="9" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+      <node begin="5" cat="pp" end="7" id="10" rel="mod">
+        <node begin="5" cat="np" end="7" id="11" rel="obj1">
+          <node word="t" begin="5" end="6" id="12" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+          <node word="noordwesten" begin="6" end="7" genus="onz" getal="ev" graad="basis" id="13" lemma="noordwesten" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="noordwesten" sense="noordwesten"/>
+        </node>
+      </node>
+      <node begin="8" cat="np" end="10" id="14" rel="predc">
+        <node word="schoon" begin="8" buiging="zonder" end="9" graad="basis" id="15" lemma="schoon" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="schoon" sense="schoon"/>
+        <node word="weer" begin="9" end="10" genus="onz" getal="ev" graad="basis" id="16" lemma="weer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="weer" sense="weer"/>
+      </node>
+    </node>
+    <node word="..." begin="10" end="11" id="17" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0175">door de wind was dat het noordwesten ... schoon weer ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0175|door de wind was dat [ @phantom in ] het noordwesten [ @skip ... ] schoon weer [ @skip ... ]|1|1|-2.5916208767000013</comment>
+  </comments>
+</alpino_ds>

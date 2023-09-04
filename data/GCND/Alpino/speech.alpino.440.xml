@@ -1,0 +1,17 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="4" id="0" rel="top">
+    <node begin="0" cat="smain" end="4" id="1" rel="--">
+      <node word="ze" begin="0" case="both" def="def" end="1" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+      <node word="komen" begin="1" end="2" frame="verb(unacc,pl,ld_pp)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="komen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="kom" sc="ld_pp" sense="kom" stype="declarative" tense="present" wvorm="pv"/>
+      <node begin="2" cat="pp" end="4" id="4" rel="ld">
+        <node word="op" begin="2" end="3" frame="preposition(op,[af,na])" his="normal" his_1="normal" id="5" lcat="pp" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+        <node word="dek" begin="3" end="4" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="dek" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="obj1" rnum="sg" root="dek" sense="dek"/>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0185">ze komen op dek</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0185|ze komen op dek|1|1|-1.4738154642999999</comment>
+  </comments>
+</alpino_ds>

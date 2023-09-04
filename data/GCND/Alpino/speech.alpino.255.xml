@@ -1,0 +1,44 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="18" id="0" rel="top">
+    <node word="..." begin="11" end="12" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node begin="0" cat="smain" end="17" id="2" rel="--">
+      <node word="me" begin="0" end="1" getal="mv" id="3" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+      <node word="m" begin="1" end="2" getal="mv" id="4" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+      <node word="en" begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="ben" wvorm="pv"/>
+      <node begin="0" cat="ppart" end="17" id="6" rel="vc">
+        <node begin="0" end="1" id="7" index="1" rel="su"/>
+        <node word="geweest" begin="10" buiging="zonder" end="11" id="8" lemma="zijn" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ben" sense="ben" wvorm="vd"/>
+        <node begin="0" cat="ppart" end="17" id="9" rel="vc">
+          <node begin="0" end="1" id="10" index="1" rel="su"/>
+          <node word="daar" begin="3" end="4" getal="getal" id="11" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+          <node begin="4" cat="conj" end="9" id="12" rel="mod">
+            <node begin="4" cat="np" end="6" id="13" rel="cnj">
+              <node word="twee" begin="4" end="5" id="14" lemma="twee" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="twee" sense="twee"/>
+              <node word="keers" begin="5" end="6" genus="genus" getal="ev" graad="basis" id="15" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer"/>
+            </node>
+            <node word="of" begin="6" conjtype="neven" end="7" id="16" lemma="of" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="of" sense="of"/>
+            <node begin="7" cat="np" end="9" id="17" rel="cnj">
+              <node word="drie" begin="7" end="8" id="18" lemma="drie" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="drie" sense="drie"/>
+              <node word="keers" begin="8" end="9" genus="genus" getal="ev" graad="basis" id="19" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer"/>
+            </node>
+          </node>
+          <node word="tegengehouden" begin="9" buiging="zonder" end="10" id="20" lemma="tegen_houden" pos="adj" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="tegen_houden" sense="tegen_houden" wvorm="vd"/>
+          <node begin="12" cat="cp" end="17" id="21" rel="mod">
+            <node word="da" begin="12" conjtype="onder" end="13" id="22" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat"/>
+            <node begin="13" cat="ssub" end="17" id="23" rel="body">
+              <node word="me" begin="13" end="14" getal="mv" id="24" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+              <node word="nie" begin="14" end="15" id="25" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet"/>
+              <node word="doore" begin="15" end="16" id="26" lemma="door" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="door" sense="door" vztype="fin"/>
+              <node word="mochten" begin="16" end="17" id="27" lemma="door_mogen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="mag_door" sense="mag_door" wvorm="pv"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="17" end="18" id="28" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0535a">we we hebben daar twee keer of drie keer tegengehouden geweest ... dat we niet door mochten .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0535a|we [ @skip we ] [ @alt zijn hebben ] daar twee keer of drie keer tegengehouden geweest [ @skip ... ] dat we niet door mochten .|1|1|-6.755953207700002</comment>
+  </comments>
+</alpino_ds>

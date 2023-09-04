@@ -1,0 +1,26 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:03" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="9" id="0" rel="top">
+    <node begin="0" cat="du" end="8" id="1" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar"/>
+      <node begin="1" cat="smain" end="8" id="3" rel="nucl">
+        <node word="da" begin="1" end="2" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="4" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh"/>
+        <node word="was" begin="2" end="3" frame="verb(unacc,past(sg),intransitive)" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sc="intransitive" sense="ben" stype="declarative" tense="past" wvorm="pv"/>
+        <node word="tan" begin="3" end="4" frame="tmp_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" special="tmp"/>
+        <node begin="4" cat="pp" end="8" id="7" rel="mod">
+          <node word="met" begin="4" end="5" frame="preposition(met,[mee,[en,al]])" his="normal" his_1="normal" id="8" lcat="pp" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+          <node begin="5" cat="np" end="8" id="9" rel="obj1">
+            <node word="t" begin="5" end="6" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="10" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh"/>
+            <node word="staande" aform="base" begin="6" buiging="met-e" end="7" frame="adjective(ende(padv))" his="normal" his_1="V-de" his_1_1="normal" id="11" infl="e" lcat="ppres" lemma="staan" pos="adj" positie="prenom" postag="WW(od,prenom,met-e)" pt="ww" rel="mod" root="sta" sense="sta" vform="gerund" wvorm="od"/>
+            <node word="net" begin="7" end="8" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="12" lcat="np" lemma="net" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="net" sense="net"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="8" end="9" frame="punct(hellip)" his="skip" id="13" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0079">maar dat was dan met het staande net ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0079|maar dat was dan met het staande net [ @skip ... ]|1|1|-1.2828958170999996</comment>
+  </comments>
+</alpino_ds>

@@ -1,0 +1,43 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="18" id="0" rel="top">
+    <node word="," begin="11" end="12" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word="..." begin="13" end="14" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word="," begin="14" end="15" id="3" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node begin="0" cat="du" end="17" id="4" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="5" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="du" end="17" id="6" rel="nucl">
+        <node word="meneere" begin="12" end="13" genus="zijd" getal="ev" graad="basis" id="7" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer"/>
+        <node begin="1" cat="smain" end="17" id="8" rel="nucl">
+          <node word="ze" begin="1" end="2" getal="mv" id="9" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+          <node word="maggen" begin="2" end="3" id="10" lemma="mogen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="mag" sense="mag" wvorm="pv"/>
+          <node begin="1" cat="inf" end="17" id="11" rel="vc">
+            <node begin="1" end="2" id="12" index="1" rel="su"/>
+            <node word="nooit" begin="3" end="4" id="13" lemma="nooit" pos="adv" postag="BW()" pt="bw" rel="mod" root="nooit" sense="nooit"/>
+            <node begin="4" cat="pp" end="6" id="14" rel="ld">
+              <node word="in" begin="4" end="5" id="15" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+              <node word="zee" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="16" lemma="zee" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="zee" sense="zee"/>
+            </node>
+            <node word="gaan" begin="6" buiging="zonder" end="7" id="17" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+            <node begin="7" cat="pp" end="11" id="18" rel="mod">
+              <node word="van" begin="7" end="8" id="19" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+              <node begin="8" cat="np" end="11" id="20" rel="obj1">
+                <node word="een" begin="8" end="9" id="21" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+                <node word="hoge" begin="9" buiging="met-e" end="10" graad="basis" id="22" lemma="hoog" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="hoog" sense="hoog"/>
+                <node word="wind" begin="10" end="11" genus="zijd" getal="ev" graad="basis" id="23" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wind" sense="wind"/>
+              </node>
+            </node>
+            <node begin="15" cat="pp" end="17" id="24" rel="mod">
+              <node word="zonder" begin="15" end="16" id="25" lemma="zonder" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="zonder" sense="zonder" vztype="init"/>
+              <node word="zeil" begin="16" end="17" genus="onz" getal="ev" graad="basis" id="26" lemma="zeil" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="obj1" root="zeil" sense="zeil"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="." begin="17" end="18" id="27" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0224">maar ze mogen nooit in zee gaan van een hoge wind , meneer ... , zonder zeil .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0224|maar ze mogen nooit in zee gaan van een hoge wind , meneer [ @skip ... ] , zonder zeil .|1|1|-5.602064639599998</comment>
+  </comments>
+</alpino_ds>

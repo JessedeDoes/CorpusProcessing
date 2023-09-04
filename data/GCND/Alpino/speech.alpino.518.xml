@@ -1,0 +1,16 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="4" id="0" rel="top">
+    <node begin="0" cat="du" end="3" id="1" rel="--">
+      <node word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node begin="1" cat="smain" end="3" id="3" rel="nucl">
+        <node word="je" begin="1" end="2" genus="masc" getal="ev" id="4" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
+        <node word="scheurde" begin="2" end="3" id="5" lemma="scheuren" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="scheur" sense="scheur" wvorm="pv"/>
+      </node>
+    </node>
+    <node word="hé" begin="3" end="4" id="6" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0200a">en hij scheurde hé</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0200a|en hij scheurde [ @skip hé ]|1|1|-1.1613588069999992</comment>
+  </comments>
+</alpino_ds>

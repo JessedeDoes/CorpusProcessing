@@ -1,0 +1,23 @@
+<alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+  <node begin="0" cat="top" end="7" id="0" rel="top">
+    <node begin="0" cat="du" end="6" id="1" rel="--">
+      <node word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node begin="1" cat="oti" end="6" id="3" rel="nucl">
+        <node word="voo" begin="1" end="2" id="4" lemma="voor" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="voor" sense="voor" vztype="init"/>
+        <node begin="2" cat="ti" end="6" id="5" rel="body">
+          <node word="te" begin="4" end="5" id="6" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init"/>
+          <node begin="2" cat="inf" end="6" id="7" rel="body">
+            <node word="da" begin="2" end="3" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="pron" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+            <node word="voorts" begin="3" end="4" id="9" lemma="voort" pos="part" postag="BW()" pt="bw" rel="svp" root="voort" sense="voort"/>
+            <node word="vertellen" begin="5" buiging="zonder" end="6" id="10" lemma="voort_vertellen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="vertel_voort" sense="vertel_voort" wvorm="inf"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node word="..." begin="6" end="7" id="11" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0044">maar voor dat voort te vertellen ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0044|maar voor dat voort te vertellen [ @skip ... ]|1|3|-5.4556748734000005</comment>
+  </comments>
+</alpino_ds>
