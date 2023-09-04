@@ -9,6 +9,30 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 import java.io.PrintWriter
 
 
+/*
+Problemen:
+- foutmeldingen bij UD conversie - tokens zonder makkelijk vindbaar head
+/home/jesse/workspace/XmlToRdf/data/GCND/Alpino/speech.alpino.100.xml
+  sentence ID: H016p_3--H016p_3_1--0315
+  error: No internal head for 13:voo
+    in internalHeadPosition
+        node -- id:22  begin:13  end:22  cat:ti  rel:body
+    in internalHeadPositionWithGapping
+        node -- id:22  begin:13  end:22  cat:ti  rel:body
+    in externalHeadPosition
+        node -- id:21  begin:12  end:13  word:voo  pt:vz  rel:cmp  lemma:om
+    in addDependencyRelations
+        node -- id:21  begin:12  end:13  word:voo  pt:vz  rel:cmp  lemma:om
+/home/jesse/workspace/XmlToRdf/data/GCND/Alpino/speech.alpino.10.xml
+  sentence ID: H016p_3--H016p_3_1--0487
+  error: No external head for 9:hé
+    in externalHeadPosition
+        node -- id:12  begin:8  end:9  word:hé  pt:tsw  rel:tag  lemma:hé
+    in addDependencyRelations
+        node -- id:12  begin:8  end:9  word:hé  pt:tsw  rel:tag  lemma:hé
+
+- lemmatisering bij instructies als [ @alt om voor ], je krijgt dan lemma 'om' bij 'voor'
+ */
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(1000,4)
   val config = new Configuration(name="gcnd", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
