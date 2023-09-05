@@ -1,19 +1,14 @@
-package corpusprocessing.GCND
-
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
-import utils.alignment.{AlignmentGeneric, SimOrDiff}
-
-import scala.xml._
-import java.io.File
-import java.util.Comparator
-import org.json4s.DefaultFormats
-import org.json4s._
-import org.json4s.jackson.JsonMethods._
-import org.json4s.native.JsonMethods.parse
-import org.json4s.native.Serialization.write
-
+package corpusprocessing.GCND.old
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u._
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
+import org.json4s.native.JsonMethods.parse
+import org.json4s.{DefaultFormats, _}
+import utils.alignment.{AlignmentGeneric, SimOrDiff}
+
+import java.io.File
+import java.util.Comparator
+import scala.xml._
 
 
 

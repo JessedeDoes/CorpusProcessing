@@ -1,5 +1,8 @@
 package corpusprocessing.GCND
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.AlpinoToken
+import utils.Tokenizer
+
 import scala.xml._
 
 case class ElanAnnotation(elan_annotatie_id: Int,
@@ -12,11 +15,17 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           eindtijd: Int
                          )
 {
+  type token = Tokenizer.Token
+
   lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = GCNDDatabase.alpinos.filter(e => // pas op ook op id filteren!
     e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
+  lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] = overLappingAlpinoAnnotations.flatMap(a => a.zipped)
+
   def pseudoFolia()  = {
+    if (tekst_zv != null && tekst_lv != null) HeavyLightAlignment(this).align();
+
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
 

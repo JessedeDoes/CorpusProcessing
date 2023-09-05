@@ -137,7 +137,7 @@ object GCNDDatabase {
 
     val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
 
-    val alpinoDumpDir = new java.io.File("/home/jesse/workspace/XmlToRdf/data/GCND/Alpino/")
+    val alpinoDumpDir = new java.io.File("data/GCND/Alpino/")
     alpinoDumpDir.mkdir()
 
 

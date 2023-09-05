@@ -24,6 +24,11 @@ object Tokenizer extends Tokenizer
     Token(l,c,r)
   }
 
+  def tokenizeErVanaf(s: String)  = {
+    val t = tokenizeOne(s)
+    List(t.leading, t.token, t.trailing).filter(_.nonEmpty).map(Token("",_,""))
+  }
+
   def doNotTokenize(s:String): Token = Token("",s,"")
 
   override def tokenize(s:String): Array[Token] =
