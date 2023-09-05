@@ -47,7 +47,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
           {
             ElanStats.alignments = ElanStats.alignments + 1
             val weetjes = elanAlignedTokens.map({case (tl, tz) => <w><t class="elanLightDutchification">{tl.toString}</t><t class="elanHeavyDutchification">{tz.toString}</t></w>})
-            (false, true, <div class="helaasGeenAlpino">{weetjes}</div>, message)
+            (false, true, <div class="noSyntacticAnnotation">{weetjes}</div>, message)
           }
           else  {
 
