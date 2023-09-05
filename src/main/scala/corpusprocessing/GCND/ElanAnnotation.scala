@@ -66,23 +66,14 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
 
       <div class="alpinoAnnotation" begintime={Stuff.formatTime(a.starttijd)} endtime={Stuff.formatTime(a.eindtijd)}>
-
-      <t class="alpinoLightDutchification">
-        {a.text_lv}
-      </t>
-        <t class="alpinoHeavyDutchification">
-          {a.text_zv}
-        </t>
+        <t class="alpinoLightDutchification">{a.text_lv}</t>
+        <t class="alpinoHeavyDutchification">{a.text_zv}</t>
       </div>
     })
 
     <speech xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
-      <t class="elanLightDutchification">
-        {tekst_lv}
-      </t>
-      <t class="elanHeavyDutchification">
-        {tekst_zv}
-      </t>
+      <t class="elanLightDutchification">{tekst_lv}</t>
+      <t class="elanHeavyDutchification">{tekst_zv}</t>
       {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
     </speech>
