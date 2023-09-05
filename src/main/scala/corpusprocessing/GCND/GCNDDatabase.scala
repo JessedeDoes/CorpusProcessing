@@ -32,6 +32,17 @@ Problemen:
         node -- id:12  begin:8  end:9  word:hé  pt:tsw  rel:tag  lemma:hé
 
 - lemmatisering bij instructies als [ @alt om voor ], je krijgt dan lemma 'om' bij 'voor'
+
+- elan_annotatie zonder tekst_lv
+
+gcnd=# select count(*) from elan_annotatie where tekst_lv is null;
+ count
+-------
+    94
+(1 row)
+
+- lichte en zware vervlaamsing moeilijk te aligneren
+
  */
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(1000,4)

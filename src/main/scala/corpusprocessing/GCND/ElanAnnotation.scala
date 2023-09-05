@@ -60,7 +60,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       };
 
     if (!useAlpino) {
-      Console.err.println(enrichedContent)
+      // Console.err.println(enrichedContent)
     }
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
