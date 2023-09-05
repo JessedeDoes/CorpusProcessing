@@ -5,6 +5,13 @@ import utils.Tokenizer
 
 import scala.xml._
 
+object ElanStats {
+  var nopes = 0
+  var nopesX = 0
+  var alpinos = 0
+  var alignments = 0
+  var nulls = 0
+}
 case class ElanAnnotation(elan_annotatie_id: Int,
                           transcriptie_id: Int,
                           annotatie_code: String,
@@ -24,8 +31,37 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] = overLappingAlpinoAnnotations.flatMap(a => a.zipped)
 
   def pseudoFolia()  = {
-    if (tekst_zv != null && tekst_lv != null) HeavyLightAlignment(this).align();
 
+    val (useAlpino, useAlignment, enrichedContent): (Boolean, Boolean, NodeSeq) =
+      if (tekst_zv != null && tekst_lv != null)
+      {
+        val (useAlpino, elanAlignedTokens) = HeavyLightAlignment(this).align()
+
+        if (useAlpino) {
+          ElanStats.alpinos = ElanStats.alpinos + 1
+          (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia() \\ "s"))
+        } else
+        {
+          // Console.err.println(elanAlignedTokens)
+          if (elanAlignedTokens.nonEmpty)
+          {
+            ElanStats.alignments = ElanStats.alignments + 1
+            val weetjes = elanAlignedTokens.map({case (tl, tz) => <w><t class="elanLightDutchification">{tl.toString}</t><t class="elanHeavyDutchification">{tz.toString}</t></w>})
+            (false, true, <div class="helaasGeenAlpino">{weetjes}</div>)
+          }
+          else  {
+
+            (false, false, Seq()) }
+        }
+      } else {
+        ElanStats.nopes = ElanStats.nopes + 1
+        ElanStats.nulls = ElanStats.nulls+1
+        (false,false,Seq())
+      };
+
+    if (!useAlpino) {
+      Console.err.println(enrichedContent)
+    }
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
 
@@ -47,8 +83,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       <t class="elanHeavyDutchification">
         {tekst_zv}
       </t>
-      {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString)}
-      {alpinoStukje}
+      {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment")}
+      {enrichedContent}
     </speech>
   }
   lazy val nAlpinos = overLappingAlpinoAnnotations.size

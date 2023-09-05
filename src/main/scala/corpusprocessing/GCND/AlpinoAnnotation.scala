@@ -31,6 +31,8 @@ object Stuff {
   }
 
   val alpinoScope = <alpino xmlns="http://alpino.fake.url"/>.scope
+
+  var nopes = 0
 }
 
 import Stuff._

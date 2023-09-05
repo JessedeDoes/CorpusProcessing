@@ -117,7 +117,7 @@ object GCNDDatabase {
           <timesegment-annotation set="cgn"/>
           <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
           <token-annotation/>
-          <sentence-annotation/>
+          <sentence-annotation set="gcnd.sentence"/>
         </annotations>
         <foreign-data>
           {Metadata.getMetadata(transcriptie_id)}
@@ -147,7 +147,7 @@ object GCNDDatabase {
       val alpinos = (e \\ "alpino_ds");
       val alpino = alpinos.head.asInstanceOf[Elem]
       //.asInstanceOf[Elem]
-      println("Aantal alpinos: " + alpinos.size)
+      // println("Aantal alpinos: " + alpinos.size)
       XML.save(alpinoDumpDir.getCanonicalPath + "/" + speech_id + ".xml", alpino)
     })
 
@@ -158,6 +158,7 @@ object GCNDDatabase {
     val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")
     out2.println(pretty.format(getPseudoFoLiAForElanAnnotations(1)))
     out2.close()
+    println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
 }
 

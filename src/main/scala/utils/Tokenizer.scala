@@ -8,6 +8,8 @@ trait Tokenizer
 {
   case class Token(leading:String, token:String, trailing:String) {
     override def toString: String = leading + token + trailing
+    def isEmpty = List(leading,token,trailing).forall(_.isEmpty)
+    def hasContent = token.nonEmpty
   }
 
   def tokenize(s:String): Array[Token]
@@ -21,12 +23,20 @@ object Tokenizer extends Tokenizer
   def tokenizeOne(s:String): Token =
   {
     val Split(l,c,r) = s.trim
-    Token(l,c,r)
+    if (l=="'" && Set("s", "m", "t").contains(c))
+      Token("", l+c, r)
+    else if (l.matches("\\.+") && c.isEmpty && r.isEmpty)
+      Token("", "", l)
+    else
+      Token(l,c,r)
   }
 
   def tokenizeErVanaf(s: String)  = {
     val t = tokenizeOne(s)
-    List(t.leading, t.token, t.trailing).filter(_.nonEmpty).map(Token("",_,""))
+    val lead = Token(t.leading,"","")
+    val token =  Token("",t.token,"")
+    val trail = Token("", "", t.trailing)
+    List(lead,token,trail).filter(!_.isEmpty)
   }
 
   def doNotTokenize(s:String): Token = Token("",s,"")

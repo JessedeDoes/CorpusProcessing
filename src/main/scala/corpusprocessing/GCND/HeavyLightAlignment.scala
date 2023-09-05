@@ -26,17 +26,25 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
   val a = new AlignmentGeneric(comp)
   //Console.err.println(e)
 
-  lazy val orgTokens: List[Tokenizer.Token] = e.tekst_lv.replaceAll("#"," 畳").split("\\s+").toList.flatMap(Tokenizer.tokenizeErVanaf)
-  lazy val ndlTokens: List[Tokenizer.Token] = e.tekst_zv.split("\\s+").toList.flatMap(Tokenizer.tokenizeErVanaf)
+
+  def fixhellip(s: String)  = s.replaceAll("\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ")
+  lazy val orgTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_lv)
+      .replaceAll("#"," 畳")
+      .split("\\s+")
+      .toList.flatMap(Tokenizer.tokenizeErVanaf)
+
+  lazy val ndlTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_zv)
+      .split("\\s+")
+      .toList.flatMap(Tokenizer.tokenizeErVanaf)
 
   def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
-  def align(): List[(token,token)] =  {
+  def align(): (Boolean, List[(token,token)]) =  {
 
     val o = z(orgTokens)
     val n = z(ndlTokens)
-
-
 
     def matchIt() =  {
       val chunks: Seq[SimOrDiff[(String, token)]] = a.findChunks(o, n)
@@ -49,22 +57,28 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
           (c.isSimilarity, left, right, c.leftStart)
         })
 
-      lr.foreach(c => {
+      lr.filter(c => !(c._2.size == c._3.size)).foreach(c => {
         val l = c._2.map(_._2).mkString(" ")
         val r = c._3.map(_._2).mkString(" ")
-        println(s"${c._1 || c._2.size == c._3.size} $l <-> $r")
+        println(s"!!  [$l] <-> [$r]")
       })
     }
-    if (orgTokens.size == ndlTokens.size &&  (ndlTokens.size == e.allAlpinoTokens.size || e.allAlpinoTokens.size == 0)) {
-      orgTokens.zip(ndlTokens)
+    val useAlpino = ndlTokens.size <= e.allAlpinoTokens.size;
+    if (useAlpino) {
+      (true,List())
     } else {
-      println(
-        s"""
-           |##### LV ${orgTokens.size}, ZV ${ndlTokens.size},  Alpino ${e.allAlpinoTokens.size} ######
-           |${e.tekst_lv}\n${e.tekst_zv}\n${orgTokens.map(_.token)}\n${ndlTokens.map(_.token)}
-           |Alpino tokens: ${e.allAlpinoTokens.size}. ${e.allAlpinoTokens.map(_._1)}""".stripMargin)
-      matchIt()
-      List()
+      if (orgTokens.size == ndlTokens.size) {
+        (false, orgTokens.zip(ndlTokens))
+      } else {
+        ElanStats.nopes = ElanStats.nopes+1
+        println(
+          s"""
+             |##### LV ${orgTokens.size}, ZV ${ndlTokens.size},  Alpino ${e.allAlpinoTokens.size} ######
+             |${e.tekst_lv}\n${e.tekst_zv}\n${orgTokens.map(_.toString)}\n${ndlTokens.map(_.toString)}
+             |Alpino tokens: ${e.allAlpinoTokens.size}. ${e.allAlpinoTokens.map(_._1.text_zv).mkString(" ")}""".stripMargin)
+        matchIt()
+        (false,List())
+      }
     }
   }
 

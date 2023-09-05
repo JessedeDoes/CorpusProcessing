@@ -28,7 +28,7 @@ object Metadata {
     def filter(field_name: String, f: Any => Boolean) = this.copy(data = this.data.filter(x => f(x(field_name))))
 
     def makeXML(m: Map[String, Any]): Elem = {
-      Console.err.println(s"Making XML for table $this")
+      // Console.err.println(s"Making XML for table $this")
       val element_id = this.name + "." + m(this.id_field).toString //  xml:id={element_id}
       val e0: Elem = <elem/>.copy(label = this.name)
 
@@ -43,13 +43,13 @@ object Metadata {
 
       val foreignChildren: Seq[Node] = Tables.relations.filter(r => r.t1.name == this.name).flatMap(r => {
          if (m.contains(r.key_field)) {
-           Console.err.println(s"Join on $r with key= ${r.key_field}")
+           // Console.err.println(s"Join on $r with key= ${r.key_field}")
            val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).makeXML()
-           Console.err.println(s"Foreign record: ${foreignRecords.size}")
+           // Console.err.println(s"Foreign record: ${foreignRecords.size}")
            val bla = <e rel={r.name}/>
            foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
          } else  {
-           Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
+           // Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
            Seq()
         }}).toSet.toSeq
       val newChildren = if (isCrossTable) foreignChildren else (children ++ foreignChildren)
