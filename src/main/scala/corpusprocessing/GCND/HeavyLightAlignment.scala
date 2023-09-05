@@ -41,7 +41,7 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
 
   def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
-  def align(): (Boolean, List[(token,token)]) =  {
+  def align(): (Boolean, List[(token,token)], String) =  {
 
     val o = z(orgTokens)
     val n = z(ndlTokens)
@@ -57,18 +57,21 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
           (c.isSimilarity, left, right, c.leftStart)
         })
 
-      lr.filter(c => !(c._2.size == c._3.size)).foreach(c => {
-        val l = c._2.map(_._2).mkString(" ")
-        val r = c._3.map(_._2).mkString(" ")
-        println(s"!!  [$l] <-> [$r]")
+       lr.filter(c => !(c._2.size == c._3.size)).map(c => {
+         val l = c._2.map(_._2).mkString(" ")
+         val r = c._3.map(_._2).mkString(" ")
+         val message = s"[$l] <-> [$r]"
+         println(s"!!  $message")
+         message
       })
     }
+
     val useAlpino = ndlTokens.size <= e.allAlpinoTokens.size;
     if (useAlpino) {
-      (true,List())
+      (true,List(), "")
     } else {
       if (orgTokens.size == ndlTokens.size) {
-        (false, orgTokens.zip(ndlTokens))
+        (false, orgTokens.zip(ndlTokens), "")
       } else {
         ElanStats.nopes = ElanStats.nopes+1
         println(
@@ -76,8 +79,8 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
              |##### LV ${orgTokens.size}, ZV ${ndlTokens.size},  Alpino ${e.allAlpinoTokens.size} ######
              |${e.tekst_lv}\n${e.tekst_zv}\n${orgTokens.map(_.toString)}\n${ndlTokens.map(_.toString)}
              |Alpino tokens: ${e.allAlpinoTokens.size}. ${e.allAlpinoTokens.map(_._1.text_zv).mkString(" ")}""".stripMargin)
-        matchIt()
-        (false,List())
+        val messages = matchIt()
+        (false,List(), messages.mkString("\n"))
       }
     }
   }

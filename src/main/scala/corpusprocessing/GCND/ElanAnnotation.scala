@@ -32,14 +32,14 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 
   def pseudoFolia()  = {
 
-    val (useAlpino, useAlignment, enrichedContent): (Boolean, Boolean, NodeSeq) =
+    val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) =
       if (tekst_zv != null && tekst_lv != null)
       {
-        val (useAlpino, elanAlignedTokens) = HeavyLightAlignment(this).align()
+        val (useAlpino, elanAlignedTokens, message) = HeavyLightAlignment(this).align()
 
         if (useAlpino) {
           ElanStats.alpinos = ElanStats.alpinos + 1
-          (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia() \\ "s"))
+          (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia() \\ "s"), message)
         } else
         {
           // Console.err.println(elanAlignedTokens)
@@ -47,16 +47,16 @@ case class ElanAnnotation(elan_annotatie_id: Int,
           {
             ElanStats.alignments = ElanStats.alignments + 1
             val weetjes = elanAlignedTokens.map({case (tl, tz) => <w><t class="elanLightDutchification">{tl.toString}</t><t class="elanHeavyDutchification">{tz.toString}</t></w>})
-            (false, true, <div class="helaasGeenAlpino">{weetjes}</div>)
+            (false, true, <div class="helaasGeenAlpino">{weetjes}</div>, message)
           }
           else  {
 
-            (false, false, Seq()) }
+            (false, false, Seq(), message) }
         }
       } else {
         ElanStats.nopes = ElanStats.nopes + 1
         ElanStats.nulls = ElanStats.nulls+1
-        (false,false,Seq())
+        (false,false,Seq(), "")
       };
 
     if (!useAlpino) {
@@ -83,7 +83,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       <t class="elanHeavyDutchification">
         {tekst_zv}
       </t>
-      {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment")}
+      {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
     </speech>
   }
