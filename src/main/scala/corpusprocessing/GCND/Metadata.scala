@@ -35,7 +35,7 @@ object Metadata {
       } else this.targetTable.copy(data = List())
     }
 
-    def x(r: SimpleRelation) = CrossTableRelation(name = this.name + " [ ⟶⟶ ] " + r.name, this, r)
+    def x(r: SimpleRelation) = CrossTableRelation(name = this.name + ";  " + r.name, this, r)
 
     def converse =  SimpleRelation(name = this.targetTable.name + "X"  + this.sourceTable.name, targetTable, sourceTable, foreign_field, key_field)
   }
@@ -94,7 +94,7 @@ object Metadata {
       val foreignChildren = relationCandidates.filter(r => !visited.contains(this.name)).flatMap(r => {
         // Console.err.println(s"Following $r (followed (${visited.size}) = ${visited}")
         val foreignRecords = r.map(m).toXML(visited = visited ++ Set(this.name))
-        val bla = <e rel={r.name}/>
+        val bla = <e rel={r.name.replaceAll("X","⟶")}/>
         foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
       }).toSet.toSeq
 
