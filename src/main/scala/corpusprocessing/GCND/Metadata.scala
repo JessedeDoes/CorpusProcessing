@@ -11,10 +11,45 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 import java.io.PrintWriter
 import scala.xml._
 import GCNDDatabase.{Token, alpinos, db, elans}
-import corpusprocessing.GCND.Metadata.Relation
+import corpusprocessing.GCND.Metadata.SimpleRelation
+
+
 object Metadata {
 
   type record = Map[String, Any]
+
+  trait Relation {
+     def name: String
+     def map(m: record): Table
+
+     def sourceTable : Table
+     def targetTable: Table
+  }
+
+  case class SimpleRelation(name: String, sourceTable: Table, targetTable: Table, key_field: String, foreign_field: String) extends Relation {
+    override def toString = s"Relation $name(${sourceTable.name}, ${targetTable.name}, ${sourceTable.name}.$key_field = ${targetTable.name}.$foreign_field)"
+
+    def map(m: record): Table = {
+      if (m.contains(key_field)) {
+        this.targetTable.filter(foreign_field, m(key_field))
+      } else this.targetTable.copy(data = List())
+    }
+
+    def x(r: SimpleRelation) = CrossTableRelation(name = this.name + " [ ⟶⟶ ] " + r.name, this, r)
+
+    def converse =  SimpleRelation(name = this.targetTable.name + "X"  + this.sourceTable.name, targetTable, sourceTable, foreign_field, key_field)
+  }
+
+  case class CrossTableRelation(name: String, r1: SimpleRelation, r2: SimpleRelation) extends Relation {
+    override def toString = s"CrossTable(${r1}, ${r2})"
+
+    val sourceTable = r1.sourceTable
+    val targetTable = r2.targetTable
+    def map(m: record): Table = {
+      val t1 = r1.map(m)
+      r2.targetTable.copy(data = t1.data.flatMap(m => r2.map(m).data))
+    }
+  }
 
   case class Table(data: List[record], name: String, id_field: String, skip_fields: Set[String]  = Set()) {
 
@@ -27,7 +62,7 @@ object Metadata {
 
     def filter(field_name: String, f: Any => Boolean) = this.copy(data = this.data.filter(x => f(x(field_name))))
 
-    def makeXML(m: Map[String, Any]): Elem = {
+    def makeXML(m: Map[String, Any], visited: Set[String]  = Set()): Elem = {
       // Console.err.println(s"Making XML for table $this")
       val element_id = this.name + "." + m(this.id_field).toString //  xml:id={element_id}
       val e0: Elem = <elem/>.copy(label = this.name)
@@ -41,33 +76,49 @@ object Metadata {
         case _ => Seq()
       }).toSeq
 
-      val foreignChildren: Seq[Node] = Tables.relations.filter(r => r.t1.name == this.name).flatMap(r => {
-         if (m.contains(r.key_field)) {
-           // Console.err.println(s"Join on $r with key= ${r.key_field}")
-           val foreignRecords = r.t2.filter(r.foreign_field, m(r.key_field)).makeXML()
-           // Console.err.println(s"Foreign record: ${foreignRecords.size}")
-           val bla = <e rel={r.name}/>
-           foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
-         } else  {
-           // Console.err.println(s"${r.key_field} NOT in keySet ${m.keySet} for relation $r")
-           Seq()
-        }}).toSet.toSeq
+      val relationCandidates = Schema.relations.filter(r => r.sourceTable.name == this.name)
+      Console.err.println(s"relation candidates: ${relationCandidates.map(_.name)}, followed = ${visited}")
+      val foreignChildren = relationCandidates.filter(r => !visited.contains(this.name)).flatMap(r => {
+        Console.err.println(s"Following $r (followed (${visited.size}) = ${visited}")
+        val foreignRecords = r.map(m).toXML(visited = visited ++ Set(this.name))
+        val bla = <e rel={r.name}/>
+        foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
+      }).toSet.toSeq
+
       val newChildren = if (isCrossTable) foreignChildren else (children ++ foreignChildren)
       e0.copy(child = newChildren)
     }
 
-    def makeXML() : NodeSeq = data.map(makeXML)
+    def toXML(visited: Set[String]  = Set()) : NodeSeq = if (visited.contains(this.name)) Seq() else data.flatMap(m => makeXML(m, visited))
   }
 
-  case class Relation(name: String, t1: Table, t2: Table, key_field: String, foreign_field: String) {
-    override def toString = s"Relation $name(${t1.name}, ${t2.name}, ${t1.name}.$key_field = ${t2.name}.$foreign_field)"
-  }
+
 
    lazy val pretty = new PrettyPrinter(100,4)
    def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
    def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
 
-   object Tables {
+   object Schema {
+
+     val relationQuery = """SELECT distinct
+                           |    tc.constraint_name,
+                           |    tc.table_name,
+                           |    kcu.column_name,
+                           |    ccu.table_name AS foreign_table_name,
+                           |    ccu.column_name AS foreign_column_name
+                           |FROM information_schema.table_constraints AS tc
+                           |JOIN information_schema.key_column_usage AS kcu
+                           |    ON tc.constraint_name = kcu.constraint_name
+                           |    AND tc.table_schema = kcu.table_schema
+                           |JOIN information_schema.constraint_column_usage AS ccu
+                           |    ON ccu.constraint_name = tc.constraint_name
+                           |WHERE tc.constraint_type = 'FOREIGN KEY'
+                           |    AND tc.table_schema='public'
+                           |""".stripMargin
+
+     db.runStatement(s"create view inter_table_relations as $relationQuery")
+
+
      lazy val alpino_annotatie: Table = zlurp("alpino_annotatie", skip_fields = Set("xml", "tokens"))
      lazy val elan_annotatie: Table = zlurp("elan_annotatie")
 
@@ -99,51 +150,82 @@ object Metadata {
      lazy val transcriptie__persoon: Table = zlurp("transcriptie__persoon")
 
 
+     /*
+     object auxiliaryRelations  {
+       val r : Map[String, SimpleRelation] = List(
+
+         SimpleRelation("persoonXpersoon__woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
+         SimpleRelation("persoon__woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
+         SimpleRelation("persoonXpersoon__schoolplaats", persoon, persoon__schoolplaats, "persoon_id", "persoon_id"),
+         SimpleRelation("persoon__schoolplaatsXplaats", persoon__schoolplaats, plaats, "plaats_id", "plaats_id"),
+         SimpleRelation("persoonXpersoon__beroepplaats", persoon, persoon__beroepplaats, "persoon_id", "persoon_id"),
+         SimpleRelation("persoon__beroepsplaatXplaats", persoon__beroepplaats, plaats, "plaats_id", "plaats_id"),
+         SimpleRelation("persoonXpersoon__beroep", persoon, persoon__beroep, "persoon_id", "persoon_id"),
+         SimpleRelation("persoon__beroepXberoep", persoon__beroep, beroep, "beroep_id", "beroep_id"),
+
+         SimpleRelation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
+         SimpleRelation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+         SimpleRelation("opnameXopname__bestand", opname, opname__bestand, "opname_id", "opname_id"),
+         SimpleRelation("opname__bestandXbestand", opname__bestand, bestand, "bestand_id", "bestand_id"),
+         SimpleRelation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
+
+         SimpleRelation("transcriptieXtranscriptie__bestand", transcriptie, transcriptie__bestand, "transcriptie_id", "transcriptie_id"),
+         SimpleRelation("transcriptie__bestandXbestand", transcriptie__bestand, bestand, "bestand_id", "bestand_id"),
+         SimpleRelation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
+         SimpleRelation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id"),
+       ).map(r => r.name -> r).toMap
+
+     }
+     */
+
+     object allRelations {
+       val r = db.slurp(db.allRecords("inter_table_relations")).map(m =>
+         SimpleRelation(
+           name = s"${m("table_name")}X${m("foreign_table_name")}",
+           sourceTable = zlurp(m("table_name")),
+           targetTable = zlurp(m("foreign_table_name")),
+           key_field = m("column_name"),
+           foreign_field = m("foreign_column_name")
+         )).flatMap(r => List(r, r.converse)).map(r => r.name -> r).toMap
+
+       r.values.map(_.toString).toList.sorted.foreach(println)
+     }
+
+     import allRelations.r
 
      lazy val relations = List[Relation](
-       Relation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
-
+       SimpleRelation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
+       SimpleRelation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
+       SimpleRelation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
+       // r("opnameXopname__persoon"),
        // persoon
 
-       Relation("persoonXplaats (geboorteplaats)", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
-       Relation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
+       SimpleRelation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
+       SimpleRelation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
 
-       Relation("persoonXpersoon__woonplaats", persoon, persoon__woonplaats, "persoon_id", "persoon_id"),
-       Relation("persoon__woonplaatsXplaats", persoon__woonplaats, plaats, "plaats_id", "plaats_id"),
+       r("opnameXopname__persoon") x r("opname__persoonXpersoon"),
+       r("persoonXpersoon__woonplaats") x r("persoon__woonplaatsXplaats"),
+       r("persoonXpersoon__schoolplaats") x r("persoon__schoolplaatsXplaats"),
+       r("persoonXpersoon__beroepplaats") x r("persoon__beroepplaatsXplaats"),
+       r("persoonXpersoon__beroep") x r("persoon__beroepXberoep"),
 
-       Relation("persoonXpersoon__schoolplaats", persoon, persoon__schoolplaats, "persoon_id", "persoon_id"),
-       Relation("persoon__schoolplaatsXplaats", persoon__schoolplaats, plaats, "plaats_id", "plaats_id"),
+      // opname
+       SimpleRelation("opnameXplaats", opname, plaats, "plaats_id", "plaats_id"),
 
-       Relation("persoonXpersoon__beroepplaats", persoon, persoon__beroepplaats, "persoon_id", "persoon_id"),
-       Relation("persoon__beroepsplaatXplaats", persoon__beroepplaats, plaats, "plaats_id", "plaats_id"),
-
-       Relation("persoonXpersoon__beroep", persoon, persoon__beroep, "persoon_id", "persoon_id"),
-       Relation("persoon__beroepXberoep", persoon__beroep, beroep, "beroep_id", "beroep_id"),
 
        // plaats
-       Relation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
-       Relation("plaatsXland", plaats, land, "land_id", "land_id"),
+       SimpleRelation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
+       SimpleRelation("plaatsXland", plaats, land, "land_id", "land_id"),
        // opname
-       Relation("opnameXopname__persoon", opname, opname__persoon, "opname_id", "opname_id"),
-       Relation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
 
-       Relation("opnameXopname__bestand", opname, opname__bestand, "opname_id", "opname_id"),
-       Relation("opname__bestandXbestand", opname__bestand, bestand, "bestand_id", "bestand_id"),
-
-       Relation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
-       Relation("opnameXplaats", opname, plaats, "plaats_id", "plaats_id"),
 
        // transcriptie
-       Relation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
-       Relation("transcriptieXtranscriptie__bestand", transcriptie, transcriptie__bestand, "transcriptie_id", "transcriptie_id"),
-       Relation("transcriptie__bestandXbestand", transcriptie__bestand, bestand, "bestand_id", "bestand_id"),
+       SimpleRelation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
 
-       Relation("transcriptieXtranscriptie__persoon", transcriptie, transcriptie__persoon, "transcriptie_id", "transcriptie_id"),
-       Relation("transcriptie__persoonXpersoon", transcriptie__persoon, persoon, "persoon_id", "persoon_id"),
      )
    }
 
-   import Tables._
+   import Schema._
 
    lazy val alle_gebruikte_personen = {
      val idz = alpinos.map(_.opname_persoon_id.toString).toSet
@@ -155,13 +237,13 @@ object Metadata {
      val opname_persoon_id = a.opname_persoon_id.toString;
      val t0 = opname__persoon.filter("opname__persoon_id", opname_persoon_id)
      val info = <alignment_info>{a.n_m}</alignment_info>
-     info +: t0.makeXML()
+     info +: t0.toXML()
    }
 
    val scope = <x xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata"></x>.scope
    def getMetadata(transcriptie_id: Int)  = {
      val t0 = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
-     val z = <gcnd_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.makeXML()}</gcnd_metadata>.copy(scope=scope)
+     val z = <gcnd_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.toXML()}</gcnd_metadata>.copy(scope=scope)
      z
    }
 
@@ -171,7 +253,7 @@ object Metadata {
       val m = <meta>{getMetadata(a)}</meta>
       println(pretty.format(m))
     })
-    val transcriptieMeta = <meta>{transcriptie.makeXML()}</meta>;
+    val transcriptieMeta = <meta>{transcriptie.toXML()}</meta>;
     println(pretty.format(transcriptieMeta))
   }
 }
