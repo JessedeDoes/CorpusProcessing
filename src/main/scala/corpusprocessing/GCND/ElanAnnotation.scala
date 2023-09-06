@@ -71,13 +71,18 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       </div>
     })
 
-    <speech xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
+    <speech speaker={functie  + ": "  + naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
       {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="elanLightDutchification">{tekst_lv}</t>}
       {if (tekst_zv.trim.nonEmpty) <t class="elanHeavyDutchification">{tekst_zv}</t>}
-      {Comment("n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
+      {Comment(s"speaker role:$functie, n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
+      <foreign-data>{Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}</foreign-data>
     </speech>
   }
+
+  lazy val meta = {Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}
+  lazy val functie = (meta \\ "functie").text
+  lazy val naam = (meta \\ "naam").text
   lazy val nAlpinos = overLappingAlpinoAnnotations.size
 }
 

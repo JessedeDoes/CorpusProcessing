@@ -41,7 +41,7 @@ object Metadata {
   }
 
   case class CrossTableRelation(name: String, r1: SimpleRelation, r2: SimpleRelation) extends Relation {
-    override def toString = s"CrossTable(${r1}, ${r2})"
+    override def toString = s"CrossTableRelation(${r1.sourceTable.name}/${r1.targetTable.name}/${r2.targetTable.name}, ${r1.name}, ${r2.name})"
 
     val sourceTable = r1.sourceTable
     val targetTable = r2.targetTable
@@ -56,8 +56,20 @@ object Metadata {
     def isCrossTable = name.contains("__")
     override  def toString = s"Table($name,key=$id_field)"
     lazy val size = data.size
+
+    case class Index(field_name: String) {
+      lazy val map: Map[Any, List[record]] = data.filter(_.contains(field_name)).map(m => m(field_name.toString) -> m).groupBy(_._1).mapValues(_.map(_._2))
+      def apply(field_value: Any): List[record] = map.getOrElse(field_value, List())
+    }
+
+    lazy val indices: Map[String, Index] = data.flatMap(m => m.keySet).map(field => field -> Index(field)).toMap
     def filter(field_name: String, value: Any): Table  = {
-      this.copy(data = this.data.filter(x => x(field_name) == value))
+      // Console.err.println(indices)
+
+      val r = if (indices.contains(field_name)) indices(field_name)(value) else List()
+      //val reference = this.data.filter(x => x(field_name) == value)
+      //println(s"${r.size} ==== ${reference.size} ??? ")
+      this.copy(data = r)
     }
 
     def filter(field_name: String, f: Any => Boolean) = this.copy(data = this.data.filter(x => f(x(field_name))))
@@ -77,16 +89,17 @@ object Metadata {
       }).toSeq
 
       val relationCandidates = Schema.relations.filter(r => r.sourceTable.name == this.name)
-      Console.err.println(s"relation candidates: ${relationCandidates.map(_.name)}, followed = ${visited}")
+      //Console.err.println(s"relation candidates: ${relationCandidates.map(_.name)}, followed = ${visited}")
+
       val foreignChildren = relationCandidates.filter(r => !visited.contains(this.name)).flatMap(r => {
-        Console.err.println(s"Following $r (followed (${visited.size}) = ${visited}")
+        // Console.err.println(s"Following $r (followed (${visited.size}) = ${visited}")
         val foreignRecords = r.map(m).toXML(visited = visited ++ Set(this.name))
         val bla = <e rel={r.name}/>
         foreignRecords.map(x => x.asInstanceOf[Elem].copy(attributes = bla.attributes))
       }).toSet.toSeq
 
       val newChildren = if (isCrossTable) foreignChildren else (children ++ foreignChildren)
-      e0.copy(child = newChildren)
+      e0.copy(child = newChildren.sortBy(_.label))
     }
 
     def toXML(visited: Set[String]  = Set()) : NodeSeq = if (visited.contains(this.name)) Seq() else data.flatMap(m => makeXML(m, visited))
@@ -187,8 +200,12 @@ object Metadata {
            key_field = m("column_name"),
            foreign_field = m("foreign_column_name")
          )).flatMap(r => List(r, r.converse)).map(r => r.name -> r).toMap
-
+       lazy val possibleCrosses: Seq[CrossTableRelation] = r.values.toSeq.flatMap(x => r.values.map(y => x -> y))
+         .filter({case (x,y) => x.targetTable.name == y.sourceTable.name && (x.targetTable.name == x.sourceTable.name + "__" + y.targetTable.name)}).map({case (r1,r2) => r1 x r2})
+         .filter(x => x.r1.targetTable.name != "opname__persoon")
+         .sortBy(_.toString)
        r.values.map(_.toString).toList.sorted.foreach(println)
+       possibleCrosses.foreach(x => println(x + s" link=${x.r1.targetTable.name}"))
      }
 
      import allRelations.r
@@ -197,13 +214,16 @@ object Metadata {
        SimpleRelation("alpino_annotatieXopname__persoon", alpino_annotatie, opname__persoon, "opname_persoon_id", "opname_persoon_id"),
        SimpleRelation("opname__persoonXpersoon", opname__persoon, persoon, "persoon_id", "persoon_id"),
        SimpleRelation("opname__persoonXopname_functie", opname__persoon, opname_functie, "opname_functie_id", "opname_functie_id"),
+       r("elan_annotatieXopname__persoon"),
+       r("opname__persoonXpersoon") ,
+       r("opnameXopname__persoon"),
+       r("opname__persoonXopname_functie"),
        // r("opnameXopname__persoon"),
        // persoon
 
        SimpleRelation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        SimpleRelation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
 
-       r("opnameXopname__persoon") x r("opname__persoonXpersoon"),
        r("persoonXpersoon__woonplaats") x r("persoon__woonplaatsXplaats"),
        r("persoonXpersoon__schoolplaats") x r("persoon__schoolplaatsXplaats"),
        r("persoonXpersoon__beroepplaats") x r("persoon__beroepplaatsXplaats"),
@@ -222,7 +242,7 @@ object Metadata {
        // transcriptie
        SimpleRelation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
 
-     )
+     ) ++ allRelations.possibleCrosses
    }
 
    import Schema._
@@ -243,9 +263,25 @@ object Metadata {
    val scope = <x xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata"></x>.scope
    def getMetadata(transcriptie_id: Int)  = {
      val t0 = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
-     val z = <gcnd_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.toXML()}</gcnd_metadata>.copy(scope=scope)
+     val z = <gcnd_transcriptie_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.toXML()}</gcnd_transcriptie_metadata>.copy(scope=scope)
      z
    }
+
+  def getMetadataForElanAnnotation(elan_annotatie_id: Int): Elem = {
+    val t0 = elan_annotatie.filter("elan_annotatie_id", elan_annotatie_id.toString)
+    val xml = t0.toXML()
+
+    val persoon_id = (xml \\ "persoon_id").text
+    val functie = xml \\ "opname_functie" \\ "label"
+
+    val persoontje = <persoon ref={"#" + persoon_id}>
+      <naam>{xml \\ "familienaam"}, {xml \\ "voornaam"}</naam>
+      <functie><label>{functie.text}</label></functie>
+    </persoon>
+    val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">{persoontje}</gcnd_annotatie_metadata>
+    // Console.err.println(z)
+    z
+  }
 
   def main(args: Array[String]): Unit = {
     alpinos.take(1).foreach(a => {
