@@ -46,7 +46,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
           if (elanAlignedTokens.nonEmpty)
           {
             ElanStats.alignments = ElanStats.alignments + 1
-            val weetjes = elanAlignedTokens.map({case (tl, tz) => <w><t class="elanLightDutchification">{tl.toString}</t><t class="elanHeavyDutchification">{tz.toString}</t></w>})
+            val weetjes = elanAlignedTokens.map({case (tl, tz) => <w><t class="lightDutchification">{tl.toString}</t><t class="heavyDutchification">{tz.toString}</t></w>})
             (false, true, <div class="noSyntacticAnnotation">{weetjes}</div>, message)
           }
           else  {
@@ -72,8 +72,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     })
 
     <speech tag={functie} speaker={naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
-      {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="elanLightDutchification">{tekst_lv}</t>}
-      {if (tekst_zv.trim.nonEmpty) <t class="elanHeavyDutchification">{tekst_zv}</t>}
+      {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightDutchification">{tekst_lv}</t>}
+      {if (tekst_zv.trim.nonEmpty) <t class="heavyDutchification">{tekst_zv}</t>}
       {Comment(s"speaker role:$functie, n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
       <foreign-data>{Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}</foreign-data>
