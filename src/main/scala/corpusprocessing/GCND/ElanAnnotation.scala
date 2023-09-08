@@ -39,7 +39,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 
         if (useAlpino) {
           ElanStats.alpinos = ElanStats.alpinos + 1
-          (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia() \\ "s"), message)
+          (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(includeAlpinoParse = true) \\ "s"), message)
         } else
         {
           // Console.err.println(elanAlignedTokens)
