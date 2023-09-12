@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
-import java.io.PrintWriter
+import java.io.{File, PrintWriter}
 import scala.collection.immutable
 import scala.xml._
 
@@ -26,13 +26,22 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val isLeaf = word.nonEmpty // (n \\ "node").isEmpty
   val rel = (n \ "@rel").text
 
-  lazy val longRel = dependencyHead.map(h => s.joiningPath(this, h)).getOrElse("?")// headWithPath.path.map(_.rel).mkString("<")
+  lazy val pathToDependencyHead = dependencyHead.map(h => s.joiningPath(this, h)).getOrElse("?")// headWithPath.path.map(_.rel).mkString("<")
+
+  lazy val isNotADependencyLeaf = s.words.exists(_.dependencyHead.map(_.id) == Some(this.id))
 
   lazy val betterRel: String =
-    if ((rel == "hd"  || rel == "body") && parent.nonEmpty)
+    if ((rel == "hd"  || rel == "body") && parent.nonEmpty) {
       parent.get.betterRel
-    else if ((rel =="mwp" || rel=="cnj" || rel=="nucl") && parent.nonEmpty && s.words.exists(_.dependencyHead.map(_.id) == Some(this.id))) // misschien niet alleen mwp?
+    } else if ((rel=="cnj") && parent.nonEmpty && !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber)) // misschien niet alleen mwp?
+      {
+        log(s"Moving up (for rel:=$rel, word=$word) to $parent for $this, path up=$relsToTheTop, zinnetje=${s.text}")
+        parent.get.betterRel
+      }
+    else if ((rel == "mwp" || rel == "cnj" || rel == "nucl") && parent.nonEmpty) // misschien niet alleen mwp?
+    {
       parent.get.betterRel
+    }
     else rel
 
 
@@ -43,6 +52,9 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val beginBaseOne = ((n \ "@begin").text.toInt + 1).toString
   lazy val parent: Option[AlpinoNode] = s.parentMap.get(id).flatMap(pid => s.nodeMap.get(pid))
   lazy val ancestor: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get +: parent.get.ancestor
+  lazy val sibling: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get.children.filter(c => c != this)
+  lazy val relsToTheTop = (this +: ancestor).map(_.rel).mkString(";")
+
   lazy val children: immutable.Seq[AlpinoNode] = (n \ "node").map(x => s.nodeMap( (x \ "@id").text))
   lazy val depth: Int = if (parent.isEmpty) 0 else 1 + parent.get.depth;
   lazy val indent = "  " * depth
@@ -58,6 +70,7 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 case class AlpinoSentence(alpino: Elem) {
 
   val sentid = (alpino \\ "sentence" \ "@sentid").text
+  val text = (alpino \\ "sentence").text
 
   val nodeMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).map(n => n.id -> n).toMap
   val wordMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).filter(_.isLeaf).map(n => n.beginBaseOne -> n).toMap
@@ -110,10 +123,10 @@ case class AlpinoSentence(alpino: Elem) {
 
   def findHeadForWord(w: AlpinoNode, in: AlpinoNode):HeadWithPath = {
      if (in.constituentHead.nonEmpty && in.constituentHead.get.id != w.id && in.constituentHead.get.begin != w.begin) {
-       if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
+       //if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
        HeadWithPath(in.constituentHead, Seq(in))
      } else if (in.parent.nonEmpty) {
-       if (w.word == "won") { Console.err.println(s"Moving to parent ${in.parent.get}")}
+       // if (w.word == "won") { Console.err.println(s"Moving to parent ${in.parent.get}")}
        val x = findHeadForWord(w, in.parent.get)
        x.copy(path = in +: x.path)
      }
@@ -144,6 +157,7 @@ object testWithHeads  {
 
     val out = new PrintWriter("/tmp/test.conll.txt")
     lines.foreach(l => {
+      val sentence_id = new File(l).getName.replaceAll(".xml$", "")
       println(s"###############  $l #####################")
       val x = XML.load(l)
       val sentence = AlpinoSentence(x)
@@ -151,13 +165,23 @@ object testWithHeads  {
 
       headjes.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + " " + x.betterRel).getOrElse("-")}")})
       println(s"### pure dependencies ${sentence.sentid} ###")
-      out.println("#######")
+      out.println(s"""\n# source = $l
+                     |# sent_id = $sentence_id
+                     |# text = ${sentence.text}""".stripMargin)
+
       sentence.words.foreach(w =>  {
-        val h = w.dependencyHead.map(x => (x.wordNumber+1).toString).getOrElse("_")
+        val h = w.dependencyHead.map(x => (x.wordNumber+1).toString).getOrElse("0")
         val hw =  w.dependencyHead.map(x => x.word).getOrElse("_")
-        lazy val udToken = UdToken(ID=(w.wordNumber+1).toString, FORM=w.word, LEMMA = w.lemma, UPOS = w.pos, XPOS = w.xpos, FEATS = "_",
+        lazy val udToken = UdToken(
+          ID=(w.wordNumber+1).toString,
+          FORM=w.word,
+          LEMMA = w.lemma,
+          UPOS = w.pos,
+          XPOS = w.xpos,
+          FEATS = "_",
           HEAD = h,
-          DEPREL = w.betterRel, DEPS=s"$h:$hw")
+          DEPREL = if (h=="0") "root" else if (w.pos == "punct") "punct" else w.betterRel,
+          DEPS=s"$h:$hw")
         println(udToken.toCONLL())
         out.println(udToken.toCONLL())
         out.flush()
