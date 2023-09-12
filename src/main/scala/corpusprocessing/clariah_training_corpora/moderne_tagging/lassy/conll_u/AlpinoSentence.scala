@@ -1,7 +1,14 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
+import java.io.PrintWriter
 import scala.collection.immutable
 import scala.xml._
+
+object Logje {
+  val pw = new PrintWriter("/tmp/logje.txt")
+  def log(s: String) = { pw.println(s); pw.flush() }
+}
+import Logje._
 
 case class AlpinoToken(n: Node, id:Option[String] = None)  {
   val atts = n.attributes.map(n => n.key -> n.value.text).toMap
@@ -20,6 +27,7 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val rel = (n \ "@rel").text
 
   lazy val longRel = dependencyHead.map(h => s.joiningPath(this, h)).getOrElse("?")// headWithPath.path.map(_.rel).mkString("<")
+
   lazy val betterRel: String =
     if ((rel == "hd"  || rel == "body") && parent.nonEmpty)
       parent.get.betterRel
@@ -69,15 +77,14 @@ case class AlpinoSentence(alpino: Elem) {
 
       val intermediateHead : Option[AlpinoNode] = n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
       if (n.children.filter(x => x.rel == "hd").isEmpty) {
-        Console.err.println(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
+        log(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
       }
       val usingBody: Option[AlpinoNode] = n.children.find(_.rel == "body").flatMap(x => findConstituentHead(x))
 
       val usingMwp: Option[AlpinoNode] = n.children.find(_.rel == "mwp").filter(_.isLeaf)
       val usingCnj : Option[AlpinoNode] = n.children.find(_.rel == "cnj").filter(_.isLeaf)
       val usingNucl: Option[AlpinoNode] = n.children.find(_.rel == "nucl").flatMap(x => findConstituentHead(x))
-
-      val gedoeStreepjes =  n.children.find(_.rel == "--").flatMap(x => findConstituentHead(x))
+      val gedoeStreepjes =  n.children.find(x => x.rel == "--" && !x.isLeaf).flatMap(x => findConstituentHead(x))
       (immediateHead.toList ++  intermediateHead.toList ++ usingBody.toList ++ usingMwp.toList ++ gedoeStreepjes.toList ++ usingCnj.toList ++ usingNucl.toList).headOption
     }
   }
@@ -100,11 +107,11 @@ case class AlpinoSentence(alpino: Elem) {
   }
 
   case class HeadWithPath(node: Option[AlpinoNode], path: Seq[AlpinoNode])
+
   def findHeadForWord(w: AlpinoNode, in: AlpinoNode):HeadWithPath = {
      if (in.constituentHead.nonEmpty && in.constituentHead.get.id != w.id && in.constituentHead.get.begin != w.begin) {
        if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
        HeadWithPath(in.constituentHead, Seq(in))
-
      } else if (in.parent.nonEmpty) {
        if (w.word == "won") { Console.err.println(s"Moving to parent ${in.parent.get}")}
        val x = findHeadForWord(w, in.parent.get)
@@ -134,6 +141,8 @@ object testWithHeads  {
   lazy val lines: Stream[String] = Seq("find", lassyAllAtHome, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
   def main(args: Array[String])  = {
+
+    val out = new PrintWriter("/tmp/test.conll.txt")
     lines.foreach(l => {
       println(s"###############  $l #####################")
       val x = XML.load(l)
@@ -142,14 +151,16 @@ object testWithHeads  {
 
       headjes.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + " " + x.betterRel).getOrElse("-")}")})
       println(s"### pure dependencies ${sentence.sentid} ###")
-
+      out.println("#######")
       sentence.words.foreach(w =>  {
         val h = w.dependencyHead.map(x => (x.wordNumber+1).toString).getOrElse("_")
         val hw =  w.dependencyHead.map(x => x.word).getOrElse("_")
         lazy val udToken = UdToken(ID=(w.wordNumber+1).toString, FORM=w.word, LEMMA = w.lemma, UPOS = w.pos, XPOS = w.xpos, FEATS = "_",
           HEAD = h,
-          DEPREL = w.betterRel, DEPS=s"$h:$hw:${w.longRel}")
+          DEPREL = w.betterRel, DEPS=s"$h:$hw")
         println(udToken.toCONLL())
+        out.println(udToken.toCONLL())
+        out.flush()
         // println(s"${w.begin} ${w.word} ${w.betterRel}  ${w.dependencyHead.map(_.begin).getOrElse("-")} ${w.dependencyHead.map(_.word).getOrElse("-")}")
       })
     })
