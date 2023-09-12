@@ -30,10 +30,14 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
   lazy val isNotADependencyLeaf = s.words.exists(_.dependencyHead.map(_.id) == Some(this.id))
 
-  lazy val betterRel: String =
-    if ((rel == "hd"  || rel == "body") && parent.nonEmpty) {
+  lazy val betterRel: String = {
+
+    val r0 = if (rel == "cnj" && dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj") {
+      this.rel
+    }
+      else if ((rel == "hd"  || rel == "body") && parent.nonEmpty) {
       parent.get.betterRel
-    } else if ((rel=="cnj") && parent.nonEmpty && !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber)) // misschien niet alleen mwp?
+    } else if ((rel=="cnj") && parent.nonEmpty && !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber)) // deze werkt niet!!!
       {
         log(s"Moving up (for rel:=$rel, word=$word) to $parent for $this, path up=$relsToTheTop, zinnetje=${s.text}")
         parent.get.betterRel
@@ -43,6 +47,8 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
       parent.get.betterRel
     }
     else rel
+    if (r0=="0") "root" else if (pos == "punct") "punct" else r0
+  }
 
 
   val cat = (n \ "@cat").text
@@ -84,21 +90,26 @@ case class AlpinoSentence(alpino: Elem) {
   lazy val nodes = nodeMap.values.toList.sortBy(x => 1000 * x.wordNumber + x.depth);
   lazy val topNode = nodes.filter(_.parent.isEmpty)
 
-  def findConstituentHead(n: AlpinoNode):Option[AlpinoNode]  = {
-    if (n.isLeaf) None else {
+  def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false):Option[AlpinoNode]  = {
+    if (n.isLeaf) (if (allowLeaf) Some(n) else None) else {
       val immediateHead: Option[AlpinoNode] = n.children.filter(x => x.rel == "hd" && x.isLeaf).headOption
 
       val intermediateHead : Option[AlpinoNode] = n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
       if (n.children.filter(x => x.rel == "hd").isEmpty) {
         log(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
       }
+      val usingCmp: Option[AlpinoNode] = n.children.find(_.rel == "cmp").flatMap(x => findConstituentHead(x))
       val usingBody: Option[AlpinoNode] = n.children.find(_.rel == "body").flatMap(x => findConstituentHead(x))
 
       val usingMwp: Option[AlpinoNode] = n.children.find(_.rel == "mwp").filter(_.isLeaf)
-      val usingCnj : Option[AlpinoNode] = n.children.find(_.rel == "cnj").filter(_.isLeaf)
+      val usingCnj : Option[AlpinoNode] = n.children.find(_.rel == "cnj").flatMap(x => findConstituentHead(x, true))// dit werkt dus niet altijd .....
+      if (usingCnj.nonEmpty) {
+        // Console.err.println(s"$n -> $usingCnj")
+        // System.exit(1)
+      }
       val usingNucl: Option[AlpinoNode] = n.children.find(_.rel == "nucl").flatMap(x => findConstituentHead(x))
       val gedoeStreepjes =  n.children.find(x => x.rel == "--" && !x.isLeaf).flatMap(x => findConstituentHead(x))
-      (immediateHead.toList ++  intermediateHead.toList ++ usingBody.toList ++ usingMwp.toList ++ gedoeStreepjes.toList ++ usingCnj.toList ++ usingNucl.toList).headOption
+      (immediateHead.toList ++  intermediateHead.toList ++ usingBody.toList  ++ usingMwp.toList ++ gedoeStreepjes.toList ++ usingCnj.toList ++ usingNucl.toList).headOption
     }
   }
 
@@ -163,7 +174,7 @@ object testWithHeads  {
       val sentence = AlpinoSentence(x)
       val headjes = sentence.nodes.filter(!_.isLeaf).map(x =>  x -> sentence.findConstituentHead(x))
 
-      headjes.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + " " + x.betterRel).getOrElse("-")}")})
+      headjes.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + ":" + x.betterRel + ":" + x.wordNumber).getOrElse("-")}")})
       println(s"### pure dependencies ${sentence.sentid} ###")
       out.println(s"""\n# source = $l
                      |# sent_id = $sentence_id
@@ -180,8 +191,10 @@ object testWithHeads  {
           XPOS = w.xpos,
           FEATS = "_",
           HEAD = h,
-          DEPREL = if (h=="0") "root" else if (w.pos == "punct") "punct" else w.betterRel,
-          DEPS=s"$h:$hw")
+          DEPREL = w.betterRel,
+          DEPS=s"$h:$hw",
+          MISC = w.relsToTheTop
+        )
         println(udToken.toCONLL())
         out.println(udToken.toCONLL())
         out.flush()
