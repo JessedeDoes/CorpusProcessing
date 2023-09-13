@@ -35,8 +35,13 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
     val r0 = rel match {
       case _ if parent.isEmpty => rel
+      case _ if (pos=="punct") => "punct"
+      case _ if isLeaf && dependencyHead.isEmpty => "root"
+
+      // nonfirst part of cooordination or multiword keeps its rel
       case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel
       case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.rel == "mwp" => this.rel
+
       case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
       case "hd" => up
       case "body" => up
@@ -44,7 +49,8 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
       case "nucl" => up
       case _ => rel
     }
-    if (r0=="0") "root" else if (pos == "punct") "punct" else r0
+    // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
+    r0
   }
 
 
@@ -89,24 +95,34 @@ case class AlpinoSentence(alpino: Elem) {
 
   def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false):Option[AlpinoNode]  = {
     if (n.isLeaf) (if (allowLeaf) Some(n) else None) else {
-      val immediateHead: Option[AlpinoNode] = n.children.filter(x => x.rel == "hd" && x.isLeaf).headOption
 
-      val intermediateHead : Option[AlpinoNode] = n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
       if (n.children.filter(x => x.rel == "hd").isEmpty) {
         log(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
       }
-      val usingCmp: Option[AlpinoNode] = n.children.find(_.rel == "cmp").flatMap(x => findConstituentHead(x))
-      val usingBody: Option[AlpinoNode] = n.children.find(_.rel == "body").flatMap(x => findConstituentHead(x))
+
+      def searchIn(relName: String)  = n.children.filter(x => x.rel == relName).headOption.flatMap(x => findConstituentHead(x, true)).headOption
+
+      val immediateHead: Option[AlpinoNode] = n.children.filter(x => x.rel == "hd" && x.isLeaf).headOption
+
+      val intermediateHead : Option[AlpinoNode] = searchIn("hd") //  n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
+
+      val usingCmp: Option[AlpinoNode] = searchIn("cmp")
+      val usingBody: Option[AlpinoNode] = searchIn("body")
 
       val usingMwp: Option[AlpinoNode] = n.children.find(_.rel == "mwp").filter(_.isLeaf)
-      val usingCnj : Option[AlpinoNode] = n.children.find(_.rel == "cnj").flatMap(x => findConstituentHead(x, true))// dit werkt dus niet altijd .....
-      if (usingCnj.nonEmpty) {
-        // Console.err.println(s"$n -> $usingCnj")
-        // System.exit(1)
-      }
-      val usingNucl: Option[AlpinoNode] = n.children.find(_.rel == "nucl").flatMap(x => findConstituentHead(x))
+      val usingCnj : Option[AlpinoNode] = searchIn("cnj")// dit werkt dus niet altijd .....
+      val usingNucl: Option[AlpinoNode] = searchIn("nucl")
+      val usingDp:  Option[AlpinoNode] = searchIn("dp")
       val gedoeStreepjes =  n.children.find(x => x.rel == "--" && !x.isLeaf).flatMap(x => findConstituentHead(x))
-      (immediateHead.toList ++  intermediateHead.toList ++ usingBody.toList  ++ usingMwp.toList ++ gedoeStreepjes.toList ++ usingCnj.toList ++ usingNucl.toList).headOption
+
+      (immediateHead.toList
+        ++ intermediateHead.toList
+        ++ usingBody.toList
+        ++ usingMwp.toList
+        ++ gedoeStreepjes.toList
+        ++ usingCnj.toList
+        ++ usingNucl.toList
+        ++ usingDp.toList).headOption
     }
   }
 
@@ -157,7 +173,7 @@ case class AlpinoSentence(alpino: Elem) {
 
 object testWithHeads  {
   import sys.process._
-  val max= 1000
+  val max= 10000
   val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
   lazy val lines: Stream[String] = Seq("find", lassyAllAtHome, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
