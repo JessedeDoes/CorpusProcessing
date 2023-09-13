@@ -131,7 +131,7 @@ case class Annotation(a: Node, typ: String, p: Package) {
 
 case class Package(elan: String, transcription: String, alpino_dir: String, json: String) {
   lazy val alpinoDocs = new File(alpino_dir).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(XML.loadFile)
-  lazy val alpinoSentences = alpinoDocs.map(AlpinoSentence)
+  lazy val alpinoSentences = alpinoDocs.map(x => AlpinoSentence(x))
   lazy val alpinoMap = alpinoSentences.toList.map(s => s.id -> s).toMap
   lazy val elanDoc = XML.load(elan)
 

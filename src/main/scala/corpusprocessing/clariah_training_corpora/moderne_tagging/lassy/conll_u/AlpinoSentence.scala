@@ -76,9 +76,9 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   override def toString: String = s"${indent}Node(begin=$begin,rel=$rel,cat=$cat,word=$word,text=$text, children=${children.map(_.rel).mkString(";")})"
 }
 
-case class AlpinoSentence(alpino: Elem) {
+case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
 
-  val sentid = (alpino \\ "sentence" \ "@sentid").text
+  val sentid = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
   val text = (alpino \\ "sentence").text
 
   val nodeMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).map(n => n.id -> n).toMap
@@ -170,34 +170,12 @@ case class AlpinoSentence(alpino: Elem) {
       {t.word}
     </w> +: Text("\n"))}
   </s>
-}
 
-object testWithHeads  {
-  import sys.process._
-  val max= 10000
-  val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
-  lazy val lines: Stream[String] = Seq("find", lassyAllAtHome, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
-  def main(args: Array[String])  = {
-
-    val out = new PrintWriter("/tmp/test.conll.txt")
-    lines.foreach(l => {
-      val sentence_id = new File(l).getName.replaceAll(".xml$", "")
-      println(s"###############  $l #####################")
-      val x = XML.load(l)
-      val sentence = AlpinoSentence(x)
-      val headjes = sentence.nodes.filter(!_.isLeaf).map(x =>  x -> sentence.findConstituentHead(x))
-
-      headjes.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + ":" + x.betterRel + ":" + x.wordNumber).getOrElse("-")}")})
-      println(s"### pure dependencies ${sentence.sentid} ###")
-      out.println(s"""\n# source = $l
-                     |# sent_id = $sentence_id
-                     |# text = ${sentence.text}""".stripMargin)
-
-      sentence.words.foreach(w =>  {
+  lazy val connlTokens = words.map(w =>  {
         val h = w.dependencyHead.map(x => (x.wordNumber+1).toString).getOrElse("0")
         val hw =  w.dependencyHead.map(x => x.word).getOrElse("_")
-        lazy val udToken = UdToken(
+        UdToken(
           ID=(w.wordNumber+1).toString,
           FORM=w.word,
           LEMMA = w.lemma,
@@ -208,12 +186,41 @@ object testWithHeads  {
           DEPREL = w.betterRel,
           DEPS=s"$h:$hw",
           MISC = w.relsToTheTop
-        )
-        println(udToken.toCONLL())
-        out.println(udToken.toCONLL())
-        out.flush()
-        // println(s"${w.begin} ${w.word} ${w.betterRel}  ${w.dependencyHead.map(_.begin).getOrElse("-")} ${w.dependencyHead.map(_.word).getOrElse("-")}")
+        )})
+
+  def toCONLL(): String = {
+      val header = s"""\n# sent_id = $sentid
+                     |# text = ${this.text}""".stripMargin
+       header + "\n" + connlTokens.map(_.toCONLL()).mkString("\n")
+   }
+}
+
+object testWithHeads  {
+  import sys.process._
+  val max= 100
+  val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
+  val lassyAtWork = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/"
+  val lassy = List(lassyAllAtHome, lassyAtWork).find(x => new File(x).exists())
+
+
+  def main(args: Array[String])  = {
+    val location = args.headOption.getOrElse(lassy.getOrElse("nope"))
+    lazy val lines: Stream[String] = Seq("find", location, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
+
+    val out = new PrintWriter("/tmp/test.conll.txt")
+    lines.foreach(l => {
+      val sentence_id = new File(l).getName.replaceAll(".xml$", "")
+      println(s"###############  $l #####################")
+      val x = XML.load(l)
+      val sentence = AlpinoSentence(x, Some(sentence_id))
+      val constituentsAndHeads = sentence.nodes.filter(!_.isLeaf).map(x =>  x -> sentence.findConstituentHead(x))
+
+      constituentsAndHeads.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + ":" + x.betterRel + ":" + x.wordNumber).getOrElse("-")}")})
+
+      println(s"### pure dependencies ${sentence.sentid} ###")
+      println(sentence.toCONLL())
+      out.println(sentence.toCONLL())
+      out.flush()
       })
-    })
   }
 }
