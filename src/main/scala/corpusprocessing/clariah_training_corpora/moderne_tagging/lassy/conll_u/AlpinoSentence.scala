@@ -4,6 +4,8 @@ import java.io.{File, PrintWriter}
 import scala.collection.immutable
 import scala.xml._
 
+// conversion SUD to UD cf: https://github.com/surfacesyntacticud/
+
 object Logje {
   val pw = new PrintWriter("/tmp/logje.txt")
   def log(s: String) = { pw.println(s); pw.flush() }
