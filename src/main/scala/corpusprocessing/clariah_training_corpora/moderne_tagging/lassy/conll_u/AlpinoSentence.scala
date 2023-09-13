@@ -41,6 +41,7 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
       case _ if isLeaf && dependencyHead.isEmpty => "root"
 
       // nonfirst part of cooordination or multiword keeps its rel
+
       case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel
       case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.rel == "mwp" => this.rel
 
@@ -55,45 +56,48 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
     r0
   }
 
+  lazy val whoseHeadAmI = ancestor.filter(a => this.isLeaf && a.constituentHead.contains(this)).map(_.cat).mkString("_")
 
   val cat = (n \ "@cat").text
 
-  val begin = (n \ "@begin").text
-  val wordNumber = begin.toInt
-  val beginBaseOne = ((n \ "@begin").text.toInt + 1).toString
+  val begin: String = (n \ "@begin").text
+  val wordNumber: Int = begin.toInt
+  val beginBaseOne: String = ((n \ "@begin").text.toInt + 1).toString
   lazy val parent: Option[AlpinoNode] = s.parentMap.get(id).flatMap(pid => s.nodeMap.get(pid))
   lazy val ancestor: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get +: parent.get.ancestor
   lazy val sibling: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get.children.filter(c => c != this)
-  lazy val relsToTheTop = (this +: ancestor).map(_.rel).mkString(";")
+  lazy val relsToTheTop: String = (this +: ancestor).map(_.rel).mkString(";")
 
   lazy val children: immutable.Seq[AlpinoNode] = (n \ "node").map(x => s.nodeMap( (x \ "@id").text))
   lazy val depth: Int = if (parent.isEmpty) 0 else 1 + parent.get.depth;
-  lazy val indent = "  " * depth
-  lazy val descendant = (n \\ "node").map(x => s.nodeMap( (x \ "@id").text))
+  lazy val indent: String = "  " * depth
+  lazy val descendant: immutable.Seq[AlpinoNode] = (n \\ "node").map(x => s.nodeMap( (x \ "@id").text))
   lazy val wordsIn: Seq[AlpinoNode] = if (isLeaf) Seq() else descendant.filter(_.isLeaf).sortBy(_.wordNumber)
-  lazy val text = wordsIn.map(_.word).mkString(" ")
+  lazy val text: String = wordsIn.map(_.word).mkString(" ")
   lazy val constituentHead: Option[AlpinoNode] = s.findConstituentHead(this)
-  lazy val headWithPath = s.findHeadForWord(this)
-  lazy val dependencyHead = headWithPath.node
+  lazy val headWithPath: s.HeadWithPath = s.findHeadForWord(this)
+  lazy val dependencyHead: Option[AlpinoNode] = headWithPath.node
   override def toString: String = s"${indent}Node(begin=$begin,rel=$rel,cat=$cat,word=$word,text=$text, children=${children.map(_.rel).mkString(";")})"
 }
 
 case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
 
-  val sentid = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
-  val text = (alpino \\ "sentence").text
+  val sentid: String = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
+  val text: String = (alpino \\ "sentence").text
 
   val nodeMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).map(n => n.id -> n).toMap
   val wordMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).filter(_.isLeaf).map(n => n.beginBaseOne -> n).toMap
   lazy val words = wordMap.values.toList.sortBy(_.wordNumber)
+
   // println(wordMap.keySet)
-  val parentMap = nodeMap.flatMap(n => {
+
+  val parentMap: Map[String, String] = nodeMap.flatMap(n => {
     val childIds = n._2.n.child.map(n => (n \ "@id").text).filter(_.nonEmpty)
     childIds.map(i => i -> n._2.id)
   }).toMap
 
-  lazy val nodes = nodeMap.values.toList.sortBy(x => 1000 * x.wordNumber + x.depth);
-  lazy val topNode = nodes.filter(_.parent.isEmpty)
+  lazy val nodes: Seq[AlpinoNode] = nodeMap.values.toList.sortBy(x => 1000 * x.wordNumber + x.depth);
+  lazy val topNode: Seq[AlpinoNode] = nodes.filter(_.parent.isEmpty)
 
   def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false):Option[AlpinoNode]  = {
     if (n.isLeaf) (if (allowLeaf) Some(n) else None) else {
@@ -115,6 +119,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
       val usingCnj : Option[AlpinoNode] = searchIn("cnj")// dit werkt dus niet altijd .....
       val usingNucl: Option[AlpinoNode] = searchIn("nucl")
       val usingDp:  Option[AlpinoNode] = searchIn("dp")
+
       val gedoeStreepjes =  n.children.find(x => x.rel == "--" && !x.isLeaf).flatMap(x => findConstituentHead(x))
 
       (immediateHead.toList
@@ -135,7 +140,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
     else if (n1.parent.nonEmpty && n2.parent.nonEmpty) commonAncestor(n1.parent.get, n2.parent.get) else None
   }
 
-  def joiningPath(n1: AlpinoNode, n2:AlpinoNode)  = {
+  def joiningPath(n1: AlpinoNode, n2:AlpinoNode): String = {
     val c = commonAncestor(n1,n2)
     if (c.nonEmpty) {
       val cp = c.get
@@ -187,7 +192,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
           HEAD = h,
           DEPREL = w.betterRel,
           DEPS=s"$h:$hw",
-          MISC = w.relsToTheTop
+          MISC = Map("CAT" -> w.whoseHeadAmI).filter({case (k,v) => v.nonEmpty}).map({case (k,v) => s"$k=$v"}).mkString("|") // w.relsToTheTop
         )})
 
   def toCONLL(): String = {
@@ -199,7 +204,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
 
 object testWithHeads  {
   import sys.process._
-  val max= 100
+  val max= 100000
   val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
   val lassyAtWork = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/"
   val lassy = List(lassyAllAtHome, lassyAtWork).find(x => new File(x).exists())
