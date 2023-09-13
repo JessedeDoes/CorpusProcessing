@@ -31,22 +31,19 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   lazy val isNotADependencyLeaf = s.words.exists(_.dependencyHead.map(_.id) == Some(this.id))
 
   lazy val betterRel: String = {
+    lazy val up = parent.get.betterRel
 
-    val r0 = if (rel == "cnj" && dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj") {
-      this.rel
+    val r0 = rel match {
+      case _ if parent.isEmpty => rel
+      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel
+      case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.rel == "mwp" => this.rel
+      case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
+      case "hd" => up
+      case "body" => up
+      case "mwp" => up
+      case "nucl" => up
+      case _ => rel
     }
-      else if ((rel == "hd"  || rel == "body") && parent.nonEmpty) {
-      parent.get.betterRel
-    } else if ((rel=="cnj") && parent.nonEmpty && !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber)) // deze werkt niet!!!
-      {
-        log(s"Moving up (for rel:=$rel, word=$word) to $parent for $this, path up=$relsToTheTop, zinnetje=${s.text}")
-        parent.get.betterRel
-      }
-    else if ((rel == "mwp" || rel == "cnj" || rel == "nucl") && parent.nonEmpty) // misschien niet alleen mwp?
-    {
-      parent.get.betterRel
-    }
-    else rel
     if (r0=="0") "root" else if (pos == "punct") "punct" else r0
   }
 
@@ -160,7 +157,7 @@ case class AlpinoSentence(alpino: Elem) {
 
 object testWithHeads  {
   import sys.process._
-  val max= 100
+  val max= 1000
   val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
   lazy val lines: Stream[String] = Seq("find", lassyAllAtHome, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
