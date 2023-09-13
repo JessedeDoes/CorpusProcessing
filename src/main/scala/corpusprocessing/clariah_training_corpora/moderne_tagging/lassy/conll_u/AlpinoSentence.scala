@@ -117,6 +117,7 @@ case class AlpinoSentence(alpino: Elem) {
 
       (immediateHead.toList
         ++ intermediateHead.toList
+        ++ usingCmp.toList
         ++ usingBody.toList
         ++ usingMwp.toList
         ++ gedoeStreepjes.toList
