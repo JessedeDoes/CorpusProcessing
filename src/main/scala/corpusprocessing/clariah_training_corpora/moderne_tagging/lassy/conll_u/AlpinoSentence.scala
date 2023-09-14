@@ -5,7 +5,9 @@ import scala.collection.immutable
 import scala.xml._
 
 // conversion SUD to UD cf: https://github.com/surfacesyntacticud/
-
+// voorbeeld complexe nesting: https://paqu.let.rug.nl:8068/tree?db=lassysmall&arch=0&file=26887&yl=2&gr=3&ms=10,12,13
+// /media/jesse/Data/Corpora/LassySmall/Treebank/WR-P-P-I-0000000198/WR-P-P-I-0000000198.p.12.s.6.xml
+// http://svprre10.ivdnt.loc:8080/corpus-frontend/Alpino_dep_test/search/hits?first=0&number=20&patt=%3Cs%2F%3E+containing+%5Bother%3D%22.%2Asmain_du_du_du_whrel_top.%2A%22%5D&interface=%7B%22form%22%3A%22search%22%2C%22patternMode%22%3A%22expert%22%7D
 object Logje {
   val pw = new PrintWriter("/tmp/logje.txt")
   def log(s: String) = { pw.println(s); pw.flush() }
@@ -42,13 +44,16 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
       // nonfirst part of cooordination or multiword keeps its rel
 
-      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel
-      case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.rel == "mwp" => this.rel
+      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "cnj" => this.rel // Pas Op deugt deze regel wel?
+      case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "mwp" => this.rel
 
       case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
+      case "mwp" if  !sibling.exists(x => x.rel == "mwp" && x.wordNumber < this.wordNumber) => up
+
       case "hd" => up
       case "body" => up
-      case "mwp" => up
+
+
       case "nucl" => up
       case _ => rel
     }
@@ -56,9 +61,9 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
     r0
   }
 
-  lazy val whoseHeadAmI = ancestor.filter(a => this.isLeaf && a.constituentHead.contains(this)).map(_.cat).mkString("_")
+  lazy val whoseHeadAmI: String = ancestor.filter(a => this.isLeaf && a.constituentHead.contains(this)).map(_.cat).mkString("_")
 
-  val cat = (n \ "@cat").text
+  val cat: String = (n \ "@cat").text
 
   val begin: String = (n \ "@begin").text
   val wordNumber: Int = begin.toInt
@@ -66,6 +71,7 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   lazy val parent: Option[AlpinoNode] = s.parentMap.get(id).flatMap(pid => s.nodeMap.get(pid))
   lazy val ancestor: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get +: parent.get.ancestor
   lazy val sibling: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get.children.filter(c => c != this)
+
   lazy val relsToTheTop: String = (this +: ancestor).map(_.rel).mkString(";")
 
   lazy val children: immutable.Seq[AlpinoNode] = (n \ "node").map(x => s.nodeMap( (x \ "@id").text))
@@ -80,11 +86,11 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   override def toString: String = s"${indent}Node(begin=$begin,rel=$rel,cat=$cat,word=$word,text=$text, children=${children.map(_.rel).mkString(";")})"
 }
 
-case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
+case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, external_source: Option[String] = None) {
 
   val sentid: String = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
   val text: String = (alpino \\ "sentence").text
-
+  val source : String = external_source.getOrElse("UNKNOWN")
   val nodeMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).map(n => n.id -> n).toMap
   val wordMap: Map[String, AlpinoNode] = (alpino \\ "node").map(n => AlpinoNode(this, n)).filter(_.isLeaf).map(n => n.beginBaseOne -> n).toMap
   lazy val words = wordMap.values.toList.sortBy(_.wordNumber)
@@ -172,6 +178,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
   lazy val input_transcript = (alpino \\ "comment").text.replaceAll("^.*?\\|", "")
   lazy val id = ((alpino \\ "sentence").head \ "@sentid").text
   lazy val alpinoTokens = (alpino \\ "node").filter(x => (x \ "@word").nonEmpty).map(x => AlpinoToken(x)).sortBy(_.begin)
+
   lazy val xml = <s xml:id={id}>
     {"\n"}{alpinoTokens.sortBy(_.begin).flatMap(t => Text("\t") :+ <w pos={t.postag} lemma={t.lemma}>
       {t.word}
@@ -197,6 +204,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
 
   def toCONLL(): String = {
       val header = s"""\n# sent_id = $sentid
+                     |# source = ${this.source}
                      |# text = ${this.text}""".stripMargin
        header + "\n" + connlTokens.map(_.toCONLL()).mkString("\n")
    }
@@ -204,12 +212,27 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None) {
 
 object testWithHeads  {
   import sys.process._
-  val max= 100000
+  val max= Integer.MAX_VALUE // 100000
   val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
   val lassyAtWork = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/"
   val lassy = List(lassyAllAtHome, lassyAtWork).find(x => new File(x).exists())
 
 
+  // complex voorbeeld coindexeringen: https://paqu.let.rug.nl:8068/tree?db=lassysmall&names=true&mwu=false&arch=/net/corpora/paqu/lassyklein.dact&file=WR-P-P-I-0000000126.p.12.s.4.xml&global=true&marknodes=&ud1=&ud2=
+  def transferInfo(x: Elem)  = {
+    val leafs = (x \\ "node").filter(x => x.child.isEmpty)
+    val groupedByBegin = leafs.groupBy(x => (x \ "@begin").text -> (x \ "@end").text)
+    groupedByBegin.foreach({case (b,n) =>  if (n.size  > 1) {
+      println("Colocated nodes!")
+      n.foreach(println)
+      // System.exit(1)
+    }
+    })
+  }
+  /*
+  <node begin="49" end="50" genus="masc" getal="ev" id="88" index="3" lemma="hem" naamval="obl" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,obl,vol,3,ev,masc)" pt="vnw" rel="obj2" root="hem" status="vol" vwtype="pers" word="hem"/>
+  <node begin="49" end="50" id="93" index="3" rel="su"/>
+   */
   def main(args: Array[String])  = {
     val location = args.headOption.getOrElse(lassy.getOrElse("nope"))
     lazy val lines: Stream[String] = Seq("find", location, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
@@ -219,7 +242,8 @@ object testWithHeads  {
       val sentence_id = new File(l).getName.replaceAll(".xml$", "")
       println(s"###############  $l #####################")
       val x = XML.load(l)
-      val sentence = AlpinoSentence(x, Some(sentence_id))
+
+      val sentence = AlpinoSentence(x, Some(sentence_id), Some(l))
       val constituentsAndHeads = sentence.nodes.filter(!_.isLeaf).map(x =>  x -> sentence.findConstituentHead(x))
 
       constituentsAndHeads.foreach({case (x,y) => println(s"${x.indent} ${x.cat}/${x.rel} [${x.text}]  ----> ${y.map(x => x.word + ":" + x.betterRel + ":" + x.wordNumber).getOrElse("-")}")})
@@ -228,6 +252,7 @@ object testWithHeads  {
       println(sentence.toCONLL())
       out.println(sentence.toCONLL())
       out.flush()
+      transferInfo(x)
       })
   }
 }
