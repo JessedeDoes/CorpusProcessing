@@ -44,10 +44,12 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
       // nonfirst part of cooordination or multiword keeps its rel
 
-      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "cnj" => this.rel // Pas Op deugt deze regel wel?
+      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel // Pas Op deugt deze regel wel?
       case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "mwp" => this.rel
 
+
       case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
+      //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
       case "mwp" if  !sibling.exists(x => x.rel == "mwp" && x.wordNumber < this.wordNumber) => up
 
       case "hd" => up
