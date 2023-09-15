@@ -4,6 +4,50 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{Sentence
 
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq()) {
 
+  def isValid() = {
+    val roots = tokens.filter(t => t.DEPREL == "root")
+    val nRoots = roots.size
+    if (!(nRoots == 1))
+    {
+      println(s"!!!!!!!!!!!!!!! nRoots != 1: $nRoots (${roots.map(_.ID)})")
+      println(this.toCONLL())
+      false
+    } else
+    {
+      val rootTo0 = tokens.exists(t => t.DEPREL == "root" && t.HEAD == "0")
+
+      val root = tokens.find(_.DEPREL == "root").head
+      val rootCoversAll = descendant(root) ++ Set(root) == tokens.toSet
+
+      if (!rootCoversAll) {
+        println("!!!!!!!!!!!!!!! Unreachable nodes!")
+        println(this.toCONLL())
+      } else {
+        // println(s"Toppie: ${descendant(root).size}, ${tokens.size}")
+      }
+      val noCycle = !cycle(root)
+      nRoots == 1 && rootCoversAll && !cycle(root)
+    }
+  }
+
+  def children(t: UdToken) = tokens.filter(_.HEAD == t.ID)
+  def descendant(t: UdToken, collected: Set[UdToken] = Set()): Set[UdToken] = {
+    val c = children(t).filter(x => !collected.contains(x)).toSet.filter(_ != t)
+    c ++ c.flatMap(x => descendant(x, collected ++ Set(t)))
+  }
+
+  def cycle(t: UdToken, collected: Set[UdToken] = Set()): Boolean= {
+    if (collected.contains(t))  {
+       Console.err.println(s"!!!!!!!!!!!!!!!Cycle: $t in ${collected.map(_.ID)}")
+       println(this.toCONLL())
+       true
+    }
+    else {
+      val c1 =  collected ++ Set(t)
+      children(t).exists(c => cycle(c, c1))
+    }
+  }
+
   lazy val sentencePlain = tokens.map(_.FORM).mkString(" ")
   def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>
     {tokens.map(_.toXML(sent_id, language))}{linkGrp}
@@ -124,7 +168,9 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
     }
   }
 
-  def toCONLL() = {
-    (Seq(" ", s"# sent_id = ${this.sent_id}") ++ rebaseIds().tokens.map(_.toCONLL())) .mkString("\n")
+  def toCONLL(rebase: Boolean = true) = {
+    (Seq("", s"# sent_id = ${this.sent_id}") ++
+      (if (rebase) rebaseIds() else this).tokens.map(_.toCONLL()))
+      .mkString("\n") ++ "\n"
   }
 }

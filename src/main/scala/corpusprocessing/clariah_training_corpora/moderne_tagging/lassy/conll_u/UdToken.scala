@@ -14,7 +14,7 @@ case class UdToken(ID: String="_", FORM: String="_", LEMMA: String="_", UPOS: St
   }
 
   def toCONLL(): String = {
-    List(ID,FORM,LEMMA,UPOS,XPOS,FEATS,HEAD,DEPREL,DEPS,MISC).map(_.replaceAll("\\s+", " ").trim).mkString("\t")
+    List(ID,FORM,LEMMA,UPOS,XPOS,FEATS,HEAD,DEPREL,DEPS,MISC).map(_.replaceAll("\\s+", " ").trim.replaceAll("^$","_")).mkString("\t")
   }
 
   lazy val position = ID.toInt
