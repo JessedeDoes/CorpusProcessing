@@ -12,23 +12,24 @@ object SpecificConversionRules {
       case _ if (n.pos == "punct") => "punct"
       case _ if n.isWord && n.dependencyHead.isEmpty => "root"
 
-      // nonfirst part of cooordination or multiword keeps its rel
+
 
       case "cnj" if n.dependencyHead.nonEmpty && n.dependencyHead.head.rel == "cnj" => n.rel // Pas Op deugt deze regel wel?
       case "mwp" if n.dependencyHead.nonEmpty && n.dependencyHead.head.betterRel == "mwp" => n.rel
 
+      // first part of cooordination or multiword takes the rel of the parent node
+
       case "cnj" if !n.sibling.exists(x => x.rel == "cnj" && x.wordNumber < n.wordNumber) => 上
-      //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
       case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => 上
 
       case "hd" => 上
       case "body" => 上
 
-
+      // TODO check this one (and other exocentric cases)
       case "nucl" => 上
       case _ => n.rel
     }
-    // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
+
     r0
   }
 
@@ -67,3 +68,5 @@ object SpecificConversionRules {
     }
   }
 }
+
+//case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
