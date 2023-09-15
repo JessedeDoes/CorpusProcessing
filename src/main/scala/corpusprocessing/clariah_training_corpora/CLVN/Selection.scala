@@ -1,5 +1,8 @@
 package corpusprocessing.clariah_training_corpora.CLVN
 
+import utils.PostProcessXML
+
+import java.io.File
 import scala.collection.immutable
 import scala.xml._
 
@@ -49,5 +52,28 @@ object Selection {
          d.save(baseDir.getCanonicalPath)
        })
     })
+  }
+}
+
+object PatchUp {
+  def fixW(w: Elem)  = {
+
+    def withText(t: String)  = w.copy(child={<seg>{t.trim}</seg>})
+    if (w.text.matches(".*[a-zA-Z0-9].*,.*[a-zA-Z0-9].*"))
+      {
+         val wordz = w.text.split("\\s*,\\s*").map(withText)
+
+         val metKomma: Seq[Node] = wordz.zipWithIndex.flatMap({case (w,i) => if (i < wordz.size - 1) Seq(w, <pc>,</pc>) else w}).toSeq
+         metKomma
+      } else withText(w.text);
+  }
+
+  val dir = "/mnt/Projecten/Corpora/Historische_Corpora/CLVN/CLVNSelectieTagged/"
+  def main(args: Array[String])  = {
+     new File(dir).listFiles().filter(_.getName.endsWith(".xml")).foreach(f => {
+       val d = XML.loadFile(f)
+       val d1 = PostProcessXML.updateElement5(d, _.label=="w", fixW).asInstanceOf[Elem]
+       XML.save(dir + "Patched/" + f.getName, d1)
+     })
   }
 }
