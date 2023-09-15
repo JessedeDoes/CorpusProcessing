@@ -7,7 +7,7 @@ object LassyXML2FlatDependencies {
 
   import sys.process._
 
-  val max = 3000 // Integer.MAX_VALUE // 100000
+  val max = Integer.MAX_VALUE // 100000
   val lassyAllAtHome = "/media/jesse/Data/Corpora/LassySmall/Treebank/"
   val lassyAtWork = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/"
   val lassy = List(lassyAllAtHome, lassyAtWork).find(x => new File(x).exists())
@@ -33,7 +33,7 @@ object LassyXML2FlatDependencies {
   val garrulous = false
 
   def main(args: Array[String]) = {
-
+    val stime = System.currentTimeMillis()
     val location = args.headOption.getOrElse(lassy.getOrElse("nope"))
     lazy val lines: Stream[String] = Seq("find", location, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
@@ -61,5 +61,11 @@ object LassyXML2FlatDependencies {
       }
       // transferInfo(x)
     })
+
+    val etime = System.currentTimeMillis()
+
+    println(  (etime - stime) / 1000.0)
   }
+
+
 }

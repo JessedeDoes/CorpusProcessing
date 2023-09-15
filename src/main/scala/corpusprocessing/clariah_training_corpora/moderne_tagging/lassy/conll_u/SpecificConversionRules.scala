@@ -3,30 +3,30 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.Logje.log
 
 object SpecificConversionRules {
-  def betterRel(aNode: AlpinoNode): String = {
+  def betterRel(n: AlpinoNode): String = {
 
-    lazy val up: String = aNode.parent.get.betterRel
+    lazy val up: String = n.parent.get.betterRel
 
-    val r0: String = aNode.rel match {
-      case _ if aNode.parent.isEmpty => aNode.rel
-      case _ if (aNode.pos == "punct") => "punct"
-      case _ if aNode.isWord && aNode.dependencyHead.isEmpty => "root"
+    val r0: String = n.rel match {
+      case _ if n.parent.isEmpty => n.rel
+      case _ if (n.pos == "punct") => "punct"
+      case _ if n.isWord && n.dependencyHead.isEmpty => "root"
 
       // nonfirst part of cooordination or multiword keeps its rel
 
-      case "cnj" if aNode.dependencyHead.nonEmpty && aNode.dependencyHead.head.rel == "cnj" => aNode.rel // Pas Op deugt deze regel wel?
-      case "mwp" if aNode.dependencyHead.nonEmpty && aNode.dependencyHead.head.betterRel == "mwp" => aNode.rel
+      case "cnj" if n.dependencyHead.nonEmpty && n.dependencyHead.head.rel == "cnj" => n.rel // Pas Op deugt deze regel wel?
+      case "mwp" if n.dependencyHead.nonEmpty && n.dependencyHead.head.betterRel == "mwp" => n.rel
 
-      case "cnj" if !aNode.sibling.exists(x => x.rel == "cnj" && x.wordNumber < aNode.wordNumber) => up
+      case "cnj" if !n.sibling.exists(x => x.rel == "cnj" && x.wordNumber < n.wordNumber) => up
       //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
-      case "mwp" if !aNode.sibling.exists(x => x.rel == "mwp" && x.wordNumber < aNode.wordNumber) => up
+      case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => up
 
       case "hd" => up
       case "body" => up
 
 
       case "nucl" => up
-      case _ => aNode.rel
+      case _ => n.rel
     }
     // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
     r0
