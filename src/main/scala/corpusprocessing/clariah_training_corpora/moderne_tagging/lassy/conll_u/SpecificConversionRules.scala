@@ -5,7 +5,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.L
 object SpecificConversionRules {
   def betterRel(n: AlpinoNode): String = {
 
-    lazy val up: String = n.parent.get.betterRel
+    lazy val 上: String = n.parent.get.betterRel
 
     val r0: String = n.rel match {
       case _ if n.parent.isEmpty => n.rel
@@ -17,15 +17,15 @@ object SpecificConversionRules {
       case "cnj" if n.dependencyHead.nonEmpty && n.dependencyHead.head.rel == "cnj" => n.rel // Pas Op deugt deze regel wel?
       case "mwp" if n.dependencyHead.nonEmpty && n.dependencyHead.head.betterRel == "mwp" => n.rel
 
-      case "cnj" if !n.sibling.exists(x => x.rel == "cnj" && x.wordNumber < n.wordNumber) => up
+      case "cnj" if !n.sibling.exists(x => x.rel == "cnj" && x.wordNumber < n.wordNumber) => 上
       //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
-      case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => up
+      case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => 上
 
-      case "hd" => up
-      case "body" => up
+      case "hd" => 上
+      case "body" => 上
 
 
-      case "nucl" => up
+      case "nucl" => 上
       case _ => n.rel
     }
     // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
