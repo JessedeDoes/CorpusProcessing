@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:08" cats="1" skips="0"/>
   <node begin="0" cat="top" end="6" id="0" rel="top">
-    <node word_zv="..." word="..." begin="2" end="3" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node isWord="true" end="3" begin="2" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
     <node begin="0" cat="conj" end="5" id="2" rel="--">
       <node begin="0" cat="mwu" end="2" his="name" his_1="begin" id="3" rel="cnj">
-        <node word_zv="Emieltje" word="Emieltje" begin="0" end="1" frame="proper_name(sg,'PER')" id="4" lcat="np" lemma="Emieltje" neclass="PER" num="sg" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Emieltje" sense="Emieltje" spectype="deeleigen"/>
-        <node word_zv="Hollevoet" word="Hollevoet" begin="1" end="2" frame="proper_name(sg,'PER')" id="5" lcat="np" lemma="Hollevoet" neclass="PER" num="sg" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Hollevoet" sense="Hollevoet" spectype="deeleigen"/>
+        <node isWord="true" end="1" begin="0" frame="proper_name(sg,'PER')" id="4" lcat="np" lemma="Emieltje" neclass="PER" num="sg" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Emieltje" sense="Emieltje" spectype="deeleigen" word="Emieltje"/>
+        <node isWord="true" end="2" begin="1" frame="proper_name(sg,'PER')" id="5" lcat="np" lemma="Hollevoet" neclass="PER" num="sg" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Hollevoet" sense="Hollevoet" spectype="deeleigen" word="Hollevoet"/>
       </node>
       <node begin="3" cat="mwu" end="5" his="name" his_1="not_begin" id="6" rel="cnj">
-        <node word_zv="Charles" word="Charles" begin="3" end="4" frame="proper_name(both,'PER')" id="7" lcat="np" lemma="Charles" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Charles" sense="Charles" spectype="deeleigen"/>
-        <node word_zv="Vermeens" word="Vermeens" begin="4" end="5" frame="proper_name(both,'PER')" id="8" lcat="np" lemma="Vermeens" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Vermeens" sense="Vermeens" spectype="deeleigen"/>
+        <node isWord="true" end="4" begin="3" frame="proper_name(both,'PER')" id="7" lcat="np" lemma="Charles" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Charles" sense="Charles" spectype="deeleigen" word="Charles"/>
+        <node isWord="true" end="5" begin="4" frame="proper_name(both,'PER')" id="8" lcat="np" lemma="Vermeens" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Vermeens" sense="Vermeens" spectype="deeleigen" word="Vermeens"/>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="5" end="6" frame="punct(hellip)" his="skip" id="9" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node isWord="true" end="6" begin="5" frame="punct(hellip)" his="skip" id="9" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0411">Emieltje Hollevoet ... Charles Vermeens ...</sentence>
   <comments>

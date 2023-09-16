@@ -1,25 +1,25 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="10" id="0" rel="top">
-    <node word_zv="s" word="s" begin="3" end="4" genus="zijd" getal="ev" graad="basis" id="1" lemma="s" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="s" sense="s"/>
-    <node word_zv="..." word="..." begin="4" end="5" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="4" begin="3" genus="zijd" getal="ev" graad="basis" id="1" lemma="s" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="s" sense="s" word="s"/>
+    <node isWord="true" end="5" begin="4" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
     <node begin="0" cat="du" end="9" id="3" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="4" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="4" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="9" id="5" rel="nucl">
         <node begin="1" cat="np" end="3" id="6" rel="su">
-          <node word_zv="die" word="die" begin="1" buiging="zonder" end="2" id="7" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-          <node word_zv="boot" word="boot" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="8" lemma="boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="boot" sense="boot"/>
+          <node isWord="true" end="2" begin="1" buiging="zonder" id="7" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+          <node isWord="true" end="3" begin="2" genus="zijd" getal="ev" graad="basis" id="8" lemma="boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="boot" sense="boot" word="boot"/>
         </node>
-        <node word_zv="stond" word="stoeg" begin="5" end="6" id="9" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sense="sta" wvorm="pv"/>
+        <node isWord="true" end="6" begin="5" id="9" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sense="sta" word="stond" wvorm="pv"/>
         <node begin="6" cat="oti" end="9" id="10" rel="mod">
-          <node word_zv="voor" word="voo" begin="6" end="7" id="11" lemma="voor" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="voor" sense="om" vztype="init"/>
+          <node isWord="true" end="7" begin="6" id="11" lemma="voor" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="voor" sense="om" vztype="init" word="voor"/>
           <node begin="7" cat="ti" end="9" id="12" rel="body">
-            <node word_zv="te" word="te" begin="7" end="8" id="13" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init"/>
-            <node word_zv="zinken" word="zinken" begin="8" buiging="zonder" end="9" id="14" lemma="zinken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="body" root="zink" sense="zink" wvorm="inf"/>
+            <node isWord="true" end="8" begin="7" id="13" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init" word="te"/>
+            <node isWord="true" end="9" begin="8" buiging="zonder" id="14" lemma="zinken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="body" root="zink" sense="zink" word="zinken" wvorm="inf"/>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="." word="." begin="9" end="10" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="10" begin="9" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0540c">en die boot s ... stond voor te zinken .</sentence>
   <comments>

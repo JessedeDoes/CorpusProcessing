@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node word_zv="..." word="..." begin="3" end="4" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="4" begin="3" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
     <node begin="0" cat="du" end="8" id="2" rel="--">
-      <node word_zv="maar" word="maar" begin="0" conjtype="neven" end="1" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="du" end="8" id="4" rel="nucl">
         <node begin="1" cat="np" end="3" id="5" rel="dp">
-          <node word_zv="een" word="e" begin="1" end="2" id="6" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-          <node word_zv="winterdag" word="winterdag" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="7" lemma="winter_dag" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="winter_dag" sense="winter_dag"/>
+          <node isWord="true" end="2" begin="1" id="6" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+          <node isWord="true" end="3" begin="2" genus="zijd" getal="ev" graad="basis" id="7" lemma="winter_dag" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="winter_dag" sense="winter_dag" word="winterdag"/>
         </node>
         <node begin="4" cat="cp" end="8" id="8" rel="dp">
-          <node word_zv="als" word="als" begin="4" conjtype="onder" end="5" id="9" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+          <node isWord="true" end="5" begin="4" conjtype="onder" id="9" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
           <node begin="5" cat="ssub" end="8" id="10" rel="body">
-            <node word_zv="is" word="is" begin="6" end="7" id="11" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+            <node isWord="true" end="7" begin="6" id="11" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="is" wvorm="pv"/>
             <node begin="5" cat="conj" end="8" id="12" rel="predc">
-              <node word_zv="vier" word="vier" begin="5" end="6" id="13" lemma="vier" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vier" sense="vier"/>
-              <node word_zv="vierenhalf" word="vierenhalf" begin="7" end="8" id="14" lemma="vierenhalf" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vierenhalf" sense="vierenhalf"/>
+              <node isWord="true" end="6" begin="5" id="13" lemma="vier" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vier" sense="vier" word="vier"/>
+              <node isWord="true" end="8" begin="7" id="14" lemma="vierenhalf" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vierenhalf" sense="vierenhalf" word="vierenhalf"/>
             </node>
           </node>
         </node>

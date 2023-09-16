@@ -2,28 +2,28 @@
   <node begin="0" cat="top" end="12" id="0" rel="top">
     <node begin="0" cat="du" end="10" id="1" rel="--">
       <node begin="0" cat="du" end="5" id="2" rel="tag">
-        <node word_zv="maar" word="maar" begin="0" conjtype="neven" end="1" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+        <node isWord="true" end="1" begin="0" conjtype="neven" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
         <node begin="1" cat="cp" end="5" id="4" rel="nucl">
-          <node word_zv="als" word="an" begin="1" conjtype="onder" end="2" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+          <node isWord="true" end="2" begin="1" conjtype="onder" id="5" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
           <node begin="2" cat="ssub" end="5" id="6" rel="body">
-            <node word_zv="ze" word="ze" begin="2" end="3" getal="mv" id="7" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-            <node word_zv="dood" word="dood" begin="3" buiging="zonder" end="4" graad="basis" id="8" lemma="dood" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="dood" sense="dood"/>
-            <node word_zv="zijn" word="zijn" begin="4" end="5" id="9" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+            <node isWord="true" end="3" begin="2" getal="mv" id="7" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+            <node isWord="true" end="4" begin="3" buiging="zonder" graad="basis" id="8" lemma="dood" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="dood" sense="dood" word="dood"/>
+            <node isWord="true" end="5" begin="4" id="9" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="zijn" wvorm="pv"/>
           </node>
         </node>
       </node>
       <node begin="5" cat="smain" end="10" id="10" rel="nucl">
-        <node word_zv="je" word="je" begin="5" end="6" getal="ev" id="11" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
-        <node word_zv="krijgt" word="krijg" begin="6" end="7" id="12" lemma="krijgen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="krijg" sense="krijg" wvorm="pv"/>
-        <node word_zv="ze" word="ze" begin="7" end="8" getal="mv" id="13" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node isWord="true" end="6" begin="5" getal="ev" id="11" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+        <node isWord="true" end="7" begin="6" id="12" lemma="krijgen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="krijg" sense="krijg" word="krijgt" wvorm="pv"/>
+        <node isWord="true" end="8" begin="7" getal="mv" id="13" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
         <node begin="8" cat="advp" end="10" id="14" rel="mod">
-          <node word_zv="niet" word="nie" begin="8" end="9" id="15" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="hd" root="niet" sense="niet"/>
-          <node word_zv="meer" word="meer" begin="9" buiging="zonder" end="10" graad="comp" id="16" lemma="veel" naamval="stan" pdtype="grad" pos="adv" positie="vrij" postag="VNW(onbep,grad,stan,vrij,zonder,comp)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep"/>
+          <node isWord="true" end="9" begin="8" id="15" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="hd" root="niet" sense="niet" word="niet"/>
+          <node isWord="true" end="10" begin="9" buiging="zonder" graad="comp" id="16" lemma="veel" naamval="stan" pdtype="grad" pos="adv" positie="vrij" postag="VNW(onbep,grad,stan,vrij,zonder,comp)" pt="vnw" rel="mod" root="veel" sense="veel" vwtype="onbep" word="meer"/>
         </node>
       </node>
     </node>
-    <node word_zv="hé" word="hé" begin="10" end="11" id="17" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word_zv="." word="." begin="11" end="12" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="11" begin="10" id="17" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node isWord="true" end="12" begin="11" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0096b">maar als ze dood zijn je krijgt ze niet meer hé .</sentence>
   <comments>

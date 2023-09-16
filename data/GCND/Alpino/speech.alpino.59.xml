@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="6" id="3" rel="nucl">
-        <node word_zv="we" word="me" begin="1" end="2" getal="mv" id="4" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
-        <node word_zv="en" word="n" begin="2" end="3" id="5" lemma="en" pos="adv" postag="BW()" pt="bw" rel="mod" root="en" sense="en"/>
-        <node word_zv="hadden" word="an" begin="3" end="4" id="6" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+        <node isWord="true" end="2" begin="1" getal="mv" id="4" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="en" pos="adv" postag="BW()" pt="bw" rel="mod" root="en" sense="en" word="en"/>
+        <node isWord="true" end="4" begin="3" id="6" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" word="hadden" wvorm="pv"/>
         <node begin="4" cat="np" end="6" id="7" rel="obj1">
-          <node word_zv="geen" word="geen" begin="4" buiging="zonder" end="5" id="8" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep"/>
-          <node word_zv="mazout" word="mazout" begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="9" lemma="mazout" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="mazout" sense="mazout"/>
+          <node isWord="true" end="5" begin="4" buiging="zonder" id="8" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep" word="geen"/>
+          <node isWord="true" end="6" begin="5" genus="zijd" getal="ev" graad="basis" id="9" lemma="mazout" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="mazout" sense="mazout" word="mazout"/>
         </node>
       </node>
     </node>
-    <node word_zv="." word="." begin="6" end="7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="7" begin="6" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0164a">en we en hadden geen mazout .</sentence>
   <comments>

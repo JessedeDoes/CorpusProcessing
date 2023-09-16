@@ -1,23 +1,23 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="9" id="0" rel="top">
     <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="7" id="3" rel="nucl">
-        <node word_zv="ik" word="k" begin="1" end="2" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-        <node word_zv="was" word="was" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node isWord="true" end="2" begin="1" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
         <node begin="1" cat="ti" end="7" id="6" rel="vc">
-          <node word_zv="te" word="te" begin="5" end="6" id="7" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init"/>
+          <node isWord="true" end="6" begin="5" id="7" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init" word="te"/>
           <node begin="1" cat="inf" end="7" id="8" rel="body">
             <node begin="1" end="2" id="9" index="1" rel="su"/>
-            <node word_zv="terwege" word="terwege" begin="3" end="4" id="10" lemma="terwege" pos="adv" postag="BW()" pt="bw" rel="mod" root="terwege" sense="terwege"/>
-            <node word_zv="niet" word="niet" begin="4" end="5" id="11" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet"/>
-            <node word_zv="gaan" word="gaan" begin="6" buiging="zonder" end="7" id="12" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+            <node isWord="true" end="4" begin="3" id="10" lemma="terwege" pos="adv" postag="BW()" pt="bw" rel="mod" root="terwege" sense="terwege" word="terwege"/>
+            <node isWord="true" end="5" begin="4" id="11" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet" word="niet"/>
+            <node isWord="true" end="7" begin="6" buiging="zonder" id="12" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="7" end="8" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word_zv="ho" word="ho" begin="8" end="9" id="14" lemma="ho" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ho" sense="ho"/>
+    <node isWord="true" end="8" begin="7" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node isWord="true" end="9" begin="8" id="14" lemma="ho" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ho" sense="ho" word="ho"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0472">en ik was terwege niet te gaan ... ho</sentence>
   <comments>

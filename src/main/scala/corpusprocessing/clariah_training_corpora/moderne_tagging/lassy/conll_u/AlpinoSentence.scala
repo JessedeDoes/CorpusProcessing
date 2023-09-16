@@ -1,5 +1,7 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
+import utils.PostProcessXML
+
 import java.io.{File, PrintWriter}
 import scala.collection.immutable
 import scala.xml._
@@ -19,6 +21,9 @@ import Logje._
 
 
 case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, external_source: Option[String] = None) {
+
+
+
 
   val sentid: String = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
   val text: String = (alpino \\ "sentence").text

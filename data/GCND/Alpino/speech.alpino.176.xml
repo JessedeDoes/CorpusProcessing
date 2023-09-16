@@ -2,21 +2,21 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:03" cats="1" skips="0"/>
   <node begin="0" cat="top" end="8" id="0" rel="top">
     <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node word_zv="maar" word="maar" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar" word="maar"/>
       <node begin="1" cat="cp" end="7" id="3" rel="nucl">
-        <node word_zv="als" word="an" begin="1" conjtype="onder" end="2" frame="complementizer(als)" his="normal" his_1="normal" id="4" lcat="cp" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sc="als" sense="als"/>
+        <node isWord="true" end="2" begin="1" conjtype="onder" frame="complementizer(als)" his="normal" his_1="normal" id="4" lcat="cp" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sc="als" sense="als" word="als"/>
         <node begin="2" cat="ssub" end="7" id="5" rel="body">
-          <node word_zv="ze" word="ze" begin="2" case="both" def="def" end="3" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="6" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+          <node isWord="true" end="3" begin="2" case="both" def="def" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="6" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh" word="ze"/>
           <node begin="3" cat="np" end="6" id="7" rel="obj1">
-            <node word_zv="de" word="de" begin="3" end="4" frame="determiner(de)" his="normal" his_1="normal" id="8" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-            <node word_zv="slechte" word="slechte" aform="base" begin="4" buiging="met-e" end="5" frame="adjective(e)" graad="basis" his="normal" his_1="normal" id="9" infl="e" lcat="ap" lemma="slecht" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="slecht" sense="slecht" vform="adj"/>
-            <node word_zv="wind" word="wind" begin="5" end="6" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="wind" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="wind" sense="wind"/>
+            <node isWord="true" end="4" begin="3" frame="determiner(de)" his="normal" his_1="normal" id="8" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+            <node isWord="true" end="5" begin="4" aform="base" buiging="met-e" frame="adjective(e)" graad="basis" his="normal" his_1="normal" id="9" infl="e" lcat="ap" lemma="slecht" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="slecht" sense="slecht" vform="adj" word="slechte"/>
+            <node isWord="true" end="6" begin="5" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="wind" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="wind" sense="wind" word="wind"/>
           </node>
-          <node word_zv="hadden" word="hadden" begin="6" end="7" frame="verb(hebben,past(pl),transitive_ndev)" his="normal" his_1="normal" id="11" infl="pl" lcat="ssub" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sc="transitive_ndev" sense="heb" tense="past" wvorm="pv"/>
+          <node isWord="true" end="7" begin="6" frame="verb(hebben,past(pl),transitive_ndev)" his="normal" his_1="normal" id="11" infl="pl" lcat="ssub" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sc="transitive_ndev" sense="heb" tense="past" word="hadden" wvorm="pv"/>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="7" end="8" frame="punct(hellip)" his="skip" id="12" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node isWord="true" end="8" begin="7" frame="punct(hellip)" his="skip" id="12" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0051">maar als ze de slechte wind hadden ...</sentence>
   <comments>

@@ -1,16 +1,16 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="5" id="0" rel="top">
     <node begin="0" cat="du" end="4" id="1" rel="--">
-      <node word_zv="maar" word="maar" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="cp" end="4" id="3" rel="nucl">
-        <node word_zv="als" word="an" begin="1" conjtype="onder" end="2" id="4" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node isWord="true" end="2" begin="1" conjtype="onder" id="4" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
         <node begin="2" cat="ssub" end="4" id="5" rel="body">
-          <node word_zv="ze" word="ze" begin="2" end="3" getal="mv" id="6" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-          <node word_zv="leefden" word="leefden" begin="3" end="4" id="7" lemma="leven" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="leef" sense="leef" wvorm="pv"/>
+          <node isWord="true" end="3" begin="2" getal="mv" id="6" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+          <node isWord="true" end="4" begin="3" id="7" lemma="leven" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="leef" sense="leef" word="leefden" wvorm="pv"/>
         </node>
       </node>
     </node>
-    <node word_zv="hé" word="hé" begin="4" end="5" id="8" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node isWord="true" end="5" begin="4" id="8" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0087">maar als ze leefden hé</sentence>
   <comments>

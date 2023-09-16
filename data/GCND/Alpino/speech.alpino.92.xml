@@ -1,25 +1,25 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="8" id="0" rel="top">
     <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="sv1" end="7" id="3" rel="nucl">
-        <node word_zv="zegt" word="zegt" begin="1" end="2" id="4" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
+        <node isWord="true" end="2" begin="1" id="4" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zegt" wvorm="pv"/>
         <node begin="2" cat="np" end="7" id="5" rel="su">
           <node begin="2" cat="mwu" end="4" id="6" rel="hd">
-            <node word_zv="Gustje" word="Gustje" begin="2" end="3" id="7" lemma="Gustje" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Gustje" sense="Gustje" spectype="deeleigen"/>
-            <node word_zv="Seys" word="Seys" begin="3" end="4" id="8" lemma="Seys" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Seys" sense="Seys" spectype="deeleigen"/>
+            <node isWord="true" end="3" begin="2" id="7" lemma="Gustje" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Gustje" sense="Gustje" spectype="deeleigen" word="Gustje"/>
+            <node isWord="true" end="4" begin="3" id="8" lemma="Seys" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Seys" sense="Seys" spectype="deeleigen" word="Seys"/>
           </node>
           <node begin="4" cat="pp" end="7" id="9" rel="mod">
-            <node word_zv="van" word="van" begin="4" end="5" id="10" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+            <node isWord="true" end="5" begin="4" id="10" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
             <node begin="5" cat="mwu" end="7" id="11" rel="obj1">
-              <node word_zv="Oostende" word="Oostende" begin="5" end="6" genus="onz" getal="ev" graad="basis" id="12" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="mwp" root="Oostende" sense="Oostende"/>
-              <node word_zv="achttien" word="achttiene" begin="6" end="7" id="13" lemma="achttien" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="mwp" root="achttien" sense="achttien"/>
+              <node isWord="true" end="6" begin="5" genus="onz" getal="ev" graad="basis" id="12" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="mwp" root="Oostende" sense="Oostende" word="Oostende"/>
+              <node isWord="true" end="7" begin="6" id="13" lemma="achttien" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="mwp" root="achttien" sense="achttien" word="achttien"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="7" end="8" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="8" begin="7" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0165">en zegt Gustje Seys van Oostende achttien ...</sentence>
   <comments>

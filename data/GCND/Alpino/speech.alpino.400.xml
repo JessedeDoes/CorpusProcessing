@@ -1,24 +1,24 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="8" id="0" rel="top">
     <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="7" id="3" rel="nucl">
         <node begin="1" cat="whrel" end="5" id="4" rel="predc">
-          <node word_zv="die" word="die" begin="1" end="2" getal="getal" id="5" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr"/>
+          <node isWord="true" end="2" begin="1" getal="getal" id="5" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr" word="die"/>
           <node begin="1" cat="ssub" end="5" id="6" rel="body">
             <node begin="1" end="2" id="7" index="1" rel="su"/>
             <node begin="2" cat="np" end="4" id="8" rel="predc">
-              <node word_zv="de" word="den" begin="2" end="3" id="9" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-              <node word_zv="eerste" word="eersten" begin="3" end="4" id="10" lemma="één" naamval="stan" numtype="rang" pos="num" positie="prenom" postag="TW(rang,prenom,stan)" pt="tw" rel="mod" root="één" sense="één"/>
+              <node isWord="true" end="3" begin="2" id="9" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+              <node isWord="true" end="4" begin="3" id="10" lemma="één" naamval="stan" numtype="rang" pos="num" positie="prenom" postag="TW(rang,prenom,stan)" pt="tw" rel="mod" root="één" sense="één" word="eerste"/>
             </node>
-            <node word_zv="was" word="was" begin="4" end="5" id="11" lemma="was" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="was" sense="was" wvorm="pv"/>
+            <node isWord="true" end="5" begin="4" id="11" lemma="was" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="was" sense="was" word="was" wvorm="pv"/>
           </node>
         </node>
-        <node word_zv="was" word="was" begin="5" end="6" id="12" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
-        <node word_zv="Bouwer" word="Bouwer" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="13" lemma="Bouwer" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="su" root="Bouwer" sense="Bouwer"/>
+        <node isWord="true" end="6" begin="5" id="12" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
+        <node isWord="true" end="7" begin="6" genus="zijd" getal="ev" graad="basis" id="13" lemma="Bouwer" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="su" root="Bouwer" sense="Bouwer" word="Bouwer"/>
       </node>
     </node>
-    <node word_zv="." word="." begin="7" end="8" id="14" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="8" begin="7" id="14" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0009">en die de eerste was was Bouwer .</sentence>
   <comments>

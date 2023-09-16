@@ -2,13 +2,13 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
   <node begin="0" cat="top" end="5" id="0" rel="top">
     <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sc="root" sense="maar" word="maar"/>
       <node begin="1" cat="smain" end="5" id="3" rel="nucl">
-        <node word_zv="dat" word="da" begin="1" end="2" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="4" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh"/>
-        <node word_zv="ging" word="ging" begin="2" end="3" frame="verb(zijn,past(sg),intransitive)" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ga" sc="intransitive" sense="ga" stype="declarative" tense="past" wvorm="pv"/>
+        <node isWord="true" end="2" begin="1" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="4" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh" word="dat"/>
+        <node isWord="true" end="3" begin="2" frame="verb(zijn,past(sg),intransitive)" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ga" sc="intransitive" sense="ga" stype="declarative" tense="past" word="ging" wvorm="pv"/>
         <node begin="3" cat="advp" end="5" id="6" rel="mod">
-          <node word_zv="nog" word="nog" begin="3" end="4" frame="modal_adverb" his="normal" his_1="normal" id="7" lcat="advp" lemma="nog" pos="adv" postag="BW()" pt="bw" rel="mod" root="nog" sc="modal" sense="nog"/>
-          <node word_zv="altijd" word="assan" begin="4" end="5" frame="sentence_adverb" his="normal" his_1="normal" id="8" lcat="advp" lemma="altijd" pos="adv" postag="BW()" pt="bw" rel="hd" root="altijd" sense="altijd" special="sentence"/>
+          <node isWord="true" end="4" begin="3" frame="modal_adverb" his="normal" his_1="normal" id="7" lcat="advp" lemma="nog" pos="adv" postag="BW()" pt="bw" rel="mod" root="nog" sc="modal" sense="nog" word="nog"/>
+          <node isWord="true" end="5" begin="4" frame="sentence_adverb" his="normal" his_1="normal" id="8" lcat="advp" lemma="altijd" pos="adv" postag="BW()" pt="bw" rel="hd" root="altijd" sense="altijd" special="sentence" word="altijd"/>
         </node>
       </node>
     </node>

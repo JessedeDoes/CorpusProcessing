@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="smain" end="7" id="3" rel="nucl">
         <node begin="1" cat="rel" end="3" id="4" index="1" rel="su">
-          <node word_zv="die" word="die" begin="1" end="2" getal="getal" id="5" index="2" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr"/>
+          <node isWord="true" end="2" begin="1" getal="getal" id="5" index="2" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr" word="die"/>
           <node begin="1" cat="ssub" end="3" id="6" rel="body">
             <node begin="1" end="2" id="7" index="2" rel="su"/>
-            <node word_zv="achterkwamen" word="achterkwamen" begin="2" end="3" id="8" lemma="achter_komen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="kom_achter" sense="kom_achter" wvorm="pv"/>
+            <node isWord="true" end="3" begin="2" id="8" lemma="achter_komen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="kom_achter" sense="kom_achter" word="achterkwamen" wvorm="pv"/>
           </node>
         </node>
-        <node word_zv="werden" word="wierd" begin="3" end="4" id="9" lemma="worden" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="word" sense="word" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" id="9" lemma="worden" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="word" sense="word" word="werden" wvorm="pv"/>
         <node begin="1" cat="ppart" end="7" id="10" rel="vc">
           <node begin="1" end="3" id="11" index="1" rel="obj1"/>
-          <node word_zv="ook" word="ook" begin="4" end="5" id="12" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
-          <node word_zv="allemaal" word="al" begin="5" end="6" id="13" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal"/>
-          <node word_zv="tegengehouden" word="tegengehouden" begin="6" buiging="zonder" end="7" id="14" lemma="tegen_houden" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="houd_tegen" sense="houd_tegen" wvorm="vd"/>
+          <node isWord="true" end="5" begin="4" id="12" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" word="ook"/>
+          <node isWord="true" end="6" begin="5" id="13" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" word="allemaal"/>
+          <node isWord="true" end="7" begin="6" buiging="zonder" id="14" lemma="tegen_houden" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="houd_tegen" sense="houd_tegen" word="tegengehouden" wvorm="vd"/>
         </node>
       </node>
     </node>

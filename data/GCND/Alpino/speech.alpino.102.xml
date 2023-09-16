@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="8" id="0" rel="top">
     <node begin="0" cat="du" end="8" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="8" id="3" rel="nucl">
-        <node word_zv="ik" word="k" begin="1" end="2" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-        <node word_zv="zou" word="zoun" begin="2" end="3" id="5" lemma="zullen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zal" sense="zal" wvorm="pv"/>
-        <node word_zv="ik" word="ik" begin="3" end="4" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node isWord="true" end="2" begin="1" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="zullen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zal" sense="zal" word="zou" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
         <node begin="1" cat="inf" end="8" id="7" rel="vc">
           <node begin="1" end="2" id="8" index="1" rel="su"/>
           <node begin="4" cat="pp" end="7" id="9" rel="ld">
-            <node word_zv="naar" word="naa" begin="4" end="5" id="10" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
+            <node isWord="true" end="5" begin="4" id="10" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
             <node begin="5" cat="np" end="7" id="11" rel="obj1">
-              <node word_zv="de" word="de" begin="5" end="6" id="12" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-              <node word_zv="gazet" word="gazette" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="13" lemma="gazet" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="gazet" sense="gazet"/>
+              <node isWord="true" end="6" begin="5" id="12" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+              <node isWord="true" end="7" begin="6" genus="zijd" getal="ev" graad="basis" id="13" lemma="gazet" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="gazet" sense="gazet" word="gazet"/>
             </node>
           </node>
-          <node word_zv="gaan" word="gaan" begin="7" buiging="zonder" end="8" id="14" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+          <node isWord="true" end="8" begin="7" buiging="zonder" id="14" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
         </node>
       </node>
     </node>

@@ -2,20 +2,20 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="cp" end="6" id="1" rel="--">
-      <node word_zv="als" word="a" begin="0" conjtype="onder" end="1" frame="complementizer(als)" his="normal" his_1="normal" id="2" lcat="cp" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sc="als" sense="als"/>
+      <node isWord="true" end="1" begin="0" conjtype="onder" frame="complementizer(als)" his="normal" his_1="normal" id="2" lcat="cp" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sc="als" sense="als" word="als"/>
       <node begin="1" cat="ssub" end="6" id="3" rel="body">
-        <node word_zv="je" word="je" begin="1" case="both" def="def" end="2" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+        <node isWord="true" end="2" begin="1" case="both" def="def" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh" word="je"/>
         <node begin="2" cat="pp" end="5" id="5" rel="ld">
-          <node word_zv="naar" word="naa" begin="2" end="3" frame="preposition(naar,[toe])" his="normal" his_1="normal" id="6" lcat="pp" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
+          <node isWord="true" end="3" begin="2" frame="preposition(naar,[toe])" his="normal" his_1="normal" id="6" lcat="pp" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
           <node begin="3" cat="np" end="5" id="7" rel="obj1">
-            <node word_zv="de" word="de" begin="3" end="4" frame="determiner(de)" his="normal" his_1="normal" id="8" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-            <node word_zv="grond" word="grond" begin="4" end="5" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="grond" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="grond" sense="grond"/>
+            <node isWord="true" end="4" begin="3" frame="determiner(de)" his="normal" his_1="normal" id="8" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+            <node isWord="true" end="5" begin="4" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="grond" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="grond" sense="grond" word="grond"/>
           </node>
         </node>
-        <node word_zv="gaat" word="gaat" begin="5" end="6" frame="verb(zijn,sg3,ld_pp)" his="normal" his_1="normal" id="10" infl="sg3" lcat="ssub" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="ld_pp" sense="ga" tense="present" wvorm="pv"/>
+        <node isWord="true" end="6" begin="5" frame="verb(zijn,sg3,ld_pp)" his="normal" his_1="normal" id="10" infl="sg3" lcat="ssub" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="ld_pp" sense="ga" tense="present" word="gaat" wvorm="pv"/>
       </node>
     </node>
-    <node word_zv="." word="." begin="6" end="7" frame="punct(punt)" his="normal" his_1="normal" id="11" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
+    <node isWord="true" end="7" begin="6" frame="punct(punt)" his="normal" his_1="normal" id="11" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0331b">als je naar de grond gaat .</sentence>
   <comments>

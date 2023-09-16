@@ -1,13 +1,13 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="5" id="0" rel="top">
     <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="sv1" end="5" id="3" rel="nucl">
-        <node word_zv="kijk" word="kijken" begin="1" end="2" id="4" lemma="kijken" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="kijk" sense="kijk" wvorm="pv"/>
-        <node word_zv="ik" word="ik" begin="2" end="3" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node isWord="true" end="2" begin="1" id="4" lemma="kijken" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="kijk" sense="kijk" word="kijk" wvorm="pv"/>
+        <node isWord="true" end="3" begin="2" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
         <node begin="3" cat="pp" end="5" id="6" rel="ld">
-          <node word_zv="naar" word="naar" begin="3" end="4" id="7" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
-          <node word_zv="achter" word="achter" begin="4" end="5" id="8" lemma="achter" pos="adv" postag="VZ(fin)" pt="vz" rel="obj1" root="achter" sense="achter" vztype="fin"/>
+          <node isWord="true" end="4" begin="3" id="7" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
+          <node isWord="true" end="5" begin="4" id="8" lemma="achter" pos="adv" postag="VZ(fin)" pt="vz" rel="obj1" root="achter" sense="achter" vztype="fin" word="achter"/>
         </node>
       </node>
     </node>

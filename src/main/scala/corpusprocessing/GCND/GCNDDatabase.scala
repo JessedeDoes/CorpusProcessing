@@ -43,7 +43,20 @@ gcnd=# select count(*) from elan_annotatie where tekst_lv is null;
 
 - lichte en zware vervlaamsing moeilijk te aligneren
 
+De Alpino analyses zijn niet helemaal volgens de Lassy guidelines:
+
+
+<node begin="8" cat="np" end="10" id="7" rel="su">
+    <node isWord="true" end="9" begin="5" buiging="zonder" graad="basis" id="8" lemma="weinig" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,zonder,agr,basis)" pt="vnw" rel="hd" root="weinig" sense="weinig" vwtype="onbep" word="weinig"/>
+    <node isWord="true" end="10" begin="6" getal="mv" graad="basis" id="9" lemma="schip" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="schip" sense="schip" word="schepen"/>
+</node>
+
+
+Weinig zou een det relatie met schip moeten hebben.
+Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
+
  */
+
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(1000,4)
   val config = new Configuration(name="gcnd", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")

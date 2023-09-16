@@ -1,25 +1,25 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="10" id="0" rel="top">
     <node begin="0" cat="du" end="9" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="9" id="3" rel="nucl">
         <node begin="1" cat="np" end="4" id="4" rel="su">
-          <node word_zv="dat" word="da" begin="1" buiging="zonder" end="2" id="5" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw"/>
-          <node word_zv="vers" word="vers" begin="2" buiging="zonder" end="3" graad="basis" id="6" lemma="vers" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="vers" sense="vers"/>
-          <node word_zv="water" word="water" begin="3" end="4" genus="onz" getal="ev" graad="basis" id="7" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water"/>
+          <node isWord="true" end="2" begin="1" buiging="zonder" id="5" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" word="dat"/>
+          <node isWord="true" end="3" begin="2" buiging="zonder" graad="basis" id="6" lemma="vers" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="vers" sense="vers" word="vers"/>
+          <node isWord="true" end="4" begin="3" genus="onz" getal="ev" graad="basis" id="7" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water" word="water"/>
         </node>
-        <node word_zv="vecht" word="vecht" begin="4" end="5" id="8" lemma="vechten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="vecht" sense="vecht-tegen" wvorm="pv"/>
+        <node isWord="true" end="5" begin="4" id="8" lemma="vechten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="vecht" sense="vecht-tegen" word="vecht" wvorm="pv"/>
         <node begin="5" cat="pp" end="9" id="9" rel="pc">
-          <node word_zv="tegen" word="tegen" begin="5" end="6" id="10" lemma="tegen" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="tegen" sense="tegen" vztype="init"/>
+          <node isWord="true" end="6" begin="5" id="10" lemma="tegen" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="tegen" sense="tegen" vztype="init" word="tegen"/>
           <node begin="6" cat="np" end="9" id="11" rel="obj1">
-            <node word_zv="het" word="t" begin="6" end="7" id="12" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
-            <node word_zv="zout" word="zout" begin="7" buiging="zonder" end="8" graad="basis" id="13" lemma="zout" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="zout" sense="zout"/>
-            <node word_zv="water" word="water" begin="8" end="9" genus="onz" getal="ev" graad="basis" id="14" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water"/>
+            <node isWord="true" end="7" begin="6" id="12" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+            <node isWord="true" end="8" begin="7" buiging="zonder" graad="basis" id="13" lemma="zout" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="zout" sense="zout" word="zout"/>
+            <node isWord="true" end="9" begin="8" genus="onz" getal="ev" graad="basis" id="14" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water" word="water"/>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="." word="." begin="9" end="10" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="10" begin="9" id="15" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0336c">en dat vers water vecht tegen het zout water .</sentence>
   <comments>

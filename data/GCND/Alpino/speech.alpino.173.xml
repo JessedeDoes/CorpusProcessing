@@ -1,37 +1,37 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:05" cats="1" skips="0"/>
   <node begin="0" cat="top" end="16" id="0" rel="top">
-    <node word_zv="," word="," begin="5" end="6" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma"/>
-    <node word_zv="," word="," begin="7" end="8" frame="punct(komma)" his="normal" his_1="normal" id="2" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma"/>
+    <node isWord="true" end="6" begin="5" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
+    <node isWord="true" end="8" begin="7" frame="punct(komma)" his="normal" his_1="normal" id="2" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="13" id="3" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="4" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="4" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
       <node begin="1" cat="du" end="13" id="5" rel="nucl">
-        <node word_zv="meneer" word="meneer" begin="6" end="7" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="meneer" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" rnum="sg" root="meneer" sense="meneer"/>
+        <node isWord="true" end="7" begin="6" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="meneer" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" rnum="sg" root="meneer" sense="meneer" word="meneer"/>
         <node begin="1" cat="smain" end="13" id="7" rel="nucl">
-          <node word_zv="je" word="je" begin="1" case="both" def="def" end="2" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="8" index="1" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
-          <node word_zv="moet" word="moe" begin="2" end="3" frame="verb('hebben/zijn',sg,modifier(aux(inf)))" his="normal" his_1="normal" id="9" infl="sg" lcat="smain" lemma="moeten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="moet" sc="modifier(aux(inf))" sense="moet" stype="declarative" tense="present" wvorm="pv"/>
+          <node isWord="true" end="2" begin="1" case="both" def="def" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="8" index="1" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh" word="je"/>
+          <node isWord="true" end="3" begin="2" frame="verb('hebben/zijn',sg,modifier(aux(inf)))" his="normal" his_1="normal" id="9" infl="sg" lcat="smain" lemma="moeten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="moet" sc="modifier(aux(inf))" sense="moet" stype="declarative" tense="present" word="moet" wvorm="pv"/>
           <node begin="1" cat="inf" end="13" id="10" rel="vc">
             <node begin="1" end="2" id="11" index="1" rel="su"/>
-            <node word_zv="niet" word="nie" begin="3" end="4" frame="adverb" his="normal" his_1="normal" id="12" lcat="advp" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet"/>
-            <node word_zv="peinzen" word="peinzen" begin="4" buiging="zonder" end="5" frame="verb(hebben,inf,sbar)" his="normal" his_1="normal" id="13" infl="inf" lcat="inf" lemma="peinzen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="peins" sc="sbar" sense="peins" wvorm="inf"/>
+            <node isWord="true" end="4" begin="3" frame="adverb" his="normal" his_1="normal" id="12" lcat="advp" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet" word="niet"/>
+            <node isWord="true" end="5" begin="4" buiging="zonder" frame="verb(hebben,inf,sbar)" his="normal" his_1="normal" id="13" infl="inf" lcat="inf" lemma="peinzen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="peins" sc="sbar" sense="peins" word="peinzen" wvorm="inf"/>
             <node begin="8" cat="cp" end="13" id="14" rel="vc">
-              <node word_zv="dat" word="dat" begin="8" conjtype="onder" end="9" frame="complementizer(dat)" his="normal" his_1="normal" id="15" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat"/>
+              <node isWord="true" end="9" begin="8" conjtype="onder" frame="complementizer(dat)" his="normal" his_1="normal" id="15" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat" word="dat"/>
               <node begin="9" cat="ssub" end="13" id="16" rel="body">
-                <node word_zv="er" word="er" begin="9" end="10" frame="er_vp_adverb" getal="getal" his="normal" his_1="normal" id="17" lcat="advp" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" special="er" status="red" vwtype="aanw"/>
+                <node isWord="true" end="10" begin="9" frame="er_vp_adverb" getal="getal" his="normal" his_1="normal" id="17" lcat="advp" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" special="er" status="red" vwtype="aanw" word="er"/>
                 <node begin="10" cat="np" end="12" id="18" rel="su">
-                  <node word_zv="geen" word="geen" begin="10" buiging="zonder" end="11" frame="determiner(geen,nwh,mod,pro,yparg,nwkpro,geen)" his="normal" his_1="normal" id="19" infl="geen" lcat="detp" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep" wh="nwh"/>
-                  <node word_zv="zee" word="zee" begin="11" end="12" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="20" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="zee" sense="zee"/>
+                  <node isWord="true" end="11" begin="10" buiging="zonder" frame="determiner(geen,nwh,mod,pro,yparg,nwkpro,geen)" his="normal" his_1="normal" id="19" infl="geen" lcat="detp" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep" wh="nwh" word="geen"/>
+                  <node isWord="true" end="12" begin="11" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="20" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="zee" sense="zee" word="zee"/>
                 </node>
-                <node word_zv="stond" word="stoeg" begin="12" end="13" frame="verb(hebben,past(sg),intransitive)" his="normal" his_1="normal" id="21" infl="sg" lcat="ssub" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sc="intransitive" sense="sta" tense="past" wvorm="pv"/>
+                <node isWord="true" end="13" begin="12" frame="verb(hebben,past(sg),intransitive)" his="normal" his_1="normal" id="21" infl="sg" lcat="ssub" lemma="staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta" sc="intransitive" sense="sta" tense="past" word="stond" wvorm="pv"/>
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="13" end="14" frame="punct(hellip)" his="skip" id="22" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
-    <node word_zv="zee" word="zee" begin="14" end="15" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="skip" id="23" lcat="--" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="zee" sense="zee"/>
-    <node word_zv="..." word="..." begin="15" end="16" frame="punct(hellip)" his="skip" id="24" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node isWord="true" end="14" begin="13" frame="punct(hellip)" his="skip" id="22" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node isWord="true" end="15" begin="14" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="skip" id="23" lcat="--" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="zee" sense="zee" word="zee"/>
+    <node isWord="true" end="16" begin="15" frame="punct(hellip)" his="skip" id="24" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0237a">en je moet niet peinzen , meneer , dat er geen zee stond ... zee ...</sentence>
   <comments>

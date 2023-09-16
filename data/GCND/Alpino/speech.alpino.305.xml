@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
     <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="5" id="3" rel="nucl">
-        <node word_zv="ze" word="ze" begin="1" end="2" getal="mv" id="4" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-        <node word_zv="zijn" word="zijn" begin="2" end="3" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
-        <node word_zv="zij" word="zijder" begin="3" end="4" getal="mv" id="6" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers"/>
+        <node isWord="true" end="2" begin="1" getal="mv" id="4" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="zijn" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" getal="mv" id="6" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers" word="zij"/>
         <node begin="1" cat="ppart" end="5" id="7" rel="vc">
           <node begin="1" end="2" id="8" index="1" rel="su"/>
-          <node word_zv="bijgedraaid" word="bijgedraaien" begin="4" buiging="zonder" end="5" id="9" lemma="bij_draaien" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="draai_bij" sense="draai_bij" wvorm="vd"/>
+          <node isWord="true" end="5" begin="4" buiging="zonder" id="9" lemma="bij_draaien" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="draai_bij" sense="draai_bij" word="bijgedraaid" wvorm="vd"/>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="5" end="6" id="10" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="6" begin="5" id="10" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0437">en ze zijn zij bijgedraaid ...</sentence>
   <comments>

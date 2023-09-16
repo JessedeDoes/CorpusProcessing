@@ -1,25 +1,25 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:14" cats="1" skips="0"/>
   <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node word_zv="," word="," begin="2" end="3" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma"/>
+    <node isWord="true" end="3" begin="2" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
     <node begin="0" cat="du" end="8" id="2" rel="--">
       <node begin="0" cat="smain" end="2" id="3" rel="tag">
-        <node word_zv="ik" word="k" begin="0" case="nom" def="def" end="1" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh"/>
-        <node word_zv="zeg" word="zeggen" begin="1" end="2" frame="verb(hebben,sg1,tr_sbar)" his="normal" his_1="normal" id="5" infl="sg1" lcat="smain" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sc="tr_sbar" sense="zeg" stype="declarative" tense="present" wvorm="pv"/>
+        <node isWord="true" end="1" begin="0" case="nom" def="def" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh" word="ik"/>
+        <node isWord="true" end="2" begin="1" frame="verb(hebben,sg1,tr_sbar)" his="normal" his_1="normal" id="5" infl="sg1" lcat="smain" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sc="tr_sbar" sense="zeg" stype="declarative" tense="present" word="zeg" wvorm="pv"/>
       </node>
       <node begin="3" cat="sv1" end="8" id="6" rel="nucl">
-        <node word_zv="stop" word="stopt" begin="3" dropped_agr="sg" dropped_prs="fir" end="4" frame="verb(zijn,sg1,intransitive)" his="normal" his_1="normal" id="7" infl="sg1" lcat="sv1" lemma="stoppen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="stop" sc="intransitive" sense="stop" stype="topic_drop" tense="present" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" dropped_agr="sg" dropped_prs="fir" frame="verb(zijn,sg1,intransitive)" his="normal" his_1="normal" id="7" infl="sg1" lcat="sv1" lemma="stoppen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="stop" sc="intransitive" sense="stop" stype="topic_drop" tense="present" word="stop" wvorm="pv"/>
         <node begin="4" cat="np" end="6" id="8" rel="mod">
-          <node word_zv="een" word="e" begin="4" end="5" frame="determiner(een)" his="normal" his_1="normal" id="9" infl="een" lcat="detp" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-          <node word_zv="keer" word="keer" begin="5" end="6" frame="tmp_noun(de,count,meas)" gen="de" genus="genus" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="keer" naamval="stan" ntype="soort" num="meas" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" rnum="sg" root="keer" sense="keer" special="tmp"/>
+          <node isWord="true" end="5" begin="4" frame="determiner(een)" his="normal" his_1="normal" id="9" infl="een" lcat="detp" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+          <node isWord="true" end="6" begin="5" frame="tmp_noun(de,count,meas)" gen="de" genus="genus" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="keer" naamval="stan" ntype="soort" num="meas" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" rnum="sg" root="keer" sense="keer" special="tmp" word="keer"/>
         </node>
         <node begin="6" cat="np" end="8" id="11" rel="mod">
-          <node word_zv="een" word="e" begin="6" end="7" frame="determiner(een)" his="normal" his_1="normal" id="12" infl="een" lcat="detp" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-          <node word_zv="beetje" word="beetje" begin="7" end="8" frame="mod_noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="dim" his="normal" his_1="normal" id="13" lcat="np" lemma="beetje" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" rnum="sg" root="beetje" sense="beetje" special="mod"/>
+          <node isWord="true" end="7" begin="6" frame="determiner(een)" his="normal" his_1="normal" id="12" infl="een" lcat="detp" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+          <node isWord="true" end="8" begin="7" frame="mod_noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="dim" his="normal" his_1="normal" id="13" lcat="np" lemma="beetje" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" rnum="sg" root="beetje" sense="beetje" special="mod" word="beetje"/>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="8" end="9" frame="punct(hellip)" his="skip" id="14" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node isWord="true" end="9" begin="8" frame="punct(hellip)" his="skip" id="14" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0540b">ik zeg , stop een keer een beetje ...</sentence>
   <comments>

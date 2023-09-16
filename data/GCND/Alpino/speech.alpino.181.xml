@@ -1,44 +1,44 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="19" id="0" rel="top">
-    <node word_zv="awel" word="awel" begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel"/>
-    <node word_zv="..." word="..." begin="2" end="3" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word_zv="hé" word="hé" begin="11" end="12" id="3" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word_zv="..." word="..." begin="12" end="13" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="1" begin="0" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel" word="awel"/>
+    <node isWord="true" end="3" begin="2" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node isWord="true" end="12" begin="11" id="3" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node isWord="true" end="13" begin="12" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
     <node begin="1" cat="du" end="18" id="5" rel="--">
-      <node word_zv="meneer" word="meneere" begin="1" end="2" genus="zijd" getal="ev" graad="basis" id="6" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer"/>
+      <node isWord="true" end="2" begin="1" genus="zijd" getal="ev" graad="basis" id="6" lemma="meneer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="tag" root="meneer" sense="meneer" word="meneer"/>
       <node begin="3" cat="du" end="18" id="7" rel="nucl">
         <node begin="3" cat="sv1" end="11" id="8" rel="tag">
-          <node word_zv="had" word="a" begin="3" end="4" id="9" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
-          <node word_zv="het" word="t" begin="4" end="5" genus="onz" getal="ev" id="10" index="1" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="noun" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
-          <node word_zv="allemaal" word="al" begin="5" end="6" id="11" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal"/>
+          <node isWord="true" end="4" begin="3" id="9" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" word="had" wvorm="pv"/>
+          <node isWord="true" end="5" begin="4" genus="onz" getal="ev" id="10" index="1" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="noun" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
+          <node isWord="true" end="6" begin="5" id="11" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" word="allemaal"/>
           <node begin="4" cat="ppart" end="11" id="12" rel="vc">
             <node begin="4" end="5" id="13" index="1" rel="su"/>
-            <node word_zv="geweest" word="geweest" begin="8" buiging="zonder" end="9" id="14" lemma="zijn" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ben" sense="ben" wvorm="vd"/>
+            <node isWord="true" end="9" begin="8" buiging="zonder" id="14" lemma="zijn" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ben" sense="ben" word="geweest" wvorm="vd"/>
             <node begin="6" cat="np" end="11" id="15" rel="predc">
-              <node word_zv="zulke" word="zukke" begin="6" buiging="zonder" end="7" id="16" lemma="zulk" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="zulk" sense="zulk" vwtype="aanw"/>
-              <node word_zv="mannen" word="mannen" begin="7" end="8" getal="mv" graad="basis" id="17" lemma="man" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="man" sense="man"/>
+              <node isWord="true" end="7" begin="6" buiging="zonder" id="16" lemma="zulk" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="zulk" sense="zulk" vwtype="aanw" word="zulke"/>
+              <node isWord="true" end="8" begin="7" getal="mv" graad="basis" id="17" lemma="man" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="man" sense="man" word="mannen"/>
               <node begin="9" cat="cp" end="11" id="18" rel="mod">
-                <node word_zv="gelijk" word="gelijk" begin="9" conjtype="onder" end="10" id="19" lemma="gelijk" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk"/>
-                <node word_zv="ik" word="ik" begin="10" end="11" getal="ev" id="20" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="body" root="ik" sense="ik" status="vol" vwtype="pers"/>
+                <node isWord="true" end="10" begin="9" conjtype="onder" id="19" lemma="gelijk" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk" word="gelijk"/>
+                <node isWord="true" end="11" begin="10" getal="ev" id="20" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="body" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
               </node>
             </node>
           </node>
         </node>
         <node begin="13" cat="smain" end="18" id="21" rel="nucl">
-          <node word_zv="was" word="was" begin="14" end="15" id="22" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+          <node isWord="true" end="15" begin="14" id="22" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
           <node begin="15" cat="np" end="17" id="23" index="2" rel="su">
-            <node word_zv="geen" word="geen" begin="15" buiging="zonder" end="16" id="24" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep"/>
-            <node word_zv="één" word="één" begin="16" end="17" id="25" lemma="één" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="één" sense="één"/>
+            <node isWord="true" end="16" begin="15" buiging="zonder" id="24" lemma="geen" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(onbep,det,stan,prenom,zonder,agr)" pt="vnw" rel="det" root="geen" sense="geen" vwtype="onbep" word="geen"/>
+            <node isWord="true" end="17" begin="16" id="25" lemma="één" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="één" sense="één" word="één"/>
           </node>
           <node begin="13" cat="ppart" end="18" id="26" rel="vc">
-            <node word_zv="het" word="t" begin="13" end="14" getal="getal" id="27" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="aanw"/>
+            <node isWord="true" end="14" begin="13" getal="getal" id="27" lemma="er" naamval="stan" pdtype="adv-pron" persoon="3" pos="adv" postag="VNW(aanw,adv-pron,stan,red,3,getal)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="aanw" word="het"/>
             <node begin="15" end="17" id="28" index="2" rel="su"/>
-            <node word_zv="versmoord" word="versmoord" begin="17" end="18" id="29" lemma="versmoren" pos="verb" postag="WW(vd-vrij,zonder)" pt="ww" rel="hd" root="versmoor" sense="versmoor"/>
+            <node isWord="true" end="18" begin="17" id="29" lemma="versmoren" pos="verb" postag="WW(vd-vrij,zonder)" pt="ww" rel="hd" root="versmoor" sense="versmoor" word="versmoord"/>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="." word="." begin="18" end="19" id="30" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="19" begin="18" id="30" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0298">awel meneer ... had het allemaal zulke mannen geweest gelijk ik hé ... het was geen één versmoord .</sentence>
   <comments>

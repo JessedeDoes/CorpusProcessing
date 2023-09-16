@@ -2,27 +2,27 @@
   <node begin="0" cat="top" end="12" id="0" rel="top">
     <node begin="0" cat="smain" end="7" id="1" rel="--">
       <node begin="0" cat="np" end="2" id="2" index="1" rel="su">
-        <node word_zv="die" word="die" begin="0" buiging="zonder" end="1" id="3" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-        <node word_zv="loodsen" word="loodsen" begin="1" end="2" getal="mv" graad="basis" id="4" lemma="loods" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="loods" sense="loods"/>
+        <node isWord="true" end="1" begin="0" buiging="zonder" id="3" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+        <node isWord="true" end="2" begin="1" getal="mv" graad="basis" id="4" lemma="loods" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="loods" sense="loods" word="loodsen"/>
       </node>
-      <node word_zv="stonden" word="stoegen" begin="2" end="3" id="5" lemma="staan" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="sta" sense="sta" wvorm="pv"/>
+      <node isWord="true" end="3" begin="2" id="5" lemma="staan" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="sta" sense="sta" word="stonden" wvorm="pv"/>
       <node begin="0" cat="ti" end="7" id="6" rel="vc">
-        <node word_zv="te" word="te" begin="3" end="4" id="7" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init"/>
+        <node isWord="true" end="4" begin="3" id="7" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sense="te" vztype="init" word="te"/>
         <node begin="0" cat="inf" end="7" id="8" rel="body">
           <node begin="0" end="2" id="9" index="1" rel="su"/>
-          <node word_zv="kijken" word="kijken" begin="4" buiging="zonder" end="5" id="10" lemma="kijken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="kijk" sense="kijk" wvorm="inf"/>
+          <node isWord="true" end="5" begin="4" buiging="zonder" id="10" lemma="kijken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="kijk" sense="kijk" word="kijken" wvorm="inf"/>
           <node begin="5" cat="pp" end="7" id="11" rel="ld">
-            <node word_zv="naar" word="naar" begin="5" end="6" id="12" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
-            <node word_zv="mij" word="mijn" begin="6" end="7" getal="ev" id="13" lemma="mij" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,vol,1,ev)" pt="vnw" rel="obj1" root="mij" sense="mij" status="vol" vwtype="pr"/>
+            <node isWord="true" end="6" begin="5" id="12" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
+            <node isWord="true" end="7" begin="6" getal="ev" id="13" lemma="mij" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,vol,1,ev)" pt="vnw" rel="obj1" root="mij" sense="mij" status="vol" vwtype="pr" word="mij"/>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="7" end="8" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word_zv="," word="," begin="8" end="9" id="15" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
-    <node word_zv="die" word="die" begin="9" buiging="zonder" end="10" id="16" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="--" root="die" sense="die" vwtype="aanw"/>
-    <node word_zv="loodsleerlingen" word="loodsleerlingen" begin="10" end="11" getal="mv" graad="basis" id="17" lemma="lood_leerling" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="--" root="lood_leerling" sense="lood_leerling"/>
-    <node word_zv="..." word="..." begin="11" end="12" id="18" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="8" begin="7" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node isWord="true" end="9" begin="8" id="15" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node isWord="true" end="10" begin="9" buiging="zonder" id="16" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="--" root="die" sense="die" vwtype="aanw" word="die"/>
+    <node isWord="true" end="11" begin="10" getal="mv" graad="basis" id="17" lemma="lood_leerling" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="--" root="lood_leerling" sense="lood_leerling" word="loodsleerlingen"/>
+    <node isWord="true" end="12" begin="11" id="18" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0449">die loodsen stonden te kijken naar mij ... , die loodsleerlingen ...</sentence>
   <comments>

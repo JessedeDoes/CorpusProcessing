@@ -1,35 +1,35 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="14" id="0" rel="top">
     <node begin="0" cat="du" end="13" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="du" end="13" id="3" rel="nucl">
         <node begin="1" cat="cp" end="5" id="4" rel="tag">
-          <node word_zv="als" word="a" begin="1" conjtype="onder" end="2" id="5" lemma="als" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+          <node isWord="true" end="2" begin="1" conjtype="onder" id="5" lemma="als" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
           <node begin="2" cat="ssub" end="5" id="6" rel="body">
-            <node word_zv="je" word="je" begin="2" end="3" getal="ev" id="7" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
-            <node word_zv="dat" word="dat" begin="3" end="4" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw"/>
-            <node word_zv="omsmijt" word="ommesmijt" begin="4" end="5" id="9" lemma="om_smijten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="smijt_om" sense="smijt_om" wvorm="pv"/>
+            <node isWord="true" end="3" begin="2" getal="ev" id="7" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+            <node isWord="true" end="4" begin="3" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
+            <node isWord="true" end="5" begin="4" id="9" lemma="om_smijten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="smijt_om" sense="smijt_om" word="omsmijt" wvorm="pv"/>
           </node>
         </node>
         <node begin="5" cat="smain" end="13" id="10" rel="nucl">
           <node begin="5" cat="np" end="7" id="11" rel="su">
-            <node word_zv="die" word="die" begin="5" buiging="zonder" end="6" id="12" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-            <node word_zv="gernaarzen" word="gernaarzen" begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="13" lemma="gernaarzen" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="gernaarzen" sense="gernaarzen"/>
+            <node isWord="true" end="6" begin="5" buiging="zonder" id="12" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+            <node isWord="true" end="7" begin="6" genus="zijd" getal="ev" graad="basis" id="13" lemma="gernaarzen" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="gernaarzen" sense="gernaarzen" word="gernaarzen"/>
           </node>
-          <node word_zv="blinken" word="blinken" begin="7" buiging="zonder" end="8" id="14" lemma="blinken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="blink" sense="blink" wvorm="inf"/>
-          <node word_zv="dan" word="tan" begin="8" end="9" id="15" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
+          <node isWord="true" end="8" begin="7" buiging="zonder" id="14" lemma="blinken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="blink" sense="blink" word="blinken" wvorm="inf"/>
+          <node isWord="true" end="9" begin="8" id="15" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" word="dan"/>
           <node begin="9" cat="cp" end="13" id="16" rel="mod">
-            <node word_zv="als" word="a" begin="9" conjtype="onder" end="10" id="17" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+            <node isWord="true" end="10" begin="9" conjtype="onder" id="17" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
             <node begin="10" cat="ssub" end="13" id="18" rel="body">
-              <node word_zv="je" word="je" begin="10" end="11" getal="ev" id="19" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
-              <node word_zv="ze" word="ze" begin="11" end="12" getal="mv" id="20" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
-              <node word_zv="uitschept" word="uitschept" begin="12" end="13" id="21" lemma="uit_scheppen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="schep_uit" sense="schep_uit" wvorm="pv"/>
+              <node isWord="true" end="11" begin="10" getal="ev" id="19" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+              <node isWord="true" end="12" begin="11" getal="mv" id="20" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+              <node isWord="true" end="13" begin="12" id="21" lemma="uit_scheppen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="schep_uit" sense="schep_uit" word="uitschept" wvorm="pv"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node word_zv="." word="." begin="13" end="14" id="22" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
+    <node isWord="true" end="14" begin="13" id="22" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0385a">en als je dat omsmijt die gernaarzen blinken dan als je ze uitschept .</sentence>
   <comments>

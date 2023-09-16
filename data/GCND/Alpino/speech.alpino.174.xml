@@ -1,44 +1,44 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="22" id="0" rel="top">
-    <node word_zv="," word="," begin="3" end="4" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
-    <node word_zv="," word="..." begin="8" end="9" id="2" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
-    <node word_zv="..." word="..." begin="9" end="10" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
-    <node word_zv="..." word="..." begin="17" end="18" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="4" begin="3" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node isWord="true" end="9" begin="8" id="2" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node isWord="true" end="10" begin="9" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node isWord="true" end="18" begin="17" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
     <node begin="0" cat="smain" end="21" id="5" rel="--">
       <node begin="0" cat="np" end="8" id="6" rel="su">
-        <node word_zv="de" word="de" begin="0" end="1" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-        <node word_zv="Vlissingse" word="Vlissingse" begin="1" buiging="met-e" end="2" graad="basis" id="8" lemma="Vlissingse" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="Vlissingse" sense="Vlissingse"/>
-        <node word_zv="male" word="male" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="9" lemma="male" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="male" sense="male"/>
+        <node isWord="true" end="1" begin="0" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+        <node isWord="true" end="2" begin="1" buiging="met-e" graad="basis" id="8" lemma="Vlissingse" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="Vlissingse" sense="Vlissingse" word="Vlissingse"/>
+        <node isWord="true" end="3" begin="2" genus="zijd" getal="ev" graad="basis" id="9" lemma="male" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="male" sense="male" word="male"/>
         <node begin="4" cat="rel" end="8" id="10" rel="mod">
-          <node word_zv="die" word="die" begin="4" end="5" getal="getal" id="11" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr"/>
+          <node isWord="true" end="5" begin="4" getal="getal" id="11" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr" word="die"/>
           <node begin="4" cat="ssub" end="8" id="12" rel="body">
             <node begin="4" end="5" id="13" index="1" rel="su"/>
             <node begin="5" cat="pp" end="7" id="14" rel="ld">
-              <node word_zv="op" word="op" begin="5" end="6" id="15" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
-              <node word_zv="Vlissinge" word="Vlissinge" begin="6" end="7" genus="onz" getal="ev" graad="basis" id="16" lemma="Vlissingen" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Vlissingen" sense="Vlissingen"/>
+              <node isWord="true" end="6" begin="5" id="15" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init" word="op"/>
+              <node isWord="true" end="7" begin="6" genus="onz" getal="ev" graad="basis" id="16" lemma="Vlissingen" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Vlissingen" sense="Vlissingen" word="Vlissinge"/>
             </node>
-            <node word_zv="gaat" word="gaat" begin="7" end="8" id="17" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sense="ga" wvorm="pv"/>
+            <node isWord="true" end="8" begin="7" id="17" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sense="ga" word="gaat" wvorm="pv"/>
           </node>
         </node>
       </node>
-      <node word_zv="slaat" word="slaat" begin="10" end="11" id="18" lemma="in_slaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="sla_in" sense="sla_in" wvorm="pv"/>
+      <node isWord="true" end="11" begin="10" id="18" lemma="in_slaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="sla_in" sense="sla_in" word="slaat" wvorm="pv"/>
       <node begin="11" cat="np" end="17" id="19" rel="mod">
-        <node word_zv="een" word="e" begin="11" end="12" id="20" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-        <node word_zv="heel" word="heel" begin="12" buiging="zonder" end="13" graad="basis" id="21" lemma="heel" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="heel" sense="heel"/>
-        <node word_zv="stuk" word="stuk" begin="13" end="14" genus="onz" getal="ev" graad="basis" id="22" lemma="stuk" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="stuk" sense="stuk"/>
-        <node word_zv="west" word="west" begin="15" end="16" genus="zijd" getal="ev" graad="basis" id="23" lemma="west" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mod" root="west" sense="west"/>
+        <node isWord="true" end="12" begin="11" id="20" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+        <node isWord="true" end="13" begin="12" buiging="zonder" graad="basis" id="21" lemma="heel" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="heel" sense="heel" word="heel"/>
+        <node isWord="true" end="14" begin="13" genus="onz" getal="ev" graad="basis" id="22" lemma="stuk" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="stuk" sense="stuk" word="stuk"/>
+        <node isWord="true" end="16" begin="15" genus="zijd" getal="ev" graad="basis" id="23" lemma="west" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mod" root="west" sense="west" word="west"/>
         <node begin="14" cat="pp" end="17" id="24" rel="mod">
-          <node word_zv="van" word="van" begin="14" end="15" id="25" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
-          <node word_zv="me" word="me" begin="16" end="17" getal="ev" id="26" lemma="me" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,red,1,ev)" pt="vnw" rel="obj1" root="me" sense="me" status="red" vwtype="pr"/>
+          <node isWord="true" end="15" begin="14" id="25" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+          <node isWord="true" end="17" begin="16" getal="ev" id="26" lemma="me" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,red,1,ev)" pt="vnw" rel="obj1" root="me" sense="me" status="red" vwtype="pr" word="me"/>
         </node>
       </node>
       <node begin="18" cat="pp" end="20" id="27" rel="mod">
-        <node word_zv="naar" word="naa" begin="18" end="19" id="28" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init"/>
-        <node word_zv="Vlissinge" word="Vlissinge" begin="19" end="20" genus="onz" getal="ev" graad="basis" id="29" lemma="Vlissingen" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Vlissingen" sense="Vlissingen"/>
+        <node isWord="true" end="19" begin="18" id="28" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
+        <node isWord="true" end="20" begin="19" genus="onz" getal="ev" graad="basis" id="29" lemma="Vlissingen" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Vlissingen" sense="Vlissingen" word="Vlissinge"/>
       </node>
-      <node word_zv="in" word="in" begin="20" end="21" id="30" lemma="in" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="in" sense="in" vztype="fin"/>
+      <node isWord="true" end="21" begin="20" id="30" lemma="in" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="in" sense="in" vztype="fin" word="in"/>
     </node>
-    <node word_zv="..." word="..." begin="21" end="22" id="31" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="22" begin="21" id="31" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0444">de Vlissingse male , die op Vlissinge gaat , ... slaat een heel stuk van west me ... naar Vlissinge in ...</sentence>
   <comments>

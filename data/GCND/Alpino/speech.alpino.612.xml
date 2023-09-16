@@ -1,17 +1,17 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
     <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="smain" end="6" id="3" rel="nucl">
         <node begin="1" cat="np" end="3" id="4" index="1" rel="su">
-          <node word_zv="die" word="die" begin="1" buiging="zonder" end="2" id="5" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
-          <node word_zv="sloep" word="sloepe" begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="6" lemma="sloep" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sloep" sense="sloep"/>
+          <node isWord="true" end="2" begin="1" buiging="zonder" id="5" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+          <node isWord="true" end="3" begin="2" genus="zijd" getal="ev" graad="basis" id="6" lemma="sloep" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sloep" sense="sloep" word="sloep"/>
         </node>
-        <node word_zv="was" word="was" begin="3" end="4" id="7" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" id="7" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
         <node begin="1" cat="ppart" end="6" id="8" rel="vc">
           <node begin="1" end="3" id="9" index="1" rel="su"/>
-          <node word_zv="daarop" word="daarop" begin="4" end="5" id="10" lemma="daarop" pos="pp" postag="BW()" pt="bw" rel="ld" root="daarop" sense="daarop"/>
-          <node word_zv="gekomen" word="gekomen" begin="5" buiging="zonder" end="6" id="11" lemma="komen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="kom" sense="kom" wvorm="vd"/>
+          <node isWord="true" end="5" begin="4" id="10" lemma="daarop" pos="pp" postag="BW()" pt="bw" rel="ld" root="daarop" sense="daarop" word="daarop"/>
+          <node isWord="true" end="6" begin="5" buiging="zonder" id="11" lemma="komen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="kom" sense="kom" word="gekomen" wvorm="vd"/>
         </node>
       </node>
     </node>

@@ -50,7 +50,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
   lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n").replaceAll("\\\\'", "'")
-  lazy val alpinoParseAsXML: Elem = XML.loadString(x)
+  lazy val alpinoParseAsXML: Elem = fixOffsets(XML.loadString(x))
   lazy val sentence = AlpinoSentence(alpinoParseAsXML)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val dependencies = {
@@ -87,11 +87,37 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd)
 
+  def fixOffsets(alpino: Elem) = {
+    val indexSet: Set[String]  =
+      (alpino \\ "node")
+        .filter(x => (x \ "@word").nonEmpty && x.child.isEmpty)
+        .flatMap(n => List((n \ "@begin").text))
+        .toSet
+    val indexMap = indexSet
+        .toList
+        .sortBy(x => x.toInt)
+        .zipWithIndex.toMap.mapValues(_.toString)
+    println(indexSet.toList.sortBy(_.toInt))
+    println("###### Index mapping!!!!!!!!")
+
+    indexMap.toList.sorted.foreach(println)
+
+    def fixNode(n: Elem) = {
+      val newBegin = indexMap.getOrElse((n \ "@begin").text,"bummer")
+      val newEnd = (n \ "@end").text// indexMap((n \ "@end").text)
+      n.copy(attributes = n.attributes.filter(a => !Set("begin", "end").contains(a.key))
+        .append(new UnprefixedAttribute("begin", newBegin, Null))
+        .append(new UnprefixedAttribute("end", newEnd, Null))
+        .append(new UnprefixedAttribute("isWord", "true", Null)))
+    }
+
+    PostProcessXML.updateElement3(alpino, x => x.label == "node" && (x \ "@word").nonEmpty && x.child.isEmpty, fixNode)
+  }
   lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML,
     x => x.label=="node" && (x \ "@word").nonEmpty && {
     val b = (x \ "@begin").text.toInt
     val e = (x \ "@end").text.toInt
-    e == b+1 && b < alignedTokens.size
+    e == b < alignedTokens.size
    },
     node => {
     val b = (node \ "@begin").text.toInt

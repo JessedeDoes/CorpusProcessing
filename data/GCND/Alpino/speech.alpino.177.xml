@@ -2,10 +2,10 @@
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:05" cats="1" skips="0"/>
   <node begin="0" cat="top" end="4" id="0" rel="top">
     <node begin="0" cat="smain" end="4" id="1" rel="--">
-      <node word_zv="ze" word="ze" begin="0" case="both" def="def" end="1" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
-      <node word_zv="komen" word="komen" begin="1" end="2" frame="verb(unacc,pl,intransitive)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="komen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="kom" sc="intransitive" sense="kom" stype="declarative" tense="present" wvorm="pv"/>
-      <node word_zv="dan" word="tan" begin="2" end="3" frame="tmp_adverb" his="normal" his_1="normal" id="4" lcat="advp" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" special="tmp"/>
-      <node word_zv="allemaal" word="al" begin="3" end="4" frame="predm_adverb" his="normal" his_1="normal" id="5" lcat="advp" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" special="predm"/>
+      <node isWord="true" end="1" begin="0" case="both" def="def" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh" word="ze"/>
+      <node isWord="true" end="2" begin="1" frame="verb(unacc,pl,intransitive)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="komen" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="kom" sc="intransitive" sense="kom" stype="declarative" tense="present" word="komen" wvorm="pv"/>
+      <node isWord="true" end="3" begin="2" frame="tmp_adverb" his="normal" his_1="normal" id="4" lcat="advp" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" special="tmp" word="dan"/>
+      <node isWord="true" end="4" begin="3" frame="predm_adverb" his="normal" his_1="normal" id="5" lcat="advp" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" special="predm" word="allemaal"/>
     </node>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0220">ze komen dan allemaal</sentence>

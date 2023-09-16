@@ -1,15 +1,15 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
     <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="5" id="3" rel="nucl">
-        <node word_zv="die" word="die" begin="1" end="2" getal="getal" id="4" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw"/>
-        <node word_zv="hadden" word="an" begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" wvorm="pv"/>
-        <node word_zv="zwaarden" word="zwaarden" begin="3" end="4" getal="mv" graad="basis" id="6" lemma="zwaard" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="obj1" root="zwaard" sense="zwaard"/>
-        <node word_zv="opzij" word="opzijde" begin="4" end="5" id="7" lemma="opzij" pos="adv" postag="BW()" pt="bw" rel="mod" root="opzij" sense="opzij"/>
+        <node isWord="true" end="2" begin="1" getal="getal" id="4" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw" word="die"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" word="hadden" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" getal="mv" graad="basis" id="6" lemma="zwaard" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="obj1" root="zwaard" sense="zwaard" word="zwaarden"/>
+        <node isWord="true" end="5" begin="4" id="7" lemma="opzij" pos="adv" postag="BW()" pt="bw" rel="mod" root="opzij" sense="opzij" word="opzij"/>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="5" end="6" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="6" begin="5" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0496a">en die hadden zwaarden opzij ...</sentence>
   <comments>

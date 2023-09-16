@@ -1,22 +1,22 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="9" id="0" rel="top">
     <node begin="0" cat="du" end="9" id="1" rel="--">
-      <node word_zv="en" word="e" begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="1" cat="smain" end="9" id="3" rel="nucl">
-        <node word_zv="we" word="m" begin="1" end="2" getal="mv" id="4" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
-        <node word_zv="hebben" word="e" begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
-        <node word_zv="wij" word="wijder" begin="3" end="4" getal="mv" id="6" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
+        <node isWord="true" end="2" begin="1" getal="mv" id="4" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" word="hebben" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" getal="mv" id="6" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers" word="wij"/>
         <node begin="1" cat="inf" end="9" id="7" rel="vc">
           <node begin="1" end="2" id="8" index="1" rel="su"/>
-          <node word_zv="moeten" word="moeten" begin="5" buiging="zonder" end="6" id="9" lemma="moeten" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="moet" sense="moet" wvorm="inf"/>
+          <node isWord="true" end="6" begin="5" buiging="zonder" id="9" lemma="moeten" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="moet" sense="moet" word="moeten" wvorm="inf"/>
           <node begin="1" cat="inf" end="9" id="10" rel="vc">
             <node begin="1" end="2" id="11" index="1" rel="su"/>
-            <node word_zv="dan" word="tan" begin="4" end="5" id="12" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
+            <node isWord="true" end="5" begin="4" id="12" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" word="dan"/>
             <node begin="6" cat="np" end="8" id="13" rel="obj1">
-              <node word_zv="het" word="t" begin="6" end="7" id="14" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
-              <node word_zv="gareel" word="gareel" begin="7" end="8" genus="onz" getal="ev" graad="basis" id="15" lemma="gareel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="gareel" sense="gareel"/>
+              <node isWord="true" end="7" begin="6" id="14" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+              <node isWord="true" end="8" begin="7" genus="onz" getal="ev" graad="basis" id="15" lemma="gareel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="gareel" sense="gareel" word="gareel"/>
             </node>
-            <node word_zv="aantrekken" word="aantrekken" begin="8" buiging="zonder" end="9" id="16" lemma="aan_trekken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="trek_aan" sense="trek_aan" wvorm="inf"/>
+            <node isWord="true" end="9" begin="8" buiging="zonder" id="16" lemma="aan_trekken" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="trek_aan" sense="trek_aan" word="aantrekken" wvorm="inf"/>
           </node>
         </node>
       </node>

@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="7" id="0" rel="top">
     <node begin="0" cat="cp" end="6" id="1" rel="--">
-      <node word_zv="als" word="als" begin="0" conjtype="onder" end="1" id="2" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+      <node isWord="true" end="1" begin="0" conjtype="onder" id="2" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
       <node begin="1" cat="ssub" end="6" id="3" rel="body">
-        <node word_zv="het" word="t" begin="1" end="2" genus="onz" getal="ev" id="4" index="1" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
+        <node isWord="true" end="2" begin="1" genus="onz" getal="ev" id="4" index="1" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
         <node begin="1" cat="ppart" end="5" id="5" rel="vc">
           <node begin="1" end="2" id="6" index="1" rel="su"/>
           <node begin="2" cat="np" end="4" id="7" rel="predc">
-            <node word_zv="hoog" word="hoog" begin="2" buiging="zonder" end="3" graad="basis" id="8" lemma="hoog" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="hoog" sense="hoog"/>
-            <node word_zv="water" word="water" begin="3" end="4" genus="onz" getal="ev" graad="basis" id="9" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water"/>
+            <node isWord="true" end="3" begin="2" buiging="zonder" graad="basis" id="8" lemma="hoog" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="hoog" sense="hoog" word="hoog"/>
+            <node isWord="true" end="4" begin="3" genus="onz" getal="ev" graad="basis" id="9" lemma="water" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="water" sense="water" word="water"/>
           </node>
-          <node word_zv="geweest" word="geweest" begin="4" buiging="zonder" end="5" id="10" lemma="zijn" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ben" sense="ben" wvorm="vd"/>
+          <node isWord="true" end="5" begin="4" buiging="zonder" id="10" lemma="zijn" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ben" sense="ben" word="geweest" wvorm="vd"/>
         </node>
-        <node word_zv="heeft" word="et" begin="5" end="6" id="11" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node isWord="true" end="6" begin="5" id="11" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="heeft" wvorm="pv"/>
       </node>
     </node>
-    <node word_zv="..." word="..." begin="6" end="7" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="7" begin="6" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0336a">als het hoog water geweest heeft ...</sentence>
   <comments>

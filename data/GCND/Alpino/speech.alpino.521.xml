@@ -1,18 +1,18 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
     <node begin="0" cat="smain" end="5" id="1" rel="--">
-      <node word_zv="ze" word="z" begin="0" end="1" getal="mv" id="2" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
-      <node word_zv="hebben" word="en" begin="1" end="2" id="3" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+      <node isWord="true" end="1" begin="0" getal="mv" id="2" index="1" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+      <node isWord="true" end="2" begin="1" id="3" lemma="hebben" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="heb" sense="heb" word="hebben" wvorm="pv"/>
       <node begin="0" cat="ppart" end="5" id="4" rel="vc">
         <node begin="0" end="1" id="5" index="1" rel="su"/>
         <node begin="2" cat="np" end="4" id="6" rel="obj1">
-          <node word_zv="de" word="d" begin="2" end="3" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
-          <node word_zv="haven" word="havent" begin="3" end="4" genus="zijd" getal="ev" graad="basis" id="8" lemma="haven" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="haven" sense="haven"/>
+          <node isWord="true" end="3" begin="2" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+          <node isWord="true" end="4" begin="3" genus="zijd" getal="ev" graad="basis" id="8" lemma="haven" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="haven" sense="haven" word="haven"/>
         </node>
-        <node word_zv="verlengd" word="verlangd" begin="4" buiging="zonder" end="5" id="9" lemma="verlengen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="verleng" sense="verleng" wvorm="vd"/>
+        <node isWord="true" end="5" begin="4" buiging="zonder" id="9" lemma="verlengen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="verleng" sense="verleng" word="verlengd" wvorm="vd"/>
       </node>
     </node>
-    <node word_zv="hé" word="hé" begin="5" end="6" id="10" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node isWord="true" end="6" begin="5" id="10" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0365a">ze hebben de haven verlengd hé</sentence>
   <comments>

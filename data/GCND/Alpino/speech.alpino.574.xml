@@ -1,11 +1,11 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="4" id="0" rel="top">
     <node begin="0" cat="np" end="2" id="1" rel="--">
-      <node word_zv="mijn" word="mijn" begin="0" buiging="zonder" end="1" getal="ev" id="2" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez"/>
-      <node word_zv="vader" word="vader" begin="1" end="2" genus="zijd" getal="ev" graad="basis" id="3" lemma="vader" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="vader" sense="vader"/>
+      <node isWord="true" end="1" begin="0" buiging="zonder" getal="ev" id="2" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez" word="mijn"/>
+      <node isWord="true" end="2" begin="1" genus="zijd" getal="ev" graad="basis" id="3" lemma="vader" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="vader" sense="vader" word="vader"/>
     </node>
-    <node word_zv="hé" word="hé" begin="2" end="3" id="4" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
-    <node word_zv="..." word="..." begin="3" end="4" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="3" begin="2" id="4" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node isWord="true" end="4" begin="3" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0146">mijn vader hé ...</sentence>
   <comments>

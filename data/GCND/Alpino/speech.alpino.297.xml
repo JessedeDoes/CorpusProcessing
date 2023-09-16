@@ -1,15 +1,15 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="6" id="0" rel="top">
-    <node word_zv="wel" word="wel" begin="1" end="2" id="1" lemma="wel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wel" sense="wel"/>
+    <node isWord="true" end="2" begin="1" id="1" lemma="wel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wel" sense="wel" word="wel"/>
     <node begin="0" cat="du" end="4" id="2" rel="--">
-      <node word_zv="en" word="en" begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
       <node begin="2" cat="smain" end="4" id="4" rel="nucl">
-        <node word_zv="ik" word="k" begin="2" end="3" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
-        <node word_zv="zeg" word="zeggen" begin="3" end="4" id="6" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
+        <node isWord="true" end="3" begin="2" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node isWord="true" end="4" begin="3" id="6" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zeg" wvorm="pv"/>
       </node>
     </node>
-    <node word_zv="," word="..." begin="4" end="5" id="7" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
-    <node word_zv="..." word="..." begin="5" end="6" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node isWord="true" end="5" begin="4" id="7" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node isWord="true" end="6" begin="5" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0292d">en wel ik zeg , ...</sentence>
   <comments>

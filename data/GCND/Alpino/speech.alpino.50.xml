@@ -1,22 +1,22 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <node begin="0" cat="top" end="12" id="0" rel="top">
     <node begin="0" cat="du" end="12" id="1" rel="--">
-      <node word_zv="maar" word="maa" begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
       <node begin="1" cat="smain" end="12" id="3" rel="nucl">
-        <node word_zv="hij" word="j" begin="1" end="2" genus="masc" getal="ev" id="4" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
-        <node word_zv="had" word="ad" begin="2" end="3" id="5" lemma="aan_hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb_aan" sense="heb_aan" wvorm="pv"/>
-        <node word_zv="hij" word="hij" begin="3" end="4" genus="masc" getal="ev" id="6" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
-        <node word_zv="zo" word="zo" begin="4" end="5" id="7" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo"/>
-        <node word_zv="aan" word="aan" begin="8" end="9" id="8" lemma="aan" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="aan" sense="aan" vztype="fin"/>
+        <node isWord="true" end="2" begin="1" genus="masc" getal="ev" id="4" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+        <node isWord="true" end="3" begin="2" id="5" lemma="aan_hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb_aan" sense="heb_aan" word="had" wvorm="pv"/>
+        <node isWord="true" end="4" begin="3" genus="masc" getal="ev" id="6" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+        <node isWord="true" end="5" begin="4" id="7" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo" word="zo"/>
+        <node isWord="true" end="9" begin="8" id="8" lemma="aan" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="aan" sense="aan" vztype="fin" word="aan"/>
         <node begin="5" cat="np" end="12" id="9" rel="obj1">
-          <node word_zv="een" word="e" begin="5" end="6" id="10" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
-          <node word_zv="lange" word="lange" begin="6" buiging="met-e" end="7" graad="basis" id="11" lemma="lang" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="lang" sense="lang"/>
-          <node word_zv="oliemantel" word="oliemantel" begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="12" lemma="olie_mantel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="olie_mantel" sense="olie_mantel"/>
+          <node isWord="true" end="6" begin="5" id="10" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+          <node isWord="true" end="7" begin="6" buiging="met-e" graad="basis" id="11" lemma="lang" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="lang" sense="lang" word="lange"/>
+          <node isWord="true" end="8" begin="7" genus="zijd" getal="ev" graad="basis" id="12" lemma="olie_mantel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="olie_mantel" sense="olie_mantel" word="oliemantel"/>
           <node begin="9" cat="pp" end="12" id="13" rel="mod">
-            <node word_zv="met" word="me" begin="9" end="10" id="14" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+            <node isWord="true" end="10" begin="9" id="14" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
             <node begin="10" cat="np" end="12" id="15" rel="obj1">
-              <node word_zv="knopen" word="knopen" begin="10" end="11" getal="mv" graad="basis" id="16" lemma="knoop" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="knoop" sense="knoop"/>
-              <node word_zv="vanvoor" word="vanvoren" begin="11" end="12" id="17" lemma="vanvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="vanvoor" sense="vanvoor"/>
+              <node isWord="true" end="11" begin="10" getal="mv" graad="basis" id="16" lemma="knoop" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="knoop" sense="knoop" word="knopen"/>
+              <node isWord="true" end="12" begin="11" id="17" lemma="vanvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="vanvoor" sense="vanvoor" word="vanvoor"/>
             </node>
           </node>
         </node>
