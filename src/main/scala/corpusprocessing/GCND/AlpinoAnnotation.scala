@@ -60,7 +60,6 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       val id = s"annotation.$alpino_annotatie_id.w.$idBaseZero"
       val hid = s"annotation.$alpino_annotatie_id.w.$headBaseZero"
       <dependency class={t.DEPREL}>
-        <token>{ t.toCONLL() }</token>
         <hd>
           <wref id={hid}/>
         </hd>
