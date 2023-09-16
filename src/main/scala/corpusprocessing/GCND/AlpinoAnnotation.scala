@@ -53,6 +53,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alpinoParseAsXML: Elem = fixOffsets(XML.loadString(x))
   lazy val sentence = AlpinoSentence(alpinoParseAsXML)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
+  lazy val conll = sentence.toCONLL() // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
   lazy val dependencies = {
     val deps = sentence.connlTokens.sortBy(_.ID.toInt).filter(x => x.HEAD != "0" && x.DEPREL != "root").map(t => {
       val idBaseZero = (t.ID.toInt - 1)
@@ -70,7 +71,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     })
     <dependencies>{deps}
       <foreign-data>
-        <conll xmls="http://conll.fake.url">{sentence.toCONLL()}</conll>
+        <conll xmls="http://conll.fake.url">{scala.xml.Unparsed("<![CDATA[%s]]>".format(conll))}</conll>
       </foreign-data>
     </dependencies>
   }
