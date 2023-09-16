@@ -109,6 +109,7 @@ object GCNDDatabase {
         <token-annotation/>
         <sentence-annotation/>
         <syntax-annotation set="gcnd.syntax"/>
+        <dependency-annotation set="gcnd.dependency"/>
       </annotations>
       <foreign-data>
         {Metadata.getMetadata(transcriptie_id)}
@@ -129,6 +130,7 @@ object GCNDDatabase {
           <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
           <token-annotation/>
           <sentence-annotation set="gcnd.sentence"/>
+          <dependency-annotation set="gcnd.dependency"/>
         </annotations>
         <foreign-data>
           {Metadata.getMetadata(transcriptie_id)}

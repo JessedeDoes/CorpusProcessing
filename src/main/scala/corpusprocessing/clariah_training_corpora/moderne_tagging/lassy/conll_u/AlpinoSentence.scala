@@ -109,6 +109,8 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
                      |# text = ${this.text}""".stripMargin
        header + "\n" + connlTokens.map(_.toCONLL()).mkString("\n")
    }
+
+
 }
 
 // old stuff before refactor into specific rules object

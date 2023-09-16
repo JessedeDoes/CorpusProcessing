@@ -24,25 +24,25 @@
       <node begin="24" cat="pp" end="32" id="18" rel="mod">
         <node word_zv="over" word="strange" begin="24" end="25" id="19" lemma="over" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="over" sense="over" vztype="init"/>
         <node begin="25" cat="np" end="32" id="20" rel="obj1">
-          <bummer/>
-          <bummer/>
+          <node begin="25" end="26" id="21" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+          <node begin="26" end="27" genus="zijd" getal="ev" graad="basis" id="22" lemma="bassin" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="bassin" sense="bassin" word="bassin"/>
           <node begin="27" cat="pp" end="31" id="23" rel="mod">
-            <bummer/>
+            <node begin="27" end="28" id="24" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init" word="aan"/>
             <node begin="28" cat="np" end="31" id="25" rel="obj1">
-              <bummer/>
-              <bummer/>
-              <bummer/>
+              <node begin="28" end="29" id="26" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+              <node begin="29" buiging="zonder" end="30" graad="basis" id="27" lemma="klein" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="klein" sense="klein" word="klein"/>
+              <node begin="30" end="31" genus="onz" getal="ev" graad="basis" id="28" lemma="strand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="strand" sense="strand" word="strand"/>
             </node>
           </node>
-          <bummer/>
+          <node begin="31" end="32" getal="getal" id="29" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
         </node>
       </node>
     </node>
-    <bummer/>
-    <bummer/>
-    <bummer/>
-    <bummer/>
-    <bummer/>
+    <node begin="34" end="35" id="30" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node begin="38" end="39" id="31" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="42" end="43" id="32" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="noun" postag="LID(bep,stan,evon)" pt="lid" rel="--" root="het" sense="het" word="het"/>
+    <node begin="46" buiging="zonder" end="47" graad="basis" id="33" lemma="klein" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="--" root="klein" sense="klein" word="klein"/>
+    <node begin="50" end="51" genus="onz" getal="ev" graad="basis" id="34" lemma="strand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="--" root="strand" sense="strand" word="strand"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0470c">ik kroop van hoog water door de palen ... door de palen over de bassin aan het klein strand daar hé ... het klein strand</sentence>
   <comments>

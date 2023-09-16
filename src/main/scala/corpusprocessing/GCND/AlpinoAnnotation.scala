@@ -53,6 +53,28 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alpinoParseAsXML: Elem = XML.loadString(x)
   lazy val sentence = AlpinoSentence(alpinoParseAsXML)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
+  lazy val dependencies = {
+    val deps = sentence.connlTokens.sortBy(_.ID.toInt).filter(x => x.HEAD != "0" && x.DEPREL != "root").map(t => {
+      val idBaseZero = (t.ID.toInt - 1)
+      val headBaseZero = (t.HEAD.toInt - 1)
+      val id = s"annotation.$alpino_annotatie_id.w.$idBaseZero"
+      val hid = s"annotation.$alpino_annotatie_id.w.$headBaseZero"
+      <dependency class={t.DEPREL}>
+        <token>{ t.toCONLL() }</token>
+        <hd>
+          <wref id={hid}/>
+        </hd>
+        <dep>
+          <wref id={id} t={t.FORM}/>
+        </dep>
+      </dependency>
+    })
+    <dependencies>{deps}
+      <foreign-data>
+        <conll xmls="http://conll.fake.url">{sentence.toCONLL()}</conll>
+      </foreign-data>
+    </dependencies>
+  }
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
@@ -65,7 +87,13 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd)
 
-  lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML, x => x.label=="node" && (x \ "@word").nonEmpty, node => {
+  lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParseAsXML,
+    x => x.label=="node" && (x \ "@word").nonEmpty && {
+    val b = (x \ "@begin").text.toInt
+    val e = (x \ "@end").text.toInt
+    e == b+1 && b < alignedTokens.size
+   },
+    node => {
     val b = (node \ "@begin").text.toInt
     val lv = alignedTokens(b).text_lv
     val zv = (node \ "@word").text
@@ -96,7 +124,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </info>
     }
 
-    def pseudoFolia(includeAlpinoParse: Boolean = false) = {
+    def pseudoFolia(includeAlpinoParse: Boolean = false, includeDeps: Boolean = true) = {
 
       <speech xml:id={speech_id}>
         {informativeT.child}
@@ -120,6 +148,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
           } else Seq()
           }
           {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data></syntax>}}
+          {if (includeDeps) {dependencies}}
           <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
           </timing>
