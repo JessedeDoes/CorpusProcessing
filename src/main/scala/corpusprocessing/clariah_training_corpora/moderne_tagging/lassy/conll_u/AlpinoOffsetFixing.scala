@@ -24,8 +24,8 @@ object AlpinoOffsetFixing {
       beginIndexMap.getOrElse(b, s"index_not_defined:$b for $w")
     }
 
-    if (true) {
-      Console.err.println(s"###### Index mapping for ${a.sentenceId} !!!!!!!!")
+    if (beginIndexMap.exists(x => x._1 != x._2)) {
+      Console.err.println(s"###### Nontrivial index mapping for ${a.sentenceId} !!!!!!!!")
       Console.err.println(beginIndexSet.toList.sortBy(_.toInt))
       beginIndexMap.toList.sortBy(_._1.toInt).foreach(z => Console.err.println(z))
     }

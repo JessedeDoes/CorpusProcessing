@@ -88,7 +88,14 @@ object PatchUp {
   def fixW(w: Elem)  = {
 
     def withText(t: String)  = w.copy(child={<seg>{t.trim}</seg>})
-    if (w.text.matches(".*[a-zA-Z0-9].*,.*[a-zA-Z0-9].*"))
+    if (w.toString().contains("<lb/>"))
+      {
+        val below = w.child.map(_.toString).mkString("").replaceAll("<lb[^<>]*/>", "LB_LB")
+        val wordX = XML.loadString(s"<w>${below}</w>")
+        val wordz = wordX.text.split("LB_LB").map(withText).toSeq
+        println(wordz)
+        wordz.zipWithIndex.flatMap({case (w,i) => if (i < wordz.size - 1) Seq(w, <lb has="flats"/>) else w}).toSeq
+      } else if (w.text.matches(".*[a-zA-Z0-9].*,.*[a-zA-Z0-9].*"))
     {
       val wordz = w.text.split("\\s*,\\s*").map(withText)
 

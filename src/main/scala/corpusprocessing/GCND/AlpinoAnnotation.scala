@@ -88,8 +88,6 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd)
 
-
-
   lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParsePatched,
     x => x.label=="node" && (x \ "@word").nonEmpty && {
     val b = (x \ "@begin").text.toInt
