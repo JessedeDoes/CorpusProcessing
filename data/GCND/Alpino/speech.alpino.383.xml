@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node isWord="true" end="6" begin="5" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
-    <node begin="0" cat="du" end="8" id="2" rel="--">
-      <node begin="0" cat="smain" end="5" id="3" rel="nucl">
-        <node isWord="true" end="1" begin="0" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="3" begin="2" id="5" lemma="kunnen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="kan" sense="kan" word="kan" wvorm="pv"/>
-        <node begin="0" cat="inf" end="5" id="6" rel="vc">
-          <node begin="0" end="1" id="7" index="1" rel="su"/>
-          <node isWord="true" end="2" begin="1" id="8" lemma="en" pos="adv" postag="BW()" pt="bw" rel="mod" root="en" sense="en" word="en"/>
-          <node isWord="true" end="4" begin="3" id="9" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet" word="niet"/>
-          <node isWord="true" end="5" begin="4" buiging="zonder" id="10" lemma="zwemmen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="zwem" sense="zwem" word="zwemmen" wvorm="inf"/>
+  <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+    <node word_zv="," word="," end="6" begin="5" originalOffsets="5--6" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node end="8" begin="0" originalOffsets="0--8" cat="du" id="2" rel="--">
+      <node end="5" begin="0" originalOffsets="0--5" cat="smain" id="3" rel="nucl">
+        <node word_zv="ik" word="k" end="1" begin="0" originalOffsets="0--1" getal="ev" id="4" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="kan" word="kan" end="3" begin="2" originalOffsets="2--3" id="5" lemma="kunnen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="kan" sense="kan" wvorm="pv"/>
+        <node end="5" begin="0" originalOffsets="0--5" cat="inf" id="6" rel="vc">
+          <node end="1" begin="0" originalOffsets="0--1" id="7" index="1" rel="su"/>
+          <node word_zv="en" word="en" end="2" begin="1" originalOffsets="1--2" id="8" lemma="en" pos="adv" postag="BW()" pt="bw" rel="mod" root="en" sense="en"/>
+          <node word_zv="niet" word="nie" end="4" begin="3" originalOffsets="3--4" id="9" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet"/>
+          <node word_zv="zwemmen" word="zwemmen" end="5" begin="4" originalOffsets="4--5" buiging="zonder" id="10" lemma="zwemmen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="zwem" sense="zwem" wvorm="inf"/>
         </node>
       </node>
-      <node begin="6" cat="sv1" end="8" id="11" rel="tag">
-        <node isWord="true" end="7" begin="6" id="12" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zegt" wvorm="pv"/>
-        <node isWord="true" end="8" begin="7" genus="masc" getal="ev" id="13" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+      <node end="8" begin="6" originalOffsets="6--8" cat="sv1" id="11" rel="tag">
+        <node word_zv="zegt" word="zegt" end="7" begin="6" originalOffsets="6--7" id="12" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
+        <node word_zv="hij" word="n" end="8" begin="7" originalOffsets="7--8" genus="masc" getal="ev" id="13" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers"/>
       </node>
     </node>
   </node>

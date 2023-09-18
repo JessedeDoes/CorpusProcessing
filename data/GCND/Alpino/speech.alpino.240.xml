@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="smain" end="8" id="2" rel="--">
-      <node isWord="true" end="1" begin="0" genus="onz" getal="ev" id="3" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
-      <node isWord="true" end="2" begin="1" id="4" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-      <node begin="3" cat="pp" end="7" id="5" rel="ld">
-        <node isWord="true" end="4" begin="3" id="6" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init" word="op"/>
-        <node begin="4" cat="np" end="7" id="7" rel="obj1">
-          <node isWord="true" end="5" begin="4" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-          <node isWord="true" end="6" begin="5" buiging="met-e" graad="basis" id="9" lemma="Belgisch" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="Belgisch" sense="Belgisch" word="Belgische"/>
-          <node isWord="true" end="7" begin="6" getal="mv" graad="basis" id="10" lemma="water" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="water" sense="water" word="waters"/>
+  <node end="9" begin="0" originalOffsets="0--9" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="8" begin="0" originalOffsets="0--8" cat="smain" id="2" rel="--">
+      <node word_zv="het" word="t" end="1" begin="0" originalOffsets="0--1" genus="onz" getal="ev" id="3" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
+      <node word_zv="was" word="was" end="2" begin="1" originalOffsets="1--2" id="4" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node end="7" begin="3" originalOffsets="3--7" cat="pp" id="5" rel="ld">
+        <node word_zv="op" word="op" end="4" begin="3" originalOffsets="3--4" id="6" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+        <node end="7" begin="4" originalOffsets="4--7" cat="np" id="7" rel="obj1">
+          <node word_zv="de" word="de" end="5" begin="4" originalOffsets="4--5" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word_zv="Belgische" word="Belgische" end="6" begin="5" originalOffsets="5--6" buiging="met-e" graad="basis" id="9" lemma="Belgisch" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="Belgisch" sense="Belgisch"/>
+          <node word_zv="waters" word="waters" end="7" begin="6" originalOffsets="6--7" getal="mv" graad="basis" id="10" lemma="water" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="water" sense="water"/>
         </node>
       </node>
-      <node isWord="true" end="8" begin="7" id="11" lemma="nog" pos="adv" postag="BW()" pt="bw" rel="mod" root="nog" sense="nog" word="nog"/>
+      <node word_zv="nog" word="nog" end="8" begin="7" originalOffsets="7--8" id="11" lemma="nog" pos="adv" postag="BW()" pt="bw" rel="mod" root="nog" sense="nog"/>
     </node>
-    <node isWord="true" end="9" begin="8" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="9" begin="8" originalOffsets="8--9" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0526a">het was ... op de Belgische waters nog ...</sentence>
   <comments>

@@ -1,12 +1,12 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="du" end="5" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="smain" end="5" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" getal="getal" id="4" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw" word="die"/>
-        <node isWord="true" end="3" begin="2" id="5" lemma="komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom" sense="kom" word="kwam" wvorm="pv"/>
-        <node isWord="true" end="4" begin="3" id="6" lemma="weer" pos="adv" postag="BW()" pt="bw" rel="mod" root="weer" sense="weer" word="weer"/>
-        <node isWord="true" end="5" begin="4" buiging="zonder" graad="basis" id="7" lemma="bloot" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="bloot" sense="bloot" word="bloot"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="5" begin="0" originalOffsets="0--5" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="5" begin="1" originalOffsets="1--5" cat="smain" id="3" rel="nucl">
+        <node word_zv="die" word="die" end="2" begin="1" originalOffsets="1--2" getal="getal" id="4" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw"/>
+        <node word_zv="kwam" word="kwam" end="3" begin="2" originalOffsets="2--3" id="5" lemma="komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom" sense="kom" wvorm="pv"/>
+        <node word_zv="weer" word="weere" end="4" begin="3" originalOffsets="3--4" id="6" lemma="weer" pos="adv" postag="BW()" pt="bw" rel="mod" root="weer" sense="weer"/>
+        <node word_zv="bloot" word="bloot" end="5" begin="4" originalOffsets="4--5" buiging="zonder" graad="basis" id="7" lemma="bloot" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="bloot" sense="bloot"/>
       </node>
     </node>
   </node>

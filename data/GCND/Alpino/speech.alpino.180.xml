@@ -1,27 +1,27 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="12" id="0" rel="top">
-    <node begin="0" cat="smain" end="10" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" getal="ev" id="2" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="is" wvorm="pv"/>
-      <node begin="2" cat="np" end="10" id="4" rel="predc">
-        <node isWord="true" end="3" begin="2" id="5" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-        <node isWord="true" end="4" begin="3" genus="onz" getal="ev" graad="dim" id="6" lemma="haven" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" root="haven_DIM" sense="haven_DIM" word="haventje"/>
-        <node begin="4" cat="pp" end="10" id="7" rel="mod">
-          <node isWord="true" end="5" begin="4" id="8" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
-          <node begin="5" cat="pp" end="10" id="9" rel="obj1">
-            <node isWord="true" end="6" begin="5" id="10" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-            <node begin="6" cat="np" end="10" id="11" rel="obj1">
-              <node isWord="true" end="7" begin="6" id="12" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-              <node isWord="true" end="8" begin="7" buiging="met-e" graad="basis" id="13" lemma="oud" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="oud" sense="oud" word="oude"/>
-              <node isWord="true" end="9" begin="8" genus="zijd" getal="ev" graad="basis" id="14" lemma="tijd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="tijd" sense="tijd" word="tijd"/>
-              <node isWord="true" end="10" begin="9" buiging="zonder" graad="comp" id="15" lemma="vroeg" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="mod" root="vroeg" sense="vroeg" word="vroeger"/>
+  <node end="12" begin="0" originalOffsets="0--12" cat="top" id="0" rel="top">
+    <node end="10" begin="0" originalOffsets="0--10" cat="smain" id="1" rel="--">
+      <node word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" getal="ev" id="2" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+      <node word_zv="is" word="is" end="2" begin="1" originalOffsets="1--2" id="3" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node end="10" begin="2" originalOffsets="2--10" cat="np" id="4" rel="predc">
+        <node word_zv="een" word="een" end="3" begin="2" originalOffsets="2--3" id="5" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+        <node word_zv="haventje" word="haventje" end="4" begin="3" originalOffsets="3--4" genus="onz" getal="ev" graad="dim" id="6" lemma="haven" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" root="haven_DIM" sense="haven_DIM"/>
+        <node end="10" begin="4" originalOffsets="4--10" cat="pp" id="7" rel="mod">
+          <node word_zv="van" word="van" end="5" begin="4" originalOffsets="4--5" id="8" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+          <node end="10" begin="5" originalOffsets="5--10" cat="pp" id="9" rel="obj1">
+            <node word_zv="in" word="in" end="6" begin="5" originalOffsets="5--6" id="10" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node end="10" begin="6" originalOffsets="6--10" cat="np" id="11" rel="obj1">
+              <node word_zv="de" word="den" end="7" begin="6" originalOffsets="6--7" id="12" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word_zv="oude" word="oude" end="8" begin="7" originalOffsets="7--8" buiging="met-e" graad="basis" id="13" lemma="oud" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="oud" sense="oud"/>
+              <node word_zv="tijd" word="tijd" end="9" begin="8" originalOffsets="8--9" genus="zijd" getal="ev" graad="basis" id="14" lemma="tijd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="tijd" sense="tijd"/>
+              <node word_zv="vroeger" word="vroeger" end="10" begin="9" originalOffsets="9--10" buiging="zonder" graad="comp" id="15" lemma="vroeg" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="mod" root="vroeg" sense="vroeg"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="11" begin="10" id="16" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
-    <node isWord="true" end="12" begin="11" id="17" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="hé" word="hé" end="11" begin="10" originalOffsets="10--11" id="16" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="." word="." end="12" begin="11" originalOffsets="11--12" id="17" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0348">dat is een haventje van in de oude tijd vroeger hé .</sentence>
   <comments>

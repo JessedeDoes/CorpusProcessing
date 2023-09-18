@@ -1,30 +1,30 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:03" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="12" id="0" rel="top">
-    <node isWord="true" end="7" begin="6" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
-    <node begin="0" cat="smain" end="11" id="2" rel="--">
-      <node isWord="true" end="1" begin="0" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="3" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh" word="dat"/>
-      <node isWord="true" end="2" begin="1" frame="verb(hebben,past(sg),ld_pp)" his="normal" his_1="normal" id="4" infl="sg" lcat="smain" lemma="zitten" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zit" sc="ld_pp" sense="zit" stype="declarative" tense="past" word="zat" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" aform="base" buiging="zonder" frame="adjective(no_e(sentadv))" graad="basis" his="normal" his_1="normal" id="5" infl="no_e" lcat="ap" lemma="eigenlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="eigenlijk" sense="eigenlijk" vform="adj" word="eigenlijk"/>
-      <node begin="3" cat="conj" end="11" id="6" rel="ld">
-        <node begin="3" cat="pp" end="6" id="7" rel="cnj">
-          <node isWord="true" end="4" begin="3" frame="preposition(bij,[vandaan])" his="normal" his_1="normal" id="8" lcat="pp" lemma="bij" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="bij" sense="bij" vztype="init" word="bij"/>
-          <node begin="4" cat="np" end="6" id="9" rel="obj1">
-            <node isWord="true" end="5" begin="4" frame="determiner(de)" his="normal" his_1="normal" id="10" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node isWord="true" end="6" begin="5" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="11" lcat="np" lemma="haring" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="haring" sense="haring" word="haring"/>
+  <node end="12" begin="0" originalOffsets="0--12" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="7" begin="6" originalOffsets="6--7" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
+    <node end="11" begin="0" originalOffsets="0--11" cat="smain" id="2" rel="--">
+      <node word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="3" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh"/>
+      <node word_zv="zat" word="zat" end="2" begin="1" originalOffsets="1--2" frame="verb(hebben,past(sg),ld_pp)" his="normal" his_1="normal" id="4" infl="sg" lcat="smain" lemma="zitten" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="zit" sc="ld_pp" sense="zit" stype="declarative" tense="past" wvorm="pv"/>
+      <node word_zv="eigenlijk" word="eigenlijk" end="3" begin="2" originalOffsets="2--3" aform="base" buiging="zonder" frame="adjective(no_e(sentadv))" graad="basis" his="normal" his_1="normal" id="5" infl="no_e" lcat="ap" lemma="eigenlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="eigenlijk" sense="eigenlijk" vform="adj"/>
+      <node end="11" begin="3" originalOffsets="3--11" cat="conj" id="6" rel="ld">
+        <node end="6" begin="3" originalOffsets="3--6" cat="pp" id="7" rel="cnj">
+          <node word_zv="bij" word="bij" end="4" begin="3" originalOffsets="3--4" frame="preposition(bij,[vandaan])" his="normal" his_1="normal" id="8" lcat="pp" lemma="bij" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="bij" sense="bij" vztype="init"/>
+          <node end="6" begin="4" originalOffsets="4--6" cat="np" id="9" rel="obj1">
+            <node word_zv="de" word="den" end="5" begin="4" originalOffsets="4--5" frame="determiner(de)" his="normal" his_1="normal" id="10" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+            <node word_zv="haring" word="aring" end="6" begin="5" originalOffsets="5--6" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="11" lcat="np" lemma="haring" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="haring" sense="haring"/>
           </node>
         </node>
-        <node isWord="true" end="8" begin="7" conjtype="neven" frame="conj(en)" his="normal" his_1="normal" id="12" lcat="vg" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
-        <node begin="8" cat="pp" end="11" id="13" rel="cnj">
-          <node isWord="true" end="9" begin="8" frame="preposition(bij,[vandaan])" his="normal" his_1="normal" id="14" lcat="pp" lemma="bij" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="bij" sense="bij" vztype="init" word="bij"/>
-          <node begin="9" cat="np" end="11" id="15" rel="obj1">
-            <node isWord="true" end="10" begin="9" frame="determiner(de)" his="normal" his_1="normal" id="16" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node isWord="true" end="11" begin="10" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="17" lcat="np" lemma="sprot" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="sprot" sense="sprot" word="sprot"/>
+        <node word_zv="en" word="en" end="8" begin="7" originalOffsets="7--8" conjtype="neven" frame="conj(en)" his="normal" his_1="normal" id="12" lcat="vg" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+        <node end="11" begin="8" originalOffsets="8--11" cat="pp" id="13" rel="cnj">
+          <node word_zv="bij" word="bij" end="9" begin="8" originalOffsets="8--9" frame="preposition(bij,[vandaan])" his="normal" his_1="normal" id="14" lcat="pp" lemma="bij" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="bij" sense="bij" vztype="init"/>
+          <node end="11" begin="9" originalOffsets="9--11" cat="np" id="15" rel="obj1">
+            <node word_zv="de" word="de" end="10" begin="9" originalOffsets="9--10" frame="determiner(de)" his="normal" his_1="normal" id="16" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+            <node word_zv="sprot" word="sprot" end="11" begin="10" originalOffsets="10--11" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="17" lcat="np" lemma="sprot" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="sprot" sense="sprot"/>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="12" begin="11" frame="punct(hellip)" his="skip" id="18" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node word_zv="..." word="..." end="12" begin="11" originalOffsets="11--12" frame="punct(hellip)" his="skip" id="18" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0112">dat zat eigenlijk bij de haring ... en bij de sprot ...</sentence>
   <comments>

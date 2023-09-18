@@ -1,27 +1,27 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="14" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja" word="ja"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="2" cat="smain" end="9" id="3" rel="--">
-      <node begin="2" cat="pp" end="5" id="4" rel="mod">
-        <node isWord="true" end="3" begin="2" id="5" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
-        <node begin="3" cat="np" end="5" id="6" rel="obj1">
-          <node isWord="true" end="4" begin="3" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-          <node isWord="true" end="5" begin="4" genus="zijd" getal="ev" graad="basis" id="8" lemma="sprot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sprot" sense="sprot" word="sprot"/>
+  <node end="14" begin="0" originalOffsets="0--14" cat="top" id="0" rel="top">
+    <node word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
+    <node word_zv="..." word="..." end="2" begin="1" originalOffsets="1--2" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="9" begin="2" originalOffsets="2--9" cat="smain" id="3" rel="--">
+      <node end="5" begin="2" originalOffsets="2--5" cat="pp" id="4" rel="mod">
+        <node word_zv="van" word="van" end="3" begin="2" originalOffsets="2--3" id="5" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+        <node end="5" begin="3" originalOffsets="3--5" cat="np" id="6" rel="obj1">
+          <node word_zv="de" word="de" end="4" begin="3" originalOffsets="3--4" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word_zv="sprot" word="sprot" end="5" begin="4" originalOffsets="4--5" genus="zijd" getal="ev" graad="basis" id="8" lemma="sprot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sprot" sense="sprot"/>
         </node>
       </node>
-      <node isWord="true" end="6" begin="5" id="9" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-      <node isWord="true" end="7" begin="6" genus="onz" getal="ev" id="10" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
-      <node begin="7" cat="ap" end="9" id="11" rel="predc">
-        <node isWord="true" end="8" begin="7" buiging="zonder" graad="basis" id="12" lemma="juist" pos="adv" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="juist" sense="juist" word="juist"/>
-        <node isWord="true" end="9" begin="8" buiging="zonder" getal-n="zonder-n" graad="basis" id="13" lemma="hetzelfde" pos="adj" positie="nom" postag="ADJ(nom,basis,zonder,zonder-n)" pt="adj" rel="hd" root="hetzelfde" sense="hetzelfde" word="hetzelfde"/>
+      <node word_zv="was" word="was" end="6" begin="5" originalOffsets="5--6" id="9" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node word_zv="het" word="t" end="7" begin="6" originalOffsets="6--7" genus="onz" getal="ev" id="10" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
+      <node end="9" begin="7" originalOffsets="7--9" cat="ap" id="11" rel="predc">
+        <node word_zv="juist" word="just" end="8" begin="7" originalOffsets="7--8" buiging="zonder" graad="basis" id="12" lemma="juist" pos="adv" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="juist" sense="juist"/>
+        <node word_zv="hetzelfde" word="etzelfste" end="9" begin="8" originalOffsets="8--9" buiging="zonder" getal-n="zonder-n" graad="basis" id="13" lemma="hetzelfde" pos="adj" positie="nom" postag="ADJ(nom,basis,zonder,zonder-n)" pt="adj" rel="hd" root="hetzelfde" sense="hetzelfde"/>
       </node>
     </node>
-    <node isWord="true" end="10" begin="9" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="11" begin="10" id="15" lemma="juist" pos="adv" postag="BW()" pt="bw" rel="--" root="juist" sense="juist" word="juist"/>
-    <node isWord="true" end="12" begin="11" id="16" lemma="juist" pos="adv" postag="BW()" pt="bw" rel="--" root="juist" sense="juist" word="juist"/>
-    <node isWord="true" end="13" begin="12" id="17" lemma="hetzelfde" pos="adv" postag="BW()" pt="bw" rel="--" root="hetzelfde" sense="hetzelfde" word="hetzelfde"/>
-    <node isWord="true" end="14" begin="13" id="18" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="10" begin="9" originalOffsets="9--10" id="14" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="juist" word="juste" end="11" begin="10" originalOffsets="10--11" id="15" lemma="juist" pos="adv" postag="BW()" pt="bw" rel="--" root="juist" sense="juist"/>
+    <node word_zv="juist" word="juste" end="12" begin="11" originalOffsets="11--12" id="16" lemma="juist" pos="adv" postag="BW()" pt="bw" rel="--" root="juist" sense="juist"/>
+    <node word_zv="hetzelfde" word="etzelfste" end="13" begin="12" originalOffsets="12--13" id="17" lemma="hetzelfde" pos="adv" postag="BW()" pt="bw" rel="--" root="hetzelfde" sense="hetzelfde"/>
+    <node word_zv="..." word="..." end="14" begin="13" originalOffsets="13--14" id="18" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0095">ja ... van de sprot was het juist hetzelfde ... juist juist hetzelfde ...</sentence>
   <comments>

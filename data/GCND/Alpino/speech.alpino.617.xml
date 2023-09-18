@@ -1,11 +1,11 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="3" id="0" rel="top">
-    <node begin="0" cat="du" end="2" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
-      <node isWord="true" end="2" begin="1" case="nom" def="def" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="3" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="nucl" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh" word="ik"/>
+  <node end="3" begin="0" originalOffsets="0--3" cat="top" id="0" rel="top">
+    <node end="2" begin="0" originalOffsets="0--2" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node word_zv="ik" word="ik" end="2" begin="1" originalOffsets="1--2" case="nom" def="def" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="3" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="nucl" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh"/>
     </node>
-    <node isWord="true" end="3" begin="2" frame="punct(hellip)" his="skip" id="4" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" frame="punct(hellip)" his="skip" id="4" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0316">en ik ...</sentence>
   <comments>

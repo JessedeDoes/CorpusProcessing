@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="van" pos="comp" postag="VZ(init)" pt="vz" rel="--" root="van" sense="van" vztype="init" word="van"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh" word="uh"/>
-    <node isWord="true" end="3" begin="2" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="3" cat="cp" end="8" id="4" rel="--">
-      <node begin="3" cat="mwu" end="5" id="5" rel="cmp">
-        <node isWord="true" end="4" begin="3" id="6" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="mwp" root="van" sense="van" vztype="init" word="van"/>
-        <node isWord="true" end="5" begin="4" conjtype="onder" id="7" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="mwp" root="als" sense="als" word="als"/>
+  <node end="9" begin="0" originalOffsets="0--9" cat="top" id="0" rel="top">
+    <node word_zv="van" word="van" end="1" begin="0" originalOffsets="0--1" id="1" lemma="van" pos="comp" postag="VZ(init)" pt="vz" rel="--" root="van" sense="van" vztype="init"/>
+    <node word_zv="uh" word="uh" end="2" begin="1" originalOffsets="1--2" id="2" lemma="uh" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="uh" sense="uh"/>
+    <node word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="8" begin="3" originalOffsets="3--8" cat="cp" id="4" rel="--">
+      <node end="5" begin="3" originalOffsets="3--5" cat="mwu" id="5" rel="cmp">
+        <node word_zv="van" word="van" end="4" begin="3" originalOffsets="3--4" id="6" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="mwp" root="van" sense="van" vztype="init"/>
+        <node word_zv="als" word="a" end="5" begin="4" originalOffsets="4--5" conjtype="onder" id="7" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="mwp" root="als" sense="als"/>
       </node>
-      <node begin="5" cat="ssub" end="8" id="8" rel="body">
-        <node isWord="true" end="6" begin="5" getal="mv" id="9" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
-        <node isWord="true" end="7" begin="6" buiging="zonder" graad="basis" id="10" lemma="klein" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="klein" sense="klein" word="klein"/>
-        <node isWord="true" end="8" begin="7" id="11" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" word="waren" wvorm="pv"/>
+      <node end="8" begin="5" originalOffsets="5--8" cat="ssub" id="8" rel="body">
+        <node word_zv="ze" word="ze" end="6" begin="5" originalOffsets="5--6" getal="mv" id="9" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node word_zv="klein" word="kleine" end="7" begin="6" originalOffsets="6--7" buiging="zonder" graad="basis" id="10" lemma="klein" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="klein" sense="klein"/>
+        <node word_zv="waren" word="waren" end="8" begin="7" originalOffsets="7--8" id="11" lemma="zijn" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
       </node>
     </node>
-    <node isWord="true" end="9" begin="8" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="9" begin="8" originalOffsets="8--9" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0002">van uh ... van als ze klein waren .</sentence>
   <comments>

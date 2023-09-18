@@ -1,14 +1,14 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="7" id="0" rel="top">
-    <node begin="0" cat="smain" end="5" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" getal="mv" id="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="drijven" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="drijf" sense="drijf" word="dreven" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" getal="mv" id="4" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers" word="zij"/>
-      <node isWord="true" end="4" begin="3" getal="getal" id="5" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
-      <node isWord="true" end="5" begin="4" id="6" lemma="opzij" pos="adv" postag="BW()" pt="bw" rel="ld" root="opzij" sense="opzij" word="opzij"/>
+  <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
+    <node end="5" begin="0" originalOffsets="0--5" cat="smain" id="1" rel="--">
+      <node word_zv="ze" word="ze" end="1" begin="0" originalOffsets="0--1" getal="mv" id="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+      <node word_zv="dreven" word="drijfden" end="2" begin="1" originalOffsets="1--2" id="3" lemma="drijven" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="drijf" sense="drijf" wvorm="pv"/>
+      <node word_zv="zij" word="zijder" end="3" begin="2" originalOffsets="2--3" getal="mv" id="4" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers"/>
+      <node word_zv="daar" word="daa" end="4" begin="3" originalOffsets="3--4" getal="getal" id="5" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+      <node word_zv="opzij" word="opzijde" end="5" begin="4" originalOffsets="4--5" id="6" lemma="opzij" pos="adv" postag="BW()" pt="bw" rel="ld" root="opzij" sense="opzij"/>
     </node>
-    <node isWord="true" end="6" begin="5" id="7" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi" word="zi"/>
-    <node isWord="true" end="7" begin="6" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="zi" word="zi" end="6" begin="5" originalOffsets="5--6" id="7" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi"/>
+    <node word_zv="." word="." end="7" begin="6" originalOffsets="6--7" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0088">ze dreven zij daar opzij zi .</sentence>
   <comments>

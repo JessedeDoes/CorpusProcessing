@@ -1,31 +1,31 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="13" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="4" begin="3" id="2" lemma="wel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wel" sense="wel" word="wel"/>
-    <node isWord="true" end="9" begin="8" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="du" end="12" id="4" rel="--">
-      <node begin="0" cat="mwu" end="2" id="5" rel="tag">
-        <node isWord="true" end="1" begin="0" id="6" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="mwp" root="ja" sense="ja" word="ja"/>
-        <node isWord="true" end="2" begin="1" genus="onz" getal="ev" id="7" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="mwp" root="het" sense="het" status="red" vwtype="pers" word="het"/>
+  <node end="13" begin="0" originalOffsets="0--13" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="wel" word="wel" end="4" begin="3" originalOffsets="3--4" id="2" lemma="wel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wel" sense="wel"/>
+    <node word_zv="..." word="..." end="9" begin="8" originalOffsets="8--9" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="12" begin="0" originalOffsets="0--12" cat="du" id="4" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="mwu" id="5" rel="tag">
+        <node word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" id="6" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="mwp" root="ja" sense="ja"/>
+        <node word_zv="het" word="t" end="2" begin="1" originalOffsets="1--2" genus="onz" getal="ev" id="7" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="mwp" root="het" sense="het" status="red" vwtype="pers"/>
       </node>
-      <node begin="4" cat="smain" end="12" id="8" rel="nucl">
-        <node isWord="true" end="5" begin="4" getal="mv" id="9" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
-        <node isWord="true" end="6" begin="5" id="10" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="zijn" wvorm="pv"/>
-        <node isWord="true" end="7" begin="6" getal="mv" id="11" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers" word="wij"/>
-        <node begin="4" cat="ppart" end="12" id="12" rel="vc">
-          <node begin="4" end="5" id="13" index="1" rel="su"/>
-          <node isWord="true" end="8" begin="7" buiging="zonder" id="14" lemma="vluchten" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="vlucht" sense="vlucht" word="gevlucht" wvorm="vd"/>
-          <node begin="9" cat="pp" end="12" id="15" rel="mod">
-            <node isWord="true" end="10" begin="9" id="16" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-            <node begin="10" cat="np" end="12" id="17" rel="obj1">
-              <node isWord="true" end="11" begin="10" buiging="zonder" id="18" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
-              <node isWord="true" end="12" begin="11" genus="zijd" getal="ev" graad="basis" id="19" lemma="oorlog" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="oorlog" sense="oorlog" word="oorlog"/>
+      <node end="12" begin="4" originalOffsets="4--12" cat="smain" id="8" rel="nucl">
+        <node word_zv="we" word="me" end="5" begin="4" originalOffsets="4--5" getal="mv" id="9" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+        <node word_zv="zijn" word="zijn" end="6" begin="5" originalOffsets="5--6" id="10" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="wij" word="wijder" end="7" begin="6" originalOffsets="6--7" getal="mv" id="11" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
+        <node end="12" begin="4" originalOffsets="4--12" cat="ppart" id="12" rel="vc">
+          <node end="5" begin="4" originalOffsets="4--5" id="13" index="1" rel="su"/>
+          <node word_zv="gevlucht" word="gevlucht" end="8" begin="7" originalOffsets="7--8" buiging="zonder" id="14" lemma="vluchten" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="vlucht" sense="vlucht" wvorm="vd"/>
+          <node end="12" begin="9" originalOffsets="9--12" cat="pp" id="15" rel="mod">
+            <node word_zv="in" word="in" end="10" begin="9" originalOffsets="9--10" id="16" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node end="12" begin="10" originalOffsets="10--12" cat="np" id="17" rel="obj1">
+              <node word_zv="die" word="dien" end="11" begin="10" originalOffsets="10--11" buiging="zonder" id="18" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+              <node word_zv="oorlog" word="oorloge" end="12" begin="11" originalOffsets="11--12" genus="zijd" getal="ev" graad="basis" id="19" lemma="oorlog" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="oorlog" sense="oorlog"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="13" begin="12" id="20" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="13" begin="12" originalOffsets="12--13" id="20" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0525">ja het ... wel we zijn wij gevlucht ... in die oorlog ...</sentence>
   <comments>

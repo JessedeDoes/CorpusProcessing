@@ -1,13 +1,13 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="6" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="zo" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zo" sense="zo" word="zo"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="2" cat="du" end="6" id="3" rel="--">
-      <node isWord="true" end="3" begin="2" buiging="zonder" graad="basis" id="4" lemma="natuurlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="tag" root="natuurlijk" sense="natuurlijk" word="natuurlijk"/>
-      <node begin="3" cat="smain" end="6" id="5" rel="nucl">
-        <node isWord="true" end="4" begin="3" getal="ev" id="6" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-        <node isWord="true" end="5" begin="4" id="7" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-        <node isWord="true" end="6" begin="5" id="8" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" word="dan"/>
+  <node end="6" begin="0" originalOffsets="0--6" cat="top" id="0" rel="top">
+    <node word_zv="zo" word="zo" end="1" begin="0" originalOffsets="0--1" id="1" lemma="zo" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zo" sense="zo"/>
+    <node word_zv="..." word="..." end="2" begin="1" originalOffsets="1--2" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="6" begin="2" originalOffsets="2--6" cat="du" id="3" rel="--">
+      <node word_zv="natuurlijk" word="natuurlijk" end="3" begin="2" originalOffsets="2--3" buiging="zonder" graad="basis" id="4" lemma="natuurlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="tag" root="natuurlijk" sense="natuurlijk"/>
+      <node end="6" begin="3" originalOffsets="3--6" cat="smain" id="5" rel="nucl">
+        <node word_zv="dat" word="da" end="4" begin="3" originalOffsets="3--4" getal="ev" id="6" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word_zv="was" word="was" end="5" begin="4" originalOffsets="4--5" id="7" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="dan" word="tan" end="6" begin="5" originalOffsets="5--6" id="8" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan"/>
       </node>
     </node>
   </node>

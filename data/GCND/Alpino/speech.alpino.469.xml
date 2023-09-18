@@ -1,14 +1,14 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="du" end="4" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
-      <node begin="1" cat="smain" end="4" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" getal="ev" id="4" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="3" begin="2" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-        <node isWord="true" end="4" begin="3" buiging="zonder" graad="basis" id="6" lemma="moe" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="moe" sense="moe" word="moe"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="4" begin="0" originalOffsets="0--4" cat="du" id="1" rel="--">
+      <node word_zv="maar" word="maa" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node end="4" begin="1" originalOffsets="1--4" cat="smain" id="3" rel="nucl">
+        <node word_zv="ik" word="k" end="2" begin="1" originalOffsets="1--2" getal="ev" id="4" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="was" word="was" end="3" begin="2" originalOffsets="2--3" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+        <node word_zv="moe" word="moe" end="4" begin="3" originalOffsets="3--4" buiging="zonder" graad="basis" id="6" lemma="moe" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="moe" sense="moe"/>
       </node>
     </node>
-    <node isWord="true" end="5" begin="4" id="7" lemma="wi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wi" sense="wi" word="wi"/>
+    <node word_zv="wi" word="wi" end="5" begin="4" originalOffsets="4--5" id="7" lemma="wi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="wi" sense="wi"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0469">maar ik was moe wi</sentence>
   <comments>

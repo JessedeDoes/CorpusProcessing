@@ -1,32 +1,32 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:09" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="11" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
-    <node begin="0" cat="du" end="10" id="2" rel="--">
-      <node begin="0" cat="sv1" end="2" id="3" rel="tag">
-        <node isWord="true" end="1" begin="0" frame="verb(hebben,sg3,tr_sbar)" his="normal" his_1="normal" id="4" infl="sg3" lcat="sv1" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sc="tr_sbar" sense="zeg" tense="present" word="zegt" wvorm="pv"/>
-        <node isWord="true" end="2" begin="1" case="nom" def="def" frame="pronoun(nwh,thi,sg,de,nom,def)" gen="de" genus="masc" getal="ev" his="normal" his_1="normal" id="5" lcat="np" lemma="hij" naamval="nomin" num="sg" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" rnum="sg" root="hij" sense="hij" status="vol" vwtype="pers" wh="nwh" word="hij"/>
+  <node end="11" begin="0" originalOffsets="0--11" cat="top" id="0" rel="top">
+    <node word_zv="," word="," end="3" begin="2" originalOffsets="2--3" frame="punct(komma)" his="normal" his_1="normal" id="1" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma"/>
+    <node end="10" begin="0" originalOffsets="0--10" cat="du" id="2" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="sv1" id="3" rel="tag">
+        <node word_zv="zegt" word="zegt" end="1" begin="0" originalOffsets="0--1" frame="verb(hebben,sg3,tr_sbar)" his="normal" his_1="normal" id="4" infl="sg3" lcat="sv1" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sc="tr_sbar" sense="zeg" tense="present" wvorm="pv"/>
+        <node word_zv="hij" word="n" end="2" begin="1" originalOffsets="1--2" case="nom" def="def" frame="pronoun(nwh,thi,sg,de,nom,def)" gen="de" genus="masc" getal="ev" his="normal" his_1="normal" id="5" lcat="np" lemma="hij" naamval="nomin" num="sg" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" rnum="sg" root="hij" sense="hij" status="vol" vwtype="pers" wh="nwh"/>
       </node>
-      <node begin="3" cat="smain" end="10" id="6" rel="nucl">
-        <node isWord="true" end="4" begin="3" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="7" index="1" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh" word="dat"/>
-        <node isWord="true" end="5" begin="4" frame="verb(zijn,sg3,aux(inf))" his="normal" his_1="normal" id="8" infl="sg3" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="aux(inf)" sense="ga" stype="declarative" tense="present" word="gaat" wvorm="pv"/>
-        <node begin="3" cat="inf" end="10" id="9" rel="vc">
-          <node begin="3" end="4" id="10" index="1" rel="su"/>
-          <node isWord="true" end="7" begin="6" buiging="zonder" frame="verb(unacc,inf,copula)" his="normal" his_1="normal" id="11" infl="inf" lcat="inf" lemma="zijn" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ben" sc="copula" sense="ben" word="zijn" wvorm="inf"/>
-          <node begin="5" cat="ap" end="10" id="12" rel="predc">
-            <node isWord="true" end="6" begin="5" aform="compar" buiging="zonder" frame="adjective(er(adv))" graad="comp" his="normal" his_1="normal" id="13" infl="no_e" lcat="ap" lemma="goed" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="hd" root="goed" sense="goed" vform="adj" word="beter"/>
-            <node begin="7" cat="cp" end="10" id="14" rel="obcomp">
-              <node isWord="true" end="8" begin="7" conjtype="onder" frame="comparative(dan)" his="normal" his_1="normal" id="15" lcat="comparative" lemma="dan" pos="comparative" postag="VG(onder)" pt="vg" rel="cmp" root="dan" sense="dan" word="of"/>
-              <node begin="8" cat="np" end="10" id="16" rel="body">
-                <node isWord="true" end="9" begin="8" aform="base" buiging="zonder" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="17" infl="no_e" lcat="ap" lemma="koud" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="koud" sense="koud" vform="adj" word="koud"/>
-                <node isWord="true" end="10" begin="9" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="18" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water" word="water"/>
+      <node end="10" begin="3" originalOffsets="3--10" cat="smain" id="6" rel="nucl">
+        <node word_zv="dat" word="da" end="4" begin="3" originalOffsets="3--4" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="7" index="1" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh"/>
+        <node word_zv="gaat" word="gaat" end="5" begin="4" originalOffsets="4--5" frame="verb(zijn,sg3,aux(inf))" his="normal" his_1="normal" id="8" infl="sg3" lcat="smain" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="aux(inf)" sense="ga" stype="declarative" tense="present" wvorm="pv"/>
+        <node end="10" begin="3" originalOffsets="3--10" cat="inf" id="9" rel="vc">
+          <node end="4" begin="3" originalOffsets="3--4" id="10" index="1" rel="su"/>
+          <node word_zv="zijn" word="zijn" end="7" begin="6" originalOffsets="6--7" buiging="zonder" frame="verb(unacc,inf,copula)" his="normal" his_1="normal" id="11" infl="inf" lcat="inf" lemma="zijn" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ben" sc="copula" sense="ben" wvorm="inf"/>
+          <node end="10" begin="5" originalOffsets="5--10" cat="ap" id="12" rel="predc">
+            <node word_zv="beter" word="beter" end="6" begin="5" originalOffsets="5--6" aform="compar" buiging="zonder" frame="adjective(er(adv))" graad="comp" his="normal" his_1="normal" id="13" infl="no_e" lcat="ap" lemma="goed" pos="adj" positie="vrij" postag="ADJ(vrij,comp,zonder)" pt="adj" rel="hd" root="goed" sense="goed" vform="adj"/>
+            <node end="10" begin="7" originalOffsets="7--10" cat="cp" id="14" rel="obcomp">
+              <node word_zv="of" word="of" end="8" begin="7" originalOffsets="7--8" conjtype="onder" frame="comparative(dan)" his="normal" his_1="normal" id="15" lcat="comparative" lemma="dan" pos="comparative" postag="VG(onder)" pt="vg" rel="cmp" root="dan" sense="dan"/>
+              <node end="10" begin="8" originalOffsets="8--10" cat="np" id="16" rel="body">
+                <node word_zv="koud" word="koud" end="9" begin="8" originalOffsets="8--9" aform="base" buiging="zonder" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="17" infl="no_e" lcat="ap" lemma="koud" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="koud" sense="koud" vform="adj"/>
+                <node word_zv="water" word="water" end="10" begin="9" originalOffsets="9--10" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="18" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water"/>
               </node>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="11" begin="10" frame="punct(punt)" his="normal" his_1="normal" id="19" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+    <node word_zv="." word="." end="11" begin="10" originalOffsets="10--11" frame="punct(punt)" his="normal" his_1="normal" id="19" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0460">zegt hij , dat gaat beter zijn of koud water .</sentence>
   <comments>

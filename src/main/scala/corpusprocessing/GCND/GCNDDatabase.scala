@@ -1,11 +1,13 @@
 package corpusprocessing.GCND
 import scala.xml._
-import database.DatabaseUtilities.Select
+import database.DatabaseUtilities.{AlmostQuery, Select, doeHet}
 import database._
 import org.json4s._
 import org.json4s.jackson.Serialization._
+
 import scala.xml.PrettyPrinter
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoSentence, AlpinoToken}
+
 import java.io.PrintWriter
 
 
@@ -43,7 +45,7 @@ gcnd=# select count(*) from elan_annotatie where tekst_lv is null;
 
 - lichte en zware vervlaamsing moeilijk te aligneren
 
-De Alpino analyses zijn niet helemaal volgens de Lassy guidelines:
+De Alpino analyses zijn niet helemaal volgens de Lassy guidelines: (2x hd bijvoorbeeld)
 
 
 <node begin="8" cat="np" end="10" id="7" rel="su">
@@ -59,7 +61,7 @@ Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
 
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(100,4)
-  val config = new Configuration(name="gcnd", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
+  val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val db = new Database(config)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
@@ -77,7 +79,7 @@ object GCNDDatabase {
     r.getInt("eindtijd"),
   ), "elan_annotatie")
 
-  lazy val alpinoQ = Select(
+  val alpinoQ: Select[AlpinoAnnotation] = Select(
     r => AlpinoAnnotation(
       r.getInt("alpino_annotatie_id"),
       r.getInt("transcriptie_id"),
@@ -90,11 +92,24 @@ object GCNDDatabase {
       r.getInt("starttijd"),
       r.getInt("eindtijd")), "alpino_annotatie")
 
+  // lazy val alpinoQ: AlmostQuery[AlpinoAnnotation] = doeHet[AlpinoAnnotation](alpinoQ0)
   lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
+
   lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
 
   def getAlpinoAnnotations(transcriptie_id: Int): Seq[AlpinoAnnotation] = {
-    val q = alpinoQ.copy(from= s"alpino_annotatie where transcriptie_id=$transcriptie_id")
+    val q: Select[AlpinoAnnotation] = Select(
+      r => AlpinoAnnotation(
+        r.getInt("alpino_annotatie_id"),
+        r.getInt("transcriptie_id"),
+        r.getString("annotatie_code"),
+        r.getInt("opname__persoon_id"),
+        r.getString("tekst_lv"),
+        r.getString("tekst_zv"),
+        r.getString("alpino_xml"),
+        r.getString("tokens"),
+        r.getInt("starttijd"),
+        r.getInt("eindtijd")), s"alpino_annotatie where transcriptie_id=$transcriptie_id")
     db.slurp(q).sortBy(x => x.sortKey)
   }
 
@@ -155,6 +170,8 @@ object GCNDDatabase {
     a.key.equals("id")).map(a => a.value.toString).head
 
   def main(args: Array[String])  = {
+
+
     if (false) {
       val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
       out.println(pretty.format(getPseudoTEI(1)))

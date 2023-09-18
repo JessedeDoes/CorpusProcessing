@@ -1,14 +1,14 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="smain" end="5" id="1" rel="--">
-      <node begin="0" cat="np" end="2" id="2" rel="su">
-        <node isWord="true" end="1" begin="0" id="3" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="het" word="de"/>
-        <node isWord="true" end="2" begin="1" genus="onz" getal="ev" graad="basis" id="4" lemma="bassin" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="bassin" sense="bassin" word="bassin"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="5" begin="0" originalOffsets="0--5" cat="smain" id="1" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="np" id="2" rel="su">
+        <node word_zv="de" word="de" end="1" begin="0" originalOffsets="0--1" id="3" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="het"/>
+        <node word_zv="bassin" word="bassing" end="2" begin="1" originalOffsets="1--2" genus="onz" getal="ev" graad="basis" id="4" lemma="bassin" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="bassin" sense="bassin"/>
       </node>
-      <node isWord="true" end="3" begin="2" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-      <node begin="3" cat="ap" end="5" id="6" rel="predc">
-        <node isWord="true" end="4" begin="3" buiging="zonder" graad="basis" id="7" lemma="schoon" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="schoon" sense="schoon" word="schoon"/>
-        <node isWord="true" end="5" begin="4" id="8" lemma="genoeg" pos="adv" postag="BW()" pt="bw" rel="mod" root="genoeg" sense="genoeg" word="genoeg"/>
+      <node word_zv="was" word="was" end="3" begin="2" originalOffsets="2--3" id="5" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node end="5" begin="3" originalOffsets="3--5" cat="ap" id="6" rel="predc">
+        <node word_zv="schoon" word="schoone" end="4" begin="3" originalOffsets="3--4" buiging="zonder" graad="basis" id="7" lemma="schoon" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="schoon" sense="schoon"/>
+        <node word_zv="genoeg" word="genoeg" end="5" begin="4" originalOffsets="4--5" id="8" lemma="genoeg" pos="adv" postag="BW()" pt="bw" rel="mod" root="genoeg" sense="genoeg"/>
       </node>
     </node>
   </node>

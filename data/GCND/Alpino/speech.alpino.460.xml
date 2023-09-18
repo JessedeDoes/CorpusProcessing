@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
-    <node isWord="true" end="4" begin="3" id="2" lemma="nè" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="nè" sense="nè" word="nè"/>
-    <node begin="0" cat="du" end="9" id="3" rel="--">
-      <node begin="0" cat="smain" end="2" id="4" rel="tag">
-        <node isWord="true" end="1" begin="0" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="2" begin="1" id="6" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zeg" wvorm="pv"/>
+  <node end="9" begin="0" originalOffsets="0--9" cat="top" id="0" rel="top">
+    <node word_zv="," word="," end="3" begin="2" originalOffsets="2--3" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word_zv="nè" word="nè" end="4" begin="3" originalOffsets="3--4" id="2" lemma="nè" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="nè" sense="nè"/>
+    <node end="9" begin="0" originalOffsets="0--9" cat="du" id="3" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="smain" id="4" rel="tag">
+        <node word_zv="ik" word="k" end="1" begin="0" originalOffsets="0--1" getal="ev" id="5" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="zeg" word="zeggen" end="2" begin="1" originalOffsets="1--2" id="6" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
       </node>
-      <node begin="4" cat="smain" end="9" id="7" rel="nucl">
-        <node begin="4" cat="np" end="6" id="8" rel="su">
-          <node isWord="true" end="5" begin="4" id="9" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-          <node isWord="true" end="6" begin="5" genus="zijd" getal="ev" graad="basis" id="10" lemma="motor" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="motor" sense="motor" word="motor"/>
+      <node end="9" begin="4" originalOffsets="4--9" cat="smain" id="7" rel="nucl">
+        <node end="6" begin="4" originalOffsets="4--6" cat="np" id="8" rel="su">
+          <node word_zv="de" word="de" end="5" begin="4" originalOffsets="4--5" id="9" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word_zv="motor" word="motor" end="6" begin="5" originalOffsets="5--6" genus="zijd" getal="ev" graad="basis" id="10" lemma="motor" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="motor" sense="motor"/>
         </node>
-        <node isWord="true" end="7" begin="6" id="11" lemma="stil_vallen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="val_stil" sense="val_stil" word="valt" wvorm="pv"/>
-        <node isWord="true" end="8" begin="7" id="12" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu" word="nu"/>
-        <node isWord="true" end="9" begin="8" buiging="zonder" graad="basis" id="13" lemma="stil" pos="part" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="svp" root="stil" sense="stil" word="stil"/>
+        <node word_zv="valt" word="valt" end="7" begin="6" originalOffsets="6--7" id="11" lemma="stil_vallen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="val_stil" sense="val_stil" wvorm="pv"/>
+        <node word_zv="nu" word="nu" end="8" begin="7" originalOffsets="7--8" id="12" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu"/>
+        <node word_zv="stil" word="stille" end="9" begin="8" originalOffsets="8--9" buiging="zonder" graad="basis" id="13" lemma="stil" pos="part" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="svp" root="stil" sense="stil"/>
       </node>
     </node>
   </node>

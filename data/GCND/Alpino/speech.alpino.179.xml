@@ -1,16 +1,16 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="du" end="4" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="cp" end="4" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" conjtype="onder" id="4" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
-        <node begin="2" cat="ssub" end="4" id="5" rel="body">
-          <node isWord="true" end="3" begin="2" getal="mv" id="6" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
-          <node isWord="true" end="4" begin="3" getal="mv" id="7" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers" word="wij"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="4" begin="0" originalOffsets="0--4" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="4" begin="1" originalOffsets="1--4" cat="cp" id="3" rel="nucl">
+        <node word_zv="als" word="as" end="2" begin="1" originalOffsets="1--2" conjtype="onder" id="4" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node end="4" begin="2" originalOffsets="2--4" cat="ssub" id="5" rel="body">
+          <node word_zv="we" word="me" end="3" begin="2" originalOffsets="2--3" getal="mv" id="6" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+          <node word_zv="wij" word="wijder" end="4" begin="3" originalOffsets="3--4" getal="mv" id="7" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="5" begin="4" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="5" begin="4" originalOffsets="4--5" id="8" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0535">en als we wij ...</sentence>
   <comments>

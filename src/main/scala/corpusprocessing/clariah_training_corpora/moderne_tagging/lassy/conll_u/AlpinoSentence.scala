@@ -22,9 +22,6 @@ import Logje._
 
 case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, external_source: Option[String] = None) {
 
-
-
-
   val sentid: String = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
   val text: String = (alpino \\ "sentence").text
   val source : String = external_source.getOrElse("UNKNOWN")
@@ -114,8 +111,6 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
                      |# text = ${this.text}""".stripMargin
        header + "\n" + connlTokens.map(_.toCONLL()).mkString("\n")
    }
-
-
 }
 
 // old stuff before refactor into specific rules object

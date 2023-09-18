@@ -1,66 +1,66 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="32" id="0" rel="top">
-    <node isWord="true" end="4" begin="3" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="8" begin="7" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="15" begin="14" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="26" begin="25" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="conj" end="29" id="5" rel="--">
-      <node begin="0" cat="smain" end="14" id="6" rel="cnj">
-        <node isWord="true" end="1" begin="0" getal="ev" id="7" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="2" begin="1" id="8" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" word="heb" wvorm="pv"/>
-        <node begin="0" cat="ppart" end="14" id="9" rel="vc">
-          <node begin="0" end="1" id="10" index="1" rel="su"/>
-          <node isWord="true" end="3" begin="2" id="11" lemma="daarvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="daarvoor" sense="daarvoor" word="daarvoor"/>
-          <node isWord="true" end="7" begin="6" buiging="zonder" id="12" lemma="hebben" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="heb" sense="heb" word="gehad" wvorm="vd"/>
-          <node begin="4" cat="conj" end="14" id="13" rel="obj1">
-            <node begin="4" cat="np" end="6" id="14" rel="cnj">
-              <node isWord="true" end="5" begin="4" id="15" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-              <node isWord="true" end="6" begin="5" genus="zijd" getal="ev" graad="basis" id="16" lemma="medaille" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="medaille" sense="medaille" word="medaille"/>
+  <node end="32" begin="0" originalOffsets="0--32" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="4" begin="3" originalOffsets="3--4" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." end="8" begin="7" originalOffsets="7--8" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." end="15" begin="14" originalOffsets="14--15" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." end="26" begin="25" originalOffsets="25--26" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="29" begin="0" originalOffsets="0--29" cat="conj" id="5" rel="--">
+      <node end="14" begin="0" originalOffsets="0--14" cat="smain" id="6" rel="cnj">
+        <node word_zv="ik" word="k" end="1" begin="0" originalOffsets="0--1" getal="ev" id="7" index="1" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="heb" word="en" end="2" begin="1" originalOffsets="1--2" id="8" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+        <node end="14" begin="0" originalOffsets="0--14" cat="ppart" id="9" rel="vc">
+          <node end="1" begin="0" originalOffsets="0--1" id="10" index="1" rel="su"/>
+          <node word_zv="daarvoor" word="daarvooren" end="3" begin="2" originalOffsets="2--3" id="11" lemma="daarvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="daarvoor" sense="daarvoor"/>
+          <node word_zv="gehad" word="get" end="7" begin="6" originalOffsets="6--7" buiging="zonder" id="12" lemma="hebben" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="heb" sense="heb" wvorm="vd"/>
+          <node end="14" begin="4" originalOffsets="4--14" cat="conj" id="13" rel="obj1">
+            <node end="6" begin="4" originalOffsets="4--6" cat="np" id="14" rel="cnj">
+              <node word_zv="een" word="een" end="5" begin="4" originalOffsets="4--5" id="15" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word_zv="medaille" word="medaille" end="6" begin="5" originalOffsets="5--6" genus="zijd" getal="ev" graad="basis" id="16" lemma="medaille" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="medaille" sense="medaille"/>
             </node>
-            <node isWord="true" end="9" begin="8" conjtype="neven" id="17" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
-            <node begin="9" cat="np" end="14" id="18" rel="cnj">
-              <node isWord="true" end="10" begin="9" id="19" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-              <node isWord="true" end="11" begin="10" genus="onz" getal="ev" graad="basis" id="20" lemma="sparen_boek" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="spaar_boek_DIM" sense="spaar_boek_DIM" word="spaarboekje"/>
-              <node begin="11" cat="pp" end="14" id="21" rel="mod">
-                <node isWord="true" end="12" begin="11" id="22" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
-                <node begin="12" cat="np" end="14" id="23" rel="obj1">
-                  <node isWord="true" end="13" begin="12" id="24" lemma="driehonderd" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="driehonderd" sense="driehonderd" word="driehonderd"/>
-                  <node isWord="true" end="14" begin="13" genus="zijd" getal="ev" graad="basis" id="25" lemma="frank" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frank" sense="frank" word="frank"/>
+            <node word_zv="en" word="en" end="9" begin="8" originalOffsets="8--9" conjtype="neven" id="17" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+            <node end="14" begin="9" originalOffsets="9--14" cat="np" id="18" rel="cnj">
+              <node word_zv="een" word="e" end="10" begin="9" originalOffsets="9--10" id="19" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+              <node word_zv="spaarboekje" word="spaarboeksje" end="11" begin="10" originalOffsets="10--11" genus="onz" getal="ev" graad="basis" id="20" lemma="sparen_boek" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="spaar_boek_DIM" sense="spaar_boek_DIM"/>
+              <node end="14" begin="11" originalOffsets="11--14" cat="pp" id="21" rel="mod">
+                <node word_zv="van" word="van" end="12" begin="11" originalOffsets="11--12" id="22" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                <node end="14" begin="12" originalOffsets="12--14" cat="np" id="23" rel="obj1">
+                  <node word_zv="driehonderd" word="driehonderd" end="13" begin="12" originalOffsets="12--13" id="24" lemma="driehonderd" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="driehonderd" sense="driehonderd"/>
+                  <node word_zv="frank" word="frang" end="14" begin="13" originalOffsets="13--14" genus="zijd" getal="ev" graad="basis" id="25" lemma="frank" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frank" sense="frank"/>
                 </node>
               </node>
             </node>
           </node>
         </node>
       </node>
-      <node isWord="true" end="16" begin="15" conjtype="neven" id="26" lemma="maar" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="maar" sense="maar" word="maar"/>
-      <node begin="16" cat="smain" end="29" id="27" rel="cnj">
-        <node isWord="true" end="17" begin="16" getal="ev" id="28" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="18" begin="17" id="29" lemma="kunnen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kan" sense="kan" word="kon" wvorm="pv"/>
-        <node begin="18" cat="np" end="29" id="30" rel="obj1">
-          <node isWord="true" end="19" begin="18" id="31" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
-          <node isWord="true" end="20" begin="19" id="32" lemma="maar" pos="adv" postag="BW()" pt="bw" rel="mod" root="maar" sense="maar" word="maar"/>
-          <node isWord="true" end="21" begin="20" buiging="zonder" getal-n="zonder-n" id="33" lemma="krijgen" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="hd" root="krijg" sense="krijg" word="krijgen" wvorm="inf"/>
-          <node begin="21" cat="pp" end="25" id="34" rel="mod">
-            <node isWord="true" end="22" begin="21" id="35" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-            <node begin="22" cat="np" end="25" id="36" rel="obj1">
-              <node isWord="true" end="23" begin="22" id="37" lemma="drie" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="drie" sense="drie" word="drie"/>
-              <node isWord="true" end="24" begin="23" genus="onz" getal="ev" graad="basis" id="38" lemma="jaar" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="jaar" sense="jaar" word="jaar"/>
-              <node isWord="true" end="25" begin="24" genus="zijd" getal="ev" graad="basis" id="39" lemma="tijd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mod" root="tijd" sense="tijd" word="tijd"/>
+      <node word_zv="maar" word="maa" end="16" begin="15" originalOffsets="15--16" conjtype="neven" id="26" lemma="maar" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="maar" sense="maar"/>
+      <node end="29" begin="16" originalOffsets="16--29" cat="smain" id="27" rel="cnj">
+        <node word_zv="ik" word="k" end="17" begin="16" originalOffsets="16--17" getal="ev" id="28" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="kon" word="kost" end="18" begin="17" originalOffsets="17--18" id="29" lemma="kunnen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kan" sense="kan" wvorm="pv"/>
+        <node end="29" begin="18" originalOffsets="18--29" cat="np" id="30" rel="obj1">
+          <node word_zv="het" word="et" end="19" begin="18" originalOffsets="18--19" id="31" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+          <node word_zv="maar" word="maa" end="20" begin="19" originalOffsets="19--20" id="32" lemma="maar" pos="adv" postag="BW()" pt="bw" rel="mod" root="maar" sense="maar"/>
+          <node word_zv="krijgen" word="krijgen" end="21" begin="20" originalOffsets="20--21" buiging="zonder" getal-n="zonder-n" id="33" lemma="krijgen" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="hd" root="krijg" sense="krijg" wvorm="inf"/>
+          <node end="25" begin="21" originalOffsets="21--25" cat="pp" id="34" rel="mod">
+            <node word_zv="in" word="in" end="22" begin="21" originalOffsets="21--22" id="35" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+            <node end="25" begin="22" originalOffsets="22--25" cat="np" id="36" rel="obj1">
+              <node word_zv="drie" word="drie" end="23" begin="22" originalOffsets="22--23" id="37" lemma="drie" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="drie" sense="drie"/>
+              <node word_zv="jaar" word="jaar" end="24" begin="23" originalOffsets="23--24" genus="onz" getal="ev" graad="basis" id="38" lemma="jaar" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="jaar" sense="jaar"/>
+              <node word_zv="tijd" word="tijd" end="25" begin="24" originalOffsets="24--25" genus="zijd" getal="ev" graad="basis" id="39" lemma="tijd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mod" root="tijd" sense="tijd"/>
             </node>
           </node>
-          <node begin="26" cat="pp" end="29" id="40" rel="mod">
-            <node isWord="true" end="27" begin="26" id="41" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init" word="aan"/>
-            <node begin="27" cat="np" end="29" id="42" rel="obj1">
-              <node isWord="true" end="28" begin="27" id="43" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-              <node isWord="true" end="29" begin="28" genus="zijd" getal="ev" graad="basis" id="44" lemma="stad" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="stad" sense="stad" word="stad"/>
+          <node end="29" begin="26" originalOffsets="26--29" cat="pp" id="40" rel="mod">
+            <node word_zv="aan" word="aan" end="27" begin="26" originalOffsets="26--27" id="41" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init"/>
+            <node end="29" begin="27" originalOffsets="27--29" cat="np" id="42" rel="obj1">
+              <node word_zv="de" word="de" end="28" begin="27" originalOffsets="27--28" id="43" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word_zv="stad" word="stad" end="29" begin="28" originalOffsets="28--29" genus="zijd" getal="ev" graad="basis" id="44" lemma="stad" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="stad" sense="stad"/>
             </node>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="30" begin="29" id="45" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="31" begin="30" id="46" lemma="ewaar" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ewaar" sense="ewaar" word="ewaar"/>
-    <node isWord="true" end="32" begin="31" id="47" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="..." word="..." end="30" begin="29" originalOffsets="29--30" id="45" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="ewaar" word="ewaar" end="31" begin="30" originalOffsets="30--31" id="46" lemma="ewaar" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ewaar" sense="ewaar"/>
+    <node word_zv="." word="." end="32" begin="31" originalOffsets="31--32" id="47" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0293f">ik heb daarvoor ... een medaille gehad ... en een spaarboekje van driehonderd frank ... maar ik kon het maar krijgen in drie jaar tijd ... aan de stad ... ewaar .</sentence>
   <comments>

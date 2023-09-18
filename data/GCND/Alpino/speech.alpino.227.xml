@@ -1,31 +1,31 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="11" id="0" rel="top">
-    <node begin="0" cat="smain" end="10" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" genus="onz" getal="ev" id="2" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" getal="getal" id="4" lemma="ergens" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(onbep,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="ergens" sense="ergens" status="vol" vwtype="onbep" word="ergens"/>
-      <node begin="3" cat="np" end="9" id="5" rel="mod">
-        <node isWord="true" end="5" begin="4" genus="onz" getal="ev" graad="basis" id="6" lemma="minuutje" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="minuutje" sense="minuutje" word="minuutje"/>
-        <node begin="3" cat="conj" end="9" id="7" rel="det">
-          <node begin="3" cat="detp" end="7" id="8" rel="cnj">
-            <node begin="3" cat="mwu" end="6" id="9" rel="mod">
-              <node isWord="true" end="4" begin="3" id="10" index="1" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="mwp" root="een" sense="een" word="een"/>
-              <node isWord="true" end="6" begin="5" conjtype="neven" id="11" lemma="of" pos="vg" postag="VG(neven)" pt="vg" rel="mwp" root="of" sense="of" word="of"/>
+  <node end="11" begin="0" originalOffsets="0--11" cat="top" id="0" rel="top">
+    <node end="10" begin="0" originalOffsets="0--10" cat="smain" id="1" rel="--">
+      <node word_zv="het" word="t" end="1" begin="0" originalOffsets="0--1" genus="onz" getal="ev" id="2" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers"/>
+      <node word_zv="was" word="was" end="2" begin="1" originalOffsets="1--2" id="3" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node word_zv="ergens" word="etwaar" end="3" begin="2" originalOffsets="2--3" getal="getal" id="4" lemma="ergens" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(onbep,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="ergens" sense="ergens" status="vol" vwtype="onbep"/>
+      <node end="9" begin="3" originalOffsets="3--9" cat="np" id="5" rel="mod">
+        <node word_zv="minuutje" word="minuutje" end="5" begin="4" originalOffsets="4--5" genus="onz" getal="ev" graad="basis" id="6" lemma="minuutje" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="minuutje" sense="minuutje"/>
+        <node end="9" begin="3" originalOffsets="3--9" cat="conj" id="7" rel="det">
+          <node end="7" begin="3" originalOffsets="3--7" cat="detp" id="8" rel="cnj">
+            <node end="6" begin="3" originalOffsets="3--6" cat="mwu" id="9" rel="mod">
+              <node word_zv="een" word="e" end="4" begin="3" originalOffsets="3--4" id="10" index="1" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="mwp" root="een" sense="een"/>
+              <node word_zv="of" word="of" end="6" begin="5" originalOffsets="5--6" conjtype="neven" id="11" lemma="of" pos="vg" postag="VG(neven)" pt="vg" rel="mwp" root="of" sense="of"/>
             </node>
-            <node isWord="true" end="7" begin="6" id="12" lemma="vier" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="hd" root="vier" sense="vier" word="vier"/>
+            <node word_zv="vier" word="viere" end="7" begin="6" originalOffsets="6--7" id="12" lemma="vier" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="hd" root="vier" sense="vier"/>
           </node>
-          <node begin="3" cat="detp" end="9" id="13" rel="cnj">
-            <node begin="3" cat="mwu" end="8" id="14" rel="mod">
-              <node begin="3" end="4" id="15" index="1" rel="mwp"/>
-              <node isWord="true" end="8" begin="7" conjtype="neven" id="16" lemma="of" pos="vg" postag="VG(neven)" pt="vg" rel="mwp" root="of" sense="of" word="of"/>
+          <node end="9" begin="3" originalOffsets="3--9" cat="detp" id="13" rel="cnj">
+            <node end="8" begin="3" originalOffsets="3--8" cat="mwu" id="14" rel="mod">
+              <node end="4" begin="3" originalOffsets="3--4" id="15" index="1" rel="mwp"/>
+              <node word_zv="of" word="of" end="8" begin="7" originalOffsets="7--8" conjtype="neven" id="16" lemma="of" pos="vg" postag="VG(neven)" pt="vg" rel="mwp" root="of" sense="of"/>
             </node>
-            <node isWord="true" end="9" begin="8" id="17" lemma="vijf" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="hd" root="vijf" sense="vijf" word="vijf"/>
+            <node word_zv="vijf" word="vijve" end="9" begin="8" originalOffsets="8--9" id="17" lemma="vijf" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="hd" root="vijf" sense="vijf"/>
           </node>
         </node>
       </node>
-      <node isWord="true" end="10" begin="9" buiging="zonder" graad="basis" id="18" lemma="vast" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="vast" sense="vast" word="vast"/>
+      <node word_zv="vast" word="vast" end="10" begin="9" originalOffsets="9--10" buiging="zonder" graad="basis" id="18" lemma="vast" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="vast" sense="vast"/>
     </node>
-    <node isWord="true" end="11" begin="10" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="11" begin="10" originalOffsets="10--11" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0199a">het was ergens een minuutje of vier of vijf vast .</sentence>
   <comments>

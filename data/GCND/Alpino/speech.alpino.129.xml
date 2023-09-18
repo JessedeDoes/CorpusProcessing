@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:09" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node begin="0" cat="du" end="7" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
-      <node begin="1" cat="smain" end="7" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" case="nom" def="def" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh" word="ik"/>
-        <node isWord="true" end="3" begin="2" frame="verb(hebben,past(sg),part_transitive(af))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="af_doen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="doe_af" sc="part_transitive(af)" sense="doe_af" stype="declarative" tense="past" word="deed" wvorm="pv"/>
-        <node isWord="true" end="4" begin="3" frame="sentence_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" special="sentence" word="ook"/>
-        <node begin="4" cat="np" end="6" id="7" rel="obj1">
-          <node isWord="true" end="5" begin="4" buiging="zonder" frame="determiner(pron)" getal="ev" his="normal" his_1="normal" id="8" infl="pron" lcat="detp" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pron="true" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez" word="mijn"/>
-          <node isWord="true" end="6" begin="5" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="vest" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="vest" sense="vest" word="vest"/>
+  <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+    <node end="7" begin="0" originalOffsets="0--7" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" frame="complementizer(root)" his="normal" his_1="normal" id="2" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en"/>
+      <node end="7" begin="1" originalOffsets="1--7" cat="smain" id="3" rel="nucl">
+        <node word_zv="ik" word="k" end="2" begin="1" originalOffsets="1--2" case="nom" def="def" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="4" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh"/>
+        <node word_zv="deed" word="deden" end="3" begin="2" originalOffsets="2--3" frame="verb(hebben,past(sg),part_transitive(af))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="af_doen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="doe_af" sc="part_transitive(af)" sense="doe_af" stype="declarative" tense="past" wvorm="pv"/>
+        <node word_zv="ook" word="ook" end="4" begin="3" originalOffsets="3--4" frame="sentence_adverb" his="normal" his_1="normal" id="6" lcat="advp" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" special="sentence"/>
+        <node end="6" begin="4" originalOffsets="4--6" cat="np" id="7" rel="obj1">
+          <node word_zv="mijn" word="mijn" end="5" begin="4" originalOffsets="4--5" buiging="zonder" frame="determiner(pron)" getal="ev" his="normal" his_1="normal" id="8" infl="pron" lcat="detp" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pron="true" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez"/>
+          <node word_zv="vest" word="veste" end="6" begin="5" originalOffsets="5--6" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="vest" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="vest" sense="vest"/>
         </node>
-        <node isWord="true" end="7" begin="6" frame="particle(af)" his="normal" his_1="normal" id="10" lcat="part" lemma="af" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="af" sense="af" vztype="fin" word="af"/>
+        <node word_zv="af" word="af" end="7" begin="6" originalOffsets="6--7" frame="particle(af)" his="normal" his_1="normal" id="10" lcat="part" lemma="af" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="af" sense="af" vztype="fin"/>
       </node>
     </node>
-    <node isWord="true" end="8" begin="7" frame="punct(punt)" his="normal" his_1="normal" id="11" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+    <node word_zv="." word="." end="8" begin="7" originalOffsets="7--8" frame="punct(punt)" his="normal" his_1="normal" id="11" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0435">en ik deed ook mijn vest af .</sentence>
   <comments>

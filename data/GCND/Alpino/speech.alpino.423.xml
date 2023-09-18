@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="7" id="0" rel="top">
-    <node begin="0" cat="smain" end="6" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" getal="ev" id="2" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="weten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="weet" sense="weet" word="weet" wvorm="pv"/>
-      <node begin="2" cat="whsub" end="6" id="4" rel="vc">
-        <node isWord="true" end="3" begin="2" id="5" index="1" lemma="hoe" pos="adj" postag="BW()" pt="bw" rel="whd" root="hoe" sense="hoe" word="hoe"/>
-        <node begin="2" cat="cp" end="6" id="6" rel="body">
-          <node isWord="true" end="4" begin="3" conjtype="onder" id="7" lemma="dat" pos="det" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat" word="dat"/>
-          <node begin="2" cat="ssub" end="6" id="8" rel="body">
-            <node begin="2" end="3" id="9" index="1" rel="predc"/>
-            <node isWord="true" end="5" begin="4" getal="ev" id="10" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-            <node isWord="true" end="6" begin="5" id="11" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
+  <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
+    <node end="6" begin="0" originalOffsets="0--6" cat="smain" id="1" rel="--">
+      <node word_zv="je" word="je" end="1" begin="0" originalOffsets="0--1" getal="ev" id="2" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+      <node word_zv="weet" word="weet" end="2" begin="1" originalOffsets="1--2" id="3" lemma="weten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="weet" sense="weet" wvorm="pv"/>
+      <node end="6" begin="2" originalOffsets="2--6" cat="whsub" id="4" rel="vc">
+        <node word_zv="hoe" word="hoe" end="3" begin="2" originalOffsets="2--3" id="5" index="1" lemma="hoe" pos="adj" postag="BW()" pt="bw" rel="whd" root="hoe" sense="hoe"/>
+        <node end="6" begin="2" originalOffsets="2--6" cat="cp" id="6" rel="body">
+          <node word_zv="dat" word="dat" end="4" begin="3" originalOffsets="3--4" conjtype="onder" id="7" lemma="dat" pos="det" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat"/>
+          <node end="6" begin="2" originalOffsets="2--6" cat="ssub" id="8" rel="body">
+            <node end="3" begin="2" originalOffsets="2--3" id="9" index="1" rel="predc"/>
+            <node word_zv="dat" word="da" end="5" begin="4" originalOffsets="4--5" getal="ev" id="10" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+            <node word_zv="was" word="was" end="6" begin="5" originalOffsets="5--6" id="11" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="7" begin="6" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="7" begin="6" originalOffsets="6--7" id="12" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0430a">je weet hoe dat dat was ...</sentence>
   <comments>

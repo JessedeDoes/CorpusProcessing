@@ -1,41 +1,41 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="20" id="0" rel="top">
-    <node isWord="true" end="11" begin="10" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="du" end="20" id="2" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="smain" end="20" id="4" rel="nucl">
-        <node isWord="true" end="2" begin="1" getal="ev" id="5" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
-        <node isWord="true" end="3" begin="2" id="6" lemma="trekken" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="trek" sense="trek" word="trekt" wvorm="pv"/>
-        <node isWord="true" end="4" begin="3" getal="ev" id="7" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="su" root="jij" sense="jij" status="vol" vwtype="pers" word="jij"/>
-        <node isWord="true" end="5" begin="4" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-        <node isWord="true" end="6" begin="5" getal="getal" id="9" lemma="hier" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="hier" sense="hier" status="vol" vwtype="aanw" word="hier"/>
-        <node begin="6" cat="pp" end="17" id="10" rel="mod">
-          <node isWord="true" end="7" begin="6" id="11" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-          <node begin="7" cat="np" end="17" id="12" rel="obj1">
-            <node isWord="true" end="8" begin="7" id="13" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
-            <node isWord="true" end="9" begin="8" genus="onz" getal="ev" graad="basis" id="14" lemma="midden" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="midden" sense="midden" word="midden"/>
-            <node begin="9" cat="pp" end="17" id="15" rel="mod">
-              <node isWord="true" end="10" begin="9" id="16" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-              <node begin="11" cat="np" end="17" id="17" rel="obj1">
-                <node isWord="true" end="12" begin="11" id="18" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
-                <node isWord="true" end="13" begin="12" genus="onz" getal="ev" graad="basis" id="19" lemma="gewicht" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="gewicht" sense="gewicht" word="gewicht"/>
-                <node begin="13" cat="pp" end="17" id="20" rel="mod">
-                  <node isWord="true" end="14" begin="13" id="21" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
-                  <node begin="14" cat="conj" end="17" id="22" rel="obj1">
-                    <node isWord="true" end="15" begin="14" getal="mv" id="23" lemma="hen" naamval="obl" pdtype="pron" persoon="3p" pos="pron" postag="VNW(pers,pron,obl,vol,3p,mv)" pt="vnw" rel="cnj" root="hen" sense="hen" status="vol" vwtype="pers" word="hen"/>
-                    <node isWord="true" end="16" begin="15" conjtype="neven" id="24" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
-                    <node isWord="true" end="17" begin="16" getal="ev" id="25" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="cnj" root="jij" sense="jij" status="vol" vwtype="pers" word="jij"/>
+  <node end="20" begin="0" originalOffsets="0--20" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="11" begin="10" originalOffsets="10--11" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="20" begin="0" originalOffsets="0--20" cat="du" id="2" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="20" begin="1" originalOffsets="1--20" cat="smain" id="4" rel="nucl">
+        <node word_zv="je" word="je" end="2" begin="1" originalOffsets="1--2" getal="ev" id="5" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+        <node word_zv="trekt" word="trek" end="3" begin="2" originalOffsets="2--3" id="6" lemma="trekken" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="trek" sense="trek" wvorm="pv"/>
+        <node word_zv="jij" word="gij" end="4" begin="3" originalOffsets="3--4" getal="ev" id="7" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="su" root="jij" sense="jij" status="vol" vwtype="pers"/>
+        <node word_zv="dat" word="da" end="5" begin="4" originalOffsets="4--5" getal="ev" id="8" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+        <node word_zv="hier" word="ier" end="6" begin="5" originalOffsets="5--6" getal="getal" id="9" lemma="hier" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="hier" sense="hier" status="vol" vwtype="aanw"/>
+        <node end="17" begin="6" originalOffsets="6--17" cat="pp" id="10" rel="mod">
+          <node word_zv="in" word="in" end="7" begin="6" originalOffsets="6--7" id="11" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+          <node end="17" begin="7" originalOffsets="7--17" cat="np" id="12" rel="obj1">
+            <node word_zv="het" word="de" end="8" begin="7" originalOffsets="7--8" id="13" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+            <node word_zv="midden" word="middelt" end="9" begin="8" originalOffsets="8--9" genus="onz" getal="ev" graad="basis" id="14" lemma="midden" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="midden" sense="midden"/>
+            <node end="17" begin="9" originalOffsets="9--17" cat="pp" id="15" rel="mod">
+              <node word_zv="in" word="in" end="10" begin="9" originalOffsets="9--10" id="16" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+              <node end="17" begin="11" originalOffsets="11--17" cat="np" id="17" rel="obj1">
+                <node word_zv="het" word="t" end="12" begin="11" originalOffsets="11--12" id="18" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het"/>
+                <node word_zv="gewicht" word="gewichte" end="13" begin="12" originalOffsets="12--13" genus="onz" getal="ev" graad="basis" id="19" lemma="gewicht" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="gewicht" sense="gewicht"/>
+                <node end="17" begin="13" originalOffsets="13--17" cat="pp" id="20" rel="mod">
+                  <node word_zv="van" word="van" end="14" begin="13" originalOffsets="13--14" id="21" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+                  <node end="17" begin="14" originalOffsets="14--17" cat="conj" id="22" rel="obj1">
+                    <node word_zv="hen" word="under" end="15" begin="14" originalOffsets="14--15" getal="mv" id="23" lemma="hen" naamval="obl" pdtype="pron" persoon="3p" pos="pron" postag="VNW(pers,pron,obl,vol,3p,mv)" pt="vnw" rel="cnj" root="hen" sense="hen" status="vol" vwtype="pers"/>
+                    <node word_zv="en" word="en" end="16" begin="15" originalOffsets="15--16" conjtype="neven" id="24" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+                    <node word_zv="jij" word="gij" end="17" begin="16" originalOffsets="16--17" getal="ev" id="25" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="cnj" root="jij" sense="jij" status="vol" vwtype="pers"/>
                   </node>
                 </node>
               </node>
             </node>
           </node>
         </node>
-        <node begin="17" cat="pp" end="20" id="26" rel="ld">
-          <node isWord="true" end="18" begin="17" id="27" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init" word="op"/>
-          <node begin="18" cat="np" end="20" id="28" rel="obj1">
-            <node isWord="true" end="19" begin="18" id="29" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node isWord="true" end="20" begin="19" genus="zijd" getal="ev" graad="basis" id="30" lemma="zij" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="zij" sense="zij" word="zij"/>
+        <node end="20" begin="17" originalOffsets="17--20" cat="pp" id="26" rel="ld">
+          <node word_zv="op" word="op" end="18" begin="17" originalOffsets="17--18" id="27" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="op" sense="op" vztype="init"/>
+          <node end="20" begin="18" originalOffsets="18--20" cat="np" id="28" rel="obj1">
+            <node word_zv="de" word="de" end="19" begin="18" originalOffsets="18--19" id="29" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+            <node word_zv="zij" word="zijde" end="20" begin="19" originalOffsets="19--20" genus="zijd" getal="ev" graad="basis" id="30" lemma="zij" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="zij" sense="zij"/>
           </node>
         </node>
       </node>

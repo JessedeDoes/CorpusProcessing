@@ -1,17 +1,17 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node begin="0" cat="du" end="8" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="smain" end="8" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" getal="mv" id="4" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
-        <node isWord="true" end="3" begin="2" id="5" lemma="komen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="kom" sense="kom" word="kwamen" wvorm="pv"/>
-        <node isWord="true" end="4" begin="3" getal="mv" id="6" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers" word="zij"/>
-        <node begin="4" cat="pp" end="8" id="7" rel="mod">
-          <node isWord="true" end="5" begin="4" id="8" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
-          <node begin="5" cat="np" end="8" id="9" rel="obj1">
-            <node isWord="true" end="6" begin="5" buiging="met-e" graad="basis" id="10" lemma="groot" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="groot" sense="groot" word="grote"/>
-            <node isWord="true" end="7" begin="6" getal="mv" graad="basis" id="11" lemma="blok" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="blok" sense="blok" word="blokken"/>
-            <node isWord="true" end="8" begin="7" genus="onz" getal="ev" graad="basis" id="12" lemma="ijs" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="mod" root="ijs" sense="ijs" word="ijs"/>
+  <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+    <node end="8" begin="0" originalOffsets="0--8" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="8" begin="1" originalOffsets="1--8" cat="smain" id="3" rel="nucl">
+        <node word_zv="ze" word="ze" end="2" begin="1" originalOffsets="1--2" getal="mv" id="4" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+        <node word_zv="kwamen" word="kwamen" end="3" begin="2" originalOffsets="2--3" id="5" lemma="komen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="kom" sense="kom" wvorm="pv"/>
+        <node word_zv="zij" word="zij" end="4" begin="3" originalOffsets="3--4" getal="mv" id="6" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers"/>
+        <node end="8" begin="4" originalOffsets="4--8" cat="pp" id="7" rel="mod">
+          <node word_zv="met" word="met" end="5" begin="4" originalOffsets="4--5" id="8" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+          <node end="8" begin="5" originalOffsets="5--8" cat="np" id="9" rel="obj1">
+            <node word_zv="grote" word="grote" end="6" begin="5" originalOffsets="5--6" buiging="met-e" graad="basis" id="10" lemma="groot" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="groot" sense="groot"/>
+            <node word_zv="blokken" word="blokken" end="7" begin="6" originalOffsets="6--7" getal="mv" graad="basis" id="11" lemma="blok" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="blok" sense="blok"/>
+            <node word_zv="ijs" word="ijs" end="8" begin="7" originalOffsets="7--8" genus="onz" getal="ev" graad="basis" id="12" lemma="ijs" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="mod" root="ijs" sense="ijs"/>
           </node>
         </node>
       </node>

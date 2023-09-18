@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="10" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
-    <node isWord="true" end="5" begin="4" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="6" begin="5" id="3" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="--" root="nu" sense="nu" word="nu"/>
-    <node isWord="true" end="7" begin="6" id="4" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi" word="zi"/>
-    <node isWord="true" end="8" begin="7" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="du" end="9" id="6" rel="--">
-      <node begin="0" cat="smain" end="2" id="7" rel="tag">
-        <node isWord="true" end="1" begin="0" getal="ev" id="8" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-        <node isWord="true" end="2" begin="1" id="9" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zeg" wvorm="pv"/>
+  <node end="10" begin="0" originalOffsets="0--10" cat="top" id="0" rel="top">
+    <node word_zv="," word="," end="3" begin="2" originalOffsets="2--3" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense=","/>
+    <node word_zv="..." word="..." end="5" begin="4" originalOffsets="4--5" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="nu" word="nu" end="6" begin="5" originalOffsets="5--6" id="3" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="--" root="nu" sense="nu"/>
+    <node word_zv="zi" word="zi" end="7" begin="6" originalOffsets="6--7" id="4" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi"/>
+    <node word_zv="..." word="..." end="8" begin="7" originalOffsets="7--8" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="9" begin="0" originalOffsets="0--9" cat="du" id="6" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="smain" id="7" rel="tag">
+        <node word_zv="ik" word="k" end="1" begin="0" originalOffsets="0--1" getal="ev" id="8" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+        <node word_zv="zeg" word="zeggen" end="2" begin="1" originalOffsets="1--2" id="9" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" wvorm="pv"/>
       </node>
-      <node begin="3" cat="du" end="9" id="10" rel="nucl">
-        <node isWord="true" end="4" begin="3" genus="zijd" getal="ev" graad="basis" id="11" lemma="Gillion" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="dp" root="Gillion" sense="Gillion" word="Gillion"/>
-        <node isWord="true" end="9" begin="8" id="12" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="dp" root="nu" sense="nu" word="nu"/>
+      <node end="9" begin="3" originalOffsets="3--9" cat="du" id="10" rel="nucl">
+        <node word_zv="Gillion" word="Gillion" end="4" begin="3" originalOffsets="3--4" genus="zijd" getal="ev" graad="basis" id="11" lemma="Gillion" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="dp" root="Gillion" sense="Gillion"/>
+        <node word_zv="nu" word="nu" end="9" begin="8" originalOffsets="8--9" id="12" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="dp" root="nu" sense="nu"/>
       </node>
     </node>
-    <node isWord="true" end="10" begin="9" id="13" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi" word="zi"/>
+    <node word_zv="zi" word="zi" end="10" begin="9" originalOffsets="9--10" id="13" lemma="zi" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zi" sense="zi"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0265">ik zeg , Gillion ... nu zi ... nu zi</sentence>
   <comments>

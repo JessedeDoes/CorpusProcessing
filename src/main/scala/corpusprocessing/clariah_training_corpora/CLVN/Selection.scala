@@ -1,5 +1,6 @@
 package corpusprocessing.clariah_training_corpora.CLVN
 
+import corpusprocessing.clariah_training_corpora.fixTokenization.getId
 import utils.PostProcessXML
 
 import java.io.File
@@ -56,24 +57,53 @@ object Selection {
 }
 
 object PatchUp {
+
+  type B = (Int, Seq[Node])
+
+  def breidUit(z: (B, Node)): B = {
+    {
+      z match  { case ((l, s), n) =>
+        val (n1, l1) = renumberWords(n, l)
+        (l1, s ++ Seq(n1))
+      }
+    }
+  }
+
+  def renumberWords(node: Node, k: Int) : (Node,Int) = {
+    if (Set("w", "pc").contains(node.label)) {
+      val id = getId(node)
+      val n1: Node = node.asInstanceOf[Elem].copy(attributes = node.attributes.filter(x => x.key != "id").append(new PrefixedAttribute("xml", "id", Text(s"${node.label}.$k"), Null)))
+      (n1,k+1)
+    } else if (node.isInstanceOf[Elem]) {
+      val t0: B = k -> Seq[Node]()
+      val t: (Int, Seq[Node]) = node.child.toSeq.foldLeft(t0)({case (t:B,n:Node) => breidUit( (t,n))})
+      node.asInstanceOf[Elem].copy(child = t._2) -> t._1
+    } else {
+      (node, k)
+    }
+  }
+
+  def renumber(e: Elem)  = renumberWords(e, 0)._1.asInstanceOf[Elem]
+
   def fixW(w: Elem)  = {
 
     def withText(t: String)  = w.copy(child={<seg>{t.trim}</seg>})
     if (w.text.matches(".*[a-zA-Z0-9].*,.*[a-zA-Z0-9].*"))
-      {
-         val wordz = w.text.split("\\s*,\\s*").map(withText)
+    {
+      val wordz = w.text.split("\\s*,\\s*").map(withText)
 
-         val metKomma: Seq[Node] = wordz.zipWithIndex.flatMap({case (w,i) => if (i < wordz.size - 1) Seq(w, <pc>,</pc>) else w}).toSeq
-         metKomma
-      } else withText(w.text);
+      val metKomma: Seq[Node] = wordz.zipWithIndex.flatMap({case (w,i) => if (i < wordz.size - 1) Seq(w, <pc>,</pc>) else w}).toSeq
+      metKomma
+    } else withText(w.text);
   }
 
   val dir = "/mnt/Projecten/Corpora/Historische_Corpora/CLVN/CLVNSelectieTagged/"
+
   def main(args: Array[String])  = {
-     new File(dir).listFiles().filter(_.getName.endsWith(".xml")).foreach(f => {
-       val d = XML.loadFile(f)
-       val d1 = PostProcessXML.updateElement5(d, _.label=="w", fixW).asInstanceOf[Elem]
-       XML.save(dir + "Patched/" + f.getName, d1)
-     })
+    new File(dir).listFiles().filter(_.getName.endsWith(".xml")).foreach(f => {
+      val d = XML.loadFile(f)
+      val d1 = PostProcessXML.updateElement5(d, _.label=="w", fixW).asInstanceOf[Elem]
+      XML.save(dir + "Patched/" + f.getName, renumber(d1))
+    })
   }
 }

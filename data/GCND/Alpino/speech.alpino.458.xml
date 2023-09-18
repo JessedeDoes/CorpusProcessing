@@ -1,16 +1,16 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="du" end="4" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="inf" end="4" id="3" rel="nucl">
-        <node isWord="true" end="3" begin="2" buiging="zonder" id="4" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
-        <node begin="1" cat="inf" end="4" id="5" rel="vc">
-          <node isWord="true" end="2" begin="1" buiging="zonder" id="6" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
-          <node isWord="true" end="4" begin="3" buiging="zonder" id="7" lemma="vissen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="vc" root="vis" sense="vis" word="vissen" wvorm="inf"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="4" begin="0" originalOffsets="0--4" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="4" begin="1" originalOffsets="1--4" cat="inf" id="3" rel="nucl">
+        <node word_zv="gaan" word="gaan" end="3" begin="2" originalOffsets="2--3" buiging="zonder" id="4" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+        <node end="4" begin="1" originalOffsets="1--4" cat="inf" id="5" rel="vc">
+          <node word_zv="gaan" word="gaan" end="2" begin="1" originalOffsets="1--2" buiging="zonder" id="6" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" wvorm="inf"/>
+          <node word_zv="vissen" word="vissen" end="4" begin="3" originalOffsets="3--4" buiging="zonder" id="7" lemma="vissen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="vc" root="vis" sense="vis" wvorm="inf"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="5" begin="4" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="5" begin="4" originalOffsets="4--5" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0062b">en gaan gaan vissen .</sentence>
   <comments>

@@ -1,19 +1,19 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:10" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="7" id="0" rel="top">
-    <node begin="0" cat="smain" end="6" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" case="both" def="def" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh" word="ze"/>
-      <node isWord="true" end="2" begin="1" frame="verb(hebben,past(pl),np_ld_pp)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="hangen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="hang" sc="np_ld_pp" sense="hang" stype="declarative" tense="past" word="hingen" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="4" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh" word="dat"/>
-      <node begin="3" cat="pp" end="6" id="5" rel="ld">
-        <node isWord="true" end="4" begin="3" frame="preposition(in,[])" his="normal" his_1="normal" id="6" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-        <node begin="4" cat="np" end="6" id="7" rel="obj1">
-          <node isWord="true" end="5" begin="4" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="8" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh" word="het"/>
-          <node isWord="true" end="6" begin="5" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water" word="water"/>
+  <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
+    <node end="6" begin="0" originalOffsets="0--6" cat="smain" id="1" rel="--">
+      <node word_zv="ze" word="z" end="1" begin="0" originalOffsets="0--1" case="both" def="def" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+      <node word_zv="hingen" word="hangden" end="2" begin="1" originalOffsets="1--2" frame="verb(hebben,past(pl),np_ld_pp)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="hangen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="hang" sc="np_ld_pp" sense="hang" stype="declarative" tense="past" wvorm="pv"/>
+      <node word_zv="dat" word="da" end="3" begin="2" originalOffsets="2--3" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="4" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="obj1" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh"/>
+      <node end="6" begin="3" originalOffsets="3--6" cat="pp" id="5" rel="ld">
+        <node word_zv="in" word="in" end="4" begin="3" originalOffsets="3--4" frame="preposition(in,[])" his="normal" his_1="normal" id="6" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node end="6" begin="4" originalOffsets="4--6" cat="np" id="7" rel="obj1">
+          <node word_zv="het" word="t" end="5" begin="4" originalOffsets="4--5" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="8" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh"/>
+          <node word_zv="water" word="water" end="6" begin="5" originalOffsets="5--6" frame="noun(het,both,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="9" lcat="np" lemma="water" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="water" sense="water"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="7" begin="6" frame="punct(hellip)" his="skip" id="10" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node word_zv="..." word="..." end="7" begin="6" originalOffsets="6--7" frame="punct(hellip)" his="skip" id="10" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0498">ze hingen dat in het water ...</sentence>
   <comments>

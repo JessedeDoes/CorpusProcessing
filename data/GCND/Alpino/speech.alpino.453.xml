@@ -1,29 +1,29 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="12" id="0" rel="top">
-    <node begin="0" cat="smain" end="11" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" getal="ev" id="2" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" id="4" lemma="toen" pos="adv" postag="BW()" pt="bw" rel="mod" root="toen" sense="toen" word="toen"/>
-      <node begin="3" cat="np" end="5" id="5" rel="mod">
-        <node isWord="true" end="4" begin="3" buiging="zonder" id="6" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
-        <node isWord="true" end="5" begin="4" getal="mv" graad="basis" id="7" lemma="tijd" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="tijd" sense="tijd" word="tijden"/>
+  <node end="12" begin="0" originalOffsets="0--12" cat="top" id="0" rel="top">
+    <node end="11" begin="0" originalOffsets="0--11" cat="smain" id="1" rel="--">
+      <node word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" getal="ev" id="2" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+      <node word_zv="was" word="was" end="2" begin="1" originalOffsets="1--2" id="3" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node word_zv="toen" word="toen" end="3" begin="2" originalOffsets="2--3" id="4" lemma="toen" pos="adv" postag="BW()" pt="bw" rel="mod" root="toen" sense="toen"/>
+      <node end="5" begin="3" originalOffsets="3--5" cat="np" id="5" rel="mod">
+        <node word_zv="die" word="die" end="4" begin="3" originalOffsets="3--4" buiging="zonder" id="6" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+        <node word_zv="tijden" word="tijden" end="5" begin="4" originalOffsets="4--5" getal="mv" graad="basis" id="7" lemma="tijd" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="tijd" sense="tijd"/>
       </node>
-      <node begin="5" cat="du" end="11" id="8" rel="predc">
-        <node begin="5" cat="np" end="8" id="9" rel="dp">
-          <node begin="5" cat="conj" end="7" id="10" rel="det">
-            <node isWord="true" end="6" begin="5" id="11" lemma="vijfhonderd" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vijfhonderd" sense="vijfhonderd" word="vijfhonderd"/>
-            <node isWord="true" end="7" begin="6" id="12" lemma="vierhonderdvijftig" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vierhonderdvijftig" sense="vierhonderdvijftig" word="vierhonderdvijftig"/>
+      <node end="11" begin="5" originalOffsets="5--11" cat="du" id="8" rel="predc">
+        <node end="8" begin="5" originalOffsets="5--8" cat="np" id="9" rel="dp">
+          <node end="7" begin="5" originalOffsets="5--7" cat="conj" id="10" rel="det">
+            <node word_zv="vijfhonderd" word="vijfhonderd" end="6" begin="5" originalOffsets="5--6" id="11" lemma="vijfhonderd" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vijfhonderd" sense="vijfhonderd"/>
+            <node word_zv="vierhonderdvijftig" word="vierhondervijftig" end="7" begin="6" originalOffsets="6--7" id="12" lemma="vierhonderdvijftig" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="vierhonderdvijftig" sense="vierhonderdvijftig"/>
           </node>
-          <node isWord="true" end="8" begin="7" genus="zijd" getal="ev" graad="basis" id="13" lemma="frank" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frank" sense="frank" word="frank"/>
+          <node word_zv="frank" word="frang" end="8" begin="7" originalOffsets="7--8" genus="zijd" getal="ev" graad="basis" id="13" lemma="frank" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="frank" sense="frank"/>
         </node>
-        <node begin="8" cat="conj" end="11" id="14" rel="dp">
-          <node isWord="true" end="9" begin="8" id="15" lemma="uit" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="uit" sense="uit" vztype="fin" word="uit"/>
-          <node isWord="true" end="10" begin="9" conjtype="neven" id="16" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
-          <node isWord="true" end="11" begin="10" id="17" lemma="in" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="in" sense="in" vztype="fin" word="in"/>
+        <node end="11" begin="8" originalOffsets="8--11" cat="conj" id="14" rel="dp">
+          <node word_zv="uit" word="uit" end="9" begin="8" originalOffsets="8--9" id="15" lemma="uit" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="uit" sense="uit" vztype="fin"/>
+          <node word_zv="en" word="en" end="10" begin="9" originalOffsets="9--10" conjtype="neven" id="16" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+          <node word_zv="in" word="in" end="11" begin="10" originalOffsets="10--11" id="17" lemma="in" pos="part" postag="VZ(fin)" pt="vz" rel="cnj" root="in" sense="in" vztype="fin"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="12" begin="11" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="12" begin="11" originalOffsets="11--12" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0022">dat was toen die tijden vijfhonderd vierhonderdvijftig frank uit en in .</sentence>
   <comments>

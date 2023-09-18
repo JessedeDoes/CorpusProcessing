@@ -1,35 +1,35 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="15" id="0" rel="top">
-    <node isWord="true" end="5" begin="4" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="11" begin="10" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="np" end="14" id="3" rel="--">
-      <node isWord="true" end="1" begin="0" id="4" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-      <node isWord="true" end="2" begin="1" buiging="met-e" graad="basis" id="5" lemma="zeker" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="zeker" sense="zeker" word="zekere"/>
-      <node begin="2" cat="mwu" end="4" id="6" rel="hd">
-        <node isWord="true" end="3" begin="2" id="7" lemma="Miel" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Miel" sense="Miel" spectype="deeleigen" word="Miel"/>
-        <node isWord="true" end="4" begin="3" id="8" lemma="Huys" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Huys" sense="Huys" spectype="deeleigen" word="Huys"/>
+  <node end="15" begin="0" originalOffsets="0--15" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="5" begin="4" originalOffsets="4--5" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="..." word="..." end="11" begin="10" originalOffsets="10--11" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="14" begin="0" originalOffsets="0--14" cat="np" id="3" rel="--">
+      <node word_zv="een" word="e" end="1" begin="0" originalOffsets="0--1" id="4" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+      <node word_zv="zekere" word="zekere" end="2" begin="1" originalOffsets="1--2" buiging="met-e" graad="basis" id="5" lemma="zeker" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="zeker" sense="zeker"/>
+      <node end="4" begin="2" originalOffsets="2--4" cat="mwu" id="6" rel="hd">
+        <node word_zv="Miel" word="Miel" end="3" begin="2" originalOffsets="2--3" id="7" lemma="Miel" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Miel" sense="Miel" spectype="deeleigen"/>
+        <node word_zv="Huys" word="Huys" end="4" begin="3" originalOffsets="3--4" id="8" lemma="Huys" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Huys" sense="Huys" spectype="deeleigen"/>
       </node>
-      <node begin="5" cat="rel" end="10" id="9" rel="mod">
-        <node isWord="true" end="6" begin="5" getal="getal" id="10" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr" word="die"/>
-        <node begin="5" cat="ssub" end="10" id="11" rel="body">
-          <node begin="5" end="6" id="12" index="1" rel="su"/>
-          <node begin="6" cat="ap" end="8" id="13" rel="mod">
-            <node isWord="true" end="7" begin="6" id="14" lemma="al" pos="adv" postag="BW()" pt="bw" rel="mod" root="al" sense="al" word="al"/>
-            <node isWord="true" end="8" begin="7" buiging="zonder" graad="basis" id="15" lemma="lang" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="lang" sense="lang" word="lang"/>
+      <node end="10" begin="5" originalOffsets="5--10" cat="rel" id="9" rel="mod">
+        <node word_zv="die" word="die" end="6" begin="5" originalOffsets="5--6" getal="getal" id="10" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr"/>
+        <node end="10" begin="5" originalOffsets="5--10" cat="ssub" id="11" rel="body">
+          <node end="6" begin="5" originalOffsets="5--6" id="12" index="1" rel="su"/>
+          <node end="8" begin="6" originalOffsets="6--8" cat="ap" id="13" rel="mod">
+            <node word_zv="al" word="al" end="7" begin="6" originalOffsets="6--7" id="14" lemma="al" pos="adv" postag="BW()" pt="bw" rel="mod" root="al" sense="al"/>
+            <node word_zv="lang" word="lange" end="8" begin="7" originalOffsets="7--8" buiging="zonder" graad="basis" id="15" lemma="lang" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="hd" root="lang" sense="lang"/>
           </node>
-          <node isWord="true" end="9" begin="8" buiging="zonder" graad="basis" id="16" lemma="dood" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="dood" sense="dood" word="dood"/>
-          <node isWord="true" end="10" begin="9" id="17" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="is" wvorm="pv"/>
+          <node word_zv="dood" word="dood" end="9" begin="8" originalOffsets="8--9" buiging="zonder" graad="basis" id="16" lemma="dood" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="dood" sense="dood"/>
+          <node word_zv="is" word="is" end="10" begin="9" originalOffsets="9--10" id="17" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
         </node>
       </node>
-      <node begin="11" cat="np" end="14" id="18" rel="app">
-        <node isWord="true" end="13" begin="12" genus="onz" getal="ev" graad="basis" id="19" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="hd" root="Oostende" sense="Oostende" word="Oostende"/>
-        <node begin="11" cat="mwu" end="14" id="20" rel="app">
-          <node isWord="true" end="12" begin="11" genus="zijd" getal="ev" graad="basis" id="21" lemma="numero" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mwp" root="numero" sense="numero" word="numero"/>
-          <node isWord="true" end="14" begin="13" id="22" lemma="honderdendrie" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="mwp" root="honderdendrie" sense="honderdendrie" word="honderdendrie"/>
+      <node end="14" begin="11" originalOffsets="11--14" cat="np" id="18" rel="app">
+        <node word_zv="Oostende" word="Oostende" end="13" begin="12" originalOffsets="12--13" genus="onz" getal="ev" graad="basis" id="19" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="hd" root="Oostende" sense="Oostende"/>
+        <node end="14" begin="11" originalOffsets="11--14" cat="mwu" id="20" rel="app">
+          <node word_zv="numero" word="numero" end="12" begin="11" originalOffsets="11--12" genus="zijd" getal="ev" graad="basis" id="21" lemma="numero" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="mwp" root="numero" sense="numero"/>
+          <node word_zv="honderdendrie" word="honderdendrieë" end="14" begin="13" originalOffsets="13--14" id="22" lemma="honderdendrie" numtype="hoofd" pos="num" positie="vrij" postag="TW(hoofd,vrij)" pt="tw" rel="mwp" root="honderdendrie" sense="honderdendrie"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="15" begin="14" id="23" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="15" begin="14" originalOffsets="14--15" id="23" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0235">een zekere Miel Huys ... die al lang dood is ... numero Oostende honderdendrie .</sentence>
   <comments>

@@ -1,21 +1,21 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="10" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="nu" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="nu" sense="nu" word="nu"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="2" cat="smain" end="9" id="3" rel="--">
-      <node isWord="true" end="3" begin="2" getal="mv" id="4" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
-      <node isWord="true" end="4" begin="3" id="5" lemma="door_laten" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="laat_door" sense="laat_door" word="lieten" wvorm="pv"/>
-      <node isWord="true" end="5" begin="4" getal="mv" id="6" lemma="ons" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,vol,1,mv)" pt="vnw" rel="obj1" root="ons" sense="ons" status="vol" vwtype="pr" word="ons"/>
-      <node begin="5" cat="pp" end="8" id="7" rel="mod">
-        <node isWord="true" end="6" begin="5" id="8" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-        <node begin="6" cat="np" end="8" id="9" rel="obj1">
-          <node isWord="true" end="7" begin="6" id="10" lemma="één" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="één" sense="één" word="één"/>
-          <node isWord="true" end="8" begin="7" genus="genus" getal="ev" graad="basis" id="11" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer" word="keer"/>
+  <node end="10" begin="0" originalOffsets="0--10" cat="top" id="0" rel="top">
+    <node word_zv="nu" word="nu" end="1" begin="0" originalOffsets="0--1" id="1" lemma="nu" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="nu" sense="nu"/>
+    <node word_zv="..." word="..." end="2" begin="1" originalOffsets="1--2" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="9" begin="2" originalOffsets="2--9" cat="smain" id="3" rel="--">
+      <node word_zv="ze" word="ze" end="3" begin="2" originalOffsets="2--3" getal="mv" id="4" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers"/>
+      <node word_zv="lieten" word="lieten" end="4" begin="3" originalOffsets="3--4" id="5" lemma="door_laten" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="laat_door" sense="laat_door" wvorm="pv"/>
+      <node word_zv="ons" word="ons" end="5" begin="4" originalOffsets="4--5" getal="mv" id="6" lemma="ons" naamval="obl" pdtype="pron" persoon="1" pos="pron" postag="VNW(pr,pron,obl,vol,1,mv)" pt="vnw" rel="obj1" root="ons" sense="ons" status="vol" vwtype="pr"/>
+      <node end="8" begin="5" originalOffsets="5--8" cat="pp" id="7" rel="mod">
+        <node word_zv="in" word="in" end="6" begin="5" originalOffsets="5--6" id="8" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node end="8" begin="6" originalOffsets="6--8" cat="np" id="9" rel="obj1">
+          <node word_zv="één" word="één" end="7" begin="6" originalOffsets="6--7" id="10" lemma="één" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="één" sense="één"/>
+          <node word_zv="keer" word="keer" end="8" begin="7" originalOffsets="7--8" genus="genus" getal="ev" graad="basis" id="11" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer"/>
         </node>
       </node>
-      <node isWord="true" end="9" begin="8" id="12" lemma="door" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="door" sense="door" vztype="fin" word="door"/>
+      <node word_zv="door" word="doore" end="9" begin="8" originalOffsets="8--9" id="12" lemma="door" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="door" sense="door" vztype="fin"/>
     </node>
-    <node isWord="true" end="10" begin="9" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="10" begin="9" originalOffsets="9--10" id="13" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0536">nu ... ze lieten ons in één keer door ...</sentence>
   <comments>

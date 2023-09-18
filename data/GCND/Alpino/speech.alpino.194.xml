@@ -1,7 +1,7 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="2" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja" word="ja"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
+    <node word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja"/>
+    <node word_zv="." word="." end="2" begin="1" originalOffsets="1--2" id="2" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0287">ja .</sentence>
   <comments>

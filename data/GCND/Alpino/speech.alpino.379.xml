@@ -1,17 +1,17 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node isWord="true" end="3" begin="2" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="smain" end="8" id="2" rel="--">
-      <node isWord="true" end="4" begin="3" genus="zijd" getal="ev" graad="basis" id="3" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="su" root="lood_boot" sense="lood_boot" word="loodsboot"/>
-      <node isWord="true" end="5" begin="4" id="4" lemma="hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb" sense="heb" word="had" wvorm="pv"/>
-      <node isWord="true" end="6" begin="5" id="5" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" word="ook"/>
-      <node begin="0" cat="np" end="8" id="6" rel="obj1">
-        <node begin="0" cat="np" end="2" id="7" rel="app">
-          <node isWord="true" end="1" begin="0" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-          <node isWord="true" end="2" begin="1" genus="genus" getal="ev" graad="basis" id="9" lemma="Antwerper" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,genus,stan)" pt="n" rel="hd" root="Antwerper" sense="Antwerper" word="Antwerper"/>
+  <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+    <node word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="8" begin="0" originalOffsets="0--8" cat="smain" id="2" rel="--">
+      <node word_zv="loodsboot" word="loodsboot" end="4" begin="3" originalOffsets="3--4" genus="zijd" getal="ev" graad="basis" id="3" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="su" root="lood_boot" sense="lood_boot"/>
+      <node word_zv="had" word="ad" end="5" begin="4" originalOffsets="4--5" id="4" lemma="hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb" sense="heb" wvorm="pv"/>
+      <node word_zv="ook" word="ook" end="6" begin="5" originalOffsets="5--6" id="5" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook"/>
+      <node end="8" begin="0" originalOffsets="0--8" cat="np" id="6" rel="obj1">
+        <node end="2" begin="0" originalOffsets="0--2" cat="np" id="7" rel="app">
+          <node word_zv="de" word="den" end="1" begin="0" originalOffsets="0--1" id="8" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+          <node word_zv="Antwerper" word="Antwerper" end="2" begin="1" originalOffsets="1--2" genus="genus" getal="ev" graad="basis" id="9" lemma="Antwerper" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,genus,stan)" pt="n" rel="hd" root="Antwerper" sense="Antwerper"/>
         </node>
-        <node isWord="true" end="7" begin="6" id="10" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-        <node isWord="true" end="8" begin="7" genus="zijd" getal="ev" graad="basis" id="11" lemma="schoener" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="schoener" sense="schoener" word="schoener"/>
+        <node word_zv="een" word="e" end="7" begin="6" originalOffsets="6--7" id="10" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+        <node word_zv="schoener" word="schoender" end="8" begin="7" originalOffsets="7--8" genus="zijd" getal="ev" graad="basis" id="11" lemma="schoener" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="schoener" sense="schoener"/>
       </node>
     </node>
   </node>

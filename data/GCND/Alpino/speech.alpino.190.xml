@@ -1,22 +1,22 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:05" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node begin="0" cat="smain" end="9" id="1" rel="--">
-      <node begin="0" cat="np" end="2" id="2" rel="su">
-        <node isWord="true" end="1" begin="0" frame="determiner(de)" his="normal" his_1="normal" id="3" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-        <node isWord="true" end="2" begin="1" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="4" lcat="np" lemma="tuiboot" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="tuiboot" sense="tuiboot" word="tuiboot"/>
+  <node end="9" begin="0" originalOffsets="0--9" cat="top" id="0" rel="top">
+    <node end="9" begin="0" originalOffsets="0--9" cat="smain" id="1" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="np" id="2" rel="su">
+        <node word_zv="de" word="de" end="1" begin="0" originalOffsets="0--1" frame="determiner(de)" his="normal" his_1="normal" id="3" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+        <node word_zv="tuiboot" word="tuiboot" end="2" begin="1" originalOffsets="1--2" frame="noun(both,both,both)" gen="both" genus="zijd" getal="ev" graad="basis" his="noun" id="4" lcat="np" lemma="tuiboot" naamval="stan" ntype="soort" num="both" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="tuiboot" sense="tuiboot"/>
       </node>
-      <node isWord="true" end="3" begin="2" frame="verb('hebben/zijn',sg3,ld_pp)" his="normal" his_1="normal" id="5" infl="sg3" lcat="smain" lemma="liggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="lig" sc="ld_pp" sense="lig" stype="declarative" tense="present" word="ligt" wvorm="pv"/>
-      <node begin="3" cat="pp" end="9" id="6" rel="ld">
-        <node isWord="true" end="4" begin="3" frame="preposition(in,[])" his="normal" his_1="normal" id="7" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-        <node begin="4" cat="np" end="9" id="8" rel="obj1">
-          <node isWord="true" end="5" begin="4" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="9" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh" word="het"/>
-          <node isWord="true" end="6" begin="5" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="midden" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="midden" sense="midden" word="midden"/>
-          <node begin="6" cat="pp" end="9" id="11" rel="mod">
-            <node isWord="true" end="7" begin="6" frame="preposition(van,[af,uit,vandaan,[af,aan]])" his="normal" his_1="normal" id="12" lcat="pp" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
-            <node begin="7" cat="np" end="9" id="13" rel="obj1">
-              <node isWord="true" end="8" begin="7" frame="determiner(de)" his="normal" his_1="normal" id="14" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-              <node isWord="true" end="9" begin="8" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="15" lcat="np" lemma="haven" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="haven" sense="haven" word="haven"/>
+      <node word_zv="ligt" word="lig" end="3" begin="2" originalOffsets="2--3" frame="verb('hebben/zijn',sg3,ld_pp)" his="normal" his_1="normal" id="5" infl="sg3" lcat="smain" lemma="liggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="lig" sc="ld_pp" sense="lig" stype="declarative" tense="present" wvorm="pv"/>
+      <node end="9" begin="3" originalOffsets="3--9" cat="pp" id="6" rel="ld">
+        <node word_zv="in" word="in" end="4" begin="3" originalOffsets="3--4" frame="preposition(in,[])" his="normal" his_1="normal" id="7" lcat="pp" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node end="9" begin="4" originalOffsets="4--9" cat="np" id="8" rel="obj1">
+          <node word_zv="het" word="de" end="5" begin="4" originalOffsets="4--5" frame="determiner(het,nwh,nmod,pro,nparg,wkpro)" his="normal" his_1="normal" id="9" infl="het" lcat="detp" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" wh="nwh"/>
+          <node word_zv="midden" word="middel" end="6" begin="5" originalOffsets="5--6" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="normal" his_1="normal" id="10" lcat="np" lemma="midden" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" rnum="sg" root="midden" sense="midden"/>
+          <node end="9" begin="6" originalOffsets="6--9" cat="pp" id="11" rel="mod">
+            <node word_zv="van" word="van" end="7" begin="6" originalOffsets="6--7" frame="preposition(van,[af,uit,vandaan,[af,aan]])" his="normal" his_1="normal" id="12" lcat="pp" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init"/>
+            <node end="9" begin="7" originalOffsets="7--9" cat="np" id="13" rel="obj1">
+              <node word_zv="de" word="d" end="8" begin="7" originalOffsets="7--8" frame="determiner(de)" his="normal" his_1="normal" id="14" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+              <node word_zv="haven" word="havent" end="9" begin="8" originalOffsets="8--9" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="15" lcat="np" lemma="haven" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="haven" sense="haven"/>
             </node>
           </node>
         </node>

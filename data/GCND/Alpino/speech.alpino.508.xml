@@ -1,30 +1,30 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="13" id="0" rel="top">
-    <node begin="0" cat="smain" end="12" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" getal="ev" id="2" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-      <node isWord="true" end="2" begin="1" id="3" lemma="op_staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta_op" sense="sta_op" word="stond" wvorm="pv"/>
-      <node isWord="true" end="3" begin="2" getal="ev" id="4" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
-      <node isWord="true" end="5" begin="4" id="5" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo" word="zo"/>
-      <node begin="5" cat="pp" end="8" id="6" rel="mod">
-        <node isWord="true" end="6" begin="5" id="7" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
-        <node begin="6" cat="np" end="8" id="8" rel="obj1">
-          <node isWord="true" end="7" begin="6" buiging="zonder" getal="ev" id="9" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez" word="mijn"/>
-          <node isWord="true" end="8" begin="7" genus="zijd" getal="ev" graad="basis" id="10" lemma="jol" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="jol" sense="jol" word="jol"/>
+  <node end="13" begin="0" originalOffsets="0--13" cat="top" id="0" rel="top">
+    <node end="12" begin="0" originalOffsets="0--12" cat="smain" id="1" rel="--">
+      <node word_zv="ik" word="k" end="1" begin="0" originalOffsets="0--1" getal="ev" id="2" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+      <node word_zv="stond" word="stond" end="2" begin="1" originalOffsets="1--2" id="3" lemma="op_staan" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="sta_op" sense="sta_op" wvorm="pv"/>
+      <node word_zv="ik" word="ik" end="3" begin="2" originalOffsets="2--3" getal="ev" id="4" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers"/>
+      <node word_zv="zo" word="azo" end="5" begin="4" originalOffsets="4--5" id="5" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo"/>
+      <node end="8" begin="5" originalOffsets="5--8" cat="pp" id="6" rel="mod">
+        <node word_zv="in" word="in" end="6" begin="5" originalOffsets="5--6" id="7" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init"/>
+        <node end="8" begin="6" originalOffsets="6--8" cat="np" id="8" rel="obj1">
+          <node word_zv="mijn" word="me" end="7" begin="6" originalOffsets="6--7" buiging="zonder" getal="ev" id="9" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez"/>
+          <node word_zv="jol" word="jolle" end="8" begin="7" originalOffsets="7--8" genus="zijd" getal="ev" graad="basis" id="10" lemma="jol" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="jol" sense="jol"/>
         </node>
       </node>
-      <node begin="8" cat="pp" end="11" id="11" rel="mod">
-        <node isWord="true" end="9" begin="8" id="12" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
-        <node begin="9" cat="np" end="11" id="13" rel="obj1">
-          <node isWord="true" end="10" begin="9" buiging="zonder" getal="ev" id="14" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez" word="mijn"/>
-          <node isWord="true" end="11" begin="10" genus="zijd" getal="ev" graad="basis" id="15" lemma="voet" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="voet" sense="voet" word="voet"/>
+      <node end="11" begin="8" originalOffsets="8--11" cat="pp" id="11" rel="mod">
+        <node word_zv="met" word="me" end="9" begin="8" originalOffsets="8--9" id="12" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init"/>
+        <node end="11" begin="9" originalOffsets="9--11" cat="np" id="13" rel="obj1">
+          <node word_zv="mijn" word="mijn" end="10" begin="9" originalOffsets="9--10" buiging="zonder" getal="ev" id="14" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez"/>
+          <node word_zv="voet" word="voet" end="11" begin="10" originalOffsets="10--11" genus="zijd" getal="ev" graad="basis" id="15" lemma="voet" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="voet" sense="voet"/>
         </node>
       </node>
-      <node begin="3" cat="pp" end="12" id="16" rel="mod">
-        <node isWord="true" end="4" begin="3" getal="getal" id="17" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
-        <node isWord="true" end="12" begin="11" id="18" lemma="op" pos="part" postag="VZ(fin)" pt="vz" rel="hd" root="op" sense="op" vztype="fin" word="op"/>
+      <node end="12" begin="3" originalOffsets="3--12" cat="pp" id="16" rel="mod">
+        <node word_zv="daar" word="daar" end="4" begin="3" originalOffsets="3--4" getal="getal" id="17" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="daar" sense="daar" status="vol" vwtype="aanw"/>
+        <node word_zv="op" word="op" end="12" begin="11" originalOffsets="11--12" id="18" lemma="op" pos="part" postag="VZ(fin)" pt="vz" rel="hd" root="op" sense="op" vztype="fin"/>
       </node>
     </node>
-    <node isWord="true" end="13" begin="12" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="13" begin="12" originalOffsets="12--13" id="19" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0275a">ik stond ik daar zo in mijn jol met mijn voet op .</sentence>
   <comments>

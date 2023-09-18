@@ -1,20 +1,20 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node begin="0" cat="du" end="6" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
-      <node begin="1" cat="whq" end="6" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" id="4" index="1" lemma="wanneer" pos="adv" postag="BW()" pt="bw" rel="whd" root="wanneer" sense="wanneer" word="wanneer"/>
-        <node begin="1" cat="sv1" end="6" id="5" rel="body">
-          <node begin="1" end="2" id="6" index="1" rel="mod"/>
-          <node isWord="true" end="3" begin="2" id="7" lemma="smijten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="smijt" sense="smijt" word="smijt" wvorm="pv"/>
-          <node isWord="true" end="4" begin="3" getal="ev" id="8" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
-          <node isWord="true" end="5" begin="4" getal="mv" id="9" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
-          <node isWord="true" end="6" begin="5" id="10" lemma="weg" pos="adj" postag="BW()" pt="bw" rel="svp" root="weg" sense="weg" word="weg"/>
+  <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+    <node end="6" begin="0" originalOffsets="0--6" cat="du" id="1" rel="--">
+      <node word_zv="maar" word="maa" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar"/>
+      <node end="6" begin="1" originalOffsets="1--6" cat="whq" id="3" rel="nucl">
+        <node word_zv="wanneer" word="wanneer" end="2" begin="1" originalOffsets="1--2" id="4" index="1" lemma="wanneer" pos="adv" postag="BW()" pt="bw" rel="whd" root="wanneer" sense="wanneer"/>
+        <node end="6" begin="1" originalOffsets="1--6" cat="sv1" id="5" rel="body">
+          <node end="2" begin="1" originalOffsets="1--2" id="6" index="1" rel="mod"/>
+          <node word_zv="smijt" word="smijt" end="3" begin="2" originalOffsets="2--3" id="7" lemma="smijten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="smijt" sense="smijt" wvorm="pv"/>
+          <node word_zv="je" word="je" end="4" begin="3" originalOffsets="3--4" getal="ev" id="8" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers"/>
+          <node word_zv="ze" word="ze" end="5" begin="4" originalOffsets="4--5" getal="mv" id="9" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers"/>
+          <node word_zv="weg" word="weg" end="6" begin="5" originalOffsets="5--6" id="10" lemma="weg" pos="adj" postag="BW()" pt="bw" rel="svp" root="weg" sense="weg"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="7" begin="6" id="11" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node isWord="true" end="8" begin="7" id="12" lemma="?" pos="punct" postag="LET()" pt="let" rel="--" root="?" sense="?" word="?"/>
+    <node word_zv="..." word="..." end="7" begin="6" originalOffsets="6--7" id="11" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node word_zv="?" word="?" end="8" begin="7" originalOffsets="7--8" id="12" lemma="?" pos="punct" postag="LET()" pt="let" rel="--" root="?" sense="?"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0331a">maar wanneer smijt je ze weg ... ?</sentence>
   <comments>

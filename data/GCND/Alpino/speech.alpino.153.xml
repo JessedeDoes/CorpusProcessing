@@ -1,24 +1,24 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="11" id="0" rel="top">
-    <node isWord="true" end="1" begin="0" id="1" lemma="zo" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zo" sense="zo" word="zo"/>
-    <node isWord="true" end="2" begin="1" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="2" cat="du" end="10" id="3" rel="--">
-      <node isWord="true" end="3" begin="2" buiging="zonder" graad="basis" id="4" lemma="natuurlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="tag" root="natuurlijk" sense="natuurlijk" word="natuurlijk"/>
-      <node begin="3" cat="cp" end="10" id="5" rel="dp">
-        <node isWord="true" end="4" begin="3" conjtype="onder" id="6" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
-        <node begin="4" cat="ssub" end="10" id="7" rel="body">
-          <node isWord="true" end="5" begin="4" getal="mv" id="8" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
-          <node isWord="true" end="6" begin="5" getal="mv" id="9" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers" word="wij"/>
-          <node begin="6" cat="np" end="9" id="10" rel="obj1">
-            <node isWord="true" end="7" begin="6" id="11" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-            <node isWord="true" end="8" begin="7" buiging="met-e" graad="basis" id="12" lemma="goed" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="goed" sense="goed" word="goeie"/>
-            <node isWord="true" end="9" begin="8" genus="zijd" getal="ev" graad="basis" id="13" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wind" sense="wind" word="wind"/>
+  <node end="11" begin="0" originalOffsets="0--11" cat="top" id="0" rel="top">
+    <node word_zv="zo" word="zo" end="1" begin="0" originalOffsets="0--1" id="1" lemma="zo" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="zo" sense="zo"/>
+    <node word_zv="..." word="..." end="2" begin="1" originalOffsets="1--2" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="10" begin="2" originalOffsets="2--10" cat="du" id="3" rel="--">
+      <node word_zv="natuurlijk" word="natuurlijk" end="3" begin="2" originalOffsets="2--3" buiging="zonder" graad="basis" id="4" lemma="natuurlijk" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="tag" root="natuurlijk" sense="natuurlijk"/>
+      <node end="10" begin="3" originalOffsets="3--10" cat="cp" id="5" rel="dp">
+        <node word_zv="als" word="as" end="4" begin="3" originalOffsets="3--4" conjtype="onder" id="6" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als"/>
+        <node end="10" begin="4" originalOffsets="4--10" cat="ssub" id="7" rel="body">
+          <node word_zv="we" word="me" end="5" begin="4" originalOffsets="4--5" getal="mv" id="8" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+          <node word_zv="wij" word="wijder" end="6" begin="5" originalOffsets="5--6" getal="mv" id="9" lemma="wij" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,mv)" pt="vnw" rel="su" root="wij" sense="wij" status="vol" vwtype="pers"/>
+          <node end="9" begin="6" originalOffsets="6--9" cat="np" id="10" rel="obj1">
+            <node word_zv="de" word="de" end="7" begin="6" originalOffsets="6--7" id="11" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+            <node word_zv="goeie" word="goeie" end="8" begin="7" originalOffsets="7--8" buiging="met-e" graad="basis" id="12" lemma="goed" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="goed" sense="goed"/>
+            <node word_zv="wind" word="wind" end="9" begin="8" originalOffsets="8--9" genus="zijd" getal="ev" graad="basis" id="13" lemma="wind" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="wind" sense="wind"/>
           </node>
-          <node isWord="true" end="10" begin="9" id="14" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" word="hadden" wvorm="pv"/>
+          <node word_zv="hadden" word="adden" end="10" begin="9" originalOffsets="9--10" id="14" lemma="hebben" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="heb" sense="heb" wvorm="pv"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="11" begin="10" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node word_zv="..." word="..." end="11" begin="10" originalOffsets="10--11" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0147">zo ... natuurlijk als we wij de goeie wind hadden ...</sentence>
   <comments>

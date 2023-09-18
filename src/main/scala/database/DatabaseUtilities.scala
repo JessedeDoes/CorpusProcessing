@@ -55,7 +55,10 @@ object DatabaseUtilities
 
   case class Mocky1(resultSet:ResultSet) extends Diamond
   {
-    def getString(s:String, s1: Option[String] = None):String = resultSet.getString(s)
+    def getString(s:String, s1: Option[String] = None):String =  {
+      // Console.err.println(s"getString: $s $s1")
+      resultSet.getString(s)
+    }
     def getStringNonNull(s:String):String = {
       val x = resultSet.getString(s)
       if (x == null) "" else x
@@ -68,7 +71,9 @@ object DatabaseUtilities
   class Mocky2 extends Diamond
   {
     val fieldNames: scala.collection.mutable.ListBuffer[String] = new scala.collection.mutable.ListBuffer[String]()
-    def getString(s:String, s1: Option[String] = None):String = { fieldNames.append(s1.getOrElse("\"" + s + "\"")); "wereldvrede"}
+    def getString(s:String, s1: Option[String] = None):String = {
+      Console.err.println(s"getString in Mocky2: $s $s1")
+      fieldNames.append(s1.getOrElse("\"" + s + "\"")); s"wereldvrede_$s"}
     def getStringNonNull(s:String):String = getString(s)
     def getInt(s:String):Int = {fieldNames.append(s); 42}
     def getBoolean(s:String):Boolean = {fieldNames.append(s); true}
@@ -93,11 +98,13 @@ object DatabaseUtilities
   implicit def doeHet[T](s:Select[T]): AlmostQuery[T] =
   {
     val m = new Mocky2
-    s.mapping(m)
+    Console.err.println("!!!!Creating query for $s " + s.mapping(m))
     val gr = ResultMapping[T](r => s.mapping(Mocky1(r)))
     val query = "select " + m.fieldNames.mkString(", ") + " from " + s.from
     db => db.createQuery(query).map(gr)
   }
+
+
 
   def makeHandle(conf: Configuration): Handle = {
     val dbi = if (conf.driver.equalsIgnoreCase("postgres")) {

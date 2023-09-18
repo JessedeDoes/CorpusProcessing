@@ -1,28 +1,28 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="10" id="0" rel="top">
-    <node begin="0" cat="conj" end="9" id="1" rel="--">
-      <node begin="0" cat="cp" end="4" id="2" rel="cnj">
-        <node isWord="true" end="1" begin="0" conjtype="onder" frame="complementizer(dat)" his="normal" his_1="normal" id="3" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat" word="dat"/>
-        <node begin="1" cat="ssub" end="4" id="4" rel="body">
-          <node begin="1" cat="np" end="3" id="5" rel="su">
-            <node isWord="true" end="2" begin="1" buiging="zonder" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="6" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh" word="dat"/>
-            <node isWord="true" end="3" begin="2" frame="meas_mod_noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="dim" his="normal" his_1="normal" id="7" lcat="np" lemma="eindje" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" rnum="sg" root="eindje" sense="eindje" special="meas_mod" word="eindje"/>
+  <node end="10" begin="0" originalOffsets="0--10" cat="top" id="0" rel="top">
+    <node end="9" begin="0" originalOffsets="0--9" cat="conj" id="1" rel="--">
+      <node end="4" begin="0" originalOffsets="0--4" cat="cp" id="2" rel="cnj">
+        <node word_zv="dat" word="dat" end="1" begin="0" originalOffsets="0--1" conjtype="onder" frame="complementizer(dat)" his="normal" his_1="normal" id="3" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat"/>
+        <node end="4" begin="1" originalOffsets="1--4" cat="ssub" id="4" rel="body">
+          <node end="3" begin="1" originalOffsets="1--3" cat="np" id="5" rel="su">
+            <node word_zv="dat" word="da" end="2" begin="1" originalOffsets="1--2" buiging="zonder" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="6" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh"/>
+            <node word_zv="eindje" word="endje" end="3" begin="2" originalOffsets="2--3" frame="meas_mod_noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="dim" his="normal" his_1="normal" id="7" lcat="np" lemma="eindje" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" rnum="sg" root="eindje" sense="eindje" special="meas_mod"/>
           </node>
-          <node isWord="true" end="4" begin="3" frame="verb(zijn,sg3,intransitive)" his="normal" his_1="normal" id="8" infl="sg3" lcat="ssub" lemma="breken" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="breek" sc="intransitive" sense="breek" tense="present" word="breekt" wvorm="pv"/>
+          <node word_zv="breekt" word="breekt" end="4" begin="3" originalOffsets="3--4" frame="verb(zijn,sg3,intransitive)" his="normal" his_1="normal" id="8" infl="sg3" lcat="ssub" lemma="breken" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="breek" sc="intransitive" sense="breek" tense="present" wvorm="pv"/>
         </node>
       </node>
-      <node isWord="true" end="5" begin="4" conjtype="neven" frame="conj(en)" his="normal" his_1="normal" id="9" lcat="vg" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
-      <node begin="5" cat="cp" end="9" id="10" rel="cnj">
-        <node isWord="true" end="6" begin="5" conjtype="onder" frame="complementizer(dat)" his="normal" his_1="normal" id="11" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat" word="dat"/>
-        <node begin="6" cat="ssub" end="9" id="12" rel="body">
-          <node isWord="true" end="7" begin="6" case="both" def="def" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="13" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh" word="je"/>
-          <node isWord="true" end="8" begin="7" frame="dir_adverb" his="normal" his_1="normal" id="14" lcat="advp" lemma="overboord" pos="adv" postag="BW()" pt="bw" rel="ld" root="overboord" sense="overboord" special="dir" word="overboord"/>
-          <node isWord="true" end="9" begin="8" frame="verb(zijn,sg3,ld_dir)" his="normal" his_1="normal" id="15" infl="sg3" lcat="ssub" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="ld_dir" sense="ga" tense="present" word="gaat" wvorm="pv"/>
+      <node word_zv="en" word="e" end="5" begin="4" originalOffsets="4--5" conjtype="neven" frame="conj(en)" his="normal" his_1="normal" id="9" lcat="vg" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en"/>
+      <node end="9" begin="5" originalOffsets="5--9" cat="cp" id="10" rel="cnj">
+        <node word_zv="dat" word="da" end="6" begin="5" originalOffsets="5--6" conjtype="onder" frame="complementizer(dat)" his="normal" his_1="normal" id="11" lcat="cp" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sc="dat" sense="dat"/>
+        <node end="9" begin="6" originalOffsets="6--9" cat="ssub" id="12" rel="body">
+          <node word_zv="je" word="je" end="7" begin="6" originalOffsets="6--7" case="both" def="def" frame="pronoun(nwh,je,sg,de,both,def,wkpro)" gen="de" getal="ev" his="normal" his_1="normal" id="13" lcat="np" lemma="je" naamval="nomin" num="sg" pdtype="pron" per="je" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" rnum="sg" root="je" sense="je" special="wkpro" status="red" vwtype="pers" wh="nwh"/>
+          <node word_zv="overboord" word="overboord" end="8" begin="7" originalOffsets="7--8" frame="dir_adverb" his="normal" his_1="normal" id="14" lcat="advp" lemma="overboord" pos="adv" postag="BW()" pt="bw" rel="ld" root="overboord" sense="overboord" special="dir"/>
+          <node word_zv="gaat" word="gaat" end="9" begin="8" originalOffsets="8--9" frame="verb(zijn,sg3,ld_dir)" his="normal" his_1="normal" id="15" infl="sg3" lcat="ssub" lemma="gaan" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="ga" sc="ld_dir" sense="ga" tense="present" wvorm="pv"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="10" begin="9" frame="punct(punt)" his="normal" his_1="normal" id="16" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+    <node word_zv="." word="." end="10" begin="9" originalOffsets="9--10" frame="punct(punt)" his="normal" his_1="normal" id="16" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt"/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0198b">dat dat eindje breekt en dat je overboord gaat .</sentence>
   <comments>

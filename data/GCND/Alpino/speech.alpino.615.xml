@@ -1,29 +1,29 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="11" id="0" rel="top">
-    <node begin="0" cat="du" end="10" id="1" rel="--">
-      <node isWord="true" end="1" begin="0" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
-      <node begin="1" cat="smain" end="10" id="3" rel="nucl">
-        <node isWord="true" end="2" begin="1" getal="mv" id="4" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers" word="we"/>
-        <node isWord="true" end="3" begin="2" id="5" lemma="gaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ga" sense="ga" word="gaan" wvorm="pv"/>
-        <node begin="1" cat="inf" end="10" id="6" rel="vc">
-          <node begin="1" end="2" id="7" index="1" rel="su"/>
-          <node begin="3" cat="np" end="5" id="8" rel="mod">
-            <node isWord="true" end="4" begin="3" id="9" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
-            <node isWord="true" end="5" begin="4" genus="genus" getal="ev" graad="basis" id="10" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer" word="keer"/>
+  <node end="11" begin="0" originalOffsets="0--11" cat="top" id="0" rel="top">
+    <node end="10" begin="0" originalOffsets="0--10" cat="du" id="1" rel="--">
+      <node word_zv="en" word="en" end="1" begin="0" originalOffsets="0--1" conjtype="neven" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en"/>
+      <node end="10" begin="1" originalOffsets="1--10" cat="smain" id="3" rel="nucl">
+        <node word_zv="we" word="me" end="2" begin="1" originalOffsets="1--2" getal="mv" id="4" index="1" lemma="we" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" root="we" sense="we" status="red" vwtype="pers"/>
+        <node word_zv="gaan" word="gaan" end="3" begin="2" originalOffsets="2--3" id="5" lemma="gaan" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ga" sense="ga" wvorm="pv"/>
+        <node end="10" begin="1" originalOffsets="1--10" cat="inf" id="6" rel="vc">
+          <node end="2" begin="1" originalOffsets="1--2" id="7" index="1" rel="su"/>
+          <node end="5" begin="3" originalOffsets="3--5" cat="np" id="8" rel="mod">
+            <node word_zv="een" word="e" end="4" begin="3" originalOffsets="3--4" id="9" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een"/>
+            <node word_zv="keer" word="keer" end="5" begin="4" originalOffsets="4--5" genus="genus" getal="ev" graad="basis" id="10" lemma="keer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" root="keer" sense="keer"/>
           </node>
-          <node isWord="true" end="6" begin="5" buiging="zonder" id="11" lemma="klappen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="klap" sense="klap" word="klappen" wvorm="inf"/>
-          <node begin="6" cat="pp" end="9" id="12" rel="mod">
-            <node isWord="true" end="7" begin="6" id="13" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="over" vztype="init" word="van"/>
-            <node begin="7" cat="np" end="9" id="14" rel="obj1">
-              <node isWord="true" end="8" begin="7" buiging="zonder" id="15" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
-              <node isWord="true" end="9" begin="8" getal="mv" graad="basis" id="16" lemma="lood_boot" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="lood_boot" sense="lood_boot" word="loodsboten"/>
+          <node word_zv="klappen" word="klappen" end="6" begin="5" originalOffsets="5--6" buiging="zonder" id="11" lemma="klappen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="klap" sense="klap" wvorm="inf"/>
+          <node end="9" begin="6" originalOffsets="6--9" cat="pp" id="12" rel="mod">
+            <node word_zv="van" word="van" end="7" begin="6" originalOffsets="6--7" id="13" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="over" vztype="init"/>
+            <node end="9" begin="7" originalOffsets="7--9" cat="np" id="14" rel="obj1">
+              <node word_zv="die" word="die" end="8" begin="7" originalOffsets="7--8" buiging="zonder" id="15" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw"/>
+              <node word_zv="loodsboten" word="loodsboots" end="9" begin="8" originalOffsets="8--9" getal="mv" graad="basis" id="16" lemma="lood_boot" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="lood_boot" sense="lood_boot"/>
             </node>
           </node>
-          <node isWord="true" end="10" begin="9" id="17" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu" word="nu"/>
+          <node word_zv="nu" word="nu" end="10" begin="9" originalOffsets="9--10" id="17" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu"/>
         </node>
       </node>
     </node>
-    <node isWord="true" end="11" begin="10" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="11" begin="10" originalOffsets="10--11" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0405">en we gaan een keer klappen van die loodsboten nu .</sentence>
   <comments>

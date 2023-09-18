@@ -1,23 +1,23 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-  <node begin="0" cat="top" end="10" id="0" rel="top">
-    <node isWord="true" end="7" begin="6" id="1" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
-    <node isWord="true" end="8" begin="7" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
-    <node begin="0" cat="smain" end="9" id="3" rel="--">
-      <node isWord="true" end="1" begin="0" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
-      <node isWord="true" end="2" begin="1" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="is" wvorm="pv"/>
-      <node begin="2" cat="np" end="9" id="6" rel="predc">
-        <node isWord="true" end="3" begin="2" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-        <node isWord="true" end="4" begin="3" genus="zijd" getal="ev" graad="basis" id="8" lemma="route" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="route" sense="route" word="route"/>
-        <node begin="4" cat="pp" end="9" id="9" rel="mod">
-          <node isWord="true" end="5" begin="4" id="10" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init" word="voor"/>
-          <node begin="5" cat="conj" end="9" id="11" rel="obj1">
-            <node isWord="true" end="6" begin="5" genus="onz" getal="ev" graad="basis" id="12" lemma="Breskens" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="cnj" root="Breskens" sense="Breskens" word="Breskens"/>
-            <node isWord="true" end="9" begin="8" genus="onz" getal="ev" graad="basis" id="13" lemma="Holland" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="cnj" root="Holland" sense="Holland" word="Holland"/>
+  <node end="10" begin="0" originalOffsets="0--10" cat="top" id="0" rel="top">
+    <node word_zv="hé" word="hé" end="7" begin="6" originalOffsets="6--7" id="1" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé"/>
+    <node word_zv="..." word="..." end="8" begin="7" originalOffsets="7--8" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..."/>
+    <node end="9" begin="0" originalOffsets="0--9" cat="smain" id="3" rel="--">
+      <node word_zv="dat" word="dat" end="1" begin="0" originalOffsets="0--1" getal="ev" id="4" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw"/>
+      <node word_zv="is" word="is" end="2" begin="1" originalOffsets="1--2" id="5" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv"/>
+      <node end="9" begin="2" originalOffsets="2--9" cat="np" id="6" rel="predc">
+        <node word_zv="de" word="de" end="3" begin="2" originalOffsets="2--3" id="7" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+        <node word_zv="route" word="route" end="4" begin="3" originalOffsets="3--4" genus="zijd" getal="ev" graad="basis" id="8" lemma="route" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="route" sense="route"/>
+        <node end="9" begin="4" originalOffsets="4--9" cat="pp" id="9" rel="mod">
+          <node word_zv="voor" word="voo" end="5" begin="4" originalOffsets="4--5" id="10" lemma="voor" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="voor" sense="voor" vztype="init"/>
+          <node end="9" begin="5" originalOffsets="5--9" cat="conj" id="11" rel="obj1">
+            <node word_zv="Breskens" word="Breskens" end="6" begin="5" originalOffsets="5--6" genus="onz" getal="ev" graad="basis" id="12" lemma="Breskens" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="cnj" root="Breskens" sense="Breskens"/>
+            <node word_zv="Holland" word="Holland" end="9" begin="8" originalOffsets="8--9" genus="onz" getal="ev" graad="basis" id="13" lemma="Holland" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="cnj" root="Holland" sense="Holland"/>
           </node>
         </node>
       </node>
     </node>
-    <node isWord="true" end="10" begin="9" id="14" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+    <node word_zv="." word="." end="10" begin="9" originalOffsets="9--10" id="14" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0210a">dat is de route voor Breskens hé ... Holland .</sentence>
   <comments>

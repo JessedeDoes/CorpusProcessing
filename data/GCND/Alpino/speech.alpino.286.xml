@@ -1,17 +1,17 @@
 <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
   <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:06" cats="1" skips="0"/>
-  <node begin="0" cat="top" end="5" id="0" rel="top">
-    <node begin="0" cat="smain" end="5" id="1" rel="--">
-      <node begin="0" cat="np" end="2" id="2" index="1" rel="su">
-        <node isWord="true" end="1" begin="0" frame="determiner(de)" his="normal" his_1="normal" id="3" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
-        <node isWord="true" end="2" begin="1" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="4" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="zee" sense="zee" word="zee"/>
+  <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
+    <node end="5" begin="0" originalOffsets="0--5" cat="smain" id="1" rel="--">
+      <node end="2" begin="0" originalOffsets="0--2" cat="np" id="2" index="1" rel="su">
+        <node word_zv="de" word="de" end="1" begin="0" originalOffsets="0--1" frame="determiner(de)" his="normal" his_1="normal" id="3" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de"/>
+        <node word_zv="zee" word="zee" end="2" begin="1" originalOffsets="1--2" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="4" lcat="np" lemma="zee" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="zee" sense="zee"/>
       </node>
-      <node isWord="true" end="3" begin="2" frame="verb(zijn,past(sg),aux(te_inf))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="beginnen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="begin" sc="aux(te_inf)" sense="begin" stype="declarative" tense="past" word="begon" wvorm="pv"/>
-      <node begin="0" cat="ti" end="5" id="6" rel="vc">
-        <node isWord="true" end="4" begin="3" frame="complementizer(te)" his="normal" his_1="normal" id="7" lcat="ti" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sc="te" sense="te" vztype="init" word="te"/>
-        <node begin="0" cat="inf" end="5" id="8" rel="body">
-          <node begin="0" end="2" id="9" index="1" rel="su"/>
-          <node isWord="true" end="5" begin="4" buiging="zonder" frame="verb(hebben,inf,intransitive)" his="normal" his_1="normal" id="10" infl="inf" lcat="inf" lemma="rammelen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="rammel" sc="intransitive" sense="rammel" word="rammelen" wvorm="inf"/>
+      <node word_zv="begon" word="begoste" end="3" begin="2" originalOffsets="2--3" frame="verb(zijn,past(sg),aux(te_inf))" his="normal" his_1="normal" id="5" infl="sg" lcat="smain" lemma="beginnen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="begin" sc="aux(te_inf)" sense="begin" stype="declarative" tense="past" wvorm="pv"/>
+      <node end="5" begin="0" originalOffsets="0--5" cat="ti" id="6" rel="vc">
+        <node word_zv="te" word="te" end="4" begin="3" originalOffsets="3--4" frame="complementizer(te)" his="normal" his_1="normal" id="7" lcat="ti" lemma="te" pos="comp" postag="VZ(init)" pt="vz" rel="cmp" root="te" sc="te" sense="te" vztype="init"/>
+        <node end="5" begin="0" originalOffsets="0--5" cat="inf" id="8" rel="body">
+          <node end="1" begin="0" originalOffsets="0--2" id="9" index="1" rel="su"/>
+          <node word_zv="rammelen" word="rammelen" end="5" begin="4" originalOffsets="4--5" buiging="zonder" frame="verb(hebben,inf,intransitive)" his="normal" his_1="normal" id="10" infl="inf" lcat="inf" lemma="rammelen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="rammel" sc="intransitive" sense="rammel" wvorm="inf"/>
         </node>
       </node>
     </node>
