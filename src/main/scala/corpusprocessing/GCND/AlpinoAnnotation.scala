@@ -56,25 +56,27 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val conll = sentence.toCONLL() // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
   lazy val dependencies = {
-    val deps = sentence.connlTokens.sortBy(_.ID.toInt).filter(x => x.HEAD != "0" && x.DEPREL != "root").map(t => {
+    val root = sentence.connlTokens.find(_.DEPREL == "root")
+    val rootWordId = root.map(t => s"annotation.$alpino_annotatie_id.w.${t.ID.toInt - 1}").get
+    lazy val deps = sentence.connlTokens.sortBy(_.ID.toInt).filter(x => true || (x.HEAD != "0" && x.DEPREL != "root")).map(t => {
       val idBaseZero = (t.ID.toInt - 1)
       val headBaseZero = (t.HEAD.toInt - 1)
       val id = s"annotation.$alpino_annotatie_id.w.$idBaseZero"
-      val hid = s"annotation.$alpino_annotatie_id.w.$headBaseZero"
+      val hid = if (idBaseZero < 0) rootWordId else s"annotation.$alpino_annotatie_id.w.$headBaseZero"
       <dependency class={t.DEPREL}>
         <hd>
-          <wref id={hid}/>
+          { if (t.DEPREL != "root") <wref id={hid}/> }
         </hd>
         <dep>
           <wref id={id} t={t.FORM}/>
         </dep>
       </dependency>
     })
-    <dependencies>{deps}
+    if (sentence.dependencyParseIsValid) { <dependencies>{deps}
       <foreign-data>
         <conll xmls="http://conll.fake.url">{scala.xml.Unparsed("<![CDATA[%s]]>".format(conll))}</conll>
       </foreign-data>
-    </dependencies>
+    </dependencies> }
   }
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
   lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
@@ -139,7 +141,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
                 <t class="lightDutchification">{t.text_lv}</t>
                 <lemma class={a.lemma}/>
                 <pos class={a.postag} head={posTag.pos}>
-                  {posTag.features.map(f => {
+                  {posTag.features.filter(_.name != "UNK").map(f => {
                     <feat class={f.value} subset={f.name}/>
                 })}
                 </pos>

@@ -9,6 +9,7 @@ import scala.xml.PrettyPrinter
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoSentence, AlpinoToken}
 
 import java.io.PrintWriter
+import scala.xml.dtd.DocType
 
 
 /*
@@ -199,7 +200,9 @@ object GCNDDatabase {
     out1.close()
 
     val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")
-    out2.println(pretty.format(getPseudoFoLiAForElanAnnotations(1)))
+    val e = getPseudoFoLiAForElanAnnotations(1)
+    XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
+    // out2.println(pretty.format(e))
     out2.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }

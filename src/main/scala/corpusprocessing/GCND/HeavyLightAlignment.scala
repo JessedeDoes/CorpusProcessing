@@ -33,6 +33,7 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
       .replaceAll("#"," 畳")
       .split("\\s+")
       .toList.flatMap(Tokenizer.tokenizeErVanaf)
+      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
 
   lazy val ndlTokens: List[Tokenizer.Token] =
     fixhellip(e.tekst_zv)

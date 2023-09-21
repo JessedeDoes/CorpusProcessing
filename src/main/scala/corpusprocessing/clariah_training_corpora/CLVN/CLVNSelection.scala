@@ -7,38 +7,43 @@ import java.io.File
 import scala.collection.immutable
 import scala.xml._
 
-case class Doc(n: Node) {
+case class Doc(n: Node, corpusURL: String) {
   val e  = n.asInstanceOf[Elem]
   def getValues(name: String): Seq[String] = ((n \\ "docInfo").head.child.filter(x => x.label == name).map(x => {  (x  \\ "value").text}))
   lazy val pid = (n \\ "docPid").text
   lazy val province = getValues("province").mkString("|")
   lazy val witness_year_from = getValues("witness_year_from").mkString("|")
   lazy  val witness_year_to  = getValues("witness_year_to").mkString("|")
+  lazy val decade = getValues("decade").mkString("|")
+  lazy val inputFile = getValues(name ="fromInputFile").mkString("").replaceAll(".*/", "")
   lazy val nTokens = (n \\ "lengthInTokens").text.toInt
   override def toString  = s"$pid ($nTokens tokens): $province, $witness_year_from-$witness_year_to"
 
-  def getContent() = {
-    val url = s"https://corpora.ato.ivdnt.org/blacklab-server/CLVN/docs/$pid/contents"
-    XML.load(url)
+  def getContent(): Elem = {
+    val url = s"$corpusURL/docs/$pid/contents"
+    PatchUp.patchDoc(XML.load(url))
   }
 
   def save(baseDir: String) = {
-    val fName = baseDir + "/" + pid  + ".xml";
+    val fName = baseDir + "/" + inputFile // + pid  + ".xml";
     XML.save(fName, getContent(), enc="UTF-8")
   }
 }
 
-object Selection {
+object CLVNSelection {
+  val corpusURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN"
    val docsURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN/docs/?number=3000"
-   lazy val docs: Seq[Doc] = XML.load(docsURL).flatMap(x => x \\ "doc").map(Doc)
+
+   lazy val docs: Seq[Doc] = XML.load(docsURL).flatMap(x => x \\ "doc").map(x => Doc(x,corpusURL))
    lazy val docs16 = docs.filter(x => x.witness_year_from >= "1500" && x.witness_year_to <= "1600").filter(_.province.nonEmpty)
    lazy val provinceGroups = docs16.groupBy(_.province).mapValues(l => l.filter(d => d.nTokens >= 200 && d.nTokens <= 2000)).mapValues(l => l.sortBy(_.nTokens))
    lazy val toksPerProvince = provinceGroups.map({case (p, l) => (p, l.map(_.nTokens).sum)}).filter(_._2 >= 5000)
    lazy val survivingProvinces = toksPerProvince.keySet
-   lazy val selection = provinceGroups.filter({case (x, _) => survivingProvinces.contains(x)}).mapValues(l => {
+   lazy val selection: Map[String, Seq[Doc]] = provinceGroups.filter({case (x, _) => survivingProvinces.contains(x)}).mapValues(l => {
      var cumul = 0;
      l.takeWhile(d => {cumul = cumul + d.nTokens; cumul <= 2750})
    })
+
   def main(args: Array[String])  = {
     // docs16.foreach(x => println(x))
     println(toksPerProvince)
@@ -52,6 +57,37 @@ object Selection {
          println(s"\t$d")
          d.save(baseDir.getCanonicalPath)
        })
+    })
+  }
+}
+
+object CourantenSelection {
+  val corpusURL = "http://svatkc10.ivdnt.loc/blacklab-server/couranten_ontdubbeld/"
+  val docsURL = s"$corpusURL/docs?number=110000"
+
+  lazy val docs: Seq[Doc] = XML.load(docsURL).flatMap(x => x \\ "doc").map(x => Doc(x,corpusURL))
+
+  lazy val provinceGroups = docs.groupBy(_.decade).mapValues(l => l.filter(d => d.nTokens >= 200 && d.nTokens <= 2000)).mapValues(l => l.sortBy(_.nTokens))
+  lazy val toksPerProvince = provinceGroups.map({case (p, l) => (p, l.map(_.nTokens).sum)}).filter(_._2 >= 2000)
+  lazy val survivingProvinces = toksPerProvince.keySet
+  lazy val selection: Map[String, Seq[Doc]] = provinceGroups.filter({case (x, _) => survivingProvinces.contains(x)}).mapValues(l => {
+    var cumul = 0;
+    l.takeWhile(d => {cumul = cumul + d.nTokens; cumul <= 2750})
+  })
+
+  def main(args: Array[String])  = {
+    // docs16.foreach(x => println(x))
+    println(toksPerProvince)
+    println(toksPerProvince.size)
+    println(25000 / toksPerProvince.size)
+    val baseDir = new java.io.File("/tmp/CourantenSelectie/")
+    baseDir.mkdir()
+    selection.foreach({case (p,l) =>
+      println(s" ### $p: ${l.map(_.nTokens).sum} ### ")
+      l.foreach(d => {
+        println(s"\t$d")
+        d.save(baseDir.getCanonicalPath)
+      })
     })
   }
 }
@@ -83,9 +119,9 @@ object PatchUp {
     }
   }
 
-  def renumber(e: Elem)  = renumberWords(e, 0)._1.asInstanceOf[Elem]
+  private def renumber(e: Elem)  = renumberWords(e, 0)._1.asInstanceOf[Elem]
 
-  def fixW(w: Elem)  = {
+  def fixW(w: Elem): Seq[Node] = {
 
     def withText(t: String)  = w.copy(child={<seg>{t.trim}</seg>})
     if (w.toString().contains("<lb/>"))
@@ -106,11 +142,12 @@ object PatchUp {
 
   val dir = "/mnt/Projecten/Corpora/Historische_Corpora/CLVN/CLVNSelectieTagged/"
 
+  def patchDoc(d: Elem) = renumber(PostProcessXML.updateElement5(d, _.label=="w", fixW).asInstanceOf[Elem])
   def main(args: Array[String])  = {
     new File(dir).listFiles().filter(_.getName.endsWith(".xml")).foreach(f => {
       val d = XML.loadFile(f)
-      val d1 = PostProcessXML.updateElement5(d, _.label=="w", fixW).asInstanceOf[Elem]
-      XML.save(dir + "Patched/" + f.getName, renumber(d1))
+      val d1 =patchDoc(d)
+      XML.save(dir + "Patched/" + f.getName, d1)
     })
   }
 }
