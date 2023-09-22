@@ -201,8 +201,8 @@ object GCNDDatabase {
 
     val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")
     val e = getPseudoFoLiAForElanAnnotations(1)
-    XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
-    // out2.println(pretty.format(e))
+    // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
+    out2.println(pretty.format(e))
     out2.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
