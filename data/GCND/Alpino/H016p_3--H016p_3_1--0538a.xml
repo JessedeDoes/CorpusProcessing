@@ -1,0 +1,30 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="10" id="0" rel="top">
+    <node begin="0" cat="du" end="9" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="9" id="3" rel="nucl">
+        <node begin="1" end="2" genus="masc" getal="ev" id="4" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+        <node begin="2" end="3" id="5" lemma="hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb" sense="heb-aan" word="had" wvorm="pv"/>
+        <node begin="3" cat="np" end="9" id="6" rel="obj1">
+          <node begin="3" cat="mwu" end="5" id="7" rel="det">
+            <node begin="3" end="4" id="8" lemma="zulk" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="mwp" root="zulk" sense="zulk" word="zulk"/>
+            <node begin="4" end="5" id="9" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="mwp" root="een" sense="een" word="een"/>
+          </node>
+          <node begin="5" end="6" genus="onz" getal="ev" graad="basis" id="10" lemma="zeer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="zeer" sense="zeer" word="zeer"/>
+          <node begin="6" cat="pp" end="9" id="11" rel="mod">
+            <node begin="6" end="7" id="12" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init" word="aan"/>
+            <node begin="7" cat="np" end="9" id="13" rel="obj1">
+              <node begin="7" buiging="zonder" end="8" getal="ev" id="14" lemma="zijn" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="zijn" sense="zijn" status="vol" vwtype="bez" word="zijn"/>
+              <node begin="8" end="9" genus="zijd" getal="ev" graad="basis" id="15" lemma="maag" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="maag" sense="maag" word="maag"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="9" end="10" id="16" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0538a">en hij had zulk een zeer aan zijn maag .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0538a|en hij had zulk een zeer aan zijn maag .|1|1|-1.9630244280999998</comment>
+  </comments>
+</alpino_ds>

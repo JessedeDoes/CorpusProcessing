@@ -1,0 +1,62 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="23" id="0" rel="top">
+    <node begin="11" end="12" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="16" end="17" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="22" id="3" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="4" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="22" id="5" rel="nucl">
+        <node begin="1" end="2" getal="mv" id="6" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+        <node begin="2" end="3" id="7" lemma="roeien" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="roei" sense="roei" word="roeiden" wvorm="pv"/>
+        <node begin="3" end="4" getal="mv" id="8" lemma="zij" naamval="nomin" pdtype="pron" persoon="3p" pos="verb" postag="VNW(pers,pron,nomin,vol,3p,mv)" pt="vnw" rel="su" root="ben" sense="ben" status="vol" vwtype="pers" word="zij"/>
+        <node begin="4" end="5" id="9" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" word="allemaal"/>
+        <node begin="5" cat="pp" end="11" id="10" rel="ld">
+          <node begin="5" end="6" id="11" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
+          <node begin="6" cat="np" end="11" id="12" rel="obj1">
+            <node begin="6" end="7" id="13" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+            <node begin="7" end="8" genus="onz" getal="ev" graad="basis" id="14" lemma="einde" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="einde" sense="einde" word="einde"/>
+            <node begin="8" cat="pp" end="11" id="15" rel="mod">
+              <node begin="8" end="9" id="16" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+              <node begin="9" cat="np" end="11" id="17" rel="obj1">
+                <node begin="9" end="10" id="18" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+                <node begin="10" end="11" genus="onz" getal="ev" graad="basis" id="19" lemma="hoofd" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="hoofd" sense="hoofd" word="hoofd"/>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node begin="12" cat="oti" end="22" id="20" rel="mod">
+          <node begin="12" end="13" id="21" lemma="om" pos="prep" postag="VZ(init)" pt="vz" rel="cmp" root="om" sense="om" vztype="init" word="voor"/>
+          <node begin="13" cat="ti" end="22" id="22" rel="body">
+            <node begin="13" cat="advp" end="22" id="23" rel="mod">
+              <node begin="13" end="14" id="24" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="hd" root="dan" sense="dan" word="dan"/>
+              <node begin="14" cat="pp" end="22" id="25" rel="mod">
+                <node begin="14" end="15" id="26" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+                <node begin="15" cat="np" end="22" id="27" rel="obj1">
+                  <node begin="15" end="16" genus="onz" getal="ev" graad="basis" id="28" lemma="oosten" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="oosten" sense="oosten" word="oosten"/>
+                  <node begin="17" cat="rel" end="22" id="29" rel="mod">
+                    <node begin="17" end="18" getal="getal" id="30" index="1" lemma="waar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(vb,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="rhd" root="waar" sense="waar" status="vol" vwtype="vb" word="waar"/>
+                    <node begin="17" cat="cp" end="22" id="31" rel="body">
+                      <node begin="18" conjtype="onder" end="19" id="32" lemma="dat" pos="vg" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat" word="dat"/>
+                      <node begin="17" cat="ssub" end="22" id="33" rel="body">
+                        <node begin="17" end="18" id="34" index="1" rel="mod"/>
+                        <node begin="19" cat="ssub" end="21" id="35" rel="body">
+                          <node begin="19" buiging="zonder" end="20" id="36" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="pron" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+                          <node begin="20" end="21" getal="mv" graad="basis" id="37" lemma="mens" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="obj1" root="mens" sense="mens" word="mensen"/>
+                        </node>
+                        <node begin="21" end="22" id="38" lemma="drijven" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="drijf" sense="drijf" word="dreven" wvorm="pv"/>
+                      </node>
+                    </node>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="22" end="23" id="39" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0315">en ze roeiden zij allemaal naar het einde van het hoofd ... voor dan van oosten ... waar dat die mensen dreven .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0315|en ze roeiden [ @skip zij ] allemaal naar het einde van het hoofd [ @skip ... ] [ @alt om voor ] dan van oosten [ @skip ... ] [ @mwu_alt waardat waar dat ] die mensen dreven .|1|1|2.879946198</comment>
+  </comments>
+</alpino_ds>

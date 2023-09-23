@@ -1,0 +1,19 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="du" end="4" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="inf" end="4" id="3" rel="nucl">
+        <node begin="2" buiging="zonder" end="3" id="4" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
+        <node begin="1" cat="inf" end="4" id="5" rel="vc">
+          <node begin="1" buiging="zonder" end="2" id="6" lemma="gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga" sense="ga" word="gaan" wvorm="inf"/>
+          <node begin="3" buiging="zonder" end="4" id="7" lemma="vissen" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="vc" root="vis" sense="vis" word="vissen" wvorm="inf"/>
+        </node>
+      </node>
+    </node>
+    <node begin="4" end="5" id="8" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0062b">en gaan gaan vissen .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0062b|en [ @skip gaan ] gaan vissen .|1|1|0.6392417008000001</comment>
+  </comments>
+</alpino_ds>

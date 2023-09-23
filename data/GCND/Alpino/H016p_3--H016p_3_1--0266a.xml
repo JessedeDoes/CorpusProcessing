@@ -1,0 +1,17 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="du" end="5" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="5" id="3" rel="nucl">
+        <node begin="1" end="2" getal="getal" id="4" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw" word="die"/>
+        <node begin="2" end="3" id="5" lemma="komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom" sense="kom" word="kwam" wvorm="pv"/>
+        <node begin="3" end="4" id="6" lemma="weer" pos="adv" postag="BW()" pt="bw" rel="mod" root="weer" sense="weer" word="weer"/>
+        <node begin="4" buiging="zonder" end="5" graad="basis" id="7" lemma="bloot" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="bloot" sense="bloot" word="bloot"/>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0266a">en die kwam weer bloot</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0266a|en die kwam weer bloot|1|1|-1.5778095405000003</comment>
+  </comments>
+</alpino_ds>

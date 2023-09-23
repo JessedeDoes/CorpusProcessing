@@ -1,0 +1,23 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="6" id="0" rel="top">
+    <node begin="0" cat="du" end="6" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
+      <node begin="1" cat="smain" end="6" id="3" rel="nucl">
+        <node begin="1" cat="np" end="3" id="4" index="1" rel="su">
+          <node begin="1" buiging="zonder" end="2" id="5" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" word="die"/>
+          <node begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="6" lemma="sloep" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="sloep" sense="sloep" word="sloep"/>
+        </node>
+        <node begin="3" end="4" id="7" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
+        <node begin="1" cat="ppart" end="6" id="8" rel="vc">
+          <node begin="1" end="3" id="9" index="1" rel="su"/>
+          <node begin="4" end="5" id="10" lemma="daarop" pos="pp" postag="BW()" pt="bw" rel="ld" root="daarop" sense="daarop" word="daarop"/>
+          <node begin="5" buiging="zonder" end="6" id="11" lemma="komen" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="kom" sense="kom" word="gekomen" wvorm="vd"/>
+        </node>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0256">maar die sloep was daarop gekomen</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0256|maar die sloep was daarop gekomen|1|1|-4.369011062200002</comment>
+  </comments>
+</alpino_ds>

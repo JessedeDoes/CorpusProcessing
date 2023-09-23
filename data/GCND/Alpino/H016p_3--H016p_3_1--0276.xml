@@ -1,0 +1,39 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="15" id="0" rel="top">
+    <node begin="2" end="3" id="1" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node begin="8" end="9" id="2" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="--" root="in" sense="in" vztype="init" word="in"/>
+    <node begin="9" end="10" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="14" id="4" rel="--">
+      <node begin="0" cat="smain" end="2" id="5" rel="tag">
+        <node begin="0" end="1" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node begin="1" end="2" id="7" lemma="zeggen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="zeg" sense="zeg" word="zeg" wvorm="pv"/>
+      </node>
+      <node begin="3" cat="cp" end="14" id="8" rel="nucl">
+        <node begin="3" conjtype="onder" end="4" id="9" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
+        <node begin="4" cat="ssub" end="14" id="10" rel="body">
+          <node begin="4" end="5" getal="ev" id="11" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+          <node begin="5" cat="np" end="7" id="12" rel="obj1">
+            <node begin="5" end="6" id="13" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+            <node begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="14" lemma="kans" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="kans" sense="kans" word="kans"/>
+          </node>
+          <node begin="7" end="8" id="15" lemma="hebben" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heb" sense="heb" word="heb" wvorm="pv"/>
+          <node begin="10" cat="pp" end="14" id="16" rel="mod">
+            <node begin="10" end="11" id="17" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
+            <node begin="11" cat="np" end="14" id="18" rel="obj1">
+              <node begin="11" cat="conj" end="13" id="19" rel="det">
+                <node begin="11" end="12" id="20" lemma="twee" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="twee" sense="twee" word="twee"/>
+                <node begin="12" end="13" id="21" lemma="drie" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="cnj" root="drie" sense="drie" word="drie"/>
+              </node>
+              <node begin="13" end="14" getal="mv" graad="basis" id="22" lemma="minuut" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="minuut" sense="minuut" word="minuten"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="14" end="15" id="23" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0276">ik zeg , als ik de kans heb in ... in twee drie minuten ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0276|ik zeg , als ik de kans heb [ @skip in ] [ @skip ... ] in twee [ @phantom of ] drie minuten [ @skip ... ]|1|1|-8.951555851999998</comment>
+  </comments>
+</alpino_ds>

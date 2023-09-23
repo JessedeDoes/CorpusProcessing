@@ -1,0 +1,17 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="5" id="0" rel="top">
+    <node begin="0" cat="du" end="3" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="du" end="3" id="3" rel="nucl">
+        <node begin="1" end="2" id="4" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="dp" root="zo" sense="zo" word="zo"/>
+        <node begin="2" end="3" id="5" lemma="zo" pos="comp" postag="BW()" pt="bw" rel="dp" root="zo" sense="zo" word="zo"/>
+      </node>
+    </node>
+    <node begin="3" end="4" id="6" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja" word="ja"/>
+    <node begin="4" end="5" id="7" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0443c">en zo zo ja ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0443c|en zo zo ja [ @skip ... ]|1|1|0.7717622999999999</comment>
+  </comments>
+</alpino_ds>

@@ -1,0 +1,51 @@
+<alpino_ds version="1.14">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:10" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="23" id="0" rel="top">
+    <node begin="7" end="8" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node begin="13" end="14" frame="punct(hellip)" his="skip" id="2" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node begin="14" end="15" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="skip" id="3" lcat="--" lemma="baron" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="baron" sense="baron" word="baron"/>
+    <node begin="15" end="16" frame="determiner(de)" his="skip" id="4" infl="de" lcat="--" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="--" root="de" sense="de" word="de"/>
+    <node begin="16" end="17" frame="--" genus="zijd" getal="ev" graad="basis" his="skip" id="5" lcat="--" lemma="Fierlant" naamval="stan" ntype="eigen" pos="--" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="--" root="Fierlant" sense="Fierlant" word="Fierlant"/>
+    <node begin="17" end="18" frame="punct(hellip)" his="skip" id="6" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node begin="0" cat="du" end="22" id="7" rel="--">
+      <node begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="8" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="22" id="9" rel="nucl">
+        <node begin="1" case="nom" def="def" end="2" frame="pronoun(nwh,fir,sg,de,nom,def)" gen="de" getal="ev" his="normal" his_1="normal" id="10" index="1" lcat="np" lemma="ik" naamval="nomin" num="sg" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" rnum="sg" root="ik" sense="ik" status="vol" vwtype="pers" wh="nwh" word="ik"/>
+        <node begin="2" end="3" frame="verb(unacc,sg1,aux_psp_zijn)" his="normal" his_1="normal" id="11" infl="sg1" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="aux_psp_zijn" sense="ben" stype="declarative" tense="present" word="ben" wvorm="pv"/>
+        <node begin="1" cat="ppart" end="22" id="12" rel="vc">
+          <node begin="1" end="2" id="13" index="1" rel="su"/>
+          <node begin="3" end="4" frame="tmp_adverb" his="normal" his_1="normal" id="14" lcat="advp" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" special="tmp" word="dan"/>
+          <node begin="6" buiging="zonder" end="7" frame="verb(zijn,psp,ld_pp)" his="normal" his_1="normal" id="15" infl="psp" lcat="ppart" lemma="gaan" pos="verb" positie="vrij" postag="WW(vd,vrij,zonder)" pt="ww" rel="hd" root="ga" sc="ld_pp" sense="ga" word="gegaan" wvorm="vd"/>
+          <node begin="4" cat="pp" end="22" id="16" rel="ld">
+            <node begin="4" end="5" frame="preposition(aan,[vooraf])" his="normal" his_1="normal" id="17" lcat="pp" lemma="aan" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="aan" sense="aan" vztype="init" word="aan"/>
+            <node begin="5" cat="np" end="22" id="18" rel="obj1">
+              <node begin="5" end="6" frame="noun(both,count,sg)" gen="both" genus="genus" getal="ev" graad="basis" his="normal" his_1="normal" id="19" lcat="np" lemma="boord" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,genus,stan)" pt="n" rel="hd" rnum="sg" root="boord" sense="boord" word="boord"/>
+              <node begin="8" cat="pp" end="22" id="20" rel="mod">
+                <node begin="8" end="9" frame="preposition(van,[af,uit,vandaan,[af,aan]])" his="normal" his_1="normal" id="21" lcat="pp" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+                <node begin="9" cat="np" end="22" id="22" rel="obj1">
+                  <node begin="9" end="10" frame="determiner(een)" his="normal" his_1="normal" id="23" infl="een" lcat="detp" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="e"/>
+                  <node begin="10" end="11" frame="noun(de,count,sg)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="24" lcat="np" lemma="baron" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="baron" sense="baron" word="baron"/>
+                  <node begin="11" cat="mwu" end="13" his="mwu" id="25" rel="app">
+                    <node begin="11" end="12" frame="proper_name(both)" id="26" lcat="np" lemma="de" neclass="MISC" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="de" sense="de" spectype="deeleigen" word="de"/>
+                    <node begin="12" end="13" frame="proper_name(both)" id="27" lcat="np" lemma="Fierlant" neclass="MISC" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Fierlant" sense="Fierlant" spectype="deeleigen" word="Fierlant"/>
+                  </node>
+                  <node begin="18" cat="mwu" end="22" his="name" his_1="begin" id="28" rel="app">
+                    <node begin="18" end="19" frame="proper_name(both,'ORG')" id="29" lcat="np" lemma="domaine" neclass="ORG" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="domaine" sense="domaine" spectype="deeleigen" word="domaine"/>
+                    <node begin="19" end="20" frame="proper_name(both,'ORG')" id="30" lcat="np" lemma="de" neclass="ORG" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="de" sense="de" spectype="deeleigen" word="de"/>
+                    <node begin="20" end="21" frame="proper_name(both,'ORG')" id="31" lcat="np" lemma="Freux" neclass="ORG" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Freux" sense="Freux" spectype="deeleigen" word="Freux"/>
+                    <node begin="21" end="22" frame="proper_name(both,'ORG')" id="32" lcat="np" lemma="Libramont" neclass="ORG" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Libramont" sense="Libramont" spectype="deeleigen" word="Libramont"/>
+                  </node>
+                </node>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="22" end="23" frame="punct(punt)" his="normal" his_1="normal" id="33" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0520">en ik ben dan aan boord gegaan ... van e baron de Fierlant ... baron de Fierlant ... domaine de Freux Libramont .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0520|en ik ben dan aan boord gegaan [ @skip ... ] van [ @alt een e ] baron [ @mwu de Fierlant ] [ @skip ... ] [ @skip baron ] [ @skip de ] [ @skip Fierlant ] [ @skip ... ] [ @mwu domaine de Freux Libramont ] .|1|1|-1.0351548922999998</comment>
+  </comments>
+</alpino_ds>

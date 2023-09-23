@@ -1,0 +1,13 @@
+<alpino_ds version="1.14">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="0" skips="4"/>
+  <node begin="0" cat="top" end="4" id="0" rel="top">
+    <node begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="robust_skip" id="1" lcat="--" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="--" root="en" sc="root" sense="en" word="en"/>
+    <node begin="1" case="nom" def="def" end="2" frame="pronoun(nwh,fir,pl,de,nom,def,wkpro)" gen="de" getal="mv" his="robust_skip" id="2" lcat="--" lemma="we" naamval="nomin" num="pl" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="--" root="we" sense="we" special="wkpro" status="red" vwtype="pers" wh="nwh" word="we"/>
+    <node begin="2" end="3" frame="--" genus="zijd" getal="ev" graad="basis" his="robust_skip" id="3" lcat="--" lemma="mo" naamval="stan" ntype="soort" pos="--" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="mo" sense="mo" word="mo"/>
+    <node begin="3" end="4" frame="punct(hellip)" his="robust_skip" id="4" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0209">en we mo ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0209|en we [ @skip mo ] [ @skip ... ]|1|4|-7.2999592999999985</comment>
+  </comments>
+</alpino_ds>

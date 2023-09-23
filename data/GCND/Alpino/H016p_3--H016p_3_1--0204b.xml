@@ -1,0 +1,25 @@
+<alpino_ds version="1.14">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="8" id="0" rel="top">
+    <node begin="1" end="2" frame="--" genus="zijd" getal="ev" graad="basis" his="skip" id="1" lcat="--" lemma="Dorten" naamval="stan" ntype="eigen" pos="--" postag="N(eigen,ev,basis,zijd,stan)" pt="n" rel="--" root="Dorten" sense="Dorten" word="Dorten"/>
+    <node begin="0" cat="du" end="7" id="2" rel="--">
+      <node begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="3" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
+      <node begin="2" cat="smain" end="7" id="4" rel="nucl">
+        <node begin="2" cat="np" end="5" id="5" rel="su">
+          <node begin="2" buiging="zonder" end="3" frame="determiner(de,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="6" infl="de" lcat="detp" lemma="die" naamval="stan" npagr="rest" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,rest)" pt="vnw" rel="det" root="die" sense="die" vwtype="aanw" wh="nwh" word="die"/>
+          <node begin="3" cat="mwu" end="5" his="name" his_1="not_begin" id="7" rel="hd">
+            <node begin="3" end="4" frame="proper_name(both,'PER')" id="8" lcat="np" lemma="Dorte" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Dorte" sense="Dorte" spectype="deeleigen" word="Dorte"/>
+            <node begin="4" end="5" frame="proper_name(both,'PER')" id="9" lcat="np" lemma="Pieters" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Pieters" sense="Pieters" spectype="deeleigen" word="Pieters"/>
+          </node>
+        </node>
+        <node begin="5" end="6" frame="verb(unacc,sg_is,ld_dir)" his="normal" his_1="normal" id="10" infl="sg_is" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sc="ld_dir" sense="ben" stype="declarative" tense="present" word="is" wvorm="pv"/>
+        <node begin="6" end="7" frame="dir_adverb" his="normal" his_1="normal" id="11" lcat="advp" lemma="overboord" pos="adv" postag="BW()" pt="bw" rel="ld" root="overboord" sense="overboord" special="dir" word="overboord"/>
+      </node>
+    </node>
+    <node begin="7" end="8" frame="punct(punt)" his="normal" his_1="normal" id="12" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0204b">en Dorten die Dorte Pieters is overboord .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0204b|en [ @skip Dorten ] die Dorte Pieters is overboord .|1|1|0.4196428784999999</comment>
+  </comments>
+</alpino_ds>

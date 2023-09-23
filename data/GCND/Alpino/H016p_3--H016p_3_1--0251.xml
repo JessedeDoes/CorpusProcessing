@@ -1,0 +1,46 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="18" id="0" rel="top">
+    <node begin="12" end="13" id="1" lemma="mee" pos="part" postag="VZ(fin)" pt="vz" rel="--" root="mee" sense="mee" vztype="fin" word="mee"/>
+    <node begin="0" cat="du" end="17" id="2" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="17" id="4" rel="nucl">
+        <node begin="1" cat="pp" end="8" id="5" rel="mod">
+          <node begin="1" end="2" id="6" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
+          <node begin="2" cat="np" end="8" id="7" rel="obj1">
+            <node begin="2" end="3" id="8" lemma="twee" naamval="stan" numtype="hoofd" pos="num" positie="prenom" postag="TW(hoofd,prenom,stan)" pt="tw" rel="det" root="twee" sense="twee" word="twee"/>
+            <node begin="3" end="4" getal="mv" graad="basis" id="9" lemma="mens" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="mens" sense="mens" word="mensen"/>
+            <node begin="4" cat="pp" end="8" id="10" rel="mod">
+              <node begin="4" end="5" id="11" lemma="in" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="in" sense="in" vztype="init" word="in"/>
+              <node begin="5" cat="np" end="8" id="12" rel="obj1">
+                <node begin="5" cat="mwu" end="7" id="13" rel="det">
+                  <node begin="5" buiging="zonder" end="6" id="14" lemma="zo" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,agr)" pt="vnw" rel="mwp" root="zo" sense="zo" vwtype="aanw" word="zo"/>
+                  <node begin="6" buiging="zonder" end="7" id="15" lemma="een" naamval="stan" npagr="agr" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,agr)" pt="vnw" rel="mwp" root="een" sense="een" vwtype="aanw" word="een"/>
+                </node>
+                <node begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="16" lemma="boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="boot" sense="boot" word="boot"/>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node begin="8" end="9" id="17" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="ben" wvorm="pv"/>
+        <node begin="9" end="10" getal="ev" id="18" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+        <node begin="10" end="11" getal="getal" id="19" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
+        <node begin="11" end="12" getal="ev" id="20" lemma="niets" naamval="stan" pdtype="pron" persoon="3o" pos="noun" postag="VNW(onbep,pron,stan,vol,3o,ev)" pt="vnw" rel="predc" root="niets" sense="niets" status="vol" vwtype="onbep" word="niets"/>
+        <node begin="13" cat="cp" end="17" id="21" rel="mod">
+          <node begin="13" cat="mwu" end="15" id="22" rel="cmp">
+            <node begin="13" conjtype="onder" end="14" id="23" lemma="gelijk" pos="prep" postag="VG(onder)" pt="vg" rel="mwp" root="gelijk" sense="gelijk" word="gelijk"/>
+            <node begin="14" conjtype="onder" end="15" id="24" lemma="of" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="of" sense="of" word="of"/>
+          </node>
+          <node begin="15" cat="ssub" end="17" id="25" rel="body">
+            <node begin="15" end="16" genus="onz" getal="ev" id="26" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
+            <node begin="16" end="17" id="27" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="17" end="18" id="28" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0251">en met twee mensen in zo een boot ben je daar niets mee gelijk of het was .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0251|en met twee mensen in zo een boot ben je daar niets mee gelijk of het was .|1|4|0.15236214000000048</comment>
+  </comments>
+</alpino_ds>

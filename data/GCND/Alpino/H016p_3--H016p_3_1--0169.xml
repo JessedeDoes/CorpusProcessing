@@ -1,0 +1,32 @@
+<alpino_ds version="1.14">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:04" cats="1" skips="0"/>
+  <node begin="0" cat="top" end="13" id="0" rel="top">
+    <node begin="4" end="5" frame="punct(hellip)" his="skip" id="1" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+    <node begin="5" end="6" frame="punct(komma)" his="normal" his_1="normal" id="2" lcat="punct" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," special="komma" word=","/>
+    <node begin="0" cat="du" end="12" id="3" rel="--">
+      <node begin="0" conjtype="neven" end="1" frame="complementizer(root)" his="normal" his_1="normal" id="4" lcat="du" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sc="root" sense="en" word="en"/>
+      <node begin="1" cat="du" end="12" id="5" rel="nucl">
+        <node begin="1" cat="sv1" end="4" id="6" rel="tag">
+          <node begin="1" end="2" frame="verb(hebben,sg3,tr_sbar)" his="normal" his_1="normal" id="7" infl="sg3" lcat="sv1" lemma="zeggen" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zeg" sc="tr_sbar" sense="zeg" tense="present" word="zegt" wvorm="pv"/>
+          <node begin="2" cat="mwu" end="4" his="name" his_1="not_begin" id="8" rel="su">
+            <node begin="2" end="3" frame="proper_name(both,'PER')" id="9" lcat="np" lemma="Dorte" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Dorte" sense="Dorte" spectype="deeleigen" word="Dorte"/>
+            <node begin="3" end="4" frame="proper_name(both,'PER')" id="10" lcat="np" lemma="Pieters" neclass="PER" num="both" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" rnum="sg" root="Pieters" sense="Pieters" spectype="deeleigen" word="Pieters"/>
+          </node>
+        </node>
+        <node begin="6" cat="smain" end="12" id="11" rel="nucl">
+          <node begin="6" case="both" def="def" end="7" frame="pronoun(nwh,thi,both,de,both,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="12" lcat="np" lemma="ze" naamval="stan" num="both" pdtype="pron" per="thi" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="su" rnum="pl" root="ze" sense="ze" special="wkpro" status="red" vwtype="pers" wh="nwh" word="ze"/>
+          <node begin="7" end="8" frame="verb(unacc,pl,part_intransitive(weg))" his="normal" his_1="normal" id="13" infl="pl" lcat="smain" lemma="weg_zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben_weg" sc="part_intransitive(weg)" sense="ben_weg" stype="declarative" tense="present" word="zijn" wvorm="pv"/>
+          <node begin="8" end="9" frame="tmp_adverb" his="normal" his_1="normal" id="14" lcat="advp" lemma="nu" pos="adv" postag="BW()" pt="bw" rel="mod" root="nu" sense="nu" special="tmp" word="nu"/>
+          <node begin="9" end="10" frame="adverb" his="normal" his_1="normal" id="15" lcat="advp" lemma="al" pos="adv" postag="BW()" pt="bw" rel="mod" root="al" sense="al" word="al"/>
+          <node begin="10" end="11" frame="predm_adverb" his="normal" his_1="normal" id="16" lcat="advp" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal" special="predm" word="allemaal"/>
+          <node begin="11" end="12" frame="particle(weg)" his="normal" his_1="normal" id="17" lcat="part" lemma="weg" pos="part" postag="BW()" pt="bw" rel="svp" root="weg" sense="weg" word="weg"/>
+        </node>
+      </node>
+    </node>
+    <node begin="12" end="13" frame="punct(hellip)" his="skip" id="18" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip" word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0169">en zegt Dorte Pieters ... , ze zijn nu al allemaal weg ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0169|en zegt Dorte Pieters [ @skip ... ] , ze zijn nu al allemaal weg [ @skip ... ]|1|1|-4.468558292</comment>
+  </comments>
+</alpino_ds>

@@ -1,0 +1,27 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="11" id="0" rel="top">
+    <node begin="4" end="5" id="1" lemma="op" pos="prep" postag="VZ(init)" pt="vz" rel="--" root="op" sense="op" vztype="init" word="op"/>
+    <node begin="5" end="6" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="10" id="3" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="4" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="10" id="5" rel="nucl">
+        <node begin="1" end="2" getal="ev" id="6" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node begin="2" end="3" id="7" lemma="roeien" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="roei" sense="roei" word="roei" wvorm="pv"/>
+        <node begin="3" end="4" getal="ev" id="8" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="su" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+        <node begin="6" end="7" id="9" lemma="opzij" pos="adv" postag="BW()" pt="bw" rel="ld" root="opzij" sense="opzij" word="opzij"/>
+        <node begin="7" cat="pp" end="10" id="10" rel="mod">
+          <node begin="7" end="8" id="11" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+          <node begin="8" cat="np" end="10" id="12" rel="obj1">
+            <node begin="8" end="9" id="13" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+            <node begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="14" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot" word="loodsboot"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="10" end="11" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0447a">en ik roei ik op ... opzij van de loodsboot ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0447a|en ik roei [ @skip ik ] [ @skip op ] [ @skip ... ] opzij van de loodsboot [ @skip ... ]|1|1|-0.2876472408999998</comment>
+  </comments>
+</alpino_ds>

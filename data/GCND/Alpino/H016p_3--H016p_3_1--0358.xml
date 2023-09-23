@@ -1,0 +1,22 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="8" id="0" rel="top">
+    <node begin="2" end="3" id="1" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node begin="3" end="4" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="conj" end="7" id="3" rel="--">
+      <node begin="0" cat="np" end="2" id="4" rel="cnj">
+        <node begin="0" end="1" genus="zijd" getal="ev" graad="basis" id="5" lemma="beton" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="beton" sense="beton" word="beton"/>
+        <node begin="1" end="2" id="6" lemma="vanonder" pos="adv" postag="BW()" pt="bw" rel="mod" root="vanonder" sense="vanonder" word="vanonder"/>
+      </node>
+      <node begin="4" conjtype="neven" end="5" id="7" lemma="en" pos="vg" postag="VG(neven)" pt="vg" rel="crd" root="en" sense="en" word="en"/>
+      <node begin="5" cat="np" end="7" id="8" rel="cmp">
+        <node begin="5" end="6" genus="onz" getal="ev" graad="basis" id="9" lemma="hout" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="hout" sense="hout" word="hout"/>
+        <node begin="6" end="7" id="10" lemma="vanboven" pos="pp" postag="BW()" pt="bw" rel="mod" root="vanboven" sense="vanboven" word="vanboven"/>
+      </node>
+    </node>
+    <node begin="7" end="8" id="11" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0358">beton vanonder hé ... en hout vanboven .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0358|beton vanonder [ @skip hé ] [ @skip ... ] en hout vanboven .|1|6|-2.181417100000001</comment>
+  </comments>
+</alpino_ds>

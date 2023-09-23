@@ -1,0 +1,34 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="14" id="0" rel="top">
+    <node begin="3" end="4" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="7" end="8" id="2" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="--" root="met" sense="met" vztype="init" word="met"/>
+    <node begin="8" end="9" genus="zijd" getal="ev" graad="basis" id="3" lemma="stiem" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="stiem" sense="stiem" word="stiem"/>
+    <node begin="9" end="10" id="4" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="13" id="5" rel="--">
+      <node begin="0" cat="pp" end="3" id="6" rel="tag">
+        <node begin="0" end="1" id="7" lemma="achter" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="achter" sense="achter" vztype="init" word="achter"/>
+        <node begin="1" cat="np" end="3" id="8" rel="obj1">
+          <node begin="1" end="2" id="9" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+          <node begin="2" end="3" genus="zijd" getal="ev" graad="basis" id="10" lemma="oorlog" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="oorlog" sense="oorlog" word="oorlog"/>
+        </node>
+      </node>
+      <node begin="4" cat="smain" end="13" id="11" rel="dp">
+        <node begin="4" end="5" getal="ev" id="12" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
+        <node begin="5" end="6" id="13" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="was" wvorm="pv"/>
+        <node begin="6" end="7" id="14" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" word="dan"/>
+        <node begin="10" cat="np" end="13" id="15" rel="predc">
+          <node begin="10" end="11" getal="mv" graad="basis" id="16" lemma="lood_boot" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="lood_boot" sense="lood_boot" word="loodsboten"/>
+          <node begin="11" cat="pp" end="13" id="17" rel="mod">
+            <node begin="11" end="12" id="18" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
+            <node begin="12" end="13" genus="zijd" getal="ev" graad="basis" id="19" lemma="stiem" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="obj1" root="stiem" sense="stiem" word="stiem"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="13" end="14" id="20" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0450a">achter de oorlog ... dat was dan met stiem ... loodsboten met stiem .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0450a|achter de oorlog [ @skip ... ] dat was dan met stiem [ @skip ... ] loodsboten met stiem .|1|2|5.390502996200004</comment>
+  </comments>
+</alpino_ds>

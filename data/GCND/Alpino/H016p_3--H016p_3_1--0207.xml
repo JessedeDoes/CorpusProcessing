@@ -1,0 +1,30 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="12" id="0" rel="top">
+    <node begin="0" cat="du" end="12" id="1" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="2" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
+      <node begin="1" cat="smain" end="12" id="3" rel="nucl">
+        <node begin="1" end="2" genus="masc" getal="ev" id="4" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+        <node begin="2" end="3" id="5" lemma="aan_hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb_aan" sense="heb_aan" word="had" wvorm="pv"/>
+        <node begin="3" end="4" genus="masc" getal="ev" id="6" lemma="hij" naamval="nomin" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,nomin,vol,3,ev,masc)" pt="vnw" rel="su" root="hij" sense="hij" status="vol" vwtype="pers" word="hij"/>
+        <node begin="4" end="5" id="7" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="mod" root="zo" sense="zo" word="zo"/>
+        <node begin="8" end="9" id="8" lemma="aan" pos="part" postag="VZ(fin)" pt="vz" rel="svp" root="aan" sense="aan" vztype="fin" word="aan"/>
+        <node begin="5" cat="np" end="12" id="9" rel="obj1">
+          <node begin="5" end="6" id="10" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+          <node begin="6" buiging="met-e" end="7" graad="basis" id="11" lemma="lang" naamval="stan" pos="adj" positie="prenom" postag="ADJ(prenom,basis,met-e,stan)" pt="adj" rel="mod" root="lang" sense="lang" word="lange"/>
+          <node begin="7" end="8" genus="zijd" getal="ev" graad="basis" id="12" lemma="olie_mantel" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="olie_mantel" sense="olie_mantel" word="oliemantel"/>
+          <node begin="9" cat="pp" end="12" id="13" rel="mod">
+            <node begin="9" end="10" id="14" lemma="met" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="met" sense="met" vztype="init" word="met"/>
+            <node begin="10" cat="np" end="12" id="15" rel="obj1">
+              <node begin="10" end="11" getal="mv" graad="basis" id="16" lemma="knoop" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="knoop" sense="knoop" word="knopen"/>
+              <node begin="11" end="12" id="17" lemma="vanvoor" pos="pp" postag="BW()" pt="bw" rel="mod" root="vanvoor" sense="vanvoor" word="vanvoor"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0207">maar hij had hij zo een lange oliemantel aan met knopen vanvoor</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0207|maar hij had [ @skip hij ] zo een lange oliemantel aan met knopen vanvoor|1|1|-1.3971642662999995</comment>
+  </comments>
+</alpino_ds>

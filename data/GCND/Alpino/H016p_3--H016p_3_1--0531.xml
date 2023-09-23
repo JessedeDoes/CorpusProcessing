@@ -1,0 +1,11 @@
+<alpino_ds version="1.14">
+  <parser build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-02-28T15:10" cats="0" skips="1"/>
+  <node begin="0" cat="top" end="2" id="0" rel="top">
+    <node begin="0" end="1" frame="--" his="robust_skip" id="1" lcat="--" lemma="ggg" pos="--" postag="SPEC(onverst)" pt="spec" rel="--" root="ggg" sense="ggg" spectype="onverst" word="ggg"/>
+    <node begin="1" end="2" frame="punct(punt)" his="robust_skip" id="2" lcat="--" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt" word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0531">ggg .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0531|ggg .|1|1|1.0607815999999999</comment>
+  </comments>
+</alpino_ds>

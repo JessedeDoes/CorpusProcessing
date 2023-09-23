@@ -170,40 +170,46 @@ object GCNDDatabase {
   def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
 
+  def saveAlpinoParses(transcriptie_id: Int, alpinoDumpDir: java.io.File) = {
+    getAlpinoAnnotations(transcriptie_id).foreach(a => {
+      val parse = a.alpinoParseAsXML
+      XML.save(alpinoDumpDir.getCanonicalPath + "/" + a.sentenceId + ".xml", parse)
+    })
+  }
+
+  def createFolia(transcriptie_id: Int=1, outputFilename: String = "data/GCND/gcnd.test.folia.elans.xml"): Unit = {
+    val out2 = new PrintWriter(outputFilename)
+    val e = getPseudoFoLiAForElanAnnotations(1)
+    // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
+    out2.println(pretty.format(e))
+    out2.close()
+  }
+
+  def createTEI() = {
+    val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
+    out.println(pretty.format(getPseudoTEI(1)))
+    out.close()
+  }
+
   def main(args: Array[String])  = {
 
 
-    if (false) {
-      val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
-      out.println(pretty.format(getPseudoTEI(1)))
-      out.close()
-    }
+
 
     val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
 
     val alpinoDumpDir = new java.io.File("data/GCND/Alpino/")
     alpinoDumpDir.mkdir()
+    saveAlpinoParses(transcriptie_id = 1, alpinoDumpDir)
 
+    if (false) {
+      val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
+      out1.println(pretty.format(foliaWithAlpino))
+      out1.close()
+    }
 
-    (foliaWithAlpino \\ "speech").foreach(a => {
-      val e = a.asInstanceOf[Elem]
-      val speech_id = getId(e)
-      val alpinos = (e \\ "alpino_ds");
-      val alpino = alpinos.head.asInstanceOf[Elem]
-      //.asInstanceOf[Elem]
-      // println("Aantal alpinos: " + alpinos.size)
-      XML.save(alpinoDumpDir.getCanonicalPath + "/" + speech_id + ".xml", alpino)
-    })
+    createFolia(1)
 
-    val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
-    out1.println(pretty.format(foliaWithAlpino))
-    out1.close()
-
-    val out2 = new PrintWriter("data/GCND/gcnd.test.folia.elans.xml")
-    val e = getPseudoFoLiAForElanAnnotations(1)
-    // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
-    out2.println(pretty.format(e))
-    out2.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
 }

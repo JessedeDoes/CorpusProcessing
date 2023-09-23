@@ -1,0 +1,47 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="19" id="0" rel="top">
+    <node begin="1" end="2" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="5" end="6" id="2" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="11" end="12" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="18" id="4" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="5" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="2" cat="du" end="18" id="6" rel="nucl">
+        <node begin="2" cat="cp" end="11" id="7" rel="tag">
+          <node begin="2" conjtype="onder" end="3" id="8" lemma="als" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="als" sense="als" word="als"/>
+          <node begin="3" cat="ssub" end="11" id="9" rel="body">
+            <node begin="3" end="4" getal="ev" id="10" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+            <node begin="4" end="5" id="11" lemma="zien" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="zie" sense="zie" word="ziet" wvorm="pv"/>
+            <node begin="6" cat="cp" end="11" id="12" rel="vc">
+              <node begin="6" conjtype="onder" end="7" id="13" lemma="dat" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="dat" sense="dat" word="dat"/>
+              <node begin="7" cat="ssub" end="11" id="14" rel="body">
+                <node begin="7" end="8" genus="onz" getal="ev" id="15" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="su" root="het" sense="het" status="red" vwtype="pers" word="het"/>
+                <node begin="8" buiging="zonder" end="9" graad="basis" id="16" lemma="gelijk" pos="adv" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="mod" root="gelijk" sense="gelijk" word="gelijk"/>
+                <node begin="9" buiging="zonder" end="10" graad="basis" id="17" lemma="warm" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="warm" sense="warm" word="warm"/>
+                <node begin="10" end="11" id="18" lemma="worden" pos="verb" postag="WW(pv,tgw,met-t)" pt="ww" pvagr="met-t" pvtijd="tgw" rel="hd" root="word" sense="word" word="wordt" wvorm="pv"/>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node begin="12" cat="smain" end="18" id="19" rel="nucl">
+          <node begin="12" end="13" getal="ev" id="20" index="1" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+          <node begin="13" end="14" id="21" lemma="mogen" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="mag" sense="mag" word="mag" wvorm="pv"/>
+          <node begin="12" cat="inf" end="18" id="22" rel="vc">
+            <node begin="12" end="13" id="23" index="1" rel="su"/>
+            <node begin="14" end="15" getal="mv" id="24" index="2" lemma="ze" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,mv)" pt="vnw" rel="obj1" root="ze" sense="ze" status="red" vwtype="pers" word="ze"/>
+            <node begin="16" buiging="zonder" end="17" id="25" lemma="laten" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="laat" sense="laat" word="laten" wvorm="inf"/>
+            <node begin="14" cat="inf" end="18" id="26" rel="vc">
+              <node begin="14" end="15" id="27" index="2" rel="su"/>
+              <node begin="15" end="16" id="28" lemma="niet" pos="adv" postag="BW()" pt="bw" rel="mod" root="niet" sense="niet" word="niet"/>
+              <node begin="17" buiging="zonder" end="18" id="29" lemma="dood_gaan" pos="verb" positie="vrij" postag="WW(inf,vrij,zonder)" pt="ww" rel="hd" root="ga_dood" sense="ga_dood" word="doodgaan" wvorm="inf"/>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="18" end="19" id="30" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0380">en ... als je ziet ... dat het gelijk warm wordt ... je mag ze niet laten doodgaan .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0380|[ @x en [ @skip ... ] als je ziet [ @skip ... ] dat het gelijk warm wordt [ @skip ... ] ] [ @x je mag ze niet laten doodgaan ] .|1|2|-6.2157241712000015</comment>
+  </comments>
+</alpino_ds>

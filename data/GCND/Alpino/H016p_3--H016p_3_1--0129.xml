@@ -1,0 +1,30 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="14" id="0" rel="top">
+    <node begin="6" end="7" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="7" end="8" id="2" lemma="," pos="punct" postag="LET()" pt="let" rel="--" root="," sense="," word=","/>
+    <node begin="0" cat="du" end="10" id="3" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="4" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="10" id="5" rel="nucl">
+        <node begin="1" end="2" getal="ev" id="6" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
+        <node begin="2" end="3" id="7" lemma="hebben" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="heb" sense="heb" word="had" wvorm="pv"/>
+        <node begin="3" end="4" id="8" lemma="dan" pos="adv" postag="BW()" pt="bw" rel="mod" root="dan" sense="dan" word="dan"/>
+        <node begin="4" cat="np" end="10" id="9" rel="obj1">
+          <node begin="4" buiging="met-e" end="5" getal="mv" id="10" lemma="ons" naamval="stan" npagr="rest" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,mv,prenom,met-e,rest)" pt="vnw" rel="det" root="ons" sense="ons" status="vol" vwtype="bez" word="onze"/>
+          <node begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="11" lemma="lood_boot" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="lood_boot" sense="lood_boot" word="loodsboot"/>
+          <node begin="8" cat="np" end="10" id="12" rel="app">
+            <node begin="8" end="9" id="13" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een" word="een"/>
+            <node begin="9" end="10" genus="zijd" getal="ev" graad="basis" id="14" lemma="kotter" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="kotter" sense="kotter" word="kotter"/>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="10" end="11" id="15" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="11" end="12" genus="zijd" getal="ev" graad="basis" id="16" lemma="kotter" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="--" root="kotter" sense="kotter" word="kotter"/>
+    <node begin="12" end="13" id="17" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node begin="13" end="14" id="18" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0129">en je had dan onze loodsboot ... , een kotter ... kotter hé .</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0129|en je had dan onze loodsboot [ @skip ... ] , een kotter [ @skip ... ] [ @skip kotter ] [ @skip hé ] .|1|1|-5.044229973400001</comment>
+  </comments>
+</alpino_ds>

@@ -1,0 +1,38 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="16" id="0" rel="top">
+    <node begin="11" end="12" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="15" id="2" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="3" lemma="maar" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="maar" sense="maar" word="maar"/>
+      <node begin="1" cat="smain" end="15" id="4" rel="nucl">
+        <node begin="1" end="2" getal="getal" id="5" lemma="die" naamval="stan" pdtype="pron" persoon="3" pos="det" postag="VNW(aanw,pron,stan,vol,3,getal)" pt="vnw" rel="su" root="die" sense="die" status="vol" vwtype="aanw" word="die"/>
+        <node begin="2" end="3" id="6" lemma="komen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="kom" sense="kom" word="kwam" wvorm="pv"/>
+        <node begin="3" end="4" id="7" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" word="ook"/>
+        <node begin="4" cat="pp" end="11" id="8" rel="mod">
+          <node begin="4" end="5" id="9" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+          <node begin="5" cat="np" end="11" id="10" rel="obj1">
+            <node begin="5" end="6" id="11" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de" word="de"/>
+            <node begin="6" end="7" genus="zijd" getal="ev" graad="basis" id="12" lemma="macht" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="macht" sense="macht" word="macht"/>
+            <node begin="7" cat="pp" end="11" id="13" rel="mod">
+              <node begin="7" end="8" id="14" lemma="van" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="van" sense="van" vztype="init" word="van"/>
+              <node begin="8" cat="np" end="11" id="15" rel="obj1">
+                <node begin="8" end="9" id="16" lemma="het" lwtype="bep" naamval="stan" npagr="evon" pos="det" postag="LID(bep,stan,evon)" pt="lid" rel="det" root="het" sense="het" word="het"/>
+                <node begin="9" buiging="zonder" end="10" graad="basis" id="17" lemma="slecht" pos="adj" positie="prenom" postag="ADJ(prenom,basis,zonder)" pt="adj" rel="mod" root="slecht" sense="slecht" word="slecht"/>
+                <node begin="10" end="11" genus="onz" getal="ev" graad="basis" id="18" lemma="weer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="weer" sense="weer" word="weer"/>
+              </node>
+            </node>
+          </node>
+        </node>
+        <node begin="12" cat="pp" end="15" id="19" rel="ld">
+          <node begin="12" end="13" id="20" lemma="naar" pos="prep" postag="VZ(init)" pt="vz" rel="hd" root="naar" sense="naar" vztype="init" word="naar"/>
+          <node begin="13" end="14" genus="onz" getal="ev" graad="basis" id="21" lemma="Oostende" naamval="stan" ntype="eigen" pos="name" postag="N(eigen,ev,basis,onz,stan)" pt="n" rel="obj1" root="Oostende" sense="Oostende" word="Oostende"/>
+          <node begin="14" end="15" id="22" lemma="toe" pos="part" postag="VZ(fin)" pt="vz" rel="hdf" root="toe" sense="toe" vztype="fin" word="toe"/>
+        </node>
+      </node>
+    </node>
+    <node begin="15" end="16" id="23" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0196">maar die kwam ook van de macht van het slecht weer ... naar Oostende toe ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0196|maar die kwam ook van de macht van het slecht weer [ @skip ... ] naar Oostende toe [ @skip ... ]|1|1|-4.305981899199999</comment>
+  </comments>
+</alpino_ds>

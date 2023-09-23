@@ -1,0 +1,38 @@
+<alpino_ds version="1.14">
+  <node begin="0" cat="top" end="15" id="0" rel="top">
+    <node begin="6" end="7" id="1" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+    <node begin="0" cat="du" end="14" id="2" rel="--">
+      <node begin="0" conjtype="neven" end="1" id="3" lemma="en" pos="comp" postag="VG(neven)" pt="vg" rel="dlink" root="en" sense="en" word="en"/>
+      <node begin="1" cat="smain" end="14" id="4" rel="nucl">
+        <node begin="1" end="2" genus="onz" getal="ev" id="5" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="mod" root="er" sense="er" status="red" vwtype="pers" word="het"/>
+        <node begin="2" end="3" id="6" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sense="ben" word="waren" wvorm="pv"/>
+        <node begin="3" end="4" getal="getal" id="7" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
+        <node begin="4" cat="np" end="14" id="8" rel="su">
+          <node begin="4" buiging="zonder" end="5" getal="ev" id="9" lemma="haar" naamval="stan" npagr="agr" pdtype="det" persoon="3" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="haar" sense="haar" status="vol" vwtype="bez" word="haar"/>
+          <node begin="5" end="6" genus="zijd" getal="ev" graad="basis" id="10" lemma="broer" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="broer" sense="broer" word="broer"/>
+          <node begin="7" cat="rel" end="14" id="11" rel="mod">
+            <node begin="7" end="8" getal="getal" id="12" index="1" lemma="die" naamval="stan" pdtype="pron" persoon="persoon" pos="pron" postag="VNW(betr,pron,stan,vol,persoon,getal)" pt="vnw" rel="rhd" root="die" sense="die" status="vol" vwtype="betr" word="die"/>
+            <node begin="7" cat="ssub" end="14" id="13" rel="body">
+              <node begin="7" end="8" id="14" index="1" rel="su"/>
+              <node begin="8" end="9" id="15" lemma="ook" pos="adv" postag="BW()" pt="bw" rel="mod" root="ook" sense="ook" word="ook"/>
+              <node begin="9" cat="mwu" end="11" id="16" rel="predc">
+                <node begin="9" end="10" id="17" lemma="Charles" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Charles" sense="Charles" spectype="deeleigen" word="Charles"/>
+                <node begin="10" end="11" id="18" lemma="Hubroeck" pos="name" postag="SPEC(deeleigen)" pt="spec" rel="mwp" root="Hubroeck" sense="Hubroeck" spectype="deeleigen" word="Hubroeck"/>
+              </node>
+              <node begin="11" end="12" id="19" lemma="heten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="heet" sense="heet" word="heet" wvorm="pv"/>
+              <node begin="12" cat="cp" end="14" id="20" rel="mod">
+                <node begin="12" conjtype="onder" end="13" id="21" lemma="gelijk" pos="comp" postag="VG(onder)" pt="vg" rel="cmp" root="gelijk" sense="gelijk" word="gelijk"/>
+                <node begin="13" end="14" getal="ev" id="22" lemma="ik" naamval="nomin" pdtype="pron" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,vol,1,ev)" pt="vnw" rel="body" root="ik" sense="ik" status="vol" vwtype="pers" word="ik"/>
+              </node>
+            </node>
+          </node>
+        </node>
+      </node>
+    </node>
+    <node begin="14" end="15" id="23" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
+  </node>
+  <sentence sentid="H016p_3--H016p_3_1--0299">en het waren daar haar broer ... die ook Charles Hubroeck heet gelijk ik ...</sentence>
+  <comments>
+    <comment>Q#H016p_3--H016p_3_1--0299|en [ @alt er het ] [ @alt was waren ] daar haar broer [ @skip ... ] die ook Charles Hubroeck heet gelijk ik [ @skip ... ]|1|1|-5.744087870400001</comment>
+  </comments>
+</alpino_ds>
