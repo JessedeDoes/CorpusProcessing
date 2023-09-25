@@ -170,6 +170,12 @@ object GCNDDatabase {
   def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
 
+  lazy val aludErrorMap: Map[String, String] = {
+    import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
+    val lines = scala.io.Source.fromFile("data/GCND/alud.errors").getLines().toList
+    groupWithFirst[String](lines, x => x.startsWith("data")).filter(x => x.head.startsWith("data")).map(g => g.head.replaceAll(".*/", "").replaceAll(".xml$", "") -> g.tail.mkString("\n")).toMap
+  }
+
   def saveAlpinoParses(transcriptie_id: Int, alpinoDumpDir: java.io.File) = {
     getAlpinoAnnotations(transcriptie_id).foreach(a => {
       val parse = a.alpinoParseAsXML
@@ -192,9 +198,6 @@ object GCNDDatabase {
   }
 
   def main(args: Array[String])  = {
-
-
-
 
     val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
 

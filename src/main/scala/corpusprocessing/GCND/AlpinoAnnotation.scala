@@ -55,6 +55,12 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val sentence = AlpinoSentence(alpinoParsePatched)
   lazy val alpinoTokens: Seq[AlpinoToken] = sentence.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})
   lazy val conll = sentence.toCONLL() // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
+
+  def addAludInfo(x: Elem)  = {
+    val status = GCNDDatabase.aludErrorMap.getOrElse(sentenceId, "OK")
+    x.copy(child=x.child :+ <alud>{status.trim}</alud>)
+  }
+
   lazy val dependencies = {
     val root = sentence.connlTokens.find(_.DEPREL == "root")
     val rootWordId = root.map(t => s"annotation.$alpino_annotatie_id.w.${t.ID.toInt - 1}").get
@@ -103,6 +109,9 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null)).append(new UnprefixedAttribute("word_zv", zv, Null))
     node.copy(attributes=atts)
   })
+
+  lazy val withAludInfo = addAludInfo(alpinoAdapted)
+
   object Folia {
     lazy val informativeT: Elem = {
       <info>
@@ -150,7 +159,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
             annotatedTokens
           } else Seq()
           }
-          {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{alpinoAdapted.copy(scope = alpinoScope)}</foreign-data></syntax>}}
+          {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
           {if (includeDeps) {dependencies}}
           <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
