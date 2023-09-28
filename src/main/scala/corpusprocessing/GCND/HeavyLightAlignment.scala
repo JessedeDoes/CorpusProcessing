@@ -20,54 +20,53 @@ object comp extends Comparator[(String,Tokenizer.Token)]
   }
 }
 
+trait Tokenization {
+  val orgTokens: List[Tokenizer.Token]
+  val ndlTokens: List[Tokenizer.Token]
+}
+case class TokenizingDetach(e: ElanAnnotation) extends Tokenization {
+  def fixhellip(s: String) = s.replaceAll("\\s*\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
+
+  lazy val orgTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_lv)
+      .replaceAll("#", " 畳")
+      .split("\\s+")
+      .toList
+      .flatMap(Tokenizer.tokenizeErVanaf)
+      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+
+  lazy val ndlTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_zv)
+      .split("\\s+")
+      .toList.flatMap(Tokenizer.tokenizeErVanaf)
+}
+
+case class TokenizingAttach(e: ElanAnnotation) extends Tokenization {
+  def fixhellip(s: String) = s.replaceAll("\\s*\\.\\.\\.\\.*", "... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
+
+  lazy val orgTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_lv)
+      .replaceAll("#", " 畳")
+      .split("\\s+")
+      .toList
+      .flatMap(Tokenizer.tokenize)
+      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+
+  lazy val ndlTokens: List[Tokenizer.Token] =
+    fixhellip(e.tekst_zv)
+      .split("\\s+")
+      .toList.flatMap(Tokenizer.tokenize)
+}
+
 case class HeavyLightAlignment(e: ElanAnnotation) {
 
   type token = Tokenizer.Token
   val a = new AlignmentGeneric(comp)
   //Console.err.println(e)
 
+  lazy val tokenization: Tokenization = TokenizingAttach(e) // Attach werkt beter omdat bijvoorbeeld ... soms ontbreekt in de zware vernederlandsing
 
-
-
-  object Tokenize_detach {
-
-    def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
-    lazy val orgTokens: List[Tokenizer.Token] =
-      fixhellip(e.tekst_lv)
-        .replaceAll("#", " 畳")
-        .split("\\s+")
-        .toList
-        .flatMap(Tokenizer.tokenizeErVanaf)
-        //.flatMap(Tokenizer.tokenize)
-        .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
-
-    lazy val ndlTokens: List[Tokenizer.Token] =
-      fixhellip(e.tekst_zv)
-        .split("\\s+")
-        .toList.flatMap(Tokenizer.tokenizeErVanaf)
-  }
-
-  object Tokenize_attach {
-
-    def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", "... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
-
-    lazy val orgTokens: List[Tokenizer.Token] =
-      fixhellip(e.tekst_lv)
-        .replaceAll("#", " 畳")
-        .split("\\s+")
-        .toList
-        //.flatMap(Tokenizer.tokenizeErVanaf)
-        .flatMap(Tokenizer.tokenize)
-        .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
-
-    lazy val ndlTokens: List[Tokenizer.Token] =
-      fixhellip(e.tekst_zv)
-        .split("\\s+")
-        .toList.flatMap(Tokenizer.tokenize)
-  }
-
-  import Tokenize_attach._
-
+  val (orgTokens, ndlTokens) = tokenization.orgTokens -> tokenization.ndlTokens
   def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
   def align(): (Boolean, List[(token,token)], String) =  {

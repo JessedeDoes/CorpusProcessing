@@ -14,7 +14,7 @@ case class Competition(n: Node) {
 case class Skater(n: Node, name: String, club: String) {
   //println("######")
   //println((n \\ "td").map(_.text.trim).filter(_.nonEmpty).mkString("\n"))
-
+  val pretty = new scala.xml.PrettyPrinter(100,2)
   def pr(m: Int) = {
     val prrow = n.descendant.filter(x => (x \ "td").exists(td => td.text.trim == s"$m meter"))
     if (prrow.nonEmpty) {
@@ -23,10 +23,18 @@ case class Skater(n: Node, name: String, club: String) {
 
       val i = cells.indices.find(i => cells(i).text.trim == s"$m meter").get
       // println(cells(i))
-      if (cells.size > i+2)
-          Some(cells(i + 1).text + cells(i + 2).text)
-      else None
-    } else None
+      if (cells.size > i+2) {
+        val r = Some(cells(i + 1).text + cells(i + 2).text)
+        Console.err.println(s"PR for $name, distance=$m = $r");
+        r
+      } else None
+    } else {
+      if (m==500) {
+        Console.err.println(s"!!!!!!!!!!!!No prrow for $name, distance=$m");
+        // Console.err.println(pretty.format(n))
+        //System.exit(1)
+      }
+      None }
   }
 
   def PRs = shortrackonline.distances.map(pr)
@@ -59,9 +67,9 @@ object shortrackonline {
   }
 
   def getSkater(url: String, name: String, club: String) = {
-    //Console.err.println("Try skater: " + url)
-    val lines  = io.Source.fromURL(new URL(url)).getLines()
-    //Console.err.println(lines.toList)
+    Console.err.println("Try skater: " + url)
+    val lines  = io.Source.fromURL(new URL(url.replaceAll("http","https"))).getLines()
+    // Console.err.println(lines.toList)
     val content = lines.mkString("\n")
     val contentX = HTML.parse(content)
     Skater(contentX, name, club)
@@ -81,6 +89,7 @@ object shortrackonline {
   val regio_dordrecht = "data/regiodordrecht.html"
   val gent2023 = "data/gent.html"
   val ar2023 = "data/ar2023.html"
+  val lara = "data/laravanruijven.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
@@ -92,7 +101,7 @@ object shortrackonline {
     val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOnly.html" -> fIHCL)
 
     tasks.foreach({ case (fileName, filter) =>
-      val regio = HTML.parse(io.Source.fromFile(gent2023).getLines().mkString("\n"))
+      val regio = HTML.parse(io.Source.fromFile(lara).getLines().mkString("\n"))
       // println(pretty.format(regio))
       val sections = (regio \\ "h3").map(_.text)
       //println(sections)
