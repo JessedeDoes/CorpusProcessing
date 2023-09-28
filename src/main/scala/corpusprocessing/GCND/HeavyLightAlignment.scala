@@ -27,21 +27,46 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
   //Console.err.println(e)
 
 
-  def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
 
-  lazy val orgTokens: List[Tokenizer.Token] =
-    fixhellip(e.tekst_lv)
-      .replaceAll("#"," 畳")
-      .split("\\s+")
-      .toList
-      .flatMap(Tokenizer.tokenizeErVanaf)
-      //.flatMap(Tokenizer.tokenize)
-      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
 
-  lazy val ndlTokens: List[Tokenizer.Token] =
-    fixhellip(e.tekst_zv)
-      .split("\\s+")
-      .toList.flatMap(Tokenizer.tokenizeErVanaf)
+  object Tokenize_detach {
+
+    def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
+    lazy val orgTokens: List[Tokenizer.Token] =
+      fixhellip(e.tekst_lv)
+        .replaceAll("#", " 畳")
+        .split("\\s+")
+        .toList
+        .flatMap(Tokenizer.tokenizeErVanaf)
+        //.flatMap(Tokenizer.tokenize)
+        .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+
+    lazy val ndlTokens: List[Tokenizer.Token] =
+      fixhellip(e.tekst_zv)
+        .split("\\s+")
+        .toList.flatMap(Tokenizer.tokenizeErVanaf)
+  }
+
+  object Tokenize_attach {
+
+    def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", "... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
+
+    lazy val orgTokens: List[Tokenizer.Token] =
+      fixhellip(e.tekst_lv)
+        .replaceAll("#", " 畳")
+        .split("\\s+")
+        .toList
+        //.flatMap(Tokenizer.tokenizeErVanaf)
+        .flatMap(Tokenizer.tokenize)
+        .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+
+    lazy val ndlTokens: List[Tokenizer.Token] =
+      fixhellip(e.tekst_zv)
+        .split("\\s+")
+        .toList.flatMap(Tokenizer.tokenize)
+  }
+
+  import Tokenize_attach._
 
   def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
