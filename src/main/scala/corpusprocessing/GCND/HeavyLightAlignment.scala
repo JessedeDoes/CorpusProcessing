@@ -27,12 +27,15 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
   //Console.err.println(e)
 
 
-  def fixhellip(s: String)  = s.replaceAll("\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ")
+  def fixhellip(s: String)  = s.replaceAll("\\s*\\.\\.\\.\\.*", " ... ").replaceAll("\\s+", " ") // of wil je juist verplicht attachen?
+
   lazy val orgTokens: List[Tokenizer.Token] =
     fixhellip(e.tekst_lv)
       .replaceAll("#"," 畳")
       .split("\\s+")
-      .toList.flatMap(Tokenizer.tokenizeErVanaf)
+      .toList
+      .flatMap(Tokenizer.tokenizeErVanaf)
+      //.flatMap(Tokenizer.tokenize)
       .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
 
   lazy val ndlTokens: List[Tokenizer.Token] =
