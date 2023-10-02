@@ -1,6 +1,6 @@
 <alpino_ds version="1.14">
   <node begin="0" cat="top" end="8" id="0" rel="top">
-    <node begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel" word="awel"/>
+    <node rel="--" begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" root="awel" sense="awel" word="awel"/>
     <node begin="1" cat="smain" end="6" id="2" rel="--">
       <node begin="1" end="2" getal="ev" id="3" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw" word="dat"/>
       <node begin="2" end="3" id="4" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" word="is" wvorm="pv"/>
@@ -10,7 +10,7 @@
         <node begin="5" end="6" genus="onz" getal="ev" graad="basis" id="8" lemma="zand" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="zand" sense="zand" word="zand"/>
       </node>
     </node>
-    <node begin="6" end="7" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node rel="--" begin="6" end="7" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" root="hé" sense="hé" word="hé"/>
     <node begin="7" end="8" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0372d">awel dat is allemaal hard zand hé .</sentence>

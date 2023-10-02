@@ -5,8 +5,8 @@
     <node begin="7" end="8" id="3" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
     <node begin="0" cat="du" end="11" id="4" rel="--">
       <node begin="0" cat="du" end="2" id="5" rel="tag">
-        <node begin="0" end="1" id="6" lemma="zo" pos="adv" postag="BW()" pt="bw" rel="tag" root="zo" sense="zo" word="zo"/>
-        <node begin="1" end="2" id="7" lemma="kijken" pos="tag" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="tag" root="kijk" sense="kijk" word="kijk" wvorm="pv"/>
+        <node rel="--" begin="0" end="1" id="6" lemma="zo" pos="adv" postag="BW()" pt="bw" root="zo" sense="zo" word="zo"/>
+        <node rel="--" begin="1" end="2" id="7" lemma="kijken" pos="tag" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" root="kijk" sense="kijk" word="kijk" wvorm="pv"/>
       </node>
       <node begin="4" cat="smain" end="11" id="8" rel="nucl">
         <node begin="4" cat="np" end="6" id="9" rel="su">

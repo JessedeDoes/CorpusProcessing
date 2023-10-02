@@ -5,7 +5,7 @@
       <node begin="1" end="2" id="3" lemma="vervangen" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="hd" root="vervang" sense="vervang" word="vervingen" wvorm="pv"/>
       <node begin="2" end="3" getal="mv" id="4" lemma="mekander" naamval="obl" pdtype="pron" persoon="3p" pos="pron" postag="VNW(pers,pron,obl,vol,3p,mv)" pt="vnw" rel="obj1" root="mekander" sense="mekander" status="vol" vwtype="pers" word="mekander"/>
     </node>
-    <node begin="3" end="4" id="5" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node rel="--" begin="3" end="4" id="5" lemma="hé" pos="tag" postag="TSW()" pt="tsw" root="hé" sense="hé" word="hé"/>
     <node begin="4" end="5" id="6" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." word="."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0415">ze vervingen mekander hé .</sentence>

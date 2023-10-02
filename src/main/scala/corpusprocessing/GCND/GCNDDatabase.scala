@@ -178,7 +178,7 @@ object GCNDDatabase {
 
   def saveAlpinoParses(transcriptie_id: Int, alpinoDumpDir: java.io.File) = {
     getAlpinoAnnotations(transcriptie_id).foreach(a => {
-      val parse = a.alpinoParseAsXML
+      val parse = fixTagWithoutNucl.fixTagWithoutNucl(a.alpinoParseAsXML)
       XML.save(alpinoDumpDir.getCanonicalPath + "/" + a.sentenceId + ".xml", parse)
     })
   }

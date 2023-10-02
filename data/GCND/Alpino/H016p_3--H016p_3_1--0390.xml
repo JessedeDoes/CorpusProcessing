@@ -1,6 +1,6 @@
 <alpino_ds version="1.14">
   <node begin="0" cat="top" end="9" id="0" rel="top">
-    <node begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="awel" sense="awel" word="awel"/>
+    <node rel="--" begin="0" end="1" id="1" lemma="awel" pos="tag" postag="TSW()" pt="tsw" root="awel" sense="awel" word="awel"/>
     <node begin="1" cat="smain" end="7" id="2" rel="--">
       <node begin="1" end="2" getal="ev" id="3" lemma="je" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,red,2v,ev)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pers" word="je"/>
       <node begin="2" end="3" id="4" lemma="smijten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="smijt" sense="smijt" word="smijt" wvorm="pv"/>
@@ -9,7 +9,7 @@
       <node begin="5" end="6" getal="getal" id="7" lemma="daar" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="mod" root="daar" sense="daar" status="vol" vwtype="aanw" word="daar"/>
       <node begin="6" buiging="zonder" end="7" graad="basis" id="8" lemma="open" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="predc" root="open" sense="open" word="open"/>
     </node>
-    <node begin="7" end="8" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node rel="--" begin="7" end="8" id="9" lemma="hé" pos="tag" postag="TSW()" pt="tsw" root="hé" sense="hé" word="hé"/>
     <node begin="8" end="9" id="10" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0390">awel je smijt jij dat daar open hé ...</sentence>

@@ -4,7 +4,7 @@
       <node begin="0" buiging="zonder" end="1" getal="ev" id="2" lemma="mijn" naamval="stan" npagr="agr" pdtype="det" persoon="1" pos="det" positie="prenom" postag="VNW(bez,det,stan,vol,1,ev,prenom,zonder,agr)" pt="vnw" rel="det" root="mijn" sense="mijn" status="vol" vwtype="bez" word="mijn"/>
       <node begin="1" end="2" genus="zijd" getal="ev" graad="basis" id="3" lemma="vader" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" root="vader" sense="vader" word="vader"/>
     </node>
-    <node begin="2" end="3" id="4" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="hé" sense="hé" word="hé"/>
+    <node rel="--" begin="2" end="3" id="4" lemma="hé" pos="tag" postag="TSW()" pt="tsw" root="hé" sense="hé" word="hé"/>
     <node begin="3" end="4" id="5" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." word="..."/>
   </node>
   <sentence sentid="H016p_3--H016p_3_1--0146">mijn vader hé ...</sentence>

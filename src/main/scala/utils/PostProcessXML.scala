@@ -105,6 +105,16 @@ object PostProcessXML {
     val grouped = numberedChild.groupBy({case (n,i) => lastBefore(i)})
     grouped.keySet.toList.sortBy(_._2).map(grouped).map(l => l.map(_._1)) // ahem, unorded...
   }
+
+  def replaceAttribute(e: Elem, name: String, f: String=>String):Elem = {
+    val s = (e \ ("@" + name)).text
+    val s1 = f(s)
+    e.copy(attributes = e.attributes.filter(_.key != name).append(   new UnprefixedAttribute(name, s1, Null)))
+  }
+
+  def replaceAttribute(e: Elem, name: String, v: String): Elem = {
+    e.copy(attributes = e.attributes.filter(_.key != name).append(new UnprefixedAttribute(name, v, Null)))
+  }
 }
 
 // ToDo deze manier van cachen is niet threadsafe
