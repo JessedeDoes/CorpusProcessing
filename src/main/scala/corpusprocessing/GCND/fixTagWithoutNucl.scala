@@ -8,7 +8,7 @@ import utils.PostProcessXML
 
 object fixTagWithoutNucl {
   def fixTag(node: Elem): Elem  = {
-    Console.err.println("Golly, removing tag!"  + node.copy(child=Seq()))
+    Console.err.println("Golly, removing tag!"  + node.copy(child=Seq()) + ": " + node.child.map(rel).mkString(" "))
     node.copy(child = node.child.map(
       c => c match {
         case e: Elem if rel(e) == "tag" => replaceAttribute(e,"rel", "--")
@@ -21,6 +21,9 @@ object fixTagWithoutNucl {
 
   def fixTagWithoutNucl(x: Elem)  = {
     PostProcessXML.updateElement3(x,
-      n => n.label == "node" & n.child.exists(x => rel(x) == "tag") && !(n.child.exists(rel(_) == "nucl")), fixTag)
+      n => n.label == "node" &
+        n.child.exists(rel(_) == "tag") &&
+        !(n.child.exists(rel(_) == "nucl")),
+      fixTag)
   }
 }
