@@ -3,8 +3,10 @@ package zeeuws
 import scala.xml._
 import utils.PostProcessXML._
 object zeeuws_xml_to_db {
+
    val filename = "/mnt/Projecten/Hercules/DSDD/WZD/selectie.xml"
    lazy val doc = XML.load(filename)
+
    def markRegions(s: Elem): Elem = {
      val children = s.child.zipWithIndex
 
