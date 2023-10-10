@@ -22,3 +22,5 @@ object QuotationCorpora {
 import QuotationCorpora._
 object q18 extends QuotationCorpus(baseDir + "gtbcit_18", "gtbcit_18")
 object q17 extends QuotationCorpus(baseDir + "gtbcit_17", "gtbcit_17")
+
+object q19 extends QuotationCorpus(baseDir + "gtbcit_19", "gtbcit_19")
