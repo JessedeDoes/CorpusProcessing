@@ -303,8 +303,8 @@ object bab_to_huggingface extends tei_to_huggingface_trait {
 object gysseling_to_hugginface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
   override val output_prefix: String = "gys"
-  override val max_files: Int = 500
-  override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
   override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
