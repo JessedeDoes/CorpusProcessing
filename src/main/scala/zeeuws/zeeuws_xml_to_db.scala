@@ -7,7 +7,7 @@ object zeeuws_xml_to_db {
    val filename = "/mnt/Projecten/Hercules/DSDD/WZD/selectie.xml"
    lazy val doc = XML.load(filename)
 
-   def markRegions(s: Elem): Elem = {
+   def markUselessRegions(s: Elem): Elem = {
      val children = s.child.zipWithIndex
 
      val nc = children.map({case (c,i) =>
@@ -27,8 +27,9 @@ object zeeuws_xml_to_db {
    }
 
   lazy val postprocessedDoc = {
-    updateElement(doc, _.label=="usg", markRegions)
+    updateElement(doc, _.label=="usg", markUselessRegions)
   }
+
   def main(args: Array[String]) = {
     println((postprocessedDoc \\ "lamePlaceName").map(_.text).groupBy(x=>x).mapValues(_.size))
   }

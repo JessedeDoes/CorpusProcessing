@@ -240,12 +240,12 @@ trait tei_to_huggingface_trait {
 
 object tei_to_huggingface extends tei_to_huggingface_trait {
 }
-
-object clariah_19 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/19_thomas/"
+object clariah_15 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
   override val output_folder = "/tmp/"
-  override val output_prefix = "nederval_19"
+  override val output_prefix = "nederval_15"
 }
+
 
 object clariah_16 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/16/CobaltServeExport/"
@@ -253,10 +253,27 @@ object clariah_16 extends  tei_to_huggingface_trait {
   override val output_prefix = "nederval_16"
 }
 
-object clariah_15 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
+object clariah_17 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/17_thomas/"
   override val output_folder = "/tmp/"
-  override val output_prefix = "nederval_15"
+  override val output_prefix = "nederval_17"
+}
+object clariah_18 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/18_thomas/"
+  override val output_folder = "/tmp/"
+  override val output_prefix = "nederval_18"
+}
+
+object clariah_19 extends  tei_to_huggingface_trait {
+  override val default_folder = "../nephomant/data/nederval/19_thomas/"
+  override val output_folder = "/tmp/"
+  override val output_prefix = "nederval_19"
+}
+
+object clariah_several {
+  def main(args: Array[String])  = {
+    List(clariah_15, clariah_16, clariah_17, clariah_18, clariah_19).foreach(_.main(Array()))
+  }
 }
 
 object gtbcit_to_huggingface extends tei_to_huggingface_trait {
