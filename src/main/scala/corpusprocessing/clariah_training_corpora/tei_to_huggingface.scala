@@ -240,6 +240,8 @@ trait tei_to_huggingface_trait {
 
 object tei_to_huggingface extends tei_to_huggingface_trait {
 }
+
+
 object clariah_15 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
   override val output_folder = "/tmp/"
@@ -323,6 +325,15 @@ object gysseling_to_hugginface extends tei_to_huggingface_trait {
   override val max_files: Int = Integer.MAX_VALUE // 500
   override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
   override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+}
+
+
+object crm_to_huggingface extends tei_to_huggingface_trait {
+  override val split_test_train_on_document_level: Boolean = true
+  override val output_prefix: String = "CRM"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/"
+  override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
 }
 
 
