@@ -12,8 +12,8 @@ object zeeuws_xml_to_db {
        c match {
          case e: Elem if e.label == "placeName" =>
            val after = children.drop(i+1).map(_._1).text.trim
-           println("####\n" + e)
-           println(after)
+           //println("####\n" + e)
+           //println(after)
            if (after.startsWith("(")) {
              e.copy(label="lamePlaceName")
            } else
@@ -28,6 +28,6 @@ object zeeuws_xml_to_db {
     updateElement(doc, _.label=="usg", markRegions)
   }
   def main(args: Array[String]) = {
-    println(postprocessedDoc)
+    println((postprocessedDoc \\ "lamePlaceName").map(_.text).groupBy(x=>x).mapValues(_.size))
   }
 }
