@@ -233,6 +233,7 @@ object zeeuws_xml_to_db {
     //db.runStatement("create table lemmata (sense_id text, original text, an text, definition text)")
 
     val fieldMappingLemmata = Seq[(String, Lemma => String)](
+      //
       ("sense_id", l => l.sense_id),
       ("original", l => l.original),
       ("an", l => l.an),
