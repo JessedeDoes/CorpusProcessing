@@ -24,16 +24,17 @@ object Classes {
   }
 
 
-  case class Sense(s: Node, e: Entry) {
-    val volgnr = (s \ "@nr").text
+  case class Sense(s: Node, e: Entry, nr: Option[String]  = None, defi: Option[String]  = None) {
+    val volgnr = nr.getOrElse( (s \ "@nr").text)
     val id = e.entryLevelFields("volgnr") + "." + volgnr
-    val definition = (s \ "definition").text
+    val definition = defi.getOrElse((s \ "definition").text)
     val variants = (s \ "var").map(v => variant(v, this))
     val usages = (s \ "usg").map(u => usage(u, this)) ++ variants.flatMap(v => v.usages)
     val keywords = usages.map(_.keyword).toSet.zipWithIndex.map({case (w,i) => Keyword(id, w, s"$id.$i")})
     val kwMap = keywords.map(k => k.keyword -> k).toMap
     lazy val lemma = Lemma(id, e.headword, e.lemma, definition)
     lazy val attestations = usages.flatMap(_.attestations)
+    lazy val splitMe = if (definition.contains(";")) definition.split("\\s*;\\s*").zipWithIndex.map({case (d,i) => Sense(s,e,Some(volgnr + "_"  + i), Some(d + " YEP! "))}).toSeq else Seq(this)
   }
 
   case class variant(v: Node, s: Sense) {
@@ -65,6 +66,41 @@ object Classes {
 }
 
 object Regions {
+  /*
+  (Alg,10)
+  (Alg.,20)
+  (Alg.,,1)
+(D.,23)
+(Duiveland,1)
+(G.,186)
+(Goeree,1)
+(L. v.Ax.,1)
+  (L.v. H.,1)
+  (L.v.Ax.,191)
+  (L.v.H.,118)
+(N.B.,135)
+(Ofl.,186)
+(Oost-Fl.,1)
+  (Oost-T.,1)
+  (Oost-Tolen,1)
+  (Oost-Z.B.,2)
+  (Oost.Z.B.,1)
+(Sch-D,152)
+  (Sch.,84)
+  (Sch.-D,2)
+  (Sch.-D.,3)
+(T.,174)
+(West-Tolen,1)
+  (West.-Fl.,1)
+  (West.T.,1)
+  (West.Z.B.,1)
+(Z.V.W. en O.,9)
+(alg,2)
+  (alg.,3)
+  (alg. Sch-D,1)
+  (grensstreek Z.V.W.,1)
+(west-Sch.,1)
+   */
   val r0 = Map("W." -> "Walcheren",
     "de Westhoek van Sch." -> "Weetikveel",
     "West-Fl." -> "West-Flakkee",
@@ -81,7 +117,41 @@ object Regions {
     "Z.V.O." -> "Oost-Zeeuws-Vlaanderen",
     "Z.V.W en O." -> "Oost en West-Zeeuws-Vlaanderen",
     "Z.V.W." -> "West-Zeeuws-Vlaanderen",
-    "Zvo-zd" -> "zuidelijk deel van WZO").map({case (k,v) =>k.toLowerCase().trim -> v})
+    "Zvo-zd" -> "zuidelijk deel van WZO",
+    "Alg" -> "full_tdb",
+    "Alg." -> "full_tdb",
+    "Alg." -> ",1",
+    "D." -> "full_tdb",
+    "Duiveland" -> "full_tdb",
+    "G." -> "full_tdb",
+    "Goeree" -> "full_tdb",
+    "L. v.Ax." -> "full_tdb",
+    "L.v. H." -> "full_tdb",
+    "L.v.Ax." -> "full_tdb",
+    "L.v.H." -> "full_tdb",
+    "N.B." -> "full_tdb",
+    "Ofl." -> "full_tdb",
+    "Oost-Fl." -> "full_tdb",
+    "Oost-T." -> "full_tdb",
+    "Oost-Tolen" -> "full_tdb",
+    "Oost-Z.B." -> "full_tdb",
+    "Oost.Z.B." -> "full_tdb",
+    "Sch-D" -> "full_tdb",
+    "Sch." -> "full_tdb",
+    "Sch.-D" -> "full_tdb",
+    "Sch.-D." -> "full_tdb",
+    "T." -> "full_tdb",
+    "West-Tolen" -> "full_tdb",
+    "West.-Fl." -> "full_tdb",
+    "West.T." -> "full_tdb",
+    "West.Z.B." -> "full_tdb",
+    "Z.V.W. en O." -> "full_tdb",
+    "alg" -> "full_tdb",
+    "alg." -> "full_tdb",
+    "alg. Sch-D" -> "full_tdb",
+    "grensstreek Z.V.W." -> "full_tdb",
+    "west-Sch." -> "full_tdb"
+  ).map({case (k,v) =>k.toLowerCase().trim -> v})
 
   val r2 = r0 ++ r0.map({case (k,v) =>k.replaceAll(" ", "") -> v})
 
@@ -141,7 +211,7 @@ object zeeuws_xml_to_db {
 
   def extractFromEntries(): Unit = {
     val entries = (postprocessedDoc \\ "entry").map(Entry)
-    val senses = entries.flatMap(_.senses)
+    val senses = entries.flatMap(_.senses) // .flatMap(_.splitMe)
     val lemmata = senses.map(_.lemma)
     val attestations = senses.flatMap(_.attestations)
     val responses = attestations.map(_.response)
@@ -190,15 +260,13 @@ object zeeuws_xml_to_db {
       ("isRegion", r => r.isRegion.toString)
     )
     insert[Response]("responses", fieldMappingResponses, responses)
-
-
   }
 
   def insert[T](tableName: String, fieldMapping: Seq[(String, T => String)], things: Seq[T], recreate: Boolean = true) = {
     if (recreate)
     {
        db.runStatement(s"drop table if exists $tableName")
-      val fieldDef = fieldMapping.map(_._1).map(s => s"$s text").mkString(", ")
+       val fieldDef = fieldMapping.map(_._1).map(s => s"$s text").mkString(", ")
        db.runStatement(s"create table $tableName ($fieldDef)")
     }
     val fields = fieldMapping.map(_._1)
