@@ -28,6 +28,7 @@ trait tei_to_huggingface_trait {
         }
       }
     }
+    def file: String = "unknown"
   }
   case class PimpedSentence(
                        id: String,
@@ -37,7 +38,7 @@ trait tei_to_huggingface_trait {
                        xml_ids: List[String]  = List(),
                        relevances: List[String]  = List(),
                        hilex_pos : List[String]  = List(),
-                       file: String = "unknown",
+                       override val file: String = "unknown",
                        partition: String = "unknown"// pas op andere dingen hebben dit niet
                      ) extends Sentence
 
@@ -47,7 +48,7 @@ trait tei_to_huggingface_trait {
                              tags: List[String],
                              lemmata: List[String],
                              xml_ids: List[String] = List(),
-                             file: String = "unknown",
+                             override val  file: String = "unknown",
                            ) extends Sentence
   val sentence_element="q"
   val pos_attribute = "@pos"
@@ -144,6 +145,8 @@ trait tei_to_huggingface_trait {
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.json.gz")))).toMap
     val printWritersTSV: Map[Partition, PrintWriter] = partitions.map(p => p ->
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.tsv.gz")))).toMap
+    val printWritersDocumentPartition: Map[Partition, PrintWriter]  = partitions.map(p => p ->
+      new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".$p.filenames.gz")))).toMap
 
     val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
 
@@ -174,20 +177,29 @@ trait tei_to_huggingface_trait {
       case ((s:BasicSentence,b),i) => s.copy(id=i.toString) -> b
     })
 
-    val jsons: Iterator[(String, String, Partition)] = s1.map({case (s,b) => (write(s), s.toTSV(), b)})
+    val jsons: Iterator[(String, String, Partition, String)] = s1.map({case (s: Sentence,b) => (write(s), s.toTSV(), b, s.file)})
 
-    jsons.foreach({ case (json, tsv, b) =>
+    val partitionedDocuments: Set[(String, Partition)] = jsons.map({ case (json, tsv, b, f) =>
       val pwJSON = printWritersJSON(b)
       val pwTSV = printWritersTSV(b)
 
       pwTSV.println("")
       pwTSV.println(tsv)
       pwJSON.println(json)
-    })
+      f -> b
+    }).toSet
+
+    if (this.split_test_train_on_document_level) {
+      partitionedDocuments.foreach({case (f,p) =>
+        val pw = printWritersDocumentPartition(p)
+        pw.println(f)
+      })
+    }
+
     printWritersJSON.values.foreach(_.close())
     printWritersTSV.values.foreach(_.close())
+    printWritersDocumentPartition.values.foreach(_.close())
   }
-
 
   def always_sampled(s: Sentence) = true
 
@@ -205,7 +217,7 @@ trait tei_to_huggingface_trait {
     }})
   }
 
-  def toJSON(f: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(f.iterator.map(x => x -> preprocess(XML.load(x))), fout)
+  def toJSON(filenames: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(filenames.iterator.map(x => x -> preprocess(XML.load(x))), fout)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
