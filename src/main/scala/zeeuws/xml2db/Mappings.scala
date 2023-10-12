@@ -9,7 +9,7 @@ object Mappings {
     //
     ("lemma_id", l => l.sense_id),
     ("lemma_wzd", l => l.lemma_wzd),
-    ("lemma", l => l.lemma),
+    ("lemma", l => l.lemma_voor_db),
     ("definition", l => l.definition)
   )
 

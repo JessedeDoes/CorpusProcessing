@@ -13,9 +13,7 @@ object PostProcess {
           val after = children.drop(i + 1).map(_._1).text.trim
 
           if (after.startsWith("(")) {
-            <region use="false" full={(e \ "@full").text}>
-              {e.child}
-            </region>
+            <region use="false" full={(e \ "@full").text}>{e.child}</region>
           } else
             e
         case _ => c
@@ -27,14 +25,20 @@ object PostProcess {
   def markRegio(p: Elem): Elem = {
     val txt = p.text.toLowerCase().trim;
     if (Regions.contains(txt)) {
-      <region full={Regions(txt)}>
-        {txt}
-      </region>
+      <region full={Regions(txt)}>{txt}</region>
     } else p
   }
 
   def postprocess(doc: Elem) = {
-    val r = updateElement(doc, _.label == "placeName", markRegio)
+    val allEntries = (doc \\ "entry")
+    val groupedByVolgnr = allEntries.groupBy(e => (e \ "volgnr").text)
+    val gooiMaarWeg = groupedByVolgnr.filter(_._2.size > 1).mapValues(_.drop(1)).values.toSet
+    val gooiMaarWegS = gooiMaarWeg.map(_.toString())
+    // println(gooiMaarWeg)
+
+    val pruned = updateElement5(doc, e => e.label == "entry" && gooiMaarWegS.contains(e.toString()), e => { Console.err.println("skipping entry!"); Seq() } ).asInstanceOf[Elem]
+    // System.exit(1)
+    val r = updateElement(pruned, _.label == "placeName", markRegio)
     updateElement(r, _.label == "usg", markUselessRegions)
   }
 }
