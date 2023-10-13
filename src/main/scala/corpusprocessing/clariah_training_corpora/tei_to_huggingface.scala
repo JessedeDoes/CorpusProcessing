@@ -16,14 +16,17 @@ import org.json4s.jackson.Serialization.write
 
 trait tei_to_huggingface_trait {
   trait Sentence {
-    def toTSV() : String = {
+    def toTSV(addSourceLine: Boolean=false) : String = {
+
       this match {
         case s:BasicSentence => {
-          s"#### ${s.file} ####\n" +
+          val sourceLine =  if (addSourceLine) s"#### ${s.file} ####\n" else ""
+          sourceLine +
           s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
         }
         case s:PimpedSentence => {
-          s"#### ${s.file} ####\n" +
+          val sourceLine =  if (addSourceLine) s"#### ${s.file} ####\n" else ""
+          sourceLine +
             s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
         }
       }
@@ -328,6 +331,8 @@ object ofr_to_huggingface extends tei_to_huggingface_trait {
 object bab_to_huggingface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
   override val output_prefix: String = "bab"
+  override val max_files: Int = Integer.MAX_VALUE
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/BaB/All/"
   override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
 }
 
