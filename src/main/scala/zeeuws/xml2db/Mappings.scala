@@ -18,7 +18,9 @@ object Mappings {
   val fieldMappingKeywords = Seq[(String, Keyword => String)](
     ("lemma_id", r => r.lemma_id),
     ("keyword", r => r.keyword),
-    ("keyword_id", r => r.keyword_id)
+    ("keyword_an", r => r.keyword_an),
+    ("keyword_id", r => r.keyword_id),
+    ("is_variant", r => r.isVariant.toString)
   )
 
   // responses   case class Response(keyword_id: String, keyword: String, place: String, isRegion: Boolean)
