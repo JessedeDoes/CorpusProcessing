@@ -57,7 +57,7 @@ trait tei_to_huggingface_trait {
   val pos_attribute = "@pos"
 
 
-  val chunkSize= 50
+  val chunkSize = 50
 
   type Partition = String
   val TRAIN: Partition = "train"

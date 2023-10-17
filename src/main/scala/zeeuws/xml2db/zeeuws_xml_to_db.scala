@@ -53,6 +53,7 @@ object zeeuws_xml_to_db {
 
 
     db.runStatement("set schema 'wzd'")
+
     val queries_create = List(
       "create table if not exists wzd.dsdd_lemmata (like integratie.lemmata including all)",
       "create table if not exists  wzd.dsdd_keywords (like integratie.keywords including all)",
@@ -61,7 +62,7 @@ object zeeuws_xml_to_db {
       "create table if not exists  wzd.dsdd_concept_list (like integratie.concept_list including all)",
       "insert into wzd.dsdd_concept_list select * from integratie.concept_list",
       "alter table wzd.dsdd_keywords add column lemma_number integer",
-
+      "alter table wzd.dsdd_keywords add column keyword_normalized text",
       "update wzd_lemmata set lemma_id='WZD.' || lemma_id",
       "update wzd_keywords set keyword_id='WZD.' ||  keyword_id",
       "update wzd_keywords set lemma_id='WZD.' || lemma_id",
@@ -70,6 +71,7 @@ object zeeuws_xml_to_db {
     )
 
     doList(queries_create)
+
     val queries_empty = List("delete from dsdd_lemmata", "delete from dsdd_keywords", "delete from dsdd_union_table")
 
     doList(queries_empty)
@@ -77,8 +79,8 @@ object zeeuws_xml_to_db {
     val queries_insert = List(
       "insert into dsdd_lemmata (dictionary, lemma_id, lemma, definition) select distinct 'WZD',  cast(lemma_id as text), lemma, definition from wzd_lemmata",
 
-      """insert into dsdd_keywords (dictionary, lemma_id, keyword_id, keyword, keyword_org)
-        |select distinct 'WZD', lemma_id, keyword_number, keyword, keyword from wzd_keywords""".stripMargin,
+      """insert into dsdd_keywords (dictionary, lemma_id, keyword_id, keyword, keyword_org, keyword_normalized)
+        |select distinct 'WZD', lemma_id, keyword_number, keyword, keyword,keyword_an from wzd_keywords""".stripMargin,
 
       "update dsdd_keywords set lemma=wzd_lemmata.lemma from wzd_lemmata where  wzd_lemmata.lemma_id = dsdd_keywords.lemma_id;",
 

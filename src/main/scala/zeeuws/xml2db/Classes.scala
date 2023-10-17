@@ -30,8 +30,14 @@ object Classes {
     val definition: String = defi.getOrElse((s \ "definition").text)
     val variants: immutable.Seq[variant] = (s \ "var").map(v => variant(v, this))
     val usages: immutable.Seq[usage] = (s \ "usg").map(u => usage(u, this)) ++ variants.flatMap(v => v.usages)
-    val keywords: Set[Keyword] = usages.map(_.keyword).toSet.zipWithIndex.map({ case (w, i) =>w.copy(keyword_id =  s"$id.$i") })
+
+    val keywordsNotSplit: Set[Keyword] = usages.map(_.keyword).toSet.zipWithIndex.map({ case (w, i) =>w.copy(keyword_id =  s"$id.$i") })
+    val keywords: Set[Keyword] = keywordsNotSplit
+      .flatMap(kw => kw.keyword.split("\\s*,\\s*").map(x => kw.copy(keyword = x)))
+      .zipWithIndex
+      .map({ case (w, i) =>w.copy(keyword_id =  s"$id.$i") })
     val kwMap: Map[String, Keyword] = keywords.map(k => k.keyword_an -> k).toMap
+
     lazy val lemma: Lemma = Lemma(id, e.headword, e.lemma, definition)
     lazy val attestations: immutable.Seq[Attestation] = usages.flatMap(_.attestations)
     // lazy val splitMe: Seq[Sense] = if (definition.contains(";")) definition.split("\\s*;\\s*").zipWithIndex.map({ case (d, i) => Sense(s, e, Some(volgnr + "_" + i), Some(d + " YEP! ")) }).toSeq else Seq(this)
@@ -60,7 +66,7 @@ object Classes {
     val org_keyword: String = variant.map(_.keyword).getOrElse(s.e.entryLevelFields("orig_trefwoord"))
     val an_keyword: String  = if (variant.nonEmpty) org_keyword else s.e.entryLevelFields("vernederl_trefwoord")
     val hasVariant: Boolean = variant.nonEmpty
-    val keyword: Keyword = Keyword(s.id,org_keyword,an_keyword,"nope", hasVariant)
+    val keyword: Keyword = Keyword(s.id,org_keyword,an_keyword, "nope", hasVariant)
     val places: Seq[place] = (u.child.filter(x => Set("region", "placeName").contains(x.label) && !((x \ "@use").text == "false"))).map(place)
     val attestations: Seq[Attestation] = places.map(p => Attestation(s, this, p))
   }
