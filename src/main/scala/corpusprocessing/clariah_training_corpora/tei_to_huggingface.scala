@@ -259,31 +259,31 @@ object tei_to_huggingface extends tei_to_huggingface_trait {
 
 object clariah_15 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
-  override val output_folder = "/tmp/"
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_15/test_train/"
   override val output_prefix = "nederval_15"
 }
 
 
 object clariah_16 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/16/CobaltServeExport/"
-  override val output_folder = "/tmp/"
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_16/test_train/"
   override val output_prefix = "nederval_16"
 }
 
 object clariah_17 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/17_thomas/"
-  override val output_folder = "/tmp/"
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_17/test_train/"
   override val output_prefix = "nederval_17"
 }
 object clariah_18 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/18_thomas/"
-  override val output_folder = "/tmp/"
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_18/test_train/"
   override val output_prefix = "nederval_18"
 }
 
 object clariah_19 extends  tei_to_huggingface_trait {
   override val default_folder = "../nephomant/data/nederval/19_thomas/"
-  override val output_folder = "/tmp/"
+  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_19/test_train/"
   override val output_prefix = "nederval_19"
 }
 
