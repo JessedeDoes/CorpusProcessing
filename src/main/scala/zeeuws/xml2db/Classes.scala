@@ -33,7 +33,7 @@ object Classes {
 
     val keywordsNotSplit: Set[Keyword] = usages.map(_.keyword).toSet.zipWithIndex.map({ case (w, i) =>w.copy(keyword_id =  s"$id.$i") })
     val keywords: Set[Keyword] = keywordsNotSplit
-      .flatMap(kw => kw.keyword.split("\\s*,\\s*").map(x => kw.copy(keyword = x)))
+      .flatMap(kw => kw.keyword.split("\\s*[,;]\\s*").map(x => kw.copy(keyword = x)))
       .zipWithIndex
       .map({ case (w, i) =>w.copy(keyword_id =  s"$id.$i") })
     val kwMap: Map[String, Keyword] = keywords.map(k => k.keyword_an -> k).toMap

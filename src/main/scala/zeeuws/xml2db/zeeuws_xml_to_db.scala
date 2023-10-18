@@ -63,11 +63,13 @@ object zeeuws_xml_to_db {
       "insert into wzd.dsdd_concept_list select * from integratie.concept_list",
       "alter table wzd.dsdd_keywords add column lemma_number integer",
       "alter table wzd.dsdd_keywords add column keyword_normalized text",
+      "alter table wzd.dsdd_union_table add column keyword_id text",
       "update wzd_lemmata set lemma_id='WZD.' || lemma_id",
       "update wzd_keywords set keyword_id='WZD.' ||  keyword_id",
       "update wzd_keywords set lemma_id='WZD.' || lemma_id",
       "update wzd_responses set keyword_id='WZD.' || keyword_id",
-      "alter table wzd_keywords add column keyword_number serial primary key"
+      "alter table wzd_keywords add column keyword_number serial primary key",
+      "alter table dsdd_keywords alter column keyword_id type text"
     )
 
     doList(queries_create)
@@ -79,15 +81,15 @@ object zeeuws_xml_to_db {
     val queries_insert = List(
       "insert into dsdd_lemmata (dictionary, lemma_id, lemma, definition) select distinct 'WZD',  cast(lemma_id as text), lemma, definition from wzd_lemmata",
 
-      """insert into dsdd_keywords (dictionary, lemma_id, keyword_id, keyword, keyword_org, keyword_normalized)
-        |select distinct 'WZD', lemma_id, keyword_number, keyword, keyword,keyword_an from wzd_keywords""".stripMargin,
+      """insert into dsdd_keywords (dictionary, lemma_id, keyword_id, keyword, keyword_org, keyword_normalized, definition)
+        |select distinct 'WZD', wzd_lemmata.lemma_id, keyword_id, keyword, keyword,keyword_an, definition from wzd_keywords left join wzd_lemmata on wzd_lemmata.lemma_id=wzd_keywords.lemma_id""".stripMargin,
 
       "update dsdd_keywords set lemma=wzd_lemmata.lemma from wzd_lemmata where  wzd_lemmata.lemma_id = dsdd_keywords.lemma_id;",
 
       """insert into dsdd_union_table
-        (dictionary, lemma, keyword, lemma_id, location_place, location_area)
+        (dictionary, lemma, keyword, keyword_id, lemma_id, location_place, location_area)
         select
-        'WZD', lemma, keyword, lemma_id,
+        'WZD', lemma, keyword, keyword_id, lemma_id,
          case when isregion='false' then place else '' end,
          case when isregion='true' then place else '' end
          from the_join
@@ -107,8 +109,8 @@ object zeeuws_xml_to_db {
 
     XML.save("/mnt/Projecten/Hercules/DSDD/WZD/Data/definitieve bestanden/selectie_werkfile_definitief_met_var_en_regiomarkering.xml", postprocessedDoc)
 
-    extractFromEntries()
-    integratie()
+    //extractFromEntries()
+    // integratie()
 
     // println(postprocessedDoc)
   }
