@@ -94,14 +94,14 @@ object shortrackonline {
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-
+    val htmlToProcess = args.headOption.getOrElse("data/shorttrackonline.html")
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
 
     val tasks = List("/tmp/allSkaters.html" -> fAll, "/tmp/ihclOnly.html" -> fIHCL)
 
     tasks.foreach({ case (fileName, filter) =>
-      val regio = HTML.parse(io.Source.fromFile(lara).getLines().mkString("\n"))
+      val regio = HTML.parse(io.Source.fromFile(htmlToProcess).getLines().mkString("\n"))
       // println(pretty.format(regio))
       val sections = (regio \\ "h3").map(_.text)
       //println(sections)
