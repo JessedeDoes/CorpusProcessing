@@ -9,14 +9,14 @@ case class QuotationCorpus(sourceFolder: String, name: String) extends tei_to_hu
   override val split_test_train_on_document_level: Boolean = true
   override val output_prefix: String = name
   override val max_files: Int = Integer.MAX_VALUE
-  override val output_folder: String = sourceFolder + "/" + "test_train"
+  override val training_subsets: Int = 10
+  override val output_folder: String = sourceFolder + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   new java.io.File(output_folder).mkdir()
   override val default_folder = sourceFolder + "/" + "CobaltServeExport"
 }
 
 object QuotationCorpora {
   val baseDir  = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/"
-
 }
 
 import QuotationCorpora._
