@@ -10,7 +10,7 @@ object fixTokenization {
   val fixedDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/Fixed/"
   val bartje = XML.loadFile("/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/Mapped2TDN/NederlabEvaluation15/enge022vand01_01.tok.frogmodernized.sampled.tei.exported.xml")
 
-  def getId(n: Node):String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") || a.key=="id").map(_.value.toString).headOption.getOrElse("zeperd")
+  def getId(n: Node):String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") || a.key=="id").map(_.value.toString).headOption.getOrElse("no_id_found")
 
   def groupBy(tags: Seq[Node], f: Node=>String, grouper: Seq[Node] => Node) =
      {

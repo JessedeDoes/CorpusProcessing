@@ -3,6 +3,7 @@ import corpusprocessing.clariah_training_corpora.crm_to_huggingface.training_sub
 
 import scala.xml._
 import fixTokenization.{bartje, getId}
+import posmapping.TagsetDiachroonNederlands
 
 import java.io.{File, PrintWriter}
 import utils.{PostProcessXML, ProcessFolder}
@@ -17,8 +18,10 @@ import org.json4s.jackson.Serialization.write
 
 
 
+
 trait tei_to_huggingface_trait {
   trait Sentence {
+    def id:Option[String] = None
     def toTSV(addSourceLine: Boolean=false) : String = {
 
       this match {
@@ -37,7 +40,7 @@ trait tei_to_huggingface_trait {
     def file: String = "unknown"
   }
   case class PimpedSentence(
-                       id: String,
+                       override val id: Option[String],
                        tokens: List[String],
                        tags: List[String],
                        lemmata: List[String],
@@ -49,7 +52,7 @@ trait tei_to_huggingface_trait {
                      ) extends Sentence
 
   case class BasicSentence(
-                             id: String,
+                             override val  id: Option[String],
                              tokens: List[String],
                              tags: List[String],
                              lemmata: List[String],
@@ -78,18 +81,25 @@ trait tei_to_huggingface_trait {
 
   val split_test_train_on_document_level = false
   val training_subsets : Int = 1
-  val output_folder= "/tmp"
-  val output_prefix = "tei_to_huggingface"
+  lazy val output_folder= "/tmp"
+  lazy val output_prefix = "tei_to_huggingface"
   val enhance : Boolean = false
   val addStuff: Boolean = false
 
   implicit val formats = DefaultFormats
 
+  def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
+    a.key.equals("id")).map(a => a.value.toString).headOption
+
+  def tagMapping(s: String)  = s
+
   def sentence(s: Node, f: String): Sentence = {
 
     def getN(n: Node) =  (n \ "@n").text
 
+    val id: Option[String]  = getId(s)
 
+    // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s")
 
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val indexedTokenElements = tokenElements.zipWithIndex
@@ -101,7 +111,7 @@ trait tei_to_huggingface_trait {
 
     //System.err.println(relevances)
 
-    val xml_ids =  tokenElements.map(x => getId(x))
+    val xml_ids =  tokenElements.map(x => getId(x).getOrElse("no_id_found"))
 
     def enhancePos(w: Node, i: Int) = {
       val p =  (w \ "@pos").headOption.getOrElse(w \ "@type").text.trim
@@ -131,16 +141,18 @@ trait tei_to_huggingface_trait {
     // println(s.attributes.toString + "->" + partition)
 
     val r = if (addStuff)
-      PimpedSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids, file=f, relevances=relevances,hilex_pos=hilex_pos,partition = partition)
-    else BasicSentence("",tokens, if (enhance) enhancedTags else tags, lemmata, xml_ids, file=f)
+      PimpedSentence(id,tokens, if (enhance) enhancedTags else tags.map(tagMapping), lemmata, xml_ids, file=f, relevances=relevances,hilex_pos=hilex_pos,partition = partition)
+    else BasicSentence(id,tokens, if (enhance) enhancedTags else tags.map(tagMapping), lemmata, xml_ids, file=f)
     r
   }
 
   def decentSentence(s: Sentence, b: Partition)  = true
 
+  val maxje = 100
   def pickPartition(): Partition = {
     val r = Math.random()
     val portion = Math.floor(Math.random()* this.training_subsets).toInt
+
     val partition = if (r < p_train)
       TRAIN
     else if (r < p_train + p_dev)
@@ -148,10 +160,11 @@ trait tei_to_huggingface_trait {
     else TEST
 
     val p1 = if (partition.part == TRAIN.part && this.training_subsets > 1) partition.copy(portion = portion) else partition
-    Console.err.println(s"$r -> $p1 ($p_train, $p_dev)")
+    // Console.err.println(s"$r -> $p1 ($p_train, $p_dev)")
     p1
   }
-  def Nodes2JSON(documents: Iterator[(String, Elem)], outputPrefix: String,  sentence_element:String=sentence_element): Unit =
+
+  def processDocuments(documents: Iterator[(String, Elem)], outputPrefix: String, sentence_element:String=sentence_element): Unit =
   {
 
     Console.err.println(s"Output to: $outputPrefix")
@@ -188,26 +201,35 @@ trait tei_to_huggingface_trait {
     //println("Sentences:" + s0.size  + " Words: " + words)
 
     val s1: Iterator[(Sentence, Partition)] = sampled.zipWithIndex.map({
-      case ((s:PimpedSentence,b),i) => s.copy(id=i.toString) -> b
-      case ((s:BasicSentence,b),i) => s.copy(id=i.toString) -> b
+      case ((s:PimpedSentence,b),i) => s.copy(id=Some(s.id.getOrElse(i.toString))) -> b
+      case ((s:BasicSentence,b),i) => s.copy(id=Some(s.id.getOrElse(i.toString))) -> b
     })
 
-    val jsons: Iterator[(String, String, Partition, String)] = s1.map({case (s: Sentence,b) => (write(s), s.toTSV(), b, s.file)})
+    val sentencesForExport: Iterator[(String, String, Partition, String, String)] = s1.map({case (s: Sentence,b) => (write(s), s.toTSV(), b, s.file, s.id.getOrElse("no_id_found"))})
 
-    val partitionedDocuments: Set[(String, Partition)] = jsons.map({ case (json, tsv, b, f) =>
+    val partitionedSentences: Set[(String, Partition, String)] = sentencesForExport.map({ case (json, tsv, b, f, id) =>
       val pwJSON = printWritersJSON(b)
       val pwTSV = printWritersTSV(b)
 
       pwTSV.println("")
       pwTSV.println(tsv)
       pwJSON.println(json)
-      f -> b
+
+      (f,b,id)
     }).toSet
 
+
     if (this.split_test_train_on_document_level) {
-      partitionedDocuments.foreach({case (f,p) =>
+      val partitionedDocuments = partitionedSentences.map({case (a,b,c) => (a,b)})
+        partitionedDocuments.foreach({case (f,p) =>
         val pw = printWritersDocumentPartition(p)
         pw.println(f)
+      })
+    } else {
+      partitionedSentences.foreach({
+        case (f, p, id) =>
+          val pw = printWritersDocumentPartition(p)
+          pw.println(s"$f\t$id")
       })
     }
 
@@ -232,7 +254,7 @@ trait tei_to_huggingface_trait {
     }})
   }
 
-  def toJSON(filenames: Seq[String], fout: String, preprocess: Elem=>Elem = x => x): Unit = Nodes2JSON(filenames.iterator.map(x => x -> preprocess(XML.load(x))), fout)
+  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = x => x): Unit = processDocuments(filenames.iterator.map(x => x -> preprocess(XML.load(x))), outputPrefix)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
@@ -247,7 +269,7 @@ trait tei_to_huggingface_trait {
   val default_dataset = ideeen
   def default_process(e: Elem)  = e
 
-  val default_folder = "hadjememaar"
+  lazy val default_folder = "hadjememaar"
 
   val max_files = Integer.MAX_VALUE
 
@@ -262,7 +284,7 @@ trait tei_to_huggingface_trait {
 
     println(filesToProcess)
     val maybeShuffled = if (this.training_subsets > 1) Random.shuffle(filesToProcess) else filesToProcess
-    toJSON(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = default_process)
+    makeTrainingMaterialSplit(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = default_process)
   }
 }
 
@@ -270,41 +292,6 @@ object tei_to_huggingface extends tei_to_huggingface_trait {
 }
 
 
-object clariah_15 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/15/CobaltServeExport/"
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_15/test_train/"
-  override val output_prefix = "nederval_15"
-}
-
-
-object clariah_16 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/16/CobaltServeExport/"
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_16/test_train/"
-  override val output_prefix = "nederval_16"
-}
-
-object clariah_17 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/17_thomas/"
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_17/test_train/"
-  override val output_prefix = "nederval_17"
-}
-object clariah_18 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/18_thomas/"
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_18/test_train/"
-  override val output_prefix = "nederval_18"
-}
-
-object clariah_19 extends  tei_to_huggingface_trait {
-  override val default_folder = "../nephomant/data/nederval/19_thomas/"
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/evaluation_set_19/test_train/"
-  override val output_prefix = "nederval_19"
-}
-
-object clariah_several {
-  def main(args: Array[String])  = {
-    List(clariah_15, clariah_16, clariah_17, clariah_18, clariah_19).foreach(_.main(Array()))
-  }
-}
 
 object gtbcit_to_huggingface extends tei_to_huggingface_trait {
   val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
@@ -332,9 +319,9 @@ object gtbcit_to_huggingface extends tei_to_huggingface_trait {
 
 object ofr_to_huggingface extends tei_to_huggingface_trait {
   override val pos_attribute = "@type"
-  override   val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
+  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
   override val split_test_train_on_document_level = true
-  override val output_prefix = "ofr"
+  override lazy val output_prefix = "ofr"
   override def decentSentence(s: Sentence, b: Partition)  =  {
     val tags =  s.asInstanceOf[BasicSentence].tags
     tags.count(_.nonEmpty) > 0.7 * tags.size
@@ -343,31 +330,40 @@ object ofr_to_huggingface extends tei_to_huggingface_trait {
 
 object bab_to_huggingface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
-  override val output_prefix: String = "bab"
+  override lazy val output_prefix: String = "bab"
   override val max_files: Int = Integer.MAX_VALUE
   override val training_subsets: Int = 10
-  override val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/BaB/All/"  + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
+  override lazy val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/BaB/All/"  + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   new File(output_folder).mkdir()
-  override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
 }
 
-object gysseling_to_hugginface extends tei_to_huggingface_trait {
+object gysseling_to_huggingface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
-  override val output_prefix: String = "gys"
+  override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
-  override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
-  override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+}
+
+object gysseling_to_huggingface_core extends tei_to_huggingface_trait {
+  override def tagMapping(s: String) = TagsetDiachroonNederlands.mapMultipleTagToCore(s).replaceAll("position=prenom.postnom.pred","position=uncl")
+  override val split_test_train_on_document_level: Boolean = true
+  override lazy val output_prefix: String = "gys"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
 
 object crm_to_huggingface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
-  override val output_prefix: String = "CRM"
+  override lazy val output_prefix: String = "CRM"
   override val max_files: Int = Integer.MAX_VALUE // 500
   override val training_subsets: Int = 10
-  override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/" + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/" + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   //override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/"
-  override val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
 }
 
 

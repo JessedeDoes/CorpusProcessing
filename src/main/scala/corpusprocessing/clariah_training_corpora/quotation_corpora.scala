@@ -7,12 +7,12 @@ object quotation_corpora {
 
 case class QuotationCorpus(sourceFolder: String, name: String) extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
-  override val output_prefix: String = name
+  override lazy val output_prefix: String = name
   override val max_files: Int = Integer.MAX_VALUE
   override val training_subsets: Int = 10
-  override val output_folder: String = sourceFolder + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
+  override lazy val output_folder: String = sourceFolder + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   // new java.io.File(output_folder).mkdir()
-  override val default_folder = sourceFolder + "/" + "CobaltServeExport"
+  override lazy val default_folder = sourceFolder + "/" + "CobaltServeExport"
 }
 
 object QuotationCorpora {
@@ -29,7 +29,7 @@ object q19 extends QuotationCorpus(baseDir + "gtbcit_19", "gtbcit_19")
 
 object qMix extends QuotationCorpus("aap", name="gtbcit") {
   val corpora = List(q15,q16,q17,q18,q19)
-  override val output_folder: String =  "/tmp/"
+  override lazy val output_folder: String =  "/tmp/"
   val folders = corpora.map(_.default_folder).toArray
   override def main(args: Array[String])  = {
     super.main(folders)

@@ -17,7 +17,7 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
   val patchedTag = if (!tag.endsWith(")")) s"$tag()" else tag
 
 
-  val tagToParse = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=oth)" else patchedTag.replaceAll(",oth", ",type=oth")
+  val tagToParse: String = if (Tag.findFirstIn(patchedTag).isEmpty) "RES(type=oth)" else patchedTag.replaceAll(",oth", ",type=oth")
 
   if (Tag.findFirstIn(tagToParse).isEmpty)
   {
@@ -68,13 +68,17 @@ case class CHNStyleTag(tag: String, tagset: TagSet = null) extends Tag(tag,tagse
     this.copy(tag =  this.toString(newFeatures))
   }
 
+  def removeFeatures(fNames: Set[String]) : CHNStyleTag = {
+    fNames.foldLeft(this)({case (t,f) => t.removeFeature(f)})
+  }
+
   def normalizeFeatureValue(n: String, v: String): String= {
     if (tagset == null) v else tagset.normalizeFeatureValue(n,v)
   }
 
   def featureValue(fn: String) = this.features.filter(_.name == fn).map(_.value).mkString("|")
 
-  lazy val features_sorted = if (tagset == null) features else {
+  lazy val features_sorted: Seq[Feature] = if (tagset == null) features else {
     val pos = features.find(_.name == "pos").map(_.value).getOrElse("UNK")
     val lijstje: Map[String, Int] = tagset.pos2partitions.getOrElse(pos, List()).zipWithIndex.toMap
     val additions = features.filter(f => !lijstje.contains(f.name)).zipWithIndex.map({case (x,i) => (x.name,lijstje.size + i)}).toMap

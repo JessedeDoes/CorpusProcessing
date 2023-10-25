@@ -33,17 +33,34 @@ object TagsetDiachroonNederlands {
     "RES" -> List("type", "WF")
   )
 
-  def integratedTag(tag: String) = CHNStyleTag(tag, TDNTagset)
+  def integratedTag(tag: String): CHNStyleTag = CHNStyleTag(tag, TDNTagset)
   //case class IntegratedTag(tag: String) extends CHNStyleTag(tag, TDNTagset)
+
+  /*
+    Issues:
+    - positie bij AA, NUM, PD (dit is de ergste)
+    - graad bij AA
+    - refl/recip afhankelijk van lemma oplossen
+    - w en d pronomina bij vragend/betrekkelijk/aanwijzend afhankelijk van lemma kiezen
+   */
+  def mapToCore(tag: CHNStyleTag): CHNStyleTag = {
+    val mainpos = tag.pos
+    val c = coreFeatures(mainpos) ++ List("pos")
+    val featsToRemove = tag.features.filter(f => !c.contains(f.name)).map(_.name).toSet
+    tag.removeFeatures(featsToRemove)
+  }
+
+  def mapToCore(tag: String): String = {
+    mapToCore(integratedTag(tag)).toString
+  }
+
+  def mapMultipleTagToCore(tag: String): String = tag.split("\\+").map(mapToCore).mkString("+")
 
   def printTagsetXML(tagset: TagSet, corpusName: String, pw: PrintWriter = new PrintWriter(System.out)): Unit = {
     //val xmlWriter = new PrintWriter(System.out)
     pw.println(TagSet.pretty.format(tagset.toXML(corpus=corpusName)))
     pw.close()
   }
-
-
-
 
   /*
    lazy val features_sorted = if (tagset == null) features else {
