@@ -99,11 +99,15 @@ trait tei_to_huggingface_trait {
 
     val id: Option[String]  = getId(s)
 
-    // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s")
+    // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s") ((x \ "choice").nonEmpty)
 
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
     val indexedTokenElements = tokenElements.zipWithIndex
-    val tokens = tokenElements.map(x => if ( (x \\ "seg").nonEmpty) (x \\ "seg").text  else x.text.trim)
+    val tokens =
+      tokenElements.map(x =>
+        if ( (x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ")
+        else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
+        else x.text.trim)
     val tags = tokenElements.map(x => (x \ pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
@@ -327,7 +331,17 @@ object ofr_to_huggingface extends tei_to_huggingface_trait {
     tags.count(_.nonEmpty) > 0.7 * tags.size
   }
 }
-
+//
+object onw_to_huggingface extends tei_to_huggingface_trait {
+  override val pos_attribute = "@pos"
+  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022/"
+  override val split_test_train_on_document_level = false
+  override lazy val output_prefix = "onw"
+  override def decentSentence(s: Sentence, b: Partition)  =  {
+    val tags =  s.asInstanceOf[BasicSentence].tags
+    tags.count(t => t.nonEmpty && !t.contains("RES")) > 0.6 * tags.size
+  }
+}
 object bab_to_huggingface extends tei_to_huggingface_trait {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "bab"
