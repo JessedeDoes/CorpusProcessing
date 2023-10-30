@@ -115,6 +115,9 @@ object PostProcessXML {
   def replaceAttribute(e: Elem, name: String, v: String): Elem = {
     e.copy(attributes = e.attributes.filter(_.key != name).append(new UnprefixedAttribute(name, v, Null)))
   }
+
+  // stuff voor ditcorpus
+   def sequence(l: Seq[Elem => Elem], d: Elem):Elem = l.foldLeft(d)({case (e,f) => f(e)})
 }
 
 // ToDo deze manier van cachen is niet threadsafe
