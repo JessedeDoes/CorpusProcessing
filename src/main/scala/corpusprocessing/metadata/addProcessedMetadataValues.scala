@@ -106,7 +106,7 @@ case class addProcessedMetadataValues() {
 
   def renameFactuality(b: Elem) = {
 
-    val sourceID = getField(b,"sourceID").head
+    val sourceID = getField(b,"sourceID")
 
     def rename(ig: Elem) = {
       val t = (ig \ "@type").text.replaceAll("factuality","fictionality")
@@ -116,7 +116,7 @@ case class addProcessedMetadataValues() {
       z
     }
 
-    if (sourceID.matches("corpusgysseling.[01].*")) PostProcessXML.updateElement(b, e => (e \ "@type").text.contains("fact"), rename) else b
+    if (sourceID.nonEmpty && sourceID.head.matches("corpusgysseling.[01].*")) PostProcessXML.updateElement(b, e => (e \ "@type").text.contains("fact"), rename) else b
   }
 
   lazy val addedFieldNames = List("witness_year_from",
@@ -138,6 +138,7 @@ case class addProcessedMetadataValues() {
     "Subcorpus")
 
   def enrichBibl(b0: Elem): Elem = {
+
 
     val b = renameFactuality(moveHistory(b0))
 
@@ -175,6 +176,7 @@ case class addProcessedMetadataValues() {
 
     val decade: Seq[String] = Seq((average - (average % 10)).toString)
     val datering: Seq[String] = Seq(witness_year_from.headOption.getOrElse("?")  + "-"  + witness_year_to.headOption.getOrElse("?"))
+
 
     val toAdd: Seq[(String, Seq[String])] =
       List("witness_year_from" -> witness_year_from,
@@ -214,6 +216,7 @@ case class addProcessedMetadataValues() {
 
 
   def addProcessedMetadataValues(d: Elem) = {
+
     PostProcessXML.updateElement(d,
       l => l.label == "listBibl" &&
         (getId(l).map(x => x.toLowerCase.contains("inlmetadata")
@@ -318,19 +321,31 @@ object enDanEindhoven extends addProcessedMetadataValues() {
 
 
 object jamaarCLVN extends addProcessedMetadataValues() {
-  def main(args: Array[String]): Unit = {
-    import utils.ProcessFolder
 
-    def putPosInPos(w: Elem) = {
-      val pos = (w \ "@type").text
-      val newAtts = w.attributes.filter(_.key != "type").append(new UnprefixedAttribute("pos", pos, Null))
-      w.copy(attributes = newAtts)
-    }
+  import utils.ProcessFolder
+
+  def putPosInPos(w: Elem) = {
+
+    val pos = (w \ "@type").text
+    val newAtts = w.attributes.filter(_.key != "type").append(new UnprefixedAttribute("pos", pos, Null))
+    w.copy(attributes = newAtts)
+  }
+  def fix(d0: Elem): Elem = {
+
+    val d1 = onwCorpus.wrapWordContent(d0)
+
+    val d = PostProcessXML.updateElement(addProcessedMetadataValues(d1), _.label == "w", putPosInPos)
+
+    d
+  }
+  def main(args: Array[String]): Unit = {
+
+
+
     def fixFile(in: String, out: String) =
     {
       val d0 = XML.load(in)
-      val d1 = onwCorpus.wrapWordContent(d0)
-      val d = PostProcessXML.updateElement(addProcessedMetadataValues(d1), _.label == "w", putPosInPos)
+      val d = fix(d0)
 
       if (this.nice) {
         val p = new scala.xml.PrettyPrinter(300, 4)

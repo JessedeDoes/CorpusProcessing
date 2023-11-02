@@ -17,12 +17,12 @@ object onwCorpus {
 
   import Settings._
 
-  val extras = io.Source.fromFile(extra).getLines.map(l => l.split("\\t",-1).toList).toStream
+  lazy val extras = io.Source.fromFile(extra).getLines.map(l => l.split("\\t",-1).toList).toStream
 
 
-  val articleId = extras.map(l => l(0) -> l(1)).filter(_._2.trim.nonEmpty).toMap
+  lazy val articleId = extras.map(l => l(0) -> l(1)).filter(_._2.trim.nonEmpty).toMap
 
-  val vulgaat = extras.map(l => l(0) -> l(2)).filter(_._2.trim.nonEmpty).toMap
+  lazy val vulgaat = extras.map(l => l(0) -> l(2)).filter(_._2.trim.nonEmpty).toMap
 
   // vulgaat.foreach(println)
 

@@ -38,7 +38,10 @@ object clariah_19 extends  nederval {
 object clariah_several {
   def main(args: Array[String])  = {
     List(
-      //clariah_15,
-      clariah_16, clariah_17, clariah_18, clariah_19).foreach(_.main(Array()))
+      clariah_15
+
+      //clariah_16, clariah_17, clariah_18, clariah_19
+       )
+      .foreach(_.main(Array()))
   }
 }
