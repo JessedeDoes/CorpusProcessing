@@ -45,16 +45,18 @@ case class Book(alignments: Alignments, verses: Stream[Verse]) {
   def linkCorresp(v: Verse): String = links.filter(_._1.xmlId == v.ref.xmlId).flatMap({ case (r, s) =>  s.map(r1 => s"#${r1.xmlId}") }).toSet.mkString(" ")
   def printTo(f: String, includeLinks: Boolean = false)  = {
     val pretty = new PrettyPrinter(1000, 2)
-    val formatted = pretty.format(this.toXML(includeLinks))
+    val x = this.toXML(includeLinks)
+    lazy val formatted = pretty.format(x)
     // println(formatted)
     val pw = new java.io.PrintWriter(f)
-    pw.println(formatted)
+    //pw.println(formatted)
+    prettyPrinting.prettyScala(pw, x)
     pw.close()
   }
 
   lazy val chapters = Chapter.chapterise(verses)
   val chapterise: Boolean = true
-  def toXML(includeLinks: Boolean = false) = {
+  def toXML(includeLinks: Boolean = false): Elem = {
     <TEI xmlns="http://www.tei-c.org/ns/1.0">
       <teiHeader>
         <fileDesc><titleStmt><title>{this.toString}</title></titleStmt></fileDesc>
