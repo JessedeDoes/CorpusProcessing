@@ -2,7 +2,7 @@ package corpusprocessing.edges.openEdges.align
 
 object decodeAlignment {
 
-  def decodeAlignment(lines: Stream[String], words1: Stream[Seq[String]], words2: Stream[Seq[String]]) = {
+  def decodeAlignment(lines: Stream[String], words1: Stream[Seq[String]], words2: Stream[Seq[String]]): Seq[(String, Seq[String])] = {
 
     val alignment: Seq[Seq[(Int, Int)]] = lines.map(l => l.split("\\s+").filter(_.nonEmpty).map(s => {
       val x = s.split("-");

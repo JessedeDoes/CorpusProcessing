@@ -35,7 +35,7 @@ object fastAlign {
       val href = (x \ "@href").text
       val dir = new File(fileName).getParentFile.getCanonicalPath
       val included = XML.load(dir + "/" + href)
-      included
+      x.copy(child = included)
     })
 
     val d2 = makeIdsGloballyUnique(d1)
@@ -47,7 +47,7 @@ object fastAlign {
     val simpleSimplyLinking = simpleVerses.filter(w => getLang(w) == "nl" && idsOfSimpleVerses.contains((w \ "@corresp").text.replaceAll("#", "")))
     val linkedVerses = simpleSimplyLinking.map(v => v -> simpleVerseMap((v \ "@corresp").text.replaceAll("#", "")))
 
-    println(linkedVerses.size)
+    println(s"all verses: ${allVerses.size}, Dutch simply linked: ${simpleSimplyLinking.size}")
 
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
     val tokenizedVerses = linkedVerses.map({ case (v1, v2) => {
@@ -73,7 +73,8 @@ object fastAlign {
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command  lineStream;
     val alignedWordIds: Seq[(String, Seq[String])] = decodeAlignment.decodeAlignment(lines, ids1, ids2)
-    alignedWordIds.foreach(println)
+    println(s"Found ${alignedWordIds.size} word alignments in ${(d2 \\ "w").size} tokens")
+    // alignedWordIds.foreach(println)
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
     val linkGrp = <linkGrp type="word-alignment">{wordLinks}</linkGrp>
     val withLinks = PostProcessXML.updateElement(d2, _.label == "standOff", x => x.copy(child = x.child ++ linkGrp))
