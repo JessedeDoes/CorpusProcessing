@@ -16,7 +16,7 @@ case class Verse(verseId: String, verse: String, ref: VerseRef) {
     val v2 = v1.replaceAll("\\{(\\S+)\\}", "<expan>$1</expan>")
     val v3 = v2.replaceAll("\\[([^\\[\\]]+)\\]", "<add type='squarebrackets'>$1</add>")
     val v4 = s"<boiler>$v3</boiler>"
-    if (verse.contains("{")) println(v3)
+    // if (verse.contains("{")) println(v3)
     Try{XML.loadString(v4).child} match {
       case Success(x) => x
       case _ => verse

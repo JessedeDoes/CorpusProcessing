@@ -4,7 +4,7 @@ import corpusprocessing.edges.openEdges.gesleutel.alignment_files
 import java.io.PrintWriter
 import scala.xml._
 import Verse._
-import Alignments._
+import Alignment._
 
 
 
@@ -19,13 +19,10 @@ import java.io.File
 
 
 
-object gesleutel extends Bible(baseDir, Set( staten_darby)) {
+object gesleutel extends Bibles(baseDir, Set( staten_darby, staten_canisius, darby_canisius)) {
   def main(args: Array[String]) = {
-
-
-
     printBooks()
-    printBookPairs()
+    printBookAlignments()
     // a.foreach(println)
   }
 }

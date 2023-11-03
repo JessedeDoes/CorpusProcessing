@@ -27,14 +27,16 @@ object Chapter {
     groups.map{case (cid,l) => Chapter(cid,l.toSeq)}
   }
 }
-case class Book(alignments: Alignments, verses: Stream[Verse]) {
+case class Book(myBible: Bible, verses: Stream[Verse]) {
+  val bibles = myBible.bibles
   val ref = verses.head.ref
   val bible = ref.bible
   val language = ref.language
   val book = ref.book
 
+  val alignments: SetOfAlignments = bibles.allAlignments
   override def toString = s"$language.$bible.$book"
-  val links: Seq[(VerseRef, Set[VerseRef])] = verses.map(v => (v.ref -> alignments.aligned(v.ref)))
+  val links: Seq[(VerseRef, Set[VerseRef])] = verses.map(v => (v.ref -> alignments.alignments.flatMap(a => a.aligned(v.ref))))
 
   def link(a: String, b: String): Elem = <link type="sentence-alignment" target={s"#$a #$b"}/>   // <link from={r.xmlId} to={r1.xmlId}/>
   def link(a: VerseRef, b: VerseRef): Elem  = link(a.xmlId, b.xmlId)
@@ -44,6 +46,8 @@ case class Book(alignments: Alignments, verses: Stream[Verse]) {
 
   def linkCorresp(v: Verse): String = links.filter(_._1.xmlId == v.ref.xmlId).flatMap({ case (r, s) =>  s.map(r1 => s"#${r1.xmlId}") }).toSet.mkString(" ")
   def printTo(f: String, includeLinks: Boolean = false)  = {
+
+    Console.err.println(s"Printing book $book from bible $bible ....")
     val pretty = new PrettyPrinter(1000, 2)
     val x = this.toXML(includeLinks)
     lazy val formatted = pretty.format(x)
