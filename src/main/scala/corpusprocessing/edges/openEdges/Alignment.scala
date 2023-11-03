@@ -38,15 +38,23 @@ case class Alignment(correspondences: Set[Correspondence]) {
   lazy val index1: Map[String, Set[Correspondence]] = correspondences.flatMap(a => a.v1.map(r => r.xmlId -> a)).groupBy(_._1).mapValues(_.map(_._2))
   lazy val index2: Map[String, Set[Correspondence]] = correspondences.flatMap(a => a.v2.map(r => r.xmlId -> a)).groupBy(_._1).mapValues(_.map(_._2))
 
+  def isSimplyLinked(id: String) = {
+    val others = aligned(id)
+    others.size == 1 && aligned(others.head.xmlId).size == 1
+  }
 
   def nonEmpty = correspondences.nonEmpty
-  def aligned(v: VerseRef): Set[VerseRef] = {
-    val id = v.xmlId
+
+  def aligned(id: String) = {
     val a1 = index1.getOrElse(id, Set[Correspondence]())
     val a2 = index2.getOrElse(id, Set[Correspondence]())
     if (a1.nonEmpty) {
       a1.flatMap(_.v2)
     } else a2.flatMap(_.v1)
+  }
+  def aligned(v: VerseRef): Set[VerseRef] = {
+    val id = v.xmlId
+    aligned(id)
   }
 
   lazy val language1 = correspondences.head.v1.head.language

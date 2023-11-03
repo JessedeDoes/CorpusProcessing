@@ -1,5 +1,5 @@
 package corpusprocessing.edges.openEdges
-import corpusprocessing.edges.openEdges.gesleutel.alignment_files
+
 import java.io.PrintWriter
 import scala.xml._
 import Verse._
@@ -8,20 +8,24 @@ import Settings._
 import java.io.File
 import utils.ProcessFolder
 
+
 object dehelezooi {
-
-  lazy val alleZooi =ProcessFolder.filesIn(new File(Settings.baseDir + "/Alignments")).map(_.getCanonicalPath).filter(_.endsWith(".tsv")).filter(x => x.contains("nl-nl") || x.contains("en-nl") || x.contains("en-en"))
-
-  lazy val b = BibleCorpus(baseDir, alleZooi.toSet)
   def main(args: Array[String]) = {
-    b.printBooks()
-    b.printBookAlignments()
+    subcorpus_en_nl.printBooks()
+    subcorpus_en_nl.printBookAlignments()
   }
 }
-object gesleutel extends BibleCorpus(baseDir, Set( staten_darby, staten_canisius, darby_canisius)) {
+
+object addWordAlignment {
+  def main(args: Array[String])  = {
+    subcorpus_en_nl.addWordAlignment("Gen", genesis)
+  }
+}
+
+object gesleutel {
   def main(args: Array[String]) = {
-    printBooks()
-    printBookAlignments()
+    /// smaller_sample.printBookAlignments()
+    smaller_sample.addWordAlignment(bookname = "Gen", genesis)
     // a.foreach(println)
   }
 }

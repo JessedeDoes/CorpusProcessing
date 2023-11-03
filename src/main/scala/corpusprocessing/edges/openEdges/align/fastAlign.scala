@@ -1,11 +1,12 @@
 package corpusprocessing.edges.openEdges.align
 
 import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.edges.openEdges.Alignment
 
 import scala.xml._
 import utils.PostProcessXML
-import sys.process._
 
+import sys.process._
 import java.io.{File, PrintWriter}
 import scala.collection.immutable
 
@@ -20,17 +21,26 @@ object fastAlign {
 
   def tokenizedText(v: Node) = v.descendant.filter(x => Set("w").contains(x.label)).map(_.text.replaceAll("\\s+", "")).toSeq // .mkString(" ")
 
+  def addWordAlignment(bookDoc: Elem, alignment: Alignment) = {
+
+    val allVerses = (bookDoc \\ "ab")
+    val id2Verse: Map[String, Node] = allVerses.map(v => getId(v) -> v).toMap
+    val idsOfSimpleVerses = id2Verse.keySet.filter(alignment.isSimplyLinked(_))
+
+    println(s"Simple verses: ${idsOfSimpleVerses.size}")
+
+    //val simpleVerses = allVerses.filter(w => (w \ "@corresp").nonEmpty && !(w \ "@corresp").text.contains(" "))
+    //val idsOfSimpleVerses = simpleVerses.map(w => getId(w)).toSet
+    // val simpleVerseMap =  idsOfSimpleVerses// simpleVerses.map(v => getId(v) -> v).toMap
+    val simpleSimplyLinking: NodeSeq = allVerses.filter(v => idsOfSimpleVerses.contains(getId(v)))  // idsOfSimpleVerses.map(id2Verse)
 
 
-
-  def processFile(d2: Elem) = {
-
-    val allVerses = (d2 \\ "ab")
-    val simpleVerses = allVerses.filter(w => (w \ "@corresp").nonEmpty && !(w \ "@corresp").text.contains(" "))
-    val idsOfSimpleVerses = simpleVerses.map(w => getId(w)).toSet
-    val simpleVerseMap = simpleVerses.map(v => getId(v) -> v).toMap
-    val simpleSimplyLinking = simpleVerses.filter(w => getLang(w) == "nl" && idsOfSimpleVerses.contains((w \ "@corresp").text.replaceAll("#", "")))
-    val linkedVerses = simpleSimplyLinking.map(v => v -> simpleVerseMap((v \ "@corresp").text.replaceAll("#", "")))
+    val linkedVerses: immutable.Seq[(Node, Node)] = simpleSimplyLinking.map(v => v -> {
+      val id = getId(v)
+      val alignedId = alignment.aligned(id).head.xmlId
+      val alignedVerse = id2Verse(alignedId)
+      alignedVerse
+    }) // id2Verse((v \ "@corresp").text.replaceAll("#", "")))
 
     println(s"all verses: ${allVerses.size}, Dutch simply linked: ${simpleSimplyLinking.size}")
 
@@ -60,17 +70,19 @@ object fastAlign {
     val lines: Stream[String] = command  lineStream;
 
     val alignedWordIds: Seq[(String, Seq[String])] = decodeAlignment.decodeAlignment(lines, ids1, ids2)
-    println(s"Found ${alignedWordIds.size} word alignments in ${(d2 \\ "w").size} tokens")
+    println(s"Found ${alignedWordIds.size} word alignments in ${(bookDoc \\ "w").size} tokens")
     // alignedWordIds.foreach(println)
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
-    val linkGrp = <linkGrp type="word-alignment">{wordLinks}</linkGrp>
-    val withLinks = PostProcessXML.updateElement(d2, _.label == "standOff", x => x.copy(child = x.child ++ linkGrp))
+    val linkGrp = <standOff type="word-alignment">{wordLinks}</standOff>
+    val withLinks = PostProcessXML.updateElement(bookDoc, _.label == "teiCorpus", x => x.copy(child = x.child ++ linkGrp))
 
-    XML.save("/tmp/withWordLinks.xml", withLinks)
+
+    // XML.save("/tmp/withWordLinks.xml", withLinks)
+    withLinks
     // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
   }
 
   def main(args: Array[String]) = {
-    processFile(genesis)
+    // processFile(genesis)
   }
 }

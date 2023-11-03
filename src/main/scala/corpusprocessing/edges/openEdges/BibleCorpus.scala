@@ -6,7 +6,7 @@ import java.io.{File, PrintWriter}
 import scala.xml.PrettyPrinter
 import scala.xml._
 import utils.PostProcessXML
-
+import corpusprocessing.clariah_training_corpora.fixTokenization.getId
 
 case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
@@ -23,26 +23,47 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
     val a = e.attributes.filter(_.key != name).append(new PrefixedAttribute(prefix, name, value, Null))
     e.copy(attributes = a)
   }
+
+  def setAttribute(e: Elem, name: String, value: String): Elem = {
+    val a = e.attributes.filter(_.key != name).append(new UnprefixedAttribute(name, value, Null))
+    e.copy(attributes = a)
+  }
+
   def makeIdsGloballyUnique(d: Elem): Elem = {
-    PostProcessXML.updateElement(d, _.label == "ab", x => PostProcessXML.updateElement(x, _.label == "w", y => setAttribute(y, "xml", "id", getId(x) + "." + getId(y))))
+    PostProcessXML.updateElement(d, _.label == "ab", x => PostProcessXML.updateElement(x, e => Set("w","pc").contains(e.label), y => setAttribute(y, "xml", "id", getId(x) + "." + getId(y))))
+  }
+
+  def includeBooks(d: Elem, fileName: String) = {
+    PostProcessXML.updateElement(d, _.label == "include", x => {
+      val href = (x \ "@href").text.replaceAll("content", "tokenized")
+      val dir = new File(fileName).getParentFile.getCanonicalPath
+      val included = XML.load(dir + "/" + href)
+      setAttribute(x.copy(child = included), "href", href)
+    })
+  }
+
+  def removeBookIncludes(d: Elem)  = {
+    PostProcessXML.updateElement(d, _.label == "include", x => {
+      x.copy(child = Seq())
+    })
   }
 
   def addWordAlignment(bookname: String, fileName: String) = {
-     val bookXML = XML.load(fileName)
 
-    val  dBooksIncluded = PostProcessXML.updateElement(bookXML, _.label == "include", x => {
-      val href = (x \ "@href").text
-      val dir = new File(fileName).getParentFile.getCanonicalPath
-      val included = XML.load(dir + "/" + href)
-      x.copy(child = included)
-    })
+    val alignments = allAlignments.alignments.map(a => {
+      Alignment(a.correspondences.filter(_.book == bookname))
+    }).filter(_.nonEmpty)
+
+    alignments.foreach(a => println(a.correspondences.size))
+
+    val bookXML = XML.load(fileName)
+
+    val  dBooksIncluded = includeBooks(bookXML, fileName)
 
     val dUniqueIds = makeIdsGloballyUnique(dBooksIncluded)
 
-     val alignments = allAlignments.alignments.map(a => {
-       Alignment(a.correspondences.filter(_.book == bookname))
-     }).filter(_.nonEmpty)
-
+    val processed = alignments.foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
+    XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), removeBookIncludes(processed))
   }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {
