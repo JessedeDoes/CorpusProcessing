@@ -40,6 +40,7 @@ object fastAlign {
 
     println(s"all verses: ${allVerses.size}, Dutch simply linked: ${simpleSimplyLinking.size}")
 
+    // write input file for fastAlign
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
 
     val tokenizedVerses = linkedVerses.map({ case (v1, v2) => {
@@ -58,17 +59,19 @@ object fastAlign {
 
     alignmentFile.close()
 
+    // run fastAlign
+
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command  lineStream;
 
     val alignedWordIds: Seq[(String, Seq[String])] = decodeAlignment.decodeAlignment(lines, ids1, ids2)
+
     println(s"Found ${alignedWordIds.size} word alignments in ${(bookDoc \\ "w").size} tokens")
-    // alignedWordIds.foreach(println)
+
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
     val id = alignment.bible1 + "--" + alignment.bible2 + ".words"
     val linkGrp = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
     val withLinks = PostProcessXML.updateElement(bookDoc, _.label == "teiCorpus", x => x.copy(child = x.child ++ linkGrp))
-
 
     // XML.save("/tmp/withWordLinks.xml", withLinks)
     withLinks
