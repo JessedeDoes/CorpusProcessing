@@ -7,14 +7,19 @@ case class Bible(bibles: BibleCorpus, language: String, bible: String) {
   val textPath = bibles.baseDir + "Texts/" + language + "/" + bible + "/"
 
   lazy val books: Array[Book] = {
-    val files = new File(textPath).listFiles().filter(_.getName.endsWith(".tsv"))
-    files.map(f => {
-      Console.err.println(s"Reading bible book from $f")
-      val book = readBook(bible, f.getCanonicalPath)
-      Console.err.println(s"Finished reading bible book from $f")
-      book
-    })
+    val dir = new File(textPath)
+    if (dir.exists()) {
+      val files = dir.listFiles().filter(_.getName.endsWith(".tsv"))
+      files.map(f => {
+        Console.err.println(s"Reading bible book from $f")
+        val book = readBook(bible, f.getCanonicalPath)
+        Console.err.println(s"Finished reading bible book from $f")
+        book
+      })
+    } else Array()
   }
+
+  def isEmpty = books.isEmpty
 
   lazy val bookNames = books.map(_.book).toSet
 

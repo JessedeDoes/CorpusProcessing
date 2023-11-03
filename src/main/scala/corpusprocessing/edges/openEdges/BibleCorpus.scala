@@ -15,7 +15,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
   lazy val bibles: List[Bible] = {
     allAlignments.bibles.map{case (l,b) => Bible(this,l,b)}
-  }.toList
+  }.toList.filter(!_.isEmpty)
 
   lazy val allBookNames = bibles.flatMap(_.bookNames).toSet.toList.sorted
 
