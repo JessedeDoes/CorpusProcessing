@@ -62,8 +62,11 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
     val dUniqueIds = makeIdsGloballyUnique(dBooksIncluded)
 
-    val processed = alignments.foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
-    XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), removeBookIncludes(processed))
+    val wordAligner = align.fastAlign(dUniqueIds)
+    val wordAlignments = alignments.map(wordAligner.addWordAlignment) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
+    val noIncludes = removeBookIncludes(dUniqueIds)
+    val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignments))
+    XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), processed)
   }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {

@@ -13,18 +13,22 @@ import scala.collection.immutable
 /*
 Use fastAlign to add word alignment to verse-aligned bible XML
  */
-object fastAlign {
+case class fastAlign(bookDoc: Elem) {
   val genesis = "/mnt/Projecten/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/XMLConversie/alignment/en_1890_Darby.Gen--nl_1637_Staten.Gen.aligments.xml"
 
+
+  lazy val allVerses = (bookDoc \\ "ab")
+  lazy val id2Verse: Map[String, Node] = allVerses.map(v => getId(v) -> v).toMap
   def getLang(w: Node) = w.attributes.filter(_.key == "lang").value.text
 
 
   def tokenizedText(v: Node) = v.descendant.filter(x => Set("w").contains(x.label)).map(_.text.replaceAll("\\s+", "")).toSeq // .mkString(" ")
 
-  def addWordAlignment(bookDoc: Elem, alignment: Alignment) = {
+  def addWordAlignment(alignment: Alignment) = {
 
-    val allVerses = (bookDoc \\ "ab")
-    val id2Verse: Map[String, Node] = allVerses.map(v => getId(v) -> v).toMap
+
+    // deze twee hoeven niet iedere keer
+
     val idsOfSimpleVerses = id2Verse.keySet.filter(alignment.isSimplyLinked(_))
 
     println(s"Simple verses: ${idsOfSimpleVerses.size}")
@@ -71,14 +75,12 @@ object fastAlign {
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
     val id = alignment.bible1 + "--" + alignment.bible2 + ".words"
     val linkGrp = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
-    val withLinks = PostProcessXML.updateElement(bookDoc, _.label == "teiCorpus", x => x.copy(child = x.child ++ linkGrp))
+
+
 
     // XML.save("/tmp/withWordLinks.xml", withLinks)
-    withLinks
+    linkGrp
     // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
   }
 
-  def main(args: Array[String]) = {
-    // processFile(genesis)
-  }
 }
