@@ -17,28 +17,13 @@ object fastAlign {
 
   def getLang(w: Node) = w.attributes.filter(_.key == "lang").value.text
 
-  def setAttribute(e: Elem, prefix: String, name: String, value: String)  = {
-    val a = e.attributes.filter(_.key != name).append(new PrefixedAttribute(prefix, name, value, Null))
-    e.copy(attributes = a)
-  }
+
   def tokenizedText(v: Node) = v.descendant.filter(x => Set("w").contains(x.label)).map(_.text.replaceAll("\\s+", "")).toSeq // .mkString(" ")
 
 
-  def makeIdsGloballyUnique(d: Elem)  = {
-    PostProcessXML.updateElement(d, _.label == "ab", x => PostProcessXML.updateElement(x, _.label == "w", y => setAttribute(y, "xml", "id", getId(x)  + "." + getId(y))))
-  }
 
-  def loadFile(fileName: String) = {
-    val d = XML.load(fileName)
 
-    val d1 = PostProcessXML.updateElement(d, _.label == "include", x => {
-      val href = (x \ "@href").text
-      val dir = new File(fileName).getParentFile.getCanonicalPath
-      val included = XML.load(dir + "/" + href)
-      x.copy(child = included)
-    })
-
-    val d2 = makeIdsGloballyUnique(d1)
+  def processFile(d2: Elem) = {
 
     val allVerses = (d2 \\ "ab")
     val simpleVerses = allVerses.filter(w => (w \ "@corresp").nonEmpty && !(w \ "@corresp").text.contains(" "))
@@ -50,6 +35,7 @@ object fastAlign {
     println(s"all verses: ${allVerses.size}, Dutch simply linked: ${simpleSimplyLinking.size}")
 
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
+
     val tokenizedVerses = linkedVerses.map({ case (v1, v2) => {
       val t1 = tokenizedText(v1)
       val t2 = tokenizedText(v2)
@@ -72,6 +58,7 @@ object fastAlign {
     alignmentFile.close()
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command  lineStream;
+
     val alignedWordIds: Seq[(String, Seq[String])] = decodeAlignment.decodeAlignment(lines, ids1, ids2)
     println(s"Found ${alignedWordIds.size} word alignments in ${(d2 \\ "w").size} tokens")
     // alignedWordIds.foreach(println)
@@ -84,6 +71,6 @@ object fastAlign {
   }
 
   def main(args: Array[String]) = {
-    loadFile(genesis)
+    processFile(genesis)
   }
 }

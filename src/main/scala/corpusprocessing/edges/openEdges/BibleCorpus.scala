@@ -4,8 +4,8 @@ import corpusprocessing.edges.openEdges.Alignment.readCorrespondences
 
 import java.io.{File, PrintWriter}
 import scala.xml.PrettyPrinter
-
-
+import scala.xml._
+import utils.PostProcessXML
 
 
 case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
@@ -19,6 +19,31 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
   lazy val allBookNames = bibles.flatMap(_.bookNames).toSet.toList.sorted
 
+  def setAttribute(e: Elem, prefix: String, name: String, value: String): Elem = {
+    val a = e.attributes.filter(_.key != name).append(new PrefixedAttribute(prefix, name, value, Null))
+    e.copy(attributes = a)
+  }
+  def makeIdsGloballyUnique(d: Elem): Elem = {
+    PostProcessXML.updateElement(d, _.label == "ab", x => PostProcessXML.updateElement(x, _.label == "w", y => setAttribute(y, "xml", "id", getId(x) + "." + getId(y))))
+  }
+
+  def addWordAlignment(bookname: String, fileName: String) = {
+     val bookXML = XML.load(fileName)
+
+    val  dBooksIncluded = PostProcessXML.updateElement(bookXML, _.label == "include", x => {
+      val href = (x \ "@href").text
+      val dir = new File(fileName).getParentFile.getCanonicalPath
+      val included = XML.load(dir + "/" + href)
+      x.copy(child = included)
+    })
+
+    val dUniqueIds = makeIdsGloballyUnique(dBooksIncluded)
+
+     val alignments = allAlignments.alignments.map(a => {
+       Alignment(a.correspondences.filter(_.book == bookname))
+     }).filter(_.nonEmpty)
+
+  }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {
     new File(toDir).mkdir()

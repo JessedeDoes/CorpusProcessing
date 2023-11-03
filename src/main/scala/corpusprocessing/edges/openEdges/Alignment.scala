@@ -11,6 +11,7 @@ case class Correspondence(v1: Set[VerseRef], v2: Set[VerseRef]) {
       {refPairs.map { case (r1, r2) => <link type="verse-alignment" target={s"#${r1.xmlId} #${r2.xmlId}"}/> }}
     </linkGrp>
       }
+   lazy val book  = v1.headOption.map(_.book).getOrElse("no_book_how_bad")
 }
 
 object Alignment {
@@ -21,14 +22,15 @@ object Alignment {
     val b1 = parts(0).replaceAll("\\.tsv", "")
     val b2 = parts(1).replaceAll("\\.tsv", "")
 
-    val correspondences = io.Source.fromFile(path).getLines().map(l => {
+    val source = io.Source.fromFile(path)
+    val correspondences = source.getLines().map(l => {
       val parts = l.split("\\t")
       val verses_1 = parts(0).split(",").map(x => verse(b1, x)).toSet
       val verses_2 = parts(1).split(",").map(x => verse(b2, x)).toSet
       Correspondence(verses_1, verses_2)
-    }).filter(x => x.v1.nonEmpty && x.v2.nonEmpty)
-
-    Alignment(correspondences.toSet)
+    }).filter(x => x.v1.nonEmpty && x.v2.nonEmpty).toSet
+    source.close()
+    Alignment(correspondences)
   }
 }
 

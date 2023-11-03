@@ -24,7 +24,8 @@ case class Bible(bibles: BibleCorpus, language: String, bible: String) {
   lazy val bookNames = books.map(_.book).toSet
 
   def readBook(bible: String, bookPath: String): Book = {
-    val verses = io.Source.fromFile(bookPath).getLines().zipWithIndex.map({ case (l, i) => {
+    val source = io.Source.fromFile(bookPath)
+    val verses = source.getLines().zipWithIndex.map({ case (l, i) => {
       val parts = l.split("\t")
       val verseId = parts(0)
       val verse = parts(1)
@@ -33,7 +34,8 @@ case class Bible(bibles: BibleCorpus, language: String, bible: String) {
       val ref = VerseRef(bible, book, n)
       Verse(verseId, verse, ref)
     }
-    }).toStream
+    }).toList.toStream
+    source.close()
     Book(this, verses)
   }
 
