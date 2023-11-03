@@ -73,7 +73,8 @@ object fastAlign {
     println(s"Found ${alignedWordIds.size} word alignments in ${(bookDoc \\ "w").size} tokens")
     // alignedWordIds.foreach(println)
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
-    val linkGrp = <standOff type="word-alignment">{wordLinks}</standOff>
+    val id = alignment.bible1 + "--" + alignment.bible2 + ".words"
+    val linkGrp = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
     val withLinks = PostProcessXML.updateElement(bookDoc, _.label == "teiCorpus", x => x.copy(child = x.child ++ linkGrp))
 
 
