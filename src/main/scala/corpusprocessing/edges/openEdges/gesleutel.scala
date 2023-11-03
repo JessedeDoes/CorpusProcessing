@@ -22,13 +22,13 @@ object dehelezooi {
 
   lazy val alleZooi =ProcessFolder.filesIn(new File(Settings.baseDir + "/Alignments")).map(_.getCanonicalPath).filter(_.endsWith(".tsv"))
 
-  lazy val b = Bibles(baseDir, alleZooi.toSet)
+  lazy val b = BibleCorpus(baseDir, alleZooi.toSet)
   def main(args: Array[String]) = {
     b.printBooks()
     b.printBookAlignments()
   }
 }
-object gesleutel extends Bibles(baseDir, Set( staten_darby, staten_canisius, darby_canisius)) {
+object gesleutel extends BibleCorpus(baseDir, Set( staten_darby, staten_canisius, darby_canisius)) {
   def main(args: Array[String]) = {
     printBooks()
     printBookAlignments()

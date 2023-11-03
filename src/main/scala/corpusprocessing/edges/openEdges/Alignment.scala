@@ -15,7 +15,7 @@ case class Correspondence(v1: Set[VerseRef], v2: Set[VerseRef]) {
 
 object Alignment {
   def readCorrespondences(path: String) = {
-
+    Console.err.println(s"Reading alignment from $path...")
     val name = new java.io.File(path).getName
     val parts = name.split("-")
     val b1 = parts(0).replaceAll("\\.tsv", "")
@@ -58,7 +58,7 @@ case class Alignment(correspondences: Set[Correspondence]) {
   def filterByBook(bookName: String): Set[Correspondence] = correspondences.filter(_.v1.exists(_.book == bookName))
 }
 
-case class SetOfAlignments(bible: Bibles, paths: Set[String]) {
+case class SetOfAlignments(bible: BibleCorpus, paths: Set[String]) {
   lazy val alignments = paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
   lazy val bibles: Set[(String, String)] = alignments.flatMap(_.bibles)
 }

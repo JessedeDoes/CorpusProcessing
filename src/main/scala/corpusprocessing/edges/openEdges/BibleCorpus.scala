@@ -6,13 +6,14 @@ import java.io.{File, PrintWriter}
 import scala.xml.PrettyPrinter
 
 
-case class Bible(bibles: Bibles, language: String, bible: String) {
+case class Bible(bibles: BibleCorpus, language: String, bible: String) {
 
   val textPath= bibles.baseDir + "Texts/" + language + "/" + bible + "/"
 
   lazy val books: Array[Book] = {
     val files = new File(textPath).listFiles().filter(_.getName.endsWith(".tsv"))
     files.map(f => {
+      Console.err.println(s"Reading bible book from $f")
       val book = readBook(bible, f.getCanonicalPath)
       book
     })
@@ -36,7 +37,7 @@ case class Bible(bibles: Bibles, language: String, bible: String) {
   def getBook(book: String): Option[Book] = books.find(_.book == book)
 }
 
-case class Bibles(baseDir: String, alignment_files: Set[String]) {
+case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
   lazy val allAlignments = SetOfAlignments(this, alignment_files)
 
