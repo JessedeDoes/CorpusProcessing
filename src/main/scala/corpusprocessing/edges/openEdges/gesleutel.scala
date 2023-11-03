@@ -20,7 +20,7 @@ import utils.ProcessFolder
 
 object dehelezooi {
 
-  lazy val alleZooi =ProcessFolder.filesIn(new File(Settings.baseDir + "/Alignments")).map(_.getCanonicalPath).filter(_.endsWith(".tsv"))
+  lazy val alleZooi =ProcessFolder.filesIn(new File(Settings.baseDir + "/Alignments")).map(_.getCanonicalPath).filter(_.endsWith(".tsv")).filter(x => x.contains("nl-nl") || x.contains("en-nl"))
 
   lazy val b = BibleCorpus(baseDir, alleZooi.toSet)
   def main(args: Array[String]) = {
