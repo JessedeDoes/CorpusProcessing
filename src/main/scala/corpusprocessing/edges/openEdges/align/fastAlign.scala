@@ -29,11 +29,7 @@ object fastAlign {
 
     println(s"Simple verses: ${idsOfSimpleVerses.size}")
 
-    //val simpleVerses = allVerses.filter(w => (w \ "@corresp").nonEmpty && !(w \ "@corresp").text.contains(" "))
-    //val idsOfSimpleVerses = simpleVerses.map(w => getId(w)).toSet
-    // val simpleVerseMap =  idsOfSimpleVerses// simpleVerses.map(v => getId(v) -> v).toMap
     val simpleSimplyLinking: NodeSeq = allVerses.filter(v => idsOfSimpleVerses.contains(getId(v)))  // idsOfSimpleVerses.map(id2Verse)
-
 
     val linkedVerses: immutable.Seq[(Node, Node)] = simpleSimplyLinking.map(v => v -> {
       val id = getId(v)
@@ -52,13 +48,8 @@ object fastAlign {
       val ids1 = (v1 \\ "w").map(getId)
       val ids2 = (v2 \\ "w").map(getId)
       alignmentFile.println(s"${t1.mkString(" ")} ||| ${t2.mkString(" ")}")
-
-      /* println("         ")
-      println(v1.text.replaceAll("\\s+", " "))
-      println(v2.text.replaceAll("\\s+", " ")) */
       (t1, t2, ids1, ids2)
-    }
-    })
+    }})
 
     val t1 = tokenizedVerses.map(_._1).toStream
     val t2 = tokenizedVerses.map(_._2).toStream
@@ -66,6 +57,7 @@ object fastAlign {
     val ids2 = tokenizedVerses.map(_._4).toStream
 
     alignmentFile.close()
+
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command  lineStream;
 
