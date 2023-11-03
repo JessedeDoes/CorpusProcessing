@@ -50,9 +50,9 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
   def addWordAlignment(bookname: String, fileName: String) = {
 
-    val alignments = allAlignments.alignments.map(a => {
+    val alignments: List[Alignment] = allAlignments.alignments.map(a => {
       Alignment(a.correspondences.filter(_.book == bookname))
-    }).filter(_.nonEmpty)
+    }).filter(_.nonEmpty).toList
 
     alignments.foreach(a => println(a.correspondences.size))
 
@@ -63,10 +63,16 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
     val dUniqueIds = makeIdsGloballyUnique(dBooksIncluded)
 
     val wordAligner = align.fastAlign(dUniqueIds)
+    val start = System.currentTimeMillis()
     val wordAlignments = alignments.zipWithIndex.map({
-      case (a,i) =>
-         println(s"!!!! Start word alignment on book $bookname, at $i of ${alignments.size} alignments")
-         wordAligner.addWordAlignment(a)}) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
+      case (a, i) =>
+        val start = System.currentTimeMillis()
+        println(s"######################################!!!! Start word alignment on book $bookname, at $i of ${alignments.size} alignments")
+        val r = wordAligner.addWordAlignment(a)
+        val end = System.currentTimeMillis()
+        println(s"######################################!!!! End word alignment on book $bookname, at $i of ${alignments.size} alignments, took ${end - start} ms")
+        r
+    }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
     val noIncludes = removeBookIncludes(dUniqueIds)
     val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignments))
     XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), processed)
