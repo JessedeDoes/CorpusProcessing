@@ -38,9 +38,9 @@ object fastAlign {
     val linkedVerses: immutable.Seq[(Node, Node)] = simpleSimplyLinking.map(v => v -> {
       val id = getId(v)
       val alignedId = alignment.aligned(id).head.xmlId
-      val alignedVerse = id2Verse(alignedId)
+      val alignedVerse = id2Verse.getOrElse(alignedId, <nope/>)
       alignedVerse
-    }) // id2Verse((v \ "@corresp").text.replaceAll("#", "")))
+    }).filter(_._2.label != "nope")
 
     println(s"all verses: ${allVerses.size}, Dutch simply linked: ${simpleSimplyLinking.size}")
 
