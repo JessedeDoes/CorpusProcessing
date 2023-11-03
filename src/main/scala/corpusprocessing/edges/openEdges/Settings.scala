@@ -11,6 +11,7 @@ object Settings {
    val staten_darby = en_nl + "en_1890_Darby-nl_1637_Staten.tsv"
    val darby_canisius = en_nl + "en_1890_Darby-nl_1939_Canisius.tsv"
    val genesis = "/media/jesse/Data/Corpora/Edges/TEI/alignments/Gen.xml"
+   val zeph = "/media/jesse/Data/Corpora/Edges/TEI/alignments/Zeph.xml"
    lazy val files_en_nl = ProcessFolder.filesIn(new File(Settings.baseDir + "/Alignments")).map(_.getCanonicalPath).filter(_.endsWith(".tsv")).filter(x => x.contains("nl-nl") || x.contains("en-nl") || x.contains("en-en"))
 
    lazy val subcorpus_en_nl = BibleCorpus(baseDir, files_en_nl.toSet)
