@@ -69,7 +69,7 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
         <body>
           <div type="book">
             {if (chapterise)
-              chapters.map(c => <div type="chapter" id={c.cid}>{c.verses.map(v => v.toXML(corresp=linkCorresp(v)))}</div>)
+              chapters.map(c => <div type="chapter" xml:id={c.cid}>{c.verses.map(v => v.toXML(corresp=linkCorresp(v)))}</div>)
             else verses.map(v => v.toXML(corresp=linkCorresp(v)))}
           </div>
         </body>
