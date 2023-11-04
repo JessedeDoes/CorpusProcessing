@@ -19,10 +19,10 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
   }.toList.filter(!_.isEmpty)
 
   lazy val allBookNames = bibles.flatMap(_.bookNames).toSet.toList.sorted
-  
+
   def includeBooks(d: Elem, fileName: String) = {
     PostProcessXML.updateElement(d, _.label == "include", x => {
-      val href = (x \ "@href").text.replaceAll("content", "tokenized")
+      val href = (x \ "@href").text.replaceAll("content", "ids-fixed")
       val dir = new File(fileName).getParentFile.getCanonicalPath
       val included = XML.load(dir + "/" + href)
       setAttribute(x.copy(child = included), "href", href)
@@ -47,7 +47,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
     val  dBooksIncluded = includeBooks(bookXML, fileName)
 
-    val dUniqueIds = makeIdsGloballyUnique(dBooksIncluded)
+    val dUniqueIds = dBooksIncluded // makeIdsGloballyUnique(dBooksIncluded)
 
     val wordAligner = align.fastAlign(dUniqueIds)
     val start = System.currentTimeMillis()
