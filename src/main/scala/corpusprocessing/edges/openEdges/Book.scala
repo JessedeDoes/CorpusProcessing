@@ -30,10 +30,10 @@ object Chapter {
 case class Book(myBible: Bible, verses: Stream[Verse]) {
   val bibles = myBible.bibles
   val ref = verses.head.ref
-  val bible = ref.bible
+  val bible: String = ref.bible
   val language = ref.language
   val book = ref.book
-
+  val pid = s"$bible.$book"
   val alignments: SetOfAlignments = bibles.allAlignments
   override def toString = s"$language.$bible.$book"
   val links: Seq[(VerseRef, Set[VerseRef])] = verses.map(v => (v.ref -> alignments.alignments.flatMap(a => a.aligned(v.ref))))
@@ -58,18 +58,43 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
     pw.close()
   }
 
+  def headerFields = {
+    val year = bible.replaceAll(".*([0-9]{4})", "$1")
+    val name = bible.replaceAll(".*[0-9]{4}", "")
+
+    Map("witnessYearLevel2From" -> year, "titleLevel2" -> name, "titleLevel1" -> book, "pid" -> pid)
+  }
+
+  def interpjes = headerFields.map({case (n,v) => <interpGrp type={n}><interp>{v}</interp></interpGrp>})
   lazy val chapters = Chapter.chapterise(verses)
   val chapterise: Boolean = true
   def toXML(includeLinks: Boolean = false): Elem = {
     <TEI xmlns="http://www.tei-c.org/ns/1.0">
       <teiHeader>
-        <fileDesc><titleStmt><title>{this.toString}</title></titleStmt></fileDesc>
+        <fileDesc>
+          <titleStmt>
+            <title>{this.toString}</title>
+            <respStmt>
+              <resp>Conversion, encoding, enrichment</resp>
+              <name>Instituut voor de Nederlandse Taal</name>
+            </respStmt>
+          </titleStmt>
+          <publicationStmt>
+            <publisher>Instituut voor de Nederlandse Taal</publisher>
+            <pubPlace>Leiden</pubPlace>
+            <date>2023</date>
+            <availability>
+              <p>Via online dictionary application: https://edges.ivdnt.org</p>
+            </availability>
+          </publicationStmt>
+        </fileDesc>
+        <sourceDesc><bibl type="intMetadata">{interpjes}</bibl></sourceDesc>
       </teiHeader>
       <text xml:lang={language} xml:id={s"$bible.$book"}>
         <body>
           <div type="book">
             {if (chapterise)
-              chapters.map(c => <div type="chapter" xml:id={c.cid}>{c.verses.map(v => v.toXML(corresp=linkCorresp(v)))}</div>)
+              chapters.map(c => <div type="chapter" n={bible + "." + c.cid}>{c.verses.map(v => v.toXML(corresp=linkCorresp(v)))}</div>)
             else verses.map(v => v.toXML(corresp=linkCorresp(v)))}
           </div>
         </body>

@@ -11,6 +11,13 @@ import utils.ProcessFolder
 
 object dehelezooi {
   def main(args: Array[String]) = {
+    complete_corpus.printBooks()
+    complete_corpus.printBookAlignments()
+  }
+}
+
+object en_nl {
+  def main(args: Array[String]) = {
     subcorpus_en_nl.printBooks()
     subcorpus_en_nl.printBookAlignments()
   }
