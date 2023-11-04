@@ -62,7 +62,7 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
     val year = bible.replaceAll(".*([0-9]{4}).*", "$1")
     val bibleName = bible.replaceAll(".*_([0-9]{4})_(.*)", "$2 $1")
 
-    Map("witnessYearLevel2From" -> year, "titleLevel2" -> bibleName, "titleLevel1" -> s"book ($bibleName)", "pid" -> pid)
+    Map("witnessYearLevel2From" -> year, "titleLevel2" -> bibleName, "titleLevel1" -> s"$book ($bibleName)", "pid" -> pid)
   }
 
   def interpjes = headerFields.map({case (n,v) => <interpGrp type={n}><interp>{v}</interp></interpGrp>})
