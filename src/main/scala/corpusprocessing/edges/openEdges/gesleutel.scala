@@ -25,7 +25,7 @@ object en_nl {
 
 object addWordAlignment {
   def main(args: Array[String])  = {
-    subcorpus_en_nl.addWordAlignment("Zeph", zeph)
+    complete_corpus.addWordAlignment("Gen", genesis)
   }
 }
 
