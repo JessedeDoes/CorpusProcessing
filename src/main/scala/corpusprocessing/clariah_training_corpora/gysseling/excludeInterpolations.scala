@@ -1,5 +1,7 @@
 package corpusprocessing.clariah_training_corpora.gysseling
 
+import corpusprocessing.clariah_training_corpora.tei_to_huggingface_trait
+import posmapping.TagsetDiachroonNederlands
 import utils.PostProcessXML
 
 import scala.xml._
@@ -71,7 +73,7 @@ case class Exclusion(docje: Elem)
     val spans = biblz.flatMap(b => {
       (b \\ "span").map(s => Span(b, (s \ "@from").text.replaceAll("#",""), (s \ "@to").text.replaceAll("#","")) )
     })
-    spans.filter(_.hasDate).foreach(println)
+    // spans.filter(_.hasDate).foreach(println)
     val forbidden = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn)
     PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
       if (forbidden.contains(w) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
@@ -79,4 +81,46 @@ case class Exclusion(docje: Elem)
   }
 
   val sample = <root><c1/><c2><c3/></c2></root>
+}
+
+object gysseling_to_huggingface extends tei_to_huggingface_trait {
+  override val split_test_train_on_document_level: Boolean = true
+  override lazy val output_prefix: String = "gys"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+}
+
+object gysseling_to_huggingface_core extends tei_to_huggingface_trait {
+  override def tagMapping(s: String) = TagsetDiachroonNederlands.mapMultipleTagToCore(s).replaceAll("position=prenom.postnom.pred","position=uncl")
+  override val split_test_train_on_document_level: Boolean = true
+  override lazy val output_prefix: String = "gys"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+}
+object gysseling_to_huggingface_filtered extends tei_to_huggingface_trait {
+
+  override val training_subsets: Int = 1
+  import corpusprocessing.clariah_training_corpora.Partition
+  override def preprocess(x: Elem) = excludeInterpolations.exclude(x)
+
+  val unfiltered = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
+
+  lazy val partitionsFromLists = new java.io.File(unfiltered).listFiles(_.getName.endsWith("filenames")).flatMap(f => {
+    val files = io.Source.fromFile(f).getLines.toSet
+    val partition = f.getName.replaceAll(".*(test|train|dev).*","$1")
+    files.map(f => f -> Partition(partition, -1))
+  }).toMap
+  override def pickPartition(f: Option[String]): Partition =
+    if (f.isEmpty || !partitionsFromLists.contains(f.get)) super.pickPartition(f) else {
+      val z = partitionsFromLists(f.get)
+      println(s"$f: $z")
+      z
+    }
+  override val split_test_train_on_document_level: Boolean = true
+  override lazy val output_prefix: String = "gys"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }

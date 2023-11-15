@@ -17,8 +17,13 @@ import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
 
 
+case class Partition(part: String, portion: Int) {
+  lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion > 0) s"$part.$portion" else part
+}
 
-
+object TRAIN extends Partition("train", -1)
+object DEV extends Partition("dev", -1)
+object TEST extends  Partition("test", -1)
 trait tei_to_huggingface_trait {
   trait Sentence {
     def id:Option[String] = None
@@ -65,12 +70,8 @@ trait tei_to_huggingface_trait {
 
   val chunkSize = 50
 
-  case class Partition(part: String, portion: Int) {
-     lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1) s"$part.$portion" else part
-  }
-  val TRAIN: Partition = Partition("train",-1)
-  val DEV: Partition = Partition("dev", -1)
-  val TEST: Partition = Partition("test",-1)
+
+
 
   lazy val partitions = if (training_subsets <= 1) List(TRAIN, DEV,  TEST) else (0 to training_subsets).map(i => TRAIN.copy(portion = i)).toList ++ List(DEV, TEST)
 
@@ -260,7 +261,8 @@ trait tei_to_huggingface_trait {
     }})
   }
 
-  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = x => x): Unit = processDocuments(filenames.iterator.map(x => x -> preprocess(XML.load(x))), outputPrefix)
+  def preprocess(x: Elem)  = x
+  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.map(x => x -> preprocess(XML.load(x))), outputPrefix)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
   lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
@@ -290,7 +292,7 @@ trait tei_to_huggingface_trait {
 
     println(filesToProcess)
     val maybeShuffled = if (this.training_subsets > 1) Random.shuffle(filesToProcess) else filesToProcess
-    makeTrainingMaterialSplit(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = default_process)
+    makeTrainingMaterialSplit(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = preprocess)
   }
 }
 
@@ -354,30 +356,10 @@ object bab_to_huggingface extends tei_to_huggingface_trait {
   override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
 }
 
-object gysseling_to_huggingface extends tei_to_huggingface_trait {
-  override val split_test_train_on_document_level: Boolean = true
-  override lazy val output_prefix: String = "gys"
-  override val max_files: Int = Integer.MAX_VALUE // 500
-  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
-}
 
-object gysseling_to_huggingface_filtered extends tei_to_huggingface_trait {
-  override val split_test_train_on_document_level: Boolean = true
-  override lazy val output_prefix: String = "gys"
-  override val max_files: Int = Integer.MAX_VALUE // 500
-  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
-}
 
-object gysseling_to_huggingface_core extends tei_to_huggingface_trait {
-  override def tagMapping(s: String) = TagsetDiachroonNederlands.mapMultipleTagToCore(s).replaceAll("position=prenom.postnom.pred","position=uncl")
-  override val split_test_train_on_document_level: Boolean = true
-  override lazy val output_prefix: String = "gys"
-  override val max_files: Int = Integer.MAX_VALUE // 500
-  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
-}
+
+
 
 
 object crm_to_huggingface extends tei_to_huggingface_trait {
