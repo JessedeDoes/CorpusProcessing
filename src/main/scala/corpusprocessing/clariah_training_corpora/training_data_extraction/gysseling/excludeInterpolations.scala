@@ -25,7 +25,7 @@ case class Exclusion(docje: Elem)
 {
   lazy val d1 = numberNodes(docje)._1.asInstanceOf[Elem]
   lazy val idIndex = (d1.descendant.filter(_.isInstanceOf[Elem])).map(e => e.attributes.filter(_.key == "id").map(_.value.text).mkString("") -> e).toMap.filter(_._1.nonEmpty)
-  def f(n: Int)  = String.format("%05d", n.asInstanceOf[Object])
+  def f(n: Int): String  = String.format("%08d", n.asInstanceOf[Object])
   def numberNodes(n: Node, k: Int=0): (Node,Int)  = {
     val (newChildren,kk) = n.child.foldLeft[(Seq[Node], Int)](Seq[Node]()->(k+1))({case ((seq, n),node) =>
        val (n1,k1) =  numberNodes(node,n)
@@ -66,21 +66,24 @@ case class Exclusion(docje: Elem)
   def isSupplied(w: Elem)  = {
     (w \ "seg").text.trim == (w \ "seg" \ "supplied").text.trim && ((w \ "@type").text == "999")
   }
-  def apply()  = {
+  def apply(): Elem = {
+    Console.err.println("Start exclusions....")
     val e1 = d1
     val biblz = (e1 \\ "bibl").filter(b => (b \\ "span").nonEmpty)
 
     val spans = biblz.flatMap(b => {
       (b \\ "span").map(s => Span(b, (s \ "@from").text.replaceAll("#",""), (s \ "@to").text.replaceAll("#","")) )
     })
-    // spans.filter(_.hasDate).foreach(println)
+
     val forbidden = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn)
-    PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
+
+    val r= PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
       if (forbidden.contains(w) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
     })
+    Console.err.println("....End exclusions")
+    r
   }
 
-  val sample = <root><c1/><c2><c3/></c2></root>
 }
 
 object gysseling_to_huggingface extends extract_training_data_trait {

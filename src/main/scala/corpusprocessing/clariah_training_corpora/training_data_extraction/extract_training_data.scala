@@ -11,7 +11,7 @@ import scala.xml._
 // {"id":"0","tokens":["@paulwalk","It","'s","the","view","from","where","I","'m","living","for","two","weeks",".","Empire","State","Building","=","ESB",".","Pretty","bad","storm","here","last","evening","."],"ner_tags":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,0,7,0,0,0,0,0,0,0,0]}
 import org.json4s._
 import org.json4s.jackson.Serialization.write
-
+import Sentence._
 
 case class Partition(part: String, portion: Int) {
   lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion >= 0) s"$part.$portion" else part
@@ -21,22 +21,13 @@ object TRAIN extends Partition("train", -1)
 object DEV extends Partition("dev", -1)
 object TEST extends  Partition("test", -1)
 trait extract_training_data_trait {
-   val sentence_element="q"
+
+  val sentence_element="q"
   val pos_attribute = "@pos"
-
-
   val chunkSize = 50
-
-
-
-
   lazy val partitions = if (training_subsets <= 1) List(TRAIN, DEV,  TEST) else (0 to training_subsets).map(i => TRAIN.copy(portion = i)).toList ++ List(DEV, TEST)
-
-
-
   val p_train = 0.75
   val p_dev = 0.125
-
   val split_test_train_on_document_level = false
   val training_subsets : Int = 1
   lazy val output_folder= "/tmp"
@@ -53,7 +44,7 @@ trait extract_training_data_trait {
 
   def transformToken(w: Node): Node = w
 
-  import Sentence._
+
 
 
   def decentSentence(s: Sentence, b: Partition)  = true
@@ -70,7 +61,7 @@ trait extract_training_data_trait {
     else TEST
 
     val p1 = if (partition.part == TRAIN.part && this.training_subsets > 1) partition.copy(portion = portion) else partition
-    // Console.err.println(s"$r -> $p1 ($p_train, $p_dev)")
+
     p1
   }
 
@@ -87,7 +78,6 @@ trait extract_training_data_trait {
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.filenames.gz")))).toMap
 
     val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
-
       case (f: String, x: Node) => {
         val documentPartition = pickPartition(Some(f))
         if ((x \\ sentence_element).nonEmpty)
@@ -106,9 +96,6 @@ trait extract_training_data_trait {
     val sentences: Iterator[(Sentence,Partition)] = partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f,this) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
     val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
-
-    //val words = (d \\ "w").size
-    //println("Sentences:" + s0.size  + " Words: " + words)
 
     val s1: Iterator[(Sentence, Partition)] = sampled.zipWithIndex.map({
       case ((s:PimpedSentence,b),i) => s.copy(id=Some(s.id.getOrElse(i.toString))) -> b
@@ -167,18 +154,8 @@ trait extract_training_data_trait {
   def preprocess(x: Elem): Elem = x
   def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.map(x => x -> preprocess(XML.load(x))), outputPrefix)
 
-  val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
-  lazy val ideeen: Seq[String] = new java.io.File(openDBNL).listFiles().filter(_.getName.contains("mult")).toSeq.map(_.getCanonicalPath)
 
-  val example = "data/20220421_cobalt/CobaltServeExport/docpid_1.xml"
-
-  val BaB = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.7CHN/" // ai heeft geen zinnen..... Willekeurig aanmaken?
-  val dbnl19 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie19"
-  val dbnl18 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie18"
-
-
-  val default_dataset: Seq[String] = ideeen
-  // def default_process(e: Elem): Elem = e
+  val default_dataset: Seq[String] = Seq()
 
   lazy val default_folder = "hadjememaar"
 
@@ -193,14 +170,12 @@ trait extract_training_data_trait {
       if (f.isFile) Seq(f.getCanonicalPath) else f.listFiles.toSeq.map(_.getCanonicalPath)
      })
 
-    println(filesToProcess)
+    // println(filesToProcess)
     val maybeShuffled = if (this.training_subsets > 1) Random.shuffle(filesToProcess) else filesToProcess
     makeTrainingMaterialSplit(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = preprocess)
   }
 }
 
-  object extract_training_data extends extract_training_data_trait {
-}
 
 
 
