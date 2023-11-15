@@ -93,6 +93,8 @@ trait tei_to_huggingface_trait {
 
   def tagMapping(s: String)  = s
 
+  def transformToken(w: Node) = w
+
   def sentence(s: Node, f: String): Sentence = {
 
     def getN(n: Node) =  (n \ "@n").text
@@ -101,7 +103,7 @@ trait tei_to_huggingface_trait {
 
     // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s") ((x \ "choice").nonEmpty)
 
-    val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label))
+    val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(transformToken)
     val indexedTokenElements = tokenElements.zipWithIndex
     val tokens =
       tokenElements.map(x =>
@@ -153,7 +155,7 @@ trait tei_to_huggingface_trait {
   def decentSentence(s: Sentence, b: Partition)  = true
 
   val maxje = 100
-  def pickPartition(): Partition = {
+  def pickPartition(f: Option[String]): Partition = {
     val r = Math.random()
     val portion = Math.floor(Math.random()* this.training_subsets).toInt
 
@@ -183,7 +185,7 @@ trait tei_to_huggingface_trait {
     val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
 
       case (f: String, x: Node) => {
-        val documentPartition = pickPartition()
+        val documentPartition = pickPartition(Some(f))
         if ((x \\ sentence_element).nonEmpty)
           (x \\ sentence_element).iterator.map(s => (f,s,documentPartition))
         else {
@@ -252,7 +254,7 @@ trait tei_to_huggingface_trait {
       if (split_test_train_on_document_level) {
         (s,p)
       } else {
-        val p1 = pickPartition()
+        val p1 = pickPartition(None)
         (s,p1)
       }
     }})
@@ -357,6 +359,14 @@ object gysseling_to_huggingface extends tei_to_huggingface_trait {
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+}
+
+object gysseling_to_huggingface_filtered extends tei_to_huggingface_trait {
+  override val split_test_train_on_document_level: Boolean = true
+  override lazy val output_prefix: String = "gys"
+  override val max_files: Int = Integer.MAX_VALUE // 500
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered/"
   override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
