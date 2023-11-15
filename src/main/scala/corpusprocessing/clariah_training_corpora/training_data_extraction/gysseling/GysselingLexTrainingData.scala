@@ -1,7 +1,7 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.training_data_extraction.gysseling
 
+import java.io.PrintWriter
 import scala.xml._
-import java.io.{File,PrintWriter}
 object GysselingLexTrainingData {
   val max = Int.MaxValue
   case class Word(word: String, pos: String, lemma: String) {

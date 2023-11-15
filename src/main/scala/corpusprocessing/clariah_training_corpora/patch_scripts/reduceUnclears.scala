@@ -1,4 +1,5 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.patch_scripts
+
 import utils.PostProcessXML._
 import utils.ProcessFolder
 

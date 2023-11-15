@@ -1,9 +1,10 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.patch_scripts
 
-import scala.xml._
-import fixTokenization.getId
-import java.io.File
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import utils.{PostProcessXML, ProcessFolder}
+
+import java.io.File
+import scala.xml._
 object fixBotchedOrder {
   val correctOrderDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/Mapped2TDN/"
   val inputDir = "/mnt/Projecten/Corpora/Historische_Corpora/TrainingCorpora/PostProcessed/"

@@ -1,6 +1,7 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.training_data_extraction
+
 import java.io.File;
-trait nederval extends tei_to_huggingface_trait {
+trait nederval extends extract_training_data_trait {
   val name = "nederval"
   override val sentence_element="s"
   val base_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/NederlabSetjes/"

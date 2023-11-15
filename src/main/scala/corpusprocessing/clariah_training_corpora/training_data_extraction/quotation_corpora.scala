@@ -1,11 +1,11 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.training_data_extraction
 
 object quotation_corpora {
 
 }
 
 
-case class QuotationCorpus(sourceFolder: String, name: String) extends tei_to_huggingface_trait {
+case class QuotationCorpus(sourceFolder: String, name: String) extends extract_training_data_trait {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = name
   override val max_files: Int = Integer.MAX_VALUE
@@ -19,8 +19,8 @@ object QuotationCorpora {
   val baseDir  = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/"
 }
 
-import QuotationCorpora._
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.training_data_extraction.QuotationCorpora._
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import utils.PostProcessXML
 
 object q15 extends QuotationCorpus(baseDir + "gtbcit_15", "gtbcit_15")
@@ -94,7 +94,7 @@ object headertje {
     </teiHeader>
 }
 
-import scala.util.{Try,Success,Failure}
+import scala.util.{Failure, Success, Try}
 object boilerplate {
 
   val bad = Set("entry-id", "partition", "sense-id", "timeSpan", "modern-lemma", "lexicon", "time", "valid")

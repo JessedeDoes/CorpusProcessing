@@ -1,4 +1,5 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.patch_scripts
+
 import utils.{PostProcessXML, ProcessFolder}
 
 import java.io.{File, PrintWriter}

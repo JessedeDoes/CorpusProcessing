@@ -1,6 +1,6 @@
-package corpusprocessing.clariah_training_corpora.gysseling
+package corpusprocessing.clariah_training_corpora.training_data_extraction.gysseling
 
-import corpusprocessing.clariah_training_corpora.tei_to_huggingface_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 import posmapping.TagsetDiachroonNederlands
 import utils.PostProcessXML
 
@@ -83,7 +83,7 @@ case class Exclusion(docje: Elem)
   val sample = <root><c1/><c2><c3/></c2></root>
 }
 
-object gysseling_to_huggingface extends tei_to_huggingface_trait {
+object gysseling_to_huggingface extends extract_training_data_trait {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
@@ -91,7 +91,7 @@ object gysseling_to_huggingface extends tei_to_huggingface_trait {
   override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
-object gysseling_to_huggingface_core extends tei_to_huggingface_trait {
+object gysseling_to_huggingface_core extends extract_training_data_trait {
   override def tagMapping(s: String) = TagsetDiachroonNederlands.mapMultipleTagToCore(s).replaceAll("position=prenom.postnom.pred","position=uncl")
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
@@ -99,10 +99,11 @@ object gysseling_to_huggingface_core extends tei_to_huggingface_trait {
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
   override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
-object gysseling_to_huggingface_filtered extends tei_to_huggingface_trait {
+object gysseling_to_huggingface_filtered extends extract_training_data_trait {
 
   override val training_subsets: Int = 1
-  import corpusprocessing.clariah_training_corpora.Partition
+
+  import corpusprocessing.clariah_training_corpora.training_data_extraction.Partition
   override def preprocess(x: Elem) = excludeInterpolations.exclude(x)
 
   val unfiltered = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"

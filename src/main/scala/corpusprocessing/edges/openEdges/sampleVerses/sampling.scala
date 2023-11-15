@@ -1,6 +1,6 @@
 package corpusprocessing.edges.openEdges.sampleVerses
 import corpusprocessing.edges.openEdges.Settings.{en_nl, teiDir, tokenizedContentDir}
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import scala.xml._
 import java.io.File
 import utils.PostProcessXML._

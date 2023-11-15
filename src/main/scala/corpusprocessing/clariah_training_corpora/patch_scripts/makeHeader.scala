@@ -1,22 +1,20 @@
-package corpusprocessing.clariah_training_corpora
+package corpusprocessing.clariah_training_corpora.patch_scripts
+
+import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 import utils.PostProcessXML
 
-import scala.xml._
 import java.io.{File, PrintWriter}
+import scala.xml._
 
 package object floep
 {
   def getId(n: Node):String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") || a.key.equals("id")).map(a => a.value.toString).headOption.getOrElse("?")
 }
 
-import floep._
-import utils.PostProcessXML._
-import org.json4s.DefaultFormats
-import org.json4s._
-import org.json4s.jackson.JsonMethods._
+import corpusprocessing.clariah_training_corpora.patch_scripts.floep._
 import org.json4s.native.JsonMethods.parse
-import org.json4s.native.Serialization.write
-import java.io.File
+import org.json4s.{DefaultFormats, _}
+import utils.PostProcessXML._
 /*
 {"id":"168","tokens":["Ik","lees","voor","me","pleizier",",","meneer",",","als","ik","lees","."],"tags":["PD(type=pers,position=free)","VRB(finiteness=fin,tense=pres)","ADP(type=pre)","PD(type=poss,position=prenom)","NOU-C(number=sg)","LET","NOU-C(number=sg)","LET","CONJ(type=sub)","PD(type=pe
 rs,position=free)","VRB(finiteness=fin,tense=pres)","LET"]}
@@ -53,9 +51,9 @@ object readOldPartitions {
   }
 }
 
-import readOldPartitions._
+import corpusprocessing.clariah_training_corpora.patch_scripts.readOldPartitions._
 
-object tei_2_json extends tei_to_huggingface_trait {
+object tei_2_json extends extract_training_data_trait {
    // override def sample(sentences: Iterator[(tei_2_json.Sentence, Boolean)], sample_rate: Double, rate_test_train: Double): Iterator[(tei_2_json.Sentence, Boolean)] = sentences.map({case (s,b) => (s, s.partition.contains("test"))})
 
 }

@@ -1,19 +1,15 @@
-package corpusprocessing.clariah_training_corpora
-import corpusprocessing.clariah_training_corpora.crm_to_huggingface.training_subsets
+package corpusprocessing.clariah_training_corpora.training_data_extraction
 
-import scala.xml._
-import fixTokenization.{bartje, getId}
-import posmapping.TagsetDiachroonNederlands
+import corpusprocessing.clariah_training_corpora.training_data_extraction.crm_to_huggingface.training_subsets
+import utils.PostProcessXML
 
 import java.io.{File, PrintWriter}
-import utils.{PostProcessXML, ProcessFolder}
-
 import java.util.zip.GZIPOutputStream
 import scala.util.Random
+import scala.xml._
 
 // {"id":"0","tokens":["@paulwalk","It","'s","the","view","from","where","I","'m","living","for","two","weeks",".","Empire","State","Building","=","ESB",".","Pretty","bad","storm","here","last","evening","."],"ner_tags":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,7,8,8,0,7,0,0,0,0,0,0,0,0]}
 import org.json4s._
-import org.json4s.jackson.Serialization
 import org.json4s.jackson.Serialization.write
 
 
@@ -24,7 +20,7 @@ case class Partition(part: String, portion: Int) {
 object TRAIN extends Partition("train", -1)
 object DEV extends Partition("dev", -1)
 object TEST extends  Partition("test", -1)
-trait tei_to_huggingface_trait {
+trait extract_training_data_trait {
   trait Sentence {
     def id:Option[String] = None
     def toTSV(addSourceLine: Boolean=false) : String = {
@@ -296,80 +292,8 @@ trait tei_to_huggingface_trait {
   }
 }
 
-object tei_to_huggingface extends tei_to_huggingface_trait {
+  object extract_training_data extends extract_training_data_trait {
 }
 
-
-
-object gtbcit_to_huggingface extends tei_to_huggingface_trait {
-  val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
-
-  override  def always_sampled(s1: Sentence) = {
-    val s = s1.asInstanceOf[PimpedSentence]
-    s.hilex_pos.indices.exists(i => s.relevances(i) == "yes" && s.hilex_pos(i).matches(".*(PD|CON|ADP|NUM|INT)"))
-  }
-
-  def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
-
-  override def decentSentence(s: Sentence, b: Partition)  = s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
-
-  def propagateHilexPos(d: Elem): Elem = {
-    PostProcessXML.updateElement(d,_.label=="cit", cit =>  {
-      val pos = (cit \ "@pos").text
-      // System.err.println(pos)
-      PostProcessXML.updateElement(cit,_.label=="w", w => setPos(w,pos))
-    })
-  }
-
-  override def default_process(e: Elem): Elem = propagateHilexPos(e)
-
-}
-
-object ofr_to_huggingface extends tei_to_huggingface_trait {
-  override val pos_attribute = "@type"
-  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
-  override val split_test_train_on_document_level = true
-  override lazy val output_prefix = "ofr"
-  override def decentSentence(s: Sentence, b: Partition)  =  {
-    val tags =  s.asInstanceOf[BasicSentence].tags
-    tags.count(_.nonEmpty) > 0.7 * tags.size
-  }
-}
-//
-object onw_to_huggingface extends tei_to_huggingface_trait {
-  override val pos_attribute = "@pos"
-  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022/"
-  override val split_test_train_on_document_level = false
-  override lazy val output_prefix = "onw"
-  override def decentSentence(s: Sentence, b: Partition)  =  {
-    val tags =  s.asInstanceOf[BasicSentence].tags
-    tags.count(t => t.nonEmpty && !t.contains("RES")) > 0.6 * tags.size
-  }
-}
-object bab_to_huggingface extends tei_to_huggingface_trait {
-  override val split_test_train_on_document_level: Boolean = true
-  override lazy val output_prefix: String = "bab"
-  override val max_files: Int = Integer.MAX_VALUE
-  override val training_subsets: Int = 10
-  override lazy val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/BaB/All/"  + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
-  new File(output_folder).mkdir()
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
-}
-
-
-
-
-
-
-
-object crm_to_huggingface extends tei_to_huggingface_trait {
-  override val split_test_train_on_document_level: Boolean = true
-  override lazy val output_prefix: String = "CRM"
-  override val max_files: Int = Integer.MAX_VALUE // 500
-  override val training_subsets: Int = 10
-  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/" + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
-  //override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
-}
 
 

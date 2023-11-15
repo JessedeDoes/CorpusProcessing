@@ -1,6 +1,6 @@
 package corpusprocessing.edges.openEdges.align
 
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import corpusprocessing.edges.openEdges.Alignment
 
 import scala.xml._

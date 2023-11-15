@@ -6,7 +6,7 @@ import java.io.{File, PrintWriter}
 import scala.xml.PrettyPrinter
 import scala.xml._
 import utils.PostProcessXML
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 
 import makeWordIdsGloballyUnique._
 case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {

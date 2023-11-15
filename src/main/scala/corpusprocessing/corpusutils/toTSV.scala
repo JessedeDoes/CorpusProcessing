@@ -1,4 +1,4 @@
-package corpusprocessing.utils
+package corpusprocessing.corpusutils
 import scala.xml._
 
 object toTSV {

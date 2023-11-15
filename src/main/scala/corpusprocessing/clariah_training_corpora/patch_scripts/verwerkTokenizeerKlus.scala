@@ -1,10 +1,11 @@
-package corpusprocessing.clariah_training_corpora
-import corpusprocessing.clariah_training_corpora.fixTokenization.{getId, groupBy, peuterLos}
+package corpusprocessing.clariah_training_corpora.patch_scripts
 
-import scala.xml._
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.{getId, groupBy}
 import utils.{PostProcessXML, ProcessFolder}
-import scala.collection._
+
 import java.io.File
+import scala.collection._
+import scala.xml._
 
 case class Token(n: Int, word: String, lemma: String, pos: String, tag: String, id: String, docId: String, pid: Int, action: String) {
   lazy val hasAction = action.size > 4

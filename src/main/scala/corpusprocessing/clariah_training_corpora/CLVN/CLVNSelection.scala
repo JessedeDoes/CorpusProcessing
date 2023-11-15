@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.CLVN
 
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import corpusprocessing.metadata.jamaarCLVN
 import utils.PostProcessXML
 

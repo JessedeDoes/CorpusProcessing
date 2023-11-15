@@ -4,7 +4,7 @@ import scala.collection.immutable.Set
 import scala.xml._
 import utils.ProcessFolder
 import utils.PostProcessXML
-import corpusprocessing.clariah_training_corpora.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 import java.io.File
 object makeWordIdsGloballyUnique {
   def setAttribute(e: Elem, prefix: String, name: String, value: String): Elem = {
