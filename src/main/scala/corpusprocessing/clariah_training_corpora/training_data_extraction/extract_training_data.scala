@@ -14,53 +14,14 @@ import org.json4s.jackson.Serialization.write
 
 
 case class Partition(part: String, portion: Int) {
-  lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion > 0) s"$part.$portion" else part
+  lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion >= 0) s"$part.$portion" else part
 }
 
 object TRAIN extends Partition("train", -1)
 object DEV extends Partition("dev", -1)
 object TEST extends  Partition("test", -1)
 trait extract_training_data_trait {
-  trait Sentence {
-    def id:Option[String] = None
-    def toTSV(addSourceLine: Boolean=false) : String = {
-
-      this match {
-        case s:BasicSentence => {
-          val sourceLine =  if (addSourceLine) s"#### ${s.file} ####\n" else ""
-          sourceLine +
-          s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
-        }
-        case s:PimpedSentence => {
-          val sourceLine =  if (addSourceLine) s"#### ${s.file} ####\n" else ""
-          sourceLine +
-            s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i)).mkString("\t")).mkString("\n")
-        }
-      }
-    }
-    def file: String = "unknown"
-  }
-  case class PimpedSentence(
-                       override val id: Option[String],
-                       tokens: List[String],
-                       tags: List[String],
-                       lemmata: List[String],
-                       xml_ids: List[String]  = List(),
-                       relevances: List[String]  = List(),
-                       hilex_pos : List[String]  = List(),
-                       override val file: String = "unknown",
-                       partition: String = "unknown"// pas op andere dingen hebben dit niet
-                     ) extends Sentence
-
-  case class BasicSentence(
-                             override val  id: Option[String],
-                             tokens: List[String],
-                             tags: List[String],
-                             lemmata: List[String],
-                             xml_ids: List[String] = List(),
-                             override val  file: String = "unknown",
-                           ) extends Sentence
-  val sentence_element="q"
+   val sentence_element="q"
   val pos_attribute = "@pos"
 
 
@@ -92,62 +53,8 @@ trait extract_training_data_trait {
 
   def transformToken(w: Node) = w
 
-  def sentence(s: Node, f: String): Sentence = {
+  import Sentence._
 
-    def getN(n: Node) =  (n \ "@n").text
-
-    val id: Option[String]  = getId(s)
-
-    // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s") ((x \ "choice").nonEmpty)
-
-    val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(transformToken)
-    val indexedTokenElements = tokenElements.zipWithIndex
-    val tokens =
-      tokenElements.map(x =>
-        if ( (x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ")
-        else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
-        else x.text.trim)
-    val tags = tokenElements.map(x => (x \ pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
-    val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
-    val relevances =  tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
-    val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
-
-    //System.err.println(relevances)
-
-    val xml_ids =  tokenElements.map(x => getId(x).getOrElse("no_id_found"))
-
-    def enhancePos(w: Node, i: Int) = {
-      val p =  (w \ "@pos").headOption.getOrElse(w \ "@type").text.trim
-      if ((w \ "@type").text=="multiw") {
-        println(w)
-        val n = getN(w)
-        val hasPrev = indexedTokenElements.exists({case (w,i1) => getN(w) == n && i1 < i })
-        val hasNext = indexedTokenElements.exists({case (w,i1) => getN(w) == n && i1 > i })
-
-        val bio =
-          (hasPrev,hasNext) match {
-            case (true,true) => "i"
-            case (true,false) => "f"
-            case (false,true) => "b"
-            case _ => "o"
-          }
-        val t = p + "_" + bio
-        println(t)
-        t
-      } else p
-    }
-
-    val enhancedTags = indexedTokenElements.map({case (x,y) => enhancePos(x,y)})
-    val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#","")).getOrElse("unknown")
-
-    // println(s.asInstanceOf[Elem].copy(child=Seq()))
-    // println(s.attributes.toString + "->" + partition)
-
-    val r = if (addStuff)
-      PimpedSentence(id,tokens, if (enhance) enhancedTags else tags.map(tagMapping), lemmata, xml_ids, file=f, relevances=relevances,hilex_pos=hilex_pos,partition = partition)
-    else BasicSentence(id,tokens, if (enhance) enhancedTags else tags.map(tagMapping), lemmata, xml_ids, file=f)
-    r
-  }
 
   def decentSentence(s: Sentence, b: Partition)  = true
 
