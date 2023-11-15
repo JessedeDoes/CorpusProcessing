@@ -49,9 +49,9 @@ trait extract_training_data_trait {
   def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  def tagMapping(s: String)  = s
+  def tagMapping(s: String): String = s
 
-  def transformToken(w: Node) = w
+  def transformToken(w: Node): Node = w
 
   import Sentence._
 
@@ -103,7 +103,7 @@ trait extract_training_data_trait {
       }
     })
 
-    val sentences: Iterator[(Sentence,Partition)] = partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
+    val sentences: Iterator[(Sentence,Partition)] = partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f,this) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
     val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
 
@@ -164,7 +164,7 @@ trait extract_training_data_trait {
     }})
   }
 
-  def preprocess(x: Elem)  = x
+  def preprocess(x: Elem): Elem = x
   def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.map(x => x -> preprocess(XML.load(x))), outputPrefix)
 
   val openDBNL = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Tagged/"
@@ -177,8 +177,8 @@ trait extract_training_data_trait {
   val dbnl18 = "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Selectie18"
 
 
-  val default_dataset = ideeen
-  def default_process(e: Elem)  = e
+  val default_dataset: Seq[String] = ideeen
+  // def default_process(e: Elem): Elem = e
 
   lazy val default_folder = "hadjememaar"
 
