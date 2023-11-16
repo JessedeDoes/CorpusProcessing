@@ -9,7 +9,7 @@ import utils.PostProcessXML._
 
 import scala.collection.immutable
 object excludeInterpolations {
-  lazy val docje = XML.load("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/3000.tei.xml")
+  lazy val docje = XML.load("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/0294.tei.xml")
 
 
   def exclude(e: Elem)  = Exclusion(e)()
@@ -18,7 +18,7 @@ object excludeInterpolations {
     // println(String.format("%05d", 100.asInstanceOf[Object]))
 
     //XML.save("/tmp/docje.xml", d1)
-    val d2 = Exclusion(docje)()
+    val d2 = exclude(docje)
     XML.save("/tmp/docje.xml", d2)
   }
 }
@@ -123,7 +123,9 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
   override val training_subsets: Int = 1
 
   import corpusprocessing.clariah_training_corpora.training_data_extraction.Partition
-  override def preprocess(x: Elem) = excludeInterpolations.exclude(x)
+  override def preprocess(x: Elem) =  {
+    excludeInterpolations.exclude(x)
+  }
 
   val unfiltered = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
 
