@@ -78,16 +78,21 @@ case class Exclusion(docje: Elem)
     (w \ "seg").text.trim == (w \ "seg" \ "supplied").text.trim && ((w \ "@type").text == "999")
   }
   def apply(): Elem = {
-    Console.err.println("Start exclusions....")
+
+    Console.err.println(s"Start exclusions.... ${docje.descendant.size}=?${everything.size}, Tokens: ${tokenElements.size}")
     val e1 = d1
-    val biblz = (e1 \\ "bibl").filter(b => (b \\ "span").nonEmpty)
+    val biblz = (e1 \ "teiHeader" \\ "bibl").filter(b => (b \\ "span").nonEmpty)
 
     val spans = biblz.flatMap(b => {
       (b \\ "span").map(s => Span(b, (s \ "@from").text.replaceAll("#",""), (s \ "@to").text.replaceAll("#","")) )
     }).toSet
 
-    val forbiddenPositions: Set[String] = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
-    Console.err.println(s"Forbidden positions: ${forbiddenPositions.size}")
+    lazy val allSpans = (e1 \ "teiHeader" \\ "span")
+    val laterSpans =  spans.filter(_.hasDate).filter(_.later)
+    Console.err.println(s"Spans: span elements: ${allSpans.size}, spans:${spans.size}, date after 1300: ${laterSpans.size}")
+
+    val forbiddenPositions: Set[String] = laterSpans.flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
+    Console.err.println(s"Excluded tokens: ${forbiddenPositions.size}")
     val r= PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
       if (forbiddenPositions.contains((w \ "@position").text) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
     })
