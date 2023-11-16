@@ -68,7 +68,7 @@ case class Exclusion(docje: Elem)
       z.lastOption.foreach(x => {
         Console.err.println( s"Exclusion range: $s:$startPosition:${z.head \ "@position"}  --- $e:$endPosition:${x \ "@position"}")
       })
-      z.filter(x => Set("w", "pc").contains(x.label))
+      z.filter(x => Set("w", "pc").contains(x.label)).toSet
     }
 
     lazy val wordsIn = wordsElementsIn.map(x => (x \ "seg").text).mkString(" ")
@@ -84,9 +84,9 @@ case class Exclusion(docje: Elem)
 
     val spans = biblz.flatMap(b => {
       (b \\ "span").map(s => Span(b, (s \ "@from").text.replaceAll("#",""), (s \ "@to").text.replaceAll("#","")) )
-    })
+    }).toSet
 
-    val forbiddenPositions: immutable.Seq[String] = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
+    val forbiddenPositions: Set[String] = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
     Console.err.println(s"Forbidden positions: ${forbiddenPositions.size}")
     val r= PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
       if (forbiddenPositions.contains((w \ "@position").text) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
