@@ -50,7 +50,7 @@ case class Exclusion(docje: Elem)
       name -> value
     }).filter(_._2.nonEmpty)
 
-    lazy val dateringen = properties.filter(_._1.contains("YearLevel0"))
+    lazy val dateringen = properties.filter(_._1.contains("itnessYearLevel0"))
     lazy val hasDate = dateringen.nonEmpty
     lazy val startstone = idIndex(from)
     lazy val endstone = idIndex(to)
