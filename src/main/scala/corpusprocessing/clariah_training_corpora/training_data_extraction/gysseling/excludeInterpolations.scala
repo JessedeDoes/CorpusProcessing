@@ -8,8 +8,9 @@ import scala.xml._
 import utils.PostProcessXML._
 
 import scala.collection.immutable
+import java.io.File
 object excludeInterpolations {
-  lazy val docje = XML.load("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/0294.tei.xml")
+  lazy val docje = XML.loadFile( new File("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/0294.tei.xml"))
 
 
   def exclude(e: Elem)  = Exclusion(e)()
@@ -129,17 +130,19 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
 
   val unfiltered = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
 
-  lazy val partitionsFromLists = new java.io.File(unfiltered).listFiles(_.getName.endsWith("filenames")).flatMap(f => {
-    val files = io.Source.fromFile(f).getLines.toSet
+  lazy val partitionsFromLists: Map[String, Partition] = new java.io.File(unfiltered).listFiles(_.getName.endsWith("filenames")).flatMap(f => {
+    val files: Set[String] = io.Source.fromFile(f).getLines.toSet
     val partition = f.getName.replaceAll(".*(test|train|dev).*","$1")
     files.map(f => f -> Partition(partition, -1))
   }).toMap
+
   override def pickPartition(f: Option[String]): Partition =
     if (f.isEmpty || !partitionsFromLists.contains(f.get)) super.pickPartition(f) else {
       val z = partitionsFromLists(f.get)
       Console.err.println(s"##### ${f.get}: ${z.prefix} #####")
       z
     }
+
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
