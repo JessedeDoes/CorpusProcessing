@@ -6,6 +6,8 @@ import utils.PostProcessXML
 
 import scala.xml._
 import utils.PostProcessXML._
+
+import scala.collection.immutable
 object excludeInterpolations {
   lazy val docje = XML.load("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/3000.tei.xml")
 
@@ -25,6 +27,9 @@ case class Exclusion(docje: Elem)
 {
   lazy val d1 = numberNodes(docje)._1.asInstanceOf[Elem]
   lazy val idIndex = (d1.descendant.filter(_.isInstanceOf[Elem])).map(e => e.attributes.filter(_.key == "id").map(_.value.text).mkString("") -> e).toMap.filter(_._1.nonEmpty)
+  lazy val everything = d1.descendant.toArray
+  lazy val tokenElements = everything.filter(x => Set("pc","w").contains(x.label))
+  lazy val positionIndex = everything.zipWithIndex.map{case (t, i) => (t \ "@position").text -> i}.toMap
   def f(n: Int): String  = String.format("%08d", n.asInstanceOf[Object])
   def numberNodes(n: Node, k: Int=0): (Node,Int)  = {
     val (newChildren,kk) = n.child.foldLeft[(Seq[Node], Int)](Seq[Node]()->(k+1))({case ((seq, n),node) =>
@@ -56,10 +61,16 @@ case class Exclusion(docje: Elem)
     lazy val startPosition = (startstone \ "@position").text
     lazy val endPosition = (endstone \ "@position").text
 
-    lazy val wordsElementsIn = (d1.descendant.filter(x => Set("pc","w").contains(x.label))).filter(w => {
-      val p = (w \ "@position").text
-      startPosition < p && endPosition > p
-    })
+    lazy val wordsElementsIn = {
+      lazy val s = positionIndex(startPosition)
+      lazy val e = positionIndex(endPosition)
+      val z = everything.slice(s,e+1)
+      z.lastOption.foreach(x => {
+        Console.err.println( s"Exclusion range: $s:$startPosition:${z.head \ "@position"}  --- $e:$endPosition:${x \ "@position"}")
+      })
+      z.filter(x => Set("w", "pc").contains(x.label))
+    }
+
     lazy val wordsIn = wordsElementsIn.map(x => (x \ "seg").text).mkString(" ")
   }
 
@@ -75,10 +86,10 @@ case class Exclusion(docje: Elem)
       (b \\ "span").map(s => Span(b, (s \ "@from").text.replaceAll("#",""), (s \ "@to").text.replaceAll("#","")) )
     })
 
-    val forbidden = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn)
-
+    val forbiddenPositions: immutable.Seq[String] = spans.filter(_.hasDate).filter(_.later).flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
+    Console.err.println(s"Forbidden positions: ${forbiddenPositions.size}")
     val r= PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
-      if (forbidden.contains(w) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
+      if (forbiddenPositions.contains((w \ "@position").text) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
     })
     Console.err.println("....End exclusions")
     r
@@ -119,7 +130,7 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
   override def pickPartition(f: Option[String]): Partition =
     if (f.isEmpty || !partitionsFromLists.contains(f.get)) super.pickPartition(f) else {
       val z = partitionsFromLists(f.get)
-      println(s"$f: $z")
+      Console.err.println(s"##### ${f.get}: ${z.prefix} #####")
       z
     }
   override val split_test_train_on_document_level: Boolean = true
