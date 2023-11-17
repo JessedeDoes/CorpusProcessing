@@ -94,7 +94,7 @@ object shortrackonline {
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
   def main(args: Array[String]): Unit = {
-    val htmlToProcess = args.headOption.getOrElse("data/shorttrackonline.html")
+    val htmlToProcess = args.headOption.getOrElse("data/regio.html")
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
 
