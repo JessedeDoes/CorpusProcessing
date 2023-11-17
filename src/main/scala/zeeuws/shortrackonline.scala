@@ -30,7 +30,7 @@ case class Skater(n: Node, name: String, club: String) {
       } else None
     } else {
       if (m==500) {
-        Console.err.println(s"!!!!!!!!!!!!No prrow for $name, distance=$m");
+        Console.err.println(s"!!!!!!!!!!!!No PR row for $name, distance=$m");
         // Console.err.println(pretty.format(n))
         //System.exit(1)
       }
