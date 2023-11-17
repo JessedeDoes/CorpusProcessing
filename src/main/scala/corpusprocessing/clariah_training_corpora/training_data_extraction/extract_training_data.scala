@@ -152,7 +152,9 @@ trait extract_training_data_trait {
   }
 
   def preprocess(x: Elem): Elem = x
-  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> preprocess(XML.load(x))), outputPrefix)
+
+  def loadXML(fileName: String)  = preprocess(XML.load(fileName))
+  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> loadXML(x)), outputPrefix)
 
 
   val default_dataset: Seq[String] = Seq()

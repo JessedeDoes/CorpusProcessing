@@ -10,16 +10,16 @@ import utils.PostProcessXML._
 import scala.collection.immutable
 import java.io.File
 object excludeInterpolations {
-  lazy val docje = XML.loadFile( new File("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/0294.tei.xml"))
+  lazy val docje = XML.loadFile( new File("/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/0295.tei.xml"))
 
 
-  def exclude(e: Elem)  = Exclusion(e)()
+  def exclude(e: Elem, fileName: String)  = Exclusion(e).apply(fileName)
 
   def main(args: Array[String]) = {
     // println(String.format("%05d", 100.asInstanceOf[Object]))
 
     //XML.save("/tmp/docje.xml", d1)
-    val d2 = exclude(docje)
+    val d2 = exclude(docje, "docje")
     XML.save("/tmp/docje.xml", d2)
   }
 }
@@ -78,9 +78,10 @@ case class Exclusion(docje: Elem)
   def isSupplied(w: Elem)  = {
     (w \ "seg").text.trim == (w \ "seg" \ "supplied").text.trim && ((w \ "@type").text == "999")
   }
-  def apply(): Elem = {
+  def apply(fileName: String=""): Elem = {
 
-    Console.err.println(s"Start exclusions.... ${docje.descendant.size}=?${everything.size}, Tokens: ${tokenElements.size}")
+    Console.err.println(s"\n#####Start exclusions on $fileName .... ${docje.descendant.size}=?${everything.size}, Tokens: ${tokenElements.size}")
+
     val e1 = d1
     val biblz = (e1 \ "teiHeader" \\ "bibl").filter(b => (b \\ "span").nonEmpty)
 
@@ -93,12 +94,20 @@ case class Exclusion(docje: Elem)
     Console.err.println(s"Spans: span elements: ${allSpans.size}, spans:${spans.size}, date after 1300: ${laterSpans.size}")
 
     val forbiddenPositions: Set[String] = laterSpans.flatMap(_.wordsElementsIn).map(x => (x \ "@position").text)
-    Console.err.println(s"Excluded tokens: ${forbiddenPositions.size}")
-    val r= PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
+    Console.err.println(s"Excluded tokens for $fileName: ${forbiddenPositions.size} of ${tokenElements.size}")
+    val r = PostProcessXML.updateElement(d1, x => Set("pc", "w").contains(x.label), w => {
       if (forbiddenPositions.contains((w \ "@position").text) || isSupplied(w)) w.copy(label = "ex_" + w.label) else w
     })
+    // haal ook de noten weg (div type = notes!)
+    val wordsInNotes = (r \\ "div").filter(d => (d \ "@type").text == "notes").flatMap(d => (d \\ "w")).size
+    Console.err.println(s"Excluded tokens for $fileName: ${forbiddenPositions.size} of ${tokenElements.size}, words in notes: ${wordsInNotes}")
+    val r1 = PostProcessXML.updateElement(r,
+         x => x.label=="div" && (x \ "@type").text == "notes",
+         div => PostProcessXML.updateElement(div,
+              x => Set("pc", "w").contains(x.label),
+              w =>  w.copy(label = "ex_" + w.label) ))
     Console.err.println("....End exclusions")
-    r
+    r1
   }
 
 }
@@ -124,8 +133,13 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
   override val training_subsets: Int = 1
 
   import corpusprocessing.clariah_training_corpora.training_data_extraction.Partition
+
+  override def loadXML(fileName: String)  = {
+     val x = XML.load(fileName)
+     excludeInterpolations.exclude(x, fileName)
+  }
   override def preprocess(x: Elem) =  {
-    excludeInterpolations.exclude(x)
+    excludeInterpolations.exclude(x,"Unkown Filename")
   }
 
   val unfiltered = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
@@ -146,6 +160,6 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
-  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered/"
+  override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered2/"
   override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
