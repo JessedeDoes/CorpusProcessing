@@ -10,8 +10,21 @@ import scala.xml._
 object banspelling {
   lazy val molex = new database.Database(Configuration("x", "svowdb16.ivdnt.loc","gig_pro", "dba", "vercingetorix"))
   val table = "data.external_links"
-  def checkze() =  molex.iterator(molex.allRecords(table)).filter(r =>   r("resource_name") == "Banlijst").toList.sortBy(r => r("modern_lemma")).map(r => {
-    println(s"")
+
+  import java.text.Normalizer
+
+  private def normalize(input: String) = if (input == null) null
+  else Normalizer.normalize(input, Normalizer.Form.NFKD)
+
+  def checkze() =  molex
+    .iterator(molex.allRecords(table))
+    .filter(r =>   r("resource_name") == "Banlijst")
+    .map(r => r.mapValues(_.trim))
+    .toList
+    .sortBy(r => r("modern_lemma"))
+    .iterator
+    .map(r => {
+
     val modern_lemma = r("modern_lemma")
     val lemma_id = r("lemma_id")
     val resource_name = r("resource_name")
@@ -19,21 +32,24 @@ object banspelling {
     val resource_lemma_id= r("resource_lemma_id")
 
 
-      val norm = resource_lemma.replaceAll(" ", "-").toLowerCase()
-      val link = s"https://namen.taalunie.org/content/$resource_lemma_id/$norm"
+    val norm = resource_lemma.replaceAll(" ", "-").toLowerCase().replaceAll("\\s*\\(.*\\)", "").replaceAll("-$","")
 
-      Console.err.println(s"Checking $link")
-      // println(link)
-      val kopjes = Try(HTML.parse(io.Source.fromURL(link).getLines().mkString("\n"))) match {
-        case Success(x) => x.descendant.filter(_.label.toLowerCase.matches("^h1.*"))
-        case _ =>
-          Console.err.println(s"Failure for $link")
-          List()
-      }
-      // println(kopjes)
-     val title_found = kopjes.map(_.text).mkString("")
-     List(lemma_id, modern_lemma, resource_lemma, link, kopjes.nonEmpty, title_found, title_found == resource_lemma, title_found == modern_lemma)
-     // println(regio)
+    val link = s"https://namen.taalunie.org/content/${normalize(resource_lemma_id)}/$norm"
+
+    Console.err.println(s"Checking $link")
+
+    val kopjes = Try(HTML.parse(io.Source.fromURL(link).getLines().mkString("\n"))) match {
+      case Success(x) => x.descendant.filter(_.label.toLowerCase.matches("^h1.*"))
+      case _ =>
+        Console.err.println(s"Failure for $link")
+        List()
+    }
+    // println(kopjes)
+    val title_found = kopjes.map(_.text.trim).mkString("")
+    List(lemma_id, modern_lemma, resource_lemma, resource_lemma_id, link, kopjes.nonEmpty, title_found, title_found == resource_lemma, title_found == modern_lemma)
+      // create table materialized_checkviews.banlinks (lemma_id integer, modern_lemma text, resource_lemma text, resource_lemma_id integer, link text,
+      // page_exists boolean, page_title text, page_title_equals_resource_lemma boolean, page_title_equals_modern_lemma boolean)
+    // println(regio)
   })
 
   def main(args: Array[String])  =  {
