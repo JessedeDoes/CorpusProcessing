@@ -12,12 +12,17 @@ object gekaapte_brieven {
      val b  = briefdb.QueryBatch[(Int,String)]("insert into nederlab_xml (id,xml) values (:id, :xml)", f)
      b.insert(Article.nederDivs.toStream)
   }
+
+  val n_to_export = Integer.MAX_VALUE
   def main(args: Array[String])  = {
 
 
     //
     //pieterNaarDB()
     briefdb.runStatement(makeArticleTable)
-    briefdb.iterator(briefdb.allRecords(articleTable)).map(x => Article(x)).take(10).foreach(x => println(x.xml))
+    briefdb.iterator(briefdb.allRecords(articleTable)).map(x => Article(x)).take(n_to_export).foreach(x => {
+      XML.save(exportDataTo + x.m("brief_id") + ".xml", x.prettyXML)
+      println(x.m("brief_id"))
+    } )
   }
 }

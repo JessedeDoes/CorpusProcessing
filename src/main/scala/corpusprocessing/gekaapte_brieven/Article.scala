@@ -28,9 +28,16 @@ object Article {
   }
 }
 
+// <note resp="transcriber"><!--Let op: tabelloze tabelaanroep.-->Zie Excel-bestand nl-hana_hca30-227.1_1_0071-74</note>
 case class Article(m: Map[String,String]) {
 
-  lazy val xml = <TEI>
+  lazy val pretty =  new scala.xml.PrettyPrinter(300, 4)
+
+  def prettyXML =  XML.loadString(pretty.format(xml))
+
+  def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
+  lazy val allMeta = m.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => meta(n,v)})
+  lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
       <fileDesc>
         <titleStmt>
@@ -45,9 +52,7 @@ case class Article(m: Map[String,String]) {
         </publicationStmt>
       </fileDesc>
       <sourceDesc>
-        <listBibl type="allMetadata">
-          {m.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => s"$n: $v"}).mkString("\n")}
-        </listBibl>
+        <listBibl type="allMetadata">{allMeta}</listBibl>
         <listBibl type="inlMetadata">
           <bibl>
 
