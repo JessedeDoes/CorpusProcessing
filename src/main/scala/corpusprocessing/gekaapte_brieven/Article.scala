@@ -5,6 +5,7 @@ import java.io.File
 object Article {
   def groupArticles(articles: List[Article]): Article = {
     val baseArticle = articles.head
+
     val afzenders = articles.filter(a => a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
       val f = a.fields.filter(_._1.startsWith("afz")).map({case (n,v) =>
@@ -13,6 +14,7 @@ object Article {
       }) // .head.fields.filter(_._1.startsWith("afz"))
       Participant("afzender", f)
     }).values.toList
+
     val ontvangers = articles.filter(a => a("ontv_id").nonEmpty).groupBy(a => a("ontv_id")).mapValues(arts => {
       val a = arts.head
       val f = a.fields.filter(_._1.startsWith("ontv")).map({ case (n, v) =>
@@ -21,6 +23,7 @@ object Article {
       })
       Participant("ontvanger", f)
     }).values.toList
+
     baseArticle.copy(participants = afzenders ++ ontvangers)
   }
   def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
