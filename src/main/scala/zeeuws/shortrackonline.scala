@@ -101,7 +101,7 @@ object shortrackonline {
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
 
-    val tasks = List("/tmp/ihclOnly.html" -> fIHCL) // "/tmp/allSkaters.html" -> fAll,
+    val tasks = List("/tmp/ihclOnly.html" -> fIHCL,"/tmp/allSkaters.html" -> fAll)
 
     tasks.foreach({ case (fileName, filter) =>
       val regio = HTML.parse(io.Source.fromFile(htmlToProcess).getLines().mkString("\n"))
@@ -156,33 +156,37 @@ object shortrackonline {
             body {{ font-family : calibri; font-size: 11px }}
           </style>
         </head> <body>
+
           <div>
+            <head>PR's</head>
           {tablez}
-          </div>
-          <div>
-            {allSkaters.grouped(2).map(g => {
+          </div>{if (fileName.toLowerCase.contains("ihcl"))
+            <div>
+              <head>Resultaten per schaatser</head>{allSkaters.grouped(2).map(g => {
               <table>
                 <tr>
-                  {g.map( s => <td><div style="font-size:12pt">
-                  <h3>
-                    {s.number} {s.name}
-                  </h3>
-                  <table style="border-collapse: collapse; border-style:solid; border-width:1pt">
-                    {(0 to 2).map(i => <tr>
-                    <td width="2em">
-                      {times(3, nbsp)}
-                    </td> <td width="16em">
-                      {times(25, nbsp)}
-                    </td> <td width="20em">
-                      {times(35, nbsp)}
-                    </td>
-                  </tr>)}
-                  </table>
-                </div></td>)}
+                  {g.map(s => <td>
+                  <div style="font-size:12pt">
+                    <h3>
+                      {s.number}<span> </span>{s.name}
+                    </h3>
+                    <table style="border-collapse: collapse; border-style:solid; border-width:1pt">
+                      {(0 to 2).map(i => <tr>
+                      <td width="2em">
+                        {times(3, nbsp)}
+                      </td> <td width="16em">
+                        {times(25, nbsp)}
+                      </td> <td width="20em">
+                        {times(35, nbsp)}
+                      </td>
+                    </tr>)}
+                    </table>
+                  </div>
+                </td>)}
                 </tr>
               </table>
-             })}
-          </div>
+            })}
+            </div>}
         </body>
       </html>
       XML.save(fileName, xml)
