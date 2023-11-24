@@ -5,14 +5,20 @@ import java.io.File
 object Article {
   def groupArticles(articles: List[Article]): Article = {
     val baseArticle = articles.head
-    val afzenders = articles.groupBy(a => a("afz_id")).mapValues(arts => {
+    val afzenders = articles.filter(a => a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
-      val f = arts.head.fields.filter(_._1.startsWith("afz"))
+      val f = a.fields.filter(_._1.startsWith("afz")).map({case (n,v) =>
+        val value =  arts.map(x => x(n)).filter(_.nonEmpty).toSet.mkString("; ")
+        n -> value
+      }) // .head.fields.filter(_._1.startsWith("afz"))
       Participant("afzender", f)
     }).values.toList
-    val ontvangers = articles.groupBy(a => a("ontv_id")).mapValues(arts => {
+    val ontvangers = articles.filter(a => a("ontv_id").nonEmpty).groupBy(a => a("ontv_id")).mapValues(arts => {
       val a = arts.head
-      val f = arts.head.fields.filter(_._1.startsWith("ontv"))
+      val f = a.fields.filter(_._1.startsWith("ontv")).map({ case (n, v) =>
+        val value = arts.map(x => x(n)).filter(_.nonEmpty).toSet.mkString("; ")
+        n -> value
+      })
       Participant("ontvanger", f)
     }).values.toList
     baseArticle.copy(participants = afzenders ++ ontvangers)
@@ -23,7 +29,8 @@ object Article {
 import Article._
 
 case class Participant(typ: String, fields: Map[String, String])  {
-  lazy val xml = <person>{fields.toList.map{case (n,v) => meta(n,v)}}</person>
+  lazy val id = if (typ.toLowerCase.startsWith("afz")) fields("afz_id") else fields("ontv_id")
+  lazy val xml = <person xml:id={typ + "." + id}>{fields.filter(_._2.nonEmpty).toList.map{case (n,v) => meta(n,v)}}</person>
 }
 
 // <note resp="transcriber"><!--Let op: tabelloze tabelaanroep.-->Zie Excel-bestand nl-hana_hca30-227.1_1_0071-74</note>
@@ -37,7 +44,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
 
 
 
-  def apply(f: String): String = fields(f)
+  def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else ""
 
   lazy val allMeta = fields.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => meta(n,v)})
 
@@ -45,7 +52,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     <teiHeader>
       <fileDesc>
         <titleStmt>
-          <title>{fields("afz_naam_lett")} - {fields("ontv_naam_lett")}, {fields("datering")} </title>
+          <title>{fields("afz_naam_lett_xl")} - {fields("ontv_naam_lett_xl")}, {fields("datering_text")} </title>
           <respStmt>
             <resp>compiled by</resp>
             <name>Nicoline van der Sijs and volunteers</name>

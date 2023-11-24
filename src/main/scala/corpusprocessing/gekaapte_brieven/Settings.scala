@@ -5,14 +5,14 @@ object Settings {
   val nederlabXML = "/mnt/Projecten/Corpora/Historische_Corpora/Nederlab/gekaaptebrieven/"
   val exportDataTo = "/mnt/Projecten/Corpora/Historische_Corpora/GekaapteBrieven2021/Export/Untagged/"
 
-  val krantenconfig = new database.Configuration(
-    name = "krantjes",
+  val brieven_db_config = new database.Configuration(
+    name = "gekaapte_briefjes",
     server = "svowdb20.ivdnt.loc",
-    database = "gekaapte_brieven_v0",
+    database = "brieven_site",
     user = "postgres",
     password = "inl")
 
-  val briefdb = new database.Database(krantenconfig)
+  val briefdb = new database.Database(brieven_db_config)
   val makePieterTable = "create table if not exists nederlab_xml (id integer, xml text, metadata text)"
   val pieterLeeg = "delete from nederlab_xml"
   val dropView = "drop view if exists bd cascade"
@@ -27,6 +27,11 @@ object Settings {
     FROM information_schema.columns
      where table_name   = 'brieven_monster_view'
        ;
+
+       create view monster_useful_columns as SELECT column_name, data_type
+      FROM information_schema.columns
+       where table_name   = 'brieven_monster_reduced'
+         ;
  create table monster_field_info as select monster_columns.*, '' as description, false as exported, '' as int_metadata_field, '' as comment from monster_columns;
    */
 
