@@ -3,45 +3,49 @@ import java.time.LocalDateTime.now
 import scala.xml._
 import java.io.File
 object Article {
-
-  val nederlabConversie = "/mnt/Projecten/Corpora/Historische_Corpora/Nederlab/gekaaptebrieven/"
-   lazy val nederBrieven = new File(nederlabConversie).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(XML.loadFile)
-
-
-  lazy val nederDivs = nederBrieven.flatMap(x => x \\ "div1").map(d => {
-     val comments = d.descendant.filter(_.isInstanceOf[Comment])
-     val strippedComments = comments.map(x => x.toString.trim.replaceAll("<!--","").replaceAll("-->","").replaceAll(",.*$","").trim) //  Brief id: 1409, Sourcetabel: table-1409.xml
-     // Console.err.println(strippedComments)
-     val possibleId = strippedComments.filter(x => x.matches("Brief id:\\s*[0-9]+")).map(x => x.replaceAll("Brief id:\\s*" , "")).headOption
-    if (possibleId.isEmpty || !possibleId.map(_.matches("[0-9]+")).get) {
-      Console.err.println("Id not found:" + (possibleId,d.toString()))
-    }
-    (possibleId,d.toString())
-  }).filter(_._1.nonEmpty).map({case (id,div) => (id.get.toInt, div)}) // .take(100)
-
-  /*
-  <!--Brief id: 23-->
-   */
-
-  def main(args: Array[String]) = {
-    nederDivs.foreach(println)
+  def groupArticles(articles: List[Article]): Article = {
+    val baseArticle = articles.head
+    val afzenders = articles.groupBy(a => a("afz_id")).mapValues(arts => {
+      val a = arts.head
+      val f = arts.head.fields.filter(_._1.startsWith("afz"))
+      Participant("afzender", f)
+    }).values.toList
+    val ontvangers = articles.groupBy(a => a("ontv_id")).mapValues(arts => {
+      val a = arts.head
+      val f = arts.head.fields.filter(_._1.startsWith("ontv"))
+      Participant("ontvanger", f)
+    }).values.toList
+    baseArticle.copy(participants = afzenders ++ ontvangers)
   }
+  def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
+}
+
+import Article._
+
+case class Participant(typ: String, fields: Map[String, String])  {
+  lazy val xml = <person>{fields.toList.map{case (n,v) => meta(n,v)}}</person>
 }
 
 // <note resp="transcriber"><!--Let op: tabelloze tabelaanroep.-->Zie Excel-bestand nl-hana_hca30-227.1_1_0071-74</note>
-case class Article(m: Map[String,String]) {
+
+case class Article(fields: Map[String,String], participants: List[Participant] = List()) {
 
   lazy val pretty =  new scala.xml.PrettyPrinter(300, 4)
 
-  def prettyXML =  XML.loadString(pretty.format(xml))
+  lazy val id = fields("brief_id")
+  def prettyXML: Elem =  XML.loadString(pretty.format(xml))
 
-  def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
-  lazy val allMeta = m.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => meta(n,v)})
+
+
+  def apply(f: String): String = fields(f)
+
+  lazy val allMeta = fields.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => meta(n,v)})
+
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
       <fileDesc>
         <titleStmt>
-          <title>{m("afz_naam_lett")} - {m("ontv_naam_lett")}, {m("datering")} </title>
+          <title>{fields("afz_naam_lett")} - {fields("ontv_naam_lett")}, {fields("datering")} </title>
           <respStmt>
             <resp>compiled by</resp>
             <name>Nicoline van der Sijs and volunteers</name>
@@ -58,6 +62,12 @@ case class Article(m: Map[String,String]) {
 
           </bibl>
         </listBibl>
+        <listPerson type="afzenders">
+          {participants.filter(_.typ=="afzender").map(_.xml)}
+        </listPerson>
+        <listPerson type="ontvangers">
+          {participants.filter(_.typ=="ontvanger").map(_.xml)}
+        </listPerson>
       </sourceDesc>
       <revisionDesc>
         <list>
@@ -67,7 +77,7 @@ case class Article(m: Map[String,String]) {
     </teiHeader>
     <text>
        <body><div>
-         {XML.loadString(m("xml"))}
+         {XML.loadString(fields("xml"))}
        </div></body>
     </text>
   </TEI>
