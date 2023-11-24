@@ -15,9 +15,6 @@ object exportCorpus {
 
     briefdb.runStatement(makeArticleTable)
 
-
-
-    
     val articleGroups: List[List[Article]] =
       briefdb.iterator(briefdb.allRecords(articleTable))
         .map(x => x.filter(y => exportFields.contains(y._1)))
