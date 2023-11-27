@@ -40,7 +40,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
           {this -> "adressering_xl"}
         </note>
         {if (!isGroupMetadata) meta("pid", s"letter.${this -> "brief_id"}")}
-        {meta("sourceId", this -> "archiefnummer_xln")}
+        {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> "groepID_INT")}
         {meta("witnessYear_from", year)}
