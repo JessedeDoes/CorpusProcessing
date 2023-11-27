@@ -2,6 +2,8 @@ package corpusprocessing.gekaapte_brieven
 
 import corpusprocessing.gekaapte_brieven.Article.meta
 
+import scala.xml.Text
+
 case class Participant(typ: String, fields: Map[String, String]) {
   val interpjes = false
   lazy val abbr = if (typ == "afzender") "afz" else "ontv"
@@ -9,20 +11,24 @@ case class Participant(typ: String, fields: Map[String, String]) {
   def ->(n: String): String = fields.getOrElse(s"${abbr}_$n", "unknown")
 
   def ->(n: List[String]): String = {
-    if (n.isEmpty) "unknown" else if ((this -> n.head) != "unkown") this -> n.head else this -> n.tail
+    if (n.isEmpty) "unknown" else if ((this -> n.head) != "unknown") this -> n.head else this -> n.tail
     fields.getOrElse(s"${abbr}_$n", "unknown")
   }
 
   lazy val event = if (typ == "afzender") "sending" else "receiving"
   lazy val id = if (typ.toLowerCase.startsWith("afz")) this -> "afz_id" else this -> "ontv_id"
+  lazy val personId: Option[Text] = if (id != "unknown")  Some(Text(id)) else None
 
-  lazy val xml = <person xml:id={typ + "." + id} role={this -> "rol_xln"} gender={this -> "geslacht_xl"}>
+
+  lazy val hasLocationInfo = fields.keySet.exists(k => k.matches(".*(land|regio|plaats|schip).*") && fields(k).nonEmpty && fields(k) != "unknown")
+
+  lazy val xml = <person xml:id={personId} role={this -> "rol_xln"} gender={this -> "geslacht_xl"}>
     {if (interpjes) fields.filter(_._2.nonEmpty).toList.map { case (n, v) => meta(n, v) }}<persName type="original">{s"${this -> "naam_lett_xl"}"}</persName>
     <persName type="normalized">{s"${this -> s"naam_norm_xln"}"}</persName>
     <occupation>{this -> List("beroep_gecorrigeerd_xln", "beroep_xln")}</occupation>
     <event type={event}>
       <desc>{event}</desc>
-      <place>
+      {if (hasLocationInfo) <place>
         <placeName type="original">
           <country>
             {this -> "land_lett_xl"}
@@ -55,7 +61,7 @@ case class Participant(typ: String, fields: Map[String, String]) {
             </placeName>
           </location>
         </placeName>
-      </place>
+      </place>}
     </event>
   </person>
 }

@@ -10,12 +10,20 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 
   lazy val allMeta = fields.filter({ case (n, v) => v != null && v.length < 100 && v.nonEmpty && !Set("t", "f").contains((v)) }).toList.sorted.map({ case (n, v) => meta(n, v) })
 
-  lazy val (year, month, day) = {
-    val datering = (this -> "datering_text").split("-").map(x => if (x.matches("^0+$")) "unknown" else x)
+
+  // beetje gerotzooi vanwege multiple values bij groepjes
+  def ymd(x: String): (String, String, String) = {
+    val datering = x.split("-").map(x => if (x.matches("^0+$")) "unknown" else x)
     if (datering.size >= 3)
-    (datering(2), datering(1), datering(0))
+      if (datering(0).size == 4) (datering(0), datering(1), datering(2)) else (datering(2), datering(1), datering(0))
     else
       ("unknown", "unknown", "unknown")
+  }
+
+  lazy val (year, month, day) = {
+    def z(x: Array[String]) = x.toSet.filter(_ != "unknown").toList.sorted.mkString(";")
+    val many: Array[(String, String, String)] = (this -> "datering_text").split("\\s*;\\s*").map(ymd)
+    (z(many.map(_._1)), z(many.map(_._2)), z(many.map(_._3)))
   }
 
   lazy val senders = participants.filter(_.typ == "afzender")

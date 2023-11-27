@@ -81,7 +81,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     </teiHeader>
     <text>
        <body><div>
-         {XML.loadString(fields("xml"))}
+         {XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))}
        </div></body>
     </text>
   </TEI>
