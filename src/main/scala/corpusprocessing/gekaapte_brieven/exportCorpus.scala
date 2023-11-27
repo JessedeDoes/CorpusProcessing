@@ -15,8 +15,11 @@ object exportCorpus {
 
     briefdb.runStatement(makeArticleTable)
 
+    def exportFilter(m: Map[String,String])  = true // m("brief_id").contains("2056")
+
     val articleGroups: List[List[Article]] =
       briefdb.iterator(briefdb.allRecords(articleTable))
+        .filter(exportFilter)
         .map(x => x.filter(y => exportFields.contains(y._1)))
         .map(x => Article(x))
         .take(n_to_export)
@@ -25,11 +28,11 @@ object exportCorpus {
         .values
         .toList
 
-    val groupedArticles = articleGroups.map(a => Article.groupArticles(a))
+    val articles = articleGroups.map(a => Article.groupArticles(a))
+    val groupMetaMap: Map[String, Metadata] = articles.map(_.metadata).groupBy(x => x("groepID_INT")).mapValues(Metadata.groupMetadata)
+    val articlesWithGroupMetadata = articles.filter(a => a.metadata.contains("groepID_INT")).map(a => a.copy(groupMetadata = groupMetaMap.get(a -> "groepID_INT")))
 
-
-
-    groupedArticles.foreach(x => {
+    articlesWithGroupMetadata.foreach(x => {
         XML.save(exportDataTo + x.fields("brief_id") + ".xml", x.prettyXML)
         println(x.fields("brief_id"))
       })

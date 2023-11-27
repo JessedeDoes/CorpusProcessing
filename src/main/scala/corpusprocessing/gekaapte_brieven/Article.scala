@@ -3,10 +3,12 @@ import java.time.LocalDateTime.now
 import scala.xml._
 import java.io.File
 object Article {
+
+  val exportAllMetadata = false
   def groupArticles(articles: List[Article]): Article = {
     val baseArticle = articles.head
 
-    val afzenders = articles.filter(a => a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
+    val afzenders = articles.filter(a => a.metadata.contains("afz_id") && a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
       val f = a.fields.filter(_._1.startsWith("afz")).map({case (n,v) =>
         val value =  arts.map(x => x(n)).filter(_.nonEmpty).toSet.mkString("; ")
@@ -15,7 +17,7 @@ object Article {
       Participant("afzender", f)
     }).values.toList
 
-    val ontvangers = articles.filter(a => a("ontv_id").nonEmpty).groupBy(a => a("ontv_id")).mapValues(arts => {
+    val ontvangers = articles.filter(a => a.metadata.contains("ontv_id") && a("ontv_id").nonEmpty).groupBy(a => a("ontv_id")).mapValues(arts => {
       val a = arts.head
       val f = a.fields.filter(_._1.startsWith("ontv")).map({ case (n, v) =>
         val value = arts.map(x => x(n)).filter(_.nonEmpty).toSet.mkString("; ")
@@ -26,30 +28,29 @@ object Article {
 
     baseArticle.copy(participants = afzenders ++ ontvangers)
   }
+
   def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
 }
 
 import Article._
 
-case class Participant(typ: String, fields: Map[String, String])  {
-  lazy val id = if (typ.toLowerCase.startsWith("afz")) fields("afz_id") else fields("ontv_id")
-  lazy val xml = <person xml:id={typ + "." + id}>{fields.filter(_._2.nonEmpty).toList.map{case (n,v) => meta(n,v)}}</person>
-}
+
 
 // <note resp="transcriber"><!--Let op: tabelloze tabelaanroep.-->Zie Excel-bestand nl-hana_hca30-227.1_1_0071-74</note>
 
-case class Article(fields: Map[String,String], participants: List[Participant] = List()) {
+case class Article(fields: Map[String,String], participants: List[Participant] = List(), groupMetadata: Option[Metadata] = None) {
+
+  def metadata = Metadata(this.fields.filter(_._1 != "xml"),this.participants)
 
   lazy val pretty =  new scala.xml.PrettyPrinter(300, 4)
 
   lazy val id = fields("brief_id")
   def prettyXML: Elem =  XML.loadString(pretty.format(xml))
 
+  def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
+  def ->(f : String)  = this(f)
 
-
-  def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else ""
-
-  lazy val allMeta = fields.filter({case (n,v) => v != null && v.length < 100 && v.nonEmpty && !Set("t","f").contains((v))}).toList.sorted.map({case (n,v) => meta(n,v)})
+  lazy val sourceDesc = metadata.TEI
 
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
@@ -62,26 +63,19 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
           </respStmt>
         </titleStmt>
         <publicationStmt>
+          <publisher>Dutch Language Institute, https://ivdnt.org</publisher>
           <availability><licence>This file may not be redistributed!! It is a preliminary version</licence></availability>
         </publicationStmt>
+        {sourceDesc}
+        {if (groupMetadata.nonEmpty) groupMetadata.get.TEI}
       </fileDesc>
-      <sourceDesc>
-        <listBibl type="allMetadata">{allMeta}</listBibl>
-        <listBibl type="inlMetadata">
-          <bibl>
-
-          </bibl>
-        </listBibl>
-        <listPerson type="afzenders">
-          {participants.filter(_.typ=="afzender").map(_.xml)}
-        </listPerson>
-        <listPerson type="ontvangers">
-          {participants.filter(_.typ=="ontvanger").map(_.xml)}
-        </listPerson>
-      </sourceDesc>
       <revisionDesc>
         <list>
-          <item>Preliminary version, exported <date>{now}</date> with duplicates, issue issues, segmentation errors and metadata inaccuracies!!!!!!</item>
+          <item>Preliminary version, exported
+            <date>
+              {now}
+            </date>
+            with duplicates, issue issues, segmentation errors and metadata inaccuracies!!!!!!</item>
         </list>
       </revisionDesc>
     </teiHeader>
