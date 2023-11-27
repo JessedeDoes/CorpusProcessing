@@ -30,7 +30,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
   lazy val recipients = participants.filter(_.typ == "ontvanger")
 
   lazy val TEI = <sourceDesc xml:id={if (isGroupMetadata) "metadata.level2" else "metadata.level0"}>
-    <listBibl type="intCorpusMetadata.level0">
+    <listBibl type={if (isGroupMetadata) "intCorpusMetadata.level2" else "intCorpusMetadata.level0"}>
       <bibl>
         {if (isGroupMetadata) <note>Grouped metadata, members: {groupMemberIds.toList.sorted.mkString(", ")}</note>}
         <note>
@@ -40,7 +40,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
           {this -> "adressering_xl"}
         </note>
         {if (!isGroupMetadata) meta("pid", s"letter.${this -> "brief_id"}")}
-        {meta("sourceId", "archiefnummer_xln")}
+        {meta("sourceId", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> "groepID_INT")}
         {meta("witnessYear_from", year)}

@@ -8,17 +8,25 @@ case class Participant(typ: String, fields: Map[String, String]) {
   val interpjes = false
   lazy val abbr = if (typ == "afzender") "afz" else "ontv"
 
-  def ->(n: String): String = fields.getOrElse(s"${abbr}_$n", "unknown")
+  def getOrElse(v: String, default: String="unknown"): String  = {
+
+    val x = fields.getOrElse(v,default)
+
+    // if (v.contains("beroep")) Console.err.println(s"$v -> $x")
+    if (x.trim.isEmpty) default else x
+  }
+  def ->(n: String): String = getOrElse(s"${abbr}_$n", "unknown")
 
   def ->(n: List[String]): String = {
-    if (n.isEmpty) "unknown" else if ((this -> n.head) != "unknown") this -> n.head else this -> n.tail
-    fields.getOrElse(s"${abbr}_$n", "unknown")
+    if (n.isEmpty) "unknown"
+    else if ((this -> n.head) != "unknown")
+      this -> n.head
+    else this -> n.tail
   }
 
   lazy val event = if (typ == "afzender") "sending" else "receiving"
   lazy val id = if (typ.toLowerCase.startsWith("afz")) this -> "afz_id" else this -> "ontv_id"
   lazy val personId: Option[Text] = if (id != "unknown")  Some(Text(id)) else None
-
 
   lazy val hasLocationInfo = fields.keySet.exists(k => k.matches(".*(land|regio|plaats|schip).*") && fields(k).nonEmpty && fields(k) != "unknown")
 
@@ -30,35 +38,17 @@ case class Participant(typ: String, fields: Map[String, String]) {
       <desc>{event}</desc>
       {if (hasLocationInfo) <place>
         <placeName type="original">
-          <country>
-            {this -> "land_lett_xl"}
-          </country>
-          <region>
-            {this -> "regio_lett_xl"}
-          </region>
-          <settlement>
-            {this -> "plaats_lett_xl"}
-          </settlement>
-          <location type="ship">
-            <placeName type="original">
-              {this -> "schip_lett_xl"}
-            </placeName>
+          <country>{this -> "land_lett_xl"}</country>
+          <region>{this -> "regio_lett_xl"}</region>
+          <settlement>{this -> "plaats_lett_xl"}</settlement>
+          <location type="ship"><placeName type="original">{this -> "schip_lett_xl"}</placeName>
           </location>
         </placeName>
         <placeName type="normalized">
-          <country>
-            {this -> "land_norm_xl"}
-          </country>
-          <region>
-            {this -> "regio_norm_xl"}
-          </region>
-          <settlement>
-            {this -> "plaats_norm_xl"}
-          </settlement>
-          <location type="ship">
-            <placeName type="normalized">
-              {this -> "schip_norm_xln"}
-            </placeName>
+          <country>{this -> "land_norm_xl"}</country>
+          <region>{this -> "regio_norm_xl"}</region>
+          <settlement>{this -> "plaats_norm_xl"}</settlement>
+          <location type="ship"><placeName type="normalized">{this -> "schip_norm_xln"}</placeName>
           </location>
         </placeName>
       </place>}

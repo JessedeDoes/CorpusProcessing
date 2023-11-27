@@ -52,6 +52,15 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
 
   lazy val sourceDesc = metadata.TEI
 
+  lazy val mainTextDiv = {
+    val d = XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
+    if (d.text.trim == (d \\ "note").text.trim) {
+      Console.err.println(s"No content for brief $id: $d")
+      d
+    }
+  }
+
+
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
       <fileDesc>
@@ -81,7 +90,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     </teiHeader>
     <text>
        <body><div>
-         {XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))}
+         {mainTextDiv}
        </div></body>
     </text>
   </TEI>
