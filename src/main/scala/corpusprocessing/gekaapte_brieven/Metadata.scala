@@ -61,6 +61,19 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 }
 
 object Metadata {
+
+  import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
+  def splitIntoSequences(metadatas: List[Metadata]): List[List[Metadata]] = {
+    val ids: Seq[(Int, Int)] = metadatas.map(x => x("brief_id")).map(_.toInt).sorted.zipWithIndex
+    def gat(ki: (Int,Int))  = ki match { case (k,i) => i==0 || ids(i-1)._1 != k-1 }
+    val groepjes = groupWithFirst[(Int,Int)](ids, gat)
+    val idGroups = groepjes.map(x => x.map(_._1.toString))
+    if (idGroups.size > 1) {
+      Console.err.println(s"Whahoooo $idGroups")
+    }
+    idGroups.map(g => metadatas.filter(m => g.contains(m("brief_id")))).toList
+  }
+
   def groupMetadata(metadatas: List[Metadata]): Metadata = {
     val baseMeta = metadatas.head
     val fields = baseMeta.fields.keySet
