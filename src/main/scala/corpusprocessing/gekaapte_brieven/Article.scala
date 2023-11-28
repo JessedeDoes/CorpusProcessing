@@ -29,7 +29,7 @@ object Article {
     baseArticle.copy(participants = afzenders ++ ontvangers)
   }
 
-  def meta(n: String, v: String)  = <interpGrp type={n}><interp>{v}</interp></interpGrp>
+
 }
 
 import Article._
@@ -52,12 +52,13 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
 
   lazy val sourceDesc = metadata.TEI
 
-  lazy val mainTextDiv = {
+  lazy val (mainTextDiv, textMissing) = {
     val d = XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
-    if (d.text.trim == (d \\ "note").text.trim) {
+    val noText = d.text.trim == (d \\ "note").text.trim
+    if (noText) {
       Console.err.println(s"No content for brief $id: $d")
-      d
     }
+    (d, noText)
   }
 
 
@@ -71,6 +72,9 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
             <name>Nicoline van der Sijs and volunteers</name>
           </respStmt>
         </titleStmt>
+        <editionStmt>
+          <p>Text missing: {textMissing} for {id}={this -> "archiefnummer_xln"}</p>
+        </editionStmt>
         <publicationStmt>
           <publisher>Dutch Language Institute, https://ivdnt.org</publisher>
           <availability><licence>This file may not be redistributed!! It is a preliminary version</licence></availability>

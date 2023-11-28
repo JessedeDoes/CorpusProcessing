@@ -22,15 +22,15 @@ object exportCorpus {
         .filter(exportFilter)
         .map(x => x.filter(y => exportFields.contains(y._1)))
         .map(x => Article(x))
-        .take(n_to_export)
         .toList
         .groupBy(_.id)
         .values
         .toList
 
-    val splitIntoSubsequent = true
+    val splitIntoSubsequent = false
     val articles = articleGroups.map(a => Article.groupArticles(a))
     lazy val groupMetaMap: Map[String, List[Metadata]] = articles.map(_.metadata).groupBy(x => x("groepID_INT")).mapValues(Metadata.groupMetadata).mapValues(List(_))
+
     lazy val splitGroups: Map[String, Iterable[Metadata]] = {
       val groups1 = articles.map(_.metadata).groupBy(x => x("groepID_INT")).values
       val groups2 = groups1.flatMap(g => Metadata.splitIntoSequences(g)).map(Metadata.groupMetadata)
@@ -40,9 +40,9 @@ object exportCorpus {
     val groupingToUse = if (splitIntoSubsequent) splitGroups else groupMetaMap
     val articlesWithGroupMetadata = articles.filter(a => a.metadata.contains("groepID_INT")).map(a => a.copy(groupMetadata = groupingToUse(a -> "groepID_INT").filter(gm => gm.groupMemberIds.contains(a.id)).headOption))
 
-    articlesWithGroupMetadata.foreach(x => {
+    articlesWithGroupMetadata.take(n_to_export).foreach(x => {
+       println("Exporting:" + x.fields("brief_id"))
         XML.save(exportDataTo + x.fields("brief_id") + ".xml", x.prettyXML)
-        println(x.fields("brief_id"))
       })
   }
 }

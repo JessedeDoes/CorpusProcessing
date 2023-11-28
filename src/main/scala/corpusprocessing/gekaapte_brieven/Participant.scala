@@ -1,6 +1,6 @@
 package corpusprocessing.gekaapte_brieven
 
-import corpusprocessing.gekaapte_brieven.Article.meta
+import corpusprocessing.gekaapte_brieven.Metadata.meta
 
 import scala.xml.Text
 

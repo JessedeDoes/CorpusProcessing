@@ -1,6 +1,6 @@
 package corpusprocessing.gekaapte_brieven
 
-import corpusprocessing.gekaapte_brieven.Article.meta
+import corpusprocessing.gekaapte_brieven.Metadata.meta
 
 case class Metadata(fields: Map[String, String], participants: List[Participant] = List(), isGroupMetadata: Boolean = false, groupMemberIds: List[String]  = List()) {
   def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
@@ -39,7 +39,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         <note resp="editor">
           {this -> "adressering_xl"}
         </note>
-        {if (!isGroupMetadata) meta("pid", s"letter.${this -> "brief_id"}")}
+        {if (!isGroupMetadata) meta("pid", s"letter_${this -> "brief_id"}")}
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> "groepID_INT")}
@@ -103,5 +103,10 @@ object Metadata {
 
     val members = metadatas.map(x => x -> "brief_id")
     baseMeta.copy(fields = nonPersonMetadata.toMap, participants = afzenders ++ ontvangers, isGroupMetadata = true, groupMemberIds =  members)
+  }
+
+  def meta(n: String, v: String)  = {
+    val values_split = v.split("\\s*;\\s*").toSet.toList.sorted
+    <interpGrp type={n}>{values_split.map(v => <interp>{v}</interp>)}</interpGrp>
   }
 }
