@@ -15,7 +15,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
   def ymd(x: String): (String, String, String) = {
     val datering = x.split("-").map(x => if (x.matches("^0+$")) "unknown" else x)
     if (datering.size >= 3)
-      if (datering(0).size == 4) (datering(0), datering(1), datering(2)) else (datering(2), datering(1), datering(0))
+       (datering(0), datering(1), datering(2))
     else
       ("unknown", "unknown", "unknown")
   }

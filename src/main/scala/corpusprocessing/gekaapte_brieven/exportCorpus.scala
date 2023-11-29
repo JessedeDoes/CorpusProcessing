@@ -29,6 +29,7 @@ object exportCorpus {
 
     val splitIntoSubsequent = false
     val articles = articleGroups.map(a => Article.groupArticles(a))
+
     lazy val groupMetaMap: Map[String, List[Metadata]] = articles.map(_.metadata).groupBy(x => x("groepID_INT")).mapValues(Metadata.groupMetadata).mapValues(List(_))
 
     lazy val splitGroups: Map[String, Iterable[Metadata]] = {

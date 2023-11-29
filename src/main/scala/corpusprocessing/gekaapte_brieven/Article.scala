@@ -28,8 +28,6 @@ object Article {
 
     baseArticle.copy(participants = afzenders ++ ontvangers)
   }
-
-
 }
 
 import Article._
