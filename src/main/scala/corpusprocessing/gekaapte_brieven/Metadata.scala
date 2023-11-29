@@ -2,7 +2,7 @@ package corpusprocessing.gekaapte_brieven
 
 import corpusprocessing.gekaapte_brieven.Metadata.meta
 
-case class Metadata(fields: Map[String, String], participants: List[Participant] = List(), isGroupMetadata: Boolean = false, groupMemberIds: List[String]  = List()) {
+case class Metadata(fields: Map[String, String], participants: List[Participant] = List(), isGroupMetadata: Boolean = false, groupMemberIds: List[String]  = List(), groupMetadata:Option[Metadata] = None) {
   def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
 
   def contains(n: String)  = fields.contains(n)  && fields(n) != null && fields(n).nonEmpty && fields(n) != "unknown"
@@ -10,6 +10,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 
   lazy val allMeta = fields.filter({ case (n, v) => v != null && v.length < 100 && v.nonEmpty && !Set("t", "f").contains((v)) }).toList.sorted.map({ case (n, v) => meta(n, v) })
 
+  lazy val broertjes: Seq[String] = groupMetadata.map(_.groupMemberIds).getOrElse(List())
 
   // beetje gerotzooi vanwege multiple values bij groepjes
   def ymd(x: String): (String, String, String) = {
@@ -20,14 +21,38 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
       ("unknown", "unknown", "unknown")
   }
 
+  lazy val (years, months, days) = {
+    def z(x: Array[String]) = x.toSet.filter(_ != "unknown").toList.sorted
+
+    val many: Array[(String, String, String)] = (this -> "datering_text").split("\\s*;\\s*").map(ymd)
+    (z(many.map(_._1)), z(many.map(_._2)), z(many.map(_._3)))
+  }
+
+  lazy val yearsPlus: Iterable[String] = if (years.exists(_ != "unknown")) years.filter(_ != "unknown") else groupMetadata.map(_.years).getOrElse(List()).sorted
+
+
+  lazy val minYear = yearsPlus.filter(_ != "unknown").headOption.getOrElse("unknown")
+  lazy val maxYear = yearsPlus.filter(_ != "unknown").lastOption.getOrElse("unknown")
+
+  lazy val this_datering = if (minYear == maxYear) minYear else s"$minYear-$maxYear"
+  lazy val datering: String = if (this_datering == "unknown") groupMetadata.map(_.datering).getOrElse("unknown") else this_datering
+  
+  //lazy val datering = if (this.contains("witnessYear_from")) this("witnessYear_from") else groupMetadata.map(_.datering).getOrElse("ongedateerd")
+
+
+  lazy val genre = if (this.contains("tekstsoort_INT")) this("tekstsoort_INT") else groupMetadata.map(_("tekstsoort_INT")).getOrElse("onbekende tekstsoort")
+  def report() = if (!isGroupMetadata) {
+    println(s"datering ($isGroupMetadata): $yearsPlus -> $datering!, genre= $genre, page level genre= ${this -> "tekstsoort_INT"}, broertjes=$broertjes")
+  }
+
   lazy val (year, month, day) = {
     def z(x: Array[String]) = x.toSet.filter(_ != "unknown").toList.sorted.mkString(";")
     val many: Array[(String, String, String)] = (this -> "datering_text").split("\\s*;\\s*").map(ymd)
     (z(many.map(_._1)), z(many.map(_._2)), z(many.map(_._3)))
   }
 
-  lazy val senders = participants.filter(_.typ == "afzender")
-  lazy val recipients = participants.filter(_.typ == "ontvanger")
+  lazy val senders: Seq[Participant] = participants.filter(_.typ == "afzender")
+  lazy val recipients: Seq[Participant] = participants.filter(_.typ == "ontvanger")
 
   lazy val TEI = <sourceDesc xml:id={if (isGroupMetadata) "metadata.level2" else "metadata.level0"}>
     <listBibl type={if (isGroupMetadata) "intCorpusMetadata.level2" else "intCorpusMetadata.level0"}>
@@ -43,8 +68,8 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> "groepID_INT")}
-        {meta("witnessYear_from", year)}
-        {meta("witnessYear_to", year)}
+        {meta("witnessYear_from", minYear)}
+        {meta("witnessYear_to", maxYear)}
         {meta("witnessMonth_from", month)}
         {meta("witnessMonth_to", month)}
         {meta("witnessDay_from", day)}
@@ -78,10 +103,12 @@ object Metadata {
     val baseMeta = metadatas.head
     val fields = baseMeta.fields.keySet
 
-    val nonPersonMetadata: Set[(String, String)] = fields
+    val nonPersonMetadata: Map[String, String] = fields
         .filter(x => !x.matches("^(afz|ontv).*"))
         .map(n => n -> metadatas.map(m => m(n))
-        .filter(_.nonEmpty).toSet.mkString(";"))
+        .filter(_.nonEmpty).toSet.mkString(";")).toMap
+
+    // println(s"Group: ${metadatas.size}, ${nonPersonMetadata.get("tekstsoort_INT")}")
 
     val afzenders = metadatas.filter(a => a.contains("afz_id") && a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
@@ -102,7 +129,7 @@ object Metadata {
     }).values.toList
 
     val members = metadatas.map(x => x -> "brief_id")
-    baseMeta.copy(fields = nonPersonMetadata.toMap, participants = afzenders ++ ontvangers, isGroupMetadata = true, groupMemberIds =  members)
+    baseMeta.copy(fields = nonPersonMetadata, participants = afzenders ++ ontvangers, isGroupMetadata = true, groupMemberIds =  members)
   }
 
   def meta(n: String, v: String)  = {

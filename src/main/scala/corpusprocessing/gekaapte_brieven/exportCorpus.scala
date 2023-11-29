@@ -8,6 +8,11 @@ object exportCorpus {
 
   val n_to_export = Integer.MAX_VALUE
 
+
+  def cleanExportDir() = {
+    val files = new java.io.File(exportDataTo).listFiles().filter(_.getName.endsWith(".xml"))
+    files.foreach(f => f.delete())
+  }
   def main(args: Array[String])  = {
     lazy val fieldInfo = briefdb.iterator(briefdb.allRecords("public.monster_field_info")).toList
     lazy val exportFields: Set[String] = fieldInfo.filter(x => x("exported").toLowerCase.contains("t")).map(x => x("column_name")).toSet ++ Set("xml", "brief_id")
@@ -40,6 +45,10 @@ object exportCorpus {
 
     val groupingToUse = if (splitIntoSubsequent) splitGroups else groupMetaMap
     val articlesWithGroupMetadata = articles.filter(a => a.metadata.contains("groepID_INT")).map(a => a.copy(groupMetadata = groupingToUse(a -> "groepID_INT").filter(gm => gm.groupMemberIds.contains(a.id)).headOption))
+    articlesWithGroupMetadata.foreach(a => a.metadata.report())
+
+    cleanExportDir()
+
 
     articlesWithGroupMetadata.take(n_to_export).foreach(x => {
        println("Exporting:" + x.fields("brief_id"))

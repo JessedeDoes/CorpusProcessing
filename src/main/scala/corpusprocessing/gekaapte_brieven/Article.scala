@@ -38,7 +38,7 @@ import Article._
 
 case class Article(fields: Map[String,String], participants: List[Participant] = List(), groupMetadata: Option[Metadata] = None) {
 
-  def metadata = Metadata(this.fields.filter(_._1 != "xml"),this.participants)
+  def metadata = Metadata(this.fields.filter(_._1 != "xml"),this.participants,groupMetadata=groupMetadata)
 
   lazy val pretty =  new scala.xml.PrettyPrinter(300, 4)
 
@@ -60,11 +60,13 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
   }
 
 
+
+
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
       <fileDesc>
         <titleStmt>
-          <title>{fields("afz_naam_lett_xl")} - {fields("ontv_naam_lett_xl")}, {fields("datering_text")} </title>
+          <title>{fields("archiefnummer_xln")}: {metadata.genre}, {metadata.datering}</title>
           <respStmt>
             <resp>compiled by</resp>
             <name>Nicoline van der Sijs and volunteers</name>
