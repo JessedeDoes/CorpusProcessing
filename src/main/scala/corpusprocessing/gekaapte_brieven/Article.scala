@@ -2,6 +2,7 @@ package corpusprocessing.gekaapte_brieven
 import java.time.LocalDateTime.now
 import scala.xml._
 import java.io.File
+import scala.util.{Try, Success, Failure}
 object Article {
 
   val exportAllMetadata = false
@@ -57,13 +58,37 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
 
   lazy val sourceDesc = metadata.TEI
 
+  def parseBrackets(t: Text): Seq[Node] = {
+    val txt = t.text
+    val expannetjes = txt.replaceAll("\\((\\p{L}+)\\)", "<expan>$1</expan>")
+    val r: Seq[Node] = Try(XML.loadString(s"<x>$expannetjes</x>").child) match {
+      case Success(value) =>  {
+        if ((value \\ "expan").nonEmpty) {
+          println(s"$txt -> ${value.toString}")
+        }
+        value
+      }
+      case _ => Seq(t)
+    }
+    r
+  }
+  def postProcess(d: Elem): Elem  = {
+    val children = d.child.map(c => { c match {
+      case ce: Elem => Seq(postProcess(ce))
+      case t: Text => parseBrackets(t)
+      case x => x }}
+    )
+    d.copy(child = children.flatten)
+  }
+
   lazy val (mainTextDiv, textMissing) = {
     val d = XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
+    val d1 = postProcess(d)
     val noText = d.text.trim == (d \\ "note").text.trim
     if (noText) {
       Console.err.println(s"No content for brief $id: $d")
     }
-    (d, noText)
+    (d1, noText)
   }
 
   lazy val title = s"${fields("archiefnummer_xln")}: ${metadata.genre}, ${metadata.datering}"

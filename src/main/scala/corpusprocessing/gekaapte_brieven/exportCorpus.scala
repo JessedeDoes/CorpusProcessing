@@ -52,11 +52,8 @@ object exportCorpus {
 
   def main(args: Array[String])  = {
 
-
     init()
     println(exportFields)
-
-
 
     articlesWithGroupMetadata.foreach(a => a.metadata.report())
 
