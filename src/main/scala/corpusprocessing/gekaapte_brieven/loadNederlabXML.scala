@@ -7,9 +7,10 @@ object loadNederlabXML {
 
   import Settings._
 
-  val justChecking = true
+  val justChecking = false
 
   lazy val nederBrieven: Iterator[Elem] = new File(nederlabXML).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(XML.loadFile)
+  lazy val extraXMLsFromExcel= new File(Settings.extraXMLFromExcel).listFiles().filter(_.getName.endsWith(".xml")).iterator.map(f => f.getName -> XML.loadFile(f)).toMap
 
   lazy val alleDivs  =
     nederBrieven
@@ -31,6 +32,16 @@ object loadNederlabXML {
   <!--Brief id: 23-->
    */
 
+  def loadExtraExcels() = {
+    val missingText: Seq[Map[String, String]] = briefdb.slurp(briefdb.allRecords("brieven_zonder_inhoud")).filter(x => x("xml_to_use") != null && x("xml_to_use").contains("xml"))
+    val loadMe: Seq[(Int, String)] = missingText.map(m => m("brief_id").toInt -> extraXMLsFromExcel(m("xml_to_use")).toString() )
+    val f: ((Int, String)) => Seq[briefdb.Binding] = {
+      case (id, xml) => Seq(briefdb.Binding("id", id), briefdb.Binding("xml", xml))
+    }
+    val b = briefdb.QueryBatch[(Int, String)]("insert into nederlab_excel_xml (id,xml) values (:id, :xml)", f)
+    b.insert(loadMe.toStream)
+  }
+
   def pieterNaarDB(): Unit = {
     preparation.foreach(briefdb.runStatement(_))
     val f: ((Int, String, String)) => Seq[briefdb.Binding] = {
@@ -43,7 +54,9 @@ object loadNederlabXML {
   def main(args: Array[String]): Unit = {
     if (justChecking)
       nederDivs.foreach(println)
-    else
-      pieterNaarDB()
+    else {
+      loadExtraExcels()
+      // pieterNaarDB()
+    }
   }
 }

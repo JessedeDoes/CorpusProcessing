@@ -41,6 +41,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 
 
   lazy val genre = if (this.contains("tekstsoort_INT")) this("tekstsoort_INT") else groupMetadata.map(_("tekstsoort_INT")).getOrElse("onbekende tekstsoort")
+
   def report() = if (!isGroupMetadata) {
     println(s"datering ($isGroupMetadata): $yearsPlus -> $datering!, genre= $genre, page level genre= ${this -> "tekstsoort_INT"}, broertjes=$broertjes")
   }
@@ -68,6 +69,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> "groepID_INT")}
+        {meta("year", datering)}
         {meta("witnessYear_from", minYear)}
         {meta("witnessYear_to", maxYear)}
         {meta("witnessMonth_from", month)}

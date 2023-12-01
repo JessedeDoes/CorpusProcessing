@@ -7,6 +7,14 @@ object Article {
   val exportAllMetadata = false
   def groupArticles(articles: List[Article]): Article = {
     val baseArticle = articles.head
+    val baseMeta = baseArticle.metadata
+    val fields = baseMeta.fields.keySet
+    val metadatas = articles.map(_.metadata)
+
+    val nonPersonMetadata: Map[String, String] = fields
+      .filter(x => !x.matches("^(afz|ontv).*"))
+      .map(n => n -> metadatas.map(m => m(n))
+        .filter(_.nonEmpty).toSet.mkString(";")).toMap
 
     val afzenders = articles.filter(a => a.metadata.contains("afz_id") && a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
@@ -26,13 +34,12 @@ object Article {
       Participant("ontvanger", f)
     }).values.toList
 
-    baseArticle.copy(participants = afzenders ++ ontvangers)
+    val newFields = nonPersonMetadata ++ Map("xml" -> baseArticle("xml"))
+    baseArticle.copy(fields = newFields, participants = afzenders ++ ontvangers)
   }
 }
 
 import Article._
-
-
 
 // <note resp="transcriber"><!--Let op: tabelloze tabelaanroep.-->Zie Excel-bestand nl-hana_hca30-227.1_1_0071-74</note>
 
@@ -59,14 +66,13 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     (d, noText)
   }
 
-
-
+  lazy val title = s"${fields("archiefnummer_xln")}: ${metadata.genre}, ${metadata.datering}"
 
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
       <fileDesc>
         <titleStmt>
-          <title>{fields("archiefnummer_xln")}: {metadata.genre}, {metadata.datering}</title>
+          <title>{title}</title>
           <respStmt>
             <resp>compiled by</resp>
             <name>Nicoline van der Sijs and volunteers</name>
