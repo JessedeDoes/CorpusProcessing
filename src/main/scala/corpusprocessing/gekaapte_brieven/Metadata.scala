@@ -1,6 +1,7 @@
 package corpusprocessing.gekaapte_brieven
 
 import corpusprocessing.gekaapte_brieven.Metadata.meta
+import corpusprocessing.gekaapte_brieven.Settings.group_id_with_singletons
 
 case class Metadata(fields: Map[String, String], participants: List[Participant] = List(), isGroupMetadata: Boolean = false, groupMemberIds: List[String]  = List(), groupMetadata:Option[Metadata] = None) {
   def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
@@ -68,7 +69,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {if (!isGroupMetadata) meta("pid", s"letter_${this -> "brief_id"}")}
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
-        {meta("level2.id", this -> "groepID_INT")}
+        {meta("level2.id", this -> group_id_with_singletons)}
         {meta("year", datering)}
         {meta("witnessYear_from", minYear)}
         {meta("witnessYear_to", maxYear)}

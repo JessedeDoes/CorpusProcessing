@@ -34,16 +34,17 @@ object loadNederlabXML {
 
   def loadExtraExcels() = {
     val missingText: Seq[Map[String, String]] = briefdb.slurp(briefdb.allRecords("brieven_zonder_inhoud")).filter(x => x("xml_to_use") != null && x("xml_to_use").contains("xml"))
+    briefdb.runStatement("create table nederlab_excel_xml_more (id integer, xml text)")
     val loadMe: Seq[(Int, String)] = missingText.map(m => m("brief_id").toInt -> extraXMLsFromExcel(m("xml_to_use")).toString() )
     val f: ((Int, String)) => Seq[briefdb.Binding] = {
       case (id, xml) => Seq(briefdb.Binding("id", id), briefdb.Binding("xml", xml))
     }
-    val b = briefdb.QueryBatch[(Int, String)]("insert into nederlab_excel_xml (id,xml) values (:id, :xml)", f)
+    val b = briefdb.QueryBatch[(Int, String)]("insert into nederlab_excel_xml_more (id,xml) values (:id, :xml)", f)
     b.insert(loadMe.toStream)
   }
 
   def pieterNaarDB(): Unit = {
-    preparation.foreach(briefdb.runStatement(_))
+    preparation_for_nederlab_import.foreach(briefdb.runStatement(_))
     val f: ((Int, String, String)) => Seq[briefdb.Binding] = {
       case (id, xml, metadata) => Seq(briefdb.Binding("id", id), briefdb.Binding("xml", xml), briefdb.Binding("metadata", metadata))
     }

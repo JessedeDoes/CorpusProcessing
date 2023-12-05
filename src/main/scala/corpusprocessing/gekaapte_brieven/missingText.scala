@@ -1,6 +1,7 @@
 package corpusprocessing.gekaapte_brieven
 
 import corpusprocessing.gekaapte_brieven.Settings.extraXMLFromExcel
+import corpusprocessing.gekaapte_brieven.exportCorpus.articlesUnfiltered
 
 import java.io
 import java.io.{File, PrintWriter}
@@ -23,15 +24,18 @@ object missingText {
       .mapValues(_.map(_._2)) // .map(_.replaceAll("[-,][0-9]+", "").replaceAll("[_c]$", ""))
 
     // baseNames.foreach(println)
-    articlesWithGroupMetadata.filter(_.textMissing).sortBy(a => a -> "archiefnummer_xln").foreach(a => {
+    articlesUnfiltered.filter(_.textMissing).sortBy(a => a -> "archiefnummer_xln").foreach(a => {
+      val archiefnr = a -> "archiefnummer_xln"
       val notes = (a.xml \\ "note").filter(n => (n \ "@resp").nonEmpty).map(_.text.trim.replaceAll("\\s+", " ")).mkString("; ")
-      val excelMentioned = notes.contains("nl-hana")
-      val excel = if (excelMentioned) notes.replaceAll(".*(nl[_-]hana\\S+)", "$1") else ""
+      val excelIsMentioned = notes.contains("nl-hana")
+      val excel = if (excelIsMentioned) notes.replaceAll(".*(nl[_-]hana\\S+)", "$1") else {
+        archiefnr
+      }
       val pogingTotXml = baseName(excel)
       val isEr = baseNames.contains(pogingTotXml) /// new File(pogingTotXml).exists()
       val actualFiles: io.Serializable = baseNames.get(pogingTotXml).getOrElse(Array()).mkString("|")
       // archiefnummer brief_id genre notes excel_mentioned base_name found matching
-      pw.println(s"${a -> "archiefnummer_xln"}\t${a.id}\t${a.metadata.genre}\t${notes}\t$excel\t$pogingTotXml\t$excelMentioned\t$isEr\t$actualFiles")
+      pw.println(s"$archiefnr\t${a.id}\t${a.metadata.genre}\t${notes}\t$excel\t$pogingTotXml\t$excelIsMentioned\t$isEr\t$actualFiles\t")
       // a.metadata.report()
     })
     pw.close()

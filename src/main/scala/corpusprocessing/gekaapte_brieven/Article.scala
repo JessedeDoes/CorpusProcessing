@@ -67,7 +67,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     val r: Seq[Node] = Try(XML.loadString(s"<x>$expannetjes</x>").child) match {
       case Success(value) =>  {
         if ((value \\ "expan").nonEmpty) {
-          println(s"$txt -> ${value.toString}")
+          // println(s"$txt -> ${value.toString}")
         }
         value
       }
@@ -102,7 +102,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
   }
 
   lazy val (mainTextDiv, textMissing) = {
-    val d = XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
+    val d = if (Settings.useXMLFromOldDatabase) convertOldXML.convertOldXML(fields("xml")) else XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
     val d1 = postProcess(d)
     val noText = d.text.trim == (d \\ "note").text.trim
     if (noText) {
