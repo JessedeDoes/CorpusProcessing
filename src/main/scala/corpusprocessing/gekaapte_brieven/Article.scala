@@ -50,16 +50,19 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
 
   lazy val pretty =  new scala.xml.PrettyPrinter(300, 4)
 
+
   lazy val id = fields("brief_id")
-  def prettyXML: Elem =  XML.loadString(pretty.format(xml))
+  def prettyXML: Elem =  if (Settings.makePretty) XML.loadString(pretty.format(xml)) else xml
 
   def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
   def ->(f : String)  = this(f)
 
   lazy val sourceDesc = metadata.TEI
 
+  val tabspace = "<space quantity='2' unit='chars'/>"
+  val tabPattern = "<tab>"
   def parseBrackets(t: Text): Seq[Node] = {
-    val txt = t.text
+    val txt = t.text.replaceAll(tabPattern, tabspace)
     val expannetjes = txt.replaceAll("\\((\\p{L}+)\\)", "<expan>$1</expan>")
     val r: Seq[Node] = Try(XML.loadString(s"<x>$expannetjes</x>").child) match {
       case Success(value) =>  {
@@ -72,8 +75,25 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     }
     r
   }
+
+  def removeLinebreakBeforeNote  = {
+
+  }
+  def processNote(note: Elem)  = {
+    val t = note.text
+    if (t.matches("\\[(\\p{L}+)\\]")) {
+      val text = t.replaceAll("[\\[\\]]*", "")
+      note.copy(label = "expan_note", child = Text(text))
+    } else if (false && t.matches("\\[([.,-;])\\]")) {
+      val text = t.replaceAll("[\\[\\]]*", "")
+      note.copy(label = "expan_note", child = Text(text))
+      note.copy(label = "expan_note", child = Text(text))
+    } else note
+  }
+
   def postProcess(d: Elem): Elem  = {
     val children = d.child.map(c => { c match {
+      case note: Elem if (note.label == "note") => Seq(processNote(note))
       case ce: Elem => Seq(postProcess(ce))
       case t: Text => parseBrackets(t)
       case x => x }}

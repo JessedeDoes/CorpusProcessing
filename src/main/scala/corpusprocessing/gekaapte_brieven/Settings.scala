@@ -2,6 +2,8 @@ package corpusprocessing.gekaapte_brieven
 import database.DatabaseUtilities.{Diamond, Select}
 
 object Settings {
+
+  val makePretty = false
   val nederlabXLSX = "/mnt/Projecten/Corpora/Historische_Corpora/GekaapteBrieven2021/Database-maart2021-onlineappl/database dump gekaapte_brieven en excels maart 2021/gekaapte_brieven/xslx"
   val nederlabXML = "/mnt/Projecten/Corpora/Historische_Corpora/Nederlab/gekaaptebrieven/"
   val exportDataTo = "/mnt/Projecten/Corpora/Historische_Corpora/GekaapteBrieven2021/Export/Untagged/"
