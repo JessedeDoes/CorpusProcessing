@@ -102,7 +102,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 
 object Metadata {
 
-  lazy val all_group_ids: Map[String, String] = articlesWithGroup.map(a => a -> group_id_with_singletons).zipWithIndex.toMap.mapValues(x => String.format("doc_%04d", x.asInstanceOf[Object]))
+  lazy val all_group_ids: Map[String, String] = articlesWithGroup.map(a => a -> group_id_with_singletons).toSet.toList.zipWithIndex.toMap.mapValues(x => String.format("doc_%04d", x.asInstanceOf[Object]))
 
   import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
   def splitIntoSequences(metadatas: List[Metadata]): List[List[Metadata]] = {
