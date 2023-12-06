@@ -1,7 +1,8 @@
 package corpusprocessing.gekaapte_brieven
 
-import corpusprocessing.gekaapte_brieven.Metadata.meta
+import corpusprocessing.gekaapte_brieven.Metadata.{all_group_ids, meta}
 import corpusprocessing.gekaapte_brieven.Settings.group_id_with_singletons
+import corpusprocessing.gekaapte_brieven.exportCorpus.articlesAll
 
 case class Metadata(fields: Map[String, String], participants: List[Participant] = List(), isGroupMetadata: Boolean = false, groupMemberIds: List[String]  = List(), groupMetadata:Option[Metadata] = None) {
   def apply(f: String): String = if (fields.contains(f) && fields(f) != null) fields(f) else "unknown"
@@ -80,7 +81,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {if (!isGroupMetadata) meta("pid", s"letter_${this -> "brief_id"}")}
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
-        {meta("level2.id", this -> group_id_with_singletons)}
+        {meta("level2.id", this -> all_group_ids(group_id_with_singletons))}
         {meta("datering", datering)}
         {meta("witnessYear_from", minYear)}
         {meta("witnessYear_to", maxYear)}
@@ -100,6 +101,8 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
 }
 
 object Metadata {
+
+  lazy val all_group_ids: Map[String, String] = articlesAll.map(a => a -> group_id_with_singletons).zipWithIndex.toMap.mapValues(x => String.format("%04d", x.asInstanceOf[Object]))
 
   import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
   def splitIntoSequences(metadatas: List[Metadata]): List[List[Metadata]] = {
