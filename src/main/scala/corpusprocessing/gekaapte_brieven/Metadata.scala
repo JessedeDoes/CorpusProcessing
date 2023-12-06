@@ -47,7 +47,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
   lazy val maxYear = yearsPlus.filter(_ != "unknown").lastOption.getOrElse("unknown")
 
   lazy val this_datering = if (minYear == maxYear) minYear else s"$minYear-$maxYear"
-  lazy val datering: String = if (this_datering == "unknown") groupMetadata.map(_.datering).getOrElse("unknown") else this_datering
+  lazy val datering: String = if (this_datering == "unknown") groupMetadata.map(_.datering).getOrElse(this -> "datering_archive") else this_datering
   
   //lazy val datering = if (this.contains("witnessYear_from")) this("witnessYear_from") else groupMetadata.map(_.datering).getOrElse("ongedateerd")
 
@@ -81,7 +81,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id", this -> group_id_with_singletons)}
-        {meta("year", datering)}
+        {meta("datering", datering)}
         {meta("witnessYear_from", minYear)}
         {meta("witnessYear_to", maxYear)}
         {meta("witnessMonth_from", month)}
