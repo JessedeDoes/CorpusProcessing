@@ -2,6 +2,7 @@ package corpusprocessing.gekaapte_brieven
 import java.io.{File, PrintWriter}
 import scala.xml._
 import Settings._
+import corpusprocessing.gekaapte_brieven.Metadata.all_group_ids
 import database.DatabaseUtilities._
 
 import java.io
@@ -71,6 +72,7 @@ object exportCorpus {
     // println(exportFields)
     println(s"Articles: ${articleGroups.size}, with group: ${articlesWithGroup.size}, With grouped metadata: ${articlesWithGroupMetadata.size} ")
     println(s"Groepid: ${articleGroups.head.head.fields("group_id_with_singletons")}")
+
     // articlesWithGroupMetadata.foreach(a => a.metadata.report())
 
     cleanExportDir()
