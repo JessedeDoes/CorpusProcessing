@@ -8,6 +8,8 @@ object Settings {
   val nederlabXML = "/mnt/Projecten/Corpora/Historische_Corpora/Nederlab/gekaaptebrieven/"
   val exportDataTo = "/mnt/Projecten/Corpora/Historische_Corpora/GekaapteBrieven2021/Export/Untagged/"
   val extraXMLFromExcel = "/mnt/Projecten/Corpora/Historische_Corpora/GekaapteBrieven2021/ExcelConverted/"
+  val brief_data_table = "with_data_plus"
+
 
   val brieven_db_config = new database.Configuration(
     name = "gekaapte_briefjes",
@@ -26,18 +28,22 @@ object Settings {
   val group_id_with_singletons = "group_id_with_singletons"
   val makeArticleTable =
     s"""create  temporary view with_data
-       |as select brieven_monster_view.*, bd.xml, case when "groepID_INT"='' then 'singleton_' || brief_id else  "groepID_INT" end as $group_id_with_singletons
+       |as select brieven_monster_view.*, bd.xml,
+       |case when "groepID_INT"='' then 'singleton_' || brieven_monster_view.brief_id else  "groepID_INT" end as $group_id_with_singletons
        |from brieven_monster_view, bd
        |where  bd.brid=brieven_monster_view.brief_id""".stripMargin
-
-  println(makeArticleTable)
 
 
   val makeArticleTable_2 =
   s"""create  temporary view with_data_2
-      |as select brieven_monster_view.*, brief_data.xml, case when "groepID_INT"='' then 'singleton_' || brief_id else  "groepID_INT" end as $group_id_with_singletons
-      |from brieven_monster_view, brief_data
-      |where brief_data.id=brieven_monster_view.brief_id""".stripMargin
+      |as select
+      |   brieven_monster_view.*,
+      |   archive_info.date as datering_archive, $brief_data_table.xml,
+      |   case when "groepID_INT"='' then 'singleton_' || brieven_monster_view.brief_id else  "groepID_INT" end as $group_id_with_singletons
+      |from brieven_monster_view, $brief_data_table, archive_info
+      |where $brief_data_table.id=brieven_monster_view.brief_id
+      |      and brieven_monster_view.brief_id=archive_info.brief_id""".stripMargin
+
   val preparation_for_nederlab_import = List(makeArticleTable, pieterLeeg, makePieterTable, dropView, makeView, makeArticleTable)
 
   val articleTable = if (useXMLFromOldDatabase) "with_data_2" else "with_data"

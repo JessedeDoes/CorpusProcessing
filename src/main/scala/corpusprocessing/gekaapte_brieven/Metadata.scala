@@ -28,8 +28,19 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
     val many: Array[(String, String, String)] = (this -> "datering_text").split("\\s*;\\s*").map(ymd)
     (z(many.map(_._1)), z(many.map(_._2)), z(many.map(_._3)))
   }
+  lazy val yearsArchive = {
+    val x = (this -> "datering_archive").split("-")
+    if (x.size == 1) List(x.head, x.head) else List(x(0), x(1))
+  }
 
-  lazy val yearsPlus: Iterable[String] = if (years.exists(_ != "unknown")) years.filter(_ != "unknown") else groupMetadata.map(_.years).getOrElse(List()).sorted
+  lazy val yearsPlus: Iterable[String] =
+    if (years.exists(_ != "unknown")) years.filter(_ != "unknown")
+    else  {
+      val g = groupMetadata.map(_.years).getOrElse(List()).sorted
+      if (g.exists(_ != "unknown")) {
+        g
+      } else yearsArchive
+    }
 
 
   lazy val minYear = yearsPlus.filter(_ != "unknown").headOption.getOrElse("unknown")

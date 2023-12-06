@@ -8,7 +8,7 @@ import java.io
 import scala.util.{Success, Try}
 object exportCorpus {
 
-  val n_to_export =  Integer.MAX_VALUE
+  val n_to_export = Integer.MAX_VALUE
 
 
   def cleanExportDir() = {
@@ -19,9 +19,18 @@ object exportCorpus {
 
   val splitIntoSubsequent = false
   lazy val fieldInfo = briefdb.iterator(briefdb.allRecords("public.monster_field_info")).toList
-  lazy val exportFields: Set[String] = fieldInfo.filter(x => x("exported").toLowerCase.contains("t")).map(x => x("column_name")).toSet ++ Set("xml", "brief_id", group_id_with_singletons)
+  lazy val exportFields: Set[String] = fieldInfo.filter(x => x("exported").toLowerCase.contains("t"))
+    .map(x => x("column_name")).toSet ++ Set("xml", "brief_id", "datering_archive", group_id_with_singletons)
 
-  def init() = briefdb.runStatement(if (useXMLFromOldDatabase) makeArticleTable_2 else makeArticleTable)
+  def init() = {
+    if (useXMLFromOldDatabase) {
+      List("create temporary table with_data_plus (id integer, xml text)",
+        "insert into with_data_plus select * from nederlab_excel_xml_more",
+        "insert into with_data_plus select id,xml from brief_data where not (id in (select id from with_data_plus))")
+        .foreach(x => briefdb.runStatement(x))
+    }
+    briefdb.runStatement(if (useXMLFromOldDatabase) makeArticleTable_2 else makeArticleTable)
+  }
 
   def exportFilter(m: Map[String, String]) = true // m("brief_id").contains("2056")
 

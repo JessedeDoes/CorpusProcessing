@@ -8,11 +8,16 @@ object convertOldXML {
    def convertOldXML(xml: String)  = {
 
      val parsed = XML.loadString(xml)
-     val text = (parsed \\ "Transcription"  \ "Text").toString()
-     val atext = adapt(text)
-     val divje = XML.loadString(atext).copy(label="div")
 
-     val looksEmpty = (divje \\ "lb").isEmpty && divje.text.toLowerCase.contains("excel")
+     // dit werkt niet voor de geconverteerde xml
+     val oldTextElement = (parsed \\ "Transcription"  \ "Text")
+     val text = if (oldTextElement.isEmpty) xml else adapt(oldTextElement.toString())
+
+     //val atext = adapt(text)
+
+     val divje = XML.loadString(text).copy(label="div")
+
+     val looksEmpty = (divje \\ "lb" ++ divje \\ "cell").isEmpty && divje.text.toLowerCase.contains("excel")
      // print(divje)
      if (looksEmpty)
      {
