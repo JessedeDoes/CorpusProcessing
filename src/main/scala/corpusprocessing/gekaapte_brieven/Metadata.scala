@@ -29,6 +29,7 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
     val many: Array[(String, String, String)] = (this -> "datering_text").split("\\s*;\\s*").map(ymd)
     (z(many.map(_._1)), z(many.map(_._2)), z(many.map(_._3)))
   }
+
   lazy val yearsArchive = {
     val x = (this -> "datering_archive").split("-")
     if (x.size == 1) List(x.head, x.head) else List(x(0), x(1))
@@ -48,15 +49,31 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
   lazy val maxYear = yearsPlus.filter(_ != "unknown").lastOption.getOrElse("unknown")
 
   lazy val this_datering = if (minYear == maxYear) minYear else s"$minYear-$maxYear"
-  lazy val datering: String = if (this_datering == "unknown") groupMetadata.map(_.datering).getOrElse(this -> "datering_archive") else this_datering
-  
+
+  lazy val datering_jaren: String = if (this_datering == "unknown") groupMetadata.map(_.datering_jaren).getOrElse(this -> "datering_archive") else this_datering
+
+  lazy val datering_display = {
+    val d0 = this -> "datering_text"
+    if (d0.matches("^1[67].*")) {
+      val (y, m, d) = ymd(d0)
+      if (m != "unknown" || d != "unknown")
+        d0.replaceAll("00", "?")else  y
+    } else  {
+      val (y,m,d) = ymd(d0)
+      if (m != "unknown" || d != "unknown") {
+        s"$datering_jaren-$m-$d".replaceAll("unknown","?")
+      } else
+        datering_jaren
+    }
+  }
+
   //lazy val datering = if (this.contains("witnessYear_from")) this("witnessYear_from") else groupMetadata.map(_.datering).getOrElse("ongedateerd")
 
 
   lazy val genre = if (this.contains("tekstsoort_INT")) this("tekstsoort_INT") else groupMetadata.map(_("tekstsoort_INT")).getOrElse("onbekende tekstsoort")
 
   def report() = if (!isGroupMetadata) {
-    println(s"datering ($isGroupMetadata): $yearsPlus -> $datering!, genre= $genre, page level genre= ${this -> "tekstsoort_INT"}, broertjes=$broertjes")
+    println(s"datering ($isGroupMetadata): $yearsPlus -> $datering_jaren!, genre= $genre, page level genre= ${this -> "tekstsoort_INT"}, broertjes=$broertjes")
   }
 
   lazy val (year, month, day) = {
@@ -82,7 +99,8 @@ case class Metadata(fields: Map[String, String], participants: List[Participant]
         {meta("sourceID", this -> "archiefnummer_xln")}
         {meta("sourceURL", this -> "originele_vindplaats_xln")}
         {meta("level2.id",  all_group_ids(this ->group_id_with_singletons))}
-        {meta("datering", datering)}
+        {meta("datering_jaren", datering_jaren)}
+        {meta("datering_display", datering_display)}
         {meta("witnessYear_from", minYear)}
         {meta("witnessYear_to", maxYear)}
         {meta("witnessMonth_from", month)}

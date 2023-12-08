@@ -111,7 +111,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     (d1, noText)
   }
 
-  lazy val title = s"${fields("archiefnummer_xln")}: ${metadata.genre}, ${metadata.datering}"
+  lazy val title = s"${fields("archiefnummer_xln")}: ${metadata.genre}, ${metadata.datering_display}"
 
   lazy val xml = <TEI xmlns="http://www.tei-c.org/ns/1.0">
     <teiHeader>
