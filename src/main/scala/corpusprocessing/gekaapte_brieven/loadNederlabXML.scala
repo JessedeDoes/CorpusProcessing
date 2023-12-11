@@ -46,7 +46,7 @@ object loadNederlabXML {
   def loadExtraExcelsEvenMore() = {
     val excelInfo: Seq[Map[String, String]] = briefdb.slurp(briefdb.allRecords("excel")) // .filter(x => x("xml_to_use") != null && x("xml_to_use").contains("xml"))
     briefdb.runStatement("drop table  excel_xml")
-    briefdb.runStatement("create table excel_xml (id integer, archiefnummer text, bestandsnaam text, xml text, found boolean, some_match boolean, matches text, note text)")
+    briefdb.runStatement("create table excel_xml (id integer primary key, archiefnummer text, bestandsnaam text, xml text, found boolean, some_match boolean, matches text, note text)")
     briefdb.runStatement("delete from excel_xml")
 
     excelInfo.foreach(println)
