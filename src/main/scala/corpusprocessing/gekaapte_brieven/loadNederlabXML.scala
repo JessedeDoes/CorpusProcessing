@@ -80,7 +80,7 @@ object loadNederlabXML {
 
     b.insert(loadMe.toStream)
 
-    Thread.sleep(2000)
+
     briefdb.runStatement("update excel_xml set note=cast(xpath('//Text//text()', cast(brief_data.xml as xml)) as text) from brief_data where brief_data.id=excel_xml.id")
     briefdb.runStatement("alter table excel_xml add column file_used text")
     briefdb.runStatement("update excel_xml set file_used =  regexp_replace(bestandsnaam, 'xls', 'xml') where found")
