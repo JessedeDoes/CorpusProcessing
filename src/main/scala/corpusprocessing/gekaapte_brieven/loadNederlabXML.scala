@@ -85,7 +85,7 @@ object loadNederlabXML {
     briefdb.runStatement("alter table excel_xml add column file_used text")
     briefdb.runStatement("update excel_xml set file_used =  regexp_replace(bestandsnaam, 'xls', 'xml') where found")
     briefdb.runStatement("update excel_xml set file_used =  matches where not found")
-    // die laatste werkt om de een of andere reden niet zo. Voer uit in psql
+
 
   }
 
