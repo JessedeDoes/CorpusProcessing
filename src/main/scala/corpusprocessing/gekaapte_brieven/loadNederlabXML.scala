@@ -55,6 +55,7 @@ object loadNederlabXML {
     briefdb.runStatement("update all_excel_xml set bestandsnaam=regexp_replace(bestandsnaam,'xml','xls')")
     briefdb.runStatement("update all_excel_xml set archiefnummer=x.archiefnummer from excel_xml x where x.bestandsnaam=all_excel_xml.bestandsnaam")
     briefdb.runStatement("update all_excel_xml set id=x.id from excel x where x.bestand=all_excel_xml.bestandsnaam")
+    briefdb.runStatement("update excel_xml set xml=a.xml from all_excel_xml a where regexp_replace(a.bestandsnaam,'xls','xml')=excel_xml.file_used and excel_xml.xml is null;")
 
   }
 

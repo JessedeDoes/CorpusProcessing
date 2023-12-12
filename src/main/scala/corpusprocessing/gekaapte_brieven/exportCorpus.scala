@@ -10,7 +10,7 @@ import scala.util.{Success, Try}
 object exportCorpus {
 
   val n_to_export = Integer.MAX_VALUE
-
+  val allowEmptyDocuments = true
 
   def cleanExportDir() = {
     val files = new java.io.File(exportDataTo).listFiles().filter(_.getName.endsWith(".xml"))
@@ -25,6 +25,13 @@ object exportCorpus {
 
   def init() = {
     if (useXMLFromOldDatabase) {
+      val tryNew = true
+      if (tryNew) {
+        List("create temporary table with_data_plus (id integer, xml text)",
+          "insert into with_data_plus select id,xml from excel_xml where found",
+          "insert into with_data_plus select id,xml from brief_data where not (id in (select id from excel_xml where found))")
+          .foreach(x => briefdb.runStatement(x))
+      } else
       List("create temporary table with_data_plus (id integer, xml text)",
         "insert into with_data_plus select * from nederlab_excel_xml_more",
         "insert into with_data_plus select id,xml from brief_data where not (id in (select id from with_data_plus))")
@@ -49,7 +56,7 @@ object exportCorpus {
 
 
   lazy val articlesUnfiltered = articleGroups.map(a => Article.groupArticles(a))
-  lazy val articles  = articlesUnfiltered.filter(a => !a.textMissing)
+  lazy val articles  = articlesUnfiltered.filter(a => allowEmptyDocuments | !a.textMissing)
 
   lazy val groupMetaMap: Map[String, List[Metadata]] = articles.map(_.metadata).groupBy(x => x(group_id_with_singletons)).mapValues(Metadata.groupMetadata).mapValues(List(_))
 
