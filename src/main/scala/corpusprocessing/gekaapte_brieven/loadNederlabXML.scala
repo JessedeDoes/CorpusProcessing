@@ -43,6 +43,21 @@ object loadNederlabXML {
     b.insert(loadMe.toStream)
   }
 
+  def loadAllExcels() = {
+    briefdb.runStatement("drop table if exists all_excel_xml")
+    briefdb.runStatement("create table all_excel_xml (tellertje serial primary key, id integer, archiefnummer text, bestandsnaam text, xml text)")
+    val loadMe: Seq[(String, String)] = extraXMLsFromExcel.mapValues(_.toString()).toList
+    val f: ((String, String)) => Seq[briefdb.Binding] = {
+      case (id, xml) => Seq(briefdb.Binding("bestandsnaam", id), briefdb.Binding("xml", xml))
+    }
+    val b = briefdb.QueryBatch[(String, String)]("insert into all_excel_xml (bestandsnaam,xml) values (:bestandsnaam, :xml)", f)
+    b.insert(loadMe.toStream)
+    briefdb.runStatement("update all_excel_xml set bestandsnaam=regexp_replace(bestandsnaam,'xml','xls')")
+    briefdb.runStatement("update all_excel_xml set archiefnummer=x.archiefnummer from excel_xml x where x.bestandsnaam=all_excel_xml.bestandsnaam")
+    briefdb.runStatement("update all_excel_xml set id=x.id from excel x where x.bestand=all_excel_xml.bestandsnaam")
+
+  }
+
   def loadExtraExcelsEvenMore() = {
     val excelInfo: Seq[Map[String, String]] = briefdb.slurp(briefdb.allRecords("excel")) // .filter(x => x("xml_to_use") != null && x("xml_to_use").contains("xml"))
     briefdb.runStatement("drop table  excel_xml")
@@ -106,6 +121,7 @@ object loadNederlabXML {
       // loadExtraExcels()
       // pieterNaarDB()
       // loadExtraExcelsEvenMore()
+      loadAllExcels
     }
   }
 }
