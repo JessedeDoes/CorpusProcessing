@@ -21,15 +21,17 @@ object exportCorpus {
   val splitIntoSubsequent = false
   lazy val fieldInfo = briefdb.iterator(briefdb.allRecords("public.monster_field_info")).toList
   lazy val exportFields: Set[String] = fieldInfo.filter(x => x("exported").toLowerCase.contains("t"))
-    .map(x => x("column_name")).toSet ++ Set("xml", "brief_id", "datering_archive", group_id_with_singletons)
+    .map(x => x("column_name")).toSet ++ Set("xml", "brief_id", "datering_archive", "excel", group_id_with_singletons)
 
   def init() = {
     if (useXMLFromOldDatabase) {
       val tryNew = true
       if (tryNew) {
-        List("create temporary table with_data_plus (id integer, xml text)",
-          "insert into with_data_plus select id,xml from excel_xml where found",
-          "insert into with_data_plus select id,xml from brief_data where not (id in (select id from excel_xml where found))")
+        List(
+          "set schema 'export'",
+          "create temporary table with_data_plus (id integer, xml text, excel boolean)",
+          "insert into with_data_plus select id,xml,true from excel_xml where found",
+          "insert into with_data_plus select id,xml,false from brief_data where not (id in (select id from excel_xml where found))")
           .foreach(x => briefdb.runStatement(x))
       } else
       List("create temporary table with_data_plus (id integer, xml text)",

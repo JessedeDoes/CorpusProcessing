@@ -26,6 +26,7 @@ object missingText {
     // baseNames.foreach(println)
     articlesUnfiltered.filter(_.textMissing).sortBy(a => a -> "archiefnummer_xln").foreach(a => {
       val archiefnr = a -> "archiefnummer_xln"
+      val isExcel =  a -> "excel"
       val notes = (a.xml \\ "note").filter(n => (n \ "@resp").nonEmpty).map(_.text.trim.replaceAll("\\s+", " ")).mkString("; ")
       val excelIsMentioned = notes.contains("nl-hana")
       val excel = if (excelIsMentioned) notes.replaceAll(".*(nl[_-]hana\\S+)", "$1") else {
@@ -35,7 +36,7 @@ object missingText {
       val isEr = baseNames.contains(pogingTotXml) /// new File(pogingTotXml).exists()
       val actualFiles: io.Serializable = baseNames.get(pogingTotXml).getOrElse(Array()).mkString("|")
       // archiefnummer brief_id genre notes excel_mentioned base_name found matching
-      pw.println(s"$archiefnr\t${a.id}\t${a.metadata.genre}\t${notes}\t$excel\t$pogingTotXml\t$excelIsMentioned\t$isEr\t$actualFiles\t")
+      pw.println(s"$archiefnr\t${a.id}\t$isExcel\t${a.metadata.genre}\t${notes}\t$excel\t$pogingTotXml\t$excelIsMentioned\t$isEr\t$actualFiles\t")
       // a.metadata.report()
     })
     pw.close()

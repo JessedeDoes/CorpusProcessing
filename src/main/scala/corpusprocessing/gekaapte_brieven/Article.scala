@@ -104,7 +104,7 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
   lazy val (mainTextDiv, textMissing) = {
     val d = if (Settings.useXMLFromOldDatabase) convertOldXML.convertOldXML(fields("xml")) else XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
     val d1 = postProcess(d)
-    val noText = d.text.trim == (d \\ "note").text.trim
+    val noText = d.text.trim == (d \\ "note").text.trim || (d.descendant.filter(t => t.isInstanceOf[Text] && t.text.trim.nonEmpty)).forall(t => t.text.toLowerCase.contains("excel"))
     if (noText) {
       Console.err.println(s"No content for brief $id: $d")
     }

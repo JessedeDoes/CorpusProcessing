@@ -38,7 +38,7 @@ object Settings {
   s"""create  temporary view with_data_2
       |as select
       |   brieven_monster_view.*,
-      |   archive_info.date as datering_archive, $brief_data_table.xml,
+      |   archive_info.date as datering_archive, $brief_data_table.xml, $brief_data_table.excel,
       |   case when "groepID_INT"='' then 'singleton_' || brieven_monster_view.brief_id else  "groepID_INT" end as $group_id_with_singletons
       |from brieven_monster_view, $brief_data_table, archive_info
       |where $brief_data_table.id=brieven_monster_view.brief_id
