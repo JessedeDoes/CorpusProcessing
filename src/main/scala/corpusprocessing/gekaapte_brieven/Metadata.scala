@@ -140,10 +140,11 @@ object Metadata {
 
     val nonPersonMetadata: Map[String, String] = fields
         .filter(x => !x.matches("^(afz|ontv).*"))
-        .map(n => n -> metadatas.map(m => m(n))
-        .filter(_.nonEmpty).toSet.mkString(";")).toMap
+        .map(n =>
+          n -> metadatas.map(m => m(n)).filter(_.nonEmpty).distinct.sorted.mkString(";")
+        ).toMap
 
-    // println(s"Group: ${metadatas.size}, ${nonPersonMetadata.get("tekstsoort_INT")}")
+    //println(s"Group: ${metadatas.size}, ${nonPersonMetadata.get("archiefnummer_xln")}")
 
     val afzenders = metadatas.filter(a => a.contains("afz_id") && a("afz_id").nonEmpty).groupBy(a => a("afz_id")).mapValues(arts => {
       val a = arts.head
@@ -164,11 +165,20 @@ object Metadata {
     }).values.toList
 
     val members = metadatas.map(x => x -> "brief_id")
-    baseMeta.copy(fields = nonPersonMetadata, participants = afzenders ++ ontvangers, isGroupMetadata = true, groupMemberIds =  members)
+    val grouped = baseMeta.copy(fields = nonPersonMetadata, participants = afzenders ++ ontvangers, isGroupMetadata = true, groupMemberIds =  members)
+    //println(grouped.TEI)
+    grouped
+  }
+
+  val onbekendjes: Set[String] = Set("unknown", "[unknown]", "ontbreekt", "[ontbreekt]", "onbekend", "[onbekend]", "unresolved", "[unresolved]", "geen", "[geen]", "?")
+  def unify_unknown(s: String) = {
+    val s1 = s.trim.toLowerCase()
+    if (onbekendjes.contains(s1)) "[onbekend]" else s
   }
 
   def meta(n: String, v: String)  = {
-    val values_split = v.split("\\s*;\\s*").toSet.toList.sorted
-    <interpGrp type={n}>{values_split.map(v => <interp>{v}</interp>)}</interpGrp>
+    val values_split: Seq[String] = v.split("\\s*;\\s*").toSet.toList.sorted
+    val v1 = values_split.map(unify_unknown)
+    <interpGrp type={n}>{v1.map(v => <interp>{v}</interp>)}</interpGrp>
   }
 }

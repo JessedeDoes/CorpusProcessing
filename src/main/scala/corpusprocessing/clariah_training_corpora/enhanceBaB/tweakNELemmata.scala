@@ -19,7 +19,7 @@ object tweakNELemmata {
     val d = XML.load(in)
     val d1 = updateElement(d, _.label == "w", dow)
     // println(out)
-    XML.save(out, d1)
+    // XML.save(out, d1)
   }
 
   def main(args: Array[String])  = {

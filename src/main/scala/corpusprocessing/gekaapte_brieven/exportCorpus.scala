@@ -28,7 +28,15 @@ object exportCorpus {
       val tryNew = true
       if (tryNew) {
         List(
+          "drop table if exists export.brieven_monster_view",
+          "create table export.brieven_monster_view as select * from public.brieven_monster_view;",
           "set schema 'export'",
+          "update export.brieven_monster_view set afz_plaats_norm_xl=afz_regio_norm_xl,afz_regio_norm_xl='' where afz_regio_norm_xl in (select regio from public.regios where is_plaats);",
+          "update export.brieven_monster_view set afz_regio_norm_xl=afz_plaats_norm_xl,afz_plaats_norm_xl='' where afz_plaats_norm_xl in (select plaats from public.plaatsen where is_regio);",
+
+          "update export.brieven_monster_view set ontv_plaats_norm_xl=ontv_regio_norm_xl,ontv_regio_norm_xl='' where ontv_regio_norm_xl in (select regio from public.regios where is_plaats);",
+          "update export.brieven_monster_view set ontv_regio_norm_xl=ontv_plaats_norm_xl,ontv_plaats_norm_xl='' where ontv_plaats_norm_xl in (select plaats from public.plaatsen where is_regio);",
+
           "create temporary table with_data_plus (id integer, xml text, excel boolean)",
           "insert into with_data_plus select id,xml,true from excel_xml where found",
           "insert into with_data_plus select id,xml,false from brief_data where not (id in (select id from excel_xml where found))")

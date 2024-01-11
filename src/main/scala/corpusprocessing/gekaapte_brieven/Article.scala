@@ -101,10 +101,22 @@ case class Article(fields: Map[String,String], participants: List[Participant] =
     d.copy(child = children.flatten)
   }
 
+  def noNotes(n: Node): Node = {
+    n match {
+      case e: Elem => e.copy(child=e.child.filter(_.label != "note").map(noNotes))
+      case _ => n
+    }
+  }
+
   lazy val (mainTextDiv, textMissing) = {
     val d = if (Settings.useXMLFromOldDatabase) convertOldXML.convertOldXML(fields("xml")) else XML.loadString(fields("xml").replaceAll("(</?)div[0-9]", "$1div"))
     val d1 = postProcess(d)
-    val noText = d.text.trim == (d \\ "note").text.trim || (d.descendant.filter(t => t.isInstanceOf[Text] && t.text.trim.nonEmpty)).forall(t => t.text.toLowerCase.contains("excel"))
+    val nn = noNotes(d1)
+
+    val noText = d.text.trim == (d \\ "note").text.trim ||
+      (d.descendant.filter(t => t.isInstanceOf[Text] && t.text.trim.nonEmpty)).forall(t => t.text.toLowerCase.contains("excel")) ||
+      nn.text.trim.replaceAll("\\s+", " ").matches("((\\p{P})|\\s+)+")
+
     if (noText) {
       Console.err.println(s"No content for brief $id: $d")
     }
