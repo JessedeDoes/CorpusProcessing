@@ -72,7 +72,7 @@ object DatabaseUtilities
   {
     val fieldNames: scala.collection.mutable.ListBuffer[String] = new scala.collection.mutable.ListBuffer[String]()
     def getString(s:String, s1: Option[String] = None):String = {
-      Console.err.println(s"getString in Mocky2: $s $s1")
+     Console.err.println(s"getString in Mocky2: $s $s1")
       fieldNames.append(s1.getOrElse("\"" + s + "\"")); s"wereldvrede_$s"}
     def getStringNonNull(s:String):String = getString(s)
     def getInt(s:String):Int = {fieldNames.append(s); 42}

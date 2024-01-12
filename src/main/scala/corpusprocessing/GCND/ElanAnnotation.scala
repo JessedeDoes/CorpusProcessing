@@ -19,16 +19,17 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           tekst_lv: String,
                           tekst_zv: String,
                           starttijd: Int,
-                          eindtijd: Int
+                          eindtijd: Int,
+                          transcription: Transcription
                          )
 {
   type token = Tokenizer.Token
 
-  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = GCNDDatabase.alpinos.filter(e => // pas op ook op id filteren!
+  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(e => // pas op ook op id filteren!
     e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
-  lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] = overLappingAlpinoAnnotations.flatMap(a => a.zipped)
+  lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] = overLappingAlpinoAnnotations.flatMap(a => a.zipped.getOrElse(Seq()))
 
   def pseudoFolia()  = {
 
@@ -73,7 +74,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 
     <speech tag={functie} speaker={naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
       {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightDutchification">{tekst_lv}</t>}
-      {if (tekst_zv.trim.nonEmpty) <t class="heavyDutchification">{tekst_zv}</t>}
+      {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyDutchification">{tekst_zv}</t>}
       {Comment(s"speaker role:$functie, n_alpino_annotations: " +  overLappingAlpinoAnnotations.size.toString + s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
       <foreign-data>{Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}</foreign-data>

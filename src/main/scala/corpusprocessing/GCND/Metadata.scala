@@ -10,9 +10,9 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 
 import java.io.PrintWriter
 import scala.xml._
-import GCNDDatabase.{Token, alpinos, db, elans}
-import corpusprocessing.GCND.Metadata.SimpleRelation
 
+import corpusprocessing.GCND.Metadata.SimpleRelation
+import GCNDDatabase.db
 
 object Metadata {
 
@@ -247,12 +247,13 @@ object Metadata {
 
    import Schema._
 
+  /*
    lazy val alle_gebruikte_personen = {
      val idz = alpinos.map(_.opname_persoon_id.toString).toSet
      val o_peetjes = opname__persoon.filter("opname__persoon_id", x => idz.contains(x))
      o_peetjes
    }
-
+*/
    def getMetadata(a: AlpinoAnnotation) = {
      val opname_persoon_id = a.opname_persoon_id.toString;
      val t0 = opname__persoon.filter("opname__persoon_id", opname_persoon_id)
@@ -284,11 +285,14 @@ object Metadata {
   }
 
   def main(args: Array[String]): Unit = {
+    /*
     alpinos.take(1).foreach(a => {
 
       val m = <meta>{getMetadata(a)}</meta>
       println(pretty.format(m))
     })
+    */
+
     val transcriptieMeta = <meta>{transcriptie.toXML()}</meta>;
     println(pretty.format(transcriptieMeta))
   }

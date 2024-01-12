@@ -4,7 +4,7 @@ import corpusprocessing.GCND.AlpinoAnnotation
 
 import scala.xml._
 import utils.PostProcessXML
-
+import scala.util.{Try,Failure,Success}
 object AlpinoOffsetFixing {
   def fixOffsets(alpino: Elem,a: AlpinoAnnotation): Elem = {
 
@@ -65,7 +65,12 @@ object AlpinoOffsetFixing {
       }
     }
 
-    val d = PostProcessXML.updateElement3(alpino, x => x.label == "node", fixNode)
-    PostProcessXML.updateElement3(d, _.label=="node", replaceFinalOffsets)
+
+    Try( {
+      val d = PostProcessXML.updateElement3(alpino, x => x.label == "node", fixNode);
+      PostProcessXML.updateElement3(d, _.label=="node", replaceFinalOffsets) }) match {
+        case Success(x) => x
+        case Failure(exception) => alpino
+    }
   }
 }

@@ -69,55 +69,27 @@ object GCNDDatabase {
 
   case class Token(text_zv: String, text_lv: String)
 
-  lazy val elanQ = Select(r => ElanAnnotation(
-    r.getInt("elan_annotatie_id"),
-    r.getInt("transcriptie_id"),
-    r.getString("annotatie_code"),
-    r.getInt("opname__persoon_id"),
-    r.getString("tekst_lv"),
-    r.getString("tekst_zv"),
-    r.getInt("starttijd"),
-    r.getInt("eindtijd"),
-  ), "elan_annotatie")
 
-  val alpinoQ: Select[AlpinoAnnotation] = Select(
-    r => AlpinoAnnotation(
-      r.getInt("alpino_annotatie_id"),
-      r.getInt("transcriptie_id"),
-      r.getString("annotatie_code"),
-      r.getInt("opname__persoon_id"),
-      r.getString("tekst_lv"),
-      r.getString("tekst_zv"),
-      r.getString("alpino_xml"),
-      r.getString("tokens"),
-      r.getInt("starttijd"),
-      r.getInt("eindtijd")), "alpino_annotatie")
+  val transcriptionQ = Select(
+    r => r.getInt("transcriptie_id"), "transcriptie"
+  )
+  lazy val elan_transcriptie_ids = db.slurp(transcriptionQ)
+  lazy val transcriptions = elan_transcriptie_ids.map(Transcription)
+
+
 
   // lazy val alpinoQ: AlmostQuery[AlpinoAnnotation] = doeHet[AlpinoAnnotation](alpinoQ0)
-  lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
+  // lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
 
-  lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
 
-  def getAlpinoAnnotations(transcriptie_id: Int): Seq[AlpinoAnnotation] = {
-    val q: Select[AlpinoAnnotation] = Select(
-      r => AlpinoAnnotation(
-        r.getInt("alpino_annotatie_id"),
-        r.getInt("transcriptie_id"),
-        r.getString("annotatie_code"),
-        r.getInt("opname__persoon_id"),
-        r.getString("tekst_lv"),
-        r.getString("tekst_zv"),
-        r.getString("alpino_xml"),
-        r.getString("tokens"),
-        r.getInt("starttijd"),
-        r.getInt("eindtijd")), s"alpino_annotatie where transcriptie_id=$transcriptie_id")
-    db.slurp(q).sortBy(x => x.sortKey)
-  }
 
-  def getElanAnnotations(transcriptie_id: Int): Seq[ElanAnnotation] = {
-    val q = elanQ.copy(from = s"elan_annotatie where transcriptie_id=$transcriptie_id")
-    db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
-  }
+  // lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
+
+
+
+
+
+  /*
 
   def getPseudoTEI(transcriptie_id: Int) = <TEI>
     <teiHeader/>
@@ -146,26 +118,7 @@ object GCNDDatabase {
     </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.Folia.pseudoFolia(true))}
   </FoLiA>
 
-  def getPseudoFoLiAForElanAnnotations(transcriptie_id: Int) =
-    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
-      <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
-        <annotations>
-          <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
-          <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
-          <syntax-annotation set="lassy.syntax.annotation"/>
-          <syntax-annotation set="ud.syntax.annotation"/>
-          <division-annotation set="gcnd_div_classes"/>
-          <timesegment-annotation set="cgn"/>
-          <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-          <token-annotation/>
-          <sentence-annotation set="gcnd.sentence"/>
-          <dependency-annotation set="gcnd.dependency"/>
-        </annotations>
-        <foreign-data>
-          {Metadata.getMetadata(transcriptie_id)}
-        </foreign-data>
-      </metadata>{getElanAnnotations(transcriptie_id).sortBy(_.starttijd).map(x => x.pseudoFolia())}
-    </FoLiA>
+  */
 
   def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
@@ -176,16 +129,18 @@ object GCNDDatabase {
     groupWithFirst[String](lines, x => x.startsWith("data")).filter(x => x.head.startsWith("data")).map(g => g.head.replaceAll(".*/", "").replaceAll(".xml$", "") -> g.tail.mkString("\n")).toMap
   }
 
-  def saveAlpinoParses(transcriptie_id: Int, alpinoDumpDir: java.io.File) = {
-    getAlpinoAnnotations(transcriptie_id).foreach(a => {
+  def saveAlpinoParses(transcriptie: Transcription, alpinoDumpDir: java.io.File) = {
+    transcriptie.alpinoAnnotations.foreach(a => {
       val parse = fixTagWithoutNucl.fixTagWithoutNucl(a.alpinoParseAsXML)
       XML.save(alpinoDumpDir.getCanonicalPath + "/" + a.sentenceId + ".xml", parse)
     })
   }
 
-  def createFolia(transcriptie_id: Int=1, outputFilename: String = "data/GCND/gcnd.test.folia.elans.xml"): Unit = {
+  def createFolia(transcription: Transcription, outputFilenameTemplate: String = "data/GCND/gcnd.#.folia.fromElan.xml"): Unit = {
+
+    val outputFilename = outputFilenameTemplate.replaceAll("#", transcription.transcriptie_id.toString)
     val out2 = new PrintWriter(outputFilename)
-    val e = getPseudoFoLiAForElanAnnotations(1)
+    val e = transcription.getPseudoFoLiAForElanAnnotations()
     // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
     out2.println(pretty.format(e))
     out2.close()
@@ -193,25 +148,29 @@ object GCNDDatabase {
 
   def createTEI() = {
     val out = new PrintWriter("/tmp/gcnd.test.tei.xml")
-    out.println(pretty.format(getPseudoTEI(1)))
+    // out.println(pretty.format(getPseudoTEI(1)))
     out.close()
   }
 
   def main(args: Array[String])  = {
 
-    val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
+    //val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
 
-    val alpinoDumpDir = new java.io.File("data/GCND/Alpino/")
-    alpinoDumpDir.mkdir()
-    saveAlpinoParses(transcriptie_id = 1, alpinoDumpDir)
+    val dumpAlpinoParses = false
+
+    if (dumpAlpinoParses) {
+      val alpinoDumpDir = new java.io.File("data/GCND/Alpino/")
+      alpinoDumpDir.mkdir()
+     // saveAlpinoParses(transcriptie_id = 1, alpinoDumpDir)
+    }
 
     if (false) {
       val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
-      out1.println(pretty.format(foliaWithAlpino))
+      //out1.println(pretty.format(foliaWithAlpino))
       out1.close()
     }
 
-    createFolia(1)
+   transcriptions.foreach(x => createFolia(x))
 
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
