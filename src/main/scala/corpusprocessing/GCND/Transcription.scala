@@ -38,7 +38,7 @@ case class Transcription(transcriptie_id: Int) {
         r.getString("tokens"),
         r.getInt("starttijd"),
         r.getInt("eindtijd"), this), "alpino_annotatie where transcriptie_id=" + id)
-    GCNDDatabase.db.slurp(alpinoQ).sortBy(x => x.sortKey)
+     GCNDDatabase.db.slurp(alpinoQ).sortBy(x => x.sortKey)
   }
 
   lazy val alpinoAnnotations = alpinosForTranscriptionId(transcriptie_id)

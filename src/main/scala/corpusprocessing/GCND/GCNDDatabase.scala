@@ -63,7 +63,9 @@ Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
 object GCNDDatabase {
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
-  val db = new Database(config)
+  val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
+
+  val db = new Database(onefile_config)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
 

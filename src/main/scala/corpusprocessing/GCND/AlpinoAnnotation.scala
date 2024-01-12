@@ -62,6 +62,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
   lazy val sentence = try { Some(AlpinoSentence(alpinoParsePatched)) } catch { case e => None }
   lazy val alpinoTokens: Option[Seq[AlpinoToken]] = sentence.map(_.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))}))
+  //println(alpinoTokens)
   lazy val conll: Option[String] = sentence.map(_.toCONLL()) // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
 
   def addAludInfo(x: Elem)  = {

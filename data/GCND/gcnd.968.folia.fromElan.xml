@@ -52043,6 +52043,29 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Tjoens, Ghislaine" xml:id="speech.elan.818558" begintime="00:39:56.664" endtime="00:40:00.397">
+        <t class="lightDutchification">
+            Het was donderdag achttentwintig november 1889 om precies te zijn.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22895">
+                    <naam>
+                        <familienaam>Tjoens</familienaam>
+                        ,
+                        <voornaam>Ghislaine</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="De Bruyne, Theofiel" xml:id="speech.elan.818072" begintime="00:39:56.664" endtime="00:40:00.397">
         <t class="lightDutchification">
             en da was tan ja de negenentwintigsten d#achtentwintigsten november.
@@ -52105,29 +52128,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Tjoens, Ghislaine" xml:id="speech.elan.818558" begintime="00:39:56.664" endtime="00:40:00.397">
-        <t class="lightDutchification">
-            Het was donderdag achttentwintig november 1889 om precies te zijn.
-        </t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22895">
-                    <naam>
-                        <familienaam>Tjoens</familienaam>
-                        ,
-                        <voornaam>Ghislaine</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

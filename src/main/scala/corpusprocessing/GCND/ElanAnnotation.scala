@@ -32,12 +32,12 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] = overLappingAlpinoAnnotations.flatMap(a => a.zipped.getOrElse(Seq()))
 
   def pseudoFolia()  = {
-     Console.err.println(s"###################### Generating xml for elan annotations transcripie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}")
+     Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
     val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) =
       if (tekst_zv != null && tekst_lv != null)
       {
         val (useAlpino, elanAlignedTokens, message) = HeavyLightAlignment(this).align()
-
+        Console.err.println(s"useAlpino=$useAlpino")
         if (useAlpino) {
           ElanStats.alpinos = ElanStats.alpinos + 1
           (true,false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(includeAlpinoParse = true) \\ "s"), message)
