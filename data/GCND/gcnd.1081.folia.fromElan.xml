@@ -1,0 +1,2084 @@
+<FoLiA 
+xml:id="gcnd.transcriptie.1081" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xmlns:folia="http://ilk.uvt.nl/folia">
+    <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+            <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+            <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+            <syntax-annotation set="lassy.syntax.annotation"/>
+            <syntax-annotation set="ud.syntax.annotation"/>
+            <division-annotation set="gcnd_div_classes"/>
+            <timesegment-annotation set="cgn"/>
+            <text-annotation 
+            set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl">
+</text-annotation>
+            <token-annotation/>
+            <sentence-annotation set="gcnd.sentence"/>
+            <dependency-annotation set="gcnd.dependency"/>
+        </annotations>
+        <foreign-data>
+            <gcnd_transcriptie_metadata 
+            xml:id="gcnd.metadata.1081" xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+                <transcriptie>
+                    <bestand rel="transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand">
+                        <bestand_id>2918</bestand_id>
+                        <bestandsgrootte>407599</bestandsgrootte>
+                        <naam>I227p_1_AF.eaf</naam>
+                        <pad>I227p_1/elan/I227p_1_AF.eaf</pad>
+                    </bestand>
+                    <opname rel="transcriptie⟶opname">
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>2917</bestand_id>
+                            <bestandsgrootte>22959751</bestandsgrootte>
+                            <naam>I227p_1.mp3</naam>
+                            <pad>I227p_1/audio/I227p_1.mp3</pad>
+                        </bestand>
+                        <dag>8</dag>
+                        <jaar>1967</jaar>
+                        <maand>1</maand>
+                        <nummer>1</nummer>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_GDS</alias>
+                                <familienaam>De Schutter</familienaam>
+                                <persoon_id>22702</persoon_id>
+                                <voornaam>Georges</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_DM</alias>
+                                <familienaam>De Muer</familienaam>
+                                <persoon_id>22693</persoon_id>
+                                <voornaam>W.</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>I227p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>44</beroep_id>
+                                    <label>secretaris</label>
+                                </beroep>
+                                <familienaam>Van Der Eecken</familienaam>
+                                <geboorte_dag>5</geboorte_dag>
+                                <geboorte_jaar>1904</geboorte_jaar>
+                                <geboorte_maand>2</geboorte_maand>
+                                <geboorte_plaats_id>2187</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <persoon_id>297</persoon_id>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>I227p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Vinkt</naam>
+                                    <plaats_id>2176</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <kloeke_code>I227p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Vinkt</naam>
+                                    <plaats_id>2176</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>I235p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Meigem</naam>
+                                    <plaats_id>2187</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <voornaam>Jules</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname_code>I227p_1</opname_code>
+                        <opname_id>254</opname_id>
+                        <plaats rel="opname⟶plaats">
+                            <kloeke_code>I227p</kloeke_code>
+                            <land rel="plaats⟶land">
+                                <label>België</label>
+                                <land_id>3</land_id>
+                            </land>
+                            <land_id>3</land_id>
+                            <naam>Vinkt</naam>
+                            <plaats_id>2176</plaats_id>
+                            <regio rel="plaats⟶regio">
+                                <label>Oost-Vlaanderen</label>
+                                <regio_id>15</regio_id>
+                            </regio>
+                            <regio_id>15</regio_id>
+                        </plaats>
+                        <plaats_id>2176</plaats_id>
+                        <tijdsduur>0</tijdsduur>
+                    </opname>
+                    <opname_id>254</opname_id>
+                    <transcriptie_id>1081</transcriptie_id>
+                    <transcriptie_type_id>1</transcriptie_type_id>
+                </transcriptie>
+</gcnd_transcriptie_metadata>
+        </foreign-data>
+    </metadata>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935142" begintime="00:00:00.360" endtime="00:00:06.020">
+        <t class="lightDutchification">dialectopname Vinkt. één augustus zevenenzestig.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935143" begintime="00:00:06.894" endtime="00:00:07.344">
+        <t class="lightDutchification">ja </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935149" begintime="00:00:07.569" endtime="00:00:10.439">
+        <t class="lightDutchification">over wa zou we ... zou je willen babbelen ezo peis#de.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935150" begintime="00:00:11.104" endtime="00:00:12.274">
+        <t class="lightDutchification">over n#oorlog, hé?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935151" begintime="00:00:12.289" endtime="00:00:13.309">
+        <t class="lightDutchification">misschien hé?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935152" begintime="00:00:14.674" endtime="00:00:17.754">
+        <t class="lightDutchification">is#ter ier t#een en t#ander gebeurd in Vinkt ezo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935153" begintime="00:00:21.669" endtime="00:00:22.649">
+        <t class="lightDutchification">op z'n Vinkts hé?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935154" begintime="00:00:22.674" endtime="00:00:23.814">
+        <t class="lightDutchification">op z'n Vinkts eerst hé</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935155" begintime="00:00:31.759" endtime="00:00:37.039">
+        <t class="lightDutchification">ja</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935156" begintime="00:19:36.298" endtime="00:19:39.078">
+        <t class="lightDutchification">wa zou da worden da monument?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935157" begintime="00:20:15.658" endtime="00:20:19.058">
+        <t class="lightDutchification">schoon.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935158" begintime="00:21:27.503" endtime="00:21:31.003">
+        <t class="lightDutchification">zij je altijd secretaris geweest uh van uh van? </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935159" begintime="00:21:37.743" endtime="00:21:38.853">
+        <t class="lightDutchification">vroeger nooit geen ander beroep?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935160" begintime="00:21:45.613" endtime="00:21:46.293">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935161" begintime="00:23:08.850" endtime="00:23:09.540">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935162" begintime="00:23:47.315" endtime="00:23:49.935">
+        <t class="lightDutchification">g#et nooit uh t#gedacht gehad voor koster te worden ofzo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935163" begintime="00:23:50.405" endtime="00:23:51.315">
+        <t class="lightDutchification">kun#de orgel spelen?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935164" begintime="00:23:54.535" endtime="00:23:56.095">
+        <t class="lightDutchification">nie helpen zingen in t#koor of zo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935144" begintime="00:24:15.140" endtime="00:24:18.580">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935165" begintime="00:24:15.140" endtime="00:24:18.580">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935166" begintime="00:24:18.775" endtime="00:24:21.825">
+        <t class="lightDutchification">maja vroeger wa da zo erg niet ook zeker?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935167" begintime="00:24:22.360" endtime="00:24:22.720">
+        <t class="lightDutchification">ja</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935168" begintime="00:24:24.680" endtime="00:24:25.110">
+        <t class="lightDutchification">ja</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935169" begintime="00:24:28.210" endtime="00:24:30.660">
+        <t class="lightDutchification">ja maa die an allemaal een bijberoep zeker nee?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935170" begintime="00:26:02.695" endtime="00:26:08.145">
+        <t class="lightDutchification">
+            anders ezo in Vinkt zijn er hier ezo merkwaardigheden ezo in de gemeente?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935171" begintime="00:26:09.250" endtime="00:26:10.160">
+        <t class="lightDutchification">niets speciaals?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935172" begintime="00:26:43.925" endtime="00:26:44.645">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935173" begintime="00:27:09.335" endtime="00:27:10.775">
+        <t class="lightDutchification">een boskeete wad e dadde?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935174" begintime="00:27:18.045" endtime="00:27:18.385">
+        <t class="lightDutchification">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935175" begintime="00:27:19.545" endtime="00:27:21.115">
+        <t class="lightDutchification">waren hier veel bossen hier in Vink?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935176" begintime="00:27:41.420" endtime="00:27:41.750">
+        <t class="lightDutchification">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935177" begintime="00:27:51.020" endtime="00:27:54.280">
+        <t class="lightDutchification">ja uh wa doen de mensen ezo allemaal hier hé?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935178" begintime="00:27:58.260" endtime="00:27:58.690">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935179" begintime="00:28:45.785" endtime="00:28:48.045">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935180" begintime="00:28:49.395" endtime="00:28:51.145">
+        <t class="lightDutchification">vroeger was da nog meer zekere?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935181" begintime="00:28:55.455" endtime="00:28:57.485">
+        <t class="lightDutchification">ken#de nog ezo namen van die oude herbergen?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935145" begintime="00:29:59.160" endtime="00:29:59.850">
+        <t class="lightDutchification">ggg </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935182" begintime="00:29:59.160" endtime="00:29:59.850">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935183" begintime="00:30:12.640" endtime="00:30:13.920">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935184" begintime="00:30:20.815" endtime="00:30:21.435">
+        <t class="lightDutchification">nee.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935146" begintime="00:30:49.055" endtime="00:30:50.075">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935185" begintime="00:30:49.055" endtime="00:30:50.075">
+        <t class="lightDutchification">ggg </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935186" begintime="00:31:03.705" endtime="00:31:04.465">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935187" begintime="00:35:34.780" endtime="00:35:38.180">
+        <t class="lightDutchification">ggg ... ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935188" begintime="00:35:56.435" endtime="00:35:58.545">
+        <t class="lightDutchification">mensen die naar Frankrijk gaan werken ezo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935189" begintime="00:36:05.445" endtime="00:36:05.965">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935190" begintime="00:36:16.415" endtime="00:36:16.905">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935191" begintime="00:36:23.050" endtime="00:36:24.230">
+        <t class="lightDutchification">oe ging dat ezo? </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935192" begintime="00:36:24.960" endtime="00:36:28.020">
+        <t class="lightDutchification">
+            oe ging dat ezo? oe geraakten ze aan die mensen? kwamen ze die ronselen?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935193" begintime="00:36:33.710" endtime="00:36:33.950">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935194" begintime="00:37:18.935" endtime="00:37:19.715">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935195" begintime="00:37:21.475" endtime="00:37:27.115">
+        <t class="lightDutchification">...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935196" begintime="00:37:27.125" endtime="00:37:28.175">
+        <t class="lightDutchification">uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935197" begintime="00:37:28.230" endtime="00:37:30.920">
+        <t class="lightDutchification">de mensen da je ... waar gaan ze nog allemaal gaan werken?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935198" begintime="00:37:32.435" endtime="00:37:33.325">
+        <t class="lightDutchification">uh de werkmensen hé ja</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935199" begintime="00:38:11.670" endtime="00:38:14.210">
+        <t class="lightDutchification">en in Deinze ... wad#ist daar?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935200" begintime="00:38:18.510" endtime="00:38:19.160">
+        <t class="lightDutchification">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935201" begintime="00:38:33.122" endtime="00:38:33.562">
+        <t class="lightDutchification">jaja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935202" begintime="00:38:35.157" endtime="00:38:38.307">
+        <t class="lightDutchification">uh ... wete nog ezo iets over het bakken van vroegere?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935203" begintime="00:38:38.882" endtime="00:38:41.632">
+        <t class="lightDutchification">ja oe da de mensen da deden ezo en of uh ...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935204" begintime="00:38:42.177" endtime="00:38:44.217">
+        <t class="lightDutchification">ja alleman dee#ta misschien nog hé?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935205" begintime="00:39:06.177" endtime="00:39:06.747">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935206" begintime="00:39:49.002" endtime="00:39:52.972">
+        <t class="lightDutchification">
+            en de mensen die ... die geen boeren en waren ... oe kwamen die aan ulder beroep?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935207" begintime="00:39:54.767" endtime="00:39:55.047">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935208" begintime="00:39:57.347" endtime="00:40:03.017">
+        <t class="lightDutchification">
+            a ja en maar uh ... gingde ... gij bijvoorbeeld bij de boeren achter brood of zo?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935209" begintime="00:40:04.177" endtime="00:40:06.357">
+        <t class="lightDutchification">ja of wa da ne bakker ier ook voor ... ?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935210" begintime="00:40:07.667" endtime="00:40:08.647">
+        <t class="lightDutchification">a ja a ja ... just.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935211" begintime="00:40:10.137" endtime="00:40:10.577">
+        <t class="lightDutchification">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935212" begintime="00:42:41.205" endtime="00:42:42.795">
+        <t class="lightDutchification">da was geestig zeker in dienen tijd?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935213" begintime="00:43:06.640" endtime="00:43:07.210">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935147" begintime="00:43:08.370" endtime="00:43:09.640">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935214" begintime="00:43:08.370" endtime="00:43:09.640">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935215" begintime="00:43:12.970" endtime="00:43:17.160">
+        <t class="lightDutchification">
+            waren der ... waren der ier ezo liedjes die betrekking hadden op Vinkt ezo?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935216" begintime="00:43:17.785" endtime="00:43:18.505">
+        <t class="lightDutchification">van da ge weet nee?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935217" begintime="00:43:20.415" endtime="00:43:21.465">
+        <t class="lightDutchification">kende soms ezo ...?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935218" begintime="00:44:03.732" endtime="00:44:12.042">
+        <t class="lightDutchification">
+            en vroegere iere de kermisse van Vink ...  was daar ier zo'n speciaal gebak ezo uh ... ier op Vink da bekend was in de streke?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935219" begintime="00:44:12.922" endtime="00:44:15.062">
+        <t class="lightDutchification">geen speciaal gebak ezo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935220" begintime="00:44:32.717" endtime="00:44:34.407">
+        <t class="lightDutchification">ah in Hansbeke ook.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935221" begintime="00:44:39.907" endtime="00:44:40.777">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935222" begintime="00:44:55.047" endtime="00:44:55.637">
+        <t class="lightDutchification">ja? uh ...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935223" begintime="00:45:03.872" endtime="00:45:07.752">
+        <t class="lightDutchification">ggg ... ja. </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935224" begintime="00:45:12.577" endtime="00:45:14.547">
+        <t class="lightDutchification">oe gingt er dat aan toe ezo een kermisse?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935225" begintime="00:45:31.872" endtime="00:45:32.542">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Muer, W." xml:id="speech.elan.935148" begintime="00:45:33.927" endtime="00:45:36.627">
+        <t class="lightDutchification">was dat dan gemeente tegen gemeente?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22693">
+                    <naam>
+                        <familienaam>De Muer</familienaam>
+                        ,
+                        <voornaam>W.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935226" begintime="00:46:03.722" endtime="00:46:05.242">
+        <t class="lightDutchification">of in de café of ezo.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935227" begintime="00:46:05.732" endtime="00:46:06.742">
+        <t class="lightDutchification">of in de café uh.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935228" begintime="00:46:07.587" endtime="00:46:09.477">
+        <t class="lightDutchification">dan der geen vremde binnen mosten of zo.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935229" begintime="00:46:24.637" endtime="00:46:25.497">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935230" begintime="00:46:33.777" endtime="00:46:35.837">
+        <t class="lightDutchification">ggg ja ...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935231" begintime="00:46:36.477" endtime="00:46:38.487">
+        <t class="lightDutchification">en wa stond er ier ezo op de kermisse?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="De Schutter, Georges" xml:id="speech.elan.935232" begintime="00:47:11.922" endtime="00:47:14.282">
+        <t class="lightDutchification">maa was ter genen here die uh die uh ...?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22702">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+</FoLiA>
+
