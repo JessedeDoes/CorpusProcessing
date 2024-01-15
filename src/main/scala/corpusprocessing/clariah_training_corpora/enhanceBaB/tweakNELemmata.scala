@@ -12,7 +12,8 @@ object tweakNELemmata {
   implicit def f(fn: String)  = new java.io.File(fn)
 
   def dow(w: Elem)  = {
-    if ((w \ "@pos").text.contains("NOU-P")) println(w \ "@lemma" + " : " + w \ "@pos")
+    val lem = (w \ "@lemma").text
+    if ((w \ "@pos").text.contains("NOU-P") && !lem.matches("^[A-Z].*")) println(lem + " : " + w \ "@pos")
     w
   }
   def tweakLemmata(in: String, out: String)  = {
