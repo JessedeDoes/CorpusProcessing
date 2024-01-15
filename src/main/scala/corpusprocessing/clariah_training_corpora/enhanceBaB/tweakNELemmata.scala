@@ -13,7 +13,9 @@ object tweakNELemmata {
 
   def dow(w: Elem)  = {
     val lem = (w \ "@lemma").text
-    if ((w \ "@pos").text.contains("NOU-P") && !lem.matches("^[A-Z].*")) println(lem + " : " + w \ "@pos")
+    val pos = (w \ "@pos").text
+    val ana = (w \ "@ana").text
+    if ( (ana.startsWith("NE") || pos.contains("NOU-P") ) && !lem.matches("^[A-Z].*")) println(lem + " : " + pos + ", ana = "  + ana)
     w
   }
   def tweakLemmata(in: String, out: String)  = {
