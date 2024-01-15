@@ -262,7 +262,8 @@ object Metadata {
    }
 
    val scope = <x xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata"></x>.scope
-   def getMetadata(transcriptie_id: Int)  = {
+   def getMetadata(transcription: Transcription)  = {
+     val transcriptie_id = transcription.transcriptie_id
      val t0 = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
      val z = <gcnd_transcriptie_metadata xml:id={"gcnd.metadata." + transcriptie_id}>{t0.toXML()}</gcnd_transcriptie_metadata>.copy(scope=scope)
      z

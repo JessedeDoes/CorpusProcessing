@@ -289,11 +289,11 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
     }
     else if (V.size == 1) V.head
     else {
-      val V1 = V.filter(n => tagset.pos2partitions(p).contains(n) && tagset.consistentPartitions(pos, n, featureValues.toList))
+      val V1 = V.filter(n => tagset.pos2partitions.contains(p) && tagset.pos2partitions(p).contains(n) && tagset.consistentPartitions(pos, n, featureValues.toList))
       if (V1.nonEmpty) V1.head else
         {
           Console.err.println(s"Unable to find feature name for pos=$p, feature value=$f, candidates $V, all features=${featureValues.toList}")
-          //System.exit(1)
+          // System.exit(1)
           V.headOption.getOrElse("unknown_feature")
         }
     }

@@ -48,7 +48,8 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
                             alpino_xml: String,
                             tokens: String,
                             starttijd: Int,
-                            eindtijd: Int, transcription: Transcription)
+                            eindtijd: Int,
+                            transcription: Transcription)
 {
   implicit lazy val serializationFormats: Formats = DefaultFormats
   lazy val elans = transcription.elanAnnotations
@@ -61,7 +62,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
 
   lazy val sentence = try { Some(AlpinoSentence(alpinoParsePatched)) } catch { case e => None }
-  lazy val alpinoTokens: Option[Seq[AlpinoToken]] = sentence.map(_.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))}))
+  lazy val alpinoTokens: Seq[AlpinoToken] = sentence.map(_.alpinoTokens.zipWithIndex.map({case (x,i) => x.copy(id = Some(s"annotation.$alpino_annotatie_id.w.$i"))})).getOrElse(Seq[AlpinoToken]())
   //println(alpinoTokens)
   lazy val conll: Option[String] = sentence.map(_.toCONLL()) // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
 
@@ -74,7 +75,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     val root: Option[UdToken] = sentence.flatMap(_.connlTokens.find(_.DEPREL == "root"))
     if (root.nonEmpty) {
     val rootWordId = root.map(t => s"annotation.$alpino_annotatie_id.w.${t.ID.toInt - 1}").get
-    lazy val deps = sentence.map(_.connlTokens.sortBy(_.ID.toInt).filter(x => true || (x.HEAD != "0" && x.DEPREL != "root")).map(t => {
+    lazy val deps: Option[Seq[Elem]] = sentence.map(_.connlTokens.sortBy(_.ID.toInt).filter(x => true || (x.HEAD != "0" && x.DEPREL != "root")).map(t => {
       val idBaseZero = (t.ID.toInt - 1)
       val headBaseZero = (t.HEAD.toInt - 1)
       val id = s"annotation.$alpino_annotatie_id.w.$idBaseZero"
@@ -88,7 +89,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         </dep>
       </dependency>
     }))
-    if (sentence.map(_.dependencyParseIsValid).getOrElse(false)) { <dependencies>{deps}
+    if (sentence.map(_.dependencyParseIsValid).getOrElse(false)) { <dependencies>{deps.getOrElse(Seq())}
       <foreign-data>
         <conll xmls="http://conll.fake.url">{scala.xml.Unparsed("<![CDATA[%s]]>".format(conll))}</conll>
       </foreign-data>
@@ -97,7 +98,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   }
 
   lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
-  lazy val zipped: Option[Seq[(Token, AlpinoToken)]] = alpinoTokens.map(x => alignedTokens.zip(x))
+  lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
@@ -148,14 +149,14 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </info>
     }
 
-    def pseudoFolia(includeAlpinoParse: Boolean = false, includeDeps: Boolean = false) = {
+    def pseudoFolia(includeAlpinoParse: Boolean = true, includeDeps: Boolean = true) = {
 
       <speech xml:id={speech_id}>
         {informativeT.child}
         <s xml:id={s"s.$alpino_annotatie_id"}>
           {
           if (alignedTokens.size == alpinoTokens.size) {
-            val annotatedTokens = if (zipped.nonEmpty) zipped.get.map({ case (t, a) =>
+            val annotatedTokens = if (zipped.nonEmpty) zipped.map({ case (t, a) =>
               val posTag = CGNTagset.fromString(a.postag)
               <w xml:id={a.id.get}>
                 <t class="heavyDutchification">{t.text_zv}</t>
@@ -168,14 +169,17 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
                 </pos>
               </w>
             })
+
             annotatedTokens
-          } else Seq()
+          } else  {
+            println(s"Mismatch: Aligned Tokens: ${alignedTokens.size}, alpinoTokens: ${alpinoTokens.size}")
+            Seq() }
           }
           {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
           {if (includeDeps) {dependencies}}
           <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{
-              if (zipped.nonEmpty) zipped.get.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
+              if (zipped.nonEmpty) zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
           </timing>
         </s>
 
@@ -201,7 +205,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         <seg type="verrijkteZin">
           <s>
             {if (alignedTokens.size == alpinoTokens.size) {
-            val zipped: Seq[(Token, AlpinoToken)] = alpinoTokens.map(at => alignedTokens.zip(at)).getOrElse(List())
+            val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
             val danges = zipped.map({ case (t, a) => <w norm={t.text_zv} lemma={a.lemma} pos={a.postag}>
               {t.text_lv}
             </w>

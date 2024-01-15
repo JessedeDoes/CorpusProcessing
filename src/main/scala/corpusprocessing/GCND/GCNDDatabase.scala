@@ -61,11 +61,12 @@ Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
  */
 
 object GCNDDatabase {
+  val maxTranscriptions = Integer.MAX_VALUE
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
 
-  val db = new Database(onefile_config)
+  val db = new Database(config)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
@@ -80,47 +81,6 @@ object GCNDDatabase {
 
 
 
-  // lazy val alpinoQ: AlmostQuery[AlpinoAnnotation] = doeHet[AlpinoAnnotation](alpinoQ0)
-  // lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
-
-
-
-  // lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
-
-
-
-
-
-  /*
-
-  def getPseudoTEI(transcriptie_id: Int) = <TEI>
-    <teiHeader/>
-    <text>
-    <body><div>{getAlpinoAnnotations(transcriptie_id).map(_.TEI.pseudoTEI)}</div></body>
-    </text>
-  </TEI>
-
-  def getPseudoFoLiAForAlpinoAnnotations(transcriptie_id: Int) =
-    <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
-    <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
-      <annotations>
-        <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
-        <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
-        <division-annotation set="gcnd_div_classes"/>
-        <timesegment-annotation set="cgn"/>
-        <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
-        <token-annotation/>
-        <sentence-annotation/>
-        <syntax-annotation set="gcnd.syntax"/>
-        <dependency-annotation set="gcnd.dependency"/>
-      </annotations>
-      <foreign-data>
-        {Metadata.getMetadata(transcriptie_id)}
-      </foreign-data>
-    </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.Folia.pseudoFolia(true))}
-  </FoLiA>
-
-  */
 
   def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
@@ -138,11 +98,11 @@ object GCNDDatabase {
     })
   }
 
-  def createFolia(transcription: Transcription, outputFilenameTemplate: String = "data/GCND/gcnd.#.folia.fromElan.xml"): Unit = {
+  def createFolia(transcription: Transcription, outputFilenameTemplate: String = "data/GCND/Folia/gcnd.#.folia.xml"): Unit = {
 
     val outputFilename = outputFilenameTemplate.replaceAll("#", transcription.transcriptie_id.toString)
     val out2 = new PrintWriter(outputFilename)
-    val e = transcription.getPseudoFoLiAForElanAnnotations()
+    val e = transcription.pseudoFoLiAForElanAnnotations
     // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
     out2.println(pretty.format(e))
     out2.close()
@@ -172,8 +132,14 @@ object GCNDDatabase {
       out1.close()
     }
 
-   transcriptions.foreach(x => createFolia(x))
-
+    val pw = new PrintWriter("/tmp/gcnd.log")
+   transcriptions.take(maxTranscriptions).foreach(
+     x => {
+       createFolia(x)
+       pw.println(x.about)
+     }
+   )
+  pw.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
 }
@@ -209,3 +175,46 @@ eindtijd           | integer           |           | not null |
 
 
  */
+
+
+// lazy val alpinoQ: AlmostQuery[AlpinoAnnotation] = doeHet[AlpinoAnnotation](alpinoQ0)
+// lazy val alpinos: Seq[AlpinoAnnotation] = db.slurp(alpinoQ).sortBy(x => x.sortKey)
+
+
+
+// lazy val elans: Seq[ElanAnnotation] = db.slurp(elanQ).sortBy(_.starttijd)
+
+
+
+
+
+/*
+
+def getPseudoTEI(transcriptie_id: Int) = <TEI>
+  <teiHeader/>
+  <text>
+  <body><div>{getAlpinoAnnotations(transcriptie_id).map(_.TEI.pseudoTEI)}</div></body>
+  </text>
+</TEI>
+
+def getPseudoFoLiAForAlpinoAnnotations(transcriptie_id: Int) =
+  <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
+  <metadata  type="internal" xmlns="http://ilk.uvt.nl/folia">
+    <annotations>
+      <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+      <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+      <division-annotation set="gcnd_div_classes"/>
+      <timesegment-annotation set="cgn"/>
+      <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>
+      <token-annotation/>
+      <sentence-annotation/>
+      <syntax-annotation set="gcnd.syntax"/>
+      <dependency-annotation set="gcnd.dependency"/>
+    </annotations>
+    <foreign-data>
+      {Metadata.getMetadata(transcriptie_id)}
+    </foreign-data>
+  </metadata>{getAlpinoAnnotations(transcriptie_id).sortBy(_.sortKey).map(x => x.Folia.pseudoFolia(true))}
+</FoLiA>
+
+*/

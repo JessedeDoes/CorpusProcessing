@@ -48,7 +48,7 @@ case class Transcription(transcriptie_id: Int) {
     GCNDDatabase.db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
   }
 
-  def getPseudoFoLiAForElanAnnotations() =
+  lazy val pseudoFoLiAForElanAnnotations =
     <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
       <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
         <annotations>
@@ -64,8 +64,17 @@ case class Transcription(transcriptie_id: Int) {
           <dependency-annotation set="gcnd.dependency"/>
         </annotations>
         <foreign-data>
-          {Metadata.getMetadata(transcriptie_id)}
+          {Metadata.getMetadata(this)}
         </foreign-data>
       </metadata>{elanAnnotations.sortBy(_.starttijd).map(x => x.pseudoFolia())}
     </FoLiA>
+
+  lazy val about = Map(
+    "transcriptie_id" -> transcriptie_id,
+    "nAlpinoAnnotations" -> alpinoAnnotations.size,
+    "nTokens" -> (pseudoFoLiAForElanAnnotations \\ "w").size,
+    "nPos" -> (pseudoFoLiAForElanAnnotations \\ "pos").size,
+    "nElanAnnotations" -> elanAnnotations.size,
+    "nElanAnnotationsUsingAlpino" -> elanAnnotations.filter(_.useAlpino).size,
+    "nElanAnnotationsUsingAlignment" -> elanAnnotations.filter(_.useAlignment).size)
 }

@@ -108,7 +108,7 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
              |${e.tekst_lv}\n${e.tekst_zv}\n${orgTokens.map(_.toString)}\n${ndlTokens.map(_.toString)}
              |Alpino tokens: ${e.allAlpinoTokens.size}. ${e.allAlpinoTokens.map(_._1.text_zv).mkString(" ")}""".stripMargin)
         val messages = matchIt()
-        (false,List(), messages.mkString("\n"))
+        (false,List(), messages.mkString("\n").replaceAll("--", "__"))
       }
     }
   }
