@@ -294,6 +294,7 @@ xml:id="gcnd.transcriptie.989" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <transcriptie_id>989</transcriptie_id>
                     <transcriptie_type_id>1</transcriptie_type_id>
                 </transcriptie>
+                <hasAlpino>false</hasAlpino>
 </gcnd_transcriptie_metadata>
         </foreign-data>
     </metadata>
@@ -14287,38 +14288,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Jonckheer, Ghislaine" xml:id="speech.elan.834951" begintime="00:09:45.693" endtime="00:09:46.749">
-        <t class="lightDutchification">xxx.</t>
-        <t class="heavyDutchification">xxx.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">xxx</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#60">
-                    <naam>
-                        <familienaam>Jonckheer</familienaam>
-                        ,
-                        <voornaam>Ghislaine</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Coulier, Lucien" xml:id="speech.elan.833950" begintime="00:09:45.693" endtime="00:09:46.749">
         <t class="lightDutchification">xxx.</t>
         <t class="heavyDutchification">xxx.</t>
@@ -14342,6 +14311,38 @@ Null text field-->
                         <familienaam>Coulier</familienaam>
                         ,
                         <voornaam>Lucien</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Jonckheer, Ghislaine" xml:id="speech.elan.834951" begintime="00:09:45.693" endtime="00:09:46.749">
+        <t class="lightDutchification">xxx.</t>
+        <t class="heavyDutchification">xxx.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">xxx</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#60">
+                    <naam>
+                        <familienaam>Jonckheer</familienaam>
+                        ,
+                        <voornaam>Ghislaine</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>

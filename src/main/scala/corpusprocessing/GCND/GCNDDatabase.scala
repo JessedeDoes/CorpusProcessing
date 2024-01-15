@@ -56,7 +56,8 @@ Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
  */
 
 object GCNDDatabase {
-  val maxTranscriptions = 30 // Integer.MAX_VALUE
+  val doAll = true
+  val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 10
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
@@ -128,7 +129,7 @@ object GCNDDatabase {
     }
 
     val pw = new PrintWriter("/tmp/gcnd.log")
-   transcriptions.take(maxTranscriptions).foreach(
+   transcriptions.iterator.take(maxTranscriptions).foreach(
      x => {
        createFolia(x)
        pw.println(x.about)

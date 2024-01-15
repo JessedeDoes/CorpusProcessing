@@ -1,0 +1,3058 @@
+<FoLiA 
+xml:id="gcnd.transcriptie.1070" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xmlns:folia="http://ilk.uvt.nl/folia">
+    <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+            <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+            <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+            <syntax-annotation set="lassy.syntax.annotation"/>
+            <syntax-annotation set="ud.syntax.annotation"/>
+            <division-annotation set="gcnd_div_classes"/>
+            <timesegment-annotation set="cgn"/>
+            <text-annotation 
+            set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl">
+</text-annotation>
+            <token-annotation/>
+            <sentence-annotation set="gcnd.sentence"/>
+            <dependency-annotation set="gcnd.dependency"/>
+        </annotations>
+        <foreign-data>
+            <gcnd_transcriptie_metadata 
+            xml:id="gcnd.metadata.1070" xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+                <transcriptie>
+                    <bestand rel="transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand">
+                        <bestand_id>2888</bestand_id>
+                        <bestandsgrootte>596482</bestandsgrootte>
+                        <naam>I205p_1_AF.eaf</naam>
+                        <pad>I205p_1/elan/I205p_1_AF.eaf</pad>
+                    </bestand>
+                    <opname rel="transcriptie⟶opname">
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>2887</bestand_id>
+                            <bestandsgrootte>196426602</bestandsgrootte>
+                            <naam>I205p_1.wav</naam>
+                            <pad>I205p_1/audio/I205p_1.wav</pad>
+                        </bestand>
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>2886</bestand_id>
+                            <bestandsgrootte>17816794</bestandsgrootte>
+                            <naam>I205p_1.mp3</naam>
+                            <pad>I205p_1/audio/I205p_1.mp3</pad>
+                        </bestand>
+                        <dag>21</dag>
+                        <jaar>1967</jaar>
+                        <maand>1</maand>
+                        <nummer>1</nummer>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_GB</alias>
+                                <familienaam>Bracke</familienaam>
+                                <persoon_id>22657</persoon_id>
+                                <voornaam>G.</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22949</persoon_id>
+                                <voornaam>Valère</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>I205p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>147</beroep_id>
+                                    <label>leurder</label>
+                                </beroep>
+                                <familienaam>Beirnaert</familienaam>
+                                <geboorte_dag>28</geboorte_dag>
+                                <geboorte_jaar>1909</geboorte_jaar>
+                                <geboorte_maand>10</geboorte_maand>
+                                <geboorte_plaats_id>2140</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <persoon_id>280</persoon_id>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>I205p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Zeveneken</naam>
+                                    <plaats_id>2140</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>I205p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Zeveneken</naam>
+                                    <plaats_id>2140</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <voornaam>Isidoor</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname_code>I205p_1</opname_code>
+                        <opname_id>237</opname_id>
+                        <plaats rel="opname⟶plaats">
+                            <kloeke_code>I205p</kloeke_code>
+                            <land rel="plaats⟶land">
+                                <label>België</label>
+                                <land_id>3</land_id>
+                            </land>
+                            <land_id>3</land_id>
+                            <naam>Zeveneken</naam>
+                            <plaats_id>2140</plaats_id>
+                            <regio rel="plaats⟶regio">
+                                <label>Oost-Vlaanderen</label>
+                                <regio_id>15</regio_id>
+                            </regio>
+                            <regio_id>15</regio_id>
+                        </plaats>
+                        <plaats_id>2140</plaats_id>
+                        <tijdsduur>0</tijdsduur>
+                    </opname>
+                    <opname_id>237</opname_id>
+                    <transcriptie_id>1070</transcriptie_id>
+                    <transcriptie_type_id>1</transcriptie_type_id>
+                </transcriptie>
+                <hasAlpino>false</hasAlpino>
+</gcnd_transcriptie_metadata>
+        </foreign-data>
+    </metadata>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.925364" begintime="00:00:00.640" endtime="00:00:05.360">
+        <t class="lightDutchification">dialectopname te Zeveneken eenentwintig januari zevenenzestig</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925366" begintime="00:00:05.880" endtime="00:00:08.790">
+        <t class="lightDutchification">xxx zeggen</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925367" begintime="00:00:17.880" endtime="00:00:18.230">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925368" begintime="00:01:09.949" endtime="00:01:10.159">
+        <t class="lightDutchification">wadde?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925369" begintime="00:01:11.698" endtime="00:01:12.074">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925370" begintime="00:01:24.157" endtime="00:01:26.555">
+        <t class="lightDutchification">dus dan e#e geen vogels meer westen vangen daar?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925371" begintime="00:02:28.147" endtime="00:02:28.492">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925372" begintime="00:02:55.330" endtime="00:02:55.774">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925373" begintime="00:03:04.533" endtime="00:03:05.681">
+        <t class="lightDutchification">en nu kweekt#e konijnen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925374" begintime="00:03:19.139" endtime="00:03:22.621">
+        <t class="lightDutchification">en zeg ne keer door da die ete gaf die konijnen op welke manier.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925375" begintime="00:03:23.752" endtime="00:03:26.029">
+        <t class="lightDutchification">wa da#de... wa voor eten da#de die konijnen gaft.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925376" begintime="00:04:04.538" endtime="00:04:06.419">
+        <t class="lightDutchification">ge moet moet er omkomen hé da is ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925377" begintime="00:04:14.116" endtime="00:04:18.379">
+        <t class="lightDutchification">
+            uh Door zoud#e gij mij nog iets... kunnen vertellen van de molen die nog in#t Molenstraatse XXX
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925378" begintime="00:04:19.395" endtime="00:04:21.690">
+        <t class="lightDutchification">ja. nee van de molen zelve.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925379" begintime="00:04:21.837" endtime="00:04:23.066">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925380" begintime="00:04:48.343" endtime="00:04:50.976">
+        <t class="lightDutchification">ja en uh... werkte die molen nog in uwen tijd?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925381" begintime="00:05:02.184" endtime="00:05:04.867">
+        <t class="lightDutchification">ja en gij et nog geweten wanneer da#ze die afgebroken en?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925382" begintime="00:05:09.376" endtime="00:05:09.813">
+        <t class="lightDutchification">mja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925383" begintime="00:05:20.382" endtime="00:05:20.656">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925384" begintime="00:05:21.223" endtime="00:05:22.905">
+        <t class="lightDutchification">en Door weet#e nog iets van uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925385" begintime="00:05:23.307" endtime="00:05:26.144">
+        <t class="lightDutchification">as ge naar school ging t#eerste studiejaar bijvoorbeeld?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925386" begintime="00:05:26.940" endtime="00:05:29.375">
+        <t class="lightDutchification">was da den Oudenbos of was da ier XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925387" begintime="00:05:30.295" endtime="00:05:30.980">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925388" begintime="00:05:34.183" endtime="00:05:34.524">
+        <t class="lightDutchification">mja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925389" begintime="00:06:23.633" endtime="00:06:28.308">
+        <t class="lightDutchification">
+            ja en uh... tan... verder Door wa e#de nog allemaal uitgestoken azo kattenkwaad?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925390" begintime="00:07:58.804" endtime="00:08:04.185">
+        <t class="lightDutchification">
+            ja en uh... ggg... tan verder... uhm... ge zat dus in#t vierde studiejaar tan of in#t derde?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925391" begintime="00:08:05.053" endtime="00:08:05.622">
+        <t class="lightDutchification">xxx</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925392" begintime="00:08:32.419" endtime="00:08:35.148">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925393" begintime="00:10:23.025" endtime="00:10:28.005">
+        <t class="lightDutchification">
+            ja Door en uhm... als ge weesten leuren ad zijd#e waarschijnlijk ook vele tegengekomen azo?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925394" begintime="00:11:39.022" endtime="00:11:39.182">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925395" begintime="00:12:10.637" endtime="00:12:10.840">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925396" begintime="00:12:12.866" endtime="00:12:13.758">
+        <t class="lightDutchification">en anders azo nog...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925397" begintime="00:12:14.136" endtime="00:12:17.449">
+        <t class="lightDutchification">
+            uhm... de mensen... ge kwam dus bij ulder... wierd#e vriendelijk ontvangen of?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925398" begintime="00:12:35.329" endtime="00:12:36.140">
+        <t class="lightDutchification">ja... Door...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925399" begintime="00:12:36.339" endtime="00:12:36.978">
+        <t class="lightDutchification">en uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925400" begintime="00:12:47.077" endtime="00:12:47.412">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925401" begintime="00:12:47.562" endtime="00:12:47.924">
+        <t class="lightDutchification">ja Door...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925402" begintime="00:13:45.107" endtime="00:13:46.515">
+        <t class="lightDutchification">en den oorlog zelve Door...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925403" begintime="00:13:51.264" endtime="00:13:51.421">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925404" begintime="00:16:39.156" endtime="00:16:41.146">
+        <t class="lightDutchification">ja maa g#et toch veel leute gehad ook nog hé Door?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925405" begintime="00:16:42.989" endtime="00:16:45.546">
+        <t class="lightDutchification">wan in den tijd k#weet nog as Saffe begraven is.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925406" begintime="00:16:45.615" endtime="00:16:46.505">
+        <t class="lightDutchification">vertelt#a ne keer.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925407" begintime="00:19:43.336" endtime="00:19:43.854">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925408" begintime="00:20:14.136" endtime="00:20:15.650">
+        <t class="lightDutchification">zul#de nooit vergeten hé Door?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925409" begintime="00:20:26.755" endtime="00:20:30.545">
+        <t class="lightDutchification">
+            ja en uh... Door as ge klein waart kreegd#e vantijd ne keer ne cens hé.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925410" begintime="00:20:30.784" endtime="00:20:33.242">
+        <t class="lightDutchification">en wa wa deed#e daar tan mee... en wa deed#e daar tan mee?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925411" begintime="00:20:36.803" endtime="00:20:37.968">
+        <t class="lightDutchification">hoevele kreegd#e tan azo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925412" begintime="00:21:05.543" endtime="00:21:05.823">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925413" begintime="00:22:35.931" endtime="00:22:36.333">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925414" begintime="00:22:38.160" endtime="00:22:38.635">
+        <t class="lightDutchification">en wa...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925415" begintime="00:22:39.430" endtime="00:22:42.250">
+        <t class="lightDutchification">ja en uh... da spel me die marbels Doore...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925416" begintime="00:22:42.711" endtime="00:22:48.161">
+        <t class="lightDutchification">
+            ge zegt daar da sperren...waren er azo nog andere dinges dad#e moest doen as ge daar zo me die be... marbels bezig waart?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925417" begintime="00:22:49.910" endtime="00:22:51.406">
+        <t class="lightDutchification">wa kost#e daar allemaal zo me doen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925418" begintime="00:22:51.512" endtime="00:22:51.870">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925419" begintime="00:22:54.497" endtime="00:22:54.896">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925420" begintime="00:23:22.901" endtime="00:23:23.308">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925421" begintime="00:23:24.585" endtime="00:23:27.941">
+        <t class="lightDutchification">
+            en waren dat allemaal zo nog van verschillende schone kleurkes en wa weet ik allemaal?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925422" begintime="00:23:43.983" endtime="00:23:44.527">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925423" begintime="00:23:46.643" endtime="00:23:52.252">
+        <t class="lightDutchification">
+            en uh... dus ge speelde me de marbels en uh... wa deed#e nog hinkelen of... of bestond XXX
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925424" begintime="00:24:36.572" endtime="00:24:36.906">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925425" begintime="00:24:43.649" endtime="00:24:44.019">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925426" begintime="00:24:45.484" endtime="00:24:46.500">
+        <t class="lightDutchification">en wa deed#e zo nog?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925427" begintime="00:24:55.503" endtime="00:24:55.929">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925428" begintime="00:25:07.183" endtime="00:25:07.989">
+        <t class="lightDutchification">aja zo.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925429" begintime="00:25:09.026" endtime="00:25:09.938">
+        <t class="lightDutchification">en uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925430" begintime="00:25:10.693" endtime="00:25:12.772">
+        <t class="lightDutchification">wa wil ik no ne keer zeggen ...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925431" begintime="00:25:13.163" endtime="00:25:16.821">
+        <t class="lightDutchification">ja... ik e nog veel horen vertellen vroeger ezo van uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925432" begintime="00:25:17.739" endtime="00:25:20.571">
+        <t class="lightDutchification">de tijd... van uh... de sécretaire.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925433" begintime="00:25:21.964" endtime="00:25:24.135">
+        <t class="lightDutchification">dat is... die vrijgezel was.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925434" begintime="00:25:26.425" endtime="00:25:28.132">
+        <t class="lightDutchification">da... die dus nie getrouwd was.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925435" begintime="00:25:28.579" endtime="00:25:34.886">
+        <t class="lightDutchification">
+            dat terug in den tijd azo van... de sécretaire zeg ne keer... en en... den anderen van de burgemeesters en azo.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925436" begintime="00:25:35.161" endtime="00:25:37.180">
+        <t class="lightDutchification">uhm... oe was da in uwen tijd?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925437" begintime="00:25:41.155" endtime="00:25:44.362">
+        <t class="lightDutchification">dus... da was nie... nietske speciaals aan azo da...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925438" begintime="00:25:47.268" endtime="00:25:47.858">
+        <t class="lightDutchification">nee.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925439" begintime="00:25:54.905" endtime="00:25:57.366">
+        <t class="lightDutchification">en da gemeentehuis da#me nu hen da was nog altijd...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925440" begintime="00:25:58.320" endtime="00:25:59.524">
+        <t class="lightDutchification">...nog altijd t#zelfde.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925441" begintime="00:26:06.135" endtime="00:26:06.634">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925442" begintime="00:26:08.888" endtime="00:26:09.887">
+        <t class="lightDutchification">aja ook nog.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925443" begintime="00:26:18.802" endtime="00:26:19.150">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925444" begintime="00:26:20.173" endtime="00:26:20.687">
+        <t class="lightDutchification">aja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925445" begintime="00:26:20.872" endtime="00:26:26.066">
+        <t class="lightDutchification">
+            wel Door... uhm... da#s misschien interessant... in Zeveneken worn er nog veel bijnamen gegeven.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925446" begintime="00:26:26.377" endtime="00:26:28.048">
+        <t class="lightDutchification">maar ik weete der nie veel meer van.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925447" begintime="00:26:28.681" endtime="00:26:29.544">
+        <t class="lightDutchification">ja uhm...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925448" begintime="00:26:29.836" endtime="00:26:30.978">
+        <t class="lightDutchification">wacht zuh wa weet ik nog?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925449" begintime="00:26:31.703" endtime="00:26:32.042">
+        <t class="lightDutchification">uhm...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925450" begintime="00:26:33.194" endtime="00:26:33.995">
+        <t class="lightDutchification">Irma Djaak</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925451" begintime="00:26:34.583" endtime="00:26:35.953">
+        <t class="lightDutchification">das d#enigste die#k kon XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925452" begintime="00:26:36.703" endtime="00:26:38.016">
+        <t class="lightDutchification">ja... en wa nog?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925453" begintime="00:26:41.046" endtime="00:26:41.887">
+        <t class="lightDutchification">en uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925454" begintime="00:26:42.418" endtime="00:26:43.474">
+        <t class="lightDutchification">oe heet den anderen daar?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925455" begintime="00:26:45.105" endtime="00:26:45.527">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925456" begintime="00:26:49.876" endtime="00:26:52.736">
+        <t class="lightDutchification">Door azo van in de Drongenstraat was ter zo nog nen ouwen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925457" begintime="00:26:56.363" endtime="00:26:57.752">
+        <t class="lightDutchification">e... en Oetseboele.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925458" begintime="00:27:00.604" endtime="00:27:03.592">
+        <t class="lightDutchification">en... en... in de Eikstrate waren der toch ook nog?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925459" begintime="00:27:14.495" endtime="00:27:15.067">
+        <t class="lightDutchification">hu?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925460" begintime="00:27:25.666" endtime="00:27:26.104">
+        <t class="lightDutchification">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925461" begintime="00:27:30.583" endtime="00:27:31.307">
+        <t class="lightDutchification">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925462" begintime="00:27:38.599" endtime="00:27:40.397">
+        <t class="lightDutchification">ah die ken#ek#ik allemaal nie meer Door.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925463" begintime="00:28:23.456" endtime="00:28:23.751">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925464" begintime="00:30:04.464" endtime="00:30:05.474">
+        <t class="lightDutchification">Sterre?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925465" begintime="00:30:07.434" endtime="00:30:07.730">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925466" begintime="00:30:08.441" endtime="00:30:09.036">
+        <t class="lightDutchification">e waarom heet...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925467" begintime="00:30:11.751" endtime="00:30:12.245">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925468" begintime="00:32:13.248" endtime="00:32:14.449">
+        <t class="lightDutchification">ah en de leringe Door...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925469" begintime="00:32:14.690" endtime="00:32:16.689">
+        <t class="lightDutchification">t#schijnt da#e der ook nog wa uitgestoken et.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925470" begintime="00:32:21.714" endtime="00:32:26.613">
+        <t class="lightDutchification">
+            en... moest#e gulder nie 's morgens vroege de zeven weken doen voor uldere plechtige communie XXX
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925471" begintime="00:32:27.252" endtime="00:32:27.945">
+        <t class="lightDutchification">XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925472" begintime="00:32:44.046" endtime="00:32:44.416">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925473" begintime="00:32:48.267" endtime="00:32:48.694">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925474" begintime="00:32:52.389" endtime="00:32:52.658">
+        <t class="lightDutchification">mmm.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925475" begintime="00:33:42.973" endtime="00:33:43.287">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925476" begintime="00:33:43.656" endtime="00:33:48.043">
+        <t class="lightDutchification">
+            en... da... ge gingt dus... g#gingt op de plaatsen zitten volges da#de... punten gehad at?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925477" begintime="00:33:51.205" endtime="00:33:51.530">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925478" begintime="00:33:54.827" endtime="00:33:55.145">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925479" begintime="00:34:01.792" endtime="00:34:02.701">
+        <t class="lightDutchification">en uhm...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925480" begintime="00:34:02.902" endtime="00:34:04.774">
+        <t class="lightDutchification">ggg de koster va Zeveneken...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925481" begintime="00:34:04.934" endtime="00:34:05.930">
+        <t class="lightDutchification">in uwen tijd...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925482" begintime="00:34:06.335" endtime="00:34:09.095">
+        <t class="lightDutchification">awel den onderkoster was dus... oe heet ij weeral?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925483" begintime="00:34:09.340" endtime="00:34:10.962">
+        <t class="lightDutchification">t#is nu gelijk wie... ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925484" begintime="00:34:11.205" endtime="00:34:13.679">
+        <t class="lightDutchification">en uh... den an... de koster... zelve...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925485" begintime="00:34:19.995" endtime="00:34:20.239">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925486" begintime="00:34:24.890" endtime="00:34:25.162">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925487" begintime="00:35:22.110" endtime="00:35:22.348">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925488" begintime="00:35:23.972" endtime="00:35:24.411">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925489" begintime="00:35:24.994" endtime="00:35:29.663">
+        <t class="lightDutchification">
+            Door e weet#e#gij soms waarom da#n ze da veld... dus waar da onzen bos staat... da#ze dat Buysterveld heten?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925490" begintime="00:35:32.723" endtime="00:35:32.973">
+        <t class="lightDutchification">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925491" begintime="00:35:35.943" endtime="00:35:36.263">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925492" begintime="00:35:40.099" endtime="00:35:40.870">
+        <t class="lightDutchification">mmm en...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925493" begintime="00:35:41.059" endtime="00:35:43.288">
+        <t class="lightDutchification">ier achter u huis oe noemd#e ta stuk?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925494" begintime="00:35:44.473" endtime="00:35:46.066">
+        <t class="lightDutchification">ja... XXX</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925495" begintime="00:35:50.069" endtime="00:35:50.492">
+        <t class="lightDutchification">mmm...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925496" begintime="00:35:51.683" endtime="00:35:54.149">
+        <t class="lightDutchification">en van de Verbrande Wal weet#e daar nog iets van?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925497" begintime="00:36:01.391" endtime="00:36:01.815">
+        <t class="lightDutchification">mmm.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925498" begintime="00:36:02.908" endtime="00:36:03.297">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925499" begintime="00:36:19.200" endtime="00:36:19.653">
+        <t class="lightDutchification">aja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bracke, G." xml:id="speech.elan.925500" begintime="00:36:28.909" endtime="00:36:30.265">
+        <t class="lightDutchification">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22657">
+                    <naam>
+                        <familienaam>Bracke</familienaam>
+                        ,
+                        <voornaam>G.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.925365" begintime="00:36:29.912" endtime="00:36:30.668">
+        <t class="lightDutchification">goed.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+</FoLiA>
+

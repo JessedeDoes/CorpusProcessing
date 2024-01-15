@@ -1,0 +1,869 @@
+<FoLiA 
+xml:id="gcnd.transcriptie.1090" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xmlns:folia="http://ilk.uvt.nl/folia">
+    <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+            <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+            <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+            <syntax-annotation set="lassy.syntax.annotation"/>
+            <syntax-annotation set="ud.syntax.annotation"/>
+            <division-annotation set="gcnd_div_classes"/>
+            <timesegment-annotation set="cgn"/>
+            <text-annotation 
+            set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl">
+</text-annotation>
+            <token-annotation/>
+            <sentence-annotation set="gcnd.sentence"/>
+            <dependency-annotation set="gcnd.dependency"/>
+        </annotations>
+        <foreign-data>
+            <gcnd_transcriptie_metadata 
+            xml:id="gcnd.metadata.1090" xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+                <transcriptie>
+                    <bestand rel="transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand">
+                        <bestand_id>2943</bestand_id>
+                        <bestandsgrootte>776480</bestandsgrootte>
+                        <naam>I241p_1_AF.eaf</naam>
+                        <pad>I241p_1/elan/I241p_1_AF.eaf</pad>
+                    </bestand>
+                    <opname rel="transcriptie⟶opname">
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>2942</bestand_id>
+                            <bestandsgrootte>23775429</bestandsgrootte>
+                            <naam>I241p_1.mp3</naam>
+                            <pad>I241p_1/audio/I241p_1.mp3</pad>
+                        </bestand>
+                        <dag>11</dag>
+                        <jaar>1964</jaar>
+                        <maand>10</maand>
+                        <nummer>1</nummer>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>I241p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>125</beroep_id>
+                                    <label>bediende</label>
+                                </beroep>
+                                <familienaam>Hamelinck</familienaam>
+                                <geboorte_dag>3</geboorte_dag>
+                                <geboorte_jaar>1912</geboorte_jaar>
+                                <geboorte_maand>4</geboorte_maand>
+                                <geboorte_plaats_id>2194</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>2</gender_id>
+                                    <label>v</label>
+                                </gender>
+                                <gender_id>2</gender_id>
+                                <persoon_id>307</persoon_id>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <voornaam>Jenny</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_Anon</alias>
+                                <persoon_id>100058</persoon_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_DG</alias>
+                                <familienaam>De Groote</familienaam>
+                                <persoon_id>22690</persoon_id>
+                                <voornaam>André</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>I241p_1_2</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>14</beroep_id>
+                                    <label>huishoudster</label>
+                                </beroep>
+                                <familienaam>Ackaert</familienaam>
+                                <geboorte_dag>25</geboorte_dag>
+                                <geboorte_jaar>1911</geboorte_jaar>
+                                <geboorte_maand>2</geboorte_maand>
+                                <geboorte_plaats_id>2194</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>2</gender_id>
+                                    <label>v</label>
+                                </gender>
+                                <gender_id>2</gender_id>
+                                <persoon_id>308</persoon_id>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>I241p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Gent</naam>
+                                    <plaats_id>2194</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <regio_id>15</regio_id>
+                                    </regio>
+                                    <regio_id>15</regio_id>
+                                </plaats>
+                                <voornaam>Georgette</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname_code>I241p_1</opname_code>
+                        <opname_id>264</opname_id>
+                        <plaats rel="opname⟶plaats">
+                            <kloeke_code>I241p</kloeke_code>
+                            <land rel="plaats⟶land">
+                                <label>België</label>
+                                <land_id>3</land_id>
+                            </land>
+                            <land_id>3</land_id>
+                            <naam>Gent</naam>
+                            <plaats_id>2194</plaats_id>
+                            <regio rel="plaats⟶regio">
+                                <label>Oost-Vlaanderen</label>
+                                <regio_id>15</regio_id>
+                            </regio>
+                            <regio_id>15</regio_id>
+                        </plaats>
+                        <plaats_id>2194</plaats_id>
+                        <tijdsduur>0</tijdsduur>
+                    </opname>
+                    <opname_id>264</opname_id>
+                    <transcriptie_id>1090</transcriptie_id>
+                    <transcriptie_type_id>1</transcriptie_type_id>
+                </transcriptie>
+                <hasAlpino>false</hasAlpino>
+</gcnd_transcriptie_metadata>
+        </foreign-data>
+    </metadata>
+    <speech 
+    tag="interviewer" speaker="De Groote, André" xml:id="speech.elan.942936" begintime="00:00:00.090" endtime="00:00:04.820">
+        <t class="lightDutchification">dialectopname te Gent. tien november negentienvierenzestig.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22690">
+                    <naam>
+                        <familienaam>De Groote</familienaam>
+                        ,
+                        <voornaam>André</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942937" begintime="00:01:44.130" endtime="00:01:47.020">
+        <t class="lightDutchification">en oe gaan ze da verwarme... me een chauffage tons?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942938" begintime="00:01:47.245" endtime="00:01:47.885">
+        <t class="lightDutchification">me eh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942939" begintime="00:01:50.855" endtime="00:01:52.270">
+        <t class="lightDutchification">ah ja. me warme lucht</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942940" begintime="00:07:09.868" endtime="00:07:13.630">
+        <t class="lightDutchification">en weet#e#al iet van uh diene zoon van Julienne De Meester tons?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942941" begintime="00:07:14.805" endtime="00:07:17.240">
+        <t class="lightDutchification">weet nie ofdatt#ij#der tons doore was of wa.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942942" begintime="00:07:19.077" endtime="00:07:20.762">
+        <t class="lightDutchification">hij was jij...wa deed ie#jij?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942943" begintime="00:08:07.266" endtime="00:08:09.256">
+        <t class="lightDutchification">en gaat ij daar tons blijven. neen ezo?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942944" begintime="00:08:22.328" endtime="00:08:22.988">
+        <t class="lightDutchification">t#is da.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942945" begintime="00:08:25.508" endtime="00:08:27.838">
+        <t class="lightDutchification">gelijk op...in Oostakker of ezo wa?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942946" begintime="00:08:29.808" endtime="00:08:30.748">
+        <t class="lightDutchification">of d#Holstraate.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942947" begintime="00:08:32.118" endtime="00:08:32.500">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942948" begintime="00:08:54.974" endtime="00:08:56.354">
+        <t class="lightDutchification">surtout me kinders he</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942949" begintime="00:16:05.866" endtime="00:16:10.718">
+        <t class="lightDutchification">
+            maar uh ge moet soms oplette e voor#t strijke van gordijne. ge ziet dan ze die dingskes wasse.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942950" begintime="00:16:11.801" endtime="00:16:13.692">
+        <t class="lightDutchification">t#een is soms langer dan t#ander.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942951" begintime="00:16:35.506" endtime="00:16:36.539">
+        <t class="lightDutchification">t#es da.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942952" begintime="00:16:57.774" endtime="00:16:59.417">
+        <t class="lightDutchification">ze kunne zij dad#apart doen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942953" begintime="00:17:27.738" endtime="00:17:31.123">
+        <t class="lightDutchification">
+            bah k#lette daar alleerst nie op. k#kijk ik naar u gordijne nie veele
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942954" begintime="00:22:12.395" endtime="00:22:14.249">
+        <t class="lightDutchification">soms fondant chocola ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942955" begintime="00:22:14.658" endtime="00:22:16.057">
+        <t class="lightDutchification">verkope ze daar chocola?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942956" begintime="00:22:32.015" endtime="00:22:34.411">
+        <t class="lightDutchification">ah ja zo uh schilferkes ezo.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942957" begintime="00:27:24.215" endtime="00:27:25.081">
+        <t class="lightDutchification">s#zijn al oud.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942958" begintime="00:27:34.829" endtime="00:27:36.137">
+        <t class="lightDutchification">een jaar of drie zekers?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942959" begintime="00:27:41.771" endtime="00:27:42.795">
+        <t class="lightDutchification">ja ja#t. </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942960" begintime="00:27:45.621" endtime="00:27:46.684">
+        <t class="lightDutchification">ja. Edith.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942961" begintime="00:27:47.748" endtime="00:27:48.875">
+        <t class="lightDutchification">ah t#en doet en doet.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942962" begintime="00:28:38.430" endtime="00:28:39.322">
+        <t class="lightDutchification">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942963" begintime="00:33:24.227" endtime="00:33:25.897">
+        <t class="lightDutchification">t#is ne jonge gast die daar besteld.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942964" begintime="00:33:39.732" endtime="00:33:41.850">
+        <t class="lightDutchification">was ze zij geen apothekeresse misschien? </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942965" begintime="00:37:36.172" endtime="00:37:40.178">
+        <t class="lightDutchification">
+            ja#s z#en#t stilgeleid voor#t tikken eh. omdat#t er ook allemaal op staat.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942966" begintime="00:37:43.970" endtime="00:37:44.614">
+        <t class="lightDutchification">nu es#t...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942967" begintime="00:37:45.081" endtime="00:37:46.099">
+        <t class="lightDutchification">al kwart naar...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942968" begintime="00:37:48.024" endtime="00:37:48.496">
+        <t class="lightDutchification">k#weet#t nie. </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942969" begintime="00:37:50.068" endtime="00:37:52.025">
+        <t class="lightDutchification">en uh Cécile hoe stelt z#et zij nu? </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942970" begintime="00:38:18.759" endtime="00:38:19.373">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942971" begintime="00:39:58.974" endtime="00:39:59.408">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker=", " xml:id="speech.elan.942972" begintime="00:43:11.857" endtime="00:43:12.470">
+        <t class="lightDutchification">Emile?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100058">
+                    <naam>, </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+</FoLiA>
+

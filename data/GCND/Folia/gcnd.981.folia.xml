@@ -158,6 +158,7 @@ xml:id="gcnd.transcriptie.981" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <transcriptie_id>981</transcriptie_id>
                     <transcriptie_type_id>1</transcriptie_type_id>
                 </transcriptie>
+                <hasAlpino>false</hasAlpino>
 </gcnd_transcriptie_metadata>
         </foreign-data>
     </metadata>
@@ -23729,6 +23730,29 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Devos, Magda" xml:id="speech.elan.828305" begintime="00:21:10.771" endtime="00:21:14.320">
+        <t class="lightDutchification">
+            ah ja ma da#s de moeite nie van van te klappen om van te leven hé.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22734">
+                    <naam>
+                        <familienaam>Devos</familienaam>
+                        ,
+                        <voornaam>Magda</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Devos, Kamiel" xml:id="speech.elan.827850" begintime="00:21:10.771" endtime="00:21:14.320">
         <t class="lightDutchification">ma gow dat is nu... maa... ja.</t>
         <t class="heavyDutchification">maar gow dat is nu... maar... ja.</t>
@@ -23787,29 +23811,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Devos, Magda" xml:id="speech.elan.828305" begintime="00:21:10.771" endtime="00:21:14.320">
-        <t class="lightDutchification">
-            ah ja ma da#s de moeite nie van van te klappen om van te leven hé.
-        </t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22734">
-                    <naam>
-                        <familienaam>Devos</familienaam>
-                        ,
-                        <voornaam>Magda</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
