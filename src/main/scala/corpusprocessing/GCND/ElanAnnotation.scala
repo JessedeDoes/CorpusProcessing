@@ -1,8 +1,12 @@
 package corpusprocessing.GCND
 
+
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.AlpinoToken
+import org.json4s.{DefaultFormats, Formats}
+import org.json4s.jackson.Serialization.read
 import utils.Tokenizer
 
+import scala.util.{Failure, Success}
 import scala.xml._
 
 object ElanStats {
@@ -20,6 +24,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           tekst_zv: String,
                           starttijd: Int,
                           eindtijd: Int,
+                          tokens: String,
                           transcription: Transcription
                          )
 {
@@ -29,12 +34,21 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
-  lazy val allAlpinoTokens: Seq[(GCNDDatabase.Token, AlpinoToken)] =overLappingAlpinoAnnotations.flatMap(a => a.zipped)
+  implicit lazy val serializationFormats: Formats = DefaultFormats
+  lazy val alignedTokensFromDatabase: List[GCNDToken] = scala.util.Try(read[Array[GCNDToken]](tokens).toList) match {
+    case Success(x) => x
+    case Failure(e) => {
+      System.err.println(s"!!!Bad tokens for elan: $tokens")
+      List[GCNDToken]()
+    }
+  }
 
+  lazy val allAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] =overLappingAlpinoAnnotations.flatMap(a => a.zipped)
 
   lazy val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) = {
     if (tekst_zv != null && tekst_lv != null) {
-      val (useAlpino, elanAlignedTokens, message) = HeavyLightAlignment(this).align()
+      val (useAlpino, elanAlignedTokensRaw, message) = HeavyLightAlignment(this).alignHeavyLight()
+      val elanAlignedTokens  = if (alignedTokensFromDatabase.nonEmpty)  alignedTokensFromDatabase else elanAlignedTokensRaw.map({case (x,y) => GCNDToken(x.toString, y.toString)})
       Console.err.println(s"useAlpino=$useAlpino")
       if (useAlpino) {
         ElanStats.alpinos = ElanStats.alpinos + 1
@@ -43,16 +57,13 @@ case class ElanAnnotation(elan_annotatie_id: Int,
         // Console.err.println(elanAlignedTokens)
         if (elanAlignedTokens.nonEmpty) {
           ElanStats.alignments = ElanStats.alignments + 1
-          val weetjes = elanAlignedTokens.map({ case (tl, tz) => <w>
-            <t class="lightDutchification">
-              {tl.toString}
-            </t> <t class="heavyDutchification">
-              {tz.toString}
-            </t>
+          val wordElements = elanAlignedTokens.map({ case t => <w joined={t.joined.toString}>
+            <t class="lightDutchification">{t.text_lv}</t>
+            <t class="heavyDutchification">{t.text_zv}</t>
           </w>
           })
           (false, true, <div class="noSyntacticAnnotation">
-            {weetjes}
+            {wordElements}
           </div>, message)
         }
         else {

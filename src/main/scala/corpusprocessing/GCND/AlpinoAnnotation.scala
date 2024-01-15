@@ -9,7 +9,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 
 import java.io.PrintWriter
 import scala.xml._
-import GCNDDatabase.{Token, transcriptions}
+import GCNDDatabase.{transcriptions}
 import com.sun.net.httpserver.Authenticator.Success
 import posmapping.{CGNPoSTagging, CGNTagset}
 import utils.PostProcessXML
@@ -97,8 +97,8 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     }  else Seq()
   }
 
-  lazy val alignedTokens: List[Token] = read[Array[Token]](tokens).toList
-  lazy val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+  lazy val alignedTokens: List[GCNDToken] = read[Array[GCNDToken]](tokens).toList
+  lazy val zipped: Seq[(GCNDToken, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
@@ -205,7 +205,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         <seg type="verrijkteZin">
           <s>
             {if (alignedTokens.size == alpinoTokens.size) {
-            val zipped: Seq[(Token, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+            val zipped: Seq[(GCNDToken, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
             val danges = zipped.map({ case (t, a) => <w norm={t.text_zv} lemma={a.lemma} pos={a.postag}>
               {t.text_lv}
             </w>

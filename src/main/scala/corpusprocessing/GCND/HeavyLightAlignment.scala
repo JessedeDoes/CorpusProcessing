@@ -58,24 +58,24 @@ case class TokenizingAttach(e: ElanAnnotation) extends Tokenization {
       .toList.flatMap(Tokenizer.tokenize)
 }
 
-case class HeavyLightAlignment(e: ElanAnnotation) {
+case class HeavyLightAlignment(elanAnnotation: ElanAnnotation) {
 
   type token = Tokenizer.Token
-  val a = new AlignmentGeneric(comp)
+  val aligner = new AlignmentGeneric(comp)
   //Console.err.println(e)
 
-  lazy val tokenization: Tokenization = TokenizingAttach(e) // Attach werkt beter omdat bijvoorbeeld ... soms ontbreekt in de zware vernederlandsing
+  lazy val tokenization: Tokenization = TokenizingAttach(elanAnnotation) // Attach werkt beter omdat bijvoorbeeld ... soms ontbreekt in de zware vernederlandsing
 
   val (orgTokens, ndlTokens) = tokenization.orgTokens -> tokenization.ndlTokens
   def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
-  def align(): (Boolean, List[(token,token)], String) =  {
+  def alignHeavyLight(): (Boolean, List[(token,token)], String) =  {
 
     val o = z(orgTokens)
     val n = z(ndlTokens)
 
     def matchIt() =  {
-      val chunks: Seq[SimOrDiff[(String, token)]] = a.findChunks(o, n)
+      val chunks: Seq[SimOrDiff[(String, token)]] = aligner.findChunks(o, n)
 
       val lr: Seq[(Boolean, Seq[(String, token)], Seq[(String, token)], Int)] = chunks.map(
         c => {
@@ -94,7 +94,8 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
       })
     }
 
-    val useAlpino = ndlTokens.size <= e.allAlpinoTokens.size;
+    val useAlpino = ndlTokens.size <= elanAnnotation.allAlpinoTokens.size;
+
     if (useAlpino) {
       (true,List(), "")
     } else {
@@ -104,14 +105,14 @@ case class HeavyLightAlignment(e: ElanAnnotation) {
         ElanStats.nopes = ElanStats.nopes+1
         println(
           s"""
-             |##### LV ${orgTokens.size}, ZV ${ndlTokens.size},  Alpino ${e.allAlpinoTokens.size} ######
-             |${e.tekst_lv}\n${e.tekst_zv}\n${orgTokens.map(_.toString)}\n${ndlTokens.map(_.toString)}
-             |Alpino tokens: ${e.allAlpinoTokens.size}. ${e.allAlpinoTokens.map(_._1.text_zv).mkString(" ")}""".stripMargin)
+             |##### LV ${orgTokens.size}, ZV ${ndlTokens.size},  Alpino ${elanAnnotation.allAlpinoTokens.size} ######
+             |${elanAnnotation.tekst_lv}\n${elanAnnotation.tekst_zv}\n${orgTokens.map(_.toString)}\n${ndlTokens.map(_.toString)}
+             |Alpino tokens: ${elanAnnotation.allAlpinoTokens.size}. ${elanAnnotation.allAlpinoTokens.map(_._1.text_zv).mkString(" ")}""".stripMargin)
         val messages = matchIt()
         (false,List(), messages.mkString("\n").replaceAll("--", "__"))
       }
     }
   }
 
-  lazy val aligned = align()
+  lazy val alignedTokens = alignHeavyLight()
 }

@@ -1,15 +1,10 @@
 package corpusprocessing.GCND
-import scala.xml._
-import database.DatabaseUtilities.{AlmostQuery, Select, doeHet}
+import database.DatabaseUtilities.{Select, doeHet}
 import database._
 import org.json4s._
-import org.json4s.jackson.Serialization._
-
-import scala.xml.PrettyPrinter
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoSentence, AlpinoToken}
 
 import java.io.PrintWriter
-import scala.xml.dtd.DocType
+import scala.xml._
 
 
 /*
@@ -61,7 +56,7 @@ Zo komen weinig en schip er allebei als "su" uit in de pure dependenties
  */
 
 object GCNDDatabase {
-  val maxTranscriptions = Integer.MAX_VALUE
+  val maxTranscriptions = 30 // Integer.MAX_VALUE
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
@@ -70,7 +65,7 @@ object GCNDDatabase {
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
-  case class Token(text_zv: String, text_lv: String)
+
 
 
   val transcriptionQ = Select(

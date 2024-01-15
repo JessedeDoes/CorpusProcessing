@@ -22,6 +22,7 @@ case class Transcription(transcriptie_id: Int) {
     r.getString("tekst_zv"),
     r.getInt("starttijd"),
     r.getInt("eindtijd"),
+    r.getString("tokens"),
     this
   ), "elan_annotatie")
 
