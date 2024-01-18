@@ -67,7 +67,7 @@ case class Transcription(transcriptie_id: Int) {
         <foreign-data>
           {Metadata.getMetadata(this)}
         </foreign-data>
-      </metadata>{elanAnnotations.sortBy(_.starttijd).map(x => x.pseudoFolia())}
+      </metadata>{elanAnnotations.sortBy(_.starttijd).map(x => x.pseudoFolia)}
     </FoLiA>
 
   lazy val about = Map(
@@ -76,6 +76,8 @@ case class Transcription(transcriptie_id: Int) {
     "nTokens" -> (pseudoFoLiAForElanAnnotations \\ "w").size,
     "nPos" -> (pseudoFoLiAForElanAnnotations \\ "pos").size,
     "nElanAnnotations" -> elanAnnotations.size,
+    "nElanSpeaker" -> (pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size,
+    "neElanSpeakerNoTokens"  =  (pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size - elanAnnotations.filter(_.useAlpino).size  - elanAnnotations.filter(_.useAlignment).size,
     "nElanAnnotationsUsingAlpino" -> elanAnnotations.filter(_.useAlpino).size,
     "nElanAnnotationsUsingAlignment" -> elanAnnotations.filter(_.useAlignment).size)
 }

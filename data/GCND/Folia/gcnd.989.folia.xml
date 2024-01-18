@@ -50168,6 +50168,27 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="De Groote, André" xml:id="speech.elan.834838" begintime="00:33:18.728" endtime="00:33:21.004">
+        <t class="lightDutchification">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22690">
+                    <naam>
+                        <familienaam>De Groote</familienaam>
+                        ,
+                        <voornaam>André</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Coulier, Lucien" xml:id="speech.elan.834139" begintime="00:33:18.728" endtime="00:33:21.004">
         <t class="lightDutchification">ggg.</t>
         <t class="heavyDutchification">ggg.</t>
@@ -50194,27 +50215,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="De Groote, André" xml:id="speech.elan.834838" begintime="00:33:18.728" endtime="00:33:21.004">
-        <t class="lightDutchification">ggg.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22690">
-                    <naam>
-                        <familienaam>De Groote</familienaam>
-                        ,
-                        <voornaam>André</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

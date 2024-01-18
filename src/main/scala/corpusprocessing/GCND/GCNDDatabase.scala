@@ -60,6 +60,18 @@ object GCNDDatabase {
     out.close()
   }
 
+  def add(a: Map[String,Any], b: Map[String,Any])  = {
+    val keys = a.keySet ++ b.keySet
+    keys.map(k => {
+      val va = a(k)
+      val vb = b(k)
+      val vc = if (k == "transcriptie_id")
+        "id";
+      else (va.toString.toInt + vb.toString.toInt)
+      k -> vc
+    }).toMap
+  }
+
   def main(args: Array[String])  = {
 
     //val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
@@ -74,14 +86,19 @@ object GCNDDatabase {
       out1.close()
     }
 
-    val pw = new PrintWriter("/tmp/gcnd.log")
-   transcriptions.iterator.take(maxTranscriptions).foreach(
+    val pw = new PrintWriter("/tmp/gcnd.transcripts.log")
+    val pw1 = new PrintWriter("/tmp/gcnd.log")
+    val abouts = transcriptions.iterator.take(maxTranscriptions).map(
      x => {
        createFolia(x)
        pw.println(x.about)
+       x.about
      }
    )
-  pw.close()
+    val about = abouts.reduce(add)
+    about.foreach(pw1.println(_))
+    pw.close()
+    pw1.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
   }
 }

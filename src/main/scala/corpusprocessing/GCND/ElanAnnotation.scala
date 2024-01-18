@@ -30,7 +30,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 {
   type token = Tokenizer.Token
 
-  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(e => // pas op ook op id filteren!
+  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(e =>
     e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
 
@@ -78,7 +78,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     }
   };
 
-  def pseudoFolia()  = {
+  lazy val pseudoFolia:Elem  = {
      Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
 
     if (!useAlpino) {

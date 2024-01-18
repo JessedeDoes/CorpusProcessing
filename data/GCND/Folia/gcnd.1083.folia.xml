@@ -14830,27 +14830,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Haenens, Jules d" xml:id="speech.elan.936897" begintime="00:43:07.869" endtime="00:43:08.450">
-        <t class="lightDutchification">ja.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22770">
-                    <naam>
-                        <familienaam>Haenens</familienaam>
-                        ,
-                        <voornaam>Jules d</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="interviewer" speaker="Eylenbosch, E." xml:id="speech.elan.936503" begintime="00:43:07.869" endtime="00:43:08.450">
         <t class="lightDutchification">ja.</t>
         <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
@@ -14863,6 +14842,27 @@ Null text field-->
                         <familienaam>Eylenbosch</familienaam>
                         ,
                         <voornaam>E.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Haenens, Jules d" xml:id="speech.elan.936897" begintime="00:43:07.869" endtime="00:43:08.450">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22770">
+                    <naam>
+                        <familienaam>Haenens</familienaam>
+                        ,
+                        <voornaam>Jules d</voornaam>
                     </naam>
                     <functie>
                         <label>interviewer</label>

@@ -3516,46 +3516,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884353" begintime="00:02:20.805" endtime="00:02:21.805">
-        <t class="lightDutchification">ja maar dit...</t>
-        <t class="heavyDutchification">ja maar dit...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">maar</t>
-                <t class="heavyDutchification">maar</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">dit</t>
-                <t class="heavyDutchification">dit</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">...</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#180">
-                    <naam>
-                        <familienaam>Dobbelaer</familienaam>
-                        ,
-                        <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885131" begintime="00:02:20.805" endtime="00:02:21.805">
         <t class="lightDutchification">achter de kerk...</t>
         <t class="heavyDutchification">achter de kerk...</t>
@@ -3587,6 +3547,46 @@ Null text field-->
                         <familienaam>Polspoel</familienaam>
                         ,
                         <voornaam>Petrus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884353" begintime="00:02:20.805" endtime="00:02:21.805">
+        <t class="lightDutchification">ja maar dit...</t>
+        <t class="heavyDutchification">ja maar dit...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">maar</t>
+                <t class="heavyDutchification">maar</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">dit</t>
+                <t class="heavyDutchification">dit</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">...</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#180">
+                    <naam>
+                        <familienaam>Dobbelaer</familienaam>
+                        ,
+                        <voornaam>Ferdinandus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -5366,6 +5366,38 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885142" begintime="00:03:25.850" endtime="00:03:29.690">
+        <t class="lightDutchification">ggg.</t>
+        <t class="heavyDutchification">ggg.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">ggg</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#179">
+                    <naam>
+                        <familienaam>Polspoel</familienaam>
+                        ,
+                        <voornaam>Petrus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884370" begintime="00:03:25.850" endtime="00:03:29.690">
         <t class="lightDutchification">
             ggg. altijd. ggg. we zijn we daar veel me aan de weet geraakt...
@@ -5453,38 +5485,6 @@ Null text field-->
                         <familienaam>Dobbelaer</familienaam>
                         ,
                         <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885142" begintime="00:03:25.850" endtime="00:03:29.690">
-        <t class="lightDutchification">ggg.</t>
-        <t class="heavyDutchification">ggg.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">ggg</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#179">
-                    <naam>
-                        <familienaam>Polspoel</familienaam>
-                        ,
-                        <voornaam>Petrus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -6240,50 +6240,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884378" begintime="00:03:54.440" endtime="00:03:58.800">
-        <t class="lightDutchification">???... Klokke Roeland...</t>
-        <t class="heavyDutchification">???... Klokke Roeland...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">???</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">...</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">Klokke</t>
-                <t class="heavyDutchification">Klokke</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">Roeland</t>
-                <t class="heavyDutchification">Roeland</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">...</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#180">
-                    <naam>
-                        <familienaam>Dobbelaer</familienaam>
-                        ,
-                        <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885147" begintime="00:03:54.440" endtime="00:03:58.800">
         <t class="lightDutchification">
             ??? dat is ook van Everaard hé? da#s van onzen ouden voorzitter van...
@@ -6376,15 +6332,19 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884379" begintime="00:03:58.840" endtime="00:04:02.620">
-        <t class="lightDutchification">ja Klokke Roeland De Zwarte Dood hé...</t>
-        <t class="heavyDutchification">ja Klokke Roeland De Zwarte Dood hé...</t>
+    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884378" begintime="00:03:54.440" endtime="00:03:58.800">
+        <t class="lightDutchification">???... Klokke Roeland...</t>
+        <t class="heavyDutchification">???... Klokke Roeland...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
         <div class="noSyntacticAnnotation">
             <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">???</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">...</t>
             </w>
             <w joined="false">
                 <t class="lightDutchification">Klokke</t>
@@ -6393,22 +6353,6 @@ Null text field-->
             <w joined="false">
                 <t class="lightDutchification">Roeland</t>
                 <t class="heavyDutchification">Roeland</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">De</t>
-                <t class="heavyDutchification">De</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">Zwarte</t>
-                <t class="heavyDutchification">Zwarte</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">Dood</t>
-                <t class="heavyDutchification">Dood</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">hé</t>
-                <t class="heavyDutchification">hé</t>
             </w>
             <w joined="false">
                 <t class="lightDutchification"></t>
@@ -6463,6 +6407,62 @@ Null text field-->
                         <familienaam>Polspoel</familienaam>
                         ,
                         <voornaam>Petrus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884379" begintime="00:03:58.840" endtime="00:04:02.620">
+        <t class="lightDutchification">ja Klokke Roeland De Zwarte Dood hé...</t>
+        <t class="heavyDutchification">ja Klokke Roeland De Zwarte Dood hé...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">Klokke</t>
+                <t class="heavyDutchification">Klokke</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">Roeland</t>
+                <t class="heavyDutchification">Roeland</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">De</t>
+                <t class="heavyDutchification">De</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">Zwarte</t>
+                <t class="heavyDutchification">Zwarte</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">Dood</t>
+                <t class="heavyDutchification">Dood</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">hé</t>
+                <t class="heavyDutchification">hé</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">...</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#180">
+                    <naam>
+                        <familienaam>Dobbelaer</familienaam>
+                        ,
+                        <voornaam>Ferdinandus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -11885,38 +11885,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885173" begintime="00:07:44.997" endtime="00:07:50.167">
-        <t class="lightDutchification">ja.</t>
-        <t class="heavyDutchification">ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#179">
-                    <naam>
-                        <familienaam>Polspoel</familienaam>
-                        ,
-                        <voornaam>Petrus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884427" begintime="00:07:44.997" endtime="00:07:50.167">
         <t class="lightDutchification">
             en die et hier uh vijf jaar gestaan hé Piet? van achtentwintig tot drieëndertig meen ek...
@@ -12008,6 +11976,38 @@ Null text field-->
                         <familienaam>Dobbelaer</familienaam>
                         ,
                         <voornaam>Ferdinandus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885173" begintime="00:07:44.997" endtime="00:07:50.167">
+        <t class="lightDutchification">ja.</t>
+        <t class="heavyDutchification">ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#179">
+                    <naam>
+                        <familienaam>Polspoel</familienaam>
+                        ,
+                        <voornaam>Petrus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -13935,46 +13935,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884444" begintime="00:09:05.247" endtime="00:09:08.677">
-        <t class="lightDutchification">uh en daar...</t>
-        <t class="heavyDutchification">uh en daar...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">uh</t>
-                <t class="heavyDutchification">uh</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">en</t>
-                <t class="heavyDutchification">en</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">daar</t>
-                <t class="heavyDutchification">daar</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">...</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#180">
-                    <naam>
-                        <familienaam>Dobbelaer</familienaam>
-                        ,
-                        <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885186" begintime="00:09:05.247" endtime="00:09:08.677">
         <t class="lightDutchification">en van honderddrieëndertig zijn der dertig...</t>
         <t class="heavyDutchification">en van honderddrieëndertig zijn er dertig...</t>
@@ -14018,6 +13978,46 @@ Null text field-->
                         <familienaam>Polspoel</familienaam>
                         ,
                         <voornaam>Petrus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884444" begintime="00:09:05.247" endtime="00:09:08.677">
+        <t class="lightDutchification">uh en daar...</t>
+        <t class="heavyDutchification">uh en daar...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">uh</t>
+                <t class="heavyDutchification">uh</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">en</t>
+                <t class="heavyDutchification">en</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">daar</t>
+                <t class="heavyDutchification">daar</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">...</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#180">
+                    <naam>
+                        <familienaam>Dobbelaer</familienaam>
+                        ,
+                        <voornaam>Ferdinandus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -14695,38 +14695,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884450" begintime="00:09:29.082" endtime="00:09:33.052">
-        <t class="lightDutchification">uh...</t>
-        <t class="heavyDutchification">uh...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">uh</t>
-                <t class="heavyDutchification">uh</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">...</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#180">
-                    <naam>
-                        <familienaam>Dobbelaer</familienaam>
-                        ,
-                        <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885195" begintime="00:09:29.082" endtime="00:09:33.052">
         <t class="lightDutchification">Landjuweel hé? ezoietske was dat eigenlijk.</t>
         <t class="heavyDutchification">Landjuweel hé? zoietsje was dat eigenlijk.</t>
@@ -14798,6 +14766,38 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884450" begintime="00:09:29.082" endtime="00:09:33.052">
+        <t class="lightDutchification">uh...</t>
+        <t class="heavyDutchification">uh...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">uh</t>
+                <t class="heavyDutchification">uh</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">...</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#180">
+                    <naam>
+                        <familienaam>Dobbelaer</familienaam>
+                        ,
+                        <voornaam>Ferdinandus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -17668,66 +17668,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885211" begintime="00:11:41.272" endtime="00:11:43.302">
-        <t class="lightDutchification">onder de Fonteine. ja. ja ja.</t>
-        <t class="heavyDutchification">onder de Fonteine. ja. ja ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">onder</t>
-                <t class="heavyDutchification">onder</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">de</t>
-                <t class="heavyDutchification">de</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">Fonteine</t>
-                <t class="heavyDutchification">Fonteine</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#179">
-                    <naam>
-                        <familienaam>Polspoel</familienaam>
-                        ,
-                        <voornaam>Petrus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884479" begintime="00:11:41.272" endtime="00:11:43.302">
         <t class="lightDutchification">Onder de Fonteine. ja. ja ja.</t>
         <t class="heavyDutchification">onder de Fonteine. ja. ja ja.</t>
@@ -17779,6 +17719,66 @@ Null text field-->
                         <familienaam>Dobbelaer</familienaam>
                         ,
                         <voornaam>Ferdinandus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885211" begintime="00:11:41.272" endtime="00:11:43.302">
+        <t class="lightDutchification">onder de Fonteine. ja. ja ja.</t>
+        <t class="heavyDutchification">onder de Fonteine. ja. ja ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">onder</t>
+                <t class="heavyDutchification">onder</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">de</t>
+                <t class="heavyDutchification">de</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">Fonteine</t>
+                <t class="heavyDutchification">Fonteine</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#179">
+                    <naam>
+                        <familienaam>Polspoel</familienaam>
+                        ,
+                        <voornaam>Petrus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -19092,6 +19092,38 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885218" begintime="00:12:42.562" endtime="00:12:45.292">
+        <t class="lightDutchification">ggg.</t>
+        <t class="heavyDutchification">ggg.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">ggg</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#179">
+                    <naam>
+                        <familienaam>Polspoel</familienaam>
+                        ,
+                        <voornaam>Petrus</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Dobbelaer, Ferdinandus" xml:id="speech.elan.884492" begintime="00:12:42.562" endtime="00:12:45.292">
         <t class="lightDutchification">t#is zeker t#is zeker uh...</t>
         <t class="heavyDutchification">het is zeker het is zeker uh...</t>
@@ -19139,38 +19171,6 @@ Null text field-->
                         <familienaam>Dobbelaer</familienaam>
                         ,
                         <voornaam>Ferdinandus</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Polspoel, Petrus" xml:id="speech.elan.885218" begintime="00:12:42.562" endtime="00:12:45.292">
-        <t class="lightDutchification">ggg.</t>
-        <t class="heavyDutchification">ggg.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">ggg</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#179">
-                    <naam>
-                        <familienaam>Polspoel</familienaam>
-                        ,
-                        <voornaam>Petrus</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>

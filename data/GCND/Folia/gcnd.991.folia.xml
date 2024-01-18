@@ -46759,6 +46759,27 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.835759" begintime="00:31:58.729" endtime="00:32:00.771">
+        <t class="lightDutchification">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker=", " xml:id="speech.elan.836486" begintime="00:31:58.729" endtime="00:32:00.771">
         <t class="lightDutchification">ggg.</t>
         <t class="heavyDutchification">ggg.</t>
@@ -46781,27 +46802,6 @@ Null text field-->
                     <naam>, </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.835759" begintime="00:31:58.729" endtime="00:32:00.771">
-        <t class="lightDutchification">ggg.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22949">
-                    <naam>
-                        <familienaam>Vanacker</familienaam>
-                        ,
-                        <voornaam>Valère</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

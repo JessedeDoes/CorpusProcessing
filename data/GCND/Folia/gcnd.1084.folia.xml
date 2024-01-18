@@ -59850,6 +59850,26 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Vleeshouwers, " xml:id="speech.elan.937410" begintime="00:38:32.819" endtime="00:38:33.671">
+        <t class="lightDutchification">ik heb...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22985">
+                    <naam>
+                        <familienaam>Vleeshouwers</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Pourquoy, Réné" xml:id="speech.elan.938268" begintime="00:38:32.819" endtime="00:38:33.671">
         <t class="lightDutchification">t#is niet voorzien.</t>
         <t class="heavyDutchification">het is niet voorzien.</t>
@@ -59888,26 +59908,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Vleeshouwers, " xml:id="speech.elan.937410" begintime="00:38:32.819" endtime="00:38:33.671">
-        <t class="lightDutchification">ik heb...</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22985">
-                    <naam>
-                        <familienaam>Vleeshouwers</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

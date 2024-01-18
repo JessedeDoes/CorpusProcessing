@@ -5680,27 +5680,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.912434" begintime="00:03:26.600" endtime="00:03:26.920">
-        <t class="lightDutchification">ja.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22886">
-                    <naam>
-                        <familienaam>Taeldeman</familienaam>
-                        ,
-                        <voornaam>Johan</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913434" begintime="00:03:26.600" endtime="00:03:26.920">
         <t class="lightDutchification">ja.</t>
         <t class="heavyDutchification">ja.</t>
@@ -5727,6 +5706,27 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.912434" begintime="00:03:26.600" endtime="00:03:26.920">
+        <t class="lightDutchification">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22886">
+                    <naam>
+                        <familienaam>Taeldeman</familienaam>
+                        ,
+                        <voornaam>Johan</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -12841,38 +12841,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913459" begintime="00:07:54.777" endtime="00:07:55.456">
-        <t class="lightDutchification">ja.</t>
-        <t class="heavyDutchification">ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <div class="noSyntacticAnnotation">
-            <w joined="false">
-                <t class="lightDutchification">ja</t>
-                <t class="heavyDutchification">ja</t>
-            </w>
-            <w joined="false">
-                <t class="lightDutchification"></t>
-                <t class="heavyDutchification">.</t>
-            </w>
-        </div>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#243">
-                    <naam>
-                        <familienaam>De Schepper</familienaam>
-                        ,
-                        <voornaam>Eleonora</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Clippeleyr, Alfons" xml:id="speech.elan.912923" begintime="00:07:54.777" endtime="00:07:55.456">
         <t class="lightDutchification">ah ja awel.</t>
         <t class="heavyDutchification">ah ja awel.</t>
@@ -12904,6 +12872,38 @@ Null text field-->
                         <familienaam>Clippeleyr</familienaam>
                         ,
                         <voornaam>Alfons</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913459" begintime="00:07:54.777" endtime="00:07:55.456">
+        <t class="lightDutchification">ja.</t>
+        <t class="heavyDutchification">ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <div class="noSyntacticAnnotation">
+            <w joined="false">
+                <t class="lightDutchification">ja</t>
+                <t class="heavyDutchification">ja</t>
+            </w>
+            <w joined="false">
+                <t class="lightDutchification"></t>
+                <t class="heavyDutchification">.</t>
+            </w>
+        </div>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#243">
+                    <naam>
+                        <familienaam>De Schepper</familienaam>
+                        ,
+                        <voornaam>Eleonora</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -40657,6 +40657,27 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.912657" begintime="00:24:12.794" endtime="00:24:13.395">
+        <t class="lightDutchification">ja ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22886">
+                    <naam>
+                        <familienaam>Taeldeman</familienaam>
+                        ,
+                        <voornaam>Johan</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913564" begintime="00:24:12.794" endtime="00:24:13.395">
         <t class="lightDutchification">ja.</t>
         <t class="heavyDutchification">ja.</t>
@@ -40683,27 +40704,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.912657" begintime="00:24:12.794" endtime="00:24:13.395">
-        <t class="lightDutchification">ja ja.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22886">
-                    <naam>
-                        <familienaam>Taeldeman</familienaam>
-                        ,
-                        <voornaam>Johan</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
