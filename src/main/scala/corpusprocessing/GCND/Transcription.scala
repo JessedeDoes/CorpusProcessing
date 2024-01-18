@@ -72,12 +72,14 @@ case class Transcription(transcriptie_id: Int) {
 
   lazy val about = Map(
     "transcriptie_id" -> transcriptie_id,
-    "nAlpinoAnnotations" -> alpinoAnnotations.size,
-    "nTokens" -> (pseudoFoLiAForElanAnnotations \\ "w").size,
-    "nPos" -> (pseudoFoLiAForElanAnnotations \\ "pos").size,
-    "nElanAnnotations" -> elanAnnotations.size,
-    "nElanSpeaker" -> (pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size,
-    "neElanSpeakerNoTokens"  =  (pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size - elanAnnotations.filter(_.useAlpino).size  - elanAnnotations.filter(_.useAlignment).size,
-    "nElanAnnotationsUsingAlpino" -> elanAnnotations.filter(_.useAlpino).size,
-    "nElanAnnotationsUsingAlignment" -> elanAnnotations.filter(_.useAlignment).size)
+    "aantal alpino-annotaties" -> alpinoAnnotations.size,
+    "aantal tokens" -> (pseudoFoLiAForElanAnnotations \\ "w").size,
+    "aantal tokens met PoS en lemma" -> (pseudoFoLiAForElanAnnotations \\ "pos").size,
+    "aantal elan-annotaties" -> elanAnnotations.size,
+    "aantal elan-annotaties van spreker" -> (pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size,
+    "aantal elan-annotaties van spreker die geen gealigneerde tokens krijgen"  -> ((pseudoFoLiAForElanAnnotations \\ "speech").filter(x => (x \ "@tag").text == "spreker").size - elanAnnotations.filter(_.useAlpino).size  - elanAnnotations.filter(_.useAlignment).size),
+    "aantal elan-annotaties met een gekoppelde alpino annotatie" -> elanAnnotations.filter(_.useAlpino).size,
+    "aantal transcripties met alpino-annotatie" -> (if (elanAnnotations.filter(_.useAlpino).size > 0) 1 else 0),
+    "aantal transcripties" -> 1,
+    "aantal elan-annotaties met gealigneerde tokens, zonder gekoppelde alpino-annotatie" -> elanAnnotations.filter(_.useAlignment).size)
 }

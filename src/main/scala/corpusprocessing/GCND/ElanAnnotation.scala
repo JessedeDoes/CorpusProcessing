@@ -43,28 +43,36 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     }
   }
 
-  lazy val allAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] =overLappingAlpinoAnnotations.flatMap(a => a.zipped)
+  lazy val allAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] =overLappingAlpinoAnnotations.flatMap(a => a.gcndTokensZippedWithAlpinoTokens)
 
   lazy val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) = {
     if (tekst_zv != null && tekst_lv != null) {
       val (useAlpino, elanAlignedTokensRaw, message) = HeavyLightAlignment(this).alignHeavyLight()
-      val elanAlignedTokens  = if (alignedTokensFromDatabase.nonEmpty)  alignedTokensFromDatabase else elanAlignedTokensRaw.map({case (x,y) => GCNDToken(x.toString, y.toString)})
-      Console.err.println(s"useAlpino=$useAlpino")
+      val elanAlignedTokens0  = if (alignedTokensFromDatabase.nonEmpty)  alignedTokensFromDatabase else elanAlignedTokensRaw.map({case (x,y) => GCNDToken(x.toString, y.toString)})
+      val elanAlignedTokens = elanAlignedTokens0.indices.map(i => {
+        val space_after = i < elanAlignedTokens0.size-1 && !elanAlignedTokens0(i+1).joined
+        elanAlignedTokens0(i).copy(space_after=space_after)
+      })
+      // Console.err.println(s"useAlpino=$useAlpino")
       if (useAlpino) {
         ElanStats.alpinos = ElanStats.alpinos + 1
-        (true, false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(includeAlpinoParse = true) \\ "s"), message)
+        (true, false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(this, includeAlpinoParse = true) \\ "s"), message)
       } else {
         // Console.err.println(elanAlignedTokens)
         if (elanAlignedTokens.nonEmpty) {
           ElanStats.alignments = ElanStats.alignments + 1
-          val wordElements = elanAlignedTokens.map({ case t => <w joined={t.joined.toString}>
-            <t class="lightDutchification">{t.text_lv}</t>
-            <t class="heavyDutchification">{t.text_zv}</t>
+          /*
+            This element (w) carries an extra and optional space attribute with value yes (default), or no,
+            indicating whether a space follows between this token and the next one. This attribute is used to reconstruct the untokenised text.
+           */
+          val wordElements = elanAlignedTokens.map({ case t => <w space={t.space_after.toString}>
+            <t class="lightNormalization">{t.text_lv}</t>
+            <t class="heavyNormalization">{t.text_zv}</t>
           </w>
           })
-          (false, true, <div class="noSyntacticAnnotation">
+          (false, true, <utt class="noSyntacticAnnotation">
             {wordElements}
-          </div>, message)
+          </utt>, message)
         }
         else {
 
@@ -79,7 +87,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   };
 
   lazy val pseudoFolia:Elem  = {
-     Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
+     //Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
 
     if (!useAlpino) {
       // Console.err.println(enrichedContent)
@@ -88,14 +96,14 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
 
       <div class="alpinoAnnotation" begintime={Stuff.formatTime(a.starttijd)} endtime={Stuff.formatTime(a.eindtijd)}>
-        {if (a.text_lv.trim.nonEmpty) <t class="alpinoLightDutchification">{a.text_lv}</t>}
-        <t class="alpinoHeavyDutchification">{a.text_zv}</t>
+        {if (a.text_lv.trim.nonEmpty) <t class="alpinoLightNormalization">{a.text_lv}</t>}
+        <t class="alpinoHeavyNormalization">{a.text_zv}</t>
       </div>
     })
 
     <speech tag={functie} speaker={naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
-      {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightDutchification">{tekst_lv}</t>}
-      {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyDutchification">{tekst_zv}</t>}
+      {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightNormalization">{tekst_lv}</t>}
+      {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyNormalization">{tekst_zv}</t>}
       {Comment(s"speaker role:${functie.replaceAll("--", "__")}, n_alpino_annotations: " +
          overLappingAlpinoAnnotations.size.toString +
          s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}

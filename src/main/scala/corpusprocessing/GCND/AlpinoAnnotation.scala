@@ -71,15 +71,15 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     x.copy(child=x.child :+ <alud>{status.trim}</alud>)
   }
 
-  lazy val dependencies: Any = {
+  def dependencies(elan_id: String): Any = {
     val root: Option[UdToken] = sentence.flatMap(_.connlTokens.find(_.DEPREL == "root"))
     if (root.nonEmpty) {
     val rootWordId = root.map(t => s"annotation.$alpino_annotatie_id.w.${t.ID.toInt - 1}").get
     lazy val deps: Option[Seq[Elem]] = sentence.map(_.connlTokens.sortBy(_.ID.toInt).filter(x => true || (x.HEAD != "0" && x.DEPREL != "root")).map(t => {
       val idBaseZero = (t.ID.toInt - 1)
       val headBaseZero = (t.HEAD.toInt - 1)
-      val id = s"annotation.$alpino_annotatie_id.w.$idBaseZero"
-      val hid = if (idBaseZero < 0) rootWordId else s"annotation.$alpino_annotatie_id.w.$headBaseZero"
+      val id = s"annotation.$elan_id.$alpino_annotatie_id.w.$idBaseZero"
+      val hid = if (idBaseZero < 0) rootWordId else s"annotation.$elan_id.$alpino_annotatie_id.w.$headBaseZero"
       <dependency class={t.DEPREL}>
         <hd>
           { if (t.DEPREL != "root") <wref id={hid}/> }
@@ -98,7 +98,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   }
 
   lazy val alignedTokens: List[GCNDToken] = read[Array[GCNDToken]](tokens).toList
-  lazy val zipped: Seq[(GCNDToken, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
+  lazy val gcndTokensZippedWithAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] = alignedTokens.zip(alpinoTokens)
   lazy val speech_id = s"speech.alpino.$alpino_annotatie_id"
   lazy val text_lv = alignedTokens.map(t => t.text_lv).mkString(" ")
   lazy val text_zv = alignedTokens.map(t => t.text_zv).mkString(" ")
@@ -131,17 +131,17 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         {Comment("n_elan_annotations: " + overLappingElanAnnotations.size.toString)}<t class="alpinoInput">
         {sentence.map(_.input_transcript)}
       </t>
-        <t class="alpinoLightDutchification">
+        <t class="alpinoLightNormalization">
           {text_lv}
         </t>
-        <t class="alpinoHeavyDutchification">
+        <t class="alpinoHeavyNormalization">
           {text_zv}
         </t>{overLappingElanAnnotations.map(e =>
         <div xml:id={speech_id + ".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
-          <t class="elanLightDutchification">
+          <t class="elanLightNormalization">
             {e.tekst_lv}
           </t>
-          <t class="elanHeavyDutchification">
+          <t class="elanHeavyNormalization">
             {e.tekst_zv}
           </t>
         </div>
@@ -149,18 +149,19 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </info>
     }
 
-    def pseudoFolia(includeAlpinoParse: Boolean = true, includeDeps: Boolean = true) = {
+    def pseudoFolia(elanAnnotation: ElanAnnotation, includeAlpinoParse: Boolean = true, includeDeps: Boolean = true) = {
 
+      def idForAlpinoToken(a: AlpinoToken)  = a.id.get.replaceAll("^([a-z]+)", "$1" + "." + elanAnnotation.elan_annotatie_id.toString)
       <speech xml:id={speech_id}>
         {informativeT.child}
         <s xml:id={s"s.$alpino_annotatie_id"}>
           {
           if (alignedTokens.size == alpinoTokens.size) {
-            val annotatedTokens = if (zipped.nonEmpty) zipped.map({ case (t, a) =>
+            val annotatedTokens = if (gcndTokensZippedWithAlpinoTokens.nonEmpty) gcndTokensZippedWithAlpinoTokens.map({ case (t, a) =>
               val posTag = CGNTagset.fromString(a.postag)
-              <w xml:id={a.id.get}>
-                <t class="heavyDutchification">{t.text_zv}</t>
-                <t class="lightDutchification">{t.text_lv}</t>
+              <w xml:id={idForAlpinoToken(a)}>
+                <t class="heavyNormalization">{t.text_zv}</t>
+                <t class="lightNormalization">{t.text_lv}</t>
                 <lemma class={a.lemma}/>
                 <pos class={a.postag} head={posTag.pos}>
                   {posTag.features.filter(_.name != "UNK").map(f => {
@@ -176,10 +177,10 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
             Seq() }
           }
           {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
-          {if (includeDeps) {dependencies}}
+          {if (includeDeps) {dependencies(elanAnnotation.elan_annotatie_id.toString)}}
           <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{
-              if (zipped.nonEmpty) zipped.map({ case (t, a) => <wref id={a.id.get} t={t.text_lv}/> })}</timesegment>
+              if (gcndTokensZippedWithAlpinoTokens.nonEmpty) gcndTokensZippedWithAlpinoTokens.map({ case (t, a) => <wref id={idForAlpinoToken(a)} t={t.text_lv}/> })}</timesegment>
           </timing>
         </s>
 

@@ -9,8 +9,8 @@ import scala.xml._
 
 
 object GCNDDatabase {
-  val doAll = true
-  val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 10
+  val doAll = false
+  val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 20
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
@@ -96,7 +96,7 @@ object GCNDDatabase {
      }
    )
     val about = abouts.reduce(add)
-    about.foreach(pw1.println(_))
+    about.toList.sortBy(_._1).foreach({case (k,v)  => pw1.println(s"$k\t$v")})
     pw.close()
     pw1.close()
     println("Nopes:" + ElanStats.nopes  + " nulls: " + ElanStats.nulls)
