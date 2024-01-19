@@ -10,7 +10,7 @@ import scala.xml._
 
 object GCNDDatabase {
   val doAll = false
-  val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 20
+  val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 30
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
@@ -18,9 +18,6 @@ object GCNDDatabase {
   val db = new Database(config)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
-
-
-
 
   val transcriptionQ = Select(
     r => r.getInt("transcriptie_id"), "transcriptie"

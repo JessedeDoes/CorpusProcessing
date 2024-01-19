@@ -25,7 +25,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           starttijd: Int,
                           eindtijd: Int,
                           tokens: String,
-                          transcription: Transcription
+                          transcription: Transcription,
+                          allowablePairs:Set[(Int,Int)]  = Set()
                          )
 {
   type token = Tokenizer.Token
@@ -33,6 +34,12 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(e =>
     e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
   )
+
+  lazy val alpinoAnnotations = if (allowablePairs.isEmpty) overLappingAlpinoAnnotations else {
+    val s0 = overLappingAlpinoAnnotations.size
+
+    overLappingAlpinoAnnotations.filter(a => allowablePairs.contains(a.alpino_annotatie_id, this.elan_annotatie_id))
+  }
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
   lazy val alignedTokensFromDatabase: List[GCNDToken] = scala.util.Try(read[Array[GCNDToken]](tokens).toList) match {
@@ -43,7 +50,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     }
   }
 
-  lazy val allAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] =overLappingAlpinoAnnotations.flatMap(a => a.gcndTokensZippedWithAlpinoTokens)
+  lazy val allAlpinoTokens: Seq[(GCNDToken, AlpinoToken)] = alpinoAnnotations.flatMap(a => a.gcndTokensZippedWithAlpinoTokens)
 
   lazy val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) = {
     if (tekst_zv != null && tekst_lv != null) {
@@ -56,7 +63,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       // Console.err.println(s"useAlpino=$useAlpino")
       if (useAlpino) {
         ElanStats.alpinos = ElanStats.alpinos + 1
-        (true, false, overLappingAlpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(this, includeAlpinoParse = true) \\ "s"), message)
+        (true, false, alpinoAnnotations.flatMap(a => a.Folia.pseudoFolia(this, includeAlpinoParse = true) \\ "s"), message)
       } else {
         // Console.err.println(elanAlignedTokens)
         if (elanAlignedTokens.nonEmpty) {
@@ -87,13 +94,13 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   };
 
   lazy val pseudoFolia:Elem  = {
-     //Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${overLappingAlpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
+     //Console.err.println(s"###################### Generating xml for elan annotations transcriptie=$transcriptie_id, elan=$elan_annotatie_id, overlapping: ${alpinoAnnotations.size}, alpinos voor transcriptie: ${transcription.alpinoAnnotations.size}")
 
     if (!useAlpino) {
       // Console.err.println(enrichedContent)
     }
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
-    lazy val alpinoStukje = overLappingAlpinoAnnotations.map(a => {
+    lazy val alpinoStukje = alpinoAnnotations.map(a => {
 
       <div class="alpinoAnnotation" begintime={Stuff.formatTime(a.starttijd)} endtime={Stuff.formatTime(a.eindtijd)}>
         {if (a.text_lv.trim.nonEmpty) <t class="alpinoLightNormalization">{a.text_lv}</t>}
@@ -105,7 +112,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightNormalization">{tekst_lv}</t>}
       {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyNormalization">{tekst_zv}</t>}
       {Comment(s"speaker role:${functie.replaceAll("--", "__")}, n_alpino_annotations: " +
-         overLappingAlpinoAnnotations.size.toString +
+      alpinoAnnotations.size.toString +
          s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
       <foreign-data>{Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}</foreign-data>
@@ -115,7 +122,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val meta: Elem = {Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}
   lazy val functie = (meta \\ "functie").text
   lazy val naam = (meta \\ "naam").text
-  lazy val nAlpinos = overLappingAlpinoAnnotations.size
+  lazy val nAlpinos = alpinoAnnotations.size
 
   lazy val about = Map(
     "overlappingAlpinos"  -> nAlpinos,

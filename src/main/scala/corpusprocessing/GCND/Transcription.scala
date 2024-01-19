@@ -27,6 +27,7 @@ case class Transcription(transcriptie_id: Int) {
   ), "elan_annotatie")
 
   def alpinosForTranscriptionId(id: Int) = {
+    println(s"Get alpinos for transcription $id")
     val alpinoQ: Select[AlpinoAnnotation] = Select(
       r => AlpinoAnnotation(
         r.getInt("alpino_annotatie_id"),
@@ -49,6 +50,32 @@ case class Transcription(transcriptie_id: Int) {
     GCNDDatabase.db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
   }
 
+  lazy val doublyBooked: Map[Int, List[ElanAnnotation]] =
+    elanAnnotations.flatMap(x => x.overLappingAlpinoAnnotations.map(a => a.alpino_annotatie_id ->x)).groupBy(_._1).toList.filter(x => x._2.size > 0).toMap.mapValues(v => v.map(_._2))
+
+  lazy val alpinoBelongsTo: Map[Int, ElanAnnotation] = doublyBooked.mapValues(_.head)
+  val allowablePairings: Set[(Int, Int)] = alpinoBelongsTo.toList.map({case (a, e) => (a, e.elan_annotatie_id)}).toSet
+
+  println(allowablePairings)
+  lazy val elanAnnotationsWithoutDoubleBookedAlpinos =
+    elanAnnotations.map(e => e.copy(allowablePairs = allowablePairings))
+
+
+  lazy val stillDoublyBooked: Map[Int, List[ElanAnnotation]] =
+    elanAnnotationsWithoutDoubleBookedAlpinos
+      .flatMap(x => x.alpinoAnnotations.map(a => a.alpino_annotatie_id -> x))
+      .groupBy(_._1).toList
+      .filter(x => x._2.size > 1)
+      .toMap
+      .mapValues(v => v.map(_._2))
+
+  if (false && stillDoublyBooked.nonEmpty) {
+    Console.err.println(s"Still multiply used alpinos: ${stillDoublyBooked.size} ${doublyBooked.size} !")
+    Console.err.println(stillDoublyBooked.keySet)
+    //stillDoublyBooked.foreach({case (a,e) => println(s"$a -> ${e.map(x => x.elan_annotatie_id -> x.predefinedAlpinoAnnotations.contains(a))} should just be ${alpinoBelongsTo(a).elan_annotatie_id}")})
+    System.exit(1)
+  }
+
   lazy val pseudoFoLiAForElanAnnotations =
     <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">
       <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
@@ -67,7 +94,7 @@ case class Transcription(transcriptie_id: Int) {
         <foreign-data>
           {Metadata.getMetadata(this)}
         </foreign-data>
-      </metadata>{elanAnnotations.sortBy(_.starttijd).map(x => x.pseudoFolia)}
+      </metadata>{elanAnnotationsWithoutDoubleBookedAlpinos.sortBy(_.starttijd).map(x => x.pseudoFolia)}
     </FoLiA>
 
   lazy val about = Map(
