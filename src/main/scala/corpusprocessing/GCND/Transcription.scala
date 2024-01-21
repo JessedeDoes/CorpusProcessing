@@ -94,7 +94,7 @@ case class Transcription(transcriptie_id: Int) {
         <foreign-data>
           {Metadata.getMetadata(this)}
         </foreign-data>
-      </metadata>{elanAnnotationsWithoutDoubleBookedAlpinos.sortBy(_.starttijd).map(x => x.pseudoFolia)}
+      </metadata>{elanAnnotations.sortBy(_.starttijd).map(x => x.pseudoFolia)}
     </FoLiA>
 
   lazy val about = Map(
