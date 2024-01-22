@@ -3,11 +3,6 @@ package corpusprocessing.GCND
 import scala.xml._
 object telze
 {
-
-
-
-
-
   def main(args: Array[String]) = {
     val doc = XML.load("/mnt/Projecten/Spelling/14_Deliverables/NTU2022-februari/spelling_2022_02_21.xml")
     val dimpies = (doc \\ "position").filter(x => (x \ "@label").text == "dim_ev")

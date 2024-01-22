@@ -43,38 +43,20 @@ case class Transcription(transcriptie_id: Int) {
      GCNDDatabase.db.slurp(alpinoQ).sortBy(x => x.sortKey)
   }
 
-  lazy val alpinoAnnotations = alpinosForTranscriptionId(transcriptie_id)
+  lazy val alpino_2_elan: Map[Int,Int]  = {
+    val q: Select[(Int,Int)] = Select(r => (r.getInt("alpino_annotatie_id") -> r.getInt("elan_annotatie_id")), "elan_2_alpino_unique where transcriptie_id=" + transcriptie_id)
+    GCNDDatabase.db.slurp(q).toMap
+  }
+
+
+  lazy val alpinoAnnotations: Seq[AlpinoAnnotation] = alpinosForTranscriptionId(transcriptie_id)
+  def getAlpinos(elan_annotatie_id: Int)  = alpinoAnnotations.filter(a => alpino_2_elan.contains(a.alpino_annotatie_id) && alpino_2_elan(a.alpino_annotatie_id) == elan_annotatie_id)
 
   lazy val elanAnnotations = {
     val q = elanQ.copy(from = s"elan_annotatie where transcriptie_id=$transcriptie_id")
     GCNDDatabase.db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
   }
 
-  lazy val doublyBooked: Map[Int, List[ElanAnnotation]] =
-    elanAnnotations.flatMap(x => x.overLappingAlpinoAnnotations.map(a => a.alpino_annotatie_id ->x)).groupBy(_._1).toList.filter(x => x._2.size > 0).toMap.mapValues(v => v.map(_._2))
-
-  lazy val alpinoBelongsTo: Map[Int, ElanAnnotation] = doublyBooked.mapValues(_.head)
-  val allowablePairings: Set[(Int, Int)] = alpinoBelongsTo.toList.map({case (a, e) => (a, e.elan_annotatie_id)}).toSet
-
-  println(allowablePairings)
-  lazy val elanAnnotationsWithoutDoubleBookedAlpinos =
-    elanAnnotations.map(e => e.copy(allowablePairs = allowablePairings))
-
-
-  lazy val stillDoublyBooked: Map[Int, List[ElanAnnotation]] =
-    elanAnnotationsWithoutDoubleBookedAlpinos
-      .flatMap(x => x.alpinoAnnotations.map(a => a.alpino_annotatie_id -> x))
-      .groupBy(_._1).toList
-      .filter(x => x._2.size > 1)
-      .toMap
-      .mapValues(v => v.map(_._2))
-
-  if (false && stillDoublyBooked.nonEmpty) {
-    Console.err.println(s"Still multiply used alpinos: ${stillDoublyBooked.size} ${doublyBooked.size} !")
-    Console.err.println(stillDoublyBooked.keySet)
-    //stillDoublyBooked.foreach({case (a,e) => println(s"$a -> ${e.map(x => x.elan_annotatie_id -> x.predefinedAlpinoAnnotations.contains(a))} should just be ${alpinoBelongsTo(a).elan_annotatie_id}")})
-    System.exit(1)
-  }
 
   lazy val pseudoFoLiAForElanAnnotations =
     <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">

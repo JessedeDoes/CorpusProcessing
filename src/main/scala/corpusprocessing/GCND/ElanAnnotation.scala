@@ -31,15 +31,11 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 {
   type token = Tokenizer.Token
 
-  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(e =>
-    e.starttijd >= starttijd & e.starttijd < eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd
+  lazy val overLappingAlpinoAnnotations: Seq[AlpinoAnnotation] = transcription.alpinoAnnotations.filter(a =>
+    a.starttijd >= starttijd & a.starttijd < eindtijd || a.eindtijd > starttijd & a.eindtijd <= eindtijd
   )
 
-  lazy val alpinoAnnotations = if (allowablePairs.isEmpty) overLappingAlpinoAnnotations else {
-    val s0 = overLappingAlpinoAnnotations.size
-
-    overLappingAlpinoAnnotations.filter(a => allowablePairs.contains(a.alpino_annotatie_id, this.elan_annotatie_id))
-  }
+  lazy val alpinoAnnotations = transcription.getAlpinos(elan_annotatie_id)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
   lazy val alignedTokensFromDatabase: List[GCNDToken] = scala.util.Try(read[Array[GCNDToken]](tokens).toList) match {
