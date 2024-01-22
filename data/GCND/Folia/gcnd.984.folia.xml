@@ -16737,58 +16737,6 @@ xml:id="gcnd.transcriptie.984" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Claeys, Madeleine" xml:id="speech.elan.829782" begintime="00:05:54.111" endtime="00:05:56.313">
-        <t class="lightNormalization">awel ja... awel ja nee.</t>
-        <t class="heavyNormalization">awel ja... awel ja nee.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">awel</t>
-                <t class="heavyNormalization">awel</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">...</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">awel</t>
-                <t class="heavyNormalization">awel</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">nee</t>
-                <t class="heavyNormalization">nee</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#47">
-                    <naam>
-                        <familienaam>Claeys</familienaam>
-                        ,
-                        <voornaam>Madeleine</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Bauwens, Telesphore" xml:id="speech.elan.830139" begintime="00:05:54.111" endtime="00:05:56.313">
         <t class="lightNormalization">e#je gij der etwa van gehoord?</t>
         <t class="heavyNormalization">heb je jij er iets van gehoord?</t>
@@ -16836,6 +16784,58 @@ xml:id="gcnd.transcriptie.984" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <familienaam>Bauwens</familienaam>
                         ,
                         <voornaam>Telesphore</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Claeys, Madeleine" xml:id="speech.elan.829782" begintime="00:05:54.111" endtime="00:05:56.313">
+        <t class="lightNormalization">awel ja... awel ja nee.</t>
+        <t class="heavyNormalization">awel ja... awel ja nee.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization">awel</t>
+                <t class="heavyNormalization">awel</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">...</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">awel</t>
+                <t class="heavyNormalization">awel</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">nee</t>
+                <t class="heavyNormalization">nee</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#47">
+                    <naam>
+                        <familienaam>Claeys</familienaam>
+                        ,
+                        <voornaam>Madeleine</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -57243,27 +57243,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Bauwens, A." xml:id="speech.elan.830492" begintime="00:29:23.193" endtime="00:29:23.631">
-        <t class="lightNormalization">ah ja.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22643">
-                    <naam>
-                        <familienaam>Bauwens</familienaam>
-                        ,
-                        <voornaam>A.</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Claeys, Madeleine" xml:id="speech.elan.829997" begintime="00:29:23.193" endtime="00:29:23.631">
         <t class="lightNormalization">ja.</t>
         <t class="heavyNormalization">ja.</t>
@@ -57290,6 +57269,27 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Bauwens, A." xml:id="speech.elan.830492" begintime="00:29:23.193" endtime="00:29:23.631">
+        <t class="lightNormalization">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22643">
+                    <naam>
+                        <familienaam>Bauwens</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

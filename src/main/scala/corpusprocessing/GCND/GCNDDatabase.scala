@@ -9,7 +9,7 @@ import scala.xml._
 
 
 object GCNDDatabase {
-  val doAll = false
+  val doAll = true
   val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 30
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
@@ -23,7 +23,7 @@ object GCNDDatabase {
     r => r.getInt("transcriptie_id"), "transcriptie"
   )
   lazy val elan_transcriptie_ids = db.slurp(transcriptionQ)
-  lazy val transcriptions = elan_transcriptie_ids.map(Transcription)
+  lazy val transcriptions = elan_transcriptie_ids.iterator.map(Transcription)
 
   def getId(n: Node): String = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).head
@@ -85,7 +85,7 @@ object GCNDDatabase {
 
     val pw = new PrintWriter("/tmp/gcnd.transcripts.log")
     val pw1 = new PrintWriter("/tmp/gcnd.log")
-    val abouts = transcriptions.iterator.take(maxTranscriptions).map(
+    val abouts = transcriptions.take(maxTranscriptions).map(
      x => {
        createFolia(x)
        pw.println(x.about)
@@ -105,7 +105,7 @@ object dumpAlpinoParses {
 
       val alpinoDumpDir = new java.io.File("/home/jesse/Downloads/AlpinoDumps/")
       alpinoDumpDir.mkdir()
-      GCNDDatabase.transcriptions.iterator.foreach(t => GCNDDatabase.saveAlpinoParses(t, alpinoDumpDir))
+      GCNDDatabase.transcriptions.foreach(t => GCNDDatabase.saveAlpinoParses(t, alpinoDumpDir))
       // saveAlpinoParses(transcriptie_id = 1, alpinoDumpDir)
 
   }
