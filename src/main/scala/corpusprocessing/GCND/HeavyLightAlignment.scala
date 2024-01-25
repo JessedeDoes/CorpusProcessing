@@ -94,7 +94,7 @@ case class HeavyLightAlignment(elanAnnotation: ElanAnnotation) {
       })
     }
 
-    val useAlpino = ndlTokens.size <= elanAnnotation.allAlpinoTokens.size;
+    val useAlpino =  elanAnnotation.allAlpinoTokens.size > 0 // ndlTokens.size <= elanAnnotation.allAlpinoTokens.size; // OK, dit werkt niet meer........
 
     if (useAlpino) {
       (true,List(), "")

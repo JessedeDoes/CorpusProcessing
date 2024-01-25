@@ -12837,38 +12837,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913459" begintime="00:07:54.777" endtime="00:07:55.456">
-        <t class="lightNormalization">ja.</t>
-        <t class="heavyNormalization">ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#243">
-                    <naam>
-                        <familienaam>De Schepper</familienaam>
-                        ,
-                        <voornaam>Eleonora</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Clippeleyr, Alfons" xml:id="speech.elan.912923" begintime="00:07:54.777" endtime="00:07:55.456">
         <t class="lightNormalization">ah ja awel.</t>
         <t class="heavyNormalization">ah ja awel.</t>
@@ -12900,6 +12868,38 @@ Null text field-->
                         <familienaam>Clippeleyr</familienaam>
                         ,
                         <voornaam>Alfons</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="De Schepper, Eleonora" xml:id="speech.elan.913459" begintime="00:07:54.777" endtime="00:07:55.456">
+        <t class="lightNormalization">ja.</t>
+        <t class="heavyNormalization">ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#243">
+                    <naam>
+                        <familienaam>De Schepper</familienaam>
+                        ,
+                        <voornaam>Eleonora</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>

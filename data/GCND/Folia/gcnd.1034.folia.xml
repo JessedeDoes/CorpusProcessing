@@ -23731,38 +23731,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Snoeck, Leontine" xml:id="speech.elan.889630" begintime="00:19:28.602" endtime="00:19:29.427">
-        <t class="lightNormalization">ja. </t>
-        <t class="heavyNormalization">ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#186">
-                    <naam>
-                        <familienaam>Snoeck</familienaam>
-                        ,
-                        <voornaam>Leontine</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Van Royen, Prosper" xml:id="speech.elan.889229" begintime="00:19:28.602" endtime="00:19:29.427">
         <t class="lightNormalization">paster Van Aelste...</t>
         <t class="heavyNormalization">paster Van Aelst...</t>
@@ -23794,6 +23762,38 @@ Null text field-->
                         <familienaam>Van Royen</familienaam>
                         ,
                         <voornaam>Prosper</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Snoeck, Leontine" xml:id="speech.elan.889630" begintime="00:19:28.602" endtime="00:19:29.427">
+        <t class="lightNormalization">ja. </t>
+        <t class="heavyNormalization">ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#186">
+                    <naam>
+                        <familienaam>Snoeck</familienaam>
+                        ,
+                        <voornaam>Leontine</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>

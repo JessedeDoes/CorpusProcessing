@@ -1,0 +1,381 @@
+<FoLiA 
+xml:id="gcnd.transcriptie.1133" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xmlns:folia="http://ilk.uvt.nl/folia">
+    <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+            <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+            <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+            <syntax-annotation set="lassy.syntax.annotation"/>
+            <syntax-annotation set="ud.syntax.annotation"/>
+            <division-annotation set="gcnd_div_classes"/>
+            <timesegment-annotation set="cgn"/>
+            <text-annotation 
+            set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl">
+</text-annotation>
+            <token-annotation/>
+            <sentence-annotation set="gcnd.sentence"/>
+            <dependency-annotation set="gcnd.dependency"/>
+        </annotations>
+        <foreign-data>
+            <gcnd_transcriptie_metadata 
+            xml:id="gcnd.metadata.1133" xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+                <transcriptie>
+                    <bestand rel="transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand">
+                        <bestand_id>3049</bestand_id>
+                        <bestandsgrootte>165906</bestandsgrootte>
+                        <naam>N108p_1_AF.eaf</naam>
+                        <pad>N108p_1/elan/N108p_1_AF.eaf</pad>
+                    </bestand>
+                    <opname rel="transcriptie⟶opname">
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>3048</bestand_id>
+                            <bestandsgrootte>92572562</bestandsgrootte>
+                            <naam>N108p_1.wav</naam>
+                            <pad>N108p_1/audio/N108p_1.wav</pad>
+                        </bestand>
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>3047</bestand_id>
+                            <bestandsgrootte>8396830</bestandsgrootte>
+                            <naam>N108p_1.mp3</naam>
+                            <pad>N108p_1/audio/N108p_1.mp3</pad>
+                        </bestand>
+                        <dag>4</dag>
+                        <jaar>1965</jaar>
+                        <maand>7</maand>
+                        <nummer>1</nummer>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>N108p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>145</beroep_id>
+                                    <label>burgemeester</label>
+                                </beroep>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>5</beroep_id>
+                                    <label>boer</label>
+                                </beroep>
+                                <familienaam>Dubrulle</familienaam>
+                                <geboorte_plaats_id>3546</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <persoon_id>653</persoon_id>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>N108p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>Frankrijk</label>
+                                        <land_id>4</land_id>
+                                    </land>
+                                    <land_id>4</land_id>
+                                    <naam>Hondeghem / Hondegem</naam>
+                                    <plaats_id>3546</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Frans-Vlaanderen</label>
+                                        <regio_id>11</regio_id>
+                                    </regio>
+                                    <regio_id>11</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <kloeke_code>N108p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>Frankrijk</label>
+                                        <land_id>4</land_id>
+                                    </land>
+                                    <land_id>4</land_id>
+                                    <naam>Hondeghem / Hondegem</naam>
+                                    <plaats_id>3546</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Frans-Vlaanderen</label>
+                                        <regio_id>11</regio_id>
+                                    </regio>
+                                    <regio_id>11</regio_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>N108p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>Frankrijk</label>
+                                        <land_id>4</land_id>
+                                    </land>
+                                    <land_id>4</land_id>
+                                    <naam>Hondeghem / Hondegem</naam>
+                                    <plaats_id>3546</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>Frans-Vlaanderen</label>
+                                        <regio_id>11</regio_id>
+                                    </regio>
+                                    <regio_id>11</regio_id>
+                                </plaats>
+                                <voornaam>Germain</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22949</persoon_id>
+                                <voornaam>Valère</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_WP</alias>
+                                <familienaam>Pée</familienaam>
+                                <persoon_id>22844</persoon_id>
+                                <voornaam>Willem</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname_code>N108p_1</opname_code>
+                        <opname_id>559</opname_id>
+                        <plaats rel="opname⟶plaats">
+                            <kloeke_code>N108p</kloeke_code>
+                            <land rel="plaats⟶land">
+                                <label>Frankrijk</label>
+                                <land_id>4</land_id>
+                            </land>
+                            <land_id>4</land_id>
+                            <naam>Hondeghem / Hondegem</naam>
+                            <plaats_id>3546</plaats_id>
+                            <regio rel="plaats⟶regio">
+                                <label>Frans-Vlaanderen</label>
+                                <regio_id>11</regio_id>
+                            </regio>
+                            <regio_id>11</regio_id>
+                        </plaats>
+                        <plaats_id>3546</plaats_id>
+                        <tijdsduur>0</tijdsduur>
+                    </opname>
+                    <opname_id>559</opname_id>
+                    <transcriptie_id>1133</transcriptie_id>
+                    <transcriptie_type_id>1</transcriptie_type_id>
+                </transcriptie>
+                <hasAlpino>false</hasAlpino>
+</gcnd_transcriptie_metadata>
+        </foreign-data>
+    </metadata>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.980809" begintime="00:00:00.580" endtime="00:00:05.840">
+        <t class="lightNormalization">dialectopname te Hondegem zeven april vijfenzestig.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980800" begintime="00:00:07.390" endtime="00:00:09.420">
+        <t class="lightNormalization">ja... meneer de maire begin maar.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980801" begintime="00:00:28.596" endtime="00:00:28.965">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980802" begintime="00:00:38.695" endtime="00:00:39.445">
+        <t class="lightNormalization">juste ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980803" begintime="00:11:35.992" endtime="00:11:39.698">
+        <t class="lightNormalization">
+            misschien zullen we uh meneer de maire zou#je ons kunnen zeggen wat dat  ier gekweekt wordt?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980804" begintime="00:11:39.698" endtime="00:11:41.861">
+        <t class="lightNormalization">uh is da vlas of patatten of?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980805" begintime="00:11:49.427" endtime="00:11:50.802">
+        <t class="lightNormalization">mmm.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980806" begintime="00:14:06.864" endtime="00:14:08.286">
+        <t class="lightNormalization">mmm.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980807" begintime="00:17:20.126" endtime="00:17:22.706">
+        <t class="lightNormalization">ge#zij#gij wel bedankt meneer de maire dat is uh zeer goed.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Pée, Willem" xml:id="speech.elan.980808" begintime="00:17:23.033" endtime="00:17:23.833">
+        <t class="lightNormalization">allô?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22844">
+                    <naam>
+                        <familienaam>Pée</familienaam>
+                        ,
+                        <voornaam>Willem</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+</FoLiA>
+

@@ -60,7 +60,9 @@ case class FoliaToRudimentaryTEI(posMapping: String => String)
 
   def convertWord(w: Node) =
   {
-    val content = (w \\ "t").filter(nonModernized).text
+
+    println(w)
+    val content = (w \\ "t").filter(nonModernized).headOption.map(_.text).getOrElse("")
     val pos =  (w \\ "pos" \ "@class").toString()
     val lemmatags = w \\ "lemma"
 
@@ -78,9 +80,9 @@ case class FoliaToRudimentaryTEI(posMapping: String => String)
     val cls = (w \ "@class").toString
 
     val teiw = if (cls !="PUNCTUATION")
-          <w xml:id={id} type={posMapping(pos)} lemma={lemma}>{content}</w>
+          <w xml:id={id} pos={posMapping(pos)} lemma={lemma}>{content}</w>
        else
-          <pc xml:id={id} type={posMapping(pos)}>{content}</pc>
+          <pc xml:id={id} pos={posMapping(pos)}>{content}</pc>
 
     val space = if ((w \ "@space").text.toString == "NO") Seq() else Seq(Text(" "))
 

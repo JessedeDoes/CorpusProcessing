@@ -4745,6 +4745,50 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="spreker" speaker="Paridaen, Gustaaf" xml:id="speech.elan.870573" begintime="00:02:57.581" endtime="00:02:58.759">
+        <t class="lightNormalization">ja die nieuwe ???...</t>
+        <t class="heavyNormalization">ja die nieuwe ???...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">die</t>
+                <t class="heavyNormalization">die</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">nieuwe</t>
+                <t class="heavyNormalization">nieuwe</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">???</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">...</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#159">
+                    <naam>
+                        <familienaam>Paridaen</familienaam>
+                        ,
+                        <voornaam>Gustaaf</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Van Hal, G." xml:id="speech.elan.869331" begintime="00:02:57.581" endtime="00:02:58.759">
         <t class="lightNormalization">en dan is#t ook uh...</t>
         <t class="heavyNormalization">en dan is het ook uh...</t>
@@ -4788,50 +4832,6 @@ Null text field-->
                         <familienaam>Van Hal</familienaam>
                         ,
                         <voornaam>G.</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Paridaen, Gustaaf" xml:id="speech.elan.870573" begintime="00:02:57.581" endtime="00:02:58.759">
-        <t class="lightNormalization">ja die nieuwe ???...</t>
-        <t class="heavyNormalization">ja die nieuwe ???...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">die</t>
-                <t class="heavyNormalization">die</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">nieuwe</t>
-                <t class="heavyNormalization">nieuwe</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">???</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">...</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#159">
-                    <naam>
-                        <familienaam>Paridaen</familienaam>
-                        ,
-                        <voornaam>Gustaaf</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>

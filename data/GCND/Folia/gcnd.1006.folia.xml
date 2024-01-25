@@ -54480,27 +54480,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.849848" begintime="00:39:50.698" endtime="00:39:52.172">
-        <t class="lightNormalization">wat is da?</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22886">
-                    <naam>
-                        <familienaam>Taeldeman</familienaam>
-                        ,
-                        <voornaam>Johan</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Misilje, Jacob" xml:id="speech.elan.850529" begintime="00:39:50.698" endtime="00:39:52.172">
         <t class="lightNormalization">boten dat is t#zaad der afslaan.</t>
         <t class="heavyNormalization">boten dat is het zaad eraf slaan.</t>
@@ -54551,6 +54530,27 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Taeldeman, Johan" xml:id="speech.elan.849848" begintime="00:39:50.698" endtime="00:39:52.172">
+        <t class="lightNormalization">wat is da?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22886">
+                    <naam>
+                        <familienaam>Taeldeman</familienaam>
+                        ,
+                        <voornaam>Johan</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

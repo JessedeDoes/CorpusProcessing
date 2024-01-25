@@ -44,7 +44,7 @@ case class Transcription(transcriptie_id: Int) {
   }
 
   lazy val alpino_2_elan: Map[Int,Int]  = {
-    val q: Select[(Int,Int)] = Select(r => (r.getInt("alpino_annotatie_id") -> r.getInt("elan_annotatie_id")), "elan_2_alpino_unique where transcriptie_id=" + transcriptie_id)
+    val q: Select[(Int,Int)] = Select(r => (r.getInt("alpino_annotatie_id") -> r.getInt("elan_annotatie_id")), "alpino_2_elan_unique where transcriptie_id=" + transcriptie_id)
     GCNDDatabase.db.slurp(q).toMap
   }
 

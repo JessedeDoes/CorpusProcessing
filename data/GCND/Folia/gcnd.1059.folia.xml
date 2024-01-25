@@ -497,32 +497,21 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914493" begintime="00:00:15.650" endtime="00:00:16.980">
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.914457" begintime="00:00:15.650" endtime="00:00:16.980">
         <t class="lightNormalization">ggg.</t>
-        <t class="heavyNormalization">ggg.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">ggg</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#249">
+                <persoon ref="#22949">
                     <naam>
-                        <familienaam>Van de Walle</familienaam>
+                        <familienaam>Vanacker</familienaam>
                         ,
-                        <voornaam>Anna</voornaam>
+                        <voornaam>Valère</voornaam>
                     </naam>
                     <functie>
-                        <label>spreker</label>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -569,21 +558,32 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.914457" begintime="00:00:15.650" endtime="00:00:16.980">
+    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914493" begintime="00:00:15.650" endtime="00:00:16.980">
         <t class="lightNormalization">ggg.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
+        <t class="heavyNormalization">ggg.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">ggg</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22949">
+                <persoon ref="#249">
                     <naam>
-                        <familienaam>Vanacker</familienaam>
+                        <familienaam>Van de Walle</familienaam>
                         ,
-                        <voornaam>Valère</voornaam>
+                        <voornaam>Anna</voornaam>
                     </naam>
                     <functie>
-                        <label>interviewer</label>
+                        <label>spreker</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -1772,38 +1772,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914504" begintime="00:01:11.210" endtime="00:01:14.070">
-        <t class="lightNormalization">ggg.</t>
-        <t class="heavyNormalization">ggg.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">ggg</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#249">
-                    <naam>
-                        <familienaam>Van de Walle</familienaam>
-                        ,
-                        <voornaam>Anna</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="Veermeer, Edith" xml:id="speech.elan.914932" begintime="00:01:11.210" endtime="00:01:14.070">
         <t class="lightNormalization">ggg. t#is zo moeilijk.</t>
         <t class="heavyNormalization">ggg. het is zo moeilijk.</t>
@@ -1847,6 +1815,38 @@ Null text field-->
                         <familienaam>Veermeer</familienaam>
                         ,
                         <voornaam>Edith</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914504" begintime="00:01:11.210" endtime="00:01:14.070">
+        <t class="lightNormalization">ggg.</t>
+        <t class="heavyNormalization">ggg.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="true">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">ggg</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#249">
+                    <naam>
+                        <familienaam>Van de Walle</familienaam>
+                        ,
+                        <voornaam>Anna</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -26735,6 +26735,27 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.914478" begintime="00:16:17.743" endtime="00:16:21.600">
+        <t class="lightNormalization">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914668" begintime="00:16:17.743" endtime="00:16:21.600">
         <t class="lightNormalization">ggg.</t>
         <t class="heavyNormalization">ggg.</t>
@@ -26761,27 +26782,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.914478" begintime="00:16:17.743" endtime="00:16:21.600">
-        <t class="lightNormalization">ggg.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22949">
-                    <naam>
-                        <familienaam>Vanacker</familienaam>
-                        ,
-                        <voornaam>Valère</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -30244,6 +30244,54 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914684" begintime="00:18:18.235" endtime="00:18:20.163">
+        <t class="lightNormalization">k#wee#t niet zuh.</t>
+        <t class="heavyNormalization">ik weet het niet zuh.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation">
+            <w space="false">
+                <t class="lightNormalization">k</t>
+                <t class="heavyNormalization">ik</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization">wee</t>
+                <t class="heavyNormalization">weet</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">t</t>
+                <t class="heavyNormalization">het</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">niet</t>
+                <t class="heavyNormalization">niet</t>
+            </w>
+            <w space="true">
+                <t class="lightNormalization">zuh</t>
+                <t class="heavyNormalization">zuh</t>
+            </w>
+            <w space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#249">
+                    <naam>
+                        <familienaam>Van de Walle</familienaam>
+                        ,
+                        <voornaam>Anna</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Veermeer, Edith" xml:id="speech.elan.915167" begintime="00:18:18.235" endtime="00:18:20.163">
         <t class="lightNormalization">maa me zo#n oude kelder gaat da niet hé.</t>
         <t class="heavyNormalization">maar met zo een oude kelder gaat dat niet hé.</t>
@@ -30303,54 +30351,6 @@ Null text field-->
                         <familienaam>Veermeer</familienaam>
                         ,
                         <voornaam>Edith</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914684" begintime="00:18:18.235" endtime="00:18:20.163">
-        <t class="lightNormalization">k#wee#t niet zuh.</t>
-        <t class="heavyNormalization">ik weet het niet zuh.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="false">
-                <t class="lightNormalization">k</t>
-                <t class="heavyNormalization">ik</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization">wee</t>
-                <t class="heavyNormalization">weet</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">t</t>
-                <t class="heavyNormalization">het</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">niet</t>
-                <t class="heavyNormalization">niet</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">zuh</t>
-                <t class="heavyNormalization">zuh</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#249">
-                    <naam>
-                        <familienaam>Van de Walle</familienaam>
-                        ,
-                        <voornaam>Anna</voornaam>
                     </naam>
                     <functie>
                         <label>spreker</label>
@@ -50162,6 +50162,27 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="De Weert, De Weert" xml:id="speech.elan.914483" begintime="00:30:27.368" endtime="00:30:31.140">
+        <t class="lightNormalization">ja ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22712">
+                    <naam>
+                        <familienaam>De Weert</familienaam>
+                        ,
+                        <voornaam>De Weert</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="Van de Walle, Anna" xml:id="speech.elan.914786" begintime="00:30:27.368" endtime="00:30:31.140">
         <t class="lightNormalization">ggg.</t>
         <t class="heavyNormalization">ggg.</t>
@@ -50188,27 +50209,6 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="De Weert, De Weert" xml:id="speech.elan.914483" begintime="00:30:27.368" endtime="00:30:31.140">
-        <t class="lightNormalization">ja ja.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22712">
-                    <naam>
-                        <familienaam>De Weert</familienaam>
-                        ,
-                        <voornaam>De Weert</voornaam>
-                    </naam>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

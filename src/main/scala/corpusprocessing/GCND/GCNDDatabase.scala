@@ -7,7 +7,33 @@ import java.io.PrintWriter
 import scala.xml._
 
 
-
+object Preparation {
+  val queries =
+    """start transaction;
+      |drop view if exists elan_2_alpino cascade;
+      |drop view if exists elan_2_alpino_unique;
+      |create view elan_2_alpino as
+      |
+      |	select e.transcriptie_id, elan_annotatie_id, alpino_annotatie_id,
+      |	case
+      |	  when a.starttijd >= e.starttijd and a.starttijd < e.eindtijd then least(e.eindtijd,a.eindtijd) - a.starttijd
+      |	  when a.eindtijd > e.starttijd and a.eindtijd <= e.eindtijd then a.eindtijd - greatest(a.starttijd, e.starttijd)
+      |	  else 0
+      |	end as overlap
+      |	from elan_annotatie e, alpino_annotatie a
+      |	where e.transcriptie_id = a.transcriptie_id and
+      |	((a.starttijd >= e.starttijd and a.starttijd < e.eindtijd) or (a.eindtijd > e.starttijd and a.eindtijd <= e.eindtijd));
+      |
+      |	create view alpino_2_elan_unique as select
+      |		transcriptie_id,
+      |		alpino_annotatie_id,
+      |		(array_agg(elan_annotatie_id order by overlap desc))[1] as elan_annotatie_id,
+      |		array_agg(elan_annotatie_id order by overlap desc) as options,
+      |		array_agg(overlap order by overlap desc) as overlaps from elan_2_alpino group by alpino_annotatie_id, transcriptie_id;
+      |
+      |commit;
+      |""".stripMargin.split(";")
+}
 object GCNDDatabase {
   val doAll = true
   val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 30
@@ -16,6 +42,7 @@ object GCNDDatabase {
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
 
   val db = new Database(config)
+  Preparation.queries.foreach(db.runStatement)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
 

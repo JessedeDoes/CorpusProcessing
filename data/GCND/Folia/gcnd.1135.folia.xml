@@ -1,0 +1,2471 @@
+<FoLiA 
+xml:id="gcnd.transcriptie.1135" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xmlns:folia="http://ilk.uvt.nl/folia">
+    <metadata type="internal" xmlns="http://ilk.uvt.nl/folia">
+        <annotations>
+            <pos-annotation set="hdl:1839/00-SCHM-0000-0000-000B-9"/>
+            <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
+            <syntax-annotation set="lassy.syntax.annotation"/>
+            <syntax-annotation set="ud.syntax.annotation"/>
+            <division-annotation set="gcnd_div_classes"/>
+            <timesegment-annotation set="cgn"/>
+            <text-annotation 
+            set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl">
+</text-annotation>
+            <token-annotation/>
+            <sentence-annotation set="gcnd.sentence"/>
+            <dependency-annotation set="gcnd.dependency"/>
+        </annotations>
+        <foreign-data>
+            <gcnd_transcriptie_metadata 
+            xml:id="gcnd.metadata.1135" xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+                <transcriptie>
+                    <bestand rel="transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand">
+                        <bestand_id>3053</bestand_id>
+                        <bestandsgrootte>285488</bestandsgrootte>
+                        <naam>N130p_1_AF.eaf</naam>
+                        <pad>N130p_1/elan/N130p_1_AF.eaf</pad>
+                    </bestand>
+                    <opname rel="transcriptie⟶opname">
+                        <bestand rel="opname⟶opname__bestand;  opname__bestand⟶bestand">
+                            <bestand_id>3052</bestand_id>
+                            <bestandsgrootte>23275100</bestandsgrootte>
+                            <naam>N130p_1.mp3</naam>
+                            <pad>N130p_1/audio/N130p_1.mp3</pad>
+                        </bestand>
+                        <dag>11</dag>
+                        <jaar>1965</jaar>
+                        <maand>10</maand>
+                        <nummer>1</nummer>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>N130p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>79</beroep_id>
+                                    <label>drukker</label>
+                                </beroep>
+                                <familienaam>Robaeys</familienaam>
+                                <geboorte_dag>19</geboorte_dag>
+                                <geboorte_jaar>1924</geboorte_jaar>
+                                <geboorte_maand>1</geboorte_maand>
+                                <geboorte_plaats_id>3571</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <persoon_id>677</persoon_id>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <kloeke_code>N130p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Wervik</naam>
+                                    <plaats_id>3571</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <regio_id>10</regio_id>
+                                    </regio>
+                                    <regio_id>10</regio_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <kloeke_code>N130p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Wervik</naam>
+                                    <plaats_id>3571</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <regio_id>10</regio_id>
+                                    </regio>
+                                    <regio_id>10</regio_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <kloeke_code>N130p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>3</land_id>
+                                    </land>
+                                    <land_id>3</land_id>
+                                    <naam>Wervik</naam>
+                                    <plaats_id>3571</plaats_id>
+                                    <regio rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <regio_id>10</regio_id>
+                                    </regio>
+                                    <regio_id>10</regio_id>
+                                </plaats>
+                                <voornaam>Mamert</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VM</alias>
+                                <familienaam>Vermeire</familienaam>
+                                <persoon_id>22975</persoon_id>
+                                <voornaam>A.</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_DG</alias>
+                                <familienaam>De Groote</familienaam>
+                                <persoon_id>22690</persoon_id>
+                                <voornaam>André</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22949</persoon_id>
+                                <voornaam>Valère</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname_code>N130p_1</opname_code>
+                        <opname_id>577</opname_id>
+                        <plaats rel="opname⟶plaats">
+                            <kloeke_code>N130p</kloeke_code>
+                            <land rel="plaats⟶land">
+                                <label>België</label>
+                                <land_id>3</land_id>
+                            </land>
+                            <land_id>3</land_id>
+                            <naam>Wervik</naam>
+                            <plaats_id>3571</plaats_id>
+                            <regio rel="plaats⟶regio">
+                                <label>West-Vlaanderen</label>
+                                <regio_id>10</regio_id>
+                            </regio>
+                            <regio_id>10</regio_id>
+                        </plaats>
+                        <plaats_id>3571</plaats_id>
+                        <tijdsduur>0</tijdsduur>
+                    </opname>
+                    <opname_id>577</opname_id>
+                    <transcriptie_id>1135</transcriptie_id>
+                    <transcriptie_type_id>1</transcriptie_type_id>
+                </transcriptie>
+                <hasAlpino>false</hasAlpino>
+</gcnd_transcriptie_metadata>
+        </foreign-data>
+    </metadata>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.981255" begintime="00:00:00.340" endtime="00:00:01.020">
+        <t class="lightNormalization">ja...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.981256" begintime="00:00:01.340" endtime="00:00:05.310">
+        <t class="lightNormalization">dialectopname te Wervik. tien november vijfenzestig.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981260" begintime="00:00:08.780" endtime="00:00:10.347">
+        <t class="lightNormalization">een beetje van n#oudheidkundige kring.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981261" begintime="00:00:10.926" endtime="00:00:12.505">
+        <t class="lightNormalization">xxx</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.981257" begintime="00:00:30.660" endtime="00:00:34.000">
+        <t class="lightNormalization">??? luister e kee. ge moet hem nie te veel laten spreken hé.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.981258" begintime="00:00:34.380" endtime="00:00:36.510">
+        <t class="lightNormalization">gij moe spreken... dus hij moe nie veel vertellen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vanacker, Valère" xml:id="speech.elan.981259" begintime="00:00:36.820" endtime="00:00:37.890">
+        <t class="lightNormalization">gij gaa spreken.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22949">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valère</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981262" begintime="00:02:27.367" endtime="00:02:28.770">
+        <t class="lightNormalization">en da gaat ook nog verschijnen op termijn?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981263" begintime="00:02:37.089" endtime="00:02:37.393">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981264" begintime="00:03:14.776" endtime="00:03:15.205">
+        <t class="lightNormalization">Wervik?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981265" begintime="00:03:33.686" endtime="00:03:34.506">
+        <t class="lightNormalization">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981266" begintime="00:03:51.857" endtime="00:03:52.264">
+        <t class="lightNormalization">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981267" begintime="00:04:03.305" endtime="00:04:04.774">
+        <t class="lightNormalization">k#peisde da#t was van veertig tot vijfenveertig.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981268" begintime="00:04:14.326" endtime="00:04:15.952">
+        <t class="lightNormalization">die expositie in in t#stadhuis misschien?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981269" begintime="00:04:20.319" endtime="00:04:20.929">
+        <t class="lightNormalization">ja</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981270" begintime="00:04:36.658" endtime="00:04:37.505">
+        <t class="lightNormalization">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981271" begintime="00:04:39.063" endtime="00:04:40.176">
+        <t class="lightNormalization">da#s typisch Werviks.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981272" begintime="00:05:28.750" endtime="00:05:29.333">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981273" begintime="00:05:37.507" endtime="00:05:38.269">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981274" begintime="00:06:09.677" endtime="00:06:10.677">
+        <t class="lightNormalization">tiens ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981275" begintime="00:07:29.063" endtime="00:07:30.146">
+        <t class="lightNormalization">ah ja k#e daar nog van gehoord.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981276" begintime="00:07:31.707" endtime="00:07:33.040">
+        <t class="lightNormalization">van de zustertjes dus uh...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981277" begintime="00:07:48.291" endtime="00:07:49.291">
+        <t class="lightNormalization">da geloof ik nie wi.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981278" begintime="00:08:07.443" endtime="00:08:07.762">
+        <t class="lightNormalization">ggg. </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981279" begintime="00:08:32.704" endtime="00:08:33.399">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981280" begintime="00:10:27.114" endtime="00:10:28.114">
+        <t class="lightNormalization">t#is een superliefhebberij.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981281" begintime="00:10:28.973" endtime="00:10:29.986">
+        <t class="lightNormalization">t#is een superliefhebberij.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981282" begintime="00:11:53.205" endtime="00:11:54.205">
+        <t class="lightNormalization">ja t#is juist.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981283" begintime="00:12:28.641" endtime="00:12:29.438">
+        <t class="lightNormalization">ja t#is juist.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981284" begintime="00:12:34.734" endtime="00:12:35.103">
+        <t class="lightNormalization">neen#k.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981285" begintime="00:12:57.838" endtime="00:12:58.838">
+        <t class="lightNormalization">ja met die zwarte kunst</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981286" begintime="00:13:04.962" endtime="00:13:05.292">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981287" begintime="00:15:19.610" endtime="00:15:20.357">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981288" begintime="00:15:36.623" endtime="00:15:37.252">
+        <t class="lightNormalization">??? ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981289" begintime="00:17:23.372" endtime="00:17:23.840">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981290" begintime="00:18:39.549" endtime="00:18:40.655">
+        <t class="lightNormalization">ja? xxx</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981291" begintime="00:18:58.106" endtime="00:18:58.637">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981292" begintime="00:19:24.857" endtime="00:19:27.000">
+        <t class="lightNormalization">je peinst dat dat echt Wervikse namen zijn ton?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981293" begintime="00:21:09.514" endtime="00:21:10.074">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981294" begintime="00:21:41.872" endtime="00:21:43.355">
+        <t class="lightNormalization">Jean Pierre Dermot is die van Wervik?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981295" begintime="00:21:45.366" endtime="00:21:45.974">
+        <t class="lightNormalization">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981296" begintime="00:21:49.002" endtime="00:21:49.456">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981297" begintime="00:21:57.857" endtime="00:21:58.277">
+        <t class="lightNormalization">tiens.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981298" begintime="00:22:36.354" endtime="00:22:37.420">
+        <t class="lightNormalization">ja t#is juiste.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981299" begintime="00:22:45.975" endtime="00:22:47.715">
+        <t class="lightNormalization">ah ze zijn ook weregekeerd.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981300" begintime="00:23:31.903" endtime="00:23:33.288">
+        <t class="lightNormalization">ah ja t#is juiste.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981301" begintime="00:23:40.600" endtime="00:23:41.472">
+        <t class="lightNormalization">nee?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981302" begintime="00:24:44.012" endtime="00:24:45.970">
+        <t class="lightNormalization">t#is allijk een ac... een actief stadje?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981303" begintime="00:24:49.831" endtime="00:24:51.749">
+        <t class="lightNormalization">awel t#jaar tweeduizend bijvoorbeeld.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981304" begintime="00:24:57.111" endtime="00:24:57.857">
+        <t class="lightNormalization">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981305" begintime="00:24:59.488" endtime="00:25:00.886">
+        <t class="lightNormalization">de studenten ???</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981306" begintime="00:25:06.228" endtime="00:25:07.017">
+        <t class="lightNormalization">ja?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981307" begintime="00:25:08.679" endtime="00:25:10.667">
+        <t class="lightNormalization">ja m#en ze gekregen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981308" begintime="00:25:13.287" endtime="00:25:13.914">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981309" begintime="00:25:15.326" endtime="00:25:17.096">
+        <t class="lightNormalization">ja ja ze zijn al verzonden.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981310" begintime="00:25:33.688" endtime="00:25:35.064">
+        <t class="lightNormalization">k#geloof et.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981311" begintime="00:25:48.808" endtime="00:25:51.365">
+        <t class="lightNormalization">da woordje krowaat ge weet gij nie van waar dat da komt?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981312" begintime="00:25:51.580" endtime="00:25:55.021">
+        <t class="lightNormalization">da woordje krowaat van wuk zou da kunnen komen? xxx tegenkomen?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981313" begintime="00:26:00.010" endtime="00:26:01.123">
+        <t class="lightNormalization">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981314" begintime="00:26:03.771" endtime="00:26:04.641">
+        <t class="lightNormalization">t#is ton...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981315" begintime="00:26:47.292" endtime="00:26:48.002">
+        <t class="lightNormalization">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981316" begintime="00:27:16.541" endtime="00:27:17.693">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981317" begintime="00:27:32.291" endtime="00:27:32.871">
+        <t class="lightNormalization">ggg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981318" begintime="00:28:04.243" endtime="00:28:07.005">
+        <t class="lightNormalization">bestaan der zo geen oude liedje van Wervik peins je?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981319" begintime="00:28:21.192" endtime="00:28:22.400">
+        <t class="lightNormalization">ah ja. ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981320" begintime="00:28:47.368" endtime="00:28:47.924">
+        <t class="lightNormalization">nee.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981321" begintime="00:29:05.473" endtime="00:29:07.460">
+        <t class="lightNormalization">t#kan misschien nog komen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981322" begintime="00:30:04.187" endtime="00:30:05.636">
+        <t class="lightNormalization">t#gaa nog wa worden.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981323" begintime="00:30:38.434" endtime="00:30:41.242">
+        <t class="lightNormalization">
+            in Wervik gaat#t nog. in andere steden is#t alijk nog slechter hé.
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981324" begintime="00:32:04.925" endtime="00:32:06.353">
+        <t class="lightNormalization">ja dat is wel waar.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981325" begintime="00:33:53.638" endtime="00:33:55.430">
+        <t class="lightNormalization">ze slaan allijk nog de nafte nie op hé.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981326" begintime="00:35:08.706" endtime="00:35:11.756">
+        <t class="lightNormalization">
+            t#is alijk nog alsan beter dan uh ier in België hé? voo de druiven?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981327" begintime="00:35:45.261" endtime="00:35:50.451">
+        <t class="lightNormalization">
+            kun je Werviks spreken over de grenze meneer ??? uh zou da gaan daar uh over de grenze spreken xxx
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981328" begintime="00:37:14.350" endtime="00:37:15.055">
+        <t class="lightNormalization">wat is dat dan?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981329" begintime="00:37:18.075" endtime="00:37:19.134">
+        <t class="lightNormalization">ah da#s een spreie.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981330" begintime="00:37:25.836" endtime="00:37:27.295">
+        <t class="lightNormalization">k#peide dat da ??? was.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981331" begintime="00:37:28.998" endtime="00:37:31.052">
+        <t class="lightNormalization">k#peisde dat#t ne kotterare was.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981332" begintime="00:37:52.565" endtime="00:37:53.326">
+        <t class="lightNormalization">pezewevers?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981333" begintime="00:38:40.105" endtime="00:38:40.684">
+        <t class="lightNormalization">ggg</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981334" begintime="00:39:08.088" endtime="00:39:09.863">
+        <t class="lightNormalization">uh... be jaa#k.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981335" begintime="00:39:11.879" endtime="00:39:12.826">
+        <t class="lightNormalization">dat is ambetant hé.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981336" begintime="00:40:02.932" endtime="00:40:05.533">
+        <t class="lightNormalization">g#et gehoord aan t#Miljoenenkwartier da ze daar gemaakt en.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981337" begintime="00:40:06.819" endtime="00:40:08.161">
+        <t class="lightNormalization">uh... da Miljoenenkwartier</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981338" begintime="00:40:08.445" endtime="00:40:09.885">
+        <t class="lightNormalization">hoe zijn ze aan die name gegraakt?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981339" begintime="00:40:20.190" endtime="00:40:22.000">
+        <t class="lightNormalization">ja ja de molen.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981340" begintime="00:40:43.053" endtime="00:40:43.766">
+        <t class="lightNormalization">ja t#is juist.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981341" begintime="00:40:57.948" endtime="00:41:00.291">
+        <t class="lightNormalization">ja ja daar op n#hoek</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981342" begintime="00:41:25.927" endtime="00:41:26.668">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981343" begintime="00:41:32.039" endtime="00:41:33.755">
+        <t class="lightNormalization">xxx</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981344" begintime="00:41:40.405" endtime="00:41:41.281">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981345" begintime="00:41:43.184" endtime="00:41:43.737">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981346" begintime="00:42:50.558" endtime="00:42:50.946">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981347" begintime="00:43:08.103" endtime="00:43:09.013">
+        <t class="lightNormalization">allez zeg.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981348" begintime="00:43:19.530" endtime="00:43:21.333">
+        <t class="lightNormalization">maa t#gaa toch een goeien invloed en?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981349" begintime="00:43:21.445" endtime="00:43:24.919">
+        <t class="lightNormalization">
+            en uh... Werviks zoun ze da ier ook spreken in Kruiseke? spreken z#ier hetzelfste Werviks?
+        </t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981350" begintime="00:43:26.746" endtime="00:43:29.098">
+        <t class="lightNormalization">da#s ook maa... t#is ook geïsoleerd zeker?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981351" begintime="00:43:48.380" endtime="00:43:49.086">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981352" begintime="00:44:59.902" endtime="00:45:00.567">
+        <t class="lightNormalization">ggg neen?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981353" begintime="00:45:24.118" endtime="00:45:24.987">
+        <t class="lightNormalization">ja t#is juist.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981354" begintime="00:45:30.937" endtime="00:45:31.935">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981355" begintime="00:45:47.832" endtime="00:45:49.090">
+        <t class="lightNormalization">ja t#is juist.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981356" begintime="00:46:09.224" endtime="00:46:10.689">
+        <t class="lightNormalization">ja... awel...</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981357" begintime="00:46:35.211" endtime="00:46:36.412">
+        <t class="lightNormalization">ja Sint-Maartensplaatse.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981358" begintime="00:46:49.653" endtime="00:46:51.531">
+        <t class="lightNormalization">en die tempel van Venus waar stond dien?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981359" begintime="00:46:52.880" endtime="00:46:53.766">
+        <t class="lightNormalization">ah da#s van Mars</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981360" begintime="00:46:54.714" endtime="00:46:55.711">
+        <t class="lightNormalization">da#s ook in Sint-Maartens?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981361" begintime="00:47:33.401" endtime="00:47:34.033">
+        <t class="lightNormalization">ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981362" begintime="00:47:54.440" endtime="00:47:57.743">
+        <t class="lightNormalization">en op Steenakker was daar ook een kerke zeker? op Steenakker?</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Vermeire, A." xml:id="speech.elan.981363" begintime="00:48:04.945" endtime="00:48:05.693">
+        <t class="lightNormalization">ah ja.</t>
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22975">
+                    <naam>
+                        <familienaam>Vermeire</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+</FoLiA>
+

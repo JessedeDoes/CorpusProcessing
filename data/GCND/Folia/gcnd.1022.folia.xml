@@ -35596,27 +35596,6 @@ Null text field-->
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="Dhaese, Clément" xml:id="speech.elan.871430" begintime="00:24:09.484" endtime="00:24:10.461">
-        <t class="lightNormalization">xxx</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
-Null text field-->
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#161">
-                    <naam>
-                        <familienaam>Dhaese</familienaam>
-                        ,
-                        <voornaam>Clément</voornaam>
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="interviewer" speaker="Eylenbosch, E." xml:id="speech.elan.871966" begintime="00:24:09.484" endtime="00:24:10.461">
         <t class="lightNormalization">xxx</t>
         <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
@@ -35632,6 +35611,27 @@ Null text field-->
                     </naam>
                     <functie>
                         <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Dhaese, Clément" xml:id="speech.elan.871430" begintime="00:24:09.484" endtime="00:24:10.461">
+        <t class="lightNormalization">xxx</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
+Null text field-->
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#161">
+                    <naam>
+                        <familienaam>Dhaese</familienaam>
+                        ,
+                        <voornaam>Clément</voornaam>
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
