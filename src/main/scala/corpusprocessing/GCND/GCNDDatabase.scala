@@ -103,7 +103,6 @@ object GCNDDatabase {
     val dumpAlpinoParses = false
 
 
-
     if (false) {
       val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
       //out1.println(pretty.format(foliaWithAlpino))

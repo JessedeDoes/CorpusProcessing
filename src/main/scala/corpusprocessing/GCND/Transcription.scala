@@ -23,8 +23,9 @@ case class Transcription(transcriptie_id: Int) {
     r.getInt("starttijd"),
     r.getInt("eindtijd"),
     r.getString("tokens"),
+    r.getString("tagged_tokens"),
     this
-  ), "elan_annotatie")
+  ), "elan_annotatie_plus")
 
   def alpinosForTranscriptionId(id: Int) = {
     println(s"Get alpinos for transcription $id")
@@ -39,7 +40,8 @@ case class Transcription(transcriptie_id: Int) {
         r.getString("alpino_xml"),
         r.getString("tokens"),
         r.getInt("starttijd"),
-        r.getInt("eindtijd"), this), "alpino_annotatie where transcriptie_id=" + id)
+        r.getInt("eindtijd"),
+        this), "alpino_annotatie where transcriptie_id=" + id)
      GCNDDatabase.db.slurp(alpinoQ).sortBy(x => x.sortKey)
   }
 
@@ -53,7 +55,7 @@ case class Transcription(transcriptie_id: Int) {
   def getAlpinos(elan_annotatie_id: Int)  = alpinoAnnotations.filter(a => alpino_2_elan.contains(a.alpino_annotatie_id) && alpino_2_elan(a.alpino_annotatie_id) == elan_annotatie_id)
 
   lazy val elanAnnotations = {
-    val q = elanQ.copy(from = s"elan_annotatie where transcriptie_id=$transcriptie_id")
+    val q = elanQ.copy(from = s"elan_annotatie_plus where transcriptie_id=$transcriptie_id")
     GCNDDatabase.db.slurp(q).sortBy(x => x.starttijd + x.eindtijd)
   }
 

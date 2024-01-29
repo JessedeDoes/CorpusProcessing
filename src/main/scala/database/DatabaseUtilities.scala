@@ -234,6 +234,14 @@ class Database(configuration: Configuration) {
       })
       batch.execute()
     }
+
+    def insert(l: Iterator[T]): Unit = {
+      l.foreach(t => {
+        val b = f(t).foldLeft(batch)({ case (ba, bi) => ba.bind(bi.name, bi.value) })
+        b.add()
+      })
+      batch.execute()
+    }
   }
 
   def getAllFields(r: ResultSet):Map[String,String] =

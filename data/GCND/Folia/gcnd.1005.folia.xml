@@ -184,42 +184,96 @@ Null text field-->
         <t class="heavyNormalization">ja nou en uh daar kwam een schaap...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849204">
+            <w xml:id="w.849204.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.1" space="true">
                 <t class="lightNormalization">nou</t>
                 <t class="heavyNormalization">nou</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="nou"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.2" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.3" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="uh"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.4" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="adv-pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="daar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.5" space="true">
                 <t class="lightNormalization">kwam</t>
                 <t class="heavyNormalization">kwam</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="komen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.6" space="true">
                 <t class="lightNormalization">ee</t>
                 <t class="heavyNormalization">een</t>
+                <pos class="LID(onbep,stan,agr)">
+                    <feat class="onbep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="agr" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849204.unannotated.7" space="true">
                 <t class="lightNormalization">schaap</t>
                 <t class="heavyNormalization">schaap</t>
+                <pos class="N(soort,ev,basis,onz,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="schaap"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849204.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -243,34 +297,84 @@ Null text field-->
         <t class="heavyNormalization">bij die mensen op die boerderij...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849205">
+            <w xml:id="w.849205.unannotated.0" space="true">
                 <t class="lightNormalization">bij</t>
                 <t class="heavyNormalization">bij</t>
+                <pos class="VZ(init)">
+                    <feat class="init" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="bij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849205.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849205.unannotated.2" space="true">
                 <t class="lightNormalization">mensen</t>
                 <t class="heavyNormalization">mensen</t>
+                <pos class="N(soort,mv,basis)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="mens"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849205.unannotated.3" space="true">
                 <t class="lightNormalization">op</t>
                 <t class="heavyNormalization">op</t>
+                <pos class="VZ(init)">
+                    <feat class="init" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="op"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849205.unannotated.4" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849205.unannotated.5" space="true">
                 <t class="lightNormalization">boerderij</t>
                 <t class="heavyNormalization">boerderij</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="boerderij"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849205.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -3227,78 +3331,195 @@ Null text field-->
         </t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849212">
+            <w xml:id="w.849212.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.2" space="true">
                 <t class="lightNormalization">vloog</t>
                 <t class="heavyNormalization">vloog</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="vliegen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.3" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="ook"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.4" space="true">
                 <t class="lightNormalization">van</t>
                 <t class="heavyNormalization">van</t>
+                <pos class="VZ(init)">
+                    <feat class="init" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="van"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.5" space="true">
                 <t class="lightNormalization">den</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.6" space="true">
                 <t class="lightNormalization">enen</t>
                 <t class="heavyNormalization">ene</t>
+                <pos class="VNW(onbep,det,stan,prenom,met-e,evz)">
+                    <feat class="onbep" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="met-e" subset="buiging"/>
+                    <feat class="evz" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.7" space="true">
                 <t class="lightNormalization">hoek</t>
                 <t class="heavyNormalization">hoek</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="hoek"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.8" space="true">
                 <t class="lightNormalization">in</t>
                 <t class="heavyNormalization">in</t>
+                <pos class="VZ(fin)">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="in"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.10" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.11" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.12" space="true">
                 <t class="lightNormalization">konden</t>
                 <t class="heavyNormalization">konden</t>
+                <pos class="WW(pv,verl,mv)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="kunnen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.13" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
+                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="zij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.14" space="true">
                 <t class="lightNormalization">maa</t>
                 <t class="heavyNormalization">maar</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="maar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.15" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="niet"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849212.unannotated.16" space="true">
                 <t class="lightNormalization">pakken</t>
                 <t class="heavyNormalization">pakken</t>
+                <pos class="WW(inf,vrij,zonder)">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="pakken"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849212.unannotated.17" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -3665,58 +3886,132 @@ Null text field-->
         <t class="heavyNormalization">en dan en dan vlogen de ramen op en de deuren open...</t>
         <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849213">
+            <w xml:id="w.849213.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.1" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.2" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.3" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.4" space="true">
                 <t class="lightNormalization">vlogen</t>
                 <t class="heavyNormalization">vlogen</t>
+                <pos class="WW(pv,verl,mv)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="vliegen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.5" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.6" space="true">
                 <t class="lightNormalization">ramen</t>
                 <t class="heavyNormalization">ramen</t>
+                <pos class="N(soort,mv,basis)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="raam"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.7" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">op</t>
+                <pos class="VZ(fin)">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="op"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.8" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.9" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.10" space="true">
                 <t class="lightNormalization">deuren</t>
                 <t class="heavyNormalization">deuren</t>
+                <pos class="N(soort,mv,basis)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="deur"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849213.unannotated.11" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">open</t>
+                <pos class="ADJ(vrij,basis,zonder)">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="open"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849213.unannotated.12" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -4121,7 +4416,7 @@ Null text field-->
         <t class="heavyNormalization">
             ja en dan bonden ze de... de... de mennen dicht soms met met stringen en dan vlogen ze nog open.
         </t>
-        <!--speaker role:spreker, n_alpino_annotations: 3; Use alpino: true, Use alignment: false
+        <!--speaker role:spreker, n_alpino_annotations: 2; Use alpino: true, Use alignment: false
 -->
         <s xml:id="s.87433">
             <w xml:id="annotation.849258.87433.w.0">
@@ -4725,8 +5020,29 @@ Null text field-->
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20023">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849215" begintime="00:01:04.250" endtime="00:01:06.090">
+        <t class="lightNormalization">ja en dan hadden ze...</t>
+        <t class="heavyNormalization">ja en dan hadden ze...</t>
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
+-->
         <s xml:id="s.87355">
-            <w xml:id="annotation.849258.87355.w.0">
+            <w xml:id="annotation.849215.87355.w.0">
                 <t class="heavyNormalization">ja</t>
                 <t class="lightNormalization">ja</t>
                 <lemma class="ja"/>
@@ -4734,7 +5050,7 @@ Null text field-->
                     <feat class="TSW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849258.87355.w.1">
+            <w xml:id="annotation.849215.87355.w.1">
                 <t class="heavyNormalization">en</t>
                 <t class="lightNormalization">en</t>
                 <lemma class="en"/>
@@ -4743,7 +5059,7 @@ Null text field-->
                     <feat class="VG" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849258.87355.w.2">
+            <w xml:id="annotation.849215.87355.w.2">
                 <t class="heavyNormalization">dan</t>
                 <t class="lightNormalization">dan</t>
                 <lemma class="dan"/>
@@ -4751,7 +5067,7 @@ Null text field-->
                     <feat class="BW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849258.87355.w.3">
+            <w xml:id="annotation.849215.87355.w.3">
                 <t class="heavyNormalization">hadden</t>
                 <t class="lightNormalization">hadden</t>
                 <lemma class="hebben"/>
@@ -4762,7 +5078,7 @@ Null text field-->
                     <feat class="WW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849258.87355.w.4">
+            <w xml:id="annotation.849215.87355.w.4">
                 <t class="heavyNormalization">ze</t>
                 <t class="lightNormalization">ze</t>
                 <lemma class="ze"/>
@@ -4776,7 +5092,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849258.87355.w.5">
+            <w xml:id="annotation.849215.87355.w.5">
                 <t class="heavyNormalization">...</t>
                 <t class="lightNormalization">...</t>
                 <lemma class="..."/>
@@ -4826,48 +5142,48 @@ Null text field-->
             <dependencies>
                 <dependency class="tag">
                     <hd>
-                        <wref id="annotation.849258.87355.w.3"/>
+                        <wref id="annotation.849215.87355.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.0" t="ja"/>
+                        <wref id="annotation.849215.87355.w.0" t="ja"/>
                     </dep>
                 </dependency>
                 <dependency class="dlink">
                     <hd>
-                        <wref id="annotation.849258.87355.w.3"/>
+                        <wref id="annotation.849215.87355.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.1" t="en"/>
+                        <wref id="annotation.849215.87355.w.1" t="en"/>
                     </dep>
                 </dependency>
                 <dependency class="--">
                     <hd>
-                        <wref id="annotation.849258.87355.w.3"/>
+                        <wref id="annotation.849215.87355.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.2" t="dan"/>
+                        <wref id="annotation.849215.87355.w.2" t="dan"/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.3" t="hadden"/>
+                        <wref id="annotation.849215.87355.w.3" t="hadden"/>
                     </dep>
                 </dependency>
                 <dependency class="su">
                     <hd>
-                        <wref id="annotation.849258.87355.w.3"/>
+                        <wref id="annotation.849215.87355.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.4" t="ze"/>
+                        <wref id="annotation.849215.87355.w.4" t="ze"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849258.87355.w.3"/>
+                        <wref id="annotation.849215.87355.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849258.87355.w.5" t="..."/>
+                        <wref id="annotation.849215.87355.w.5" t="..."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -4887,62 +5203,15 @@ Null text field-->
             </dependencies>
             <timing>
                 <timesegment begintime="00:01:04.250" endtime="00:01:06.090">
-                    <wref id="annotation.849258.87355.w.0" t="ja"/>
-                    <wref id="annotation.849258.87355.w.1" t="en"/>
-                    <wref id="annotation.849258.87355.w.2" t="dan"/>
-                    <wref id="annotation.849258.87355.w.3" t="hadden"/>
-                    <wref id="annotation.849258.87355.w.4" t="ze"/>
-                    <wref id="annotation.849258.87355.w.5" t="..."/>
+                    <wref id="annotation.849215.87355.w.0" t="ja"/>
+                    <wref id="annotation.849215.87355.w.1" t="en"/>
+                    <wref id="annotation.849215.87355.w.2" t="dan"/>
+                    <wref id="annotation.849215.87355.w.3" t="hadden"/>
+                    <wref id="annotation.849215.87355.w.4" t="ze"/>
+                    <wref id="annotation.849215.87355.w.5" t="..."/>
                 </timesegment>
             </timing>
         </s>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20023">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849215" begintime="00:01:04.250" endtime="00:01:06.090">
-        <t class="lightNormalization">ja en dan hadden ze...</t>
-        <t class="heavyNormalization">ja en dan hadden ze...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">en</t>
-                <t class="heavyNormalization">en</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">dan</t>
-                <t class="heavyNormalization">dan</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">hadden</t>
-                <t class="heavyNormalization">hadden</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">ze</t>
-                <t class="heavyNormalization">ze</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">...</t>
-            </w>
-        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -5207,34 +5476,75 @@ Null text field-->
         <t class="heavyNormalization">want... dat is allemaal gebeurd...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849260">
+            <w xml:id="w.849260.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="want"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849260.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849260.unannotated.2" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
+                <pos class="VNW(aanw,pron,stan,vol,3o,ev)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="dat"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849260.unannotated.3" space="true">
                 <t class="lightNormalization">is</t>
                 <t class="heavyNormalization">is</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zijn"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849260.unannotated.4" space="true">
                 <t class="lightNormalization">al</t>
                 <t class="heavyNormalization">allemaal</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="allemaal"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849260.unannotated.5" space="true">
                 <t class="lightNormalization">gebeurd</t>
                 <t class="heavyNormalization">gebeurd</t>
+                <pos class="WW(vd,vrij,zonder)">
+                    <feat class="vd" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="gebeuren"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849260.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -5837,26 +6147,58 @@ Null text field-->
         <t class="heavyNormalization">nee minder want Marina...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849216">
+            <w xml:id="w.849216.unannotated.0" space="true">
                 <t class="lightNormalization">nee</t>
                 <t class="heavyNormalization">nee</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="nee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849216.unannotated.1" space="true">
                 <t class="lightNormalization">minder</t>
                 <t class="heavyNormalization">minder</t>
+                <pos class="VNW(onbep,grad,stan,vrij,zonder,comp)">
+                    <feat class="onbep" subset="vwtype"/>
+                    <feat class="grad" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="comp" subset="graad"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="minder"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849216.unannotated.2" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="want"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849216.unannotated.3" space="true">
                 <t class="lightNormalization">Marina</t>
                 <t class="heavyNormalization">Marina</t>
+                <pos class="N(eigen,ev,basis,zijd,stan)">
+                    <feat class="eigen" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="Marina"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849216.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -5947,53 +6289,10 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849217" begintime="00:01:24.665" endtime="00:01:27.235">
         <t class="lightNormalization">Marina was de dienstmeid.</t>
         <t class="heavyNormalization">Marina was de dienstmeid.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">Marina</t>
-                <t class="heavyNormalization">Marina</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">was</t>
-                <t class="heavyNormalization">was</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">de</t>
-                <t class="heavyNormalization">de</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">dienstmeid</t>
-                <t class="heavyNormalization">dienstmeid</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20022">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849265" begintime="00:01:25.745" endtime="00:01:27.215">
-        <t class="lightNormalization">vijf... vijfenzestig jaar.</t>
-        <t class="heavyNormalization">vijf... vijfenzestig jaar.</t>
         <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
         <s xml:id="s.87494">
-            <w xml:id="annotation.849265.87494.w.0">
+            <w xml:id="annotation.849217.87494.w.0">
                 <t class="heavyNormalization">vijf</t>
                 <t class="lightNormalization">vijf</t>
                 <lemma class="vijf"/>
@@ -6004,7 +6303,7 @@ Null text field-->
                     <feat class="TW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849265.87494.w.1">
+            <w xml:id="annotation.849217.87494.w.1">
                 <t class="heavyNormalization">...</t>
                 <t class="lightNormalization">...</t>
                 <lemma class="..."/>
@@ -6012,7 +6311,7 @@ Null text field-->
                     <feat class="LET" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849265.87494.w.2">
+            <w xml:id="annotation.849217.87494.w.2">
                 <t class="heavyNormalization">vijfenzestig</t>
                 <t class="lightNormalization">vijfenzestig</t>
                 <lemma class="vijfenzestig"/>
@@ -6023,7 +6322,7 @@ Null text field-->
                     <feat class="TW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849265.87494.w.3">
+            <w xml:id="annotation.849217.87494.w.3">
                 <t class="heavyNormalization">jaar</t>
                 <t class="lightNormalization">jaar</t>
                 <lemma class="jaar"/>
@@ -6036,7 +6335,7 @@ Null text field-->
                     <feat class="N" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849265.87494.w.4">
+            <w xml:id="annotation.849217.87494.w.4">
                 <t class="heavyNormalization">.</t>
                 <t class="lightNormalization">.</t>
                 <lemma class="."/>
@@ -6082,40 +6381,40 @@ Null text field-->
             <dependencies>
                 <dependency class="--">
                     <hd>
-                        <wref id="annotation.849265.87494.w.3"/>
+                        <wref id="annotation.849217.87494.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849265.87494.w.0" t="vijf"/>
+                        <wref id="annotation.849217.87494.w.0" t="vijf"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849265.87494.w.3"/>
+                        <wref id="annotation.849217.87494.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849265.87494.w.1" t="..."/>
+                        <wref id="annotation.849217.87494.w.1" t="..."/>
                     </dep>
                 </dependency>
                 <dependency class="det">
                     <hd>
-                        <wref id="annotation.849265.87494.w.3"/>
+                        <wref id="annotation.849217.87494.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849265.87494.w.2" t="vijfenzestig"/>
+                        <wref id="annotation.849217.87494.w.2" t="vijfenzestig"/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.849265.87494.w.3" t="jaar"/>
+                        <wref id="annotation.849217.87494.w.3" t="jaar"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849265.87494.w.3"/>
+                        <wref id="annotation.849217.87494.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849265.87494.w.4" t="."/>
+                        <wref id="annotation.849217.87494.w.4" t="."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -6134,14 +6433,88 @@ Null text field-->
             </dependencies>
             <timing>
                 <timesegment begintime="00:01:25.745" endtime="00:01:27.215">
-                    <wref id="annotation.849265.87494.w.0" t="vijf"/>
-                    <wref id="annotation.849265.87494.w.1" t="..."/>
-                    <wref id="annotation.849265.87494.w.2" t="vijfenzestig"/>
-                    <wref id="annotation.849265.87494.w.3" t="jaar"/>
-                    <wref id="annotation.849265.87494.w.4" t="."/>
+                    <wref id="annotation.849217.87494.w.0" t="vijf"/>
+                    <wref id="annotation.849217.87494.w.1" t="..."/>
+                    <wref id="annotation.849217.87494.w.2" t="vijfenzestig"/>
+                    <wref id="annotation.849217.87494.w.3" t="jaar"/>
+                    <wref id="annotation.849217.87494.w.4" t="."/>
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20022">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849265" begintime="00:01:25.745" endtime="00:01:27.215">
+        <t class="lightNormalization">vijf... vijfenzestig jaar.</t>
+        <t class="heavyNormalization">vijf... vijfenzestig jaar.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849265">
+            <w xml:id="w.849265.unannotated.0" space="true">
+                <t class="lightNormalization">vijf</t>
+                <t class="heavyNormalization">vijf</t>
+                <pos class="TW(hoofd,prenom,stan)">
+                    <feat class="hoofd" subset="numtype"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="TW" subset="pos"/>
+                </pos>
+                <lemma class="vijf"/>
+            </w>
+            <w xml:id="w.849265.unannotated.1" space="true">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
+            </w>
+            <w xml:id="w.849265.unannotated.2" space="true">
+                <t class="lightNormalization">vijfenzestig</t>
+                <t class="heavyNormalization">vijfenzestig</t>
+                <pos class="TW(hoofd,prenom,stan)">
+                    <feat class="hoofd" subset="numtype"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="TW" subset="pos"/>
+                </pos>
+                <lemma class="vijfenzestig"/>
+            </w>
+            <w xml:id="w.849265.unannotated.3" space="true">
+                <t class="lightNormalization">jaar</t>
+                <t class="heavyNormalization">jaar</t>
+                <pos class="N(soort,ev,basis,onz,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="jaar"/>
+            </w>
+            <w xml:id="w.849265.unannotated.4" space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
+            </w>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -9577,34 +9950,182 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849274" begintime="00:01:55.450" endtime="00:01:57.850">
         <t class="lightNormalization">da waren... da waren...</t>
         <t class="heavyNormalization">dat waren... dat waren...</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">da</t>
+        <s xml:id="s.87470">
+            <w xml:id="annotation.849274.87470.w.0">
                 <t class="heavyNormalization">dat</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">waren</t>
-                <t class="heavyNormalization">waren</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">...</t>
-            </w>
-            <w space="true">
                 <t class="lightNormalization">da</t>
-                <t class="heavyNormalization">dat</t>
+                <lemma class="dat"/>
+                <pos class="VG(onder)" head="VG">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
             </w>
-            <w space="true">
-                <t class="lightNormalization">waren</t>
+            <w xml:id="annotation.849274.87470.w.1">
                 <t class="heavyNormalization">waren</t>
+                <t class="lightNormalization">waren</t>
+                <lemma class="waren"/>
+                <pos class="WW(pv,verl,mv)" head="WW">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
             </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
+            <w xml:id="annotation.849274.87470.w.2">
                 <t class="heavyNormalization">...</t>
+                <t class="lightNormalization">...</t>
+                <lemma class="..."/>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <w xml:id="annotation.849274.87470.w.3">
+                <t class="heavyNormalization">dat</t>
+                <t class="lightNormalization">da</t>
+                <lemma class="dat"/>
+                <pos class="VNW(aanw,det,stan,prenom,zonder,evon)" head="VNW">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="evon" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+            </w>
+            <w xml:id="annotation.849274.87470.w.4">
+                <t class="heavyNormalization">waren</t>
+                <t class="lightNormalization">waren</t>
+                <lemma class="waren"/>
+                <pos class="WW(inf,nom,zonder,zonder-n)" head="WW">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="nom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="zonder-n" subset="getal-n"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+            </w>
+            <w xml:id="annotation.849274.87470.w.5">
+                <t class="heavyNormalization">...</t>
+                <t class="lightNormalization">...</t>
+                <lemma class="..."/>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+            </w>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <parser 
+                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-07-28T07:56" cats="1" skips="0">
+</parser>
+                        <node end="6" begin="0" originalOffsets="0--6" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" conjtype="onder" frame="cleft_het_noun" his="skip" id="1" lcat="--" lemma="dat" pos="det" postag="VG(onder)" pt="vg" rel="--" root="dat" sense="dat" special="cleft_het">
+</node>
+                            <node 
+                            word_zv="waren" word="waren" end="2" begin="1" originalOffsets="1--2" frame="v_noun(intransitive)" his="skip" id="2" lcat="--" lemma="waren" pos="verb" postag="WW(pv,verl,mv)" pt="ww" pvagr="mv" pvtijd="verl" rel="--" root="waar" sc="intransitive" sense="waar" special="v_noun" wvorm="pv">
+</node>
+                            <node 
+                            word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" frame="punct(hellip)" his="skip" id="3" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip">
+</node>
+                            <node end="5" begin="3" originalOffsets="3--5" cat="np" id="4" rel="--">
+                                <node 
+                                word_zv="dat" word="da" end="4" begin="3" originalOffsets="3--4" buiging="zonder" frame="determiner(het,nwh,nmod,pro,nparg)" his="normal" his_1="normal" id="5" infl="het" lcat="detp" lemma="dat" naamval="stan" npagr="evon" pdtype="det" pos="det" positie="prenom" postag="VNW(aanw,det,stan,prenom,zonder,evon)" pt="vnw" rel="det" root="dat" sense="dat" vwtype="aanw" wh="nwh">
+</node>
+                                <node 
+                                word_zv="waren" word="waren" end="5" begin="4" originalOffsets="4--5" buiging="zonder" frame="v_noun(intransitive)" getal-n="zonder-n" his="normal" his_1="normal" id="6" lcat="np" lemma="waren" pos="verb" positie="nom" postag="WW(inf,nom,zonder,zonder-n)" pt="ww" rel="hd" rnum="sg" root="waar" sc="intransitive" sense="waar" special="v_noun" wvorm="inf">
+</node>
+                            </node>
+                            <node 
+                            word_zv="..." word="..." end="6" begin="5" originalOffsets="5--6" frame="punct(hellip)" his="skip" id="7" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip">
+</node>
+                        </node>
+                        <sentence sentid="I064a_1--I064a_1_2--a95--01--0049">dat waren ... dat waren ...</sentence>
+                        <comments>
+                            <comment>
+                                Q#I064a_1--I064a_1_2--a95--01--0049|[ @skip dat ] [ @skip waren ] [ @skip ... ] dat waren [ @skip ... ]|1|1|1.9131510999999997
+                            </comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <dependencies>
+                <dependency class="--">
+                    <hd>
+                        <wref id="annotation.849274.87470.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.0" t="dat"/>
+                    </dep>
+                </dependency>
+                <dependency class="--">
+                    <hd>
+                        <wref id="annotation.849274.87470.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.1" t="waren"/>
+                    </dep>
+                </dependency>
+                <dependency class="punct">
+                    <hd>
+                        <wref id="annotation.849274.87470.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.2" t="..."/>
+                    </dep>
+                </dependency>
+                <dependency class="det">
+                    <hd>
+                        <wref id="annotation.849274.87470.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.3" t="dat"/>
+                    </dep>
+                </dependency>
+                <dependency class="root">
+                    <hd> </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.4" t="waren"/>
+                    </dep>
+                </dependency>
+                <dependency class="punct">
+                    <hd>
+                        <wref id="annotation.849274.87470.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.849274.87470.w.5" t="..."/>
+                    </dep>
+                </dependency>
+                <foreign-data>
+                    <conll xmls="http://conll.fake.url">
+                        <![CDATA[Some(
+# sent_id = I064a_1--I064a_1_2--a95--01--0049
+# source = UNKNOWN
+# text = dat waren ... dat waren ...
+1	dat	dat	det	VG(onder)	_	5	--	5:waren	_
+2	waren	waren	verb	WW(pv,verl,mv)	_	5	--	5:waren	_
+3	...	...	punct	LET()	_	5	punct	5:waren	_
+4	dat	dat	det	VNW(aanw,det,stan,prenom,zonder,evon)	_	5	det	5:waren	_
+5	waren	waren	verb	WW(inf,nom,zonder,zonder-n)	_	0	root	0:_	CAT=np_top
+6	...	...	punct	LET()	_	5	punct	5:waren	_)]]>
+                    </conll>
+                </foreign-data>
+            </dependencies>
+            <timing>
+                <timesegment begintime="00:01:55.450" endtime="00:01:57.850">
+                    <wref id="annotation.849274.87470.w.0" t="da"/>
+                    <wref id="annotation.849274.87470.w.1" t="waren"/>
+                    <wref id="annotation.849274.87470.w.2" t="..."/>
+                    <wref id="annotation.849274.87470.w.3" t="da"/>
+                    <wref id="annotation.849274.87470.w.4" t="waren"/>
+                    <wref id="annotation.849274.87470.w.5" t="..."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -9623,7 +10144,7 @@ Null text field-->
     <speech 
     tag="interviewer" speaker="van Overloop, M.G." xml:id="speech.elan.849179" begintime="00:01:55.450" endtime="00:01:57.850">
         <t class="lightNormalization">nee nee integendeel.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 1; Use alpino: false, Use alignment: false
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
 Null text field-->
         <foreign-data>
             <gcnd_annotatie_metadata 
@@ -12182,42 +12703,104 @@ Null text field-->
         <t class="heavyNormalization">want die dacht... de de tover xxx.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849283">
+            <w xml:id="w.849283.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="want"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.2" space="true">
                 <t class="lightNormalization">dacht</t>
                 <t class="heavyNormalization">dacht</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="denken"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.3" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.4" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.5" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.6" space="true">
                 <t class="lightNormalization">tover</t>
                 <t class="heavyNormalization">tover</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="tover"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849283.unannotated.7" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849283.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -14805,50 +15388,124 @@ Null text field-->
         <t class="heavyNormalization">ja dat weet ik niet hoor xxx ik heb daar...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849291">
+            <w xml:id="w.849291.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.1" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
+                <pos class="VNW(aanw,pron,stan,vol,3o,ev)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="dat"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.2" space="true">
                 <t class="lightNormalization">weet</t>
                 <t class="heavyNormalization">weet</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="weten"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.3" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="1" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="ik"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.4" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="niet"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.5" space="true">
                 <t class="lightNormalization">hoor</t>
                 <t class="heavyNormalization">hoor</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="hoor"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.7" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="1" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="ik"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.8" space="true">
                 <t class="lightNormalization">eb</t>
                 <t class="heavyNormalization">heb</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="hebben"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849291.unannotated.9" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="adv-pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="daar"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849291.unannotated.10" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -15566,7 +16223,7 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849294" begintime="00:03:08.995" endtime="00:03:11.645">
         <t class="lightNormalization">wan die wordt nog bang geloof ik a j#erover praat hé?</t>
         <t class="heavyNormalization">want die wordt nog bang geloof ik als je erover praat hé?</t>
-        <!--speaker role:spreker, n_alpino_annotations: 2; Use alpino: true, Use alignment: false
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
         <s xml:id="s.87468">
             <w xml:id="annotation.849294.87468.w.0">
@@ -15961,8 +16618,29 @@ Null text field-->
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20023">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849221" begintime="00:03:10.585" endtime="00:03:11.525">
+        <t class="lightNormalization">ja... ja.</t>
+        <t class="heavyNormalization">ja... ja.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
+-->
         <s xml:id="s.87379">
-            <w xml:id="annotation.849294.87379.w.0">
+            <w xml:id="annotation.849221.87379.w.0">
                 <t class="heavyNormalization">ja</t>
                 <t class="lightNormalization">ja</t>
                 <lemma class="ja"/>
@@ -15970,7 +16648,7 @@ Null text field-->
                     <feat class="TSW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849294.87379.w.1">
+            <w xml:id="annotation.849221.87379.w.1">
                 <t class="heavyNormalization">...</t>
                 <t class="lightNormalization">...</t>
                 <lemma class="..."/>
@@ -15978,7 +16656,7 @@ Null text field-->
                     <feat class="LET" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849294.87379.w.2">
+            <w xml:id="annotation.849221.87379.w.2">
                 <t class="heavyNormalization">ja</t>
                 <t class="lightNormalization">ja</t>
                 <lemma class="ja"/>
@@ -15986,7 +16664,7 @@ Null text field-->
                     <feat class="TSW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849294.87379.w.3">
+            <w xml:id="annotation.849221.87379.w.3">
                 <t class="heavyNormalization">.</t>
                 <t class="lightNormalization">.</t>
                 <lemma class="."/>
@@ -16029,32 +16707,32 @@ Null text field-->
             <dependencies>
                 <dependency class="tag">
                     <hd>
-                        <wref id="annotation.849294.87379.w.2"/>
+                        <wref id="annotation.849221.87379.w.2"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849294.87379.w.0" t="ja"/>
+                        <wref id="annotation.849221.87379.w.0" t="ja"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849294.87379.w.2"/>
+                        <wref id="annotation.849221.87379.w.2"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849294.87379.w.1" t="..."/>
+                        <wref id="annotation.849221.87379.w.1" t="..."/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.849294.87379.w.2" t="ja"/>
+                        <wref id="annotation.849221.87379.w.2" t="ja"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849294.87379.w.2"/>
+                        <wref id="annotation.849221.87379.w.2"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849294.87379.w.3" t="."/>
+                        <wref id="annotation.849221.87379.w.3" t="."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -16072,52 +16750,13 @@ Null text field-->
             </dependencies>
             <timing>
                 <timesegment begintime="00:03:10.585" endtime="00:03:11.525">
-                    <wref id="annotation.849294.87379.w.0" t="ja"/>
-                    <wref id="annotation.849294.87379.w.1" t="..."/>
-                    <wref id="annotation.849294.87379.w.2" t="ja"/>
-                    <wref id="annotation.849294.87379.w.3" t="."/>
+                    <wref id="annotation.849221.87379.w.0" t="ja"/>
+                    <wref id="annotation.849221.87379.w.1" t="..."/>
+                    <wref id="annotation.849221.87379.w.2" t="ja"/>
+                    <wref id="annotation.849221.87379.w.3" t="."/>
                 </timesegment>
             </timing>
         </s>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20023">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849221" begintime="00:03:10.585" endtime="00:03:11.525">
-        <t class="lightNormalization">ja... ja.</t>
-        <t class="heavyNormalization">ja... ja.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">...</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -16858,26 +17497,46 @@ Null text field-->
         <t class="heavyNormalization">ja ??? ook uh...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849296">
+            <w xml:id="w.849296.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849296.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849296.unannotated.2" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="ook"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849296.unannotated.3" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="uh"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849296.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -17110,30 +17769,81 @@ Null text field-->
         <t class="heavyNormalization">die man waardat ze xxx...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849298">
+            <w xml:id="w.849298.unannotated.0" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849298.unannotated.1" space="true">
                 <t class="lightNormalization">man</t>
                 <t class="heavyNormalization">man</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="man"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849298.unannotated.2" space="true">
                 <t class="lightNormalization">waardat</t>
                 <t class="heavyNormalization">waardat</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="waardat"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849298.unannotated.3" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
+                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="zij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849298.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849298.unannotated.5" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -17470,7 +18180,7 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849300" begintime="00:03:27.935" endtime="00:03:31.575">
         <t class="lightNormalization">die woonden der voor knecht. dan ad die et gedaan... hé?</t>
         <t class="heavyNormalization">die woonden er voor knecht. dan had die het gedaan... hé?</t>
-        <!--speaker role:spreker, n_alpino_annotations: 2; Use alpino: true, Use alignment: false
+        <!--speaker role:spreker, n_alpino_annotations: 3; Use alpino: true, Use alignment: false
 -->
         <s xml:id="s.87483">
             <w xml:id="annotation.849300.87483.w.0">
@@ -17875,29 +18585,8 @@ Null text field-->
                 </timesegment>
             </timing>
         </s>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20023">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849223" begintime="00:03:29.430" endtime="00:03:31.570">
-        <t class="lightNormalization">die kennen die mensen toch niet hé.</t>
-        <t class="heavyNormalization">die kennen die mensen toch niet hé.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
--->
         <s xml:id="s.87485">
-            <w xml:id="annotation.849223.87485.w.0">
+            <w xml:id="annotation.849300.87485.w.0">
                 <t class="heavyNormalization">die</t>
                 <t class="lightNormalization">die</t>
                 <lemma class="die"/>
@@ -17911,7 +18600,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.1">
+            <w xml:id="annotation.849300.87485.w.1">
                 <t class="heavyNormalization">kennen</t>
                 <t class="lightNormalization">kennen</t>
                 <lemma class="kennen"/>
@@ -17922,7 +18611,7 @@ Null text field-->
                     <feat class="WW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.2">
+            <w xml:id="annotation.849300.87485.w.2">
                 <t class="heavyNormalization">die</t>
                 <t class="lightNormalization">die</t>
                 <lemma class="die"/>
@@ -17936,7 +18625,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.3">
+            <w xml:id="annotation.849300.87485.w.3">
                 <t class="heavyNormalization">mensen</t>
                 <t class="lightNormalization">mensen</t>
                 <lemma class="mens"/>
@@ -17947,7 +18636,7 @@ Null text field-->
                     <feat class="N" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.4">
+            <w xml:id="annotation.849300.87485.w.4">
                 <t class="heavyNormalization">toch</t>
                 <t class="lightNormalization">toch</t>
                 <lemma class="toch"/>
@@ -17955,7 +18644,7 @@ Null text field-->
                     <feat class="BW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.5">
+            <w xml:id="annotation.849300.87485.w.5">
                 <t class="heavyNormalization">niet</t>
                 <t class="lightNormalization">niet</t>
                 <lemma class="niet"/>
@@ -17963,7 +18652,7 @@ Null text field-->
                     <feat class="BW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.6">
+            <w xml:id="annotation.849300.87485.w.6">
                 <t class="heavyNormalization">hé</t>
                 <t class="lightNormalization">hé</t>
                 <lemma class="hé"/>
@@ -17971,7 +18660,7 @@ Null text field-->
                     <feat class="TSW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849223.87485.w.7">
+            <w xml:id="annotation.849300.87485.w.7">
                 <t class="heavyNormalization">.</t>
                 <t class="lightNormalization">.</t>
                 <lemma class="."/>
@@ -18029,64 +18718,64 @@ Null text field-->
             <dependencies>
                 <dependency class="su">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.0" t="die"/>
+                        <wref id="annotation.849300.87485.w.0" t="die"/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.1" t="kennen"/>
+                        <wref id="annotation.849300.87485.w.1" t="kennen"/>
                     </dep>
                 </dependency>
                 <dependency class="det">
                     <hd>
-                        <wref id="annotation.849223.87485.w.3"/>
+                        <wref id="annotation.849300.87485.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.2" t="die"/>
+                        <wref id="annotation.849300.87485.w.2" t="die"/>
                     </dep>
                 </dependency>
                 <dependency class="obj1">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.3" t="mensen"/>
+                        <wref id="annotation.849300.87485.w.3" t="mensen"/>
                     </dep>
                 </dependency>
                 <dependency class="mod">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.4" t="toch"/>
+                        <wref id="annotation.849300.87485.w.4" t="toch"/>
                     </dep>
                 </dependency>
                 <dependency class="mod">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.5" t="niet"/>
+                        <wref id="annotation.849300.87485.w.5" t="niet"/>
                     </dep>
                 </dependency>
                 <dependency class="tag">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.6" t="hé"/>
+                        <wref id="annotation.849300.87485.w.6" t="hé"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849223.87485.w.1"/>
+                        <wref id="annotation.849300.87485.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849223.87485.w.7" t="."/>
+                        <wref id="annotation.849300.87485.w.7" t="."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -18108,17 +18797,72 @@ Null text field-->
             </dependencies>
             <timing>
                 <timesegment begintime="00:03:29.430" endtime="00:03:31.570">
-                    <wref id="annotation.849223.87485.w.0" t="die"/>
-                    <wref id="annotation.849223.87485.w.1" t="kennen"/>
-                    <wref id="annotation.849223.87485.w.2" t="die"/>
-                    <wref id="annotation.849223.87485.w.3" t="mensen"/>
-                    <wref id="annotation.849223.87485.w.4" t="toch"/>
-                    <wref id="annotation.849223.87485.w.5" t="niet"/>
-                    <wref id="annotation.849223.87485.w.6" t="hé"/>
-                    <wref id="annotation.849223.87485.w.7" t="."/>
+                    <wref id="annotation.849300.87485.w.0" t="die"/>
+                    <wref id="annotation.849300.87485.w.1" t="kennen"/>
+                    <wref id="annotation.849300.87485.w.2" t="die"/>
+                    <wref id="annotation.849300.87485.w.3" t="mensen"/>
+                    <wref id="annotation.849300.87485.w.4" t="toch"/>
+                    <wref id="annotation.849300.87485.w.5" t="niet"/>
+                    <wref id="annotation.849300.87485.w.6" t="hé"/>
+                    <wref id="annotation.849300.87485.w.7" t="."/>
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20023">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849223" begintime="00:03:29.430" endtime="00:03:31.570">
+        <t class="lightNormalization">die kennen die mensen toch niet hé.</t>
+        <t class="heavyNormalization">die kennen die mensen toch niet hé.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+-->
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849223">
+            <w xml:id="w.849223.unannotated.0" space="true">
+                <t class="lightNormalization">die</t>
+                <t class="heavyNormalization">die</t>
+            </w>
+            <w xml:id="w.849223.unannotated.1" space="true">
+                <t class="lightNormalization">kennen</t>
+                <t class="heavyNormalization">kennen</t>
+            </w>
+            <w xml:id="w.849223.unannotated.2" space="true">
+                <t class="lightNormalization">die</t>
+                <t class="heavyNormalization">die</t>
+            </w>
+            <w xml:id="w.849223.unannotated.3" space="true">
+                <t class="lightNormalization">mensen</t>
+                <t class="heavyNormalization">mensen</t>
+            </w>
+            <w xml:id="w.849223.unannotated.4" space="true">
+                <t class="lightNormalization">toch</t>
+                <t class="heavyNormalization">toch</t>
+            </w>
+            <w xml:id="w.849223.unannotated.5" space="true">
+                <t class="lightNormalization">niet</t>
+                <t class="heavyNormalization">niet</t>
+            </w>
+            <w xml:id="w.849223.unannotated.6" space="true">
+                <t class="lightNormalization">hé</t>
+                <t class="heavyNormalization">hé</t>
+            </w>
+            <w xml:id="w.849223.unannotated.7" space="false">
+                <t class="lightNormalization"></t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -18661,7 +19405,7 @@ Null text field-->
     <speech 
     tag="interviewer" speaker="van Overloop, M.G." xml:id="speech.elan.849186" begintime="00:03:35.996" endtime="00:03:40.540">
         <t class="lightNormalization">ja xxx en de karn bijvoorbeeld dan ze boter xxx.</t>
-        <!--speaker role:interviewer, n_alpino_annotations: 2; Use alpino: false, Use alignment: false
+        <!--speaker role:interviewer, n_alpino_annotations: 0; Use alpino: false, Use alignment: false
 Null text field-->
         <foreign-data>
             <gcnd_annotatie_metadata 
@@ -18683,18 +19427,57 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849302" begintime="00:03:37.290" endtime="00:03:37.970">
         <t class="lightNormalization">just.</t>
         <t class="heavyNormalization">juist.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">just</t>
+        <s xml:id="s.87359">
+            <w xml:id="annotation.849302.87359.w.0">
                 <t class="heavyNormalization">juist</t>
+                <t class="lightNormalization">just</t>
+                <lemma class="juist"/>
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
             </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
+            <w xml:id="annotation.849302.87359.w.1">
                 <t class="heavyNormalization">.</t>
+                <t class="lightNormalization">.</t>
+                <lemma class="."/>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <parser 
+                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-07-28T07:57" cats="1" skips="0">
+</parser>
+                        <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="juist" word="just" end="1" begin="0" originalOffsets="0--1" aform="base" buiging="zonder" frame="adjective(no_e(adv))" graad="basis" his="normal" his_1="normal" id="1" infl="no_e" lcat="ap" lemma="juist" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="--" root="juist" sense="juist" vform="adj">
+</node>
+                            <node 
+                            word_zv="." word="." end="2" begin="1" originalOffsets="1--2" frame="punct(punt)" his="normal" his_1="normal" id="2" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
+</node>
+                        </node>
+                        <sentence sentid="I064a_1--I064a_1_2--a176--01--0094">juist .</sentence>
+                        <comments>
+                            <comment>Q#I064a_1--I064a_1_2--a176--01--0094|juist .|1|1|0.4187796</comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <timing>
+                <timesegment begintime="00:03:37.290" endtime="00:03:37.970">
+                    <wref id="annotation.849302.87359.w.0" t="just"/>
+                    <wref id="annotation.849302.87359.w.1" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -18714,18 +19497,57 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849303" begintime="00:03:39.665" endtime="00:03:40.540">
         <t class="lightNormalization">precies.</t>
         <t class="heavyNormalization">precies.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">precies</t>
+        <s xml:id="s.87427">
+            <w xml:id="annotation.849303.87427.w.0">
                 <t class="heavyNormalization">precies</t>
+                <t class="lightNormalization">precies</t>
+                <lemma class="precies"/>
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
             </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
+            <w xml:id="annotation.849303.87427.w.1">
                 <t class="heavyNormalization">.</t>
+                <t class="lightNormalization">.</t>
+                <lemma class="."/>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <parser 
+                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-07-28T07:57" cats="1" skips="0">
+</parser>
+                        <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="precies" word="precies" end="1" begin="0" originalOffsets="0--1" aform="base" buiging="zonder" frame="adjective(postn_no_e(adv))" graad="basis" his="normal" his_1="normal" id="1" infl="no_e" lcat="ap" lemma="precies" pos="adj" positie="vrij" postag="ADJ(vrij,basis,zonder)" pt="adj" rel="--" root="precies" sense="precies" vform="adj">
+</node>
+                            <node 
+                            word_zv="." word="." end="2" begin="1" originalOffsets="1--2" frame="punct(punt)" his="normal" his_1="normal" id="2" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
+</node>
+                        </node>
+                        <sentence sentid="I064a_1--I064a_1_2--a177--01--0095">precies .</sentence>
+                        <comments>
+                            <comment>Q#I064a_1--I064a_1_2--a177--01--0095|precies .|1|1|0.3336297</comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <timing>
+                <timesegment begintime="00:03:39.665" endtime="00:03:40.540">
+                    <wref id="annotation.849303.87427.w.0" t="precies"/>
+                    <wref id="annotation.849303.87427.w.1" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -18747,14 +19569,22 @@ Null text field-->
         <t class="heavyNormalization">xxx.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849304">
+            <w xml:id="w.849304.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849304.unannotated.1" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -20361,42 +21191,95 @@ Null text field-->
         <t class="heavyNormalization">want hij zat altijd dikwijls daar ??? ook.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849309">
+            <w xml:id="w.849309.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="want"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.1" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="masc" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.2" space="true">
                 <t class="lightNormalization">zat</t>
                 <t class="heavyNormalization">zat</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zitten"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.3" space="true">
                 <t class="lightNormalization">altijd</t>
                 <t class="heavyNormalization">altijd</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="altijd"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.4" space="true">
                 <t class="lightNormalization">dikwijls</t>
                 <t class="heavyNormalization">dikwijls</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dikwijls"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.5" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="adv-pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="daar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849309.unannotated.7" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="ook"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849309.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -20720,46 +21603,115 @@ Null text field-->
         <t class="heavyNormalization">hij wou zo graage een paar oude ??? kopen ...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849311">
+            <w xml:id="w.849311.unannotated.0" space="true">
                 <t class="lightNormalization">ie</t>
                 <t class="heavyNormalization">hij</t>
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="masc" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.1" space="true">
                 <t class="lightNormalization">wou</t>
                 <t class="heavyNormalization">wou</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="willen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.2" space="true">
                 <t class="lightNormalization">zo</t>
                 <t class="heavyNormalization">zo</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="zo"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.3" space="true">
                 <t class="lightNormalization">graag</t>
                 <t class="heavyNormalization">graage</t>
+                <pos class="ADJ(vrij,basis,zonder)">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="graag"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.4" space="true">
                 <t class="lightNormalization">een</t>
                 <t class="heavyNormalization">een</t>
+                <pos class="LID(onbep,stan,agr)">
+                    <feat class="onbep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="agr" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.5" space="true">
                 <t class="lightNormalization">paar</t>
                 <t class="heavyNormalization">paar</t>
+                <pos class="N(soort,ev,basis,onz,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="paar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.6" space="true">
                 <t class="lightNormalization">ouwe</t>
                 <t class="heavyNormalization">oude</t>
+                <pos class="ADJ(nom,basis,met-e,zonder-n,stan)">
+                    <feat class="nom" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="met-e" subset="buiging"/>
+                    <feat class="zonder-n" subset="getal-n"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="oude"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.7" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849311.unannotated.8" space="true">
                 <t class="lightNormalization">kopen</t>
                 <t class="heavyNormalization">kopen</t>
+                <pos class="WW(inf,vrij,zonder)">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="kopen"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849311.unannotated.9" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -26433,50 +27385,128 @@ Null text field-->
         <t class="heavyNormalization">hier ben ik hij is ??? van de watermachine ???.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849327">
+            <w xml:id="w.849327.unannotated.0" space="true">
                 <t class="lightNormalization">ier</t>
                 <t class="heavyNormalization">hier</t>
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="adv-pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hier"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.1" space="true">
                 <t class="lightNormalization">ben</t>
                 <t class="heavyNormalization">ben</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zijn"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.2" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="1" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="ik"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.3" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="masc" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.4" space="true">
                 <t class="lightNormalization">is</t>
                 <t class="heavyNormalization">is</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zijn"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.5" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849327.unannotated.6" space="true">
                 <t class="lightNormalization">van</t>
                 <t class="heavyNormalization">van</t>
+                <pos class="VZ(init)">
+                    <feat class="init" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="van"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.7" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.8" space="true">
                 <t class="lightNormalization">watermachien</t>
                 <t class="heavyNormalization">watermachine</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="watermachine"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849327.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849327.unannotated.10" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -27377,14 +28407,22 @@ Null text field-->
         <t class="heavyNormalization">xxx.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849227">
+            <w xml:id="w.849227.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849227.unannotated.1" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -29052,7 +30090,7 @@ Null text field-->
     tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849230" begintime="00:05:12.495" endtime="00:05:14.725">
         <t class="lightNormalization">en dan dan moet dat toch wat wezen?</t>
         <t class="heavyNormalization">en dan dan moet dat toch wat wezen?</t>
-        <!--speaker role:spreker, n_alpino_annotations: 2; Use alpino: true, Use alignment: false
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
 -->
         <s xml:id="s.87501">
             <w xml:id="annotation.849230.87501.w.0">
@@ -29300,8 +30338,29 @@ Null text field-->
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20022">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849333" begintime="00:05:12.729" endtime="00:05:14.715">
+        <t class="lightNormalization">ik weet nie of ze#t gezien ebben.</t>
+        <t class="heavyNormalization">ik weet niet of ze het gezien hebben.</t>
+        <!--speaker role:spreker, n_alpino_annotations: 1; Use alpino: true, Use alignment: false
+-->
         <s xml:id="s.87362">
-            <w xml:id="annotation.849230.87362.w.0">
+            <w xml:id="annotation.849333.87362.w.0">
                 <t class="heavyNormalization">ik</t>
                 <t class="lightNormalization">ik</t>
                 <lemma class="ik"/>
@@ -29315,7 +30374,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.1">
+            <w xml:id="annotation.849333.87362.w.1">
                 <t class="heavyNormalization">weet</t>
                 <t class="lightNormalization">weet</t>
                 <lemma class="weten"/>
@@ -29326,7 +30385,7 @@ Null text field-->
                     <feat class="WW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.2">
+            <w xml:id="annotation.849333.87362.w.2">
                 <t class="heavyNormalization">niet</t>
                 <t class="lightNormalization">nie</t>
                 <lemma class="niet"/>
@@ -29334,7 +30393,7 @@ Null text field-->
                     <feat class="BW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.3">
+            <w xml:id="annotation.849333.87362.w.3">
                 <t class="heavyNormalization">of</t>
                 <t class="lightNormalization">of</t>
                 <lemma class="of"/>
@@ -29343,7 +30402,7 @@ Null text field-->
                     <feat class="VG" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.4">
+            <w xml:id="annotation.849333.87362.w.4">
                 <t class="heavyNormalization">ze</t>
                 <t class="lightNormalization">ze</t>
                 <lemma class="ze"/>
@@ -29357,7 +30416,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.5">
+            <w xml:id="annotation.849333.87362.w.5">
                 <t class="heavyNormalization">het</t>
                 <t class="lightNormalization">t</t>
                 <lemma class="het"/>
@@ -29372,7 +30431,7 @@ Null text field-->
                     <feat class="VNW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.6">
+            <w xml:id="annotation.849333.87362.w.6">
                 <t class="heavyNormalization">gezien</t>
                 <t class="lightNormalization">gezien</t>
                 <lemma class="zien"/>
@@ -29383,7 +30442,7 @@ Null text field-->
                     <feat class="WW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.7">
+            <w xml:id="annotation.849333.87362.w.7">
                 <t class="heavyNormalization">hebben</t>
                 <t class="lightNormalization">ebben</t>
                 <lemma class="hebben"/>
@@ -29394,7 +30453,7 @@ Null text field-->
                     <feat class="WW" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.849230.87362.w.8">
+            <w xml:id="annotation.849333.87362.w.8">
                 <t class="heavyNormalization">.</t>
                 <t class="lightNormalization">.</t>
                 <lemma class="."/>
@@ -29461,72 +30520,72 @@ Null text field-->
             <dependencies>
                 <dependency class="su">
                     <hd>
-                        <wref id="annotation.849230.87362.w.1"/>
+                        <wref id="annotation.849333.87362.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.0" t="ik"/>
+                        <wref id="annotation.849333.87362.w.0" t="ik"/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.1" t="weet"/>
+                        <wref id="annotation.849333.87362.w.1" t="weet"/>
                     </dep>
                 </dependency>
                 <dependency class="mod">
                     <hd>
-                        <wref id="annotation.849230.87362.w.1"/>
+                        <wref id="annotation.849333.87362.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.2" t="niet"/>
+                        <wref id="annotation.849333.87362.w.2" t="niet"/>
                     </dep>
                 </dependency>
                 <dependency class="cmp">
                     <hd>
-                        <wref id="annotation.849230.87362.w.1"/>
+                        <wref id="annotation.849333.87362.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.3" t="of"/>
+                        <wref id="annotation.849333.87362.w.3" t="of"/>
                     </dep>
                 </dependency>
                 <dependency class="su">
                     <hd>
-                        <wref id="annotation.849230.87362.w.7"/>
+                        <wref id="annotation.849333.87362.w.7"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.4" t="ze"/>
+                        <wref id="annotation.849333.87362.w.4" t="ze"/>
                     </dep>
                 </dependency>
                 <dependency class="obj1">
                     <hd>
-                        <wref id="annotation.849230.87362.w.6"/>
+                        <wref id="annotation.849333.87362.w.6"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.5" t="het"/>
+                        <wref id="annotation.849333.87362.w.5" t="het"/>
                     </dep>
                 </dependency>
                 <dependency class="vc">
                     <hd>
-                        <wref id="annotation.849230.87362.w.7"/>
+                        <wref id="annotation.849333.87362.w.7"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.6" t="gezien"/>
+                        <wref id="annotation.849333.87362.w.6" t="gezien"/>
                     </dep>
                 </dependency>
                 <dependency class="vc">
                     <hd>
-                        <wref id="annotation.849230.87362.w.3"/>
+                        <wref id="annotation.849333.87362.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.7" t="hebben"/>
+                        <wref id="annotation.849333.87362.w.7" t="hebben"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.849230.87362.w.1"/>
+                        <wref id="annotation.849333.87362.w.1"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.849230.87362.w.8" t="."/>
+                        <wref id="annotation.849333.87362.w.8" t="."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -29549,77 +30608,18 @@ Null text field-->
             </dependencies>
             <timing>
                 <timesegment begintime="00:05:12.729" endtime="00:05:14.715">
-                    <wref id="annotation.849230.87362.w.0" t="ik"/>
-                    <wref id="annotation.849230.87362.w.1" t="weet"/>
-                    <wref id="annotation.849230.87362.w.2" t="nie"/>
-                    <wref id="annotation.849230.87362.w.3" t="of"/>
-                    <wref id="annotation.849230.87362.w.4" t="ze"/>
-                    <wref id="annotation.849230.87362.w.5" t="t"/>
-                    <wref id="annotation.849230.87362.w.6" t="gezien"/>
-                    <wref id="annotation.849230.87362.w.7" t="ebben"/>
-                    <wref id="annotation.849230.87362.w.8" t="."/>
+                    <wref id="annotation.849333.87362.w.0" t="ik"/>
+                    <wref id="annotation.849333.87362.w.1" t="weet"/>
+                    <wref id="annotation.849333.87362.w.2" t="nie"/>
+                    <wref id="annotation.849333.87362.w.3" t="of"/>
+                    <wref id="annotation.849333.87362.w.4" t="ze"/>
+                    <wref id="annotation.849333.87362.w.5" t="t"/>
+                    <wref id="annotation.849333.87362.w.6" t="gezien"/>
+                    <wref id="annotation.849333.87362.w.7" t="ebben"/>
+                    <wref id="annotation.849333.87362.w.8" t="."/>
                 </timesegment>
             </timing>
         </s>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20022">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="Kaljouw, " xml:id="speech.elan.849333" begintime="00:05:12.729" endtime="00:05:14.715">
-        <t class="lightNormalization">ik weet nie of ze#t gezien ebben.</t>
-        <t class="heavyNormalization">ik weet niet of ze het gezien hebben.</t>
-        <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
--->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
-                <t class="lightNormalization">ik</t>
-                <t class="heavyNormalization">ik</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">weet</t>
-                <t class="heavyNormalization">weet</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">nie</t>
-                <t class="heavyNormalization">niet</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">of</t>
-                <t class="heavyNormalization">of</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization">ze</t>
-                <t class="heavyNormalization">ze</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">t</t>
-                <t class="heavyNormalization">het</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">gezien</t>
-                <t class="heavyNormalization">gezien</t>
-            </w>
-            <w space="true">
-                <t class="lightNormalization">ebben</t>
-                <t class="heavyNormalization">hebben</t>
-            </w>
-            <w space="false">
-                <t class="lightNormalization"></t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -36729,42 +37729,106 @@ Null text field-->
         <t class="heavyNormalization">de xxjongen die had zo een buik.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849350">
+            <w xml:id="w.849350.unannotated.0" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.1" space="true">
                 <t class="lightNormalization">xx</t>
                 <t class="heavyNormalization">xx</t>
+                <pos class="ADJ(prenom,basis,zonder)">
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="x"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.2" space="true">
                 <t class="lightNormalization">jongen</t>
                 <t class="heavyNormalization">jongen</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="jongen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.3" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.4" space="true">
                 <t class="lightNormalization">a</t>
                 <t class="heavyNormalization">had</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="hebben"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849350.unannotated.5" space="true">
                 <t class="lightNormalization">zo</t>
                 <t class="heavyNormalization">zo</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="zo"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.6" space="true">
                 <t class="lightNormalization">n</t>
                 <t class="heavyNormalization">een</t>
+                <pos class="LID(onbep,stan,agr)">
+                    <feat class="onbep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="agr" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849350.unannotated.7" space="true">
                 <t class="lightNormalization">buik</t>
                 <t class="heavyNormalization">buik</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="buik"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849350.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -36788,26 +37852,48 @@ Null text field-->
         <t class="heavyNormalization">??? ggg binnen hé.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849351">
+            <w xml:id="w.849351.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="teen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849351.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">ggg</t>
+                <pos class="SPEC(onverst)">
+                    <feat class="onverst" subset="spectype"/>
+                    <feat class="SPEC" subset="pos"/>
+                </pos>
+                <lemma class="ge"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849351.unannotated.2" space="true">
                 <t class="lightNormalization">binnen</t>
                 <t class="heavyNormalization">binnen</t>
+                <pos class="VZ(fin)">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="binnen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849351.unannotated.3" space="true">
                 <t class="lightNormalization">hé</t>
                 <t class="heavyNormalization">hé</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="hé"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849351.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -37795,74 +38881,172 @@ Null text field-->
         </t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849354">
+            <w xml:id="w.849354.unannotated.0" space="true">
                 <t class="lightNormalization">geloof</t>
                 <t class="heavyNormalization">geloof</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="geloven"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.1" space="true">
                 <t class="lightNormalization">je</t>
                 <t class="heavyNormalization">je</t>
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="2v" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="jij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.2" space="true">
                 <t class="lightNormalization">toch</t>
                 <t class="heavyNormalization">toch</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="toch"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.3" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="wel"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.5" space="true">
                 <t class="lightNormalization">as</t>
                 <t class="heavyNormalization">als</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="als"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.7" space="true">
                 <t class="lightNormalization">kunnen</t>
                 <t class="heavyNormalization">kan</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="kunnen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.8" space="true">
                 <t class="lightNormalization">tovenaren</t>
                 <t class="heavyNormalization">tovenaren</t>
+                <pos class="N(soort,mv,basis)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="tovenaar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.9" space="true">
                 <t class="lightNormalization">naar</t>
                 <t class="heavyNormalization">naar</t>
+                <pos class="VZ(init)">
+                    <feat class="init" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="naar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.10" space="true">
                 <t class="lightNormalization">ons</t>
                 <t class="heavyNormalization">ons</t>
+                <pos class="VNW(pr,pron,obl,vol,1,mv)">
+                    <feat class="pr" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="1" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="ons"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.11" space="true">
                 <t class="lightNormalization">toe</t>
                 <t class="heavyNormalization">toe</t>
+                <pos class="VZ(fin)">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="toe"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.12" space="true">
                 <t class="lightNormalization">laten</t>
                 <t class="heavyNormalization">laten</t>
+                <pos class="WW(inf,vrij,zonder)">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="laten"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.13" space="true">
                 <t class="lightNormalization">komen</t>
                 <t class="heavyNormalization">komen</t>
+                <pos class="WW(inf,vrij,zonder)">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="komen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.14" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849354.unannotated.15" space="true">
                 <t class="lightNormalization">hé</t>
                 <t class="heavyNormalization">hé</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="hé"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849354.unannotated.16" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -39235,30 +40419,65 @@ Null text field-->
         <t class="heavyNormalization">en als je dronk xxx.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849357">
+            <w xml:id="w.849357.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849357.unannotated.1" space="true">
                 <t class="lightNormalization">a</t>
                 <t class="heavyNormalization">als</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="als"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849357.unannotated.2" space="true">
                 <t class="lightNormalization">je</t>
                 <t class="heavyNormalization">je</t>
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="2v" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="jij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849357.unannotated.3" space="true">
                 <t class="lightNormalization">dronk</t>
                 <t class="heavyNormalization">dronk</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="drinken"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849357.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="xx"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849357.unannotated.5" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -39286,114 +40505,298 @@ Null text field-->
         </t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849358">
+            <w xml:id="w.849358.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.1" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849358.unannotated.2" space="true">
                 <t class="lightNormalization">gebeurde</t>
                 <t class="heavyNormalization">gebeurde</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="gebeuren"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.3" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">het</t>
+                <pos class="VNW(pers,pron,stan,red,3,ev,onz)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="het"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.4" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="wel"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.5" space="true">
                 <t class="lightNormalization">es</t>
                 <t class="heavyNormalization">eens</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="eens"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.6" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="dat"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.7" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(betr,pron,stan,vol,persoon,getal)">
+                    <feat class="betr" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="persoon" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.8" space="true">
                 <t class="lightNormalization">fl</t>
                 <t class="heavyNormalization">fl</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="vleuf"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.10" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="det" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="prenom" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="die"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.11" space="true">
                 <t class="lightNormalization">flessen</t>
                 <t class="heavyNormalization">flessen</t>
+                <pos class="N(soort,mv,basis)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="fles"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.12" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.13" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="masc" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.14" space="true">
                 <t class="lightNormalization">zei</t>
                 <t class="heavyNormalization">zei</t>
+                <pos class="WW(pv,verl,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zeggen"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849358.unannotated.15" space="true">
                 <t class="lightNormalization">k</t>
                 <t class="heavyNormalization">ik</t>
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="1" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="ik"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849358.unannotated.16" space="true">
                 <t class="lightNormalization">eb</t>
                 <t class="heavyNormalization">heb</t>
+                <pos class="WW(pv,tgw,ev)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="hebben"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.17" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">het</t>
+                <pos class="VNW(pers,pron,stan,red,3,ev,onz)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="het"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.18" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="wel"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.19" space="true">
                 <t class="lightNormalization">gezeid</t>
                 <t class="heavyNormalization">gezegd</t>
+                <pos class="WW(vd,vrij,zonder)">
+                    <feat class="vd" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zeggen"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849358.unannotated.20" space="true">
                 <t class="lightNormalization">j</t>
                 <t class="heavyNormalization">je</t>
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="2v" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="jij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.21" space="true">
                 <t class="lightNormalization">e</t>
                 <t class="heavyNormalization">hebt</t>
+                <pos class="WW(pv,tgw,met-t)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="met-t" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="hebben"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.22" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="niet"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.23" space="true">
                 <t class="lightNormalization">voorzichtig</t>
                 <t class="heavyNormalization">voorzichtig</t>
+                <pos class="ADJ(vrij,basis,zonder)">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="voorzichtig"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.24" space="true">
                 <t class="lightNormalization">genoeg</t>
                 <t class="heavyNormalization">genoeg</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="genoeg"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849358.unannotated.25" space="true">
                 <t class="lightNormalization">geweest</t>
                 <t class="heavyNormalization">geweest</t>
+                <pos class="WW(vd,vrij,zonder)">
+                    <feat class="vd" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="zijn"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849358.unannotated.26" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -41657,26 +43060,58 @@ Null text field-->
         <t class="heavyNormalization">en de deur open.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849245">
+            <w xml:id="w.849245.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="en"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849245.unannotated.1" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
+                <pos class="LID(bep,stan,rest)">
+                    <feat class="bep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="rest" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="de"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849245.unannotated.2" space="true">
                 <t class="lightNormalization">deur</t>
                 <t class="heavyNormalization">deur</t>
+                <pos class="N(soort,ev,basis,zijd,stan)">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zijd" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="deur"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849245.unannotated.3" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">open</t>
+                <pos class="ADJ(vrij,basis,zonder)">
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="ADJ" subset="pos"/>
+                </pos>
+                <lemma class="open"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849245.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -42167,38 +43602,81 @@ Null text field-->
         <t class="heavyNormalization">maar als ze ernaartoe gingen dan dan...</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849247">
+            <w xml:id="w.849247.unannotated.0" space="true">
                 <t class="lightNormalization">maar</t>
                 <t class="heavyNormalization">maar</t>
+                <pos class="VG(neven)">
+                    <feat class="neven" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="maar"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849247.unannotated.1" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="als"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849247.unannotated.2" space="true">
                 <t class="lightNormalization">z</t>
                 <t class="heavyNormalization">ze</t>
+                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="zij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849247.unannotated.3" space="true">
                 <t class="lightNormalization">ernaartoe</t>
                 <t class="heavyNormalization">ernaartoe</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="ernaartoe"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849247.unannotated.4" space="true">
                 <t class="lightNormalization">gingen</t>
                 <t class="heavyNormalization">gingen</t>
+                <pos class="WW(pv,verl,mv)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="gaan"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849247.unannotated.5" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849247.unannotated.6" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849247.unannotated.7" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -42222,34 +43700,81 @@ Null text field-->
         <t class="heavyNormalization">dan konden ze hem niet raken.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849248">
+            <w xml:id="w.849248.unannotated.0" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="dan"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849248.unannotated.1" space="true">
                 <t class="lightNormalization">konden</t>
                 <t class="heavyNormalization">konden</t>
+                <pos class="WW(pv,verl,mv)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="kunnen"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849248.unannotated.2" space="true">
                 <t class="lightNormalization">z</t>
                 <t class="heavyNormalization">ze</t>
+                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="zij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849248.unannotated.3" space="true">
                 <t class="lightNormalization">em</t>
                 <t class="heavyNormalization">hem</t>
+                <pos class="VNW(pers,pron,obl,vol,3,ev,masc)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="masc" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849248.unannotated.4" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="niet"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849248.unannotated.5" space="true">
                 <t class="lightNormalization">raken</t>
                 <t class="heavyNormalization">raken</t>
+                <pos class="WW(inf,vrij,zonder)">
+                    <feat class="inf" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="raken"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849248.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>
@@ -42294,42 +43819,92 @@ Null text field-->
         <t class="heavyNormalization">??? stingen ze net als uh als verlamd.</t>
         <!--speaker role:spreker, n_alpino_annotations: 0; Use alpino: false, Use alignment: true
 -->
-        <utt class="noSyntacticAnnotation">
-            <w space="true">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.849249">
+            <w xml:id="w.849249.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="twee"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.1" space="true">
                 <t class="lightNormalization">stingen</t>
                 <t class="heavyNormalization">stingen</t>
+                <pos class="WW(pv,verl,mv)">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="mv" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="stingen"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.2" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
+                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="mv" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="zij"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.3" space="true">
                 <t class="lightNormalization">net</t>
                 <t class="heavyNormalization">net</t>
+                <pos class="BW()">
+                    <feat class="BW" subset="pos"/>
+                </pos>
+                <lemma class="net"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.4" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="als"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.5" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
+                <pos class="TSW()">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="uh"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.6" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
+                <pos class="VG(onder)">
+                    <feat class="onder" subset="conjtype"/>
+                    <feat class="VG" subset="pos"/>
+                </pos>
+                <lemma class="als"/>
             </w>
-            <w space="true">
+            <w xml:id="w.849249.unannotated.7" space="true">
                 <t class="lightNormalization">verlamd</t>
                 <t class="heavyNormalization">verlamd</t>
+                <pos class="WW(vd,vrij,zonder)">
+                    <feat class="vd" subset="wvorm"/>
+                    <feat class="vrij" subset="positie"/>
+                    <feat class="zonder" subset="buiging"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="verlammen"/>
             </w>
-            <w space="false">
+            <w xml:id="w.849249.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+                <lemma class="terts"/>
             </w>
         </utt>
         <foreign-data>

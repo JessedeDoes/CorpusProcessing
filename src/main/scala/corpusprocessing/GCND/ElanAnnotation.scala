@@ -25,6 +25,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
                           starttijd: Int,
                           eindtijd: Int,
                           tokens: String,
+                          tagged_tokens: String,
                           transcription: Transcription,
                           allowablePairs:Set[(Int,Int)]  = Set()
                          )
@@ -38,7 +39,16 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val alpinoAnnotations = transcription.getAlpinos(elan_annotatie_id)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
-  lazy val alignedTokensFromDatabase: List[GCNDToken] = scala.util.Try(read[Array[GCNDToken]](tokens).toList) match {
+
+  lazy val taggedTokensFromDatabase: List[GCNDToken] = scala.util.Try(read[Array[GCNDToken]](tagged_tokens).toList) match {
+    case Success(x) => x
+    case Failure(e) => {
+      System.err.println(s"!!!Bad tagged tokens for elan $elan_annotatie_id: $tagged_tokens")
+      List[GCNDToken]()
+    }
+  }
+
+  lazy val alignedTokensFromDatabase: List[GCNDToken] = if (taggedTokensFromDatabase.nonEmpty) taggedTokensFromDatabase else scala.util.Try(read[Array[GCNDToken]](tokens).toList) match {
     case Success(x) => x
     case Failure(e) => {
       System.err.println(s"!!!Bad tokens for elan: $tokens")
@@ -51,10 +61,11 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val (useAlpino, useAlignment, enrichedContent, message): (Boolean, Boolean, NodeSeq, String) = {
     if (tekst_zv != null && tekst_lv != null) {
       val (useAlpino, elanAlignedTokensRaw, message) = HeavyLightAlignment(this).alignHeavyLight()
-      val elanAlignedTokens0  = if (alignedTokensFromDatabase.nonEmpty)  alignedTokensFromDatabase else elanAlignedTokensRaw.map({case (x,y) => GCNDToken(x.toString, y.toString)})
-      val elanAlignedTokens = elanAlignedTokens0.indices.map(i => {
+      val elanAlignedTokens0: Seq[GCNDToken] = if (alignedTokensFromDatabase.nonEmpty)  alignedTokensFromDatabase else elanAlignedTokensRaw.map({case (x,y) => GCNDToken(x.toString, y.toString)})
+      val elanAlignedTokens: Seq[GCNDToken] = elanAlignedTokens0.indices.map(i => {
         val space_after = i < elanAlignedTokens0.size-1 && !elanAlignedTokens0(i+1).joined
-        elanAlignedTokens0(i).copy(space_after=space_after)
+        val id = s"w.$elan_annotatie_id.unannotated.$i"
+        elanAlignedTokens0(i).copy(space_after=space_after, id=id)
       })
       // Console.err.println(s"useAlpino=$useAlpino")
       if (useAlpino) {
@@ -68,12 +79,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
             This element (w) carries an extra and optional space attribute with value yes (default), or no,
             indicating whether a space follows between this token and the next one. This attribute is used to reconstruct the untokenised text.
            */
-          val wordElements = elanAlignedTokens.map({ case t => <w space={t.space_after.toString}>
-            <t class="lightNormalization">{t.text_lv}</t>
-            <t class="heavyNormalization">{t.text_zv}</t>
-          </w>
-          })
-          (false, true, <utt class="noSyntacticAnnotation">
+          val wordElements = elanAlignedTokens.map({ case t => t.asFoLiA()})
+          (false, true, <utt class="noSyntacticAnnotation" xml:id={s"utterance.$elan_annotatie_id"}>
             {wordElements}
           </utt>, message)
         }

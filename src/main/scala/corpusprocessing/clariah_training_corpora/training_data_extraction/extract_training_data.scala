@@ -30,7 +30,7 @@ trait extract_training_data_trait {
   val p_dev = 0.125
   val split_test_train_on_document_level = false
   val training_subsets : Int = 1
-  lazy val output_folder= "/tmp"
+  lazy val output_folder = "/tmp"
   lazy val output_prefix = "tei_to_huggingface"
   val enhance : Boolean = false
   val addStuff: Boolean = false
@@ -80,6 +80,7 @@ trait extract_training_data_trait {
     val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
       case (f: String, x: Node) => {
         val documentPartition = pickPartition(Some(f))
+        println(s"$f $documentPartition")
         if ((x \\ sentence_element).nonEmpty)
           (x \\ sentence_element).iterator.map(s => (f,s,documentPartition))
         else {
@@ -179,6 +180,8 @@ trait extract_training_data_trait {
 }
 
 object gcnd_folia extends extract_training_data_trait {
+  override val split_test_train_on_document_level = true
+  override lazy val output_prefix: String = "gcnd"
   override val sentence_element: String = "s"
   override lazy val output_folder = "/tmp/gcnd_test"
   override def preprocess(x: Elem): Elem = {
