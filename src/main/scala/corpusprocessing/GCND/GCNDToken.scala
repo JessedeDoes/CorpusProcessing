@@ -4,6 +4,8 @@ import posmapping.CGNTagset
 
 case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, space_after: Boolean = true, id:String="", pos: String="", lemma:String="") {
   def asFoLiA() = {
+
+    lazy val hasLemma = lemma.nonEmpty && !text_zv.matches("\\p{P}+") && !pos.matches("LET.*")
     if (pos.nonEmpty) {
       val posTag = CGNTagset.fromString(pos)
 
@@ -15,7 +17,7 @@ case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, 
             <feat class={f.value} subset={f.name}/>
         })}
         </pos>
-        <lemma class={lemma}/>
+        { if (hasLemma)  <lemma class={lemma}/> }
       </w>
     } else {
       <w xml:id={id} space={space_after.toString}>
