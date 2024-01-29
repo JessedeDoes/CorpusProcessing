@@ -188,7 +188,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="ja"/>
@@ -196,7 +196,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.1" space="true">
                 <t class="lightNormalization">nou</t>
                 <t class="heavyNormalization">nou</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="nou"/>
@@ -204,7 +204,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.2" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -213,7 +213,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.3" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="uh"/>
@@ -221,7 +221,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.4" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
-                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="adv-pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -235,7 +235,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.5" space="true">
                 <t class="lightNormalization">kwam</t>
                 <t class="heavyNormalization">kwam</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -246,7 +246,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.6" space="true">
                 <t class="lightNormalization">ee</t>
                 <t class="heavyNormalization">een</t>
-                <pos class="LID(onbep,stan,agr)">
+                <pos class="LID(onbep,stan,agr)" head="LID">
                     <feat class="onbep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="agr" subset="npagr"/>
@@ -257,7 +257,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.7" space="true">
                 <t class="lightNormalization">schaap</t>
                 <t class="heavyNormalization">schaap</t>
-                <pos class="N(soort,ev,basis,onz,stan)">
+                <pos class="N(soort,ev,basis,onz,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -270,7 +270,7 @@ Null text field-->
             <w xml:id="w.849204.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -301,7 +301,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.0" space="true">
                 <t class="lightNormalization">bij</t>
                 <t class="heavyNormalization">bij</t>
-                <pos class="VZ(init)">
+                <pos class="VZ(init)" head="VZ">
                     <feat class="init" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -310,7 +310,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="det" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -324,7 +324,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.2" space="true">
                 <t class="lightNormalization">mensen</t>
                 <t class="heavyNormalization">mensen</t>
-                <pos class="N(soort,mv,basis)">
+                <pos class="N(soort,mv,basis)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="mv" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -335,7 +335,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.3" space="true">
                 <t class="lightNormalization">op</t>
                 <t class="heavyNormalization">op</t>
-                <pos class="VZ(init)">
+                <pos class="VZ(init)" head="VZ">
                     <feat class="init" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -344,7 +344,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.4" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="det" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -358,7 +358,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.5" space="true">
                 <t class="lightNormalization">boerderij</t>
                 <t class="heavyNormalization">boerderij</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -371,7 +371,7 @@ Null text field-->
             <w xml:id="w.849205.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -3335,7 +3335,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -3344,7 +3344,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -3358,7 +3358,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.2" space="true">
                 <t class="lightNormalization">vloog</t>
                 <t class="heavyNormalization">vloog</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -3369,7 +3369,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.3" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="ook"/>
@@ -3377,7 +3377,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.4" space="true">
                 <t class="lightNormalization">van</t>
                 <t class="heavyNormalization">van</t>
-                <pos class="VZ(init)">
+                <pos class="VZ(init)" head="VZ">
                     <feat class="init" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -3386,7 +3386,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.5" space="true">
                 <t class="lightNormalization">den</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -3397,7 +3397,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.6" space="true">
                 <t class="lightNormalization">enen</t>
                 <t class="heavyNormalization">ene</t>
-                <pos class="VNW(onbep,det,stan,prenom,met-e,evz)">
+                <pos class="VNW(onbep,det,stan,prenom,met-e,evz)" head="VNW">
                     <feat class="onbep" subset="vwtype"/>
                     <feat class="det" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -3411,7 +3411,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.7" space="true">
                 <t class="lightNormalization">hoek</t>
                 <t class="heavyNormalization">hoek</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -3424,7 +3424,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.8" space="true">
                 <t class="lightNormalization">in</t>
                 <t class="heavyNormalization">in</t>
-                <pos class="VZ(fin)">
+                <pos class="VZ(fin)" head="VZ">
                     <feat class="fin" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -3433,7 +3433,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -3441,7 +3441,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.10" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -3450,7 +3450,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.11" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -3464,7 +3464,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.12" space="true">
                 <t class="lightNormalization">konden</t>
                 <t class="heavyNormalization">konden</t>
-                <pos class="WW(pv,verl,mv)">
+                <pos class="WW(pv,verl,mv)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="mv" subset="pvagr"/>
@@ -3475,7 +3475,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.13" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
-                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                <pos class="VNW(pers,pron,stan,red,3,mv)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -3489,7 +3489,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.14" space="true">
                 <t class="lightNormalization">maa</t>
                 <t class="heavyNormalization">maar</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="maar"/>
@@ -3497,7 +3497,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.15" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="niet"/>
@@ -3505,7 +3505,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.16" space="true">
                 <t class="lightNormalization">pakken</t>
                 <t class="heavyNormalization">pakken</t>
-                <pos class="WW(inf,vrij,zonder)">
+                <pos class="WW(inf,vrij,zonder)" head="WW">
                     <feat class="inf" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -3516,7 +3516,7 @@ Null text field-->
             <w xml:id="w.849212.unannotated.17" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -3890,7 +3890,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -3899,7 +3899,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.1" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -3907,7 +3907,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.2" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -3916,7 +3916,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.3" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -3924,7 +3924,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.4" space="true">
                 <t class="lightNormalization">vlogen</t>
                 <t class="heavyNormalization">vlogen</t>
-                <pos class="WW(pv,verl,mv)">
+                <pos class="WW(pv,verl,mv)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="mv" subset="pvagr"/>
@@ -3935,7 +3935,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.5" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -3946,7 +3946,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.6" space="true">
                 <t class="lightNormalization">ramen</t>
                 <t class="heavyNormalization">ramen</t>
-                <pos class="N(soort,mv,basis)">
+                <pos class="N(soort,mv,basis)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="mv" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -3957,7 +3957,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.7" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">op</t>
-                <pos class="VZ(fin)">
+                <pos class="VZ(fin)" head="VZ">
                     <feat class="fin" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -3966,7 +3966,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.8" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -3975,7 +3975,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.9" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -3986,7 +3986,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.10" space="true">
                 <t class="lightNormalization">deuren</t>
                 <t class="heavyNormalization">deuren</t>
-                <pos class="N(soort,mv,basis)">
+                <pos class="N(soort,mv,basis)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="mv" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -3997,7 +3997,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.11" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">open</t>
-                <pos class="ADJ(vrij,basis,zonder)">
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
                     <feat class="vrij" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="zonder" subset="buiging"/>
@@ -4008,7 +4008,7 @@ Null text field-->
             <w xml:id="w.849213.unannotated.12" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -5480,7 +5480,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -5489,7 +5489,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -5497,7 +5497,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.2" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
-                <pos class="VNW(aanw,pron,stan,vol,3o,ev)">
+                <pos class="VNW(aanw,pron,stan,vol,3o,ev)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -5511,7 +5511,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.3" space="true">
                 <t class="lightNormalization">is</t>
                 <t class="heavyNormalization">is</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -5522,7 +5522,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.4" space="true">
                 <t class="lightNormalization">al</t>
                 <t class="heavyNormalization">allemaal</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="allemaal"/>
@@ -5530,7 +5530,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.5" space="true">
                 <t class="lightNormalization">gebeurd</t>
                 <t class="heavyNormalization">gebeurd</t>
-                <pos class="WW(vd,vrij,zonder)">
+                <pos class="WW(vd,vrij,zonder)" head="WW">
                     <feat class="vd" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -5541,7 +5541,7 @@ Null text field-->
             <w xml:id="w.849260.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -6151,7 +6151,7 @@ Null text field-->
             <w xml:id="w.849216.unannotated.0" space="true">
                 <t class="lightNormalization">nee</t>
                 <t class="heavyNormalization">nee</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="nee"/>
@@ -6159,7 +6159,7 @@ Null text field-->
             <w xml:id="w.849216.unannotated.1" space="true">
                 <t class="lightNormalization">minder</t>
                 <t class="heavyNormalization">minder</t>
-                <pos class="VNW(onbep,grad,stan,vrij,zonder,comp)">
+                <pos class="VNW(onbep,grad,stan,vrij,zonder,comp)" head="VNW">
                     <feat class="onbep" subset="vwtype"/>
                     <feat class="grad" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -6173,7 +6173,7 @@ Null text field-->
             <w xml:id="w.849216.unannotated.2" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -6182,7 +6182,7 @@ Null text field-->
             <w xml:id="w.849216.unannotated.3" space="true">
                 <t class="lightNormalization">Marina</t>
                 <t class="heavyNormalization">Marina</t>
-                <pos class="N(eigen,ev,basis,zijd,stan)">
+                <pos class="N(eigen,ev,basis,zijd,stan)" head="N">
                     <feat class="eigen" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -6195,7 +6195,7 @@ Null text field-->
             <w xml:id="w.849216.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -6466,7 +6466,7 @@ Null text field-->
             <w xml:id="w.849265.unannotated.0" space="true">
                 <t class="lightNormalization">vijf</t>
                 <t class="heavyNormalization">vijf</t>
-                <pos class="TW(hoofd,prenom,stan)">
+                <pos class="TW(hoofd,prenom,stan)" head="TW">
                     <feat class="hoofd" subset="numtype"/>
                     <feat class="prenom" subset="positie"/>
                     <feat class="stan" subset="naamval"/>
@@ -6477,7 +6477,7 @@ Null text field-->
             <w xml:id="w.849265.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -6485,7 +6485,7 @@ Null text field-->
             <w xml:id="w.849265.unannotated.2" space="true">
                 <t class="lightNormalization">vijfenzestig</t>
                 <t class="heavyNormalization">vijfenzestig</t>
-                <pos class="TW(hoofd,prenom,stan)">
+                <pos class="TW(hoofd,prenom,stan)" head="TW">
                     <feat class="hoofd" subset="numtype"/>
                     <feat class="prenom" subset="positie"/>
                     <feat class="stan" subset="naamval"/>
@@ -6496,7 +6496,7 @@ Null text field-->
             <w xml:id="w.849265.unannotated.3" space="true">
                 <t class="lightNormalization">jaar</t>
                 <t class="heavyNormalization">jaar</t>
-                <pos class="N(soort,ev,basis,onz,stan)">
+                <pos class="N(soort,ev,basis,onz,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -6509,7 +6509,7 @@ Null text field-->
             <w xml:id="w.849265.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -12707,7 +12707,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -12716,7 +12716,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.1" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -12730,7 +12730,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.2" space="true">
                 <t class="lightNormalization">dacht</t>
                 <t class="heavyNormalization">dacht</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -12741,7 +12741,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.3" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -12749,7 +12749,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.4" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -12760,7 +12760,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.5" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -12771,7 +12771,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.6" space="true">
                 <t class="lightNormalization">tover</t>
                 <t class="heavyNormalization">tover</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -12784,7 +12784,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.7" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -12797,7 +12797,7 @@ Null text field-->
             <w xml:id="w.849283.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -15392,7 +15392,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="ja"/>
@@ -15400,7 +15400,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.1" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
-                <pos class="VNW(aanw,pron,stan,vol,3o,ev)">
+                <pos class="VNW(aanw,pron,stan,vol,3o,ev)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -15414,7 +15414,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.2" space="true">
                 <t class="lightNormalization">weet</t>
                 <t class="heavyNormalization">weet</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -15425,7 +15425,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.3" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
-                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -15439,7 +15439,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.4" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="niet"/>
@@ -15447,7 +15447,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.5" space="true">
                 <t class="lightNormalization">hoor</t>
                 <t class="heavyNormalization">hoor</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="hoor"/>
@@ -15455,7 +15455,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="xx"/>
@@ -15463,7 +15463,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.7" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
-                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -15477,7 +15477,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.8" space="true">
                 <t class="lightNormalization">eb</t>
                 <t class="heavyNormalization">heb</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -15488,7 +15488,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.9" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
-                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="adv-pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -15502,7 +15502,7 @@ Null text field-->
             <w xml:id="w.849291.unannotated.10" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -17501,7 +17501,7 @@ Null text field-->
             <w xml:id="w.849296.unannotated.0" space="true">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="ja"/>
@@ -17509,7 +17509,7 @@ Null text field-->
             <w xml:id="w.849296.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -17517,7 +17517,7 @@ Null text field-->
             <w xml:id="w.849296.unannotated.2" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="ook"/>
@@ -17525,7 +17525,7 @@ Null text field-->
             <w xml:id="w.849296.unannotated.3" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="uh"/>
@@ -17533,7 +17533,7 @@ Null text field-->
             <w xml:id="w.849296.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -17773,7 +17773,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.0" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="det" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -17787,7 +17787,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.1" space="true">
                 <t class="lightNormalization">man</t>
                 <t class="heavyNormalization">man</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -17800,7 +17800,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.2" space="true">
                 <t class="lightNormalization">waardat</t>
                 <t class="heavyNormalization">waardat</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -17813,7 +17813,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.3" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
-                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                <pos class="VNW(pers,pron,stan,red,3,mv)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -17827,7 +17827,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -17840,7 +17840,7 @@ Null text field-->
             <w xml:id="w.849298.unannotated.5" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -19573,7 +19573,7 @@ Null text field-->
             <w xml:id="w.849304.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="xx"/>
@@ -19581,7 +19581,7 @@ Null text field-->
             <w xml:id="w.849304.unannotated.1" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -21195,7 +21195,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.0" space="true">
                 <t class="lightNormalization">want</t>
                 <t class="heavyNormalization">want</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -21204,7 +21204,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.1" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
-                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -21219,7 +21219,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.2" space="true">
                 <t class="lightNormalization">zat</t>
                 <t class="heavyNormalization">zat</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -21230,7 +21230,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.3" space="true">
                 <t class="lightNormalization">altijd</t>
                 <t class="heavyNormalization">altijd</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="altijd"/>
@@ -21238,7 +21238,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.4" space="true">
                 <t class="lightNormalization">dikwijls</t>
                 <t class="heavyNormalization">dikwijls</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dikwijls"/>
@@ -21246,7 +21246,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.5" space="true">
                 <t class="lightNormalization">daar</t>
                 <t class="heavyNormalization">daar</t>
-                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="adv-pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -21260,7 +21260,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -21268,7 +21268,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.7" space="true">
                 <t class="lightNormalization">ook</t>
                 <t class="heavyNormalization">ook</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="ook"/>
@@ -21276,7 +21276,7 @@ Null text field-->
             <w xml:id="w.849309.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -21607,7 +21607,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.0" space="true">
                 <t class="lightNormalization">ie</t>
                 <t class="heavyNormalization">hij</t>
-                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -21622,7 +21622,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.1" space="true">
                 <t class="lightNormalization">wou</t>
                 <t class="heavyNormalization">wou</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -21633,7 +21633,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.2" space="true">
                 <t class="lightNormalization">zo</t>
                 <t class="heavyNormalization">zo</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="zo"/>
@@ -21641,7 +21641,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.3" space="true">
                 <t class="lightNormalization">graag</t>
                 <t class="heavyNormalization">graage</t>
-                <pos class="ADJ(vrij,basis,zonder)">
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
                     <feat class="vrij" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="zonder" subset="buiging"/>
@@ -21652,7 +21652,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.4" space="true">
                 <t class="lightNormalization">een</t>
                 <t class="heavyNormalization">een</t>
-                <pos class="LID(onbep,stan,agr)">
+                <pos class="LID(onbep,stan,agr)" head="LID">
                     <feat class="onbep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="agr" subset="npagr"/>
@@ -21663,7 +21663,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.5" space="true">
                 <t class="lightNormalization">paar</t>
                 <t class="heavyNormalization">paar</t>
-                <pos class="N(soort,ev,basis,onz,stan)">
+                <pos class="N(soort,ev,basis,onz,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -21676,7 +21676,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.6" space="true">
                 <t class="lightNormalization">ouwe</t>
                 <t class="heavyNormalization">oude</t>
-                <pos class="ADJ(nom,basis,met-e,zonder-n,stan)">
+                <pos class="ADJ(nom,basis,met-e,zonder-n,stan)" head="ADJ">
                     <feat class="nom" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="met-e" subset="buiging"/>
@@ -21689,7 +21689,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.7" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -21697,7 +21697,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.8" space="true">
                 <t class="lightNormalization">kopen</t>
                 <t class="heavyNormalization">kopen</t>
-                <pos class="WW(inf,vrij,zonder)">
+                <pos class="WW(inf,vrij,zonder)" head="WW">
                     <feat class="inf" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -21708,7 +21708,7 @@ Null text field-->
             <w xml:id="w.849311.unannotated.9" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -27389,7 +27389,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.0" space="true">
                 <t class="lightNormalization">ier</t>
                 <t class="heavyNormalization">hier</t>
-                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)">
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="adv-pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -27403,7 +27403,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.1" space="true">
                 <t class="lightNormalization">ben</t>
                 <t class="heavyNormalization">ben</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -27414,7 +27414,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.2" space="true">
                 <t class="lightNormalization">ik</t>
                 <t class="heavyNormalization">ik</t>
-                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -27428,7 +27428,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.3" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
-                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -27443,7 +27443,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.4" space="true">
                 <t class="lightNormalization">is</t>
                 <t class="heavyNormalization">is</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -27454,7 +27454,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.5" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -27462,7 +27462,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.6" space="true">
                 <t class="lightNormalization">van</t>
                 <t class="heavyNormalization">van</t>
-                <pos class="VZ(init)">
+                <pos class="VZ(init)" head="VZ">
                     <feat class="init" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -27471,7 +27471,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.7" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -27482,7 +27482,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.8" space="true">
                 <t class="lightNormalization">watermachien</t>
                 <t class="heavyNormalization">watermachine</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -27495,7 +27495,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -27503,7 +27503,7 @@ Null text field-->
             <w xml:id="w.849327.unannotated.10" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -28411,7 +28411,7 @@ Null text field-->
             <w xml:id="w.849227.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="xx"/>
@@ -28419,7 +28419,7 @@ Null text field-->
             <w xml:id="w.849227.unannotated.1" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -37733,7 +37733,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.0" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -37744,7 +37744,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.1" space="true">
                 <t class="lightNormalization">xx</t>
                 <t class="heavyNormalization">xx</t>
-                <pos class="ADJ(prenom,basis,zonder)">
+                <pos class="ADJ(prenom,basis,zonder)" head="ADJ">
                     <feat class="prenom" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="zonder" subset="buiging"/>
@@ -37755,7 +37755,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.2" space="true">
                 <t class="lightNormalization">jongen</t>
                 <t class="heavyNormalization">jongen</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -37768,7 +37768,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.3" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,pron,stan,vol,3,getal)">
+                <pos class="VNW(aanw,pron,stan,vol,3,getal)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -37782,7 +37782,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.4" space="true">
                 <t class="lightNormalization">a</t>
                 <t class="heavyNormalization">had</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -37793,7 +37793,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.5" space="true">
                 <t class="lightNormalization">zo</t>
                 <t class="heavyNormalization">zo</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="zo"/>
@@ -37801,7 +37801,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.6" space="true">
                 <t class="lightNormalization">n</t>
                 <t class="heavyNormalization">een</t>
-                <pos class="LID(onbep,stan,agr)">
+                <pos class="LID(onbep,stan,agr)" head="LID">
                     <feat class="onbep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="agr" subset="npagr"/>
@@ -37812,7 +37812,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.7" space="true">
                 <t class="lightNormalization">buik</t>
                 <t class="heavyNormalization">buik</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -37825,7 +37825,7 @@ Null text field-->
             <w xml:id="w.849350.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -37856,7 +37856,7 @@ Null text field-->
             <w xml:id="w.849351.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="teen"/>
@@ -37864,7 +37864,7 @@ Null text field-->
             <w xml:id="w.849351.unannotated.1" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">ggg</t>
-                <pos class="SPEC(onverst)">
+                <pos class="SPEC(onverst)" head="SPEC">
                     <feat class="onverst" subset="spectype"/>
                     <feat class="SPEC" subset="pos"/>
                 </pos>
@@ -37873,7 +37873,7 @@ Null text field-->
             <w xml:id="w.849351.unannotated.2" space="true">
                 <t class="lightNormalization">binnen</t>
                 <t class="heavyNormalization">binnen</t>
-                <pos class="VZ(fin)">
+                <pos class="VZ(fin)" head="VZ">
                     <feat class="fin" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -37882,7 +37882,7 @@ Null text field-->
             <w xml:id="w.849351.unannotated.3" space="true">
                 <t class="lightNormalization">hé</t>
                 <t class="heavyNormalization">hé</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="hé"/>
@@ -37890,7 +37890,7 @@ Null text field-->
             <w xml:id="w.849351.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -38885,7 +38885,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.0" space="true">
                 <t class="lightNormalization">geloof</t>
                 <t class="heavyNormalization">geloof</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -38896,7 +38896,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.1" space="true">
                 <t class="lightNormalization">je</t>
                 <t class="heavyNormalization">je</t>
-                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -38910,7 +38910,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.2" space="true">
                 <t class="lightNormalization">toch</t>
                 <t class="heavyNormalization">toch</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="toch"/>
@@ -38918,7 +38918,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.3" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="wel"/>
@@ -38926,7 +38926,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -38934,7 +38934,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.5" space="true">
                 <t class="lightNormalization">as</t>
                 <t class="heavyNormalization">als</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -38943,7 +38943,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.6" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -38951,7 +38951,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.7" space="true">
                 <t class="lightNormalization">kunnen</t>
                 <t class="heavyNormalization">kan</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -38962,7 +38962,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.8" space="true">
                 <t class="lightNormalization">tovenaren</t>
                 <t class="heavyNormalization">tovenaren</t>
-                <pos class="N(soort,mv,basis)">
+                <pos class="N(soort,mv,basis)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="mv" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -38973,7 +38973,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.9" space="true">
                 <t class="lightNormalization">naar</t>
                 <t class="heavyNormalization">naar</t>
-                <pos class="VZ(init)">
+                <pos class="VZ(init)" head="VZ">
                     <feat class="init" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -38982,7 +38982,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.10" space="true">
                 <t class="lightNormalization">ons</t>
                 <t class="heavyNormalization">ons</t>
-                <pos class="VNW(pr,pron,obl,vol,1,mv)">
+                <pos class="VNW(pr,pron,obl,vol,1,mv)" head="VNW">
                     <feat class="pr" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -38996,7 +38996,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.11" space="true">
                 <t class="lightNormalization">toe</t>
                 <t class="heavyNormalization">toe</t>
-                <pos class="VZ(fin)">
+                <pos class="VZ(fin)" head="VZ">
                     <feat class="fin" subset="vztype"/>
                     <feat class="VZ" subset="pos"/>
                 </pos>
@@ -39005,7 +39005,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.12" space="true">
                 <t class="lightNormalization">laten</t>
                 <t class="heavyNormalization">laten</t>
-                <pos class="WW(inf,vrij,zonder)">
+                <pos class="WW(inf,vrij,zonder)" head="WW">
                     <feat class="inf" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -39016,7 +39016,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.13" space="true">
                 <t class="lightNormalization">komen</t>
                 <t class="heavyNormalization">komen</t>
-                <pos class="WW(inf,vrij,zonder)">
+                <pos class="WW(inf,vrij,zonder)" head="WW">
                     <feat class="inf" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -39027,7 +39027,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.14" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -39035,7 +39035,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.15" space="true">
                 <t class="lightNormalization">hé</t>
                 <t class="heavyNormalization">hé</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="hé"/>
@@ -39043,7 +39043,7 @@ Null text field-->
             <w xml:id="w.849354.unannotated.16" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -40423,7 +40423,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -40432,7 +40432,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.1" space="true">
                 <t class="lightNormalization">a</t>
                 <t class="heavyNormalization">als</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -40441,7 +40441,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.2" space="true">
                 <t class="lightNormalization">je</t>
                 <t class="heavyNormalization">je</t>
-                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -40455,7 +40455,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.3" space="true">
                 <t class="lightNormalization">dronk</t>
                 <t class="heavyNormalization">dronk</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -40466,7 +40466,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.4" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">xxx</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="xx"/>
@@ -40474,7 +40474,7 @@ Null text field-->
             <w xml:id="w.849357.unannotated.5" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -40509,7 +40509,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -40518,7 +40518,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.1" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -40526,7 +40526,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.2" space="true">
                 <t class="lightNormalization">gebeurde</t>
                 <t class="heavyNormalization">gebeurde</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -40537,7 +40537,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.3" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">het</t>
-                <pos class="VNW(pers,pron,stan,red,3,ev,onz)">
+                <pos class="VNW(pers,pron,stan,red,3,ev,onz)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -40552,7 +40552,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.4" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="wel"/>
@@ -40560,7 +40560,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.5" space="true">
                 <t class="lightNormalization">es</t>
                 <t class="heavyNormalization">eens</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="eens"/>
@@ -40568,7 +40568,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.6" space="true">
                 <t class="lightNormalization">dat</t>
                 <t class="heavyNormalization">dat</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -40577,7 +40577,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.7" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(betr,pron,stan,vol,persoon,getal)">
+                <pos class="VNW(betr,pron,stan,vol,persoon,getal)" head="VNW">
                     <feat class="betr" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -40591,7 +40591,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.8" space="true">
                 <t class="lightNormalization">fl</t>
                 <t class="heavyNormalization">fl</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -40604,7 +40604,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.9" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -40612,7 +40612,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.10" space="true">
                 <t class="lightNormalization">die</t>
                 <t class="heavyNormalization">die</t>
-                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)">
+                <pos class="VNW(aanw,det,stan,prenom,zonder,rest)" head="VNW">
                     <feat class="aanw" subset="vwtype"/>
                     <feat class="det" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -40626,7 +40626,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.11" space="true">
                 <t class="lightNormalization">flessen</t>
                 <t class="heavyNormalization">flessen</t>
-                <pos class="N(soort,mv,basis)">
+                <pos class="N(soort,mv,basis)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="mv" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -40637,7 +40637,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.12" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -40645,7 +40645,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.13" space="true">
                 <t class="lightNormalization">ij</t>
                 <t class="heavyNormalization">hij</t>
-                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)">
+                <pos class="VNW(pers,pron,nomin,vol,3,ev,masc)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -40660,7 +40660,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.14" space="true">
                 <t class="lightNormalization">zei</t>
                 <t class="heavyNormalization">zei</t>
-                <pos class="WW(pv,verl,ev)">
+                <pos class="WW(pv,verl,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -40671,7 +40671,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.15" space="true">
                 <t class="lightNormalization">k</t>
                 <t class="heavyNormalization">ik</t>
-                <pos class="VNW(pers,pron,nomin,vol,1,ev)">
+                <pos class="VNW(pers,pron,nomin,vol,1,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -40685,7 +40685,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.16" space="true">
                 <t class="lightNormalization">eb</t>
                 <t class="heavyNormalization">heb</t>
-                <pos class="WW(pv,tgw,ev)">
+                <pos class="WW(pv,tgw,ev)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="ev" subset="pvagr"/>
@@ -40696,7 +40696,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.17" space="true">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">het</t>
-                <pos class="VNW(pers,pron,stan,red,3,ev,onz)">
+                <pos class="VNW(pers,pron,stan,red,3,ev,onz)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -40711,7 +40711,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.18" space="true">
                 <t class="lightNormalization">wel</t>
                 <t class="heavyNormalization">wel</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="wel"/>
@@ -40719,7 +40719,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.19" space="true">
                 <t class="lightNormalization">gezeid</t>
                 <t class="heavyNormalization">gezegd</t>
-                <pos class="WW(vd,vrij,zonder)">
+                <pos class="WW(vd,vrij,zonder)" head="WW">
                     <feat class="vd" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -40730,7 +40730,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.20" space="true">
                 <t class="lightNormalization">j</t>
                 <t class="heavyNormalization">je</t>
-                <pos class="VNW(pers,pron,nomin,red,2v,ev)">
+                <pos class="VNW(pers,pron,nomin,red,2v,ev)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="nomin" subset="naamval"/>
@@ -40744,7 +40744,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.21" space="true">
                 <t class="lightNormalization">e</t>
                 <t class="heavyNormalization">hebt</t>
-                <pos class="WW(pv,tgw,met-t)">
+                <pos class="WW(pv,tgw,met-t)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="tgw" subset="pvtijd"/>
                     <feat class="met-t" subset="pvagr"/>
@@ -40755,7 +40755,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.22" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="niet"/>
@@ -40763,7 +40763,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.23" space="true">
                 <t class="lightNormalization">voorzichtig</t>
                 <t class="heavyNormalization">voorzichtig</t>
-                <pos class="ADJ(vrij,basis,zonder)">
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
                     <feat class="vrij" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="zonder" subset="buiging"/>
@@ -40774,7 +40774,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.24" space="true">
                 <t class="lightNormalization">genoeg</t>
                 <t class="heavyNormalization">genoeg</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="genoeg"/>
@@ -40782,7 +40782,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.25" space="true">
                 <t class="lightNormalization">geweest</t>
                 <t class="heavyNormalization">geweest</t>
-                <pos class="WW(vd,vrij,zonder)">
+                <pos class="WW(vd,vrij,zonder)" head="WW">
                     <feat class="vd" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -40793,7 +40793,7 @@ Null text field-->
             <w xml:id="w.849358.unannotated.26" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -43064,7 +43064,7 @@ Null text field-->
             <w xml:id="w.849245.unannotated.0" space="true">
                 <t class="lightNormalization">en</t>
                 <t class="heavyNormalization">en</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -43073,7 +43073,7 @@ Null text field-->
             <w xml:id="w.849245.unannotated.1" space="true">
                 <t class="lightNormalization">de</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)">
+                <pos class="LID(bep,stan,rest)" head="LID">
                     <feat class="bep" subset="lwtype"/>
                     <feat class="stan" subset="naamval"/>
                     <feat class="rest" subset="npagr"/>
@@ -43084,7 +43084,7 @@ Null text field-->
             <w xml:id="w.849245.unannotated.2" space="true">
                 <t class="lightNormalization">deur</t>
                 <t class="heavyNormalization">deur</t>
-                <pos class="N(soort,ev,basis,zijd,stan)">
+                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
                     <feat class="soort" subset="ntype"/>
                     <feat class="ev" subset="getal"/>
                     <feat class="basis" subset="graad"/>
@@ -43097,7 +43097,7 @@ Null text field-->
             <w xml:id="w.849245.unannotated.3" space="true">
                 <t class="lightNormalization">open</t>
                 <t class="heavyNormalization">open</t>
-                <pos class="ADJ(vrij,basis,zonder)">
+                <pos class="ADJ(vrij,basis,zonder)" head="ADJ">
                     <feat class="vrij" subset="positie"/>
                     <feat class="basis" subset="graad"/>
                     <feat class="zonder" subset="buiging"/>
@@ -43108,7 +43108,7 @@ Null text field-->
             <w xml:id="w.849245.unannotated.4" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -43606,7 +43606,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.0" space="true">
                 <t class="lightNormalization">maar</t>
                 <t class="heavyNormalization">maar</t>
-                <pos class="VG(neven)">
+                <pos class="VG(neven)" head="VG">
                     <feat class="neven" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -43615,7 +43615,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.1" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -43624,7 +43624,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.2" space="true">
                 <t class="lightNormalization">z</t>
                 <t class="heavyNormalization">ze</t>
-                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                <pos class="VNW(pers,pron,stan,red,3,mv)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -43638,7 +43638,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.3" space="true">
                 <t class="lightNormalization">ernaartoe</t>
                 <t class="heavyNormalization">ernaartoe</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="ernaartoe"/>
@@ -43646,7 +43646,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.4" space="true">
                 <t class="lightNormalization">gingen</t>
                 <t class="heavyNormalization">gingen</t>
-                <pos class="WW(pv,verl,mv)">
+                <pos class="WW(pv,verl,mv)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="mv" subset="pvagr"/>
@@ -43657,7 +43657,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.5" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -43665,7 +43665,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.6" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -43673,7 +43673,7 @@ Null text field-->
             <w xml:id="w.849247.unannotated.7" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -43704,7 +43704,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.0" space="true">
                 <t class="lightNormalization">dan</t>
                 <t class="heavyNormalization">dan</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="dan"/>
@@ -43712,7 +43712,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.1" space="true">
                 <t class="lightNormalization">konden</t>
                 <t class="heavyNormalization">konden</t>
-                <pos class="WW(pv,verl,mv)">
+                <pos class="WW(pv,verl,mv)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="mv" subset="pvagr"/>
@@ -43723,7 +43723,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.2" space="true">
                 <t class="lightNormalization">z</t>
                 <t class="heavyNormalization">ze</t>
-                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                <pos class="VNW(pers,pron,stan,red,3,mv)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -43737,7 +43737,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.3" space="true">
                 <t class="lightNormalization">em</t>
                 <t class="heavyNormalization">hem</t>
-                <pos class="VNW(pers,pron,obl,vol,3,ev,masc)">
+                <pos class="VNW(pers,pron,obl,vol,3,ev,masc)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="obl" subset="naamval"/>
@@ -43752,7 +43752,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.4" space="true">
                 <t class="lightNormalization">nie</t>
                 <t class="heavyNormalization">niet</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="niet"/>
@@ -43760,7 +43760,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.5" space="true">
                 <t class="lightNormalization">raken</t>
                 <t class="heavyNormalization">raken</t>
-                <pos class="WW(inf,vrij,zonder)">
+                <pos class="WW(inf,vrij,zonder)" head="WW">
                     <feat class="inf" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -43771,7 +43771,7 @@ Null text field-->
             <w xml:id="w.849248.unannotated.6" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
@@ -43823,7 +43823,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.0" space="true">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">???</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="twee"/>
@@ -43831,7 +43831,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.1" space="true">
                 <t class="lightNormalization">stingen</t>
                 <t class="heavyNormalization">stingen</t>
-                <pos class="WW(pv,verl,mv)">
+                <pos class="WW(pv,verl,mv)" head="WW">
                     <feat class="pv" subset="wvorm"/>
                     <feat class="verl" subset="pvtijd"/>
                     <feat class="mv" subset="pvagr"/>
@@ -43842,7 +43842,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.2" space="true">
                 <t class="lightNormalization">ze</t>
                 <t class="heavyNormalization">ze</t>
-                <pos class="VNW(pers,pron,stan,red,3,mv)">
+                <pos class="VNW(pers,pron,stan,red,3,mv)" head="VNW">
                     <feat class="pers" subset="vwtype"/>
                     <feat class="pron" subset="pdtype"/>
                     <feat class="stan" subset="naamval"/>
@@ -43856,7 +43856,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.3" space="true">
                 <t class="lightNormalization">net</t>
                 <t class="heavyNormalization">net</t>
-                <pos class="BW()">
+                <pos class="BW()" head="BW">
                     <feat class="BW" subset="pos"/>
                 </pos>
                 <lemma class="net"/>
@@ -43864,7 +43864,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.4" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -43873,7 +43873,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.5" space="true">
                 <t class="lightNormalization">uh</t>
                 <t class="heavyNormalization">uh</t>
-                <pos class="TSW()">
+                <pos class="TSW()" head="TSW">
                     <feat class="TSW" subset="pos"/>
                 </pos>
                 <lemma class="uh"/>
@@ -43881,7 +43881,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.6" space="true">
                 <t class="lightNormalization">als</t>
                 <t class="heavyNormalization">als</t>
-                <pos class="VG(onder)">
+                <pos class="VG(onder)" head="VG">
                     <feat class="onder" subset="conjtype"/>
                     <feat class="VG" subset="pos"/>
                 </pos>
@@ -43890,7 +43890,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.7" space="true">
                 <t class="lightNormalization">verlamd</t>
                 <t class="heavyNormalization">verlamd</t>
-                <pos class="WW(vd,vrij,zonder)">
+                <pos class="WW(vd,vrij,zonder)" head="WW">
                     <feat class="vd" subset="wvorm"/>
                     <feat class="vrij" subset="positie"/>
                     <feat class="zonder" subset="buiging"/>
@@ -43901,7 +43901,7 @@ Null text field-->
             <w xml:id="w.849249.unannotated.8" space="false">
                 <t class="lightNormalization"></t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()">
+                <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
                 <lemma class="terts"/>
