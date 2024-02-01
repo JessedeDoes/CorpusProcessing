@@ -157,23 +157,11 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
           .filter(x => alignedTokens.size == alpinoTokens.size) else Seq()
 
       <speech xml:id={speech_id}>
-        {informativeT.child}
+        {if (false) informativeT.child}
         <s xml:id={s"s.$alpino_annotatie_id"}>
           {
            if (alignedTokens.size == alpinoTokens.size) {
               val annotatedTokens = tokens.map(_.asFoLiA())
-            /*
-               <w xml:id={idForAlpinoToken(a)}>
-                <t class="heavyNormalization">{t.text_zv}</t>
-                <t class="lightNormalization">{t.text_lv}</t>
-                <lemma class={a.lemma}/>
-                <pos class={a.postag} head={posTag.pos}>
-                  {posTag.features.filter(_.name != "UNK").map(f => {
-                    <feat class={f.value} subset={f.name}/>
-                })}
-                </pos>
-              </w>
-              */
               annotatedTokens
             }
           else  {
@@ -182,10 +170,10 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
           }}
           {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
           {if (includeDeps && tokens.nonEmpty) {dependencies(elanAnnotation.elan_annotatie_id.toString)}}
-          <timing>
+          {if (tokens.nonEmpty) <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}> {
               if (gcndTokensZippedWithAlpinoTokens.nonEmpty) gcndTokensZippedWithAlpinoTokens.map({ case (t, a) => <wref id={idForAlpinoToken(a)} t={t.text_lv}/> })}</timesegment>
-          </timing>
+          </timing>}
         </s>
 
       </speech>
