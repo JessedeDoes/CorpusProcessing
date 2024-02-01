@@ -114,9 +114,6 @@ case class ElanAnnotation(elan_annotatie_id: Int,
     <speech tag={functie} speaker={naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
       {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightNormalization">{tekst_lv}</t>}
       {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyNormalization">{tekst_zv}</t>}
-      {Comment(s"speaker role:${functie.replaceAll("--", "__")}, n_alpino_annotations: " +
-      alpinoAnnotations.size.toString +
-         s"; Use alpino: $useAlpino, Use alignment: $useAlignment\n$message")}
       {enrichedContent}
       <foreign-data>{Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}</foreign-data>
     </speech>

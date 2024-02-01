@@ -36,7 +36,7 @@ object Preparation {
       |""".stripMargin.split(";")
 }
 object GCNDDatabase {
-  val doAll = true
+  val doAll = false
   val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 30
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
@@ -69,7 +69,14 @@ object GCNDDatabase {
     })
   }
 
-  def createFolia(transcription: Transcription, outputFilenameTemplate: String = "data/GCND/Folia/gcnd.#.folia.xml"): Unit = {
+  val foliadDir = "data/GCND/Folia/"
+
+  def emptyDir(d: String)  = {
+    val dir = new java.io.File(d)
+    dir.listFiles.filter(x => x.isFile).foreach(_.delete())
+  }
+
+  def createFolia(transcription: Transcription, outputFilenameTemplate: String = foliadDir  + "gcnd.#.folia.xml"): Unit = {
 
     val outputFilename = outputFilenameTemplate.replaceAll("#", transcription.transcriptie_id.toString)
     val out2 = new PrintWriter(outputFilename)
@@ -99,19 +106,13 @@ object GCNDDatabase {
 
   def main(args: Array[String])  = {
 
-    //val foliaWithAlpino = getPseudoFoLiAForAlpinoAnnotations(1)
 
-    val dumpAlpinoParses = false
-
-
-    if (false) {
-      val out1 = new PrintWriter("data/GCND/gcnd.test.folia.xml")
-      //out1.println(pretty.format(foliaWithAlpino))
-      out1.close()
-    }
 
     val pw = new PrintWriter("/tmp/gcnd.transcripts.log")
     val pw1 = new PrintWriter("/tmp/gcnd.log")
+
+    emptyDir(foliadDir)
+
     val abouts = transcriptions.take(maxTranscriptions).map(
      x => {
        createFolia(x)

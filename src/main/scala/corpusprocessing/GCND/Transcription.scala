@@ -68,6 +68,7 @@ case class Transcription(transcriptie_id: Int) {
           <lemma-annotation set="hdl:1839/00-SCHM-0000-0000-000E-3"/>
           <syntax-annotation set="lassy.syntax.annotation"/>
           <syntax-annotation set="ud.syntax.annotation"/>
+          <utterance-annotation set="gcnd.utt.annotation"/>
           <division-annotation set="gcnd_div_classes"/>
           <timesegment-annotation set="cgn"/>
           <text-annotation set="https://raw.githubusercontent.com/proycon/folia/master/setdefinitions/text.foliaset.ttl"/>

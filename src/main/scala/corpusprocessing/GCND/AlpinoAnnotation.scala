@@ -109,12 +109,17 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val overLappingElanAnnotations = elans.filter(e =>
     e.starttijd >= starttijd & e.starttijd <= eindtijd || e.eindtijd > starttijd & e.eindtijd <= eindtijd)
 
+  def selectNode(x: Elem) = {
+    if (x.label != "node" || (x \ "@word").isEmpty) false
+    else {
+      val b = (x \ "@begin").text.toInt
+      val e = (x \ "@end").text.toInt
+      b < alignedTokens.size
+    }
+  }
+
   lazy val alpinoAdapted = PostProcessXML.updateElement(alpinoParsePatched,
-    x => x.label=="node" && (x \ "@word").nonEmpty && {
-    val b = (x \ "@begin").text.toInt
-    val e = (x \ "@end").text.toInt
-    b < alignedTokens.size
-   },
+    selectNode,
     node => {
     val b = (node \ "@begin").text.toInt
     val lv = alignedTokens(b).text_lv
@@ -131,19 +136,12 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
         {Comment("n_elan_annotations: " + overLappingElanAnnotations.size.toString)}<t class="alpinoInput">
         {sentence.map(_.input_transcript)}
       </t>
-        <t class="alpinoLightNormalization">
-          {text_lv}
-        </t>
-        <t class="alpinoHeavyNormalization">
-          {text_zv}
+        <t class="alpinoLightNormalization">{text_lv}</t>
+        <t class="alpinoHeavyNormalization">{text_zv}
         </t>{overLappingElanAnnotations.map(e =>
         <div xml:id={speech_id + ".elan." + e.elan_annotatie_id} class="elanAnnotation" begintime={formatTime(e.starttijd)} endtime={formatTime(e.eindtijd)}>
-          <t class="elanLightNormalization">
-            {e.tekst_lv}
-          </t>
-          <t class="elanHeavyNormalization">
-            {e.tekst_zv}
-          </t>
+          <t class="elanLightNormalization">{e.tekst_lv}</t>
+          <t class="elanHeavyNormalization">{e.tekst_zv}</t>
         </div>
       )}
       </info>
@@ -152,14 +150,20 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     def pseudoFolia(elanAnnotation: ElanAnnotation, includeAlpinoParse: Boolean = true, includeDeps: Boolean = true) = {
 
       def idForAlpinoToken(a: AlpinoToken)  = a.id.get.replaceAll("^([a-z]+)", "$1" + "." + elanAnnotation.elan_annotatie_id.toString)
+
+      val tokens: Seq[GCNDToken] = if (gcndTokensZippedWithAlpinoTokens.nonEmpty)
+        gcndTokensZippedWithAlpinoTokens
+          .map({ case (t, a) => t.copy(id = idForAlpinoToken(a), pos = a.postag, lemma = a.lemma) })
+          .filter(x => alignedTokens.size == alpinoTokens.size) else Seq()
+
       <speech xml:id={speech_id}>
         {informativeT.child}
         <s xml:id={s"s.$alpino_annotatie_id"}>
           {
-          if (alignedTokens.size == alpinoTokens.size) {
-            val annotatedTokens = if (gcndTokensZippedWithAlpinoTokens.nonEmpty) gcndTokensZippedWithAlpinoTokens.map({ case (t, a) =>
-              val posTag = CGNTagset.fromString(a.postag)
-              <w xml:id={idForAlpinoToken(a)}>
+           if (alignedTokens.size == alpinoTokens.size) {
+              val annotatedTokens = tokens.map(_.asFoLiA())
+            /*
+               <w xml:id={idForAlpinoToken(a)}>
                 <t class="heavyNormalization">{t.text_zv}</t>
                 <t class="lightNormalization">{t.text_lv}</t>
                 <lemma class={a.lemma}/>
@@ -169,17 +173,17 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
                 })}
                 </pos>
               </w>
-            })
-
-            annotatedTokens
-          } else  {
-            println(s"Mismatch: Aligned Tokens: ${alignedTokens.size}, alpinoTokens: ${alpinoTokens.size}")
-            Seq() }
-          }
+              */
+              annotatedTokens
+            }
+          else  {
+            // println(s"Mismatch: Aligned Tokens: ${alignedTokens.size}, alpinoTokens: ${alpinoTokens.size}")
+            Seq()
+          }}
           {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
-          {if (includeDeps) {dependencies(elanAnnotation.elan_annotatie_id.toString)}}
+          {if (includeDeps && tokens.nonEmpty) {dependencies(elanAnnotation.elan_annotatie_id.toString)}}
           <timing>
-            <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}>{
+            <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}> {
               if (gcndTokensZippedWithAlpinoTokens.nonEmpty) gcndTokensZippedWithAlpinoTokens.map({ case (t, a) => <wref id={idForAlpinoToken(a)} t={t.text_lv}/> })}</timesegment>
           </timing>
         </s>
