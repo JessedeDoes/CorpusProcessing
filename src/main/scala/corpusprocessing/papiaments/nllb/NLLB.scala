@@ -1,6 +1,6 @@
 package corpusprocessing.papiaments.nllb
 
-import java.io.{FileInputStream, FileOutputStream, FileReader, PrintWriter}
+import java.io.{FileInputStream, FileOutputStream, FileReader, InputStreamReader, PrintWriter}
 import java.util.zip.{GZIPInputStream, GZIPOutputStream}
 import scala.xml.Node
 object NLLB {
@@ -72,9 +72,9 @@ object NLLB {
   val portionSize = 50000;
   var portion: Int = 0;
   var item = 0;
-
+  val portionBase = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/Portions/"
   def w(x: String)  = new PrintWriter(new GZIPOutputStream(new FileOutputStream(x)))
-  var writer = w(s"/tmp/portion.$portion.xml.gz")
+  var writer = w(s"$portionBase/portion.$portion.xml.gz")
   def handle(m: Map[String,String])  = {
 
     item = item + 1
@@ -83,7 +83,7 @@ object NLLB {
       writer.println("</text></TEI>")
       writer.close()
       portion = portion + 1
-      writer =  w(s"/tmp/portion.$portion.xml.gz")
+      writer =  w(s"$portionBase/portion.$portion.xml.gz")
       writer.println("<TEI><text>")
     }
 
@@ -98,13 +98,13 @@ object NLLB {
     val parser = factory.newSAXParser()
     val handler = new MySAXHandler(handle)
 
-    val source = new InputSource(new FileReader(fileName))
+    val source = new InputSource(new InputStreamReader(new GZIPInputStream(new FileInputStream(fileName))))
     parser.parse(source, handler)
     writer.println("</text></TEI>")
     writer.close()
   }
 
-  val stukje = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/stukje.tmx"
+  val stukje = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/en-pap.tmx.gz"
   def main(args: Array[String]): Unit = {
      parse(stukje)
   }
