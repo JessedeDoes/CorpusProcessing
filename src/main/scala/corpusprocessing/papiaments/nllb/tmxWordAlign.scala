@@ -24,29 +24,29 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
     println("Youp!")
     // deze twee hoeven niet iedere keer
 
-    val linkedVerses: Seq[(Node, Node)] = (tmxDoc.flatMap(x => x \\ "tuv")).map(tu => {
+    val linkedVerses: Iterator[(Node, Node)] = (tmxDoc.flatMap(x => x \\ "tuv")).map(tu => {
       //println(tu)
       val tuvs = (tu \ "tu")
       if (tuvs.size >= 1)
         tuvs(0) -> tuvs(1)
       else
           <nope/> -> <nope/>
-    }).filter({ case (x, y) => x.label != "nope" }).toSeq
+    }).filter({ case (x, y) => x.label != "nope" })
 
 
     // write input file for fastAlign
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
 
-    val tokenizedVerses: Seq[(immutable.Seq[String], immutable.Seq[String], immutable.Seq[String], immutable.Seq[String])] =
+    val tokenizedVerses: Stream[(Seq[String], Seq[String], Seq[String], Seq[String])] =
       linkedVerses.map({ case (v1, v2) => {
-        val t1 = tokenizedText(v1)
+        val t1: Seq[String] = tokenizedText(v1)
         val t2 = tokenizedText(v2)
         val ids1 = (v1 \\ "w").map(getId)
         val ids2 = (v2 \\ "w").map(getId)
         alignmentFile.println(s"${t1.mkString(" ")} ||| ${t2.mkString(" ")}")
         (t1, t2, ids1, ids2)
       }
-      })
+      }).toStream
 
     println(s"${tokenizedVerses.size}")
 
@@ -62,11 +62,9 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command lineStream;
 
-    val allPairs = lines.zip(linkedVerses).flatMap({
-      case (line, (v1, v2)) => {
-
-        val w1 = (v1 \\ "w").map(_.text)
-        val w2 = (v2 \\ "w").map(_.text)
+    val allPairs = lines.zip(tokenizedVerses).flatMap({
+      case (line, (w1, w2, id1, id2)) => {
+        // println(s"$line $w1 $w2")
         val pairings = line.trim.split("\\s+").filter(_.contains("-")).map(p => {
           //println(p)
           val lr = p.split("-")
@@ -75,6 +73,7 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
 
         val leftCounts = pairings.groupBy(_._1).mapValues(_.size)
         val rightCounts = pairings.groupBy(_._2).mapValues(_.size)
+
         val simplePairings = pairings.filter({ case (a, b) => leftCounts(a) == 1 && rightCounts(b) == 1 })
         val pairs = simplePairings.map({
           case (i, j) if (i < w1.size && j < w2.size) => w1(i) -> w2(j)
@@ -123,7 +122,7 @@ object testje {
   val stukje0 = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/stukje.tok.tmx.gz"
   val stukje ="/tmp/stukje.tok.tmx.gz"
   val dir = "/mnt/other/svprre10_data/tagger/papje/nllb_tokenized/"
-  lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(50)
+  lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(20)
   lazy val streampje = new GZIPInputStream(new FileInputStream(stukje))
   def main(args: Array[String])  = {
     tmxWordAlign(docs).addWordAlignment()
