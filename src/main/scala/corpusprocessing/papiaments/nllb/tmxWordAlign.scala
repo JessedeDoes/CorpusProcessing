@@ -9,12 +9,10 @@ import scala.collection.immutable
 import scala.sys.process._
 import scala.xml._
 import java.io._
-case class tmxWordAlign(tmxDoc: Elem) {
+case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
   val genesis = "/mnt/Projecten/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/XMLConversie/alignment/en_1890_Darby.Gen--nl_1637_Staten.Gen.aligments.xml"
 
 
-  lazy val allVerses = (tmxDoc \\ "ab")
-  lazy val id2Verse: Map[String, Node] = allVerses.map(v => getId(v) -> v).toMap
 
   def getLang(w: Node) = w.attributes.filter(_.key == "lang").value.text
 
@@ -26,19 +24,20 @@ case class tmxWordAlign(tmxDoc: Elem) {
     println("Youp!")
     // deze twee hoeven niet iedere keer
 
-    val linkedVerses: immutable.Seq[(Node, Node)] = (tmxDoc \\ "tu").map(tu => {
-      val tuvs = (tu \ "tuv")
-      if (tuvs.size >= 0)
+    val linkedVerses: Seq[(Node, Node)] = (tmxDoc.flatMap(x => x \\ "tuv")).map(tu => {
+      //println(tu)
+      val tuvs = (tu \ "tu")
+      if (tuvs.size >= 1)
         tuvs(0) -> tuvs(1)
       else
           <nope/> -> <nope/>
-    }).filter({ case (x, y) => x.label != "nope" })
+    }).filter({ case (x, y) => x.label != "nope" }).toSeq
 
 
     // write input file for fastAlign
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
 
-    val tokenizedVerses: immutable.Seq[(immutable.Seq[String], immutable.Seq[String], immutable.Seq[String], immutable.Seq[String])] =
+    val tokenizedVerses: Seq[(immutable.Seq[String], immutable.Seq[String], immutable.Seq[String], immutable.Seq[String])] =
       linkedVerses.map({ case (v1, v2) => {
         val t1 = tokenizedText(v1)
         val t2 = tokenizedText(v2)
@@ -48,6 +47,8 @@ case class tmxWordAlign(tmxDoc: Elem) {
         (t1, t2, ids1, ids2)
       }
       })
+
+    println(s"${tokenizedVerses.size}")
 
     val t1 = tokenizedVerses.map(_._1).toStream
     val t2 = tokenizedVerses.map(_._2).toStream
@@ -115,12 +116,16 @@ case class tmxWordAlign(tmxDoc: Elem) {
   }
 
 }
-
+// https://anymalign.limsi.fr/
+// https://dl.acm.org/doi/pdf/10.1145/3168054
+// https://arxiv.org/pdf/2310.13995.pdf
 object testje {
   val stukje0 = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/stukje.tok.tmx.gz"
   val stukje ="/tmp/stukje.tok.tmx.gz"
-  val streampje = new GZIPInputStream(new FileInputStream(stukje))
+  val dir = "/mnt/other/svprre10_data/tagger/papje/nllb_tokenized/"
+  lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(50)
+  lazy val streampje = new GZIPInputStream(new FileInputStream(stukje))
   def main(args: Array[String])  = {
-    tmxWordAlign(XML.load(streampje)).addWordAlignment()
+    tmxWordAlign(docs).addWordAlignment()
   }
 }
