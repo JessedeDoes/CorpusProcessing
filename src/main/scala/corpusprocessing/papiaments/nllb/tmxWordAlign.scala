@@ -121,10 +121,13 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
 object testje {
   val stukje0 = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/stukje.tok.tmx.gz"
   val stukje ="/tmp/stukje.tok.tmx.gz"
-  val dir = "/mnt/other/svprre10_data/tagger/papje/nllb_tokenized/"
-  lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(20)
+
   lazy val streampje = new GZIPInputStream(new FileInputStream(stukje))
   def main(args: Array[String])  = {
+
+    val dir = args.headOption.getOrElse("/mnt/other/svprre10_data/tagger/papje/nllb_tokenized/")
+    val n = if (args.size >= 2) args(1).toInt else 100
+    lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(n)
     tmxWordAlign(docs).addWordAlignment()
   }
 }
