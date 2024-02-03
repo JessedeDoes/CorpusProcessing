@@ -37,7 +37,7 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
     // write input file for fastAlign
     val alignmentFile = new PrintWriter("/tmp/bible.alignMe.txt")
 
-    val tokenizedVerses: Stream[(Seq[String], Seq[String], Seq[String], Seq[String])] =
+    val tokenizedSegments: Stream[(Seq[String], Seq[String], Seq[String], Seq[String])] =
       linkedVerses.map({ case (v1, v2) => {
         val t1: Seq[String] = tokenizedText(v1)
         val t2 = tokenizedText(v2)
@@ -48,12 +48,12 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
       }
       }).toStream
 
-    println(s"${tokenizedVerses.size}")
+    println(s"${tokenizedSegments.size}")
 
-    val t1 = tokenizedVerses.map(_._1).toStream
-    val t2 = tokenizedVerses.map(_._2).toStream
-    val ids1 = tokenizedVerses.map(_._3).toStream
-    val ids2 = tokenizedVerses.map(_._4).toStream
+    val t1 = tokenizedSegments.map(_._1).toStream
+    val t2 = tokenizedSegments.map(_._2).toStream
+    val ids1 = tokenizedSegments.map(_._3).toStream
+    val ids2 = tokenizedSegments.map(_._4).toStream
 
     alignmentFile.close()
 
@@ -62,7 +62,7 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
     val command = "fast_align -i /tmp/bible.alignMe.txt -N -d -o -v -I 10".split("\\s+").toSeq
     val lines: Stream[String] = command lineStream;
 
-    val allPairs = lines.zip(tokenizedVerses).flatMap({
+    val allPairs = lines.zip(tokenizedSegments).flatMap({
       case (line, (w1, w2, id1, id2)) => {
         // println(s"$line $w1 $w2")
         val pairings = line.trim.split("\\s+").filter(_.contains("-")).map(p => {
@@ -114,20 +114,4 @@ case class tmxWordAlign(tmxDoc: Iterator[Elem]) {
     // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
   }
 
-}
-// https://anymalign.limsi.fr/
-// https://dl.acm.org/doi/pdf/10.1145/3168054
-// https://arxiv.org/pdf/2310.13995.pdf
-object testje {
-  val stukje0 = "/mnt/Projecten/Papiaments/Corpusdata/NLLB/stukje.tok.tmx.gz"
-  val stukje ="/tmp/stukje.tok.tmx.gz"
-
-  lazy val streampje = new GZIPInputStream(new FileInputStream(stukje))
-  def main(args: Array[String])  = {
-
-    val dir = args.headOption.getOrElse("/mnt/other/svprre10_data/tagger/papje/nllb_tokenized/")
-    val n = if (args.size >= 2) args(1).toInt else 100
-    lazy val docs = new File(dir).listFiles().iterator.map(XML.loadFile).take(n)
-    tmxWordAlign(docs).addWordAlignment()
-  }
 }
