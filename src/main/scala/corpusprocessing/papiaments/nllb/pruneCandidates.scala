@@ -10,7 +10,7 @@ object pruneCandidates {
      val out = new PrintWriter("/tmp/pairs.pruned.out")
      p.leftWords.foreach(w => {
        Console.err.println(w.word)
-       out.println(s"${w.word}:${w.count} ${list(w.prunedCandidates2)} -unpruned- ${list(w.candidates.take(2))}")
+       out.println(s"${w.word}:${w.count} ${list(w.prunedCandidates)} -unpruned- ${list(w.candidates.take(2))}")
      })
     out.close()
   }
