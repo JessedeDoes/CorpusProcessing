@@ -167,7 +167,7 @@ trait extract_training_data_trait {
   def main(args0: Array[String]): Unit = {
 
     val args = if (args0.size > 0) args0 else Array(default_folder)
-
+    println(args.toList)
     val filesToProcess: Seq[String] = args.toSeq.flatMap(x => {
       val f = new java.io.File(x)
       if (f.isFile) Seq(f.getCanonicalPath) else f.listFiles.toSeq.map(_.getCanonicalPath)
