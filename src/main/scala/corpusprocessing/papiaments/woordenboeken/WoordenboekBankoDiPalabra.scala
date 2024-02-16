@@ -5,28 +5,30 @@ import utils.PostProcessXML._
 
 import scala.xml._
 object WoordenboekBankoDiPalabra {
-  val xmlFilename = "/mnt/Projecten/Papiaments/Woordenboeken/WoordenboekBankoDiPalabra/Woordenboek Banko di Palabra.tei.xml"
+  val dir =  "/mnt/Projecten/Papiaments/Woordenboeken/WoordenboekBankoDiPalabra/"
+  val xmlFilename = dir + "Woordenboek Banko di Palabra.tei.xml"
+  val outputFile = dir + "WoordenboekBankodiPalabra.postProcessedtei.xml"
   lazy val doc = XML.load(xmlFilename)
   lazy val paragraphs = (doc \\ "p")
   import scala.xml.PrettyPrinter
   val p = new PrettyPrinter(200,4)
   val papStyle = "font-size:10.0pt;color:#231f20;white-space:pre-wrap;"
+  val otherPapStyle = "color:#231f20;white-space:pre-wrap;"
   val betNrStyle = "font-family:'Times New Roman';font-size:10.0pt;font-weight:bold;color:#231f20;white-space:pre-wrap;"
+  val otherBetNrStyle  = "font-family:'Times New Roman';font-weight:bold;color:#231f20;white-space:pre-wrap;"
   val posStyle = "font-size:10.0pt;font-style:italic;color:#231f20;white-space:pre-wrap;"
   val collocStyle = "font-size:10.0pt;font-style:italic;color:#231f20;white-space:pre-wrap;"
-
+  val lemmaStyle = "font-family:'Times New Roman';font-size:10.0pt;font-weight:bold;color:#231f20;white-space:pre-wrap;"
   val pos = "(bw|bnw|vnw|voegw|lidw|tw|ww|hulpww|koppelww|vz)"
-  def isBetNr(n: Node) = rend(n) == betNrStyle && n.text.trim.matches("[0-9]+")
+
+
+  def isBetNr(n: Node) = (rend(n) == betNrStyle || rend(n) == otherBetNrStyle) && n.text.trim.matches("[0-9]+")
   def isPos(n: Node) = rend(n) == posStyle && (n.text.trim.matches("\\(([a-z]+)\\)") || n.text.trim.matches(s"(.* |^\\()($pos)\\..*"))
   def isGender(n: Node) = rend(n) == posStyle && (n.text.trim.matches("\\((de|het)\\)"))
 
-  def isColloc(n: Node) = rend(n) == collocStyle && n.text.contains("~")
+  def isColloc(n: Node) = rend(n) == collocStyle && (n.text.contains("~") || n.text.matches(".*[a-zA-Z].* .*[a-zA-Z].*"))
   def isLabel(n: Node)  = rend(n) == posStyle && (n.text.trim.matches("\\((.*)\\)"))
 
-
-  def splitEntry(n: Node)  = {
-
-  }
   def splitRoman(n: Node) = {
     val t = n.text
     val regex = "(^|.* )(I|II|III|IV|V|VI|VII|VIII|IX)( |$)"
@@ -54,6 +56,17 @@ object WoordenboekBankoDiPalabra {
     groups.map(g => <hi rend={rend(g.head)}>{g.text}</hi>)
   }
 
+
+  def splitEntry(entry: Elem) = {
+    def looksLikeLemma(x: Node)  = rend(x) == lemmaStyle && !isBetNr(x)
+    val groups = grouping.groupWithFirst[Node](entry.child.filter(_.isInstanceOf[Elem]), looksLikeLemma )
+    val newChildren = groups.flatMap(g =>
+      if (g.exists(looksLikeLemma)) Seq(<entry type="splitOff">{g.map(x => if (looksLikeLemma(x)) <form type="lemma">{x.child}</form>else x)}</entry>) else <entry>{g}</entry>)
+    if (groups.size > 1)
+      entry.copy(label="superEntry", child = newChildren)
+    else entry
+  }
+
   def groupSenses(entry: Elem)  = {
     val groups = grouping.groupWithFirst[Node](entry.child.filter(_.isInstanceOf[Elem]), x => x.label=="senseMarker")
     val newChildren = groups.flatMap(g => if (g.exists(_.label=="senseMarker")) Seq(<sense>{g}</sense>) else g)
@@ -75,7 +88,7 @@ object WoordenboekBankoDiPalabra {
 
   def postProcessP(p: Elem)  = {
     val groupedChildren = groupRenditions(p \ "hi").flatMap(x =>
-      if (rend(x) == papStyle)
+      if (rend(x) == papStyle || rend(x) == otherPapStyle)
         splitRoman(<form type="papiamentu">{x.child}</form>)
       else if (isBetNr(x))
         <senseMarker>{x.text.trim}</senseMarker>
@@ -106,10 +119,12 @@ object WoordenboekBankoDiPalabra {
 
     val post0 = updateElement(doc, _.label=="p", postProcessP)
     val post1 = updateElement(post0, _.label=="div", groupParagraphsintoEntries)
-    val post2 = updateElement(post1, _.label=="entry", groupBlocks)
+    val post11 = updateElement(post1, _.label=="entry", splitEntry)
+    val post2 = updateElement(post11, _.label=="entry", groupBlocks)
     val post3 = updateElement(post2, _.label=="entry", groupSenses)
-    val post4 = updateElement(post3, _.label=="sense", groupSenses)
-    XML.save("/tmp/dict.xml", post4)
+    val post4 = updateElement(post3, x => (x.label=="sense") && (x \ "@type").text=="roman" , groupSenses)
+    println("Save to: " + outputFile)
+    XML.save(outputFile, post4)
     // println(p.format(post1))
   }
 }
