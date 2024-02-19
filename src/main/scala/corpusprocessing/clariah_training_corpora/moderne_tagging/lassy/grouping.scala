@@ -4,7 +4,7 @@ object grouping {
   def pushOptionInside[T](o: Option[(T, Int)]): (Option[T], Int) =
     o.map(x => (Some(x._1).asInstanceOf[Option[T]], x._2)).getOrElse((None, 0))
 
-  def groupWithFirst[T](l: Seq[T], f: T => Boolean): Seq[Seq[T]] = {
+  def groupWithFirst[T](l: Seq[T], f: T => Boolean, previousMustNotBeIt: Boolean = false): Seq[Seq[T]] = {
 
     val numberedChild: Array[(T, Int)] = l.zipWithIndex.toArray
 
@@ -13,7 +13,7 @@ object grouping {
       val countDown = (i to 0 by -1)
       val hitIndex = countDown.find(j => {
         val n = numberedChild(j)._1
-        f(n)
+        f(n) && (!previousMustNotBeIt || j ==0 || !f(numberedChild(j-1)._1))
       }).map(k => (numberedChild(k)._1, k))
 
       //pushOptionInside(numberedChild.filter({ case (n, j) => j <= i && f(n) }).lastOption)

@@ -100,8 +100,8 @@ object shortrackonline {
     val htmlToProcess = args.headOption.getOrElse("data/regio.html")
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
-
-    val tasks = List("/tmp/ihclOnly.html" -> fIHCL,"/tmp/allSkaters.html" -> fAll)
+    val fHVHW: Skater => Boolean = x => x.club.toLowerCase().contains("hvhw");
+    val tasks = List("/tmp/ihclOnly.html" -> fIHCL,"/tmp/hvhwOnly.html" -> fHVHW, "/tmp/allSkaters.html" -> fAll)
 
     tasks.foreach({ case (fileName, filter) =>
       val regio = HTML.parse(io.Source.fromFile(htmlToProcess).getLines().mkString("\n"))
@@ -160,7 +160,7 @@ object shortrackonline {
           <div>
             <head>PR's</head>
           {tablez}
-          </div>{if (fileName.toLowerCase.contains("ihcl"))
+          </div>{if (fileName.toLowerCase.contains("ihcl") || fileName.toLowerCase.contains("hvhw")  )
             <div>
               <head>Resultaten per schaatser</head>{allSkaters.grouped(2).map(g => {
               <table>

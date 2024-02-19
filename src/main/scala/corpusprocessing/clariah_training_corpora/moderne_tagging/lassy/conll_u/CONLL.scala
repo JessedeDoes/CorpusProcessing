@@ -73,9 +73,13 @@ object CONLL {
 
   def startsLine(x: String)  = x.startsWith("# sent_id =") || x.startsWith("# S-ID")
   def startsLineSource(x: String)  = x.startsWith("# source =")
+  def isMeta(x: String)  = x.startsWith("#") && x.count(_ == "\t") < 5
   def parse(lines: Stream[String], language:String="Dutch"): Seq[UdSentence] = {
+    // val l1 = lines.zipWithIndex
 
-    val grouped: Seq[Seq[String]] = groupWithFirst[String](lines, x => startsLine(x)) // S-ID in Japanese KTC
+    // lazy val grouped: Seq[Seq[String]] = groupWithFirst[(String,Int)](l1, {case (x,i) => isMeta(x) && (i==0 || !isMeta(lines(i-1)))}).map(l => l.map(_._1))
+
+    val grouped: Seq[Seq[String]] = groupWithFirst[String](lines, x => isMeta(x), previousMustNotBeIt=true) // S-ID in Japanese KTC
 
     val sentences = grouped.flatMap(g => {
       val sent_id: Option[String] = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]", "").replaceAll("\\s+", ""))
