@@ -47,6 +47,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
       children(t).exists(c => cycle(c, c1))
     }
   }
+  lazy val plainText = tokens.zipWithIndex.map({case (t,i) => t.FORM + (if (t.MISC.contains("SpaceAfter=No")) "" else " ") }).mkString("").trim
 
   lazy val sentencePlain = tokens.map(_.FORM).mkString(" ")
   def toXML() = <s xml:lang={language} n={sent_id} xml:id={s"$sent_id.$language"}>
@@ -169,7 +170,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   }
 
   def toCONLL(rebase: Boolean = true) = {
-    (Seq("", s"# sent_id = ${this.sent_id}") ++
+    (Seq("", s"# sent_id = ${this.sent_id}",  s"# text = ${this.plainText}" ) ++
       (if (rebase) rebaseIds() else this).tokens.map(_.toCONLL()))
       .mkString("\n") ++ "\n"
   }
