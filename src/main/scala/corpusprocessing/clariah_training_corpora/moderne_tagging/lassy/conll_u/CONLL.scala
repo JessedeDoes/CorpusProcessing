@@ -103,11 +103,14 @@ object CONLL {
   }
 
   def main(args: Array[String])  = {
-    val sentences = parseFile(args(0))
-    sentences.filter(!_.isValid()).foreach(s => {
+    val in = args(0)
+    val sentences = parseFile(in)
+    val out = new PrintWriter(in.replaceAll("conllu", "fixed.conllu"))
+    sentences.filter(_.isValid()).foreach(s => {
       // println("")
-      s.lines.foreach(println)
+      out.print(s.toCONLL())
     })
+    out.flush()
     //p.foreach(println)
   }
 
