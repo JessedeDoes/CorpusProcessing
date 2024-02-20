@@ -9,8 +9,8 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
     val nRoots = roots.size
     if (!(nRoots == 1))
     {
-      println(s"!!!!!!!!!!!!!!! nRoots != 1: $nRoots (${roots.map(_.ID)})")
-      println(this.toCONLL())
+      // println(s"!!!!!!!!!!!!!!! nRoots != 1: $nRoots (${roots.map(_.ID)})")
+      // println(this.toCONLL())
       false
     } else
     {
@@ -20,8 +20,8 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
       val rootCoversAll = descendant(root) ++ Set(root) == tokens.toSet
 
       if (!rootCoversAll) {
-        println("!!!!!!!!!!!!!!! Unreachable nodes!")
-        println(this.toCONLL())
+        // println("!!!!!!!!!!!!!!! Unreachable nodes!")
+        // println(this.toCONLL())
       } else {
         // println(s"Toppie: ${descendant(root).size}, ${tokens.size}")
       }

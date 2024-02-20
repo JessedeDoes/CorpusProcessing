@@ -18,6 +18,10 @@ object CONLL {
     parse(lines, language).filter(_.isValid())
   }
 
+  def parseFile(f: String): Seq[UdSentence]  = {
+    parseFile(new File(f))
+  }
+
   def splitMaterial(f: java.io.File, dev_p: Double = 0.1, test_p: Double=0.1) = {
 
     val dev = new File(f.getCanonicalPath.replaceAll("\\.([^.]*$)", ".dev.$1"))
@@ -73,7 +77,7 @@ object CONLL {
 
   def startsLine(x: String)  = x.startsWith("# sent_id =") || x.startsWith("# S-ID")
   def startsLineSource(x: String)  = x.startsWith("# source =")
-  def isMeta(x: String)  = x.startsWith("#") && x.count(_ == "\t") < 5
+  def isMeta(x: String)  = x.startsWith("# ") && x.count(_ == "\t") < 5
   def parse(lines: Stream[String], language:String="Dutch"): Seq[UdSentence] = {
     // val l1 = lines.zipWithIndex
 
@@ -83,7 +87,8 @@ object CONLL {
 
     val sentences = grouped.flatMap(g => {
       val sent_id: Option[String] = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]", "").replaceAll("\\s+", ""))
-
+      lazy val headers = g.filter(isMeta)
+      println(headers)
       sent_id.map(x => {
         val text = g.find(_.startsWith("# text")).map(_.replaceAll(".*=", "").trim)
         val tokens = g.filter(_.matches("^[0-9].*")).map(_.split("\\t",-1).toList)
@@ -97,12 +102,20 @@ object CONLL {
     sentences
   }
 
+  def main(args: Array[String])  = {
+    val sentences = parseFile(args(0))
+    sentences.filter(!_.isValid()).foreach(s => {
+      // println("")
+      s.lines.foreach(println)
+    })
+    //p.foreach(println)
+  }
 
 }
 
 
 object Split {
   def main(args: Array[String]) = {
-     CONLL.splitMaterial(new File("/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/AlpinoDepOnly/lassy.deponly.connl-u"))
+     CONLL.splitMaterial(new File(args(0)))
   }
 }
