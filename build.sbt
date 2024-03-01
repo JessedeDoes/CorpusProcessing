@@ -68,6 +68,10 @@ libraryDependencies += "org.apache.commons" % "commons-text" % "1.8"
 
 libraryDependencies += "com.github.nikita-volkov" % "sext" % "0.2.4"
 
+// https://mvnrepository.com/artifact/org.apache.commons/commons-csv
+libraryDependencies += "org.apache.commons" % "commons-csv" % "1.10.0"
+
+
 /*
 https://github.com/iovka/shex-java
 

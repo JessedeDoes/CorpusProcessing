@@ -1,15 +1,11 @@
-package corpusprocessing.kranten.oud
+package corpusprocessing.kranten.oud.dubbelestukjes
 
-import corpusprocessing.kranten.oud.OverlapChecking.N
 import corpusprocessing.kranten.oud.Settings.krantendb
+import corpusprocessing.kranten.oud.dubbelestukjes.OverlapChecking.N
 import database.DatabaseUtilities.Select
-
-import java.io.PrintWriter
-import scala.collection.JavaConverters._
 import utils.alignment.{AlignmentGeneric, SimOrDiff}
 
-import scala.xml._
-import java.io.File
+import java.io.PrintWriter
 import java.util.Comparator
 object comp extends Comparator[(String,String)]
 {
@@ -111,7 +107,7 @@ object eenPaarQueries  {
   val addtext2 = s"update overlappings_$N set text2_org = articles_int.article_text, subheader2 = subheader_int from articles_int where cast(record_id as text) = id2"
 }
 
-import eenPaarQueries._
+import corpusprocessing.kranten.oud.dubbelestukjes.eenPaarQueries._
 
 object OverlapChecking {
 

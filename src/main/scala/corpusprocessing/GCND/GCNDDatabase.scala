@@ -137,8 +137,7 @@ object dumpAlpinoParses {
       // saveAlpinoParses(transcriptie_id = 1, alpinoDumpDir)
 
   }
-
-  }
+}
 
 
 /*

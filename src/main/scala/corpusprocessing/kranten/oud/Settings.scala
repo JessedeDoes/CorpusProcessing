@@ -45,7 +45,16 @@ object Settings {
     ), "with_normalized_subheader")
   )
 
+  val exportQuery_old =
+    """\"Krantenmetadata17eeeuwdefintieveversie1-22021nw\" a,
+      | (select kb_page, kb_issue, subissue from pages_kb) p,
+      | (select kb_issue, subissue, datum_issue, colophon_int,  to_char(datum_issue, 'Day') as weekday from issues_kb ) i
+      | where
+      |   a.kb_page=p.kb_page and p.kb_issue=i.kb_issue and p.subissue=i.subissue"""
 
+  val exportQuery1664 = "articles_int where cast(issue_date as text) ~ '1664'"
+  val exportQuery = "articles_int"
+  val exportQuery_geenDubbel = " (select articles_int.* from articles_int, issues_kb_fixed where articles_int.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x" // deze wordt nu gebruik
 }
 
 /*

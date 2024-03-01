@@ -108,8 +108,9 @@ object CONLL {
     val out = new PrintWriter(in.replaceAll("conllu", "fixed.conllu"))
     sentences.filter(_.isValid()).foreach(s => {
       // println("")
-      out.print(s.toCONLL())
+      out.print(s.toCONLL(rebase = false))
     })
+    out.println()
     out.flush()
     //p.foreach(println)
   }

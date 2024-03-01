@@ -48,12 +48,12 @@ where
   a.kb_page=p.kb_page and
   p.kb_issue=i.kb_issue and
   p.subissue=i.subissue and
-  i.issue_handled and (not i.wegermee) and i.datum_issue is not null
+  i.issue_handled and (not i.wegermee) and i.datum_issue is not null and not (i.dubbel_mag_weg)
   and not (record_id in (select record_id from commentaar_bewerker where kan_weg or issue_mismatch))
   ;
 
 delete from articles_int_extra where record_id in (select record_id from articles_int);
-
+select paper_title, issue_date, length(article_text) from articles_int_extra order by issue_date desc;
 select count(*) from articles_int_extra;
 rollback;
 -- select count(*) from  "Krantenmetadata17eeeuwdefintieveversie1-22021nw";
