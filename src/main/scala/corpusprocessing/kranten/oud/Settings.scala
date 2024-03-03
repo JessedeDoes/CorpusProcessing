@@ -69,4 +69,29 @@ Tijdens een van m'n zoekacties in het Couranten Corpus viel mij op dat ik helema
 Hartelijke groeten,
 Machteld
 
+paper_title              | issue_date
+---------------------------------------+------------
+Opregte Leydse courant                | 1698-08-11
+Oprechte Haerlemsche courant          | 1697-09-12
+Amsterdamse courant                   | 1696-05-01
+Oprechte Haerlemsche courant          | 1693-07-23
+Oprechte Haerlemsche courant          | 1693-05-09
+Oprechte Haerlemsche courant          | 1693-02-19
+Amsterdamse courant                   | 1692-06-17
+Amsterdamse courant                   | 1692-06-14
+Amsterdamse courant                   | 1692-05-31
+Oprechte Haerlemsche courant          | 1688-12-23
+Amsterdamse courant                   | 1672-08-20
+Ordinarisse middel-weeckse courante   | 1665-08-11
+Ordinaris dingsdaeghse courante       | 1650-07-19
+Courante uyt Italien, Duytslandt, &c. | 1621-12-03
+Tĳdinghe uyt verscheyde quartieren    | 1619-06-22
+Tĳdinghe uyt verscheyde quartieren    | 1619-02-10
+Courante uyt Italien, Duytslandt, &c. | 1618-11-30
+Courante uyt Italien, Duytslandt, &c. | 1618-11-23
+Courante uyt Italien, Duytslandt, &c. | 1618-11-16
+Courante uyt Italien, Duytslandt, &c. | 1618-06-22
+Courante uyt Italien, Duytslandt, &c. | 1618-06-15
+
+
  */

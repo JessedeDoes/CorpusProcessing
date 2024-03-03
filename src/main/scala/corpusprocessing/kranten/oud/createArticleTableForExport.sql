@@ -1,7 +1,13 @@
 start transaction;
 drop table if exists articles_int_extra;
 
-create table articles_int_extra (
+update issues_kb_fixed set dubbel_mag_weg=true from issues_kb_fixed i
+where issues_kb_fixed.issue_handled and i.issue_handled and not issues_kb_fixed.dubbel_mag_weg
+ and i.datum_issue=issues_kb_fixed.datum_issue and i.paper_title_int = issues_kb_fixed.paper_title_int
+ and (i.text_length > issues_kb_fixed.text_length or (i.text_length > issues_kb_fixed.text_length and i.tellertje > issues_kb_fixed.tellertje));
+
+drop table if exists articles_int_extra;
+create  table articles_int_extra (
         record_id text primary key,
         kb_article_id text,
         kb_issue text,
@@ -53,7 +59,8 @@ where
   ;
 
 delete from articles_int_extra where record_id in (select record_id from articles_int);
-select paper_title, issue_date, length(article_text) from articles_int_extra order by issue_date desc;
+select distinct paper_title, issue_date from articles_int_extra order by issue_date desc;
 select count(*) from articles_int_extra;
-rollback;
+-- create table articles_int_more as (select * from articles_int) union (select * from articles_int_extra);
+commit;
 -- select count(*) from  "Krantenmetadata17eeeuwdefintieveversie1-22021nw";
