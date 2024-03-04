@@ -21,7 +21,13 @@ create  table articles_int_extra (
         tekstsoort text,
         header text,
         subheader text,
-        article_text text
+        article_text text,
+         plaats_int text,
+         land_int     text,
+         tekstsoort_int text,
+         land_header    text,
+         header_int     text,
+         subheader_int text
 );
 
 insert into articles_int_extra
@@ -61,6 +67,11 @@ where
 delete from articles_int_extra where record_id in (select record_id from articles_int);
 select distinct paper_title, issue_date from articles_int_extra order by issue_date desc;
 select count(*) from articles_int_extra;
--- create table articles_int_more as (select * from articles_int) union (select * from articles_int_extra);
+update articles_int_extra set tekstsoort_int=tekstsoort;
+update articles_int_extra set plaats_int=plaats;
+update articles_int_extra set land_int=land;
+update articles_int_extra set header_int=header;
+update articles_int_extra set subheader_int=subheader;
+create view articles_int_more as (select * from articles_int) union (select * from articles_int_extra);
 commit;
 -- select count(*) from  "Krantenmetadata17eeeuwdefintieveversie1-22021nw";

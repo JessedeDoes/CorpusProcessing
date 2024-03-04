@@ -13,11 +13,11 @@ case class City(land: String, plaats: String, spelling: String, id:Int) {
   override def toString: String = s"$plaats/$land".replaceAll("\\s+", " ")
 }
 
-case class Node(spelling: String, next: Map[String,Node] = Map.empty, cities: Set[City] = Set.empty) {
+case class GeoNode(spelling: String, next: Map[String,GeoNode] = Map.empty, cities: Set[City] = Set.empty) {
   lazy val unique_cities = cities.groupBy(x => (x.land, x.plaats)).values.map(_.head).toSet
 }
 
-case class Match(a: Article, hit: Seq[(Int,Node)], tokens: Seq[Tokenizer.Token]) {
+case class Match(a: Article, hit: Seq[(Int,GeoNode)], tokens: Seq[Tokenizer.Token]) {
   def cities = hit.last._2.unique_cities
   def matched_form = hit.tail.map{ case (i,n) => tokens(i).toString }.mkString(" ")
   def subMatchOf(m: Match) = hit.map(_._1).toSet.subsetOf(m.hit.map(_._1).toSet)
@@ -30,33 +30,33 @@ object Plaatsnamen {
     Select(
        r => City(r.getString("land"), r.getString("plaats"), r.getString("spelling"), r.getInt("id")), "cities_rob where ok")) //  where (not fishy) or changed"))
 
-  def oneToNode(c: City) : Node = {
+  def oneToNode(c: City) : GeoNode = {
     val tokens = Tokenizer.tokenize(c.spelling).reverse
-    val n0 = Node(tokens(0).token.toLowerCase(), cities = Set(c))
-    tokens.tail.foldLeft(n0){case (n,t) => Node(t.token.toLowerCase, Map(n.spelling.toLowerCase -> n))}
+    val n0 = GeoNode(tokens(0).token.toLowerCase(), cities = Set(c))
+    tokens.tail.foldLeft(n0){case (n,t) => GeoNode(t.token.toLowerCase, Map(n.spelling.toLowerCase -> n))}
   }
 
 
-  def add(m: Map[String, Node], n: Node): Map[String,Node] = {
+  def add(m: Map[String, GeoNode], n: GeoNode): Map[String,GeoNode] = {
     if (m.contains(n.spelling)) {
       // println("adding: "  + n)
       val n0 = m(n.spelling)
       val mNew = n.next.foldLeft(n0.next){case (m1,(k,n)) => add(m1,n)}
-      val nNew = Node(n.spelling, mNew, cities = n0.cities ++ n.cities)
+      val nNew = GeoNode(n.spelling, mNew, cities = n0.cities ++ n.cities)
       (m - n.spelling) + (nNew.spelling -> nNew)
     } else m + (n.spelling -> n)
   }
 
-  def addCity(m: Map[String,Node], c: City): Map[String,Node] = add(m, oneToNode(c))
+  def addCity(m: Map[String,GeoNode], c: City): Map[String,GeoNode] = add(m, oneToNode(c))
 
-  lazy val cityTree: Map[String,Node] = cities.foldLeft(Map.empty[String,Node]){case (m,c ) => addCity(m,c)}
+  lazy val cityTree: Map[String,GeoNode] = cities.foldLeft(Map.empty[String,GeoNode]){case (m,c ) => addCity(m,c)}
   lazy val cityMap = cityTree
-  lazy val nodeZero = Node("0", cityTree)
+  lazy val nodeZero = GeoNode("0", cityTree)
 
   def findCity(a : Article)  = {
     val tokens = Tokenizer.tokenize(a.subheader)
 
-    def extend(l: Seq[(Int,Node)], i: Int): Set[Seq[(Int, Node)]] = {
+    def extend(l: Seq[(Int,GeoNode)], i: Int): Set[Seq[(Int, GeoNode)]] = {
       if (i >= tokens.size) Set.empty else {
         val t = tokens(i).token.toLowerCase
         val (i0,cur) = l.last
@@ -68,7 +68,7 @@ object Plaatsnamen {
       }
     }
 
-    val hits: Seq[Seq[(Int,Node)]] = tokens.indices.flatMap(i => extend(Seq(i -> nodeZero), i)).filter(l => l.nonEmpty && l.tail.nonEmpty && l.last._2.cities.nonEmpty)
+    val hits: Seq[Seq[(Int,GeoNode)]] = tokens.indices.flatMap(i => extend(Seq(i -> nodeZero), i)).filter(l => l.nonEmpty && l.tail.nonEmpty && l.last._2.cities.nonEmpty)
     val matches = hits.map(Match(a, _, tokens))
     val maximal_matches = matches.filter(m => !matches.exists(m1 => m.properSubmatchOf(m1)))
     val cities = hits.flatMap(_.last._2.unique_cities).toSet
@@ -155,7 +155,7 @@ object Plaatsnamen {
     // if () println(a.subheader + " ## <" + a.city + "> ---> " + unique_cities.mkString("; "))}
   }
 
-  def printNode(n: Node, indent: Int): Unit =
+  def printNode(n: GeoNode, indent: Int): Unit =
     {
       (0 to indent).foreach(x => print(" "))
       println(n.spelling + " -> " + n.cities.headOption)

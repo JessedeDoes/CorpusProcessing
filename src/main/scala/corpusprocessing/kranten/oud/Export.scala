@@ -7,6 +7,8 @@ import Settings._
 
 import scala.util.{Success, Try}
 
+import TEIScope._
+
 case class ExportTo(exportDir: String) {
 
 
@@ -178,10 +180,10 @@ Indexes:
        </body>
      </text>
     </TEI>
-    (year,tei)
+    (year,setTeiScope(tei))
   },
 
-  exportQuery_geenDubbel.stripMargin)
+    exportQuery_geenDubbelMetWatMeer.stripMargin)
 
   def export(): Unit = {
    // year_map.values.foreach(x => x.println("<teiCorpus>"))
@@ -203,7 +205,7 @@ Indexes:
 }
 
 object Export {
-  val exportDir = "/tmp/Krantjes/" // "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTestGeenDubbel/"
+  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTestGeenDubbel2024/"
   def main(args: Array[String]): Unit = {
     new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }

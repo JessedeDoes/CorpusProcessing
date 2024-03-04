@@ -10,7 +10,7 @@ object renameFilesInZip {
     val zipFilePath = Paths.get(zipfile)
 
     try {
-      val fs = FileSystems.newFileSystem(zipFilePath, null)
+      val fs = FileSystems.newFileSystem(zipFilePath, null.asInstanceOf[ClassLoader])
       try {
         val oldpathInsideZipPath = fs.getPath(olddir)
         if (!Files.exists(Paths.get(newdir))) Files.createDirectory(Paths.get(newdir))
