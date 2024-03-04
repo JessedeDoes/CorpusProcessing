@@ -111,7 +111,7 @@ import corpusprocessing.kranten.oud.dubbelestukjes.eenPaarQueries._
 
 object OverlapChecking {
 
-  val N = 12
+  val N = 8
   val addOriginalText = true
   val log_overlaps = false
 
