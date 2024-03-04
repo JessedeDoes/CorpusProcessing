@@ -1,6 +1,6 @@
 package corpusprocessing.papiaments.woordenboeken
 import scala.xml._
-object jansen {
+object jansen1947 {
 
 
    case class Sense(s: String, entry_id: Int) {
