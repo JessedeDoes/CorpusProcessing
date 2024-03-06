@@ -1,11 +1,12 @@
 package corpusprocessing.wolkencorpus.quotationcorpus
 
+import corpusprocessing.kranten.oud.splitsZeDanTochMaarOp
 import corpusprocessing.wolkencorpus.quotationcorpus.quotationCorpus.getId
 import utils.PostProcessXML
 
 import java.io.File
 import scala.util.Random
-import scala.xml.{Elem, Node, Null, PrefixedAttribute, XML}
+import scala.xml.{Elem, Node, Null, PrefixedAttribute, Text, XML}
 
 case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
 
@@ -97,3 +98,41 @@ object sampleQuotationsPerCenturyMNW extends sampleQuotationsPerCentury(fromDir 
   override val toDir = "/tmp/" // fromDir.replaceAll("/[^/]*/?$", "/CenturySelections")
   override lazy val centuries =  List(14)
 };
+
+object deTokenize {
+
+
+  def deTokenize(s: Elem) = {
+    val tokens = s.descendant.filter(x => Set("pc","w").contains(x.label)).zipWithIndex
+    //println(tokens)
+    val texts =   tokens.flatMap({ case (t, i) =>
+      val pre =  if (i==0 || getId(t).contains("post") || t.label == "pc" || getId(tokens(i-1)._1).contains("pre")) "" else " "
+      val post =  if (i >= tokens.size-1 || t.label == "pc" || getId(t).contains("pre") || i < tokens.size -1 && getId(tokens(i+1)._1).contains("post")) "" else " "
+        Seq(Text(pre), Text(t.text), Text(post))
+    })
+
+    val x = s.copy(child=texts)
+
+    x
+  }
+
+  def main(args:Array[String])  = {
+    val file = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/CenturySelections/Lemmatized/quotations_14.xml"
+    val d = XML.load(file)
+    val d1 = PostProcessXML.updateElement(d, _.label=="q", deTokenize)
+
+    val file1 = file.replaceAll("xml","detokenized.zip")
+
+    val citjes = (d1 \\ "cit").map(c => <TEI>
+      <text>
+        <div>
+          <p>{c}</p>
+        </div>
+      </text>
+    </TEI>)
+
+    splitsZeDanTochMaarOp.writeFiles(new File(file1),citjes.zipWithIndex.iterator, "", file1.replaceAll("/[^/]*$","") + "/")
+    // XML.save(file1,d1)
+    // println(d1)
+  }
+}

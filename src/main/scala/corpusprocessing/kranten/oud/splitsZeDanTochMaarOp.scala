@@ -55,7 +55,7 @@ object splitsZeDanTochMaarOp {
       zipEntry.close()
     }
     root.getFileSystem.close()
-    Console.err.println(s"Done ${f.getName}")
+    Console.err.println(s"Done ${f.getCanonicalPath}")
   }
 
   def main(args: Array[String]): Unit = {
