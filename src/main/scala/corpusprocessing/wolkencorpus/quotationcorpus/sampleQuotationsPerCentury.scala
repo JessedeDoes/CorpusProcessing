@@ -11,7 +11,7 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
 
 
   val toDir = fromDir.replaceAll("/[^/]*/?$", "/CenturySelections")
-  new File(toDir).mkdir()
+
   val maxFiles = Integer.MAX_VALUE
   def allQuotations() = new File(fromDir).listFiles.iterator.take(maxFiles).flatMap(x => XML.loadFile(x) \\ "cit")
 
@@ -23,7 +23,7 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
     id -> (average,nWords)
   }).toMap
 
-  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000, 16 -> 40000, 15 -> 40000)
+  val wordsPerCentury = Map(19 -> 30000, 18 -> 40000, 17 -> 40000, 16 -> 40000, 15 -> 40000, 14 ->50000)
   val wordsPerDecennium = wordsPerCentury.mapValues( _ / 10)
 
   lazy val perDecennium: Map[Double, List[(String, (Double, Int))]] = quotationDates.groupBy({case (id,(d,n)) => 10 * Math.floor(d/10)}).mapValues(l => Random.shuffle(l).toList)
@@ -81,9 +81,11 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
       </text>
     </TEI>
   }
+
   lazy val centuries = List(15,16)
+
   def main(args: Array[String])  = {
-    // perDecennium.foreach({case (d,l) => println(d -> l.take(5))})
+    new File(toDir).mkdir()
     centuries.foreach(c => {
       val corpusje = selectCentury(c)
       XML.save(toDir + "/"  + s"quotations_$c.xml", corpusje, enc="UTF-8")
@@ -91,7 +93,7 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
   }
 }
 
-object sampleQuotationsPerCenturyWNT extends sampleQuotationsPerCentury();
 object sampleQuotationsPerCenturyMNW extends sampleQuotationsPerCentury(fromDir = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/CitatenTDN/") {
-  override  lazy val centuries  = List(14)
-}
+  override val toDir = "/tmp/" // fromDir.replaceAll("/[^/]*/?$", "/CenturySelections")
+  override lazy val centuries =  List(14)
+};
