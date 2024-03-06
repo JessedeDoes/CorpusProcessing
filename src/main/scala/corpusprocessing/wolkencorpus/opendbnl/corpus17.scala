@@ -43,10 +43,12 @@ object corpus17 {
       case _ => false
     }}
 
+  lazy val century = "18"
+  lazy val max = Integer.MAX_VALUE
   def main(args: Array[String]): Unit = {
      // allFiles.filter(select("16")).foreach(f => println(f.getName))
-    val dumpie = new PrintWriter("/tmp/17.txt")
-    allFiles.filter(select("16")).take(300).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
+    val dumpie = new PrintWriter(s"/tmp/$century.txt")
+    allFiles.filter(select(century)).take(max).foreach(f => { dumpie.println(f.getName); dumpie.flush() } )
     dumpie.close()
   }
 }
