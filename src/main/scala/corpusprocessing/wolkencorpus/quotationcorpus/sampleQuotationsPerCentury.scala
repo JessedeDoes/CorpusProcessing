@@ -81,10 +81,10 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
       </text>
     </TEI>
   }
-
+  lazy val centuries = List(15,16)
   def main(args: Array[String])  = {
     // perDecennium.foreach({case (d,l) => println(d -> l.take(5))})
-    List(15,16).foreach(c => {
+    centuries.foreach(c => {
       val corpusje = selectCentury(c)
       XML.save(toDir + "/"  + s"quotations_$c.xml", corpusje, enc="UTF-8")
     })
@@ -92,4 +92,6 @@ case class sampleQuotationsPerCentury(fromDir: String =  addHilexPos.enriched) {
 }
 
 object sampleQuotationsPerCenturyWNT extends sampleQuotationsPerCentury();
-object sampleQuotationsPerCenturyMNW extends sampleQuotationsPerCentury(fromDir = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/CitatenTDN/");
+object sampleQuotationsPerCenturyMNW extends sampleQuotationsPerCentury(fromDir = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenMNW/CitatenTDN/") {
+  override  lazy val centuries  = List(14)
+}
