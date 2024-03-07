@@ -14,8 +14,7 @@ object toTSV {
     def posCompatible(w: Word) = w.pos.startsWith(this.pos)
   }
 
-  def toTsv(f: String) = {
-    val d = XML.load(f)
+  def elemToTsv(d: Elem) = {
     if ((d \\ "s").nonEmpty) {
       (d \\ "s").foreach(s => {
         val tokens = s.descendant.filter(x => Set("w", "pc").contains(x.label))
@@ -36,6 +35,11 @@ object toTSV {
         case x => println(x.text.trim.replaceAll("\\s+", " "))
       })
     }
+  }
+
+  def toTsv(f: String) = {
+    val d = XML.load(f)
+    elemToTsv(d)
   }
 
 
