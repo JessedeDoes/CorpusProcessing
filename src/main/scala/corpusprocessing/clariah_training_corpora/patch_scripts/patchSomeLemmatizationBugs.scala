@@ -64,10 +64,12 @@ object patchSomeLemmatizationBugs {
 
     if (lNew != lemma) {
       println(s"$word $pos $lemma --> $lNew")
-      setAttribute(
-      setAttribute(e, "lemma", s"$lNew"),
-        "lemmaLexicon", if (lexica.isEmpty) "unknown" else lexica)
-    } else e
+    }
+    setAttribute
+        (setAttribute(e, "lemma", s"$lNew"),
+        "lemmaLexicon",
+          if (lexica.isEmpty) "unknown" else lexica)
+
   }
   def patchLemmata(d: Elem)  = {
     PostProcessXML.updateElement(d, _.label=="w",patchLemma)
