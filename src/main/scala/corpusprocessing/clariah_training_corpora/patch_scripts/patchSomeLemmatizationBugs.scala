@@ -65,12 +65,11 @@ object patchSomeLemmatizationBugs {
     if (lNew != lemma) {
       println(s"$word $pos $lemma --> $lNew")
     }
-    setAttribute
-        (setAttribute(e, "lemma", s"$lNew"),
-        "lemmaLexicon",
-          if (lexica.isEmpty) "unknown" else lexica)
 
+    val e1 = setAttribute(e, "lemma", s"$lNew")
+    setAttribute(e1, "lemmaLexicon", if (lexica.isEmpty) "unknown" else lexica)
   }
+
   def patchLemmata(d: Elem)  = {
     PostProcessXML.updateElement(d, _.label=="w",patchLemma)
   }
@@ -85,6 +84,8 @@ object patchSomeLemmatizationBugs {
     // val d1 = patchLemmata(XML.load(testFile))
     // elemToTsv(d1)
     implicit def f(x: String) = new java.io.File(x)
-    ProcessFolder.processFolder("/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Corpus19Tagged/", "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/LemmaPatch/", handle)
+    ProcessFolder.processFolder(
+      "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/Corpus19Tagged/",
+      "/mnt/Projecten/Corpora/Historische_Corpora/DBNL/LemmaPatch/", handle)
   }
 }
