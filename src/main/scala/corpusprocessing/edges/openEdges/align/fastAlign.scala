@@ -13,11 +13,12 @@ import scala.collection.immutable
 /*
 Use fastAlign to add word alignment to verse-aligned bible XML
  */
-case class fastAlign(bookDoc: Elem) {
-  val genesis = "/mnt/Projecten/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/XMLConversie/alignment/en_1890_Darby.Gen--nl_1637_Staten.Gen.aligments.xml"
+case class fastAlign(bookDoc: Elem, unitElement: String="ab") {
+  //val genesis = "/mnt/Projecten/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/XMLConversie/alignment/en_1890_Darby.Gen--nl_1637_Staten.Gen.aligments.xml"
 
 
-  lazy val allVerses = (bookDoc \\ "ab")
+  lazy val allVerses = (bookDoc \\ unitElement)
+
   lazy val id2Verse: Map[String, Node] = allVerses.map(v => getId(v) -> v).toMap
   def getLang(w: Node) = w.attributes.filter(_.key == "lang").value.text
 

@@ -30,6 +30,16 @@ object addWordAlignment {
   }
 }
 
+object addWordAlignmentForAll {
+  def main(args: Array[String])  = {
+    new File(verseAlignedTEIDir).listFiles().foreach(f =>
+    {
+      println(f.getName)
+      complete_corpus.addWordAlignment(f.getName.replaceAll(".xml", ""), f.getCanonicalPath)
+    })
+  }
+}
+
 object gesleutel {
   def main(args: Array[String]) = {
     /// smaller_sample.printBookAlignments()

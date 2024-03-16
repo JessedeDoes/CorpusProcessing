@@ -11,7 +11,7 @@ import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.g
 import makeWordIdsGloballyUnique._
 case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
-  lazy val allAlignments = SetOfAlignments(this, alignment_files)
+  lazy val allAlignments: SetOfAlignments = SetOfAlignments(this, alignment_files)
 
 
   lazy val bibles: List[Bible] = {
@@ -45,9 +45,9 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
 
     val bookXML = XML.load(fileName)
 
-    val  dBooksIncluded = includeBooks(bookXML, fileName)
+    val  dBooksIncluded = includeBooks(bookXML, fileName) // dit is verkeerde logica, beter hele bijbel per talenpaar in plaats van alle taalparen per bijbel
 
-    val dUniqueIds = dBooksIncluded // makeIdsGloballyUnique(dBooksIncluded)
+    val dUniqueIds: Elem = dBooksIncluded // makeIdsGloballyUnique(dBooksIncluded)
 
     val wordAligner = align.fastAlign(dUniqueIds)
     val start = System.currentTimeMillis()
