@@ -2,6 +2,8 @@ package corpusprocessing.kranten.oud.dubbelestukjes
 import corpusprocessing.kranten.oud.Settings.krantendb
 import corpusprocessing.kranten.oud.dubbelestukjes.OverlapChecking.N
 import database.DatabaseUtilities.Select
+
+import scala.collection.immutable
 object nogwatgedoe {
   var booHoo = 0
   val showMe = "ddd:010411954:mpeg21:a0001"
@@ -23,9 +25,10 @@ object nogwatgedoe {
 
   case class SubArticle(record_id: String, kb_article_id: String, id: Int, subheader: String, text: String,
                         start_index: Option[Int]  = None,
+                        end_index: Option[Int]  = None,
                         matched_prefix: Option[String]  = None)
   {
-    lazy val match_info = s"start_index: $start_index, matched_prefix: ${matched_prefix.getOrElse("<None>").take(10)}..."
+    lazy val match_info = s"start_index: $start_index, end_index: $end_index matched_prefix: ${matched_prefix.getOrElse("<None>").take(10)}..."
   }
 
 
@@ -46,6 +49,7 @@ object nogwatgedoe {
 
   def findLongestMatchIn(str: String, s: SubArticle): SubArticle= {
     val search = s.text.trim
+
     val matching: Option[(Int, Int, String)] = (search.size - 1 to 5 by -1).iterator.map(len => {
       val prefix = search.substring(0, len)
       (str.indexOf(prefix), len, prefix)
@@ -59,28 +63,30 @@ object nogwatgedoe {
 
       // Console.err.println(s"looking for $eersteStukjes")
       val matched = subarticles.map(x => findLongestMatchIn(coarseArticle,x)) // .toList.sorted
-      matched.sortBy(_.start_index.getOrElse(-1))
+      val r: Seq[SubArticle] = matched.sortBy(_.start_index.getOrElse(-1))
+      val z = r.indices.map(i => {
+        val e = if (i < r.size-1) r(i+1).start_index else Some(coarseArticle.size)
+        r(i).copy(end_index = e)
+      })
+      z.foreach(x => Console.err.println(x.match_info))
+      z
    }
 
-  def resplitArticles(article_id: String, coarseArticles: List[(String,Int)])  = {
+  def resplitArticles(article_id: String, coarseArticles: List[(String,Int)]): Seq[SubArticle] = {
 
     println(s"\n\n###############################################################################################\n################$article_id (${coarseArticles.size})  ####################")
 
-    coarseArticles.foreach({
+    coarseArticles.flatMap({
       case (a,n) =>
 
-
         val subarticles = splitArticleMap(article_id -> n)
-
 
         // val resplit = articles.flatMap(a => a.replaceAll(subheaderPattern, "ZxZxZx<subheader>$1</subheader>").split("ZxZxZx"))
 
         val matchedSubArticles: Seq[SubArticle] = findSubArticleStartIn(a, subarticles)
-        val matchable = matchedSubArticles.forall(s => s.start_index.nonEmpty)
-
+        val matchable = matchedSubArticles.forall(s => s.start_index.nonEmpty && s.end_index.nonEmpty)
 
         if (!matchable) {
-          // Console.err.println("Bohhoooooooooooooooooooooooooo   !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
           if (subarticles.size > 1) booHoo = booHoo + 1
         }
 
@@ -91,31 +97,41 @@ object nogwatgedoe {
         val z = a.replaceAll("<vtab/>", "\n")
 
         println(s"\n===================================== $n /Match$matchable: ${subarticles.size} =? ${matchedSubArticles.size} ${matchedSubArticles.map(_.start_index)} / ============= \n") // + z
-        println(z)
 
         if (matchable) {
-          val matchIndexes: Seq[Int] = 0 +: matchedSubArticles.map(_.start_index.get) :+ a.size
+          matchedSubArticles.map({subarticle => {
+            val stukje = a.substring(subarticle.start_index.get, subarticle.end_index.get)
 
-          val stukjes: Seq[String] = matchIndexes.indices
-            .dropRight(1)
-            .map(i => s"$i,${matchIndexes(i)},${matchIndexes(i+1)}:" + a.substring(matchIndexes(i), matchIndexes(i + 1)))
-
-          subarticles.zip(stukjes).foreach({case (subarticle,stukje) => {
-            println(s"//////// ${subarticle.record_id} ${subarticle.subheader} ${subarticle.text.size} ${stukje} ${subarticle.match_info}/////")
-            println("___________ versie in articles_int: ____________")
-            println(s"${subarticle.text.trim}")
-            println("___________ versie in stukje: ____________")
-            println(s"${stukje.trim}")
+            if (stukje.trim.size < subarticle.text.trim.size - 50) {
+              println(s"~~~~~~~~~~~~~~~~~~ ${subarticle.record_id} ${subarticle.subheader} ${subarticle.text.size}  ${subarticle.match_info} ~~~~~~~~~~ ")
+              println("___________ versie in articles_int: ____________")
+              println(s"${subarticle.text.trim}")
+              println("___________ versie in stukje: ____________")
+              println(s"${stukje.trim}")
+            }
+            subarticle.copy(text=stukje)
           }})
-        }
+        } else List()
     })
   }
 
+  def insertChoppedArticles(subarticles: Seq[SubArticle]) = {
+    implicit def xtb(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
+    krantendb.runStatement("create table if not exists articles_resplit (record_id text, content text)")
+    val batchInsertion = krantendb.QueryBatch[SubArticle](s"insert into articles_resplit (record_id, content) values (:record_id, :content)",
+      o => Seq(
+        "record_id" -> o.record_id,
+        "content" -> o.text,
+      )
+    )
+    batchInsertion.insert(subarticles)
+  }
+
   def main(args: Array[String]) : Unit = {
-     coarseArticles
-       .filter(_._1==showMe)
-       .foreach({case (id,l) => resplitArticles(id,l)})
-     //subheaderMap.foreach(println)
+     val adaptedSubArticles = coarseArticles
+       //.filter(_._1==showMe)
+       .flatMap({case (id,l) => resplitArticles(id,l)}).toSeq
+      insertChoppedArticles(adaptedSubArticles)
       println(s"Matches failed: $booHoo")
    }
 }

@@ -72,6 +72,7 @@ update articles_int_extra set plaats_int=plaats;
 update articles_int_extra set land_int=land;
 update articles_int_extra set header_int=header;
 update articles_int_extra set subheader_int=subheader;
+
 create view articles_int_more as (select * from articles_int) union (select * from articles_int_extra);
 commit;
 -- select count(*) from  "Krantenmetadata17eeeuwdefintieveversie1-22021nw";
