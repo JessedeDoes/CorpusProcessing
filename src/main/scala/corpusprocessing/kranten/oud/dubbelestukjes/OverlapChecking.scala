@@ -87,24 +87,28 @@ case class Groepje(kb_article_id: String, articles: List[String], record_ids: Li
 
 
 object eenPaarQueries  {
+
+  lazy val text_field = "article_text_ontdubbeld"
+  lazy val text_field_org = "article_text"
+  lazy val overlap_base_name = "overlap_postfix"
   val check_article_overlap_query =
-    """create temporary view groupie as
+    s"""create temporary view groupie as
      select kb_article_id,
-     array_agg(article_text order by record_id) as articles,
+     array_agg($text_field order by record_id) as articles,
      array_agg(record_id order by record_id) as record_ids,
      array_agg(subheader_int order by record_id) as subheaders
      from articles_int
      where kb_issue in (select kb_issue from issues_kb_fixed where not dubbel_mag_weg)
      group by kb_article_id;"""
 
-  val drop_overlap_table = s"drop table overlappings_$N"
+  val drop_overlap_table = s"drop table ${overlap_base_name}_$N"
   val create_overlap_table =
-    s"""create table overlappings_$N (kb_article_id text, id1 text, id2 text, n text, example text,
+    s"""create table ${overlap_base_name}_$N (kb_article_id text, id1 text, id2 text, n text, example text,
        |text1 text, text2 text,
        |text1_org text, text2_org text,
        |subheader1 text, subheader2 text)""".stripMargin
-  val addtext1 = s"update overlappings_$N set text1_org = articles_int.article_text, subheader1 = subheader_int from articles_int where cast(record_id as text) = id1"
-  val addtext2 = s"update overlappings_$N set text2_org = articles_int.article_text, subheader2 = subheader_int from articles_int where cast(record_id as text) = id2"
+  val addtext1 = s"update ${overlap_base_name}_$N set text1_org = articles_int.$text_field_org , subheader1 = subheader_int from articles_int where cast(record_id as text) = id1"
+  val addtext2 = s"update ${overlap_base_name}_$N set text2_org = articles_int.$text_field_org , subheader2 = subheader_int from articles_int where cast(record_id as text) = id2"
 }
 
 import corpusprocessing.kranten.oud.dubbelestukjes.eenPaarQueries._
@@ -121,7 +125,7 @@ object OverlapChecking {
 
   implicit def xtb(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
 
-  val batchInsertion = krantendb.QueryBatch[Overlap](s"insert into overlappings_$N (kb_article_id, id1, id2, n, example, text1, text2) values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2)",
+  val batchInsertion = krantendb.QueryBatch[Overlap](s"insert into ${overlap_base_name}_$N (kb_article_id, id1, id2, n, example, text1, text2) values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2)",
     o => Seq(
       "kb_article_id" -> o.kb_article_id,
       "id1" -> o.id1,

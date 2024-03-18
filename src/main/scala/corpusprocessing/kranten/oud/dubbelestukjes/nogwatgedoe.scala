@@ -4,9 +4,15 @@ import corpusprocessing.kranten.oud.dubbelestukjes.OverlapChecking.N
 import database.DatabaseUtilities.Select
 
 import scala.collection.immutable
+
+/*
+Deze aanpak kan nog niet tegen subartikels die over de paginagrens lopen......
+Daar moeten we dus afblijven....
+ */
+
 object nogwatgedoe {
   var booHoo = 0
-  val showMe = "ddd:010411954:mpeg21:a0001"
+  val showMe = "ddd:010411970:mpeg21:a0004" // "ddd:010633828:mpeg21:a0013"// "ddd:010411954:mpeg21:a0001"
 
 
   lazy val coarseArticles: Map[String,
@@ -31,7 +37,6 @@ object nogwatgedoe {
     lazy val match_info = s"start_index: $start_index, end_index: $end_index matched_prefix: ${matched_prefix.getOrElse("<None>").take(10)}..."
   }
 
-
   lazy val splitArticleMap: Map[(String, Int), List[SubArticle]] =
     krantendb.slurp(Select(r =>
       SubArticle(
@@ -44,18 +49,15 @@ object nogwatgedoe {
       .groupBy(x => x.kb_article_id -> x.id)
       //.mapValues(l => l.map(_._3).toSet.filter(x => x != null && x.trim.nonEmpty))
 
-
-
-
   def findLongestMatchIn(str: String, s: SubArticle): SubArticle= {
     val search = s.text.trim
-
-    val matching: Option[(Int, Int, String)] = (search.size - 1 to 5 by -1).iterator.map(len => {
+    val minimalMatch = 10
+    val matching: Option[(Int, Int, String)] = (search.size - 1 to minimalMatch by -1).iterator.map(len => {
       val prefix = search.substring(0, len)
       (str.indexOf(prefix), len, prefix)
     }).find( _._1 >= 0)
 
-    s.copy(start_index = matching.map(_._1), matched_prefix = matching.map(_._3))
+    s.copy(start_index = matching.map(_._1), matched_prefix = if (s.matched_prefix.isEmpty) Some(search.take(80).trim.replaceAll("\\s+", " ")) else matching.map(_._3))
     // matching
   }
 
@@ -102,7 +104,7 @@ object nogwatgedoe {
           matchedSubArticles.map({subarticle => {
             val stukje = a.substring(subarticle.start_index.get, subarticle.end_index.get)
 
-            if (stukje.trim.size < subarticle.text.trim.size - 50) {
+            if (true || stukje.trim.size < subarticle.text.trim.size - 50) {
               println(s"~~~~~~~~~~~~~~~~~~ ${subarticle.record_id} ${subarticle.subheader} ${subarticle.text.size}  ${subarticle.match_info} ~~~~~~~~~~ ")
               println("___________ versie in articles_int: ____________")
               println(s"${subarticle.text.trim}")
@@ -111,12 +113,16 @@ object nogwatgedoe {
             }
             subarticle.copy(text=stukje)
           }})
-        } else List()
+        } else  {
+
+          List()
+        }
     })
   }
 
   def insertChoppedArticles(subarticles: Seq[SubArticle]) = {
     implicit def xtb(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
+    krantendb.runStatement("drop table if exists articles_resplit")
     krantendb.runStatement("create table if not exists articles_resplit (record_id text, content text)")
     val batchInsertion = krantendb.QueryBatch[SubArticle](s"insert into articles_resplit (record_id, content) values (:record_id, :content)",
       o => Seq(
@@ -125,13 +131,21 @@ object nogwatgedoe {
       )
     )
     batchInsertion.insert(subarticles)
+    List("articles_int", "articles_int_extra").foreach( t => {
+      krantendb.runStatement(s"update $t set article_text_ontdubbeld=article_text")
+      krantendb.runStatement(s"update $t set article_text_ontdubbeld = articles_resplit.content from articles_resplit where articles_resplit.record_id=$t.record_id")
+    })
   }
 
+  val sample = true
   def main(args: Array[String]) : Unit = {
      val adaptedSubArticles = coarseArticles
-       //.filter(_._1==showMe)
+       .filter(!sample || _._1==showMe)
        .flatMap({case (id,l) => resplitArticles(id,l)}).toSeq
-      insertChoppedArticles(adaptedSubArticles)
+      if (!sample)  {
+        insertChoppedArticles(adaptedSubArticles)
+        OverlapChecking.main(Array())
+      }
       println(s"Matches failed: $booHoo")
    }
 }

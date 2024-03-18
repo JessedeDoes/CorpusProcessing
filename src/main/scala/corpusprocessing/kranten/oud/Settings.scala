@@ -45,6 +45,7 @@ object Settings {
     ), "with_normalized_subheader")
   )
 
+  val article_text_field = "article_text_ontdubbeld"
   val exportQuery_old =
     """\"Krantenmetadata17eeeuwdefintieveversie1-22021nw\" a,
       | (select kb_page, kb_issue, subissue from pages_kb) p,
