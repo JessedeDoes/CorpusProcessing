@@ -9,6 +9,7 @@ object Settings {
    val baseDir = if (rekenserver) baseDirAtWork else baseDirAtWork
    val outputTEIDir =  s"${projecten}/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/TEI/"  // /mnt/Projecten//Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/TEI/alignments/
    val verseAlignedTEIDir = outputTEIDir + "alignments/"
+
    // deze twee alleen gebruikt voor expandxinclude
 
    val teiDir = "/media/jesse/Data/Corpora/Edges/TEI/"

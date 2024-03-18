@@ -9,9 +9,10 @@ import utils.PostProcessXML
 import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
 
 import makeWordIdsGloballyUnique._
-case class BibleCorpus(baseDir: String, alignment_files: Set[String]) {
+case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlignedTEIDir: Option[String] = None) {
 
-  lazy val allAlignments: SetOfAlignments = SetOfAlignments(this, alignment_files)
+  lazy val allAlignments: SetOfAlignments =
+    SetOfAlignments(this, alignment_files, verseAlignedTEIDir)
 
 
   lazy val bibles: List[Bible] = {

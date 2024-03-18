@@ -72,7 +72,7 @@ object DatabaseUtilities
   {
     val fieldNames: scala.collection.mutable.ListBuffer[String] = new scala.collection.mutable.ListBuffer[String]()
     def getString(s:String, s1: Option[String] = None):String = {
-     Console.err.println(s"getString in Mocky2: $s $s1")
+     //Console.err.println(s"getString in Mocky2: $s $s1")
       fieldNames.append(s1.getOrElse("\"" + s + "\"")); s"wereldvrede_$s"}
     def getStringNonNull(s:String):String = getString(s)
     def getInt(s:String):Int = {fieldNames.append(s); 42}
@@ -98,7 +98,8 @@ object DatabaseUtilities
   implicit def doeHet[T](s:Select[T]): AlmostQuery[T] =
   {
     val m = new Mocky2
-    Console.err.println("!!!!Creating query for $s " + s.mapping(m))
+    val message = "!!!!Creating query for $s " + s.mapping(m)
+    //Console.err.println(message)
     val gr = ResultMapping[T](r => s.mapping(Mocky1(r)))
     val query = "select " + m.fieldNames.mkString(", ") + " from " + s.from
     db => db.createQuery(query).map(gr)

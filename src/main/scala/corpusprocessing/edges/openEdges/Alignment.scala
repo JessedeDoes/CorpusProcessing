@@ -32,6 +32,20 @@ object Alignment {
     source.close()
     Alignment(correspondences)
   }
+  import scala.xml._
+  def readCorrespondencesFromTEI(f: File) = {
+
+    val d = XML.loadFile(f)
+    val correspondences = (d \\ "linkGrp").map(
+      lg => {
+        val links = (lg \ "link").filter(x => (x \ "@type").text == "verse-alignment").map(l => {
+          val c = (l \ "@target").text.split("\\s+").map(_.replaceAll("#", ""))
+          c(0) -> c(1)
+        })
+
+      }
+    )
+  }
 }
 
 case class Alignment(correspondences: Set[Correspondence]) {
@@ -68,7 +82,14 @@ case class Alignment(correspondences: Set[Correspondence]) {
   def filterByBook(bookName: String): Set[Correspondence] = correspondences.filter(_.v1.exists(_.book == bookName))
 }
 
-case class SetOfAlignments(bible: BibleCorpus, paths: Set[String]) {
-  lazy val alignments = paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
+case class SetOfAlignments(bible: BibleCorpus,  paths: Set[String], verseAlignedTEIDir: Option[String] = None) {
+  lazy val alignments: Set[Alignment] =
+    if (verseAlignedTEIDir.nonEmpty) {
+      val xmlFiles = new java.io.File(verseAlignedTEIDir.get).listFiles().filter(_.getName.endsWith(".xml"))
+      //xmlFiles.map(Alignment.readCorrespondencesFromAlignedTEI())
+      paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
+    }
+     else
+     paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
   lazy val bibles: Set[(String, String)] = alignments.flatMap(_.bibles)
 }
