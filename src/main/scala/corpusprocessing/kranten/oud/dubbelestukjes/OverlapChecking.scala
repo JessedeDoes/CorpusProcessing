@@ -19,113 +19,27 @@ object comp extends Comparator[(String,String)]
   }
 }
 
-case class Overlap(g: Groepje, kb_article_id: String, id1: String, id2: String, evidence: Set[List[String]]) {
-  override def toString() = s"$kb_article_id:($id1 $id2) [${evidence.size}] ${evidence.toList.sortBy(x => x.toString).head.mkString(" ")}"
-  lazy val art1 = g.artMap(id1)
-  lazy val art2 = g.artMap(id2)
-
-  lazy val subheader1 = g.subheaders(id1)
-  lazy val subheader2 = g.subheaders(id2)
-
-  def align() = {
-    def z(x: List[String]) = x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({case (y,i) => (i.toString,y)})
-    val a = new AlignmentGeneric(comp) // dit werkt niet...
-
-    val z1 = z(art1.split("\\s+").toList)
-    val z2 = z(art2.split("\\s+").toList)
-
-    val chunks: Seq[SimOrDiff[(String, String)]] = a.findChunks(z1, z2)
-
-    val lr: Seq[(Boolean, List[(String, String)], List[(String, String)], Int)] = chunks.map(
-      c => {
-        //Console.err.println(c)
-        val left = z1.slice(c.leftStart, c.leftEnd)
-        val right = z2.slice(c.rightStart, c.rightEnd)
-        (c.isSimilarity, left, right, c.leftStart)
-      })
-
-    val ltext = lr.map(c => {
-      val l = c._2.map(_._2).mkString(" ")
-       if (c._1) "<b>" + l + "</b>" else l
-    })
-
-    val rtext = lr.map(c => {
-      val l = c._3.map(_._2).mkString(" ")
-      if (c._1) "<b>" + l + "</b>" else l
-    })
-
-    (ltext, rtext)
-  }
-
-  lazy val alignment = align()
-  lazy val art1_aligned = s"<h2>$subheader1</h2>" + alignment._1.mkString(" ")
-  lazy val art2_aligned = s"<h2>$subheader2</h2>" + alignment._2.mkString(" ")
-  // hier nog een difje aan toevoegen .......
-}
-
-case class Groepje(kb_article_id: String, articles: List[String], record_ids: List[String], subheaderz: List[String]) {
-
-  def n_grams(s: String, n: Int): Set[List[String]] = s.split("\\s+").toList.sliding(n).toSet
-
-  val arts: Seq[(String, String)] = record_ids.zip(articles)
-  val artMap = arts.toMap
-  val subheaders = record_ids.zip(subheaderz).toMap
-
-  def overlaps_0(n: Int): Seq[(String, Seq[(String, Set[List[String]])])] = {
-    arts.map(a => {
-       val g = n_grams(a._2, n)
-       val overlappies: Seq[(String, Set[List[String]])] = arts.filter(_._1 != a._1).map({case (id1, s1) =>
-          id1 -> n_grams(s1,n).intersect(g)
-       }).filter(_._2.nonEmpty)
-      a._1 -> overlappies
-     }
-    ).filter(_._2.nonEmpty)
-  }
-
-  def overlaps(n: Int): Set[Overlap] = overlaps_0(n).flatMap({case (id, l)  => l.map({case (id1, s) => Overlap(this, kb_article_id, id, id1, s) })}).toSet.filter(o => o.id2 > o.id1)
-}
-
-
-object eenPaarQueries  {
-
-  lazy val text_field = "article_text_ontdubbeld"
-  lazy val text_field_org = "article_text"
-  lazy val overlap_base_name = "overlap_postfix"
-  val check_article_overlap_query =
-    s"""create temporary view groupie as
-     select kb_article_id,
-     array_agg($text_field order by record_id) as articles,
-     array_agg(record_id order by record_id) as record_ids,
-     array_agg(subheader_int order by record_id) as subheaders
-     from articles_int
-     where kb_issue in (select kb_issue from issues_kb_fixed where not dubbel_mag_weg)
-     group by kb_article_id;"""
-
-  val drop_overlap_table = s"drop table ${overlap_base_name}_$N"
-  val create_overlap_table =
-    s"""create table ${overlap_base_name}_$N (kb_article_id text, id1 text, id2 text, n text, example text,
-       |text1 text, text2 text,
-       |text1_org text, text2_org text,
-       |subheader1 text, subheader2 text)""".stripMargin
-  val addtext1 = s"update ${overlap_base_name}_$N set text1_org = articles_int.$text_field_org , subheader1 = subheader_int from articles_int where cast(record_id as text) = id1"
-  val addtext2 = s"update ${overlap_base_name}_$N set text2_org = articles_int.$text_field_org , subheader2 = subheader_int from articles_int where cast(record_id as text) = id2"
-}
 
 import corpusprocessing.kranten.oud.dubbelestukjes.eenPaarQueries._
 
 object OverlapChecking {
 
-  val N = 8
+  val N = 10
   val addOriginalText = true
   val log_overlaps = false
 
-  lazy val qo = Select(r => Groepje(r.getString("kb_article_id"), r.getStringArray("articles").toList, r.getStringArray("record_ids").toList, r.getStringArray("subheaders").toList), "groupie" )
+  lazy val qo = Select(r => ArticleGroup(r.getString("kb_article_id"), r.getStringArray("articles").toList, r.getStringArray("record_ids").toList, r.getStringArray("subheaders").toList), "groupie" )
 
   lazy val overlap_check = krantendb.iterator(qo)
 
-  implicit def xtb(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
+  implicit def s2b(p: (String, String)): krantendb.Binding = krantendb.Binding(p._1, p._2)
+  implicit def itb(p: (String, Int)): krantendb.Binding = krantendb.Binding(p._1, p._2)
 
-  val batchInsertion = krantendb.QueryBatch[Overlap](s"insert into ${overlap_base_name}_$N (kb_article_id, id1, id2, n, example, text1, text2) values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2)",
+  val batchInsertion = krantendb.QueryBatch[Overlap](
+    s"""insert into ${overlap_base_name}_$N
+       |(kb_article_id, id1, id2, n, example, text1, text2, matchOrder)
+       |values (:kb_article_id, :id1, :id2, :n, :example, :text1, :text2, :matchOrder)""".stripMargin,
+
     o => Seq(
       "kb_article_id" -> o.kb_article_id,
       "id1" -> o.id1,
@@ -133,10 +47,10 @@ object OverlapChecking {
       "n" -> o.evidence.size.toString,
       "example" -> o.evidence.toList.sortBy(x => x.toString).head.mkString(" "),
       "text1" -> o.art1_aligned,
-      "text2" -> o.art2_aligned
+      "text2" -> o.art2_aligned,
+      "matchOrder" -> o.positionOf(o.id2)
     )
   )
-
 
   def logOverlaps(all_overlaps: Stream[Set[Overlap]]) = {
     val log = new PrintWriter("/tmp/couranten_overlaps.txt")
@@ -149,15 +63,39 @@ object OverlapChecking {
     log.close()
   }
 
+  def count(S: Set[Overlap], id: String) = S.count(o => o.id1 == id || o.id2 == id)
+
+  def size(S: Set[Overlap], id: String) = S.filter(_.id1 == id).map(_.art1).union(S.filter(_.id2 == id).map(_.art2)).headOption.map(_.length).getOrElse(0)
+  def identifyCulprits(S: Set[Overlap]): Set[String] = {
+
+    val ids = S.flatMap(o => Set(o.id1,o.id2))
+    val multiple  = ids.filter(count(S,_) > 1)
+    if (false && multiple.nonEmpty) multiple else Set(ids.toList.maxBy(size(S, _)))
+  }
+
+  def postProcessOverlaps(S: Set[Overlap]): Set[Overlap] = {
+    val culprits = identifyCulprits(S)
+    def maybeSwap(o: Overlap)  = {
+      if (culprits.contains(o.id2) && !culprits.contains(o.id1) || size(S,o.id2)  > size(S,o.id1)) o.swap() else o
+    }
+    val z = S.filter(o => culprits.contains(o.id1)).groupBy(_.id1).mapValues(g => {
+      val allRelated: List[(String, String)] = g.map(o => o.id2 -> o.art2).toSet.toList
+      g.map(_.copy(allRelated = allRelated))
+    }).values.flatten.toSet
+    z
+  }
+
   def main(args: Array[String]) = {
 
     krantendb.runStatement(drop_overlap_table)
     krantendb.runStatement(check_article_overlap_query)
     krantendb.runStatement(create_overlap_table)
 
-    val all_overlaps: Stream[Set[Overlap]] = overlap_check.map(g => g.overlaps(N)).filter(_.nonEmpty).toStream
+    lazy val all_overlaps: Stream[Set[Overlap]] = overlap_check.map(g => g.overlaps(N)).filter(_.nonEmpty).toStream
+    lazy val filtered_overlaps = all_overlaps.map(s => postProcessOverlaps(s))
 
-    batchInsertion.insert(all_overlaps.flatMap(identity))
+    batchInsertion.insert(filtered_overlaps.flatten)
+    krantendb.runStatement(create_grouped_view)
 
     if (addOriginalText) {
       krantendb.runStatement(addtext1)
@@ -165,7 +103,9 @@ object OverlapChecking {
     }
 
     if (log_overlaps)
-      logOverlaps(all_overlaps)
+      logOverlaps(filtered_overlaps)
+
+    println(create_grouped_view)
   }
 }
 
