@@ -89,7 +89,7 @@ case class Overlap(g: ArticleGroup, kb_article_id: String, id1: String, id2: Str
         })
 
       val ltext = lr.map(c => {
-        if (c._1) c._2.foreach(x => m(x._1) = m.getOrElse(x._1, Set()) += k)
+        if (c._1) c._2.foreach(x => m(x._1) = m.getOrElse(x._1, Set()) + k)
         val l = c._2.map(x => x._1 + ":" + x._2).mkString(" ")
         if (c._1) "<b>" + l + "</b>" else l
       })
