@@ -6,7 +6,7 @@ import java.io.File
 case class DcMeta(d: Elem, f: File) {
   val dcx = (d \ "dcx").headOption.getOrElse(<bummer/>)
 
-  lazy val fields = dcx.child.filter(_.isInstanceOf[Elem]).map(e => e.label -> e.text).toMap ++ Map("pageFileName" -> f.getCanonicalPath)
+  lazy val fields = dcx.child.filter(_.isInstanceOf[Elem]).map(e => e.label -> e.text.trim).toMap ++ Map("pageFileName" -> f.getCanonicalPath)
 
   val title = fields.getOrElse("title", "?")
 
@@ -19,7 +19,7 @@ case class DcMeta(d: Elem, f: File) {
 
 object makegroupedLists {
   import scala.xml._
-  val pageDirEnhanced = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/"
+  val pageDirEnhanced = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/Page/"
 
   def main(args:Array[String])  = {
 
@@ -32,17 +32,23 @@ object makegroupedLists {
     groups.foreach({
       case (k,l) => {
         val fields = l.head.fields
-        val title = fields("title") + ":" + fields("date")
+        if (fields.contains("title")) {
+          val title = fields("title").trim + ":" + fields("date").trim
+          val titleEscaped = title.replaceAll("[^A-Za-z0-9:_]", "_")
+          val list = <pages group={title}>
+            {l.map(x => <page>
+              {x.fields("pageFileName")}
+            </page>)}
+          </pages>
 
-        val list = <pages group={title}>
-          {l.map(x => <page>{x.fields("pageFileName")}</page>)}
-        </pages>
+          if (l.size > 1) println(list)
 
-        if (l.size > 1) println(list)
-
-        val pw = new java.io.PrintWriter(s"/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/DDDGroupedLists/$title.xml")
-        pw.print(list.toString)
-        pw.close()
+          val pw = new java.io.PrintWriter(s"/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/DDDGroupedLists/$titleEscaped.xml")
+          pw.print(list.toString)
+          pw.close()
+        } else {
+          Console.err.println("Geen titel (en dus vermoedelijk geen dcMeta): " + l)
+        }
       }
     })
   }
