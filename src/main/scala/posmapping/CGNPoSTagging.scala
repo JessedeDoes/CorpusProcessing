@@ -264,12 +264,21 @@ class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 {
   val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
 
-  if (Tag.findFirstIn(tag).isEmpty)
+  lazy val notAtTag = try {
+    Tag.findFirstIn(tag).isEmpty
+  } catch {
+    case e:Exception =>
+      e.printStackTrace
+      Console.err.println(s"error processing tag '$tag'")
+      true
+  }
+
+  if (notAtTag)
     {
       Console.err.println(s"PAS OP Mislukte tag: $tag")
     }
 
-  val Tag(pos,feats) = if (Tag.findFirstIn(tag).isEmpty) "SPEC(overig)" else tag
+  val Tag(pos,feats) = if (notAtTag) "SPEC(overig)" else tag
 
   val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
 
