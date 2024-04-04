@@ -129,6 +129,7 @@ object Metadata {
                            |    AND tc.table_schema='public'
                            |""".stripMargin
 
+     db.runStatement(s"drop view inter_table_relations")
      db.runStatement(s"create view inter_table_relations as $relationQuery")
 
 
@@ -161,7 +162,7 @@ object Metadata {
      lazy val transcriptie: Table = zlurp("transcriptie")
      lazy val transcriptie__bestand: Table = zlurp("transcriptie__bestand")
      lazy val transcriptie__persoon: Table = zlurp("transcriptie__persoon")
-
+     lazy val transcriptie_status: Table = zlurp("transcriptie_status")
 
      /*
      object auxiliaryRelations  {
@@ -241,7 +242,7 @@ object Metadata {
 
        // transcriptie
        SimpleRelation("transcriptieXopname", transcriptie, opname, "opname_id", "opname_id"),
-
+       SimpleRelation("transcriptieXstatus", transcriptie, transcriptie_status, "transcriptie_status_id", "transcriptie_status_id")
      ) ++ allRelations.possibleCrosses
    }
 

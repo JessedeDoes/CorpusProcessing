@@ -59,7 +59,7 @@ object loadTokensFromTaggedTEI {
 
   def main(args: Array[String]) = {
     db.runStatement("create table if not exists tagged_tokens (elan_annotatie_id integer, tokens text)")
-    db.runStatement("create view elan_annotatie_plus as select elan_annotatie.*, tagged_tokens.tokens from elan_annotatie left join tagged_tokens on tagged_tokens.elan_annotatie_id=elan_annotatie.elan_annotatie_id;")
+    db.runStatement("create view elan_annotatie_plus as select elan_annotatie.*, tagged_tokens.tokens as tagged_tokens from elan_annotatie left join tagged_tokens on tagged_tokens.elan_annotatie_id=elan_annotatie.elan_annotatie_id;")
     db.runStatement("delete from tagged_tokens")
     val tokens = getTokens(dir)
 
