@@ -37,7 +37,7 @@ object Preparation {
       |""".stripMargin.split(";")
 }
 object GCNDDatabase {
-  val doAll = false
+  val doAll = true
   val maxTranscriptions = if (doAll) Integer.MAX_VALUE else 30
   lazy val pretty = new PrettyPrinter(100,4)
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
