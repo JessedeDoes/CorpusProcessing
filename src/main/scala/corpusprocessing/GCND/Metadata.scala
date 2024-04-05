@@ -152,7 +152,10 @@ object Metadata {
      lazy val plaats: Table = zlurp("plaats")
      lazy val regio: Table = zlurp("regio")
      lazy val land: Table = zlurp("land")
+     lazy val dialectgebied: Table = zlurp("dialectgebied")
+     lazy val dialectgebied_ruw: Table = zlurp("dialectgebied_ruw")
      lazy val beroep: Table = zlurp("beroep")
+     lazy val mobiliteit: Table = zlurp("mobiliteit")
      lazy val bestand: Table = zlurp(tableName = "bestand")
      lazy val gender: Table = zlurp("gender")
 
@@ -224,6 +227,7 @@ object Metadata {
 
        SimpleRelation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        SimpleRelation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
+       SimpleRelation("persoonXmobiliteit", persoon, mobiliteit, "mobiliteit_id", "mobiliteit_id"),
 
        r("persoonXpersoon__woonplaats") x r("persoon__woonplaatsXplaats"),
        r("persoonXpersoon__schoolplaats") x r("persoon__schoolplaatsXplaats"),
@@ -237,6 +241,8 @@ object Metadata {
        // plaats
        SimpleRelation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
        SimpleRelation("plaatsXland", plaats, land, "land_id", "land_id"),
+       SimpleRelation("plaatsXdialectgebied", plaats, dialectgebied, "dialectgebied_id", "dialectgebied_id"),
+       SimpleRelation("dialectgebiedXdialectgebiedruw", dialectgebied, dialectgebied_ruw, "dialectgebied_ruw_id", "dialectgebied_ruw_id"),
        // opname
 
 

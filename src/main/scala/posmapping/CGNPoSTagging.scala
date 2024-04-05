@@ -262,23 +262,24 @@ object defaultTagset extends TagSet("unknown")
 
 class CGNStyleTag(tag: String, tagset: TagSet) extends Tag(tag,tagset)
 {
-  val Tag = new Regex("^([A-Z]+)\\((.*?)\\)")
+  val trimmedTag = tag.trim
+  val Tag = new Regex("^([A-Z]+)\\((.*?)\\)$")
 
   lazy val notAtTag = try {
-    Tag.findFirstIn(tag).isEmpty
+    Tag.findFirstIn(trimmedTag).isEmpty
   } catch {
     case e:Exception =>
       e.printStackTrace
-      Console.err.println(s"error processing tag '$tag'")
+      Console.err.println(s"error processing tag '$trimmedTag'")
       true
   }
 
   if (notAtTag)
     {
-      Console.err.println(s"PAS OP Mislukte tag: $tag")
+      Console.err.println(s"PAS OP Mislukte tag: $trimmedTag")
     }
 
-  val Tag(pos,feats) = if (notAtTag) "SPEC(overig)" else tag
+  val Tag(pos,feats) = if (notAtTag) "SPEC(overig)" else trimmedTag
 
   val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
 
