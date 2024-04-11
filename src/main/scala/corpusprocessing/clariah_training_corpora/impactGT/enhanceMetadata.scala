@@ -4,10 +4,9 @@ import corpusprocessing.clariah_training_corpora.impactGT.enhanceMetadata.KBMeta
 
 import scala.xml._
 import java.io.{File, PrintWriter}
+import Settings._
 object enhanceMetadata {
 
-  val pageDir = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDD/" // SelectiePages/"
-  val pageDirEnhanced = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/Page/"
   "https://services.kb.nl/mdo/oai?verb=GetRecord&identifier=DDD:ddd:010040741:mpeg21&metadataPrefix=didl"
 
   lazy val files: Iterator[(String, Elem)] = new File(pageDir).listFiles().iterator.filter(_.getName.endsWith(".xml")).map(x => x.getName -> XML.loadFile(x))

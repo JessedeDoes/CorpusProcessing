@@ -103,6 +103,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
       // Console.err.println(enrichedContent)
     }
     lazy val speech_id = s"speech.elan.$elan_annotatie_id"
+    /*
     lazy val alpinoStukje = alpinoAnnotations.map(a => {
 
       <div class="alpinoAnnotation" begintime={Stuff.formatTime(a.starttijd)} endtime={Stuff.formatTime(a.eindtijd)}>
@@ -110,8 +111,8 @@ case class ElanAnnotation(elan_annotatie_id: Int,
         <t class="alpinoHeavyNormalization">{a.text_zv}</t>
       </div>
     })
-
-    <speech tag={functie} speaker={naam} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
+    */
+    <speech tag={functie} speaker={alias} xml:id={speech_id}  begintime={Stuff.formatTime(starttijd)} endtime={Stuff.formatTime(eindtijd)}>
       {if (tekst_lv != null && tekst_lv.trim.nonEmpty) <t class="lightNormalization">{tekst_lv}</t>}
       {if (tekst_zv != null && tekst_zv.trim.nonEmpty) <t class="heavyNormalization">{tekst_zv}</t>}
       {enrichedContent}
@@ -122,6 +123,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
   lazy val meta: Elem = {Metadata.getMetadataForElanAnnotation(elan_annotatie_id)}
   lazy val functie = (meta \\ "functie").text
   lazy val naam = (meta \\ "naam").text
+  lazy val alias = (meta \\ "alias").text
   lazy val nAlpinos = alpinoAnnotations.size
 
   lazy val about = Map(

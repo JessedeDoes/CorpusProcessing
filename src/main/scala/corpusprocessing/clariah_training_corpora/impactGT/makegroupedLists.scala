@@ -19,8 +19,8 @@ case class DcMeta(d: Elem, f: File) {
 
 object makegroupedLists {
   import scala.xml._
-  val pageDirEnhanced = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/Page/"
-
+  val pageDirEnhanced =  "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/SelectieCorrected/PageEnhanced//" // "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/Page/"
+  val outputDir = "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/SelectieCorrected/GroupedLists/" // "/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/DDDGroupedLists/"
   def main(args:Array[String])  = {
 
     val groups: Map[String, List[DcMeta]] = new File(pageDirEnhanced).listFiles.filter(_.getName.endsWith(".xml")).map(f => {
@@ -43,7 +43,7 @@ object makegroupedLists {
 
           if (l.size > 1) println(list)
 
-          val pw = new java.io.PrintWriter(s"/mnt/Projecten/Corpora/Historische_Corpora/ImpactGT/Page/DDDEnhanced/DDDGroupedLists/$titleEscaped.xml")
+          val pw = new java.io.PrintWriter(s"$outputDir/$titleEscaped.xml")
           pw.print(list.toString)
           pw.close()
         } else {

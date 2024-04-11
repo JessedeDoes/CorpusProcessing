@@ -287,9 +287,10 @@ object Metadata {
 
     val persoon_id = (xml \\ "persoon_id").text
     val functie = xml \\ "opname_functie" \\ "label"
-
+    val alias = (xml \\ "alias").text
     val persoontje = <persoon ref={"#" + persoon_id}>
       <naam>{xml \\ "familienaam"}, {xml \\ "voornaam"}</naam>
+      <alias>{alias}</alias>
       <functie><label>{functie.text}</label></functie>
     </persoon>
     val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">{persoontje}</gcnd_annotatie_metadata>
@@ -311,6 +312,20 @@ object Metadata {
   }
 }
 
+
+object listMetadataFromBlacklabServer {
+  val url = "http://svotmc10.ivdnt.loc:8080/blacklab-server/GCND/"
+  lazy val response = XML.load(url)
+  lazy val metadataFields = (response \\ "metadataField")
+  lazy val fieldNames = metadataFields.map(x => (x \ "@name").text).toSet.toList.sorted
+  def pad(x: String,n: Int) =  " " * (n - x.size)
+  def main(args: Array[String])  = {
+     fieldNames.foreach(name => {
+       val s = s"['$name'${pad(name,30)}               ,      x       ,       x       ,                      ,                      ,                ],"
+       println(s)
+     })
+  }
+}
 /*
 Table "public.opname__persoon"
 Column        |       Type        | Collation | Nullable |                           Default
