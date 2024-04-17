@@ -72,6 +72,9 @@ libraryDependencies += "com.github.nikita-volkov" % "sext" % "0.2.4"
 libraryDependencies += "org.apache.commons" % "commons-csv" % "1.10.0"
 
 
+// https://mvnrepository.com/artifact/com.softwaremill.sttp/core
+// libraryDependencies += "com.softwaremill.sttp" %% "core" % "1.7.2"
+
 /*
 https://github.com/iovka/shex-java
 
