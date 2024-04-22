@@ -7,6 +7,11 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   def isValid() = {
     val roots = tokens.filter(t => t.DEPREL == "root")
     val nRoots = roots.size
+    val ids: Seq[Int] = tokens.map(_.ID.toInt)
+    val check: Seq[Int] = (1 to tokens.size).toSeq
+    if (ids  != check)
+      false
+    else
     if (!(nRoots == 1))
     {
       // println(s"!!!!!!!!!!!!!!! nRoots != 1: $nRoots (${roots.map(_.ID)})")

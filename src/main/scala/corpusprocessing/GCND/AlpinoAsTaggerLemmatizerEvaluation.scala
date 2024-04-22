@@ -7,6 +7,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 
 import scala.util.Random
 import scala.xml._
+
 object AlpinoAsTaggerLemmatizerEvaluation {
   val atHome = true
 
@@ -18,9 +19,15 @@ object AlpinoAsTaggerLemmatizerEvaluation {
   lazy val originalFiles = findXMLFilesIn(new File(original))
   lazy val processedFiles = findXMLFilesIn(new File(processed))
 
-  lazy val orgMap = originalFiles.map(f => f.getName -> f).toMap
-  lazy val procMap = processedFiles.map(f => f.getName -> f).toMap
-  lazy val hasBoth = orgMap.keySet intersect procMap.keySet
+  lazy val orgMap: Map[String, File] = originalFiles.map(f => f.getName -> f).toMap
+  lazy val procMap: Map[String, File] = processedFiles.map(f => f.getName -> f).toMap
+  lazy val hasBoth: Set[String] = orgMap.keySet intersect procMap.keySet
+
+  val sourceMap: Map[String, String] = hasBoth.map(x => {
+    val f = procMap(x)
+    x -> f.getCanonicalPath.replaceAll("/[^/]*$","").replaceAll(".*/", "")
+  }).toMap
+
   def findXMLFilesIn(f: File): List[File] = {
     if (f.isFile && f.getName.endsWith(".xml")) List(f) else {
       if (f.isDirectory)
@@ -69,7 +76,10 @@ object AlpinoAsTaggerLemmatizerEvaluation {
   }
 
   val sampleSize = Integer.MAX_VALUE
+
+  val emptyMap = Map[String, (Int, Int)]()
   def main(args: Array[String]) = {
+
      val sample: Seq[String] = Random.shuffle(hasBoth.toList).take(sampleSize)
 
      val scores: Seq[Map[String, (Int, Int)]] = sample.map(x => {
@@ -77,12 +87,15 @@ object AlpinoAsTaggerLemmatizerEvaluation {
         try {
          val org = AlpinoSentence(XML.loadFile(orgMap(x)))
          val processed =  AlpinoSentence(XML.loadFile(procMap(x)))
-          evalSentence(org,processed, fields.toMap)
+          if (org.dependencyParseIsValid && processed.dependencyParseIsValid)
+            evalSentence(org,processed, fields.toMap)
+          else
+            emptyMap
         }
         catch {
           case e: Exception =>
             e.printStackTrace()
-            Map[String, (Int, Int)]()
+            emptyMap
          }
        })
 
@@ -102,4 +115,46 @@ object AlpinoAsTaggerLemmatizerEvaluation {
          println(s"${pad(k,maxFieldLen)}\t$nErrors\t$score")
       })
     }
+}
+
+import AlpinoAsTaggerLemmatizerEvaluation._
+object makeTrainingData {
+  val sources = sourceMap.values.toSet.filter(_ != "skip")
+  val shuffled = Random.shuffle(sources).toList
+
+  val train = shuffled.take(30)
+  val dev = shuffled.drop(30).take(7)
+  val test = shuffled.drop(37)
+
+  def hasSource(x: String) = procMap.values.filter(f => sourceMap.contains(f.getName) && sourceMap(f.getName)== x)
+
+
+ def makeConnl(sources: List[String], writer: PrintWriter)  = {
+   sources.foreach(x => {
+     val files = hasSource(x)
+     files.foreach(f => {
+       try {
+         val s = AlpinoSentence(XML.loadFile(f))
+         if (s.dependencyParseIsValid) {
+           writer.println(s.toCONLL() + "\n")
+           writer.flush()
+         }
+       } catch {
+         case e: Exception =>
+       }
+     })
+   })
+ }
+
+  val outputBase = "/mnt/Projecten/Hercules/Corpus-ZNL-Dialecten/GCNDAlpinoParsesWithCorrection/CONLL-U/"
+  def main(args: Array[String]) = {
+
+    val trainPW = new PrintWriter(s"$outputBase/train.conllu")
+    val devPW = new PrintWriter(s"$outputBase/dev.conllu")
+    val testPW =  new PrintWriter(s"$outputBase/test.conllu")
+
+    makeConnl(train,trainPW)
+    makeConnl(test,testPW)
+    makeConnl(dev,devPW)
+  }
 }

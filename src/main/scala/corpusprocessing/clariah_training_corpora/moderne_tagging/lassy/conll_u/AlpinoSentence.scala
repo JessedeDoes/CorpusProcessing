@@ -101,12 +101,12 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
         )})
 
   lazy val dependencyParseIsValid: Boolean = {
-    val udSentence = UdSentence(sentid,"Dutch", connlTokens)
+    val udSentence = UdSentence(sentid, "Dutch", connlTokens)
     udSentence.isValid()
   }
 
   def toCONLL(): String = {
-      val header = s"""\n# sent_id = $sentid
+      val header = s"""# sent_id = $sentid
                      |# source = ${this.source}
                      |# text = ${this.text}""".stripMargin
        header + "\n" + connlTokens.map(_.toCONLL()).mkString("\n")
