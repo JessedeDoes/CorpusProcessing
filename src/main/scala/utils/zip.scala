@@ -25,7 +25,14 @@ object zipUtils
     path
   }
 
-  def find(zipFile: String, filter: Path => Boolean=truth):Stream[Path] = findPath(getRootPath(zipFile), filter)
+  def find(zipFile: String, filter: Path => Boolean=truth):Stream[Path] =
+    try { findPath(getRootPath(zipFile), filter) } catch
+      {
+        case e:Exception =>
+          Console.err.println(s"Failure opening $zipFile")
+          e.printStackTrace()
+          Stream[Path]()
+      }
 
   def truth(p:Path):Boolean = true
 

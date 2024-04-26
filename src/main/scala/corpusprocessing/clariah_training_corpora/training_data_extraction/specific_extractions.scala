@@ -31,7 +31,7 @@ object gtbcit_to_huggingface extends extract_training_data_trait {
 
 object ofr_to_huggingface extends extract_training_data_trait {
   override val pos_attribute = "@type"
-  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
+  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
   override val split_test_train_on_document_level = true
   override lazy val output_prefix = "ofr"
   override def decentSentence(s: Sentence, b: Partition)  =  {

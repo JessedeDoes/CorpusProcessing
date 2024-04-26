@@ -1,5 +1,5 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
-
+import scala.util.Failure
 import scala.util.Success
 
 import scala.collection.immutable
@@ -25,10 +25,16 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
   val cat: String = (n \ "@cat").text
 
-  val begin: String = (n \ "@begin").text
+  lazy val begin: String = (n \ "@begin").text
   val wordNumber: Int = Try (begin.toInt) match {case Success(x) => x ; case _ => 0 }
 
-  val beginBaseOne: String = ((n \ "@begin").text.toInt + 1).toString
+  lazy val beginBaseOne: String = Try(((n \ "@begin").text.toInt + 1).toString) match
+  {
+    case Success(x) => x ;
+    case Failure(exception) =>
+      Console.err.println(s"Error getting begin position of node $n")
+      throw exception
+  }
 
   lazy val parent: Option[AlpinoNode] = s.parentMap.get(id).flatMap(pid => s.nodeMap.get(pid))
   lazy val ancestor: Seq[AlpinoNode] = if (parent.isEmpty) Seq() else parent.get +: parent.get.ancestor

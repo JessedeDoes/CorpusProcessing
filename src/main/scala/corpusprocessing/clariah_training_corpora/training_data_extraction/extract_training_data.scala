@@ -186,7 +186,6 @@ object gcnd_folia extends extract_training_data_trait {
   override lazy val output_folder = "/tmp/gcnd_test"
   override def preprocess(x: Elem): Elem = {
     val y = folia.FoliaToRudimentaryTEI(x => x).convert(x).asInstanceOf[Elem]
-
     y
   }
 

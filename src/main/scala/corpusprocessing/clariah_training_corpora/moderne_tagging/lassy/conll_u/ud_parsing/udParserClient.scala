@@ -3,7 +3,7 @@ import java.io.File
 import javautil.MultipartFormDataClient
 import scala.collection.JavaConverters._
 import collection.convert
-import com.softwaremill.sttp.multipartFile
+
 // https://docs.scala-lang.org/toolkit/http-client-upload-file.html
 object udParserClient {
 

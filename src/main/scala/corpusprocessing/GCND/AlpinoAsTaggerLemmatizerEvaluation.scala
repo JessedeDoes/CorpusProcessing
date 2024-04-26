@@ -47,7 +47,8 @@ object AlpinoAsTaggerLemmatizerEvaluation {
     m("Lemma")._2 >= 12
 
   def evalSentence(org: AlpinoSentence, processed: AlpinoSentence, fields: Map[String,UdToken => String]): Map[String, (Int, Int)] = {
-     val tokenPairs = org.connlTokens.zip(processed.connlTokens)
+
+    val tokenPairs = org.connlTokens.zip(processed.connlTokens)
      val n = tokenPairs.size
 
      val m = fields.map({case (name, field) =>
@@ -94,6 +95,7 @@ object AlpinoAsTaggerLemmatizerEvaluation {
         }
         catch {
           case e: Exception =>
+            System.err.println(s"Exception on $x ${orgMap(x)} ${procMap(x)}")
             e.printStackTrace()
             emptyMap
          }
