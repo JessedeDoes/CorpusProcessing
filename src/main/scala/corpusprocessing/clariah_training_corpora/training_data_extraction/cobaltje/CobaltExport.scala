@@ -11,6 +11,7 @@ import scala.xml._
 // http://lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=gtbcit_punct_14_refurbished&only_validated=false
 
 object CobaltExport {
+  val outputBase = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
   val project = "courantenselectie"
   val testURL = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$project&only_validated=false"
 
@@ -24,7 +25,7 @@ object CobaltExport {
       val projectName = corpus("schemaName")
 
       try {
-        if (false || projectName.toString.contains("duits")) {
+        if (true || projectName.toString.contains("duits")) {
           Console.err.println(s"Trying $projectName")
           val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
           val e = CobaltExport(url, projectName.toString)
@@ -58,8 +59,9 @@ object CobaltExport {
   }
 }
 
+import CobaltExport._
 case class CobaltExport(url: String, name: String) {
-  val zipName = s"/tmp/cobalt_export_$name.zip"
+  val zipName = s"$outputBase/cobalt_export_$name.zip"
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
   lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else Stream[Path]()
   lazy val files = paths.map(p =>  Files.newInputStream(p))
