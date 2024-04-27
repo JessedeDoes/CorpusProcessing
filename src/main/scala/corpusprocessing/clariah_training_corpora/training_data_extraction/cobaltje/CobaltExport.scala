@@ -5,7 +5,7 @@ import utils.zipUtils
 
 import java.io.File
 import java.net.URL
-import java.nio.file.Files
+import java.nio.file.{Files, Path}
 import scala.sys.process._
 import scala.xml._
 // http://lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=gtbcit_punct_14_refurbished&only_validated=false
@@ -24,7 +24,7 @@ object CobaltExport {
       val projectName = corpus("schemaName")
 
       try {
-        if (true || projectName.toString.contains("duits")) {
+        if (false || projectName.toString.contains("duits")) {
           Console.err.println(s"Trying $projectName")
           val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
           val e = CobaltExport(url, projectName.toString)
@@ -43,21 +43,25 @@ object CobaltExport {
       }
     })
   }
-  def main(args: Array[String])  = {
-    checkAllCorpora()
+
+  def testje() = {
     val export = new CobaltExport(testURL, "aapje")
     export.tokens.foreach(println)
     export.paths.foreach(p => {
       val c = p.getNameCount
-      (0 to c-1).foreach(i => println(p.getName(i)))
+      (0 to c - 1).foreach(i => println(p.getName(i)))
     })
+  }
+  def main(args: Array[String])  = {
+    checkAllCorpora()
+
   }
 }
 
 case class CobaltExport(url: String, name: String) {
   val zipName = s"/tmp/cobalt_export_$name.zip"
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
-  lazy val paths = zipUtils.find(zipName)
+  lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else Stream[Path]()
   lazy val files = paths.map(p =>  Files.newInputStream(p))
   lazy val documents = files.map(XML.load)
   lazy val tokens = documents.flatMap(d => d \\ "w")

@@ -14,9 +14,6 @@ object HTTPDownload {
   }
 }
 case class HTTPDownload(url: String, outputPath: String, username: String, password: String) {
-  //val url = "https://example.com/file.zip" // URL to download ZIP from
-  // val outputPath = "output.zip" // Output path for the downloaded file
-
 
   // Encode credentials for basic auth
   val encoding = Base64.getEncoder.encodeToString(s"$username:$password".getBytes("UTF-8"))
@@ -63,11 +60,12 @@ case class HTTPDownload(url: String, outputPath: String, username: String, passw
       }
     }  catch {
       case e:Exception =>e.printStackTrace()
-        //error = true
+         Console.err.println(s"What the... $url")
+         error = true
     }
     finally {
       httpClient.close()
     }
-    error
+    !error
   }
 }
