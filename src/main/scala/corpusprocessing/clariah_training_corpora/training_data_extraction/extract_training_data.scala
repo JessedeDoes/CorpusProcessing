@@ -94,7 +94,8 @@ trait extract_training_data_trait {
       }
     })
 
-    val sentences: Iterator[(Sentence,Partition)] = partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f,this) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
+    val sentences: Iterator[(Sentence,Partition)] =
+      partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f,this) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
     val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
 
