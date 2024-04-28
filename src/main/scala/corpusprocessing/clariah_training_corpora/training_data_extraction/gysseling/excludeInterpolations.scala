@@ -117,7 +117,7 @@ object gysseling_to_huggingface extends extract_training_data_trait {
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/All/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
 object gysseling_to_huggingface_core extends extract_training_data_trait {
@@ -126,7 +126,7 @@ object gysseling_to_huggingface_core extends extract_training_data_trait {
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 object gysseling_to_huggingface_filtered extends extract_training_data_trait {
 
@@ -161,5 +161,5 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/AllFiltered2/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }

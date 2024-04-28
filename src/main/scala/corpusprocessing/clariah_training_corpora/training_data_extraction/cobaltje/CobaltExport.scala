@@ -1,6 +1,7 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
 import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{downloadFile, testURL}
+import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 import utils.zipUtils
 
 import java.io.File
@@ -55,7 +56,6 @@ object CobaltExport {
   }
   def main(args: Array[String])  = {
     checkAllCorpora()
-
   }
 }
 
@@ -68,4 +68,36 @@ case class CobaltExport(url: String, name: String) {
   lazy val documents = files.map(XML.load)
   lazy val tokens = documents.flatMap(d => d \\ "w")
   lazy val validTokens = tokens.filter(w => (w \ "@valid").text == "true")
+}
+
+case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, sentenceElement: String="s") {
+  lazy val paths: Seq[Path] = zipUtils.find(zipFileName)
+
+
+
+  case class Extractor() extends extract_training_data_trait {
+    override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
+    override lazy val output_prefix: String = outputPrefix
+    override val sentence_element: String = "s"
+    // override lazy val output_folder = outputDir
+  }
+
+  def extract() = {
+    val e = Extractor()
+    println(e.output_folder)
+    e.makeTrainingMaterialAndPartitionFromPaths(paths,e.output_prefix)
+  }
+}
+
+object ExtractorFromZippie {
+  def main(args: Array[String])  = {
+    val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
+    new File(dir).listFiles().filter(_.getName.endsWith(".zip")).foreach(f => {
+      val outputFilenamePrefix = f.getName().replaceAll("^cobalt_export_","").replaceAll(".zip", "")
+      new File(dir + "/"  + outputFilenamePrefix).mkdir()
+      val outputPrefix = dir + "/" + outputFilenamePrefix + "/"  + outputFilenamePrefix
+      val e = ExtractorFromZippie(f.getCanonicalPath, outputPrefix, sentenceElement = if (outputFilenamePrefix.contains("cit")) "q" else "s")
+      e.extract()
+    })
+  }
 }

@@ -12,7 +12,7 @@ case class QuotationCorpus(sourceFolder: String, name: String) extends extract_t
   override val training_subsets: Int = 10
   override lazy val output_folder: String = sourceFolder + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   // new java.io.File(output_folder).mkdir()
-  override lazy val default_folder = sourceFolder + "/" + "CobaltServeExport"
+  override lazy val default_input_folder = sourceFolder + "/" + "CobaltServeExport"
 }
 
 object QuotationCorpora {
@@ -32,7 +32,7 @@ object q19 extends QuotationCorpus(baseDir + "gtbcit_19", "gtbcit_19")
 object qMix extends QuotationCorpus("aap", name="gtbcit") {
   val corpora = List(q15,q16,q17,q18,q19)
   override lazy val output_folder: String =  "/tmp/"
-  val folders = corpora.map(_.default_folder).toArray
+  val folders = corpora.map(_.default_input_folder).toArray
   override def main(args: Array[String])  = {
     super.main(folders)
   }

@@ -8,7 +8,7 @@ case class CourantenCorpus(sourceFolder: String, name: String) extends extract_t
   override val training_subsets: Int = 1
   override lazy val output_folder: String = sourceFolder + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   // new java.io.File(output_folder).mkdir()
-  override lazy val default_folder = sourceFolder
+  override lazy val default_input_folder = sourceFolder
 }
 
 object Couranten {

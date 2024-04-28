@@ -12,7 +12,7 @@ import scala.xml._
 import org.json4s._
 import org.json4s.jackson.Serialization.write
 import Sentence._
-
+import java.nio.file.{Files, Path}
 case class Partition(part: String, portion: Int) {
   lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion >= 0) s"$part.$portion" else part
 }
@@ -154,20 +154,36 @@ trait extract_training_data_trait {
 
   def preprocess(x: Elem): Elem = x
 
-  def loadXML(fileName: String)  = preprocess(XML.load(fileName))
-  def makeTrainingMaterialSplit(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit = processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> loadXML(x)), outputPrefix)
+  def loadXML(fileName: String): Elem = preprocess(XML.load(fileName))
 
+  def makeTrainingMaterialAndPartition(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit =
+    processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> loadXML(x)), outputPrefix)
+
+  def makeTrainingMaterialAndPartitionFromPaths(paths: Seq[Path], outputPrefix: String, preprocess: Elem => Elem = preprocess): Unit =
+    {
+       val iterator = Random.shuffle(paths).iterator.map(p => {
+        val c = p.getNameCount
+        val lastPart = p.getName(c-1).toString
+        val inStream = Files.newInputStream(p)
+        val doc = XML.load(inStream)
+        lastPart -> doc
+      })
+      processDocuments(iterator, outputPrefix)
+    }
+    // processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> loadXML(x)), outputPrefix)
 
   val default_dataset: Seq[String] = Seq()
 
-  lazy val default_folder = "hadjememaar"
+  lazy val default_input_folder = "hadjememaar"
 
   val max_files = Integer.MAX_VALUE
 
   def main(args0: Array[String]): Unit = {
 
-    val args = if (args0.size > 0) args0 else Array(default_folder)
+    val args = if (args0.size > 0) args0 else Array(default_input_folder)
+
     println(args.toList)
+
     val filesToProcess: Seq[String] = args.toSeq.flatMap(x => {
       val f = new java.io.File(x)
       if (f.isFile) Seq(f.getCanonicalPath) else f.listFiles.toSeq.map(_.getCanonicalPath)
@@ -175,9 +191,10 @@ trait extract_training_data_trait {
 
     // println(filesToProcess)
     val maybeShuffled = if (this.training_subsets > 1) Random.shuffle(filesToProcess) else filesToProcess
-    makeTrainingMaterialSplit(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = preprocess)
+    makeTrainingMaterialAndPartition(maybeShuffled.take(max_files), output_folder + "/" + output_prefix, preprocess = preprocess)
   }
 }
+
 
 object gcnd_folia extends extract_training_data_trait {
   override val split_test_train_on_document_level = true
@@ -189,7 +206,7 @@ object gcnd_folia extends extract_training_data_trait {
     y
   }
 
-  override lazy val default_folder: String = "/home/jesse/workspace/XmlToRdf/data/GCND/Folia/WithAlpino"
+  override lazy val default_input_folder: String = "/home/jesse/workspace/XmlToRdf/data/GCND/Folia/WithAlpino"
 
 }
 

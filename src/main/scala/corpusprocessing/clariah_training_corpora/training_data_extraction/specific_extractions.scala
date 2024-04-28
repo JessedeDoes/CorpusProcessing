@@ -31,7 +31,7 @@ object gtbcit_to_huggingface extends extract_training_data_trait {
 
 object ofr_to_huggingface extends extract_training_data_trait {
   override val pos_attribute = "@type"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
   override val split_test_train_on_document_level = true
   override lazy val output_prefix = "ofr"
   override def decentSentence(s: Sentence, b: Partition)  =  {
@@ -42,7 +42,7 @@ object ofr_to_huggingface extends extract_training_data_trait {
 //
 object onw_to_huggingface extends extract_training_data_trait {
   override val pos_attribute = "@pos"
-  override   lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022/"
+  override   lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022/"
   override val split_test_train_on_document_level = false
   override lazy val output_prefix = "onw"
   override def decentSentence(s: Sentence, b: Partition)  =  {
@@ -57,7 +57,7 @@ object bab_to_huggingface extends extract_training_data_trait {
   override val training_subsets: Int = 10
   override lazy val output_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/BaB/All/"  + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   new File(output_folder).mkdir()
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
 }
 object crm_to_huggingface extends extract_training_data_trait {
   override val split_test_train_on_document_level: Boolean = true
@@ -66,5 +66,5 @@ object crm_to_huggingface extends extract_training_data_trait {
   override val training_subsets: Int = 10
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/" + "/" + "test_train" + (if (training_subsets > 1) "/partitioned/" else "")
   //override val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/CRM/All/"
-  override lazy val default_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
+  override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CRM/TEI-tagmapped/"
 }

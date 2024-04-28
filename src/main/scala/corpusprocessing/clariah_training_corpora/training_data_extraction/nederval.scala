@@ -8,7 +8,7 @@ trait nederval extends extract_training_data_trait {
   val output_base = "/mnt/Projecten/Corpora/TrainingDataForTools/NederlabSetjes/Splits/"
   override lazy val output_folder = { val z = output_base + name; new File(z).mkdir(); z }
 
-  override lazy val default_folder = base_folder + "/"  + name + "/CobaltServeExport/"
+  override lazy val default_input_folder = base_folder + "/"  + name + "/CobaltServeExport/"
   override lazy val output_prefix = name
 }
 
