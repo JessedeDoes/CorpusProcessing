@@ -52,7 +52,7 @@ object Sentence {
 
   def sentence(s: Node, f: String, extractor: extract_training_data_trait): Sentence = {
 
-    def getN(n: Node) = (n \ "@n").text
+    def getN(n: Node) = (n \ "join" \  "@n").text
 
     val id: Option[String] = getId(s)
 
@@ -76,7 +76,7 @@ object Sentence {
 
     def enhancePos(w: Node, i: Int) = {
       val p = (w \ "@pos").headOption.getOrElse(w \ "@type").text.trim
-      if ((w \ "@type").text == "multiw") {
+      if ((w \\ "join").nonEmpty) {
         println(w)
         val n = getN(w)
         val hasPrev = indexedTokenElements.exists({ case (w, i1) => getN(w) == n && i1 < i })

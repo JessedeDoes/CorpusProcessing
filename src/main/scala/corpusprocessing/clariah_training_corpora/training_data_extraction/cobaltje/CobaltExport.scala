@@ -31,6 +31,13 @@ object CobaltExport {
           val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
           val e = CobaltExport(url, projectName.toString)
           if (true || e.downloadSuccessfull) {
+            val nValid = e.validTokens.size
+            val nTokens = e.tokens.size
+            if (nTokens == 0 || nValid / nTokens.toDouble< 0.75)
+              {
+                System.err.println(s"Corpus $projectName is not ready: $nValid / $nTokens, deleting zip")
+                new File(e.zipName).delete()
+              } else
             println(
               s"""Downloading $projectName at $url
       Exported to: ${e.zipName}
@@ -63,7 +70,11 @@ import CobaltExport._
 case class CobaltExport(url: String, name: String) {
   val zipName = s"$outputBase/cobalt_export_$name.zip"
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
-  lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else Stream[Path]()
+  lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else {
+    val f = new File(zipName)
+    if (f.exists()) f.delete()
+    Stream[Path]()
+  }
   lazy val files = paths.map(p =>  Files.newInputStream(p))
   lazy val documents = files.map(XML.load)
   lazy val tokens = documents.flatMap(d => d \\ "w")
@@ -79,6 +90,7 @@ case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, senten
     override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
     override lazy val output_prefix: String = outputPrefix
     override val sentence_element: String = "s"
+    override val enhance: Boolean = true
     // override lazy val output_folder = outputDir
   }
 
