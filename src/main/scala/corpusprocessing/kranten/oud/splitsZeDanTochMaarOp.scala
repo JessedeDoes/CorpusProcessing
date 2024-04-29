@@ -48,8 +48,8 @@ object splitsZeDanTochMaarOp {
       val e1 = <TEI xmlns="http://www.tei-c.org/ns/1.0"/>
       val e2 = e1.copy(scope = newNS)
       val e3 = e2.copy(child=e.child)
-      val e4 = postProcessBaBTagging.fixDocje(e3,false)
-      val e5 = setTeiScope(e4)
+      lazy val e4 = postProcessBaBTagging.fixDocje(e3,false)
+      val e5 = setTeiScope(e3)
       val zipEntry = zipUtils.getWriter(root, s"${f.getName.replaceAll(".xml","")}_$i.xml")
       zipEntry.write(e5.toString()) // .replaceAll("<TEI", "<TEI xmlns=\"http://www.tei-c.org/ns/1.0\" "))
       zipEntry.close()
