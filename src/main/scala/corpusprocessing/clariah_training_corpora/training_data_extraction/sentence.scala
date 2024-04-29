@@ -50,6 +50,10 @@ object Sentence {
   def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
+  def getWord(x: Node)  = if ((x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ")
+    else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
+    else x.text.trim
+
   def sentence(s: Node, f: String, extractor: extract_training_data_trait): Sentence = {
 
     def getN(n: Node) = (n \ "join" \  "@n").text
@@ -60,24 +64,23 @@ object Sentence {
 
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
     val indexedTokenElements = tokenElements.zipWithIndex
-    val tokens =
-      tokenElements.map(x =>
-        if ((x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ")
-        else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
-        else x.text.trim)
+    val tokens = tokenElements.map(getWord)
     val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
     val lemmata = tokenElements.map(x => (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
     val relevances = tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
     val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
 
     //System.err.println(relevances)
-
+    // println(s)
     val xml_ids = tokenElements.map(x => getId(x).getOrElse("no_id_found"))
+
+    // alternatief: doe alleen de delene van een scheidbaar werkwoord
 
     def enhancePos(w: Node, i: Int) = {
       val p = (w \ "@pos").headOption.getOrElse(w \ "@type").text.trim
+      val word = getWord(w)
       if ((w \\ "join").nonEmpty) {
-        println(w)
+
         val n = getN(w)
         val hasPrev = indexedTokenElements.exists({ case (w, i1) => getN(w) == n && i1 < i })
         val hasNext = indexedTokenElements.exists({ case (w, i1) => getN(w) == n && i1 > i })
@@ -89,8 +92,12 @@ object Sentence {
             case (false, true) => "b"
             case _ => "o"
           }
-        val t = p + "_" + bio
-        println(t)
+
+        val t = p + "_" + bio + {
+          val lexicalPos = separable_part_lexical_data.getPos(word)
+          if ( (lexicalPos intersect Set("adv", "adp")).nonEmpty) "A" else ""
+        }
+
         t
       } else p
     }

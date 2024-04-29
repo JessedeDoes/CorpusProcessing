@@ -89,7 +89,7 @@ case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, senten
   case class Extractor() extends extract_training_data_trait {
     override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
     override lazy val output_prefix: String = outputPrefix
-    override val sentence_element: String = "s"
+    override val sentence_element: String = sentenceElement
     override val enhance: Boolean = true
     // override lazy val output_folder = outputDir
   }
@@ -104,11 +104,14 @@ case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, senten
 object ExtractorFromZippie {
   def main(args: Array[String])  = {
     val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
-    new File(dir).listFiles().filter(_.getName.endsWith(".zip")).foreach(f => {
-      val outputFilenamePrefix = f.getName().replaceAll("^cobalt_export_","").replaceAll(".zip", "")
-      new File(dir + "/"  + outputFilenamePrefix).mkdir()
-      val outputPrefix = dir + "/" + outputFilenamePrefix + "/"  + outputFilenamePrefix
-      val e = ExtractorFromZippie(f.getCanonicalPath, outputPrefix, sentenceElement = if (outputFilenamePrefix.contains("cit")) "q" else "s")
+    new File(dir).listFiles()
+      .filter(_.getName.endsWith(".zip"))
+      //.filter(_.getName.contains("gtbcit_mnw_15"))
+      .foreach(f => {
+        val outputFilenamePrefix = f.getName().replaceAll("^cobalt_export_","").replaceAll(".zip", "")
+        new File(dir + "/"  + outputFilenamePrefix).mkdir()
+        val outputPrefix = dir + "/" + outputFilenamePrefix + "/"  + outputFilenamePrefix
+        val e = ExtractorFromZippie(f.getCanonicalPath, outputPrefix, sentenceElement = if (outputFilenamePrefix.contains("cit")) "q" else "s")
       e.extract()
     })
   }

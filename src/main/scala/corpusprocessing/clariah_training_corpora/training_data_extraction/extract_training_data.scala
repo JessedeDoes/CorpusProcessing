@@ -84,7 +84,9 @@ trait extract_training_data_trait {
         if ((x \\ sentence_element).nonEmpty)
           (x \\ sentence_element).iterator.map(s => (f,s,documentPartition))
         else {
-          val chunks = (x \\ "w").grouped(chunkSize).toList.map(chunk => {
+          val chunks = x.descendant
+            .filter(d => Set("w", "pc").contains(d.label))
+            .grouped(chunkSize).toList.map(chunk => {
             <s ana="#chunk">
               {chunk}
             </s>
