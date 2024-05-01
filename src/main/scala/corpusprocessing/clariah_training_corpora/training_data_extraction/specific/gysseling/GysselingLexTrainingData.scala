@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.gysseling
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific.gysseling
 
 import java.io.PrintWriter
 import scala.xml._

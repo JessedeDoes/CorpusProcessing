@@ -1,4 +1,6 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
+
+import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 
 import java.io.File;
 trait nederval extends extract_training_data_trait {

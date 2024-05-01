@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.gysseling
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific.gysseling
 
 import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 import posmapping.TagsetDiachroonNederlands

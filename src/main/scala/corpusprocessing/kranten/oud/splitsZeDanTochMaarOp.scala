@@ -38,7 +38,6 @@ object splitsZeDanTochMaarOp {
 
   //val outZip = "/tmp/Gesplitst.zip"
 
-
   def writeFiles(f: File, stuff: Iterator[(xml.Node, Int)], inDir: String, outDir: String): Unit = {
     val root = zipUtils.getRootPath(outDir + f.getName.replaceAll(".xml", ".zip"))
 

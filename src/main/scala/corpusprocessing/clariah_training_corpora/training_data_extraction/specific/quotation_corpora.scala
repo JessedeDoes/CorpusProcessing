@@ -1,5 +1,5 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction
-
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
+import corpusprocessing.clariah_training_corpora.training_data_extraction._
 object quotation_corpora {
 
 }
@@ -19,8 +19,8 @@ object QuotationCorpora {
   val baseDir  = "/mnt/Projecten/Corpora/TrainingDataForTools/galahad-corpus-data/public-corpora/clariah-evaluation-corpora/"
 }
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.QuotationCorpora._
 import corpusprocessing.clariah_training_corpora.patch_scripts.fixTokenization.getId
+import corpusprocessing.clariah_training_corpora.training_data_extraction.specific.QuotationCorpora._
 import utils.PostProcessXML
 
 object q15 extends QuotationCorpus(baseDir + "gtbcit_15", "gtbcit_15")

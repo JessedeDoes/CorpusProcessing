@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.crm_to_huggingface.training_subsets
+import corpusprocessing.clariah_training_corpora.training_data_extraction.specific.crm_to_huggingface.training_subsets
 import utils.PostProcessXML
 
 import java.io.{File, PrintWriter}
@@ -44,12 +44,10 @@ trait extract_training_data_trait {
 
   def transformToken(w: Node): Node = w
 
-
-
-
   def decentSentence(s: Sentence, b: Partition)  = true
 
   val maxje = 100
+
   def pickPartition(f: Option[String]): Partition = {
     val r = Math.random()
     val portion = Math.floor(Math.random()* this.training_subsets).toInt
@@ -76,6 +74,8 @@ trait extract_training_data_trait {
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.tsv.gz")))).toMap
     val printWritersDocumentPartition: Map[Partition, PrintWriter]  = partitions.map(p => p ->
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.filenames.gz")))).toMap
+
+
 
     val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
       case (f: String, x: Node) => {
@@ -120,19 +120,27 @@ trait extract_training_data_trait {
     }).toSet
 
 
-    if (this.split_test_train_on_document_level) {
+    val partitionInformation: Set[(String, (String, Option[String]))] = if (this.split_test_train_on_document_level) {
       val partitionedDocuments = partitionedSentences.map({case (a,b,c) => (a,b)})
-        partitionedDocuments.foreach({case (f,p) =>
+        partitionedDocuments.map({case (f,p) =>
         val pw = printWritersDocumentPartition(p)
         pw.println(f)
+          p.prefix -> (f,None.asInstanceOf[Option[String]])
       })
     } else {
-      partitionedSentences.foreach({
+      partitionedSentences.map({
         case (f, p, id) =>
           val pw = printWritersDocumentPartition(p)
           pw.println(s"$f\t$id")
+          p.prefix -> (f,Some(id).asInstanceOf[Option[String]])
       })
     }
+    val infoAsJSON = TrainingDataInfo.info2Json(partitionInformation)
+
+    val jsonInfoWriter = new PrintWriter(outputPrefix + s".partitionInformation.json")
+
+    jsonInfoWriter.println(infoAsJSON)
+    jsonInfoWriter.close()
 
     printWritersJSON.values.foreach(_.close())
     printWritersTSV.values.foreach(_.close())

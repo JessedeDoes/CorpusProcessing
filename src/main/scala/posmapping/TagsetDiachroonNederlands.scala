@@ -364,8 +364,26 @@ object TagsetDiachroonNederlands {
     // tagsetFromCorpusFiles("/home/jesse/Links/Werkfolder/Projecten/InterviewsCGN/TEI", "pos", "data/TDN/Corpora/CGN/", "CGN")
   }
 
+
    def main(args: Array[String]): Unit = {
-      doCGN
+     val featureNames = coreFeatures.flatMap(_._2).toSet
+       featureNames.foreach(x => {
+       val stukkie = s"""
+         |      - name: $x
+         |        valuePath: "@pos"
+         |        uiType: select
+         |        multipleValues: true
+         |        allowDuplicateValues : false
+         |        process:
+         |        - action: parsePos
+         |          field: $x
+         |        - action: split
+         |          separator: '[|]'
+         |          keep: both
+         |""".stripMargin
+         println(stukkie)
+       })
+     // doCGN
      return
       //doONW
       //doGysselingFromCorpus

@@ -1,4 +1,6 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
+
+import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 
 case class CourantenCorpus(sourceFolder: String, name: String) extends extract_training_data_trait {
   override val sentence_element="s"

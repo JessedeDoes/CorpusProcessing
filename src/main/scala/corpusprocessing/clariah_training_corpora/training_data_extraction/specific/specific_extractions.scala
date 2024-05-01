@@ -1,5 +1,6 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction
+package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
 
+import corpusprocessing.clariah_training_corpora.training_data_extraction._
 import utils.PostProcessXML
 
 import java.io.File
