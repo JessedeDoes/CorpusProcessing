@@ -45,6 +45,7 @@ case class DocFromFile(f: File) {
   def getValues(name: String): Seq[String] = (meta \\ "interpGrp").filter(g => (g \ "@type").text == name).flatMap(g => (g \\ "interp").map(_.text)) // ((n \\ "docInfo").head.child.filter(x => x.label == name).map(x => {  (x  \\ "value").text}))
   lazy val pid = (meta \\ "docPid").text
   lazy val province = getValues("province").mkString("|")
+  lazy val regionLevel1 = getValues("witnessLocalization_regionLevel1").mkString("|")
   lazy val witness_year_from = getValues("witness_year_from").mkString("|")
   lazy  val witness_year_to  = getValues("witness_year_to").mkString("|")
   lazy val decade = getValues("decade").mkString("|")

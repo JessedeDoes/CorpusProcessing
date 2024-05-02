@@ -1,0 +1,71 @@
+<header>					<teiHeader> => al in schema
+	</header>
+
+<ambig>						<unclear>		</unclear>
+	</ambig>
+
+<del>						<del>			</del>
+	</del>
+
+<cancel/>					<gap reason="cancellation"/>
+
+<illeg/>					<gap reason="illegible"/>
+<illeg com="duse.."/>		<gap reason="illegible">
+								<desc></desc>
+							</gap>
+
+<space/>					<space/>
+
+<ins>						<add>			</add>
+	</ins>
+
+<language value="latin">	<foreign xml:lang="fr">		</foreign>		la, fr, es, it
+	</language>
+
+<leftmargin>				<note place="margin">
+	</leftmargin>
+
+<rightmargin>				<note place="margin">
+	</rightmargin>
+
+<name>						<name type="person">
+	</name>
+
+<pl>						<name type="place">
+	</pl>
+
+<sign></sign>				WIS
+
+<reg orig="">
+	</reg>					<choice>
+							  <orig>woord-|grens</orig>   -|- of -| of |-
+ 							  <reg>woordgrens</reg>
+						 	</choice>
+
+<ed com="woord ontbreekt"/>	<note resp="#ed">	</note>
+
+<pb/>						<pb/>
+							MAAR: zie hieronder: dubbele \n's weg
+
+varia
+							</teiHeader>\n{1,} 	=>		</teiHeader>\n<pb/>\n
+							\n{2,}<pb/>\n{2,}   =>  	\n<pb/>\n
+							(?s)\Z  			=> 		\n</p>
+							 {1,}$				=>		LEEG
+							 {2,}				=> 		enkele spatie
+
+voers[creuen]				<choice>
+							 <expan>voerscreuen</expan>
+							 <abbr>voers</abbr>
+							</choice>
+
+<header>
+DOCUMENT:
+ARCHIVE:
+GENRE:
+DATE:
+PLACE:
+TRANSCRIBER:
+NOTES:
+WORD COUNT:
+</header>
