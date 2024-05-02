@@ -76,7 +76,7 @@ object CorpusVandeVoorde {
       <note resp="#ed">{com}</note>
     }),
     t("language") -> (i => {
-      val lang = (i \ "@value").text
+      val lang = (i \ "@value").text // TODO moet je nog codes van maken
       <foreign xml:lang={lang}>{i.child}</foreign>
     }),
     t("illeg") -> <gap reason="illegible"/>,
@@ -86,24 +86,25 @@ object CorpusVandeVoorde {
     t("pl") -> <name type="place"/>,
   )
 
-  def processText(t: Text): NodeSeq = {
-    val x = t.text.replaceAll("\\[([a-zA-Z0-9]+)\\]", "<expan>$1</expan>")
+  def processTextNode(t: Text): NodeSeq = {
+    val x = t.toString.replaceAll("\\[([a-zA-Z0-9]+)\\]", "<expan>$1</expan>")
+
     val child = try {
       val z: Seq[Node] = XML.loadString("<x>"  + x  + "</x>").child
       z
     } catch {
       case e =>
-        println(t)
-        e.printStackTrace()
+        println(s"\n\n|$x|\nCould not be parsed! Jammer hoor!")
+        // e.printStackTrace()
         t.asInstanceOf[NodeSeq]
     }
     child
   }
 
-  def processTextR(n: Node): Node = {
+  def processTextIn(n: Node): Node = {
     val child: Seq[Node] = n.child.flatMap(
-      {case e: Elem => processTextR(e)
-      case t: Text => processText(t)
+      {case e: Elem => processTextIn(e)
+      case t: Text => processTextNode(t)
       case x => x})
     n match  {
       case e: Elem => e.copy(child = child)
@@ -113,7 +114,7 @@ object CorpusVandeVoorde {
 
   def transForm(d: Elem)  = {
     val z1 = transformations.foldLeft(d)({case (b, (t1,t2)) => PostProcessXML.updateElement(b,t1, t2)})
-    processTextR(z1)
+    processTextIn(z1)
   }
   def main(args: Array[String])  = {
     val d = new File(xmlLoc)
