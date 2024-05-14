@@ -21,35 +21,46 @@ object CobaltExport {
   }
 
   def checkAllCorpora()  = {
-    val corpora = cobaltStats.getCorpusInfo()
-    corpora.foreach(corpus => {
+    val corpora: Seq[Map[String, Any]] = cobaltStats.getCorpusInfo()
+    val enhancedInfo: Seq[Map[String, Any]] = corpora.map(corpus => {
       val projectName = corpus("schemaName")
 
       try {
-        if (true || projectName.toString.contains("duits")) {
-          Console.err.println(s"Trying $projectName")
-          val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
-          val e = CobaltExport(url, projectName.toString)
-          if (true || e.downloadSuccessfull) {
-            val nValid = e.validTokens.size
-            val nTokens = e.tokens.size
-            if (nTokens == 0 || nValid / nTokens.toDouble< 0.75)
-              {
-                System.err.println(s"Corpus $projectName is not ready: $nValid / $nTokens, deleting zip")
-                new File(e.zipName).delete()
-              } else
+
+        Console.err.println(s"Trying $projectName")
+        val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
+        val e = CobaltExport(url, projectName.toString)
+        if (true || e.downloadSuccessfull) {
+          val nValid = e.validTokens.size
+          val nTokens = e.tokens.size
+
+          if (nTokens == 0 || nValid / nTokens.toDouble < 0.75) {
+            System.err.println(s"Corpus $projectName is not ready: $nValid / $nTokens, deleting zip")
+            new File(e.zipName).delete()
+          } else
             println(
               s"""Downloading $projectName at $url
       Exported to: ${e.zipName}
       Blacklab: docs=${corpus("documentCount")} tokens=${corpus("tokenCount")}
-      Export: docs=${e.documents.size} tokens=${e.tokens.size} validated tokens=${e.validTokens.size}""")
-          } else {
-            Console.err.println(s"Failed to download cobalt project $projectName")
-          }
+      Export: docs=${e.documents.size} tokens=${e.tokens.size} validated tokens=${nValid}""")
+          corpus ++ Map("validatedTokens" -> nValid)
+        } else {
+          Console.err.println(s"Failed to download cobalt project $projectName")
+          corpus
         }
+
       } catch {
         case e: Exception => e.printStackTrace()
+          corpus
       }
+    })
+    val info = List("schemaName", "documentCount", "tokenCount", "validatedTokens", "url")
+    println(info.mkString("\t"))
+
+    enhancedInfo.sortBy(_("schemaName").asInstanceOf[String]).foreach(m => {
+      val row = info.map(f => m.getOrElse(f, "-"))
+      val include = !m.contains("validatedTokens") || (2 * m("validatedTokens").asInstanceOf[Int] > m("tokenCount").asInstanceOf[Int])
+      println(row.mkString("\t"))
     })
   }
 
@@ -61,6 +72,7 @@ object CobaltExport {
       (0 to c - 1).foreach(i => println(p.getName(i)))
     })
   }
+
   def main(args: Array[String])  = {
     checkAllCorpora()
   }
@@ -101,18 +113,3 @@ case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, senten
   }
 }
 
-object ExtractorFromZippie {
-  def main(args: Array[String])  = {
-    val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
-    new File(dir).listFiles()
-      .filter(_.getName.endsWith(".zip"))
-      //.filter(_.getName.contains("gtbcit_mnw_15"))
-      .foreach(f => {
-        val outputFilenamePrefix = f.getName().replaceAll("^cobalt_export_","").replaceAll(".zip", "")
-        new File(dir + "/"  + outputFilenamePrefix).mkdir()
-        val outputPrefix = dir + "/" + outputFilenamePrefix + "/"  + outputFilenamePrefix
-        val e = ExtractorFromZippie(f.getCanonicalPath, outputPrefix, sentenceElement = if (outputFilenamePrefix.contains("cit")) "q" else "s")
-      e.extract()
-    })
-  }
-}

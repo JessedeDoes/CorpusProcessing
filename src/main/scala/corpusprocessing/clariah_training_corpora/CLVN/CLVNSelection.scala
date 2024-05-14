@@ -33,7 +33,8 @@ case class Doc(n: Node, corpusURL: String) {
 
 case class DocFromFile(f: File) {
 
-  val (meta, nTokens) = {
+  lazy val doc = XML.loadFile(f)
+  lazy val (meta, nTokens) = {
 
     val n = XML.loadFile(f)
     val toks = (n \\ "w").size
@@ -41,7 +42,8 @@ case class DocFromFile(f: File) {
     (n \ "teiHeader").head -> toks
   }
 
-  val e  = meta.asInstanceOf[Elem]
+
+  lazy val e  = meta.asInstanceOf[Elem]
   def getValues(name: String): Seq[String] = (meta \\ "interpGrp").filter(g => (g \ "@type").text == name).flatMap(g => (g \\ "interp").map(_.text)) // ((n \\ "docInfo").head.child.filter(x => x.label == name).map(x => {  (x  \\ "value").text}))
   lazy val pid = (meta \\ "docPid").text
   lazy val province = getValues("province").mkString("|")

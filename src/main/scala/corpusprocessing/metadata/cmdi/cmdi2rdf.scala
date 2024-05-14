@@ -112,11 +112,11 @@ object cmdi2rdf {
 
   def main(args: Array[String]) = {
     lat_profile.list()
-    val x = new PrintWriter("/home/jesse/Downloads/test.fss")
+    val x = new PrintWriter("/var/lib/tomcat9/webapps/dictionary_data/int_text_profile.fss")
     x.println(lat_profile.owl)
     x.close()
   }
-
+  // http://localhost:8080/webvowl/#iri=http://localhost:8080/dictionary_data/int_text_profile.fss 
 }
 
 

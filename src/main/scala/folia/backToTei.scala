@@ -23,7 +23,7 @@ trait FoliaToRudimentaryTEITrait {
   def convertWord(w: Node) = {
 
 
-    val content = (w \\ "t").filter(nonModernized).headOption.map(_.text).getOrElse("")
+    val content = (w \\ "t").find(nonModernized).map(_.text).getOrElse("")
     val pos = (w \\ "pos" \ "@class").toString()
     val lemmatags = w \\ "lemma"
 
@@ -109,18 +109,19 @@ object BlacklabMeta {
 
   val docMeta = docjes.map(d => {
     val pid = (d \\ "docPid").text
-    val fields = (d \ "docInfo").head.child.map(c => {
-      c match {
-        case e: Elem =>
-          val name = e.label
-          val values = (e \ "value").filter(v => !v.text.contains("Unspec")).map(_.text.trim)
-          if (values.nonEmpty)
-            <interpGrp type={name}>{values.map(v => <interp>{v}</interp> )}</interpGrp>
-          else Seq()
-        case _ =>  Seq()
-      }
-
-    })
+    val fields = (d \ "docInfo").head.child.map {
+      case e: Elem =>
+        val name = e.label
+        val values = (e \ "value").filter(v => !v.text.contains("Unspec")).map(_.text.trim)
+        if (values.nonEmpty)
+          <interpGrp type={name}>
+            {values.map(v => <interp>
+            {v}
+          </interp>)}
+          </interpGrp>
+        else Seq()
+      case _ => Seq()
+    }
     val bibl = <listBibl><bibl>{fields}</bibl></listBibl>
     pid -> bibl
   }).toMap
