@@ -34,14 +34,54 @@ object CorpusVandeVoorde {
   </header>
    */
 
+  val dinges = <bibl>
+    <interpGrp type="genre">
+      <interp>administrative</interp>
+    </interpGrp>
+    <interpGrp type="document">
+      <interp>ga londerzeel_schepenbank steenhuffel_1735</interp>
+    </interpGrp>
+    <interpGrp type="word_count">
+      <interp>7200</interp>
+    </interpGrp>
+    <interpGrp type="transcriber">
+      <interp>iv</interp>
+    </interpGrp>
+    <interpGrp type="date">
+      <interp>1735</interp>
+    </interpGrp>
+    <interpGrp type="place">
+      <interp>steenhuffel</interp>
+    </interpGrp>
+    <interpGrp type="notes">
+      <interp>transcriptie (ongepubliceerd) door louis de bondt die door iris van de voorde is aangepast aan de transcriptierichtlijnen die voor die project gehanteerd worden. extra tekst in de marge (soms toegevoegd op een later tijdstip) werd niet opgenomen.</interp>
+    </interpGrp>
+    <interpGrp type="archive">
+      <interp>gemeentearchief londerzeel</interp>
+    </interpGrp>
+  </bibl>
+
+  val mapping = Map("date" -> "witnessYearLevel1_from", "genre" -> "genre", "place" -> "place", "document" -> "titleLevel1", "pid" -> "pid")
+
+  def uuid(s: String): String = {
+    val bytes = s.getBytes("UTF-8")
+    java.util.UUID.nameUUIDFromBytes(bytes).toString
+  }
+
   def parseHeader(h: Elem): Elem = {
     val fields = h.text.split("\n").filter(_.contains(":")).map(l => l.split("\\s*:\\s*",-1)).map(a => {
       val name = a(0).trim.toLowerCase()
       val value = a(1).trim.toLowerCase()
       name -> value
-    }).toMap
+    }).toMap ++ Map("pid" -> uuid(h.text))
+
     def m(f: String)  = fields.getOrElse(f, "undefined")
     def interp(n: String, v: String)  =  { <interpGrp type={n.replaceAll("\\s+","_")}><interp>{v}</interp></interpGrp> }
+    def interp2(n: String, v: String): Seq[Node] =  {
+      val k = n.replaceAll("\\s+","_")
+      val k1 = mapping.get(k).map(x => <interpGrp type={x}><interp>{v}</interp></interpGrp>).getOrElse(Seq[Node]())
+      k1
+    }
 
     <teiHeader>
       <fileDesc>
@@ -73,6 +113,11 @@ object CorpusVandeVoorde {
             {fields.map({case (n,v) => interp(n,v)})}
           </bibl>
         </listBibl>
+          <listBibl xml:id="inlMetadata">
+            <bibl>
+              {fields.map({ case (n, v) => interp2(n, v) })}
+            </bibl>
+          </listBibl>
       </sourceDesc>
       </fileDesc>
     </teiHeader>
