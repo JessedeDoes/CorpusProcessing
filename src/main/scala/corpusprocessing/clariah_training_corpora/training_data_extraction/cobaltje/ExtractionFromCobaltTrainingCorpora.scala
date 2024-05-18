@@ -3,8 +3,9 @@ package corpusprocessing.clariah_training_corpora.training_data_extraction.cobal
 import java.io.File
 
 object ExtractionFromCobaltTrainingCorpora {
+  val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
   def main(args: Array[String]) = {
-    val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
+
     new File(dir).listFiles()
       .filter(_.getName.endsWith(".zip"))
       //.filter(_.getName.contains("gtbcit_mnw_15"))

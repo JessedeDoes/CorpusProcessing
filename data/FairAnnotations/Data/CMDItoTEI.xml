@@ -1,0 +1,438 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<TEI xmlns="http://www.tei-c.org/ns/1.0">
+    <teiHeader>
+        <fileDesc>
+            <titleStmt>
+                <title type="dependentTitle" xml:lang="nl">'Donorkind' haalt slag thuis: gynaecoloog
+                    moet DNA afstaan</title>
+                <title type="title" xml:lang="nl">Het Nieuwsblad van 11-05-2024</title>
+                <title type="seriesTitle" xml:lang="nl">Het Nieuwsblad</title>
+                <respStmt>
+                    <resp>online publication, conversion, linguistic annotation</resp>
+                    <orgName xml:lang="nl">Instituut voor de Nederlandse Taal</orgName>
+                    <orgName xml:lang="en">Dutch Language Institute</orgName>
+                </respStmt>
+            </titleStmt>
+            <!-- editionStmt wegdoen hier -->
+            <editionStmt>
+                <edition>editie Antwerpen/Mechelen</edition>
+            </editionStmt>
+            <extent/>
+            <publicationStmt>
+                <publisher>
+                    <orgName xml:lang="nl">Instituut voor de Nederlandse Taal</orgName>
+                    <orgName xml:lang="en">Dutch Language Institute</orgName>
+                </publisher>
+                <distributor>
+                    <orgName xml:lang="nl">Instituut voor de Nederlandse Taal</orgName>
+                    <orgName xml:lang="en">Dutch Language Institute</orgName>
+                </distributor>
+                <pubPlace>Leiden</pubPlace>
+                <idno type="sourceID">c975f054-0edb-11ef-933a-d25f7d0f633f</idno>
+                <idno type="pid">20240511220711765BH38475105718</idno>
+                <availability>
+                    <licence>
+                        <ref target="http://creativecommons.org/licenses/by/4.0"/>
+                        <interpGrp type="licence">
+                            <interp>CC BY 4.0</interp>
+
+                        </interpGrp>
+                        <interpGrp type="dataAccess">
+                            <interp>online</interp>
+                        </interpGrp>
+                        <interpGrp type="copyrightOwner">
+                            <interp>Mediahuis</interp>
+                        </interpGrp>
+                    </licence>
+                </availability>
+            </publicationStmt>
+            <sourceDesc>
+                <p>Born digital</p>
+                <p>
+                    <!-- lelijk -->
+                    <idno type="sourceID">c975f054-0edb-11ef-933a-d25f7d0f633f</idno>
+                    <idno type="ISBN/ISSN"/>
+                    <ref type="sourceURI" target="URL"/>
+                </p>
+
+                <!-- sourceURI -->
+                <p>
+                    <listPerson type="creators">
+                        <!-- wat is hier precies de bedoeling -->
+                        <person role="author" xml:id="YYY2">
+                            <idno type="internal_person_identifier">YYY2</idno>
+                            <idno type="VIAF">XXX1</idno>
+
+                            <persName>
+                                <surname>Y</surname>
+                                <addName type="pseudonym">XYZ</addName>
+                                <addName type="infixes">de</addName>
+                            </persName>
+
+                            <interpGrp type="anonymized">
+                                <interp>false</interp>
+                            </interpGrp>
+                            <interpGrp type="normalizedName">
+                                <interp>false</interp>
+                            </interpGrp>
+                            <gender/>
+                            <age/>
+                            <birth when="2089"> XXX <placeName>
+                                    <settlement type="city">XXX</settlement>
+                                    <country key="XXX">XXX</country>
+                                </placeName>
+                            </birth>
+                            <occupation/>
+                            <faith/>
+                            <residence/>
+                            <death when="2370"/>
+                            <education/>
+                            <socecStatus/>
+                        </person>
+                        <person role="translator" xml:id="XXX2">
+                            <idno type="internal_person_identifier">XXX2</idno>
+                            <idno type="VIAF">XXX1</idno>
+                            <persName>
+                                <surname>Y</surname>
+                                <addName type="pseudonym">XYZ</addName>
+                                <addName type="infixes">de</addName></persName>
+                            <interpGrp type="anonymized">
+                                <interp>false</interp>
+                            </interpGrp>
+                            <interpGrp type="normalizedName">
+                                <interp>false</interp>
+                            </interpGrp>
+                            <gender/>
+                            <age/>
+                            <birth when="1980-04-20"> April 20th, 1980 <placeName>
+                                    <settlement type="city">Brussels</settlement>
+                                </placeName>
+                            </birth>
+                            <occupation/>
+                            <faith/>
+                            <residence/>
+                            <death when="2750"/>
+                            <education/>
+                            <socecStatus/>
+                        </person>
+                        <org role="intended audience">functionally illiterate people</org>
+                        <!-- dit past niet hier, ook een textClass -->
+                    </listPerson>
+                </p>
+                <p>
+                    <listPlace type="location">
+                        <place type="country">
+                            <placeName/>
+                        </place>
+                        <place type="province">
+                            <placeName/>
+                        </place>
+                        <place type="settlement">
+                            <placeName/>
+                        </place>
+                        <place type="region">
+                            <placeName/>
+                        </place>
+                        <place type="locationCode">
+                            <location type="KloekeCode">K244p</location>
+                        </place>
+                    </listPlace>
+                    <listBibl>
+                        <bibl>
+                            <msIdentifier>
+                                <collection>nieuwsblad</collection>
+                                <idno type="callNumberManuscript"/>
+                            </msIdentifier>
+                        </bibl>
+                    </listBibl>
+                    <listBibl xml:id="sourceCollectionSpecificMetadatas">
+                        <bibl>
+                            <interpGrp type="BasilexAgeGroup">
+                                <interp>Group 2</interp>
+                            </interpGrp>
+                            <interpGrp type="IMDB code">
+                                <interp>tt0120338</interp>
+                            </interpGrp>
+                        </bibl>
+                    </listBibl>
+                </p>
+                <p>
+                    <biblStruct type="newspaper">
+                        <analytic>
+                            <editor xml:id="XXX2"/>
+                            <author xml:id="YYY2"/>
+                            <title type="a" xml:lang="nl">'Donorkind' haalt slag thuis: gynaecoloog
+                                moet DNA afstaan</title>
+                            <date type="witnessDate" when="2024-05-01">01-05-2024 <interp
+                                    value="dateApproximation">false</interp>
+                                <interp value="dateUncertainty">false</interp>
+                            </date>
+                            <date type="publicationDate" when="2024-05-01">01-05-2024 <interp
+                                    value="dateApproximation">false</interp>
+                                <interp value="dateUncertainty">false</interp>
+                            </date>
+                            <date type="textDate" when=""/>
+                        </analytic>
+                        <monogr>
+                            <title type="j" xml:lang="nl">Het Nieuwsblad van 11-05-2024</title>
+                            <imprint>
+                                <pubPlace/>
+                                <publisher>Mediahuis</publisher>
+                            </imprint>
+                            <biblScope unit="volume"/>
+                            <biblScope unit="issue"/>
+                            <biblScope unit="page" from="" to=""/>
+                        </monogr>
+                        <series>
+                            <title type="s">Het Nieuwsblad</title>
+                        </series>
+                    </biblStruct>
+                </p>
+                <p>
+                    <listBibl xml:id="letterCorpusSpecific">
+                        <listPerson>
+                            <person role="sender" xml:id="ABYZ">
+                                <persName>
+                                    <forename>AB</forename>
+                                    <surname>YZ</surname>
+                                </persName>
+                                <addName type="pseudonym">XYZ</addName>
+                                <addName type="infixes">de</addName>
+                                <interpGrp type="anonymized">
+                                    <interp>false</interp>
+                                </interpGrp>
+                                <interpGrp type="normalizedName">
+                                    <interp>false</interp>
+                                </interpGrp>
+                                <gender/>
+                                <age/>
+                                <birth when=""> XXX <placeName>
+                                        <settlement type="city">XXX</settlement>
+                                        <country key="XXX">XXX</country>
+                                    </placeName>
+                                </birth>
+                                <occupation/>
+                                <faith/>
+                                <residence/>
+                                <death when=""/>
+                                <education/>
+                                <socecStatus/>
+                            </person>
+                            <person role="addressee" xml:id="CDWX">
+                                <persName>
+                                    <forename>CD</forename>
+                                    <surname>WX</surname>
+                                </persName>
+                                <addName type="pseudonym">MNO</addName>
+                                <addName type="infixes">de</addName>
+                                <addName type="FullNameFromSource"/>
+                                <interpGrp type="anonymized">
+                                    <interp>false</interp>
+                                </interpGrp>
+                                <interpGrp type="normalizedName">
+                                    <interp>false</interp>
+                                </interpGrp>
+                                <gender/>
+                                <age/>
+                                <birth when=""> XXX <placeName>
+                                        <settlement type="city">XXX</settlement>
+                                        <country key="XXX">XXX</country>
+                                    </placeName>
+                                </birth>
+                                <occupation/>
+                                <faith/>
+                                <residence/>
+                                <death when=""/>
+                                <education/>
+                                <socecStatus/>
+                            </person>
+                        </listPerson>
+                        <listRelation type="personal">
+                            <relation name="father" active="#ABYZ" passive="#CDWX"/>
+                        </listRelation>
+                        <listPlace>
+                            <place type="sentFrom">
+                                <placename>
+                                    <place type="settlement"/>
+                                    <place type="region"/>
+                                    <place type="country"/>
+                                    <place type="ship"/>
+                                </placename>
+                            </place>
+                            <place type="sentTo">
+                                <placename>
+                                    <place type="settlement"/>
+                                    <place type="region"/>
+                                    <place type="country"/>
+                                    <place type="ship"/>
+                                </placename>
+                            </place>
+                        </listPlace>
+                        <bibl>
+                            <interpGrp type="autograph">
+                                <interp/>
+                            </interpGrp>
+                            <interpGrp type="textType">
+                                <interp/>
+                            </interpGrp>
+                        </bibl>
+                    </listBibl>
+                    <listBibl xml:id="fragment1">
+                        <listPerson>
+                            <person role="author">
+                                <persName/>
+                            </person>
+                        </listPerson>
+                        <listBibl xml:id="date">
+                            <date type="witnessDate" from="1785" to="1800">01-05-2022 <interp
+                                    value="dateApproximation">false</interp>
+                                <interp value="dateUncertainty">false</interp>
+                            </date>
+                            <date type="publicationDate" when="2022-05-01">01-05-2022 <interp
+                                    value="dateApproximation">false</interp>
+                                <interp value="dateUncertainty">false</interp>
+                            </date>
+                            <date type="textDate" when=""/>
+                        </listBibl>
+                        <listBibl>
+                            <bibl>
+                                <interpGrp type="language">
+                                    <interp>English</interp>
+                                </interpGrp>
+                                <interpGrp type="languageID">
+                                    <interp>en</interp>
+                                </interpGrp>
+                                <interpGrp type="languageVariety">
+                                    <interp>British English</interp>
+                                </interpGrp>
+                            </bibl>
+                        </listBibl>
+                        <biblScope>
+                            <xref from="X" to="Y"/>
+                        </biblScope>
+                    </listBibl>
+                </p>
+            </sourceDesc>
+        </fileDesc>
+        <encodingDesc>
+            <appInfo>
+                <application version="1.5" xml:id="Frog">
+                    <label>POS-tagger</label>
+                    <ptr target="https://languagemachines.github.io/frog/"/>
+                </application>
+            </appInfo>
+            <appInfo>
+                <application ident="a3" version="2024.2" xml:id="TextRazor">
+                    <label>topic detection</label>
+                    <ptr target="https://www.textrazor.com/"/>
+                </application>
+            </appInfo>
+            <editorialDecl>
+                <interpretation>
+                    <p>
+                        <listBibl xml:id="LinguisticAnnotation">
+                            <bibl xml:id="POS-tagging">
+                                <interpGrp type="annotationStyle">
+                                    <interp>inline</interp>
+                                </interpGrp>
+                                <interpGrp type="Documentation">
+                                    <interp>URL</interp>
+                                </interpGrp>
+                                <interpGrp type="annotationSet">
+                                    <interp>URL</interp>
+                                </interpGrp>
+                                <interpGrp type="annotationFormat">
+                                    <interp>xml</interp>
+                                </interpGrp>
+                                <interpGrp type="annotationDescription">
+                                    <interp
+                                        value="The text was automatically POS-tagged. The POS-tags were manually verified."
+                                    />
+                                </interpGrp>
+                            </bibl>
+                            <bibl xml:id="POS-taggingProvenance1">
+                                <interpGrp type="annotationMode">
+                                    <interp>Manual</interp>
+                                </interpGrp>
+                                <interpGrp type="processor">
+                                    <interp>INT</interp>
+                                </interpGrp>
+                                <date/>
+                            </bibl>
+                            <bibl xml:id="POS-taggingProvenance2">
+                                <interpGrp type="annotationMode">
+                                    <interp>Automatic</interp>
+                                </interpGrp>
+                                <interpGrp type="processor">
+                                    <interp>#Frog</interp>
+                                </interpGrp>
+                                <date/>
+                            </bibl>
+                        </listBibl>
+                    </p>
+                </interpretation>
+            </editorialDecl>
+
+        </encodingDesc>
+
+        <profileDesc>
+            <textDesc>
+                <channel mode="w">newspaper</channel>
+                <constitution/>
+                <derivation type="translation"/>
+                <domain/>
+                <factuality type="fact"/>
+                <interaction/>
+                <preparedness/>
+                <purpose/>
+            </textDesc>
+            <textClass>
+                <keywords resp="#myKeywordExtractor">
+                    <!-- refereert naar appInfo -->
+                    <list>
+                        <interpGrp type="processor">
+                            <interp>#TextRazor</interp>
+                        </interpGrp>
+                    </list>
+                    <term/>
+                    <term/>
+                </keywords>
+            </textClass>
+            <settingDesc>
+                <setting>
+                    <name type="city">Brussel</name>
+                    <name type="person">koning Filip</name>
+                </setting>
+            </settingDesc>
+            <langUsage>
+                <language ident="nl">Dutch <interpGrp type="dominant language">
+                        <interp>true</interp>
+                    </interpGrp>
+                </language>
+                <language style="languageVariety">Belgian Dutch <interpGrp
+                        type="languageVarietyJustification">
+                        <interp>Published in a Flemish newspaper</interp>
+                    </interpGrp>
+                </language>
+                <language>
+                    <interpGrp type="translated text">
+                        <interp>true</interp>
+                    </interpGrp>
+                    <interpGrp type="originalLanguage">
+                        <interp>French</interp>
+                    </interpGrp>
+                </language>
+            </langUsage>
+        </profileDesc>
+        <revisionDesc>
+            <revisionDesc status="current">
+                <list>
+                    <interpGrp type="version">
+                        <interp>1.0</interp>
+                    </interpGrp>
+                </list>
+            </revisionDesc>
+        </revisionDesc>
+    </teiHeader>
+    <text> </text>
+</TEI>
