@@ -7,10 +7,11 @@ object toSentPerLine {
   def printSentences(f: String) = {
     val d = XML.load(f)
     val n = new File(f).getName
+    val docPid = ((d \\ "interpGrp").filter(x => (x \ "@type").text == "pid") \\ "interp").text
     (d \\ "s").foreach(s => {
       val id = getId(s)
       val t = s.text.replaceAll("\\s+", " ").trim
-      println(s"$n\t$id\t$t")
+      println(s"$n\t$docPid\t$id\t$t")
     })
   }
 
