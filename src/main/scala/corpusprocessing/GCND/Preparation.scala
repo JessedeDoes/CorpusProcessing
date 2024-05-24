@@ -24,7 +24,7 @@ object Preparation {
       |		array_agg(elan_annotatie_id order by overlap desc) as options,
       |		array_agg(overlap order by overlap desc) as overlaps from elan_2_alpino group by alpino_annotatie_id, transcriptie_id;
       | create table if not exists tagged_tokens (elan_annotatie_id integer, tokens text);
-      | drop view elan_annotatie_plus;
+      | drop view if exists elan_annotatie_plus;
       | create view  elan_annotatie_plus as select elan_annotatie.*, tagged_tokens.tokens as tagged_tokens from elan_annotatie left join tagged_tokens on tagged_tokens.elan_annotatie_id=elan_annotatie.elan_annotatie_id;
       |commit;
       |""".stripMargin.split(";")

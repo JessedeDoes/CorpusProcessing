@@ -34,34 +34,16 @@ object CorpusVandeVoorde {
   </header>
    */
 
-  val dinges = <bibl>
-    <interpGrp type="genre">
-      <interp>administrative</interp>
-    </interpGrp>
-    <interpGrp type="document">
-      <interp>ga londerzeel_schepenbank steenhuffel_1735</interp>
-    </interpGrp>
-    <interpGrp type="word_count">
-      <interp>7200</interp>
-    </interpGrp>
-    <interpGrp type="transcriber">
-      <interp>iv</interp>
-    </interpGrp>
-    <interpGrp type="date">
-      <interp>1735</interp>
-    </interpGrp>
-    <interpGrp type="place">
-      <interp>steenhuffel</interp>
-    </interpGrp>
-    <interpGrp type="notes">
-      <interp>transcriptie (ongepubliceerd) door louis de bondt die door iris van de voorde is aangepast aan de transcriptierichtlijnen die voor die project gehanteerd worden. extra tekst in de marge (soms toegevoegd op een later tijdstip) werd niet opgenomen.</interp>
-    </interpGrp>
-    <interpGrp type="archive">
-      <interp>gemeentearchief londerzeel</interp>
-    </interpGrp>
-  </bibl>
 
-  val mapping = Map("date" -> "witnessYearLevel1_from", "genre" -> "genre", "place" -> "place", "document" -> "titleLevel1", "pid" -> "pid")
+
+  val mapping = Map(
+    "name" -> "authorLevel1",
+    "date" -> "witnessYearLevel1_from",
+    "genre" -> "genre",
+    "place" -> "place",
+    "document" -> "titleLevel1",
+    "pid" -> "pid",
+    "archive" -> "archive")
 
   def uuid(s: String): String = {
     val bytes = s.getBytes("UTF-8")
@@ -77,10 +59,21 @@ object CorpusVandeVoorde {
 
     def m(f: String)  = fields.getOrElse(f, "undefined")
     def interp(n: String, v: String)  =  { <interpGrp type={n.replaceAll("\\s+","_")}><interp>{v}</interp></interpGrp> }
-    def interp2(n: String, v: String): Seq[Node] =  {
+    def mappedProperty(n: String, v: String): Seq[Node] =  {
       val k = n.replaceAll("\\s+","_")
-      val k1 = mapping.get(k).map(x => <interpGrp type={x}><interp>{v}</interp></interpGrp>).getOrElse(Seq[Node]())
-      k1
+      if (k == "date") {
+       val parts = v.trim.split("-")
+       val from = parts.head
+       val to =  parts.tail.headOption.getOrElse(from)
+        Seq(interp("witnessYearLevel1_from",from), interp("witnessYearLevel1_to",to))
+      } else {
+        val k1 = mapping.get(k).map(x => <interpGrp type={x}>
+          <interp>
+            {v}
+          </interp>
+        </interpGrp>).getOrElse(Seq[Node]())
+        k1
+      }
     }
 
     <teiHeader>
@@ -115,7 +108,7 @@ object CorpusVandeVoorde {
         </listBibl>
           <listBibl xml:id="inlMetadata">
             <bibl>
-              {fields.map({ case (n, v) => interp2(n, v) })}
+              {fields.map({ case (n, v) => mappedProperty(n, v) })}
             </bibl>
           </listBibl>
       </sourceDesc>
@@ -210,3 +203,33 @@ object CorpusVandeVoorde {
     })
   }
 }
+
+
+/*
+val dinges = <bibl>
+  <interpGrp type="genre">
+    <interp>administrative</interp>
+  </interpGrp>
+  <interpGrp type="document">
+    <interp>ga londerzeel_schepenbank steenhuffel_1735</interp>
+  </interpGrp>
+  <interpGrp type="word_count">
+    <interp>7200</interp>
+  </interpGrp>
+  <interpGrp type="transcriber">
+    <interp>iv</interp>
+  </interpGrp>
+  <interpGrp type="date">
+    <interp>1735</interp>
+  </interpGrp>
+  <interpGrp type="place">
+    <interp>steenhuffel</interp>
+  </interpGrp>
+  <interpGrp type="notes">
+    <interp>transcriptie (ongepubliceerd) door louis de bondt die door iris van de voorde is aangepast aan de transcriptierichtlijnen die voor die project gehanteerd worden. extra tekst in de marge (soms toegevoegd op een later tijdstip) werd niet opgenomen.</interp>
+  </interpGrp>
+  <interpGrp type="archive">
+    <interp>gemeentearchief londerzeel</interp>
+  </interpGrp>
+</bibl>
+ */
