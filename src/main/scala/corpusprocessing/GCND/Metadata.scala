@@ -10,9 +10,10 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 
 import java.io.PrintWriter
 import scala.xml._
-
 import corpusprocessing.GCND.Metadata.SimpleRelation
 import GCNDDatabase.db
+
+import scala.collection.mutable
 
 object Metadata {
 
@@ -106,10 +107,25 @@ object Metadata {
   }
 
 
+   type dinges = List[Map[String,String]]
+   val slurpMap: mutable.Map[String, dinges]  = new mutable.HashMap[String, dinges]()
+   def cachedSlurp(tableName: String) : dinges= {
+      if (slurpMap.contains(tableName))  {
+         Console.err.println(s"Cached slurp: $tableName")
+         slurpMap(tableName)
+       } else {
+         val x = db.slurp(db.allRecords(tableName))
+         slurpMap(tableName) = x
+         x
+      }
+   }
 
    lazy val pretty = new PrettyPrinter(100,4)
-   def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table = Table(data = db.slurp(db.allRecords(tableName)), tableName, id_field_name, skip_fields)
-   def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = zlurp0(tableName, tableName + "_id", skip_fields = skip_fields)
+   def zlurp0(tableName: String, id_field_name: String, skip_fields: Set[String] = Set()): Table =
+     Table(data = cachedSlurp(tableName), tableName, id_field_name, skip_fields)
+   def zlurp(tableName: String, skip_fields: Set[String] = Set()): Table = {
+     Console.err.println(s"slurping $tableName")
+     zlurp0(tableName, tableName + "_id", skip_fields = skip_fields) }
 
    object Schema {
 
