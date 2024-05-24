@@ -150,7 +150,7 @@ object Metadata {
      lazy val opname_functie: Table = zlurp("opname_functie")
 
      lazy val plaats: Table = zlurp("plaats")
-     lazy val regio: Table = zlurp("regio")
+     lazy val provincie: Table = zlurp("provincie")
      lazy val land: Table = zlurp("land")
      lazy val dialectgebied: Table = zlurp("dialectgebied")
      lazy val dialectgebied_ruw: Table = zlurp("dialectgebied_ruw")
@@ -240,7 +240,7 @@ object Metadata {
 
 
        // plaats
-       SimpleRelation("plaatsXregio", plaats, regio, "regio_id", "regio_id"),
+       SimpleRelation("plaatsXregio", plaats, provincie, "provincie_id", "provincie_id"),
        SimpleRelation("plaatsXland", plaats, land, "land_id", "land_id"),
        SimpleRelation("plaatsXdialectgebied", plaats, dialectgebied, "dialectgebied_id", "dialectgebied_id"),
        SimpleRelation("dialectgebiedXdialectgebiedruw", dialectgebied, dialectgebied_ruw, "dialectgebied_ruw_id", "dialectgebied_ruw_id"),
