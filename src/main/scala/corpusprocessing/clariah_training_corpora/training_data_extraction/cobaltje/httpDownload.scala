@@ -9,7 +9,7 @@ import java.util.Base64
 
 object HTTPDownload {
   def main(args: Array[String])  = {
-    val d = HTTPDownload(CobaltExport.testURL,"/tmp/zippie.zip", "jesse", "dedoes")
+    val d = HTTPDownload(Settings.testURL,"/tmp/zippie.zip", "jesse", "dedoes")
     d.apply()
   }
 }

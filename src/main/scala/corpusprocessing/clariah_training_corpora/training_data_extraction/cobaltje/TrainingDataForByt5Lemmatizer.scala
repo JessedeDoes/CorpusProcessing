@@ -6,15 +6,16 @@ import java.util.zip.GZIPInputStream
 
 case class Token(word: String, pos: String, lemma: String)
 
+import Settings._
 object TrainingDataForByt5Lemmatizer {
 
   val proportion = 80
 
-  val dir = ExtractionFromCobaltTrainingCorpora.dir
 
-  lazy val lemAll = dir + "/Lemmatizer/lem.all.tsv"
-  lazy val lemTrain = dir + "/Lemmatizer/lem.train.tsv"
-  lazy val lemTest = dir + "/Lemmatizer/lem.test.tsv"
+
+  lazy val lemAll = lemDataDir + "lem.all.tsv"
+  lazy val lemTrain = lemDataDir + "lem.train.tsv"
+  lazy val lemTest = lemDataDir + "lem.test.tsv"
 
   def parseToken(s: String): Option[Token] = {
     val f = s.split("\\t")
@@ -29,8 +30,7 @@ object TrainingDataForByt5Lemmatizer {
       l1.flatMap(x => findAllFilesIn(x))
   }
 
-
-  lazy val trainingFiles = findAllFilesIn(new File(dir)).filter(_.getName.endsWith("train.tsv.gz"))
+  lazy val trainingFiles = findAllFilesIn(new File(posTaggingDataDir)).filter(_.getName.endsWith("train.tsv.gz"))
 
   lazy val trainingLines = trainingFiles.iterator.flatMap(f => {
     val x = io.Source.fromInputStream(new GZIPInputStream(new FileInputStream(f))).getLines()
@@ -60,6 +60,5 @@ object TrainingDataForByt5Lemmatizer {
     val test = groups.drop(proportion * groups.size / 100)
     printGroups(train,lemTrain)
     printGroups(test, lemTest)
-
   }
 }

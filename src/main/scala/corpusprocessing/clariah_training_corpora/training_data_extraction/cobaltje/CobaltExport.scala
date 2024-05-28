@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{downloadFile, testURL}
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{downloadFile}
 import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
 import utils.zipUtils
 
@@ -11,10 +11,10 @@ import scala.sys.process._
 import scala.xml._
 // http://lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=gtbcit_punct_14_refurbished&only_validated=false
 
+import Settings._
+
 object CobaltExport {
-  val outputBase = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024/"
-  val project = "courantenselectie"
-  val testURL = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$project&only_validated=false"
+
 
   def downloadFile(url: String, filename: String) = {
     new URL(url) #> new File(filename) !!
@@ -80,7 +80,7 @@ object CobaltExport {
 
 import CobaltExport._
 case class CobaltExport(url: String, name: String) {
-  val zipName = s"$outputBase/cobalt_export_$name.zip"
+  val zipName = s"$downloadDir/cobalt_export_$name.zip"
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
   lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else {
     val f = new File(zipName)
@@ -93,23 +93,5 @@ case class CobaltExport(url: String, name: String) {
   lazy val validTokens = tokens.filter(w => (w \ "@valid").text == "true")
 }
 
-case class ExtractorFromZippie(zipFileName: String, outputPrefix: String, sentenceElement: String="s") {
-  lazy val paths: Seq[Path] = zipUtils.find(zipFileName)
 
-
-
-  case class Extractor() extends extract_training_data_trait {
-    override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
-    override lazy val output_prefix: String = outputPrefix
-    override val sentence_element: String = sentenceElement
-    override val enhance: Boolean = true
-    // override lazy val output_folder = outputDir
-  }
-
-  def extract() = {
-    val e = Extractor()
-    println(e.output_folder)
-    e.makeTrainingMaterialAndPartitionFromPaths(paths,e.output_prefix)
-  }
-}
 
