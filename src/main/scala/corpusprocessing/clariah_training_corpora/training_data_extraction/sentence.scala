@@ -68,7 +68,16 @@ object Sentence {
     val indexedTokenElements = tokenElements.zipWithIndex
     val tokens = tokenElements.map(getWord)
     val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
-    val lemmata = tokenElements.map(x => if (x.label == "pc") "" else (x \ "@lemma").headOption.map(_.text.trim).getOrElse(""))
+    val lemmata = tokenElements.map(x =>  {
+      val w = getWord(x)
+      val looksLikePunct = w.matches("(\\p{P})+")
+      if (x.label == "pc") "" else  {
+        val lem = (x \ "@lemma").headOption.map(_.text.trim)
+        if (lem.nonEmpty && lem.get.nonEmpty && looksLikePunct) {
+          Console.err.println("HMMMMMMMMMM " + x)
+        }
+        lem.getOrElse("") }
+    } )
     val relevances = tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
     val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
 
