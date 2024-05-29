@@ -29,3 +29,19 @@ object Preparation {
       |commit;
       |""".stripMargin.split(";")
 }
+
+
+/*
+create view persoon_persoon_plus as select persoon__persoon.*,
+relatie_type.label from persoon__persoon, relatie_type where persoon__persoon.relatie_id = relatie_type.relatie_type_id;
+
+create view create view persoon_persoon_plusplus
+as select persoon_persoon_plus.*, plaats.*,persoon.gender_id from persoon_persoon_plus, persoon,
+plaats where persoon_persoon_plus.persoon_id2=persoon_id and persoon.geboorte_plaats_id=plaats.plaats_id;
+
+create view persoon_vaderplaats as select
+    persoon_id1 as persoon_id, plaats_id, kloeke_code, provincie_id,
+    dialectgebied_id from persoon_persoon_plusplus where label='ouder van' and gender_id=1;
+
+
+ */

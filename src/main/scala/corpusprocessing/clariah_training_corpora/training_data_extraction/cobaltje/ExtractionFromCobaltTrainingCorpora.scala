@@ -17,7 +17,9 @@ object ExtractionFromCobaltTrainingCorpora {
         // dirAsDir.delete()
         dirAsDir.mkdir()
         val outputPrefix = createdTrainingDataDirectory + "/" + datasetName + "/" + datasetName
-        val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix, sentenceElement = if (datasetName.contains("cit")) "q" else "s")
+
+        val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
+          sentenceElement = if (datasetName.contains("cit")) "q" else "s")
         datasetName -> e.extract()
       }).toMap
 
@@ -45,6 +47,7 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         // dirAsDir.delete()
         dirAsDir.mkdir()
         val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
+
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
           sentenceElement = datasetConfig.sentenceElement, ///if (datasetName.contains("cit")) "q" else "s",
           enhanceTags = false, // dan wordt dus alles wel anders.......
