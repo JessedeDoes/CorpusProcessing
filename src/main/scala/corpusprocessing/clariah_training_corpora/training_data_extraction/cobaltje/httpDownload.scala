@@ -9,8 +9,8 @@ import java.util.Base64
 
 object HTTPDownload {
   def main(args: Array[String])  = {
-    val d = HTTPDownload(Settings.testURL,"/tmp/zippie.zip", "jesse", "dedoes")
-    d.apply()
+    //val d = HTTPDownload(Settings.testURL,"/tmp/zippie.zip", "jesse", "dedoes")
+    //d.apply()
   }
 }
 case class HTTPDownload(url: String, outputPath: String, username: String, password: String) {

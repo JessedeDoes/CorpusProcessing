@@ -7,17 +7,16 @@ import java.io.File
 import scala.xml.{Elem, Null, UnprefixedAttribute}
 
 
-object gtbcit_to_huggingface extends extract_training_data_trait {
+object gtbcit_to_huggingface extends TrainingDataExtraction {
   val gtbCit = "/mnt/Projecten/Corpora/Historische_Corpora/Wolkencorpus/GTB/CitatenTDN2/Refurbished/"
 
   override  def always_sampled(s1: Sentence) = {
-    val s = s1.asInstanceOf[PimpedSentence]
-    s.hilex_pos.indices.exists(i => s.relevances(i) == "yes" && s.hilex_pos(i).matches(".*(PD|CON|ADP|NUM|INT)"))
+   false
   }
 
   def setPos(w: Elem, p:String) = w.copy(attributes =  w.attributes.append(new UnprefixedAttribute("hilex-pos", p, Null)))
 
-  override def decentSentence(s: Sentence, b: Partition)  = s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
+  //override def decentSentence(s: Sentence, b: Partition)  = true // s.asInstanceOf[PimpedSentence].hilex_pos.exists(x => x != "unk")
 
   def propagateHilexPos(d: Elem): Elem = {
     PostProcessXML.updateElement(d,_.label=="cit", cit =>  {
@@ -30,28 +29,28 @@ object gtbcit_to_huggingface extends extract_training_data_trait {
   override def preprocess(e: Elem): Elem = propagateHilexPos(e)
 }
 
-object ofr_to_huggingface extends extract_training_data_trait {
+object ofr_to_huggingface extends TrainingDataExtraction {
   override val pos_attribute = "@type"
   override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/OudFries/RitaVdPoel/corpusfiles/"
   override val split_test_train_on_document_level = true
   override lazy val output_prefix = "ofr"
-  override def decentSentence(s: Sentence, b: Partition)  =  {
+  override def decentSentence(s: Sentence)  =  {
     val tags =  s.asInstanceOf[BasicSentence].tags
     tags.count(_.nonEmpty) > 0.7 * tags.size
   }
 }
 //
-object onw_to_huggingface extends extract_training_data_trait {
+object onw_to_huggingface extends TrainingDataExtraction {
   override val pos_attribute = "@pos"
   override   lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/ONW/ONW-januari-2022/"
   override val split_test_train_on_document_level = false
   override lazy val output_prefix = "onw"
-  override def decentSentence(s: Sentence, b: Partition)  =  {
+  override def decentSentence(s: Sentence)  =  {
     val tags =  s.asInstanceOf[BasicSentence].tags
     tags.count(t => t.nonEmpty && !t.contains("RES")) > 0.6 * tags.size
   }
 }
-object bab_to_huggingface extends extract_training_data_trait {
+object bab_to_huggingface extends TrainingDataExtraction {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "bab"
   override val max_files: Int = Integer.MAX_VALUE
@@ -60,7 +59,7 @@ object bab_to_huggingface extends extract_training_data_trait {
   new File(output_folder).mkdir()
   override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/BrievenAlsBuit/2.8TDN/"
 }
-object crm_to_huggingface extends extract_training_data_trait {
+object crm_to_huggingface extends TrainingDataExtraction {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "CRM"
   override val max_files: Int = Integer.MAX_VALUE // 500

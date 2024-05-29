@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.patch_scripts
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 import utils.PostProcessXML
 
 import java.io.{File, PrintWriter}
@@ -13,7 +13,7 @@ package object floep
 
 import corpusprocessing.clariah_training_corpora.patch_scripts.floep._
 import org.json4s.native.JsonMethods.parse
-import org.json4s.{DefaultFormats, _}
+import org.json4s._
 import utils.PostProcessXML._
 /*
 {"id":"168","tokens":["Ik","lees","voor","me","pleizier",",","meneer",",","als","ik","lees","."],"tags":["PD(type=pers,position=free)","VRB(finiteness=fin,tense=pres)","ADP(type=pre)","PD(type=poss,position=prenom)","NOU-C(number=sg)","LET","NOU-C(number=sg)","LET","CONJ(type=sub)","PD(type=pe
@@ -53,7 +53,7 @@ object readOldPartitions {
 
 import corpusprocessing.clariah_training_corpora.patch_scripts.readOldPartitions._
 
-object tei_2_json extends extract_training_data_trait {
+object tei_2_json extends TrainingDataExtraction {
    // override def sample(sentences: Iterator[(tei_2_json.Sentence, Boolean)], sample_rate: Double, rate_test_train: Double): Iterator[(tei_2_json.Sentence, Boolean)] = sentences.map({case (s,b) => (s, s.partition.contains("test"))})
 
 }

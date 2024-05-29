@@ -3,48 +3,36 @@ package corpusprocessing.clariah_training_corpora.training_data_extraction
 import scala.xml._
 
 trait Sentence {
-  def id: Option[String] = None
+  def sentenceId: Option[String] = None
 
   def toTSV(addSourceLine: Boolean = false, addGroupIds: Boolean = true): String = {
 
     this match {
       case s: BasicSentence => {
-        val sourceLine = if (addSourceLine) s"#### ${s.file} ####\n" else ""
-        sourceLine +
-          s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i), s.token_group_ids(i).getOrElse("")).mkString("\t")).mkString("\n")
-      }
-      case s: PimpedSentence => {
-        val sourceLine = if (addSourceLine) s"#### ${s.file} ####\n" else ""
+        val sourceLine = if (addSourceLine) s"#### ${s.fileId} ####\n" else ""
         sourceLine +
           s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i), s.token_group_ids(i).getOrElse("")).mkString("\t")).mkString("\n")
       }
     }
   }
 
-  def file: String = "unknown"
+  def fileId: String = "unknown"
+
+  def partition: Option[Partition] = None
 }
 
-case class PimpedSentence(
-                           override val id: Option[String],
-                           tokens: List[String],
-                           tags: List[String],
-                           lemmata: List[String],
-                           xml_ids: List[String] = List(),
-                           token_group_ids: List[Option[String]]  = List(),
-                           relevances: List[String] = List(),
-                           hilex_pos: List[String] = List(),
-                           override val file: String = "unknown",
-                           partition: String = "unknown" // pas op andere dingen hebben dit niet
-                         ) extends Sentence
+
 
 case class BasicSentence(
-                          override val id: Option[String],
+                          override val sentenceId: Option[String],
                           tokens: List[String],
                           tags: List[String],
                           lemmata: List[String],
                           xml_ids: List[String] = List(),
                           token_group_ids: List[Option[String]]  = List(),
-                          override val file: String = "unknown",
+                          override val fileId: String = "unknown",
+                          node: Option[Node] = None, // hebben we die echt nodig?
+                          override val partition: Option[Partition] = None
                         ) extends Sentence
 
 object Sentence {
@@ -56,7 +44,7 @@ object Sentence {
     else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
     else x.text.trim
 
-  def sentence(s: Node, f: String, extractor: extract_training_data_trait): Sentence = {
+  def sentence(s: Node, f: String, extractor: TrainingDataExtraction, partition: Option[Partition] = None): Sentence = {
 
     def getJoin_n(n: Node) = (n \ "join" \  "@n").text
 
@@ -78,6 +66,7 @@ object Sentence {
         }
         lem.getOrElse("") }
     } )
+
     val relevances = tokenElements.map(x => (x \ "@sense-id").nonEmpty).map(x => if (x) "yes" else "no")
     val hilex_pos = tokenElements.map(x => (x \ "@hilex-pos").headOption.map(_.text.trim).getOrElse("unk"))
 
@@ -119,14 +108,18 @@ object Sentence {
     })
 
     val enhancedTags = indexedTokenElements.map({ case (x, y) => enhancePos(x, y) })
-    val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#", "")).getOrElse("unknown")
+    //val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#", "")).getOrElse("unknown")
 
-    // println(s.asInstanceOf[Elem].copy(child=Seq()))
-    // println(s.attributes.toString + "->" + partition)
-
-    val r = if (extractor.addStuff)
-      PimpedSentence(id, tokens, if (extractor.enhance) enhancedTags else tags.map(extractor.tagMapping), lemmata, xml_ids, file = f, relevances = relevances, hilex_pos = hilex_pos, partition = partition)
-    else BasicSentence(id, tokens, if (extractor.enhance) enhancedTags else tags.map(extractor.tagMapping), lemmata, xml_ids, tokenGroupIds, file = f)
+    val r =
+      BasicSentence(id,
+        tokens,
+      if (extractor.enhance) enhancedTags else tags.map(extractor.tagMapping),
+      lemmata,
+        xml_ids,
+        tokenGroupIds,
+        fileId = f,
+        None, // s,
+        partition=partition)
     r
   }
 }

@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.specific.gysseling
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 import posmapping.TagsetDiachroonNederlands
 import utils.PostProcessXML
 
@@ -112,7 +112,7 @@ case class Exclusion(docje: Elem)
 
 }
 
-object gysseling_to_huggingface extends extract_training_data_trait {
+object gysseling_to_huggingface extends TrainingDataExtraction {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
   override val max_files: Int = Integer.MAX_VALUE // 500
@@ -120,7 +120,7 @@ object gysseling_to_huggingface extends extract_training_data_trait {
   override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
 
-object gysseling_to_huggingface_core extends extract_training_data_trait {
+object gysseling_to_huggingface_core extends TrainingDataExtraction {
   override def tagMapping(s: String) = TagsetDiachroonNederlands.mapMultipleTagToCore(s).replaceAll("position=prenom.postnom.pred","position=uncl")
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = "gys"
@@ -128,7 +128,7 @@ object gysseling_to_huggingface_core extends extract_training_data_trait {
   override lazy val output_folder: String = "/mnt/Projecten/Corpora/TrainingDataForTools/Gysseling/Core/"
   override lazy val default_input_folder = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
 }
-object gysseling_to_huggingface_filtered extends extract_training_data_trait {
+object gysseling_to_huggingface_filtered extends TrainingDataExtraction {
 
   override val training_subsets: Int = 1
 
@@ -150,10 +150,10 @@ object gysseling_to_huggingface_filtered extends extract_training_data_trait {
     files.map(f => f -> Partition(partition, -1))
   }).toMap
 
-  override def pickPartition(f: Option[String]): Partition =
-    if (f.isEmpty || !partitionsFromLists.contains(f.get)) super.pickPartition(f) else {
-      val z = partitionsFromLists(f.get)
-      Console.err.println(s"##### ${f.get}: ${z.prefix} #####")
+  override def pickPartition(fId: Option[String], sId: Option[String]): Partition =
+    if (fId.isEmpty || !partitionsFromLists.contains(fId.get)) super.pickPartition(fId, sId) else {
+      val z = partitionsFromLists(fId.get)
+      Console.err.println(s"##### ${fId.get}: ${z.prefix} #####")
       z
     }
 

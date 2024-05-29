@@ -13,14 +13,14 @@ import org.json4s._
 import org.json4s.jackson.Serialization.write
 import Sentence._
 import java.nio.file.{Files, Path}
-case class Partition(part: String, portion: Int) {
+case class Partition(part: String, portion: Int = -1) {
   lazy val prefix: String = if (part == TRAIN.part && training_subsets > 1 && portion >= 0) s"$part.$portion" else part
 }
 
 object TRAIN extends Partition("train", -1)
 object DEV extends Partition("dev", -1)
 object TEST extends  Partition("test", -1)
-trait extract_training_data_trait {
+trait TrainingDataExtraction {
 
   val sentence_element="q"
   val pos_attribute = "@pos"
@@ -34,6 +34,7 @@ trait extract_training_data_trait {
   lazy val output_prefix = "tei_to_huggingface"
   val enhance : Boolean = false
   val addStuff: Boolean = false
+  val shuffleDocuments: Boolean = false
 
   implicit val formats = DefaultFormats
 
@@ -44,11 +45,11 @@ trait extract_training_data_trait {
 
   def transformToken(w: Node): Node = w
 
-  def decentSentence(s: Sentence, b: Partition)  = true
+  def decentSentence(s: Sentence)  = true
 
   val maxje = 100
 
-  def pickPartition(f: Option[String]): Partition = {
+  def pickPartition(fileId: Option[String]=None, sentenceId: Option[String]=None): Partition = {
     val r = Math.random()
     val portion = Math.floor(Math.random()* this.training_subsets).toInt
 
@@ -63,7 +64,7 @@ trait extract_training_data_trait {
     p1
   }
 
-  def processDocuments(documents: Iterator[(String, Elem)], outputPrefix: String, sentence_element:String=sentence_element): Unit =
+  def processDocuments(documents: Iterator[(String, Elem)], outputPrefix: String, sentence_element:String=sentence_element)  =
   {
 
     Console.err.println(s"Output to: $outputPrefix")
@@ -75,56 +76,63 @@ trait extract_training_data_trait {
     val printWritersDocumentPartition: Map[Partition, PrintWriter]  = partitions.map(p => p ->
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.filenames.gz")))).toMap
 
-
-
-    val partitioned_s_elements: Iterator[(String, Node, Partition)] = documents.flatMap({
+    val sentences = documents.flatMap({
       case (f: String, x: Node) => {
-        val documentPartition = pickPartition(Some(f))
+        val documentPartition = Some(pickPartition(Some(f)))
+
         println(s"$f $documentPartition")
-        if ((x \\ sentence_element).nonEmpty)
-          (x \\ sentence_element).iterator.map(s => (f,s,documentPartition))
-        else {
-          val chunks = x.descendant
+
+        val chunkElements =
+          if ((x \\ sentence_element).nonEmpty)
+          (x \\ sentence_element)
+          else x.descendant
             .filter(d => Set("w", "pc").contains(d.label))
             .grouped(chunkSize).toList.map(chunk => {
-            <s ana="#chunk">
-              {chunk}
-            </s>
+            <s ana="#chunk">{chunk}</s>
           })
-          chunks.iterator.map(c =>  (f, c, documentPartition))
-        }
+
+        chunkElements.iterator
+          .map(s => sentence(s, f, extractor=this, partition = documentPartition))
+          .filter(decentSentence)
       }
     })
 
-    val sentences: Iterator[(Sentence,Partition)] =
-      partitioned_s_elements.map({case (f,s,documentPartition) => sentence(s,f,this) -> documentPartition}).filter({case (s,documentPartition) => decentSentence(s,documentPartition)})
 
-    val sampled: Iterator[(Sentence, Partition)] = sample(sentences)
+    val sampledSentences: Iterator[Sentence] = sampleAndChooseSentencePartitions(sentences)
 
-    val s1: Iterator[(Sentence, Partition)] = sampled.zipWithIndex.map({
-      case ((s:PimpedSentence,b),i) => s.copy(id=Some(s.id.getOrElse(i.toString))) -> b
-      case ((s:BasicSentence,b),i) => s.copy(id=Some(s.id.getOrElse(i.toString))) -> b
+    val sentencesWithIds: Iterator[Sentence] = sampledSentences.zipWithIndex.map({
+      case (s:BasicSentence ,i) => s.copy(sentenceId=Some(s.sentenceId.getOrElse(i.toString)))
     })
 
-    val sentencesForExport: Iterator[(String, String, Partition, String, String)] = s1.map({case (s: Sentence,b) => (write(s), s.toTSV(), b, s.file, s.id.getOrElse("no_id_found"))})
 
-    val partitionedSentences: Set[(String, Partition, String)] = sentencesForExport.map({ case (json, tsv, b, f, id) =>
-      val pwJSON = printWritersJSON(b)
-      val pwTSV = printWritersTSV(b)
+    case class SentenceSerializations(s: Sentence) {
+      lazy val json = write(s)
+      lazy val tsv = s.toTSV()
+    }
 
-      pwTSV.println("")
-      pwTSV.println(tsv)
-      pwJSON.println(json)
+    val sentencesForExport: Iterator[(String, String, Partition, String, String)] = sentencesWithIds.map(s=> (write(s), s.toTSV(), s.partition.get,s.fileId, s.sentenceId.getOrElse("no_id_found")))
 
-      (f,b,id)
-    }).toSet
+    val partitionedSentences: Set[(String, Partition, String)] = {
+      val printed = sentencesForExport.map({ case (json, tsv, b, f, id) =>
+        val pwJSON = printWritersJSON(b)
+        val pwTSV = printWritersTSV(b)
+
+        pwTSV.println("")
+        pwTSV.println(tsv)
+        pwJSON.println(json)
+
+        (f, b, id)
+      })
+      printed.toSet
+    }
 
 
-    val partitionInformation: Set[(String, (String, Option[String]))] = if (this.split_test_train_on_document_level) {
+    val partitionInformation: Set[(String, (String, Option[String]))] =
+      if (this.split_test_train_on_document_level) {
       val partitionedDocuments = partitionedSentences.map({case (a,b,c) => (a,b)})
         partitionedDocuments.map({case (f,p) =>
-        val pw = printWritersDocumentPartition(p)
-        pw.println(f)
+          val pw = printWritersDocumentPartition(p)
+          pw.println(f)
           p.prefix -> (f,None.asInstanceOf[Option[String]])
       })
     } else {
@@ -135,6 +143,7 @@ trait extract_training_data_trait {
           p.prefix -> (f,Some(id).asInstanceOf[Option[String]])
       })
     }
+
     val infoAsJSON = TrainingDataInfo.info2Json(partitionInformation)
 
     val jsonInfoWriter = new PrintWriter(outputPrefix + s".partitionInformation.json")
@@ -145,22 +154,24 @@ trait extract_training_data_trait {
     printWritersJSON.values.foreach(_.close())
     printWritersTSV.values.foreach(_.close())
     printWritersDocumentPartition.values.foreach(_.close())
+
+    TrainingDataInfo.info2Object(partitionInformation, sentence_element)
   }
 
   def always_sampled(s: Sentence) = true
 
-  def sample(sentences: Iterator[(Sentence,Partition)], sample_rate: Double = 0.05, rate_test_train: Double = p_train): Iterator[(Sentence, Partition)] = {
+  def sampleAndChooseSentencePartitions(sentences: Iterator[Sentence], sample_rate: Double = 0.05): Iterator[Sentence] = {
+    def  inSample(s: Sentence) = (Math.random() < sample_rate) || always_sampled(s)
 
-    def  selected(s: Sentence) = (Math.random() < sample_rate) || always_sampled(s)
-
-    sentences.filter({ case (s,b) => selected(s)}).map({ case (s,p) => {
+    sentences.filter(s => inSample(s))
+      .map(s => {
       if (split_test_train_on_document_level) {
-        (s,p)
+        s
       } else {
-        val p1 = pickPartition(None)
-        (s,p1)
+        val p1 = pickPartition(Some(s.fileId), s.sentenceId)
+        s.asInstanceOf[BasicSentence].copy(partition = Some(p1))
       }
-    }})
+    })
   }
 
   def preprocess(x: Elem): Elem = x
@@ -170,9 +181,9 @@ trait extract_training_data_trait {
   def makeTrainingMaterialAndPartition(filenames: Seq[String], outputPrefix: String, preprocess: Elem=>Elem = preprocess): Unit =
     processDocuments(filenames.iterator.filter(_.contains("xml")).map(x => x -> loadXML(x)), outputPrefix)
 
-  def makeTrainingMaterialAndPartitionFromPaths(paths: Seq[Path], outputPrefix: String, preprocess: Elem => Elem = preprocess): Unit =
+  def makeTrainingMaterialAndPartitionFromPaths(paths: Seq[Path], outputPrefix: String, preprocess: Elem => Elem = preprocess): TrainingDataInfo =
     {
-       val iterator = Random.shuffle(paths).iterator.map(p => {
+       val iterator = (if (shuffleDocuments) Random.shuffle(paths) else paths).iterator.map(p => {
         val c = p.getNameCount
         val lastPart = p.getName(c-1).toString
         val inStream = Files.newInputStream(p)
@@ -206,8 +217,11 @@ trait extract_training_data_trait {
   }
 }
 
+case class PrepartitionedTrainingDataExtraction(info: TrainingDataInfo) extends TrainingDataExtraction {
+  override def pickPartition(fileId: Option[String], sentenceId: Option[String]): Partition = info.pickPartition(fileId,sentenceId)
+}
 
-object gcnd_folia extends extract_training_data_trait {
+object gcnd_folia extends TrainingDataExtraction {
   override val split_test_train_on_document_level = true
   override lazy val output_prefix: String = "gcnd"
   override val sentence_element: String = "s"

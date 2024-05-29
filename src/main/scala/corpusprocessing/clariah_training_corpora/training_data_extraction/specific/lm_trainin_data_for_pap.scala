@@ -1,8 +1,8 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 
-case class PapCorpus(sourceFolder: String="/mnt/Projecten/Papiaments/Corpusdata/madlad_400/", name: String = "pap") extends extract_training_data_trait {
+case class PapCorpus(sourceFolder: String="/mnt/Projecten/Papiaments/Corpusdata/madlad_400/", name: String = "pap") extends TrainingDataExtraction {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = name
   override val max_files: Int = Integer.MAX_VALUE

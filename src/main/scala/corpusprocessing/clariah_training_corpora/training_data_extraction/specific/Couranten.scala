@@ -1,8 +1,8 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 
-case class CourantenCorpus(sourceFolder: String, name: String) extends extract_training_data_trait {
+case class CourantenCorpus(sourceFolder: String, name: String) extends TrainingDataExtraction {
   override val sentence_element="s"
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = name

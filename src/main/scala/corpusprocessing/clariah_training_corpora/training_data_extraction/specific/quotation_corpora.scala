@@ -5,7 +5,7 @@ object quotation_corpora {
 }
 
 
-case class QuotationCorpus(sourceFolder: String, name: String) extends extract_training_data_trait {
+case class QuotationCorpus(sourceFolder: String, name: String) extends TrainingDataExtraction {
   override val split_test_train_on_document_level: Boolean = true
   override lazy val output_prefix: String = name
   override val max_files: Int = Integer.MAX_VALUE

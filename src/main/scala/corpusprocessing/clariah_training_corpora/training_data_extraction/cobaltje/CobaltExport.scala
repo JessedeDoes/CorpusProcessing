@@ -1,7 +1,7 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{downloadFile}
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.downloadFile
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 import utils.zipUtils
 
 import java.io.File
@@ -28,7 +28,7 @@ object CobaltExport {
       try {
 
         Console.err.println(s"Trying $projectName")
-        val url = s"http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=$projectName&only_validated=false"
+        val url = s"$cobaltServeExport?project_name=$projectName&only_validated=false"
         val e = CobaltExport(url, projectName.toString)
         if (true || e.downloadSuccessfull) {
           val nValid = e.validTokens.size
@@ -64,14 +64,6 @@ object CobaltExport {
     })
   }
 
-  def testje() = {
-    val export = new CobaltExport(testURL, "aapje")
-    export.tokens.foreach(println)
-    export.paths.foreach(p => {
-      val c = p.getNameCount
-      (0 to c - 1).foreach(i => println(p.getName(i)))
-    })
-  }
 
   def main(args: Array[String])  = {
     checkAllCorpora()
@@ -80,13 +72,17 @@ object CobaltExport {
 
 import CobaltExport._
 case class CobaltExport(url: String, name: String) {
+
   val zipName = s"$downloadDir/cobalt_export_$name.zip"
+
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
+
   lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else {
     val f = new File(zipName)
     if (f.exists()) f.delete()
     Stream[Path]()
   }
+
   lazy val files = paths.map(p =>  Files.newInputStream(p))
   lazy val documents = files.map(XML.load)
   lazy val tokens = documents.flatMap(d => d \\ "w")

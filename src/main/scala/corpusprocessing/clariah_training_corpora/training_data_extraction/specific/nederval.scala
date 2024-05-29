@@ -1,9 +1,9 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.specific
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.extract_training_data_trait
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 
 import java.io.File;
-trait nederval extends extract_training_data_trait {
+trait nederval extends TrainingDataExtraction {
   val name = "nederval"
   override val sentence_element="s"
   val base_folder = "/mnt/Projecten/Corpora/TrainingDataForTools/NederlabSetjes/"
