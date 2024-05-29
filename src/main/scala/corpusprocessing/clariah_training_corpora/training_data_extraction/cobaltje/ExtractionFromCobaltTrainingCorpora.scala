@@ -47,6 +47,7 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
           sentenceElement = datasetConfig.sentenceElement, ///if (datasetName.contains("cit")) "q" else "s",
+          enhanceTags = false, // dan wordt dus alles wel anders.......
           info=Some(datasetConfig)
         )
         val newConfig = e.extract()

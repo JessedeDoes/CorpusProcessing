@@ -8,6 +8,7 @@ import java.nio.file.Path
 case class ExtractionFromCobaltExport(zipFileName: String,
                                       outputPrefix: String,
                                       sentenceElement: String = "s",
+                                      enhanceTags: Boolean = true,
                                       info:Option[TrainingDataInfo] = None) {
   lazy val paths: Seq[Path] = zipUtils.find(zipFileName)
 
@@ -17,7 +18,7 @@ case class ExtractionFromCobaltExport(zipFileName: String,
     override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
     override lazy val output_prefix: String = outputPrefix
     override val sentence_element: String = sentenceElement
-    override val enhance: Boolean = true
+    override val enhance: Boolean = enhanceTags
 
     override def pickPartition(fileId: Option[String], sentenceId: Option[String]): Partition =
       info.map(_.pickPartition(fileId,sentenceId)).getOrElse(super.pickPartition(fileId, sentenceId))
