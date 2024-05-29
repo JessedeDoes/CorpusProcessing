@@ -20,7 +20,12 @@ object zipUtils
     val absolutePath = new java.io.File(zipFile).getAbsolutePath
     env.put("create", "true")
     val uri = URI.create(s"jar:file:$absolutePath")
-    val zipfs:FileSystem = FileSystems.newFileSystem(uri, env)
+    val zipfs:FileSystem = try {
+      FileSystems.getFileSystem(uri)
+    }
+    catch {
+      case e: FileSystemNotFoundException => FileSystems.newFileSystem(uri, env)
+    }
     val path:Path = zipfs.getPath("/")
     path
   }

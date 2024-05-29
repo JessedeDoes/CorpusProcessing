@@ -57,10 +57,19 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
   }
 }
 
-object doBoth {
+object doBoth { // dit werkt niet vanwege
   def main(args: Array[String]) = {
     ExtractionFromCobaltTrainingCorpora.main(Array())
     ExtractionFromCobaltTrainingCorporaWithConfig.main(Array())
   }
 }
 
+/*
+Failure opening /mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/download/cobalt_export_wnt_citaten_19.zip
+java.nio.file.FileSystemAlreadyExistsException
+  at com.sun.nio.zipfs.ZipFileSystemProvider.newFileSystem(ZipFileSystemProvider.java:113)
+  at java.nio.file.FileSystems.newFileSystem(FileSystems.java:326)
+  at java.nio.file.FileSystems.newFileSystem(FileSystems.java:276)
+  at utils.zipUtils$.getRootPath(zip.scala:23)
+  at utils.zipUtils$.find(zip.scala:29)
+ */
