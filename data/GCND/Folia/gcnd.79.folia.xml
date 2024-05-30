@@ -40,18 +40,6 @@ xml:id="gcnd.transcriptie.79" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                         <nummer>2</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_GDW</alias>
-                                <familienaam>De Windt</familienaam>
-                                <persoon_id>22731</persoon_id>
-                                <voornaam>Gabril</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -74,6 +62,30 @@ xml:id="gcnd.transcriptie.79" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>208</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4208</persoon_id1>
+                                    <persoon_id2>208</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6208</persoon_id1>
+                                    <persoon_id2>208</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>2208</persoon_id1>
+                                    <persoon_id2>208</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -157,6 +169,18 @@ xml:id="gcnd.transcriptie.79" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                 </plaats>
                                 <voornaam>Istella</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_GDW</alias>
+                                <familienaam>De Windt</familienaam>
+                                <persoon_id>22731</persoon_id>
+                                <voornaam>Gabril</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
@@ -33433,52 +33457,24 @@ xml:id="gcnd.transcriptie.79" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
     tag="spreker" speaker="I156p_2_1" xml:id="speech.elan.83259" begintime="00:22:33.333" endtime="00:22:33.923">
         <t class="lightNormalization">ja ja#j</t>
         <t class="heavyNormalization">ja ja jij.</t>
-        <s xml:id="s.52171">
-            <w xml:id="annotation.83259.52171.w.0" space="yes">
-                <t class="lightNormalization">ggg</t>
-                <t class="heavyNormalization">ggg</t>
-                <pos class="SPEC(onverst)" head="SPEC">
-                    <feat class="onverst" subset="spectype"/>
-                    <feat class="SPEC" subset="pos"/>
-                </pos>
-                <lemma class="ggg"/>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.83259">
+            <w xml:id="w.83259.unannotated.0" space="yes">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
             </w>
-            <w xml:id="annotation.83259.52171.w.1" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.83259.unannotated.1" space="no">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w xml:id="w.83259.unannotated.2" space="yes">
+                <t class="lightNormalization">j</t>
+                <t class="heavyNormalization">jij</t>
+            </w>
+            <w xml:id="w.83259.unannotated.3" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.15" xmlns="http://alpino.fake.url">
-                        <parser 
-                        build="Alpino-x86_64-linux-glibc2.5-git1006-sicstus" date="2024-02-02T22:10" cats="0" skips="1">
-</parser>
-                        <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
-                            <node 
-                            word_zv="ggg" word="ggg" end="1" begin="0" originalOffsets="0--1" frame="--" his="robust_skip" id="1" lcat="--" lemma="ggg" pos="--" postag="SPEC(onverst)" pt="spec" rel="--" root="ggg" sense="ggg" spectype="onverst">
-</node>
-                            <node 
-                            word_zv="." word="." end="2" begin="1" originalOffsets="1--2" frame="punct(punt)" his="robust_skip" id="2" lcat="--" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
-</node>
-                        </node>
-                        <sentence sentid="I156p_2--I156p_2_1--a1088--01--0702">ggg .</sentence>
-                        <comments>
-                            <comment>Q#I156p_2--I156p_2_1--a1088--01--0702|ggg .|1|1|1.0607815999999999</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <timing>
-                <timesegment begintime="00:22:33.333" endtime="00:22:33.923">
-                    <wref id="annotation.83259.52171.w.0" t="ggg"/>
-                    <wref id="annotation.83259.52171.w.1" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">

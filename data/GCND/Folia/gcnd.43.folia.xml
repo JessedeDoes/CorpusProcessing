@@ -7122,28 +7122,8 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                 </timesegment>
             </timing>
         </s>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#20022">
-                    <naam>
-                        <familienaam>Kaljouw</familienaam>
-                        ,
-                    </naam>
-                    <alias>I064a_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="I064a_1_2" xml:id="speech.elan.35991" begintime="00:01:25.745" endtime="00:01:27.215">
-        <t class="lightNormalization">vijf... vijfenzestig jaar.</t>
-        <t class="heavyNormalization">vijf... vijfenzestig jaar.</t>
         <s xml:id="s.24094">
-            <w xml:id="annotation.35991.24094.w.0" space="yes">
+            <w xml:id="annotation.35943.24094.w.0" space="yes">
                 <t class="lightNormalization">vijf</t>
                 <t class="heavyNormalization">vijf</t>
                 <pos class="TW(hoofd,prenom,stan)" head="TW">
@@ -7154,14 +7134,14 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                 </pos>
                 <lemma class="vijf"/>
             </w>
-            <w xml:id="annotation.35991.24094.w.1" space="yes">
+            <w xml:id="annotation.35943.24094.w.1" space="yes">
                 <t class="lightNormalization">...</t>
                 <t class="heavyNormalization">...</t>
                 <pos class="LET()" head="LET">
                     <feat class="LET" subset="pos"/>
                 </pos>
             </w>
-            <w xml:id="annotation.35991.24094.w.2" space="yes">
+            <w xml:id="annotation.35943.24094.w.2" space="yes">
                 <t class="lightNormalization">vijfenzestig</t>
                 <t class="heavyNormalization">vijfenzestig</t>
                 <pos class="TW(hoofd,prenom,stan)" head="TW">
@@ -7172,7 +7152,7 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                 </pos>
                 <lemma class="vijfenzestig"/>
             </w>
-            <w xml:id="annotation.35991.24094.w.3" space="yes">
+            <w xml:id="annotation.35943.24094.w.3" space="yes">
                 <t class="lightNormalization">jaar</t>
                 <t class="heavyNormalization">jaar</t>
                 <pos class="N(soort,ev,basis,onz,stan)" head="N">
@@ -7185,7 +7165,7 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                 </pos>
                 <lemma class="jaar"/>
             </w>
-            <w xml:id="annotation.35991.24094.w.4" space="yes">
+            <w xml:id="annotation.35943.24094.w.4" space="yes">
                 <t class="lightNormalization">.</t>
                 <t class="heavyNormalization">.</t>
                 <pos class="LET()" head="LET">
@@ -7230,40 +7210,40 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
             <dependencies>
                 <dependency class="--">
                     <hd>
-                        <wref id="annotation.35991.24094.w.3"/>
+                        <wref id="annotation.35943.24094.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.35991.24094.w.0" t="vijf"/>
+                        <wref id="annotation.35943.24094.w.0" t="vijf"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.35991.24094.w.3"/>
+                        <wref id="annotation.35943.24094.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.35991.24094.w.1" t="..."/>
+                        <wref id="annotation.35943.24094.w.1" t="..."/>
                     </dep>
                 </dependency>
                 <dependency class="det">
                     <hd>
-                        <wref id="annotation.35991.24094.w.3"/>
+                        <wref id="annotation.35943.24094.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.35991.24094.w.2" t="vijfenzestig"/>
+                        <wref id="annotation.35943.24094.w.2" t="vijfenzestig"/>
                     </dep>
                 </dependency>
                 <dependency class="root">
                     <hd> </hd>
                     <dep>
-                        <wref id="annotation.35991.24094.w.3" t="jaar"/>
+                        <wref id="annotation.35943.24094.w.3" t="jaar"/>
                     </dep>
                 </dependency>
                 <dependency class="punct">
                     <hd>
-                        <wref id="annotation.35991.24094.w.3"/>
+                        <wref id="annotation.35943.24094.w.3"/>
                     </hd>
                     <dep>
-                        <wref id="annotation.35991.24094.w.4" t="."/>
+                        <wref id="annotation.35943.24094.w.4" t="."/>
                     </dep>
                 </dependency>
                 <foreign-data>
@@ -7281,14 +7261,56 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
             </dependencies>
             <timing>
                 <timesegment begintime="00:01:25.745" endtime="00:01:27.215">
-                    <wref id="annotation.35991.24094.w.0" t="vijf"/>
-                    <wref id="annotation.35991.24094.w.1" t="..."/>
-                    <wref id="annotation.35991.24094.w.2" t="vijfenzestig"/>
-                    <wref id="annotation.35991.24094.w.3" t="jaar"/>
-                    <wref id="annotation.35991.24094.w.4" t="."/>
+                    <wref id="annotation.35943.24094.w.0" t="vijf"/>
+                    <wref id="annotation.35943.24094.w.1" t="..."/>
+                    <wref id="annotation.35943.24094.w.2" t="vijfenzestig"/>
+                    <wref id="annotation.35943.24094.w.3" t="jaar"/>
+                    <wref id="annotation.35943.24094.w.4" t="."/>
                 </timesegment>
             </timing>
         </s>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#20022">
+                    <naam>
+                        <familienaam>Kaljouw</familienaam>
+                        ,
+                    </naam>
+                    <alias>I064a_1_1</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="I064a_1_2" xml:id="speech.elan.35991" begintime="00:01:25.745" endtime="00:01:27.215">
+        <t class="lightNormalization">vijf... vijfenzestig jaar.</t>
+        <t class="heavyNormalization">vijf... vijfenzestig jaar.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.35991">
+            <w xml:id="w.35991.unannotated.0" space="yes">
+                <t class="lightNormalization">vijf</t>
+                <t class="heavyNormalization">vijf</t>
+            </w>
+            <w xml:id="w.35991.unannotated.1" space="yes">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">...</t>
+            </w>
+            <w xml:id="w.35991.unannotated.2" space="yes">
+                <t class="lightNormalization">vijfenzestig</t>
+                <t class="heavyNormalization">vijfenzestig</t>
+            </w>
+            <w xml:id="w.35991.unannotated.3" space="yes">
+                <t class="lightNormalization">jaar</t>
+                <t class="heavyNormalization">jaar</t>
+            </w>
+            <w xml:id="w.35991.unannotated.4" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -25329,6 +25351,210 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
     tag="spreker" speaker="I064a_1_2" xml:id="speech.elan.36046" begintime="00:04:32.375" endtime="00:04:35.225">
         <t class="lightNormalization">vroeger op... op#t dorp een machinist...</t>
         <t class="heavyNormalization">vroeger op... op het dorp een machinist...</t>
+        <s xml:id="s.24020">
+            <w xml:id="annotation.36046.24020.w.0" space="yes">
+                <t class="lightNormalization">lust</t>
+                <t class="heavyNormalization">lust</t>
+                <pos class="WW(pv,tgw,ev)" head="WW">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="tgw" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="lusten"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.1" space="yes">
+                <t class="lightNormalization">j</t>
+                <t class="heavyNormalization">je</t>
+                <pos class="VNW(pr,pron,obl,red,2v,getal)" head="VNW">
+                    <feat class="pr" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="2v" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="je"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.2" space="yes">
+                <t class="lightNormalization">ier</t>
+                <t class="heavyNormalization">hier</t>
+                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
+                    <feat class="aanw" subset="vwtype"/>
+                    <feat class="adv-pron" subset="pdtype"/>
+                    <feat class="obl" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="3o" subset="persoon"/>
+                    <feat class="getal" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="hier"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.3" space="yes">
+                <t class="lightNormalization">een</t>
+                <t class="heavyNormalization">een</t>
+                <pos class="LID(onbep,stan,agr)" head="LID">
+                    <feat class="onbep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="agr" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.4" space="yes">
+                <t class="lightNormalization">stukje</t>
+                <t class="heavyNormalization">stukje</t>
+                <pos class="N(soort,ev,dim,onz,stan)" head="N">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="dim" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="stuk"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.5" space="yes">
+                <t class="lightNormalization">van</t>
+                <t class="heavyNormalization">van</t>
+                <pos class="VZ(fin)" head="VZ">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="van"/>
+            </w>
+            <w xml:id="annotation.36046.24020.w.6" space="yes">
+                <t class="lightNormalization">?</t>
+                <t class="heavyNormalization">?</t>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
+            </w>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
+                            <node end="6" begin="0" originalOffsets="0--6" cat="sv1" id="1" rel="--">
+                                <node 
+                                word_zv="lust" word="lust" end="1" begin="0" originalOffsets="0--1" id="2" lemma="lusten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="lust" sense="lust" wvorm="pv">
+</node>
+                                <node 
+                                word_zv="je" word="j" end="2" begin="1" originalOffsets="1--2" getal="getal" id="3" lemma="je" naamval="obl" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pr,pron,obl,red,2v,getal)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pr">
+</node>
+                                <node end="5" begin="3" originalOffsets="3--5" cat="np" id="4" rel="obj1">
+                                    <node 
+                                    word_zv="een" word="een" end="4" begin="3" originalOffsets="3--4" id="5" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een">
+</node>
+                                    <node 
+                                    word_zv="stukje" word="stukje" end="5" begin="4" originalOffsets="4--5" genus="onz" getal="ev" graad="dim" id="6" lemma="stuk" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" root="stuk_DIM" sense="stuk_DIM">
+</node>
+                                </node>
+                                <node end="6" begin="2" originalOffsets="2--6" cat="pp" id="7" rel="mod">
+                                    <node 
+                                    word_zv="hier" word="ier" end="3" begin="2" originalOffsets="2--3" getal="getal" id="8" lemma="hier" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="hier" sense="hier" status="vol" vwtype="aanw">
+</node>
+                                    <node 
+                                    word_zv="van" word="van" end="6" begin="5" originalOffsets="5--6" id="9" lemma="van" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="van" sense="van" vztype="fin">
+</node>
+                                </node>
+                            </node>
+                            <node 
+                            word_zv="?" word="?" end="7" begin="6" originalOffsets="6--7" id="10" lemma="?" pos="punct" postag="LET()" pt="let" rel="--" root="?" sense="?">
+</node>
+                        </node>
+                        <sentence sentid="I064a_1--I064a_1_1--a204--01--0118">lust je hier een stukje van ?</sentence>
+                        <comments>
+                            <comment>
+                                Q#I064a_1--I064a_1_1--a204--01--0118|lust je hier een stukje van ?|1|2|2.906311030300001
+                            </comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <dependencies>
+                <dependency class="root">
+                    <hd> </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.0" t="lust"/>
+                    </dep>
+                </dependency>
+                <dependency class="su">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.1" t="je"/>
+                    </dep>
+                </dependency>
+                <dependency class="obj1">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.5"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.2" t="hier"/>
+                    </dep>
+                </dependency>
+                <dependency class="det">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.3" t="een"/>
+                    </dep>
+                </dependency>
+                <dependency class="obj1">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.4" t="stukje"/>
+                    </dep>
+                </dependency>
+                <dependency class="mod">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.5" t="van"/>
+                    </dep>
+                </dependency>
+                <dependency class="punct">
+                    <hd>
+                        <wref id="annotation.36046.24020.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.36046.24020.w.6" t="?"/>
+                    </dep>
+                </dependency>
+                <foreign-data>
+                    <conll xmls="http://conll.fake.url">
+                        <![CDATA[Some(# sent_id = I064a_1--I064a_1_1--a204--01--0118
+# source = UNKNOWN
+# text = lust je hier een stukje van ?
+1	lust	lusten	verb	WW(pv,tgw,ev)	_	0	root	0:_	CAT=sv1_top
+2	je	je	pron	VNW(pr,pron,obl,red,2v,getal)	_	1	su	1:lust	_
+3	hier	hier	adv	VNW(aanw,adv-pron,obl,vol,3o,getal)	_	6	obj1	6:van	_
+4	een	een	det	LID(onbep,stan,agr)	_	5	det	5:stukje	_
+5	stukje	stuk	noun	N(soort,ev,dim,onz,stan)	_	1	obj1	1:lust	CAT=np
+6	van	van	prep	VZ(fin)	_	1	mod	1:lust	CAT=pp
+7	?	?	punct	LET()	_	1	punct	1:lust	_)]]>
+                    </conll>
+                </foreign-data>
+            </dependencies>
+            <timing>
+                <timesegment begintime="00:04:32.465" endtime="00:04:33.837">
+                    <wref id="annotation.36046.24020.w.0" t="lust"/>
+                    <wref id="annotation.36046.24020.w.1" t="j"/>
+                    <wref id="annotation.36046.24020.w.2" t="ier"/>
+                    <wref id="annotation.36046.24020.w.3" t="een"/>
+                    <wref id="annotation.36046.24020.w.4" t="stukje"/>
+                    <wref id="annotation.36046.24020.w.5" t="van"/>
+                    <wref id="annotation.36046.24020.w.6" t="?"/>
+                </timesegment>
+            </timing>
+        </s>
         <s xml:id="s.23981">
             <w xml:id="annotation.36046.23981.w.0" space="yes">
                 <t class="lightNormalization">vroeger</t>
@@ -25592,210 +25818,36 @@ xml:id="gcnd.transcriptie.43" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
     tag="spreker" speaker="I064a_1_1" xml:id="speech.elan.35951" begintime="00:04:32.465" endtime="00:04:33.837">
         <t class="lightNormalization">lust j#ier een stukje van?</t>
         <t class="heavyNormalization">lust je hier een stukje van?</t>
-        <s xml:id="s.24020">
-            <w xml:id="annotation.35951.24020.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.35951">
+            <w xml:id="w.35951.unannotated.0" space="yes">
                 <t class="lightNormalization">lust</t>
                 <t class="heavyNormalization">lust</t>
-                <pos class="WW(pv,tgw,ev)" head="WW">
-                    <feat class="pv" subset="wvorm"/>
-                    <feat class="tgw" subset="pvtijd"/>
-                    <feat class="ev" subset="pvagr"/>
-                    <feat class="WW" subset="pos"/>
-                </pos>
-                <lemma class="lusten"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.1" space="yes">
+            <w xml:id="w.35951.unannotated.1" space="no">
                 <t class="lightNormalization">j</t>
                 <t class="heavyNormalization">je</t>
-                <pos class="VNW(pr,pron,obl,red,2v,getal)" head="VNW">
-                    <feat class="pr" subset="vwtype"/>
-                    <feat class="pron" subset="pdtype"/>
-                    <feat class="obl" subset="naamval"/>
-                    <feat class="red" subset="status"/>
-                    <feat class="2v" subset="persoon"/>
-                    <feat class="getal" subset="getal"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="je"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.2" space="yes">
+            <w xml:id="w.35951.unannotated.2" space="yes">
                 <t class="lightNormalization">ier</t>
                 <t class="heavyNormalization">hier</t>
-                <pos class="VNW(aanw,adv-pron,obl,vol,3o,getal)" head="VNW">
-                    <feat class="aanw" subset="vwtype"/>
-                    <feat class="adv-pron" subset="pdtype"/>
-                    <feat class="obl" subset="naamval"/>
-                    <feat class="vol" subset="status"/>
-                    <feat class="3o" subset="persoon"/>
-                    <feat class="getal" subset="getal"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="hier"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.3" space="yes">
+            <w xml:id="w.35951.unannotated.3" space="yes">
                 <t class="lightNormalization">een</t>
                 <t class="heavyNormalization">een</t>
-                <pos class="LID(onbep,stan,agr)" head="LID">
-                    <feat class="onbep" subset="lwtype"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="agr" subset="npagr"/>
-                    <feat class="LID" subset="pos"/>
-                </pos>
-                <lemma class="een"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.4" space="yes">
+            <w xml:id="w.35951.unannotated.4" space="yes">
                 <t class="lightNormalization">stukje</t>
                 <t class="heavyNormalization">stukje</t>
-                <pos class="N(soort,ev,dim,onz,stan)" head="N">
-                    <feat class="soort" subset="ntype"/>
-                    <feat class="ev" subset="getal"/>
-                    <feat class="dim" subset="graad"/>
-                    <feat class="onz" subset="genus"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="N" subset="pos"/>
-                </pos>
-                <lemma class="stuk"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.5" space="yes">
+            <w xml:id="w.35951.unannotated.5" space="yes">
                 <t class="lightNormalization">van</t>
                 <t class="heavyNormalization">van</t>
-                <pos class="VZ(fin)" head="VZ">
-                    <feat class="fin" subset="vztype"/>
-                    <feat class="VZ" subset="pos"/>
-                </pos>
-                <lemma class="van"/>
             </w>
-            <w xml:id="annotation.35951.24020.w.6" space="yes">
-                <t class="lightNormalization">?</t>
+            <w xml:id="w.35951.unannotated.6" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">?</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-                        <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
-                            <node end="6" begin="0" originalOffsets="0--6" cat="sv1" id="1" rel="--">
-                                <node 
-                                word_zv="lust" word="lust" end="1" begin="0" originalOffsets="0--1" id="2" lemma="lusten" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="lust" sense="lust" wvorm="pv">
-</node>
-                                <node 
-                                word_zv="je" word="j" end="2" begin="1" originalOffsets="1--2" getal="getal" id="3" lemma="je" naamval="obl" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pr,pron,obl,red,2v,getal)" pt="vnw" rel="su" root="je" sense="je" status="red" vwtype="pr">
-</node>
-                                <node end="5" begin="3" originalOffsets="3--5" cat="np" id="4" rel="obj1">
-                                    <node 
-                                    word_zv="een" word="een" end="4" begin="3" originalOffsets="3--4" id="5" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een">
-</node>
-                                    <node 
-                                    word_zv="stukje" word="stukje" end="5" begin="4" originalOffsets="4--5" genus="onz" getal="ev" graad="dim" id="6" lemma="stuk" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,dim,onz,stan)" pt="n" rel="hd" root="stuk_DIM" sense="stuk_DIM">
-</node>
-                                </node>
-                                <node end="6" begin="2" originalOffsets="2--6" cat="pp" id="7" rel="mod">
-                                    <node 
-                                    word_zv="hier" word="ier" end="3" begin="2" originalOffsets="2--3" getal="getal" id="8" lemma="hier" naamval="obl" pdtype="adv-pron" persoon="3o" pos="adv" postag="VNW(aanw,adv-pron,obl,vol,3o,getal)" pt="vnw" rel="obj1" root="hier" sense="hier" status="vol" vwtype="aanw">
-</node>
-                                    <node 
-                                    word_zv="van" word="van" end="6" begin="5" originalOffsets="5--6" id="9" lemma="van" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="van" sense="van" vztype="fin">
-</node>
-                                </node>
-                            </node>
-                            <node 
-                            word_zv="?" word="?" end="7" begin="6" originalOffsets="6--7" id="10" lemma="?" pos="punct" postag="LET()" pt="let" rel="--" root="?" sense="?">
-</node>
-                        </node>
-                        <sentence sentid="I064a_1--I064a_1_1--a204--01--0118">lust je hier een stukje van ?</sentence>
-                        <comments>
-                            <comment>
-                                Q#I064a_1--I064a_1_1--a204--01--0118|lust je hier een stukje van ?|1|2|2.906311030300001
-                            </comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <dependencies>
-                <dependency class="root">
-                    <hd> </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.0" t="lust"/>
-                    </dep>
-                </dependency>
-                <dependency class="su">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.1" t="je"/>
-                    </dep>
-                </dependency>
-                <dependency class="obj1">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.5"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.2" t="hier"/>
-                    </dep>
-                </dependency>
-                <dependency class="det">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.4"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.3" t="een"/>
-                    </dep>
-                </dependency>
-                <dependency class="obj1">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.4" t="stukje"/>
-                    </dep>
-                </dependency>
-                <dependency class="mod">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.5" t="van"/>
-                    </dep>
-                </dependency>
-                <dependency class="punct">
-                    <hd>
-                        <wref id="annotation.35951.24020.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.35951.24020.w.6" t="?"/>
-                    </dep>
-                </dependency>
-                <foreign-data>
-                    <conll xmls="http://conll.fake.url">
-                        <![CDATA[Some(# sent_id = I064a_1--I064a_1_1--a204--01--0118
-# source = UNKNOWN
-# text = lust je hier een stukje van ?
-1	lust	lusten	verb	WW(pv,tgw,ev)	_	0	root	0:_	CAT=sv1_top
-2	je	je	pron	VNW(pr,pron,obl,red,2v,getal)	_	1	su	1:lust	_
-3	hier	hier	adv	VNW(aanw,adv-pron,obl,vol,3o,getal)	_	6	obj1	6:van	_
-4	een	een	det	LID(onbep,stan,agr)	_	5	det	5:stukje	_
-5	stukje	stuk	noun	N(soort,ev,dim,onz,stan)	_	1	obj1	1:lust	CAT=np
-6	van	van	prep	VZ(fin)	_	1	mod	1:lust	CAT=pp
-7	?	?	punct	LET()	_	1	punct	1:lust	_)]]>
-                    </conll>
-                </foreign-data>
-            </dependencies>
-            <timing>
-                <timesegment begintime="00:04:32.465" endtime="00:04:33.837">
-                    <wref id="annotation.35951.24020.w.0" t="lust"/>
-                    <wref id="annotation.35951.24020.w.1" t="j"/>
-                    <wref id="annotation.35951.24020.w.2" t="ier"/>
-                    <wref id="annotation.35951.24020.w.3" t="een"/>
-                    <wref id="annotation.35951.24020.w.4" t="stukje"/>
-                    <wref id="annotation.35951.24020.w.5" t="van"/>
-                    <wref id="annotation.35951.24020.w.6" t="?"/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">

@@ -61,7 +61,28 @@ xml:id="gcnd.transcriptie.301" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>1032</persoon_id>
-                                <plaats rel="geboorteplaats">
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>5032</persoon_id1>
+                                    <persoon_id2>1032</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>7032</persoon_id1>
+                                    <persoon_id2>1032</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>3032</persoon_id1>
+                                    <persoon_id2>1032</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>15</dialectgebied_id>
                                         <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
@@ -88,7 +109,7 @@ xml:id="gcnd.transcriptie.301" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     </provincie>
                                     <provincie_id>5</provincie_id>
                                 </plaats>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>15</dialectgebied_id>
                                         <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
@@ -116,118 +137,6 @@ xml:id="gcnd.transcriptie.301" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <provincie_id>5</provincie_id>
                                 </plaats>
                                 <voornaam>Marie Bertha</voornaam>
-                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Q002p_2_3</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>31</beroep_id>
-                                    <label>slager</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
-                                <familienaam>Hoex</familienaam>
-                                <geboorte_dag>15</geboorte_dag>
-                                <geboorte_jaar>1876</geboorte_jaar>
-                                <geboorte_maand>3</geboorte_maand>
-                                <geboorte_plaats_id>1097</geboorte_plaats_id>
-                                <gender rel="persoon⟶gender">
-                                    <gender_id>1</gender_id>
-                                    <label>m</label>
-                                </gender>
-                                <gender_id>1</gender_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>nee</label>
-                                    <mobiliteit_id>1</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>1030</persoon_id>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>15</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                            <label>Limburgs</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                        <label>West-Limburg</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>15</dialectgebied_id>
-                                    <kloeke_code>Q002p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9314346</latitude>
-                                    <longitude>5.34500027</longitude>
-                                    <naam>Hasselt</naam>
-                                    <plaats_id>1097</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Be-Limburg</label>
-                                        <provincie_id>5</provincie_id>
-                                    </provincie>
-                                    <provincie_id>5</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>15</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                            <label>Limburgs</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                        <label>West-Limburg</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>15</dialectgebied_id>
-                                    <kloeke_code>Q002p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9314346</latitude>
-                                    <longitude>5.34500027</longitude>
-                                    <naam>Hasselt</naam>
-                                    <plaats_id>1097</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Be-Limburg</label>
-                                        <provincie_id>5</provincie_id>
-                                    </provincie>
-                                    <provincie_id>5</provincie_id>
-                                </plaats>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>15</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                            <label>Limburgs</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
-                                        <label>West-Limburg</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>15</dialectgebied_id>
-                                    <kloeke_code>Q002p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9314346</latitude>
-                                    <longitude>5.34500027</longitude>
-                                    <naam>Hasselt</naam>
-                                    <plaats_id>1097</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Be-Limburg</label>
-                                        <provincie_id>5</provincie_id>
-                                    </provincie>
-                                    <provincie_id>5</provincie_id>
-                                </plaats>
-                                <voornaam>Jozef</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
@@ -270,6 +179,20 @@ xml:id="gcnd.transcriptie.301" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>1031</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>5031</persoon_id1>
+                                    <persoon_id2>1031</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>3031</persoon_id1>
+                                    <persoon_id2>1031</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>15</dialectgebied_id>
@@ -352,6 +275,140 @@ xml:id="gcnd.transcriptie.301" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <provincie_id>5</provincie_id>
                                 </plaats>
                                 <voornaam>Mathieu</voornaam>
+                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Q002p_2_3</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>31</beroep_id>
+                                    <label>slager</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
+                                <familienaam>Hoex</familienaam>
+                                <geboorte_dag>15</geboorte_dag>
+                                <geboorte_jaar>1876</geboorte_jaar>
+                                <geboorte_maand>3</geboorte_maand>
+                                <geboorte_plaats_id>1097</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>1030</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>5030</persoon_id1>
+                                    <persoon_id2>1030</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>7030</persoon_id1>
+                                    <persoon_id2>1030</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>3030</persoon_id1>
+                                    <persoon_id2>1030</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>15</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                            <label>Limburgs</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                        <label>West-Limburg</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>15</dialectgebied_id>
+                                    <kloeke_code>Q002p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9314346</latitude>
+                                    <longitude>5.34500027</longitude>
+                                    <naam>Hasselt</naam>
+                                    <plaats_id>1097</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Be-Limburg</label>
+                                        <provincie_id>5</provincie_id>
+                                    </provincie>
+                                    <provincie_id>5</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>15</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                            <label>Limburgs</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                        <label>West-Limburg</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>15</dialectgebied_id>
+                                    <kloeke_code>Q002p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9314346</latitude>
+                                    <longitude>5.34500027</longitude>
+                                    <naam>Hasselt</naam>
+                                    <plaats_id>1097</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Be-Limburg</label>
+                                        <provincie_id>5</provincie_id>
+                                    </provincie>
+                                    <provincie_id>5</provincie_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>15</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                            <label>Limburgs</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>1</dialectgebied_ruw_id>
+                                        <label>West-Limburg</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>15</dialectgebied_id>
+                                    <kloeke_code>Q002p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9314346</latitude>
+                                    <longitude>5.34500027</longitude>
+                                    <naam>Hasselt</naam>
+                                    <plaats_id>1097</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Be-Limburg</label>
+                                        <provincie_id>5</provincie_id>
+                                    </provincie>
+                                    <provincie_id>5</provincie_id>
+                                </plaats>
+                                <voornaam>Jozef</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>

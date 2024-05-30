@@ -56,6 +56,18 @@ xml:id="gcnd.transcriptie.17" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_JT</alias>
+                                <familienaam>Taeldeman</familienaam>
+                                <persoon_id>22782</persoon_id>
+                                <voornaam>Johan</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -78,6 +90,30 @@ xml:id="gcnd.transcriptie.17" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                     <mobiliteit_id>2</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>46</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4046</persoon_id1>
+                                    <persoon_id2>46</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6046</persoon_id1>
+                                    <persoon_id2>46</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2046</persoon_id1>
+                                    <persoon_id2>46</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>91</dialectgebied_id>
@@ -161,18 +197,6 @@ xml:id="gcnd.transcriptie.17" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                 </plaats>
                                 <voornaam>Julien</voornaam>
                                 <woonplaats_mobiliteit_id>2</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_JT</alias>
-                                <familienaam>Taeldeman</familienaam>
-                                <persoon_id>22782</persoon_id>
-                                <voornaam>Johan</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname_code>H035p_1</opname_code>

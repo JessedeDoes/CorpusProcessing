@@ -65,6 +65,30 @@ xml:id="gcnd.transcriptie.154" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>2</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>518</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4518</persoon_id1>
+                                    <persoon_id2>518</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6518</persoon_id1>
+                                    <persoon_id2>518</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2518</persoon_id1>
+                                    <persoon_id2>518</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>14</dialectgebied_id>

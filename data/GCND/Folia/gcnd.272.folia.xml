@@ -46,29 +46,6 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <nummer>1</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_F</alias>
-                                <familienaam>Forceville</familienaam>
-                                <persoon_id>22722</persoon_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -94,6 +71,22 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>2</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>268</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4268</persoon_id1>
+                                    <persoon_id2>268</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2268</persoon_id1>
+                                    <persoon_id2>268</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -150,6 +143,29 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Georges</voornaam>
                                 <woonplaats_mobiliteit_id>2</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_F</alias>
+                                <familienaam>Forceville</familienaam>
+                                <persoon_id>22722</persoon_id>
                             </persoon>
                         </opname__persoon>
                         <opname_code>O197p_1</opname_code>

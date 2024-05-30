@@ -46,6 +46,144 @@ xml:id="gcnd.transcriptie.226" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <nummer>1</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>O061p_1_1</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>287</beroep_id>
+                                    <label>brouwerijarbeider</label>
+                                </beroep>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>288</beroep_id>
+                                    <label>textielarbeider</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
+                                <familienaam>Wauters</familienaam>
+                                <geboorte_dag>9</geboorte_dag>
+                                <geboorte_jaar>1899</geboorte_jaar>
+                                <geboorte_maand>3</geboorte_maand>
+                                <geboorte_plaats_id>550</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>782</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>4782</persoon_id1>
+                                    <persoon_id2>782</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>6782</persoon_id1>
+                                    <persoon_id2>782</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2782</persoon_id1>
+                                    <persoon_id2>782</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>45</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Zuid-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>45</dialectgebied_id>
+                                    <kloeke_code>O061p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9442253</latitude>
+                                    <longitude>4.07188702</longitude>
+                                    <naam>Aalst</naam>
+                                    <plaats_id>550</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>45</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Zuid-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>45</dialectgebied_id>
+                                    <kloeke_code>O061p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9442253</latitude>
+                                    <longitude>4.07188702</longitude>
+                                    <naam>Aalst</naam>
+                                    <plaats_id>550</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>45</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Zuid-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>45</dialectgebied_id>
+                                    <kloeke_code>O061p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9442253</latitude>
+                                    <longitude>4.07188702</longitude>
+                                    <naam>Aalst</naam>
+                                    <plaats_id>550</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <voornaam>Jozef</voornaam>
+                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>interviewer</label>
                                 <opname_functie_id>2</opname_functie_id>
                             </opname_functie>
@@ -87,6 +225,28 @@ xml:id="gcnd.transcriptie.226" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>783</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>4783</persoon_id1>
+                                    <persoon_id2>783</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>6783</persoon_id1>
+                                    <persoon_id2>783</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2783</persoon_id1>
+                                    <persoon_id2>783</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>45</dialectgebied_id>
@@ -181,122 +341,6 @@ xml:id="gcnd.transcriptie.226" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <alias>Int_F</alias>
                                 <familienaam>Forceville</familienaam>
                                 <persoon_id>22722</persoon_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>O061p_1_1</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>287</beroep_id>
-                                    <label>brouwerijarbeider</label>
-                                </beroep>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>288</beroep_id>
-                                    <label>textielarbeider</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
-                                <familienaam>Wauters</familienaam>
-                                <geboorte_dag>9</geboorte_dag>
-                                <geboorte_jaar>1899</geboorte_jaar>
-                                <geboorte_maand>3</geboorte_maand>
-                                <geboorte_plaats_id>550</geboorte_plaats_id>
-                                <gender rel="persoon⟶gender">
-                                    <gender_id>1</gender_id>
-                                    <label>m</label>
-                                </gender>
-                                <gender_id>1</gender_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>nee</label>
-                                    <mobiliteit_id>1</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>782</persoon_id>
-                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>45</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Zuid-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>45</dialectgebied_id>
-                                    <kloeke_code>O061p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9442253</latitude>
-                                    <longitude>4.07188702</longitude>
-                                    <naam>Aalst</naam>
-                                    <plaats_id>550</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>45</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Zuid-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>45</dialectgebied_id>
-                                    <kloeke_code>O061p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9442253</latitude>
-                                    <longitude>4.07188702</longitude>
-                                    <naam>Aalst</naam>
-                                    <plaats_id>550</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>45</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Zuid-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>45</dialectgebied_id>
-                                    <kloeke_code>O061p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9442253</latitude>
-                                    <longitude>4.07188702</longitude>
-                                    <naam>Aalst</naam>
-                                    <plaats_id>550</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <voornaam>Jozef</voornaam>
-                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
                         <opname_code>O061p_1</opname_code>
@@ -19125,37 +19169,6 @@ xml:id="gcnd.transcriptie.226" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="O061p_1_1" xml:id="speech.elan.216684" begintime="00:13:50.019" endtime="00:13:52.639">
-        <t class="lightNormalization">ggg.</t>
-        <t class="heavyNormalization">ggg.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.216684">
-            <w xml:id="w.216684.unannotated.0" space="yes">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">ggg</t>
-            </w>
-            <w xml:id="w.216684.unannotated.1" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#782">
-                    <naam>
-                        <familienaam>Wauters</familienaam>
-                        ,
-                        <voornaam>Jozef</voornaam>
-                    </naam>
-                    <alias>O061p_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="O061p_1_2" xml:id="speech.elan.217138" begintime="00:13:50.019" endtime="00:13:52.639">
         <t class="lightNormalization">ggg.</t>
         <t class="heavyNormalization">ggg.</t>
@@ -19179,6 +19192,37 @@ xml:id="gcnd.transcriptie.226" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Josephine</voornaam>
                     </naam>
                     <alias>O061p_1_2</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="O061p_1_1" xml:id="speech.elan.216684" begintime="00:13:50.019" endtime="00:13:52.639">
+        <t class="lightNormalization">ggg.</t>
+        <t class="heavyNormalization">ggg.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.216684">
+            <w xml:id="w.216684.unannotated.0" space="yes">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">ggg</t>
+            </w>
+            <w xml:id="w.216684.unannotated.1" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#782">
+                    <naam>
+                        <familienaam>Wauters</familienaam>
+                        ,
+                        <voornaam>Jozef</voornaam>
+                    </naam>
+                    <alias>O061p_1_1</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>

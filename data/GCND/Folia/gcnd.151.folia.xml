@@ -56,6 +56,30 @@ xml:id="gcnd.transcriptie.151" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_GDS</alias>
+                                <familienaam>De Schutter</familienaam>
+                                <persoon_id>22730</persoon_id>
+                                <voornaam>Georges</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_JT</alias>
+                                <familienaam>Taeldeman</familienaam>
+                                <persoon_id>22782</persoon_id>
+                                <voornaam>Johan</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -77,6 +101,30 @@ xml:id="gcnd.transcriptie.151" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>453</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>4453</persoon_id1>
+                                    <persoon_id2>453</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>6453</persoon_id1>
+                                    <persoon_id2>453</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2453</persoon_id1>
+                                    <persoon_id2>453</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>41</dialectgebied_id>
@@ -133,30 +181,6 @@ xml:id="gcnd.transcriptie.151" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Aloïs</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_GDS</alias>
-                                <familienaam>De Schutter</familienaam>
-                                <persoon_id>22730</persoon_id>
-                                <voornaam>Georges</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_JT</alias>
-                                <familienaam>Taeldeman</familienaam>
-                                <persoon_id>22782</persoon_id>
-                                <voornaam>Johan</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname_code>K282p_1</opname_code>
@@ -49142,6 +49166,26 @@ xml:id="gcnd.transcriptie.151" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Int_GDS" xml:id="speech.elan.154262" begintime="00:31:51.755" endtime="00:31:53.900">
+        <t class="lightNormalization">ggg.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22730">
+                    <naam>
+                        <familienaam>De Schutter</familienaam>
+                        ,
+                        <voornaam>Georges</voornaam>
+                    </naam>
+                    <alias>Int_GDS</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="K282p_1_1" xml:id="speech.elan.154897" begintime="00:31:51.755" endtime="00:31:53.900">
         <t class="lightNormalization">occu... occupé zegt.</t>
         <t class="heavyNormalization">occu... occupé zegt.</t>
@@ -49179,26 +49223,6 @@ xml:id="gcnd.transcriptie.151" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>K282p_1_1</alias>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Int_GDS" xml:id="speech.elan.154262" begintime="00:31:51.755" endtime="00:31:53.900">
-        <t class="lightNormalization">ggg.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22730">
-                    <naam>
-                        <familienaam>De Schutter</familienaam>
-                        ,
-                        <voornaam>Georges</voornaam>
-                    </naam>
-                    <alias>Int_GDS</alias>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

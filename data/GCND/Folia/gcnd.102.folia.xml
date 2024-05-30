@@ -44,139 +44,6 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
-                                <alias>I190p_1_2</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>14</beroep_id>
-                                    <label>huishoudster</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
-                                <familienaam>De Vuysere</familienaam>
-                                <geboorte_plaats_id>1502</geboorte_plaats_id>
-                                <gender rel="persoon⟶gender">
-                                    <gender_id>2</gender_id>
-                                    <label>v</label>
-                                </gender>
-                                <gender_id>2</gender_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>nee</label>
-                                    <mobiliteit_id>1</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>257</persoon_id>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>71</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                            <label>Oost-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                        <label>Oost-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>71</dialectgebied_id>
-                                    <kloeke_code>I190p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.1484871</latitude>
-                                    <longitude>3.63081741</longitude>
-                                    <naam>Waarschoot</naam>
-                                    <plaats_id>1502</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>71</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                            <label>Oost-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                        <label>Oost-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>71</dialectgebied_id>
-                                    <kloeke_code>I190p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.1484871</latitude>
-                                    <longitude>3.63081741</longitude>
-                                    <naam>Waarschoot</naam>
-                                    <plaats_id>1502</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>71</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                            <label>Oost-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
-                                        <label>Oost-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>71</dialectgebied_id>
-                                    <kloeke_code>I190p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.1484871</latitude>
-                                    <longitude>3.63081741</longitude>
-                                    <naam>Waarschoot</naam>
-                                    <plaats_id>1502</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Oost-Vlaanderen</label>
-                                        <provincie_id>3</provincie_id>
-                                    </provincie>
-                                    <provincie_id>3</provincie_id>
-                                </plaats>
-                                <voornaam>Clémentine</voornaam>
-                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_JT</alias>
-                                <familienaam>Taeldeman</familienaam>
-                                <persoon_id>22782</persoon_id>
-                                <voornaam>Johan</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>I190p_1_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>14</beroep_id>
@@ -195,6 +62,30 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>2</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>256</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4256</persoon_id1>
+                                    <persoon_id2>256</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6256</persoon_id1>
+                                    <persoon_id2>256</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2256</persoon_id1>
+                                    <persoon_id2>256</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -278,6 +169,155 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Clara</voornaam>
                                 <woonplaats_mobiliteit_id>2</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_JT</alias>
+                                <familienaam>Taeldeman</familienaam>
+                                <persoon_id>22782</persoon_id>
+                                <voornaam>Johan</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>I190p_1_2</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>14</beroep_id>
+                                    <label>huishoudster</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
+                                <familienaam>De Vuysere</familienaam>
+                                <geboorte_plaats_id>1502</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>2</gender_id>
+                                    <label>v</label>
+                                </gender>
+                                <gender_id>2</gender_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>257</persoon_id>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6257</persoon_id1>
+                                    <persoon_id2>257</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2257</persoon_id1>
+                                    <persoon_id2>257</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>71</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                            <label>Oost-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                        <label>Oost-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>71</dialectgebied_id>
+                                    <kloeke_code>I190p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.1484871</latitude>
+                                    <longitude>3.63081741</longitude>
+                                    <naam>Waarschoot</naam>
+                                    <plaats_id>1502</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>71</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                            <label>Oost-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                        <label>Oost-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>71</dialectgebied_id>
+                                    <kloeke_code>I190p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.1484871</latitude>
+                                    <longitude>3.63081741</longitude>
+                                    <naam>Waarschoot</naam>
+                                    <plaats_id>1502</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>71</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                            <label>Oost-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>7</dialectgebied_ruw_id>
+                                        <label>Oost-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>71</dialectgebied_id>
+                                    <kloeke_code>I190p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.1484871</latitude>
+                                    <longitude>3.63081741</longitude>
+                                    <naam>Waarschoot</naam>
+                                    <plaats_id>1502</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Oost-Vlaanderen</label>
+                                        <provincie_id>3</provincie_id>
+                                    </provincie>
+                                    <provincie_id>3</provincie_id>
+                                </plaats>
+                                <voornaam>Clémentine</voornaam>
+                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
                         <opname_code>I190p_1</opname_code>
@@ -36643,6 +36683,26 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Int_JT" xml:id="speech.elan.105197" begintime="00:25:44.948" endtime="00:25:45.777">
+        <t class="lightNormalization">ah ja.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22782">
+                    <naam>
+                        <familienaam>Taeldeman</familienaam>
+                        ,
+                        <voornaam>Johan</voornaam>
+                    </naam>
+                    <alias>Int_JT</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="I190p_1_2" xml:id="speech.elan.105988" begintime="00:25:44.948" endtime="00:25:45.777">
         <t class="lightNormalization">xxx</t>
         <t class="heavyNormalization">xxx</t>
@@ -36664,26 +36724,6 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>I190p_1_2</alias>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Int_JT" xml:id="speech.elan.105197" begintime="00:25:44.948" endtime="00:25:45.777">
-        <t class="lightNormalization">ah ja.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22782">
-                    <naam>
-                        <familienaam>Taeldeman</familienaam>
-                        ,
-                        <voornaam>Johan</voornaam>
-                    </naam>
-                    <alias>Int_JT</alias>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -57739,6 +57779,26 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Int_JT" xml:id="speech.elan.105371" begintime="00:38:28.172" endtime="00:38:29.478">
+        <t class="lightNormalization">ij zit weer in#t klassement.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22782">
+                    <naam>
+                        <familienaam>Taeldeman</familienaam>
+                        ,
+                        <voornaam>Johan</voornaam>
+                    </naam>
+                    <alias>Int_JT</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="I190p_1_1" xml:id="speech.elan.105954" begintime="00:38:28.172" endtime="00:38:29.478">
         <t class="lightNormalization">ik zit weer in het klassement.</t>
         <t class="heavyNormalization">ik zit weer in het klassement.</t>
@@ -57784,26 +57844,6 @@ xml:id="gcnd.transcriptie.102" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>I190p_1_1</alias>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Int_JT" xml:id="speech.elan.105371" begintime="00:38:28.172" endtime="00:38:29.478">
-        <t class="lightNormalization">ij zit weer in#t klassement.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22782">
-                    <naam>
-                        <familienaam>Taeldeman</familienaam>
-                        ,
-                        <voornaam>Johan</voornaam>
-                    </naam>
-                    <alias>Int_JT</alias>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

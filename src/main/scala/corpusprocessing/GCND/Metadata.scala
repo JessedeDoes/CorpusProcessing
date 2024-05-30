@@ -77,7 +77,7 @@ object Metadata {
 
     def makeXML(m: Map[String, Any], visited: Set[String]  = Set()): Elem = {
       // Console.err.println(s"Making XML for table $this")
-      val element_id = this.name + "." + m(this.id_field).toString //  xml:id={element_id}
+      //val element_id = this.name + "." + m(this.id_field).toString //  xml:id={element_id} // Niet gebruikt dit???
       val e0: Elem = <elem/>.copy(label = this.name)
 
       val e1: Elem = <elem/>
@@ -162,6 +162,11 @@ object Metadata {
      lazy val persoon__woonplaats: Table = zlurp("persoon__woonplaats")
      lazy val persoon__beroepplaats: Table = zlurp("persoon__beroepplaats")
      lazy val persoon__schoolplaats: Table = zlurp("persoon__schoolplaats")
+     lazy val persoon_vaderplaats: Table = zlurp("persoon_vaderplaats")
+     lazy val persoon_moederplaats: Table = zlurp("persoon_moederplaats")
+     lazy val persoon_partnerplaats: Table = zlurp("persoon_partnerplaats")
+
+
      lazy val opname__persoon: Table = zlurp("opname__persoon")
      lazy val opname_functie: Table = zlurp("opname_functie")
 
@@ -245,6 +250,10 @@ object Metadata {
        SimpleRelation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
        SimpleRelation("persoonXwoonplaatsmobiliteit", persoon, mobiliteit, "woonplaats_mobiliteit_id", "mobiliteit_id"),
        SimpleRelation("persoonXberoepmobiliteit", persoon, mobiliteit, "beroep_mobilitiet_id", "mobiliteit_id"), // TODO: tiet nog tot teit corrigeren
+
+       SimpleRelation("persoonXvader", persoon, persoon_vaderplaats, "persoon_id", "persoon_id2"),
+       SimpleRelation("persoonXmoeder", persoon, persoon_moederplaats, "persoon_id", "persoon_id2"),
+       SimpleRelation("persoonXpartner", persoon, persoon_partnerplaats, "persoon_id", "persoon_id2"),
 
        r("persoonXpersoon__woonplaats") x r("persoon__woonplaatsXplaats"),
        r("persoonXpersoon__schoolplaats") x r("persoon__schoolplaatsXplaats"),

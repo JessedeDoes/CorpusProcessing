@@ -46,6 +46,29 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <nummer>1</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_F</alias>
+                                <familienaam>Forceville</familienaam>
+                                <persoon_id>22722</persoon_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -71,6 +94,30 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>985</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4985</persoon_id1>
+                                    <persoon_id2>985</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6985</persoon_id1>
+                                    <persoon_id2>985</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2985</persoon_id1>
+                                    <persoon_id2>985</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -154,29 +201,6 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Alfred</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_F</alias>
-                                <familienaam>Forceville</familienaam>
-                                <persoon_id>22722</persoon_id>
                             </persoon>
                         </opname__persoon>
                         <opname_code>O265p_1</opname_code>
@@ -16337,160 +16361,28 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="O265p_1_1" xml:id="speech.elan.277667" begintime="00:03:18.375" endtime="00:03:19.895">
         <t class="lightNormalization">we zijn den man.</t>
         <t class="heavyNormalization">we zijn de man. </t>
-        <s xml:id="s.175768">
-            <w xml:id="annotation.277667.175768.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.277667">
+            <w xml:id="w.277667.unannotated.0" space="yes">
                 <t class="lightNormalization">we</t>
                 <t class="heavyNormalization">we</t>
-                <pos class="VNW(pers,pron,nomin,red,1,mv)" head="VNW">
-                    <feat class="pers" subset="vwtype"/>
-                    <feat class="pron" subset="pdtype"/>
-                    <feat class="nomin" subset="naamval"/>
-                    <feat class="red" subset="status"/>
-                    <feat class="1" subset="persoon"/>
-                    <feat class="mv" subset="getal"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="we"/>
             </w>
-            <w xml:id="annotation.277667.175768.w.1" space="yes">
+            <w xml:id="w.277667.unannotated.1" space="yes">
                 <t class="lightNormalization">zijn</t>
                 <t class="heavyNormalization">zijn</t>
-                <pos class="WW(pv,tgw,mv)" head="WW">
-                    <feat class="pv" subset="wvorm"/>
-                    <feat class="tgw" subset="pvtijd"/>
-                    <feat class="mv" subset="pvagr"/>
-                    <feat class="WW" subset="pos"/>
-                </pos>
-                <lemma class="zijn"/>
             </w>
-            <w xml:id="annotation.277667.175768.w.2" space="yes">
+            <w xml:id="w.277667.unannotated.2" space="yes">
                 <t class="lightNormalization">den</t>
                 <t class="heavyNormalization">de</t>
-                <pos class="LID(bep,stan,rest)" head="LID">
-                    <feat class="bep" subset="lwtype"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="rest" subset="npagr"/>
-                    <feat class="LID" subset="pos"/>
-                </pos>
-                <lemma class="de"/>
             </w>
-            <w xml:id="annotation.277667.175768.w.3" space="yes">
+            <w xml:id="w.277667.unannotated.3" space="yes">
                 <t class="lightNormalization">man</t>
                 <t class="heavyNormalization">man</t>
-                <pos class="N(soort,ev,basis,zijd,stan)" head="N">
-                    <feat class="soort" subset="ntype"/>
-                    <feat class="ev" subset="getal"/>
-                    <feat class="basis" subset="graad"/>
-                    <feat class="zijd" subset="genus"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="N" subset="pos"/>
-                </pos>
-                <lemma class="man"/>
             </w>
-            <w xml:id="annotation.277667.175768.w.4" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.277667.unannotated.4" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-                        <parser 
-                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-03-21T12:26" cats="1" skips="0">
-</parser>
-                        <node end="5" begin="0" originalOffsets="0--5" cat="top" id="0" rel="top">
-                            <node end="4" begin="0" originalOffsets="0--4" cat="smain" id="1" rel="--">
-                                <node 
-                                word_zv="we" word="we" end="1" begin="0" originalOffsets="0--1" case="nom" def="def" frame="pronoun(nwh,fir,pl,de,nom,def,wkpro)" gen="de" getal="mv" his="normal" his_1="normal" id="2" lcat="np" lemma="we" naamval="nomin" num="pl" pdtype="pron" per="fir" persoon="1" pos="pron" postag="VNW(pers,pron,nomin,red,1,mv)" pt="vnw" rel="su" rnum="pl" root="we" sense="we" special="wkpro" status="red" vwtype="pers" wh="nwh">
-</node>
-                                <node 
-                                word_zv="zijn" word="zijn" end="2" begin="1" originalOffsets="1--2" frame="verb(unacc,pl,copula)" his="normal" his_1="normal" id="3" infl="pl" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,tgw,mv)" pt="ww" pvagr="mv" pvtijd="tgw" rel="hd" root="ben" sc="copula" sense="ben" stype="declarative" tense="present" wvorm="pv">
-</node>
-                                <node end="4" begin="2" originalOffsets="2--4" cat="np" id="4" rel="predc">
-                                    <node 
-                                    word_zv="de" word="den" end="3" begin="2" originalOffsets="2--3" frame="determiner(de)" his="normal" his_1="normal" id="5" infl="de" lcat="detp" lemma="de" lwtype="bep" naamval="stan" npagr="rest" pos="det" postag="LID(bep,stan,rest)" pt="lid" rel="det" root="de" sense="de">
-</node>
-                                    <node 
-                                    word_zv="man" word="man" end="4" begin="3" originalOffsets="3--4" frame="noun(de,count,bare_meas)" gen="de" genus="zijd" getal="ev" graad="basis" his="normal" his_1="normal" id="6" lcat="np" lemma="man" naamval="stan" ntype="soort" num="bare_meas" pos="noun" postag="N(soort,ev,basis,zijd,stan)" pt="n" rel="hd" rnum="sg" root="man" sense="man">
-</node>
-                                </node>
-                            </node>
-                            <node 
-                            word_zv="." word="." end="5" begin="4" originalOffsets="4--5" frame="punct(punt)" his="normal" his_1="normal" id="7" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
-</node>
-                        </node>
-                        <sentence sentid="O265p_1--O265p_1_1--0053">we zijn de man .</sentence>
-                        <comments>
-                            <comment>Q#O265p_1--O265p_1_1--0053|we zijn de man .|1|1|-3.8263417719999997</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <dependencies>
-                <dependency class="su">
-                    <hd>
-                        <wref id="annotation.277667.175768.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.277667.175768.w.0" t="we"/>
-                    </dep>
-                </dependency>
-                <dependency class="root">
-                    <hd> </hd>
-                    <dep>
-                        <wref id="annotation.277667.175768.w.1" t="zijn"/>
-                    </dep>
-                </dependency>
-                <dependency class="det">
-                    <hd>
-                        <wref id="annotation.277667.175768.w.3"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.277667.175768.w.2" t="de"/>
-                    </dep>
-                </dependency>
-                <dependency class="predc">
-                    <hd>
-                        <wref id="annotation.277667.175768.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.277667.175768.w.3" t="man"/>
-                    </dep>
-                </dependency>
-                <dependency class="punct">
-                    <hd>
-                        <wref id="annotation.277667.175768.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.277667.175768.w.4" t="."/>
-                    </dep>
-                </dependency>
-                <foreign-data>
-                    <conll xmls="http://conll.fake.url">
-                        <![CDATA[Some(# sent_id = O265p_1--O265p_1_1--0053
-# source = UNKNOWN
-# text = we zijn de man .
-1	we	we	pron	VNW(pers,pron,nomin,red,1,mv)	_	2	su	2:zijn	_
-2	zijn	zijn	verb	WW(pv,tgw,mv)	_	0	root	0:_	CAT=smain_top
-3	de	de	det	LID(bep,stan,rest)	_	4	det	4:man	_
-4	man	man	noun	N(soort,ev,basis,zijd,stan)	_	2	predc	2:zijn	CAT=np
-5	.	.	punct	LET()	_	2	punct	2:zijn	_)]]>
-                    </conll>
-                </foreign-data>
-            </dependencies>
-            <timing>
-                <timesegment begintime="00:03:18.375" endtime="00:03:19.895">
-                    <wref id="annotation.277667.175768.w.0" t="we"/>
-                    <wref id="annotation.277667.175768.w.1" t="zijn"/>
-                    <wref id="annotation.277667.175768.w.2" t="den"/>
-                    <wref id="annotation.277667.175768.w.3" t="man"/>
-                    <wref id="annotation.277667.175768.w.4" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">

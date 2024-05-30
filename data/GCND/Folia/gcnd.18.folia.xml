@@ -50,142 +50,6 @@ xml:id="gcnd.transcriptie.18" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
-                                <alias>H036p_1_2</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>39</beroep_id>
-                                    <label>goudborduurder</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
-                                <familienaam>Bauwens</familienaam>
-                                <geboorte_dag>3</geboorte_dag>
-                                <geboorte_jaar>1911</geboorte_jaar>
-                                <geboorte_maand>6</geboorte_maand>
-                                <geboorte_plaats_id>1815</geboorte_plaats_id>
-                                <gender rel="persoon⟶gender">
-                                    <gender_id>1</gender_id>
-                                    <label>m</label>
-                                </gender>
-                                <gender_id>1</gender_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>nee</label>
-                                    <mobiliteit_id>1</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>48</persoon_id>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>91</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                            <label>West-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                        <label>Noord-West-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>91</dialectgebied_id>
-                                    <kloeke_code>H036p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.2075233</latitude>
-                                    <longitude>3.23045635</longitude>
-                                    <naam>Brugge</naam>
-                                    <plaats_id>1815</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>West-Vlaanderen</label>
-                                        <provincie_id>10</provincie_id>
-                                    </provincie>
-                                    <provincie_id>10</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>91</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                            <label>West-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                        <label>Noord-West-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>91</dialectgebied_id>
-                                    <kloeke_code>H036p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.2075233</latitude>
-                                    <longitude>3.23045635</longitude>
-                                    <naam>Brugge</naam>
-                                    <plaats_id>1815</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>West-Vlaanderen</label>
-                                        <provincie_id>10</provincie_id>
-                                    </provincie>
-                                    <provincie_id>10</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>91</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                            <label>West-Vlaams</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
-                                        <label>Noord-West-Vlaanderen</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>91</dialectgebied_id>
-                                    <kloeke_code>H036p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.2075233</latitude>
-                                    <longitude>3.23045635</longitude>
-                                    <naam>Brugge</naam>
-                                    <plaats_id>1815</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>West-Vlaanderen</label>
-                                        <provincie_id>10</provincie_id>
-                                    </provincie>
-                                    <provincie_id>10</provincie_id>
-                                </plaats>
-                                <voornaam>Telesphore</voornaam>
-                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_AB</alias>
-                                <familienaam>Bauwens</familienaam>
-                                <persoon_id>22630</persoon_id>
-                                <voornaam>A.</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>H036p_1_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>38</beroep_id>
@@ -207,6 +71,22 @@ xml:id="gcnd.transcriptie.18" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>47</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4047</persoon_id1>
+                                    <persoon_id2>47</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2047</persoon_id1>
+                                    <persoon_id2>47</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>91</dialectgebied_id>
@@ -289,6 +169,158 @@ xml:id="gcnd.transcriptie.18" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                                     <provincie_id>10</provincie_id>
                                 </plaats>
                                 <voornaam>Madeleine</voornaam>
+                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_AB</alias>
+                                <familienaam>Bauwens</familienaam>
+                                <persoon_id>22630</persoon_id>
+                                <voornaam>A.</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>H036p_1_2</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>39</beroep_id>
+                                    <label>goudborduurder</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
+                                <familienaam>Bauwens</familienaam>
+                                <geboorte_dag>3</geboorte_dag>
+                                <geboorte_jaar>1911</geboorte_jaar>
+                                <geboorte_maand>6</geboorte_maand>
+                                <geboorte_plaats_id>1815</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>1</gender_id>
+                                    <label>m</label>
+                                </gender>
+                                <gender_id>1</gender_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>48</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4048</persoon_id1>
+                                    <persoon_id2>48</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>2048</persoon_id1>
+                                    <persoon_id2>48</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>91</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                            <label>West-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                        <label>Noord-West-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>91</dialectgebied_id>
+                                    <kloeke_code>H036p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.2075233</latitude>
+                                    <longitude>3.23045635</longitude>
+                                    <naam>Brugge</naam>
+                                    <plaats_id>1815</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <provincie_id>10</provincie_id>
+                                    </provincie>
+                                    <provincie_id>10</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>91</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                            <label>West-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                        <label>Noord-West-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>91</dialectgebied_id>
+                                    <kloeke_code>H036p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.2075233</latitude>
+                                    <longitude>3.23045635</longitude>
+                                    <naam>Brugge</naam>
+                                    <plaats_id>1815</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <provincie_id>10</provincie_id>
+                                    </provincie>
+                                    <provincie_id>10</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>91</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                            <label>West-Vlaams</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>9</dialectgebied_ruw_id>
+                                        <label>Noord-West-Vlaanderen</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>91</dialectgebied_id>
+                                    <kloeke_code>H036p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.2075233</latitude>
+                                    <longitude>3.23045635</longitude>
+                                    <naam>Brugge</naam>
+                                    <plaats_id>1815</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>West-Vlaanderen</label>
+                                        <provincie_id>10</provincie_id>
+                                    </provincie>
+                                    <provincie_id>10</provincie_id>
+                                </plaats>
+                                <voornaam>Telesphore</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
@@ -66296,26 +66328,6 @@ xml:id="gcnd.transcriptie.18" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Int_AB" xml:id="speech.elan.15076" begintime="00:29:23.193" endtime="00:29:23.631">
-        <t class="lightNormalization">ah ja.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22630">
-                    <naam>
-                        <familienaam>Bauwens</familienaam>
-                        ,
-                        <voornaam>A.</voornaam>
-                    </naam>
-                    <alias>Int_AB</alias>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="H036p_1_1" xml:id="speech.elan.14581" begintime="00:29:23.193" endtime="00:29:23.631">
         <t class="lightNormalization">ja.</t>
         <t class="heavyNormalization">ja.</t>
@@ -66341,6 +66353,26 @@ xml:id="gcnd.transcriptie.18" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" xm
                     <alias>H036p_1_1</alias>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Int_AB" xml:id="speech.elan.15076" begintime="00:29:23.193" endtime="00:29:23.631">
+        <t class="lightNormalization">ah ja.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22630">
+                    <naam>
+                        <familienaam>Bauwens</familienaam>
+                        ,
+                        <voornaam>A.</voornaam>
+                    </naam>
+                    <alias>Int_AB</alias>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

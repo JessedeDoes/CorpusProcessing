@@ -50,6 +50,28 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
+                                <alias>N009p_1_2</alias>
+                                <persoon_id>100072</persoon_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>N009p_1_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>4</beroep_id>
@@ -71,6 +93,30 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>536</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4536</persoon_id1>
+                                    <persoon_id2>536</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6536</persoon_id1>
+                                    <persoon_id2>536</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2536</persoon_id1>
+                                    <persoon_id2>536</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>94</dialectgebied_id>
@@ -154,28 +200,6 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Gustave</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>N009p_1_2</alias>
-                                <persoon_id>100072</persoon_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
@@ -37547,6 +37571,26 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Int_VV" xml:id="speech.elan.159776" begintime="00:10:28.135" endtime="00:10:29.853">
+        <t class="lightNormalization">xxx.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22959">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valre</voornaam>
+                    </naam>
+                    <alias>Int_VV</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="N009p_1_1" xml:id="speech.elan.160033" begintime="00:10:28.135" endtime="00:10:29.853">
         <t class="lightNormalization">n#tijd da wijder jong waren eneeë.</t>
         <t class="heavyNormalization">de tijd dat wij jong waren eneeë.</t>
@@ -37596,26 +37640,6 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>N009p_1_1</alias>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Int_VV" xml:id="speech.elan.159776" begintime="00:10:28.135" endtime="00:10:29.853">
-        <t class="lightNormalization">xxx.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22959">
-                    <naam>
-                        <familienaam>Vanacker</familienaam>
-                        ,
-                        <voornaam>Valre</voornaam>
-                    </naam>
-                    <alias>Int_VV</alias>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -51460,51 +51484,16 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="N009p_1_1" xml:id="speech.elan.160095" begintime="00:14:50.320" endtime="00:14:50.614">
         <t class="lightNormalization">ja.</t>
         <t class="heavyNormalization">ja.</t>
-        <s xml:id="s.104006">
-            <w xml:id="annotation.160095.104006.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.160095">
+            <w xml:id="w.160095.unannotated.0" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.160095.104006.w.1" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.160095.unannotated.1" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.15" xmlns="http://alpino.fake.url">
-                        <parser 
-                        build="Alpino-x86_64-linux-glibc2.5-git1006-sicstus" date="2024-02-02T10:15" cats="1" skips="0">
-</parser>
-                        <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
-                            <node 
-                            word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" frame="tag" his="normal" his_1="normal" id="1" lcat="advp" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
-</node>
-                            <node 
-                            word_zv="." word="." end="2" begin="1" originalOffsets="1--2" frame="punct(punt)" his="normal" his_1="normal" id="2" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
-</node>
-                        </node>
-                        <sentence sentid="N009p_1--N009p_1_1--a767--01--0417">ja .</sentence>
-                        <comments>
-                            <comment>Q#N009p_1--N009p_1_1--a767--01--0417|ja .|1|1|-0.5072236</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <timing>
-                <timesegment begintime="00:14:50.320" endtime="00:14:50.614">
-                    <wref id="annotation.160095.104006.w.0" t="ja"/>
-                    <wref id="annotation.160095.104006.w.1" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -51877,100 +51866,20 @@ xml:id="gcnd.transcriptie.159" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="N009p_1_1" xml:id="speech.elan.160099" begintime="00:14:58.617" endtime="00:14:59.281">
         <t class="lightNormalization">ja ja.</t>
         <t class="heavyNormalization">ja ja.</t>
-        <s xml:id="s.104008">
-            <w xml:id="annotation.160099.104008.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.160099">
+            <w xml:id="w.160099.unannotated.0" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.160099.104008.w.1" space="yes">
+            <w xml:id="w.160099.unannotated.1" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.160099.104008.w.2" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.160099.unannotated.2" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.15" xmlns="http://alpino.fake.url">
-                        <parser 
-                        build="Alpino-x86_64-linux-glibc2.5-git1006-sicstus" date="2024-02-02T10:15" cats="1" skips="0">
-</parser>
-                        <node end="3" begin="0" originalOffsets="0--3" cat="top" id="0" rel="top">
-                            <node 
-                            end="2" begin="0" originalOffsets="0--2" cat="mwu" his="normal" his_1="normal" id="1" rel="--">
-                                <node 
-                                word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" frame="tag" id="2" lcat="advp" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="mwp" root="ja" sense="ja">
-</node>
-                                <node 
-                                word_zv="ja" word="ja" end="2" begin="1" originalOffsets="1--2" frame="tag" id="3" lcat="advp" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="mwp" root="ja" sense="ja">
-</node>
-</node>
-                            <node 
-                            word_zv="." word="." end="3" begin="2" originalOffsets="2--3" frame="punct(punt)" his="normal" his_1="normal" id="4" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
-</node>
-                        </node>
-                        <sentence sentid="N009p_1--N009p_1_1--a771--01--0426">ja ja .</sentence>
-                        <comments>
-                            <comment>Q#N009p_1--N009p_1_1--a771--01--0426|ja ja .|1|1|-0.712228</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <dependencies>
-                <dependency class="root">
-                    <hd> </hd>
-                    <dep>
-                        <wref id="annotation.160099.104008.w.0" t="ja"/>
-                    </dep>
-                </dependency>
-                <dependency class="mwp">
-                    <hd>
-                        <wref id="annotation.160099.104008.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.160099.104008.w.1" t="ja"/>
-                    </dep>
-                </dependency>
-                <dependency class="punct">
-                    <hd>
-                        <wref id="annotation.160099.104008.w.0"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.160099.104008.w.2" t="."/>
-                    </dep>
-                </dependency>
-                <foreign-data>
-                    <conll xmls="http://conll.fake.url">
-                        <![CDATA[Some(# sent_id = N009p_1--N009p_1_1--a771--01--0426
-# source = UNKNOWN
-# text = ja ja .
-1	ja	ja	tag	TSW()	_	0	root	0:_	CAT=mwu_top
-2	ja	ja	tag	TSW()	_	1	mwp	1:ja	_
-3	.	.	punct	LET()	_	1	punct	1:ja	_)]]>
-                    </conll>
-                </foreign-data>
-            </dependencies>
-            <timing>
-                <timesegment begintime="00:14:58.617" endtime="00:14:59.281">
-                    <wref id="annotation.160099.104008.w.0" t="ja"/>
-                    <wref id="annotation.160099.104008.w.1" t="ja"/>
-                    <wref id="annotation.160099.104008.w.2" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">

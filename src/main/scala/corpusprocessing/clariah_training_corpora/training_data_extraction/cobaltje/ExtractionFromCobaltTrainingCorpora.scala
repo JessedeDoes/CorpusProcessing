@@ -32,8 +32,26 @@ object ExtractionFromCobaltTrainingCorpora {
 
 object ExtractionFromCobaltTrainingCorporaWithConfig {
 
+  val omgekeerd = Map(
+    "clariah-evaluation-15" -> "evaluation_set_15",
+    "clariah-evaluation-16" -> "evaluation_set_16",
+    "clariah-evaluation-17" -> "evaluation_set_17",
+    "clariah-evaluation-18" -> "evaluation_set_18",
+    "clariah-evaluation-19" -> "evaluation_set_19",
+    "clvn" -> "clvn_selectie_met_wat_minder_duits",
+    "couranten" -> "courantenselectie",
+    "dictionary-quotations-14" -> "gtbcit_14_fromscratch",
+    "dictionary-quotations-15" -> "gtbcit_mnw_15",
+    "dictionary-quotations-16" -> "gtbcit_punct_16",
+    "dictionary-quotations-17" -> "gtbcit_punct_17",
+    "dictionary-quotations-18" -> "wnt_citaten_18",
+    "dictionary-quotations-19" -> "wnt_citaten_19",
+    "letters-as-loot" -> "bab_enhanced_hoofdlettertest"
+  )
+  val  renaming: Map[String, String] = omgekeerd.map({case (x,y) => (y,x)})
   val jsonLocation ="/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
   def main(args: Array[String]) = {
+    print(renaming)
     val info = TrainingDataInfos.readFromFile(jsonLocation)
     val extractTo = info.extractedDataDir.replaceAll("/$", "") + ".test_reextract"
     new File(extractTo).mkdir()
@@ -41,8 +59,9 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
       .filter(_.getName.endsWith(".zip"))
       //.filter(_.getName.contains("gtbcit_mnw_15"))
       .foreach(f => {
-        val datasetName = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
-        val datasetConfig = info.trainingDataInfos(datasetName)
+        val datasetNameOrg = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
+        val datasetName = renaming.getOrElse(datasetNameOrg, datasetNameOrg)
+        val datasetConfig = info.trainingDataInfos(datasetNameOrg)
         val dirAsDir = new File(extractTo + "/" + datasetName)
         // dirAsDir.delete()
         dirAsDir.mkdir()

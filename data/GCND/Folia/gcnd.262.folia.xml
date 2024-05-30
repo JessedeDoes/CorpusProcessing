@@ -44,6 +44,112 @@ xml:id="gcnd.transcriptie.262" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
+                                <alias>O162p_1_2</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>5</beroep_id>
+                                    <label>boer</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>2</beroep_mobiliteit_id>
+                                <familienaam>De Peet</familienaam>
+                                <geboorte_plaats_id>590</geboorte_plaats_id>
+                                <gender rel="persoon⟶gender">
+                                    <gender_id>2</gender_id>
+                                    <label>v</label>
+                                </gender>
+                                <gender_id>2</gender_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>ja, zelfde provincie</label>
+                                    <mobiliteit_id>2</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>904</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>f</dialectgebied_match>
+                                    <match_level>andere provincie</match_level>
+                                    <persoon_id1>4904</persoon_id1>
+                                    <persoon_id2>904</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>f</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6904</persoon_id1>
+                                    <persoon_id2>904</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2904</persoon_id1>
+                                    <persoon_id2>904</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>45</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Zuid-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>45</dialectgebied_id>
+                                    <kloeke_code>O162p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9043465</latitude>
+                                    <longitude>4.21896553</longitude>
+                                    <naam>Asse</naam>
+                                    <plaats_id>590</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Vlaams-Brabant</label>
+                                        <provincie_id>4</provincie_id>
+                                    </provincie>
+                                    <provincie_id>4</provincie_id>
+                                </plaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>45</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Zuid-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>45</dialectgebied_id>
+                                    <kloeke_code>O162p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>50.9043465</latitude>
+                                    <longitude>4.21896553</longitude>
+                                    <naam>Asse</naam>
+                                    <plaats_id>590</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Vlaams-Brabant</label>
+                                        <provincie_id>4</provincie_id>
+                                    </provincie>
+                                    <provincie_id>4</provincie_id>
+                                </plaats>
+                                <voornaam>Marie</voornaam>
+                                <woonplaats_mobiliteit_id>2</woonplaats_mobiliteit_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>O162p_1_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>5</beroep_id>
@@ -69,6 +175,30 @@ xml:id="gcnd.transcriptie.262" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>902</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4902</persoon_id1>
+                                    <persoon_id2>902</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6902</persoon_id1>
+                                    <persoon_id2>902</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>2902</persoon_id1>
+                                    <persoon_id2>902</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>45</dialectgebied_id>
@@ -156,88 +286,6 @@ xml:id="gcnd.transcriptie.262" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>O162p_1_2</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>5</beroep_id>
-                                    <label>boer</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>2</beroep_mobiliteit_id>
-                                <familienaam>De Peet</familienaam>
-                                <geboorte_plaats_id>590</geboorte_plaats_id>
-                                <gender rel="persoon⟶gender">
-                                    <gender_id>2</gender_id>
-                                    <label>v</label>
-                                </gender>
-                                <gender_id>2</gender_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>ja, zelfde provincie</label>
-                                    <mobiliteit_id>2</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>904</persoon_id>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>45</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Zuid-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>45</dialectgebied_id>
-                                    <kloeke_code>O162p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9043465</latitude>
-                                    <longitude>4.21896553</longitude>
-                                    <naam>Asse</naam>
-                                    <plaats_id>590</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Vlaams-Brabant</label>
-                                        <provincie_id>4</provincie_id>
-                                    </provincie>
-                                    <provincie_id>4</provincie_id>
-                                </plaats>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>45</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Zuid-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>45</dialectgebied_id>
-                                    <kloeke_code>O162p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>50.9043465</latitude>
-                                    <longitude>4.21896553</longitude>
-                                    <naam>Asse</naam>
-                                    <plaats_id>590</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Vlaams-Brabant</label>
-                                        <provincie_id>4</provincie_id>
-                                    </provincie>
-                                    <provincie_id>4</provincie_id>
-                                </plaats>
-                                <voornaam>Marie</voornaam>
-                                <woonplaats_mobiliteit_id>2</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>interviewer</label>
                                 <opname_functie_id>2</opname_functie_id>
                             </opname_functie>
@@ -299,6 +347,30 @@ xml:id="gcnd.transcriptie.262" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>903</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4903</persoon_id1>
+                                    <persoon_id2>903</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>6903</persoon_id1>
+                                    <persoon_id2>903</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2903</persoon_id1>
+                                    <persoon_id2>903</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>45</dialectgebied_id>

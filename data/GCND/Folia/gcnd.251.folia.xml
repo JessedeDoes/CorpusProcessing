@@ -69,6 +69,30 @@ xml:id="gcnd.transcriptie.251" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>853</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4853</persoon_id1>
+                                    <persoon_id2>853</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6853</persoon_id1>
+                                    <persoon_id2>853</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2853</persoon_id1>
+                                    <persoon_id2>853</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -12474,6 +12498,25 @@ xml:id="gcnd.transcriptie.251" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="interviewer" speaker="Int_VDV" xml:id="speech.elan.241153" begintime="00:11:14.070" endtime="00:11:15.976">
+        <t class="lightNormalization">as#tij... ingehuldigd is...</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22929">
+                    <naam>
+                        <familienaam>Van De Velde</familienaam>
+                        ,
+                    </naam>
+                    <alias>Int_VDV</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="O117p_1_1" xml:id="speech.elan.241442" begintime="00:11:14.070" endtime="00:11:15.976">
         <t class="lightNormalization">ah ja natuurlijk ggg ja...</t>
         <t class="heavyNormalization">ah ja natuurlijk ggg ja...</t>
@@ -12515,25 +12558,6 @@ xml:id="gcnd.transcriptie.251" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>O117p_1_1</alias>
                     <functie>
                         <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="interviewer" speaker="Int_VDV" xml:id="speech.elan.241153" begintime="00:11:14.070" endtime="00:11:15.976">
-        <t class="lightNormalization">as#tij... ingehuldigd is...</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22929">
-                    <naam>
-                        <familienaam>Van De Velde</familienaam>
-                        ,
-                    </naam>
-                    <alias>Int_VDV</alias>
-                    <functie>
-                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

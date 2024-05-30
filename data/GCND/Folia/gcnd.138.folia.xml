@@ -44,6 +44,16 @@ xml:id="gcnd.transcriptie.138" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
+                                <alias>I256a_4_2</alias>
+                                <persoon_id>100064</persoon_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>I256a_4_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>172</beroep_id>
@@ -73,6 +83,30 @@ xml:id="gcnd.transcriptie.138" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>339</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4339</persoon_id1>
+                                    <persoon_id2>339</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6339</persoon_id1>
+                                    <persoon_id2>339</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2339</persoon_id1>
+                                    <persoon_id2>339</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>61</dialectgebied_id>
@@ -156,16 +190,6 @@ xml:id="gcnd.transcriptie.138" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Maria</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>I256a_4_2</alias>
-                                <persoon_id>100064</persoon_id>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">

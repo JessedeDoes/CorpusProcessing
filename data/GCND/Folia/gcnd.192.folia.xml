@@ -68,6 +68,30 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>704</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4704</persoon_id1>
+                                    <persoon_id2>704</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6704</persoon_id1>
+                                    <persoon_id2>704</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2704</persoon_id1>
+                                    <persoon_id2>704</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>94</dialectgebied_id>
@@ -155,6 +179,18 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -184,6 +220,22 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>702</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4702</persoon_id1>
+                                    <persoon_id2>702</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2702</persoon_id1>
+                                    <persoon_id2>702</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>94</dialectgebied_id>
@@ -271,18 +323,6 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -309,6 +349,30 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>2</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>703</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4703</persoon_id1>
+                                    <persoon_id2>703</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6703</persoon_id1>
+                                    <persoon_id2>703</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2703</persoon_id1>
+                                    <persoon_id2>703</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>94</dialectgebied_id>
@@ -23357,37 +23421,6 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="N155p_1_1" xml:id="speech.elan.185924" begintime="00:18:12.730" endtime="00:18:13.650">
-        <t class="lightNormalization">pachtgoed.</t>
-        <t class="heavyNormalization">pachtgoed.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.185924">
-            <w xml:id="w.185924.unannotated.0" space="yes">
-                <t class="lightNormalization">pachtgoed</t>
-                <t class="heavyNormalization">pachtgoed</t>
-            </w>
-            <w xml:id="w.185924.unannotated.1" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#703">
-                    <naam>
-                        <familienaam>De Graeve</familienaam>
-                        ,
-                        <voornaam>Elie</voornaam>
-                    </naam>
-                    <alias>N155p_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="N155p_1_2" xml:id="speech.elan.186309" begintime="00:18:12.730" endtime="00:18:13.650">
         <t class="lightNormalization">een pachtgoed.</t>
         <t class="heavyNormalization">een pachtgoed.</t>
@@ -23415,6 +23448,37 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Gerard</voornaam>
                     </naam>
                     <alias>N155p_1_2</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="N155p_1_1" xml:id="speech.elan.185924" begintime="00:18:12.730" endtime="00:18:13.650">
+        <t class="lightNormalization">pachtgoed.</t>
+        <t class="heavyNormalization">pachtgoed.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.185924">
+            <w xml:id="w.185924.unannotated.0" space="yes">
+                <t class="lightNormalization">pachtgoed</t>
+                <t class="heavyNormalization">pachtgoed</t>
+            </w>
+            <w xml:id="w.185924.unannotated.1" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#703">
+                    <naam>
+                        <familienaam>De Graeve</familienaam>
+                        ,
+                        <voornaam>Elie</voornaam>
+                    </naam>
+                    <alias>N155p_1_1</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>
@@ -37465,26 +37529,6 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Int_VV" xml:id="speech.elan.185707" begintime="00:29:00.196" endtime="00:29:00.986">
-        <t class="lightNormalization">???</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22959">
-                    <naam>
-                        <familienaam>Vanacker</familienaam>
-                        ,
-                        <voornaam>Valre</voornaam>
-                    </naam>
-                    <alias>Int_VV</alias>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="N155p_1_2" xml:id="speech.elan.186436" begintime="00:29:00.196" endtime="00:29:00.986">
         <t class="lightNormalization">oe?</t>
         <t class="heavyNormalization">hoe?</t>
@@ -37510,6 +37554,26 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>N155p_1_2</alias>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Int_VV" xml:id="speech.elan.185707" begintime="00:29:00.196" endtime="00:29:00.986">
+        <t class="lightNormalization">???</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22959">
+                    <naam>
+                        <familienaam>Vanacker</familienaam>
+                        ,
+                        <voornaam>Valre</voornaam>
+                    </naam>
+                    <alias>Int_VV</alias>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>
@@ -38775,6 +38839,33 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
+    tag="spreker" speaker="N155p_1_2" xml:id="speech.elan.186452" begintime="00:29:53.541" endtime="00:29:55.401">
+        <t class="lightNormalization">???</t>
+        <t class="heavyNormalization">???</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.186452">
+            <w xml:id="w.186452.unannotated.0" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">???</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#702">
+                    <naam>
+                        <familienaam>De Graeve</familienaam>
+                        ,
+                        <voornaam>Gerard</voornaam>
+                    </naam>
+                    <alias>N155p_1_2</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
     tag="spreker" speaker="N155p_1_1" xml:id="speech.elan.186004" begintime="00:29:53.541" endtime="00:29:55.401">
         <t class="lightNormalization">je dee et in manden vallen.</t>
         <t class="heavyNormalization">je deed het in manden vallen.</t>
@@ -38818,33 +38909,6 @@ xml:id="gcnd.transcriptie.192" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Elie</voornaam>
                     </naam>
                     <alias>N155p_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
-    tag="spreker" speaker="N155p_1_2" xml:id="speech.elan.186452" begintime="00:29:53.541" endtime="00:29:55.401">
-        <t class="lightNormalization">???</t>
-        <t class="heavyNormalization">???</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.186452">
-            <w xml:id="w.186452.unannotated.0" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">???</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#702">
-                    <naam>
-                        <familienaam>De Graeve</familienaam>
-                        ,
-                        <voornaam>Gerard</voornaam>
-                    </naam>
-                    <alias>N155p_1_2</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>

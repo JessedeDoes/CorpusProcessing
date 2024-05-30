@@ -44,86 +44,6 @@ xml:id="gcnd.transcriptie.150" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
-                                <alias>K246p_1_2</alias>
-                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
-                                    <beroep_id>53</beroep_id>
-                                    <label>werkloos</label>
-                                </beroep>
-                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
-                                <familienaam>Goeyens</familienaam>
-                                <geboorte_dag>7</geboorte_dag>
-                                <geboorte_jaar>1921</geboorte_jaar>
-                                <geboorte_maand>6</geboorte_maand>
-                                <geboorte_plaats_id>267</geboorte_plaats_id>
-                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
-                                    <label>nee</label>
-                                    <mobiliteit_id>1</mobiliteit_id>
-                                </mobiliteit>
-                                <persoon_id>431</persoon_id>
-                                <plaats rel="geboorteplaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>41</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Noordwest-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>41</dialectgebied_id>
-                                    <kloeke_code>K246p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.2128525</latitude>
-                                    <longitude>4.45035505</longitude>
-                                    <naam>Borgerhout</naam>
-                                    <plaats_id>267</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Antwerpen</label>
-                                        <provincie_id>2</provincie_id>
-                                    </provincie>
-                                    <provincie_id>2</provincie_id>
-                                </plaats>
-                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
-                                    <dialectgebied rel="plaats⟶dialectgebied">
-                                        <dialectgebied_id>41</dialectgebied_id>
-                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
-                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                            <label>Brabants</label>
-                                        </dialectgebied_ruw>
-                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
-                                        <label>Noordwest-Brabant</label>
-                                    </dialectgebied>
-                                    <dialectgebied_id>41</dialectgebied_id>
-                                    <kloeke_code>K246p</kloeke_code>
-                                    <land rel="plaats⟶land">
-                                        <label>België</label>
-                                        <land_id>2</land_id>
-                                    </land>
-                                    <land_id>2</land_id>
-                                    <latitude>51.2128525</latitude>
-                                    <longitude>4.45035505</longitude>
-                                    <naam>Borgerhout</naam>
-                                    <plaats_id>267</plaats_id>
-                                    <provincie rel="plaats⟶regio">
-                                        <label>Antwerpen</label>
-                                        <provincie_id>2</provincie_id>
-                                    </provincie>
-                                    <provincie_id>2</provincie_id>
-                                </plaats>
-                                <voornaam>Goeyens</voornaam>
-                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>spreker</label>
-                                <opname_functie_id>1</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
                                 <alias>K246p_1_1</alias>
                                 <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
                                     <beroep_id>53</beroep_id>
@@ -145,6 +65,22 @@ xml:id="gcnd.transcriptie.150" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>430</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4430</persoon_id1>
+                                    <persoon_id2>430</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2430</persoon_id1>
+                                    <persoon_id2>430</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="geboorteplaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>41</dialectgebied_id>
@@ -225,6 +161,102 @@ xml:id="gcnd.transcriptie.150" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <familienaam>Vanacker</familienaam>
                                 <persoon_id>22959</persoon_id>
                                 <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>spreker</label>
+                                <opname_functie_id>1</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>K246p_1_2</alias>
+                                <beroep rel="persoon⟶persoon__beroep;  persoon__beroep⟶beroep">
+                                    <beroep_id>53</beroep_id>
+                                    <label>werkloos</label>
+                                </beroep>
+                                <beroep_mobiliteit_id>1</beroep_mobiliteit_id>
+                                <familienaam>Goeyens</familienaam>
+                                <geboorte_dag>7</geboorte_dag>
+                                <geboorte_jaar>1921</geboorte_jaar>
+                                <geboorte_maand>6</geboorte_maand>
+                                <geboorte_plaats_id>267</geboorte_plaats_id>
+                                <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <persoon_id>431</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4431</persoon_id1>
+                                    <persoon_id2>431</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2431</persoon_id1>
+                                    <persoon_id2>431</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
+                                <plaats rel="geboorteplaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>41</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Noordwest-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>41</dialectgebied_id>
+                                    <kloeke_code>K246p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.2128525</latitude>
+                                    <longitude>4.45035505</longitude>
+                                    <naam>Borgerhout</naam>
+                                    <plaats_id>267</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Antwerpen</label>
+                                        <provincie_id>2</provincie_id>
+                                    </provincie>
+                                    <provincie_id>2</provincie_id>
+                                </plaats>
+                                <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
+                                    <dialectgebied rel="plaats⟶dialectgebied">
+                                        <dialectgebied_id>41</dialectgebied_id>
+                                        <dialectgebied_ruw rel="dialectgebied⟶dialectgebiedruw">
+                                            <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                            <label>Brabants</label>
+                                        </dialectgebied_ruw>
+                                        <dialectgebied_ruw_id>4</dialectgebied_ruw_id>
+                                        <label>Noordwest-Brabant</label>
+                                    </dialectgebied>
+                                    <dialectgebied_id>41</dialectgebied_id>
+                                    <kloeke_code>K246p</kloeke_code>
+                                    <land rel="plaats⟶land">
+                                        <label>België</label>
+                                        <land_id>2</land_id>
+                                    </land>
+                                    <land_id>2</land_id>
+                                    <latitude>51.2128525</latitude>
+                                    <longitude>4.45035505</longitude>
+                                    <naam>Borgerhout</naam>
+                                    <plaats_id>267</plaats_id>
+                                    <provincie rel="plaats⟶regio">
+                                        <label>Antwerpen</label>
+                                        <provincie_id>2</provincie_id>
+                                    </provincie>
+                                    <provincie_id>2</provincie_id>
+                                </plaats>
+                                <voornaam>Goeyens</voornaam>
+                                <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">

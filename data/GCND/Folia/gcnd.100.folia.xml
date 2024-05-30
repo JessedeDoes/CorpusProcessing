@@ -46,6 +46,18 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <nummer>1</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -71,6 +83,30 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>248</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde provincie</match_level>
+                                    <persoon_id1>4248</persoon_id1>
+                                    <persoon_id2>248</persoon_id2>
+                                    <plaats_match>f</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6248</persoon_id1>
+                                    <persoon_id2>248</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2248</persoon_id1>
+                                    <persoon_id2>248</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -162,10 +198,10 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <opname_functie_id>2</opname_functie_id>
                             </opname_functie>
                             <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
+                                <alias>Int_DG</alias>
+                                <familienaam>De Groote</familienaam>
+                                <persoon_id>22976</persoon_id>
+                                <voornaam>Andr</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
@@ -195,6 +231,30 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
                                 <persoon_id>249</persoon_id>
+                                <persoon_moederplaats rel="persoon⟶moeder">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>4249</persoon_id1>
+                                    <persoon_id2>249</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_moederplaats>
+                                <persoon_partnerplaats rel="persoon⟶partner">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>6249</persoon_id1>
+                                    <persoon_id2>249</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_partnerplaats>
+                                <persoon_vaderplaats rel="persoon⟶vader">
+                                    <dialectgebied_match>t</dialectgebied_match>
+                                    <match_level>zelfde plaats</match_level>
+                                    <persoon_id1>2249</persoon_id1>
+                                    <persoon_id2>249</persoon_id2>
+                                    <plaats_match>t</plaats_match>
+                                    <provincie_match>t</provincie_match>
+                                </persoon_vaderplaats>
                                 <plaats rel="persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats">
                                     <dialectgebied rel="plaats⟶dialectgebied">
                                         <dialectgebied_id>71</dialectgebied_id>
@@ -278,18 +338,6 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </plaats>
                                 <voornaam>Anna</voornaam>
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_DG</alias>
-                                <familienaam>De Groote</familienaam>
-                                <persoon_id>22976</persoon_id>
-                                <voornaam>Andr</voornaam>
                             </persoon>
                         </opname__persoon>
                         <opname__persoon rel="opname⟶opname__persoon">
@@ -595,37 +643,6 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103207" begintime="00:00:15.650" endtime="00:00:16.980">
-        <t class="lightNormalization">ggg.</t>
-        <t class="heavyNormalization">ggg.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.103207">
-            <w xml:id="w.103207.unannotated.0" space="yes">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">ggg</t>
-            </w>
-            <w xml:id="w.103207.unannotated.1" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#249">
-                    <naam>
-                        <familienaam>Van de Walle</familienaam>
-                        ,
-                        <voornaam>Anna</voornaam>
-                    </naam>
-                    <alias>I187p_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="interviewer" speaker="Int_VV" xml:id="speech.elan.103171" begintime="00:00:15.650" endtime="00:00:16.980">
         <t class="lightNormalization">ggg.</t>
         <foreign-data>
@@ -677,6 +694,37 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Edith</voornaam>
                     </naam>
                     <alias>I187p_1_2</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103207" begintime="00:00:15.650" endtime="00:00:16.980">
+        <t class="lightNormalization">ggg.</t>
+        <t class="heavyNormalization">ggg.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.103207">
+            <w xml:id="w.103207.unannotated.0" space="yes">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">ggg</t>
+            </w>
+            <w xml:id="w.103207.unannotated.1" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#249">
+                    <naam>
+                        <familienaam>Van de Walle</familienaam>
+                        ,
+                        <voornaam>Anna</voornaam>
+                    </naam>
+                    <alias>I187p_1_1</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>
@@ -1841,37 +1889,6 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103218" begintime="00:01:11.210" endtime="00:01:14.070">
-        <t class="lightNormalization">ggg.</t>
-        <t class="heavyNormalization">ggg.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.103218">
-            <w xml:id="w.103218.unannotated.0" space="yes">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">ggg</t>
-            </w>
-            <w xml:id="w.103218.unannotated.1" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#249">
-                    <naam>
-                        <familienaam>Van de Walle</familienaam>
-                        ,
-                        <voornaam>Anna</voornaam>
-                    </naam>
-                    <alias>I187p_1_1</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="I187p_1_2" xml:id="speech.elan.103646" begintime="00:01:11.210" endtime="00:01:14.070">
         <t class="lightNormalization">ggg. t#is zo moeilijk.</t>
         <t class="heavyNormalization">ggg. het is zo moeilijk.</t>
@@ -1915,6 +1932,37 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Edith</voornaam>
                     </naam>
                     <alias>I187p_1_2</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103218" begintime="00:01:11.210" endtime="00:01:14.070">
+        <t class="lightNormalization">ggg.</t>
+        <t class="heavyNormalization">ggg.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.103218">
+            <w xml:id="w.103218.unannotated.0" space="yes">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">ggg</t>
+            </w>
+            <w xml:id="w.103218.unannotated.1" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#249">
+                    <naam>
+                        <familienaam>Van de Walle</familienaam>
+                        ,
+                        <voornaam>Anna</voornaam>
+                    </naam>
+                    <alias>I187p_1_1</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>
@@ -19027,41 +19075,6 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="spreker" speaker="I187p_1_2" xml:id="speech.elan.103795" begintime="00:11:33.155" endtime="00:11:34.641">
-        <t class="lightNormalization">ah ja.</t>
-        <t class="heavyNormalization">ah ja.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.103795">
-            <w xml:id="w.103795.unannotated.0" space="yes">
-                <t class="lightNormalization">ah</t>
-                <t class="heavyNormalization">ah</t>
-            </w>
-            <w xml:id="w.103795.unannotated.1" space="yes">
-                <t class="lightNormalization">ja</t>
-                <t class="heavyNormalization">ja</t>
-            </w>
-            <w xml:id="w.103795.unannotated.2" space="no">
-                <t class="lightNormalization">_</t>
-                <t class="heavyNormalization">.</t>
-            </w>
-        </utt>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#248">
-                    <naam>
-                        <familienaam>Veermeer</familienaam>
-                        ,
-                        <voornaam>Edith</voornaam>
-                    </naam>
-                    <alias>I187p_1_2</alias>
-                    <functie>
-                        <label>spreker</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103335" begintime="00:11:33.155" endtime="00:11:34.641">
         <t class="lightNormalization">maar uh...</t>
         <t class="heavyNormalization">maar uh...</t>
@@ -19089,6 +19102,41 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <voornaam>Anna</voornaam>
                     </naam>
                     <alias>I187p_1_1</alias>
+                    <functie>
+                        <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="spreker" speaker="I187p_1_2" xml:id="speech.elan.103795" begintime="00:11:33.155" endtime="00:11:34.641">
+        <t class="lightNormalization">ah ja.</t>
+        <t class="heavyNormalization">ah ja.</t>
+        <utt class="noSyntacticAnnotation" xml:id="utterance.103795">
+            <w xml:id="w.103795.unannotated.0" space="yes">
+                <t class="lightNormalization">ah</t>
+                <t class="heavyNormalization">ah</t>
+            </w>
+            <w xml:id="w.103795.unannotated.1" space="yes">
+                <t class="lightNormalization">ja</t>
+                <t class="heavyNormalization">ja</t>
+            </w>
+            <w xml:id="w.103795.unannotated.2" space="no">
+                <t class="lightNormalization">_</t>
+                <t class="heavyNormalization">.</t>
+            </w>
+        </utt>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#248">
+                    <naam>
+                        <familienaam>Veermeer</familienaam>
+                        ,
+                        <voornaam>Edith</voornaam>
+                    </naam>
+                    <alias>I187p_1_2</alias>
                     <functie>
                         <label>spreker</label>
                     </functie>
@@ -49539,26 +49587,6 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Int_DWG" xml:id="speech.elan.103197" begintime="00:30:27.368" endtime="00:30:31.140">
-        <t class="lightNormalization">ja ja.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#22713">
-                    <naam>
-                        <familienaam>De Weert</familienaam>
-                        ,
-                        <voornaam>De Weert</voornaam>
-                    </naam>
-                    <alias>Int_DWG</alias>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="spreker" speaker="I187p_1_1" xml:id="speech.elan.103500" begintime="00:30:27.368" endtime="00:30:31.140">
         <t class="lightNormalization">ggg.</t>
         <t class="heavyNormalization">ggg.</t>
@@ -49584,6 +49612,26 @@ xml:id="gcnd.transcriptie.100" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <alias>I187p_1_1</alias>
                     <functie>
                         <label>spreker</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Int_DWG" xml:id="speech.elan.103197" begintime="00:30:27.368" endtime="00:30:31.140">
+        <t class="lightNormalization">ja ja.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#22713">
+                    <naam>
+                        <familienaam>De Weert</familienaam>
+                        ,
+                        <voornaam>De Weert</voornaam>
+                    </naam>
+                    <alias>Int_DWG</alias>
+                    <functie>
+                        <label>interviewer</label>
                     </functie>
                 </persoon>
 </gcnd_annotatie_metadata>

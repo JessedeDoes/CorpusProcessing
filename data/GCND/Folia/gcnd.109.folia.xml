@@ -20228,40 +20228,228 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1" xml:id="speech.elan.113111" begintime="00:06:52.760" endtime="00:06:55.100">
         <t class="lightNormalization">t#hingt een kruis boven hé ja.</t>
         <t class="heavyNormalization">het hing een kruis boven hé ja.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.113111">
-            <w xml:id="w.113111.unannotated.0" space="no">
+        <s xml:id="s.70585">
+            <w xml:id="annotation.113111.70585.w.0" space="yes">
                 <t class="lightNormalization">t</t>
                 <t class="heavyNormalization">het</t>
+                <pos class="VNW(pers,pron,stan,red,3,ev,onz)" head="VNW">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="red" subset="status"/>
+                    <feat class="3" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="het"/>
             </w>
-            <w xml:id="w.113111.unannotated.1" space="yes">
+            <w xml:id="annotation.113111.70585.w.1" space="yes">
                 <t class="lightNormalization">hingt</t>
                 <t class="heavyNormalization">hing</t>
+                <pos class="WW(pv,verl,ev)" head="WW">
+                    <feat class="pv" subset="wvorm"/>
+                    <feat class="verl" subset="pvtijd"/>
+                    <feat class="ev" subset="pvagr"/>
+                    <feat class="WW" subset="pos"/>
+                </pos>
+                <lemma class="hangen"/>
             </w>
-            <w xml:id="w.113111.unannotated.2" space="yes">
+            <w xml:id="annotation.113111.70585.w.2" space="yes">
                 <t class="lightNormalization">een</t>
                 <t class="heavyNormalization">een</t>
+                <pos class="LID(onbep,stan,agr)" head="LID">
+                    <feat class="onbep" subset="lwtype"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="agr" subset="npagr"/>
+                    <feat class="LID" subset="pos"/>
+                </pos>
+                <lemma class="een"/>
             </w>
-            <w xml:id="w.113111.unannotated.3" space="yes">
+            <w xml:id="annotation.113111.70585.w.3" space="yes">
                 <t class="lightNormalization">kruis</t>
                 <t class="heavyNormalization">kruis</t>
+                <pos class="N(soort,ev,basis,onz,stan)" head="N">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="kruis"/>
             </w>
-            <w xml:id="w.113111.unannotated.4" space="yes">
+            <w xml:id="annotation.113111.70585.w.4" space="yes">
                 <t class="lightNormalization">boven</t>
                 <t class="heavyNormalization">boven</t>
+                <pos class="VZ(fin)" head="VZ">
+                    <feat class="fin" subset="vztype"/>
+                    <feat class="VZ" subset="pos"/>
+                </pos>
+                <lemma class="boven"/>
             </w>
-            <w xml:id="w.113111.unannotated.5" space="yes">
+            <w xml:id="annotation.113111.70585.w.5" space="yes">
                 <t class="lightNormalization">hé</t>
                 <t class="heavyNormalization">hé</t>
+                <pos class="TSW()" head="TSW">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="hé"/>
             </w>
-            <w xml:id="w.113111.unannotated.6" space="yes">
+            <w xml:id="annotation.113111.70585.w.6" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()" head="TSW">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w xml:id="w.113111.unannotated.7" space="no">
-                <t class="lightNormalization">_</t>
+            <w xml:id="annotation.113111.70585.w.7" space="yes">
+                <t class="lightNormalization">.</t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <node end="8" begin="0" originalOffsets="0--8" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="hé" word="hé" end="6" begin="5" originalOffsets="5--6" id="1" lemma="hé" pos="tag" postag="TSW()" pt="tsw" rel="--" root="hé" sense="hé">
+</node>
+                            <node end="7" begin="0" originalOffsets="0--7" cat="du" id="2" rel="--">
+                                <node end="5" begin="0" originalOffsets="0--5" cat="smain" id="3" rel="nucl">
+                                    <node 
+                                    word_zv="hing" word="hingt" end="2" begin="1" originalOffsets="1--2" id="4" lemma="hangen" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="hang" sense="hang" wvorm="pv">
+</node>
+                                    <node end="4" begin="2" originalOffsets="2--4" cat="np" id="5" rel="su">
+                                        <node 
+                                        word_zv="een" word="een" end="3" begin="2" originalOffsets="2--3" id="6" lemma="een" lwtype="onbep" naamval="stan" npagr="agr" pos="det" postag="LID(onbep,stan,agr)" pt="lid" rel="det" root="een" sense="een">
+</node>
+                                        <node 
+                                        word_zv="kruis" word="kruis" end="4" begin="3" originalOffsets="3--4" genus="onz" getal="ev" graad="basis" id="7" lemma="kruis" naamval="stan" ntype="soort" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="hd" root="kruis" sense="kruis">
+</node>
+                                    </node>
+                                    <node end="5" begin="0" originalOffsets="0--5" cat="pp" id="8" rel="ld">
+                                        <node 
+                                        word_zv="het" word="t" end="1" begin="0" originalOffsets="0--1" genus="onz" getal="ev" id="9" lemma="het" naamval="stan" pdtype="pron" persoon="3" pos="adv" postag="VNW(pers,pron,stan,red,3,ev,onz)" pt="vnw" rel="obj1" root="het" sense="er" status="red" vwtype="pers">
+</node>
+                                        <node 
+                                        word_zv="boven" word="boven" end="5" begin="4" originalOffsets="4--5" id="10" lemma="boven" pos="prep" postag="VZ(fin)" pt="vz" rel="hd" root="boven" sense="boven" vztype="fin">
+</node>
+                                    </node>
+                                </node>
+                                <node 
+                                word_zv="ja" word="ja" end="7" begin="6" originalOffsets="6--7" id="11" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="tag" root="ja" sense="ja">
+</node>
+                            </node>
+                            <node 
+                            word_zv="." word="." end="8" begin="7" originalOffsets="7--8" id="12" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense=".">
+</node>
+                        </node>
+                        <sentence sentid="I204p_1--I204p_1_1--0200">het hing een kruis boven hé ja .</sentence>
+                        <comments>
+                            <comment>
+                                Q#I204p_1--I204p_1_1--0200|[ @alt er het ] hing een kruis boven [ @skip hé ] ja .|1|1|-4.804537109599999
+                            </comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <dependencies>
+                <dependency class="obj1">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.4"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.0" t="het"/>
+                    </dep>
+                </dependency>
+                <dependency class="root">
+                    <hd> </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.1" t="hing"/>
+                    </dep>
+                </dependency>
+                <dependency class="det">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.3"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.2" t="een"/>
+                    </dep>
+                </dependency>
+                <dependency class="su">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.1"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.3" t="kruis"/>
+                    </dep>
+                </dependency>
+                <dependency class="ld">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.1"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.4" t="boven"/>
+                    </dep>
+                </dependency>
+                <dependency class="--">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.1"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.5" t="hé"/>
+                    </dep>
+                </dependency>
+                <dependency class="tag">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.1"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.6" t="ja"/>
+                    </dep>
+                </dependency>
+                <dependency class="punct">
+                    <hd>
+                        <wref id="annotation.113111.70585.w.1"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113111.70585.w.7" t="."/>
+                    </dep>
+                </dependency>
+                <foreign-data>
+                    <conll xmls="http://conll.fake.url">
+                        <![CDATA[Some(# sent_id = I204p_1--I204p_1_1--0200
+# source = UNKNOWN
+# text = het hing een kruis boven hé ja .
+1	het	het	adv	VNW(pers,pron,stan,red,3,ev,onz)	_	5	obj1	5:boven	_
+2	hing	hangen	verb	WW(pv,verl,ev)	_	0	root	0:_	CAT=smain_du_top
+3	een	een	det	LID(onbep,stan,agr)	_	4	det	4:kruis	_
+4	kruis	kruis	noun	N(soort,ev,basis,onz,stan)	_	2	su	2:hing	CAT=np
+5	boven	boven	prep	VZ(fin)	_	2	ld	2:hing	CAT=pp
+6	hé	hé	tag	TSW()	_	2	--	2:hing	_
+7	ja	ja	tag	TSW()	_	2	tag	2:hing	_
+8	.	.	punct	LET()	_	2	punct	2:hing	_)]]>
+                    </conll>
+                </foreign-data>
+            </dependencies>
+            <timing>
+                <timesegment begintime="00:06:52.760" endtime="00:06:55.100">
+                    <wref id="annotation.113111.70585.w.0" t="t"/>
+                    <wref id="annotation.113111.70585.w.1" t="hingt"/>
+                    <wref id="annotation.113111.70585.w.2" t="een"/>
+                    <wref id="annotation.113111.70585.w.3" t="kruis"/>
+                    <wref id="annotation.113111.70585.w.4" t="boven"/>
+                    <wref id="annotation.113111.70585.w.5" t="hé"/>
+                    <wref id="annotation.113111.70585.w.6" t="ja"/>
+                    <wref id="annotation.113111.70585.w.7" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -20651,20 +20839,60 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1" xml:id="speech.elan.113113" begintime="00:07:08.315" endtime="00:07:09.245">
         <t class="lightNormalization">ja ja.</t>
         <t class="heavyNormalization">ja ja.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.113113">
-            <w xml:id="w.113113.unannotated.0" space="yes">
+        <s xml:id="s.70619">
+            <w xml:id="annotation.113113.70619.w.0" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()" head="TSW">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w xml:id="w.113113.unannotated.1" space="yes">
+            <w xml:id="annotation.113113.70619.w.1" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
+                <pos class="TSW()" head="TSW">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="ja"/>
             </w>
-            <w xml:id="w.113113.unannotated.2" space="no">
-                <t class="lightNormalization">_</t>
+            <w xml:id="annotation.113113.70619.w.2" space="yes">
+                <t class="lightNormalization">.</t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <node end="3" begin="0" originalOffsets="0--3" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
+</node>
+                            <node 
+                            word_zv="ja" word="ja" end="2" begin="1" originalOffsets="1--2" id="2" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
+</node>
+                            <node 
+                            word_zv="." word="." end="3" begin="2" originalOffsets="2--3" id="3" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense=".">
+</node>
+                        </node>
+                        <sentence sentid="I204p_1--I204p_1_1--0207">ja ja .</sentence>
+                        <comments>
+                            <comment>Q#I204p_1--I204p_1_1--0207|ja ja .|1|1|-0.712228</comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <timing>
+                <timesegment begintime="00:07:08.315" endtime="00:07:09.245">
+                    <wref id="annotation.113113.70619.w.0" t="ja"/>
+                    <wref id="annotation.113113.70619.w.1" t="ja"/>
+                    <wref id="annotation.113113.70619.w.2" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -26024,16 +26252,56 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1" xml:id="speech.elan.113133" begintime="00:09:23.685" endtime="00:09:24.455">
         <t class="lightNormalization">lijnzaad.</t>
         <t class="heavyNormalization">lijnzaad.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.113133">
-            <w xml:id="w.113133.unannotated.0" space="yes">
+        <s xml:id="s.70562">
+            <w xml:id="annotation.113133.70562.w.0" space="yes">
                 <t class="lightNormalization">lijnzaad</t>
                 <t class="heavyNormalization">lijnzaad</t>
+                <pos class="N(soort,ev,basis,onz,stan)" head="N">
+                    <feat class="soort" subset="ntype"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="basis" subset="graad"/>
+                    <feat class="onz" subset="genus"/>
+                    <feat class="stan" subset="naamval"/>
+                    <feat class="N" subset="pos"/>
+                </pos>
+                <lemma class="lijn_zaad"/>
             </w>
-            <w xml:id="w.113133.unannotated.1" space="no">
-                <t class="lightNormalization">_</t>
+            <w xml:id="annotation.113133.70562.w.1" space="yes">
+                <t class="lightNormalization">.</t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <parser 
+                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-07-27T10:58" cats="1" skips="0">
+</parser>
+                        <node end="2" begin="0" originalOffsets="0--2" cat="top" id="0" rel="top">
+                            <node 
+                            word_zv="lijnzaad" word="lijnzaad" end="1" begin="0" originalOffsets="0--1" frame="noun(het,count,sg)" gen="het" genus="onz" getal="ev" graad="basis" his="compound" his_1="2" id="1" lcat="np" lemma="lijn_zaad" naamval="stan" ntype="soort" num="sg" pos="noun" postag="N(soort,ev,basis,onz,stan)" pt="n" rel="--" rnum="sg" root="lijn_zaad" sense="lijn_zaad">
+</node>
+                            <node 
+                            word_zv="." word="." end="2" begin="1" originalOffsets="1--2" frame="punct(punt)" his="normal" his_1="normal" id="2" lcat="punct" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense="." special="punt">
+</node>
+                        </node>
+                        <sentence sentid="I204p_1--I204p_1_1--0267">lijnzaad .</sentence>
+                        <comments>
+                            <comment>Q#I204p_1--I204p_1_1--0267|lijnzaad .|1|1|-0.14470740000000015</comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <timing>
+                <timesegment begintime="00:09:23.685" endtime="00:09:24.455">
+                    <wref id="annotation.113133.70562.w.0" t="lijnzaad"/>
+                    <wref id="annotation.113133.70562.w.1" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -26800,22 +27068,6 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
         </foreign-data>
 </speech>
     <speech 
-    tag="interviewer" speaker="Int_ANON_2" xml:id="speech.elan.112939" begintime="00:09:32.300" endtime="00:09:32.950">
-        <t class="lightNormalization">ah ja.</t>
-        <foreign-data>
-            <gcnd_annotatie_metadata 
-            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
-                <persoon ref="#100027">
-                    <naam>, </naam>
-                    <alias>Int_ANON_2</alias>
-                    <functie>
-                        <label>interviewer</label>
-                    </functie>
-                </persoon>
-</gcnd_annotatie_metadata>
-        </foreign-data>
-</speech>
-    <speech 
     tag="interviewer" speaker="Int_ANON_1" xml:id="speech.elan.112781" begintime="00:09:32.300" endtime="00:09:32.950">
         <t class="lightNormalization">mee dien boot?</t>
         <foreign-data>
@@ -26824,6 +27076,22 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                 <persoon ref="#100026">
                     <naam>, </naam>
                     <alias>Int_ANON_1</alias>
+                    <functie>
+                        <label>interviewer</label>
+                    </functie>
+                </persoon>
+</gcnd_annotatie_metadata>
+        </foreign-data>
+</speech>
+    <speech 
+    tag="interviewer" speaker="Int_ANON_2" xml:id="speech.elan.112939" begintime="00:09:32.300" endtime="00:09:32.950">
+        <t class="lightNormalization">ah ja.</t>
+        <foreign-data>
+            <gcnd_annotatie_metadata 
+            xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
+                <persoon ref="#100027">
+                    <naam>, </naam>
+                    <alias>Int_ANON_2</alias>
                     <functie>
                         <label>interviewer</label>
                     </functie>
@@ -29968,20 +30236,102 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1" xml:id="speech.elan.113145" begintime="00:10:26.960" endtime="00:10:27.610">
         <t class="lightNormalization">nee#je.</t>
         <t class="heavyNormalization">nee jij.</t>
-        <utt class="noSyntacticAnnotation" xml:id="utterance.113145">
-            <w xml:id="w.113145.unannotated.0" space="no">
+        <s xml:id="s.70486">
+            <w xml:id="annotation.113145.70486.w.0" space="yes">
                 <t class="lightNormalization">nee</t>
                 <t class="heavyNormalization">nee</t>
+                <pos class="TSW()" head="TSW">
+                    <feat class="TSW" subset="pos"/>
+                </pos>
+                <lemma class="nee"/>
             </w>
-            <w xml:id="w.113145.unannotated.1" space="yes">
+            <w xml:id="annotation.113145.70486.w.1" space="yes">
                 <t class="lightNormalization">je</t>
                 <t class="heavyNormalization">jij</t>
+                <pos class="VNW(pers,pron,nomin,vol,2v,ev)" head="VNW">
+                    <feat class="pers" subset="vwtype"/>
+                    <feat class="pron" subset="pdtype"/>
+                    <feat class="nomin" subset="naamval"/>
+                    <feat class="vol" subset="status"/>
+                    <feat class="2v" subset="persoon"/>
+                    <feat class="ev" subset="getal"/>
+                    <feat class="VNW" subset="pos"/>
+                </pos>
+                <lemma class="jij"/>
             </w>
-            <w xml:id="w.113145.unannotated.2" space="no">
-                <t class="lightNormalization">_</t>
+            <w xml:id="annotation.113145.70486.w.2" space="yes">
+                <t class="lightNormalization">.</t>
                 <t class="heavyNormalization">.</t>
+                <pos class="LET()" head="LET">
+                    <feat class="LET" subset="pos"/>
+                </pos>
             </w>
-        </utt>
+            <syntax set="lassy.syntax.annotation">
+                <foreign-data>
+                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
+                        <node end="3" begin="0" originalOffsets="0--3" cat="top" id="0" rel="top">
+                            <node end="2" begin="0" originalOffsets="0--2" cat="mwu" id="1" rel="--">
+                                <node 
+                                word_zv="nee" word="nee" end="1" begin="0" originalOffsets="0--1" id="2" lemma="nee" pos="tag" postag="TSW()" pt="tsw" rel="mwp" root="nee" sense="nee">
+</node>
+                                <node 
+                                word_zv="jij" word="je" end="2" begin="1" originalOffsets="1--2" getal="ev" id="3" lemma="jij" naamval="nomin" pdtype="pron" persoon="2v" pos="pron" postag="VNW(pers,pron,nomin,vol,2v,ev)" pt="vnw" rel="mwp" root="jij" sense="jij" status="vol" vwtype="pers">
+</node>
+                            </node>
+                            <node 
+                            word_zv="." word="." end="3" begin="2" originalOffsets="2--3" id="4" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense=".">
+</node>
+                        </node>
+                        <sentence sentid="I204p_1--I204p_1_1--0293">nee jij .</sentence>
+                        <comments>
+                            <comment>Q#I204p_1--I204p_1_1--0293|[ @mwu_alt nee nee jij ] .|1|1|-0.34350400000000003</comment>
+                        </comments>
+                        <alud>OK</alud>
+                    </alpino_ds>
+                </foreign-data>
+            </syntax>
+            <dependencies>
+                <dependency class="root">
+                    <hd> </hd>
+                    <dep>
+                        <wref id="annotation.113145.70486.w.0" t="nee"/>
+                    </dep>
+                </dependency>
+                <dependency class="mwp">
+                    <hd>
+                        <wref id="annotation.113145.70486.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113145.70486.w.1" t="jij"/>
+                    </dep>
+                </dependency>
+                <dependency class="punct">
+                    <hd>
+                        <wref id="annotation.113145.70486.w.0"/>
+                    </hd>
+                    <dep>
+                        <wref id="annotation.113145.70486.w.2" t="."/>
+                    </dep>
+                </dependency>
+                <foreign-data>
+                    <conll xmls="http://conll.fake.url">
+                        <![CDATA[Some(# sent_id = I204p_1--I204p_1_1--0293
+# source = UNKNOWN
+# text = nee jij .
+1	nee	nee	tag	TSW()	_	0	root	0:_	CAT=mwu_top
+2	jij	jij	pron	VNW(pers,pron,nomin,vol,2v,ev)	_	1	mwp	1:nee	_
+3	.	.	punct	LET()	_	1	punct	1:nee	_)]]>
+                    </conll>
+                </foreign-data>
+            </dependencies>
+            <timing>
+                <timesegment begintime="00:10:26.960" endtime="00:10:27.610">
+                    <wref id="annotation.113145.70486.w.0" t="nee"/>
+                    <wref id="annotation.113145.70486.w.1" t="je"/>
+                    <wref id="annotation.113145.70486.w.2" t="."/>
+                </timesegment>
+            </timing>
+        </s>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -46626,205 +46976,36 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1" xml:id="speech.elan.113205" begintime="00:15:26.432" endtime="00:15:28.262">
         <t class="lightNormalization">da#s amaal veel jaren geleden.</t>
         <t class="heavyNormalization">dat is allemaal veel jaren geleden.</t>
-        <s xml:id="s.70497">
-            <w xml:id="annotation.113205.70497.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.113205">
+            <w xml:id="w.113205.unannotated.0" space="no">
                 <t class="lightNormalization">da</t>
                 <t class="heavyNormalization">dat</t>
-                <pos class="VNW(aanw,pron,stan,vol,3o,ev)" head="VNW">
-                    <feat class="aanw" subset="vwtype"/>
-                    <feat class="pron" subset="pdtype"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="vol" subset="status"/>
-                    <feat class="3o" subset="persoon"/>
-                    <feat class="ev" subset="getal"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="dat"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.1" space="yes">
+            <w xml:id="w.113205.unannotated.1" space="yes">
                 <t class="lightNormalization">s</t>
                 <t class="heavyNormalization">is</t>
-                <pos class="WW(pv,tgw,ev)" head="WW">
-                    <feat class="pv" subset="wvorm"/>
-                    <feat class="tgw" subset="pvtijd"/>
-                    <feat class="ev" subset="pvagr"/>
-                    <feat class="WW" subset="pos"/>
-                </pos>
-                <lemma class="zijn"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.2" space="yes">
+            <w xml:id="w.113205.unannotated.2" space="yes">
                 <t class="lightNormalization">amaal</t>
                 <t class="heavyNormalization">allemaal</t>
-                <pos class="BW()" head="BW">
-                    <feat class="BW" subset="pos"/>
-                </pos>
-                <lemma class="allemaal"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.3" space="yes">
+            <w xml:id="w.113205.unannotated.3" space="yes">
                 <t class="lightNormalization">veel</t>
                 <t class="heavyNormalization">veel</t>
-                <pos class="VNW(onbep,grad,stan,prenom,zonder,agr,basis)" head="VNW">
-                    <feat class="onbep" subset="vwtype"/>
-                    <feat class="grad" subset="pdtype"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="prenom" subset="positie"/>
-                    <feat class="zonder" subset="buiging"/>
-                    <feat class="agr" subset="npagr"/>
-                    <feat class="basis" subset="graad"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="veel"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.4" space="yes">
+            <w xml:id="w.113205.unannotated.4" space="yes">
                 <t class="lightNormalization">jaren</t>
                 <t class="heavyNormalization">jaren</t>
-                <pos class="N(soort,mv,basis)" head="N">
-                    <feat class="soort" subset="ntype"/>
-                    <feat class="mv" subset="getal"/>
-                    <feat class="basis" subset="graad"/>
-                    <feat class="N" subset="pos"/>
-                </pos>
-                <lemma class="jaar"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.5" space="yes">
+            <w xml:id="w.113205.unannotated.5" space="yes">
                 <t class="lightNormalization">geleden</t>
                 <t class="heavyNormalization">geleden</t>
-                <pos class="BW()" head="BW">
-                    <feat class="BW" subset="pos"/>
-                </pos>
-                <lemma class="geleden"/>
             </w>
-            <w xml:id="annotation.113205.70497.w.6" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.113205.unannotated.6" space="no">
+                <t class="lightNormalization">_</t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-                        <node end="7" begin="0" originalOffsets="0--7" cat="top" id="0" rel="top">
-                            <node end="6" begin="0" originalOffsets="0--6" cat="smain" id="1" rel="--">
-                                <node 
-                                word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" getal="ev" id="2" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" root="dat" sense="dat" status="vol" vwtype="aanw">
-</node>
-                                <node 
-                                word_zv="is" word="s" end="2" begin="1" originalOffsets="1--2" id="3" lemma="zijn" pos="verb" postag="WW(pv,tgw,ev)" pt="ww" pvagr="ev" pvtijd="tgw" rel="hd" root="ben" sense="ben" wvorm="pv">
-</node>
-                                <node 
-                                word_zv="allemaal" word="amaal" end="3" begin="2" originalOffsets="2--3" id="4" lemma="allemaal" pos="adv" postag="BW()" pt="bw" rel="predm" root="allemaal" sense="allemaal">
-</node>
-                                <node end="6" begin="3" originalOffsets="3--6" cat="ap" id="5" rel="predc">
-                                    <node end="5" begin="3" originalOffsets="3--5" cat="np" id="6" rel="mod">
-                                        <node 
-                                        word_zv="veel" word="veel" end="4" begin="3" originalOffsets="3--4" buiging="zonder" graad="basis" id="7" lemma="veel" naamval="stan" npagr="agr" pdtype="grad" pos="adj" positie="prenom" postag="VNW(onbep,grad,stan,prenom,zonder,agr,basis)" pt="vnw" rel="det" root="veel" sense="veel" vwtype="onbep">
-</node>
-                                        <node 
-                                        word_zv="jaren" word="jaren" end="5" begin="4" originalOffsets="4--5" getal="mv" graad="basis" id="8" lemma="jaar" ntype="soort" pos="noun" postag="N(soort,mv,basis)" pt="n" rel="hd" root="jaar" sense="jaar">
-</node>
-                                    </node>
-                                    <node 
-                                    word_zv="geleden" word="geleden" end="6" begin="5" originalOffsets="5--6" id="9" lemma="geleden" pos="adj" postag="BW()" pt="bw" rel="hd" root="geleden" sense="geleden">
-</node>
-                                </node>
-                            </node>
-                            <node 
-                            word_zv="." word="." end="7" begin="6" originalOffsets="6--7" id="10" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense=".">
-</node>
-                        </node>
-                        <sentence sentid="I204p_1--I204p_1_1--0441">dat is allemaal veel jaren geleden .</sentence>
-                        <comments>
-                            <comment>
-                                Q#I204p_1--I204p_1_1--0441|dat is allemaal veel jaren geleden .|1|1|-7.1457475855
-                            </comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <dependencies>
-                <dependency class="su">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.0" t="dat"/>
-                    </dep>
-                </dependency>
-                <dependency class="root">
-                    <hd> </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.1" t="is"/>
-                    </dep>
-                </dependency>
-                <dependency class="predm">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.2" t="allemaal"/>
-                    </dep>
-                </dependency>
-                <dependency class="det">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.4"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.3" t="veel"/>
-                    </dep>
-                </dependency>
-                <dependency class="mod">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.5"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.4" t="jaren"/>
-                    </dep>
-                </dependency>
-                <dependency class="predc">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.5" t="geleden"/>
-                    </dep>
-                </dependency>
-                <dependency class="punct">
-                    <hd>
-                        <wref id="annotation.113205.70497.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113205.70497.w.6" t="."/>
-                    </dep>
-                </dependency>
-                <foreign-data>
-                    <conll xmls="http://conll.fake.url">
-                        <![CDATA[Some(# sent_id = I204p_1--I204p_1_1--0441
-# source = UNKNOWN
-# text = dat is allemaal veel jaren geleden .
-1	dat	dat	det	VNW(aanw,pron,stan,vol,3o,ev)	_	2	su	2:is	_
-2	is	zijn	verb	WW(pv,tgw,ev)	_	0	root	0:_	CAT=smain_top
-3	allemaal	allemaal	adv	BW()	_	2	predm	2:is	_
-4	veel	veel	adj	VNW(onbep,grad,stan,prenom,zonder,agr,basis)	_	5	det	5:jaren	_
-5	jaren	jaar	noun	N(soort,mv,basis)	_	6	mod	6:geleden	CAT=np
-6	geleden	geleden	adj	BW()	_	2	predc	2:is	CAT=ap
-7	.	.	punct	LET()	_	2	punct	2:is	_)]]>
-                    </conll>
-                </foreign-data>
-            </dependencies>
-            <timing>
-                <timesegment begintime="00:15:26.432" endtime="00:15:28.262">
-                    <wref id="annotation.113205.70497.w.0" t="da"/>
-                    <wref id="annotation.113205.70497.w.1" t="s"/>
-                    <wref id="annotation.113205.70497.w.2" t="amaal"/>
-                    <wref id="annotation.113205.70497.w.3" t="veel"/>
-                    <wref id="annotation.113205.70497.w.4" t="jaren"/>
-                    <wref id="annotation.113205.70497.w.5" t="geleden"/>
-                    <wref id="annotation.113205.70497.w.6" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
