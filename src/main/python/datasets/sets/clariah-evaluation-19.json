@@ -1,0 +1,20 @@
+{
+    "sourcePath": "source-data/clariah-evaluation-19",
+    "trainingPath": "training-data/clariah-evaluation-19",
+    "columns": [
+        "token",
+        "pos",
+        "lemma",
+        "group_id"
+    ],
+    "name": "clariah-evaluation-19",
+    "eraFrom": "1800",
+    "eraTo": "1900",
+    "tagset": "TDN-Core",
+    "dataset": true,
+    "public": true,
+    "sourceName": "clariah-evaluation-19",
+    "sourceURL": "https://dbnl.org",
+    "version": "0.9",
+    "description": "CLARIAH Evaluation set 1800-1900"
+}

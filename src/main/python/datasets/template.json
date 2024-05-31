@@ -1,0 +1,18 @@
+ {
+        "sourcePath": "source-data/gysseling",
+        "trainingPath": "training-data/inl-gysseling",
+        "columns": [
+            "token",
+            "pos",
+            "lemma"
+        ],
+        "name": "Corpus Gysseling",
+        "eraFrom": 1200,
+        "eraTo": 1300,
+        "tagset": "Gysseling",
+        "dataset": true,
+        "public": true,
+        "sourceName": "Corpus Gysseling",
+        "sourceURL": "https://corpusgysseling.ivdnt.org/",
+        "version": "0.1.0"
+   }

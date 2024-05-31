@@ -1,0 +1,20 @@
+{
+    "sourcePath": "source-data/clvn",
+    "trainingPath": "training-data/clvn",
+    "columns": [
+        "token",
+        "pos",
+        "lemma",
+        "group_id"
+    ],
+    "name": "clvn",
+    "eraFrom": "1500",
+    "eraTo": "1700",
+    "tagset": "TDN-Core",
+    "dataset": true,
+    "public": true,
+    "sourceName": "clvn",
+    "sourceURL": "https://ivdnt.org/actueel/nieuws/digitaaljaar-2024-databanken-van-nicoline/",
+    "version": "0.9",
+    "description": "CLVN Selection"
+}

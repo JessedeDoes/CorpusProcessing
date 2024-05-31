@@ -1,0 +1,20 @@
+{
+    "sourcePath": "source-data/clariah-evaluation-15",
+    "trainingPath": "training-data/clariah-evaluation-15",
+    "columns": [
+        "token",
+        "pos",
+        "lemma",
+        "group_id"
+    ],
+    "name": "clariah-evaluation-15",
+    "eraFrom": "1400",
+    "eraTo": "1500",
+    "tagset": "TDN-Core",
+    "dataset": true,
+    "public": true,
+    "sourceName": "clariah-evaluation-15",
+    "sourceURL": "https://dbnl.org",
+    "version": "0.9",
+    "description": "CLARIAH Evaluation set 1400-1500"
+}
