@@ -1,0 +1,20 @@
+{
+    "sourcePath": "source-data/dbnl-excerpts-18",
+    "trainingPath": "training-data/dbnl-excerpts-18",
+    "columns": [
+        "token",
+        "pos",
+        "lemma",
+        "group_id"
+    ],
+    "name": "dbnl-excerpts-18",
+    "eraFrom": "1700",
+    "eraTo": "1800",
+    "tagset": "TDN-Core",
+    "dataset": true,
+    "public": true,
+    "sourceName": "dbnl-excerpts-18",
+    "sourceURL": "https://dbnl.org",
+    "version": "0.9",
+    "description": "CLARIAH Evaluation Set 1700-1800"
+}

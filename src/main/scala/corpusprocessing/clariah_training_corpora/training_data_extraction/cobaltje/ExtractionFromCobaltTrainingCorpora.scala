@@ -4,6 +4,27 @@ import java.io.{File, PrintWriter}
 import Settings._
 import corpusprocessing.clariah_training_corpora.training_data_extraction.{TrainingDataInfo, TrainingDataInfos}
 
+object Rename {
+  val renaming: Map[String,String] =Map(
+    "evaluation_set_15" -> "dbnl-excerpts-15",
+    "evaluation_set_16" -> "dbnl-excerpts-16",
+    "evaluation_set_17" -> "dbnl-excerpts-17",
+    "evaluation_set_18" -> "dbnl-excerpts-18",
+    "evaluation_set_19" -> "dbnl-excerpts-19",
+    "clvn_selectie_met_wat_minder_duits" -> "clvn",
+    "courantenselectie" -> "couranten",
+    "gtbcit_14_fromscratch" -> "dictionary-quotations-14",
+    "gtbcit_mnw_15" -> "dictionary-quotations-15",
+    "gtbcit_punct_16" -> "dictionary-quotations-16",
+    "gtbcit_punct_17" -> "dictionary-quotations-17",
+    "wnt_citaten_18" -> "dictionary-quotations-18",
+    "wnt_citaten_19" -> "dictionary-quotations-19",
+    "bab_enhanced_hoofdlettertest" -> "letters-as-loot",
+  )
+}
+
+import Rename._
+
 object ExtractionFromCobaltTrainingCorpora {
 
   def main(args: Array[String]) = {
@@ -32,23 +53,7 @@ object ExtractionFromCobaltTrainingCorpora {
 
 object ExtractionFromCobaltTrainingCorporaWithConfig {
 
-  val omgekeerd = Map(
-    "clariah-evaluation-15" -> "evaluation_set_15",
-    "clariah-evaluation-16" -> "evaluation_set_16",
-    "clariah-evaluation-17" -> "evaluation_set_17",
-    "clariah-evaluation-18" -> "evaluation_set_18",
-    "clariah-evaluation-19" -> "evaluation_set_19",
-    "clvn" -> "clvn_selectie_met_wat_minder_duits",
-    "couranten" -> "courantenselectie",
-    "dictionary-quotations-14" -> "gtbcit_14_fromscratch",
-    "dictionary-quotations-15" -> "gtbcit_mnw_15",
-    "dictionary-quotations-16" -> "gtbcit_punct_16",
-    "dictionary-quotations-17" -> "gtbcit_punct_17",
-    "dictionary-quotations-18" -> "wnt_citaten_18",
-    "dictionary-quotations-19" -> "wnt_citaten_19",
-    "letters-as-loot" -> "bab_enhanced_hoofdlettertest"
-  )
-  val  renaming: Map[String, String] = omgekeerd.map({case (x,y) => (y,x)})
+
   val jsonLocation ="/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
   def main(args: Array[String]) = {
     print(renaming)
@@ -65,6 +70,7 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val dirAsDir = new File(extractTo + "/" + datasetName)
         // dirAsDir.delete()
         dirAsDir.mkdir()
+
         val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
 
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,

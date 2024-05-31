@@ -10,6 +10,8 @@ template["version"] = '0.9'
 template["columns"] = ["token", "pos", "lemma", "group_id"]
 
 f = open('lijstje.tsv','r')
+scalamapfile = open('rename.scala','w')
+scalamap = 'val rename: Map[String,String] =('
 
 lines = f.readlines()
 datasets = []
@@ -30,6 +32,7 @@ for l in lines:
   instance['sourceURL'] = url # "http://github.com/INL/galahad-corpus-data"
   instance['sourcePath'] = f'source-data/{name}'
   instance['description'] = desc
+  scalamap = scalamap + f'"{code}" -> "{instance["name"]}",\n'
   datasets.append(instance)
 
   fout=open(f"sets/{name}.json", "w")
@@ -37,3 +40,6 @@ for l in lines:
   fout.close()
 
 print(json.dumps(datasets,indent=4))
+scalamap = scalamap + ")"
+print(scalamap,file=scalamapfile)
+scalamapfile.close()

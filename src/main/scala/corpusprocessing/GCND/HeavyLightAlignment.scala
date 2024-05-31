@@ -33,7 +33,9 @@ case class TokenizingDetach(e: ElanAnnotation) extends Tokenization {
       .split("\\s+")
       .toList
       .flatMap(Tokenizer.tokenizeErVanaf)
-      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"),
+        t.token.replaceAll("畳", GCNDToken.cliticMarker),
+        t.trailing.replaceAll("畳", GCNDToken.cliticMarker)))
 
   lazy val ndlTokens: List[Tokenizer.Token] =
     fixhellip(e.tekst_zv)
@@ -50,7 +52,9 @@ case class TokenizingAttach(e: ElanAnnotation) extends Tokenization {
       .split("\\s+")
       .toList
       .flatMap(Tokenizer.tokenize)
-      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"), t.token.replaceAll("畳", "#"), t.trailing.replaceAll("畳", "#")))
+      .map(t => Tokenizer.Token(t.leading.replaceAll("畳", "#"),
+        t.token.replaceAll("畳", GCNDToken.cliticMarker),
+        t.trailing.replaceAll("畳", GCNDToken.cliticMarker)))
 
   lazy val ndlTokens: List[Tokenizer.Token] =
     fixhellip(e.tekst_zv)
@@ -66,14 +70,15 @@ case class HeavyLightAlignment(elanAnnotation: ElanAnnotation) {
 
   lazy val tokenization: Tokenization = TokenizingAttach(elanAnnotation) // Attach werkt beter omdat bijvoorbeeld ... soms ontbreekt in de zware vernederlandsing
 
-  val (orgTokens, ndlTokens) = tokenization.orgTokens -> tokenization.ndlTokens
-  def z(x: List[Tokenizer.Token]) = x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
+  val (orgTokens, ndlTokens) = (tokenization.orgTokens, tokenization.ndlTokens)
+  def z(x: List[Tokenizer.Token]) =
+    x.zipWithIndex.map({ case (y, i) => (i.toString, y) }) // x.flatMap(_.split("nnnxnxnxnxnxnxn")).zipWithIndex.map({ case (y, i) => (i.toString, y) })
 
   def alignHeavyLight(): (Boolean, List[(token,token)], String) =  {
 
     val o = z(orgTokens)
     val n = z(ndlTokens)
-
+    // println("org=" + o)
     def matchIt() =  {
       val chunks: Seq[SimOrDiff[(String, token)]] = aligner.findChunks(o, n)
 

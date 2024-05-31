@@ -40,8 +40,9 @@ object Sentence {
   def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
-  def getWord(x: Node)  = if ((x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ")
-    else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text
+  def getWord(x: Node)  =
+    if ((x \\ "seg").nonEmpty) (x \\ "seg").text.replaceAll("\\s+", " ").trim
+    else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text.trim
     else x.text.trim
 
   def sentence(s: Node, f: String, extractor: TrainingDataExtraction, partition: Option[Partition] = None): Sentence = {
@@ -55,7 +56,10 @@ object Sentence {
     val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
     val indexedTokenElements = tokenElements.zipWithIndex
     val tokens = tokenElements.map(getWord)
-    val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim)
+    val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim).map(t => {
+      if (t.toLowerCase().matches("^let([()]*)$")) "PC" else t
+    })
+
     val lemmata = tokenElements.map(x =>  {
       val w = getWord(x)
       val looksLikePunct = w.matches("(\\p{P})+")
