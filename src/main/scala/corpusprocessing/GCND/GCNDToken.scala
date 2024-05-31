@@ -20,7 +20,7 @@ case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, 
   lazy val space_after_yes_no = if (space_after) "yes" else "no"
 
   def cliticallyAware(): GCNDToken = if (text_lv.startsWith(cliticMarker)) this.copy(joined=true, text_lv=text_lv.replaceAll(cliticMarker,"")) else this
-  def asFoLiA(): NodeSeq = (if (joined) <w><t class="cliticMarker">{cliticMarker}</t></w> else Seq()) ++ Seq(mainWord)
+  def asFoLiA(): NodeSeq = (if (joined) <w space="no"><t class="cliticMarker">{cliticMarker}</t></w> else Seq()) ++ Seq(mainWord)
 
   lazy val mainWord =
    {
