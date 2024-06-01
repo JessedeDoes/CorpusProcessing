@@ -9,9 +9,7 @@ case class Token(word: String, pos: String, lemma: String)
 import Settings._
 object TrainingDataForByt5Lemmatizer {
 
-  val proportion = 80
-
-
+  val proportion = 85
 
   lazy val lemAll = lemDataDir + "lem.all.tsv"
   lazy val lemTrain = lemDataDir + "lem.train.tsv"
@@ -53,7 +51,6 @@ object TrainingDataForByt5Lemmatizer {
   }
   def main(args: Array[String]) = {
     // trainingFiles.foreach(println)
-
     println(groups.size)
     printGroups(groups, lemAll)
     val train = groups.take(proportion * groups.size / 100)
