@@ -15,7 +15,7 @@ case class ExtractionFromCobaltExport(zipFileName: String,
 
   case class Extractor() extends TrainingDataExtraction {
 
-    override val split_test_train_on_document_level = !outputPrefix.contains("evaluation_set")
+    override val split_test_train_on_document_level = !(outputPrefix.contains("evaluation_set")||info.exists(_.isSentenceLevel))// domme check....
     override lazy val output_prefix: String = outputPrefix
     override val sentence_element: String = sentenceElement
     override val enhance: Boolean = enhanceTags

@@ -107,9 +107,9 @@ object Metadata {
   }
 
 
-   type dinges = List[Map[String,String]]
-   val slurpMap: mutable.Map[String, dinges]  = new mutable.HashMap[String, dinges]()
-   def cachedSlurp(tableName: String) : dinges= {
+   type ListOfMaps = List[Map[String,String]]
+   val slurpMap: mutable.Map[String, ListOfMaps]  = new mutable.HashMap[String, ListOfMaps]()
+   def cachedSlurp(tableName: String) : ListOfMaps= {
       if (slurpMap.contains(tableName))  {
          Console.err.println(s"Cached slurp: $tableName")
          slurpMap(tableName)

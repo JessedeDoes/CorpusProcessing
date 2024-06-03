@@ -20,6 +20,7 @@ case class PartitionInfo(documents: Set[DocumentInfo]) {
 
 case class TrainingDataInfo(partitions: Map[String, PartitionInfo], sentenceElement: String = "s") {
 
+  lazy val isSentenceLevel = partitions.values.exists(p => p.documents.exists(d => d.sentenceIds.nonEmpty))
   lazy val file2partitionName: Map[String, String] = partitions.flatMap({ case (p,i) =>
     i.documents.map(_.sourceFileName -> p)
   })
@@ -33,13 +34,17 @@ case class TrainingDataInfo(partitions: Map[String, PartitionInfo], sentenceElem
 
   def pickPartition(fileId: Option[String]=None, sentenceId: Option[String]=None): Partition = {
     val docPartition = Partition(file2partitionName(fileId.get))
+    val partition = {
      if (sentenceId==None)
        docPartition
      else if (filePlusDoc2partitionName.contains(fileId.get -> sentenceId.get))
        Partition(filePlusDoc2partitionName(fileId.get -> sentenceId.get))
      else
        docPartition
-   }
+    }
+    Console.err.println(s"Choosing partition for $fileId, $sentenceId: $partition")
+    partition
+  }
 }
 
 case class TrainingDataInfos(downloadedDataDir: String, extractedDataDir: String, trainingDataInfos: Map[String, TrainingDataInfo])

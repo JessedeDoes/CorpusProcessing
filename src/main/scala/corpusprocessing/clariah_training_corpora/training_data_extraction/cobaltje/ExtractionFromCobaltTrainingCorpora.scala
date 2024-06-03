@@ -31,6 +31,7 @@ object ExtractionFromCobaltTrainingCorpora {
 
     val extractedSets = new File(directoryWithCobaltExports).listFiles()
       .filter(_.getName.endsWith(".zip"))
+
       //.filter(_.getName.contains("gtbcit_mnw_15"))
       .map(f => {
         val datasetName = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
@@ -55,13 +56,16 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
 
 
   val jsonLocation ="/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
-  def main(args: Array[String]) = {
+  val info = TrainingDataInfos.readFromFile(jsonLocation)
+
+  def extract(enhanceTags: Boolean = false, extractTo:String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
     print(renaming)
-    val info = TrainingDataInfos.readFromFile(jsonLocation)
-    val extractTo = info.extractedDataDir.replaceAll("/$", "") + ".test_reextract"
+
+
     new File(extractTo).mkdir()
     new File(info.downloadedDataDir).listFiles()
       .filter(_.getName.endsWith(".zip"))
+      //.filter(_.getName.contains("evaluation_set"))
       //.filter(_.getName.contains("gtbcit_mnw_15"))
       .foreach(f => {
         val datasetNameOrg = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
@@ -76,13 +80,17 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
           sentenceElement = datasetConfig.sentenceElement, ///if (datasetName.contains("cit")) "q" else "s",
           enhanceTags = false, // dan wordt dus alles wel anders.......
-          info=Some(datasetConfig)
+          info = Some(datasetConfig)
         )
         val newConfig = e.extract()
         if (newConfig != datasetConfig) {
           Console.err.println(s"Hm, het is niet hetzelfde voor $datasetName")
         }
       })
+  }
+  def main(args: Array[String]) = {
+    extract()
+    extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
   }
 }
 
