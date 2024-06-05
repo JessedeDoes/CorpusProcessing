@@ -55,7 +55,7 @@ object ExtractionFromCobaltTrainingCorpora {
 object ExtractionFromCobaltTrainingCorporaWithConfig {
 
 
-  val jsonLocation ="/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
+  val jsonLocation = "data/cobaltExport/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
   val info = TrainingDataInfos.readFromFile(jsonLocation)
 
   def extract(enhanceTags: Boolean = false, extractTo:String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
