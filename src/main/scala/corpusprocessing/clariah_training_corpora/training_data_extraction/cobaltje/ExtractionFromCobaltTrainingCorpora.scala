@@ -63,14 +63,16 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
 
 
     new File(extractTo).mkdir()
-    new File(info.downloadedDataDir).listFiles()
+
+
+    val extractedSets  = new File(info.downloadedDataDir).listFiles()
       .filter(_.getName.endsWith(".zip"))
       //.filter(_.getName.contains("evaluation_set"))
       //.filter(_.getName.contains("gtbcit_mnw_15"))
-      .foreach(f => {
+      .map(f => {
         val datasetNameOrg = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
         val datasetName = renaming.getOrElse(datasetNameOrg, datasetNameOrg)
-        val datasetConfig = info.trainingDataInfos(datasetNameOrg)
+        val datasetConfig = info.trainingDataInfos.get(datasetNameOrg)
         val dirAsDir = new File(extractTo + "/" + datasetName)
         // dirAsDir.delete()
         dirAsDir.mkdir()
@@ -78,19 +80,28 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
 
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
-          sentenceElement = datasetConfig.sentenceElement, ///if (datasetName.contains("cit")) "q" else "s",
-          enhanceTags = false, // dan wordt dus alles wel anders.......
-          info = Some(datasetConfig)
+          sentenceElement = datasetConfig.map(_.sentenceElement).getOrElse(
+            if (datasetName.contains("cit") || datasetName.contains("quotation")) "q" else "s"
+          ) ,///if (datasetName.contains("cit")) "q" else "s",
+          enhanceTags = enhanceTags, // dan wordt dus alles wel anders.......
+          info = datasetConfig
         )
         val newConfig = e.extract()
         if (newConfig != datasetConfig) {
           Console.err.println(s"Hm, het is niet hetzelfde voor $datasetName")
         }
-      })
+        datasetName -> newConfig
+      }).toMap
+
+    val infos = TrainingDataInfos(directoryWithCobaltExports, createdTrainingDataDirectory, extractedSets)
+    val w = new PrintWriter(createdTrainingDataDirectory + "/" + "cobaltSets.json")
+    w.println(TrainingDataInfos.write(infos))
+    w.close()
+
   }
   def main(args: Array[String]) = {
-    extract()
-    extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
+    extract(enhanceTags = true)
+    // extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
   }
 }
 

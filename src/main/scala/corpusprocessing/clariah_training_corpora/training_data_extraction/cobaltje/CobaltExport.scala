@@ -21,7 +21,8 @@ object CobaltExport {
   }
 
   def checkAllCorpora()  = {
-    val corpora: Seq[Map[String, Any]] = cobaltStats.getCorpusInfo()
+    val corpora: Seq[Map[String, Any]] = cobaltStats.getCorpusInfo().filter(_("schemaName") != "gtbcit_punct_14_refurbished")
+
     val enhancedInfo: Seq[Map[String, Any]] = corpora.map(corpus => {
       val projectName = corpus("schemaName")
 
@@ -77,11 +78,19 @@ case class CobaltExport(url: String, name: String) {
 
   lazy val downloadSuccessfull = HTTPDownload(url, zipName, "jesse", "dedoes").apply()
 
-  lazy val paths: Seq[Path] = if (downloadSuccessfull) zipUtils.find(zipName) else {
-    val f = new File(zipName)
-    if (f.exists()) f.delete()
-    Stream[Path]()
-  }
+  lazy val paths: Seq[Path] =
+    if (downloadSuccessfull)
+      try zipUtils.find(zipName) catch {
+
+        case e: Exception =>
+          Console.err.println(s"Exception for $zipName!!! ($name,$url)")
+          Seq()
+      }
+    else {
+      val f = new File(zipName)
+      if (f.exists()) f.delete()
+      Stream[Path]()
+    }
 
   lazy val files = paths.map(p =>  Files.newInputStream(p))
   lazy val documents = files.map(XML.load)

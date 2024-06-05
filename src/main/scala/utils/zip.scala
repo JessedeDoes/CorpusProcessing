@@ -14,7 +14,8 @@ object zipUtils
 {
   val testFile = "data/kranten_pd_voorbeeld.zip"
 
-  def getRootPath(zipFile: String) =
+  @throws[Exception]
+  def getRootPath(zipFile: String): Path =
   {
     val env = new java.util.HashMap[String,String]()
     val absolutePath = new java.io.File(zipFile).getAbsolutePath
@@ -30,6 +31,7 @@ object zipUtils
     path
   }
 
+
   def find(zipFile: String, filter: Path => Boolean=truth):Stream[Path] =
     try { findPath(getRootPath(zipFile), filter) } catch
       {
@@ -41,8 +43,10 @@ object zipUtils
 
   def truth(p:Path):Boolean = true
 
+  @throws[Exception]
   def findPath(path:Path, filter: Path => Boolean=truth):Stream[Path] =
   {
+    try {
     if (Files.isDirectory(path))
     {
       val children = Files.newDirectoryStream(path).toStream
@@ -51,6 +55,13 @@ object zipUtils
     }
     else {
       if (filter(path)) new Stream.Cons(path, Stream.empty[Path]) else Stream.empty[Path]
+    }
+    } catch {
+
+      case e:Exception =>
+        Console.err.println(e)
+        e.printStackTrace()
+        Stream.empty[Path]
     }
   }
 

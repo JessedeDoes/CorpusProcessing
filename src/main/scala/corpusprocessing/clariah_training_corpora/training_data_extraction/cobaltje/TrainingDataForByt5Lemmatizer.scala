@@ -17,7 +17,7 @@ object TrainingDataForByt5Lemmatizer {
 
   def parseToken(s: String): Option[Token] = {
     val f = s.split("\\t")
-    if (f.size == 3) Some(Token(f(0), f(1), f(2))) else None
+    if (f.size == 3) Some(Token(f(0), f(1), f(2))) else None // hierdoor verdwijnen de mw's.....
   }
 
 
@@ -41,7 +41,7 @@ object TrainingDataForByt5Lemmatizer {
 
   def printGroups(groups: Map[Token,Int], f: String) = {
     val out = new PrintWriter(f)
-    out.println("word\tpos\tlemma\tfreq")
+    //out.println("word\tpos\tlemma\tfreq")
     groups.foreach(g => {
       val t = g._1
       val props = List(t.word, t.pos, t.lemma, g._2)
