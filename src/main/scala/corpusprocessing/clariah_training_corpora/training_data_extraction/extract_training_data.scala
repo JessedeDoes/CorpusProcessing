@@ -29,6 +29,7 @@ trait TrainingDataExtraction {
   val p_train = 0.75
   val p_dev = 0.125
   val split_test_train_on_document_level = false
+  val clean_brackets = false
   val training_subsets : Int = 1
   lazy val output_folder = "/tmp"
   lazy val output_prefix = "tei_to_huggingface"
@@ -80,7 +81,7 @@ trait TrainingDataExtraction {
       case (f: String, x: Node) => {
         val documentPartition = Some(pickPartition(Some(f)))
 
-        println(s"$f $documentPartition")
+        // println(s"$f $documentPartition")
 
         val chunkElements =
           if ((x \\ sentence_element).nonEmpty)

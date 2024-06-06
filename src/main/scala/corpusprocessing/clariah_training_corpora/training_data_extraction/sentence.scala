@@ -45,6 +45,35 @@ object Sentence {
     else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text.trim
     else x.text.trim
 
+
+  def removeStuffBetweenBracketsIfUntagged(tokenElements: Seq[Node]) = {
+    val indexed = tokenElements.zipWithIndex
+    val startBrackets: Seq[(Node,Int)] = indexed.filter(x => getWord(x._1) == "(")
+    val bracketPairs: Seq[((Node, Int), (Node, Int))] = startBrackets.map({case (s,i) => {
+      val nextBracket: Option[(Node, Int)] = startBrackets.find{case (n,j) => j > i}
+      val endBracket: Option[(Node, Int)] = indexed.drop(i).find{case (n,j) => getWord(n) == ")" && !nextBracket.exists{case (_,k) => k < j }}
+      (s,i) -> endBracket
+    }}).filter(_._2.nonEmpty).map{case (s,e) => (s,e.get)}
+    val sentence = tokenElements.map(getWord).mkString(" ")
+    val removeIt = bracketPairs.map({case ((s,i), (e,j)) =>
+       val slice = tokenElements.slice(i,j+1)
+       val part = slice.map(getWord).mkString(" ")
+       val posjes = slice.map(x => (x \ "@pos").text)
+       val noPos = slice.filter(p => (p \ "@pos").text.isEmpty)
+       val emptyness = noPos.size / slice.filter(_.label != "pc").size.toDouble
+       val removable = emptyness > 0.66
+       println(s"Bracketed part [$emptyness, remove=$removable] found: $part  in $sentence")
+      (removable,i,j+1)
+    }).filter(_._1)
+    val cleaner = indexed.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i <= e})}.map(_._1)
+
+    if (removeIt.exists(_._1)) {
+      val cleanedSentence = cleaner.map(getWord).mkString(" ")
+      println(s"Cleaned to: $cleanedSentence\n\n")
+    }
+    cleaner.toList
+  }
+
   def sentence(s: Node, f: String, extractor: TrainingDataExtraction, partition: Option[Partition] = None): Sentence = {
 
     def getJoin_n(n: Node) = (n \ "join" \  "@n").text
@@ -53,9 +82,15 @@ object Sentence {
 
     // Console.err.println(s"!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!ID: $id for $s") ((x \ "choice").nonEmpty)
 
-    val tokenElements = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
+    val tokenElements: List[Node] =  {
+      val all = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
+      if (extractor.clean_brackets) removeStuffBetweenBracketsIfUntagged(all) else all
+    }
+
+
+
     val indexedTokenElements = tokenElements.zipWithIndex
-    val tokens = tokenElements.map(getWord)
+    val tokens: List[String] = tokenElements.map(getWord).toList
     val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim).map(t => {
       if (t.toLowerCase().matches("^let([()]*)$")) "PC" else t
     })
@@ -66,7 +101,7 @@ object Sentence {
       if (x.label == "pc") "" else  {
         val lem = (x \ "@lemma").headOption.map(_.text.trim)
         if (lem.nonEmpty && lem.get.nonEmpty && looksLikePunct) {
-          Console.err.println("HMMMMMMMMMM " + x)
+          // Console.err.println("HMMMMMMMMMM " + x)
         }
         lem.getOrElse("") }
     } )
@@ -103,7 +138,9 @@ object Sentence {
         }
 
         t
-      } else p
+      } else {
+        if (p.toLowerCase().matches("^let([()]*)$")) "PC" else p
+      }
     }
 
     lazy val tokenGroupIds = tokenElements.map(w => {
@@ -111,14 +148,14 @@ object Sentence {
       if (n.isEmpty) None else Some(n)
     })
 
-    val enhancedTags = indexedTokenElements.map({ case (x, y) => enhancePos(x, y) })
+    val enhancedTags = indexedTokenElements.map({ case (x, y) => enhancePos(x, y) }).toList
     //val partition = (s \ "@ana").headOption.map(_.text.replaceAll("#", "")).getOrElse("unknown")
 
     val r =
       BasicSentence(id,
         tokens,
-      if (extractor.enhance) enhancedTags else tags.map(extractor.tagMapping),
-      lemmata,
+      if (extractor.enhance) enhancedTags else tags.toList.map(extractor.tagMapping),
+      lemmata.toList,
         xml_ids,
         tokenGroupIds,
         fileId = f,

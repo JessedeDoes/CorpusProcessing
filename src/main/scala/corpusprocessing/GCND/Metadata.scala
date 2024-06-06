@@ -309,7 +309,7 @@ object Metadata {
   def getMetadataForElanAnnotation(elan_annotatie_id: Int): Elem = {
     val t0 = elan_annotatie.filter("elan_annotatie_id", elan_annotatie_id.toString)
     val xml = t0.toXML()
-
+    val opname__persoon = xml \\ "opname__persoon"
     val persoon_id = (xml \\ "persoon_id").text
     val functie = xml \\ "opname_functie" \\ "label"
     val alias = (xml \\ "alias").text
@@ -318,7 +318,11 @@ object Metadata {
       <alias>{alias}</alias>
       <functie><label>{functie.text}</label></functie>
     </persoon>
-    val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">{persoontje}</gcnd_annotatie_metadata>
+    //val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">{persoontje}</gcnd_annotatie_metadata>
+    val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
+      {persoontje}
+      {opname__persoon}
+    </gcnd_annotatie_metadata>
     // Console.err.println(z)
     z
   }

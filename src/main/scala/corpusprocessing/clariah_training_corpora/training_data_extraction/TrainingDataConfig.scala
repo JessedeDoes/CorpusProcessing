@@ -42,7 +42,7 @@ case class TrainingDataInfo(partitions: Map[String, PartitionInfo], sentenceElem
      else
        docPartition
     }
-    Console.err.println(s"Choosing partition for $fileId, $sentenceId: $partition")
+    // Console.err.println(s"Choosing partition for $fileId, $sentenceId: $partition")
     partition
   }
 }

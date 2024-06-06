@@ -55,11 +55,11 @@ object ExtractionFromCobaltTrainingCorpora {
 object ExtractionFromCobaltTrainingCorporaWithConfig {
 
 
-  val jsonLocation = "data/cobaltExport/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
+  val jsonLocation = "data/cobaltExtraction/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
   val info = TrainingDataInfos.readFromFile(jsonLocation)
 
   def extract(enhanceTags: Boolean = false, extractTo:String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
-    print(renaming)
+    //print(renaming)
 
 
     new File(extractTo).mkdir()
@@ -74,15 +74,15 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val datasetName = renaming.getOrElse(datasetNameOrg, datasetNameOrg)
         val datasetConfig = info.trainingDataInfos.get(datasetNameOrg)
         val dirAsDir = new File(extractTo + "/" + datasetName)
+        val isQuotationCorpus = (datasetName.contains("cit") || datasetName.contains("quotation"))
         // dirAsDir.delete()
         dirAsDir.mkdir()
 
         val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
 
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
-          sentenceElement = datasetConfig.map(_.sentenceElement).getOrElse(
-            if (datasetName.contains("cit") || datasetName.contains("quotation")) "q" else "s"
-          ) ,///if (datasetName.contains("cit")) "q" else "s",
+          sentenceElement = datasetConfig.map(_.sentenceElement).getOrElse(if (isQuotationCorpus) "q" else "s"),
+          cleanBrackets = isQuotationCorpus,
           enhanceTags = enhanceTags, // dan wordt dus alles wel anders.......
           info = datasetConfig
         )
