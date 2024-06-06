@@ -65,7 +65,7 @@ object Sentence {
        println(s"Bracketed part [$emptyness, remove=$removable] found: $part  in $sentence")
       (removable,i,j+1)
     }).filter(_._1)
-    val cleaner = indexed.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i <= e})}.map(_._1)
+    val cleaner = indexed.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i < e})}.map(_._1)
 
     if (removeIt.exists(_._1)) {
       val cleanedSentence = cleaner.map(getWord).mkString(" ")
