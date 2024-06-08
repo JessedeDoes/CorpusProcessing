@@ -96,8 +96,7 @@ trait TrainingDataExtraction {
           .map(s => sentence(s, f, extractor=this, partition = documentPartition))
           .filter(decentSentence)
       }
-    })
-
+    }).filter(!_.isEmpty)
 
     val sampledSentences: Iterator[Sentence] = sampleAndChooseSentencePartitions(sentences)
 

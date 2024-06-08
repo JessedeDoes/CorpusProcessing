@@ -1,7 +1,7 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction
 
 import scala.xml._
-
+import java.io.PrintWriter
 trait Sentence {
   def sentenceId: Option[String] = None
 
@@ -19,6 +19,8 @@ trait Sentence {
   def fileId: String = "unknown"
 
   def partition: Option[Partition] = None
+
+  def isEmpty: Boolean = ???
 }
 
 
@@ -33,10 +35,15 @@ case class BasicSentence(
                           override val fileId: String = "unknown",
                           node: Option[Node] = None, // hebben we die echt nodig?
                           override val partition: Option[Partition] = None
-                        ) extends Sentence
+                        ) extends Sentence {
+  override def isEmpty: Boolean =  tokens.isEmpty
+}
 
 object Sentence {
 
+  var discardIfStrict = 0
+  val logje = new PrintWriter("/tmp/quotationCleaning.log.txt")
+  def log(x: String) = { logje.println(x); logje.flush() }
   def getId(n: Node): Option[String] = n.attributes.filter(a => a.prefixedKey.endsWith(":id") ||
     a.key.equals("id")).map(a => a.value.toString).headOption
 
@@ -45,15 +52,19 @@ object Sentence {
     else if ((x \ "choice").nonEmpty) (x \ "choice" \ "sic").text.trim
     else x.text.trim
 
+  def noPos(p: Node) = (p \ "@pos").text.isEmpty
 
   def removeStuffBetweenBracketsIfUntagged(tokenElements: Seq[Node]) = {
-    val indexed = tokenElements.zipWithIndex
-    val startBrackets: Seq[(Node,Int)] = indexed.filter(x => getWord(x._1) == "(")
+    val indexedTokenElements = tokenElements.zipWithIndex
+
+    val startBrackets: Seq[(Node,Int)] = indexedTokenElements.filter(x => getWord(x._1).contains("("))
     val bracketPairs: Seq[((Node, Int), (Node, Int))] = startBrackets.map({case (s,i) => {
       val nextBracket: Option[(Node, Int)] = startBrackets.find{case (n,j) => j > i}
-      val endBracket: Option[(Node, Int)] = indexed.drop(i).find{case (n,j) => getWord(n) == ")" && !nextBracket.exists{case (_,k) => k < j }}
+      val endBracket: Option[(Node, Int)] = indexedTokenElements.drop(i).find{case (n,j) => getWord(n).contains(")") && !nextBracket.exists{case (_,k) => k < j }}
       (s,i) -> endBracket
     }}).filter(_._2.nonEmpty).map{case (s,e) => (s,e.get)}
+
+
     val sentence = tokenElements.map(getWord).mkString(" ")
     val removeIt = bracketPairs.map({case ((s,i), (e,j)) =>
        val slice = tokenElements.slice(i,j+1)
@@ -61,17 +72,34 @@ object Sentence {
        val posjes = slice.map(x => (x \ "@pos").text)
        val noPos = slice.filter(p => (p \ "@pos").text.isEmpty)
        val emptyness = noPos.size / slice.filter(_.label != "pc").size.toDouble
-       val removable = emptyness > 0.66
-       println(s"Bracketed part [$emptyness, remove=$removable] found: $part  in $sentence")
+       val removable = emptyness > 0 // 0.66
+       // println(s"Bracketed part [$emptyness, remove=$removable] found: $part  in $sentence")
       (removable,i,j+1)
     }).filter(_._1)
-    val cleaner = indexed.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i < e})}.map(_._1)
 
-    if (removeIt.exists(_._1)) {
-      val cleanedSentence = cleaner.map(getWord).mkString(" ")
-      println(s"Cleaned to: $cleanedSentence\n\n")
+    val untaggedLastWords: Seq[Int] = indexedTokenElements
+      .filter(_._1.label=="w")
+      .filter{case (w,i) => !indexedTokenElements.exists{case (w1,i1) =>  i1 >= i && !noPos(w1)}}.map(_._2)
+
+    untaggedLastWords.filter(i => !removeIt.exists{case (r,s,e) => i >= s && i < e}).foreach(k => println(s"Untagged last Token: ${getWord(tokenElements(k))}"))
+
+    val cleaner = indexedTokenElements.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i < e}) && !untaggedLastWords.contains(i)}.map(_._1)
+    val cleanedSentence = cleaner.map(getWord).mkString(" ")
+
+    val nopjes = cleaner.filter(x => x.label=="w" && noPos(x))
+    val nopPart = nopjes.map(getWord).mkString(" ")
+
+
+    if (cleaner.size < tokenElements.size || nopjes.nonEmpty) {
+      log("########################")
+      log(s"Quotation: ${tokenElements.map(getWord).mkString(" ")} ")
+      if (nopjes.nonEmpty) {
+        discardIfStrict += nopjes.size
+        log(s"!!!Nopjes (total $discardIfStrict tokens): $nopPart")
+      }
+      log(s"Cleaned to: ||$cleanedSentence||\n\n")
     }
-    cleaner.toList
+    cleaner.toList -> nopPart.isEmpty
   }
 
   def sentence(s: Node, f: String, extractor: TrainingDataExtraction, partition: Option[Partition] = None): Sentence = {
@@ -84,7 +112,9 @@ object Sentence {
 
     val tokenElements: List[Node] =  {
       val all = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
-      if (extractor.clean_brackets) removeStuffBetweenBracketsIfUntagged(all) else all
+      if (extractor.clean_brackets)  { val (cleaned, ok) = removeStuffBetweenBracketsIfUntagged(all)
+        if (ok) cleaned else List()
+      } else all
     }
 
 
