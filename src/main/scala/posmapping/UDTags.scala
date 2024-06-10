@@ -1,6 +1,8 @@
 package posmapping
 
 import propositional.{And, Literal, Proposition}
+
+import java.io.PrintWriter
 import scala.util.matching.Regex
 import scala.xml._
 
@@ -61,16 +63,36 @@ object UDTagSet extends TagSet("ud", UDTags.pos, UDTags.partitions, UDTags.pos2p
 class UDStyleTag(tag: String, tagset: TagSet=defaultTagset) extends Tag(tag,tagset)
 {
   //Console.err.println(s"Yes: $tag...")
-  val Tag = new Regex("^([A-Z\\|-]+)\\((.*?)\\)")
+  val pos = tag.replaceAll("upostag=([A-Za-z]+).*", "$1")
+  val rest = tag.replaceAll("^.*?\\|", "")
 
-  val Tag(pos,feats) = tag
 
-  val featureValues:Array[String] = feats.split("\\s*,\\s*").filter(f => !(f.trim == ""))
-  val features:List[Feature] = featureValues.map(parseFeature).toList ++ List(Feature("pos", pos))
+  val featureValues:Array[String] = rest.split("\\s*\\|\\s*").filter(f => !(f.trim == ""))
+  val features:List[Feature] = featureValues.map(parseFeature).toList.filter(_.name != "upostag") // ++ List(Feature("pos", pos))
+  println("\n#### "  + tag)
+  features.foreach(println)
 
   def parseFeature(f: String):Feature = {val c = f.split("\\s*=\\s*"); Feature(c(0), c(1))}
 
   def proposition:Proposition = And(features.map({case Feature(n,v) => Literal(s"${tagset.prefix}:$n=$v") } ) :_*)
 
   override def toString:String = tag
+}
+
+object getTagsFromBlacklab  {
+  //val url = "http://svotmc10.ivdnt.loc:8080/blacklab-server/parlamint_test_config/hits?first=0&group=hit%3Axpos&number=100000&patt=%5B%5D&adjusthits=yes&interface=%7B%22form%22%3A%22explore%22%2C%22exploreMode%22%3A%22frequency%22%7D"
+  val url="http://svotmc10.ivdnt.loc:8080/blacklab-server/parlamint_test_config/hits?first=0&group=context%3Axpos%3Ai%3AH&number=10000&patt=%5Blanguage%3D%22nl%22%5D"
+  def main(args: Array[String]) = {
+    val d = XML.load(url)
+    val tags = (d \\ "hitgroup").filter(h => (h \ "size").text.toInt > 2)
+
+      .map(x => (x  \ "identityDisplay").text)
+      .toSet.filter(x => x.nonEmpty && !x.contains("(")).map(UDTagSet.fromString)
+    tags.foreach(println)
+    val tagset = TagSet.tagsetFromSetOfTags("pos", tags)
+
+    val p = new PrintWriter("/tmp/tagset.json")
+    p.println(tagset.asJSON.replaceAll("pos_upostag","pos_head"))
+    p.close()
+  }
 }

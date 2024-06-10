@@ -100,8 +100,8 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
 
   }
   def main(args: Array[String]) = {
-    extract(enhanceTags = true)
-    //extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
+    //extract(enhanceTags = true)
+    extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
   }
 }
 
