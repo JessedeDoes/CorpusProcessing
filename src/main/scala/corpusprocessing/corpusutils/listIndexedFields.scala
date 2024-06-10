@@ -19,4 +19,6 @@ case class listIndexedFields(url: String="http://svotmc10.ivdnt.loc:8080/blackla
   }
 }
 
+object listParlamintFields extends listIndexedFields("http://svotmc10.ivdnt.loc:8080/blacklab-server/parlamint_test_config//")
+
 

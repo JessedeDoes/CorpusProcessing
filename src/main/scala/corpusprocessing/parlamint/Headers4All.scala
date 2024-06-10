@@ -22,7 +22,7 @@ object Headers4All {
    val mainFile = baseDir + "ParlaMint-BE.ana.xml"
 
   val parentDir = "../" //  s"file:///$baseDir/"
-  val max = 100
+  val max = Integer.MAX_VALUE
    implicit def f(x: String)  = new java.io.File(x)
 
   def expandInclude(d: Elem)  = {
