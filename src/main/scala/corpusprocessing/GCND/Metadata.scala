@@ -299,8 +299,11 @@ object Metadata {
      val transcriptie_id = transcription.transcriptie_id
      val t0: Table = transcriptie.filter("transcriptie_id", transcriptie_id.toString)
      val hasAlpino = transcription.elanAnnotations.exists(_.useAlpino)
+     val meta = t0.toXML()
+     val metaString = meta.toString()
      val z = <gcnd_transcriptie_metadata xml:id={"gcnd.metadata." + transcriptie_id}>
        {t0.toXML()}
+       <metaDump>{metaString}</metaDump>
        <hasAlpino>{hasAlpino}</hasAlpino>
        </gcnd_transcriptie_metadata>.copy(scope=scope)
      z
