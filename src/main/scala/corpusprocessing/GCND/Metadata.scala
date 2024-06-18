@@ -249,7 +249,7 @@ object Metadata {
        SimpleRelation("geboorteplaats", persoon, plaats, "geboorte_plaats_id", "plaats_id"),
        SimpleRelation("persoonXgender", persoon, gender, "gender_id", "gender_id"),
        SimpleRelation("persoonXwoonplaatsmobiliteit", persoon, mobiliteit, "woonplaats_mobiliteit_id", "mobiliteit_id"),
-       SimpleRelation("persoonXberoepmobiliteit", persoon, mobiliteit, "beroep_mobilitiet_id", "mobiliteit_id"), // TODO: tiet nog tot teit corrigeren
+       SimpleRelation("persoonXberoepmobiliteit", persoon, mobiliteit, "beroep_mobiliteit_id", "mobiliteit_id"), // TODO: tiet nog tot teit corrigeren
 
        SimpleRelation("persoonXvader", persoon, persoon_vaderplaats, "persoon_id", "persoon_id2"),
        SimpleRelation("persoonXmoeder", persoon, persoon_moederplaats, "persoon_id", "persoon_id2"),
@@ -259,6 +259,7 @@ object Metadata {
        r("persoonXpersoon__schoolplaats") x r("persoon__schoolplaatsXplaats"),
        r("persoonXpersoon__beroepplaats") x r("persoon__beroepplaatsXplaats"),
        r("persoonXpersoon__beroep") x r("persoon__beroepXberoep"),
+
       // r("persoonXpersoon__persoon") x r("persoon__persoonXpersoon"),
       // opname
        SimpleRelation("opnameXplaats", opname, plaats, "plaats_id", "plaats_id"),

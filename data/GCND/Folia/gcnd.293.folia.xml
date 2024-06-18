@@ -46,6 +46,29 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         <nummer>1</nummer>
                         <opname__persoon rel="opname⟶opname__persoon">
                             <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_VV</alias>
+                                <familienaam>Vanacker</familienaam>
+                                <persoon_id>22959</persoon_id>
+                                <voornaam>Valre</voornaam>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
+                                <label>interviewer</label>
+                                <opname_functie_id>2</opname_functie_id>
+                            </opname_functie>
+                            <persoon rel="opname__persoon⟶persoon">
+                                <alias>Int_F</alias>
+                                <familienaam>Forceville</familienaam>
+                                <persoon_id>22722</persoon_id>
+                            </persoon>
+                        </opname__persoon>
+                        <opname__persoon rel="opname⟶opname__persoon">
+                            <opname_functie rel="opname__persoon⟶opname_functie">
                                 <label>spreker</label>
                                 <opname_functie_id>1</opname_functie_id>
                             </opname_functie>
@@ -67,6 +90,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 </gender>
                                 <gender_id>1</gender_id>
                                 <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                                    <label>nee</label>
+                                    <mobiliteit_id>1</mobiliteit_id>
+                                </mobiliteit>
+                                <mobiliteit rel="persoon⟶beroepmobiliteit">
                                     <label>nee</label>
                                     <mobiliteit_id>1</mobiliteit_id>
                                 </mobiliteit>
@@ -180,29 +207,6 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                 <woonplaats_mobiliteit_id>1</woonplaats_mobiliteit_id>
                             </persoon>
                         </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_VV</alias>
-                                <familienaam>Vanacker</familienaam>
-                                <persoon_id>22959</persoon_id>
-                                <voornaam>Valre</voornaam>
-                            </persoon>
-                        </opname__persoon>
-                        <opname__persoon rel="opname⟶opname__persoon">
-                            <opname_functie rel="opname__persoon⟶opname_functie">
-                                <label>interviewer</label>
-                                <opname_functie_id>2</opname_functie_id>
-                            </opname_functie>
-                            <persoon rel="opname__persoon⟶persoon">
-                                <alias>Int_F</alias>
-                                <familienaam>Forceville</familienaam>
-                                <persoon_id>22722</persoon_id>
-                            </persoon>
-                        </opname__persoon>
                         <opname_code>O265p_1</opname_code>
                         <opname_id>809</opname_id>
                         <plaats rel="opname⟶plaats">
@@ -247,7 +251,7 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <transcriptie_type_id>1</transcriptie_type_id>
                 </transcriptie>
                 <metaDump>
-                    &lt;transcriptie&gt;&lt;bestand rel=&quot;transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;740&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;113936&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1_AF.eaf&lt;/naam&gt;&lt;pad&gt;O265p_1/elan/O265p_1_AF.eaf&lt;/pad&gt;&lt;/bestand&gt;&lt;opname rel=&quot;transcriptie⟶opname&quot;&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;739&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;53849234&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1.wav&lt;/naam&gt;&lt;pad&gt;O265p_1/audio/O265p_1.wav&lt;/pad&gt;&lt;/bestand&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;738&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;4884478&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1.mp3&lt;/naam&gt;&lt;pad&gt;O265p_1/audio/O265p_1.mp3&lt;/pad&gt;&lt;/bestand&gt;&lt;bron&gt;UGent oud&lt;/bron&gt;&lt;dag&gt;22&lt;/dag&gt;&lt;jaar&gt;1963&lt;/jaar&gt;&lt;maand&gt;4&lt;/maand&gt;&lt;nummer&gt;1&lt;/nummer&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;spreker&lt;/label&gt;&lt;opname_functie_id&gt;1&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;O265p_1_1&lt;/alias&gt;&lt;beroep rel=&quot;persoon⟶persoon__beroep;  persoon__beroep⟶beroep&quot;&gt;&lt;beroep_id&gt;414&lt;/beroep_id&gt;&lt;label&gt;handelaar&lt;/label&gt;&lt;/beroep&gt;&lt;beroep_mobiliteit_id&gt;1&lt;/beroep_mobiliteit_id&gt;&lt;familienaam&gt;Blockeel&lt;/familienaam&gt;&lt;geboorte_dag&gt;4&lt;/geboorte_dag&gt;&lt;geboorte_jaar&gt;1911&lt;/geboorte_jaar&gt;&lt;geboorte_maand&gt;1&lt;/geboorte_maand&gt;&lt;geboorte_plaats_id&gt;1499&lt;/geboorte_plaats_id&gt;&lt;gender rel=&quot;persoon⟶gender&quot;&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;label&gt;m&lt;/label&gt;&lt;/gender&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;mobiliteit rel=&quot;persoon⟶woonplaatsmobiliteit&quot;&gt;&lt;label&gt;nee&lt;/label&gt;&lt;mobiliteit_id&gt;1&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;persoon_id&gt;985&lt;/persoon_id&gt;&lt;persoon_moederplaats rel=&quot;persoon⟶moeder&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;4985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_moederplaats&gt;&lt;persoon_partnerplaats rel=&quot;persoon⟶partner&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;6985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_partnerplaats&gt;&lt;persoon_vaderplaats rel=&quot;persoon⟶vader&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;2985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_vaderplaats&gt;&lt;plaats rel=&quot;geboorteplaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;voornaam&gt;Alfred&lt;/voornaam&gt;&lt;woonplaats_mobiliteit_id&gt;1&lt;/woonplaats_mobiliteit_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_VV&lt;/alias&gt;&lt;familienaam&gt;Vanacker&lt;/familienaam&gt;&lt;persoon_id&gt;22959&lt;/persoon_id&gt;&lt;voornaam&gt;Valre&lt;/voornaam&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_F&lt;/alias&gt;&lt;familienaam&gt;Forceville&lt;/familienaam&gt;&lt;persoon_id&gt;22722&lt;/persoon_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname_code&gt;O265p_1&lt;/opname_code&gt;&lt;opname_id&gt;809&lt;/opname_id&gt;&lt;plaats rel=&quot;opname⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;rnd_plaats&gt;t&lt;/rnd_plaats&gt;&lt;sand_plaats&gt;t&lt;/sand_plaats&gt;&lt;tijdsduur&gt;0&lt;/tijdsduur&gt;&lt;/opname&gt;&lt;opname_id&gt;809&lt;/opname_id&gt;&lt;transcriptie_id&gt;293&lt;/transcriptie_id&gt;&lt;transcriptie_status rel=&quot;transcriptie⟶status&quot;&gt;&lt;label&gt;Alpino (gecorrigeerd)&lt;/label&gt;&lt;transcriptie_status_id&gt;7&lt;/transcriptie_status_id&gt;&lt;/transcriptie_status&gt;&lt;transcriptie_status_id&gt;7&lt;/transcriptie_status_id&gt;&lt;transcriptie_type_id&gt;1&lt;/transcriptie_type_id&gt;&lt;/transcriptie&gt;
+                    &lt;transcriptie&gt;&lt;bestand rel=&quot;transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;740&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;113936&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1_AF.eaf&lt;/naam&gt;&lt;pad&gt;O265p_1/elan/O265p_1_AF.eaf&lt;/pad&gt;&lt;/bestand&gt;&lt;opname rel=&quot;transcriptie⟶opname&quot;&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;739&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;53849234&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1.wav&lt;/naam&gt;&lt;pad&gt;O265p_1/audio/O265p_1.wav&lt;/pad&gt;&lt;/bestand&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;738&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;4884478&lt;/bestandsgrootte&gt;&lt;naam&gt;O265p_1.mp3&lt;/naam&gt;&lt;pad&gt;O265p_1/audio/O265p_1.mp3&lt;/pad&gt;&lt;/bestand&gt;&lt;bron&gt;UGent oud&lt;/bron&gt;&lt;dag&gt;22&lt;/dag&gt;&lt;jaar&gt;1963&lt;/jaar&gt;&lt;maand&gt;4&lt;/maand&gt;&lt;nummer&gt;1&lt;/nummer&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_VV&lt;/alias&gt;&lt;familienaam&gt;Vanacker&lt;/familienaam&gt;&lt;persoon_id&gt;22959&lt;/persoon_id&gt;&lt;voornaam&gt;Valre&lt;/voornaam&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_F&lt;/alias&gt;&lt;familienaam&gt;Forceville&lt;/familienaam&gt;&lt;persoon_id&gt;22722&lt;/persoon_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;spreker&lt;/label&gt;&lt;opname_functie_id&gt;1&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;O265p_1_1&lt;/alias&gt;&lt;beroep rel=&quot;persoon⟶persoon__beroep;  persoon__beroep⟶beroep&quot;&gt;&lt;beroep_id&gt;414&lt;/beroep_id&gt;&lt;label&gt;handelaar&lt;/label&gt;&lt;/beroep&gt;&lt;beroep_mobiliteit_id&gt;1&lt;/beroep_mobiliteit_id&gt;&lt;familienaam&gt;Blockeel&lt;/familienaam&gt;&lt;geboorte_dag&gt;4&lt;/geboorte_dag&gt;&lt;geboorte_jaar&gt;1911&lt;/geboorte_jaar&gt;&lt;geboorte_maand&gt;1&lt;/geboorte_maand&gt;&lt;geboorte_plaats_id&gt;1499&lt;/geboorte_plaats_id&gt;&lt;gender rel=&quot;persoon⟶gender&quot;&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;label&gt;m&lt;/label&gt;&lt;/gender&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;mobiliteit rel=&quot;persoon⟶woonplaatsmobiliteit&quot;&gt;&lt;label&gt;nee&lt;/label&gt;&lt;mobiliteit_id&gt;1&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;mobiliteit rel=&quot;persoon⟶beroepmobiliteit&quot;&gt;&lt;label&gt;nee&lt;/label&gt;&lt;mobiliteit_id&gt;1&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;persoon_id&gt;985&lt;/persoon_id&gt;&lt;persoon_moederplaats rel=&quot;persoon⟶moeder&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;4985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_moederplaats&gt;&lt;persoon_partnerplaats rel=&quot;persoon⟶partner&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;6985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_partnerplaats&gt;&lt;persoon_vaderplaats rel=&quot;persoon⟶vader&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;2985&lt;/persoon_id1&gt;&lt;persoon_id2&gt;985&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_vaderplaats&gt;&lt;plaats rel=&quot;geboorteplaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__beroepplaats;  persoon__beroepplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;voornaam&gt;Alfred&lt;/voornaam&gt;&lt;woonplaats_mobiliteit_id&gt;1&lt;/woonplaats_mobiliteit_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname_code&gt;O265p_1&lt;/opname_code&gt;&lt;opname_id&gt;809&lt;/opname_id&gt;&lt;plaats rel=&quot;opname⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O265p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7383461&lt;/latitude&gt;&lt;longitude&gt;3.63798952&lt;/longitude&gt;&lt;naam&gt;Ronse&lt;/naam&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats_id&gt;1499&lt;/plaats_id&gt;&lt;rnd_plaats&gt;t&lt;/rnd_plaats&gt;&lt;sand_plaats&gt;t&lt;/sand_plaats&gt;&lt;tijdsduur&gt;0&lt;/tijdsduur&gt;&lt;/opname&gt;&lt;opname_id&gt;809&lt;/opname_id&gt;&lt;transcriptie_id&gt;293&lt;/transcriptie_id&gt;&lt;transcriptie_status rel=&quot;transcriptie⟶status&quot;&gt;&lt;label&gt;Alpino (gecorrigeerd)&lt;/label&gt;&lt;transcriptie_status_id&gt;7&lt;/transcriptie_status_id&gt;&lt;/transcriptie_status&gt;&lt;transcriptie_status_id&gt;7&lt;/transcriptie_status_id&gt;&lt;transcriptie_type_id&gt;1&lt;/transcriptie_type_id&gt;&lt;/transcriptie&gt;
                 </metaDump>
                 <hasAlpino>true</hasAlpino>
 </gcnd_transcriptie_metadata>
@@ -858,6 +862,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -1535,6 +1543,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -1854,6 +1866,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -3174,6 +3190,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -4051,6 +4071,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -4276,6 +4300,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -5431,6 +5459,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -5660,6 +5692,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -6125,6 +6161,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -6828,6 +6868,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -7839,6 +7883,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -8179,6 +8227,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -9434,6 +9486,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -9638,6 +9694,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -10375,6 +10435,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -11635,6 +11699,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -12329,6 +12397,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -12941,6 +13013,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -13125,6 +13201,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -13703,6 +13783,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -14008,6 +14092,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -14354,6 +14442,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -15258,6 +15350,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -15589,6 +15685,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -15943,6 +16043,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -16228,6 +16332,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -16914,6 +17022,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -17929,6 +18041,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -19235,6 +19351,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -19419,6 +19539,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -20403,6 +20527,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -20720,6 +20848,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -20976,6 +21108,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -21212,6 +21348,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -22305,6 +22445,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -22667,6 +22811,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -23108,6 +23256,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -24105,6 +24257,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -24301,6 +24457,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -25294,6 +25454,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -25497,6 +25661,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -26359,6 +26527,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -26955,6 +27127,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -27909,6 +28085,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -28500,6 +28680,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -29785,6 +29969,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -30551,6 +30739,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -30788,6 +30980,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -30984,6 +31180,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -31492,6 +31692,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -31721,6 +31925,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -32003,6 +32211,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -32766,6 +32978,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -33935,6 +34151,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -34653,6 +34873,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -35185,6 +35409,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -36025,6 +36253,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -36244,6 +36476,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -36455,6 +36691,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -36651,6 +36891,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -37443,6 +37687,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -37711,6 +37959,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -37969,6 +38221,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -38875,6 +39131,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -39442,6 +39702,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -39913,6 +40177,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -40165,6 +40433,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -40797,6 +41069,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -41400,6 +41676,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -41883,6 +42163,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -42818,6 +43102,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -44240,6 +44528,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -44971,6 +45263,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -45732,6 +46028,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -46147,6 +46447,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -46838,6 +47142,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -47202,6 +47510,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -47799,6 +48111,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -48028,6 +48344,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -49078,6 +49398,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -50205,6 +50529,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -50666,6 +50994,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -51031,6 +51363,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -51660,6 +51996,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -52547,6 +52887,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -52788,6 +53132,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -52984,6 +53332,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -53525,6 +53877,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -53701,6 +54057,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -53937,6 +54297,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -54766,6 +55130,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -55355,6 +55723,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -55584,6 +55956,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -56148,6 +56524,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -56848,6 +57228,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -57541,6 +57925,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -58297,6 +58685,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -58673,6 +59065,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -59063,6 +59459,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -59369,6 +59769,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -59624,6 +60028,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -60129,6 +60537,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -60402,6 +60814,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -61261,6 +61677,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -61572,6 +61992,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -61774,6 +62198,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -62794,6 +63222,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -63028,6 +63460,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -63854,6 +64290,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -64080,6 +64520,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -64836,6 +65280,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -65169,6 +65617,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -65492,6 +65944,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -65836,6 +66292,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -66306,6 +66766,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -66749,6 +67213,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
@@ -67535,6 +68003,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
                         <persoon_id>985</persoon_id>
                         <persoon_moederplaats rel="persoon⟶moeder">
                             <dialectgebied_match>t</dialectgebied_match>
@@ -68315,6 +68787,10 @@ xml:id="gcnd.transcriptie.293" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                         </gender>
                         <gender_id>1</gender_id>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
+                            <label>nee</label>
+                            <mobiliteit_id>1</mobiliteit_id>
+                        </mobiliteit>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
                             <label>nee</label>
                             <mobiliteit_id>1</mobiliteit_id>
                         </mobiliteit>

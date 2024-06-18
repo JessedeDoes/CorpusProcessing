@@ -61739,108 +61739,20 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1I204p_1_1" xml:id="speech.elan.113215" begintime="00:16:00.722" endtime="00:16:01.392">
         <t class="lightNormalization">da was...</t>
         <t class="heavyNormalization">dat was...</t>
-        <s xml:id="s.70572">
-            <w xml:id="annotation.113215.70572.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.113215">
+            <w xml:id="w.113215.unannotated.0" space="yes">
                 <t class="lightNormalization">da</t>
                 <t class="heavyNormalization">dat</t>
-                <pos class="VNW(aanw,pron,stan,vol,3o,ev)" head="VNW">
-                    <feat class="aanw" subset="vwtype"/>
-                    <feat class="pron" subset="pdtype"/>
-                    <feat class="stan" subset="naamval"/>
-                    <feat class="vol" subset="status"/>
-                    <feat class="3o" subset="persoon"/>
-                    <feat class="ev" subset="getal"/>
-                    <feat class="VNW" subset="pos"/>
-                </pos>
-                <lemma class="dat"/>
             </w>
-            <w xml:id="annotation.113215.70572.w.1" space="yes">
+            <w xml:id="w.113215.unannotated.1" space="yes">
                 <t class="lightNormalization">was</t>
                 <t class="heavyNormalization">was</t>
-                <pos class="WW(pv,verl,ev)" head="WW">
-                    <feat class="pv" subset="wvorm"/>
-                    <feat class="verl" subset="pvtijd"/>
-                    <feat class="ev" subset="pvagr"/>
-                    <feat class="WW" subset="pos"/>
-                </pos>
-                <lemma class="zijn"/>
             </w>
-            <w xml:id="annotation.113215.70572.w.2" space="yes">
-                <t class="lightNormalization">...</t>
+            <w xml:id="w.113215.unannotated.2" space="no">
+                <t class="lightNormalization"> </t>
                 <t class="heavyNormalization">...</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-                        <parser 
-                        build="Alpino-x86_64-linux-glibc2.5-git819-sicstus" date="2023-07-27T10:58" cats="1" skips="0">
-</parser>
-                        <node end="3" begin="0" originalOffsets="0--3" cat="top" id="0" rel="top">
-                            <node end="2" begin="0" originalOffsets="0--2" cat="smain" id="1" rel="--">
-                                <node 
-                                word_zv="dat" word="da" end="1" begin="0" originalOffsets="0--1" frame="determiner(het,nwh,nmod,pro,nparg)" getal="ev" his="normal" his_1="normal" id="2" infl="het" lcat="np" lemma="dat" naamval="stan" pdtype="pron" persoon="3o" pos="det" postag="VNW(aanw,pron,stan,vol,3o,ev)" pt="vnw" rel="su" rnum="sg" root="dat" sense="dat" status="vol" vwtype="aanw" wh="nwh">
-</node>
-                                <node 
-                                word_zv="was" word="was" end="2" begin="1" originalOffsets="1--2" frame="verb(unacc,past(sg),intransitive)" his="normal" his_1="normal" id="3" infl="sg" lcat="smain" lemma="zijn" pos="verb" postag="WW(pv,verl,ev)" pt="ww" pvagr="ev" pvtijd="verl" rel="hd" root="ben" sc="intransitive" sense="ben" stype="declarative" tense="past" wvorm="pv">
-</node>
-                            </node>
-                            <node 
-                            word_zv="..." word="..." end="3" begin="2" originalOffsets="2--3" frame="punct(hellip)" his="skip" id="4" lcat="--" lemma="..." pos="punct" postag="LET()" pt="let" rel="--" root="..." sense="..." special="hellip">
-</node>
-                        </node>
-                        <sentence sentid="I204p_1--I204p_1_1--0457">dat was ...</sentence>
-                        <comments>
-                            <comment>Q#I204p_1--I204p_1_1--0457|dat was [ @skip ... ]|1|1|-2.125166839</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <dependencies>
-                <dependency class="su">
-                    <hd>
-                        <wref id="annotation.113215.70572.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113215.70572.w.0" t="dat"/>
-                    </dep>
-                </dependency>
-                <dependency class="root">
-                    <hd> </hd>
-                    <dep>
-                        <wref id="annotation.113215.70572.w.1" t="was"/>
-                    </dep>
-                </dependency>
-                <dependency class="punct">
-                    <hd>
-                        <wref id="annotation.113215.70572.w.1"/>
-                    </hd>
-                    <dep>
-                        <wref id="annotation.113215.70572.w.2" t="..."/>
-                    </dep>
-                </dependency>
-                <foreign-data>
-                    <conll xmls="http://conll.fake.url">
-                        <![CDATA[Some(# sent_id = I204p_1--I204p_1_1--0457
-# source = UNKNOWN
-# text = dat was ...
-1	dat	dat	det	VNW(aanw,pron,stan,vol,3o,ev)	_	2	su	2:was	_
-2	was	zijn	verb	WW(pv,verl,ev)	_	0	root	0:_	CAT=smain_top
-3	...	...	punct	LET()	_	2	punct	2:was	_)]]>
-                    </conll>
-                </foreign-data>
-            </dependencies>
-            <timing>
-                <timesegment begintime="00:16:00.722" endtime="00:16:01.392">
-                    <wref id="annotation.113215.70572.w.0" t="da"/>
-                    <wref id="annotation.113215.70572.w.1" t="was"/>
-                    <wref id="annotation.113215.70572.w.2" t="..."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">
@@ -62150,72 +62062,24 @@ xml:id="gcnd.transcriptie.109" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
     tag="spreker" speaker="I204p_1_1I204p_1_1" xml:id="speech.elan.113217" begintime="00:16:19.942" endtime="00:16:21.562">
         <t class="lightNormalization">ja ja ja.</t>
         <t class="heavyNormalization">ja ja ja.</t>
-        <s xml:id="s.70623">
-            <w xml:id="annotation.113217.70623.w.0" space="yes">
+        <utt class="noSyntacticAnnotation" xml:id="utterance.113217">
+            <w xml:id="w.113217.unannotated.0" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.113217.70623.w.1" space="yes">
+            <w xml:id="w.113217.unannotated.1" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.113217.70623.w.2" space="yes">
+            <w xml:id="w.113217.unannotated.2" space="yes">
                 <t class="lightNormalization">ja</t>
                 <t class="heavyNormalization">ja</t>
-                <pos class="TSW()" head="TSW">
-                    <feat class="TSW" subset="pos"/>
-                </pos>
-                <lemma class="ja"/>
             </w>
-            <w xml:id="annotation.113217.70623.w.3" space="yes">
-                <t class="lightNormalization">.</t>
+            <w xml:id="w.113217.unannotated.3" space="no">
+                <t class="lightNormalization"> </t>
                 <t class="heavyNormalization">.</t>
-                <pos class="LET()" head="LET">
-                    <feat class="LET" subset="pos"/>
-                </pos>
             </w>
-            <syntax set="lassy.syntax.annotation">
-                <foreign-data>
-                    <alpino_ds version="1.14" xmlns="http://alpino.fake.url">
-                        <node end="4" begin="0" originalOffsets="0--4" cat="top" id="0" rel="top">
-                            <node 
-                            word_zv="ja" word="ja" end="1" begin="0" originalOffsets="0--1" id="1" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
-</node>
-                            <node 
-                            word_zv="ja" word="ja" end="2" begin="1" originalOffsets="1--2" id="2" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
-</node>
-                            <node 
-                            word_zv="ja" word="ja" end="3" begin="2" originalOffsets="2--3" id="3" lemma="ja" pos="tag" postag="TSW()" pt="tsw" rel="--" root="ja" sense="ja">
-</node>
-                            <node 
-                            word_zv="." word="." end="4" begin="3" originalOffsets="3--4" id="4" lemma="." pos="punct" postag="LET()" pt="let" rel="--" root="." sense=".">
-</node>
-                        </node>
-                        <sentence sentid="I204p_1--I204p_1_1--0464">ja ja ja .</sentence>
-                        <comments>
-                            <comment>Q#I204p_1--I204p_1_1--0464|ja ja ja .|1|1|-0.8399266000000002</comment>
-                        </comments>
-                        <alud>OK</alud>
-                    </alpino_ds>
-                </foreign-data>
-            </syntax>
-            <timing>
-                <timesegment begintime="00:16:19.942" endtime="00:16:21.562">
-                    <wref id="annotation.113217.70623.w.0" t="ja"/>
-                    <wref id="annotation.113217.70623.w.1" t="ja"/>
-                    <wref id="annotation.113217.70623.w.2" t="ja"/>
-                    <wref id="annotation.113217.70623.w.3" t="."/>
-                </timesegment>
-            </timing>
-        </s>
+        </utt>
         <foreign-data>
             <gcnd_annotatie_metadata 
             xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata" xmlns="http://gcnd.ivdnt.org/metadata">

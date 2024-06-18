@@ -66,6 +66,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                                     <label>m</label>
                                 </gender>
                                 <gender_id>1</gender_id>
+                                <mobiliteit rel="persoon⟶beroepmobiliteit">
+                                    <label>ja, zelfde provincie</label>
+                                    <mobiliteit_id>2</mobiliteit_id>
+                                </mobiliteit>
                                 <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                                     <label>ja, zelfde provincie</label>
                                     <mobiliteit_id>2</mobiliteit_id>
@@ -212,7 +216,7 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                     <transcriptie_type_id>1</transcriptie_type_id>
                 </transcriptie>
                 <metaDump>
-                    &lt;transcriptie&gt;&lt;bestand rel=&quot;transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;696&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;90233&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1_AF.eaf&lt;/naam&gt;&lt;pad&gt;O197p_1/elan/O197p_1_AF.eaf&lt;/pad&gt;&lt;/bestand&gt;&lt;opname rel=&quot;transcriptie⟶opname&quot;&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;694&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;3810536&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1.mp3&lt;/naam&gt;&lt;pad&gt;O197p_1/audio/O197p_1.mp3&lt;/pad&gt;&lt;/bestand&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;695&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;42006750&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1.wav&lt;/naam&gt;&lt;pad&gt;O197p_1/audio/O197p_1.wav&lt;/pad&gt;&lt;/bestand&gt;&lt;bron&gt;UGent oud&lt;/bron&gt;&lt;dag&gt;24&lt;/dag&gt;&lt;jaar&gt;1963&lt;/jaar&gt;&lt;maand&gt;4&lt;/maand&gt;&lt;nummer&gt;1&lt;/nummer&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;spreker&lt;/label&gt;&lt;opname_functie_id&gt;1&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;O197p_1_1&lt;/alias&gt;&lt;beroep rel=&quot;persoon⟶persoon__beroep;  persoon__beroep⟶beroep&quot;&gt;&lt;beroep_id&gt;414&lt;/beroep_id&gt;&lt;label&gt;handelaar&lt;/label&gt;&lt;/beroep&gt;&lt;beroep_mobiliteit_id&gt;2&lt;/beroep_mobiliteit_id&gt;&lt;familienaam&gt;Eeckhout&lt;/familienaam&gt;&lt;geboorte_dag&gt;30&lt;/geboorte_dag&gt;&lt;geboorte_jaar&gt;1900&lt;/geboorte_jaar&gt;&lt;geboorte_maand&gt;6&lt;/geboorte_maand&gt;&lt;geboorte_plaats_id&gt;1538&lt;/geboorte_plaats_id&gt;&lt;gender rel=&quot;persoon⟶gender&quot;&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;label&gt;m&lt;/label&gt;&lt;/gender&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;mobiliteit rel=&quot;persoon⟶woonplaatsmobiliteit&quot;&gt;&lt;label&gt;ja, zelfde provincie&lt;/label&gt;&lt;mobiliteit_id&gt;2&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;persoon_id&gt;268&lt;/persoon_id&gt;&lt;persoon_moederplaats rel=&quot;persoon⟶moeder&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;4268&lt;/persoon_id1&gt;&lt;persoon_id2&gt;268&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_moederplaats&gt;&lt;persoon_vaderplaats rel=&quot;persoon⟶vader&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;2268&lt;/persoon_id1&gt;&lt;persoon_id2&gt;268&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_vaderplaats&gt;&lt;plaats rel=&quot;geboorteplaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O205p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7990532&lt;/latitude&gt;&lt;longitude&gt;3.71687698&lt;/longitude&gt;&lt;naam&gt;Schorisse&lt;/naam&gt;&lt;plaats_id&gt;1538&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O197p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.8214722&lt;/latitude&gt;&lt;longitude&gt;3.63091588&lt;/longitude&gt;&lt;naam&gt;Leupegem&lt;/naam&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;voornaam&gt;Georges&lt;/voornaam&gt;&lt;woonplaats_mobiliteit_id&gt;2&lt;/woonplaats_mobiliteit_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_VV&lt;/alias&gt;&lt;familienaam&gt;Vanacker&lt;/familienaam&gt;&lt;persoon_id&gt;22959&lt;/persoon_id&gt;&lt;voornaam&gt;Valre&lt;/voornaam&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_F&lt;/alias&gt;&lt;familienaam&gt;Forceville&lt;/familienaam&gt;&lt;persoon_id&gt;22722&lt;/persoon_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname_code&gt;O197p_1&lt;/opname_code&gt;&lt;opname_id&gt;770&lt;/opname_id&gt;&lt;plaats rel=&quot;opname⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O197p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.8214722&lt;/latitude&gt;&lt;longitude&gt;3.63091588&lt;/longitude&gt;&lt;naam&gt;Leupegem&lt;/naam&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;rnd_plaats&gt;f&lt;/rnd_plaats&gt;&lt;sand_plaats&gt;f&lt;/sand_plaats&gt;&lt;tijdsduur&gt;0&lt;/tijdsduur&gt;&lt;/opname&gt;&lt;opname_id&gt;770&lt;/opname_id&gt;&lt;transcriptie_id&gt;272&lt;/transcriptie_id&gt;&lt;transcriptie_status rel=&quot;transcriptie⟶status&quot;&gt;&lt;label&gt;Alpino (niet gecorrigeerd)&lt;/label&gt;&lt;transcriptie_status_id&gt;5&lt;/transcriptie_status_id&gt;&lt;/transcriptie_status&gt;&lt;transcriptie_status_id&gt;5&lt;/transcriptie_status_id&gt;&lt;transcriptie_type_id&gt;1&lt;/transcriptie_type_id&gt;&lt;/transcriptie&gt;
+                    &lt;transcriptie&gt;&lt;bestand rel=&quot;transcriptie⟶transcriptie__bestand;  transcriptie__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;696&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;90233&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1_AF.eaf&lt;/naam&gt;&lt;pad&gt;O197p_1/elan/O197p_1_AF.eaf&lt;/pad&gt;&lt;/bestand&gt;&lt;opname rel=&quot;transcriptie⟶opname&quot;&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;694&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;3810536&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1.mp3&lt;/naam&gt;&lt;pad&gt;O197p_1/audio/O197p_1.mp3&lt;/pad&gt;&lt;/bestand&gt;&lt;bestand rel=&quot;opname⟶opname__bestand;  opname__bestand⟶bestand&quot;&gt;&lt;bestand_id&gt;695&lt;/bestand_id&gt;&lt;bestandsgrootte&gt;42006750&lt;/bestandsgrootte&gt;&lt;naam&gt;O197p_1.wav&lt;/naam&gt;&lt;pad&gt;O197p_1/audio/O197p_1.wav&lt;/pad&gt;&lt;/bestand&gt;&lt;bron&gt;UGent oud&lt;/bron&gt;&lt;dag&gt;24&lt;/dag&gt;&lt;jaar&gt;1963&lt;/jaar&gt;&lt;maand&gt;4&lt;/maand&gt;&lt;nummer&gt;1&lt;/nummer&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;spreker&lt;/label&gt;&lt;opname_functie_id&gt;1&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;O197p_1_1&lt;/alias&gt;&lt;beroep rel=&quot;persoon⟶persoon__beroep;  persoon__beroep⟶beroep&quot;&gt;&lt;beroep_id&gt;414&lt;/beroep_id&gt;&lt;label&gt;handelaar&lt;/label&gt;&lt;/beroep&gt;&lt;beroep_mobiliteit_id&gt;2&lt;/beroep_mobiliteit_id&gt;&lt;familienaam&gt;Eeckhout&lt;/familienaam&gt;&lt;geboorte_dag&gt;30&lt;/geboorte_dag&gt;&lt;geboorte_jaar&gt;1900&lt;/geboorte_jaar&gt;&lt;geboorte_maand&gt;6&lt;/geboorte_maand&gt;&lt;geboorte_plaats_id&gt;1538&lt;/geboorte_plaats_id&gt;&lt;gender rel=&quot;persoon⟶gender&quot;&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;label&gt;m&lt;/label&gt;&lt;/gender&gt;&lt;gender_id&gt;1&lt;/gender_id&gt;&lt;mobiliteit rel=&quot;persoon⟶beroepmobiliteit&quot;&gt;&lt;label&gt;ja, zelfde provincie&lt;/label&gt;&lt;mobiliteit_id&gt;2&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;mobiliteit rel=&quot;persoon⟶woonplaatsmobiliteit&quot;&gt;&lt;label&gt;ja, zelfde provincie&lt;/label&gt;&lt;mobiliteit_id&gt;2&lt;/mobiliteit_id&gt;&lt;/mobiliteit&gt;&lt;persoon_id&gt;268&lt;/persoon_id&gt;&lt;persoon_moederplaats rel=&quot;persoon⟶moeder&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;4268&lt;/persoon_id1&gt;&lt;persoon_id2&gt;268&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_moederplaats&gt;&lt;persoon_vaderplaats rel=&quot;persoon⟶vader&quot;&gt;&lt;dialectgebied_match&gt;t&lt;/dialectgebied_match&gt;&lt;match_level&gt;zelfde provincie&lt;/match_level&gt;&lt;persoon_id1&gt;2268&lt;/persoon_id1&gt;&lt;persoon_id2&gt;268&lt;/persoon_id2&gt;&lt;plaats_match&gt;f&lt;/plaats_match&gt;&lt;provincie_match&gt;t&lt;/provincie_match&gt;&lt;/persoon_vaderplaats&gt;&lt;plaats rel=&quot;geboorteplaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O205p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.7990532&lt;/latitude&gt;&lt;longitude&gt;3.71687698&lt;/longitude&gt;&lt;naam&gt;Schorisse&lt;/naam&gt;&lt;plaats_id&gt;1538&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats rel=&quot;persoon⟶persoon__woonplaats;  persoon__woonplaats⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O197p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.8214722&lt;/latitude&gt;&lt;longitude&gt;3.63091588&lt;/longitude&gt;&lt;naam&gt;Leupegem&lt;/naam&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;voornaam&gt;Georges&lt;/voornaam&gt;&lt;woonplaats_mobiliteit_id&gt;2&lt;/woonplaats_mobiliteit_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_VV&lt;/alias&gt;&lt;familienaam&gt;Vanacker&lt;/familienaam&gt;&lt;persoon_id&gt;22959&lt;/persoon_id&gt;&lt;voornaam&gt;Valre&lt;/voornaam&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname__persoon rel=&quot;opname⟶opname__persoon&quot;&gt;&lt;opname_functie rel=&quot;opname__persoon⟶opname_functie&quot;&gt;&lt;label&gt;interviewer&lt;/label&gt;&lt;opname_functie_id&gt;2&lt;/opname_functie_id&gt;&lt;/opname_functie&gt;&lt;persoon rel=&quot;opname__persoon⟶persoon&quot;&gt;&lt;alias&gt;Int_F&lt;/alias&gt;&lt;familienaam&gt;Forceville&lt;/familienaam&gt;&lt;persoon_id&gt;22722&lt;/persoon_id&gt;&lt;/persoon&gt;&lt;/opname__persoon&gt;&lt;opname_code&gt;O197p_1&lt;/opname_code&gt;&lt;opname_id&gt;770&lt;/opname_id&gt;&lt;plaats rel=&quot;opname⟶plaats&quot;&gt;&lt;dialectgebied rel=&quot;plaats⟶dialectgebied&quot;&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;dialectgebied_ruw rel=&quot;dialectgebied⟶dialectgebiedruw&quot;&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaams&lt;/label&gt;&lt;/dialectgebied_ruw&gt;&lt;dialectgebied_ruw_id&gt;7&lt;/dialectgebied_ruw_id&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;/dialectgebied&gt;&lt;dialectgebied_id&gt;71&lt;/dialectgebied_id&gt;&lt;kloeke_code&gt;O197p&lt;/kloeke_code&gt;&lt;land rel=&quot;plaats⟶land&quot;&gt;&lt;label&gt;België&lt;/label&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;/land&gt;&lt;land_id&gt;2&lt;/land_id&gt;&lt;latitude&gt;50.8214722&lt;/latitude&gt;&lt;longitude&gt;3.63091588&lt;/longitude&gt;&lt;naam&gt;Leupegem&lt;/naam&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;provincie rel=&quot;plaats⟶regio&quot;&gt;&lt;label&gt;Oost-Vlaanderen&lt;/label&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/provincie&gt;&lt;provincie_id&gt;3&lt;/provincie_id&gt;&lt;/plaats&gt;&lt;plaats_id&gt;1506&lt;/plaats_id&gt;&lt;rnd_plaats&gt;f&lt;/rnd_plaats&gt;&lt;sand_plaats&gt;f&lt;/sand_plaats&gt;&lt;tijdsduur&gt;0&lt;/tijdsduur&gt;&lt;/opname&gt;&lt;opname_id&gt;770&lt;/opname_id&gt;&lt;transcriptie_id&gt;272&lt;/transcriptie_id&gt;&lt;transcriptie_status rel=&quot;transcriptie⟶status&quot;&gt;&lt;label&gt;Alpino (niet gecorrigeerd)&lt;/label&gt;&lt;transcriptie_status_id&gt;5&lt;/transcriptie_status_id&gt;&lt;/transcriptie_status&gt;&lt;transcriptie_status_id&gt;5&lt;/transcriptie_status_id&gt;&lt;transcriptie_type_id&gt;1&lt;/transcriptie_type_id&gt;&lt;/transcriptie&gt;
                 </metaDump>
                 <hasAlpino>true</hasAlpino>
 </gcnd_transcriptie_metadata>
@@ -627,6 +631,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -1022,6 +1030,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -1551,6 +1563,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -1821,6 +1837,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -2511,6 +2531,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -2678,6 +2702,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -3256,6 +3284,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -3787,6 +3819,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -4412,6 +4448,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -5054,6 +5094,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -5671,6 +5715,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -5978,6 +6026,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -6189,6 +6241,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -6699,6 +6755,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -7442,6 +7502,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -8128,6 +8192,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -8402,6 +8470,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -8565,6 +8637,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -8891,6 +8967,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -9184,6 +9264,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -9816,6 +9900,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -10327,6 +10415,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -10824,6 +10916,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -11264,6 +11360,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -11743,6 +11843,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -12163,6 +12267,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -12628,6 +12736,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -13131,6 +13243,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -13497,6 +13613,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -14055,6 +14175,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -14959,6 +15083,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -15207,6 +15335,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -16027,6 +16159,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -16439,6 +16575,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -16802,6 +16942,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -17151,6 +17295,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -17909,6 +18057,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -18542,6 +18694,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -18942,6 +19098,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -19404,6 +19564,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -19757,6 +19921,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -20136,6 +20304,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -20592,6 +20764,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -20995,6 +21171,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -21626,6 +21806,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -22030,6 +22214,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -22798,6 +22986,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -23335,6 +23527,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -24077,6 +24273,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -24913,6 +25113,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -25434,6 +25638,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -25601,6 +25809,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -25928,6 +26140,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -26611,6 +26827,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -27064,6 +27284,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -27390,6 +27614,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -27798,6 +28026,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -28284,6 +28516,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -28484,6 +28720,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -28897,6 +29137,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -29482,6 +29726,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -30210,6 +30458,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -30538,6 +30790,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -31053,6 +31309,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -31583,6 +31843,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -32116,6 +32380,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -32597,6 +32865,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -32899,6 +33171,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -33393,6 +33669,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -33662,6 +33942,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -34231,6 +34515,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -34735,6 +35023,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -35188,6 +35480,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -35320,6 +35616,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -35854,6 +36154,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -36156,6 +36460,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -36815,6 +37123,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -37082,6 +37394,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -37639,6 +37955,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -38429,6 +38749,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -39120,6 +39444,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -39478,6 +39806,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -39753,6 +40085,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -39969,6 +40305,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -40203,6 +40543,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -40611,6 +40955,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -40937,6 +41285,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -41259,6 +41611,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -41795,6 +42151,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -42262,6 +42622,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -43145,6 +43509,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -43637,6 +44005,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -44154,6 +44526,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -44401,6 +44777,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -44654,6 +45034,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -45037,6 +45421,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -45387,6 +45775,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -45691,6 +46083,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -46151,6 +46547,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -46621,6 +47021,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -46802,6 +47206,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -47049,6 +47457,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -47626,6 +48038,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -47824,6 +48240,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -48319,6 +48739,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -48491,6 +48915,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -48978,6 +49406,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -49417,6 +49849,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -49790,6 +50226,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
@@ -49952,6 +50392,10 @@ xml:id="gcnd.transcriptie.272" version="2.5.1" xmlns="http://ilk.uvt.nl/folia" x
                             <label>m</label>
                         </gender>
                         <gender_id>1</gender_id>
+                        <mobiliteit rel="persoon⟶beroepmobiliteit">
+                            <label>ja, zelfde provincie</label>
+                            <mobiliteit_id>2</mobiliteit_id>
+                        </mobiliteit>
                         <mobiliteit rel="persoon⟶woonplaatsmobiliteit">
                             <label>ja, zelfde provincie</label>
                             <mobiliteit_id>2</mobiliteit_id>
