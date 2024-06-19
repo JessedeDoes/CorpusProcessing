@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:id="dpc-bco-002345-en" xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+<fileDesc>
+<titleStmt>
+<title>dpc-bco-002345-en</title>
+</titleStmt>
+<editionStmt>
+<edition>
+<title>DPC 1.0</title>
+<date>2010</date>
+</edition>
+<respStmt>
+<resp>Conversion to TEI</resp>
+<name>Hans Paulussen</name>
+</respStmt>
+</editionStmt>
+<publicationStmt>
+<idno>dpc-bco-002345-en</idno>
+<distributor>
+The Dutch HLT Agency (TST-Centrale – Centrale voor Taal- en Spraaktechnologie)
+</distributor>
+<authority>DPC Project</authority>
+<address>
+<addName type="ns">http://www.kuleuven-kortrijk.be/dpc</addName>
+</address>
+</publicationStmt>
+<sourceDesc>
+<bibl>
+DPC – Dutch Parallel Corpus,
+A Multifunctional and Multilingual corpus
+(Dutch – English, Dutch – French)
+STEVIN project STE-05-26
+</bibl>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<creation>
+<date>2010-02-25</date>
+</creation>
+</profileDesc>
+<encodingDesc>
+<tagsDecl>
+<namespace name="http://www.tei-c.org/ns/1.0">
+<tagUsage gi="s" occurs="10">Used for sentences</tagUsage>
+<tagUsage gi="w" occurs="165">Used for words/tokens</tagUsage>
+</namespace>
+</tagsDecl>
+</encodingDesc>
+</teiHeader>
+<text xml:id="dpc-bco-002345-en." xml:lang="en">
+<body>
+<div n="div1">
+<p n="p1">
+<seg type="sent" n="seg.p1.s1">
+<seg type="original">Company1 STRENGTHENS ITS POSITION IN THE EAST AND STARTS UP SUBSIDIARIES IN AUSTRALIA AND TAIWAN</seg>
+<s n="p1.s1">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="VBZ" lemma="strengthen">STRENGTHENS</w> 
+<w ana="PRP$" lemma="its">ITS</w> 
+<w ana="NN" lemma="position">POSITION</w> 
+<w ana="IN" lemma="in">IN</w> 
+<w ana="DT" lemma="the">THE</w> 
+<w ana="NNP" lemma="East">EAST</w> 
+<w ana="CC" lemma="and">AND</w> 
+<w ana="VBZ" lemma="start">STARTS</w> 
+<w ana="RP" lemma="up">UP</w> 
+<w ana="NNS" lemma="subsidiary">SUBSIDIARIES</w> 
+<w ana="IN" lemma="in">IN</w> 
+<w ana="NNP" lemma="Australia">AUSTRALIA</w> 
+<w ana="CC" lemma="and">AND</w> 
+<w ana="NNP" lemma="Taiwan">TAIWAN</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s2">
+<seg type="original">The Company1-group has acquired the activities of its distributor, Company2 Ltd.</seg>
+<s n="p1.s2">
+<w ana="DT" lemma="the">The</w> 
+<w ana="NNP" lemma="Company1-group">Company1-group</w> 
+<w ana="VBZ" lemma="have">has</w> 
+<w ana="VBN" lemma="acquire">acquired</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNS" lemma="activity">activities</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="PRP$" lemma="its">its</w> 
+<w ana="NN" lemma="distributor">distributor</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company2">Company2</w> 
+<w ana="NNP" lemma="Ltd">Ltd</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s3">
+<seg type="original">During the last five years, Australia has been a very interesting market for Company1.</seg>
+<s n="p1.s3">
+<w ana="IN" lemma="during">During</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="JJ" lemma="last">last</w> 
+<w ana="CD" lemma="five">five</w> 
+<w ana="NNS" lemma="year">years</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Australia">Australia</w> 
+<w ana="VBZ" lemma="have">has</w> 
+<w ana="VBN" lemma="be">been</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="RB" lemma="very">very</w> 
+<w ana="JJ" lemma="interesting">interesting</w> 
+<w ana="NN" lemma="market">market</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="NN" lemma="Company1">Company1</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s4">
+<seg type="original">The large investment in infrastructure for the Olympic Games Sydney 2000 will also guarantee considerable sales potential for the coming years.</seg>
+<s n="p1.s4">
+<w ana="DT" lemma="the">The</w> 
+<w ana="JJ" lemma="large">large</w> 
+<w ana="NN" lemma="investment">investment</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NN" lemma="infrastructure">infrastructure</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Olympic">Olympic</w> 
+<w ana="NNPS" lemma="Games">Games</w> 
+<w ana="NNP" lemma="Sydney">Sydney</w> 
+<w ana="CD" lemma="2000">2000</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="RB" lemma="also">also</w> 
+<w ana="VB" lemma="guarantee">guarantee</w> 
+<w ana="JJ" lemma="considerable">considerable</w> 
+<w ana="NNS" lemma="sale">sales</w> 
+<w ana="NN" lemma="potential">potential</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="VBG" lemma="come">coming</w> 
+<w ana="NNS" lemma="year">years</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s5">
+<seg type="original">This will provide good opportunities for Company1's Division2, Division1 and telecommunication equipment.</seg>
+<s n="p1.s5">
+<w ana="DT" lemma="this">This</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="provide">provide</w> 
+<w ana="JJ" lemma="good">good</w> 
+<w ana="NNS" lemma="opportunity">opportunities</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="NNP" lemma="Division2">Division2</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="telecommunication">telecommunication</w> 
+<w ana="NN" lemma="equipment">equipment</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s6">
+<seg type="original">The new subsidiary employs 10 people in Sydney and Melbourne.</seg>
+<s n="p1.s6">
+<w ana="DT" lemma="the">The</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NN" lemma="subsidiary">subsidiary</w> 
+<w ana="VBZ" lemma="employ">employs</w> 
+<w ana="CD" lemma="10">10</w> 
+<w ana="NNS" lemma="people">people</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NNP" lemma="Sydney">Sydney</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NNP" lemma="Melbourne">Melbourne</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s7">
+<seg type="original">Company1 also opens a subsidiary in Taipei, Taiwan.</seg>
+<s n="p1.s7">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="RB" lemma="also">also</w> 
+<w ana="VBZ" lemma="open">opens</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="subsidiary">subsidiary</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NNP" lemma="Taipei">Taipei</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Taiwan">Taiwan</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s8">
+<seg type="original">With its 15 employees, Company1 will concentrate particularly on the Taiwanese industrial markets for process control and on the rapidly expanding graphic sector.</seg>
+<s n="p1.s8">
+<w ana="IN" lemma="with">With</w> 
+<w ana="PRP$" lemma="its">its</w> 
+<w ana="CD" lemma="15">15</w> 
+<w ana="NNS" lemma="employee">employees</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NN" lemma="Company1">Company1</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="concentrate">concentrate</w> 
+<w ana="RB" lemma="particularly">particularly</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="JJ" lemma="Taiwanese">Taiwanese</w> 
+<w ana="JJ" lemma="industrial">industrial</w> 
+<w ana="NNS" lemma="market">markets</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="NN" lemma="process">process</w> 
+<w ana="NN" lemma="control">control</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="RB" lemma="rapidly">rapidly</w> 
+<w ana="VBG" lemma="expand">expanding</w> 
+<w ana="JJ" lemma="graphic">graphic</w> 
+<w ana="NN" lemma="sector">sector</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s9">
+<seg type="original">Both sectors are going through a fast growth period in Taiwan : moving from a labor-intensive industry using manual methods to automated systems.</seg>
+<s n="p1.s9">
+<w ana="DT" lemma="both">Both</w> 
+<w ana="NNS" lemma="sector">sectors</w> 
+<w ana="VBP" lemma="be">are</w> 
+<w ana="VBG" lemma="go">going</w> 
+<w ana="IN" lemma="through">through</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJ" lemma="fast">fast</w> 
+<w ana="NN" lemma="growth">growth</w> 
+<w ana="NN" lemma="period">period</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NNP" lemma="Taiwan">Taiwan</w> 
+<w ana=":" lemma=":">:</w> 
+<w ana="VBG" lemma="move">moving</w> 
+<w ana="IN" lemma="from">from</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJ" lemma="labor-intensive">labor-intensive</w> 
+<w ana="NN" lemma="industry">industry</w> 
+<w ana="VBG" lemma="use">using</w> 
+<w ana="JJ" lemma="manual">manual</w> 
+<w ana="NNS" lemma="method">methods</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VBN" lemma="automate">automated</w> 
+<w ana="NNS" lemma="system">systems</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s10">
+<seg type="original">Company1 needs to take advantage of this new tendency by offering adequate solutions.</seg>
+<s n="p1.s10">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="VBZ" lemma="need">needs</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VB" lemma="take">take</w> 
+<w ana="NN" lemma="advantage">advantage</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NN" lemma="tendency">tendency</w> 
+<w ana="IN" lemma="by">by</w> 
+<w ana="VBG" lemma="offer">offering</w> 
+<w ana="JJ" lemma="adequate">adequate</w> 
+<w ana="NNS" lemma="solution">solutions</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+</p>
+</div>
+</body>
+</text>
+</TEI>

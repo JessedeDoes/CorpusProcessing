@@ -23,7 +23,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
   def includeBooks(d: Elem, fileName: String) = {
     PostProcessXML.updateElement(d, _.label == "include", x => {
-      val href = (x \ "@href").text.replaceAll("content", "ids-fixed")
+      val href = (x \ "@href").text.replaceAll("content", "ids-fixed") // dit is een beetje suffe hack
       val dir = new File(fileName).getParentFile.getCanonicalPath
       val included = XML.load(dir + "/" + href)
       setAttribute(x.copy(child = included), "href", href)
@@ -52,17 +52,17 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
     val wordAligner = align.fastAlign(dUniqueIds)
     val start = System.currentTimeMillis()
-    val wordAlignments = alignments.zipWithIndex.map({
+    val wordAlignmentLayers: Seq[Elem] = alignments.zipWithIndex.map({
       case (a, i) =>
         val start = System.currentTimeMillis()
         println(s"######################################!!!! Start word alignment on book $bookname, at $i of ${alignments.size} alignments")
-        val r = wordAligner.addWordAlignment(a)
+        val alignmentLayer: Elem = wordAligner.addWordAlignment(a)
         val end = System.currentTimeMillis()
         println(s"######################################!!!! End word alignment on book $bookname, at $i of ${alignments.size} alignments, took ${end - start} ms")
-        r
+        alignmentLayer
     }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
     val noIncludes = removeBookIncludes(dUniqueIds)
-    val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignments))
+    val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignmentLayers))
     XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), processed)
   }
 
@@ -90,6 +90,13 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
       new File(toDir).mkdir()
       val books = bibles.map(_.getBook(bkname)).filter(_.nonEmpty).map(_.get)
       val includes = books.map(b => <xi:include href={"../content/" + b.xmlFileName}/>)
+
+      val alignmentInfo: List[Elem] = allAlignments.alignments.map(a => {
+        val id = a.bible1 + "--" + a.bible2
+        val nCorrespondences = a.filterByBook(bkname).size
+        <relation type="verse-alignment" active={a.bible1} passive={a.bible2}><desc>{nCorrespondences} instances</desc></relation>
+      }).toList.sortBy(_.toString)
+
       val allCorrespondences = allAlignments.alignments.map(a => {
         val id = a.bible1 + "--" + a.bible2
         val correspondences = a.filterByBook(bkname)
@@ -103,6 +110,9 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
               <title>Link file for {bkname}</title>
             </titleStmt>
           </fileDesc>
+          <encodingDesc>
+            <p><listRelation>{alignmentInfo}</listRelation></p>
+          </encodingDesc>
         </teiHeader>
         {includes}
         {allCorrespondences}

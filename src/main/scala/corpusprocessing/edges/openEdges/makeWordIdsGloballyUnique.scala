@@ -23,13 +23,14 @@ object makeWordIdsGloballyUnique {
 
   def main(args: Array[String]): Unit = {
 
-    val inDir = Settings.teiDir + "/tokenized/"
-    val outDir = Settings.teiDir + "/ids-fixed/"
+    val inDir = Settings.outputTEIDir + "/tokenized/"
+    val outDir = Settings.outputTEIDir + "/ids-fixed/"
 
     new File(outDir).mkdir()
 
     ProcessFolder.processFolder(new File(inDir), new File(outDir), { case (i, o) =>
       if (i.endsWith(".xml")) {
+        Console.err.println(i)
         val g = new File(i)
         val inDoc = XML.loadFile(g)
 

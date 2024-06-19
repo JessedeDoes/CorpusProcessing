@@ -1,0 +1,659 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:id="dpc-bco-002346-en" xml:lang="en" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+<fileDesc>
+<titleStmt>
+<title>dpc-bco-002346-en</title>
+</titleStmt>
+<editionStmt>
+<edition>
+<title>DPC 1.0</title>
+<date>2010</date>
+</edition>
+<respStmt>
+<resp>Conversion to TEI</resp>
+<name>Hans Paulussen</name>
+</respStmt>
+</editionStmt>
+<publicationStmt>
+<idno>dpc-bco-002346-en</idno>
+<distributor>
+The Dutch HLT Agency (TST-Centrale – Centrale voor Taal- en Spraaktechnologie)
+</distributor>
+<authority>DPC Project</authority>
+<address>
+<addName type="ns">http://www.kuleuven-kortrijk.be/dpc</addName>
+</address>
+</publicationStmt>
+<sourceDesc>
+<bibl>
+DPC – Dutch Parallel Corpus,
+A Multifunctional and Multilingual corpus
+(Dutch – English, Dutch – French)
+STEVIN project STE-05-26
+</bibl>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<creation>
+<date>2010-02-25</date>
+</creation>
+</profileDesc>
+<encodingDesc>
+<tagsDecl>
+<namespace name="http://www.tei-c.org/ns/1.0">
+<tagUsage gi="s" occurs="23">Used for sentences</tagUsage>
+<tagUsage gi="w" occurs="508">Used for words/tokens</tagUsage>
+</namespace>
+</tagsDecl>
+</encodingDesc>
+</teiHeader>
+<text xml:id="dpc-bco-002346-en." xml:lang="en">
+<body>
+<div n="div1">
+<p n="p1">
+<seg type="sent" n="seg.p1.s1">
+<seg type="original">Company1 and the Free University Brussels (Dutch Speaking) set up Joint Venture</seg>
+<s n="p1.s1">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Free">Free</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Brussels">Brussels</w> 
+<w ana="(" lemma="(">(</w> 
+<w ana="JJ" lemma="Dutch">Dutch</w> 
+<w ana="VBG" lemma="speak">Speaking</w> 
+<w ana=")" lemma=")">)</w> 
+<w ana="VBP" lemma="set">set</w> 
+<w ana="RP" lemma="up">up</w> 
+<w ana="NNP" lemma="Joint">Joint</w> 
+<w ana="NNP" lemma="Venture">Venture</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s2">
+<seg type="original">Company1 is setting up a spin-off company, Company1 A N.V., in partnership with the Free University Brussels (VUB).</seg>
+<s n="p1.s2">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="VBG" lemma="set">setting</w> 
+<w ana="RP" lemma="up">up</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJ" lemma="spin-off">spin-off</w> 
+<w ana="NN" lemma="company">company</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="A">A</w> 
+<w ana="NNP" lemma="N.V.">N.V.</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NN" lemma="partnership">partnership</w> 
+<w ana="IN" lemma="with">with</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Free">Free</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Brussels">Brussels</w> 
+<w ana="(" lemma="(">(</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana=")" lemma=")">)</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s3">
+<seg type="original">This spin-off will function as a research centre for R&amp;D into software programs in the area of medical imaging and image processing for radiology applications.</seg>
+<s n="p1.s3">
+<w ana="DT" lemma="this">This</w> 
+<w ana="NN" lemma="spin-off">spin-off</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="function">function</w> 
+<w ana="IN" lemma="as">as</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="research">research</w> 
+<w ana="NN" lemma="centre">centre</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="NN" lemma="R&amp;D">R&amp;D</w> 
+<w ana="IN" lemma="into">into</w> 
+<w ana="NN" lemma="software">software</w> 
+<w ana="NNS" lemma="program">programs</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NN" lemma="area">area</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="JJ" lemma="medical">medical</w> 
+<w ana="NN" lemma="imaging">imaging</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="image">image</w> 
+<w ana="NN" lemma="processing">processing</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="NN" lemma="radiology">radiology</w> 
+<w ana="NNS" lemma="application">applications</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s4">
+<seg type="original">Company1 A N.V. is part of Company1 Division1, one of the Company1 Group's five strategic pillars.</seg>
+<s n="p1.s4">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="A">A</w> 
+<w ana="NNP" lemma="N.V.">N.V.</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="NN" lemma="part">part</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="CD" lemma="one">one</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Group">Group</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="CD" lemma="five">five</w> 
+<w ana="JJ" lemma="strategic">strategic</w> 
+<w ana="NNS" lemma="pillar">pillars</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s5">
+<seg type="original">A large amount of research has been carried out in this area at the VUB's University Hospital.</seg>
+<s n="p1.s5">
+<w ana="DT" lemma="a">A</w> 
+<w ana="JJ" lemma="large">large</w> 
+<w ana="NN" lemma="amount">amount</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="NN" lemma="research">research</w> 
+<w ana="VBZ" lemma="have">has</w> 
+<w ana="VBN" lemma="be">been</w> 
+<w ana="VBN" lemma="carry">carried</w> 
+<w ana="RP" lemma="out">out</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="NN" lemma="area">area</w> 
+<w ana="IN" lemma="at">at</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Hospital">Hospital</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s6">
+<seg type="original">The know-how developed by Professor Person1 and Company1's expertise in the area of medical imaging form the basis of this joint venture.</seg>
+<s n="p1.s6">
+<w ana="DT" lemma="the">The</w> 
+<w ana="NN" lemma="know-how">know-how</w> 
+<w ana="VBN" lemma="develop">developed</w> 
+<w ana="IN" lemma="by">by</w> 
+<w ana="NNP" lemma="Professor">Professor</w> 
+<w ana="NNP" lemma="Person1">Person1</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="NN" lemma="expertise">expertise</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NN" lemma="area">area</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="JJ" lemma="medical">medical</w> 
+<w ana="NN" lemma="imaging">imaging</w> 
+<w ana="VBP" lemma="form">form</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NN" lemma="basis">basis</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="JJ" lemma="joint">joint</w> 
+<w ana="NN" lemma="venture">venture</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s7">
+<seg type="original">The initial capital of this new venture amounts to 15 million BEF, in which the Company1 Group is taking a 80% participation and VUB 20%.</seg>
+<s n="p1.s7">
+<w ana="DT" lemma="the">The</w> 
+<w ana="JJ" lemma="initial">initial</w> 
+<w ana="NN" lemma="capital">capital</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NN" lemma="venture">venture</w> 
+<w ana="NNS" lemma="amount">amounts</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="CD" lemma="15">15</w> 
+<w ana="CD" lemma="million">million</w> 
+<w ana="NNP" lemma="BEF">BEF</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="WDT" lemma="which">which</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Group">Group</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="VBG" lemma="take">taking</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="CD" lemma="80">80</w> 
+<w ana="SYM" lemma="%">%</w> 
+<w ana="NN" lemma="participation">participation</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="CD" lemma="20">20</w> 
+<w ana="SYM" lemma="%">%</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s8">
+<seg type="original">Digital imaging and image processing are making increasing headway in radiology.</seg>
+<s n="p1.s8">
+<w ana="NNP" lemma="Digital">Digital</w> 
+<w ana="NN" lemma="imaging">imaging</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="image">image</w> 
+<w ana="NN" lemma="processing">processing</w> 
+<w ana="VBP" lemma="be">are</w> 
+<w ana="VBG" lemma="make">making</w> 
+<w ana="VBG" lemma="increase">increasing</w> 
+<w ana="NN" lemma="headway">headway</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NN" lemma="radiology">radiology</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s9">
+<seg type="original">As a result traditional medical film is gradually being replaced by imaging on extra-high resolution monitors.</seg>
+<s n="p1.s9">
+<w ana="IN" lemma="as">As</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="result">result</w> 
+<w ana="JJ" lemma="traditional">traditional</w> 
+<w ana="JJ" lemma="medical">medical</w> 
+<w ana="NN" lemma="film">film</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="RB" lemma="gradually">gradually</w> 
+<w ana="VBG" lemma="be">being</w> 
+<w ana="VBN" lemma="replace">replaced</w> 
+<w ana="IN" lemma="by">by</w> 
+<w ana="NN" lemma="imaging">imaging</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="JJ" lemma="extra-high">extra-high</w> 
+<w ana="NN" lemma="resolution">resolution</w> 
+<w ana="NNS" lemma="monitor">monitors</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s10">
+<seg type="original">Additionally, digital imaging offers a number of new possibilities such as remote radiology and consulting, as well as specific in-depth diagnosis through image manipulation.</seg>
+<s n="p1.s10">
+<w ana="RB" lemma="additionally">Additionally</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="JJ" lemma="digital">digital</w> 
+<w ana="NN" lemma="imaging">imaging</w> 
+<w ana="VBZ" lemma="offer">offers</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="number">number</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NNS" lemma="possibility">possibilities</w> 
+<w ana="JJ" lemma="such">such</w> 
+<w ana="IN" lemma="as">as</w> 
+<w ana="JJ" lemma="remote">remote</w> 
+<w ana="NN" lemma="radiology">radiology</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="consulting">consulting</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="RB" lemma="as">as</w> 
+<w ana="RB" lemma="well">well</w> 
+<w ana="IN" lemma="as">as</w> 
+<w ana="JJ" lemma="specific">specific</w> 
+<w ana="JJ" lemma="in-depth">in-depth</w> 
+<w ana="NN" lemma="diagnosis">diagnosis</w> 
+<w ana="IN" lemma="through">through</w> 
+<w ana="NN" lemma="image">image</w> 
+<w ana="NN" lemma="manipulation">manipulation</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s11">
+<seg type="original">The necessary expertise is based on high technology visualisation software in combination with screen technology.</seg>
+<s n="p1.s11">
+<w ana="DT" lemma="the">The</w> 
+<w ana="JJ" lemma="necessary">necessary</w> 
+<w ana="NN" lemma="expertise">expertise</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="VBN" lemma="base">based</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="JJ" lemma="high">high</w> 
+<w ana="NN" lemma="technology">technology</w> 
+<w ana="NN" lemma="visualisation">visualisation</w> 
+<w ana="NN" lemma="software">software</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NN" lemma="combination">combination</w> 
+<w ana="IN" lemma="with">with</w> 
+<w ana="NN" lemma="screen">screen</w> 
+<w ana="NN" lemma="technology">technology</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s12">
+<seg type="original">The joint venture will concentrate on optimizing existing software programs and developing new ones.</seg>
+<s n="p1.s12">
+<w ana="DT" lemma="the">The</w> 
+<w ana="JJ" lemma="joint">joint</w> 
+<w ana="NN" lemma="venture">venture</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="concentrate">concentrate</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="VBG" lemma="optimize">optimizing</w> 
+<w ana="JJ" lemma="existing">existing</w> 
+<w ana="NN" lemma="software">software</w> 
+<w ana="NNS" lemma="program">programs</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="VBG" lemma="develop">developing</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NNS" lemma="one">ones</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s13">
+<seg type="original">One important feature of the present partnership is that the VUB University Hospital's radiology department offers the opportunity for new developments to be evaluated and validated by direct users such as medical practitioners and radiologists.</seg>
+<s n="p1.s13">
+<w ana="CD" lemma="one">One</w> 
+<w ana="JJ" lemma="important">important</w> 
+<w ana="NN" lemma="feature">feature</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="JJ" lemma="present">present</w> 
+<w ana="NN" lemma="partnership">partnership</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="IN" lemma="that">that</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Hospital">Hospital</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="NN" lemma="radiology">radiology</w> 
+<w ana="NN" lemma="department">department</w> 
+<w ana="VBZ" lemma="offer">offers</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NN" lemma="opportunity">opportunity</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NNS" lemma="development">developments</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VB" lemma="be">be</w> 
+<w ana="VBN" lemma="evaluate">evaluated</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="VBN" lemma="validate">validated</w> 
+<w ana="IN" lemma="by">by</w> 
+<w ana="JJ" lemma="direct">direct</w> 
+<w ana="NNS" lemma="user">users</w> 
+<w ana="JJ" lemma="such">such</w> 
+<w ana="IN" lemma="as">as</w> 
+<w ana="JJ" lemma="medical">medical</w> 
+<w ana="NNS" lemma="practitioner">practitioners</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NNS" lemma="radiologist">radiologists</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s14">
+<seg type="original">Within the Company1 Group, Company1 Division1 will in turn be responsible for adapting equipment to customer specifications, and for the industrialization and world-wide marketing of all newly developed visualisation software products.</seg>
+<s n="p1.s14">
+<w ana="IN" lemma="within">Within</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Group">Group</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NN" lemma="turn">turn</w> 
+<w ana="VB" lemma="be">be</w> 
+<w ana="JJ" lemma="responsible">responsible</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="VBG" lemma="adapt">adapting</w> 
+<w ana="NN" lemma="equipment">equipment</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="NN" lemma="customer">customer</w> 
+<w ana="NNS" lemma="specification">specifications</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NN" lemma="industrialization">industrialization</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="JJ" lemma="world-wide">world-wide</w> 
+<w ana="NN" lemma="marketing">marketing</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="all">all</w> 
+<w ana="RB" lemma="newly">newly</w> 
+<w ana="VBN" lemma="develop">developed</w> 
+<w ana="NN" lemma="visualisation">visualisation</w> 
+<w ana="NN" lemma="software">software</w> 
+<w ana="NNS" lemma="product">products</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s15">
+<seg type="original">Initially one employee from the VUB University Hospital and one Company1 Division1 employee will be detached to work on software development activities.</seg>
+<s n="p1.s15">
+<w ana="RB" lemma="initially">Initially</w> 
+<w ana="CD" lemma="one">one</w> 
+<w ana="NN" lemma="employee">employee</w> 
+<w ana="IN" lemma="from">from</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Hospital">Hospital</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="CD" lemma="one">one</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="JJ" lemma="Division1">Division1</w> 
+<w ana="NN" lemma="employee">employee</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="be">be</w> 
+<w ana="VBN" lemma="detach">detached</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VB" lemma="work">work</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="NN" lemma="software">software</w> 
+<w ana="NN" lemma="development">development</w> 
+<w ana="NNS" lemma="activity">activities</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s16">
+<seg type="original">It is intended to enlarge this group at a later stage.</seg>
+<s n="p1.s16">
+<w ana="PRP" lemma="it">It</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="VBN" lemma="intend">intended</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VB" lemma="enlarge">enlarge</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="NN" lemma="group">group</w> 
+<w ana="IN" lemma="at">at</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJR" lemma="late">later</w> 
+<w ana="NN" lemma="stage">stage</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s17">
+<seg type="original">In addition, a scientific advisory committee will be set up, consisting of four employees of Company1 Division1 and four employees from the VUB University Hospital, to provide advice on scientific developments in Company1 A N.V.'s existing and future specialty areas.</seg>
+<s n="p1.s17">
+<w ana="IN" lemma="in">In</w> 
+<w ana="NN" lemma="addition">addition</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJ" lemma="scientific">scientific</w> 
+<w ana="JJ" lemma="advisory">advisory</w> 
+<w ana="NN" lemma="committee">committee</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="be">be</w> 
+<w ana="VBN" lemma="set">set</w> 
+<w ana="RP" lemma="up">up</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="VBG" lemma="consist">consisting</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="CD" lemma="four">four</w> 
+<w ana="NNS" lemma="employee">employees</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="CD" lemma="four">four</w> 
+<w ana="NNS" lemma="employee">employees</w> 
+<w ana="IN" lemma="from">from</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="NNP" lemma="University">University</w> 
+<w ana="NNP" lemma="Hospital">Hospital</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="TO" lemma="to">to</w> 
+<w ana="VB" lemma="provide">provide</w> 
+<w ana="NN" lemma="advice">advice</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="JJ" lemma="scientific">scientific</w> 
+<w ana="NNS" lemma="development">developments</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="A">A</w> 
+<w ana="NNP" lemma="N.V.">N.V.</w> 
+<w ana="POS" lemma="'s">'s</w> 
+<w ana="JJ" lemma="existing">existing</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="JJ" lemma="future">future</w> 
+<w ana="NN" lemma="specialty">specialty</w> 
+<w ana="NNS" lemma="area">areas</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s18">
+<seg type="original">Company1 A N.V. is located on the VUB campus.</seg>
+<s n="p1.s18">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="A">A</w> 
+<w ana="NNP" lemma="N.V.">N.V.</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="VBN" lemma="locate">located</w> 
+<w ana="IN" lemma="on">on</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="VUB">VUB</w> 
+<w ana="NN" lemma="campus">campus</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s19">
+<seg type="original">Day-to-day management of this new investment within Company1 lies with Person2, Division Manager Division7.</seg>
+<s n="p1.s19">
+<w ana="JJ" lemma="day-to-day">Day-to-day</w> 
+<w ana="NN" lemma="management">management</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="JJ" lemma="new">new</w> 
+<w ana="NN" lemma="investment">investment</w> 
+<w ana="IN" lemma="within">within</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="VBZ" lemma="lie">lies</w> 
+<w ana="IN" lemma="with">with</w> 
+<w ana="NNP" lemma="Person2">Person2</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Division">Division</w> 
+<w ana="NNP" lemma="Manager">Manager</w> 
+<w ana="NNP" lemma="Division7">Division7</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s20">
+<seg type="original">As time goes on, Company1 will be taking a higher profile in this market segment with a product range evolving towards total medical Division1.</seg>
+<s n="p1.s20">
+<w ana="IN" lemma="as">As</w> 
+<w ana="NN" lemma="time">time</w> 
+<w ana="VBZ" lemma="go">goes</w> 
+<w ana="RP" lemma="on">on</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="MD" lemma="will">will</w> 
+<w ana="VB" lemma="be">be</w> 
+<w ana="VBG" lemma="take">taking</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="JJR" lemma="high">higher</w> 
+<w ana="NN" lemma="profile">profile</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="DT" lemma="this">this</w> 
+<w ana="NN" lemma="market">market</w> 
+<w ana="NN" lemma="segment">segment</w> 
+<w ana="IN" lemma="with">with</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="product">product</w> 
+<w ana="NN" lemma="range">range</w> 
+<w ana="VBG" lemma="evolve">evolving</w> 
+<w ana="IN" lemma="towards">towards</w> 
+<w ana="JJ" lemma="total">total</w> 
+<w ana="JJ" lemma="medical">medical</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s21">
+<seg type="original">This is a niche market which sets high demands in terms of diagnostic quality, reliability and performance.</seg>
+<s n="p1.s21">
+<w ana="DT" lemma="this">This</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="DT" lemma="a">a</w> 
+<w ana="NN" lemma="niche">niche</w> 
+<w ana="NN" lemma="market">market</w> 
+<w ana="WDT" lemma="which">which</w> 
+<w ana="VBZ" lemma="set">sets</w> 
+<w ana="JJ" lemma="high">high</w> 
+<w ana="NNS" lemma="demand">demands</w> 
+<w ana="IN" lemma="in">in</w> 
+<w ana="NNS" lemma="term">terms</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="JJ" lemma="diagnostic">diagnostic</w> 
+<w ana="NN" lemma="quality">quality</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NN" lemma="reliability">reliability</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="performance">performance</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s22">
+<seg type="original">Company1 Division1 is one of the five strategic pillars of the Company1 Group, alongside Company1 Division2, Company1 Division3, Company1 Division4 and Company1 Division5.</seg>
+<s n="p1.s22">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="VBZ" lemma="be">is</w> 
+<w ana="CD" lemma="one">one</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="CD" lemma="five">five</w> 
+<w ana="JJ" lemma="strategic">strategic</w> 
+<w ana="NNS" lemma="pillar">pillars</w> 
+<w ana="IN" lemma="of">of</w> 
+<w ana="DT" lemma="the">the</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Group">Group</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="IN" lemma="alongside">alongside</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division2">Division2</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division3">Division3</w> 
+<w ana="," lemma=",">,</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division4">Division4</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division5">Division5</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s23">
+<seg type="original">Company1 Division1 develops and produces high resolution monitors and display subsystems for various highly demanding niche markets.</seg>
+<s n="p1.s23">
+<w ana="NNP" lemma="Company1">Company1</w> 
+<w ana="NNP" lemma="Division1">Division1</w> 
+<w ana="VBZ" lemma="develop">develops</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="VBZ" lemma="produce">produces</w> 
+<w ana="JJ" lemma="high">high</w> 
+<w ana="NN" lemma="resolution">resolution</w> 
+<w ana="NNS" lemma="monitor">monitors</w> 
+<w ana="CC" lemma="and">and</w> 
+<w ana="NN" lemma="display">display</w> 
+<w ana="NNS" lemma="subsystem">subsystems</w> 
+<w ana="IN" lemma="for">for</w> 
+<w ana="JJ" lemma="various">various</w> 
+<w ana="RB" lemma="highly">highly</w> 
+<w ana="JJ" lemma="demanding">demanding</w> 
+<w ana="NN" lemma="niche">niche</w> 
+<w ana="NNS" lemma="market">markets</w> 
+<w ana="." lemma=".">.</w></s>
+</seg>
+</p>
+</div>
+</body>
+</text>
+</TEI>

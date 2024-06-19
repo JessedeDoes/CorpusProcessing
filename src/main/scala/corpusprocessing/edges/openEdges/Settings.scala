@@ -2,17 +2,21 @@ package corpusprocessing.edges.openEdges
 import utils.ProcessFolder
 import java.io.File
 object Settings {
+
    val rekenserver = new File("/media/proj/").exists()
    val projecten = if (rekenserver) "/media/proj/" else "/mnt/Projecten/"
-   val baseDirAtWork = s"${projecten}/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/OpenEDGeS/OpenEDGeS/"
-   val baseDirAtHome = "/media/jesse/Data/Corpora/Edges/OpenEDGeS/"
+   val baseDirAtWork = s"${projecten}/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/OpenEDGeS/OpenEDGeS_v1.01/"
+   //val baseDirAtHome = "/media/jesse/Data/Corpora/Edges/OpenEDGeS/"
+
    val baseDir = if (rekenserver) baseDirAtWork else baseDirAtWork
+
    val outputTEIDir =  s"${projecten}/Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/TEI/"  // /mnt/Projecten//Corpora/Historische_Corpora/EDGeS_historical_bible_corpus/TEI/alignments/
    val verseAlignedTEIDir = outputTEIDir + "alignments/"
 
    // deze twee alleen gebruikt voor expandxinclude
 
    val teiDir = "/media/jesse/Data/Corpora/Edges/TEI/"
+
    val tokenizedContentDir = teiDir + "ids-fixed/"
 
 
@@ -32,5 +36,5 @@ object Settings {
    lazy val complete_corpus = BibleCorpus(baseDir, allFiles.toSet)
    lazy val subcorpus_en_nl = BibleCorpus(baseDir, files_en_nl.toSet)
 
-   lazy val smaller_sample = BibleCorpus(baseDir, Set( staten_darby, staten_canisius, darby_canisius))
+   lazy val smaller_sample = BibleCorpus(baseDir, Set(staten_darby, staten_canisius, darby_canisius))
 }

@@ -1,0 +1,661 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:id="dpc-bco-002346-nl" xml:lang="nl" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+<fileDesc>
+<titleStmt>
+<title>dpc-bco-002346-nl</title>
+</titleStmt>
+<editionStmt>
+<edition>
+<title>DPC 1.0</title>
+<date>2010</date>
+</edition>
+<respStmt>
+<resp>Conversion to TEI</resp>
+<name>Hans Paulussen</name>
+</respStmt>
+</editionStmt>
+<publicationStmt>
+<idno>dpc-bco-002346-nl</idno>
+<distributor>
+The Dutch HLT Agency (TST-Centrale – Centrale voor Taal- en Spraaktechnologie)
+</distributor>
+<authority>DPC Project</authority>
+<address>
+<addName type="ns">http://www.kuleuven-kortrijk.be/dpc</addName>
+</address>
+</publicationStmt>
+<sourceDesc>
+<bibl>
+DPC – Dutch Parallel Corpus,
+A Multifunctional and Multilingual corpus
+(Dutch – English, Dutch – French)
+STEVIN project STE-05-26
+</bibl>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<creation>
+<date>2010-02-25</date>
+</creation>
+</profileDesc>
+<encodingDesc>
+<tagsDecl>
+<namespace name="http://www.tei-c.org/ns/1.0">
+<tagUsage gi="s" occurs="24">Used for sentences</tagUsage>
+<tagUsage gi="w" occurs="506">Used for words/tokens</tagUsage>
+</namespace>
+</tagsDecl>
+</encodingDesc>
+</teiHeader>
+<text xml:id="dpc-bco-002346-nl." xml:lang="nl">
+<body>
+<div n="div1">
+<p n="p1">
+<seg type="sent" n="seg.p1.s1">
+<seg type="original">Company1 EN DE VRIJE UNIVERSITEIT BRUSSEL RICHTEN JOINT VENTURE OP</seg>
+<s n="p1.s1">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="VG(neven)" lemma="eN">EN</w> 
+<w ana="LID(bep,stan,rest)" lemma="dE">DE</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">VRIJE</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">UNIVERSITEIT</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">BRUSSEL</w> 
+<w ana="SPEC(deeleigen)" lemma="_">RICHTEN</w> 
+<w ana="SPEC(deeleigen)" lemma="_">JOINT</w> 
+<w ana="SPEC(deeleigen)" lemma="_">VENTURE</w> 
+<w ana="VZ(init)" lemma="oP">OP</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s2">
+<seg type="original">Company1 richt samen met de Vrije Universiteit Brussel een spin-off bedrijf op : Company1 A N.V.</seg>
+<s n="p1.s2">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="WW(pv,tgw,ev)" lemma="richten">richt</w> 
+<w ana="BW()" lemma="samen">samen</w> 
+<w ana="VZ(init)" lemma="met">met</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="spin-off">spin-off</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="bedrijf">bedrijf</w> 
+<w ana="VZ(fin)" lemma="op">op</w> 
+<w ana="LET()" lemma=":">:</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="n.V.">N.V.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s3">
+<seg type="original">Deze spin-off zal fungeren als research centrum voor onderzoek en ontwikkeling van softwareprogramma's op het gebied van medische beeldvorming en beeldverwerking voor radio-logie.</seg>
+<s n="p1.s3">
+<w ana="VNW(aanw,det,stan,prenom,met-e,rest)" lemma="deze">Deze</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="spin-off">spin-off</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="WW(pv,tgw,mv)" lemma="fungeren">fungeren</w> 
+<w ana="VZ(init)" lemma="als">als</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="research">research</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="centrum">centrum</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="onderzoek">onderzoek</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="ontwikkeling">ontwikkeling</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="N(soort,mv,basis)" lemma="softwareprogramma">softwareprogramma's</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="gebied">gebied</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="medisch">medische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldvorming">beeldvorming</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldverwerking">beeldverwerking</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="radio-logie">radio-logie</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s4">
+<seg type="original">Company1 A N.V. behoort tot Company1 Division1, één van de vijf strategische pijlers van de Company1-Groep.</seg>
+<s n="p1.s4">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="SPEC(afk)" lemma="_">N.V.</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="behoren">behoort</w> 
+<w ana="VZ(init)" lemma="tot">tot</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division1</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="één">één</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="vijf">vijf</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="strategisch">strategische</w> 
+<w ana="N(soort,mv,basis)" lemma="pijler">pijlers</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-Groep">Company1-Groep</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s5">
+<seg type="original">Aan het Academisch Ziekenhuis van de Vrije Universiteit Brussel werd op dit vlak al heel wat research verricht.</seg>
+<s n="p1.s5">
+<w ana="VZ(init)" lemma="aan">Aan</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="Academisch">Academisch</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="ziekenhuis">Ziekenhuis</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="WW(pv,verl,ev)" lemma="worden">werd</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="VNW(aanw,det,stan,prenom,zonder,evon)" lemma="dit">dit</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="vlak">vlak</w> 
+<w ana="BW()" lemma="al">al</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="heel">heel</w> 
+<w ana="VNW(vb,pron,stan,vol,3o,ev)" lemma="wat">wat</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="research">research</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="verrichten">verricht</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s6">
+<seg type="original">De opgebouwde expertise van Professor Person1 en de Company1-knowhow op het gebied van medische beeldvorming vormen de basis van deze joint venture.</seg>
+<s n="p1.s6">
+<w ana="LID(bep,stan,rest)" lemma="de">De</w> 
+<w ana="WW(vd,prenom,met-e)" lemma="opbouwen">opgebouwde</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="expertise">expertise</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="professor">Professor</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Person1">Person1</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-knowhow">Company1-knowhow</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="gebied">gebied</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="medisch">medische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldvorming">beeldvorming</w> 
+<w ana="WW(pv,tgw,mv)" lemma="vormen">vormen</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="basis">basis</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="VNW(aanw,det,stan,prenom,met-e,rest)" lemma="deze">deze</w> 
+<w ana="SPEC(vreemd)" lemma="_">joint</w> 
+<w ana="SPEC(vreemd)" lemma="_">venture</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s7">
+<seg type="original">Het oprichtingskapitaal van Company1 A N.V. bedraagt 15 miljoen BEF, waarin de Company1-Groep een 80% participatie neemt en de Vrije Universiteit Brussel 20%.</seg>
+<s n="p1.s7">
+<w ana="LID(bep,stan,evon)" lemma="het">Het</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="oprichtingskapitaal">oprichtingskapitaal</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="SPEC(afk)" lemma="_">N.V.</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="bedragen">bedraagt</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="15">15</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="miljoen">miljoen</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="bef">BEF</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="BW()" lemma="waarin">waarin</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-Groep">Company1-Groep</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="80">80</w> 
+<w ana="SPEC(symb)" lemma="_">%</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="participatie">participatie</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="nemen">neemt</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="20">20</w> 
+<w ana="SPEC(symb)" lemma="_">%</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s8">
+<seg type="original">Digitale beeldvorming en -verwerking wint steeds meer terrein in de radiologie.</seg>
+<s n="p1.s8">
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Digitaal">Digitale</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldvorming">beeldvorming</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LET()" lemma="-">-</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="verwerking">verwerking</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="winnen">wint</w> 
+<w ana="BW()" lemma="steeds">steeds</w> 
+<w ana="VNW(onbep,grad,stan,prenom,zonder,agr,comp)" lemma="veel">meer</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="terrein">terrein</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="radiologie">radiologie</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s9">
+<seg type="original">Dit betekent dat de klassieke medische film geleidelijk aan wordt vervangen door beeldvorming op extra hoge resolutie monitoren.</seg>
+<s n="p1.s9">
+<w ana="VNW(aanw,pron,stan,vol,3o,ev)" lemma="dit">Dit</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="betekenen">betekent</w> 
+<w ana="VG(onder)" lemma="dat">dat</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="klassiek">klassieke</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="medisch">medische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="film">film</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="geleidelijk">geleidelijk</w> 
+<w ana="VZ(fin)" lemma="aan">aan</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="worden">wordt</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="vervangen">vervangen</w> 
+<w ana="VZ(init)" lemma="door">door</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldvorming">beeldvorming</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="extra">extra</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="hoog">hoge</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="resolutie">resolutie</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="monitoren">monitoren</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s10">
+<seg type="original">Bovendien biedt digitale medische beeldvorming tal van nieuwe mogelijkheden zoals teleradiologie en teleconsultatie, naast specifieke diepgaande diagnoses door beeldmanipulatie.</seg>
+<s n="p1.s10">
+<w ana="BW()" lemma="bovendien">Bovendien</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="bieden">biedt</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="digitaal">digitale</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="medisch">medische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldvorming">beeldvorming</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="tal">tal</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="nieuw">nieuwe</w> 
+<w ana="N(soort,mv,basis)" lemma="mogelijkheid">mogelijkheden</w> 
+<w ana="VG(onder)" lemma="zoals">zoals</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="teleradiologie">teleradiologie</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="teleconsultatie">teleconsultatie</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="VZ(init)" lemma="naast">naast</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="specifiek">specifieke</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="diepgaand">diepgaande</w> 
+<w ana="N(soort,mv,basis)" lemma="diagnose">diagnoses</w> 
+<w ana="VZ(init)" lemma="door">door</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldmanipulatie">beeldmanipulatie</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s11">
+<seg type="original">De expertise die hiervoor nodig is, berust op hoog-technologische visualisatiesoftware in combinatie met beeldscherm-technologie.</seg>
+<s n="p1.s11">
+<w ana="LID(bep,stan,rest)" lemma="de">De</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="expertise">expertise</w> 
+<w ana="VNW(betr,pron,stan,vol,persoon,getal)" lemma="die">die</w> 
+<w ana="BW()" lemma="hiervoor">hiervoor</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="nodig">nodig</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="WW(pv,tgw,ev)" lemma="berusten">berust</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="hoog-technologisch">hoog-technologische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="visualisatiesoftware">visualisatiesoftware</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="combinatie">combinatie</w> 
+<w ana="VZ(init)" lemma="met">met</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beeldscherm-technologie">beeldscherm-technologie</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s12">
+<seg type="original">De joint venture zal zich vooral toeleggen op het optimaliseren van reeds bestaande en het ontwikkelen van nieuwe softwareprogramma's.</seg>
+<s n="p1.s12">
+<w ana="LID(bep,stan,rest)" lemma="de">De</w> 
+<w ana="SPEC(vreemd)" lemma="_">joint</w> 
+<w ana="SPEC(vreemd)" lemma="_">venture</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="VNW(refl,pron,obl,red,3,getal)" lemma="zich">zich</w> 
+<w ana="BW()" lemma="vooral">vooral</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="toeleggen">toeleggen</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="optimaliseren">optimaliseren</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="BW()" lemma="reeds">reeds</w> 
+<w ana="WW(od,vrij,zonder)" lemma="bestaan">bestaande</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="ontwikkelen">ontwikkelen</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="nieuw">nieuwe</w> 
+<w ana="N(soort,mv,basis)" lemma="softwareprogramma">softwareprogramma's</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s13">
+<seg type="original">Belangrijk is dat binnen deze samenwerking de radiologie-afdeling van het Academisch Ziekenhuis, Vrije Universiteit Brussel de mogelijkheid biedt om nieuwe ontwikkelingen te laten evalueren en valideren door directe gebruikers zoals medici en radiologen.</seg>
+<s n="p1.s13">
+<w ana="ADJ(vrij,basis,zonder)" lemma="belangrijk">Belangrijk</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="VG(onder)" lemma="dat">dat</w> 
+<w ana="VZ(init)" lemma="binnen">binnen</w> 
+<w ana="VNW(aanw,det,stan,prenom,met-e,rest)" lemma="deze">deze</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="samenwerking">samenwerking</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="radiologie-afdeling">radiologie-afdeling</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="Academisch">Academisch</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="ziekenhuis">Ziekenhuis</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="mogelijkheid">mogelijkheid</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="bieden">biedt</w> 
+<w ana="VZ(init)" lemma="om">om</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="nieuw">nieuwe</w> 
+<w ana="N(soort,mv,basis)" lemma="ontwikkeling">ontwikkelingen</w> 
+<w ana="VZ(init)" lemma="te">te</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="laten">laten</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="evalueren">evalueren</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="revalideren">valideren</w> 
+<w ana="VZ(init)" lemma="door">door</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="direct">directe</w> 
+<w ana="N(soort,mv,basis)" lemma="gebruiker">gebruikers</w> 
+<w ana="VG(onder)" lemma="zoals">zoals</w> 
+<w ana="N(soort,mv,basis)" lemma="medicus">medici</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,mv,basis)" lemma="radioloog">radiologen</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s14">
+<seg type="original">Binnen de Company1-Groep zal Company1 Division1 op haar beurt instaan voor het afwerken op maat van de klant, het industrialiseren en het wereldwijd commercialiseren van alle nieuw ontwikkelde visualisatiesoftwareproducten.</seg>
+<s n="p1.s14">
+<w ana="VZ(init)" lemma="binnen">Binnen</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-Groep">Company1-Groep</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="N(eigen,ev,basis,zijd,stan)" lemma="Division1">Division1</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" lemma="haar">haar</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beurt">beurt</w> 
+<w ana="WW(pv,tgw,mv)" lemma="instaan">instaan</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="afwerken">afwerken</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="maat">maat</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="klant">klant</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="industrialiseren">industrialiseren</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="wereldwijd">wereldwijd</w> 
+<w ana="N(soort,mv,basis)" lemma="commercialiseren">commercialiseren</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="VNW(onbep,det,stan,prenom,met-e,agr)" lemma="al">alle</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="nieuw">nieuw</w> 
+<w ana="WW(vd,prenom,met-e)" lemma="ontwikkelen">ontwikkelde</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="visualisatiesoftwareproducten">visualisatiesoftwareproducten</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s15">
+<seg type="original">Voor Company1 A N.V. zal in een beginfase een medewerker van het Academisch Ziekenhuis van de Vrije Universiteit Brussel en een medewerker van Company1 Division1 ter beschikking worden gesteld voor software-ontwikkelingsactiviteiten.</seg>
+<s n="p1.s15">
+<w ana="VZ(init)" lemma="voor">Voor</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="SPEC(afk)" lemma="_">N.V.</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beginfase">beginfase</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="medewerker">medewerker</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="Academisch">Academisch</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="ziekenhuis">Ziekenhuis</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="medewerker">medewerker</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Division1">Division1</w> 
+<w ana="VZ(versm)" lemma="te">ter</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="beschikking">beschikking</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="worden">worden</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="stellen">gesteld</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="N(soort,mv,basis)" lemma="software-ontwikkelingsactiviteit">software-ontwikkelingsactiviteiten</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s16">
+<seg type="original">In een later stadium is het de bedoeling dat deze groep uitgebreid wordt.</seg>
+<s n="p1.s16">
+<w ana="VZ(init)" lemma="in">In</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="ADJ(prenom,comp,zonder)" lemma="laat">later</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="stadium">stadium</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="VNW(pers,pron,stan,red,3,ev,onz)" lemma="het">het</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="bedoeling">bedoeling</w> 
+<w ana="VNW(betr,pron,stan,vol,3,ev)" lemma="dat">dat</w> 
+<w ana="VNW(aanw,det,stan,prenom,met-e,rest)" lemma="deze">deze</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="groep">groep</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="uitbreiden">uitgebreid</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="worden">wordt</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s17">
+<seg type="original">Verder zal een wetenschappelijk adviescomité worden opgericht, samen- gesteld uit 4 medewerkers van Company1 Division1 en 4 medewerkers van het Academisch Ziekenhuis, Vrije Universiteit Brussel.</seg>
+<s n="p1.s17">
+<w ana="ADJ(vrij,basis,zonder)" lemma="Verder">Verder</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="wetenschappelijk">wetenschappelijk</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="adviescomité">adviescomité</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="worden">worden</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="oprichten">opgericht</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="BW()" lemma="samen">samen</w> 
+<w ana="LET()" lemma="-">-</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="stellen">gesteld</w> 
+<w ana="VZ(init)" lemma="uit">uit</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="4">4</w> 
+<w ana="N(soort,mv,basis)" lemma="medewerker">medewerkers</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division1</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="4">4</w> 
+<w ana="N(soort,mv,basis)" lemma="medewerker">medewerkers</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="Academisch">Academisch</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="ziekenhuis">Ziekenhuis</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s18">
+<seg type="original">Dit comité zal een adviserende rol hebben rond de wetenschappelijke evolutie op het vlak van alle bestaande en nieuwe kennisdomeinen van Company1 A N.V.</seg>
+<s n="p1.s18">
+<w ana="VNW(aanw,det,stan,prenom,zonder,evon)" lemma="dit">Dit</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="comité">comité</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="WW(od,prenom,met-e)" lemma="adviseren">adviserende</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="rol">rol</w> 
+<w ana="WW(pv,tgw,mv)" lemma="hebben">hebben</w> 
+<w ana="VZ(init)" lemma="rond">rond</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="wetenschappelijk">wetenschappelijke</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="evolutie">evolutie</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="vlak">vlak</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="VNW(onbep,det,stan,prenom,met-e,agr)" lemma="al">alle</w> 
+<w ana="WW(od,prenom,met-e)" lemma="bestaan">bestaande</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="nieuw">nieuwe</w> 
+<w ana="N(soort,mv,basis)" lemma="kennisdomein">kennisdomeinen</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="n.V.">N.V.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s19">
+<seg type="original">Company1 A N.V. is gevestigd op de campus van de Vrije Universiteit Brussel.</seg>
+<s n="p1.s19">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">A</w> 
+<w ana="SPEC(afk)" lemma="_">N.V.</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="vestigen">gevestigd</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="campus">campus</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="Vrij">Vrije</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="universiteit">Universiteit</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Brussel">Brussel</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s20">
+<seg type="original">Binnen Company1 valt de dagelijkse leiding onder de verantwoordelijkheid van Person2, Division Manager Division7.</seg>
+<s n="p1.s20">
+<w ana="VZ(init)" lemma="binnen">Binnen</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Company1">Company1</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="vallen">valt</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="dagelijks">dagelijkse</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="leiding">leiding</w> 
+<w ana="VZ(init)" lemma="onder">onder</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="verantwoordelijkheid">verantwoordelijkheid</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="N(eigen,ev,basis,zijd,stan)" lemma="Person2">Person2</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="SPEC(vreemd)" lemma="_">Division</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="manager">Manager</w> 
+<w ana="SPEC(symb)" lemma="_">Division7</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s21">
+<seg type="original">Naar de toekomst toe, zal Company1 zich in dit marktsegment verder profileren met een productgamma dat evolueert naar volledige medische display-systemen.</seg>
+<s n="p1.s21">
+<w ana="VZ(init)" lemma="naar">Naar</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="toekomst">toekomst</w> 
+<w ana="VZ(fin)" lemma="toe">toe</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="N(eigen,ev,basis,zijd,stan)" lemma="Company1">Company1</w> 
+<w ana="VNW(refl,pron,obl,red,3,getal)" lemma="zich">zich</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="VNW(aanw,det,stan,prenom,zonder,evon)" lemma="dit">dit</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="marktsegment">marktsegment</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="ver">verder</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="profileren">profileren</w> 
+<w ana="VZ(init)" lemma="met">met</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="productgamma">productgamma</w> 
+<w ana="VNW(betr,pron,stan,vol,3,ev)" lemma="dat">dat</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="evolueren">evolueert</w> 
+<w ana="VZ(init)" lemma="naar">naar</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="volledig">volledige</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="medisch">medische</w> 
+<w ana="N(soort,mv,basis)" lemma="display-systeem">display-systemen</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s22">
+<seg type="original">Dit is een nichemarkt waar hoge eisen worden gesteld op het vlak van diagnostische kwaliteit, betrouwbaarheid en performantie.</seg>
+<s n="p1.s22">
+<w ana="VNW(aanw,pron,stan,vol,3o,ev)" lemma="dit">Dit</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="nichemarkt">nichemarkt</w> 
+<w ana="VNW(vb,adv-pron,obl,vol,3o,getal)" lemma="waar">waar</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="hoog">hoge</w> 
+<w ana="N(soort,mv,basis)" lemma="eis">eisen</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="worden">worden</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="stellen">gesteld</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="vlak">vlak</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="diagnostisch">diagnostische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="kwaliteit">kwaliteit</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="betrouwbaarheid">betrouwbaarheid</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="performantie">performantie</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s23">
+<seg type="original">Company1 Division1 is één van de vijf strategische pijlers van de Company1 Groep, naast Company1 Division2, Company1 Division3, Company1 Division4 en Company1 Division5.</seg>
+<s n="p1.s23">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division1</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="één">één</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="TW(hoofd,prenom,stan)" lemma="vijf">vijf</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="strategisch">strategische</w> 
+<w ana="N(soort,mv,basis)" lemma="pijler">pijlers</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="SPEC(deeleigen)" lemma="_">Company1</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="groep">Groep</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="VZ(init)" lemma="naast">naast</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division2</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division3</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division4</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="SPEC(symb)" lemma="_">Division5</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s24">
+<seg type="original">Company1 Division1 ontwikkelt en produceert hoge resolutie monitoren en display-subsystemen voor diverse veeleisende nichemarkten.</seg>
+<s n="p1.s24">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Division1">Division1</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="ontwikkelen">ontwikkelt</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="produceren">produceert</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="hoog">hoge</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="resolutie">resolutie</w> 
+<w ana="WW(inf,nom,zonder,zonder-n)" lemma="monitoren">monitoren</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,mv,basis)" lemma="display-subsysteem">display-subsystemen</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="divers">diverse</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="veeleisend">veeleisende</w> 
+<w ana="N(soort,mv,basis)" lemma="nichemarkt">nichemarkten</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+</p>
+</div>
+</body>
+</text>
+</TEI>

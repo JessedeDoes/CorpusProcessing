@@ -25,7 +25,8 @@ case class Verse(verseId: String, verse: String, ref: VerseRef) {
 
   def toXML(corresp: String) = {
     val corr: Option[Node] = if (corresp.isEmpty) None else Some(Text(corresp))
-    <ab type="verse" corresp={corr} xml:lang={language} n={verseId} xml:id={xmlId}>{parsedVerse}</ab>
+    // no not print corresp={corr} anymore
+    <ab type="verse" xml:lang={language} n={verseId} xml:id={xmlId}>{parsedVerse}</ab>
   }
 }
 

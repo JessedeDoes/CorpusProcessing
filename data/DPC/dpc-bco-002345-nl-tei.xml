@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEI xml:id="dpc-bco-002345-nl" xml:lang="nl" xmlns="http://www.tei-c.org/ns/1.0">
+<teiHeader>
+<fileDesc>
+<titleStmt>
+<title>dpc-bco-002345-nl</title>
+</titleStmt>
+<editionStmt>
+<edition>
+<title>DPC 1.0</title>
+<date>2010</date>
+</edition>
+<respStmt>
+<resp>Conversion to TEI</resp>
+<name>Hans Paulussen</name>
+</respStmt>
+</editionStmt>
+<publicationStmt>
+<idno>dpc-bco-002345-nl</idno>
+<distributor>
+The Dutch HLT Agency (TST-Centrale – Centrale voor Taal- en Spraaktechnologie)
+</distributor>
+<authority>DPC Project</authority>
+<address>
+<addName type="ns">http://www.kuleuven-kortrijk.be/dpc</addName>
+</address>
+</publicationStmt>
+<sourceDesc>
+<bibl>
+DPC – Dutch Parallel Corpus,
+A Multifunctional and Multilingual corpus
+(Dutch – English, Dutch – French)
+STEVIN project STE-05-26
+</bibl>
+</sourceDesc>
+</fileDesc>
+<profileDesc>
+<creation>
+<date>2010-02-25</date>
+</creation>
+</profileDesc>
+<encodingDesc>
+<tagsDecl>
+<namespace name="http://www.tei-c.org/ns/1.0">
+<tagUsage gi="s" occurs="10">Used for sentences</tagUsage>
+<tagUsage gi="w" occurs="163">Used for words/tokens</tagUsage>
+</namespace>
+</tagsDecl>
+</encodingDesc>
+</teiHeader>
+<text xml:id="dpc-bco-002345-nl." xml:lang="nl">
+<body>
+<div n="div1">
+<p n="p1">
+<seg type="sent" n="seg.p1.s1">
+<seg type="original">Company1 versterkt zijn positie in het Oosten en richt filialen op in Australië en Taiwan</seg>
+<s n="p1.s1">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="versterken">versterkt</w> 
+<w ana="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" lemma="zijn">zijn</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="positie">positie</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="LID(bep,stan,evon)" lemma="het">het</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Oosten">Oosten</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="WW(pv,tgw,ev)" lemma="richten">richt</w> 
+<w ana="N(soort,mv,basis)" lemma="filiaal">filialen</w> 
+<w ana="VZ(fin)" lemma="op">op</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Australië">Australië</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Taiwan">Taiwan</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s2">
+<seg type="original">De Company1-groep neemt in Australië de activiteiten van zijn distributeur, Company2 Ltd, over.</seg>
+<s n="p1.s2">
+<w ana="LID(bep,stan,rest)" lemma="de">De</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-groep">Company1-groep</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="nemen">neemt</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Australië">Australië</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,mv,basis)" lemma="activiteit">activiteiten</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" lemma="zijn">zijn</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="distributeur">distributeur</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="SPEC(symb)" lemma="_">Company2</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="ltd">Ltd</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="VZ(init)" lemma="over">over</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s3">
+<seg type="original">Australië is reeds gedurende een 5-tal jaar een interessante markt voor Company1.</seg>
+<s n="p1.s3">
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Australië">Australië</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zijn">is</w> 
+<w ana="BW()" lemma="reeds">reeds</w> 
+<w ana="VZ(init)" lemma="gedurende">gedurende</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="5-tal">5-tal</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="jaar">jaar</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="interessant">interessante</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="markt">markt</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="N(eigen,ev,basis,zijd,stan)" lemma="Company1">Company1</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s4">
+<seg type="original">De vele investeringen in infrastructuur voor de Olympische Spelen Sydney 2000 zullen ook de komende jaren voor een behoorlijk verkoop-potentieel garant staan.</seg>
+<s n="p1.s4">
+<w ana="LID(bep,stan,rest)" lemma="de">De</w> 
+<w ana="VNW(onbep,grad,stan,prenom,met-e,agr,basis)" lemma="veel">vele</w> 
+<w ana="N(soort,mv,basis)" lemma="investering">investeringen</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="infrastructuur">infrastructuur</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="SPEC(deeleigen)" lemma="_">Olympische</w> 
+<w ana="SPEC(deeleigen)" lemma="_">Spelen</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Sydney">Sydney</w> 
+<w ana="TW(hoofd,vrij)" lemma="2000">2000</w> 
+<w ana="WW(pv,tgw,mv)" lemma="zullen">zullen</w> 
+<w ana="BW()" lemma="ook">ook</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="WW(od,prenom,met-e)" lemma="komen">komende</w> 
+<w ana="N(soort,mv,basis)" lemma="jaar">jaren</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="ADJ(prenom,basis,zonder)" lemma="behoorlijk">behoorlijk</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="verkoop-potentieel">verkoop-potentieel</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="garant">garant</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="staan">staan</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s5">
+<seg type="original">Company1 ziet hier vooral goede kansen voor zijn projectiesystemen, displaysystemen en telecommunicatieapparatuur.</seg>
+<s n="p1.s5">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="zien">ziet</w> 
+<w ana="VNW(aanw,adv-pron,obl,vol,3o,getal)" lemma="hier">hier</w> 
+<w ana="BW()" lemma="vooral">vooral</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="goed">goede</w> 
+<w ana="N(soort,mv,basis)" lemma="kans">kansen</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="VNW(bez,det,stan,vol,3,ev,prenom,zonder,agr)" lemma="zijn">zijn</w> 
+<w ana="N(soort,mv,basis)" lemma="projectiesysteem">projectiesystemen</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="N(soort,mv,basis)" lemma="displaysysteem">displaysystemen</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="telecommunicatieapparatuur">telecommunicatieapparatuur</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s6">
+<seg type="original">Het nieuwe filiaal heeft een 10-tal medewerkers verdeeld over de locaties Melbourne en Sydney.</seg>
+<s n="p1.s6">
+<w ana="LID(bep,stan,evon)" lemma="het">Het</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="nieuw">nieuwe</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="filiaal">filiaal</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="hebben">heeft</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="10-tal">10-tal</w> 
+<w ana="N(soort,mv,basis)" lemma="medewerker">medewerkers</w> 
+<w ana="WW(vd,vrij,zonder)" lemma="verdeeld">verdeeld</w> 
+<w ana="VZ(init)" lemma="over">over</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,mv,basis)" lemma="locatie">locaties</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Melbourne">Melbourne</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Sydney">Sydney</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s7">
+<seg type="original">Ook in Taipei, Taiwan opent de Company1-groep een filiaal.</seg>
+<s n="p1.s7">
+<w ana="BW()" lemma="ook">Ook</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Taipei">Taipei</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Taiwan">Taiwan</w> 
+<w ana="WW(pv,tgw,met-t)" lemma="openen">opent</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="company1-groep">Company1-groep</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="filiaal">filiaal</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s8">
+<seg type="original">In Taiwan zal Company1 zich met een 15-tal medewerkers vooral richten op de industriële markten voor procescontrole en op de snel evoluerende grafische sector.</seg>
+<s n="p1.s8">
+<w ana="VZ(init)" lemma="in">In</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Taiwan">Taiwan</w> 
+<w ana="WW(pv,tgw,ev)" lemma="zullen">zal</w> 
+<w ana="N(eigen,ev,basis,zijd,stan)" lemma="Company1">Company1</w> 
+<w ana="VNW(refl,pron,obl,red,3,getal)" lemma="zich">zich</w> 
+<w ana="VZ(init)" lemma="met">met</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="N(soort,ev,basis,onz,stan)" lemma="15-tal">15-tal</w> 
+<w ana="N(soort,mv,basis)" lemma="medewerker">medewerkers</w> 
+<w ana="BW()" lemma="vooral">vooral</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="richten">richten</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="industrieel">industriële</w> 
+<w ana="N(soort,mv,basis)" lemma="markt">markten</w> 
+<w ana="VZ(init)" lemma="voor">voor</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="procescontrole">procescontrole</w> 
+<w ana="VG(neven)" lemma="en">en</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="LID(bep,stan,rest)" lemma="de">de</w> 
+<w ana="ADJ(vrij,basis,zonder)" lemma="snel">snel</w> 
+<w ana="WW(od,prenom,met-e)" lemma="evolueren">evoluerende</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="grafisch">grafische</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="sector">sector</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s9">
+<seg type="original">Beide sectoren maken in Taiwan een snelle evolutie door van arbeidsintensieve, manuele methodes naar geautomatiseerde systemen.</seg>
+<s n="p1.s9">
+<w ana="VNW(onbep,grad,stan,prenom,met-e,mv,basis)" lemma="beide">Beide</w> 
+<w ana="N(soort,mv,basis)" lemma="sector">sectoren</w> 
+<w ana="WW(pv,tgw,mv)" lemma="maken">maken</w> 
+<w ana="VZ(init)" lemma="in">in</w> 
+<w ana="N(eigen,ev,basis,onz,stan)" lemma="Taiwan">Taiwan</w> 
+<w ana="LID(onbep,stan,agr)" lemma="een">een</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="snel">snelle</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="evolutie">evolutie</w> 
+<w ana="VZ(fin)" lemma="door">door</w> 
+<w ana="VZ(init)" lemma="van">van</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="arbeidsintensief">arbeidsintensieve</w> 
+<w ana="LET()" lemma=",">,</w> 
+<w ana="ADJ(prenom,basis,met-e,stan)" lemma="manueel">manuele</w> 
+<w ana="N(soort,mv,basis)" lemma="methode">methodes</w> 
+<w ana="VZ(init)" lemma="naar">naar</w> 
+<w ana="WW(vd,prenom,met-e)" lemma="automatiseren">geautomatiseerde</w> 
+<w ana="N(soort,mv,basis)" lemma="systeem">systemen</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+<seg type="sent" n="seg.p1.s10">
+<seg type="original">Company1 wil op deze trend inspelen door hiervoor oplossingen aan te bieden.</seg>
+<s n="p1.s10">
+<w ana="SPEC(symb)" lemma="_">Company1</w> 
+<w ana="WW(pv,tgw,ev)" lemma="willen">wil</w> 
+<w ana="VZ(init)" lemma="op">op</w> 
+<w ana="VNW(aanw,det,stan,prenom,met-e,rest)" lemma="deze">deze</w> 
+<w ana="N(soort,ev,basis,zijd,stan)" lemma="trend">trend</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="inspelen">inspelen</w> 
+<w ana="VZ(init)" lemma="door">door</w> 
+<w ana="BW()" lemma="hiervoor">hiervoor</w> 
+<w ana="N(soort,mv,basis)" lemma="oplossing">oplossingen</w> 
+<w ana="VZ(init)" lemma="aan">aan</w> 
+<w ana="VZ(init)" lemma="te">te</w> 
+<w ana="WW(inf,vrij,zonder)" lemma="bieden">bieden</w> 
+<w ana="LET()" lemma=".">.</w></s>
+</seg>
+</p>
+</div>
+</body>
+</text>
+</TEI>

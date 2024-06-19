@@ -75,12 +75,12 @@ case class fastAlign(bookDoc: Elem, unitElement: String="ab") {
 
     val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
     val id = alignment.bible1 + "--" + alignment.bible2 + ".words"
-    val linkGrp = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
+    val alignmentLayer = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
 
 
 
     // XML.save("/tmp/withWordLinks.xml", withLinks)
-    linkGrp
+    alignmentLayer
     // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
   }
 

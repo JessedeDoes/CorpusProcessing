@@ -23,6 +23,13 @@ object en_nl {
   }
 }
 
+object smallish {
+  def main(args: Array[String]) = {
+    smaller_sample.printBooks()
+    smaller_sample.printBookAlignments()
+  }
+}
+
 object addWordAlignment {
   def main(args: Array[String])  = {
     complete_corpus.addWordAlignment("Gen", genesis)

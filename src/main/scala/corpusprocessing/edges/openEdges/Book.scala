@@ -36,6 +36,11 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
   val pid = s"$bible.$book"
   val alignments: SetOfAlignments = bibles.allAlignments
   override def toString = s"$language.$bible.$book"
+
+  lazy val metadata: Elem = Metadata.getMetadata(bible,book)
+  lazy val  bookTitle = Metadata.getField(metadata, "bookName")
+  lazy val bibleTitle = Metadata.getField(metadata, "Full title")
+
   val links: Seq[(VerseRef, Set[VerseRef])] = verses.map(v => (v.ref -> alignments.alignments.flatMap(a => a.aligned(v.ref))))
 
   def link(a: String, b: String): Elem = <link type="sentence-alignment" target={s"#$a #$b"}/>   // <link from={r.xmlId} to={r1.xmlId}/>
@@ -73,7 +78,7 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
       <teiHeader>
         <fileDesc>
           <titleStmt>
-            <title>{this.toString}</title>
+            <title>{bookTitle} ({bibleTitle})</title>
             <respStmt>
               <resp>Conversion, encoding, enrichment</resp>
               <name>Instituut voor de Nederlandse Taal</name>
@@ -88,7 +93,9 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
             </availability>
           </publicationStmt>
         </fileDesc>
-        <sourceDesc><bibl type="intMetadata">{interpjes}</bibl></sourceDesc>
+        <sourceDesc>
+          {metadata}
+          <listBibl type="intMetadata"><bibl type="intMetadata">{interpjes}</bibl></listBibl></sourceDesc>
       </teiHeader>
       <text xml:lang={language} xml:id={s"$bible.$book"}>
         <body>
