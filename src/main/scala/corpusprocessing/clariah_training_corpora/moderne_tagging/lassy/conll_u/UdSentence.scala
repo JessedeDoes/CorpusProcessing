@@ -7,9 +7,13 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   def isValid() = {
     val roots = tokens.filter(t => t.DEPREL == "root")
     val nRoots = roots.size
-    val ids: Seq[Int] = tokens.map(_.ID.toInt)
-    val check: Seq[Int] = (1 to tokens.size).toSeq
-    if (ids  != check)
+
+    lazy val check0 = {
+      val ids: Seq[Int] = tokens.map(_.ID.toInt)
+      val check: Seq[Int] = (1 to tokens.size).toSeq
+      ids == check
+    }
+    if (false && !check0)
       false
     else
     if (!(nRoots == 1))
@@ -178,5 +182,13 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
     (Seq("", s"# sent_id = ${this.sent_id}",  s"# text = ${this.plainText}" ) ++
       (if (rebase) rebaseIds() else this).tokens.map(_.toCONLL()))
       .mkString("\n") ++ "\n"
+  }
+
+
+  def asTEI() = {
+    val words = tokens.map(t => <w xml:id={this.sent_id + "." + t.ID} lemma={t.LEMMA} pos={t.UPOS} msd={t.XPOS}>{t.FORM}</w>) // PC
+    val links = tokens.map(t => <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}.${t.HEAD} #${this.sent_id}${t.ID}"}/>)
+    val linkGrp = <linkGrp targFunc="head argument" type="UD-SYN">{links}</linkGrp>;
+    <s xml:lang={language} xml:id={this.sent_id}>{words}{linkGrp}</s>
   }
 }

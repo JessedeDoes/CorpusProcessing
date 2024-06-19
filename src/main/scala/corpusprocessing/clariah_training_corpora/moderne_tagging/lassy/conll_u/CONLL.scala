@@ -1,5 +1,5 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
-import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.CONLL.parse
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.CONLL.{parse, parseFile, toTEI}
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping
 import org.json4s._
 import org.json4s.jackson.Serialization.write
@@ -15,7 +15,14 @@ object CONLL {
   def parseFile(f: java.io.File): Seq[UdSentence] = {
     val lines = io.Source.fromFile(f).getLines.toStream
     val language = f.getName.replaceAll("_.*", "")
-    parse(lines, language).filter(_.isValid())
+    parse(lines, language).filter(_.isValid()).map(s => s.copy(sent_id = f.getName + "." + s.sent_id))
+  }
+
+  def toTEI(f: java.io.File): Elem = {
+    val sentences = CONLL.parseFile(f).map(_.asTEI())
+    <TEI xmlns="http://www.tei-c.org/ns/1.0">
+      <text><body><div><p>{sentences}</p></div></body></text>
+    </TEI>
   }
 
   def parseFile(f: String): Seq[UdSentence]  = {
@@ -117,6 +124,17 @@ object CONLL {
 
 }
 
+object CONLL2TEI {
+  def main(args: Array[String]) = {
+    val in = args(0)
+    val f = new File(in)
+    val tei = toTEI(f)
+    val pw = new PrintWriter(s"/tmp/${f.getName.replaceAll("[.][^.]*$","")}.xml")
+    pw.println(tei)
+    pw.close()
+    //p.foreach(println)
+  }
+}
 
 object Split {
   def main(args: Array[String]) = {

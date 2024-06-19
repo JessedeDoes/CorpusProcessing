@@ -19,10 +19,10 @@ object Defaults {
 
    val teiDir: String = "TEI"
 }
-case class Settings(projectRoot: String = Defaults.projectRoot,
+case class EdgeSettings(projectRoot: String = Defaults.projectRoot,
                       sourceDir: String = Defaults.sourceDir,
                       teiDir: String = Defaults.teiDir)
-object Settings extends Settings() {
+object Settings extends EdgeSettings() {
 
    val fullPathtoSourceData = projectRoot  + "/"  + sourceDir
    val outputTEIDir =  projectRoot + teiDir
