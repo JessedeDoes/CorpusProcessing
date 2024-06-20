@@ -27,17 +27,17 @@ object Settings extends EdgeSettings() {
    val fullPathtoSourceData = projectRoot  + "/"  + sourceDir
    val outputTEIDir =  projectRoot + teiDir
 
-   val verseAlignedTEIDir = outputTEIDir + "alignments/"
+   val verseAlignedTEIDir = outputTEIDir + "/alignments/"
 
 
-   val tokenizedContentDir = teiDir + "ids-fixed/"
+   val tokenizedContentDir = teiDir + "/ids-fixed/"
 
 
-   val nl_nl = fullPathtoSourceData + "Alignments/nl-nl/"
-   val en_nl = fullPathtoSourceData + "Alignments/en-nl/"
-   val staten_canisius = nl_nl + "nl_1637_Staten-nl_1939_Canisius.tsv"
-   val staten_darby = en_nl + "en_1890_Darby-nl_1637_Staten.tsv"
-   val darby_canisius = en_nl + "en_1890_Darby-nl_1939_Canisius.tsv"
+   val nl_nl = fullPathtoSourceData + "/Alignments/nl-nl/"
+   val en_nl = fullPathtoSourceData + "/Alignments/en-nl/"
+   val staten_canisius = nl_nl + "/nl_1637_Staten-nl_1939_Canisius.tsv"
+   val staten_darby = en_nl + "/en_1890_Darby-nl_1637_Staten.tsv"
+   val darby_canisius = en_nl + "/en_1890_Darby-nl_1939_Canisius.tsv"
 
    val genesis = s"$teiDir/alignments/Gen.xml"
    val zeph = s"$teiDir/alignments/Zeph.xml"

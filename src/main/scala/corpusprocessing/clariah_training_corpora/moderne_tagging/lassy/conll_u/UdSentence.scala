@@ -4,7 +4,8 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{Sentence
 
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq()) {
 
-  def isValid() = {
+  def hasContent(): Boolean = tokens.exists(_.FORM != "_")
+  def isValid(): Boolean = {
     val roots = tokens.filter(t => t.DEPREL == "root")
     val nRoots = roots.size
 
@@ -13,6 +14,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
       val check: Seq[Int] = (1 to tokens.size).toSeq
       ids == check
     }
+
     if (false && !check0)
       false
     else
@@ -187,7 +189,9 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
 
   def asTEI() = {
     val words = tokens.map(t => <w xml:id={this.sent_id + "." + t.ID} lemma={t.LEMMA} pos={t.UPOS} msd={t.XPOS}>{t.FORM}</w>) // PC
-    val links = tokens.map(t => <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}.${t.HEAD} #${this.sent_id}${t.ID}"}/>)
+    val links = tokens.map(t =>  {
+        val headPart = if (t.DEPREL == "root") "" else s".${t.HEAD}"
+        <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}$headPart #${this.sent_id}.${t.ID}"}/> })
     val linkGrp = <linkGrp targFunc="head argument" type="UD-SYN">{links}</linkGrp>;
     <s xml:lang={language} xml:id={this.sent_id}>{words}{linkGrp}</s>
   }

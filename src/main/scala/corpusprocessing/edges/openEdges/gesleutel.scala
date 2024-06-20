@@ -39,6 +39,7 @@ object addWordAlignment {
 
 object addWordAlignmentForAll {
   def main(args: Array[String])  = {
+    Console.err.println("Aligning from: " + verseAlignedTEIDir)
     new File(verseAlignedTEIDir).listFiles().foreach(f =>
     {
       println(f.getName)

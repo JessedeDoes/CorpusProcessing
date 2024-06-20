@@ -36,7 +36,18 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
     })
   }
 
-  def addWordAlignment(bookname: String, fileName: String) = {
+  def addWordAlignment(bookname: String, fileName: String): Unit = {
+
+
+    val outputFile = fileName.replaceAll(".xml$", ".wordAligned.xml").replaceAll("alignments", "all-word-alignments")
+
+    Console.err.println("Output to: " + outputFile)
+
+    if (new File(outputFile).exists()) {
+      Console.err.println("Already aligned: " + outputFile)
+      return ()
+    };
+
 
     val alignments: List[Alignment] = allAlignments.alignments.map(a => {
       Alignment(a.correspondences.filter(_.book == bookname))
@@ -63,7 +74,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
     }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
     val noIncludes = removeBookIncludes(dUniqueIds)
     val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignmentLayers))
-    XML.save(fileName.replaceAll(".xml$", ".wordAligned.xml"), processed)
+    XML.save(outputFile, processed)
   }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {
