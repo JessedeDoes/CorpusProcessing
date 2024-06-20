@@ -1,5 +1,7 @@
 package zeeuws
 
+import utils.HTML
+
 import java.net.{URI, URL}
 import scala.xml._
 import java.nio.charset.CodingErrorAction

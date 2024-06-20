@@ -1,7 +1,7 @@
 package corpusprocessing.hyakunin
 
+import utils.HTML
 import scala.xml._
-import zeeuws.HTML
 
 import java.net.URL
 object hyakunin {

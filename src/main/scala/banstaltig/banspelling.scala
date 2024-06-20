@@ -1,7 +1,7 @@
 package banstaltig
 
 import database._
-import zeeuws.HTML
+import utils.HTML
 
 import java.io.PrintWriter
 import scala.util.{Failure, Success, Try}

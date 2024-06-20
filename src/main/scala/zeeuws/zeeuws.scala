@@ -1,7 +1,7 @@
 package zeeuws
 import database.DatabaseUtilities.Select
 import database._
-import utils.PostProcessXML
+import utils.{HTML, PostProcessXML}
 
 import scala.xml._
 import scala.util.{Failure, Success, Try}

@@ -1,8 +1,7 @@
 package corpusprocessing.VandeVoorde
 import scala.xml._
 import java.io.{File, PrintWriter}
-import zeeuws.HTML
-import utils.PostProcessXML
+import utils.{HTML, PostProcessXML}
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.grouping.groupWithFirst
 import corpusprocessing.edges.openEdges.prettyPrinting
 import corpusprocessing.kranten.oud.TEIScope._

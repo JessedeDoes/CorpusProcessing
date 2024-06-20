@@ -74,7 +74,8 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
     }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
     val noIncludes = removeBookIncludes(dUniqueIds)
     val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignmentLayers))
-    XML.save(outputFile, processed)
+    // XML.save(outputFile, processed)
+    corpusprocessing.corpusutils.SaveHugeXML.save(outputFile,processed)
   }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {

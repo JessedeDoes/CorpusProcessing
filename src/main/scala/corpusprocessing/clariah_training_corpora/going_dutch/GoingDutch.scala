@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.going_dutch
-import zeeuws.HTML
 
+import utils.HTML
 import scala.xml._
 import java.io.{File, PrintWriter}
 import utils.PostProcessXML._

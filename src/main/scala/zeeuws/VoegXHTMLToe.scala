@@ -2,7 +2,9 @@ package zeeuws
 
 import database.{Configuration, Database, DatabaseUtilities}
 import database.DatabaseUtilities.Select
+import utils.HTML
 import utils.PostProcessXML.updateElement5
+
 import scala.xml._
 case class Lemma(r: DatabaseUtilities.Diamond) {
   def g(x: String) = r.getString(x)

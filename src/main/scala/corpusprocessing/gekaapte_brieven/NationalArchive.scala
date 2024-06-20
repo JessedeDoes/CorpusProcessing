@@ -1,6 +1,6 @@
 package corpusprocessing.gekaapte_brieven
-import zeeuws.HTML
 
+import utils.HTML
 import java.io.PrintWriter
 object NationalArchive {
 
