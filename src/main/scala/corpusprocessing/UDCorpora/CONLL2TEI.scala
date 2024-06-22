@@ -40,7 +40,7 @@ object CONLL2TEI {
 
     val nTokens = sentences.map(x => (x \\ "w").size).sum
     val langCode = corpusprocessing.UDCorpora.languageCodes.two2three(f.getName.replaceAll("_.*", ""))
-    val classification = Families.getClassification(langCode)
+    val classification: Seq[LangInfo] = Families.getClassification(langCode)
 
 
     val langName = setName.replaceAll("-.*", "").replaceAll("_", " ")
@@ -80,7 +80,7 @@ object CONLL2TEI {
           <listBibl type="intMetadata">
             <bibl type="intMetadata">
                <interpGrp type="languageClassification"> {
-                 classification.map(c => <interp>{c}</interp>)
+                 classification.map(c => <interp type={c.level}>{c}</interp>)
                  }
                </interpGrp>
             </bibl>
