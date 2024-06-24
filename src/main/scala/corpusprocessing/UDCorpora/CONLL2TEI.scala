@@ -110,6 +110,7 @@ object CONLL2TEI {
       </text>
     </TEI>
   }
+
   def main(args: Array[String]) = {
     val in = args.headOption.getOrElse(corpusDir)
     val f = new File(in)
