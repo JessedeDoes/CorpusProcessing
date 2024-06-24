@@ -44,7 +44,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   def children(t: UdToken) = tokens.filter(_.HEAD == t.ID)
 
   def dependencyPattern(t: UdToken) = children(t).filter(_.DEPREL != "punct").map(_.DEPREL).sorted.mkString("|") //
-  
+
   def descendant(t: UdToken, collected: Set[UdToken] = Set()): Set[UdToken] = {
     val c = children(t).filter(x => !collected.contains(x)).toSet.filter(_ != t)
     c ++ c.flatMap(x => descendant(x, collected ++ Set(t)))
@@ -191,7 +191,10 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
 
 
   def asTEI() = {
-    val words = tokens.map(t => <w xml:id={this.sent_id + "." + t.ID} subtype={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={s"UPosTag=${t.UPOS}|${t.FEATS}"}>{t.FORM}</w>) // PC
+    val words = tokens.map(t => {
+      val msd = s"UPosTag=${t.UPOS}" + (if (t.FEATS.contains("|")) "|"  + t.FEATS else "");
+      <w xml:id={this.sent_id + "." + t.ID} subtype={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={s"UPosTag=${t.UPOS}|${t.FEATS}"}>{t.FORM}</w>
+    }) // PC
     val links = tokens.map(t =>  {
         val headPart = if (t.DEPREL == "root") "" else s".${t.HEAD}"
         <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}$headPart #${this.sent_id}.${t.ID}"}/> })
