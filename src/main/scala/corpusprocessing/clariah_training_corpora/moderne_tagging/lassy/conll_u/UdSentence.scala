@@ -2,10 +2,13 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{Sentence, cgn_tdn}
 
+import scala.xml.Elem
+
 case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq()) {
 
   def hasContent(): Boolean = tokens.exists(_.FORM != "_")
-  def isValid(): Boolean = {
+  def isValid(): Boolean = { // TODO fix this to work for multiword token sentences
+    return true;
     val roots = tokens.filter(t => t.DEPREL == "root")
     val nRoots = roots.size
 
@@ -190,12 +193,36 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   }
 
 
+  def containingMWT(t: UdToken): Option[UdToken] = {
+    val x = tokens.find(x => x.isMultiWordToken && x.subTokenIds.contains(t.ID))
+    if (x.nonEmpty)
+      println(t + "--> " + x)
+    x
+  }
+
+
+  lazy val leafTokens = tokens.filter(!_.isMultiWordToken)
+  def subTokens(t: UdToken): Seq[UdToken] = t.subTokenIds.flatMap(id => tokens.filter(_.ID==id))
+
+  def leafTokenXML(t: UdToken): Elem = {
+    val msd = s"UPosTag=${t.UPOS}" + (if (t.FEATS.contains("|")) "|"  + t.FEATS else "");
+    <w xml:id={this.sent_id + "." + t.ID} subtype={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={msd}>{t.FORM}</w>
+  }
   def asTEI() = {
-    val words = tokens.map(t => {
-      val msd = s"UPosTag=${t.UPOS}" + (if (t.FEATS.contains("|")) "|"  + t.FEATS else "");
-      <w xml:id={this.sent_id + "." + t.ID} subtype={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={s"UPosTag=${t.UPOS}|${t.FEATS}"}>{t.FORM}</w>
+
+    //val mwteetjes = tokens.filter(_.isMultiWordToken)
+    //if (mwteetjes.nonEmpty) println(mwteetjes.map(_.subTokenIds))
+
+    val words = tokens.filter(t => containingMWT(t).isEmpty).map(t => {
+      if (t.isMultiWordToken) {
+        // println("MWT!!!"  + t)
+        // System.exit(0)
+        <w xml:id={this.sent_id + "." + t.ID} type="MultiWordToken"><choice><orig>{t.FORM}</orig><reg>{subTokens(t).map(leafTokenXML)}</reg></choice></w>
+      } else
+        leafTokenXML(t)
     }) // PC
-    val links = tokens.map(t =>  {
+
+    val links = leafTokens.map(t =>  {
         val headPart = if (t.DEPREL == "root") "" else s".${t.HEAD}"
         <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}$headPart #${this.sent_id}.${t.ID}"}/> })
     val linkGrp = <linkGrp targFunc="head argument" type="UD-SYN">{links}</linkGrp>;

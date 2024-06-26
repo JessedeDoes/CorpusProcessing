@@ -111,6 +111,7 @@ object CONLL2TEI {
     </TEI>
   }
 
+  def filter(f: File) = true // f.getCanonicalPath.contains("French")
   def main(args: Array[String]) = {
     val in = args.headOption.getOrElse(corpusDir)
     val f = new File(in)
@@ -121,7 +122,7 @@ object CONLL2TEI {
       pw.close()
     } else {
       val files = findAllConllIn(in)
-      files.take(maxFiles).foreach(f => {
+      files.take(maxFiles).filter(filter).foreach(f => {
 
         val setName = f.getParentFile.getName.replaceAll("UD_", "")
         val tei = toTEI(f, setName, maxSentLength = maxSentLength)

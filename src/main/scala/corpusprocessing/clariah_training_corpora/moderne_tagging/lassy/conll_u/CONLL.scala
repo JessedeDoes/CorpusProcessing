@@ -93,7 +93,13 @@ object CONLL {
       // println(headers)
       sent_id.map(x => {
         val text = g.find(_.startsWith("# text")).map(_.replaceAll(".*=", "").trim)
-        val tokens = g.filter(_.matches("^[0-9].*")).map(_.split("\\t",-1).toList)
+        val tokenLines: Seq[String] = g.filter(_.matches("^[0-9].*"))
+        val t0z= tokenLines.map(_.split("\\t").head).filter(x => !x.matches("[0-9]+"))
+        if (t0z.nonEmpty) {
+          //println(t0z)
+          //println(tokenLines.map(_.split("\\t",-1).size))
+        }
+        val tokens = tokenLines.map(_.split("\\t",-1).toList)
           .filter(l => { if (l.size < 10) Console.err.println(s"Nope: $sent_id: $l");  l.size >= 10})
           .map(l => UdToken(l(0), l(1), l(2), l(3), l(4), l(5), l(6), l(7), l(8), l(9), x, language))
 

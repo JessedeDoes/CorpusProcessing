@@ -5,6 +5,9 @@ case class UdToken(ID: String="_", FORM: String="_", LEMMA: String="_", UPOS: St
                    sent_id: String="_", language: String="und", subtokens:Seq[UdToken] = Seq()) {
 
   lazy val tokenId = s"$sent_id.$ID.$language"
+  lazy val isMultiWordToken = !ID.matches("[0-9]+")
+  lazy val subTokenIds: Seq[String] = if (isMultiWordToken) ID.split("-").toList else List()
+
 
   def toXML(sent_id: String, language: String) = {
     val feats = if (FEATS != "_") "|" + FEATS else ""
