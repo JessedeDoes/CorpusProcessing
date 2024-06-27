@@ -6,7 +6,15 @@ case class UdToken(ID: String="_", FORM: String="_", LEMMA: String="_", UPOS: St
 
   lazy val tokenId = s"$sent_id.$ID.$language"
   lazy val isMultiWordToken = !ID.matches("[0-9]+")
-  lazy val subTokenIds: Seq[String] = if (isMultiWordToken) ID.split("-").toList else List()
+  lazy val subTokenIds: Seq[String] = if (isMultiWordToken) {
+    val s1 = ID.split("-").toList;
+    if (s1.forall(_.matches("^[0-9]+$"))) {
+      val s2 = s1.map(_.toInt)
+      Range.inclusive(s2.min, s2.max).map(_.toString).toSeq
+    } else
+    s1
+  }
+  else List()
 
 
   def toXML(sent_id: String, language: String) = {

@@ -204,10 +204,12 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   lazy val leafTokens = tokens.filter(!_.isMultiWordToken)
   def subTokens(t: UdToken): Seq[UdToken] = t.subTokenIds.flatMap(id => tokens.filter(_.ID==id))
 
-  def leafTokenXML(t: UdToken): Elem = {
+  def leafTokenXML(t: UdToken, orig_form:Option[String] = None, n:Int=0): Elem = {
     val msd = s"UPosTag=${t.UPOS}" + (if (t.FEATS.contains("|")) "|"  + t.FEATS else "");
-    <w xml:id={this.sent_id + "." + t.ID} subtype={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={msd}>{t.FORM}</w>
+    val orig: Option[String] = if (orig_form.nonEmpty) { if (n==0) orig_form  else Some("_") } else None
+    <w xml:id={this.sent_id + "." + t.ID} orig={orig.getOrElse(null)} type={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={msd}>{t.FORM}</w>
   }
+
   def asTEI() = {
 
     //val mwteetjes = tokens.filter(_.isMultiWordToken)
@@ -217,7 +219,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
       if (t.isMultiWordToken) {
         // println("MWT!!!"  + t)
         // System.exit(0)
-        <w xml:id={this.sent_id + "." + t.ID} type="MultiWordToken"><choice><orig>{t.FORM}</orig><reg>{subTokens(t).map(leafTokenXML)}</reg></choice></w>
+        <w xml:id={this.sent_id + "." + t.ID} type="MultiWordToken"><choice><orig>{t.FORM}</orig><reg>{subTokens(t).zipWithIndex.map({case (x,j) => leafTokenXML(x,Some(t.FORM), j)})}</reg></choice></w>
       } else
         leafTokenXML(t)
     }) // PC
