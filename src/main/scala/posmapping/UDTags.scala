@@ -68,7 +68,7 @@ class UDStyleTag(tag: String, tagset: TagSet=defaultTagset) extends Tag(tag,tags
 
 
   val featureValues:Array[String] = rest.split("\\s*\\|\\s*").filter(f => !(f.trim == ""))
-  val features:List[Feature] = featureValues.map(parseFeature).toList.filter(_.name != "upostag") // ++ List(Feature("pos", pos))
+  val features:List[Feature] = featureValues.map(parseFeature).toList.filter(x => x.name != "upostag" && x.name.toLowerCase.matches("^[a-z]+$")) // ++ List(Feature("pos", pos))
   println("\n#### "  + tag)
   features.foreach(println)
 
@@ -80,9 +80,11 @@ class UDStyleTag(tag: String, tagset: TagSet=defaultTagset) extends Tag(tag,tags
 }
 
 object getTagsFromBlacklab  {
+  val corpus = "UD_TEI_SHORTSENTENCES"
   //val url = "http://svotmc10.ivdnt.loc:8080/blacklab-server/parlamint_test_config/hits?first=0&group=hit%3Axpos&number=100000&patt=%5B%5D&adjusthits=yes&interface=%7B%22form%22%3A%22explore%22%2C%22exploreMode%22%3A%22frequency%22%7D"
-  val url="http://svotmc10.ivdnt.loc:8080/blacklab-server/parlamint_test_config/hits?first=0&group=context%3Axpos%3Ai%3AH&number=10000&patt=%5Blanguage%3D%22nl%22%5D"
+  val url=s"http://svotmc10.ivdnt.loc:8080/blacklab-server/$corpus/hits?first=0&group=context%3Axpos%3Ai%3AH&number=10000&patt=%5B%5D"
   def main(args: Array[String]) = {
+    println(url)
     val d = XML.load(url)
     val tags = (d \\ "hitgroup").filter(h => (h \ "size").text.toInt > 2)
 
