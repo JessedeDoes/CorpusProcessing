@@ -61,7 +61,7 @@ with open(sys.argv[1]) as f:
      name = a['name']
      print(name, file=sys.stderr)
      path = re.sub("'", '"',  a['valuePath'])
-     path = re.sub("^[.]", "ancestor::speech", path)
+     #path = re.sub("^[.]", "ancestor::speech", path)
      metas.append(f'''<meta group="speech" type="text" name="{name}"><xsl:attribute name="value"><xsl:value-of select='{path}'/></xsl:attribute></meta>''')
 
 

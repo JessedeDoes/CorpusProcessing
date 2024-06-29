@@ -28,14 +28,14 @@
 		<meta type="text" group="Opname" name="Bron"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:opname/meta:bron'/></xsl:attribute></meta>
 		<meta type="text" group="Opname" name="status"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:transcriptie_status/meta:label'/></xsl:attribute></meta>
 		<meta group="speech" type="text" name="spreker"><xsl:attribute name="value"><xsl:value-of select='@speaker'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="geslacht"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:gender//meta:label'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="geslacht"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:gender//meta:label'/></xsl:attribute></meta>
 		<meta group="speech" type="text" name="beroep"><xsl:attribute name="value"><xsl:value-of select='let $b := .//meta:opname__persoon[.//meta:label="spreker"]//meta:beroep//meta:label/text() return $b[1]'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="geboorteplaats"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:plaats[contains(@rel,"boor")]//meta:naam'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="mobiliteit_woonplaats"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:mobiliteit[contains(@rel,"woon")]//meta:label'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="mobiliteit_werkplaats"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:mobiliteit[contains(@rel,"beroep")]//meta:label'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="herkomst_partner"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_partnerplaats//meta:match_level'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="herkomst_moeder"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech//meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_moederplaats//meta:match_level'/></xsl:attribute></meta>
-		<meta group="speech" type="text" name="herkomst_vader"><xsl:attribute name="value"><xsl:value-of select='ancestor::speech/meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_vaderplaats//meta:match_level'/></xsl:attribute></meta></xsl:variable>
+		<meta group="speech" type="text" name="geboorteplaats"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:plaats[contains(@rel,"boor")]//meta:naam'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="mobiliteit_woonplaats"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:mobiliteit[contains(@rel,"woon")]//meta:label'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="mobiliteit_werkplaats"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:mobiliteit[contains(@rel,"beroep")]//meta:label'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="herkomst_partner"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_partnerplaats//meta:match_level'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="herkomst_moeder"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_moederplaats//meta:match_level'/></xsl:attribute></meta>
+		<meta group="speech" type="text" name="herkomst_vader"><xsl:attribute name="value"><xsl:value-of select='./meta:opname__persoon[.//meta:label="spreker"]//meta:persoon_vaderplaats//meta:match_level'/></xsl:attribute></meta></xsl:variable>
     
   <xsl:for-each select=".//*[local-name()='alpino_ds']">
    <alpino_ds>
