@@ -90,11 +90,15 @@ object getTagsFromBlacklab  {
 
       .map(x => (x  \ "identityDisplay").text)
       .toSet.filter(x => x.nonEmpty && !x.contains("(")).map(UDTagSet.fromString)
-    tags.foreach(println)
+    //tags.foreach(println)
     val tagset = TagSet.tagsetFromSetOfTags("pos", tags)
 
     val p = new PrintWriter("/tmp/tagset.json")
     p.println(tagset.asJSON.replaceAll("pos_upostag","pos_head"))
     p.close()
+
+    val p1 = new PrintWriter("/tmp/tagset.yaml")
+    p1.println(tagset.forBlacklabUDStyle)
+    p1.close()
   }
 }

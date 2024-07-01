@@ -407,6 +407,15 @@ case class TagSet(prefix: String,
        |          keep: both
        |""".stripMargin).mkString("\n")
 
+  def forBlacklabUDStyle = partitions.keySet.map(p =>
+    s"""
+       |    - name: pos_$p
+       |      displayName: $p
+       |      valuePath: ".[matches(@msd,'^([A-Za-z]+=[A-Za-z0-9]+)([|]([A-Za-z]+=[A-Za-z0-9]+))*$$')][contains(@msd,'$p')]/replace(./@msd, '.*$p=([A-Za-z0-9]+).*', '$$1')"
+       |      uiType: select
+       |
+       """.stripMargin).mkString("\n")
+
   def inSubsets(f:String):List[String] = partitions.filter({ case (s, v) => v.contains(f) }).toList.map(_._1)
 
   def fromPropositionCGN(p:Proposition, posIsSpecial: Boolean = false):Tag =
