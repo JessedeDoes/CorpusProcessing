@@ -207,7 +207,8 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
   def leafTokenXML(t: UdToken, orig_form:Option[String] = None, n:Int=0): Elem = {
     val msd = s"UPosTag=${t.UPOS}" + (if (t.FEATS.contains("|")) "|"  + t.FEATS else "");
     val orig: Option[String] = if (orig_form.nonEmpty) { if (n==0) orig_form  else Some("_") } else None
-    <w xml:id={this.sent_id + "." + t.ID} orig={orig.getOrElse(null)} type={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={msd}>{t.FORM}</w>
+    val l:String = String.format("%03d",t.FORM.length.asInstanceOf[Object])
+    <w n={l}  xml:id={this.sent_id + "." + t.ID} orig={orig.getOrElse(null)} type={dependencyPattern(t)} lemma={t.LEMMA} pos={t.UPOS} msd={msd}>{t.FORM}</w>
   }
 
   def asTEI() = {
@@ -219,7 +220,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
       if (t.isMultiWordToken) {
         // println("MWT!!!"  + t)
         // System.exit(0)
-        <w xml:id={this.sent_id + "." + t.ID} type="MultiWordToken"><choice><orig>{t.FORM}</orig><reg>{subTokens(t).zipWithIndex.map({case (x,j) => leafTokenXML(x,Some(t.FORM), j)})}</reg></choice></w>
+        <w type="MultiWordToken"><choice><orig>{t.FORM}</orig><reg>{subTokens(t).zipWithIndex.map({case (x,j) => leafTokenXML(x,Some(t.FORM), j)})}</reg></choice></w>
       } else
         leafTokenXML(t)
     }) // PC
