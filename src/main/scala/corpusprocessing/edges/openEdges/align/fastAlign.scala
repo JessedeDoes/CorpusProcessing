@@ -25,8 +25,12 @@ case class fastAlign(bookDoc: Elem, unitElement: String="ab") {
 
   def tokenizedText(v: Node) = v.descendant.filter(x => Set("w").contains(x.label)).map(_.text.replaceAll("\\s+", "")).toSeq // .mkString(" ")
 
-  def addWordAlignment(alignment: Alignment) = {
+  def createWordAlignmentLinks(alignment: Alignment) = {
+    val pairs = makePairs(alignment)
+    makeStandOffLinks(alignment,pairs)
+  }
 
+  def makePairs(alignment: Alignment)  = {
 
     // deze twee hoeven niet iedere keer
 
@@ -73,15 +77,24 @@ case class fastAlign(bookDoc: Elem, unitElement: String="ab") {
 
     println(s"Found ${alignedWordIds.size} word alignments in ${(bookDoc \\ "w").size} tokens")
 
-    val wordLinks = alignedWordIds.flatMap({case (l,r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>)})
+    alignedWordIds
+    // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
+  }
+
+
+
+  def makeStandOffLinks(alignment: Alignment, alignedWordIds: Seq[(String, Seq[String])])  = {
+    val wordLinks = alignedWordIds.flatMap({ case (l, r) => r.map(r1 => <link type="word-alignment" target={s"#$l #$r1"}/>) })
     val id = alignment.bible1 + "--" + alignment.bible2 + ".words"
-    val alignmentLayer = <standOff type="word-alignment" xml:id={id}>{wordLinks}</standOff>
+    val alignmentLayer = <standOff type="word-alignment" xml:id={id}>
+      {wordLinks}
+    </standOff>
 
 
 
     // XML.save("/tmp/withWordLinks.xml", withLinks)
     alignmentLayer
-    // fast_align -i /tmp/bible.alignMe -N -d -o -v -I 10 > forward.align
   }
+
 
 }

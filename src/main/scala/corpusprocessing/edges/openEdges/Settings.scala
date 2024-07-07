@@ -31,7 +31,9 @@ object Settings extends EdgeSettings() {
 
 
    val tokenizedContentDir = teiDir + "/ids-fixed/"
+   val wordLinkedContentDir = teiDir + "/inline-word-alignment/"
 
+   new File(wordLinkedContentDir).mkdir()
 
    val nl_nl = fullPathtoSourceData + "/Alignments/nl-nl/"
    val en_nl = fullPathtoSourceData + "/Alignments/en-nl/"

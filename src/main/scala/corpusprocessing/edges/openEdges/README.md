@@ -13,7 +13,7 @@ Paden zijn nu hard coded in de scripts. Deze instellingen staan in Settings.scal
 * DutchTagger voor het tokenizeren van de TEI
 * `fast_align` voor het toevoegen van wordalignment
 ## Stappen
-* Conversie naar TEI met verse alignment (output naat `/tmp/Bible`): (duurt ongeveer 25 minuten op mijn PC thuis)
+* Conversie naar TEI met verse alignment (output naar `/tmp/Bible`): (duurt ongeveer 25 minuten op mijn PC thuis)
 ```bash 
 java -Xmx20g corpusprocessing.edges.openEdges.dehelezooi
 ```

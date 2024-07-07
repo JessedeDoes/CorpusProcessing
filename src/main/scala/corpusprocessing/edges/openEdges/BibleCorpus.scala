@@ -23,7 +23,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
   def includeBooks(d: Elem, fileName: String) = {
     PostProcessXML.updateElement(d, _.label == "include", x => {
-      val href = (x \ "@href").text.replaceAll("content", "ids-fixed") // dit is een beetje suffe hack
+      val href = (x \ "@href").text.replaceAll("content", "ids-fixed") // dit is een beetje suffe hack, moet eruit
       val dir = new File(fileName).getParentFile.getCanonicalPath
       val included = XML.load(dir + "/" + href)
       setAttribute(x.copy(child = included), "href", href)
@@ -36,7 +36,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
     })
   }
 
-  def addWordAlignment(bookname: String, fileName: String): Unit = {
+  def addWordAlignment(bookname: String, fileName: String, inlineLinks: Boolean = true): Unit = {
 
 
     val outputFile = fileName.replaceAll(".xml$", ".wordAligned.xml").replaceAll("alignments", "all-word-alignments")
@@ -57,25 +57,65 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
     val bookXML = XML.load(fileName)
 
-    val  dBooksIncluded = includeBooks(bookXML, fileName) // dit is verkeerde logica, beter hele bijbel per talenpaar in plaats van alle taalparen per bijbel
+    val (dBooksIncluded, contentDocuments): (Elem, NodeSeq)  =
+      if (!inlineLinks) includeBooks(bookXML, fileName) -> List()
+      else (bookXML,
+        (bookXML \\ "include").map(x => {
+          val href = (x \ "@href").text.replaceAll("content", "ids-fixed") // dit is een beetje suffe hack, moet eruit
+          val dir = new File(fileName).getParentFile.getCanonicalPath
+          val included = XML.load(dir + "/" + href)
+          included
+        }) )
+
+     // dit is verkeerde logica, beter hele bijbel per talenpaar in plaats van alle taalparen per bijbel
 
     val dUniqueIds: Elem = dBooksIncluded // makeIdsGloballyUnique(dBooksIncluded)
 
     val wordAligner = align.fastAlign(dUniqueIds)
+
     val start = System.currentTimeMillis()
-    val wordAlignmentLayers: Seq[Elem] = alignments.zipWithIndex.map({
-      case (a, i) =>
-        val start = System.currentTimeMillis()
-        println(s"######################################!!!! Start word alignment on book $bookname, at $i of ${alignments.size} alignments")
-        val alignmentLayer: Elem = wordAligner.addWordAlignment(a)
-        val end = System.currentTimeMillis()
-        println(s"######################################!!!! End word alignment on book $bookname, at $i of ${alignments.size} alignments, took ${end - start} ms")
-        alignmentLayer
-    }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
-    val noIncludes = removeBookIncludes(dUniqueIds)
-    val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignmentLayers))
-    // XML.save(outputFile, processed)
-    corpusprocessing.corpusutils.SaveHugeXML.save(outputFile,processed)
+
+    if (!inlineLinks) {
+      val wordAlignmentLayers: Seq[Elem] = alignments.zipWithIndex.map({
+        case (a, i) =>
+          val start = System.currentTimeMillis()
+          println(s"######################################!!!! Start word alignment on book $bookname, at $i of ${alignments.size} alignments")
+          val alignmentLayer: Elem = wordAligner.createWordAlignmentLinks(a)
+          val end = System.currentTimeMillis()
+          println(s"######################################!!!! End word alignment on book $bookname, at $i of ${alignments.size} alignments, took ${end - start} ms")
+          alignmentLayer
+      }) // .foldLeft(dUniqueIds)({case (e,a) => align.fastAlign.addWordAlignment(e, a)})
+
+      val noIncludes = removeBookIncludes(dUniqueIds)
+      val processed = PostProcessXML.updateElement(noIncludes, _.label == "teiCorpus", x => x.copy(child = x.child ++ wordAlignmentLayers))
+      // XML.save(outputFile, processed)
+      corpusprocessing.corpusutils.SaveHugeXML.save(outputFile, processed)
+    } else {
+      //case class linkToBible(to_bible: String, word_ids: Seq[String])
+      //val bibles = alignments.map(_.bible1).toSet ++ alignments.map(_.bible2).toSet
+      this.bibles.foreach(b => {
+        val relevantAlignments = alignments.filter(a => Set(a.bible1).contains(b.bible))
+        val book: Book = b.books.filter(_.book == bookname).head
+        val producedPairs: Seq[(String, Seq[(String, String)])] = relevantAlignments.flatMap(a => {
+          val bibleTo = a.bible2
+          val pairs: Seq[(String, Seq[String])] = wordAligner.makePairs(a)
+          val pairsWithTargetBible: Seq[(String, Seq[(String, String)])] = pairs.map{case (id,l) => id -> l.map(bibleTo -> _)}
+          pairsWithTargetBible
+        })
+        val mapje: Map[String, Seq[(String, String)]] = producedPairs.groupBy(_._1).mapValues(_.flatMap(_._2))
+
+          // wordAligner.makePairs(a).map(x => linksToBible(a.bible2,x))).groupBy(_._1).mapValues(l => l.map(_._2))
+        val fileName = Settings.tokenizedContentDir + "/" + book.xmlFileName
+        val bookXML = XML.load(fileName)
+
+        val wordLinkedXML = PostProcessXML.updateElement(bookXML, _.label=="w", w => {
+          val id = getId(w)
+          val links = mapje.getOrElse(id,Seq()).map({case (bid,wid) => <link type="word-alignment" subtype={bid} target={wid}/>})
+          w.copy(child = w.child ++ links)
+        })
+
+      })
+    }
   }
 
   def printBooks(toDir: String = "/tmp/Bible/") = {

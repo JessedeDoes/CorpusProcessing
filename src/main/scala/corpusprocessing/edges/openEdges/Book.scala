@@ -50,6 +50,7 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
   def linkXml(v: Verse): Seq[Elem] = links.filter(_._1.xmlId == v.ref.xmlId).flatMap({ case (r, s) => s.map(r1 => link(r,r1)) })
 
   def linkCorresp(v: Verse): String = links.filter(_._1.xmlId == v.ref.xmlId).flatMap({ case (r, s) =>  s.map(r1 => s"#${r1.xmlId}") }).toSet.mkString(" ")
+  def inlineLinks(v: Verse) =  links.filter(_._1.xmlId == v.ref.xmlId).flatMap({ case (r, s) =>  s.map(r1 => <link type="verse-alignment" subtype={r.bible} target={r1.xmlId}/> /* s"#${r1.xmlId}" */) }).toSet.toSeq
   def printTo(f: String, includeLinks: Boolean = false)  = {
 
     Console.err.println(s"Printing book $book from bible $bible ....")
@@ -102,7 +103,7 @@ case class Book(myBible: Bible, verses: Stream[Verse]) {
           <div type="book">
             {if (chapterise)
               chapters.map(c => <div type="chapter" n={bible + "." + c.cid}>{c.verses.map(v => v.toXML(corresp=linkCorresp(v)))}</div>)
-            else verses.map(v => v.toXML(corresp=linkCorresp(v)))}
+            else verses.map(v => v.toXML(corresp=linkCorresp(v), inlineLinks = inlineLinks(v)))}
           </div>
         </body>
       </text>
