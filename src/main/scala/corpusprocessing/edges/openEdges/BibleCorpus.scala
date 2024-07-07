@@ -114,6 +114,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
           w.copy(child = w.child ++ links)
         })
 
+        XML.save(Settings.wordLinkedContentDir + "/"  + book.xmlFileName, wordLinkedXML)
       })
     }
   }
