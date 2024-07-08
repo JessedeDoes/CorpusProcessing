@@ -17,7 +17,7 @@ object Defaults {
    val sourceDir: String = "OpenEDGeS/OpenEDGeS_v1.01/"
 
 
-   val teiDir: String = "TEI"
+   val teiDir: String = projectRoot + "TEI"
 }
 case class EdgeSettings(projectRoot: String = Defaults.projectRoot,
                       sourceDir: String = Defaults.sourceDir,

@@ -55,10 +55,12 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
     alignments.foreach(a => println(a.correspondences.size))
 
-    val bookXML = XML.load(Settings.tokenizedContentDir +"/" + fileName)
+
+    println(Settings.tokenizedContentDir)
+    val bookXML = XML.load(fileName)
 
     val (dBooksIncluded, contentDocuments): (Elem, NodeSeq)  =
-      if (!inlineLinks) includeBooks(bookXML, fileName) -> List()
+      if (true || !inlineLinks) includeBooks(bookXML, fileName) -> List()
       else (bookXML,
         (bookXML \\ "include").map(x => {
           val href = (x \ "@href").text.replaceAll("content", "ids-fixed") // dit is een beetje suffe hack, moet eruit
@@ -94,14 +96,21 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
       //case class linkToBible(to_bible: String, word_ids: Seq[String])
       //val bibles = alignments.map(_.bible1).toSet ++ alignments.map(_.bible2).toSet
       this.bibles.foreach(b => {
+        println("working on:  " + b.bible)
+
         val relevantAlignments = alignments.filter(a => Set(a.bible1).contains(b.bible))
+
         val book: Book = b.books.filter(_.book == bookname).head
         val producedPairs: Seq[(String, Seq[(String, String)])] = relevantAlignments.flatMap(a => {
           val bibleTo = a.bible2
+          // println(s"Alignment layer for ${b.bible} $bibleTo $bookname:\n" + a)
           val pairs: Seq[(String, Seq[String])] = wordAligner.makePairs(a)
           val pairsWithTargetBible: Seq[(String, Seq[(String, String)])] = pairs.map{case (id,l) => id -> l.map(bibleTo -> _)}
           pairsWithTargetBible
         })
+
+        // println(producedPairs)
+
         val mapje: Map[String, Seq[(String, String)]] = producedPairs.groupBy(_._1).mapValues(_.flatMap(_._2))
 
           // wordAligner.makePairs(a).map(x => linksToBible(a.bible2,x))).groupBy(_._1).mapValues(l => l.map(_._2))
