@@ -25,7 +25,7 @@ case class EdgeSettings(projectRoot: String = Defaults.projectRoot,
 object Settings extends EdgeSettings() {
 
    val fullPathtoSourceData = projectRoot  + "/"  + sourceDir
-   val outputTEIDir =  projectRoot + teiDir
+   val outputTEIDir =  teiDir
 
    val verseAlignedTEIDir = outputTEIDir + "/alignments/"
 

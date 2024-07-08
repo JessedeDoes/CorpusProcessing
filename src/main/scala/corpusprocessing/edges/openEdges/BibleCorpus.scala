@@ -100,30 +100,33 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
         val relevantAlignments = alignments.filter(a => Set(a.bible1).contains(b.bible))
 
-        val book: Book = b.books.filter(_.book == bookname).head
-        val producedPairs: Seq[(String, Seq[(String, String)])] = relevantAlignments.flatMap(a => {
-          val bibleTo = a.bible2
-          // println(s"Alignment layer for ${b.bible} $bibleTo $bookname:\n" + a)
-          val pairs: Seq[(String, Seq[String])] = wordAligner.makePairs(a)
-          val pairsWithTargetBible: Seq[(String, Seq[(String, String)])] = pairs.map{case (id,l) => id -> l.map(bibleTo -> _)}
-          pairsWithTargetBible
-        })
+        val bookOption: Option[Book] = b.books.find(_.book == bookname)
+        bookOption.foreach(book  => {
 
-        // println(producedPairs)
+          val producedPairs: Seq[(String, Seq[(String, String)])] = relevantAlignments.flatMap(a => {
+            val bibleTo = a.bible2
+            // println(s"Alignment layer for ${b.bible} $bibleTo $bookname:\n" + a)
+            val pairs: Seq[(String, Seq[String])] = wordAligner.makePairs(a)
+            val pairsWithTargetBible: Seq[(String, Seq[(String, String)])] = pairs.map { case (id, l) => id -> l.map(bibleTo -> _) }
+            pairsWithTargetBible
+          })
 
-        val mapje: Map[String, Seq[(String, String)]] = producedPairs.groupBy(_._1).mapValues(_.flatMap(_._2))
+          // println(producedPairs)
+
+          val mapje: Map[String, Seq[(String, String)]] = producedPairs.groupBy(_._1).mapValues(_.flatMap(_._2))
 
           // wordAligner.makePairs(a).map(x => linksToBible(a.bible2,x))).groupBy(_._1).mapValues(l => l.map(_._2))
-        val fileName = Settings.tokenizedContentDir + "/" + book.xmlFileName
-        val bookXML = XML.load(fileName)
+          val fileName = Settings.tokenizedContentDir + "/" + book.xmlFileName
+          val bookXML = XML.load(fileName)
 
-        val wordLinkedXML = PostProcessXML.updateElement(bookXML, _.label=="w", w => {
-          val id = getId(w)
-          val links = mapje.getOrElse(id,Seq()).map({case (bid,wid) => <link type="word-alignment" subtype={bid} target={wid}/>})
-          w.copy(child = w.child ++ links)
+          val wordLinkedXML = PostProcessXML.updateElement(bookXML, _.label == "w", w => {
+            val id = getId(w)
+            val links = mapje.getOrElse(id, Seq()).map({ case (bid, wid) => <link type="word-alignment" subtype={bid} target={wid}/> })
+            w.copy(child = w.child ++ links)
+          })
+
+          XML.save(Settings.wordLinkedContentDir + "/" + book.xmlFileName, wordLinkedXML)
         })
-
-        XML.save(Settings.wordLinkedContentDir + "/"  + book.xmlFileName, wordLinkedXML)
       })
     }
   }
