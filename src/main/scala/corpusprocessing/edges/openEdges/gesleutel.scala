@@ -37,6 +37,13 @@ object addWordAlignment {
   }
 }
 
+object addWordAlignmentTestje {
+  def main(args: Array[String])  = {
+    //complete_corpus.addWordAlignment("Gen", genesis)
+    smaller_sample.addWordAlignment("Zeph", zeph)
+  }
+}
+
 object addWordAlignmentForAll {
   def main(args: Array[String])  = {
     Console.err.println("Aligning from: " + verseAlignedTEIDir)

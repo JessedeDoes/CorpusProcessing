@@ -55,7 +55,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
 
     alignments.foreach(a => println(a.correspondences.size))
 
-    val bookXML = XML.load(fileName)
+    val bookXML = XML.load(Settings.tokenizedContentDir +"/" + fileName)
 
     val (dBooksIncluded, contentDocuments): (Elem, NodeSeq)  =
       if (!inlineLinks) includeBooks(bookXML, fileName) -> List()

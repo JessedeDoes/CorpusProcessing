@@ -5,6 +5,8 @@ import corpusprocessing.edges.openEdges.Verse.verse
 import java.io.File
 
 case class Correspondence(v1: Set[VerseRef], v2: Set[VerseRef]) {
+
+  def converse() = Correspondence(v2,v1)
   def toXML = {
     val refPairs = v1.flatMap(v => v2.map(w => v -> w))
     <linkGrp n={refPairs.size.toString}>
@@ -52,6 +54,7 @@ case class Alignment(correspondences: Set[Correspondence]) {
   lazy val index1: Map[String, Set[Correspondence]] = correspondences.flatMap(a => a.v1.map(r => r.xmlId -> a)).groupBy(_._1).mapValues(_.map(_._2))
   lazy val index2: Map[String, Set[Correspondence]] = correspondences.flatMap(a => a.v2.map(r => r.xmlId -> a)).groupBy(_._1).mapValues(_.map(_._2))
 
+  def converse = Alignment(correspondences.map{ _.converse()})
   def isSimplyLinked(id: String) = {
     val others = aligned(id)
     others.size == 1 && aligned(others.head.xmlId).size == 1
@@ -83,7 +86,7 @@ case class Alignment(correspondences: Set[Correspondence]) {
 }
 
 case class SetOfAlignments(bible: BibleCorpus,  paths: Set[String], verseAlignedTEIDir: Option[String] = None) {
-  lazy val alignments: Set[Alignment] =
+  lazy val alignmentsOneWay: Set[Alignment] =
     if (verseAlignedTEIDir.nonEmpty) {
       val xmlFiles = new java.io.File(verseAlignedTEIDir.get).listFiles().filter(_.getName.endsWith(".xml"))
       //xmlFiles.map(Alignment.readCorrespondencesFromAlignedTEI())
@@ -91,5 +94,6 @@ case class SetOfAlignments(bible: BibleCorpus,  paths: Set[String], verseAligned
     }
      else
      paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
+  lazy val alignments = alignmentsOneWay.map(_.converse) ++ alignmentsOneWay // doe het toch maar weer tweezijdig
   lazy val bibles: Set[(String, String)] = alignments.flatMap(_.bibles)
 }
