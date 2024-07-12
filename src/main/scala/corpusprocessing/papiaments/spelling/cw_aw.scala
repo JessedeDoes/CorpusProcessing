@@ -16,11 +16,18 @@ import DiacriticRemover._
 object cw_aw {
 
   val baseDir = "/mnt/Projecten/Papiaments/Woordenboeken/ArubaLijst/"
-  lazy val arubalijst = io.Source.fromFile(baseDir + "unieke_lijst.txt").getLines.map(x => x.replaceAll(" .*", "")).toSet
+  lazy val arubalijst = io.Source.fromFile(baseDir + "unieke_lijst.txt").getLines.map(x => x.replaceAll(" .*", "")).toSet.filter(!_.contains("["))
   lazy val alignments = io.Source.fromFile(baseDir + "../../Alignments/pairs.pruned.e2p.out").getLines
   val buki = baseDir + "../GoudenBoekje/buki_plus_retro.tab"
   lazy val bukiwords = io.Source.fromFile(buki).getLines.map(_.replaceAll("\t.*","")).filter(_.nonEmpty).toSet
+  lazy val approvedBukiWords =  io.Source.fromFile(buki).getLines.filter(_.contains("buki")).map(_.replaceAll("\t.*","")).filter(_.nonEmpty).toSet
   lazy val bukiwords_noacc = bukiwords.map(removeDiacritics)
+
+  lazy val bukiReaccent: Map[String, Set[String]] = bukiwords.map(x => removeDiacritics(x) -> x).groupBy(_._1).mapValues(_.map(_._2))
+
+  def prefer(s: Set[String], f: String => Boolean): Set[String]  = if (s.exists(f)) s.filter(f) else s
+
+
   val replacements = List(
     "k" -> "c",
     "s" -> "c",
@@ -39,16 +46,23 @@ object cw_aw {
     "o" -> "u",
     "cio" -> "sho",
     "xio" -> "sho",
+    "sio" -> "sho",
     "sci" -> "si",
     "xi" -> "si",
+    "x" -> "ks",
+    "th" -> "t",
     "[pbk]s" -> "s",
-    "ss" -> "s",
-    "a" -> "á",
-    "i" -> "í",
-    "e" -> "é",
-    "ó" -> "o",
-    "ie" -> "e",
+    // assimilaties
+    "dh" -> "th",
+    "dv" -> "tv",
+    "bv" -> "pv",
     "bs" -> "ps",
+    "nm" -> "mm",
+    "iyo" -> "ilio",
+    "^ps" -> "s",
+    "ss" -> "s",
+    "ie" -> "e",
+
     "d$" -> "t",
     "cu" -> "kw",
     "b" -> "v"
@@ -75,22 +89,30 @@ object cw_aw {
     if (arubalijst.contains(w)) Set() else blaasop(Set(w)).filter(x => arubalijst.contains(x))
   }
 
+  val N = Integer.MAX_VALUE
+  def pick(s: Set[String], n:Int=N) = util.Random.shuffle(s.toList).take(n).toSet
 
+  def reconstruct(x: String): Set[String] = prefer(bukiReaccent(x), y => approvedBukiWords.contains(y)  )
   def fromAruba() = {
-    println(bukiwords_noacc.contains("farmaseutiko"))
 
-    val matches = arubalijst.toList.sorted.map(w0 => {
+
+    val matches = pick(arubalijst).toList.sorted.map(w0 => {
       val w = removeDiacritics(w0)
       val cands = blaasop(Set(w), andersom) ++ Set(w)
-      val found = (cands intersect bukiwords_noacc).headOption // .getOrElse("_")
-      if (found.nonEmpty)
-        println(w + " -> " + found.get)
-      else {
+      val found = (cands intersect bukiwords_noacc) // .getOrElse("_")
+      if (found.nonEmpty) {
+        val r = prefer(found.flatMap(reconstruct),x => approvedBukiWords.contains(x))
+        println(w + " -> " + r.mkString(", "))
+      } else {
         println(w + " -> " + "______") //   + cands)
 
       }
       w0 -> found
     })
+    val nMatches = matches.filter(_._2.nonEmpty).size
+    val trivial = matches.filter({case (p,v) => v.contains(p)}).size
+    val percentage = Math.round(10000 * (nMatches / matches.size.toDouble)).toDouble / 100
+    println(s"matched $nMatches of ${matches.size} ($percentage), $trivial identical matches")
   }
 
   def main(args: Array[String])  = fromAruba()
