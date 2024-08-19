@@ -24,9 +24,7 @@ object expandXInclude {
     ProcessFolder.processFolder(new File(inDir), new File(outDir), { case (i, o) =>
       if (i.endsWith(".xml") && i.contains("Zeph")) {
         val g = new File(i)
-        println(o)
-
-
+        println("Processing " + o)
         val inDoc = XML.loadFile(g)
         val outDoc = includeBooks(inDoc, g.getCanonicalPath)
         XML.save(o, outDoc, "UTF-8")

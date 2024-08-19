@@ -25,15 +25,20 @@ object Alignment {
     val b2 = parts(1).replaceAll("\\.tsv", "")
 
     val source = io.Source.fromFile(path)
-    val correspondences = source.getLines().map(l => {
+    val correspondences: Set[Correspondence] = source.getLines().map(l => {
       val parts = l.split("\\t")
       val verses_1 = parts(0).split(",").map(x => verse(b1, x)).toSet
       val verses_2 = parts(1).split(",").map(x => verse(b2, x)).toSet
       Correspondence(verses_1, verses_2)
-    }).filter(x => x.v1.nonEmpty && x.v2.nonEmpty).toSet
+    })
+      .filter(x => x.v1.nonEmpty && x.v2.nonEmpty)
+      .filter(x => x.v1.map(_.book) == x.v2.map(_.book))
+      .toSet
     source.close()
+    println(s"$path: ${correspondences.size}")
     Alignment(correspondences)
   }
+
   import scala.xml._
   def readCorrespondencesFromTEI(f: File) = {
 
@@ -90,7 +95,8 @@ case class SetOfAlignments(bible: BibleCorpus,  paths: Set[String], verseAligned
     if (verseAlignedTEIDir.nonEmpty) {
       val xmlFiles = new java.io.File(verseAlignedTEIDir.get).listFiles().filter(_.getName.endsWith(".xml"))
       //xmlFiles.map(Alignment.readCorrespondencesFromAlignedTEI())
-      paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)
+      val a1 = paths.toList.map(p => Alignment.readCorrespondences(p))
+      a1.filter(_.nonEmpty).toSet
     }
      else
      paths.map(Alignment.readCorrespondences).filter(_.nonEmpty)

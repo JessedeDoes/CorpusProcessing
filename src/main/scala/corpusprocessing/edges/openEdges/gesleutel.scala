@@ -5,8 +5,10 @@ import scala.xml._
 import Verse._
 import Alignment._
 import Settings._
+import corpusprocessing.parlamint.setAtt
+
 import java.io.File
-import utils.ProcessFolder
+import utils.{PostProcessXML, ProcessFolder}
 
 
 object dehelezooi {
@@ -64,6 +66,39 @@ object gesleutel {
 }
 
 
+
+object removeStandoff {
+  def removeStandoff(d: Elem)  = {
+    val d1 = PostProcessXML.updateElement(d, _.label=="include", include => {
+      val href = (include \ "@href").text.replaceAll("content", "inline-word-alignment")
+      setAtt.setAttribute(include, "href", href)
+    })
+    val d2 = PostProcessXML.updateElement5(d1, x => x.label=="standOff" || x.label=="listRelation", e => Seq()).asInstanceOf[Elem]
+    d2
+  }
+
+  def main(args: Array[String]): Unit = {
+
+    val inDir = Settings.teiDir + "/alignments/"
+    val outDir = Settings.teiDir + "/no-standoff/"
+
+    new File(outDir).mkdir()
+
+    ProcessFolder.processFolder(new File(inDir), new File(outDir), { case (i, o) =>
+      if (i.endsWith(".xml")) {
+        val g = new File(i)
+
+        println(o)
+
+        val inDoc = XML.loadFile(g)
+        val outDoc = removeStandoff(inDoc)
+        XML.save(o, outDoc, "UTF-8")
+      }
+    })
+  }
+
+
+}
 /*
 1Chr.466        1Chr.469
 1Chr.467        1Chr.470

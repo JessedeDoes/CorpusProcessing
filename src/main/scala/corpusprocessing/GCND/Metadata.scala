@@ -325,7 +325,7 @@ object Metadata {
     //val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">{persoontje}</gcnd_annotatie_metadata>
     val z = <gcnd_annotatie_metadata xmlns="http://gcnd.ivdnt.org/metadata" xmlns:gcndmeta="http://gcnd.ivdnt.org/metadata">
       {persoontje}
-      {opname__persoon}
+      {opname__persoon} 
     </gcnd_annotatie_metadata>
     // Console.err.println(z)
     z

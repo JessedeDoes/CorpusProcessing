@@ -162,12 +162,13 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
         <relation type="verse-alignment" active={a.bible1} passive={a.bible2}><desc>{nCorrespondences} instances</desc></relation>
       }).toList.sortBy(_.toString)
 
-      val allCorrespondences = allAlignments.alignments.map(a => {
+      lazy val allCorrespondences = allAlignments.alignments.map(a => {
         val id = a.bible1 + "--" + a.bible2
         val correspondences = a.filterByBook(bkname)
         <standOff type="book-alignment" xml:id={id}>{correspondences.map(_.toXML)}</standOff>
       })
 
+      val includeCorrespondences = false
       val xml = <teiCorpus xmlns:xi="http://www.w3.org/2001/XInclude" xmlns="http://www.tei-c.org/ns/1.0">
         <teiHeader>
           <fileDesc>
@@ -180,7 +181,7 @@ case class BibleCorpus(baseDir: String, alignment_files: Set[String], verseAlign
           </encodingDesc>
         </teiHeader>
         {includes}
-        {allCorrespondences}
+        {if (includeCorrespondences) allCorrespondences}
       </teiCorpus>
       val subdir = toDir + "/alignments/"
       new File(subdir).mkdir()
