@@ -8,15 +8,48 @@
 <!-- stylesheet om de alpino-zinnetjes met metadata uit de GCND folia bestanden te halen -->
 
 <xsl:variable name="pid"><xsl:value-of select="//meta:gcnd_transcriptie_metadata/@xml:id"/></xsl:variable>
+<xsl:variable name="docpid"><xsl:value-of select="/*/@xml:id"/></xsl:variable>
+<xsl:variable name="docurl">http://svotmc10.ivdnt.loc/blacklab-server/GCND_mei/docs/<xsl:value-of select="$docpid"/>?outputformat=xml</xsl:variable>
+
+<xsl:variable name="Code"><xsl:value-of select="//metadata//meta:opname_code"/></xsl:variable>
+<xsl:variable name="Provincie"><xsl:value-of select='//metadata//meta:plaats[@rel="opname⟶plaats"]//meta:provincie/meta:label'/></xsl:variable>
+<xsl:variable name="Plaats_opname"><xsl:value-of select='//metadata//meta:plaats[@rel="opname⟶plaats"]//meta:naam'/></xsl:variable>
+
+<xsl:variable name="doctitle"><xsl:value-of select="$Code"/>: <xsl:value-of select="$Provincie"/>, <xsl:value-of select="$Plaats_opname"/></xsl:variable>
 <xsl:template match="/">
 <document xml:id="{$pid}">
   <xsl:apply-templates select=".//speech"/>
 </document>
 </xsl:template>
 
+<!--
+  - name: Title
+    value: ""
+    process: 
+    - action: append
+      field: Code
+    - action: append
+      value: ": "
+    - action: append
+      field: Provincie
+    - action: append
+      value: ", "
+    - action: append
+      field: Plaats_opname
+    - action: replace
+      find: " :"
+      replace: ":"
+    - action: replace
+      find: " ,"
+      replace: ","
+-->
+
 <xsl:template match="speech">
 
+ <xsl:message><xsl:value-of select="$docurl"/>: <xsl:value-of select="$doctitle"/></xsl:message>
   <xsl:variable name="metadata" as="node()*">
+	        <meta type="text" group="Identificatie" name="docpid" value="{$docpid}"/>
+		<meta type="text" group="Identificatie" name="doctitle" value="{$doctitle}"/>
 		<meta type="text" group="Lokalisering" name="Plaats_opname"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:plaats[@rel="opname⟶plaats"]//meta:naam'/></xsl:attribute></meta>
 		<meta type="text" group="Lokalisering" name="Kloekecode"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:plaats[@rel="opname⟶plaats"]//meta:kloeke_code'/></xsl:attribute></meta>
 		<meta type="text" group="Lokalisering" name="Provincie"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:plaats[@rel="opname⟶plaats"]//meta:provincie/meta:label'/></xsl:attribute></meta>
