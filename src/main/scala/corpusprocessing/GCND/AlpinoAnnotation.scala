@@ -124,7 +124,8 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
     val b = (node \ "@begin").text.toInt
     val lv = alignedTokens(b).text_lv
     val zv = (node \ "@word").text
-    val atts = node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null)).append(new UnprefixedAttribute("word_zv", zv, Null))
+    val atts = // node.attributes.filter(x => x.key != "word").append(new UnprefixedAttribute("word", lv, Null))
+      node.attributes.append(new UnprefixedAttribute("dialect_word", lv, Null))
     node.copy(attributes=atts)
   })
 
