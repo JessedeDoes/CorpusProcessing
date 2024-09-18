@@ -93,7 +93,11 @@ Indexes:
     def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{getCleanedText(n)}</interp></interpGrp>
 
     val article = {
-      val a = x("article_text")
+      //perl -pe 's/=((<\/?[ib]\/?>)?)\s*$/\n/'
+      // perl -pe 's/=((</?[ib]/?>)?)\\s*$/$1/'
+
+      val a = x("article_text").replaceAll("=((</?[ib]/?>)?)\\s+", "$1===")
+
       val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
         case Success(value) =>  {
           // Console.err.println("Yes, parsed! ")
@@ -205,7 +209,7 @@ Indexes:
 }
 
 object Export {
-  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/ExportTestGeenDubbel2024/"
+  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export2024_2/"
   def main(args: Array[String]): Unit = {
     new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }

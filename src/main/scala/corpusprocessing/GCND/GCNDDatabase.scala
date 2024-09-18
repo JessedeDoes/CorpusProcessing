@@ -5,7 +5,7 @@ import org.json4s._
 
 import java.io.PrintWriter
 import scala.xml._
-
+import corpusprocessing.GCND.Settings
 
 
 object GCNDDatabase {
@@ -15,7 +15,7 @@ object GCNDDatabase {
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
 
-  val db = new Database(config)
+  val db = new Database(Settings.config)
   Preparation.queries.foreach(db.runStatement)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats
@@ -42,7 +42,7 @@ object GCNDDatabase {
     })
   }
 
-  val foliadDir = "data/GCND/Folia/"
+  val foliadDir = Settings.foliaDir // "/home/jesse/WorkSpace/GCND/Folia/"
 
   def emptyDir(d: String)  = {
     val dir = new java.io.File(d)
