@@ -15,7 +15,7 @@ object GCNDDatabase {
   val config = new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd")
   val onefile_config =new Configuration(name="gcnd.nogmaals", server="svowdb20.ivdnt.loc", user="postgres", password="inl", database = "gcnd_prev")
 
-  val db = new Database(Settings.config)
+  val db = new Database(Settings.databaseConfig)
   Preparation.queries.foreach(db.runStatement)
 
   implicit lazy val serializationFormats: Formats = DefaultFormats

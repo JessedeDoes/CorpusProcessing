@@ -92,6 +92,7 @@ object shortrackonline {
   val gent2023 = "data/gent.html"
   val ar2023 = "data/ar2023.html"
   val lara = "data/laravanruijven.html"
+  val lara24 = "data/vanruijven.html"
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
@@ -99,15 +100,18 @@ object shortrackonline {
   lazy val nbsp = text("&#160;")
   def times(n: Int, node: NodeSeq) = (0 to n-1).flatMap(i => node)
   def main(args: Array[String]): Unit = {
-    val htmlToProcess = args.headOption.getOrElse("data/regio.html")
+    val htmlToProcess = args.headOption.getOrElse(lara24)
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
     val fHVHW: Skater => Boolean = x => x.club.toLowerCase().contains("hvhw");
     val fIJA: Skater => Boolean = x => x.club.toLowerCase().contains("ija");
+    val fDKIJV: Skater => Boolean = x => x.club.toLowerCase().contains("dkijv");
 
     val fFocus: Skater => Boolean = x=> fIHCL(x) || fHVHW(x) || fIJA(x)
     val tasks = List("/tmp/ihclOnly.html" -> fIHCL,
-      "/tmp/hvhwOnly.html" -> fHVHW, "/tmp/ijAOnly.html" -> fIJA,
+      "/tmp/hvhwOnly.html" -> fHVHW,
+      "/tmp/ijAOnly.html" -> fIJA,
+      "/tmp/dkijvOnly.html" -> fDKIJV,
       "/tmp/fSomeClubs.html" -> fFocus,
       "/tmp/allSkaters.html" -> fAll)
 
