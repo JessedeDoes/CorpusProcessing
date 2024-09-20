@@ -110,8 +110,12 @@ Het is toch geen waar, etc
 
 * _hij zei hij weet het niet_
 * _ik zeg gisterenavond , ik moet de auto binnensteken ut tut tut ._
+* _ik zeg , steek hem binnen ._
 
-Inleidende matrixzin (hij zei):
+(Laatste met sv1, verschil met smain niet zo duidelijk?)
+
+
+* Inleidende matrixzin (hij zei):
 
     Dependentielabel (rel): tag
     Categorielabel (cat): smain
