@@ -1,5 +1,5 @@
 
-# Dialectconstructies die moeilijk zijn voor Alpino
+# XPath-queries voor dialectconstructies
 
 
 De example-based search van gretel zal voor sommige dialect constructies niet goed werken omdat Alpino de gebruikersinvoer 
@@ -13,15 +13,6 @@ https://hackmd.io/@amghysel/r1kMS8cC9
 
 
 ## Pseudodirecte rede
-
-_hij zei hij weet het niet_
-
-met tag en nucl
-
-Directe rede met "van"
-
-//node[@rel="vc"  and @cat="svan"]
-bijvoorbeeld met zeggen: //node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
 
 
 ## 2. Subjectsverschijnselen
@@ -105,5 +96,38 @@ _Wat vindt u der eigenlijk van dat zulke zinnen dat die zo geanalyseerd worden?_
 
 Die gaan weet met sat
 
-# Zooi
+### 3.3 ja/nee het/ik/…
+
+* _Bwa nee het jong_
+* _ja **ja ze** het is heel juist_
+
+
+`//node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] and node[@rel='mwp' and @pos='pron']]`
+
+### 3.4 V2-bijzinnen - pseudodirecte rede
+
 Het is toch geen waar, etc
+
+* _hij zei hij weet het niet_
+* _ik zeg gisterenavond , ik moet de auto binnensteken ut tut tut ._
+
+Inleidende matrixzin (hij zei):
+
+    Dependentielabel (rel): tag
+    Categorielabel (cat): smain
+
+Pseudodirecte rede - V2-bijzin (hij weet het niet):
+
+    Depentielabel (rel): nucl
+    Categorielabel (cat): smain (of – bij werkwoordsinitiële zinnen – sv1)
+
+`//node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]`
+
+
+# Zooi
+
+Directe rede met "van"
+
+//node[@rel="vc"  and @cat="svan"]
+bijvoorbeeld met zeggen: //node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
+
