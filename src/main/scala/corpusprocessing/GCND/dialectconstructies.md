@@ -9,19 +9,23 @@ https://hackmd.io/@amghysel/r1kMS8cC9
 
 ## "en" als negatie
 
-`//node[./node[@word="en" and @rel="mod"]]`
 
+```xpath
+//node[./node[@word="en" and @rel="mod"]]
+```
 
 ## Pseudodirecte rede
 
-
+? 
 ## 2. Subjectsverschijnselen
 
 ### 2.1 subjectverdubbeling
 
 _Ik heb ik ik dat niet gezegd._
 
-`//node[count(./node[@rel='su']) > 1]`
+```xpath
+//node[count(./node[@rel='su']) > 1]
+```
 
 
 
@@ -29,7 +33,9 @@ _Ik heb ik ik dat niet gezegd._
 
 _omdat hem peinsde dat dat zijn kindje was._
 
-`//node[@rel="su" and @word="hem"]`
+```xpath
+//node[@rel="su" and @word="hem"]
+```
 
 `//node[@rel="su" and @naamval="obl"]`
 
@@ -183,19 +189,75 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 * Om het te zeggen gelijk of dat het is: …
 * ik was getrouwd sinds dat hij nog bij het leger was
 
-`//node[@cat='cp']/node[@rel='cmp' and @cat='mwu'][./node[@word="dat"]]`
+```xpath
+//node[@cat='cp']/node[@rel='cmp' and @cat='mwu'][./node[@word="dat"]]
+```
 
 #### Type 2: na vraagwoord
 * Ik weet niet wie dat er komt.
 * we gaan weer moeten de tijd afwachten wat dat er allemaal gaat voorvallen
 
-`//node[@word="wie" and @rel="whd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]`
+```xpath
+//node[@word="wie" and @rel="whd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
+```
 
 #### Type 3: na betrekkelijk voornaamwoord
 
-* De mens die dat jou moet helpen, zal vloeken.
+* _De mens die dat jou moet helpen, zal vloeken._
+* _nee ze voor de oorlog veertien achttien was waren er dan nog knechten **die dat** we winter zomer hadden_
+
+```xpath
+//node[@word="die" and @rel="rhd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
+```
 
 #### Type 4: na vraagwoord + of (zeldzaam in Vlaanderen, cf. Lassy-handleiding)
 
-* Zijn er meer mogelijkheden dan wat of dat je nu hebt?
+* _Zijn er meer mogelijkheden dan wat of dat je nu hebt?_
+
+(Niet te vinden in corpus)
+
+```xpath
+//node[@cat="whsub" and @rel="body" and
+     node[@lemma="wat" and @pt="vnw" and @rel="whd"] and
+     node[@cat="cp" and @rel="body" and
+         node[@cat="mwu" and @rel="cmp" and
+            node[@lemma="of" and @pt="vg" and @rel="mwp"] and
+            node[@lemma="dat" and @pt="vg" and @rel="mwp"]]]]
+```
+<!--
+![img_1.png](img_1.png)
+-->
+
+### 4.4 Beknopte bijzinnen ingeleid door _voor_ of _van_ in plaats van _om_
+
+* _een restaurant voor te blijven voor te eten_
+
+```xpath
+//node[@cat='oti'][./node[@rel='cmp' and @pt='vz' and (@word='voor' or @word='van')]]
+```
+
+### 4.5. Afhankelijke ja/nee-vragen ingeleid door _als_ ipv of
+
+* _k weet nie a je da weet ._
+
+```xpath
+//node [
+  node[@rel="vc"]
+    [node[@lemma="als"] and
+      node[@rel="body"]] and 
+  node[@rel="hd" and @pt="ww"]
+  ]
+```
+
+Trage query, 23 resultaten voor nu, allemaal west vlaanderen
+
+### 4.6. Bijzin met hoofdzinsvolgorde (V2-bijzin of Nebensätze)
+
+* _Die rol heb ik heel graag gespeeld omdat er zat poëzie in._
+```xpath
+//node[@cat='ssub'][
+node[@rel='hd' and @pt='ww'][following-sibling::node[@rel='obj1']]
+]
+```
+
 
