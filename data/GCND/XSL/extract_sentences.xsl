@@ -47,6 +47,8 @@
 <xsl:template match="speech">
 
  <xsl:message><xsl:value-of select="$docurl"/>: <xsl:value-of select="$doctitle"/></xsl:message>
+
+  <xsl:if test="//metadata//meta:transcriptie_status/meta:label='Alpino (gecorrigeerd)'">
   <xsl:variable name="metadata" as="node()*">
 	        <meta type="text" group="Identificatie" name="docpid" value="{$docpid}"/>
 		<meta type="text" group="Identificatie" name="doctitle" value="{$doctitle}"/>
@@ -80,7 +82,7 @@
      </metadata>
    </alpino_ds>
   </xsl:for-each>
+  </xsl:if>
 </xsl:template>
-
 </xsl:stylesheet>
 

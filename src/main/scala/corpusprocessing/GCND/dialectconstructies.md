@@ -128,10 +128,74 @@ Pseudodirecte rede - V2-bijzin (hij weet het niet):
 `//node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]`
 
 
-# Zooi
+NB: Alpino parset directe en pseudodirecte redes doorgaans automatisch juist als je een komma toevoegt tussen de matrixzin en de V2-bijzin.
 
-Directe rede met "van"
 
-//node[@rel="vc"  and @cat="svan"]
-bijvoorbeeld met zeggen: //node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
+### 3.5 Intercalaties/parentheses/interpositio
+
+Let op: afwijking van lassy: In het GCND kiezen we ervoor parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen . 
+
+
+`//node[node[@rel="tag"][.//node[@pos="verb"]]] and node[@cat="smain"]]`
+
+Geeft zinnetjes met tag (@rel='tag' and @cat='smain') zou ook al wat zijn.
+
+`node[@rel="tag" and @cat='smain'][../node[@cat='smain' and @rel='nucl']/@begin < @begin]`
+
+Dit werkt niet....
+
+
+## 4. Complementizer-fenomenen
+
+### 4.1 Afwijkende comparatieve voegwoorden (of, als, gelijk als, gelijk of dat)
+
+Bijvoorbeeld voor "of"
+
+* _maar het scheelt meer **of de helft** ._
+* _dat is veel langer **als dat** ik ik ben ._
+
+Voor 'of' bijvoorbeeld:
+
+`//node[@rel='obcomp'][./node[@rel='cmp' and @word='of']]`
+
+Meerwoordige voegwoordelijke combinaties:
+
+`//node[@rel='obcomp'][./node[@rel='cmp' and @cat='mwu']]`
+
+### 4.2 Directe rede ingeleid door van
+
+
+* _ja die zeggen van , als we daar in de tranchée en zaten ..._
+
+Vindbaar met: 
+
+`//node[@rel="vc"  and @cat="svan"]`
+
+Bijvoorbeeld beperkt tot combinatie met "zeggen"
+
+`//node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]`
+
+
+### 4.3 Expletief dat
+
+#### Type 1: na onderschikkend voegwoord
+* Ik weet niet of dat hij komt.
+* Om het te zeggen gelijk of dat het is: …
+* ik was getrouwd sinds dat hij nog bij het leger was
+
+`//node[@cat='cp']/node[@rel='cmp' and @cat='mwu'][./node[@word="dat"]]`
+
+#### Type 2: na vraagwoord
+* Ik weet niet wie dat er komt.
+* we gaan weer moeten de tijd afwachten wat dat er allemaal gaat voorvallen
+
+`//node[@word="wie" and @rel="whd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]`
+
+#### Type 3: na betrekkelijk voornaamwoord
+
+* De mens die dat jou moet helpen, zal vloeken.
+
+#### Type 4: na vraagwoord + of (zeldzaam in Vlaanderen, cf. Lassy-handleiding)
+
+* Zijn er meer mogelijkheden dan wat of dat je nu hebt?
 
