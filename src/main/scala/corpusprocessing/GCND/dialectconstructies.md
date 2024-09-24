@@ -7,6 +7,8 @@ niet goed parseert.
 
 https://hackmd.io/@amghysel/r1kMS8cC9
 
+Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
+
 ## 1. Parsing input (beetje onduidelijke kop voor dit doel)
 
 ### 1.1 Elliptische/asyndetische constructies
@@ -127,9 +129,15 @@ Niet alle matches van deze query zijn daadwerkelijk topicalisaties.
 
 _zeg **als je nu trouwt** het zijn altijd voort kosten._
 
-`//node[@rel="tag" and @cat="cp"]`
+```xpath
+//node[@rel="tag" and @cat="cp"]
+```
 
-Mogelijk ook: `//node[@rel="tag" and @cat="pp"]`
+
+Mogelijk ook: 
+```xpath
+//node[@rel="tag" and @cat="pp"]
+```
 
 _**in de zomer** t e klaar tot sn avonds t negenen_
 
