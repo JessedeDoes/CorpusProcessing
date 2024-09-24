@@ -1,13 +1,14 @@
+# Zoeken in het GCND-corpus met XPath
 
-# XPath-queries voor dialectconstructies
+Motivatie:
+* De example-based search van GrETEL zal voor sommige dialect constructies niet goed werken omdat Alpino de gebruikersinvoer 
+niet herkent.  
+* Sommige verschijnselen zijn moeilijk te vatten in de example-based search
 
 
-De example-based search van gretel zal voor sommige dialect constructies niet goed werken omdat Alpino de gebruikersinvoer 
-niet goed parseert.  
-
-https://hackmd.io/@amghysel/r1kMS8cC9
-
-Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
+Zie ook
+* https://hackmd.io/@amghysel/r1kMS8cC9
+* Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
 
 ## 1. Parsing input (beetje onduidelijke kop voor dit doel)
 
