@@ -7,27 +7,48 @@ niet goed parseert.
 
 https://hackmd.io/@amghysel/r1kMS8cC9
 
-## "en" als negatie
+## 1. Parsing input (beetje onduidelijke kop voor dit doel)
 
+### 1.1 Elliptische/asyndetische constructies
+
+### 1.3 Performance errors, reparaties en onderbroken zinnen
+
+
+#### 1.4.2. Doen-replieken
+
+A: _Hij komt toch niet?_
+B: _Ja hij en doet ne komt._
+
+In het algemeen (positieve en negatieve voorbeelden) zijn vindbaar met iets als
 
 ```xpath
-//node[./node[@word="en" and @rel="mod"]]
+//node[@lemma="doen"]
+   [../node[@rel="su" and @pt="vnw"]]
+   [not (../node[@rel="obj1"])]
+   [not (../node[@rel="vc"])]
 ```
 
-## Pseudodirecte rede
+##### Negatieve gevallen met _en_
 
-? 
+* _bè ik en doe , zei dat kind_
+
+```xpath
+//node[@lemma="doen"]
+   [../node[@word='en' and @rel="mod" and @pt="bw"]]
+   [../node[@rel="su" and @pt="vnw"]]
+   [not (../node[@rel="obj1"])]
+```
+
 ## 2. Subjectsverschijnselen
 
-### 2.1 subjectverdubbeling
+### 2.1 subjectverdubbeling (of drievoudig subject)
 
-_Ik heb ik ik dat niet gezegd._
+* _Ik heb ik ik dat niet gezegd._
+* _en t jij ee t jij zijn kazak gekeerd ._
 
 ```xpath
 //node[count(./node[@rel='su']) > 1]
 ```
-
-
 
 ### 2.1 subject in objectvorm
 
@@ -37,7 +58,9 @@ _omdat hem peinsde dat dat zijn kindje was._
 //node[@rel="su" and @word="hem"]
 ```
 
-`//node[@rel="su" and @naamval="obl"]`
+```xpath
+//node[@rel="su" and @naamval="obl"]
+```
 
 
 ### 2.3 Presentatief 'het'
@@ -48,7 +71,9 @@ Adjectieven met "geen".
 
 Vindbaar met:
 
-`//node[@rel='mod' and word='het']`
+```xpath
+//node[@rel='mod' and word='het']
+```
 
 De resultaten zijn soms een beetje verwarrend
 
@@ -62,7 +87,12 @@ Lijkt goed te gaan in Alpino.
 
 Herkenbaar aan rel=sat en cat=np of pos="noun"
 
-`//node[@rel='sat' and (@cat='np' or @pos='noun')]`
+```xpath
+//node[@rel='sat' and (@cat='np' or @pos='noun')][@begin="0"]
+```
+
+
+Niet altijd te onderscheiden van volgende categorie. Zie ook 3.1.3 "hangend topic"
 
 #### 3.1.2. Tussenwerpsels en aansporingen
 
@@ -82,9 +112,16 @@ Geanalyseerd met tag en nucl
 
 _**mijn vent** wist **hij** ook niet wat dat was en nu komt ..._
 
-er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen
+Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen
 
-`//node[@rel='tag' and (@cat='np' or @pos='noun')]`
+Tag-nodes aan het begin van de zin zoek je met
+
+```xpath
+//node[@rel='tag' and (@cat='np' or @pos='noun') and @begin="0"]
+```
+
+Niet alle matches van deze query zijn daadwerkelijk topicalisaties.
+
 
 #### 3.1.4. Inversieloos V-later-dan-2 / V>2 / Noninverted V3
 
@@ -107,8 +144,11 @@ Die gaan weet met sat
 * _Bwa nee het jong_
 * _ja **ja ze** het is heel juist_
 
+```xpath
+//node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] and node[@rel='mwp' and @pos='pron']]
+```
 
-`//node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] and node[@rel='mwp' and @pos='pron']]`
+
 
 ### 3.4 V2-bijzinnen - pseudodirecte rede
 
@@ -131,7 +171,9 @@ Pseudodirecte rede - V2-bijzin (hij weet het niet):
     Depentielabel (rel): nucl
     Categorielabel (cat): smain (of – bij werkwoordsinitiële zinnen – sv1)
 
-`//node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]`
+```xpath
+//node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]
+```
 
 
 NB: Alpino parset directe en pseudodirecte redes doorgaans automatisch juist als je een komma toevoegt tussen de matrixzin en de V2-bijzin.
@@ -139,47 +181,53 @@ NB: Alpino parset directe en pseudodirecte redes doorgaans automatisch juist als
 
 ### 3.5 Intercalaties/parentheses/interpositio
 
-Let op: afwijking van lassy: In het GCND kiezen we ervoor parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen . 
+Let op: afwijking van Lassy: In het GCND kiezen we ervoor parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen . 
 
 
-`//node[node[@rel="tag"][.//node[@pos="verb"]]] and node[@cat="smain"]]`
+```xpath
+//node[@rel='tag' and @cat='smain']
+   [number(../node[@cat='smain' and @rel='nucl' and @begin and @end]
+/@begin) < @begin]
+   [number(../node[@cat='smain' and @rel='nucl' and @begin and @end]/@end) > @begin]
+```
 
-Geeft zinnetjes met tag (@rel='tag' and @cat='smain') zou ook al wat zijn.
-
-`node[@rel="tag" and @cat='smain'][../node[@cat='smain' and @rel='nucl']/@begin < @begin]`
-
-Dit werkt niet....
 
 
 ## 4. Complementizer-fenomenen
 
 ### 4.1 Afwijkende comparatieve voegwoorden (of, als, gelijk als, gelijk of dat)
 
-Bijvoorbeeld voor "of"
-
 * _maar het scheelt meer **of de helft** ._
 * _dat is veel langer **als dat** ik ik ben ._
 
 Voor 'of' bijvoorbeeld:
 
-`//node[@rel='obcomp'][./node[@rel='cmp' and @word='of']]`
+```xpath
+//node[@rel='obcomp'][./node[@rel='cmp' and @word='of']]
+```
 
 Meerwoordige voegwoordelijke combinaties:
 
-`//node[@rel='obcomp'][./node[@rel='cmp' and @cat='mwu']]`
+```xpath
+//node[@rel='obcomp'][./node[@rel='cmp' and @cat='mwu']]
+```
 
 ### 4.2 Directe rede ingeleid door van
-
 
 * _ja die zeggen van , als we daar in de tranchée en zaten ..._
 
 Vindbaar met: 
 
-`//node[@rel="vc"  and @cat="svan"]`
+```xpath
+//node[@rel="vc"  and @cat="svan"]
+```
+
 
 Bijvoorbeeld beperkt tot combinatie met "zeggen"
 
-`//node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]`
+```xpath
+//node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
+```
 
 
 ### 4.3 Expletief dat
@@ -253,11 +301,85 @@ Trage query, 23 resultaten voor nu, allemaal west vlaanderen
 
 ### 4.6. Bijzin met hoofdzinsvolgorde (V2-bijzin of Nebensätze)
 
-* _Die rol heb ik heel graag gespeeld omdat er zat poëzie in._
+* _Die rol heb ik heel graag gespeeld omdat **er zat poëzie in**._
+* _awaar , da zij smokkelden patatten en ..._
+
+
+Hoofdzinvolgorde wordt gekenmerkt door
+* object na werkwoordelijk hoofd
+* of subject na werkwoordelijk hoofd
+* Let op object kan in VC zitten
+* Let op _omdat zij wil broodjes eten_ etc zijn weliswaar te duiden als hoofdzinvolgorden, maar ook als WW-clusteronderbrekingen  
+
+Object is losstaand znw (dus geen _VC_ node aanwezig in boom):
 ```xpath
 //node[@cat='ssub'][
-node[@rel='hd' and @pt='ww'][following-sibling::node[@rel='obj1']]
+node[@rel='hd' and @pt='ww'][number(../node[@rel='obj1' and @word and @pt='n']/@begin)  > number(@begin)]
 ]
 ```
 
+Object zit binnen VC (dit overlapt met de vlaamse clusterdoorbreking)
+```xpath
+//node[@cat='ssub'][
+node[@rel='hd' and @pt='ww'][number(../node[@rel='vc'][node[@rel="obj1" and @pt="n"]]/@begin)  > number(@begin)]
+]
+```
+
+Subject na werkwoordelijk hoofd:
+```xpath
+//node[@cat='ssub']
+     [node[@rel='hd' and @pt='ww'][number(../node[@rel='su'][1]/@begin)  > number(@begin)]]
+```
+
+Lastig .... even later meer doorklooien
+```xpath2
+declare default element namespace "http://alpino.fake.url";
+for $node in //node[@cat='ssub'][not (.//node[@index])]
+     [node[@rel='hd' and @pt='ww'][count(../node[@rel='su']) = 1][number(../node[@rel='su' and @word][.//@word][1]/@begin)  > number(@begin)]] 
+let     $sentence := $node/ancestor::*[local-name()='alpino_ds']/sentence,
+  $txt := string-join($node//@word, ' ')
+return <node>{$node} <text>{$txt}</text> {$sentence}</node>
+```
+
+## 5. Negatieverschijnselen (o.a. negatiepartikel en en dubbele negatie)
+
+### 5.1. Dubbele negatie
+
+* (a) Ik en heb dat niet gezegd.
+* (b) Ik heb niemand niet gezien.
+* (c ) Ik heb niets niet gedaan.
+* (d) Ik heb dat nooit niet gedaan.
+* (e) Daar zijn nooit geen rozen.
+* (f) Ik heb geen boeken niet meer.
+* (g) Er zijn er niet veel niet meer.
+* (h) Ik heb niet veel geen boeken meer.
+
+#### Negatie met het oude negatiepartikel en (zin a)
+
+Alpino ziet _en_ standaard als voegwoord.
+
+Negatie met _en_ is terug te vinden met een xpath als
+
+```xpath
+//node[./node[@rel='mod' and @word='en' and @pt='bw']]
+```
+
+* _ze **en** hebben **geen** redenen van klagen_
+
+```xpath
+//node
+   [./node[@rel='mod' and @word='en' and @pt='bw']]
+   [node[@cat='np'][node[@rel='det' and @lemma='geen' and @pt='vnw']]]
+```
+
+![img.png](img.png)
+#### Negatieverdubbeling binnen de nominale constituent (zin h)
+
+Is behandeld als een meerwoordige determiner.
+
+Complexe determiners waar _niet_ deel van is, zijn te zoeken met
+```xpath
+//node[@rel="det" and @cat="mwu"]
+   [node[@lemma="niet"]]
+```
 
