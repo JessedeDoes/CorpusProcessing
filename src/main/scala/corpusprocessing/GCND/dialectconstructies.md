@@ -10,19 +10,40 @@ Zie ook
 * https://hackmd.io/@amghysel/r1kMS8cC9
 * Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
 
-## 1. Parsing input (beetje onduidelijke kop voor dit doel)
+## 1. Elliptische constructies, onderbroken zinnen, reparaties....
+
+Syntactisch "onvolledige" zinnen worden in de Alpino-analyses niet aangevuld tot een volledige zin.
+Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in voorkomt
+
+```xpath
+//node[not (ancestor::node)][not (.//node[@cat="smain" or @cat="nucl"])]
+```
 
 ### 1.1 Elliptische/asyndetische constructies
 
+### 1.2 Eenwoordzinnen
+
+
 ### 1.3 Performance errors, reparaties en onderbroken zinnen
 
+#### 1.3.1 Herformulering en reparatie
+
+Bij een herformulering of reparatie behoudt het corpus enkel _het meeste rechtse element_ voor de parsing. 
+De andere elementen worden direct aan de topknoop van de boom gehangen met als dependentielabel '–'.
+
+We kunnen een poging doen zulke gevallen terug te vinden met bijvoorbeeld:
+```xpath
+//node
+   [node[@rel='--' and not (@cat) and not (@pt='let' or @pt='spec')]
+       [number(../node[@cat]/@begin) > number(@begin)]]
+```
 
 #### 1.4.2. Doen-replieken
 
 A: _Hij komt toch niet?_
 B: _Ja hij en doet ne komt._
 
-In het algemeen (positieve en negatieve voorbeelden) zijn vindbaar met iets als
+Positieve positieve en negatieve replieken zijn vindbaar met iets als
 
 ```xpath
 //node[@lemma="doen"]
@@ -94,8 +115,7 @@ Herkenbaar aan rel=sat en cat=np of pos="noun"
 //node[@rel='sat' and (@cat='np' or @pos='noun')][@begin="0"]
 ```
 
-
-Niet altijd te onderscheiden van volgende categorie. Zie ook 3.1.3 "hangend topic"
+Niet altijd te onderscheiden van volgende categorie. Zie ook 3.1.3 "_hangend topic_"
 
 #### 3.1.2. Tussenwerpsels en aansporingen
 
@@ -109,7 +129,10 @@ Niet altijd te onderscheiden van volgende categorie. Zie ook 3.1.3 "hangend topi
 
 Met dit soort structuren kan Alpino doorgaans vlotjes om; preprocessing is dan ook niet nodig.
 
-Geanalyseerd met tag en nucl
+Geanalyseerd met dependentierelaties tag (voor tussenwerpsel of aansporing) en nucl (voor de eigenlijke zin)
+```xpath
+//node[@rel='tag' and (@cat="pp" or @pt='bw' or @cat="advp" or @pt="tsw") and @begin="0"][../node[@rel='nucl']]
+```
 
 #### 3.1.3. Hanging Topic / Hangend Topic / Nominativus Pendens:
 
@@ -117,14 +140,13 @@ _**mijn vent** wist **hij** ook niet wat dat was en nu komt ..._
 
 Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen
 
-Tag-nodes aan het begin van de zin zoek je met
+Nominale tag-nodes aan het begin van de zin zoek je met
 
 ```xpath
 //node[@rel='tag' and (@cat='np' or @pos='noun') and @begin="0"]
 ```
 
 Niet alle matches van deze query zijn daadwerkelijk topicalisaties.
-
 
 #### 3.1.4. Inversieloos V-later-dan-2 / V>2 / Noninverted V3
 
