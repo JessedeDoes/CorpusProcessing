@@ -103,6 +103,22 @@ De resultaten zijn soms een beetje verwarrend
 
 ## 3. Uitbreidingen van de zin: TAG en SAT
 
+### Discourse-structuren in de Lassy annotatie
+
+Uit het Lassy-annotatiemanual:
+
+| dependentielabel | OMSCHRIJVING                                                                                                                                                                                            |
+|---|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| NUCL | kernzin                                                                                                                                                                                                 |
+| DLINK | discourse-link In samenhangende tekst komt het vaak voor dat een spreker een zin begint of eindigt met iets dat op een voegwoord lijkt, maar geen syntactisch verband heeft: _maar wat ik zeggen wou ..._ |
+| SAT | satelliet: aan- of uitloop ‘aanloop’- en ‘uitloop’-elementen die een anaforische relatie onderhouden met verwijswoorden in de kernzin.  _NUCL:[het verbaast me] SAT:[dat je dat nog weet]_              |
+| TAG | aanhangsel, tussenvoegsel. Elementen die op een andere manier dan DLINK en SAT buiten de kernzin staan                                                                                                  |
+| DP  | discourse-part                                                                                                                                                                                          |
+
+| categorielabel | OMSCHRIJVING |
+|---|---|
+| DU  | discourse-unit |
+
 #### 3.1.1 Left dislocation (topicalisatie)
 
 _Jan, die ken ik niet_
@@ -168,7 +184,7 @@ _**in de zomer** t e klaar tot sn avonds t negenen_
 
 _Wat vindt u der eigenlijk van dat zulke zinnen dat die zo geanalyseerd worden?_
 
-Die gaan weet met sat
+Zijn getagd met met _SAT_
 
 ### 3.3 ja/nee het/ik/…
 
