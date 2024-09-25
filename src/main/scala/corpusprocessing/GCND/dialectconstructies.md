@@ -3,7 +3,7 @@
 Motivatie:
 * De example-based search van GrETEL zal voor sommige dialect constructies niet goed werken omdat Alpino de gebruikersinvoer 
 niet herkent.  
-* Sommige verschijnselen zijn moeilijk te vatten in de example-based search
+* Sommige verschijnselen zijn sowieso moeilijk te vatten in de example-based search
 
 
 Zie ook
