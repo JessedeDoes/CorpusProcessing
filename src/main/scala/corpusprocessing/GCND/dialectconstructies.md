@@ -49,9 +49,10 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
 
 ```xpath
 //node[@lemma="doen" and @pvtijd='tgw']
+   [parent::node[@cat='smain']]
    [../node[@rel="su" and @pt="vnw"]]
    [not (../node[@rel="obj1"])]
-   [not (../node[@rel="vc"])]
+   [not (../node[@rel="vc" or @rel="predc"])]
 ```
 
 ##### Negatieve gevallen met _en_
@@ -61,9 +62,10 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
 ```xpath
 //node[@lemma="doen" and @pvtijd='tgw']
    [../node[@word='en' and @rel="mod" and @pt="bw"]]
+   [parent::node[@cat='smain']]
    [../node[@rel="su" and @pt="vnw"]]
    [not (../node[@rel="obj1"])]
-   [not (../node[@rel="vc"])]
+   [not (../node[@rel="vc" or @rel="predc"])]
 ```
 
 ## 2. Subjectsverschijnselen
