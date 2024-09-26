@@ -152,10 +152,14 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
 
       def idForAlpinoToken(a: AlpinoToken)  = a.id.get.replaceAll("^([a-z]+)", "$1" + "." + elanAnnotation.elan_annotatie_id.toString)
 
+
+
       val tokens: Seq[GCNDToken] = if (gcndTokensZippedWithAlpinoTokens.nonEmpty)
         gcndTokensZippedWithAlpinoTokens
           .map({ case (t, a) => t.copy(id = idForAlpinoToken(a), pos = a.postag, lemma = a.lemma) })
           .filter(x => alignedTokens.size == alpinoTokens.size) else Seq()
+
+      val xxxOrQuestionMarks = tokens.exists(t => t.text_zv.toLowerCase.contains("xxx") || t.text_zv.toLowerCase.contains("???")  )
 
       <speech xml:id={speech_id}>
         {if (false) informativeT.child}
@@ -169,7 +173,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
             // println(s"Mismatch: Aligned Tokens: ${alignedTokens.size}, alpinoTokens: ${alpinoTokens.size}")
             Seq()
           }}
-          {if (includeAlpinoParse) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
+          {if (includeAlpinoParse && !xxxOrQuestionMarks) { <syntax set="lassy.syntax.annotation"><foreign-data>{withAludInfo.copy(scope = alpinoScope)}</foreign-data></syntax>}}
           {if (includeDeps && tokens.nonEmpty) {dependencies(elanAnnotation.elan_annotatie_id.toString)}}
           {if (tokens.nonEmpty) <timing>
             <timesegment begintime={formatTime(starttijd)} endtime={formatTime(eindtijd)}> {

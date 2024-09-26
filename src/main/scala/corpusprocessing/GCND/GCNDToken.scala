@@ -5,15 +5,14 @@ import posmapping.CGNTagset
 import scala.xml.NodeSeq
 
 object GCNDToken {
-  val cliticMarker = "↪"
-  val nbsp = ' '
-  val emptyToken = nbsp // was _
+  val cliticMarker = "·"
+  val emptyness = "∅"
+  val nbsp = ' ' // token dat getoond wordt als de ene laag iets heeft en de andere niet
+  val emptyToken = emptyness // nbsp // was _
 }
 
 import GCNDToken._
 case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, space_after: Boolean = true, id:String="", pos: String="", lemma:String="") {
-
-
 
   lazy val text_lv_nonempty  = if (text_lv.isEmpty) emptyToken else text_lv
   lazy val text_zv_nonempty  = if (text_zv.isEmpty) emptyToken else text_zv

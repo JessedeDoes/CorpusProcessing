@@ -52,11 +52,14 @@ object GCNDDatabase {
   def createFolia(transcription: Transcription, outputFilenameTemplate: String = foliadDir  + "gcnd.#.folia.xml"): Unit = {
 
     val outputFilename = outputFilenameTemplate.replaceAll("#", transcription.transcriptie_id.toString)
-    val out2 = new PrintWriter(outputFilename)
+
     val e = transcription.pseudoFoLiAForElanAnnotations
     // XML.write(out2, e, enc="UTF-8", doctype = DocType("FoLiA"), xmlDecl = true)
-    out2.println(pretty.format(e))
-    out2.close()
+    if (transcription.canBeExported) {
+      val out2 = new PrintWriter(outputFilename)
+      out2.println(pretty.format(e))
+      out2.close()
+    }
   }
 
   def createTEI() = {
