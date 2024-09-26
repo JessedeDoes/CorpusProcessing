@@ -3,7 +3,7 @@ name: Run links.py on commit of linked.md
 on:
   push:
     paths:
-      - "linked.md"
+      - "src/main/scala/corpusprocessing/GCND/dialectconstructions.md"
 
 jobs:
   run-python-script:
