@@ -19,6 +19,7 @@ Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in vo
 ```xpath
 //node[not (ancestor::node)][not (.//node[@cat="smain" or @cat="nucl"])]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5Bnot%20%28ancestor%3A%3Anode%29%5D%5Bnot%20%28.//node%5B%40cat%3D%22smain%22%20or%20%40cat%3D%22nucl%22%5D%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 1.1 Elliptische/asyndetische constructies
 
@@ -38,6 +39,7 @@ We kunnen een poging doen zulke gevallen terug te vinden met bijvoorbeeld:
    [node[@rel='--' and not (@cat) and not (@pt='let' or @pt='spec')]
        [number(../node[@cat]/@begin) > number(@begin)]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%0A%20%20%20%5Bnode%5B%40rel%3D%27--%27%20and%20not%20%28%40cat%29%20and%20not%20%28%40pt%3D%27let%27%20or%20%40pt%3D%27spec%27%29%5D%0A%20%20%20%20%20%20%20%5Bnumber%28../node%5B%40cat%5D/%40begin%29%20%3E%20number%28%40begin%29%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 #### 1.4.2. Doen-replieken
 
@@ -52,6 +54,7 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
    [not (../node[@rel="obj1"])]
    [not (../node[@rel="vc"])]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40lemma%3D%22doen%22%20and%20%40pvtijd%3D%27tgw%27%5D%0A%20%20%20%5B../node%5B%40rel%3D%22su%22%20and%20%40pt%3D%22vnw%22%5D%5D%0A%20%20%20%5Bnot%20%28../node%5B%40rel%3D%22obj1%22%5D%29%5D%0A%20%20%20%5Bnot%20%28../node%5B%40rel%3D%22vc%22%5D%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ##### Negatieve gevallen met _en_
 
@@ -63,6 +66,7 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
    [../node[@rel="su" and @pt="vnw"]]
    [not (../node[@rel="obj1"])]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40lemma%3D%22doen%22%5D%0A%20%20%20%5B../node%5B%40word%3D%27en%27%20and%20%40rel%3D%22mod%22%20and%20%40pt%3D%22bw%22%5D%5D%0A%20%20%20%5B../node%5B%40rel%3D%22su%22%20and%20%40pt%3D%22vnw%22%5D%5D%0A%20%20%20%5Bnot%20%28../node%5B%40rel%3D%22obj1%22%5D%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ## 2. Subjectsverschijnselen
 
@@ -74,6 +78,7 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
 ```xpath
 //node[count(./node[@rel='su']) > 1]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5Bcount%28./node%5B%40rel%3D%27su%27%5D%29%20%3E%201%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 2.1 subject in objectvorm
 
@@ -82,10 +87,12 @@ _omdat hem peinsde dat dat zijn kindje was._
 ```xpath
 //node[@rel="su" and @word="hem"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22su%22%20and%20%40word%3D%22hem%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ```xpath
 //node[@rel="su" and @naamval="obl"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22su%22%20and%20%40naamval%3D%22obl%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 ### 2.3 Presentatief 'het'
@@ -99,6 +106,7 @@ Vindbaar met:
 ```xpath
 //node[@rel='mod' and word='het']
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27mod%27%20and%20word%3D%27het%27%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 De resultaten zijn soms een beetje verwarrend
 
@@ -131,6 +139,7 @@ Herkenbaar aan dependentierelatie _SAT_ en (categorie _np_ of woordsoort zelfsta
 ```xpath
 //node[@rel='sat' and (@cat='np' or @pt='n')][@begin="0"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27sat%27%20and%20%28%40cat%3D%27np%27%20or%20%40pt%3D%27n%27%29%5D%5B%40begin%3D%220%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Niet altijd makkelijk te onderscheiden van volgende categorie. Zie ook 3.1.3 "_hangend topic_"
 
@@ -150,6 +159,7 @@ Geanalyseerd met dependentierelaties tag (voor tussenwerpsel of aansporing) en n
 ```xpath
 //node[@rel='tag' and (@cat="pp" or @pt='bw' or @cat="advp" or @pt="tsw") and @begin="0"][../node[@rel='nucl']]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27tag%27%20and%20%28%40cat%3D%22pp%22%20or%20%40pt%3D%27bw%27%20or%20%40cat%3D%22advp%22%20or%20%40pt%3D%22tsw%22%29%20and%20%40begin%3D%220%22%5D%5B../node%5B%40rel%3D%27nucl%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 #### 3.1.3. Hanging Topic / Hangend Topic / Nominativus Pendens:
 
@@ -162,6 +172,7 @@ Nominale tag-nodes aan het begin van de zin zoek je met
 ```xpath
 //node[@rel='tag' and (@cat='np' or @pos='noun') and @begin="0"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27tag%27%20and%20%28%40cat%3D%27np%27%20or%20%40pos%3D%27noun%27%29%20and%20%40begin%3D%220%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Niet alle matches van deze query zijn daadwerkelijk topicalisaties.
 
@@ -172,12 +183,14 @@ _zeg **als je nu trouwt** het zijn altijd voort kosten._
 ```xpath
 //node[@rel="tag" and @cat="cp"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22tag%22%20and%20%40cat%3D%22cp%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 Mogelijk ook: 
 ```xpath
 //node[@rel="tag" and @cat="pp"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22tag%22%20and%20%40cat%3D%22pp%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 _**in de zomer** t e klaar tot sn avonds t negenen_
 
@@ -195,6 +208,7 @@ Zijn getagd met met _SAT_
 ```xpath
 //node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] and node[@rel='mwp' and @pos='pron']]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27tag%27%5D%5Bnode%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27tsw%27%5D%20and%20node%5B%40rel%3D%27mwp%27%20and%20%40pos%3D%27pron%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 
@@ -222,6 +236,7 @@ Pseudodirecte rede - V2-bijzin (hij weet het niet):
 ```xpath
 //node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B./node%5B%40rel%3D%27tag%27%20and%20%40cat%3D%27smain%27%5D%20and%20node%5B%40rel%3D%27nucl%27%20and%20%28%40cat%3D%27smain%27%20or%20%40cat%3D%27sv1%27%29%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 NB: Alpino parset directe en pseudodirecte redes doorgaans automatisch juist als je een komma toevoegt tussen de matrixzin en de V2-bijzin.
@@ -238,6 +253,7 @@ Let op: afwijking van Lassy: In het GCND kiezen we ervoor parentheses het depend
 /@begin) < @begin]
    [number(../node[@cat='smain' and @rel='nucl' and @begin and @end]/@end) > @begin]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27tag%27%20and%20%40cat%3D%27smain%27%5D%0A%20%20%20%5Bnumber%28../node%5B%40cat%3D%27smain%27%20and%20%40rel%3D%27nucl%27%20and%20%40begin%20and%20%40end%5D%0A/%40begin%29%20%3C%20%40begin%5D%0A%20%20%20%5Bnumber%28../node%5B%40cat%3D%27smain%27%20and%20%40rel%3D%27nucl%27%20and%20%40begin%20and%20%40end%5D/%40end%29%20%3E%20%40begin%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 
@@ -253,12 +269,14 @@ Voor 'of' bijvoorbeeld:
 ```xpath
 //node[@rel='obcomp'][./node[@rel='cmp' and @word='of']]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27obcomp%27%5D%5B./node%5B%40rel%3D%27cmp%27%20and%20%40word%3D%27of%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Meerwoordige voegwoordelijke combinaties:
 
 ```xpath
 //node[@rel='obcomp'][./node[@rel='cmp' and @cat='mwu']]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27obcomp%27%5D%5B./node%5B%40rel%3D%27cmp%27%20and%20%40cat%3D%27mwu%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 4.2 Directe rede ingeleid door van
 
@@ -269,6 +287,7 @@ Vindbaar met:
 ```xpath
 //node[@rel="vc"  and @cat="svan"]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22vc%22%20%20and%20%40cat%3D%22svan%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 Bijvoorbeeld beperkt tot combinatie met "zeggen"
@@ -276,6 +295,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 ```xpath
 //node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5Bnode%5B%40rel%3D%22hd%22%20and%20%40lemma%3D%22zeggen%22%5D%20and%20node%5B%40rel%3D%22vc%22%20%20and%20%40cat%3D%22svan%22%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
 ### 4.3 Expletief dat
@@ -288,6 +308,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 ```xpath
 //node[@cat='cp']/node[@rel='cmp' and @cat='mwu'][./node[@word="dat"]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27cp%27%5D/node%5B%40rel%3D%27cmp%27%20and%20%40cat%3D%27mwu%27%5D%5B./node%5B%40word%3D%22dat%22%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 #### Type 2: na vraagwoord
 * Ik weet niet wie dat er komt.
@@ -296,6 +317,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 ```xpath
 //node[@word="wie" and @rel="whd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40word%3D%22wie%22%20and%20%40rel%3D%22whd%22%5D%5Bfollowing-sibling%3A%3Anode%5B./node%5B%40word%3D%22dat%22%20and%20%40pt%3D%22vg%22%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 #### Type 3: na betrekkelijk voornaamwoord
 
@@ -305,6 +327,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 ```xpath
 //node[@word="die" and @rel="rhd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40word%3D%22die%22%20and%20%40rel%3D%22rhd%22%5D%5Bfollowing-sibling%3A%3Anode%5B./node%5B%40word%3D%22dat%22%20and%20%40pt%3D%22vg%22%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 #### Type 4: na vraagwoord + of (zeldzaam in Vlaanderen, cf. Lassy-handleiding)
 
@@ -320,6 +343,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
             node[@lemma="of" and @pt="vg" and @rel="mwp"] and
             node[@lemma="dat" and @pt="vg" and @rel="mwp"]]]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%22whsub%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20node%5B%40lemma%3D%22wat%22%20and%20%40pt%3D%22vnw%22%20and%20%40rel%3D%22whd%22%5D%20and%0A%20%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20node%5B%40cat%3D%22mwu%22%20and%20%40rel%3D%22cmp%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22of%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22dat%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 <!--
 ![img_1.png](img_1.png)
 -->
@@ -331,6 +355,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 ```xpath
 //node[@cat='oti'][./node[@rel='cmp' and @pt='vz' and (@word='voor' or @word='van')]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27oti%27%5D%5B./node%5B%40rel%3D%27cmp%27%20and%20%40pt%3D%27vz%27%20and%20%28%40word%3D%27voor%27%20or%20%40word%3D%27van%27%29%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 4.5. Afhankelijke ja/nee-vragen ingeleid door _als_ ipv of
 
@@ -344,6 +369,7 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
   node[@rel="hd" and @pt="ww"]
   ]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%20%5B%0A%20%20node%5B%40rel%3D%22vc%22%5D%0A%20%20%20%20%5Bnode%5B%40lemma%3D%22als%22%5D%20and%0A%20%20%20%20%20%20node%5B%40rel%3D%22body%22%5D%5D%20and%20%0A%20%20node%5B%40rel%3D%22hd%22%20and%20%40pt%3D%22ww%22%5D%0A%20%20%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Trage query, 23 resultaten voor nu, allemaal west vlaanderen
 
@@ -365,6 +391,7 @@ Object is losstaand znw (dus geen _VC_ node aanwezig in boom):
 node[@rel='hd' and @pt='ww'][number(../node[@rel='obj1' and @word and @pt='n']/@begin)  > number(@begin)]
 ]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27ssub%27%5D%5B%0Anode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ww%27%5D%5Bnumber%28../node%5B%40rel%3D%27obj1%27%20and%20%40word%20and%20%40pt%3D%27n%27%5D/%40begin%29%20%20%3E%20number%28%40begin%29%5D%0A%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Object zit binnen VC (dit overlapt met de vlaamse clusterdoorbreking)
 ```xpath
@@ -372,12 +399,14 @@ Object zit binnen VC (dit overlapt met de vlaamse clusterdoorbreking)
 node[@rel='hd' and @pt='ww'][number(../node[@rel='vc'][node[@rel="obj1" and @pt="n"]]/@begin)  > number(@begin)]
 ]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27ssub%27%5D%5B%0Anode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ww%27%5D%5Bnumber%28../node%5B%40rel%3D%27vc%27%5D%5Bnode%5B%40rel%3D%22obj1%22%20and%20%40pt%3D%22n%22%5D%5D/%40begin%29%20%20%3E%20number%28%40begin%29%5D%0A%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Subject na werkwoordelijk hoofd:
 ```xpath
 //node[@cat='ssub']
      [node[@rel='hd' and @pt='ww'][number(../node[@rel='su'][1]/@begin)  > number(@begin)]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27ssub%27%5D%0A%20%20%20%20%20%5Bnode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ww%27%5D%5Bnumber%28../node%5B%40rel%3D%27su%27%5D%5B1%5D/%40begin%29%20%20%3E%20number%28%40begin%29%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 Lastig .... even later meer doorklooien
 ```xpath2
@@ -388,6 +417,7 @@ let     $sentence := $node/ancestor::*[local-name()='alpino_ds']/sentence,
   $txt := string-join($node//@word, ' ')
 return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=2%0Adeclare%20default%20element%20namespace%20%22http%3A//alpino.fake.url%22%3B%0Afor%20%24node%20in%20//node%5B%40cat%3D%27ssub%27%5D%5Bnot%20%28.//node%5B%40index%5D%29%5D%0A%20%20%20%20%20%5Bnode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ww%27%5D%5Bcount%28../node%5B%40rel%3D%27su%27%5D%29%20%3D%201%5D%5Bnumber%28../node%5B%40rel%3D%27su%27%20and%20%40word%5D%5B.//%40word%5D%5B1%5D/%40begin%29%20%20%3E%20number%28%40begin%29%5D%5D%20%0Alet%20%20%20%20%20%24sentence%20%3A%3D%20%24node/ancestor%3A%3A%2A%5Blocal-name%28%29%3D%27alpino_ds%27%5D/sentence%2C%0A%20%20%24txt%20%3A%3D%20string-join%28%24node//%40word%2C%20%27%20%27%29%0Areturn%20%3Cnode%3E%7B%24node%7D%20%3Ctext%3E%7B%24txt%7D%3C/text%3E%20%7B%24sentence%7D%3C/node%3E%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ## 5. Negatieverschijnselen (o.a. negatiepartikel en en dubbele negatie)
 
@@ -411,6 +441,7 @@ Negatie met _en_ is terug te vinden met een xpath als
 ```xpath
 //node[./node[@rel='mod' and @word='en' and @pt='bw']]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B./node%5B%40rel%3D%27mod%27%20and%20%40word%3D%27en%27%20and%20%40pt%3D%27bw%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 * _ze **en** hebben **geen** redenen van klagen_
 
@@ -419,6 +450,7 @@ Negatie met _en_ is terug te vinden met een xpath als
    [./node[@rel='mod' and @word='en' and @pt='bw']]
    [node[@cat='np'][node[@rel='det' and @lemma='geen' and @pt='vnw']]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%0A%20%20%20%5B./node%5B%40rel%3D%27mod%27%20and%20%40word%3D%27en%27%20and%20%40pt%3D%27bw%27%5D%5D%0A%20%20%20%5Bnode%5B%40cat%3D%27np%27%5D%5Bnode%5B%40rel%3D%27det%27%20and%20%40lemma%3D%27geen%27%20and%20%40pt%3D%27vnw%27%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ![img.png](img.png)
 #### Negatieverdubbeling binnen de nominale constituent (zin h)
@@ -430,4 +462,6 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 //node[@rel="det" and @cat="mwu"]
    [node[@lemma="niet"]]
 ```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22det%22%20and%20%40cat%3D%22mwu%22%5D%0A%20%20%20%5Bnode%5B%40lemma%3D%22niet%22%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
 
