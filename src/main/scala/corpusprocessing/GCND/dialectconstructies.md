@@ -58,10 +58,11 @@ Positieve positieve en negatieve replieken zijn vindbaar met iets als
 * _bè ik en doe , zei dat kind_
 
 ```xpath
-//node[@lemma="doen"]
+//node[@lemma="doen" and @pvtijd='tgw']
    [../node[@word='en' and @rel="mod" and @pt="bw"]]
    [../node[@rel="su" and @pt="vnw"]]
    [not (../node[@rel="obj1"])]
+   [not (../node[@rel="vc"])]
 ```
 
 ## 2. Subjectsverschijnselen
