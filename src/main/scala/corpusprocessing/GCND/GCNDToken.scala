@@ -14,8 +14,12 @@ object GCNDToken {
 import GCNDToken._
 case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, space_after: Boolean = true, id:String="", pos: String="", lemma:String="") {
 
-  lazy val text_lv_nonempty  = if (text_lv.isEmpty) emptyToken else text_lv
+  lazy val text_lv_nonempty  = if (text_lv.isEmpty)  {
+    if (text_zv.matches("\\p{P}+")) s"[$text_zv]" else emptyToken
+  } else text_lv
+
   lazy val text_zv_nonempty  = if (text_zv.isEmpty) emptyToken else text_zv
+
   lazy val space_after_yes_no = if (space_after) "yes" else "no"
 
   def cliticallyAware(): GCNDToken = if (text_lv.startsWith(cliticMarker)) this.copy(joined=true, text_lv=text_lv.replaceAll(cliticMarker,"")) else this

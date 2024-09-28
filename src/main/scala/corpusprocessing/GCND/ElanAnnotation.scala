@@ -135,7 +135,7 @@ case class ElanAnnotation(elan_annotatie_id: Int,
 
   lazy val functie = (meta \\ "functie").text
   lazy val naam = (meta \\ "naam").text
-  lazy val alias = (meta \\ "alias").text
+  lazy val alias = (meta \\ "alias").headOption.map(_.text).getOrElse("") // foutje met dubbele sprekercode
   lazy val nAlpinos = alpinoAnnotations.size
 
   lazy val about = Map(
