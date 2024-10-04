@@ -62,7 +62,7 @@ case class Transcription(transcriptie_id: Int) {
   lazy val metadata = Metadata.getMetadata(this)
 
   // documentPath: //folia:FoLiA[.//metadata//meta:opname/meta:bron != "Meertens Instituut"]
-  lazy val canBeExported = (metadata \\ "opname" \\ "bron").text != "Meertens Instituut"
+  lazy val canBeExported = true // (metadata \\ "opname" \\ "bron").text != "Meertens Instituut"
 
   lazy val pseudoFoLiAForElanAnnotations =
     <FoLiA xml:id={"gcnd.transcriptie." + transcriptie_id} version="2.5.1" xmlns:folia="http://ilk.uvt.nl/folia" xmlns="http://ilk.uvt.nl/folia">

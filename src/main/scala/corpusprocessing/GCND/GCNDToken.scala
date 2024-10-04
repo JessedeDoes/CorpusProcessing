@@ -6,7 +6,7 @@ import scala.xml.NodeSeq
 
 object GCNDToken {
   val cliticMarker = "·"
-  val emptyness = "∅"
+  val emptyness = "[...]"
   val nbsp = ' ' // token dat getoond wordt als de ene laag iets heeft en de andere niet
   val emptyToken = emptyness // nbsp // was _
 }
