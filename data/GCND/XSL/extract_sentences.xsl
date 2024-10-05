@@ -48,7 +48,7 @@
 
  <xsl:message><xsl:value-of select="$docurl"/>: <xsl:value-of select="$doctitle"/></xsl:message>
 
-  <xsl:if test="//metadata//meta:transcriptie_status/meta:label='Alpino (gecorrigeerd)'">
+  <xsl:if test="contains(//metadata//meta:transcriptie_status/meta:label,'aalkundige verrijking geco')">
   <xsl:variable name="metadata" as="node()*">
 	        <meta type="text" group="Identificatie" name="docpid" value="{$docpid}"/>
 		<meta type="text" group="Identificatie" name="doctitle" value="{$doctitle}"/>
