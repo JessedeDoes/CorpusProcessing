@@ -9,6 +9,7 @@ import scala.xml.XML
 object extractAlpinoSentences {
 
 }
+
 object ExtractAlpinoSentencesFromFolia  {
 
   def main(args: Array[String]) : Unit = {
