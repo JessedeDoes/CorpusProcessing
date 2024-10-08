@@ -25,6 +25,19 @@ case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, 
   def cliticallyAware(): GCNDToken = if (text_lv.startsWith(cliticMarker)) this.copy(joined=true, text_lv=text_lv.replaceAll(cliticMarker,"")) else this
   def asFoLiA(): NodeSeq = (if (joined) <w space="no"><t class="cliticMarker">{cliticMarker}</t></w> else Seq()) ++ Seq(mainWord)
 
+  def fixHeadPos(pos: String)  = {
+    pos match {
+      case "na" => "SPEC"
+      case "ts" => "TSW"
+      case "tws" => "TSW"
+      case "vc" => "VG"
+      case "vw" => "VG"
+      case "vwn" => "VNW"
+      case "v" => "WW"
+      case _ => pos
+    }
+  }
+
   lazy val mainWord =
    {
     lazy val hasLemma = lemma.nonEmpty && !text_zv.matches("\\p{P}+") && !pos.matches("LET.*")
@@ -34,7 +47,7 @@ case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, 
       <w xml:id={id} space={space_after_yes_no}>
         <t class="lightNormalization">{text_lv_nonempty}</t>
         <t class="heavyNormalization">{text_zv_nonempty}</t>
-        <pos class={pos} head={posTag.pos}>
+        <pos class={pos} head={fixHeadPos(posTag.pos)}>
           {posTag.features.filter(_.name != "UNK").map(f => {
             <feat class={f.value} subset={f.name}/>
         })}
