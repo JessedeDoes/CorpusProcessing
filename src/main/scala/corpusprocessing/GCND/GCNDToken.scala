@@ -26,7 +26,7 @@ case class GCNDToken(text_zv: String, text_lv: String, joined: Boolean = false, 
   def asFoLiA(): NodeSeq = (if (joined) <w space="no"><t class="cliticMarker">{cliticMarker}</t></w> else Seq()) ++ Seq(mainWord)
 
   def fixHeadPos(pos: String)  = {
-    pos match {
+    pos.toLowerCase match {
       case "na" => "SPEC"
       case "ts" => "TSW"
       case "tws" => "TSW"
