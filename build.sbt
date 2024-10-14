@@ -1,8 +1,14 @@
-name := "XmlToRdf"
+name := "CorpusProcessing"
 
 version := "0.1"
 
 scalaVersion := "2.12.3"
+
+/// stukje om te proberen build te patchen
+dependencyOverrides += "org.scala-lang.modules" %% "scala-xml" % "2.2.0"
+libraryDependencies += "com.eclipsesource.j2v8" % "j2v8_win32_x86" % "desired-version"
+dependencyOverrides += "com.eclipsesource.j2v8" % "j2v8_win32_x86" % "desired-version"
+excludeDependencies += "com.eclipsesource.j2v8" % "j2v8_win32_x86"
 
 // https://mvnrepository.com/artifact/org.scala-lang.modules/scala-xml_2.12
 
@@ -27,7 +33,7 @@ libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-owlapi" % "1.18.1"
 
 libraryDependencies += "it.unibz.inf.ontop" % "ontop-quest-sesame" % "1.18.1"
 
-resolvers +=  "Basex Repository" at "http://files.basex.org/maven"
+resolvers +=  "Basex Repository" at "https://files.basex.org/maven"
 
 libraryDependencies += "org.basex" % "basex" % "8.6.7"
 
@@ -36,16 +42,22 @@ libraryDependencies += "org.basex" % "basex" % "8.6.7"
 // libraryDependencies += "com.xqj2" % "xqj2" % "0.2.0"
 // libraryDependencies += "javax.xml.xquery" % "xqj-api" % "1.0"
 
+// https://mvnrepository.com/artifact/org.json4s/json4s-native
+// libraryDependencies += "org.json4s" %% "json4s-native" % "4.1.0-M5"
+
 // https://mvnrepository.com/artifact/org.json4s/json4s-native_2.12
-libraryDependencies += "org.json4s" % "json4s-native_2.12" % "3.6.6"
+// libraryDependencies += "org.json4s" % "json4s-native" % "4.1.0-M5"
+
+// https://mvnrepository.com/artifact/org.json4s/json4s-native
+libraryDependencies += "org.json4s" %% "json4s-native" % "4.1.0-M5"
 
 
 // https://mvnrepository.com/artifact/org.json4s/json4s-xml
-libraryDependencies += "org.json4s" %% "json4s-xml" % "3.6.6"
+libraryDependencies += "org.json4s" %% "json4s-xml" % "4.1.0-M5"
 // was 3.5.3
 
 // https://mvnrepository.com/artifact/org.json4s/json4s-jackson
-libraryDependencies += "org.json4s" %% "json4s-jackson" % "3.6.6"
+libraryDependencies += "org.json4s" %% "json4s-jackson" % "4.1.0-M5"
 
 // https://mvnrepository.com/artifact/javax.servlet/javax.servlet-api
 libraryDependencies += "javax.servlet" % "javax.servlet-api" % "4.0.0" % "provided"
@@ -96,6 +108,7 @@ https://github.com/iovka/shex-java
 //libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
 
 enablePlugins(TomcatPlugin)
+addDependencyTreePlugin
 
 assemblyMergeStrategy in assembly := {
     case x if Assembly.isConfigFile(x) =>
