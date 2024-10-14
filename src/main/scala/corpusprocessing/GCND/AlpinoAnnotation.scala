@@ -67,8 +67,9 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
   lazy val conll: Option[String] = sentence.map(_.toCONLL()) // scala.xml.Unparsed("<![CDATA[%s]]>".format(failedReason))
 
   def addAludInfo(x: Elem)  = {
-    val status = GCNDDatabase.aludErrorMap.getOrElse(sentenceId, "OK")
-    x.copy(child=x.child :+ <alud>{status.trim}</alud>)
+    //val status = GCNDDatabase.aludErrorMap.getOrElse(sentenceId, "OK")
+    // x.copy(child=x.child :+ <alud>{status.trim}</alud>)
+    x
   }
 
   def dependencies(elan_id: String): Any = {
