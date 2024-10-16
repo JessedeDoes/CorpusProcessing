@@ -23,8 +23,30 @@ Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in vo
 
 ### 1.1 Elliptische/asyndetische constructies
 
+* Piet voor de bar en Klaas voor de schoonmaak.
+* en heibezems ook van hei uit de bossen .
+
+Deze zinnen worden geanalyseerd volgens de Lassy-annotatieprincipes: 
+
+"We geven de coherentie in dergelijke reeksen weer door de frases onder een DU-knoop samen te voegen. We zien er evenwel van af om expliciete dependentierelaties te reconstrueren: we beschouwen dit als een inferentie-taak, niet als een taak van de basisannotatie zelf. De dochters van DU krijgen in deze gevallen een uniform dependentielabel DP (‘discourse-part’)."
+
+Let op: Alpino heeft hier moeite mee. Om deze constructies in het corpus terug te vinden zal dus XPath search gebruikt moeten worden.
+Voorbeeld:
+
+
+```xpath
+//node[@cat='du'][node[@rel='dp' and @pt='n'] and node[@rel='dp' and @cat='pp']]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27du%27%5D%5Bnode%5B%40rel%3D%27dp%27%20and%20%40pt%3D%27n%27%5D%20and%20node%5B%40rel%3D%27dp%27%20and%20%40cat%3D%27pp%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+[NB: dit gaat niet zo erg goed, er lijken nog flink wat slordigheden in de annotatie te zitten voor zulke gevallen]
+
 ### 1.2 Eenwoordzinnen
 
+```xpath
+//alpino_ds[count(.//node[@word])=1]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//alpino_ds%5Bcount%28.//node%5B%40word%5D%29%3D1%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 1.3 Performance errors, reparaties en onderbroken zinnen
 
@@ -93,6 +115,8 @@ _omdat hem peinsde dat dat zijn kindje was._
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22su%22%20and%20%40word%3D%22hem%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
+Iets algemener:
+
 ```xpath
 //node[@rel="su" and @naamval="obl"]
 ```
@@ -102,8 +126,9 @@ _omdat hem peinsde dat dat zijn kindje was._
 ### 2.3 Presentatief 'het'
 
 Deze constructie wordt noch in de Lassy-handleiding noch in de CGN-beschrijving besproken. 
-In het GCND zullen we dit soort het zoals presentatief er behandelen, en het dus het dependentielabel 'MOD' te geven.
-Adjectieven met "geen".
+In het GCND is dit _het_ zoals presentatief _er_ behandeld, en heeft _het_ dus het dependentielabel _MOD_.
+
+?Adjectieven met "geen".
 
 Vindbaar met:
 
@@ -468,4 +493,15 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22det%22%20and%20%40cat%3D%22mwu%22%5D%0A%20%20%20%5Bnode%5B%40lemma%3D%22niet%22%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
+### 6.12. Adjectieven die met 'geen' gecombineerd worden
 
+* Dat is _geen waar_
+
+!NB zou moeten zijn
+
+```xpath
+node[node[@rel='hd' and @pt='ADJ'] and node[@rel='det' and lemma='geen']]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0Anode%5Bnode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ADJ%27%5D%20and%20node%5B%40rel%3D%27det%27%20and%20lemma%3D%27geen%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+Maar in de praktijk houdt _waar_ vaak de n-tag,

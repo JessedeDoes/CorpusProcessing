@@ -22,8 +22,28 @@ Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in vo
 
 ### 1.1 Elliptische/asyndetische constructies
 
+* Piet voor de bar en Klaas voor de schoonmaak.
+* en heibezems ook van hei uit de bossen .
+
+Deze zinnen worden geanalyseerd volgens de Lassy-annotatieprincipes: 
+
+"We geven de coherentie in dergelijke reeksen weer door de frases onder een DU-knoop samen te voegen. We zien er evenwel van af om expliciete dependentierelaties te reconstrueren: we beschouwen dit als een inferentie-taak, niet als een taak van de basisannotatie zelf. De dochters van DU krijgen in deze gevallen een uniform dependentielabel DP (‘discourse-part’)."
+
+Let op: Alpino heeft hier moeite mee. Om deze constructies in het corpus terug te vinden zal dus XPath search gebruikt moeten worden.
+Voorbeeld:
+
+
+```xpath
+//node[@cat='du'][node[@rel='dp' and @pt='n'] and node[@rel='dp' and @cat='pp']]
+```
+
+[NB: dit gaat niet zo erg goed, er lijken nog flink wat slordigheden in de annotatie te zitten voor zulke gevallen]
+
 ### 1.2 Eenwoordzinnen
 
+```xpath
+//alpino_ds[count(.//node[@word])=1]
+```
 
 ### 1.3 Performance errors, reparaties en onderbroken zinnen
 
@@ -87,6 +107,8 @@ _omdat hem peinsde dat dat zijn kindje was._
 //node[@rel="su" and @word="hem"]
 ```
 
+Iets algemener:
+
 ```xpath
 //node[@rel="su" and @naamval="obl"]
 ```
@@ -95,8 +117,9 @@ _omdat hem peinsde dat dat zijn kindje was._
 ### 2.3 Presentatief 'het'
 
 Deze constructie wordt noch in de Lassy-handleiding noch in de CGN-beschrijving besproken. 
-In het GCND zullen we dit soort het zoals presentatief er behandelen, en het dus het dependentielabel 'MOD' te geven.
-Adjectieven met "geen".
+In het GCND is dit _het_ zoals presentatief _er_ behandeld, en heeft _het_ dus het dependentielabel _MOD_.
+
+?Adjectieven met "geen".
 
 Vindbaar met:
 
@@ -435,3 +458,14 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
    [node[@lemma="niet"]]
 ```
 
+### 6.12. Adjectieven die met 'geen' gecombineerd worden
+
+* Dat is _geen waar_
+
+!NB zou moeten zijn
+
+```xpath
+node[node[@rel='hd' and @pt='ADJ'] and node[@rel='det' and lemma='geen']]
+```
+
+Maar in de praktijk houdt _waar_ vaak de n-tag,
