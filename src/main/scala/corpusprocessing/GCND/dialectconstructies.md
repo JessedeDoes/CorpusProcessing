@@ -457,6 +457,30 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 //node[@rel="det" and @cat="mwu"]
    [node[@lemma="niet"]]
 ```
+## 6 Andere
+
+### 6.1 en zo/ of zo / en al / en alles / maar ja / en si en la
+
+Behandeld als een multi-word unit (MWU) die als modificeerder fungeert (MOD).
+
+### 6.2 woordherhaling
+
+Het woord wordt 2x opgenomen, met hetzelfde dependentielabel.
+
+### 6.3 Spiegelconstructies
+
+* je gebruikt nog alsan diezelfde potees gebruik je.
+* het is verder is het.
+
+Hier worden twee verbalen hoofden en twee subjecten getagd.
+
+```xpath
+node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
+```
+
+Dit vindt niets. Alpino geeft voor het tweede voorbeeld een analyse met dp's erin:
+
+
 
 ### 6.12. Adjectieven die met 'geen' gecombineerd worden
 
@@ -468,4 +492,4 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 node[node[@rel='hd' and @pt='ADJ'] and node[@rel='det' and lemma='geen']]
 ```
 
-Maar in de praktijk houdt _waar_ vaak de n-tag,
+Maar in de het corpus heeft in ieder geval _waar_ vaak de n-tag,

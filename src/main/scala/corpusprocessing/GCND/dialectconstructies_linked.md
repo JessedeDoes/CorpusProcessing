@@ -492,6 +492,31 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
    [node[@lemma="niet"]]
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22det%22%20and%20%40cat%3D%22mwu%22%5D%0A%20%20%20%5Bnode%5B%40lemma%3D%22niet%22%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+## 6 Andere
+
+### 6.1 en zo/ of zo / en al / en alles / maar ja / en si en la
+
+Behandeld als een multi-word unit (MWU) die als modificeerder fungeert (MOD).
+
+### 6.2 woordherhaling
+
+Het woord wordt 2x opgenomen, met hetzelfde dependentielabel.
+
+### 6.3 Spiegelconstructies
+
+* je gebruikt nog alsan diezelfde potees gebruik je.
+* het is verder is het.
+
+Hier worden twee verbalen hoofden en twee subjecten getagd.
+
+```xpath
+node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0Anode%5Bcount%28./node%5B%40rel%3D%27su%27%5D%29%20%3D2%20and%20count%28./node%5B%40rel%3D%27hd%27%5D%29%20%3D2%5D%20%20%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+Dit vindt niets. Alpino geeft voor het tweede voorbeeld een analyse met dp's erin:
+
+
 
 ### 6.12. Adjectieven die met 'geen' gecombineerd worden
 
@@ -504,4 +529,4 @@ node[node[@rel='hd' and @pt='ADJ'] and node[@rel='det' and lemma='geen']]
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0Anode%5Bnode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ADJ%27%5D%20and%20node%5B%40rel%3D%27det%27%20and%20lemma%3D%27geen%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-Maar in de praktijk houdt _waar_ vaak de n-tag,
+Maar in de het corpus heeft in ieder geval _waar_ vaak de n-tag,
