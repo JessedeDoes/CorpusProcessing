@@ -471,15 +471,27 @@ Het woord wordt 2x opgenomen, met hetzelfde dependentielabel.
 
 * je gebruikt nog alsan diezelfde potees gebruik je.
 * het is verder is het.
+* Ik zeg :"je bent gek", zeg ik.
 
-Hier worden twee verbalen hoofden en twee subjecten getagd.
+Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd (mag dat wel? is meer dan een _hd_ niet tegen de principes van Alpino?). In xpath: 
 
 ```xpath
 node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
 ```
 
-Dit vindt niets. Alpino geeft voor het tweede voorbeeld een analyse met dp's erin:
+Dit vindt echter niets. Alpino geeft voor het tweede voorbeeld een analyse met dp's erin:
 
+```xpath
+//node[following-sibling::node/node[@rel="su"]/@lemma=./node[@rel='su']/@lemma and following-sibling::node/node[@rel="hd"]/@lemma=./node[@rel='hd']/@lemma]
+```
+
+Of eigenlijk preciezer
+
+```xpath
+//node[following-sibling::node/node[@rel="su"][preceding-sibling::node[@rel='hd']]/@word=./node[@rel='su'][following-sibling::node[@rel='hd']]/@word and following-sibling::node/node[@rel="hd"]/@word=./node[@rel='hd']/@word]
+```
+
+Helaas alleen voorbeelden met _zeggen_ gevonden.
 
 
 ### 6.12. Adjectieven die met 'geen' gecombineerd worden
