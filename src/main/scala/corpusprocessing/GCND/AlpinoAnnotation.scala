@@ -33,7 +33,9 @@ object Stuff {
     s"$hs:$ms:$ss.$mis"
   }
 
-  val alpinoScope = <alpino xmlns="http://alpino.fake.url"/>.scope
+  // https://www.let.rug.nl/~vannoord/Lassy/sa-man_lassy.pdf
+  // 452461 words, 
+  val alpinoScope = <alpino xmlns="https://www.let.rug.nl/~vannoord/Lassy/"/>.scope
 
   var nopes = 0
 }
