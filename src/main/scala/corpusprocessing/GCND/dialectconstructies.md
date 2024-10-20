@@ -1,15 +1,48 @@
 # Zoeken in het GCND-corpus met XPath
 
-Motivatie:
-* De example-based search van GrETEL zal voor sommige dialect constructies niet goed werken omdat Alpino de gebruikersinvoer 
-niet herkent.  
-* Sommige verschijnselen zijn sowieso moeilijk te vatten in de example-based search
-
-
 Zie ook
 * https://hackmd.io/@amghysel/r1kMS8cC9
 * Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
-* Ook https://paqu.let.rug.nl:8068/info.html#re 
+* Ook https://paqu.let.rug.nl:8068/info.html#re
+
+Motivatie waarom het in veel geval noodzakelijk is met XPath aan de slag te gaan:
+
+* De example-based search van GrETEL zal voor sommige dialectconstructies niet goed werken omdat Alpino de gebruikersinvoer niet op de gewenste manier analyseert. Zie bijvoorbeeld subjectverdubbeling (1.1)
+* In de example-based search kom je niet meteen tot de essentie van wat je zoekt; om een hogere _recall_ te bereiken zal de gegenereerde query moeten worden aangepast. Hieronder een voorbeeld:
+
+We zoeken naar "groter dan/of/als X"-constructies. We voeren "_groter dan een olifant_" in bij de example-based search.
+
+De analyse is:
+
+![img_12.png](img_12.png)
+
+en de bijbehorende xpath is
+
+```xpath
+//node[@cat="ap" and @rel="--" and
+    node[@pt="adj" and @rel="hd"] and
+    node[@cat="cp" and @rel="obcomp" and
+        node[@pt="vg" and @rel="cmp"] and
+        node[@cat="np" and @rel="body" and
+            node[@pt="lid" and @rel="det"] and
+            node[@pt="n" and @rel="hd"]]]]
+```
+
+Hiermee worden 2 resultaten gevonden - een teleurstellend resultaat. Deze query is duidelijk te restrictief. Naar `@rel="--` waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. We moeten de query dus tot zijn essentie reduceren:
+
+```xpath
+//node[@cat="ap" and
+    node[@pt="adj" and @rel="hd"] and
+    node[@cat="cp" and @rel="obcomp" and
+        node[@pt="vg" and @rel="cmp"] and
+        node[@rel="body" ]]]
+```
+
+Hiermee vinden we 118 resultaten, een aannemelijker aantal.
+
+
+
+
 
 
 ## 1. Subjectsverschijnselen
@@ -375,7 +408,8 @@ Negatie met _en_ is terug te vinden met een xpath als
    [node[@cat='np'][node[@rel='det' and @lemma='geen' and @pt='vnw']]]
 ```
 
-![img.png](img.png)
+![img_0.png](img_0.png)
+
 #### Negatieverdubbeling binnen de nominale constituent (zin h)
 
 Is behandeld als een meerwoordige determiner.
@@ -385,8 +419,6 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 //node[@rel="det" and @cat="mwu"]
    [node[@lemma="niet"]]
 ```
-
-
 
 ### 4.2 Adjectieven die met 'geen' gecombineerd worden
 
@@ -404,6 +436,7 @@ Maar in de het corpus heeft in ieder geval _waar_ vaak de n-tag,
 
 A: _Hij komt toch niet?_
 B: _Ja hij en doet ne komt._
+
 
 
 Positieve positieve en negatieve replieken zijn vindbaar met iets als
@@ -516,7 +549,7 @@ De een ... of determiner is te vinden met
 ]
 ```
 
-<img src="img_4.png" width="300x"/> 
+<img src="img_4.png" width="300px"/> 
 
 
 
@@ -575,6 +608,54 @@ node[@rel="hd" and @pt="vnw" and @vwtype="aanw"]
 ```
 
 ![img_9.png](img_9.png)
+
+### 6.9 Code-switches naar het Frans/Engels/...
+
+* ja de potten waren **à peu près** ten einde dan . 
+
+![img_10.png](img_10.png)
+```xpath
+//node[@cat='mwu'][node[@postag='SPEC(vreemd)'] and not (node[@postag!='SPEC(vreemd)'])]
+```
+
+### 6.10 Geluiden en klanknabootsingen
+
+a. en als je voeten zweetten **zwiep** zat je kleine teen erdoor.
+
+b. zodus iedere keer dat hij sloeg hé dat was . . . **djoef**.
+
+Worden getagd als _tsw_, al dan niet met in zinsverband geannoteerde syntactische functie (_predc_ bij b.)
+
+```xpath
+//node[@pt='tsw']
+```
+
+![img_11.png](img_11.png)
+Natuurlijk zijn lang niet alle tussenwerpsels klanknabootsingen.
+
+
+### 6.11 Exclamatieve infinitiefzinnen
+
+Zinnen zoals
+
+a. wij maar werken!
+
+b. en ik zoeken maar!
+
+worden in het GCND als infinitieven (categorielabel _inf_) geanalyseerd, maar
+mét een overt subject (_su_). Deze infinitief wordt i.p.v. een smain gebruikt.
+
+
+Het moet eenvoudiger kunnen, maar hieronder een benadering:
+
+```xpath
+//node[@cat="inf" and not (@rel="vc")][
+  node[@wvorm='inf' and @rel='hd'] and node[@rel='su'][descendant-or-self::node[@word]]
+  ]
+  [not (descendant::node[@pt='ww' and @wvorm != 'inf'])]
+  [not (ancestor::node[@cat="whq" or @cat="oti" or @cat="ti" or @cat="smain"])]
+  [count(descendant::node[@pt="ww"]) = 1]
+```
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 
