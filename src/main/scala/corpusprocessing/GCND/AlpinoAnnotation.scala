@@ -34,7 +34,7 @@ object Stuff {
   }
 
   // https://www.let.rug.nl/~vannoord/Lassy/sa-man_lassy.pdf
-  // 452461 words, 
+  // 452461 words, 50111 sentences
   val alpinoScope = <alpino xmlns="https://www.let.rug.nl/~vannoord/Lassy/"/>.scope
 
   var nopes = 0
@@ -54,6 +54,7 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
                             transcription: Transcription)
 {
   implicit lazy val serializationFormats: Formats = DefaultFormats
+  val writeCONLL= false
   lazy val elans = transcription.elanAnnotations
   lazy val x = alpino_xml.replaceAll("^b'", "").replaceAll("'$", "").replaceAll("\\\\n", "\n").replaceAll("\\\\'", "'")
   lazy val alpinoParseAsXML: Elem = { XML.loadString(x) }//  fixOffsets(, this)
@@ -93,9 +94,9 @@ case class AlpinoAnnotation(alpino_annotatie_id: Int,
       </dependency>
     }))
     if (sentence.map(_.dependencyParseIsValid).getOrElse(false)) { <dependencies>{deps.getOrElse(Seq())}
-      <foreign-data>
+      { if (writeCONLL ) <foreign-data>
         <conll xmls="http://conll.fake.url">{scala.xml.Unparsed("<![CDATA[%s]]>".format(conll))}</conll>
-      </foreign-data>
+      </foreign-data> }
     </dependencies> }
     }  else Seq()
   }

@@ -11,7 +11,7 @@
 <xsl:variable name="docpid"><xsl:value-of select="/*/@xml:id"/></xsl:variable>
 <xsl:variable name="opname_code"><xsl:value-of select="//metadata//meta:opname_code"/></xsl:variable>
 <xsl:variable name="Code"><xsl:value-of select="//metadata//meta:opname_code"/></xsl:variable>
-
+<xsl:variable name="status"><xsl:value-of select='//metadata//meta:transcriptie_status/meta:label'/></xsl:variable>
 <xsl:variable name="docurl">http://svotmc10.ivdnt.loc/blacklab-server/GCND_mei/docs/<xsl:value-of select="$docpid"/>?outputformat=xml</xsl:variable>
 
 
@@ -47,6 +47,12 @@
       replace: ","
 -->
 
+<xsl:template match="@*"><xsl:attribute name="{name(.)}"><xsl:value-of select="."/></xsl:attribute></xsl:template>
+
+<xsl:template match="*"><xsl:element name="{name()}"><xsl:apply-templates select="@*"/><xsl:apply-templates select="node()"/></xsl:element></xsl:template>
+
+<xsl:template match="@originalOffsets"/>
+
 <xsl:template match="speech">
 
  <xsl:message><xsl:value-of select="$docurl"/>: <xsl:value-of select="$doctitle"/></xsl:message>
@@ -68,9 +74,13 @@
 
 		<meta type="text" group="Opname" name="Bron"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:opname/meta:bron'/></xsl:attribute></meta>
     <meta type="text" group="Opname" name="Jaar van opname"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:opname/meta:jaar'/></xsl:attribute></meta>
-		<meta type="text" group="Opname" name="Verificatiestatus"><xsl:attribute name="value"><xsl:value-of select='//metadata//meta:transcriptie_status/meta:label'/></xsl:attribute></meta>
-		
-    <meta group="speech" type="text" name="spreker"><xsl:attribute name="value"><xsl:value-of select='@speaker'/></xsl:attribute></meta>
+		<meta type="text" group="Opname" name="Verificatiestatus"><xsl:attribute name="value"><xsl:choose>
+      <xsl:when test="$status='transcriptie gecorrigeerd, geen taalkundige verrijking'">Transcriptie gecontroleerd, geen taalkundige verrijking</xsl:when>
+      <xsl:when test="$status='transcriptie niet gecorrigeerd, taalkundige verrijking niet gecontroleerd'">Transcriptie niet gecontroleerd, taalkundige verrijking niet gecontroleerd</xsl:when>
+      <xsl:when test="$status='transcriptie gecontroleerd, taalkundige verrijking niet gecontroleerd'">Transcriptie gecontroleerd, taalkundige verrijking niet gecontroleerd</xsl:when>
+      <xsl:when test="$status='transcriptie niet gecorrigeerd, geen taalkundige verrijking'">Transcriptie niet gecontroleerd, geen taalkundige verrijking</xsl:when>
+      <xsl:when test="$status='transcriptie gecontroleerd, taalkundige verrijking gecontroleerd'">Transcriptie gecontroleerd, taalkundige verrijking gecontroleerd</xsl:when></xsl:choose></xsl:attribute></meta> <!-- values mappen-->
+    <meta group="speech" type="text" name="Spreker"><xsl:attribute name="value"><xsl:value-of select='@speaker'/></xsl:attribute></meta>
 		<meta group="speech" type="text" name="Geslacht"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:gender//meta:label'/></xsl:attribute></meta>
 		<meta group="speech" type="text" name="Beroep"><xsl:attribute name="value"><xsl:value-of select='let $b := .//meta:opname__persoon[.//meta:label="spreker"]//meta:beroep//meta:label/text() return $b[1]'/></xsl:attribute></meta>
 		<meta group="speech" type="text" name="Geboorteplaats"><xsl:attribute name="value"><xsl:value-of select='.//meta:opname__persoon[.//meta:label="spreker"]//meta:plaats[contains(@rel,"boor")]//meta:naam'/></xsl:attribute></meta>
@@ -82,7 +92,7 @@
     
   <xsl:for-each select=".//*[local-name()='alpino_ds']">
    <alpino_ds>
-     <xsl:for-each select="@*|node()[not (name()='alud')]"><xsl:copy-of select="."/></xsl:for-each>
+     <xsl:for-each select="@*|node()[not (name()='alud')]"><xsl:apply-templates select="."/></xsl:for-each>
      <metadata>
          <meta type="text" name="speech_id"><xsl:attribute name="value"><xsl:value-of select="ancestor::speech/@xml:id"/></xsl:attribute></meta>
 		     <meta type="text" name="sentence_id"><xsl:attribute name="value"><xsl:value-of select="ancestor::s/@xml:id"/></xsl:attribute></meta>
