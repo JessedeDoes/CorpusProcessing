@@ -78,16 +78,14 @@ Iets algemener:
 Deze constructie wordt noch in de Lassy-handleiding noch in de CGN-beschrijving besproken.
 In het GCND is dit _het_ zoals presentatief _er_ behandeld, en heeft _het_ dus het dependentielabel _MOD_.
 
-?Adjectieven met "geen".
 
 Vindbaar met:
 
 ```xpath
-//node[@rel='mod' and word='het']
+//node[@rel='mod' and @word='het']
 ```
 
 De resultaten zijn soms een beetje verwarrend
-
 
 
 ## 2. Uitbreidingen van de zin: TAG en SAT
