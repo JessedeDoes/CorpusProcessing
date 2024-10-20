@@ -515,8 +515,7 @@ tegelijkertijd deel uitmaakt, eerst als staart en dan als kop, van twee onafhank
 * maar nu [**hadden we hier zo {_de vaart_**] , _noemen wij dat_ }.
 
 In het GCND wordt hier het categorielabel _apokoinou_ gebruikt, en in het tweede
-zinsdeel is er een lege knoop die met het woord dat twee rollen heeft gecoïndi-
-ceerd is (=dezelfde index heeft).
+zinsdeel is er een lege knoop die met het woord dat twee rollen heeft gecoïndiceerd is (=dezelfde index heeft).
 
 ```xpath
 //node[@cat="apokoinou"]
@@ -528,15 +527,97 @@ ceerd is (=dezelfde index heeft).
 
 ### 6.5 Opsomming van cijfers met betekenis ‘ongeveer’
 
+
+
+#### Type 1
+
+* gastjes van vijf zes jaar
+
 ```xpath
 //node[@cat='conj'][count(./node[@pt='tw']) > 1 and count(./node[@pt="tw"]) =  count(./node)]
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27conj%27%5D%5Bcount%28./node%5B%40pt%3D%27tw%27%5D%29%20%3E%201%20and%20count%28./node%5B%40pt%3D%22tw%22%5D%29%20%3D%20%20count%28./node%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-
 ![img_3.png](img_3.png)
 
+#### Type 2 
 
+* een boek of twee drie
+
+De een ... of determiner is te vinden met
+
+* en k·zegge k·e ik nog een **een** stinkebol **of twee**.
+
+```xpath
+//node[@cat='detp'
+ and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27detp%27%0A%20and%20node%20%5B%40rel%3D%27mod%27%20and%20%40cat%3D%27mwu%27%5D%5Bnode%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27lid%27%5D%20and%20node%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27vg%27%5D%20%20%5D%0A%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+<img src="img_4.png" width="300x"/> 
+
+
+
+```xpath
+//node[@rel='det' and 
+   node[@cat='detp' and @rel="cnj"
+        and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+]]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27det%27%20and%20%0A%20%20%20node%5B%40cat%3D%27detp%27%20and%20%40rel%3D%22cnj%22%0A%20%20%20%20%20%20%20%20and%20node%20%5B%40rel%3D%27mod%27%20and%20%40cat%3D%27mwu%27%5D%5Bnode%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27lid%27%5D%20and%20node%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27vg%27%5D%20%20%5D%0A%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+
+<!-- ![img_5.png](img_5.png) -->
+
+<img src="img_5.png" width="40%"/> 
+
+### 6.6 Discontinue telwoorden drie jaar en half, drie kilo een half
+
+* k·ware nog een jaar en half te jong.
+
+Volgens de annotatierichtlijnen getagds als mwu met mwp delen. 
+
+
+* en da was maar op twee uren en half .
+
+<img src="img_7.png" width="40%"/> 
+
+```xpath
+//node[@cat="mwu"][node[@lemma="half"][../node[@pt="tw"]/@begin < @begin]]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%22mwu%22%5D%5Bnode%5B%40lemma%3D%22half%22%5D%5B../node%5B%40pt%3D%22tw%22%5D/%40begin%20%3C%20%40begin%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+In de praktijk gebeurt het vaak anders:
+
+* als mijn va ... awel als mijn vader zijn zuster zes jaar en half was ging ze al naar het fabriek .
+
+<img src="img_6.png" width="30%"/>
+
+### 6.7  Tijdsbepalingen met (van) te: _te zessen, van te zessen_
+
+* en het was dan al rond te vieren .
+
+```xpath
+//node[node[@lemma='te' and @rel='hd'] and node[@pt='tw' and @rel='obj1' ]]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5Bnode%5B%40lemma%3D%27te%27%20and%20%40rel%3D%27hd%27%5D%20and%20node%5B%40pt%3D%27tw%27%20and%20%40rel%3D%27obj1%27%20%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+<img src="img_8.png" width="40%"/>
+
+### 6.8 De die
+
+* awel de die was heel klein hé .
+
+```xpath
+//node[
+node[@rel='det' and @pt="lid"] and
+node[@rel="hd" and @pt="vnw" and @vwtype="aanw"]
+]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%0Anode%5B%40rel%3D%27det%27%20and%20%40pt%3D%22lid%22%5D%20and%0Anode%5B%40rel%3D%22hd%22%20and%20%40pt%3D%22vnw%22%20and%20%40vwtype%3D%22aanw%22%5D%0A%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+![img_9.png](img_9.png)
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 
@@ -549,8 +630,6 @@ Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in vo
 //node[not (ancestor::node)][not (.//node[@cat="smain" or @cat="nucl"])]
 ```
 [link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5Bnot%20%28ancestor%3A%3Anode%29%5D%5Bnot%20%28.//node%5B%40cat%3D%22smain%22%20or%20%40cat%3D%22nucl%22%5D%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
-
-
 
 ### 1.1 Elliptische/asyndetische constructies
 

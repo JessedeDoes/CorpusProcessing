@@ -479,8 +479,7 @@ tegelijkertijd deel uitmaakt, eerst als staart en dan als kop, van twee onafhank
 * maar nu [**hadden we hier zo {_de vaart_**] , _noemen wij dat_ }.
 
 In het GCND wordt hier het categorielabel _apokoinou_ gebruikt, en in het tweede
-zinsdeel is er een lege knoop die met het woord dat twee rollen heeft gecoïndi-
-ceerd is (=dezelfde index heeft).
+zinsdeel is er een lege knoop die met het woord dat twee rollen heeft gecoïndiceerd is (=dezelfde index heeft).
 
 ```xpath
 //node[@cat="apokoinou"]
@@ -491,14 +490,91 @@ ceerd is (=dezelfde index heeft).
 
 ### 6.5 Opsomming van cijfers met betekenis ‘ongeveer’
 
+
+
+#### Type 1
+
+* gastjes van vijf zes jaar
+
 ```xpath
 //node[@cat='conj'][count(./node[@pt='tw']) > 1 and count(./node[@pt="tw"]) =  count(./node)]
 ```
 
-
 ![img_3.png](img_3.png)
 
+#### Type 2 
 
+* een boek of twee drie
+
+De een ... of determiner is te vinden met
+
+* en k·zegge k·e ik nog een **een** stinkebol **of twee**.
+
+```xpath
+//node[@cat='detp'
+ and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+]
+```
+
+<img src="img_4.png" width="300x"/> 
+
+
+
+```xpath
+//node[@rel='det' and 
+   node[@cat='detp' and @rel="cnj"
+        and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+]]
+```
+
+
+<!-- ![img_5.png](img_5.png) -->
+
+<img src="img_5.png" width="40%"/> 
+
+### 6.6 Discontinue telwoorden drie jaar en half, drie kilo een half
+
+* k·ware nog een jaar en half te jong.
+
+Volgens de annotatierichtlijnen getagds als mwu met mwp delen. 
+
+
+* en da was maar op twee uren en half .
+
+<img src="img_7.png" width="40%"/> 
+
+```xpath
+//node[@cat="mwu"][node[@lemma="half"][../node[@pt="tw"]/@begin < @begin]]
+```
+
+In de praktijk gebeurt het vaak anders:
+
+* als mijn va ... awel als mijn vader zijn zuster zes jaar en half was ging ze al naar het fabriek .
+
+<img src="img_6.png" width="30%"/>
+
+### 6.7  Tijdsbepalingen met (van) te: _te zessen, van te zessen_
+
+* en het was dan al rond te vieren .
+
+```xpath
+//node[node[@lemma='te' and @rel='hd'] and node[@pt='tw' and @rel='obj1' ]]
+```
+
+<img src="img_8.png" width="40%"/>
+
+### 6.8 De die
+
+* awel de die was heel klein hé .
+
+```xpath
+//node[
+node[@rel='det' and @pt="lid"] and
+node[@rel="hd" and @pt="vnw" and @vwtype="aanw"]
+]
+```
+
+![img_9.png](img_9.png)
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 
@@ -510,8 +586,6 @@ Ze zijn (niet geheel betrouwbaar) te vinden als analyses waar geen _smain_ in vo
 ```xpath
 //node[not (ancestor::node)][not (.//node[@cat="smain" or @cat="nucl"])]
 ```
-
-
 
 ### 1.1 Elliptische/asyndetische constructies
 
