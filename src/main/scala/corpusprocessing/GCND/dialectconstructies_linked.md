@@ -528,6 +528,15 @@ ceerd is (=dezelfde index heeft).
 
 ### 6.5 Opsomming van cijfers met betekenis ‘ongeveer’
 
+```xpath
+//node[@cat='conj'][count(./node[@pt='tw']) > 1 and count(./node[@pt="tw"]) =  count(./node)]
+```
+[link](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27conj%27%5D%5Bcount%28./node%5B%40pt%3D%27tw%27%5D%29%20%3E%201%20and%20count%28./node%5B%40pt%3D%22tw%22%5D%29%20%3D%20%20count%28./node%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+
+
+![img_3.png](img_3.png)
+
+
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 

@@ -491,6 +491,14 @@ ceerd is (=dezelfde index heeft).
 
 ### 6.5 Opsomming van cijfers met betekenis ‘ongeveer’
 
+```xpath
+//node[@cat='conj'][count(./node[@pt='tw']) > 1 and count(./node[@pt="tw"]) =  count(./node)]
+```
+
+
+![img_3.png](img_3.png)
+
+
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 
