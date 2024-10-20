@@ -1,9 +1,11 @@
 # Zoeken in het GCND-corpus met XPath
 
 Zie ook
-* https://hackmd.io/@amghysel/r1kMS8cC9
-* Voor een algemeen GrETEL tutorial zie https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM
-* Ook https://paqu.let.rug.nl:8068/info.html#re
+
+
+* [Document op hackmd](https://hackmd.io/@amghysel/r1kMS8cC9)
+* Voor een algemeen GrETEL tutorial zie [Tutorial van Jan Odijk](https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM)
+* Ook [Documentatie bij PaQU](https://paqu.let.rug.nl:8068/info.html#re)
 
 Motivatie waarom het in veel geval noodzakelijk is met XPath aan de slag te gaan:
 
