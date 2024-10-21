@@ -736,7 +736,9 @@ Behandeld als een multi-word unit (MWU) die als modificeerder fungeert (MOD).
 Query bij benadering:
 
 ```xpath
-//node[@rel='mod' and @cat='mwu' and not (parent::node[@rel='det' or @cat='detp'])][node[@pt='vg']]
+//node[@rel='mod' 
+         and @cat='mwu' and not (parent::node[@rel='det' or @cat='detp'])]
+     [node[@pt='vg']]
 ```
 
 ### 5.2 woordherhaling (voor klemtoon)

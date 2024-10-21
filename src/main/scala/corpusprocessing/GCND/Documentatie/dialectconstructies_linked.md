@@ -789,9 +789,11 @@ Behandeld als een multi-word unit (MWU) die als modificeerder fungeert (MOD).
 Query bij benadering:
 
 ```xpath
-//node[@rel='mod' and @cat='mwu' and not (parent::node[@rel='det' or @cat='detp'])][node[@pt='vg']]
+//node[@rel='mod' 
+         and @cat='mwu' and not (parent::node[@rel='det' or @cat='detp'])]
+     [node[@pt='vg']]
 ```
-[→<img src='img.png' width='20pt'/>](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27mod%27%20and%20%40cat%3D%27mwu%27%20and%20not%20%28parent%3A%3Anode%5B%40rel%3D%27det%27%20or%20%40cat%3D%27detp%27%5D%29%5D%5Bnode%5B%40pt%3D%27vg%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+[→<img src='img.png' width='20pt'/>](https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27mod%27%20%0A%20%20%20%20%20%20%20%20%20and%20%40cat%3D%27mwu%27%20and%20not%20%28parent%3A%3Anode%5B%40rel%3D%27det%27%20or%20%40cat%3D%27detp%27%5D%29%5D%0A%20%20%20%20%20%5Bnode%5B%40pt%3D%27vg%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 ### 5.2 woordherhaling (voor klemtoon)
 
