@@ -989,6 +989,7 @@ Hier vinden we maar 1 hit voor. De reden daarvoor is dat het grensvlak met schei
 ##### Cheat Sheet
 
 Basis XPath-syntaxis:
+
 * / - Selecteert vanaf de root node.
 * // - Selecteert nodes overal in het document.
 * . - Vertegenwoordigt de "huidige node".
