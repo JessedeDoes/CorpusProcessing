@@ -979,9 +979,40 @@ node[@rel=&quot;hd&quot; and @pt=&quot;vnw&quot; and @vwtype=&quot;aanw&quot;]
 <li>text() - Selecteert de tekst binnen een element. <em>(Zelden nuttig in Gretel)</em></li>
 <li>[predicate] - Voegt een voorwaarde toe om nodes te filteren.</li>
 </ul>
-<p>Predicaten: * <span class="citation" data-cites="name">[@name='waarde']</span> - Selecteert nodes met de opgegeven attribuutwaarde. * [position()] - Selecteert nodes op basis van hun positie. * [last()] - Selecteert de laatste node van een gegeven type. * <span class="citation" data-cites="attribute">[contains(@attribute, 'waarde')]</span> - Selecteert nodes met attribuutwaarden die ‘waarde’ bevatten. * [not(predicate)] - Ontkent een voorwaarde.</p>
-<p>Assen: * ancestor:: - Selecteert alle voorouders. * ancestor-or-self:: - Selecteert voorouders en de huidige node. * child:: - Selecteert alle kinderen. * descendant:: - Selecteert alle afstammelingen. * descendant-or-self:: - Selecteert afstammelingen en de huidige node. * following:: - Selecteert alle volgende nodes. * following-sibling:: - Selecteert volgende broers/zussen. * parent:: - Selecteert de ontmiddelijke parent node. * preceding:: - Selecteert alle voorgaande nodes. * preceding-sibling:: - Selecteert voorgaande broers/zussen. * self:: - Selecteert de huidige node.</p>
-<p>Operatoren * = - Gelijk aan. * != - Niet gelijk aan. * &lt; - Minder dan. * &lt;= - Minder dan of gelijk aan. * <code>&gt;</code> - Groter dan. * <code>&gt;=</code> - Groter dan of gelijk aan. * and - Logisch EN. * or - Logisch OF. * not - Logisch NIET.</p>
+<p>Predicaten:</p>
+<ul>
+<li><span class="citation" data-cites="name">[@name='waarde']</span> - Selecteert nodes met de opgegeven attribuutwaarde.</li>
+<li>[position()] - Selecteert nodes op basis van hun positie.</li>
+<li>[last()] - Selecteert de laatste node van een gegeven type.</li>
+<li><span class="citation" data-cites="attribute">[contains(@attribute, 'waarde')]</span> - Selecteert nodes met attribuutwaarden die ‘waarde’ bevatten.</li>
+<li>[not(predicate)] - Ontkent een voorwaarde.</li>
+</ul>
+<p>Assen:</p>
+<ul>
+<li>ancestor:: - Selecteert alle voorouders.</li>
+<li>ancestor-or-self:: - Selecteert voorouders en de huidige node.</li>
+<li>child:: - Selecteert alle kinderen.</li>
+<li>descendant:: - Selecteert alle afstammelingen.</li>
+<li>descendant-or-self:: - Selecteert afstammelingen en de huidige node.</li>
+<li>following:: - Selecteert alle volgende nodes.</li>
+<li>following-sibling:: - Selecteert volgende broers/zussen.</li>
+<li>parent:: - Selecteert de ontmiddelijke parent node.</li>
+<li>preceding:: - Selecteert alle voorgaande nodes.</li>
+<li>preceding-sibling:: - Selecteert voorgaande broers/zussen.</li>
+<li>self:: - Selecteert de huidige node.</li>
+</ul>
+<p>Operatoren:</p>
+<ul>
+<li>= - Gelijk aan.</li>
+<li>!= - Niet gelijk aan.</li>
+<li>&lt; - Minder dan.</li>
+<li>&lt;= - Minder dan of gelijk aan.</li>
+<li><code>&gt;</code> - Groter dan.</li>
+<li><code>&gt;=</code> - Groter dan of gelijk aan.</li>
+<li>and - Logisch EN.</li>
+<li>or - Logisch OF.</li>
+<li>not - Logisch NIET.</li>
+</ul>
 <p>Functies (Voorbeelden):</p>
 <ul>
 <li>name() - Geeft de naam van de huidige node terug. <em>(Zelden nuttig in Gretel, is bijna altijd ‘node’)</em></li>

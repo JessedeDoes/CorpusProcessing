@@ -1003,6 +1003,7 @@ Selectors:
 * [predicate] - Voegt een voorwaarde toe om nodes te filteren.
 
 Predicaten:
+
 * [@name='waarde'] - Selecteert nodes met de opgegeven attribuutwaarde.
 * [position()] - Selecteert nodes op basis van hun positie.
 * [last()] - Selecteert de laatste node van een gegeven type.
@@ -1010,6 +1011,7 @@ Predicaten:
 * [not(predicate)] - Ontkent een voorwaarde.
 
 Assen:
+
 * ancestor:: - Selecteert alle voorouders.
 * ancestor-or-self:: - Selecteert voorouders en de huidige node.
 * child:: - Selecteert alle kinderen.
@@ -1022,7 +1024,8 @@ Assen:
 * preceding-sibling:: - Selecteert voorgaande broers/zussen.
 * self:: - Selecteert de huidige node.
 
-Operatoren
+Operatoren:
+
 * = - Gelijk aan.
 * != - Niet gelijk aan.
 * < - Minder dan.
