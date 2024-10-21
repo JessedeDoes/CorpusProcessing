@@ -1,16 +1,22 @@
-# Zoeken in het GCND-corpus met XPath
+# Zoeken naar dialectconstructies in het GCND-corpus met behulp van XPath
 
-Zie ook
+Zie voor meer informatie ook:
+
+* [Lassy annotatiehandleiding](https://www.let.rug.nl/~vannoord/Lassy/sa-man_lassy.pdf)
+* Voor een algemeen GrETEL tutorial  [Tutorial van Jan Odijk](https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM)
+* [Documentatie bij de PaQu-zoekapplicatie](https://paqu.let.rug.nl:8068/info.html#re)
 
 
-* [Document op hackmd](https://hackmd.io/@amghysel/r1kMS8cC9)
-* Voor een algemeen GrETEL tutorial zie [Tutorial van Jan Odijk](https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM)
-* Ook [Documentatie bij PaQU](https://paqu.let.rug.nl:8068/info.html#re)
+## Inleiding
 
-Motivatie waarom het in veel geval noodzakelijk is met XPath aan de slag te gaan:
+Hoewel de GReTEL-applicatie de mogelijk biedt om met example-based search te zoeken, 
+is het in veel gevallen toch noodzakelijk met XPath aan de slag te gaan.
 
-* De example-based search van GrETEL zal voor sommige dialectconstructies niet goed werken omdat Alpino de gebruikersinvoer niet op de gewenste manier analyseert. Zie bijvoorbeeld subjectverdubbeling (1.1)
-* In de example-based search kom je niet meteen tot de essentie van wat je zoekt; om een hogere _recall_ te bereiken zal de gegenereerde query moeten worden aangepast. Hieronder een voorbeeld:
+* De example-based search van GrETEL zal voor sommige dialectconstructies niet goed werken 
+   omdat Alpino de gebruikersinvoer niet op de gewenste manier analyseert. Zie bijvoorbeeld subjectverdubbeling (1.1)
+* In de example-based search kom je niet meteen tot de essentie van wat je zoekt; 
+   om een hogere _recall_ te bereiken zal de gegenereerde query moeten worden aangepast. Hieronder een voorbeeld:
+
 
 We zoeken naar "groter dan/of/als X"-constructies. We voeren "_groter dan een olifant_" in bij de example-based search.
 
@@ -30,7 +36,10 @@ en de bijbehorende xpath is
             node[@pt="n" and @rel="hd"]]]]
 ```
 
-Hiermee worden 2 resultaten gevonden - een teleurstellend resultaat. Deze query is duidelijk te restrictief. Naar `@rel="--` waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. We moeten de query dus tot zijn essentie reduceren:
+Hiermee worden 2 resultaten gevonden - een beetje mager resultaat. De query is dus 
+duidelijk te restrictief. 
+Naar `@rel="--"` waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. 
+We moeten de query dus tot zijn essentie reduceren:
 
 ```xpath
 //node[@cat="ap" and
@@ -42,10 +51,180 @@ Hiermee worden 2 resultaten gevonden - een teleurstellend resultaat. Deze query 
 
 Hiermee vinden we 118 resultaten, een aannemelijker aantal.
 
+### XPath voor het zoeken in Alpino-structuren
 
 
+#### Algemeen
+
+De Alpino-analyses zijn gecodeerd in XML. Een knoop in de analyseboom corresponeert met een element `node` in de XML-codering. 
+De nesting van `node`-elementen definieert de hierarchische zinsstructuur.
+
+##### Zoeken op eigenschappen van `node`
+
+De xpath-query ```//node``` zoekt naar nodes onafhankelijk van de diepte in de hierarchisch structuur. 
+Om nodes op grond van hun eigenschappen te selecteren gebruiken we de attributen van het element.
+
+XML:
+```xml
+<node word='knoop'/>
+```
+XPath:
+```xpath
+//node[@word='knoop']
+```
+
+Alle knopen hebben een attribuut `@rel` dat de dependentierelatie aanduidt, en `@begin` en `@end` waarmee respectievelijk 
+de begin- en eindpositie (in woorden, met 0 voor het eerste woord in de zin) van een woord of zinsdeel worden aangegeven.
 
 
+| dependentielabel | omschrijving
+|---|---
+| APP | appositie, bijstelling
+| BODY | romp (bij complementizer))
+| CMP | complementizer
+| CNJ | lid van nevenschikking
+| CRD | nevenschikker (als hoofd van conjunctie)
+| DET | determinator
+| DLINK | discourse-link
+| DP | discourse-part
+| HD | hoofd
+| HDF | afsluitend element van circumpositie
+| LD | locatief of directioneel complement
+| ME | maat (duur, gewicht, . . . ) complement
+| MOD | bijwoordelijke bepaling
+| MWP | deel van een multi-word-unit
+| NUCL | kernzin
+| OBCOMP | vergelijkingscomplement
+| OBJ1 | direct object, lijdend voorwerp
+| OBJ2 | secundair object (meewerkend, belanghebbend, ondervindend)
+| PC | voorzetselvoorwerp
+| POBJ1 | voorlopig direct object
+| PREDC | predicatief complement
+| PREDM | bepaling van gesteldheid ‘tijdens de handeling’
+| RHD | hoofd van een relatieve zin
+| SAT | satelliet; aan- of uitloop
+| SE | verplicht reflexief object
+| SU | subject, onderwerp
+| SUP | voorlopig subject
+| SVP | scheidbaar deel van werkwoord
+| TAG | aanhangsel, tussenvoegsel
+| VC | verbaal complement
+| WHD | hoofd van een vraagzin
+
+Simpele zoekvragen met deze attributen: (met `[]` wordt een conditie aan het voorgaande `node`-element opgelegd; attributwaarden 
+worden aangeduid met `@attribuut_naam`)
+
+| gezocht | XPath
+|--|--
+| Object aan het begin van de zin | ```ixpath //node[@rel='obj1' and @begin='0']```
+
+De "bladeren" in de knoop (de woorden) zijn voorzien van (onder andere) de volgende attributen:
+
+| attribuut | omschrijving
+|--|--
+|@word | woordvorm (zware vernederlandsing)
+|@dialect_word | woordvorm (lichte vernederlandsing)
+|@lemma | lemma
+|@pt | woordsoort (woordsoort volgens de CGN-tagset)
+|@postag | woordsoort volgens CGN, met features
+|@wvorm, @buiging, .... | CGN PoS features
+
+Simpele zoekvragen met deze attributen:
+
+| gezocht               | XPath
+|-----------------------|--
+| Substantiva           | ```ixpath //node[@pt='n']```
+| Adjectief als subject | ```ixpath //node[@pt='adj' and @rel='su']```
+
+Niet-bladeren hebben in plaats van de PoS informatie een categorielabel dat het type constituent aangeeft.
+
+| attribuut | omschrijving
+|-----------|--
+| @cat      | categorielabel
+
+
+| categorielabel | omschrijving
+|----------------|-------------
+| AP             | bijvoeglijk-naamwoordgroep
+| ADVP           | woordgroep met bijwoord als hoofd
+| AHI            | aan het-infinitief-groep
+| CONJ           | nevenschikking
+| CP             | frase ingeleid door onderschikkend voegwoord
+| DETP           | woordgroep met lidwoord als hoofd
+| DU             | discourse unit
+| INF            | kale infinitiefgroep
+| NP             | naamwoordelijke constituent
+| OTI            | om te-infinitief-groep
+| PPART          | voltooid/passief-deelwoordgroep
+| PP             | voorzetselconstituent
+| PPRES          | tegenwoordig-deelwoordgroep
+| REL            | relatieve zin
+| SMAIN          | declaratieve zin (werkwoord op tweede plaats)
+| SSUB           | bijzin (V finaal)
+| SVAN           | van-zin
+| SV1            | werkwoordsinitiële zin (ja/nee-vraag, bevel)
+| TI             | te-infinitief-groep
+| WHREL          | relatieve zin met ingesloten antecedent
+| WHSUB          | constituentvraag: ondergeschikte zin
+| WHQ            | constituentvraag: hoofdzin
+
+##### Hierarchie
+
+##### Volgorde
+
+##### Opletten
+
+* Vergeet bij vergelijking van woordposities niet `@begin` en `@end` als getallen op te vatten door `number(@begin)`, etc.
+* Let op gecoindexeerde woorden
+
+Het laatste moet even worden uitgelegd. Bij de query ```//node[@rel='obj1' and @begin='0']``` hierboven vonden 
+we het onjuiste resultaat _**k** zijn ier geboren_. Bij inspectie ziet de boom er zo uit:
+
+![img_19.png](img_19.png)
+
+De interferentie van de geindexeerde spooknodes kan worden vermeden met bijvoorbeeld
+
+```xpath 
+//node[@rel='obj1' and @begin='0'][@word or .//node[@word]]
+```
+
+
+##### Eenvoudig voorbeeld ontleend aan (Tutorial Odijk):
+
+Stel dat we zoeken naar adjectieven met een bijwoordelijke modifier.
+
+* ah ba ja t ... bestaat **al lang** eni .
+
+In de Alpino-boom ziet dat er zo uit:
+
+![img_18.png](img_18.png)
+
+De XPath-vertaling van deze structuur is
+
+```xpath
+//node[@cat="ap" and
+     node[@pt="bw" and @rel="mod"] and
+     node[@pt="adj" and @rel="hd"]]
+```
+
+Stapsgewijze uitleg:
+
+| Xpath                                        | Interpretatie
+|----------------------------------------------|-------------
+| //                                           | zoek overal in de boom
+| node                                         | naar een knoop met tag  node
+| [                                            | begin van de condities op node
+| @cat = | "cat" attribuut(@) cat heeft waarde `ap` 
+| and | en 
+| node | bevat een knoop met tag node
+| [@pt="bw" and @rel="mod"] | met attribuut pt = `bw` en attribuut rel = `mod`
+| and |  en
+| node | een knoop met tag node
+| [@pt="adj" and @rel="hd"] | met attribuut pt = `adj` en attribuut rel = `hd`
+| ] | einde van de condities
+
+
+In het vervolg kijken we hoe een aantal typische dialectconstructies met behulp van XPath-queries kunnen proberen terug te vinden. 
 
 ## 1. Subjectsverschijnselen
 
@@ -85,9 +264,6 @@ Vindbaar met:
 //node[@rel='mod' and @word='het']
 ```
 
-De resultaten zijn soms een beetje verwarrend
-
-
 ## 2. Uitbreidingen van de zin: TAG en SAT
 
 ### Discourse-structuren in de Lassy annotatie
@@ -111,9 +287,9 @@ Uit het Lassy-annotatiemanual:
 
 #### 2.1.a Aanloopconstructie (Left dislocation)
 
-_Jan, die ken ik niet_
+* _Jan, die ken ik niet_
 
-Dit goed te gaan in Alpino, en kan dus via example-based search worden gevonden.
+Dit lijkt goed te gaan in Alpino, en kan dus via example-based search worden gevonden.
 
 Herkenbaar aan dependentierelatie _SAT_ en (categorie _np_ of woordsoort zelfstandig naamwoord (_n_).
 
@@ -121,11 +297,10 @@ Herkenbaar aan dependentierelatie _SAT_ en (categorie _np_ of woordsoort zelfsta
 //node[@rel='sat' and (@cat='np' or @pt='n')][@begin="0"]
 ```
 
-Niet altijd makkelijk te onderscheiden van volgende categorie. 
 
 ##### 2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:
 
-_**mijn vent** wist **hij** ook niet wat dat was en nu komt ..._
+* _**mijn vent** wist **hij** ook niet wat dat was en nu komt ..._
 
 Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen
 
@@ -151,7 +326,9 @@ Met dit soort structuren kan Alpino doorgaans vlotjes om; preprocessing is dan o
 
 Geanalyseerd met dependentierelaties tag (voor tussenwerpsel of aansporing) en nucl (voor de eigenlijke zin)
 ```xpath
-//node[@rel='tag' and (@cat="pp" or @pt='bw' or @cat="advp" or @pt="tsw") and @begin="0"][../node[@rel='nucl']]
+//node[@rel='tag' and 
+      (@cat="pp" or @pt='bw' or @cat="advp" or @pt="tsw") and @begin="0"]
+   [../node[@rel='nucl']]
 ```
 
 #### 2.1.d Inversieloos V-later-dan-2 / V>2 / Noninverted V3
@@ -173,7 +350,7 @@ _**in de zomer** t e klaar tot sn avonds t negenen_
 
 #### 2.1.e Ingebedde dislocaties
 
-_Wat vindt u der eigenlijk van dat zulke zinnen dat die zo geanalyseerd worden?_
+* _Wat vindt u der eigenlijk van dat zulke zinnen dat die zo geanalyseerd worden?_
 
 Zijn getagd met met _SAT_
 
@@ -183,7 +360,8 @@ Zijn getagd met met _SAT_
 * _ja **ja ze** het is heel juist_
 
 ```xpath
-//node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] and node[@rel='mwp' and @pos='pron']]
+//node[@rel='tag'][node[@rel='mwp' and @pt='tsw'] 
+     and node[@rel='mwp' and @pos='pron']]
 ```
 
 
@@ -199,21 +377,20 @@ Het is toch geen waar, etc
 (Laatste met sv1, verschil met smain niet zo duidelijk?)
 
 * Inleidende matrixzin (hij zei):
+  * Dependentielabel (rel): tag
+  * Categorielabel (cat): smain
 
-  Dependentielabel (rel): tag
-  Categorielabel (cat): smain
-
-Pseudodirecte rede - V2-bijzin (hij weet het niet):
-
-    Depentielabel (rel): nucl
-    Categorielabel (cat): smain (of – bij werkwoordsinitiële zinnen – sv1)
+* Pseudodirecte rede - V2-bijzin (hij weet het niet):
+    * Depentielabel (rel): nucl
+    * Categorielabel (cat): smain (of – bij werkwoordsinitiële zinnen – sv1)
 
 ```xpath
-//node[./node[@rel='tag' and @cat='smain'] and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]
+//node[./node[@rel='tag' and @cat='smain'] 
+     and node[@rel='nucl' and (@cat='smain' or @cat='sv1')]]
 ```
 
 
-NB: Alpino parset directe en pseudodirecte redes doorgaans automatisch juist als je een komma toevoegt tussen de matrixzin en de V2-bijzin.
+NB: Alpino parseert directe en pseudodirecte redes doorgaans automatisch juist als je een komma toevoegt tussen de matrixzin en de V2-bijzin.
 
 
 ### 2.3 Intercalaties/parentheses/interpositio
@@ -225,7 +402,8 @@ Let op: afwijking van Lassy: In het GCND kiezen we ervoor parentheses het depend
 //node[@rel='tag' and @cat='smain']
    [number(../node[@cat='smain' and @rel='nucl' and @begin and @end]
 /@begin) < @begin]
-   [number(../node[@cat='smain' and @rel='nucl' and @begin and @end]/@end) > @begin]
+   [number(../node[@cat='smain' and @rel='nucl' 
+        and @begin and @end]/@end) > @begin]
 ```
 
 
@@ -258,11 +436,11 @@ Vindbaar met:
 //node[@rel="vc"  and @cat="svan"]
 ```
 
-
-Bijvoorbeeld beperkt tot combinatie met "zeggen"
+Beperkt tot combinatie met "zeggen"
 
 ```xpath
-//node[node[@rel="hd" and @lemma="zeggen"] and node[@rel="vc"  and @cat="svan"]]
+//node[node[@rel="hd" and @lemma="zeggen"] 
+   and node[@rel="vc"  and @cat="svan"]]
 ```
 
 
@@ -282,7 +460,8 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 * we gaan weer moeten de tijd afwachten wat dat er allemaal gaat voorvallen
 
 ```xpath
-//node[@word="wie" and @rel="whd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
+//node[@word="wie" and @rel="whd"]
+   [following-sibling::node[./node[@word="dat" and @pt="vg"]]]
 ```
 
 #### Type 3: na betrekkelijk voornaamwoord
@@ -291,7 +470,8 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 * _nee ze voor de oorlog veertien achttien was waren er dan nog knechten **die dat** we winter zomer hadden_
 
 ```xpath
-//node[@word="die" and @rel="rhd"][following-sibling::node[./node[@word="dat" and @pt="vg"]]]
+//node[@word="die" and @rel="rhd"]
+   [following-sibling::node[./node[@word="dat" and @pt="vg"]]]
 ```
 
 #### Type 4: na vraagwoord + of (zeldzaam in Vlaanderen, cf. Lassy-handleiding)
@@ -317,7 +497,8 @@ Bijvoorbeeld beperkt tot combinatie met "zeggen"
 * _een restaurant voor te blijven voor te eten_
 
 ```xpath
-//node[@cat='oti'][./node[@rel='cmp' and @pt='vz' and (@word='voor' or @word='van')]]
+//node[@cat='oti'][./node[@rel='cmp' and @pt='vz' 
+      and (@word='voor' or @word='van')]]
 ```
 
 ### 3.5. Afhankelijke ja/nee-vragen ingeleid door _als_ ipv of
@@ -350,28 +531,36 @@ Hoofdzinvolgorde wordt gekenmerkt door
 Object is losstaand znw (dus geen _VC_ node aanwezig in boom):
 ```xpath
 //node[@cat='ssub'][
-node[@rel='hd' and @pt='ww'][number(../node[@rel='obj1' and @word and @pt='n']/@begin)  > number(@begin)]
+    node[@rel='hd' and @pt='ww']
+      [number(../node[@rel='obj1' and @word and @pt='n']/@begin)
+          > number(@begin)]
 ]
 ```
 
 Object zit binnen VC (dit overlapt met de vlaamse clusterdoorbreking)
 ```xpath
 //node[@cat='ssub'][
-node[@rel='hd' and @pt='ww'][number(../node[@rel='vc'][node[@rel="obj1" and @pt="n"]]/@begin)  > number(@begin)]
+    node[@rel='hd' and @pt='ww']
+        [number(../node[@rel='vc'][node[@rel="obj1" 
+            and @pt="n"]]/@begin)  > number(@begin)]
 ]
 ```
 
 Subject na werkwoordelijk hoofd:
 ```xpath
 //node[@cat='ssub']
-     [node[@rel='hd' and @pt='ww'][number(../node[@rel='su'][1]/@begin)  > number(@begin)]]
+     [node[@rel='hd' and @pt='ww']
+        [number(../node[@rel='su'][1]/@begin)  > number(@begin)]]
 ```
 
-Lastig .... even later meer doorklooien
+Lukt nog niet zo goed!
 ```xpath2
 declare default element namespace "http://alpino.fake.url";
 for $node in //node[@cat='ssub'][not (.//node[@index])]
-     [node[@rel='hd' and @pt='ww'][count(../node[@rel='su']) = 1][number(../node[@rel='su' and @word][.//@word][1]/@begin)  > number(@begin)]] 
+     [node[@rel='hd' and @pt='ww']
+         [count(../node[@rel='su']) = 1]
+             [number(../node[@rel='su' 
+                 and @word][.//@word][1]/@begin)  > number(@begin)]] 
 let     $sentence := $node/ancestor::*[local-name()='alpino_ds']/sentence,
   $txt := string-join($node//@word, ' ')
 return <node>{$node} <text>{$txt}</text> {$sentence}</node>
@@ -383,14 +572,14 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 
 * (a) Ik en heb dat niet gezegd.
 * (b) Ik heb niemand niet gezien.
-* (c ) Ik heb niets niet gedaan.
+* (c) Ik heb niets niet gedaan.
 * (d) Ik heb dat nooit niet gedaan.
 * (e) Daar zijn nooit geen rozen.
 * (f) Ik heb geen boeken niet meer.
 * (g) Er zijn er niet veel niet meer.
 * (h) Ik heb niet veel geen boeken meer.
 
-#### Negatie met het oude negatiepartikel en (zin a)
+#### Negatie met het oude negatiepartikel _en_ (zin a)
 
 Alpino ziet _en_ standaard als voegwoord.
 
@@ -405,7 +594,8 @@ Negatie met _en_ is terug te vinden met een xpath als
 ```xpath
 //node
    [./node[@rel='mod' and @word='en' and @pt='bw']]
-   [node[@cat='np'][node[@rel='det' and @lemma='geen' and @pt='vnw']]]
+   [node[@cat='np'][node[@rel='det' 
+        and @lemma='geen' and @pt='vnw']]]
 ```
 
 ![img_0.png](img_0.png)
@@ -472,9 +662,29 @@ Behandeld als een multi-word unit (MWU) die als modificeerder fungeert (MOD).
 
 ```
 
-### 6.2 woordherhaling
+### 6.2 woordherhaling (voor klemtoon)
 
 Het woord wordt 2x opgenomen, met hetzelfde dependentielabel.
+
+```xpath
+//node
+  [node[@word]
+     [following-sibling::node[@word][1]/@rel=@rel and 
+      following-sibling::node[@word][1]/@word=@word and
+       number(following-sibling::node[@word][1]/@begin)=number(@begin)+1]]
+```
+
+Hiermee vinden we diverse gevallen van woordherhaling, door de woordsoort te 
+beperken komen de nadrukkelijke herhalingen wat meer naar voren.
+
+```xpath
+//node
+  [node[@word][@pt != 'tsw' and @pt != 'vnw' and @pt != 'vg'
+              and @pt != 'vz' and @pt != 'lid']
+     [following-sibling::node[@word][1]/@rel=@rel and 
+      following-sibling::node[@word][1]/@word=@word and
+       number(following-sibling::node[@word][1]/@begin)=number(@begin)+1]]
+```
 
 ### 6.3 Spiegelconstructies
 
@@ -482,27 +692,30 @@ Het woord wordt 2x opgenomen, met hetzelfde dependentielabel.
 * het is verder is het.
 * Ik zeg :"je bent gek", zeg ik.
 
-Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd (mag dat wel? is meer dan een _hd_ niet tegen de principes van Alpino?). In xpath:
+Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd 
+(is meer dan een _hd_ niet tegen de principes van Alpino?). In xpath:
 
 ```xpath
-node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
+//node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
 ```
 
-Dit vindt echter niets. Alpino geeft voor het tweede voorbeeld een analyse met dp's erin:
+Dit vindt echter niet de gewenste constructies. Alpino geeft (in de example-based search) voor het tweede voorbeeld een analyse met dp's erin:
 
 ```xpath
-//node[following-sibling::node/node[@rel="su"]/@lemma=./node[@rel='su']/@lemma and following-sibling::node/node[@rel="hd"]/@lemma=./node[@rel='hd']/@lemma]
+//node[following-sibling::node/node[@rel="su"]/@lemma=./node[@rel='su']/@lemma 
+     and following-sibling::node/node[@rel="hd"]/@lemma=./node[@rel='hd']/@lemma]
 ```
 
 Of eigenlijk preciezer
 
 ```xpath
-//node[following-sibling::node/node[@rel="su"][preceding-sibling::node[@rel='hd']]/@word=./node[@rel='su'][following-sibling::node[@rel='hd']]/@word and following-sibling::node/node[@rel="hd"]/@word=./node[@rel='hd']/@word]
+//node[following-sibling::node/node[@rel="su"]
+   [preceding-sibling::node[@rel='hd']]/@word=./node[@rel='su']
+   [following-sibling::node[@rel='hd']]/@word 
+       and following-sibling::node/node[@rel="hd"]/@word=./node[@rel='hd']/@word]
 ```
 
 Helaas alleen voorbeelden met _zeggen_ gevonden.
-
-
 
 ### 6.4 Apokoinouconstructies
 
@@ -530,7 +743,8 @@ zinsdeel is er een lege knoop die met het woord dat twee rollen heeft gecoïndic
 * gastjes van vijf zes jaar
 
 ```xpath
-//node[@cat='conj'][count(./node[@pt='tw']) > 1 and count(./node[@pt="tw"]) =  count(./node)]
+//node[@cat='conj'][count(./node[@pt='tw']) > 1 
+   and count(./node[@pt="tw"]) =  count(./node)]
 ```
 
 ![img_3.png](img_3.png)
@@ -545,7 +759,9 @@ De een ... of determiner is te vinden met
 
 ```xpath
 //node[@cat='detp'
- and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+ and node [@rel='mod' and @cat='mwu']
+        [node[@rel='mwp' and @pt='lid'] 
+            and node[@rel='mwp' and @pt='vg']  ]
 ]
 ```
 
@@ -556,7 +772,9 @@ De een ... of determiner is te vinden met
 ```xpath
 //node[@rel='det' and 
    node[@cat='detp' and @rel="cnj"
-        and node [@rel='mod' and @cat='mwu'][node[@rel='mwp' and @pt='lid'] and node[@rel='mwp' and @pt='vg']  ]
+      and node [@rel='mod' and @cat='mwu']
+        [node[@rel='mwp' and @pt='lid'] 
+            and node[@rel='mwp' and @pt='vg']  ]
 ]]
 ```
 
@@ -656,6 +874,112 @@ Het moet eenvoudiger kunnen, maar hieronder een benadering:
   [not (ancestor::node[@cat="whq" or @cat="oti" or @cat="ti" or @cat="smain"])]
   [count(descendant::node[@pt="ww"]) = 1]
 ```
+
+### 6.12 Circumposities
+
+* _tussen_ de seizoenen _in_
+* hoe geraak te gij _aan_ een lief _aan_ ?
+
+Worden in het volgens de handleiding geannoteerd volgens
+
+![img_13.png](img_13.png)
+
+```xpath
+//node[
+    node[@rel="hdf"] and 
+    node[@rel="hd" and @pt="vz"]]
+```
+
+Het specifieke geval dat het voor- en achterzetsel identiek zijn vergt een extra beperking:
+
+```xpath
+//node[
+    node[@rel="hdf"] and 
+    node[@rel="hd" and @pt="vz"]
+       [../node[@rel='hdf']/@lemma = @lemma]]
+```
+
+![img_14.png](img_14.png)
+
+Hier vinden we maar 1 hit voor. De reden daarvoor is dat het grensvlak met scheidbare werkwoordconstructies een beetje fuzzy is.
+
+* en die ging _uit_ haar huisje niet _uit_ hè .
+
+![img_15.png](img_15.png)
+
+```xpath
+//node[@rel="svp" and @pt="vz"]
+   [../node[@cat="pp"]/node[@rel="hd"]/@lemma=@lemma]
+   [number(../node[@cat="pp"]/node[@rel="hd"]/@begin) < number(@begin)]
+```
+
+
+# Appendix: Xpath cheat sheet 
+
+##### Cheat Sheet
+
+Basis XPath-syntaxis:
+* / - Selecteert vanaf de root node.
+* // - Selecteert nodes overal in het document.
+* . - Vertegenwoordigt de "huidige node".
+* .. - Vertegenwoordigt de ouder van de huidige node.
+
+Selectors:
+
+* element - Selecteert alle elementen met de gegeven naam. (Meestal `node`)
+* @attribute - Selecteert de waarde van het opgegeven attribuut.
+* `*`  Selecteert alle elementen.
+* text() - Selecteert de tekst binnen een element. _(Zelden nuttig in Gretel)_
+* [predicate] - Voegt een voorwaarde toe om nodes te filteren.
+
+Predicaten:
+* [@name='waarde'] - Selecteert nodes met de opgegeven attribuutwaarde.
+* [position()] - Selecteert nodes op basis van hun positie.
+* [last()] - Selecteert de laatste node van een gegeven type.
+* [contains(@attribute, 'waarde')] - Selecteert nodes met attribuutwaarden die 'waarde' bevatten.
+* [not(predicate)] - Ontkent een voorwaarde.
+
+Assen:
+* ancestor:: - Selecteert alle voorouders.
+* ancestor-or-self:: - Selecteert voorouders en de huidige node.
+* child:: - Selecteert alle kinderen.
+* descendant:: - Selecteert alle afstammelingen.
+* descendant-or-self:: - Selecteert afstammelingen en de huidige node.
+* following:: - Selecteert alle volgende nodes.
+* following-sibling:: - Selecteert volgende broers/zussen.
+* parent:: - Selecteert de ontmiddelijke parent node.
+* preceding:: - Selecteert alle voorgaande nodes.
+* preceding-sibling:: - Selecteert voorgaande broers/zussen.
+* self:: - Selecteert de huidige node.
+
+Operatoren
+* = - Gelijk aan.
+* != - Niet gelijk aan.
+* < - Minder dan.
+* <= - Minder dan of gelijk aan.
+* `>` - Groter dan.
+* `>=` - Groter dan of gelijk aan.
+* and - Logisch EN.
+* or - Logisch OF.
+* not - Logisch NIET.
+
+Functies (Voorbeelden):
+
+* name() - Geeft de naam van de huidige node terug. _(Zelden nuttig in Gretel, is bijna altijd 'node')_
+* count(nodes) - Geeft het aantal nodes in de node-set terug.
+* concat(string1, string2) - Voegt twee strings samen. _(Zelden nuttig in Gretel)_
+* substring(string, start, length) - Geeft een substring terug.
+* contains(string, substr) - Controleert of een string een substring bevat.
+* matches(string, pattern) - Controleert of een string aan een reguliere expressie voldoet.
+* normalize-space(string) - Verwijdert voor- en achterliggende witruimtes en comprimeert spaties.
+
+Voorbeelden:
+
+* //node - Selecteert alle nodes
+* `//*[@pt='ww']` - Selecteert elementen met het attribuut pt gelijk aan 'ww'.
+* //node/node[position()=1] - Selecteert alle nodes die eerste element binnen hun parent zijn
+* //node[@cat='pp']/node[@cat='np'] - Selecteert noun phrases direct binnen een propositional phrase
+* //node[matches(@word,'.*end$')] - Selecteert woorden die op 'end' eindigen
 
 ## 6. Elliptische constructies, onderbroken zinnen, reparaties....
 

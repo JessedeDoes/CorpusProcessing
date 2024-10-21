@@ -19,9 +19,18 @@ def f(match):
     query = re.sub("```(xpath)?", "",  matched_text)
     encoded = urllib.parse.quote(query)
     gretellink = re.sub("_XPATH_", encoded, link) 
-    return matched_text + "\n" + f"[<img src='img.png' width='20pt'/>]({gretellink})"
+    return matched_text + "\n" + f"[→<img src='img.png' width='20pt'/>]({gretellink})"
+
+def f2(match):
+    matched_text = re.sub('ixpath', '', match.group(0))
+    # Process the matched string (e.g., convert to uppercase)
+    query = re.sub("```(xpath)?", "",  matched_text)
+    encoded = urllib.parse.quote(query)
+    gretellink = re.sub("_XPATH_", encoded, link)
+    return matched_text + f"[→<img src='img.png' width='12pt'/>]({gretellink})"
 
 result = re.sub("```xpath.*?```", f, txt, flags=re.DOTALL) 
+result = re.sub("```ixpath.*?```", f2, result, flags=re.DOTALL) 
 result = re.sub(r"!\[img_([0-9]+).png\]\(img_[0-9]+.png\)", r"<img src='img_\1.png' width='40%'/>\n", result, flags=re.DOTALL)
 print(result)
 #print(result)
