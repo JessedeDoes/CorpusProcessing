@@ -7,7 +7,7 @@ perl -pe 's/(<table.*?>)/$1<colgroup><col width="30%"><col width="70%"><\/colgro
 
 cp /tmp/dinges3.html dialectconstructies.html
 pandoc dialectconstructies.html -o dialectconstructies.pdf
-cp * ~/workspace/corpus-frontend-config/GCND/static/Documentatie/
+#cp * ~/workspace/corpus-frontend-config/GCND/static/Documentatie/
 cp * /mnt/Projecten/Hercules/Corpus-ZNL-Dialecten/Documentatie/XPathDoc/
-cd ~/workspace/corpora-index-scripts/GCND; bash copy_config.sh settings.ato.sh
+#cd ~/workspace/corpora-index-scripts/GCND; bash copy_config.sh settings.ato.sh
 

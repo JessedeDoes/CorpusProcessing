@@ -12,6 +12,7 @@ for l in lines:
   txt = txt + l
 
 link="https://gretel5.ato.ivdnt.org/xpath-search?currentStep=2&xpath=_XPATH_&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0"
+link="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=_XPATH_&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0"
 
 def f(match):
     matched_text = match.group(0)
