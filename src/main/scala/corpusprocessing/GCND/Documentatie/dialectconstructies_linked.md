@@ -5,18 +5,20 @@ Zie voor meer informatie ook:
 * [Lassy annotatiehandleiding](https://www.let.rug.nl/~vannoord/Lassy/sa-man_lassy.pdf)
 * Voor een algemeen GrETEL tutorial:  [Tutorial van Jan Odijk](https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM)
 * [Documentatie bij de PaQu-zoekapplicatie](https://paqu.let.rug.nl:8068/info.html#re)
+* ["Over het GCND", protocol syntactische annotatie](https://portal.clarin.ivdnt.org/gcnd-frontend/GCND/static/files/Over_het_GCND.pdf#page=32.15)
 
 
 ## Inleiding
 
-Hoewel de GReTEL-applicatie de mogelijk biedt om met example-based search te zoeken, 
+### Waarom XPath
+
+Hoewel de GReTEL-applicatie de mogelijkheid biedt om met example-based search te zoeken, 
 is het in veel gevallen toch noodzakelijk met XPath aan de slag te gaan.
 
 * De example-based search van GrETEL zal voor sommige dialectconstructies niet goed werken 
    omdat Alpino de gebruikersinvoer niet op de gewenste manier analyseert. Zie bijvoorbeeld subjectverdubbeling (1.1)
 * In de example-based search kom je niet meteen tot de essentie van wat je zoekt; 
    om een hogere _recall_ te bereiken zal de gegenereerde query moeten worden aangepast. Hieronder een voorbeeld:
-
 
 We zoeken naar "groter dan/of/als X"-constructies. We voeren "_groter dan een olifant_" in bij de example-based search.
 
@@ -38,7 +40,7 @@ en de bijbehorende xpath is
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%22ap%22%20and%20%40rel%3D%22--%22%20and%0A%20%20%20%20node%5B%40pt%3D%22adj%22%20and%20%40rel%3D%22hd%22%5D%20and%0A%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22obcomp%22%20and%0A%20%20%20%20%20%20%20%20node%5B%40pt%3D%22vg%22%20and%20%40rel%3D%22cmp%22%5D%20and%0A%20%20%20%20%20%20%20%20node%5B%40cat%3D%22np%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40pt%3D%22lid%22%20and%20%40rel%3D%22det%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40pt%3D%22n%22%20and%20%40rel%3D%22hd%22%5D%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-Hiermee worden 2 resultaten gevonden - een beetje mager resultaat. De query is dus 
+Hiermee worden 2 resultaten gevonden - een mager resultaat. De query is dus 
 duidelijk te restrictief. 
 Naar `@rel="--"` waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. 
 We moeten de query dus tot zijn essentie reduceren:
@@ -59,12 +61,12 @@ Hiermee vinden we 118 resultaten, een aannemelijker aantal.
 
 #### Algemeen
 
-De Alpino-analyses zijn gecodeerd in XML. Een knoop in de analyseboom corresponeert met een element `node` in de XML-codering. 
-De nesting van `node`-elementen definieert de hierarchische zinsstructuur.
+De Alpino-analyses zijn gecodeerd in XML. Een knoop in de analyseboom correspondeert met een element `node` in de XML-codering. 
+De nesting van `node`-elementen definieert de hiërarchische zinsstructuur.
 
-##### Zoeken op eigenschappen van `node`
+#### Zoeken op eigenschappen van `node`
 
-De xpath-query ```//node``` zoekt naar nodes onafhankelijk van de diepte in de hierarchisch structuur. 
+De xpath-query ```//node``` zoekt naar nodes onafhankelijk van de diepte in de hiërarchische structuur. 
 Om nodes op grond van hun eigenschappen te selecteren gebruiken we de attributen van het element.
 
 XML:
@@ -117,7 +119,7 @@ de begin- en eindpositie (in woorden, met 0 voor het eerste woord in de zin) van
 | VC | verbaal complement
 | WHD | hoofd van een vraagzin
 
-Simpele zoekvragen met deze attributen: ()
+Een simpele zoekvraag met deze attributen:
 
 | gezocht | XPath
 |--|--
@@ -173,7 +175,7 @@ Niet-bladeren hebben in plaats van de PoS informatie een categorielabel dat het 
 | WHSUB          | constituentvraag: ondergeschikte zin
 | WHQ            | constituentvraag: hoofdzin
 
-##### Hierarchie en assen, de "current node"
+#### Hiërarchie en assen, de "current node"
 
 De basis van een Xpath query wordt gevormd door een pad door de XML-structuurboom. Op zo'n pad kan omlaag, omhoog of opzij gelopen worden. In XML-terminologie noem je de richting van zo'n stap een "as" (axis).
 
@@ -217,7 +219,7 @@ De lange notatie moet - behalve voor de stappen waarvoor geen kort equivalent be
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27det%27%5D/parent%3A%3Anode%5B%40cat%21%3D%27np%27%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-Om te kunnen volgen wat het resultaat van een query is en waar de condities op werken, moet worden bijgehouden wat na iedere stap de "current node" (aangeduid met ".") is. Iedere stap modificeert de current node, een conditie doet dat niet.
+Om te kunnen volgen wat het resultaat van een query is, en waar de condities op werken, moet worden bijgehouden wat na iedere stap de "current node" (aangeduid met ".") is. Iedere stap modificeert de current node, een conditie doet dat niet.
 
 Nodes die direct een determiner bevatten zijn dus
 
@@ -233,13 +235,13 @@ In tegenstelling tot het ophalen van de determiners zelf met
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node/node%5B%40pt%3D%27det%27%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-##### Opletten
+#### Opletten
 
 * Let op: "bladeren" (woordknopen) hebben geen categorie. Een losstaand zelfstandig naamwoord is dus geen NP, en een ongemodificeerd adjectief is geen AP.
 * De volgorde van nodes in de XML is niet altijd dezelfde als de volgorde in de zin. Om positie te vergelijken moeten de attributen `@begin` en `@end` gebruikt worden. 
-* Vergeet bij vergelijking van woordposities niet `@begin` en `@end` als getallen op te vatten door `number(@begin)`, etc.
+* Vergeet bij vergelijking van woordposities niet `@begin` en `@end` als getallen op te vatten door `number(@begin)`, etc., (anders sorteert '10' voor '2').
 * In de huidige applicatie moeten de labels in lowercase worden ingevoerd
-* Let op gecoindexeerde woorden 
+* Let op gecoïndexeerde woorden 
 
 Uitleg bij het laatste punt: Bij de query ```//node[@rel='obj1' and @begin='0']``` hierboven vonden 
 we onder andere het onjuiste resultaat _**k** zijn ier geboren_. Bij inspectie ziet de boom er zo uit:
@@ -247,15 +249,14 @@ we onder andere het onjuiste resultaat _**k** zijn ier geboren_. Bij inspectie z
 <img src='img_19.png' width='40%'/>
 
 
-De interferentie van de geindexeerde spooknodes kan worden vermeden met bijvoorbeeld
+De interferentie van de geïndexeerde spooknodes kan worden vermeden met bijvoorbeeld
 
 ```xpath 
 //node[@rel='obj1' and @begin='0'][@word or .//node[@word]]
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%20%0A//node%5B%40rel%3D%27obj1%27%20and%20%40begin%3D%270%27%5D%5B%40word%20or%20.//node%5B%40word%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-
-##### Eenvoudig voorbeeld ontleend aan (Tutorial Odijk):
+#### Eenvoudig voorbeeld ontleend aan het GRETeL tutorial
 
 Stel dat we zoeken naar adjectieven met een bijwoordelijke modifier.
 
@@ -292,7 +293,7 @@ Stapsgewijze uitleg:
 | ] | einde van de condities
 
 
-In het vervolg kijken we hoe een aantal typische dialectconstructies met behulp van XPath-queries kunnen proberen terug te vinden. 
+In het vervolg kijken we hoe we een aantal typische dialectconstructies (voorbeelden uit de GCND annotatierichtlijnen) met behulp van XPath-queries kunnen proberen terug te vinden. 
 
 ## 1. Subjectsverschijnselen
 
@@ -361,21 +362,18 @@ Uit het Lassy-annotatiemanual:
 
 * _Jan_, die ken ik niet
 
-Dit kan ook via example-based search worden gevonden.
-
-Herkenbaar aan dependentierelatie _SAT_ en (categorie _np_ of woordsoort zelfstandig naamwoord (_n_).
+Dit kan ook via example-based search worden gevonden. Herkenbaar aan dependentierelatie _SAT_ en (categorie _np_ of woordsoort zelfstandig naamwoord (_n_).
 
 ```xpath
 //node[@rel='sat' and (@cat='np' or @pt='n')][@begin="0"]
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%27sat%27%20and%20%28%40cat%3D%27np%27%20or%20%40pt%3D%27n%27%29%5D%5B%40begin%3D%220%22%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-
-##### 2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:
+#### 2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:
 
 * _mijn vent_ wist _hij_ ook niet wat dat was en nu komt ...
 
-Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen
+Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen.
 
 Nominale tag-nodes aan het begin van de zin zoek je met
 
@@ -429,10 +427,9 @@ Mogelijk ook:
 
 * Wat vindt u der eigenlijk van *dat zulke zinnen* dat die zo geanalyseerd worden?
 
-Zijn getagd met met _SAT_.
+Deze gevallen zijn getagd met met _SAT_.
 
-
-!NB: het is me niet gelukt ze in het corpus terg te vinden.
+!NB: het is nog niet gelukt deze constructies met een query in het corpus terug te vinden.
 
 <!--
 ```xpath
@@ -465,8 +462,6 @@ Zijn getagd met met _SAT_.
 * ik zeg gisterenavond , ik moet de auto binnensteken ut tut tut .
 * ik zeg , steek hem binnen .
 
-(Laatste met sv1, verschil met smain niet zo duidelijk?)
-
 * Inleidende matrixzin (hij zei):
   * Dependentielabel (rel): tag
   * Categorielabel (cat): smain
@@ -485,10 +480,9 @@ Zijn getagd met met _SAT_.
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%0A%20%20%20%20%20node%5B%40rel%3D%27tag%27%20and%20%40cat%3D%27smain%27%5D%20and%20%0A%20%20%20%20%20node%5B%40rel%3D%27nucl%27%20and%20%28%40cat%3D%27smain%27%20or%20%40cat%3D%27sv1%27%29%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-### 2.3 Intercalaties/parentheses/interpositio
+### 2.3 Intercalaties/parentheses/interpositio’s
 
-Let op: afwijking van Lassy: In het GCND kiezen we ervoor parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen .
-
+Let op: afwijking van Lassy: In het GCND is ervoor gekozen parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen .
 
 ```xpath
 //node[@rel='tag' and @cat='smain']
@@ -577,8 +571,8 @@ Beperkt tot combinatie met "zeggen"
 
 * Zijn er meer mogelijkheden dan _wat of dat_ je nu hebt?
 
-(Niet te vinden in corpus)
-
+Het is nog niet gelukt deze gevallen met een query te vinden.
+<!--
 ```xpath
 //node[@cat="whsub" and @rel="body" and
      node[@lemma="wat" and @pt="vnw" and @rel="whd"] and
@@ -588,6 +582,7 @@ Beperkt tot combinatie met "zeggen"
             node[@lemma="dat" and @pt="vg" and @rel="mwp"]]]]
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%22whsub%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20node%5B%40lemma%3D%22wat%22%20and%20%40pt%3D%22vnw%22%20and%20%40rel%3D%22whd%22%5D%20and%0A%20%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20node%5B%40cat%3D%22mwu%22%20and%20%40rel%3D%22cmp%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22of%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22dat%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+-->
 <!--
 <img src='img_1.png' width='40%'/>
 
@@ -633,7 +628,7 @@ Beperkt tot combinatie met "zeggen"
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%27cp%27%5D%0A%20%20%20%5Bnode%5B%40rel%3D%27cmp%27%20and%20%40pt%3D%27vg%27%5D%5D%0A%20%20%20%5Bnode%5B%40cat%3D%27smain%27%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-Deze query heeft een lage precisie (in een aantal gevallen met bijzinvolgorde is smain geannoteerd).
+Deze query heeft een lage precisie (in een aantal gevallen met bijzinvolgorde is _smain_ geannoteerd).
 
 
 <!--
@@ -704,7 +699,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 
 Alpino ziet _en_ standaard als voegwoord.
 
-Negatie met _en_ is terug te vinden met een xpath als
+Negatie met _en_ is terug te vinden met een XPath als
 
 ```xpath
 //node[./node[@rel='mod' and @word='en' and @pt='bw']]
@@ -726,7 +721,7 @@ Negatie met _en_ is terug te vinden met een xpath als
 
 #### Negatieverdubbeling binnen de nominale constituent (zin h)
 
-Is behandeld als een meerwoordige determiner.
+Zulke constructies zijn behandeld als meerwoordige determiners.
 
 Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 ```xpath
@@ -739,7 +734,7 @@ Complexe determiners waar _niet_ deel van is, zijn te zoeken met
 
 * Dat is _geen waar_
 
-!NB zou moeten zijn
+!NB volgens de annotatierichtlijnen zou dit moeten worden gevonden met
 
 ```xpath
 node[node[@rel='hd' and @pt='ADJ'] and node[@rel='det' and lemma='geen']]
@@ -753,9 +748,7 @@ Maar in het corpus heeft in zulke gevallen _waar_ vaak de tag "n",
 * A: Hij komt toch niet?
 * B: Ja hij en doet ne komt.
 
-
-
-Positieve positieve en negatieve replieken zijn vindbaar met iets als
+Positieve positieve en negatieve replieken zijn vindbaar met een XPath als
 
 ```xpath
 //node[@lemma="doen" and @pvtijd='tgw']
@@ -828,7 +821,7 @@ beperken komen de nadrukkelijke herhalingen wat meer naar voren.
 * Ik zeg :"je bent gek", zeg ik.
 
 Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd 
-(is meer dan een _hd_ niet tegen de principes van Alpino?). In xpath:
+(is meer dan een _hd_ niet tegen de principes van Alpino?). In XPath:
 
 ```xpath
 //node[count(./node[@rel='su']) =2 and count(./node[@rel='hd']) =2]  
@@ -837,13 +830,16 @@ Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getag
 
 Dit vindt echter meestal niet de gewenste constructies. Alpino geeft (in de example-based search) voor het tweede voorbeeld een analyse met dp's erin:
 
+<img src='img_23.png' width='40%'/>
+
+
 ```xpath
 //node[following-sibling::node/node[@rel="su"]/@lemma=./node[@rel='su']/@lemma 
      and following-sibling::node/node[@rel="hd"]/@lemma=./node[@rel='hd']/@lemma]
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5Bfollowing-sibling%3A%3Anode/node%5B%40rel%3D%22su%22%5D/%40lemma%3D./node%5B%40rel%3D%27su%27%5D/%40lemma%20%0A%20%20%20%20%20and%20following-sibling%3A%3Anode/node%5B%40rel%3D%22hd%22%5D/%40lemma%3D./node%5B%40rel%3D%27hd%27%5D/%40lemma%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-Of eigenlijk preciezer
+Of nog wat preciezer
 
 ```xpath
 //node[following-sibling::node/node[@rel="su"]
@@ -853,7 +849,6 @@ Of eigenlijk preciezer
 ```
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5Bfollowing-sibling%3A%3Anode/node%5B%40rel%3D%22su%22%5D%0A%20%20%20%5Bpreceding-sibling%3A%3Anode%5B%40rel%3D%27hd%27%5D%5D/%40word%3D./node%5B%40rel%3D%27su%27%5D%0A%20%20%20%5Bfollowing-sibling%3A%3Anode%5B%40rel%3D%27hd%27%5D%5D/%40word%20%0A%20%20%20%20%20%20%20and%20following-sibling%3A%3Anode/node%5B%40rel%3D%22hd%22%5D/%40word%3D./node%5B%40rel%3D%27hd%27%5D/%40word%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
-De gevonden voorbeelden zijn met _zeggen_.
 
 ### 6.4 Apokoinouconstructies
 
@@ -930,7 +925,7 @@ De een ... of determiner is te vinden met
 
 * k·ware nog _een jaar en half_ te jong.
 
-Volgens de annotatierichtlijnen getagds als mwu met mwp delen. 
+Volgens de annotatierichtlijnen getagd als _mwu_ met _mwp_-delen. 
 
 
 * en da was maar op _twee uren en half_ .
@@ -1083,9 +1078,7 @@ Hier vinden we maar 1 hit voor. De reden daarvoor is dat het grensvlak met schei
 [→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40rel%3D%22svp%22%20and%20%40pt%3D%22vz%22%5D%0A%20%20%20%5B../node%5B%40cat%3D%22pp%22%5D/node%5B%40rel%3D%22hd%22%5D/%40lemma%3D%40lemma%5D%0A%20%20%20%5Bnumber%28../node%5B%40cat%3D%22pp%22%5D/node%5B%40rel%3D%22hd%22%5D/%40begin%29%20%3C%20number%28%40begin%29%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
 
 
-# Appendix: Xpath cheat sheet 
-
-##### Cheat Sheet
+## Appendix: XPath cheat sheet 
 
 Basis XPath-syntaxis:
 

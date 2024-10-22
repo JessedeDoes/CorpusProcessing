@@ -1,3 +1,65 @@
+<div>
+<h1>Zoeken naar dialectconstructies in het GCND-corpus met behulp van XPath</h1>
+<h2>Inhoudsopgave</h2>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#inleiding'>Inleiding</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#waarom-xpath'>Waarom XPath</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#xpath-voor-het-zoeken-in-alpino-structuren'>XPath voor het zoeken in Alpino-structuren</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#algemeen'>Algemeen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#zoeken-op-eigenschappen-van-node'>Zoeken op eigenschappen van <code>node</code></a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#hiërarchie-en-assen-de-current-node'>Hiërarchie en assen, de “current node”</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#opletten'>Opletten</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#eenvoudig-voorbeeld-ontleend-aan-het-gretel-tutorial'>Eenvoudig voorbeeld ontleend aan het GRETeL tutorial</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#subjectsverschijnselen'>1. Subjectsverschijnselen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#subjectverdubbeling-of-drievoudig-subject'>1.1 subjectverdubbeling (of drievoudig subject)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#subject-in-objectvorm'>1.1 subject in objectvorm</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#presentatief-het'>1.3 Presentatief ‘het’</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#uitbreidingen-van-de-zin-tag-en-sat'>2. Uitbreidingen van de zin: TAG en SAT</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#discourse-structuren-in-de-lassy-annotatie'>Discourse-structuren in de Lassy annotatie</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#linker-zinsperiferie'>2.1 Linker zinsperiferie</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#a-aanloopconstructie-left-dislocation'>2.1.a Aanloopconstructie (Left dislocation)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#b-hanging-topic-hangend-topic-nominativus-pendens'>2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#c-tussenwerpsels-en-aansporingen'>2.1.c Tussenwerpsels en aansporingen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#d-inversieloos-v-later-dan-2-v2-noninverted-v3'>2.1.d Inversieloos V-later-dan-2 / V&gt;2 / Noninverted V3</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#e-ingebedde-dislocaties'>2.1.e Ingebedde dislocaties</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#f-janee-hetik'>2.1.f ja/nee het/ik/…</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#v2-bijzinnen---pseudodirecte-rede'>2.2 V2-bijzinnen - pseudodirecte rede</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#intercalatiesparenthesesinterpositios'>2.3 Intercalaties/parentheses/interpositio’s</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#complementizer-fenomenen'>3. Complementizer-fenomenen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#afwijkende-comparatieve-voegwoorden-of-als-gelijk-als-gelijk-of-dat'>3.1 Afwijkende comparatieve voegwoorden (of, als, gelijk als, gelijk of dat)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#directe-rede-ingeleid-door-van'>3.2 Directe rede ingeleid door van</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#expletief-dat'>3.3 Expletief dat</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-1-na-onderschikkend-voegwoord'>Type 1: na onderschikkend voegwoord</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-2-na-vraagwoord'>Type 2: na vraagwoord</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-3-na-betrekkelijk-voornaamwoord'>Type 3: na betrekkelijk voornaamwoord</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-4-na-vraagwoord-of-zeldzaam-in-vlaanderen-cf.-lassy-handleiding'>Type 4: na vraagwoord + of (zeldzaam in Vlaanderen, cf. Lassy-handleiding)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#beknopte-bijzinnen-ingeleid-door-voor-of-van-in-plaats-van-om'>3.4 Beknopte bijzinnen ingeleid door <em>voor</em> of <em>van</em> in plaats van <em>om</em></a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#afhankelijke-janee-vragen-ingeleid-door-als-ipv-of'>3.5. Afhankelijke ja/nee-vragen ingeleid door <em>als</em> ipv of</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#bijzin-met-hoofdzinsvolgorde-v2-bijzin-of-nebensätze'>3.6. Bijzin met hoofdzinsvolgorde (V2-bijzin of Nebensätze)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#negatieverschijnselen-o.a.-negatiepartikel-en-en-dubbele-negatie'>4. Negatieverschijnselen (o.a. negatiepartikel en en dubbele negatie)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#dubbele-negatie'>4.1. Dubbele negatie</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#negatie-met-het-oude-negatiepartikel-en-zin-a'>Negatie met het oude negatiepartikel <em>en</em> (zin a)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#negatieverdubbeling-binnen-de-nominale-constituent-zin-h'>Negatieverdubbeling binnen de nominale constituent (zin h)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#adjectieven-die-met-geen-gecombineerd-worden'>4.2 Adjectieven die met ‘geen’ gecombineerd worden</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#doen-replieken'>4.3 Doen-replieken</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='#negatieve-gevallen-met-en'>Negatieve gevallen met <em>en</em></a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#andere'>5 Andere</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#en-zo-of-zo-en-al-en-alles-maar-ja-en-si-en-la'>5.1 en zo/ of zo / en al / en alles / maar ja / en si en la</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#woordherhaling-voor-klemtoon'>5.2 woordherhaling (voor klemtoon)</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#spiegelconstructies'>6.3 Spiegelconstructies</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#apokoinouconstructies'>6.4 Apokoinouconstructies</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#opsomming-van-cijfers-met-betekenis-ongeveer'>6.5 Opsomming van cijfers met betekenis ‘ongeveer’</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-1'>Type 1</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;&nbsp;&nbsp;<a href='#type-2'>Type 2</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#discontinue-telwoorden-drie-jaar-en-half-drie-kilo-een-half'>6.6 Discontinue telwoorden drie jaar en half, drie kilo een half</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#tijdsbepalingen-met-van-te-te-zessen-van-te-zessen'>6.7 Tijdsbepalingen met (van) te: <em>te zessen, van te zessen</em></a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#de-die'>6.8 De die</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#code-switches-naar-het-fransengels'>6.9 Code-switches naar het Frans/Engels/…</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#geluiden-en-klanknabootsingen'>6.10 Geluiden en klanknabootsingen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#exclamatieve-infinitiefzinnen'>6.11 Exclamatieve infinitiefzinnen</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'>&nbsp;&nbsp;<a href='#circumposities'>6.12 Circumposities</a></div>
+<div style='margin-top:0pt; margin-bottom:0pt'><a href='#appendix-xpath-cheat-sheet'>Appendix: XPath cheat sheet</a></div>
+
+</div>
 <body style="font-size: 14pt">
 <h1 id="zoeken-naar-dialectconstructies-in-het-gcnd-corpus-met-behulp-van-xpath">Zoeken naar dialectconstructies in het GCND-corpus met behulp van XPath</h1>
 <p>Zie voor meer informatie ook:</p>
@@ -5,9 +67,11 @@
 <li><a href="https://www.let.rug.nl/~vannoord/Lassy/sa-man_lassy.pdf">Lassy annotatiehandleiding</a></li>
 <li>Voor een algemeen GrETEL tutorial: <a href="https://surfdrive.surf.nl/files/index.php/s/xfjVB2AfwgOpmNM">Tutorial van Jan Odijk</a></li>
 <li><a href="https://paqu.let.rug.nl:8068/info.html#re">Documentatie bij de PaQu-zoekapplicatie</a></li>
+<li><a href="https://portal.clarin.ivdnt.org/gcnd-frontend/GCND/static/files/Over_het_GCND.pdf#page=32.15">“Over het GCND”, protocol syntactische annotatie</a></li>
 </ul>
 <h2 id="inleiding">Inleiding</h2>
-<p>Hoewel de GReTEL-applicatie de mogelijk biedt om met example-based search te zoeken, is het in veel gevallen toch noodzakelijk met XPath aan de slag te gaan.</p>
+<h3 id="waarom-xpath">Waarom XPath</h3>
+<p>Hoewel de GReTEL-applicatie de mogelijkheid biedt om met example-based search te zoeken, is het in veel gevallen toch noodzakelijk met XPath aan de slag te gaan.</p>
 <ul>
 <li>De example-based search van GrETEL zal voor sommige dialectconstructies niet goed werken omdat Alpino de gebruikersinvoer niet op de gewenste manier analyseert. Zie bijvoorbeeld subjectverdubbeling (1.1)</li>
 <li>In de example-based search kom je niet meteen tot de essentie van wat je zoekt; om een hogere <em>recall</em> te bereiken zal de gegenereerde query moeten worden aangepast. Hieronder een voorbeeld:</li>
@@ -24,7 +88,7 @@
             node[@pt=&quot;lid&quot; and @rel=&quot;det&quot;] and
             node[@pt=&quot;n&quot; and @rel=&quot;hd&quot;]]]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40cat%3D%22ap%22%20and%20%40rel%3D%22--%22%20and%0A%20%20%20%20node%5B%40pt%3D%22adj%22%20and%20%40rel%3D%22hd%22%5D%20and%0A%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22obcomp%22%20and%0A%20%20%20%20%20%20%20%20node%5B%40pt%3D%22vg%22%20and%20%40rel%3D%22cmp%22%5D%20and%0A%20%20%20%20%20%20%20%20node%5B%40cat%3D%22np%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40pt%3D%22lid%22%20and%20%40rel%3D%22det%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40pt%3D%22n%22%20and%20%40rel%3D%22hd%22%5D%5D%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<p>Hiermee worden 2 resultaten gevonden - een beetje mager resultaat. De query is dus duidelijk te restrictief. Naar <code>@rel="--"</code> waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. We moeten de query dus tot zijn essentie reduceren:</p>
+<p>Hiermee worden 2 resultaten gevonden - een mager resultaat. De query is dus duidelijk te restrictief. Naar <code>@rel="--"</code> waren we niet op zoek, en eigenlijk maakt de vorm van het vergelijkende element ook niet uit. We moeten de query dus tot zijn essentie reduceren:</p>
 <pre class="xpath"><code>//node[@cat=&quot;ap&quot; and
     node[@pt=&quot;adj&quot; and @rel=&quot;hd&quot;] and
     node[@cat=&quot;cp&quot; and @rel=&quot;obcomp&quot; and
@@ -34,9 +98,9 @@
 <p>Hiermee vinden we 118 resultaten, een aannemelijker aantal.</p>
 <h3 id="xpath-voor-het-zoeken-in-alpino-structuren">XPath voor het zoeken in Alpino-structuren</h3>
 <h4 id="algemeen">Algemeen</h4>
-<p>De Alpino-analyses zijn gecodeerd in XML. Een knoop in de analyseboom corresponeert met een element <code>node</code> in de XML-codering. De nesting van <code>node</code>-elementen definieert de hierarchische zinsstructuur.</p>
-<h5 id="zoeken-op-eigenschappen-van-node">Zoeken op eigenschappen van <code>node</code></h5>
-<p>De xpath-query <code>//node</code> zoekt naar nodes onafhankelijk van de diepte in de hierarchisch structuur. Om nodes op grond van hun eigenschappen te selecteren gebruiken we de attributen van het element.</p>
+<p>De Alpino-analyses zijn gecodeerd in XML. Een knoop in de analyseboom correspondeert met een element <code>node</code> in de XML-codering. De nesting van <code>node</code>-elementen definieert de hiërarchische zinsstructuur.</p>
+<h4 id="zoeken-op-eigenschappen-van-node">Zoeken op eigenschappen van <code>node</code></h4>
+<p>De xpath-query <code>//node</code> zoekt naar nodes onafhankelijk van de diepte in de hiërarchische structuur. Om nodes op grond van hun eigenschappen te selecteren gebruiken we de attributen van het element.</p>
 <p>XML:</p>
 <div class="sourceCode" id="cb3"><pre class="sourceCode xml"><code class="sourceCode xml"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true"></a><span class="kw">&lt;node</span><span class="ot"> word=</span><span class="st">&#39;olifant&#39;</span><span class="kw">/&gt;</span></span></code></pre></div>
 <p>XPath:</p>
@@ -177,7 +241,7 @@
 </tr>
 </tbody>
 </table>
-<p>Simpele zoekvragen met deze attributen: ()</p>
+<p>Een simpele zoekvraag met deze attributen:</p>
 <table><colgroup><col width="30%"><col width="70%"></colgroup>
 <thead>
 <tr class="header">
@@ -359,7 +423,7 @@
 </tr>
 </tbody>
 </table>
-<h5 id="hierarchie-en-assen-de-current-node">Hierarchie en assen, de “current node”</h5>
+<h4 id="hiërarchie-en-assen-de-current-node">Hiërarchie en assen, de “current node”</h4>
 <p>De basis van een Xpath query wordt gevormd door een pad door de XML-structuurboom. Op zo’n pad kan omlaag, omhoog of opzij gelopen worden. In XML-terminologie noem je de richting van zo’n stap een “as” (axis).</p>
 <p>Een stap naar beneden doe je met “/”: (zoek een determiner direct binnen een NP)</p>
 <pre class="xpath"><code>//node[@cat=&#39;np&#39;]/node[@rel=&#39;det&#39;]</code></pre>
@@ -385,27 +449,27 @@
 <p>De lange notatie moet - behalve voor de stappen waarvoor geen kort equivalent bestaat - worden gebruikt om condities te kunnen opleggen. Niet-NP-parents van een determiner zijn dus bijvoorbeeld:</p>
 <pre class="xpath"><code>//node[@rel=&#39;det&#39;]/parent::node[@cat!=&#39;np&#39;]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40rel%3D%27det%27%5D/parent%3A%3Anode%5B%40cat%21%3D%27np%27%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<p>Om te kunnen volgen wat het resultaat van een query is en waar de condities op werken, moet worden bijgehouden wat na iedere stap de “current node” (aangeduid met “.”) is. Iedere stap modificeert de current node, een conditie doet dat niet.</p>
+<p>Om te kunnen volgen wat het resultaat van een query is, en waar de condities op werken, moet worden bijgehouden wat na iedere stap de “current node” (aangeduid met “.”) is. Iedere stap modificeert de current node, een conditie doet dat niet.</p>
 <p>Nodes die direct een determiner bevatten zijn dus</p>
 <pre class="xpath"><code>//node[./node[@pt=&#39;det&#39;]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B./node%5B%40pt%3D%27det%27%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <p>In tegenstelling tot het ophalen van de determiners zelf met</p>
 <pre class="xpath"><code>//node/node[@pt=&#39;det&#39;]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node/node%5B%40pt%3D%27det%27%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<h5 id="opletten">Opletten</h5>
+<h4 id="opletten">Opletten</h4>
 <ul>
 <li>Let op: “bladeren” (woordknopen) hebben geen categorie. Een losstaand zelfstandig naamwoord is dus geen NP, en een ongemodificeerd adjectief is geen AP.</li>
 <li>De volgorde van nodes in de XML is niet altijd dezelfde als de volgorde in de zin. Om positie te vergelijken moeten de attributen <code>@begin</code> en <code>@end</code> gebruikt worden.</li>
-<li>Vergeet bij vergelijking van woordposities niet <code>@begin</code> en <code>@end</code> als getallen op te vatten door <code>number(@begin)</code>, etc.</li>
+<li>Vergeet bij vergelijking van woordposities niet <code>@begin</code> en <code>@end</code> als getallen op te vatten door <code>number(@begin)</code>, etc., (anders sorteert ‘10’ voor ‘2’).</li>
 <li>In de huidige applicatie moeten de labels in lowercase worden ingevoerd</li>
-<li>Let op gecoindexeerde woorden</li>
+<li>Let op gecoïndexeerde woorden</li>
 </ul>
 <p>Uitleg bij het laatste punt: Bij de query <code>//node[@rel='obj1' and @begin='0']</code> hierboven vonden we onder andere het onjuiste resultaat <em><strong>k</strong> zijn ier geboren</em>. Bij inspectie ziet de boom er zo uit:</p>
 <p><img src='img_19.png' width='40%'/></p>
-<p>De interferentie van de geindexeerde spooknodes kan worden vermeden met bijvoorbeeld</p>
+<p>De interferentie van de geïndexeerde spooknodes kan worden vermeden met bijvoorbeeld</p>
 <pre class="xpath"><code>//node[@rel=&#39;obj1&#39; and @begin=&#39;0&#39;][@word or .//node[@word]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%20%0A//node%5B%40rel%3D%27obj1%27%20and%20%40begin%3D%270%27%5D%5B%40word%20or%20.//node%5B%40word%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<h5 id="eenvoudig-voorbeeld-ontleend-aan-tutorial-odijk">Eenvoudig voorbeeld ontleend aan (Tutorial Odijk):</h5>
+<h4 id="eenvoudig-voorbeeld-ontleend-aan-het-gretel-tutorial">Eenvoudig voorbeeld ontleend aan het GRETeL tutorial</h4>
 <p>Stel dat we zoeken naar adjectieven met een bijwoordelijke modifier.</p>
 <ul>
 <li>ah ba ja t … bestaat <strong>al lang</strong> eni .</li>
@@ -476,7 +540,7 @@
 </tr>
 </tbody>
 </table>
-<p>In het vervolg kijken we hoe een aantal typische dialectconstructies met behulp van XPath-queries kunnen proberen terug te vinden.</p>
+<p>In het vervolg kijken we hoe we een aantal typische dialectconstructies (voorbeelden uit de GCND annotatierichtlijnen) met behulp van XPath-queries kunnen proberen terug te vinden.</p>
 <h2 id="subjectsverschijnselen">1. Subjectsverschijnselen</h2>
 <h3 id="subjectverdubbeling-of-drievoudig-subject">1.1 subjectverdubbeling (of drievoudig subject)</h3>
 <ul>
@@ -558,15 +622,14 @@
 <ul>
 <li><em>Jan</em>, die ken ik niet</li>
 </ul>
-<p>Dit kan ook via example-based search worden gevonden.</p>
-<p>Herkenbaar aan dependentierelatie <em>SAT</em> en (categorie <em>np</em> of woordsoort zelfstandig naamwoord (<em>n</em>).</p>
+<p>Dit kan ook via example-based search worden gevonden. Herkenbaar aan dependentierelatie <em>SAT</em> en (categorie <em>np</em> of woordsoort zelfstandig naamwoord (<em>n</em>).</p>
 <pre class="xpath"><code>//node[@rel=&#39;sat&#39; and (@cat=&#39;np&#39; or @pt=&#39;n&#39;)][@begin=&quot;0&quot;]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40rel%3D%27sat%27%20and%20%28%40cat%3D%27np%27%20or%20%40pt%3D%27n%27%29%5D%5B%40begin%3D%220%22%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<h5 id="b-hanging-topic-hangend-topic-nominativus-pendens">2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:</h5>
+<h4 id="b-hanging-topic-hangend-topic-nominativus-pendens">2.1.b Hanging Topic / Hangend Topic / Nominativus Pendens:</h4>
 <ul>
 <li><em>mijn vent</em> wist <em>hij</em> ook niet wat dat was en nu komt …</li>
 </ul>
-<p>Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen</p>
+<p>Er staat steeds een naamwoordgroep in de eerste positie, die later in de zin door een persoonlijk voornaamwoord (hij, het, zij, hem, haar) wordt opgenomen.</p>
 <p>Nominale tag-nodes aan het begin van de zin zoek je met</p>
 <pre class="xpath"><code>//node[@rel=&#39;tag&#39; and (@cat=&#39;np&#39; or @pos=&#39;noun&#39;) and @begin=&quot;0&quot;]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40rel%3D%27tag%27%20and%20%28%40cat%3D%27np%27%20or%20%40pos%3D%27noun%27%29%20and%20%40begin%3D%220%22%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
@@ -600,8 +663,8 @@
 <ul>
 <li>Wat vindt u der eigenlijk van <em>dat zulke zinnen</em> dat die zo geanalyseerd worden?</li>
 </ul>
-<p>Zijn getagd met met <em>SAT</em>.</p>
-<p>!NB: het is me niet gelukt ze in het corpus terg te vinden.</p>
+<p>Deze gevallen zijn getagd met met <em>SAT</em>.</p>
+<p>!NB: het is nog niet gelukt deze constructies met een query in het corpus terug te vinden.</p>
 <!--
 ```xpath
 //node[@rel='sat' and (@cat='np' or @pt='n')][number(@begin) > 0]
@@ -621,18 +684,15 @@
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40rel%3D%27tag%27%5D%5Bnode%5B%40rel%3D%27mwp%27%20and%20%40pt%3D%27tsw%27%5D%20%0A%20%20%20%20%20and%20node%5B%40rel%3D%27mwp%27%20and%20%40pos%3D%27pron%27%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <h3 id="v2-bijzinnen---pseudodirecte-rede">2.2 V2-bijzinnen - pseudodirecte rede</h3>
 <ul>
-<li>hij zei hij weet het niet</li>
-<li>ik zeg gisterenavond , ik moet de auto binnensteken ut tut tut .</li>
-<li>ik zeg , steek hem binnen .</li>
-</ul>
-<p>(Laatste met sv1, verschil met smain niet zo duidelijk?)</p>
-<ul>
-<li>Inleidende matrixzin (hij zei):
+<li><p>hij zei hij weet het niet</p></li>
+<li><p>ik zeg gisterenavond , ik moet de auto binnensteken ut tut tut .</p></li>
+<li><p>ik zeg , steek hem binnen .</p></li>
+<li><p>Inleidende matrixzin (hij zei):</p>
 <ul>
 <li>Dependentielabel (rel): tag</li>
 <li>Categorielabel (cat): smain</li>
 </ul></li>
-<li>Pseudodirecte rede - V2-bijzin (hij weet het niet):
+<li><p>Pseudodirecte rede - V2-bijzin (hij weet het niet):</p>
 <ul>
 <li>Depentielabel (rel): nucl</li>
 <li>Categorielabel (cat): smain (of – bij werkwoordsinitiële zinnen – sv1)</li>
@@ -643,8 +703,8 @@
      node[@rel=&#39;tag&#39; and @cat=&#39;smain&#39;] and 
      node[@rel=&#39;nucl&#39; and (@cat=&#39;smain&#39; or @cat=&#39;sv1&#39;)]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%0A%20%20%20%20%20node%5B%40rel%3D%27tag%27%20and%20%40cat%3D%27smain%27%5D%20and%20%0A%20%20%20%20%20node%5B%40rel%3D%27nucl%27%20and%20%28%40cat%3D%27smain%27%20or%20%40cat%3D%27sv1%27%29%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<h3 id="intercalatiesparenthesesinterpositio">2.3 Intercalaties/parentheses/interpositio</h3>
-<p>Let op: afwijking van Lassy: In het GCND kiezen we ervoor parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen .</p>
+<h3 id="intercalatiesparenthesesinterpositios">2.3 Intercalaties/parentheses/interpositio’s</h3>
+<p>Let op: afwijking van Lassy: In het GCND is ervoor gekozen parentheses het dependentielabel TAG te geven en op hetzelfde niveau als de hoofdzin onder te brengen .</p>
 <pre class="xpath"><code>//node[@rel=&#39;tag&#39; and @cat=&#39;smain&#39;]
    [number(../node[@cat=&#39;smain&#39; and @rel=&#39;nucl&#39; and @begin and @end]
 /@begin) &lt; @begin]
@@ -703,14 +763,17 @@
 <ul>
 <li>Zijn er meer mogelijkheden dan <em>wat of dat</em> je nu hebt?</li>
 </ul>
-<p>(Niet te vinden in corpus)</p>
-<pre class="xpath"><code>//node[@cat=&quot;whsub&quot; and @rel=&quot;body&quot; and
-     node[@lemma=&quot;wat&quot; and @pt=&quot;vnw&quot; and @rel=&quot;whd&quot;] and
-     node[@cat=&quot;cp&quot; and @rel=&quot;body&quot; and
-         node[@cat=&quot;mwu&quot; and @rel=&quot;cmp&quot; and
-            node[@lemma=&quot;of&quot; and @pt=&quot;vg&quot; and @rel=&quot;mwp&quot;] and
-            node[@lemma=&quot;dat&quot; and @pt=&quot;vg&quot; and @rel=&quot;mwp&quot;]]]]</code></pre>
-<p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40cat%3D%22whsub%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20node%5B%40lemma%3D%22wat%22%20and%20%40pt%3D%22vnw%22%20and%20%40rel%3D%22whd%22%5D%20and%0A%20%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20node%5B%40cat%3D%22mwu%22%20and%20%40rel%3D%22cmp%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22of%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22dat%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%5D%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a> <!--
+<p>Het is nog niet gelukt deze gevallen met een query te vinden. <!--
+```xpath
+//node[@cat="whsub" and @rel="body" and
+     node[@lemma="wat" and @pt="vnw" and @rel="whd"] and
+     node[@cat="cp" and @rel="body" and
+         node[@cat="mwu" and @rel="cmp" and
+            node[@lemma="of" and @pt="vg" and @rel="mwp"] and
+            node[@lemma="dat" and @pt="vg" and @rel="mwp"]]]]
+```
+[→<img src='img.png' width='20pt'/>](https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&xpath=%0A//node%5B%40cat%3D%22whsub%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20node%5B%40lemma%3D%22wat%22%20and%20%40pt%3D%22vnw%22%20and%20%40rel%3D%22whd%22%5D%20and%0A%20%20%20%20%20node%5B%40cat%3D%22cp%22%20and%20%40rel%3D%22body%22%20and%0A%20%20%20%20%20%20%20%20%20node%5B%40cat%3D%22mwu%22%20and%20%40rel%3D%22cmp%22%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22of%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%20and%0A%20%20%20%20%20%20%20%20%20%20%20%20node%5B%40lemma%3D%22dat%22%20and%20%40pt%3D%22vg%22%20and%20%40rel%3D%22mwp%22%5D%5D%5D%5D%0A&selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&retrieveContext=0)
+--> <!--
 <img src='img_1.png' width='40%'/>
 
 --></p>
@@ -743,7 +806,7 @@
    [node[@rel=&#39;cmp&#39; and @pt=&#39;vg&#39;]]
    [node[@cat=&#39;smain&#39;]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40cat%3D%27cp%27%5D%0A%20%20%20%5Bnode%5B%40rel%3D%27cmp%27%20and%20%40pt%3D%27vg%27%5D%5D%0A%20%20%20%5Bnode%5B%40cat%3D%27smain%27%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<p>Deze query heeft een lage precisie (in een aantal gevallen met bijzinvolgorde is smain geannoteerd).</p>
+<p>Deze query heeft een lage precisie (in een aantal gevallen met bijzinvolgorde is <em>smain</em> geannoteerd).</p>
 <!--
 Hoofdzinvolgorde wordt gekenmerkt door
 
@@ -824,7 +887,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 </ul>
 <h4 id="negatie-met-het-oude-negatiepartikel-en-zin-a">Negatie met het oude negatiepartikel <em>en</em> (zin a)</h4>
 <p>Alpino ziet <em>en</em> standaard als voegwoord.</p>
-<p>Negatie met <em>en</em> is terug te vinden met een xpath als</p>
+<p>Negatie met <em>en</em> is terug te vinden met een XPath als</p>
 <pre class="xpath"><code>//node[./node[@rel=&#39;mod&#39; and @word=&#39;en&#39; and @pt=&#39;bw&#39;]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B./node%5B%40rel%3D%27mod%27%20and%20%40word%3D%27en%27%20and%20%40pt%3D%27bw%27%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <ul>
@@ -837,7 +900,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%0A%20%20%20%5B./node%5B%40rel%3D%27mod%27%20and%20%40word%3D%27en%27%20and%20%40pt%3D%27bw%27%5D%5D%0A%20%20%20%5Bnode%5B%40cat%3D%27np%27%5D%5Bnode%5B%40rel%3D%27det%27%20%0A%20%20%20%20%20%20%20%20and%20%40lemma%3D%27geen%27%20and%20%40pt%3D%27vnw%27%5D%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <p><img src='img_0.png' width='40%'/></p>
 <h4 id="negatieverdubbeling-binnen-de-nominale-constituent-zin-h">Negatieverdubbeling binnen de nominale constituent (zin h)</h4>
-<p>Is behandeld als een meerwoordige determiner.</p>
+<p>Zulke constructies zijn behandeld als meerwoordige determiners.</p>
 <p>Complexe determiners waar <em>niet</em> deel van is, zijn te zoeken met</p>
 <pre class="xpath"><code>//node[@rel=&quot;det&quot; and @cat=&quot;mwu&quot;]
    [node[@lemma=&quot;niet&quot;]]</code></pre>
@@ -846,7 +909,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 <ul>
 <li>Dat is <em>geen waar</em></li>
 </ul>
-<p>!NB zou moeten zijn</p>
+<p>!NB volgens de annotatierichtlijnen zou dit moeten worden gevonden met</p>
 <pre class="xpath"><code>node[node[@rel=&#39;hd&#39; and @pt=&#39;ADJ&#39;] and node[@rel=&#39;det&#39; and lemma=&#39;geen&#39;]]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0Anode%5Bnode%5B%40rel%3D%27hd%27%20and%20%40pt%3D%27ADJ%27%5D%20and%20node%5B%40rel%3D%27det%27%20and%20lemma%3D%27geen%27%5D%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <p>Maar in het corpus heeft in zulke gevallen <em>waar</em> vaak de tag “n”,</p>
@@ -855,7 +918,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 <li>A: Hij komt toch niet?</li>
 <li>B: Ja hij en doet ne komt.</li>
 </ul>
-<p>Positieve positieve en negatieve replieken zijn vindbaar met iets als</p>
+<p>Positieve positieve en negatieve replieken zijn vindbaar met een XPath als</p>
 <pre class="xpath"><code>//node[@lemma=&quot;doen&quot; and @pvtijd=&#39;tgw&#39;]
    [parent::node[@cat=&#39;smain&#39;]]
    [../node[@rel=&quot;su&quot; and @pt=&quot;vnw&quot;]]
@@ -903,20 +966,20 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 <li>het is verder is het.</li>
 <li>Ik zeg :“je bent gek”, zeg ik.</li>
 </ul>
-<p>Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd (is meer dan een <em>hd</em> niet tegen de principes van Alpino?). In xpath:</p>
+<p>Hier worden volgens de richtlijnen twee verbalen hoofden en twee subjecten getagd (is meer dan een <em>hd</em> niet tegen de principes van Alpino?). In XPath:</p>
 <pre class="xpath"><code>//node[count(./node[@rel=&#39;su&#39;]) =2 and count(./node[@rel=&#39;hd&#39;]) =2]  </code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5Bcount%28./node%5B%40rel%3D%27su%27%5D%29%20%3D2%20and%20count%28./node%5B%40rel%3D%27hd%27%5D%29%20%3D2%5D%20%20%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
 <p>Dit vindt echter meestal niet de gewenste constructies. Alpino geeft (in de example-based search) voor het tweede voorbeeld een analyse met dp’s erin:</p>
+<p><img src='img_23.png' width='40%'/></p>
 <pre class="xpath"><code>//node[following-sibling::node/node[@rel=&quot;su&quot;]/@lemma=./node[@rel=&#39;su&#39;]/@lemma 
      and following-sibling::node/node[@rel=&quot;hd&quot;]/@lemma=./node[@rel=&#39;hd&#39;]/@lemma]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5Bfollowing-sibling%3A%3Anode/node%5B%40rel%3D%22su%22%5D/%40lemma%3D./node%5B%40rel%3D%27su%27%5D/%40lemma%20%0A%20%20%20%20%20and%20following-sibling%3A%3Anode/node%5B%40rel%3D%22hd%22%5D/%40lemma%3D./node%5B%40rel%3D%27hd%27%5D/%40lemma%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<p>Of eigenlijk preciezer</p>
+<p>Of nog wat preciezer</p>
 <pre class="xpath"><code>//node[following-sibling::node/node[@rel=&quot;su&quot;]
    [preceding-sibling::node[@rel=&#39;hd&#39;]]/@word=./node[@rel=&#39;su&#39;]
    [following-sibling::node[@rel=&#39;hd&#39;]]/@word 
        and following-sibling::node/node[@rel=&quot;hd&quot;]/@word=./node[@rel=&#39;hd&#39;]/@word]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5Bfollowing-sibling%3A%3Anode/node%5B%40rel%3D%22su%22%5D%0A%20%20%20%5Bpreceding-sibling%3A%3Anode%5B%40rel%3D%27hd%27%5D%5D/%40word%3D./node%5B%40rel%3D%27su%27%5D%0A%20%20%20%5Bfollowing-sibling%3A%3Anode%5B%40rel%3D%27hd%27%5D%5D/%40word%20%0A%20%20%20%20%20%20%20and%20following-sibling%3A%3Anode/node%5B%40rel%3D%22hd%22%5D/%40word%3D./node%5B%40rel%3D%27hd%27%5D/%40word%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<p>De gevonden voorbeelden zijn met <em>zeggen</em>.</p>
 <h3 id="apokoinouconstructies">6.4 Apokoinouconstructies</h3>
 <p>Een apokoinouconstructie is een constructie waarbij een woord of woordengroep tegelijkertijd deel uitmaakt, eerst als staart en dan als kop, van twee onafhankelijke constructies.</p>
 <ul>
@@ -964,7 +1027,7 @@ return <node>{$node} <text>{$txt}</text> {$sentence}</node>
 <ul>
 <li>k·ware nog <em>een jaar en half</em> te jong.</li>
 </ul>
-<p>Volgens de annotatierichtlijnen getagds als mwu met mwp delen.</p>
+<p>Volgens de annotatierichtlijnen getagd als <em>mwu</em> met <em>mwp</em>-delen.</p>
 <ul>
 <li>en da was maar op <em>twee uren en half</em> .</li>
 </ul>
@@ -1058,8 +1121,7 @@ node[@rel=&quot;hd&quot; and @pt=&quot;vnw&quot; and @vwtype=&quot;aanw&quot;]
    [../node[@cat=&quot;pp&quot;]/node[@rel=&quot;hd&quot;]/@lemma=@lemma]
    [number(../node[@cat=&quot;pp&quot;]/node[@rel=&quot;hd&quot;]/@begin) &lt; number(@begin)]</code></pre>
 <p><a href="https://gcnd-gretel.ivdnt.org/gcnd-gretel/xpath-search?currentStep=2&amp;xpath=%0A//node%5B%40rel%3D%22svp%22%20and%20%40pt%3D%22vz%22%5D%0A%20%20%20%5B../node%5B%40cat%3D%22pp%22%5D/node%5B%40rel%3D%22hd%22%5D/%40lemma%3D%40lemma%5D%0A%20%20%20%5Bnumber%28../node%5B%40cat%3D%22pp%22%5D/node%5B%40rel%3D%22hd%22%5D/%40begin%29%20%3C%20number%28%40begin%29%5D%0A&amp;selectedTreebanks=%7B%22gretel%22:%7B%22gcnd_24-09-2024%22:%5B%22main%22%5D%7D%7D&amp;retrieveContext=0">→<img src='img.png' width='20pt'/></a></p>
-<h1 id="appendix-xpath-cheat-sheet">Appendix: Xpath cheat sheet</h1>
-<h5 id="cheat-sheet">Cheat Sheet</h5>
+<h2 id="appendix-xpath-cheat-sheet">Appendix: XPath cheat sheet</h2>
 <p>Basis XPath-syntaxis:</p>
 <ul>
 <li>/ - Selecteert vanaf de root node.</li>
@@ -1127,3 +1189,4 @@ node[@rel=&quot;hd&quot; and @pt=&quot;vnw&quot; and @vwtype=&quot;aanw&quot;]
 <li>//node<span class="citation" data-cites="cat">[@cat='pp']</span>/node<span class="citation" data-cites="cat">[@cat='np']</span> - Selecteert noun phrases direct binnen een propositional phrase</li>
 <li>//node[matches(<span class="citation" data-cites="word">@word</span>,’.*end$’)] - Selecteert woorden die op ‘end’ eindigen</li>
 </ul>
+
