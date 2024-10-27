@@ -1,0 +1,163 @@
+alpino_ds =
+  element alpino_ds { attlist.alpino_ds, node, sentence, comments? }
+attlist.alpino_ds &= attribute version { xsd:NMTOKEN }?
+node = element node { attlist.node, node* }
+attlist.node &=
+  attribute rel {
+    "hdf"
+    | "hd"
+    | "cmp"
+    | "sup"
+    | "su"
+    | "obj1"
+    | "pobj1"
+    | "obj2"
+    | "se"
+    | "pc"
+    | "vc"
+    | "svp"
+    | "predc"
+    | "ld"
+    | "me"
+    | "predm"
+    | "obcomp"
+    | "mod"
+    | "body"
+    | "det"
+    | "app"
+    | "whd"
+    | "rhd"
+    | "cnj"
+    | "crd"
+    | "nucl"
+    | "sat"
+    | "tag"
+    | "dp"
+    | "top"
+    | "mwp"
+    | "dlink"
+    | "--"
+  },
+  attribute cat {
+    "smain"
+    | "np"
+    | "ppart"
+    | "pp"
+    | "ssub"
+    | "inf"
+    | "cp"
+    | "du"
+    | "ap"
+    | "advp"
+    | "ti"
+    | "rel"
+    | "whrel"
+    | "whsub"
+    | "conj"
+    | "whq"
+    | "oti"
+    | "ahi"
+    | "detp"
+    | "sv1"
+    | "svan"
+    | "mwu"
+    | "top"
+  }?,
+  attribute begin { text }?,
+  attribute end { text }?,
+  attribute word { text }?,
+  attribute index { text }?,
+  attribute id { text }?,
+  attribute lemma { text }?,
+  attribute postag { text }?,
+  attribute pt {
+    "let"
+    | "spec"
+    | "bw"
+    | "vg"
+    | "lid"
+    | "vnw"
+    | "tw"
+    | "ww"
+    | "adj"
+    | "n"
+    | "tsw"
+    | "vz"
+  }?,
+  attribute dial { "dial" }?,
+  attribute ntype { "soort" | "eigen" }?,
+  attribute getal { "getal" | "ev" | "mv" }?,
+  attribute graad { "basis" | "comp" | "sup" | "dim" }?,
+  attribute genus { "genus" | "zijd" | "masc" | "fem" | "onz" }?,
+  attribute naamval {
+    "stan" | "nomin" | "obl" | "bijz" | "gen" | "dat"
+  }?,
+  attribute positie { "prenom" | "nom" | "postnom" | "vrij" }?,
+  attribute buiging { "zonder" | "met-e" | "met-s" }?,
+  attribute getal-n { "zonder-n" | "mv-n" }?,
+  attribute wvorm { "pv" | "inf" | "od" | "vd" }?,
+  attribute pvtijd { "tgw" | "verl" | "conj" }?,
+  attribute pvagr { "ev" | "mv" | "met-t" }?,
+  attribute numtype { "hoofd" | "rang" }?,
+  attribute vwtype {
+    "pr"
+    | "pers"
+    | "refl"
+    | "recip"
+    | "bez"
+    | "vb"
+    | "vrag"
+    | "betr"
+    | "excl"
+    | "aanw"
+    | "onbep"
+  }?,
+  attribute pdtype { "pron" | "adv-pron" | "det" | "grad" }?,
+  attribute persoon {
+    "persoon"
+    | "1"
+    | "2"
+    | "2v"
+    | "2b"
+    | "3"
+    | "3p"
+    | "3m"
+    | "3v"
+    | "3o"
+  }?,
+  attribute status { "vol" | "red" | "nadr" }?,
+  attribute npagr {
+    "agr"
+    | "evon"
+    | "rest"
+    | "evz"
+    | "mv"
+    | "agr3"
+    | "evmo"
+    | "rest3"
+    | "evf"
+  }?,
+  attribute lwtype { "bep" | "onbep" }?,
+  attribute vztype { "init" | "versm" | "fin" }?,
+  attribute conjtype { "neven" | "onder" }?,
+  attribute spectype {
+    "afgebr"
+    | "onverst"
+    | "vreemd"
+    | "deeleigen"
+    | "meta"
+    | "comment"
+    | "achter"
+    | "afk"
+    | "symb"
+    | "enof"
+  }?,
+  attribute root { text }?,
+  attribute pos { text }?
+sentence = element sentence { attlist.sentence, text }
+attlist.sentence &= empty
+comments = element comments { attlist.comments, comment+ }
+attlist.comments &= empty
+comment = element comment { attlist.comment, text }
+attlist.comment &= empty
+start = alpino_ds

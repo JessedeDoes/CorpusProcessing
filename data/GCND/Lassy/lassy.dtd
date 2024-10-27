@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!ELEMENT alpino_ds (node, sentence, comments?) >
+<!ATTLIST alpino_ds
+version NMTOKEN #IMPLIED >
+<!ELEMENT node (node*) >
+<!ATTLIST node
+rel (hdf|hd|cmp|sup|su|obj1|pobj1|obj2|se|pc|vc|svp|predc
+|ld|me|predm|obcomp|mod|body|det|app|whd|rhd|cnj|crd|
+nucl|sat|tag|dp|top|mwp|dlink|--) #REQUIRED
+cat (smain|np|ppart|pp|ssub|inf|cp|du|ap|advp|ti|rel|whrel|
+whsub|conj|whq|oti|ahi|detp|sv1|svan|mwu|top) #IMPLIED
+begin CDATA #IMPLIED
+end CDATA #IMPLIED
+word CDATA #IMPLIED
+index CDATA #IMPLIED
+id CDATA #IMPLIED
+lemma CDATA #IMPLIED
+postag CDATA #IMPLIED
+pt (let|spec|bw|vg|lid|vnw|tw|ww|adj|n|tsw|vz) #IMPLIED
+dial (dial) #IMPLIED
+ntype (soort|eigen) #IMPLIED
+getal (getal|ev|mv) #IMPLIED
+graad (basis|comp|sup|dim) #IMPLIED
+genus (genus|zijd|masc|fem|onz) #IMPLIED
+naamval (stan|nomin|obl|bijz|gen|dat) #IMPLIED
+positie (prenom|nom|postnom|vrij) #IMPLIED
+buiging (zonder|met-e|met-s) #IMPLIED
+getal-n (zonder-n|mv-n) #IMPLIED
+wvorm (pv|inf|od|vd) #IMPLIED
+pvtijd (tgw|verl|conj) #IMPLIED
+pvagr (ev|mv|met-t) #IMPLIED
+numtype (hoofd|rang) #IMPLIED
+vwtype (pr|pers|refl|recip|bez|vb|vrag|betr|
+excl|aanw|onbep) #IMPLIED
+pdtype (pron|adv-pron|det|grad) #IMPLIED
+persoon (persoon|1|2|2v|2b|3|3p|3m|3v|3o) #IMPLIED
+status (vol|red|nadr) #IMPLIED
+npagr (agr|evon|rest|evz|mv|agr3|evmo|rest3|evf) #IMPLIED
+lwtype (bep|onbep) #IMPLIED
+vztype (init|versm|fin) #IMPLIED
+conjtype (neven|onder) #IMPLIED
+spectype (afgebr|onverst|vreemd|deeleigen|meta|
+comment|achter|afk|symb|enof) #IMPLIED
+root CDATA #IMPLIED
+pos CDATA #IMPLIED
+>
+<!ELEMENT sentence (#PCDATA) >
+<!ELEMENT comments (comment+) >
+<!ELEMENT comment (#PCDATA) >

@@ -1,0 +1,403 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<grammar xmlns="http://relaxng.org/ns/structure/1.0" datatypeLibrary="http://www.w3.org/2001/XMLSchema-datatypes">
+  <define name="alpino_ds">
+    <element name="alpino_ds">
+      <ref name="attlist.alpino_ds"/>
+      <ref name="node"/>
+      <ref name="sentence"/>
+      <optional>
+        <ref name="comments"/>
+      </optional>
+    </element>
+  </define>
+  <define name="attlist.alpino_ds" combine="interleave">
+    <optional>
+      <attribute name="version">
+        <data type="NMTOKEN"/>
+      </attribute>
+    </optional>
+  </define>
+  <define name="node">
+    <element name="node">
+      <ref name="attlist.node"/>
+      <zeroOrMore>
+        <ref name="node"/>
+      </zeroOrMore>
+    </element>
+  </define>
+  <define name="attlist.node" combine="interleave">
+    <attribute name="rel">
+      <choice>
+        <value>hdf</value>
+        <value>hd</value>
+        <value>cmp</value>
+        <value>sup</value>
+        <value>su</value>
+        <value>obj1</value>
+        <value>pobj1</value>
+        <value>obj2</value>
+        <value>se</value>
+        <value>pc</value>
+        <value>vc</value>
+        <value>svp</value>
+        <value>predc</value>
+        <value>ld</value>
+        <value>me</value>
+        <value>predm</value>
+        <value>obcomp</value>
+        <value>mod</value>
+        <value>body</value>
+        <value>det</value>
+        <value>app</value>
+        <value>whd</value>
+        <value>rhd</value>
+        <value>cnj</value>
+        <value>crd</value>
+        <value>nucl</value>
+        <value>sat</value>
+        <value>tag</value>
+        <value>dp</value>
+        <value>top</value>
+        <value>mwp</value>
+        <value>dlink</value>
+        <value>--</value>
+      </choice>
+    </attribute>
+    <optional>
+      <attribute name="cat">
+        <choice>
+          <value>smain</value>
+          <value>np</value>
+          <value>ppart</value>
+          <value>pp</value>
+          <value>ssub</value>
+          <value>inf</value>
+          <value>cp</value>
+          <value>du</value>
+          <value>ap</value>
+          <value>advp</value>
+          <value>ti</value>
+          <value>rel</value>
+          <value>whrel</value>
+          <value>whsub</value>
+          <value>conj</value>
+          <value>whq</value>
+          <value>oti</value>
+          <value>ahi</value>
+          <value>detp</value>
+          <value>sv1</value>
+          <value>svan</value>
+          <value>mwu</value>
+          <value>top</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="begin"/>
+    </optional>
+    <optional>
+      <attribute name="end"/>
+    </optional>
+    <optional>
+      <attribute name="word"/>
+    </optional>
+    <optional>
+      <attribute name="index"/>
+    </optional>
+    <optional>
+      <attribute name="id"/>
+    </optional>
+    <optional>
+      <attribute name="lemma"/>
+    </optional>
+    <optional>
+      <attribute name="postag"/>
+    </optional>
+    <optional>
+      <attribute name="pt">
+        <choice>
+          <value>let</value>
+          <value>spec</value>
+          <value>bw</value>
+          <value>vg</value>
+          <value>lid</value>
+          <value>vnw</value>
+          <value>tw</value>
+          <value>ww</value>
+          <value>adj</value>
+          <value>n</value>
+          <value>tsw</value>
+          <value>vz</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="dial">
+        <choice>
+          <value>dial</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="ntype">
+        <choice>
+          <value>soort</value>
+          <value>eigen</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="getal">
+        <choice>
+          <value>getal</value>
+          <value>ev</value>
+          <value>mv</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="graad">
+        <choice>
+          <value>basis</value>
+          <value>comp</value>
+          <value>sup</value>
+          <value>dim</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="genus">
+        <choice>
+          <value>genus</value>
+          <value>zijd</value>
+          <value>masc</value>
+          <value>fem</value>
+          <value>onz</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="naamval">
+        <choice>
+          <value>stan</value>
+          <value>nomin</value>
+          <value>obl</value>
+          <value>bijz</value>
+          <value>gen</value>
+          <value>dat</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="positie">
+        <choice>
+          <value>prenom</value>
+          <value>nom</value>
+          <value>postnom</value>
+          <value>vrij</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="buiging">
+        <choice>
+          <value>zonder</value>
+          <value>met-e</value>
+          <value>met-s</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="getal-n">
+        <choice>
+          <value>zonder-n</value>
+          <value>mv-n</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="wvorm">
+        <choice>
+          <value>pv</value>
+          <value>inf</value>
+          <value>od</value>
+          <value>vd</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="pvtijd">
+        <choice>
+          <value>tgw</value>
+          <value>verl</value>
+          <value>conj</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="pvagr">
+        <choice>
+          <value>ev</value>
+          <value>mv</value>
+          <value>met-t</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="numtype">
+        <choice>
+          <value>hoofd</value>
+          <value>rang</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="vwtype">
+        <choice>
+          <value>pr</value>
+          <value>pers</value>
+          <value>refl</value>
+          <value>recip</value>
+          <value>bez</value>
+          <value>vb</value>
+          <value>vrag</value>
+          <value>betr</value>
+          <value>excl</value>
+          <value>aanw</value>
+          <value>onbep</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="pdtype">
+        <choice>
+          <value>pron</value>
+          <value>adv-pron</value>
+          <value>det</value>
+          <value>grad</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="persoon">
+        <choice>
+          <value>persoon</value>
+          <value>1</value>
+          <value>2</value>
+          <value>2v</value>
+          <value>2b</value>
+          <value>3</value>
+          <value>3p</value>
+          <value>3m</value>
+          <value>3v</value>
+          <value>3o</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="status">
+        <choice>
+          <value>vol</value>
+          <value>red</value>
+          <value>nadr</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="npagr">
+        <choice>
+          <value>agr</value>
+          <value>evon</value>
+          <value>rest</value>
+          <value>evz</value>
+          <value>mv</value>
+          <value>agr3</value>
+          <value>evmo</value>
+          <value>rest3</value>
+          <value>evf</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="lwtype">
+        <choice>
+          <value>bep</value>
+          <value>onbep</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="vztype">
+        <choice>
+          <value>init</value>
+          <value>versm</value>
+          <value>fin</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="conjtype">
+        <choice>
+          <value>neven</value>
+          <value>onder</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="spectype">
+        <choice>
+          <value>afgebr</value>
+          <value>onverst</value>
+          <value>vreemd</value>
+          <value>deeleigen</value>
+          <value>meta</value>
+          <value>comment</value>
+          <value>achter</value>
+          <value>afk</value>
+          <value>symb</value>
+          <value>enof</value>
+        </choice>
+      </attribute>
+    </optional>
+    <optional>
+      <attribute name="root"/>
+    </optional>
+    <optional>
+      <attribute name="pos"/>
+    </optional>
+  </define>
+  <define name="sentence">
+    <element name="sentence">
+      <ref name="attlist.sentence"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.sentence" combine="interleave">
+    <empty/>
+  </define>
+  <define name="comments">
+    <element name="comments">
+      <ref name="attlist.comments"/>
+      <oneOrMore>
+        <ref name="comment"/>
+      </oneOrMore>
+    </element>
+  </define>
+  <define name="attlist.comments" combine="interleave">
+    <empty/>
+  </define>
+  <define name="comment">
+    <element name="comment">
+      <ref name="attlist.comment"/>
+      <text/>
+    </element>
+  </define>
+  <define name="attlist.comment" combine="interleave">
+    <empty/>
+  </define>
+  <start>
+    <choice>
+      <ref name="alpino_ds"/>
+    </choice>
+  </start>
+</grammar>
