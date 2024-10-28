@@ -23,7 +23,9 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
   lazy val betterRel: String = s.conversionRules.betterRel(this)
 
-  lazy val constituentLabelsIAmTheHeadOf: String = ancestor.filter(a => this.isWord && a.constituentHead.contains(this)).map(_.cat).mkString("_")
+  lazy val constituentsIAmTheHeadOf: Seq[AlpinoNode] = ancestor.filter(a => this.isWord && a.constituentHead.contains(this))
+  lazy val relationsAboveMe: Seq[String] = constituentsIAmTheHeadOf.map(_.rel)
+  lazy val constituentLabelsIAmTheHeadOf: String = constituentsIAmTheHeadOf.map(_.cat).mkString("_")
 
   val cat: String = (n \ "@cat").text
 

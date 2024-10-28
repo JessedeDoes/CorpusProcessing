@@ -36,6 +36,34 @@ object ConversionToSUDRules extends ConversionRules {
 | VC | verbaal complement
 | WHD | hoofd van een vraagzin
 
+3470 cc
+  68 cc@preconj
+4118 comp:aux
+2115 comp:aux@pass
+ 685 comp@expl
+32381 comp:obj
+3408 comp:obl
+ 315 comp:obl@agent
+1734 compound@prt
+4289 comp:pred
+2071 conj:appos
+4261 conj:coord
+  51 conj:coord@emb
+22055 det
+4807 flat
+25546 mod
+1466 mod@poss
+1867 mod@relcl
+  68 orphan
+1345 parataxis
+20040 punct
+12289 root
+14724 subj
+1824 subj@pass
+17872 udep
+3033 unk
+ 125 unk@expl
+
  */
   val relMap: Map[String,String]  = Map(
     "su" -> "subj",
@@ -50,7 +78,10 @@ object ConversionToSUDRules extends ConversionRules {
     "ld" -> "comp:ldmod",
     "crd" -> "cc",
     "cnj" -> "conj:coord",
-    "cmp" -> "comp" // ??
+    "obcomp" -> "mod:comp",
+    "svp" -> "compound@prt",
+    "dlink" -> "parataxis",
+    "cmp" -> "comp" // nee, klopt niet.... Hangt af van rol constituent waar je head van bent
 
   )
 
@@ -101,6 +132,13 @@ object ConversionToSUDRules extends ConversionRules {
         } else "whd"
       }
 
+      case "cmp" => {
+        if (n.relationsAboveMe.contains("su")) "subj"
+        else if (n.relationsAboveMe.contains("vc")) "comp:obj"
+        else if (n.relationsAboveMe.contains("mod")) "mod"
+        else if (n.relationsAboveMe.contains("obcomp")) "mod:comp"
+        else "mod:?"
+      }
       // iets met whd doen!
       case _ => n.rel
 
