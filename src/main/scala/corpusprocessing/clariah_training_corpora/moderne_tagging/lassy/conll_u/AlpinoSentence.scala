@@ -20,7 +20,7 @@ import Logje._
 
 
 
-case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, external_source: Option[String] = None) {
+case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, external_source: Option[String] = None, conversionRules: ConversionRules = ConversionToFlatLassyRules) {
 
   val sentid: String = external_id.getOrElse((alpino \\ "sentence" \ "@sentid").text)
   val text: String = (alpino \\ "sentence").text
@@ -38,7 +38,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
   lazy val topNode: Seq[AlpinoNode] = nodes.filter(_.parent.isEmpty)
 
 
-  lazy val constituentsAndHeads: Seq[(AlpinoNode, Option[AlpinoNode])] = nodes.filter(!_.isWord).map(x =>  x -> SpecificConversionRules.findConstituentHead(x))
+  lazy val constituentsAndHeads: Seq[(AlpinoNode, Option[AlpinoNode])] = nodes.filter(!_.isWord).map(x =>  x -> ConversionToFlatLassyRules.findConstituentHead(x))
   def commonAncestor(n1: AlpinoNode, n2: AlpinoNode): Option[AlpinoNode]  = {
     if (n1 == n2) Some(n1) else if (n1.parent.contains(n2)) Some(n2) else if (n2.parent.contains(n1)) Some(n1)
     else if (n1.parent.nonEmpty && n2.parent.nonEmpty) commonAncestor(n1.parent.get, n2.parent.get) else None
@@ -55,10 +55,16 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
     } else ""
   }
 
-  case class HeadWithPath(node: Option[AlpinoNode], path: Seq[AlpinoNode])
+  case class HeadWithPath(node: Option[AlpinoNode], path: Seq[AlpinoNode]) {
+    override  def toString() = {
+
+      node.toString + "  " + path.map(_.cat).mkString("|")
+    }
+  }
 
   def findHeadForWord(w: AlpinoNode, in: AlpinoNode):HeadWithPath = {
-     if (in.constituentHead.nonEmpty && in.constituentHead.get.id != w.id && in.constituentHead.get.begin != w.begin) {
+
+    val r: HeadWithPath = if (in.constituentHead.nonEmpty && in.constituentHead.get.id != w.id && in.constituentHead.get.begin != w.begin) {
        //if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
        HeadWithPath(in.constituentHead, Seq(in))
      } else if (in.parent.nonEmpty) {
@@ -67,7 +73,15 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
        x.copy(path = in +: x.path)
      }
      else HeadWithPath(None.asInstanceOf[Option[AlpinoNode]], Seq[AlpinoNode]())
-  }
+
+    if (w.rel == "whd") {
+      //println(this.text)
+      // println(w + "==>"  + r)
+    }
+    r
+    }
+
+
 
   def findHeadForWord(w: AlpinoNode) : HeadWithPath = {
     if (w.isWord && w.parent.nonEmpty) findHeadForWord(w, w.parent.get) else HeadWithPath(None,Seq())
@@ -97,7 +111,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
           HEAD = h,
           DEPREL = w.betterRel,
           DEPS=s"$h:$hw",
-          MISC = Map("CAT" -> w.whoseHeadAmI).filter({case (k,v) => v.nonEmpty}).map({case (k,v) => s"$k=$v"}).mkString("|") // w.relsToTheTop
+          MISC = Map("CAT" -> w.constituentLabelsIAmTheHeadOf).filter({case (k,v) => v.nonEmpty}).map({case (k,v) => s"$k=$v"}).mkString("|") // w.relsToTheTop
         )})
 
   lazy val dependencyParseIsValid: Boolean = {

@@ -32,18 +32,18 @@ object LassyXML2FlatDependencies {
 
   val garrulous = false
 
-  def main(args: Array[String]) = {
+  def transform(location: String, output: String = "/tmp/test.conll.txt", rules: ConversionRules = ConversionToFlatLassyRules) = {
+
     val stime = System.currentTimeMillis()
-    val location = args.headOption.getOrElse(lassy.getOrElse("nope"))
     lazy val lines: Stream[String] = Seq("find", location, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
-    val conllOutput = new PrintWriter("/tmp/test.conll.txt")
+    val conllOutput = new PrintWriter(output)
 
     lines.foreach(l => {
 
       val sentence_id = new File(l).getName.replaceAll(".xml$", "")
       val x = XML.load(l)
-      val sentence = AlpinoSentence(x, Some(sentence_id), Some(l))
+      val sentence = AlpinoSentence(x, Some(sentence_id), Some(l), rules)
 
 
       if (garrulous) {
@@ -64,8 +64,11 @@ object LassyXML2FlatDependencies {
 
     val etime = System.currentTimeMillis()
 
-    println(  (etime - stime) / 1000.0)
+    println((etime - stime) / 1000.0)
   }
-
-
+  def main(args: Array[String]) = {
+    val location = args.headOption.getOrElse(lassy.getOrElse("nope"))
+    transform(location)
+  }
 }
+

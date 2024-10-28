@@ -6,12 +6,14 @@ import scala.collection.immutable
 import scala.util.Try
 import scala.xml.Node
 
+// kijk naar https://grew.fr/gallery/flat/
 case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val id: String = (n \ "@id").text
   val word: String = (n \ "@word").text
   val pos: String = (n \ "@pos").text
   val xpos: String = (n \ "@postag").text
   val lemma: String = (n \ "@lemma").text
+  val index: String = (n \ "@index").text
   val isWord: Boolean = word.nonEmpty // (n \\ "node").isEmpty
   val rel: String = (n \ "@rel").text
 
@@ -19,9 +21,9 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
 
   lazy val isNotADependencyLeaf: Boolean = s.words.exists(_.dependencyHead.map(_.id).contains(this.id))
 
-  lazy val betterRel: String = SpecificConversionRules.betterRel(this)
+  lazy val betterRel: String = s.conversionRules.betterRel(this)
 
-  lazy val whoseHeadAmI: String = ancestor.filter(a => this.isWord && a.constituentHead.contains(this)).map(_.cat).mkString("_")
+  lazy val constituentLabelsIAmTheHeadOf: String = ancestor.filter(a => this.isWord && a.constituentHead.contains(this)).map(_.cat).mkString("_")
 
   val cat: String = (n \ "@cat").text
 
@@ -48,7 +50,7 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   lazy val descendant: immutable.Seq[AlpinoNode] = (n \\ "node").map(x => s.nodeMap((x \ "@id").text))
   lazy val wordsIn: Seq[AlpinoNode] = if (isWord) Seq() else descendant.filter(_.isWord).sortBy(_.wordNumber)
   lazy val text: String = wordsIn.map(_.word).mkString(" ")
-  lazy val constituentHead: Option[AlpinoNode] = SpecificConversionRules.findConstituentHead(this)
+  lazy val constituentHead: Option[AlpinoNode] = s.conversionRules.findConstituentHead(this)
   lazy val headWithPath: s.HeadWithPath = s.findHeadForWord(this)
   lazy val dependencyHead: Option[AlpinoNode] = headWithPath.node
 

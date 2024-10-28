@@ -2,7 +2,9 @@ package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
 import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.Logje.log
 
-object SpecificConversionRules {
+
+
+object ConversionToFlatLassyRules extends ConversionRules {
   def betterRel(n: AlpinoNode): String = {
 
     lazy val 上: String = n.parent.get.betterRel
@@ -23,7 +25,10 @@ object SpecificConversionRules {
       case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => 上
 
       case "hd" => 上
-      case "body" => 上
+      case "body" => if (n.parent.get.children.exists(_.rel == "cmp"))
+        "body"
+      else // nee, dit wil je helemaal niet in geval van een "cmp" ernaast
+        上
 
       // TODO check this one (and other exocentric cases)
       case "nucl" => 上
