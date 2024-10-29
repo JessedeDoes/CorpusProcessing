@@ -72,7 +72,7 @@ object ConversionToSUDRules extends ConversionRules {
     "vc" -> "comp:aux",
     "predc" -> "comp:pred",
     "pc" -> "comp:obl",
-    "mwp" -> "fixed",
+    "mwp" -> "fixed", // maar "flat" als het een naam is.....
     "dp" -> "parataxis",
     "app" -> "conj:appos",
     "ld" -> "comp:ldmod",
@@ -81,6 +81,8 @@ object ConversionToSUDRules extends ConversionRules {
     "obcomp" -> "mod:comp",
     "svp" -> "compound@prt",
     "dlink" -> "parataxis",
+    "tag" -> "parataxis",
+    "sat" -> "dislocated",
     "cmp" -> "comp" // nee, klopt niet.... Hangt af van rol constituent waar je head van bent
 
   )
@@ -103,8 +105,10 @@ object ConversionToSUDRules extends ConversionRules {
 
       case "cnj" if !n.sibling.exists(x => x.rel == "cnj" && x.wordNumber < n.wordNumber) => 上
       case "mwp" if !n.sibling.exists(x => x.rel == "mwp" && x.wordNumber < n.wordNumber) => 上
+      case "mwp" if n.xpos == "SPEC(deeleigen)" => "flat"
 
       case "hd" => 上
+
       case "body" =>
         if (n.parent.get.children.exists(_.rel=="cmp"))
           "comp:obj"
@@ -144,7 +148,16 @@ object ConversionToSUDRules extends ConversionRules {
 
     }
 
-   relMap.getOrElse(r0,r0)
+    val r1 = relMap.getOrElse(r0,r0)
+
+    val r2 = if (r1=="comp:aux"  && n.dependencyHead.nonEmpty) {
+      val h = n.dependencyHead.get
+
+      if (h.lemma == "zijn" && n.xpos.contains("vd,")) {
+        "comp:aux@pass"
+      } else "comp:aux"
+    } else r1
+    r2
   }
 
   def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false): Option[AlpinoNode] = {

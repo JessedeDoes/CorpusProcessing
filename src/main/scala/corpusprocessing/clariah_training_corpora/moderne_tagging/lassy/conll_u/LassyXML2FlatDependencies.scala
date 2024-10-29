@@ -32,14 +32,16 @@ object LassyXML2FlatDependencies {
 
   val garrulous = false
 
-  def transform(location: String, output: String = "/tmp/test.conll.txt", rules: ConversionRules = ConversionToFlatLassyRules) = {
+  def transform(location: String, output: String = "/tmp/test.conll.txt", rules: ConversionRules = ConversionToFlatLassyRules, referenceSentences: List[String]  = List()) = {
+
+    val refSet = referenceSentences.toSet
 
     val stime = System.currentTimeMillis()
     lazy val lines: Stream[String] = Seq("find", location, "-name", "*.xml") #| Seq("head", s"-$max") lineStream
 
     val conllOutput = new PrintWriter(output)
 
-    lines.foreach(l => {
+    val sentenceMap: Map[String,String] = lines.flatMap(l => {
 
       val sentence_id = new File(l).getName.replaceAll(".xml$", "")
       val x = XML.load(l)
@@ -54,13 +56,32 @@ object LassyXML2FlatDependencies {
       }
 
       if (sentence.dependencyParseIsValid) {
-        conllOutput.println(sentence.toCONLL())
-        conllOutput.flush()
+        if (referenceSentences.nonEmpty && refSet.contains(sentence.text.trim.replaceAll("\\s+", ""))) {
+          println(s"Youpie ${sentence.text}")
+          List( (sentence.text.trim.replaceAll("\\s+", ""), sentence.toCONLL()))
+        } else if (referenceSentences.isEmpty) {
+          conllOutput.println(sentence.toCONLL())
+          conllOutput.flush()
+          conllOutput.println()
+          List[(String,String)]()
+        } else List[(String,String)]()
       } else {
         Console.err.println(s"Bummer, invalid dependency parse for ${sentence.sentid} !")
+        List[(String,String)]()
       }
       // transferInfo(x)
-    })
+    }).toMap
+
+
+    if  (sentenceMap.nonEmpty) {
+      referenceSentences.foreach(s => {
+        if (sentenceMap.contains(s)) {
+          conllOutput.println(sentenceMap(s))
+          conllOutput.println()
+          conllOutput.flush()
+        }
+      })
+    }
 
     val etime = System.currentTimeMillis()
 
