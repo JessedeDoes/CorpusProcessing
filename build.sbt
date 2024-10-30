@@ -108,7 +108,7 @@ https://github.com/iovka/shex-java
 //libraryDependencies += "org.apache.logging.log4j" % "log4j-core" % "2.11.1"
 
 enablePlugins(TomcatPlugin)
-addDependencyTreePlugin
+/// addDependencyTreePlugin
 
 assemblyMergeStrategy in assembly := {
     case x if Assembly.isConfigFile(x) =>
