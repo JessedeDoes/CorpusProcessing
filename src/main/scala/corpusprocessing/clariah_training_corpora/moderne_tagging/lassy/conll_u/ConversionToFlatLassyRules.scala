@@ -45,31 +45,36 @@ object ConversionToFlatLassyRules extends ConversionRules {
         log(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
       }
 
-      def searchIn(relName: String) = n.children.find(x => x.rel == relName).flatMap(x => findConstituentHead(x, true))
+      def searchIn(relName: String) = n.children.find(x => x.rel == relName).flatMap(x => findConstituentHead(x, true)).toList
 
       val immediateHead: Option[AlpinoNode] = n.children.find(x => x.rel == "hd" && x.isWord)
 
-      val intermediateHead: Option[AlpinoNode] = searchIn("hd") //  n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
+      val intermediateHead = searchIn("hd") //  n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
 
-      val usingCmp: Option[AlpinoNode] = searchIn("cmp")
-      val usingBody: Option[AlpinoNode] = searchIn("body")
+      val usingCmp = searchIn("cmp")
 
-      val usingMwp: Option[AlpinoNode] = n.children.find(_.rel == "mwp").filter(_.isWord)
-      val usingCnj: Option[AlpinoNode] = searchIn("cnj") // dit werkt dus niet altijd .....
-      val usingNucl: Option[AlpinoNode] = searchIn("nucl")
-      val usingDp: Option[AlpinoNode] = searchIn("dp")
+      val usingWhd = searchIn("whd")
+      val usingRhd = searchIn("rhd")
+      val usingBody= searchIn("body")
 
-      val gedoeStreepjes = n.children.find(x => x.rel == "--" && !x.isWord).flatMap(x => findConstituentHead(x))
+      val usingMwp = n.children.find(_.rel == "mwp").filter(_.isWord).toList
+      val usingCnj = searchIn("cnj") // dit werkt dus niet altijd .....
+      val usingNucl = searchIn("nucl")
+      val usingDp = searchIn("dp")
+
+      val gedoeStreepjes = n.children.find(x => x.rel == "--" && !x.isWord).flatMap(x => findConstituentHead(x)).toList
 
       (immediateHead.toList
-        ++ intermediateHead.toList
-        ++ usingCmp.toList
-        ++ usingBody.toList
-        ++ usingMwp.toList
-        ++ gedoeStreepjes.toList
-        ++ usingCnj.toList
-        ++ usingNucl.toList
-        ++ usingDp.toList).headOption
+        ++ intermediateHead
+        ++ usingCmp
+        ++ usingWhd
+        ++ usingRhd
+        ++ usingBody
+        ++ usingMwp
+        ++ gedoeStreepjes
+        ++ usingCnj
+        ++ usingNucl
+        ++ usingDp).headOption
     }
   }
 }

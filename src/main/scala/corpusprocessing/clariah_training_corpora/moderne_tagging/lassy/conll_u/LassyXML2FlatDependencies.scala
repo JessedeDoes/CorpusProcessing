@@ -24,11 +24,11 @@ object LassyXML2FlatDependencies {
     }
     })
   }
-  /*
-  <node begin="49" end="50" genus="masc" getal="ev" id="88" index="3" lemma="hem" naamval="obl" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,obl,vol,3,ev,masc)" pt="vnw" rel="obj2" root="hem" status="vol" vwtype="pers" word="hem"/>
-  <node begin="49" end="50" id="93" index="3" rel="su"/>
-   */
 
+  /*
+    <node begin="49" end="50" genus="masc" getal="ev" id="88" index="3" lemma="hem" naamval="obl" pdtype="pron" persoon="3" pos="pron" postag="VNW(pers,pron,obl,vol,3,ev,masc)" pt="vnw" rel="obj2" root="hem" status="vol" vwtype="pers" word="hem"/>
+    <node begin="49" end="50" id="93" index="3" rel="su"/>
+  */
 
   val garrulous = false
 

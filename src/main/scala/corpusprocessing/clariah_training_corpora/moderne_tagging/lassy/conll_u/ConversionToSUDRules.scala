@@ -175,7 +175,7 @@ object ConversionToSUDRules extends ConversionRules {
 
       val usingCmp: Option[AlpinoNode] = searchIn("cmp")
       val usingWhd: Option[AlpinoNode] = searchIn("whd")
-
+      val usingRhd: Option[AlpinoNode] = searchIn("rhd")
       // usingWhd.foreach(x => { println(n + " ==> "  + x) })
 
       val usingBody: Option[AlpinoNode] = searchIn("body")
