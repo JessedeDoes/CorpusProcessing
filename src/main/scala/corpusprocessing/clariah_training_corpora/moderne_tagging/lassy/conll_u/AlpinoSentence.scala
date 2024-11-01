@@ -1,5 +1,6 @@
 package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
 
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.dependencyconversion.ConversionToFlatLassyRules
 import utils.PostProcessXML
 
 import java.io.{File, PrintWriter}
@@ -62,26 +63,24 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
     }
   }
 
-  def findHeadForWord(w: AlpinoNode, in: AlpinoNode):HeadWithPath = {
+  def findHeadForWord(w: AlpinoNode, in: AlpinoNode): HeadWithPath = {
 
     val r: HeadWithPath = if (in.constituentHead.nonEmpty && in.constituentHead.get.id != w.id && in.constituentHead.get.begin != w.begin) {
-       //if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
-       HeadWithPath(in.constituentHead, Seq(in))
-     } else if (in.parent.nonEmpty) {
-       // if (w.word == "won") { Console.err.println(s"Moving to parent ${in.parent.get}")}
-       val x = findHeadForWord(w, in.parent.get)
-       x.copy(path = in +: x.path)
-     }
-     else HeadWithPath(None.asInstanceOf[Option[AlpinoNode]], Seq[AlpinoNode]())
+      //if (w.word == "won") { Console.err.println(s"Yep ${in.constituentHead}")}
+      HeadWithPath(in.constituentHead, Seq(in))
+    } else if (in.parent.nonEmpty) {
+      // if (w.word == "won") { Console.err.println(s"Moving to parent ${in.parent.get}")}
+      val x = findHeadForWord(w, in.parent.get)
+      x.copy(path = in +: x.path)
+    }
+    else HeadWithPath(None.asInstanceOf[Option[AlpinoNode]], Seq[AlpinoNode]())
 
     if (w.rel == "whd") {
       //println(this.text)
       // println(w + "==>"  + r)
     }
     r
-    }
-
-
+  }
 
   def findHeadForWord(w: AlpinoNode) : HeadWithPath = {
     if (w.isWord && w.parent.nonEmpty) findHeadForWord(w, w.parent.get) else HeadWithPath(None,Seq())
@@ -127,101 +126,3 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
    }
 }
 
-// old stuff before refactor into specific rules object
-
-/*
-lazy val betterRel: String = {
-  lazy val up = parent.get.betterRel
-
-  val r0 = rel match {
-    case _ if parent.isEmpty => rel
-    case _ if (pos=="punct") => "punct"
-    case _ if isWord && dependencyHead.isEmpty => "root"
-
-    // nonfirst part of cooordination or multiword keeps its rel
-
-    case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel // Pas Op deugt deze regel wel?
-    case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "mwp" => this.rel
-  /*
-  lazy val betterRel: String = {
-    lazy val up = parent.get.betterRel
-
-    val r0 = rel match {
-      case _ if parent.isEmpty => rel
-      case _ if (pos=="punct") => "punct"
-      case _ if isWord && dependencyHead.isEmpty => "root"
-
-      // nonfirst part of cooordination or multiword keeps its rel
-
-      case "cnj" if dependencyHead.nonEmpty && dependencyHead.head.rel == "cnj" => this.rel // Pas Op deugt deze regel wel?
-      case "mwp" if dependencyHead.nonEmpty && dependencyHead.head.betterRel == "mwp" => this.rel
-
-
-      case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
-      //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
-      case "mwp" if  !sibling.exists(x => x.rel == "mwp" && x.wordNumber < this.wordNumber) => up
-
-      case "hd" => up
-      case "body" => up
-
-
-      case "nucl" => up
-      case _ => rel
-    }
-    // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
-    r0
-  }
-   */
-
-    case "cnj" if  !sibling.exists(x => x.rel == "cnj" && x.wordNumber < this.wordNumber) => up
-    //case "cnj" if parent.exists(_.cat=="conj" && !(parent.get.children.exists(_.wordNumber < this.wordNumber))) => s"Tja!: ${parent.get.children.map(_.rel).mkString("|")}"
-    case "mwp" if  !sibling.exists(x => x.rel == "mwp" && x.wordNumber < this.wordNumber) => up
-
-    case "hd" => up
-    case "body" => up
-
-
-    case "nucl" => up
-    case _ => rel
-  }
-  // if (dependencyHead.isEmpty || r0=="0") "root" else if (pos == "punct") "punct" else r0
-  r0
-}
- */
-
-/*
-def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false):Option[AlpinoNode]  = {
-  if (n.isWord) (if (allowLeaf) Some(n) else None) else {
-
-    if (!n.children.exists(x => x.rel == "hd")) {
-      log(s"Exocentric node: ${n.cat}:${n.rel} (${n.children.map(c => s"${c.cat}:${c.rel}").mkString(",")}) ")
-    }
-
-    def searchIn(relName: String)  = n.children.find(x => x.rel == relName).flatMap(x => findConstituentHead(x, true))
-
-    val immediateHead: Option[AlpinoNode] = n.children.find(x => x.rel == "hd" && x.isWord)
-
-    val intermediateHead : Option[AlpinoNode] = searchIn("hd") //  n.children.filter(x => x.rel == "hd").headOption.flatMap(x => findConstituentHead(x))
-
-    val usingCmp: Option[AlpinoNode] = searchIn("cmp")
-    val usingBody: Option[AlpinoNode] = searchIn("body")
-
-    val usingMwp: Option[AlpinoNode] = n.children.find(_.rel == "mwp").filter(_.isWord)
-    val usingCnj : Option[AlpinoNode] = searchIn("cnj")// dit werkt dus niet altijd .....
-    val usingNucl: Option[AlpinoNode] = searchIn("nucl")
-    val usingDp:  Option[AlpinoNode] = searchIn("dp")
-
-    val gedoeStreepjes =  n.children.find(x => x.rel == "--" && !x.isWord).flatMap(x => findConstituentHead(x))
-
-    (immediateHead.toList
-      ++ intermediateHead.toList
-      ++ usingCmp.toList
-      ++ usingBody.toList
-      ++ usingMwp.toList
-      ++ gedoeStreepjes.toList
-      ++ usingCnj.toList
-      ++ usingNucl.toList
-      ++ usingDp.toList).headOption
-  }
-}
- */

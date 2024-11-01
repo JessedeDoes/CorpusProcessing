@@ -1,4 +1,7 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.dependencyconversion
+
+import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{AlpinoNode, ConversionRules, Logje}
+
 object ConversionToSUDRules extends ConversionRules {
 
 /*

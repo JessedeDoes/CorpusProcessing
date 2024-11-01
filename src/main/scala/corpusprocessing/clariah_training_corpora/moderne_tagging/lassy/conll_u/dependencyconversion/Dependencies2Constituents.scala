@@ -1,5 +1,4 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u
-
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.dependencyconversion
 
 /*
 Mogelijkheden
