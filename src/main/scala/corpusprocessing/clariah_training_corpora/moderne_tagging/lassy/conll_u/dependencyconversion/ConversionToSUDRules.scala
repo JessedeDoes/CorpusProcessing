@@ -74,6 +74,7 @@ object ConversionToSUDRules extends ConversionRules {
     "obj2" -> "comp:obl",
     "vc" -> "comp:aux",
     "predc" -> "comp:pred",
+    "predn" -> "mod:pred",
     "pc" -> "comp:obl",
     "mwp" -> "fixed", // maar "flat" als het een naam is.....
     "dp" -> "parataxis",
@@ -87,7 +88,6 @@ object ConversionToSUDRules extends ConversionRules {
     "tag" -> "parataxis",
     "sat" -> "dislocated",
     "cmp" -> "comp" // nee, klopt niet.... Hangt af van rol constituent waar je head van bent
-
   )
 
   def betterRel(n: AlpinoNode): String = {

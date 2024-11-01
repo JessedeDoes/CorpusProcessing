@@ -41,9 +41,9 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
 
   lazy val constituentsAndHeads: Seq[(AlpinoNode, Option[AlpinoNode])] = nodes.filter(!_.isWord).map(x =>  x -> ConversionToFlatLassyRules.findConstituentHead(x))
   def commonAncestor(n1: AlpinoNode, n2: AlpinoNode): Option[AlpinoNode]  = {
-    if (n1 == n2) Some(n1) else if (n1.parent.contains(n2)) Some(n2) else if (n2.parent.contains(n1)) Some(n1)
+    if (n1 == n2) Some(n1) else if (n1.ancestor.contains(n2)) Some(n2) else if (n2.ancestor.contains(n1)) Some(n1)
     else if (n1.parent.nonEmpty && n2.parent.nonEmpty) commonAncestor(n1.parent.get, n2.parent.get) else None
-  }
+  } // lijkt me niet goed als n1 al ancestor van n2 is
 
   def joiningPath(n1: AlpinoNode, n2:AlpinoNode): String = {
     val c = commonAncestor(n1,n2)
