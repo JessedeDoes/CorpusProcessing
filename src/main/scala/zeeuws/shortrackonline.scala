@@ -102,7 +102,7 @@ object shortrackonline {
   lazy val nbsp = text("&#160;")
   def times(n: Int, node: NodeSeq) = (0 to n-1).flatMap(i => node)
   def main(args: Array[String]): Unit = {
-    val htmlToProcess = args.headOption.getOrElse(hutspot)
+    val htmlToProcess = args.headOption.getOrElse(regio_dordrecht)
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
     val fHVHW: Skater => Boolean = x => x.club.toLowerCase().contains("hvhw");
