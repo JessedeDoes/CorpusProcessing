@@ -46,9 +46,9 @@ object GysselingPostprocessing {
         val otherIndexes = wordParts.indices.filter(_ != wpi)
         val newCorresp = ((w \ "@corresp").text + " " + otherIndexes.map(i => s"#${id + "." + i}").mkString(" ")).trim
         val adapted3 = setAtt.setAttribute(adapted2, "corresp", newCorresp)
-        val adapted4 = setAtt.setAttribute(adapted3, "feest", "hoera")
-        println(adapted4)
-        adapted4
+        //val adapted4 = setAtt.setAttribute(adapted3, "feest", "hoera")
+        //println(adapted3)
+        adapted3
       })
     } else Seq(w)
   }
