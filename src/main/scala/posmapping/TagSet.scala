@@ -490,7 +490,7 @@ case class TagSet(prefix: String,
     this.posTags.contains(t.pos) && t.features.forall(f => {
       val b = this.posForFeature(f.name,f.value).contains(t.pos) || f.value.split("\\||/").forall(x => this.posForFeature(f.name,x).contains(t.pos))
       if (!b)
-        Console.err.println(s"$f not ok for ${t.pos}")
+        Console.err.println(s"$f not ok for ${t.pos} in $t")
       b
     })
   }
