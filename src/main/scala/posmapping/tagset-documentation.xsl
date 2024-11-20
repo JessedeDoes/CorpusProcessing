@@ -12,7 +12,7 @@
 
   
 <xsl:param name="server">svotmc10.ivdnt.loc</xsl:param>
-<xsl:variable name="corpus"><xsl-value-of select="//corpus"/></xsl:variable> 
+<xsl:variable name="corpus"><xsl:value-of select="//corpus"/></xsl:variable>
   
 <xsl:template match="/">
 	<html>

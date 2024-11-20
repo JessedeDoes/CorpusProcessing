@@ -15,9 +15,9 @@
 <xsl:variable name="corpus"><xsl-value-of select="//corpus"/></xsl:variable> 
 <xsl:param name="corpora">
   <xsl:sequence><corpora>
-    <corpus id="ONW" name="ONW"><xsl:sequence select="document('Corpora/ONW/tagset_desc_temp.xml')"></xsl:sequence></corpus>
-    <corpus id="Gysseling" name="Gysseling">Gysseling<xsl:sequence select="document('Corpora/Gysseling/tagset_desc_temp.xml')"></xsl:sequence></corpus>
-    <corpus id="CGN_TDN" name="CGN">CGN<xsl:sequence select="document('Corpora/CGN/tagset_desc_temp.xml')"></xsl:sequence></corpus>
+		  <corpus id="ONW" name="ONW"><xsl:sequence select="document('data/TDN/Corpora/ONW/tagset_desc_temp.xml')"></xsl:sequence></corpus>
+		  <corpus id="Gysseling" name="Gysseling">Gysseling<xsl:sequence select="document('data/TDN/Corpora/Gysseling/tagset_desc_temp.xml')"></xsl:sequence></corpus>
+		  <corpus id="CGN_TDN" name="CGN">CGN<xsl:sequence select="document('data/TDN/Corpora/CGN/tagset_desc_temp.xml')"></xsl:sequence></corpus>
   </corpora></xsl:sequence>
 </xsl:param>
   

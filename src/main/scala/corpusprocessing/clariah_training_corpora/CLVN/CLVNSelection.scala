@@ -34,22 +34,31 @@ case class Doc(n: Node, corpusURL: String) {
 case class DocFromFile(f: File) {
 
   lazy val doc = XML.loadFile(f)
-  lazy val (meta, nTokens) = {
+  lazy val toks = (doc \\ "w").size
+  lazy val meta = (doc \ "teiHeader").head
+  lazy val nTokens = toks
 
-    val n = XML.loadFile(f)
-    val toks = (n \\ "w").size
-    Console.err.println(s"${f.getName}: $toks")
-    (n \ "teiHeader").head -> toks
-  }
 
 
   lazy val e  = meta.asInstanceOf[Elem]
   def getValues(name: String): Seq[String] = (meta \\ "interpGrp").filter(g => (g \ "@type").text == name).flatMap(g => (g \\ "interp").map(_.text)) // ((n \\ "docInfo").head.child.filter(x => x.label == name).map(x => {  (x  \\ "value").text}))
+
+
   lazy val pid = (meta \\ "docPid").text
   lazy val province = getValues("province").mkString("|")
   lazy val regionLevel1 = getValues("witnessLocalization_regionLevel1").mkString("|")
   lazy val witness_year_from = getValues("witness_year_from").mkString("|")
-  lazy  val witness_year_to  = getValues("witness_year_to").mkString("|")
+  lazy val witness_year_to  = getValues("witness_year_to").mkString("|")
+  lazy val witness_years_to: Seq[String] = getValues("witnessYearLevel1_to") ++ getValues("witnessYearLevel0_from")
+  lazy val maxYearTo = if (witness_years_to.nonEmpty) witness_years_to.max else "undefined"
+  lazy val periodOK = {val ok =  maxYearTo != "undefined" && maxYearTo < "1302";
+    // Console.err.println(s"${f.getName}: tokens: $toks, waarvan met RES: $nRes, periodOK: $ok, $witness_years_to, resOK: $notTooManyRes");
+    ok }
+
+
+  lazy val nRes = (doc \\ "w").filter(x => (x \ "@pos").text.contains("RES")).size
+  lazy val notTooManyRes = {
+    val z = (20 * nRes < nTokens); Console.err.println(s"${f.getName}: tokens: $toks, waarvan met RES: $nRes, periodOK: $periodOK, $witness_years_to, resOK: $z")  ; z}
   lazy val decade = getValues("decade").mkString("|")
   lazy val inputFile = f.getName
 

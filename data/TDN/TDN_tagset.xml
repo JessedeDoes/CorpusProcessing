@@ -1052,14 +1052,21 @@ Dit is unclear en mag dus niet
             <pos>RES</pos>
           </posForValue>
         </featureValue>
-   
+
+       <featureValue displayName="Bounded Root Element" desc="Bounded Root Element">
+          <value>bre</value>
+          <posForValue>
+            <pos>RES</pos>
+          </posForValue>
+        </featureValue>
+
         <featureValue displayName="Foreign" desc="Foreign word">
           <value>for</value>
           <posForValue>
             <pos>RES</pos>
           </posForValue>
         </featureValue>
-        
+    
         <featureValue displayName="Formula" desc="Formula">
           <value>form</value>
           <posForValue>

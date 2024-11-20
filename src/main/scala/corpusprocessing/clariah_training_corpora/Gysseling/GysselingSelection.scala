@@ -27,8 +27,8 @@ object GysselingSelection {
   //val corpusURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN"
   //val docsURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN/docs/?number=3000"
   //val atHome = "/media/jesse/Data/Corpora/CLVN/Tagged"
-  val baseDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/" // /mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TDNEnhancedTagging/"
-
+  val baseDirX = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/" // /mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TDNEnhancedTagging/"
+  val baseDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/GysAmbtelijkSelectie/Origineel/"
   def findAllXMlIn(path: String): Set[File]  = {
     val f = new File(path)
     if (f.isFile && f.getName.endsWith(".xml")) {
@@ -43,7 +43,7 @@ object GysselingSelection {
   // lazy val docsx: Seq[Doc] = XML.load(docsURL).flatMap(x => x \\ "doc").map(x => Doc(x,corpusURL))
 
   lazy val docs = util.Random.shuffle(findAllXMlIn(baseDir)).take(Integer.MAX_VALUE).map(DocFromFile)
-  lazy val officialDocs = docs.filter(x => x.inputFile.matches(".*[01][0-9]{3}.*") && x.regionLevel1.nonEmpty)
+  lazy val officialDocs = docs.filter(x => x.inputFile.matches(".*[01][0-9]{3}.*") && x.regionLevel1.nonEmpty && x.notTooManyRes)
 
   lazy val provinceGroups: Map[String, List[DocFromFile]] = {
     val a: Map[String, List[DocFromFile]] =
@@ -86,6 +86,7 @@ object GysselingSelection {
 }
 
 import GysselingSelection._
+
 object GysselingLiterarySelection {
   val baseDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/"
   lazy val docs: Set[DocFromFile] = util.Random.shuffle(findAllXMlIn(baseDir)).take(Integer.MAX_VALUE).filter(_.getName.matches("^[2-9].*")).map(DocFromFile)

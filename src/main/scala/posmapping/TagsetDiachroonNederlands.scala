@@ -1,10 +1,10 @@
 package posmapping
 
 import java.io.{File, PrintWriter}
-
 import corpusprocessing.CGN.CGNToTEIWithTDNTags
 import corpusprocessing.CGNMiddleDutch
 import corpusprocessing.gysseling.HistoricalTagsetPatching
+import utils.XSLT
 
 import scala.xml.XML
 object DataSettings {
@@ -17,7 +17,7 @@ object DataSettings {
 object TagsetDiachroonNederlands {
   val TDN_xml = "data/TDN/TDN_tagset.xml"
   lazy val TDNTagset = TagSet.fromXML(TDN_xml)
-  val stylesheet = "/home/jesse/workspace/xml2rdf/src/main/scala/posmapping/tagset-documentation.xsl"
+  val stylesheet = "src/main/scala/posmapping/tagset-documentation.xsl"
 
   val coreFeatures = Map(
     "NOU-C" -> List("number", "WF"),
@@ -120,14 +120,18 @@ object TagsetDiachroonNederlands {
     blfWriterCHN.println(corpusBasedWithDesc.forBlacklabCHNStyle)
     blfWriterCHN.close()
 
-    val z = new File(stylesheet)
-    if (z.exists) {
-      val x = new utils.XSLT(stylesheet)
-      x.transform(s"$outputBase.xml", s"$outputBase.html")
-      x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll("xml", "html"))
-    }
+    transformToHTML(outputBase, outputBase)
     //compareGysselingToMolex.pretty(molexWithDesc, new PrintWriter("/tmp/molex_tagset_displayNames.xml"))
     corpusBasedWithDesc
+  }
+
+  private def transformToHTML(inputBase: String, outputBase: String): Unit = {
+    val z = new File(stylesheet)
+    if (z.exists) {
+      val x = new XSLT(stylesheet)
+      x.transform(s"$inputBase.xml", s"$outputBase.html")
+      x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll("xml", "html"))
+    }
   }
 
   def tagsetFromCorpusFiles(dirName: String, attribute: String, prefix: String = "/tmp/", corpus: String, corpusXML: Option[String] = None,
@@ -397,6 +401,24 @@ object TagsetDiachroonNederlands {
    }
 }
 
+object MakeTagsetHTML {
+  import TagsetDiachroonNederlands._
+  val stylesheet = "./data/TDN/tdn.xsl"
+  private def transformToHTML(): Unit = {
+    val z = new File(stylesheet)
+    println(TDN_xml)
+    println(stylesheet)
+    if (z.exists) {
+      println(z)
+      val x = new XSLT(stylesheet)
+
+      x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll(".xml", ".latest.html"))
+    }
+  }
+  def main(args: Array[String]) = {
+    transformToHTML()
+  }
+}
 /*
 def oldMain(args: Array[String]): Unit = {
     val GysTags = scala.io.Source.fromFile("data/CG/overzichtje_met_morfcode.txt").getLines.map(l => l.split("\\s+")) // .map(l => l(2))
