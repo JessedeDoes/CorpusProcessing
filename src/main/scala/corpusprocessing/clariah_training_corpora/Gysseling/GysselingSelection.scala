@@ -27,8 +27,8 @@ object GysselingSelection {
   //val corpusURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN"
   //val docsURL = "https://corpora.ato.ivdnt.org/blacklab-server/CLVN/docs/?number=3000"
   //val atHome = "/media/jesse/Data/Corpora/CLVN/Tagged"
-  val baseDirX = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/" // /mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TDNEnhancedTagging/"
-  val baseDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/GysAmbtelijkSelectie/Origineel/"
+  val baseDir = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TeIndexeren/2020_07_31/" // /mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/TDNEnhancedTagging/"
+  val baseDirY = "/mnt/Projecten/Corpora/Historische_Corpora/CorpusGysseling/GysAmbtelijkSelectie/Origineel/"
   def findAllXMlIn(path: String): Set[File]  = {
     val f = new File(path)
     if (f.isFile && f.getName.endsWith(".xml")) {
