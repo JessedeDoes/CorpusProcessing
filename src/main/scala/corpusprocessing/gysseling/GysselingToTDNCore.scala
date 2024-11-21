@@ -22,8 +22,10 @@ object GysselingToTDNCore {
   val mappings: Map[String, Map[String,String]] = Map(
     "PD.type" -> Map("dem" -> "d-p", "rel" -> "d-p", "inter" -> "w-p"),
     "CONJ.type" -> Map("comp" -> "sub", "expl" -> "sub", "neg" -> "sub", "rel" -> "sub", "qual" -> "sub"),
+    "ADP.type" -> Map("uncl" -> "pre"),
     "PD.position" -> Map("prenom|postnom|pred" -> "prenom"),
     "AA.position" -> Map("prenom|postnom|pred" -> "prenom"),
+    "NUM.representation" -> Map("uncl" -> "let"),
   )
 
 
@@ -52,7 +54,7 @@ object GysselingToTDNCore {
   }
 
 
-  def mapTag(tagOrg: String) = {
+  def mapTag(tagOrg: String): CHNStyleTag = {
     val tag = tagset.integratedTag(tagOrg)
     val coreTag = fixTag(tagset.mapToCore(tag), tagOrg)
     // println(coreTag + "< "  + tagOrg)
@@ -64,6 +66,7 @@ object GysselingToTDNCore {
 
   def isRelPron(t: String)  = t.matches("PD.*rel.*")
   def isReflPron(t: String)  = t.matches("PD.*ref.*")
+
   def mapTagInWord(w: Elem): Elem = {
 
     val lemmaRef = (w \ "@lemmaRef").text.replaceAll("[^ 0-9]", "").trim.split("\\s+").toList.sorted.mkString("-")//.map(_.toInt).sorted.map(_.toString).mkString("-")
@@ -74,7 +77,7 @@ object GysselingToTDNCore {
     val tagjesFixed: Seq[String] = tagjesMapped.zip(lemmata).map({
       case (t,l) if l.startsWith("W") && t.startsWith("PD") => t.replaceAll("d-p", "w-p")
       case (t,l) => t
-    }).map(_.replaceAll("position=uncl", "position=prenom").replaceAll("degree=uncl", "degree=pos"))
+    }).map(_.replaceAll("position=uncl", "position=prenom").replaceAll("degree=uncl", "degree=pos").replaceAll("[(][)]", ""))
 
     tagjes.zip(tagjesFixed).foreach({case (a,b) => countPair(a.replaceAll(",?inflection=[^,()]*",""),b)})
 
