@@ -21,7 +21,7 @@ libraryDependencies += "org.scala-lang.modules" % "scala-parser-combinators_2.12
 
 libraryDependencies += "mysql" % "mysql-connector-java" % "5.1.16" force()
 libraryDependencies += "org.jdbi" % "jdbi" % "2.78"
-libraryDependencies += "org.postgresql" % "postgresql" % "42.1.1"
+libraryDependencies += "org.postgresql" % "postgresql" % "42.6.0"
 
 // https://mvnrepository.com/artifact/org.incava/java-diff
 libraryDependencies += "org.incava" % "java-diff" % "1.1"
