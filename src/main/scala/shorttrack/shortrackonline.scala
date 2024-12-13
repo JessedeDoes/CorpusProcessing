@@ -1,12 +1,12 @@
-package zeeuws
+package shorttrack
 
 import utils.HTML
 
-import java.net.{URI, URL}
-import scala.xml._
+import java.net.URL
 import java.nio.charset.CodingErrorAction
 import scala.collection.immutable
 import scala.io.Codec
+import scala.xml._
 
 
 case class Competition(n: Node) {
@@ -77,24 +77,6 @@ object shortrackonline {
     Skater(contentX, name, club, number)
   }
 
-  val lewis = "http://www.shorttrackonline.info/skaterbio.php?id=STNED12802201301"
-  val regiof = "data/regiofinale.html"
-  val gent = "data/gent_deelnemers.html"
-  val hutspot = "data/hutspot.html"
-  val zoetermeer = "data/zoetermeer.html"
-  val groningen = "data/groningen.html"
-  val alkmaar = "data/alkmaar.html"
-  val finaleAlkmaar = "data/regioFinaleAlkmaar.html"
-  val denhaag = "data/regio_denhaag.html"
-  val hasselt = "data/hasselt.html"
-  val regio_utrecht = "data/regio_utrecht.html"
-  val regio_dordrecht = "data/regiodordrecht.html"
-  val gent2023 = "data/gent.html"
-  val ar2023 = "data/ar2023.html"
-  val lara = "data/laravanruijven.html"
-  val lara24 = "data/vanruijven.html"
-
-
   val pretty = new scala.xml.PrettyPrinter(300, 4)
   val distances = List(222, 333, 444, 500, 777, 1000, 1500)
 
@@ -102,7 +84,7 @@ object shortrackonline {
   lazy val nbsp = text("&#160;")
   def times(n: Int, node: NodeSeq) = (0 to n-1).flatMap(i => node)
   def main(args: Array[String]): Unit = {
-    val htmlToProcess = args.headOption.getOrElse(regio_dordrecht)
+    val htmlToProcess = args.headOption.getOrElse(Settings.inputHTML)
     val fAll: Skater => Boolean = x => true;
     val fIHCL: Skater => Boolean = x => x.club.toLowerCase().contains("ihcl");
     val fHVHW: Skater => Boolean = x => x.club.toLowerCase().contains("hvhw");
