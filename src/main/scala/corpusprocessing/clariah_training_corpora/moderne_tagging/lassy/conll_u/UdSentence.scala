@@ -8,7 +8,7 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
 
   def hasContent(): Boolean = tokens.exists(_.FORM != "_")
   def isValid(): Boolean = { // TODO fix this to work for multiword token sentences
-    return true;
+    //return true;
     val roots = tokens.filter(t => t.DEPREL == "root")
     val nRoots = roots.size
 

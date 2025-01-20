@@ -11,7 +11,7 @@ object Alpino2FlatDependencies {
   val lassyAtWork = "/mnt/Projecten/Corpora/TrainingDataForTools/LassyKlein/LassySmall/Treebank/"
   val lassy = List(lassyAllAtHome, lassyAtWork).find(x => new File(x).exists())
 
-
+  println(lassy)
   // complex voorbeeld coindexeringen: https://paqu.let.rug.nl:8068/tree?db=lassysmall&names=true&mwu=false&arch=/net/corpora/paqu/lassyklein.dact&file=WR-P-P-I-0000000126.p.12.s.4.xml&global=true&marknodes=&ud1=&ud2=
   def transferInfo(x: Elem) = {
     val leafs = (x \\ "node").filter(x => x.child.isEmpty)
