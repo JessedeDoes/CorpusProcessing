@@ -35,6 +35,18 @@ object ConversionToFlatLassyRules extends ConversionRules {
 
       // TODO check this one (and other exocentric cases)
       case "nucl" => 上
+      case "cmp" if (n.dependencyHead.nonEmpty && n.parent.nonEmpty) => {
+        val h = n.dependencyHead.get
+        val p = n.parent.get
+        if (p.rel == "obcomp") "obcomp" else "cmp"
+        /*
+        if (n.word == "dan") println(n  + "-head->" + h)
+        val betterRelsAbove =  { val z = h.constituentsIAmTheHeadOf.map(_.rel)
+          if (n.word == "dan") println("Above me:" + z)
+          z.filter(x => x=="obcomp") }
+        betterRelsAbove.headOption.getOrElse("cmp")
+         */
+      }
       case _ => n.rel
     }
 

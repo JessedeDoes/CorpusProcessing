@@ -100,6 +100,11 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
   lazy val connlTokens = words.map(w =>  {
         val h = w.dependencyHead.map(x => (x.wordNumber+1).toString).getOrElse("0")
         val hw =  w.dependencyHead.map(x => x.word).getOrElse("_")
+        val cat =  {
+          val l = Map("CAT" -> w.constituentLabelsIAmTheHeadOf).filter({case (k,v) => v.nonEmpty})
+          if (l.nonEmpty) l.map({case (k,v) => s"$k=$v"}).mkString("|") else "CATPLUS=" + w.catPlus
+        }
+
         UdToken(
           ID=(w.wordNumber+1).toString,
           FORM=w.word,
@@ -110,7 +115,7 @@ case class AlpinoSentence(alpino: Elem, external_id: Option[String] = None, exte
           HEAD = h,
           DEPREL = w.betterRel,
           DEPS=s"$h:$hw",
-          MISC = Map("CAT" -> w.constituentLabelsIAmTheHeadOf).filter({case (k,v) => v.nonEmpty}).map({case (k,v) => s"$k=$v"}).mkString("|") // w.relsToTheTop
+          MISC = cat // w.relsToTheTop
         )})
 
   lazy val dependencyParseIsValid: Boolean = {

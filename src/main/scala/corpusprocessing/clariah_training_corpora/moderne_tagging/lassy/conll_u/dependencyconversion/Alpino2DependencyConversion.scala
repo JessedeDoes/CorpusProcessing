@@ -7,8 +7,11 @@ import java.io.{File, PrintWriter}
 import scala.xml.XML
 import scala.sys.process._
 
+
 object Alpino2DependencyConversion {
-  def transform(location: String, output: String = "/tmp/test.conll.txt", rules: ConversionRules = ConversionToFlatLassyRules, referenceSentences: List[String] = List()) = {
+  def transform(location: String, output: String = "/tmp/test.conll.txt",
+                rules: ConversionRules = ConversionToFlatLassyRules,
+                referenceSentences: List[String] = List()) = {
 
     val refSet = referenceSentences.toSet
 

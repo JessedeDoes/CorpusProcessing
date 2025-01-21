@@ -6,6 +6,28 @@ import scala.collection.immutable
 import scala.util.Try
 import scala.xml.Node
 
+object posToCat{
+  val map: Map[String,String]  = Map(
+    "adj" -> "ap",  //93193
+    "adv" -> "advp",  //50000
+    "comp" -> "",  //32884
+    "comparative" -> "",  //1585
+    "det" -> "detp",  //144640
+    "fixed" -> "",  //3848
+    "name" -> "",  //83552
+    "noun" -> "np",  //214104
+    "num" -> "",  //17921
+    "part" -> "",  //8034
+    "pp" -> "advp",  //5751
+    "prefix" -> "",  //694
+    "prep" -> "",  //125638
+    "pron" -> "np",  //28230
+    "punct" -> "",  //120371
+    "tag" -> "",  //1212
+    "verb" -> "",  //133476
+    "vg" -> "",  //29410
+  )
+}
 // kijk naar https://grew.fr/gallery/flat/
 case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val id: String = (n \ "@id").text
@@ -16,6 +38,11 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   val index: String = (n \ "@index").text
   val isWord: Boolean = word.nonEmpty // (n \\ "node").isEmpty
   val rel: String = (n \ "@rel").text
+  val cat: String = (n \ "@cat").text
+
+  lazy val catPlus = if (cat.nonEmpty) cat else {
+    if (posToCat.map.contains(pos) && posToCat.map(pos).nonEmpty) posToCat.map(pos) else "_";
+  }
 
   lazy val pathToDependencyHead: String = dependencyHead.map(h => s.joiningPath(this, h)).getOrElse("?") // headWithPath.path.map(_.rel).mkString("<")
 
@@ -27,7 +54,14 @@ case class AlpinoNode(s: AlpinoSentence, n: Node) {
   lazy val relationsAboveMe: Seq[String] = constituentsIAmTheHeadOf.map(_.rel)
   lazy val constituentLabelsIAmTheHeadOf: String = constituentsIAmTheHeadOf.map(_.cat).mkString("_")
 
-  val cat: String = (n \ "@cat").text
+  // niet echt nodig
+  def upwardPathTo(n: AlpinoNode, target: AlpinoNode):Seq[AlpinoNode]  = {
+    if (n==target) Seq[AlpinoNode]() else  {
+      Seq(n) ++  n.parent.map(upwardPathTo(_,target)).getOrElse(Seq())
+    }
+  }
+
+
 
   lazy val begin: String = (n \ "@begin").text
   val wordNumber: Int = Try (begin.toInt) match {case Success(x) => x ; case _ => 0 }
