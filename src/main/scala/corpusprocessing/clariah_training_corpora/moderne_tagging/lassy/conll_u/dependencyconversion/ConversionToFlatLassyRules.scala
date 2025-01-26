@@ -8,13 +8,20 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.conll_u.{
 object ConversionToFlatLassyRules extends ConversionRules {
   def betterRel(n: AlpinoNode): String = {
 
+    val pathUp: Seq[String] = if (n.dependencyHead.nonEmpty) {
+      val h = n.dependencyHead.get
+      val p = n.ancestor.takeWhile(x => !h.constituentsIAmTheHeadOf.contains(x))
+      p.map(_.rel)
+    } else Seq()
+
+
     lazy val 上: String = n.parent.get.betterRel
 
     val r0: String = n.rel match {
       case _ if n.parent.isEmpty => n.rel
       case _ if (n.pos == "punct") => "punct"
       case _ if n.isWord && n.dependencyHead.isEmpty => "root"
-
+      case _ if pathUp.nonEmpty  => pathUp.mkString("_")
 
 
       case "cnj" if n.dependencyHead.nonEmpty && n.dependencyHead.head.rel == "cnj" => n.rel // Pas Op deugt deze regel wel?
@@ -59,7 +66,7 @@ object ConversionToFlatLassyRules extends ConversionRules {
   //per domein normaliter hoogstens één keer voor.
 
   // ?? en nucl/tag dan, en du/dp enzo??
-  
+
   def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false): Option[AlpinoNode] = {
     if (n.isWord) (if (allowLeaf) Some(n) else None) else {
 
