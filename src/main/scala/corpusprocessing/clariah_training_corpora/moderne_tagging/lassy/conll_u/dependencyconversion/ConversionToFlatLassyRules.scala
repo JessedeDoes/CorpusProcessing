@@ -53,6 +53,13 @@ object ConversionToFlatLassyRules extends ConversionRules {
     r0
   }
 
+  // Hoofd
+  // We onderscheiden verschillende types, waarvoor de dependentielabels HD,
+  //RHD, WHD, CMP, CRD, DLINK worden gereserveerd. Een hoofd komt
+  //per domein normaliter hoogstens één keer voor.
+
+  // ?? en nucl/tag dan, en du/dp enzo??
+  
   def findConstituentHead(n: AlpinoNode, allowLeaf: Boolean = false): Option[AlpinoNode] = {
     if (n.isWord) (if (allowLeaf) Some(n) else None) else {
 
@@ -70,6 +77,8 @@ object ConversionToFlatLassyRules extends ConversionRules {
 
       val usingWhd = searchIn("whd")
       val usingRhd = searchIn("rhd")
+      val usingCrd = searchIn("crd")
+      val usingDlink = searchIn("dlink")
       val usingBody= searchIn("body")
 
       val usingMwp = n.children.find(_.rel == "mwp").filter(_.isWord).toList
@@ -84,6 +93,8 @@ object ConversionToFlatLassyRules extends ConversionRules {
         ++ usingCmp
         ++ usingWhd
         ++ usingRhd
+        ++ usingDlink
+        ++ usingCrd
         ++ usingBody
         ++ usingMwp
         ++ gedoeStreepjes
