@@ -6,5 +6,5 @@ git add Queries
 git add scripts
 git add lexit
 git commit -am "$1"
-git push origin master
+git push github master
 
