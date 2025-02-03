@@ -17,8 +17,10 @@ object setAtt {
 }
 
 object Headers4All {
-   val baseDir = "/media/jesse/Data/ParlaMint/CorpusData/" // "/mnt/Projecten/Corpora/0-Ruwmateriaal/FederaalParlement_v1/linguistic_annotation/complete_corpus_parlamint_v1_trankit/"
-   val toDir = baseDir + "headers4all/"
+   val baseDir = 
+     // "/media/jesse/Data/ParlaMint/CorpusData/" 
+      "/mnt/Projecten/Corpora/0-Ruwmateriaal/FederaalParlement_v1/linguistic_annotation/complete_corpus_parlamint_v1_trankit/"
+   val toDir = baseDir + "headers4all2025/"
    val mainFile = baseDir + "ParlaMint-BE.ana.xml"
 
   val parentDir = "../" //  s"file:///$baseDir/"

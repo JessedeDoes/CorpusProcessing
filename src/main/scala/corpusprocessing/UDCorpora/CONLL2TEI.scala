@@ -10,10 +10,10 @@ object CONLL2TEI {
 
   val corpusDir = "/mnt/Projecten/Corpora/UDCorpora/All/ud-treebanks-v2.14/"
 
-  val xmlDir = "/media/jesse/Data/Corpora/UD/ShortSentences/"
+  val xmlDir = "/data/UD_TEI/AllSentences/" // "/media/jesse/Data/Corpora/UD/ShortSentences/"
   lazy val pretty = new scala.xml.PrettyPrinter(300, 4)
   val maxFiles = Int.MaxValue
-  val maxSentLength = 12 // Integer.MAX_VALUE
+  val maxSentLength = Integer.MAX_VALUE // 12
 
   var tokens = 0
 
@@ -35,7 +35,7 @@ object CONLL2TEI {
   def toTEI(f: java.io.File, setName: String = "Unknown", maxSentLength: Int = Integer.MAX_VALUE): Elem = {
     val sentences = CONLL.parseFile(f)
       .filter(_.tokens.size <= maxSentLength)
-      .zipWithIndex.map({ case (s, i) => s.copy(sent_id = s"sentence_$i") })
+      .zipWithIndex.map({ case (s, i) => s.copy(sent_id = s"sentence_$i", n=Some(s.sent_id)) })
       .map(_.asTEI())
 
     val nTokens = sentences.map(x => (x \\ "w").size).sum

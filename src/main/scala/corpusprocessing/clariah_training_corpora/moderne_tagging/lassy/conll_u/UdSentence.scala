@@ -4,7 +4,7 @@ import corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.{Sentence
 
 import scala.xml.Elem
 
-case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq()) {
+case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], lines: Seq[String] = Seq(), n:Option[String] = None) {
 
   def hasContent(): Boolean = tokens.exists(_.FORM != "_")
   def isValid(): Boolean = { // TODO fix this to work for multiword token sentences
@@ -225,10 +225,12 @@ case class UdSentence(sent_id: String, language: String, tokens: Seq[UdToken], l
         leafTokenXML(t)
     }) // PC
 
+
+    println(s"Sentence to TEI: ${this.n}")
     val links = leafTokens.map(t =>  {
         val headPart = if (t.DEPREL == "root") "" else s".${t.HEAD}"
         <link ana={"ud-syn:" + t.DEPREL} target={s"#${this.sent_id}$headPart #${this.sent_id}.${t.ID}"}/> })
     val linkGrp = <linkGrp targFunc="head argument" type="UD-SYN">{links}</linkGrp>;
-    <s xml:lang={language} xml:id={this.sent_id}>{words}{linkGrp}</s>
+    <s xml:lang={language} xml:id={this.sent_id} n={this.n.orNull}>{words}{linkGrp}</s>
   }
 }

@@ -88,10 +88,12 @@ object CONLL {
     val grouped: Seq[Seq[String]] = groupWithFirst[String](lines, x => isMeta(x), previousMustNotBeIt=true) // S-ID in Japanese KTC
 
     val sentences = grouped.flatMap(g => {
-      val sent_id: Option[String] = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID")).map(_.replaceAll(".*[=:]", "").replaceAll("\\s+", ""))
+      val sent_id: Option[String] = g.find(x => x.startsWith("# sent_id") || x.startsWith("# S-ID"))
+        .map(_.replaceAll(".*[=:]", "").replaceAll("\\s+", ""))
       lazy val headers = g.filter(isMeta)
-      // println(headers)
+
       sent_id.map(x => {
+        println(s"Sentence id: $sent_id")
         val text = g.find(_.startsWith("# text")).map(_.replaceAll(".*=", "").trim)
         val tokenLines: Seq[String] = g.filter(_.matches("^[0-9].*"))
         val t0z= tokenLines.map(_.split("\\t").head).filter(x => !x.matches("[0-9]+"))
