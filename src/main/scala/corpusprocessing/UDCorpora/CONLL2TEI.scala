@@ -112,16 +112,17 @@ object CONLL2TEI {
   }
 
   def filter(f: File) = true // f.getCanonicalPath.contains("French")
-  def main(args: Array[String]) = {
-    val in = args.headOption.getOrElse(corpusDir)
-    val f = new File(in)
+
+  def convert(corpusDir: String, xmlDir: String) = {
+
+    val f = new File(corpusDir)
     if (f.isFile) {
       val tei = toTEI(f)
-      val pw = new PrintWriter(s"/tmp/${f.getName.replaceAll("[.][^.]*$", "")}.xml")
+      val pw = new PrintWriter(s"/$xmlDir/${f.getName.replaceAll("[.][^.]*$", "")}.xml")
       pw.println(tei)
       pw.close()
     } else {
-      val files = findAllConllIn(in)
+      val files = findAllConllIn(corpusDir)
       files.take(maxFiles).filter(filter).foreach(f => {
 
         val setName = f.getParentFile.getName.replaceAll("UD_", "")
@@ -144,6 +145,15 @@ object CONLL2TEI {
       })
     }
 
-    //p.foreach(println)
+  }
+  def main(args: Array[String]) = {
+    val in = args.headOption.getOrElse(corpusDir)
+    convert(corpusDir, xmlDir)//p.foreach(println)
+  }
+}
+
+object Lassy2TEI {
+  def main(args: Array[String]) = {
+    CONLL2TEI.convert("/mnt/Projecten/Taalbank/UD-TDN-Lassy/Data/lassy_small_7.conllu", "/tmp/")
   }
 }

@@ -3,6 +3,7 @@ package basex;
 import basex.BaseXClient.Query;
 
 import java.io.*;
+import java.util.ArrayList;
 
 /**
  * This example shows how queries can be executed in an iterative manner.
@@ -27,9 +28,12 @@ public final class QueryExample {
     runQuery(database, query, "/tmp/out.xml");
   }
 
-  public static void runQuery(String database, String input, String toFile) throws IOException {
-    // create session
 
+
+
+  public static ArrayList<String> runQuery(String database, String input, String toFile) throws IOException {
+    // create session
+    ArrayList<String> l = new ArrayList<>();
     try(BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
       // create query instance
 
@@ -46,7 +50,8 @@ public final class QueryExample {
         while(query.more()) {
           //val += query.next();
           String r = query.next();
-          pw.println(r  + "<!--sepje -->");
+          l.add(r);
+          pw.println(r  + "\n<!--result separator-->");
         }
 
         // print query info
@@ -54,6 +59,46 @@ public final class QueryExample {
       }
       pw.println("</results>");
       pw.close();
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      return l;
     }
+    return l;
+  }
+
+  public static ArrayList<String> getQueryResults(String database, String input) throws IOException {
+    // create session
+    ArrayList<String> l = new ArrayList<>();
+    try(BaseXClient session = new BaseXClient("localhost", 1984, "admin", "admin")) {
+      // create query instance
+
+
+      session.execute("open " + database);
+
+
+
+
+
+      try(Query query = session.query(input)) {
+        // loop through all results
+
+        while(query.more()) {
+          //val += query.next();
+          String r = query.next();
+          l.add(r);
+
+        }
+
+        // print query info
+        System.err.println(query.info());
+      }
+
+
+    } catch (Exception e) {
+      e.printStackTrace();
+      return l;
+    }
+    return l;
   }
 }

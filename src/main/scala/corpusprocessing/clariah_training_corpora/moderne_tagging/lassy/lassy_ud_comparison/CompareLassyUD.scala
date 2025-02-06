@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.spod
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy_ud_comparison
 
 import basex.QueryExample.runQuery
 
@@ -43,7 +43,7 @@ object CompareLassyUD {
                                      |                </result>""".stripMargin
 
     def lassyQuery(part: String)  =  {
-      runQuery("LassyEnhanced", part, "/tmp/out.xml")
+      runQuery("Enhanced", part, "/tmp/out.xml")
       XML.load("/tmp/out.xml")
     }
 /*

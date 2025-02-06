@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy.syntax_poc.spod
+package corpusprocessing.clariah_training_corpora.moderne_tagging.lassy_ud_comparison
 import scala.xml._
 import java.io.{File, PrintWriter}
 import java.net.{URLDecoder, URLEncoder}
