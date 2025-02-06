@@ -8,7 +8,7 @@ object UD_CGN_TDN {
    val mapping_ud_cgn_file = folder + "nl-cgn-uposf.html"
    lazy val mapping_xml_gcn_ud = utils.HTML.parse(new java.io.File(mapping_ud_cgn_file))
    val mapping_cgn_tdn_file = folder + "cgn_mapping_29_juni.html"
-  lazy val mapping_xml_cgn_tdn = utils.HTML.parse(new java.io.File(mapping_cgn_tdn_file))
+   lazy val mapping_xml_cgn_tdn = utils.HTML.parse(new java.io.File(mapping_cgn_tdn_file))
 
 
    def getOrElse(a: Seq[String], i:Int)  = {
