@@ -20,17 +20,18 @@ object CobaltExport {
     new URL(url) #> new File(filename) !!
   }
 
-  def checkAllCorpora()  = {
-    val corpora: Seq[Map[String, Any]] = cobaltStats.getCorpusInfo().filter(_("schemaName") != "gtbcit_punct_14_refurbished")
+  def checkAllCorpora(lancelotDB: LancelotDatabase, settings: CobaltExportSettings)  = {
+    val corpora: Seq[Map[String, Any]] = lancelotDB.getCorpusInfo().filter(_("schemaName") != "gtbcit_punct_14_refurbished")
 
     val enhancedInfo: Seq[Map[String, Any]] = corpora.map(corpus => {
       val projectName = corpus("schemaName")
 
       try {
 
-        Console.err.println(s"Trying $projectName")
-        val url = s"$cobaltServeExport?project_name=$projectName&only_validated=false"
-        val e = CobaltExport(url, projectName.toString)
+        Console.err.println(s"Try to export  $projectName")
+        val url = s"${settings.cobaltServeExport}?project_name=$projectName&only_validated=false"
+        Console.err.println(s"URL for export: $url")
+        val e = CobaltExport(url, projectName.toString, settings.downloadDir)
         if (true || e.downloadSuccessfull) {
           val nValid = e.validTokens.size
           val nTokens = e.tokens.size
@@ -56,7 +57,7 @@ object CobaltExport {
       }
     })
     val info = List("schemaName", "documentCount", "tokenCount", "validatedTokens", "url")
-    println(info.mkString("\t"))
+    println("INFO:" + info.mkString("\t"))
 
     enhancedInfo.sortBy(_("schemaName").asInstanceOf[String]).foreach(m => {
       val row = info.map(f => m.getOrElse(f, "-"))
@@ -67,12 +68,13 @@ object CobaltExport {
 
 
   def main(args: Array[String])  = {
-    checkAllCorpora()
+    val stats = LancelotDatabase(LancelotSettings)
+    checkAllCorpora(stats, LancelotSettings)
   }
 }
 
 import CobaltExport._
-case class CobaltExport(url: String, name: String) {
+case class CobaltExport(url: String, name: String, downloadDir: String) {
 
   val zipName = s"$downloadDir/cobalt_export_$name.zip"
 

@@ -1,19 +1,15 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
 import scala.xml._
-object cobaltStats {
+
+case class  LancelotDatabase(settings: CobaltExportSettings) {
 
   val schemaQ = "select * from information_schema.schemata where schema_owner='dba' and not schema_name ~ 'hidden|kernel|OFF'"
   def corpusQ(schemaName: String) = s" select * from $schemaName.corpora"
 
-  val cobalt_db_config = new database.Configuration(
-    name = "gekaapte_briefjes",
-    server = "svowdb16.ivdnt.loc",
-    database = "cobaltje",
-    user = "dba",
-    password = "vercingetorix")
 
-  val cobalt_db = new database.Database(cobalt_db_config)
+
+  val cobalt_db = new database.Database(settings.cobalt_db_config)
 
   lazy val schemaInfo: Seq[Map[String, String]] = cobalt_db.slurp(cobalt_db.allRecords("information_schema.schemata"))
 
@@ -30,7 +26,7 @@ object cobaltStats {
       case e => Seq()
     }
     val blacklabCorpus: Option[Map[String, String]] = corpusInfo.filter(x => x("url").contains("blacklab-server")).headOption
-
+    // println(blacklabCorpus)
     blacklabCorpus
   })
 

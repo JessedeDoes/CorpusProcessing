@@ -20,6 +20,8 @@ object Rename {
     "wnt_citaten_18" -> "dictionary-quotations-18",
     "wnt_citaten_19" -> "dictionary-quotations-19",
     "bab_enhanced_hoofdlettertest" -> "letters-as-loot",
+    "eee1729763457532" -> "kranten_19",
+    "gys1732186374071" -> "gysseling_ambtelijk"
   )
 }
 
@@ -27,28 +29,34 @@ import Rename._
 
 object ExtractionFromCobaltTrainingCorpora {
 
-  def main(args: Array[String]) = {
-
-    val extractedSets = new File(directoryWithCobaltExports).listFiles()
+  def extract(cobaltExportSettings: CobaltExportSettings): Unit = {
+    val extractedSets = new File(cobaltExportSettings.directoryWithCobaltExports).listFiles()
       .filter(_.getName.endsWith(".zip"))
 
       //.filter(_.getName.contains("gtbcit_mnw_15"))
       .map(f => {
-        val datasetName = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
-        val dirAsDir = new File(createdTrainingDataDirectory + "/" + datasetName)
+        //val datasetName = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
+        val datasetNameOrg = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
+        val datasetName = renaming.getOrElse(datasetNameOrg, datasetNameOrg)
+        val dirAsDir = new File(cobaltExportSettings.createdTrainingDataDirectory + "/" + datasetName)
         // dirAsDir.delete()
         dirAsDir.mkdir()
-        val outputPrefix = createdTrainingDataDirectory + "/" + datasetName + "/" + datasetName
+        val outputPrefix = cobaltExportSettings.createdTrainingDataDirectory + "/" + datasetName + "/" + datasetName
 
         val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
           sentenceElement = if (datasetName.contains("cit")) "q" else "s")
         datasetName -> e.extract()
       }).toMap
 
-      val infos = TrainingDataInfos(directoryWithCobaltExports, createdTrainingDataDirectory, extractedSets)
-      val w = new PrintWriter(createdTrainingDataDirectory + "/"  + "cobaltSets.json")
-      w.println(TrainingDataInfos.write(infos))
-      w.close()
+    val infos = TrainingDataInfos(cobaltExportSettings.directoryWithCobaltExports, cobaltExportSettings.createdTrainingDataDirectory, extractedSets)
+    val w = new PrintWriter(cobaltExportSettings.createdTrainingDataDirectory + "/"  + "cobaltSets.json")
+    w.println(TrainingDataInfos.write(infos))
+    w.close()
+  }
+
+  def main(args: Array[String]) = {
+
+    extract(LancelotSettings)
   }
 }
 
