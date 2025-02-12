@@ -77,7 +77,7 @@ trait TrainingDataExtraction {
     val printWritersDocumentPartition: Map[Partition, PrintWriter]  = partitions.map(p => p ->
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.filenames.gz")))).toMap
 
-    val sentences = documents.flatMap({
+    val sentences: Iterator[Sentence] = documents.flatMap({
       case (f: String, x: Node) => {
         val documentPartition = Some(pickPartition(Some(f)))
 

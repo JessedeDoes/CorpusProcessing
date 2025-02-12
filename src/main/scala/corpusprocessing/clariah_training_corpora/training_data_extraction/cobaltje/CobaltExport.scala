@@ -1,6 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.downloadFile
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{checkAllCorpora, downloadFile}
 import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
 import utils.zipUtils
 
@@ -11,7 +11,7 @@ import scala.sys.process._
 import scala.xml._
 // http://lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=gtbcit_punct_14_refurbished&only_validated=false
 
-import Settings._
+import OldCobaltSettings._
 
 object CobaltExport {
 
@@ -70,6 +70,13 @@ object CobaltExport {
   def main(args: Array[String])  = {
     val stats = LancelotDatabase(LancelotSettings)
     checkAllCorpora(stats, LancelotSettings)
+  }
+}
+
+object OldCobaltExport {
+  def main(args: Array[String])  = {
+    val stats = LancelotDatabase(OldCobaltSettings)
+    checkAllCorpora(stats, OldCobaltSettings)
   }
 }
 

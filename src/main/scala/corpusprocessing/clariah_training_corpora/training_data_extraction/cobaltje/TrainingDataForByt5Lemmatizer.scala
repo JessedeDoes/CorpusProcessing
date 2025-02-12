@@ -6,7 +6,7 @@ import java.util.zip.GZIPInputStream
 
 case class Token(word: String, pos: String, lemma: String)
 
-import Settings._
+import OldCobaltSettings._
 object TrainingDataForByt5Lemmatizer {
 
   val proportion = 85

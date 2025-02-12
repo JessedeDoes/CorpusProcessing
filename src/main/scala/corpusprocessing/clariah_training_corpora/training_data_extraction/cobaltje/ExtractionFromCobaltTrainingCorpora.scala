@@ -1,7 +1,7 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
 import java.io.{File, PrintWriter}
-import Settings._
+import OldCobaltSettings._
 import corpusprocessing.clariah_training_corpora.training_data_extraction.{TrainingDataInfo, TrainingDataInfos}
 
 object Rename {
@@ -55,63 +55,11 @@ object ExtractionFromCobaltTrainingCorpora {
   }
 
   def main(args: Array[String]) = {
-
     extract(LancelotSettings)
   }
 }
 
-object ExtractionFromCobaltTrainingCorporaWithConfig {
 
-
-  val jsonLocation = "data/cobaltExtraction/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
-  val info = TrainingDataInfos.readFromFile(jsonLocation)
-
-  def extract(enhanceTags: Boolean = false, extractTo:String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
-    //print(renaming)
-
-
-    new File(extractTo).mkdir()
-
-
-    val extractedSets  = new File(info.downloadedDataDir).listFiles()
-      .filter(_.getName.endsWith(".zip"))
-      //.filter(_.getName.contains("evaluation_set"))
-      //.filter(_.getName.contains("gtbcit_mnw_15"))
-      .map(f => {
-        val datasetNameOrg = f.getName().replaceAll("^cobalt_export_", "").replaceAll(".zip", "")
-        val datasetName = renaming.getOrElse(datasetNameOrg, datasetNameOrg)
-        val datasetConfig = info.trainingDataInfos.get(datasetNameOrg)
-        val dirAsDir = new File(extractTo + "/" + datasetName)
-        val isQuotationCorpus = (datasetName.contains("cit") || datasetName.contains("quotation"))
-        // dirAsDir.delete()
-        dirAsDir.mkdir()
-
-        val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
-
-        val e = ExtractionFromCobaltExport(f.getCanonicalPath, outputPrefix,
-          sentenceElement = datasetConfig.map(_.sentenceElement).getOrElse(if (isQuotationCorpus) "q" else "s"),
-          cleanBrackets = isQuotationCorpus,
-          enhanceTags = enhanceTags, // dan wordt dus alles wel anders.......
-          info = datasetConfig
-        )
-        val newConfig = e.extract()
-        if (newConfig != datasetConfig) {
-          Console.err.println(s"Hm, het is niet hetzelfde voor $datasetName")
-        }
-        datasetName -> newConfig
-      }).toMap
-
-    val infos = TrainingDataInfos(directoryWithCobaltExports, createdTrainingDataDirectory, extractedSets)
-    val w = new PrintWriter(createdTrainingDataDirectory + "/" + "cobaltSets.json")
-    w.println(TrainingDataInfos.write(infos))
-    w.close()
-
-  }
-  def main(args: Array[String]) = {
-    //extract(enhanceTags = true)
-    extract(false, info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
-  }
-}
 
 object doBoth { // dit werkt niet vanwege
   def main(args: Array[String]) = {

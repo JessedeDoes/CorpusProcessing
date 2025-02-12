@@ -84,4 +84,22 @@ object TrainingDataInfo {
   }
   def read(info: String): TrainingDataInfo = org.json4s.jackson.Serialization.read[TrainingDataInfo](info)
 
+  def compareConfigs(c1: TrainingDataInfo, c2: TrainingDataInfo) = {
+    val k1 = c1.partitions.keySet
+    val k2 = c2.partitions.keySet
+    if (c1.sentenceElement != c2.sentenceElement) {
+      println(s"Sentence elements: ${c1.sentenceElement} != ${c2.sentenceElement}" )
+    }
+    if (k1 != k2) {
+       println(s"different partition keySets, ${k1} ${k2} ")
+     } else {
+      k1.foreach(k => {
+        val d1 = c1.partitions(k).documents
+        val d2 = c2.partitions(k).documents
+        val d = d1 diff d2
+        println(s"Boom for $k!: ${d.size}, old:${d1.size}, new:${d2.size}:  ${d}")
+      })
+    }
+  }
 }
+

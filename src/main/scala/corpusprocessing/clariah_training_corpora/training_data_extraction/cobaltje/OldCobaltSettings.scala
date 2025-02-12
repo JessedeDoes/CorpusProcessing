@@ -47,7 +47,7 @@ case class CobaltExportSettings() {
   }
 }
 
-object Settings extends CobaltExportSettings()
+object OldCobaltSettings extends CobaltExportSettings()
 
 // psql -h svprll01.ivdnt.loc -U lancelot -d lancelot
 object LancelotSettings extends CobaltExportSettings() {
