@@ -52,12 +52,12 @@ object OldCobaltSettings extends CobaltExportSettings()
 // psql -h svprll01.ivdnt.loc -U lancelot -d lancelot
 object LancelotSettings extends CobaltExportSettings() {
   // http://lancelot.ivdnt.loc/CobaltServe/webservice/api/
-  override  val cobaltServeExport = "http://lancelot.ivdnt.loc/CobaltServe/webservice/api/export/"
+  override  val cobaltServeExport = "http://172.16.4.31/CobaltServe/webservice/api/export/" // lancelot.ivdnt.loc
   // http://lancelot.ivdnt.loc/lancelot/search/lancelot:19e-eeuwse_kranten_DEFINITIEF/search/
   override val blacklab_server: String = "http://lancelot.ivdnt.loc/lancelot/search/" //
   override val cobalt_db_config = new database.Configuration(
     name = "lancelotje",
-    server = "svprll01.ivdnt.loc",
+    server = "172.16.4.31", // svprll01.ivdnt.loc (172.16.4.31):
     database = "lancelot",
     user = "lancelot",
     password = "daargingeenriddertepaard")

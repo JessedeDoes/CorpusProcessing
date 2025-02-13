@@ -32,6 +32,9 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         // dirAsDir.mkdir()
 
         // val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
+        if (datasetName == "dictionary-quotations-15") {
+
+        }
         val outputPrefix = cobaltExportSettings.createdTrainingDataDirectory + "/" + datasetName + "/" + datasetName
         new File(cobaltExportSettings.createdTrainingDataDirectory + "/" + datasetName).mkdir()
         val e = ExtractionFromCobaltExport(f.getCanonicalPath,
@@ -63,3 +66,8 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
     extract(LancelotSettings, false, null) // info.extractedDataDir.replaceAll("/$", "") + "_unenhanced_tags")
   }
 }
+
+/*
+Hm, partitionering is niet hetzelfde voor dictionary-quotations-15, true
+Boom for dev!: 11, old:282, new:271:  Set(DocumentInfo(docpid_822.xml,None),
+ */

@@ -99,6 +99,9 @@ object Sentence {
       }
       log(s"Cleaned to: ||$cleanedSentence||\n\n")
     }
+    if (cleaner.isEmpty) {
+       println(s"Sentence completely dropped!: ${cleaner.toList}")
+    }
     cleaner.toList -> nopPart.isEmpty
   }
 
