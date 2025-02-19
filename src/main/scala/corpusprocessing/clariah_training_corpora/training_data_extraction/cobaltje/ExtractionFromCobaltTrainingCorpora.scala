@@ -4,26 +4,7 @@ import java.io.{File, PrintWriter}
 import OldCobaltSettings._
 import corpusprocessing.clariah_training_corpora.training_data_extraction.{TrainingDataInfo, TrainingDataInfos}
 
-object Rename {
-  val renaming: Map[String,String] =Map(
-    "evaluation_set_15" -> "dbnl-excerpts-15",
-    "evaluation_set_16" -> "dbnl-excerpts-16",
-    "evaluation_set_17" -> "dbnl-excerpts-17",
-    "evaluation_set_18" -> "dbnl-excerpts-18",
-    "evaluation_set_19" -> "dbnl-excerpts-19",
-    "clvn_selectie_met_wat_minder_duits" -> "clvn",
-    "courantenselectie" -> "couranten",
-    "gtbcit_14_fromscratch" -> "dictionary-quotations-14",
-    "gtbcit_mnw_15" -> "dictionary-quotations-15",
-    "gtbcit_punct_16" -> "dictionary-quotations-16",
-    "gtbcit_punct_17" -> "dictionary-quotations-17",
-    "wnt_citaten_18" -> "dictionary-quotations-18",
-    "wnt_citaten_19" -> "dictionary-quotations-19",
-    "bab_enhanced_hoofdlettertest" -> "letters-as-loot",
-    "eee1729763457532" -> "kranten_19",
-    "gys1732186374071" -> "gysseling_ambtelijk"
-  )
-}
+
 
 import Rename._
 

@@ -92,13 +92,17 @@ object TrainingDataInfo {
     }
     if (k1 != k2) {
        println(s"different partition keySets, ${k1} ${k2} ")
+       false
      } else {
-      k1.foreach(k => {
+      val c2SubsetOfc1 =  k1.map(k => {
         val d1 = c1.partitions(k).documents
         val d2 = c2.partitions(k).documents
         val d = d1 diff d2
+
         println(s"Boom for $k!: ${d.size}, old:${d1.size}, new:${d2.size}:  ${d}")
-      })
+        d2 subsetOf d1
+      }).reduce( (b1,b2) => b1 && b2)
+      c2SubsetOfc1
     }
   }
 }

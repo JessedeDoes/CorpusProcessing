@@ -45,13 +45,13 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
           info = datasetConfig
         )
         val newConfig: TrainingDataInfo = e.extract()
-        if (Some(newConfig) != datasetConfig) {
+        val useOld: Boolean = if (Some(newConfig) != datasetConfig) {
           Console.err.println(s"Hm, partitionering is niet hetzelfde voor $datasetName, ${datasetConfig.nonEmpty}")
           if (datasetConfig.nonEmpty) {
             TrainingDataInfo.compareConfigs(datasetConfig.get,newConfig)
-          }
-        }
-        datasetName -> newConfig
+          } else false
+        } else false
+        datasetName -> (if (useOld && datasetConfig.nonEmpty) datasetConfig.get else newConfig)
       }).toMap
 
     val infos = TrainingDataInfos(cobaltExportSettings.directoryWithCobaltExports,

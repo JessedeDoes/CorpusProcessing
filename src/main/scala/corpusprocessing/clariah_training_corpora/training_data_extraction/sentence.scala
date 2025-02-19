@@ -54,7 +54,10 @@ object Sentence {
 
   def noPos(p: Node) = (p \ "@pos").text.isEmpty
 
-  def removeStuffBetweenBracketsIfUntagged(tokenElements: Seq[Node]) = {
+  def removeStuffBetweenBracketsIfUntagged(tokenElements: Seq[Node]): (List[Node], Boolean) = {
+
+
+    // return tokenElements.toList -> true
     val indexedTokenElements = tokenElements.zipWithIndex
 
     val startBrackets: Seq[(Node,Int)] = indexedTokenElements.filter(x => getWord(x._1).contains("("))
@@ -87,8 +90,8 @@ object Sentence {
     val cleanedSentence = cleaner.map(getWord).mkString(" ")
 
     val nopjes = cleaner.filter(x => x.label=="w" && noPos(x))
-    val nopPart = nopjes.map(getWord).mkString(" ")
 
+    val nopPart = nopjes.map(getWord).mkString(" ")
 
     if (cleaner.size < tokenElements.size || nopjes.nonEmpty) {
       log("########################")
@@ -116,7 +119,7 @@ object Sentence {
     val tokenElements: List[Node] =  {
       val all = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
       if (extractor.clean_brackets)  { val (cleaned, ok) = removeStuffBetweenBracketsIfUntagged(all)
-        if (ok) cleaned else List()
+        if (ok) cleaned else {Console.err.println(s"Not OK! in $all") ; List()}
       } else all
     }
 
