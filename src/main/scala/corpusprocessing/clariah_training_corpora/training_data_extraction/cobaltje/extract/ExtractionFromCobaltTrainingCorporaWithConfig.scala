@@ -1,6 +1,7 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
+package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.extract
 
 import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.Rename.renaming
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.{LancelotExportSettings, LancelotSettings}
 import corpusprocessing.clariah_training_corpora.training_data_extraction.{TrainingDataInfo, TrainingDataInfos}
 
 import java.io.{File, PrintWriter}
@@ -11,7 +12,7 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
   val jsonLocation = "data/cobaltExtraction/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
   val info = TrainingDataInfos.readFromFile(jsonLocation)
 
-  def extract(cobaltExportSettings: CobaltExportSettings, enhanceTags: Boolean = false,
+  def extract(cobaltExportSettings: LancelotExportSettings, enhanceTags: Boolean = false,
               extractToX: String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
     //print(renaming)
 

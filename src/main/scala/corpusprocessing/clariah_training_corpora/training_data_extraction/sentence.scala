@@ -110,7 +110,14 @@ object Sentence {
 
   def sentence(s: Node, f: String, extractor: TrainingDataExtraction, partition: Option[Partition] = None): Sentence = {
 
-    def getJoin_n(n: Node) = (n \ "join" \  "@n").text
+    def getJoin_n(n: Node): String =  {
+      if ((n \ "join").nonEmpty)
+        (n \ "join" \  "@n").text;
+      else if ((n \ "@corresp").nonEmpty) { // oude gysseling en cobalt codering......
+        val join_n = (List(getId(n).get) ++  (n \ "@corresp").text.split("\\s+").map(_.replaceAll("#","")).toList).sorted.mkString("_")
+        join_n
+      } else ""
+    }
 
     val id: Option[String] = getId(s)
 

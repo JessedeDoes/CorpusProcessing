@@ -1,8 +1,7 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
+package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.download
 
-import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CobaltExport.{checkAllCorpora, downloadFile}
-import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataExtraction
-import utils.zipUtils
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.{LancelotDatabase, LancelotExportSettings, LancelotSettings, OldCobaltSettings}
+import utils.{HTTPDownload, zipUtils}
 
 import java.io.File
 import java.net.URL
@@ -11,16 +10,14 @@ import scala.sys.process._
 import scala.xml._
 // http://lexit.inl.loc:8080/CobaltServe/cobalt/export/?project_name=gtbcit_punct_14_refurbished&only_validated=false
 
-import OldCobaltSettings._
-
-object CobaltExport {
+object LancelotExport {
 
 
   def downloadFile(url: String, filename: String) = {
     new URL(url) #> new File(filename) !!
   }
 
-  def checkAllCorpora(lancelotDB: LancelotDatabase, settings: CobaltExportSettings)  = {
+  def checkAllCorpora(lancelotDB: LancelotDatabase, settings: LancelotExportSettings)  = {
     val corpora: Seq[Map[String, Any]] = lancelotDB.getCorpusInfo().filter(_("schemaName") != "gtbcit_punct_14_refurbished")
 
     val enhancedInfo: Seq[Map[String, Any]] = corpora.map(corpus => {
@@ -31,7 +28,7 @@ object CobaltExport {
         Console.err.println(s"Try to export  $projectName")
         val url = s"${settings.cobaltServeExport}?project_name=$projectName&only_validated=false"
         Console.err.println(s"URL for export: $url")
-        val e = CobaltExport(url, projectName.toString, settings.downloadDir)
+        val e = LancelotExport(url, projectName.toString, settings.downloadDir)
         if (true || e.downloadSuccessfull) {
           val nValid = e.validTokens.size
           val nTokens = e.tokens.size
@@ -76,12 +73,11 @@ object CobaltExport {
 object OldCobaltExport {
   def main(args: Array[String])  = {
     val stats = LancelotDatabase(OldCobaltSettings)
-    checkAllCorpora(stats, OldCobaltSettings)
+    LancelotExport.checkAllCorpora(stats, OldCobaltSettings)
   }
 }
 
-import CobaltExport._
-case class CobaltExport(url: String, name: String, downloadDir: String) {
+case class LancelotExport(url: String, name: String, downloadDir: String) {
 
   val zipName = s"$downloadDir/cobalt_export_$name.zip"
 

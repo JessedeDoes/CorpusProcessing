@@ -1,9 +1,8 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
-
+package utils
 
 import org.apache.http.client.methods.HttpGet
 import org.apache.http.impl.client.HttpClients
-import org.apache.http.util.EntityUtils
+
 import java.io.{FileOutputStream, InputStream}
 import java.util.Base64
 

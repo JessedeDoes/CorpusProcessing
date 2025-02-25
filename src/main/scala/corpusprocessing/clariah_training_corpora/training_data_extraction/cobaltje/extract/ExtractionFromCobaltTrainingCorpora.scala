@@ -1,16 +1,14 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
+package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.extract
+
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataInfos
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.Rename.renaming
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.{LancelotExportSettings, LancelotSettings}
 
 import java.io.{File, PrintWriter}
-import OldCobaltSettings._
-import corpusprocessing.clariah_training_corpora.training_data_extraction.{TrainingDataInfo, TrainingDataInfos}
-
-
-
-import Rename._
 
 object ExtractionFromCobaltTrainingCorpora {
 
-  def extract(cobaltExportSettings: CobaltExportSettings): Unit = {
+  def extract(cobaltExportSettings: LancelotExportSettings): Unit = {
     val extractedSets = new File(cobaltExportSettings.directoryWithCobaltExports).listFiles()
       .filter(_.getName.endsWith(".zip"))
 

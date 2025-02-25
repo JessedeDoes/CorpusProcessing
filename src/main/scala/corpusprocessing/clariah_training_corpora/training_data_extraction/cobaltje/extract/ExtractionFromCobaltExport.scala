@@ -1,4 +1,4 @@
-package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
+package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.extract
 
 import corpusprocessing.clariah_training_corpora.training_data_extraction.{Partition, TrainingDataExtraction, TrainingDataInfo}
 import utils.zipUtils

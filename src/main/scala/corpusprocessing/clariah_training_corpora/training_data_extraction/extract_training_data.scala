@@ -1,5 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction
 
+import corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje.CheckLancelotTEI
 import corpusprocessing.clariah_training_corpora.training_data_extraction.specific.crm_to_huggingface.training_subsets
 import utils.PostProcessXML
 
@@ -78,7 +79,9 @@ trait TrainingDataExtraction {
       new PrintWriter(new GZIPOutputStream(new java.io.FileOutputStream(outputPrefix + s".${p.prefix}.filenames.gz")))).toMap
 
     val sentences: Iterator[Sentence] = documents.flatMap({
-      case (f: String, x: Node) => {
+      case (f: String, x0: Node) => {
+
+        val x = CheckLancelotTEI.patchDocument(x0.asInstanceOf[Elem])
         val documentPartition = Some(pickPartition(Some(f)))
 
         // println(s"$f $documentPartition")

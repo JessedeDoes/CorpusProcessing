@@ -2,7 +2,7 @@ package corpusprocessing.clariah_training_corpora.training_data_extraction.cobal
 
 import scala.xml._
 
-case class  LancelotDatabase(settings: CobaltExportSettings) {
+case class  LancelotDatabase(settings: LancelotExportSettings) {
 
   val schemaQ = "select * from information_schema.schemata where schema_owner='dba' and not schema_name ~ 'hidden|kernel|OFF'"
   def corpusQ(schemaName: String) = s" select * from $schemaName.corpora"

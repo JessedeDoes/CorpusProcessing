@@ -22,7 +22,7 @@ object Rename {
   )
 }
 
-case class CobaltExportSettings() {
+case class LancelotExportSettings() {
 
   val outputBase = "/data/Lancelot/" // /mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/" // "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/"
   val downloadDir = outputBase  + "/download/"
@@ -68,18 +68,21 @@ case class CobaltExportSettings() {
   }
 }
 
-object OldCobaltSettings extends CobaltExportSettings()
+
 
 // psql -h svprll01.ivdnt.loc -U lancelot -d lancelot
-object LancelotSettings extends CobaltExportSettings() {
+object LancelotSettings extends LancelotExportSettings() {
   // http://lancelot.ivdnt.loc/CobaltServe/webservice/api/
-  override  val cobaltServeExport = "http://172.16.4.31:8080/CobaltServe/webservice/api/export/" // lancelot.ivdnt.loc
+  override  val cobaltServeExport = "http://172.16.4.31/CobaltServe/webservice/api/export/" // lancelot.ivdnt.loc
   // http://lancelot.ivdnt.loc/lancelot/search/lancelot:19e-eeuwse_kranten_DEFINITIEF/search/
   override val blacklab_server: String = "http://lancelot.ivdnt.loc/lancelot/search/" //
   override val cobalt_db_config = new database.Configuration(
     name = "lancelotje",
-    server = "172.16.4.31", // svprll01.ivdnt.loc (172.16.4.31):
+    server = "svowdb20.ivdnt.loc", // 172.16.4.31", // svprll01.ivdnt.loc (172.16.4.31):
     database = "lancelot",
-    user = "lancelot",
-    password = "daargingeenriddertepaard")
+    user = "postgres", // "lancelot",
+    password = "inl"
+     ) // "daargingeenriddertepaard")
 }
+
+object OldCobaltSettings extends LancelotExportSettings()
