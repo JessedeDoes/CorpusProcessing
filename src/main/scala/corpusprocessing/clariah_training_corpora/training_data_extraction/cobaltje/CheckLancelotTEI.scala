@@ -1,10 +1,13 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
 import corpusprocessing.eindhoven.Eindhoven.getId
+import utils.zipUtils
 
 import java.io.File
+import java.nio.file.Files
 import scala.xml._
 object CheckLancelotTEI {
+  val downloadDir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/download_19_februari_2025/"
   val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/download_19_februari_2025/Gys/LancelotExport/"
 
 
@@ -25,6 +28,7 @@ object CheckLancelotTEI {
       w1.copy(label="pc")
     } else w
   }
+
   def fixJoinForW(w: Elem) = {
        if ( (w \ "join").nonEmpty || (w \ "@corresp").isEmpty )
          w else
@@ -39,10 +43,21 @@ object CheckLancelotTEI {
   def fixPunct(d: Elem)  = utils.PostProcessXML.updateElement(d, x => Set("w", "pc").contains(x.label), fixPoSforPunct)
   def patchDocument(d: Elem): Elem  = fixPunct(fixMissingJoins(d))
 
+  def lookAtPidsAndFilenames(zipName: String) = {
+    println(s"\n\n##### $zipName #####")
+    lazy val paths = zipUtils.find(zipName)
+    lazy val inputStreams = paths.map(p => (p.toString -> Files.newInputStream(p)))
+    inputStreams.sortBy(_._1).take(5).foreach({case (n, s) => {
+      val doc = XML.load(s)
+      val idLikeElements = doc.descendant_or_self.map(n => getId(n)).filter(_.nonEmpty).take(4)
+      println(s"${zipName.replaceAll(".*/","")}: $n: $idLikeElements")
+    }})
+  }
+
   def main(args: Array[String]): Unit = {
-    new File(dir).listFiles().foreach(f => {
-      val d = XML.loadFile(f)
-      fixMissingJoins(d)
-    })
+     new File(downloadDir).listFiles().filter(_.getName.endsWith(".zip")).foreach(f => {
+       val zipName = f.getAbsolutePath
+       lookAtPidsAndFilenames(zipName)
+     })
   }
 }
