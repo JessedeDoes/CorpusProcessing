@@ -27,6 +27,14 @@ object CheckLancelotTEI {
 
   def taggedText(d: Node) = words(d).mkString(" ")
 
+  def uuid(s: String): String = {
+    val bytes = s.getBytes("UTF-8")
+    java.util.UUID.nameUUIDFromBytes(bytes).toString
+  }
+
+
+  def uuidFromContent(d: Node) = uuid(taggedText(d))
+
   def fixPoSforPunct(w: Elem): Elem = {
     val txt:String = if ( (w \ "seg").nonEmpty) (w \ "seg").text.trim else (w.text.trim);
     if (txt.matches("(\\p{P})+")) {
@@ -50,26 +58,44 @@ object CheckLancelotTEI {
   def fixPunct(d: Elem)  = utils.PostProcessXML.updateElement(d, x => Set("w", "pc").contains(x.label), fixPoSforPunct)
   def patchDocument(d: Elem): Elem  = fixPunct(fixMissingJoins(d))
 
-  def lookAtPidsAndFilenames(zipName: String) = {
+
+  def lookAtPidsAndFilenames(zipName: String, compare: Seq[(String,String)] = Seq()) = {
     println(s"\n\n##### $zipName #####")
+    val m = compare.toMap
     lazy val paths = zipUtils.find(zipName)
     lazy val inputStreams = paths.map(p => (p.toString -> Files.newInputStream(p)))
-
-    inputStreams.sortBy(_._1).take(5).foreach({case (n, s) => {
+    val id2name = inputStreams.sortBy(_._1).take(Integer.MAX_VALUE).map({case (n, s) => {
       val doc = XML.load(s)
-
+      val speak = compare.nonEmpty
       //println(doc \\ "teiHeader")
-      println(doc.copy(child=Seq()))
-      println(doc.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem].copy(child=Seq())))
-      val idLikeElements = doc.descendant_or_self.map(n => getId(n)).filter(_.nonEmpty).take(4)
-      println(s"${zipName.replaceAll(".*/","")}: $n: $idLikeElements")
+      if (speak) {
+        println(doc.copy(child = Seq()))
+        println(doc.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem].copy(child = Seq())))
+        val idLikeElements = doc.descendant_or_self.map(n => getId(n)).filter(_.nonEmpty).take(4)
+        println(s"${zipName.replaceAll(".*/", "")}: $n: $idLikeElements")
+      }
+      val uuid = uuidFromContent(doc)
+      if (compare.nonEmpty) {
+        if (m.contains(uuid))
+          {
+            println(s"Yep!!!? ${m(uuid)} ~ $n?  ")
+          }
+      }
+      uuid -> n
     }})
+    id2name.toList
   }
 
   def main(args: Array[String]): Unit = {
-     new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).foreach(f => {
+     val newInfo = new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
        val zipName = f.getAbsolutePath
-       lookAtPidsAndFilenames(zipName)
-     })
+       val m = lookAtPidsAndFilenames(zipName)
+       m
+     }).reduce({case (l1,l2) => l1 ++ l2})
+    new File(oldDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
+      val zipName = f.getAbsolutePath
+      val m = lookAtPidsAndFilenames(zipName, newInfo)
+      m
+    })
   }
 }
