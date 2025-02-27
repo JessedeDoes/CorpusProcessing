@@ -81,7 +81,7 @@ object Eindhoven {
   val hulpDataDir = baseDir + "hulpdata/"
   val xmlDir = baseDir + xmlSubDir // "xml-with-word-ids/"
 
-  Console.err.println(xmlDir)
+  // Console.err.println(xmlDir)
 
   val patchDir = baseDir + "xml-tagged/"
   val outputDir = baseDir + "tkvPatch/"
@@ -153,7 +153,7 @@ object Eindhoven {
 
   allPronTypes.foreach(
     pdtype => {
-      Console.err.println(s"Hola:$pdtype")
+      // Console.err.println(s"Hola:$pdtype")
       featureOrder(t => t.pos == "VNW" && t.features.contains(pdtype))
     }
   )

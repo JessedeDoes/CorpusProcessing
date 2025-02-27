@@ -70,12 +70,7 @@ object LancelotExport {
   }
 }
 
-object OldCobaltExport {
-  def main(args: Array[String])  = {
-    val stats = LancelotDatabase(OldCobaltSettings)
-    LancelotExport.checkAllCorpora(stats, OldCobaltSettings)
-  }
-}
+
 
 case class LancelotExport(url: String, name: String, downloadDir: String) {
 
