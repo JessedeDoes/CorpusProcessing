@@ -33,7 +33,6 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
         val isQuotationCorpus = (datasetName.contains("cit") || datasetName.contains("quotation"))
         // dirAsDir.delete()
         // dirAsDir.mkdir()
-
         // val outputPrefix = extractTo + "/" + datasetName + "/" + datasetName
         if (datasetName == "dictionary-quotations-15") {
 
