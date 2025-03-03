@@ -1,5 +1,6 @@
 package corpusprocessing.clariah_training_corpora.training_data_extraction.cobaltje
 
+import corpusprocessing.clariah_training_corpora.training_data_extraction.TrainingDataInfos
 import corpusprocessing.eindhoven.Eindhoven.getId
 import utils.zipUtils
 
@@ -60,58 +61,91 @@ object CheckLancelotTEI {
 
   lazy val log = new java.io.PrintWriter("/tmp/logje.txt")
 
-  def lookAtPidsAndFilenames(zipName: String, compare: Seq[(String,String)] = Seq()) = {
-    log.println(s"\n\n##### $zipName #####")
+  def lookAtPidsAndFilenames(pathToZip: String, compare: Seq[((String,String), String)]= Seq()) = {
+
+    log.println(s"\n\n##### $pathToZip #####")
     val m = compare.toMap
-    lazy val paths = zipUtils.find(zipName)
+    val fileName = new File(pathToZip).getName
+    lazy val paths = zipUtils.find(pathToZip)
     lazy val inputStreams = paths.map(p => (p.toString -> Files.newInputStream(p)))
 
     val id2name = inputStreams.sortBy(_._1).take(Integer.MAX_VALUE).map({case (n, s) => {
       val doc = XML.load(s)
+
+      val citId = (doc \\ "cit").headOption.flatMap(getId).getOrElse("")
+      val identifier = uuidFromContent(doc) + citId
       val speak = compare.nonEmpty
       //println(doc \\ "teiHeader")
       if (speak && false) {
         println(doc.copy(child = Seq()))
         println(doc.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem].copy(child = Seq())))
         val idLikeElements = doc.descendant_or_self.map(n => getId(n)).filter(_.nonEmpty).take(4)
-        println(s"${zipName.replaceAll(".*/", "")}: $n: $idLikeElements")
+        println(s"${pathToZip.replaceAll(".*/", "")}: $n: $idLikeElements")
       }
-      val uuid = uuidFromContent(doc)
+
       if (speak) {
-        if (m.contains(uuid))
+        if (m.contains(fileName -> identifier))
           {
-            log.println(s"Yep!!!? Nieuwe export: ${m(uuid)} ~ Oude export $n?  ")
+            log.println(s"Yep!!!? Nieuwe export: ${m(fileName -> identifier)} ~ Oude export $n?  ")
           } else {
           log.println(s"BoooHooHoo!!!? Oude export $n?")
         }
       }
-      uuid -> n
+      (fileName, identifier) -> n
     }})
     id2name.toList
   }
 
   def concat[T](l1: Seq[T], l2: Seq[T]) : Seq[T]  = l1 ++ l2
 
-  def hasAmbiguity(m: Seq[(String,String)])  = {
+  def hasAmbiguity(m: Seq[((String,String), String)])  = {
      val problems = m.groupBy(_._1).values.filter(_.size > 1)
     problems.foreach(println)
     problems.nonEmpty
   }
+
+
   def main(args: Array[String]): Unit = {
-     val newInfo = new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
+    val x = TrainingDataInfos.readFromFile(LancelotSettings.trainingDataInfoLocation)
+
+     val newInfo: Seq[((String, String), String)] = new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
        val zipName = f.getAbsolutePath
-       val m: Seq[(String, String)] = lookAtPidsAndFilenames(zipName)
+       val m: Seq[((String,String), String)] = lookAtPidsAndFilenames(zipName)
        m
-     }).reduce(concat[(String,String)])
+     }).reduce(concat[((String,String), String)])
+
     println(s"Step 1: ${hasAmbiguity(newInfo)}")
+
     val oldInfo = new File(oldDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
       val zipName = f.getAbsolutePath
       val m = lookAtPidsAndFilenames(zipName, newInfo)
       m
-    }).reduce(concat[(String,String)])
+    }).reduce(concat[((String,String), String)])
 
     println(s"Step 2: ${hasAmbiguity(oldInfo)}")
 
+    val mNew = newInfo.toMap // (set,identifier) -> name
+    val oldInverse = newInfo.map({case ((set,id), name) => (set,name) -> id})
+    val oldFile2NewFile: Map[(String, String), String] = oldInfo
+      .map({case ((set,id), name) =>  (set,name) -> mNew((set,id))  }).toMap
+      .map({case ((set,name), name2) => (set.replaceAll(".zip$", "").replaceAll("^cobalt_export_",""),name.replaceAll(".*/", "")) -> name2.replaceAll(".*/","")})
+    oldFile2NewFile.take(10).foreach(println)
+
+
+    x.trainingDataInfos.map({case (set, ti) =>
+
+      val s1 = set.replaceAll("cobalt_export_","").replaceAll(".zip$", "")
+      println(s"Set: $s1")
+      val relevant: Map[(String, String), String] = oldFile2NewFile.filter(_._1._1 == s1)
+      val nameMap = relevant.map( {case ((set1,n1),n2) => (n1,n2)})
+      nameMap.take(3).foreach(println)
+      ti.partitions.map({case (pName, pi) => {
+
+
+      // println(nameMap)
+    }})
+
+    })
     log.close()
   }
 }

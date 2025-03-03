@@ -24,6 +24,8 @@ object Rename {
 
 case class LancelotExportSettings() {
 
+  val trainingDataInfoLocation = "data/cobaltExtraction/cobaltSets.met14.oldNames.json"
+
   val outputBase = "/data/Lancelot/" // /mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/" // "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/"
   val downloadDir = outputBase  + "/download/"
   val cobaltServeExport = "http://jesse:dedoes@lexit.inl.loc:8080/CobaltServe/cobalt/export/"
