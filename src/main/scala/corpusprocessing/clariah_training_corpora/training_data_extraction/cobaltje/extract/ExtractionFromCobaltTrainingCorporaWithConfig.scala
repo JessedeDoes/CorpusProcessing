@@ -17,8 +17,6 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
   def extract(cobaltExportSettings: LancelotExportSettings, enhanceTags: Boolean = false,
               extractToX: String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {
     //print(renaming)
-
-
     //new File(extractTo).mkdir()
 
     val extractedSets = new File(cobaltExportSettings.directoryWithCobaltExports).listFiles()
