@@ -58,44 +58,60 @@ object CheckLancelotTEI {
   def fixPunct(d: Elem)  = utils.PostProcessXML.updateElement(d, x => Set("w", "pc").contains(x.label), fixPoSforPunct)
   def patchDocument(d: Elem): Elem  = fixPunct(fixMissingJoins(d))
 
+  lazy val log = new java.io.PrintWriter("/tmp/logje.txt")
 
   def lookAtPidsAndFilenames(zipName: String, compare: Seq[(String,String)] = Seq()) = {
-    println(s"\n\n##### $zipName #####")
+    log.println(s"\n\n##### $zipName #####")
     val m = compare.toMap
     lazy val paths = zipUtils.find(zipName)
     lazy val inputStreams = paths.map(p => (p.toString -> Files.newInputStream(p)))
+
     val id2name = inputStreams.sortBy(_._1).take(Integer.MAX_VALUE).map({case (n, s) => {
       val doc = XML.load(s)
       val speak = compare.nonEmpty
       //println(doc \\ "teiHeader")
-      if (speak) {
+      if (speak && false) {
         println(doc.copy(child = Seq()))
         println(doc.child.filter(_.isInstanceOf[Elem]).map(_.asInstanceOf[Elem].copy(child = Seq())))
         val idLikeElements = doc.descendant_or_self.map(n => getId(n)).filter(_.nonEmpty).take(4)
         println(s"${zipName.replaceAll(".*/", "")}: $n: $idLikeElements")
       }
       val uuid = uuidFromContent(doc)
-      if (compare.nonEmpty) {
+      if (speak) {
         if (m.contains(uuid))
           {
-            println(s"Yep!!!? ${m(uuid)} ~ $n?  ")
-          }
+            log.println(s"Yep!!!? Nieuwe export: ${m(uuid)} ~ Oude export $n?  ")
+          } else {
+          log.println(s"BoooHooHoo!!!? Oude export $n?")
+        }
       }
       uuid -> n
     }})
     id2name.toList
   }
 
+  def concat[T](l1: Seq[T], l2: Seq[T]) : Seq[T]  = l1 ++ l2
+
+  def hasAmbiguity(m: Seq[(String,String)])  = {
+     val problems = m.groupBy(_._1).values.filter(_.size > 1)
+    problems.foreach(println)
+    problems.nonEmpty
+  }
   def main(args: Array[String]): Unit = {
      val newInfo = new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
        val zipName = f.getAbsolutePath
-       val m = lookAtPidsAndFilenames(zipName)
+       val m: Seq[(String, String)] = lookAtPidsAndFilenames(zipName)
        m
-     }).reduce({case (l1,l2) => l1 ++ l2})
-    new File(oldDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
+     }).reduce(concat[(String,String)])
+    println(s"Step 1: ${hasAmbiguity(newInfo)}")
+    val oldInfo = new File(oldDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
       val zipName = f.getAbsolutePath
       val m = lookAtPidsAndFilenames(zipName, newInfo)
       m
-    })
+    }).reduce(concat[(String,String)])
+
+    println(s"Step 2: ${hasAmbiguity(oldInfo)}")
+
+    log.close()
   }
 }
