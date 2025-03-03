@@ -84,7 +84,8 @@ object Sentence {
       .filter(_._1.label=="w")
       .filter{case (w,i) => !indexedTokenElements.exists{case (w1,i1) =>  i1 >= i && !noPos(w1)}}.map(_._2)
 
-    untaggedLastWords.filter(i => !removeIt.exists{case (r,s,e) => i >= s && i < e}).foreach(k => println(s"Untagged last Token: ${getWord(tokenElements(k))}"))
+    if (false) untaggedLastWords.filter(i => !removeIt.exists{case (r,s,e) => i >= s && i < e})
+      .foreach(k => println(s"Untagged last Token: ${getWord(tokenElements(k))}"))
 
     val cleaner = indexedTokenElements.filter{case (n,i) => !removeIt.exists({case (r,s,e) => r && s <= i && i < e}) && !untaggedLastWords.contains(i)}.map(_._1)
     val cleanedSentence = cleaner.map(getWord).mkString(" ")
@@ -126,7 +127,7 @@ object Sentence {
     val tokenElements: List[Node] =  {
       val all = s.descendant.toList.filter(n => Set("w", "pc").contains(n.label)).map(extractor.transformToken)
       if (extractor.clean_brackets)  { val (cleaned, ok) = removeStuffBetweenBracketsIfUntagged(all)
-        if (ok) cleaned else {Console.err.println(s"Not OK! in $all") ; List()}
+        if (ok) cleaned else { if (false) Console.err.println(s"Not OK! in $all") ; List()}
       } else all
     }
 

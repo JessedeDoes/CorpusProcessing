@@ -10,7 +10,9 @@ import java.io.{File, PrintWriter}
 object ExtractionFromCobaltTrainingCorporaWithConfig {
 
   val jsonLocation = "data/cobaltExtraction/cobaltSets.met14.oldNames.json" //  "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2024_2/training-data-2/cobaltSets.json"
-  val info = TrainingDataInfos.readFromFile(jsonLocation)
+  val newJsonLocation = "data/cobaltExtraction/cobaltSets.newDocumentNames.noLegacyNames.json" // "data/cobaltExtraction/cobaltSets.newDocumentNames.json"
+
+  val info = TrainingDataInfos.readFromFile(newJsonLocation)
 
   def extract(cobaltExportSettings: LancelotExportSettings, enhanceTags: Boolean = false,
               extractToX: String = info.extractedDataDir.replaceAll("/$", "") + "_enhanced_tags"): Unit = {

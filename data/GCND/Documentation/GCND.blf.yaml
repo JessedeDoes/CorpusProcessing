@@ -1,0 +1,769 @@
+# DocIndexerWhiteLab2 data-driven
+
+# For displaying in user interface (optional)
+displayName: GCND FoLiA content format
+
+# For describing input format in user interface (optional)
+description: The file format used by GCND for document contents.
+
+helpUrl: https://proycon.github.io/folia/
+
+# Our base format. All settings except the above three are copied from it.
+#baseFormat: folia
+
+# (Optional, informational)
+# content, metadata or mixed?
+# (not used by BlackLab, purely informational for the frontend application)
+type: content
+
+processor: saxon
+
+# What namespaces do we use in our XPaths?
+# (if none are declared, ignore namespaces)
+namespaces:
+  'folia': http://ilk.uvt.nl/folia
+  '' : http://ilk.uvt.nl/folia
+  'meta' : http://gcnd.ivdnt.org/metadata
+
+# What element starts a new document?
+# (the only absolute XPath; the rest is relative)
+documentPath: //folia:FoLiA # [.//metadata//meta:opname/meta:bron != "Meertens Instituut"]
+
+# Annotated, CQL-searchable fields (also called "complex fields").
+# We usually have just one, named "contents".
+annotatedFields:
+
+  contents:
+    # How to display the field in the interface (optional)
+    displayName: Contents
+
+    # How to describe the field in the interface (optional)
+    description: Contents of the documents.
+
+    # What element (relative to document) contains this field's contents?
+    # (if omitted, entire document is used)
+    #containerPath: folia:text
+
+    # What are our word tags? (relative to container)
+
+    wordPath: .//folia:w[ (ancestor::speech[@tag='spreker']) and (ancestor::s or ( (not (ancestor::speech[./s])) )) and (./folia:t[@class='lightNormalization']) ]
+
+    # If specified, a mapping from this id to token position will be saved, so we
+    # can refer back to it for standoff annotations later.
+
+    punctPath: .//text()[not(ancestor::w) and not(ancestor::foreign-data) and not (ancestor::t)]
+
+    tokenIdPath: "@xml:id"
+
+    # What annotation can each word have? How do we index them?
+    # (annotations are also called "(word) properties" in BlackLab)
+    # (valuePaths relative to word path)
+    # NOTE: forEachPath is NOT allowed for annotations, because we need to know all annotations before indexing,
+    #       and with forEachPath you could run in to an unknown new annotation mid-way through.
+    annotations:
+    - name: word
+      displayName: Zware vernederlandsing
+      valuePath: ./folia:t[@class="heavyNormalization"]
+      sensitivity: sensitive_insensitive
+      uiType: select
+
+    - name: dialect_word
+      displayName: Lichte vernederlandsing
+      valuePath: ./folia:t[@class="lightNormalization"] 
+      sensitivity: sensitive_insensitive
+      uiType: select
+
+    - name: both
+      displayName: Zware en Lichte vernederlandsing
+      valuePath: concat(./folia:t[@class="heavyNormalization"], "|", ./folia:t[@class="lightNormalization"])
+      uiType: select
+
+    - name: lemma
+      displayName: Lemma
+      valuePath: ./folia:lemma/@class
+      sensitivity: sensitive_insensitive
+   
+    - name: verified
+      displayName: Verified Linguistic Annotation
+      valuePath: concat(substring('verified', 1, count(ancestor::s)*string-length('verified')), substring('unverified', 1, (1- count(ancestor::s))*string-length('unverified')))  
+      uiType: select
+        #    - name: grouping_pos
+        # displayName: Part of Speech with features
+        # valuePath: ./folia:pos/@class
+        # uiType: select
+
+    - name: pos
+      displayName: Woordsoort (uitgebreid)
+      basePath: ./folia:pos  # subsequent XPaths are relative to this
+      valuePath: ./@class
+
+
+      subannotations:
+
+      - name: head
+        displayName: Woordsoort
+        valuePath: "@head"
+        uiType: pos  # OpenSonar+ part of speech selector
+        forwardIndex: true
+
+      - name: vztype
+        displayName: adposition type
+        uiType: select
+        forwardIndex: false
+
+      - name: lwtype
+        displayName: article type
+        uiType: select
+        forwardIndex: false
+
+      - name: naamval
+        displayName: case
+        uiType: select
+        forwardIndex: false
+
+      - name: conjtype
+        displayName: conjunction type
+        uiType: select
+        forwardIndex: false
+
+      - name: graad
+        displayName: degree
+        uiType: select
+        forwardIndex: false
+
+      - name: dial
+        displayName: dialect
+        uiType: select
+        forwardIndex: false
+
+      - name: genus
+        displayName: gender
+        uiType: select
+        forwardIndex: false
+
+      - name: buiging
+        displayName: inflection
+        uiType: select
+        forwardIndex: false
+
+      - name: npagr
+        displayName: noun phrase agreement
+        uiType: select
+        forwardIndex: false
+
+      - name: ntype
+        displayName: ntype
+        uiType: select
+        forwardIndex: false
+
+      - name: getal
+        displayName: number
+        uiType: select
+        forwardIndex: false
+
+      - name: getal_n
+        displayName: number-n
+        uiType: select
+        forwardIndex: false
+
+      - name: numtype
+        displayName: numeral type
+        uiType: select
+        forwardIndex: false
+
+      - name: pdtype
+        displayName: pdtype
+        uiType: select
+        forwardIndex: false
+
+      - name: persoon
+        displayName: person
+        uiType: select
+        forwardIndex: false
+
+      - name: pos
+        displayName: pos
+        uiType: select
+        forwardIndex: false
+
+      - name: positie
+        displayName: position
+        uiType: select
+        forwardIndex: false
+
+      - name: vwtype
+        displayName: pronoun type
+        uiType: select
+        forwardIndex: false
+
+      - name: spectype
+        displayName: spectype
+        uiType: select
+        forwardIndex: false
+
+      - name: status
+        displayName: status
+        uiType: select
+        forwardIndex: false
+
+      - name: pvagr
+        displayName: subject agreement
+        uiType: select
+        forwardIndex: false
+
+      - name: pvtijd
+        displayName: tense/mood
+        uiType: select
+        forwardIndex: false
+
+      - name: UNK
+        displayName: UNKNOWN
+        uiType: select
+        forwardIndex: false
+
+      - name: wvorm
+        displayName: verb form
+        uiType: select
+        forwardIndex: false
+
+      - forEachPath: folia:feat[not(@subset='UNK')]
+        namePath: translate(@subset, '-', '_')
+        valuePath: "@class"
+
+          #    - name: phonetic
+          #valuePath: .//ph
+
+    - name: _xmlid
+      valuePath: "@xml:id"           # NOTE: xml:id of w tag
+      isInternal: true
+      #type: untokenized
+      #process:
+      #- action: replace
+      #  find:    "^[^\\.]*\\.(.*)$"  # find first
+      #  replace: "$1"                # keep everything after that
+
+          #    - name: phonetic
+          # valuePath: .//ph
+
+    - name: speaker
+      displayName: Spreker
+      valuePath: ancestor::folia:speech/@speaker
+      uiType: select
+
+    - name: role
+      displayName: Spreker of interviewer?
+      valuePath: ancestor::folia:speech/@tag
+      uiType: select
+
+    - name: begintime
+      valuePath: ancestor::speech/@begintime
+      isInternal: true
+
+    - name: endtime
+      valuePath: ancestor::speech/@endtime
+      isInternal: true
+
+### metadata annotated at token level (speaker metadata)
+#### speaker properties
+#
+    - name: Beroep
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:beroep//meta:label
+      uiType: select
+      multipleValues: true
+    
+    - name: Spreker
+      displayName: Spreker-ID
+      valuePath:  ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:alias
+      uiType: select
+      multipleValues: true
+  
+    - name: Geslacht
+      valuePath:  ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:gender//meta:label
+      uiType: select
+      multipleValues: true
+
+    - name: geboortejaar
+      displayName: Geboortejaar
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:geboorte_jaar 
+      uiType: select
+      multipleValues: true
+
+    - name: Geboorteplaats
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'boor')]//meta:naam    
+      uiType: select
+      multipleValues: true
+
+    - name: Woonplaats
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:naam
+      uiType: select
+      multipleValues: true 
+        #  - name: AnyPlaats
+        # valuePath:ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:plaats//meta:naam
+        # uiType: select
+  
+    - name: Mobiliteit_woonplaats
+      displayName: Mobiliteit woonplaats
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'woon')]//meta:label
+      uiType: select
+      multipleValues: true
+
+    - name: Mobiliteit_werkplaats
+      displayName: Mobiliteit werkplaats
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'beroep')]//meta:label
+      uiType: select
+      multipleValues: true
+
+    # deze dingen: if (xx) then xx else "Unknown"?
+    - name: herkomst_partner
+      displayName: Herkomst partner
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_partnerplaats//meta:match_level
+      uiType: select
+      multipleValues: true
+
+    - name: herkomst_moeder
+      displayName: Herkomst moeder
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_moederplaats//meta:match_level
+      uiType: select
+      multipleValues: true
+
+    - name: herkomst_vader
+      displayName: Herkomst vader
+      valuePath: ancestor::speech//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_vaderplaats//meta:match_level
+      uiType: select
+      multipleValues: true
+
+#
+#
+#
+
+       
+#
+    standoffAnnotations:
+#    - path: //folia:timesegment                   # Element containing the values to index
+#      tokenRefPath: folia:wref/@id  # What token position(s) to index these values at
+#      annotations:                          # Annotation(s) to index there
+#      - name: begintime
+#        valuePath: "@begintime"
+#        isInternal: true
+#      - name: endtime
+#        valuePath: "@endtime"
+#        isInternal: true
+
+    - path: .//folia:dependency
+      type: relation
+      valuePath: "./@class"   # relation type
+      # Find the relation source and target by parsing the @target attribute
+      # Make sure root relation is recognized as such (has no source in BL)
+      sourcePath: ".//folia:hd//folia:wref/@id"
+      targetPath: ".//folia:dep//folia:wref/@id"
+
+    - path: //folia:dependency      # Element containing what to index (relative to documentPath)
+      tokenRefPath: "./folia:dep/folia:wref/@id" # What token position(s) to index these values at
+                                     # (may have multiple matches per path element; values will 
+                                     # be indexed at all those positions)
+      annotations:           # The actual annotations (structure identical to regular annotations)
+      - name: head
+        valuePath: "./folia:hd/folia:wref/@id"
+        sensitivity: sensitive
+      - name: deprel
+        displayName: Syntactische functie
+        valuePath: "./@class"
+        uiType: select
+
+    # XML tags within the content we'd like to index
+    # (relative to container)
+    inlineTags:
+    # (p and s are already added in the base format)
+    - path: .//folia:s
+      displayAs: Zin
+    #- path: .//folia:s[.//*[local-name()='alud']!='OK']
+    #  displayAs: Bad parse
+    #- path: .//folia:utt
+    #  displayAs: Ongeparseerd segment
+    - path: .//folia:speech
+      displayAs: Speech
+      excludeAttributes:
+        #- "xml:id"
+        - "begintime"
+        - "endtime"
+      extraAttributes:
+        - name: "spreker"
+          valuePath: "@speaker"
+        - name: geslacht
+          valuePath:  .//meta:opname__persoon[.//meta:label='spreker']//meta:gender//meta:label
+        - name: beroep
+          valuePath: let $b := .//meta:opname__persoon[.//meta:label='spreker']//meta:beroep//meta:label/text() return $b[1]
+        - name: geboorteplaats
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'boor')]//meta:naam   
+        - name: mobiliteit_woonplaats
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'woon')]//meta:label
+        - name: mobiliteit_werkplaats
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'beroep')]//meta:label
+        - name: herkomst_partner
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_partnerplaats[1]//meta:match_level[1]
+        - name: herkomst_moeder
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_moederplaats[1]//meta:match_level[1]
+        - name: herkomst_vader
+          valuePath: .//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_vaderplaats[1]//meta:match_level[1]
+  
+    
+
+# If a metadatafield wasn't specified or is empty, index the value "Unspecified",
+# so we can search for documents that don't have a value for a field.
+metadataDefaultUnknownCondition: MISSING_OR_EMPTY
+metadataDefaultUnknownValue: Unspecified
+
+# FoLiA's native metadata
+# Embedded metadata: all attributes of the document element
+metadata:
+
+- containerPath:  .        # document element
+  fields:
+  - name: id
+    valuePath: ./@xml:id
+    type: untokenized
+
+  - name: Code
+    valuePath: //metadata//meta:opname_code
+    uiType: select 
+    type: untokenized
+   
+
+#### speaker properties
+#
+  - name: Beroep
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:beroep//meta:label
+    uiType: select
+    #multipleValues: true
+  
+  - name: Spreker
+    displayName: Spreker-ID
+    valuePath:  //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:alias
+    uiType: select
+
+  - name: Geslacht
+    valuePath:  //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:gender//meta:label
+    uiType: select
+
+  - name: geboortejaar
+    displayName: Geboortejaar
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:geboorte_jaar 
+    uiType: select
+
+  - name: Geboorteplaats
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'boor')]//meta:naam    
+    uiType: select
+
+  - name: Woonplaats
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:naam
+    uiType: select
+
+      #  - name: AnyPlaats
+      # valuePath: /metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats//meta:naam
+      # uiType: select
+
+  - name: Mobiliteit_woonplaats
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'woon')]//meta:label
+    uiType: select
+
+  - name: Mobiliteit_werkplaats
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:mobiliteit[contains(@rel,'beroep')]//meta:label
+    uiType: select
+
+  # deze dingen: if (xx) then xx else "Unknown"?
+  - name: herkomst_partner
+    displayName: Herkomst partner
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_partnerplaats//meta:match_level
+    uiType: select
+
+  - name: herkomst_moeder
+    displayName: Herkomst moeder
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_moederplaats//meta:match_level
+    uiType: select
+
+  - name: herkomst_vader
+    displayName: Herkomst vader
+    valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:persoon_vaderplaats//meta:match_level
+    uiType: select
+
+######## opname properties
+      
+  - name: jaar_opname
+    displayName: Jaar van opname
+    valuePath: //metadata//meta:opname/meta:jaar
+    uiType: select
+
+  - name: Maand
+    valuePath: //metadata//meta:opname/meta:maand
+    uiType: select
+
+  - name: Dag
+    valuePath: //metadata//meta:opname/meta:dag
+    uiType: select
+
+  - name: AudioFile
+    valuePath: //metadata//meta:opname/meta:bestand/meta:naam
+    uiType: select
+
+  - name: Duur
+    displayName: Duur opname
+    valuePath: replace(max(for $x in //speech/@endtime return string($x)),".[0-9]+$", "")
+
+####  
+  - name: Plaats_opname 
+    displayName: Plaats van opname
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:naam
+    uiType: select
+
+  - name: Kloekecode
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:kloeke_code
+    uiType: select
+
+  - name: latitude
+    displayName: Latitude
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:latitude
+    uiType: select
+
+  - name: longitude 
+    displayName: Longitude
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:longitude
+    uiType: select
+
+  - name: Provincie
+    displayName: Provincie
+    #valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:provincie/meta:label
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:provincie/meta:label
+    uiType: select
+
+  - name: Land
+    displayName: Land
+    #valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:provincie/meta:label
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:land/meta:label
+    uiType: select
+      #  - forEachPath: .//metadata//*
+      #namePath: local-name()
+      #valuePath: .
+
+  - name: Dialectregio
+    displayName: Dialectindeling (ruw)
+    #valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:dialectgebied_ruw/meta:label
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:dialectgebied_ruw/meta:label
+    uiType: select
+
+  - name: Dialectsubregio
+    displayName: Dialectindeling (fijn)
+    #valuePath: //metadata//meta:opname__persoon[.//meta:label='spreker']//meta:plaats[contains(@rel,'woon')]//meta:dialectgebied/meta:label
+    valuePath: //metadata//meta:plaats[@rel="opname⟶plaats"]//meta:dialectgebied/meta:label
+    uiType: select
+
+  - name: Sand_plaats
+    displayName: SAND plaats
+    valuePath: //metadata//meta:opname//meta:sand_plaats
+    uiType: select
+    process: 
+      - action: replace
+        find: ".*t.*"
+        replace: "ja"
+      - action: replace
+        find: ".*f.*"
+        replace: "nee" 
+
+  - name: RND_plaats
+    displayName: RND plaats
+    valuePath: //metadata//meta:opname//meta:rnd_plaats
+    uiType: select
+    process: 
+      - action: replace
+        find: ".*t.*"
+        replace: "ja"
+      - action: replace
+        find: ".*f.*"
+        replace: "nee"  
+
+  - name: Bron
+    valuePath: //metadata//meta:opname/meta:bron
+    uiType: select
+    mapValues:
+      "UGent nieuw" : "Universiteit Gent"
+      "UGent oud" : "Universiteit Gent"
+      "Meertens Instituut" :  "Meertens Instituut"
+    
+  - name: Title
+    value: ""
+    process: 
+    - action: append
+      field: Code
+    - action: append
+      value: ": "
+    - action: append
+      field: Provincie
+    - action: append
+      value: ", "
+    - action: append
+      field: Plaats_opname
+    - action: replace
+      find: " :"
+      replace: ":"
+    - action: replace
+      find: " ,"
+      replace: ","
+
+
+  - name: Parsed
+    displayName: Document has verified Alpino parses
+    valuePath: //metadata//meta:hasAlpino
+    uiType: select
+
+# Wat ‘status’ betreft, zou ik volgende categorieën nemen (Mss ‘status correctie’ of ‘verificatiestatus’ noemen voor duidelijkheid?):
+# 0. Ongecorrigeerd
+# 1. Enkel transcriptie gecorrigeerd
+# 2. Transcriptie & annotatie gecorrigeerd
+
+  - name: verrijking_toegevoegd
+    displayName: Taalkundige verrijking
+    valuePath: //metadata//meta:transcriptie_status/meta:label
+    mapValues:
+      "Transcriptie niet nagelezen" : "Nee"
+      "Transcriptie nagelezen": "Nee"
+      "Alpino (niet gecorrigeerd)" : "Ja"
+      "Alpino (gecorrigeerd)" : "Ja"
+    uiType: select
+
+
+  - name: status_correctie
+    displayName: Verificatiestatus
+    valuePath: //metadata//meta:transcriptie_status/meta:label
+    mapValues:
+      #"Transcriptie niet nagelezen" : Transcriptie niet gecontroleerd en verrijking niet gecontroleerd"
+      #"Alpino (niet gecorrigeerd)" : "Transcriptie gecontroleerd en verrijking niet gecontroleerd"
+      #"Alpino (gecorrigeerd)" : "Transcriptie gecontroleerd en verrijking gecontroleerd"
+      "transcriptie gecorrigeerd, geen taalkundige verrijking" : "Transcriptie gecontroleerd, geen taalkundige verrijking"
+      "transcriptie niet gecorrigeerd, taalkundige verrijking niet gecontroleerd" : "Transcriptie niet gecontroleerd, taalkundige verrijking niet gecontroleerd"
+      "transcriptie gecontroleerd, taalkundige verrijking niet gecontroleerd" : "Transcriptie gecontroleerd, taalkundige verrijking niet gecontroleerd"
+      "transcriptie niet gecorrigeerd, geen taalkundige verrijking" : "Transcriptie niet gecontroleerd, geen taalkundige verrijking"
+      "transcriptie gecontroleerd, taalkundige verrijking gecontroleerd" : "Transcriptie gecontroleerd, taalkundige verrijking gecontroleerd"
+    uiType: select
+
+
+# Voor de *transcriptie* kunnen we deze symbolen overwegen:
+#- *Nagekeken transcriptie:* ✔ (U+2714)
+#- *Nog niet nagekeken transcriptie:* ✓ (U+2713)
+
+#Voor de *dagkundige verrijking*:
+#- *Nagekeken verrijking:* ✅ (U+2705)
+#- *Aanwezig maar niet nagekeken:* ✓ (U+2713)
+#- *Afwezig:* ✗ (U+2717)
+
+#Dus bijvoorbeeld:
+#- *Transcriptie nagekeken, verrijking nagekeken:* ✔ ✅
+#- *Transcriptie nagekeken, verrijking aanwezig maar niet nagekeken:* ✔ ✓
+#- *Transcriptie nagekeken, verrijking afwezig:* ✔ ✗
+#- *Transcriptie niet nagekeken, verrijking aanwezig maar niet nagekeken:* ✓ ✓
+#- *Transcriptie niet nagekeken, verrijking afwezig:* ✓ ✗
+
+  - name: status_display
+    displayName: Status
+    valuePath: //metadata//meta:transcriptie_status/meta:label
+    mapValues:
+      #"Transcriptie niet nagelezen" : "✓✗"
+      #"Transcriptie nagelezen": "✔✗"
+      #"Alpino (niet gecorrigeerd)" : "✔✓"
+      #"Alpino (gecorrigeerd)" : "✔✔"
+      "transcriptie gecorrigeerd, geen taalkundige verrijking" : "✔✗"
+      "transcriptie niet gecorrigeerd, taalkundige verrijking niet gecontroleerd" : "✓✓"
+      "transcriptie gecontroleerd, taalkundige verrijking niet gecontroleerd" : "✔✓"
+      "transcriptie niet gecorrigeerd, geen taalkundige verrijking" : "✓✗"
+      "transcriptie gecontroleerd, taalkundige verrijking gecontroleerd" : "✔✔"
+
+    uiType: select
+
+  - name : metadump
+    valuePath: //*[local-name()='metaDump']
+    type: untokenized
+
+corpusConfig:
+
+  displayName: Gesproken Corpus van de zuidelijk-Nederlandse Dialecten
+
+  description: Gesproken Corpus van de zuidelijk-Nederlandse Dialecten
+
+  contentViewable: true
+
+  specialFields:
+    pidField: Code
+    titleField: Title
+    #authorField: Spreker
+    dateField: jaar_opname
+ 
+  metadataFieldGroups:
+  - name: Opname
+    fields:
+    #- Title
+    #- jaar_opname
+    #
+    - jaar_opname
+    - status_correctie
+    #- verrijking_toegevoegd
+    - Bron
+    - Duur
+
+  - name: Lokalisering
+    fields:
+    - Plaats_opname # of andere plaats? Beroep_plaats?
+    - Provincie
+    - Land
+    - Dialectregio
+    - Dialectsubregio
+    - Kloekecode
+    - Sand_plaats
+    - RND_plaats
+    
+  #- name: Datering
+  #  fields:
+    
+  - name: Spreker
+    fields:
+  
+    - Geslacht
+    - geboortejaar # moet ook nog bij extra-attributes
+    - Beroep
+    # - Beroep_categorie
+    - Geboorteplaats
+    - Mobiliteit_woonplaats
+    - Mobiliteit_werkplaats
+    - herkomst_moeder
+    - herkomst_vader
+    - herkomst_partner
+    - Spreker
+   
+  # - name: Rest
+  #  addRemainingFields: true
+
+  annotationGroups:
+    contents:
+    - name: Woord
+      annotations:
+      - word
+      - dialect_word
+      - lemma
+      - pos_head
+      - pos
+    - name: Spreker
+      annotations: 
+        - Geslacht
+        - geboortejaar # moet ook nog bij extra-attributes
+        - Beroep
+        - Geboorteplaats
+        - Mobiliteit_woonplaats
+        - Mobiliteit_werkplaats
+        - herkomst_moeder
+        - herkomst_vader
+        - herkomst_partner
+        - Spreker
+    #  - deprel
+    #- name: More annotations
+    #  annotations:
+    #  - speaker
+    #  - role
+    #  - verified
+    #  addRemainingAnnotations: true

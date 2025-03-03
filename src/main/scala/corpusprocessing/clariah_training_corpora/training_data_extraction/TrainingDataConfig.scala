@@ -4,6 +4,7 @@ import org.json4s.jackson.Serialization.read
 import org.json4s.jackson.Serialization.write
 import org.json4s.jackson.Serialization.writePretty
 
+import java.io.PrintWriter
 import scala.collection.immutable
 /*
 {
@@ -11,7 +12,7 @@ import scala.collection.immutable
 }
  */
 
-case class DocumentInfo(sourceFileName: String, sentenceIds: Option[Set[String]]  = None) {
+case class DocumentInfo(sourceFileName: String, sentenceIds: Option[Set[String]]  = None, legacyName: Option[String]= None) {
 
 }
 case class PartitionInfo(documents: Set[DocumentInfo]) {
@@ -52,7 +53,13 @@ case class TrainingDataInfos(downloadedDataDir: String, extractedDataDir: String
 object TrainingDataInfos {
   implicit lazy val serializationFormats: Formats = DefaultFormats
 
-  def write(info: TrainingDataInfos): String = writePretty(info) //
+  def write(info: TrainingDataInfos): String = writePretty(info)
+
+  def writeToFile(info: TrainingDataInfos, fileName: String)  = {
+    val p = new PrintWriter(fileName)
+    p.write(write(info))
+    p.close()
+  }//
   def read(info: String): TrainingDataInfos = org.json4s.jackson.Serialization.read[TrainingDataInfos](info)
 
   def readFromFile(path: String)  = {

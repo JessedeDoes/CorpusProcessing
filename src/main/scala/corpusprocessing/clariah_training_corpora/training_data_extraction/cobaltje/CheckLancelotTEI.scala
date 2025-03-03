@@ -11,7 +11,7 @@ object CheckLancelotTEI {
   val oldDownloadDir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/download_19_februari_2025/"
   val newDownloadDir = "/data/Lancelot/download"
   val dir = "/mnt/Projecten/Corpora/TrainingDataForTools/CobaltExport/2025/download_19_februari_2025/Gys/LancelotExport/"
-
+  val includeLegacyName = false
 
 
   def getJoin_n(n: Node): String =  {
@@ -106,7 +106,7 @@ object CheckLancelotTEI {
 
 
   def main(args: Array[String]): Unit = {
-    val x = TrainingDataInfos.readFromFile(LancelotSettings.trainingDataInfoLocation)
+    val trainingDataInfos = TrainingDataInfos.readFromFile(LancelotSettings.trainingDataInfoLocation)
 
      val newInfo: Seq[((String, String), String)] = new File(newDownloadDir).listFiles().filter(_.getName.endsWith(".zip")).map(f => {
        val zipName = f.getAbsolutePath
@@ -132,20 +132,22 @@ object CheckLancelotTEI {
     oldFile2NewFile.take(10).foreach(println)
 
 
-    x.trainingDataInfos.map({case (set, ti) =>
-
+    val newInfos = trainingDataInfos.trainingDataInfos.map({case (set, ti) =>
       val s1 = set.replaceAll("cobalt_export_","").replaceAll(".zip$", "")
       println(s"Set: $s1")
       val relevant: Map[(String, String), String] = oldFile2NewFile.filter(_._1._1 == s1)
       val nameMap = relevant.map( {case ((set1,n1),n2) => (n1,n2)})
       nameMap.take(3).foreach(println)
-      ti.partitions.map({case (pName, pi) => {
-
-
+      val newPartitions = ti.partitions.map({case (pName, pi) => {
+          val newDocs = pi.documents.map(d => d.copy(sourceFileName = nameMap(d.sourceFileName),
+            legacyName = if (includeLegacyName) Some(d.sourceFileName) else None))
+          pName -> pi.copy(documents = newDocs)
       // println(nameMap)
-    }})
-
+      }})
+      set -> ti.copy(partitions = newPartitions)
     })
+    val newStuff = trainingDataInfos.copy(trainingDataInfos = newInfos)
+    TrainingDataInfos.writeToFile(newStuff, "/tmp/stuffWithNewNames.json")
     log.close()
   }
 }
