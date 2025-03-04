@@ -17,7 +17,14 @@ from lxml import etree
 NS = {
     'folia': 'http://ilk.uvt.nl/folia',        # FoLiA default namespace
     'gcnd': 'http://gcnd.ivdnt.org/metadata',  # GCND metadata namespace
+    'xml': 'http://www.w3.org/XML/1998/namespace'
 }
+
+def txt(x):
+  if x:
+     return x[0]
+  else: 
+    return 'None'
 
 def main(xml_file):
     # Parse the XML with lxml
@@ -32,6 +39,11 @@ def main(xml_file):
     else:
         print("\nAudio file name not found in metadata")
 
+    kloeke_code = doc.xpath('//gcnd:plaats[@rel="opname⟶plaats"]//gcnd:kloeke_code/text()',  namespaces=NS)
+    verification_status = doc.xpath('//gcnd:transcriptie_status/gcnd:label/text()',  namespaces=NS)
+
+    print(f"\nKloekecode: {txt(kloeke_code)}")
+    print(f"\nVerification status: {txt(verification_status)}")
     # 2) FIND ALL <speech> ELEMENTS
     speeches = doc.xpath('//folia:speech', namespaces=NS)
     print(f"\nFound {len(speeches)} <speech> segments.\n")
@@ -79,7 +91,7 @@ def main(xml_file):
                 pos_coarse = "(no pos)"
                 pos_full = "(no pos)"
 
-            print(f"     Token ID: {w.get('xml:id')}")
+            print(f"     Token ID: {w.get('{http://www.w3.org/XML/1998/namespace}id')}")
             print(f"       Dialect (light): '{dialect_form}'")
             print(f"       Normalized (heavy): '{heavy_form}'")
             print(f"       Lemma: {lemma}")

@@ -20,7 +20,7 @@ object ExtractionFromCobaltTrainingCorporaWithConfig {
     //new File(extractTo).mkdir()
 
     val extractedSets = new File(cobaltExportSettings.directoryWithCobaltExports).listFiles()
-      .filter(_.getName.endsWith(".zip"))
+      .filter(x => x.getName.endsWith(".zip"))
       //.filter(_.getName.contains("evaluation_set"))
       //.filter(_.getName.contains("gtbcit_mnw_15"))
       .map(f => {

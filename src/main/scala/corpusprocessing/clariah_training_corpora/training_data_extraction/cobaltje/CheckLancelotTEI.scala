@@ -56,8 +56,12 @@ object CheckLancelotTEI {
     }
 
   def fixMissingJoins(d: Elem): Elem  = utils.PostProcessXML.updateElement(d, _.label=="w", fixJoinForW)
-  def fixPunct(d: Elem)  = utils.PostProcessXML.updateElement(d, x => Set("w", "pc").contains(x.label), fixPoSforPunct)
-  def patchDocument(d: Elem): Elem  = fixPunct(fixMissingJoins(d))
+  def fixPunct(d: Elem) : Elem  = utils.PostProcessXML.updateElement(d, x => Set("w", "pc").contains(x.label), fixPoSforPunct)
+  def fixWInInterp(d: Elem): Elem =  utils.PostProcessXML.updateElement(d, _.label=="interp", i => i.copy(child=Text(i.text)))
+
+  val patches = List[Elem => Elem](fixMissingJoins, fixPunct, fixWInInterp)
+
+  def patchDocument(d: Elem): Elem  = patches.foldLeft(d)({case (x,p) => p(x)})// fixPunct(fixMissingJoins(d))
 
   lazy val log = new java.io.PrintWriter("/tmp/logje.txt")
 

@@ -9,6 +9,7 @@ trait Sentence {
 
     this match {
       case s: BasicSentence => {
+        // println(s)
         val sourceLine = if (addSourceLine) s"#### ${s.fileId} ####\n" else ""
         sourceLine +
           s.tokens.indices.map(i => List(s.tokens(i), s.tags(i), s.lemmata(i), s.token_group_ids(i).getOrElse("")).mkString("\t")).mkString("\n")
@@ -135,6 +136,7 @@ object Sentence {
 
     val indexedTokenElements = tokenElements.zipWithIndex
     val tokens: List[String] = tokenElements.map(getWord).toList
+
     val tags = tokenElements.map(x => (x \ extractor.pos_attribute).headOption.getOrElse(x \ "@type").text.trim).map(t => {
       if (t.toLowerCase().matches("^let([()]*)$")) "PC" else t
     })
