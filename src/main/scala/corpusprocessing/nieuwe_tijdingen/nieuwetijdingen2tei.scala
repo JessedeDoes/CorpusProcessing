@@ -1,18 +1,18 @@
-package corpusprocessing.kranten
-import database.DatabaseUtilities.Select
+package corpusprocessing.nieuwe_tijdingen
 
-import scala.xml._
+import database.DatabaseUtilities.Select
 import utils.PostProcessXML._
 import utils.ProcessFolder
 
-import java.io.{File, FileWriter}
-import scala.util.matching.Regex._
+import java.io.{File, FileWriter, PrintWriter}
+import scala.xml._
 
-object nieuwetijdingen {
+object nieuwetijdingen2tei {
   val input = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Teksten/AllesWelgevormd/"
-  val output = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Teksten/OpWegNaarTEI/"
+  val output = "/data/NieuweTijdingen/TEI/" // "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Teksten/OpWegNaarTEI/"
   lazy val outList = new FileWriter("/tmp/tijdingen.tsv")
   val scanDir = "/mnt/Projecten/Corpora/Historische_Corpora/NieuweTijdinghen/Scans/PDF/"
+
   val krantenconfig = new database.Configuration(
     name = "krantjes",
     server = "svowdb20.ivdnt.loc",
@@ -120,7 +120,9 @@ object nieuwetijdingen {
         val inDoc = XML.loadFile(g)
         val (meta, title) = metadataFromFilename(i, inDoc)
         val outDoc = fixDocje(inDoc, meta, title)
-        val outTSV = o.replaceAll(".xml$", ".tsv")
+        //val tsvLine = Metadata.convertTeiMetadataToTsv(outDoc)
+        //val outTSV = o.replaceAll(".xml$", ".tsv")
+       // println(tsvLine)
         XML.save(o, outDoc, "UTF-8")
       }
     })
@@ -133,7 +135,7 @@ object nieuwetijdingen {
 
 object loadTextIntoDB
 {
-  import nieuwetijdingen.db
+  import nieuwetijdingen2tei.db
 
   lazy val bestanden = db.slurp(Select(r => r.getString("filepath"), "bestanden"))
 

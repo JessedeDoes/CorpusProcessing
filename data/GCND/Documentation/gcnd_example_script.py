@@ -17,6 +17,7 @@ from lxml import etree
 NS = {
     'folia': 'http://ilk.uvt.nl/folia',        # FoLiA default namespace
     'gcnd': 'http://gcnd.ivdnt.org/metadata',  # GCND metadata namespace
+    'meta': 'http://gcnd.ivdnt.org/metadata',  # GCND metadata namespace
     'xml': 'http://www.w3.org/XML/1998/namespace'
 }
 
