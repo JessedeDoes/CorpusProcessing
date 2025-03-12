@@ -16,12 +16,13 @@ object Settings {
   val sillyQuery = s"""
                     create temporary table normalized_subheaders as select record_id, string_agg(word, ' ' order by tellertje)
     as normalized_subheader from subheader_words group by record_id;
+
+
     create temporary view with_normalized_subheader as
       select $article_table.*, normalized_subheaders.normalized_subheader from
-      articles_int left join normalized_subheaders on articles_int.record_id = normalized_subheaders.record_id;
+      articles_int left join normalized_subheaders on articles_int.record_id = normalized_subheaders.record_id union select * from colophons.colophons;
     """
 
-  krantendb.runStatement(sillyQuery)
 
 
 
@@ -56,7 +57,14 @@ object Settings {
   val exportQuery1664 = "articles_int where cast(issue_date as text) ~ '1664'"
   val exportQuery = "articles_int"
   val exportQuery_geenDubbel = " (select articles_int.* from articles_int, issues_kb_fixed where articles_int.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x" // deze wordt nu gebruik
-  val exportQuery_geenDubbelMetWatMeer = " (select articles_int_more.* from articles_int_more, issues_kb_fixed where articles_int_more.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x"
+  val exportQuery_geenDubbelMetWatMeerOld =
+    " (select articles_int_more.* from articles_int_more, issues_kb_fixed where articles_int_more.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x"
+
+
+
+  val exportQuery_geenDubbelMetWatMeer =   """ (select articles_int_more_more.*
+      |from articles_int_more_more, issues_kb_fixed
+      |where articles_int_more_more.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x""".stripMargin
 }
 
 /*

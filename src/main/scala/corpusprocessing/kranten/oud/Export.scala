@@ -63,11 +63,16 @@ Indexes:
 
   def cleanAmp(s:String) = s.replaceAll("&amp([^;])","&$1").replaceAll("&amp;", "&")
 
+  def fixHyphens(a: String) = a
+    .replaceAll("(\\S+?)(=+)(\\S+)","$1$3 <anchor type='a1' n='$1$2$3'/>\n")
+    .replaceAll("(\\S+) *([=]) *[\r\n]+ *(\\S+)","$1$3 <anchor type='a2'org='$1$2$3'/>\n")
+    .replaceAll("(\\S+) *([-]) *[\r\n]+ *([a-z]\\S+)","$1$3 <anchor type='a3'org='$1$2$3'/>\n")
+
   val q = Select(r =>  {
 
     def x(s: String) = r.getStringNonNull(s).trim;
 
-    def getCleanedText(s: String) = {
+    def getCleanedText(s: String)  = {
       val a = cleanAmp(r.getStringNonNull(s).trim);
       val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
         case Success(value) =>  {
@@ -88,7 +93,7 @@ Indexes:
     val day =  date.replaceAll(".*-","")
     val delpher_link = s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${x("kb_article_id")}"
     val pid = s"kranten_17_${x("record_id")}"
-    val tekststoort = x("tekstsoort_int").replaceAll("colo.*n|mededeling.advertentie|--", "")
+    val tekstsoort = x("tekstsoort_int").replaceAll("xcolo.*n|mededeling.advertentie|--", "")
     def ig(n: String, v: String) = <interpGrp type={n}><interp>{cleanAmp(v)}</interp></interpGrp>
     def i(n: String) = <interpGrp type={nameMap.getOrElse(n,n)}><interp>{getCleanedText(n)}</interp></interpGrp>
 
@@ -97,8 +102,8 @@ Indexes:
       // perl -pe 's/=((</?[ib]/?>)?)\\s*$/$1/'
 
       val a = x("article_text").replaceAll("=((</?[ib]/?>)?)\\s+", "$1===")
-
-      val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
+      val a1 = fixHyphens(a)
+      val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a1) + "</art>").child) match {
         case Success(value) =>  {
           // Console.err.println("Yes, parsed! ")
           value }
@@ -157,7 +162,7 @@ Indexes:
             {ig("corpusProvenance", "Courantencorpus")}
             {ig("editorLevel3", "Nicoline van der Sijs")}
 
-            {ig("articleClass", tekststoort)}
+            {ig("articleClass", tekstsoort)}
             {i("paper_title")}
             {i("header_int")}
             {i("subheader_int")}
@@ -209,7 +214,7 @@ Indexes:
 }
 
 object Export {
-  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export2024_2/"
+  val exportDir = "/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/Export2025_3/"
   def main(args: Array[String]): Unit = {
     new ExportTo(args.headOption.getOrElse(exportDir)).export()
   }
