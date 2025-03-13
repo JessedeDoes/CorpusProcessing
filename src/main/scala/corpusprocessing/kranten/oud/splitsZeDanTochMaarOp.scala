@@ -58,9 +58,9 @@ object splitsZeDanTochMaarOp {
   }
 
   def main(args: Array[String]): Unit = {
-    val inDir = args.headOption.getOrElse("/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/TaggedTestVersion7/")
+    val inDir = args.headOption.getOrElse("/mnt/Projecten/Corpora/Historische_Corpora/17e-eeuwseKranten/RetaggedWithTDN2025/")
     val outDir = if (args.size > 1) args(1) else "/tmp/Gesplitst/"
-
+    new File(outDir).mkdir()
     val stuffs: Iterator[(File, Iterator[(xml.Node, Int)])] =
       new java.io.File(inDir)
         .listFiles.sorted.iterator.map(x => x -> (XML.loadFile(x) \\ "TEI").iterator.zipWithIndex)

@@ -11,6 +11,7 @@ import TEIScope._
 
 case class ExportTo(exportDir: String) {
 
+   val hyphenLog = new PrintWriter("/tmp/hyphens.log")
 
   /*
       Column     | Type | Collation | Nullable | Default
@@ -63,10 +64,29 @@ Indexes:
 
   def cleanAmp(s:String) = s.replaceAll("&amp([^;])","&$1").replaceAll("&amp;", "&")
 
-  def fixHyphens(a: String) = a
-    .replaceAll("(\\S+?)(=+)(\\S+)","$1$3 <anchor type='a1' n='$1$2$3'/>\n")
-    .replaceAll("(\\S+) *([=]) *[\r\n]+ *(\\S+)","$1$3 <anchor type='a2'org='$1$2$3'/>\n")
-    .replaceAll("(\\S+) *([-]) *[\r\n]+ *([a-z]\\S+)","$1$3 <anchor type='a3'org='$1$2$3'/>\n")
+  def fixHyphens(a: String) = {
+    val dehyph = a
+      .replaceAll("</i>([= ]*)<i>","$1")
+      .replaceAll("<i></i>", "")
+      .replaceAll("<b></b>", "")
+      .replaceAll("<b>([= ]+)</b>","$1")
+      .replaceAll("<i>([= ]+)</i>","$1")
+      .replaceAll("<[bi]/>","")
+      .replaceAll("([^\\s<>=]+)(\\s*=+\\s*)([^\\s<>=]+)", "$1$3 <anchor type='a2b' org='$1|$3'/>")
+      // .replaceAll("([^\\s<>]+?)(=+)([^\\s<>]+)", "$1$3 <anchor type='a1' n='$1$2$3'/>\n")
+      .replaceAll("([^\\s<>=]+) *([=]+) *[\r\n]+ *([^\\s<>=]+)", "$1$3 <anchor type='a2a' org='$1|$3'/>\n")
+
+      .replaceAll("([^\\s<>]+) *([-]) *[\r\n]+ *([a-z][^\\s<>]+)", "$1$3 <anchor type='a3' org='$1|$3'/>\n")
+    import util.matching.Regex._
+    import util.matching._
+    "(.{0,20})<anchor[^<>]*>(.{0,20})".r.findAllMatchIn(dehyph).foreach(m => {
+      hyphenLog.println(m.toString().replaceAll("\\s+", " "))
+    })
+    "(.{0,20})(=+[^'\"])(.{0,20})".r.findAllMatchIn(dehyph).foreach(m => {
+      hyphenLog.println("MISSED:" + m.toString().replaceAll("\\s+", " "))
+    })
+    dehyph
+  }
 
   val q = Select(r =>  {
 
@@ -79,7 +99,7 @@ Indexes:
           // Console.err.println("Yes, parsed! ")
           value }
         case _ => {
-          Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
+          // Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
           a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
         }
       }
@@ -103,12 +123,13 @@ Indexes:
 
       val a = x("article_text").replaceAll("=((</?[ib]/?>)?)\\s+", "$1===")
       val a1 = fixHyphens(a)
+
       val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a1) + "</art>").child) match {
         case Success(value) =>  {
           // Console.err.println("Yes, parsed! ")
           value }
         case _ => {
-          Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
+          // Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
             a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
         }
       }
@@ -201,6 +222,7 @@ Indexes:
       { case (y, n) =>
         if (year_map.contains(y)) {
           year_map(y).println(n.toString())
+          hyphenLog.flush()
         }
       })
 
@@ -210,6 +232,7 @@ Indexes:
         x.pw.close()
       }
     })
+    hyphenLog.close()
   }
 }
 
