@@ -128,7 +128,17 @@ Indexes:
     val decade = if (year.matches("[0-9]{4}")) year.replaceAll(".$", "0") else "undefined"
     val month = date.replaceAll("^.*?-","").replaceAll("-.*","")
     val day =  date.replaceAll(".*-","")
-    val delpher_link = s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${x("kb_article_id")}"
+    val delpher_link =  {
+      val article_id = x("kb_article_id")
+      val issue_id =  x("kb_issue")
+      if (article_id.nonEmpty)
+      s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${article_id}"
+      else   { // colofons hebben geen artikel id en ook geen page id
+        val z = s"https://www.delpher.nl/nl/kranten/view?coll=ddd&identifier=${issue_id}:mpeg21"
+        println(z)
+        z
+      }
+    }
     val pid = s"kranten_17_${x("record_id")}"
     val tekstsoort = x("tekstsoort_int").replaceAll("xcolo.*n|mededeling.advertentie|--", "")
     def ig(n: String, v: String) = <interpGrp type={n}><interp>{cleanAmp(v)}</interp></interpGrp>
