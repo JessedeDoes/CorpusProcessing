@@ -12,7 +12,7 @@ import TEIScope._
 case class ExportTo(exportDir: String) {
 
    val hyphenLog = new PrintWriter("/tmp/hyphens.log")
-
+  val parseLog = new PrintWriter("/tmp/parse.log")
   /*
       Column     | Type | Collation | Nullable | Default
 ---------------+------+-----------+----------+---------
@@ -64,6 +64,10 @@ Indexes:
 
   def cleanAmp(s:String) = s.replaceAll("&amp([^;])","&$1").replaceAll("&amp;", "&")
 
+  def escapeEq(x:String)  = x.replaceAll("=", "空白")
+  import scala.util.matching.Regex
+  val pattern: Regex = "<([^<>]*)>".r
+
   def fixHyphens(a: String) = {
     val dehyph = a
       .replaceAll("</i>([= ]*)<i>","$1")
@@ -72,20 +76,31 @@ Indexes:
       .replaceAll("<b>([= ]+)</b>","$1")
       .replaceAll("<i>([= ]+)</i>","$1")
       .replaceAll("<[bi]/>","")
-      .replaceAll("([^\\s<>=]+)(\\s*=+\\s*)([^\\s<>=]+)", "$1$3 <anchor type='a2b' org='$1|$3'/>")
-      // .replaceAll("([^\\s<>]+?)(=+)([^\\s<>]+)", "$1$3 <anchor type='a1' n='$1$2$3'/>\n")
-      .replaceAll("([^\\s<>=]+) *([=]+) *[\r\n]+ *([^\\s<>=]+)", "$1$3 <anchor type='a2a' org='$1|$3'/>\n")
+      .replaceAll("([^\\s<>=]+)(\\s*=+\\s*)([^\\s<>=]+)", "$1$3 <anchor type='a2b' org=\"$1|$3\"/>")
 
-      .replaceAll("([^\\s<>]+) *([-]) *[\r\n]+ *([a-z][^\\s<>]+)", "$1$3 <anchor type='a3' org='$1|$3'/>\n")
+      .replaceAll("([^\\s<>=]+) *([=]+) *[\r\n]+ *([^\\s<>=]+)", "$1$3 <anchor type='a2a' org=\"$1|$3\"/>\n")
+
+      .replaceAll("([^\\s<>]+) *([-]) *[\r\n]+ *([a-z][^\\s<>]+)", "$1$3 <anchor type='a3' org=\"$1|$3\"/>\n")
+
+    val d2 = pattern.replaceAllIn(dehyph, m => s"<${escapeEq(m.group(1))}>").replaceAll("\\s*=+\\s*", "")
+
+    if (d2.contains("=")) {
+      "(.{0,20})(=+)(.{0,20})".r.findAllMatchIn(d2).foreach(m => {
+        hyphenLog.println("MISSED:" + m.toString().replaceAll("\\s+", " "))
+      })
+    }
+
+    val d3 = d2.replaceAll("空白","=")
+
     import util.matching.Regex._
     import util.matching._
-    "(.{0,20})<anchor[^<>]*>(.{0,20})".r.findAllMatchIn(dehyph).foreach(m => {
+    "(.{0,20})<anchor[^<>]*>(.{0,20})".r.findAllMatchIn(d3).foreach(m => {
       hyphenLog.println(m.toString().replaceAll("\\s+", " "))
     })
-    "(.{0,20})(=+[^'\"])(.{0,20})".r.findAllMatchIn(dehyph).foreach(m => {
+    "(.{0,20})(=+[^'\"])(.{0,20})".r.findAllMatchIn(d3).foreach(m => {
       hyphenLog.println("MISSED:" + m.toString().replaceAll("\\s+", " "))
     })
-    dehyph
+    d3
   }
 
   val q = Select(r =>  {
@@ -93,14 +108,16 @@ Indexes:
     def x(s: String) = r.getStringNonNull(s).trim;
 
     def getCleanedText(s: String)  = {
-      val a = cleanAmp(r.getStringNonNull(s).trim);
+      val a0 = cleanAmp(r.getStringNonNull(s).trim);
+      val a = fixHyphens(a0)
       val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a) + "</art>").child) match {
         case Success(value) =>  {
           // Console.err.println("Yes, parsed! ")
           value }
         case _ => {
-          // Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
-          a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
+          Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
+          parseLog.println(s"\n### PARSE ERROR\nKan niet parsen: ${a}")
+          a.replaceAll("<i>|</i>|<b>|<anchor[^<>]*>|</b>|\\{tab\\}","")
         }
       }
       parsed
@@ -121,7 +138,8 @@ Indexes:
       //perl -pe 's/=((<\/?[ib]\/?>)?)\s*$/\n/'
       // perl -pe 's/=((</?[ib]/?>)?)\\s*$/$1/'
 
-      val a = x("article_text").replaceAll("=((</?[ib]/?>)?)\\s+", "$1===")
+      val a = x("article_text") // .replaceAll("=((</?[ib]/?>)?)\\s+", "$1===") // Huh????? Waarom????
+
       val a1 = fixHyphens(a)
 
       val parsed = Try(XML.loadString("<art>" + vreselijkeTabjes.processTabjes(a1) + "</art>").child) match {
@@ -130,7 +148,8 @@ Indexes:
           value }
         case _ => {
           // Console.err.println(s"\nKan niet parsen: ${a.substring(0,Math.min(100,a.length))}")
-            a.replaceAll("<i>|</i>|<b>|</b>|\\{tab\\}","")
+            parseLog.println(s"\n### PARSE ERROR\nKan niet parsen: ${a1}")
+            a1.replaceAll("<i>|</i>|<b>|</b>|<anchor[^<>]*>|\\{tab\\}","")
         }
       }
       parsed
@@ -223,6 +242,7 @@ Indexes:
         if (year_map.contains(y)) {
           year_map(y).println(n.toString())
           hyphenLog.flush()
+          parseLog.flush()
         }
       })
 
@@ -233,6 +253,7 @@ Indexes:
       }
     })
     hyphenLog.close()
+    parseLog.close()
   }
 }
 

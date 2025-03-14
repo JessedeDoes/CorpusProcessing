@@ -22,7 +22,7 @@ select
   'colofon',
   colophon_int,
   500000 + tellertje
-from issues_kb_fixed;
+from issues_kb_fixed where datum_issue is not null and not dubbel_mag_weg and issue_handled;
 
 create view articles_int_more_more as (select * from articles_int_more) union (select * from colophons.colophons where article_text is not null and article_text != '');
 commit;
