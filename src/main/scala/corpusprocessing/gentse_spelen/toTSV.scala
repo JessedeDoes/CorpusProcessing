@@ -27,7 +27,9 @@ object toTSV {
         tokens.foreach(t => t match {
           case e: Elem if (e.label == "w") =>
             val w = word(e)
-            println(s"${w.word}\t${w.pos}\t${w.lemma}\t${w.old_pos}\t${w.old_lemma}")
+            val join = (e \\ "join").map(j =>  "JOIN_" + (j \ "@n").text)
+
+            println(s"${w.word}\t${w.pos}\t${w.lemma}\t${w.old_pos}\t${w.old_lemma}\t$join")
           case x => println(x.text)
         })
         println("\n")
@@ -37,7 +39,8 @@ object toTSV {
       tokens.foreach(t => t match {
         case e: Elem if (e.label == "w") =>
           val w = word(e)
-          println(s"${w.word}\t${w.pos}\t${w.lemma}\t${w.old_pos}\t${w.old_lemma}")
+          val join = (e \\ "join").map(j =>  "JOIN_" + (j \ "@n").text)
+          println(s"${w.word}\t${w.pos}\t${w.lemma}\t${w.old_pos}\t${w.old_lemma}\t$join")
         case x => println(x.text.trim.replaceAll("\\s+", " "))
       })
     }

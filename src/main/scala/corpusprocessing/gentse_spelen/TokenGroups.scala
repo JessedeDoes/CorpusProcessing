@@ -38,11 +38,23 @@ case class TokenGroups(d: Elem) {
 
   case class Group(members: Set[String], id: Int)
 
+  val lpfreqs = wordElements.map(w =>  (w\ "@lemma").text + "__" + (w \ "@ctag").text).groupBy(identity).mapValues(_.size)
+  def jofel(s: String) = {
+
+
+    val ls = s.split("__")
+    if (ls.size < 2)
+      false else {
+      val (lemma, pos) = (ls(0), ls(1))
+       lpfreqs(s) < 5  && pos != "FOREIGN"
+    }
+  }
+
   def findGroups()  = {
 
     val primaryGroups: Set[Set[String]] = wordElements.sliding(9).flatMap(l => {
-      val groups: Map[String, List[Node]] = l.groupBy(w =>  (w\ "@lemma").text + "__" + (w \ "@ctag").text )
-      val z: Iterable[Set[Node]] = groups.values.filter(_.size > 1).map(_.toSet)
+      val groups: Map[String, List[Node]] = l.groupBy(w =>  (w\ "@lemma").text + "__" + (w \ "@ctag").text)
+      val z: Iterable[Set[Node]] = groups.filter(x => jofel(x._1)).values.filter(_.size > 1).map(_.toSet)
       z.map(s => s.map( w => (w \ "@id").text))
     }).toSet
     val equivgroups = transitiveClosure(primaryGroups).zipWithIndex.map({case (s,i) => Group(s,i)})
