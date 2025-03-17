@@ -76,7 +76,7 @@ object createWordids {
   def testje() =
   {
     val x = <text> <w/> <w/> <div><p> <w/><w/></p></div> <w/> <w/></text>
-    println(createWordIds(x))
+    // println(createWordIds(x))
   }
 
   def doit(f1: String, f2:String) = XML.save(f2, createWordIds(XML.load(f1)), "UTF-8")

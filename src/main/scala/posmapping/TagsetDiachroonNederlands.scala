@@ -4,6 +4,7 @@ import java.io.{File, PrintWriter}
 import corpusprocessing.CGN.CGNToTEIWithTDNTags
 import corpusprocessing.CGNMiddleDutch
 import corpusprocessing.gysseling.HistoricalTagsetPatching
+import posmapping.TagsetDiachroonNederlands.{TDN_core_xml, TDN_xml}
 import utils.XSLT
 
 import scala.xml.XML
@@ -16,6 +17,7 @@ object DataSettings {
 
 object TagsetDiachroonNederlands {
   val TDN_xml = "data/TDN/TDN_tagset.xml"
+  val TDN_core_xml = "data/TDN/Corpora/Core/tagset_desc_temp.xml"
   lazy val TDNTagset = TagSet.fromXML(TDN_xml)
   val stylesheet = "src/main/scala/posmapping/tagset-documentation.xsl"
 
@@ -401,24 +403,29 @@ object TagsetDiachroonNederlands {
    }
 }
 
-object MakeTagsetHTML {
+case class MakeTagsetHTMLClass(tagxml: String) {
   import TagsetDiachroonNederlands._
   val stylesheet = "./data/TDN/tdn.xsl"
   private def transformToHTML(): Unit = {
     val z = new File(stylesheet)
-    println(TDN_xml)
-    println(stylesheet)
+    println(s"Transforming $tagxml with $stylesheet")
+
     if (z.exists) {
-      println(z)
+      //println(z)
       val x = new XSLT(stylesheet)
 
-      x.transform(inFile = TDN_xml, outFile = TDN_xml.replaceAll(".xml", ".latest.html"))
+      x.transform(inFile = tagxml, outFile = tagxml.replaceAll(".xml", ".latestie.html"))
     }
   }
   def main(args: Array[String]) = {
     transformToHTML()
   }
 }
+
+object MakeTagsetHTML extends MakeTagsetHTMLClass(TDN_xml)
+
+object MakeCoreTagsetHTML extends MakeTagsetHTMLClass(TDN_core_xml)
+
 /*
 def oldMain(args: Array[String]): Unit = {
     val GysTags = scala.io.Source.fromFile("data/CG/overzichtje_met_morfcode.txt").getLines.map(l => l.split("\\s+")) // .map(l => l(2))

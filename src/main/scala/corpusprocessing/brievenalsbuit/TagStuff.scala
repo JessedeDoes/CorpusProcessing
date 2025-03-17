@@ -24,7 +24,11 @@ trait Annotation {
 
   def mapTag(f: String => String): Annotation = map({case LemPos(l,t) => LemPos(l, f(t))})
 
-  def toTDN: Annotation = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
+  def toTDN: Annotation = {
+    val out = better().mapTag(p => tagMapTDNStyle.getOrElse(p, s"RES(type=uncl)"))
+    // println(s"$this --> $out")
+    out
+  }
   def toUD: Annotation = better().mapTag(p => tagMapUDStyle.getOrElse(p, s"X"))
   def better(): Annotation = this.map(_.betterAnnotation())
 
@@ -95,11 +99,13 @@ object TagStuff {
   val tagMapCGNStyle = Map(
     "NOU-C" -> "N(soort)",
     "NOU" -> "N(soort)",  "NOUEN" -> "N(soort)",
-    "NEPER" -> "N(eigen,per)", "GEB.WENDEL" -> "N(eigen,per)",
+    "NEPER" -> "N(eigen,per)",
+    "GEB.WENDEL" -> "N(eigen,per)",
     "PER" -> "N(eigen,per)",
     "NELOC" -> "N(eigen,loc)",
     "NEOTHER" -> "N(eigen,overig)",
     "NEORG" -> "N(eigen,org)",
+
     "CON" -> "VG",
     "VRB" -> "WW", "VRN" -> "WW",
     "ADP" -> "VZ",
@@ -123,6 +129,10 @@ object TagStuff {
     "NELOC" -> "NOU-P(type=loc)",
     "NEOTHER" -> "NOU-P(type=other)",
     "NEORG" -> "NOU-P(type=per)",
+    "NE_LOC" -> "NOU-P(type=loc)",
+    "NE_OTHER" -> "NOU-P(type=other)",
+    "NE_ORG" -> "NOU-P(type=per)",
+    "NE_TF" -> "NOU-P(type=tf)",
     "CON" -> "CON",
     "VRB" -> "VRB", "VRN" -> "VRB",
     "ADP" -> "ADP",
@@ -146,6 +156,12 @@ object TagStuff {
     "NELOC" -> "NOU-P(type=loc)",
     "NEOTHER" -> "NOU-P(type=oth)",
     "NEORG" -> "NOU-P(type=org)",
+
+    "NE_LOC" -> "NOU-P(type=loc)",
+    "NE_PER" -> "NOU-P(type=per)",
+    "NE_OTHER" -> "NOU-P(type=other)",
+    "NE_ORG" -> "NOU-P(type=per)",
+    "NE_TF" -> "NOU-P(type=tf)",
     "CON" -> "CONJ",
     "VRB" -> "VRB", "VRN" -> "VRB",
     "ADP" -> "ADP",
