@@ -10,6 +10,7 @@ import scala.collection.mutable
 case class TokenGroups(d: Elem) {
   lazy val wordElements = (d \\  "w").toList
 
+  def word(w: Node)  = (w \ "seg").text
   def markGroups() = {
     val groups: Map[Int, Group] = findGroups()
     val id2groupid: Map[String, Int] = groups.values.toList.flatMap(g => g.members.map(s => s -> g.id)).toMap
@@ -39,14 +40,15 @@ case class TokenGroups(d: Elem) {
   case class Group(members: Set[String], id: Int)
 
   val lpfreqs = wordElements.map(w =>  (w\ "@lemma").text + "__" + (w \ "@ctag").text).groupBy(identity).mapValues(_.size)
-  def jofel(s: String) = {
+  def jofel(s: String, l: List[Node]) = {
 
 
     val ls = s.split("__")
-    if (ls.size < 2)
+    val sameWord = l.groupBy(word).exists(_._2.size > 1)
+    if (sameWord || ls.size < 2)
       false else {
       val (lemma, pos) = (ls(0), ls(1))
-       lpfreqs(s) < 10  && pos != "FOREIGN"
+      (lpfreqs(s)< 10 || lemma.matches("daar.+"))  && pos != "FOREIGN"
     }
   }
 
@@ -54,7 +56,7 @@ case class TokenGroups(d: Elem) {
 
     val primaryGroups: Set[Set[String]] = wordElements.sliding(9).flatMap(l => {
       val groups: Map[String, List[Node]] = l.groupBy(w =>  (w\ "@lemma").text + "__" + (w \ "@ctag").text)
-      val z: Iterable[Set[Node]] = groups.filter(x => jofel(x._1)).values.filter(_.size > 1).map(_.toSet)
+      val z: Iterable[Set[Node]] = groups.filter(x => jofel(x._1, x._2)).values.filter(_.size > 1).map(_.toSet)
       z.map(s => s.map( w => (w \ "@id").text))
     }).toSet
     val equivgroups = transitiveClosure(primaryGroups).zipWithIndex.map({case (s,i) => Group(s,i)})
