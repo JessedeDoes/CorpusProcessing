@@ -46,7 +46,7 @@ case class TokenGroups(d: Elem) {
     if (ls.size < 2)
       false else {
       val (lemma, pos) = (ls(0), ls(1))
-       lpfreqs(s) < 5  && pos != "FOREIGN"
+       lpfreqs(s) < 10  && pos != "FOREIGN"
     }
   }
 
