@@ -25,7 +25,7 @@ case class addProcessedMetadataValues() {
       val newValue = getField(b1, n)
       val oldValue = getField(b,n)
       if (oldValue.nonEmpty) {
-        Console.err.println(s"!!!! Combinatieveld was er al CHECK $n -> $newValue; was: $oldValue")
+        // Console.err.println(s"!!!! Combinatieveld was er al CHECK $n -> $newValue; was: $oldValue")
         b
       } else b1
     }

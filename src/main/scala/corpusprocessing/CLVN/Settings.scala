@@ -6,6 +6,11 @@ object Settings {
   val ditAtHome = "/mnt/DiskStation/homes/jesse/work/DiT-corpusproject/"
   val ditDirectory:String = if (atHome) ditAtHome else ditAtWork
 
+  val CLNVPatched ="/mnt/Projecten/Corpora/Historische_Corpora/CLVN/Patched2025/"
+  val CLNVDetokenized ="/mnt/Projecten/Corpora/Historische_Corpora/CLVN/Detokenized2025/"
+  val CLVN =  "/mnt/Projecten/Corpora/Historische_Corpora/CLVN/PostProcessedMetadata/"
+
+
   val ditconfig = database.Configuration(
     name = "ditmeta",
     server = "svowdb02",

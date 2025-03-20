@@ -1,7 +1,13 @@
 package corpusprocessing.CLVN
 
+import corpusprocessing.CLVN.PostProcessForCobaltje.{fix, p, p1, process, putAllInSeg}
+import corpusprocessing.metadata.jamaarCLVN
+
 import scala.xml.{Elem, NodeSeq, _}
 import utils.PostProcessXML._
+import utils.ProcessFolder
+
+import java.io.File
 
 object CLVNUtils {
 
@@ -334,4 +340,27 @@ object CLVNUtils {
 
   def floatingTextInQ(d: Elem): Elem = updateElement3(d, _.label == "q", addFloatingText)
 
+  def deTokenizeToken(w: Elem)  = {
+    if ((w \ "seg").nonEmpty && w.label != "s") (w \ "seg").flatMap(_.child) else w.child
+  }
+
+  def deTokenizeDoc(d: Elem) =
+    updateElement5(d, x => Set("w", "pc", "s").contains(x.label), deTokenizeToken).asInstanceOf[Elem]
+}
+
+
+object deTokenize {
+
+  val in = new File(Settings.CLNVPatched)
+  val out = new File(Settings.CLNVDetokenized)
+  def process(in: String, out: String)  = {
+
+    XML.save(out, CLVNUtils.deTokenizeDoc(XML.load(in)))
+  }
+  def main(args: Array[String]) = {
+
+    ProcessFolder.processFolder(in,out,process)
+    p.close()
+    p1.close()
+  }
 }
