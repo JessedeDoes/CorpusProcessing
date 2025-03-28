@@ -62,7 +62,7 @@ object Settings {
 
 
 
-  val exportQuery_geenDubbelMetWatMeer =   """ (select articles_int_more_more.*
+  val exportQuery_geenDubbelMetWatMeer =   """ (select distinct articles_int_more_more.*
       |from articles_int_more_more, issues_kb_fixed
       |where articles_int_more_more.kb_issue=issues_kb_fixed.kb_issue and not dubbel_mag_weg) x""".stripMargin
 }
