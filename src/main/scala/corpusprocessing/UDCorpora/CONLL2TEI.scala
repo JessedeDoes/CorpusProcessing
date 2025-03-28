@@ -157,3 +157,11 @@ object Lassy2TEI {
     CONLL2TEI.convert("/mnt/Projecten/Taalbank/UD-TDN-Lassy/Data/lassy_small_7.conllu", "/tmp/")
   }
 }
+
+
+object LassyExamples {
+
+  def main(args: Array[String]) = {
+    CONLL2TEI.convert("/mnt/Projecten/Taalbank/UD-TDN-Lassy/Data/lassy-examples.conllu", "/tmp/")
+  }
+}
